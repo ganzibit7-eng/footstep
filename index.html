@@ -68,6 +68,13 @@
     color: var(--muted-text) !important;
   }
   html[data-theme="dark"] .photo-tile{ opacity:0.85; }
+  html[data-theme="dark"] .map-tiles{
+    filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.85);
+  }
+  html[data-theme="dark"] .leaflet-control-attribution{
+    background:rgba(36,43,38,0.8) !important; color:var(--muted-text) !important;
+  }
+  html[data-theme="dark"] .leaflet-control-attribution a{ color:var(--gold) !important; }
   html[data-theme="dark"] .hero-card{ background:var(--paper); }
   html[data-theme="dark"] .weather-card, html[data-theme="dark"] #champion-card{ filter:brightness(0.9); }
   *{box-sizing:border-box;}
@@ -1861,18 +1868,14 @@
     renderMap();
   }
 
-  function currentTileUrl(){
-    return document.documentElement.getAttribute('data-theme') === 'dark'
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-  }
+  const OSM_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   let mainTileLayer, miniTileLayer, walkTileLayer;
   let coursePathLayer; // 경로선 전용 레이어 (마커 클러스터와 분리)
   function initMap(){
     map = L.map('map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
-    mainTileLayer = L.tileLayer(currentTileUrl(), {
-      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin'
+    mainTileLayer = L.tileLayer(OSM_TILE_URL, {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
     }).addTo(map);
     courseLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
     coursePathLayer = L.layerGroup().addTo(map);
@@ -2182,9 +2185,9 @@
 
   function initMiniMap(){
     miniMap = L.map('mini-map', {tap:true}).setView([36.5,127.8], 7);
-    miniTileLayer = L.tileLayer(currentTileUrl(), {
-      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin'
+    miniTileLayer = L.tileLayer(OSM_TILE_URL, {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
     }).addTo(miniMap);
 
     // 점 찍기 모드 & 배변봉투함 모드용 클릭 처리
@@ -2505,9 +2508,9 @@
     mapEl.innerHTML = '';
     if(routeMap){ routeMap.remove(); routeMap = null; }
     routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false}).setView([c.lat,c.lng], 14);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin'
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
     }).addTo(routeMap);
     if(c.path && c.path.length > 1){
       const line = L.polyline(c.path, {color:'#B5502E', weight:4}).addTo(routeMap);
@@ -2653,9 +2656,9 @@
   }
   function initWalkMap(){
     walkMap = L.map('walk-map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
-    walkTileLayer = L.tileLayer(currentTileUrl(), {
-      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin'
+    walkTileLayer = L.tileLayer(OSM_TILE_URL, {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
     }).addTo(walkMap);
   }
   function nearestCourseWithin(lat, lng, maxMeters){
@@ -2878,10 +2881,6 @@
     document.documentElement.setAttribute('data-theme', theme);
     document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
     try{ localStorage.setItem('paw_theme', theme); }catch(e){}
-    const url = currentTileUrl();
-    if(mainTileLayer) mainTileLayer.setUrl(url);
-    if(miniTileLayer) miniTileLayer.setUrl(url);
-    if(walkTileLayer) walkTileLayer.setUrl(url);
   }
   (function initTheme(){
     let saved = null;
