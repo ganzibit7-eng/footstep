@@ -12,6 +12,10 @@
 <meta property="og:url" content="https://balzaguk.com">
 <meta property="og:locale" content="ko_KR">
 <meta name="naver-site-verification" content="9b251cb6993878e0c84ba3d24bc4b0b1bd5b2234" />
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#1F3A2E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
@@ -32,7 +36,35 @@
     --gold:#C79A3C;
     --radius:14px;
     --shadow: 0 10px 30px -12px rgba(21,41,34,0.35);
+    --muted-text: #4A4636;
   }
+  html[data-theme="dark"]{
+    --pine:#2A4A3A;
+    --pine-deep:#0E1815;
+    --sand:#1B211D;
+    --paper:#242B26;
+    --moss:#8FB08C;
+    --clay:#D9754F;
+    --clay-dark:#F08A5F;
+    --ink:#EDE8DC;
+    --line:#3A423C;
+    --gold:#D9B15C;
+    --shadow: 0 10px 30px -12px rgba(0,0,0,0.6);
+    --muted-text: #B8B29E;
+  }
+  html[data-theme="dark"] .card p.desc,
+  html[data-theme="dark"] .section-head p,
+  html[data-theme="dark"] .review-item p,
+  html[data-theme="dark"] .empty-review,
+  html[data-theme="dark"] .empty-admin,
+  html[data-theme="dark"] .card-owner-tag,
+  html[data-theme="dark"] .tag-pill,
+  html[data-theme="dark"] .mini-map-note{
+    color: var(--muted-text) !important;
+  }
+  html[data-theme="dark"] .photo-tile{ opacity:0.85; }
+  html[data-theme="dark"] .hero-card{ background:var(--paper); }
+  html[data-theme="dark"] .weather-card, html[data-theme="dark"] #champion-card{ filter:brightness(0.9); }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   .app-page{ display:none; }
@@ -276,6 +308,11 @@
   .star-input span{ color:var(--line); transition:color .1s; }
   .star-input span.on{ color:var(--gold); }
   .empty-review{ font-size:13px; color:#6B6550; }
+  .loading-state, .empty-course-state{
+    grid-column:1/-1; text-align:center; padding:48px 20px; color:var(--muted-text); font-size:15px;
+  }
+  .loading-state{ animation:pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:0.5;} 50%{opacity:1;} }
   .badge-shop-item{
     display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1.5px solid var(--line);
     border-radius:10px; margin-bottom:8px; background:#fff;
@@ -369,10 +406,11 @@
     <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
     <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot"></span><span id="profile-label">로그인</span></button>
     <button id="points-badge" style="margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
+    <button id="theme-toggle" aria-label="다크모드 전환" style="margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">🌙</button>
   </div>
 </header>
 
-<nav class="bottom-tab-bar" id="bottom-tab-bar">
+<nav class="bottom-tab-bar" id="bottom-tab-bar" aria-label="주요 메뉴">
   <button data-page-nav="home"><span class="tab-icon">🏠</span><span>홈</span></button>
   <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
   <button data-page-nav="list"><span class="tab-icon">📋</span><span>목록</span></button>
@@ -427,7 +465,7 @@
         <p id="nearby-desc">프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.</p>
       </div>
     </div>
-    <div class="grid" id="nearby-grid"></div>
+    <div class="grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
   </div>
 </section>
 
@@ -499,7 +537,10 @@
       </div>
     </div>
     <p id="course-count-label" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
-    <div class="grid" id="course-grid"></div>
+    <div class="grid" id="course-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+    <div style="text-align:center; margin-top:24px;">
+      <button type="button" id="course-load-more-btn" class="pin-btn" style="display:none; width:auto; padding:12px 28px;">더 보기</button>
+    </div>
   </div>
 </section>
 
@@ -690,7 +731,7 @@
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <div class="modal-inner-wrap">
-      <button class="modal-close" id="modal-close">✕</button>
+      <button class="modal-close" id="modal-close" aria-label="닫기">✕</button>
       <div class="modal-gallery" id="modal-gallery">
         <div class="photo-tile">🐕</div>
         <div class="photo-tile">🌳</div>
@@ -791,12 +832,12 @@
 </div>
 
 
-<button class="admin-toggle" id="admin-toggle" title="관리자 전용" style="display:none;">🛡️</button>
+<button class="admin-toggle" id="admin-toggle" title="관리자 전용" aria-label="관리자 화면 열기" style="display:none;">🛡️</button>
 
 <div class="modal-overlay" id="admin-overlay">
   <div class="modal admin-panel">
     <div class="modal-inner-wrap">
-      <button class="modal-close" id="admin-close">✕</button>
+      <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
       <div class="modal-body">
         <h3 style="font-size:22px;">🛡️ 신고된 항목 검수</h3>
         <p style="font-size:13px; color:#6B6550; margin-top:4px;">관리자 전용 화면이에요.</p>
@@ -1650,6 +1691,10 @@
   }
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
+    if(courseList.length === 0){
+      containerEl.innerHTML = '<p class="empty-course-state">🐾 조건에 맞는 코스를 아직 못 찾았어요.<br>검색어나 필터를 조정해보시거나, 직접 첫 코스를 등록해보세요!</p>';
+      return;
+    }
     courseList.forEach(c=>{
       const card = document.createElement('div');
       card.className = 'card';
@@ -1697,6 +1742,8 @@
     return !!(courseBoosts[courseId] && new Date(courseBoosts[courseId]) > new Date());
   }
   const listFilterState = { query:'', diff:'all', tags: new Set() };
+  const LIST_PAGE_SIZE = 12;
+  let listShownCount = LIST_PAGE_SIZE;
   function renderGrid(){
     let list = allCourses().filter(c => !isHidden('course', c.id));
 
@@ -1719,7 +1766,19 @@
 
     const countLabel = document.getElementById('course-count-label');
     if(countLabel) countLabel.textContent = `총 ${list.length}개 코스`;
-    renderCourseCards(document.getElementById('course-grid'), list);
+
+    const visible = list.slice(0, listShownCount);
+    renderCourseCards(document.getElementById('course-grid'), visible);
+
+    const moreBtn = document.getElementById('course-load-more-btn');
+    if(moreBtn){
+      if(list.length > listShownCount){
+        moreBtn.style.display = '';
+        moreBtn.textContent = `더 보기 (${list.length - listShownCount}개 더 있음)`;
+      } else {
+        moreBtn.style.display = 'none';
+      }
+    }
   }
   function loadNearbyRecommendations(){
     const visible = allCourses().filter(c => !isHidden('course', c.id));
@@ -1911,6 +1970,26 @@
     }
   }
   const MAX_PHOTO_MB = 5;
+  function compressImage(file, maxDim, quality){
+    return new Promise((resolve)=>{
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = ()=>{
+        let { width, height } = img;
+        if(width > maxDim || height > maxDim){
+          if(width > height){ height = Math.round(height * (maxDim/width)); width = maxDim; }
+          else{ width = Math.round(width * (maxDim/height)); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        canvas.toBlob((blob)=> resolve(blob || file), 'image/jpeg', quality);
+      };
+      img.onerror = ()=>{ URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
   async function uploadCoursePhoto(file){
     if(!myNickname){ openNickModal(); toast('사진을 올리려면 먼저 로그인해주세요'); return; }
     if(!activeCourseId) return;
@@ -1920,11 +1999,12 @@
       return;
     }
     const statusEl = document.getElementById('photo-upload-status');
-    statusEl.textContent = '업로드 중...';
+    statusEl.textContent = '사진 최적화 중...';
     try{
-      const ext = file.name.split('.').pop();
-      const path = `${activeCourseId}/${Date.now()}.${ext}`;
-      const { error: upErr } = await sb.storage.from('course-photos').upload(path, file);
+      const compressed = await compressImage(file, 1600, 0.82);
+      statusEl.textContent = '업로드 중...';
+      const path = `${activeCourseId}/${Date.now()}.jpg`;
+      const { error: upErr } = await sb.storage.from('course-photos').upload(path, compressed, { contentType:'image/jpeg' });
       if(upErr){ console.error(upErr); statusEl.textContent = '업로드 실패 (course-photos 버킷이 있는지 확인해주세요)'; return; }
       const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
       const { error: insErr } = await sb.from('course_photos').insert([{
@@ -2148,6 +2228,7 @@
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(()=>{
       listFilterState.query = e.target.value.trim();
+      listShownCount = LIST_PAGE_SIZE;
       renderGrid();
     }, 250);
   });
@@ -2157,6 +2238,7 @@
     document.querySelectorAll('#list-diff-filter .chip').forEach(c=>c.classList.remove('active'));
     chip.classList.add('active');
     listFilterState.diff = chip.dataset.diffFilter;
+    listShownCount = LIST_PAGE_SIZE;
     renderGrid();
   });
   document.getElementById('list-tag-filter').addEventListener('click', (e)=>{
@@ -2165,6 +2247,11 @@
     chip.classList.toggle('active');
     const tag = chip.dataset.tagFilter;
     if(listFilterState.tags.has(tag)) listFilterState.tags.delete(tag); else listFilterState.tags.add(tag);
+    listShownCount = LIST_PAGE_SIZE;
+    renderGrid();
+  });
+  document.getElementById('course-load-more-btn').addEventListener('click', ()=>{
+    listShownCount += LIST_PAGE_SIZE;
     renderGrid();
   });
 
@@ -2751,6 +2838,23 @@
   initMap();
   initMiniMap();
   initWalkMap();
+  // ===== 다크모드 =====
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+    try{ localStorage.setItem('paw_theme', theme); }catch(e){}
+  }
+  (function initTheme(){
+    let saved = null;
+    try{ saved = localStorage.getItem('paw_theme'); }catch(e){}
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  })();
+  document.getElementById('theme-toggle').addEventListener('click', ()=>{
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
   captureReferralFromUrl();
   seedIfNeeded().then(loadData);
   initWeatherWidget();
