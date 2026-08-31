@@ -189,6 +189,17 @@
   .map-panel{
     background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
   }
+  .map-wrap-relative{ position:relative; }
+  .locate-btn{
+    position:absolute; bottom:16px; right:16px; z-index:400;
+    width:46px; height:46px; border-radius:50%; border:1px solid var(--line);
+    background:var(--paper); color:var(--pine-deep); font-size:20px; cursor:pointer;
+    box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center;
+  }
+  .locate-btn:active{ transform:scale(0.94); }
+  .locate-btn.loading svg{ animation:locate-spin 0.9s linear infinite; color:var(--clay); }
+  .locate-btn.located svg{ color:#3B82F6; }
+  @keyframes locate-spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
   .map-toolbar{
     display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:12px;
   }
@@ -511,7 +522,12 @@
         </div>
         <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
       </div>
-      <div id="map"></div>
+      <div class="map-wrap-relative">
+        <div id="map"></div>
+        <button type="button" id="locate-me-btn" class="locate-btn" aria-label="현재 위치로 이동" title="현재 위치로 이동">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm8.94 3H23v2h-2.06A9.005 9.005 0 0113 20.94V23h-2v-2.06A9.005 9.005 0 013.06 13H1v-2h2.06A9.005 9.005 0 0111 3.06V1h2v2.06A9.005 9.005 0 0120.94 11zM12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+        </button>
+      </div>
       <div class="map-legend">
         <span>🐾 산책 코스 시작점</span>
         <span>┈┈ 실제 산책 경로</span>
@@ -2049,6 +2065,32 @@
     if(activePoiCategories.size === 0) poiLayer.clearLayers();
   });
   document.getElementById('poi-search-btn').addEventListener('click', searchNearbyPoi);
+
+  // ===== 현재 위치로 이동 =====
+  let myLocationMarker = null;
+  document.getElementById('locate-me-btn').addEventListener('click', ()=>{
+    if(!navigator.geolocation){ toast('이 브라우저에서는 위치 기능을 쓸 수 없어요'); return; }
+    const btn = document.getElementById('locate-me-btn');
+    btn.classList.add('loading');
+    navigator.geolocation.getCurrentPosition(
+      (pos)=>{
+        const { latitude, longitude } = pos.coords;
+        map.setView([latitude, longitude], 15);
+        if(myLocationMarker) map.removeLayer(myLocationMarker);
+        myLocationMarker = L.circleMarker([latitude, longitude], {
+          radius:9, color:'#fff', weight:3, fillColor:'#3B82F6', fillOpacity:1
+        }).addTo(map).bindPopup('📍 현재 위치');
+        btn.classList.remove('loading');
+        btn.classList.add('located');
+      },
+      (err)=>{
+        console.error(err);
+        toast('위치 정보를 가져올 수 없어요. 위치 권한을 확인해주세요');
+        btn.classList.remove('loading');
+      },
+      { enableHighAccuracy:true, timeout:10000, maximumAge:5000 }
+    );
+  });
 
   // ===== 코스 사진 업로드 (Supabase Storage) =====
   const PHOTO_PLACEHOLDER_EMOJI = ['🐕','🌳','🐾'];
