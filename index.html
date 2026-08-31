@@ -535,6 +535,12 @@
     <div class="map-panel" style="margin-bottom:24px;">
       <div class="map-toolbar">
         <input type="text" id="course-search-input" placeholder="🔍 코스 이름·설명으로 검색 (예: 한강, 그늘)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
+        <select id="course-sort-select" style="padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); color:var(--ink);">
+          <option value="default">기본순</option>
+          <option value="rating">평점 높은순</option>
+          <option value="reviews">리뷰 많은순</option>
+          <option value="name">이름순</option>
+        </select>
       </div>
       <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="list-diff-filter">
@@ -823,6 +829,7 @@
         <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
       </div>
       <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
+      <button class="pin-btn" id="withdraw-btn" style="margin-top:10px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
     </div>
   </div>
 </div>
@@ -1782,7 +1789,7 @@
   function isBoostedNow(courseId){
     return !!(courseBoosts[courseId] && new Date(courseBoosts[courseId]) > new Date());
   }
-  const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false };
+  const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false, sort:'default' };
   const LIST_PAGE_SIZE = 12;
   let listShownCount = LIST_PAGE_SIZE;
   function renderGrid(){
@@ -1806,6 +1813,13 @@
       list = list.filter(c => favoriteIds.has(c.id));
     }
 
+    if(listFilterState.sort === 'rating'){
+      list = list.sort((a,b)=> (Number(avgRating(b.id))||0) - (Number(avgRating(a.id))||0));
+    } else if(listFilterState.sort === 'reviews'){
+      list = list.sort((a,b)=> reviewsFor(b.id).length - reviewsFor(a.id).length);
+    } else if(listFilterState.sort === 'name'){
+      list = list.sort((a,b)=> a.name.localeCompare(b.name, 'ko'));
+    }
     list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
 
     const countLabel = document.getElementById('course-count-label');
@@ -2295,6 +2309,11 @@
       listShownCount = LIST_PAGE_SIZE;
       renderGrid();
     }, 250);
+  });
+  document.getElementById('course-sort-select').addEventListener('change', (e)=>{
+    listFilterState.sort = e.target.value;
+    listShownCount = LIST_PAGE_SIZE;
+    renderGrid();
   });
   document.getElementById('list-diff-filter').addEventListener('click', (e)=>{
     const chip = e.target.closest('.chip');
@@ -2905,12 +2924,18 @@
 
   // ===== 페이지 전환 (메뉴별 화면 분리) =====
   let currentPage = 'home';
-  function showPage(page){
+  const VALID_PAGES = ['home','map','list','walk','register','etiquette','privacy','terms'];
+  function showPage(page, opts){
+    opts = opts || {};
     document.querySelectorAll('.app-page').forEach(el => el.classList.remove('active'));
     document.querySelectorAll(`.app-page[data-page-section="${page}"]`).forEach(el => el.classList.add('active'));
     currentPage = page;
     document.querySelectorAll('[data-page-nav]').forEach(el => el.classList.toggle('active', el.dataset.pageNav === page));
     window.scrollTo({ top:0, behavior:'instant' in window ? 'instant' : 'auto' });
+    if(!opts.skipHistory){
+      const newHash = '#' + page;
+      if(window.location.hash !== newHash) history.pushState({page}, '', newHash);
+    }
     // 지도가 숨겨져 있다가 보이면 Leaflet이 크기를 다시 계산해야 정상적으로 그려짐
     setTimeout(()=>{
       if(page === 'map' && map) map.invalidateSize();
@@ -2924,6 +2949,16 @@
       showPage(el.dataset.pageNav);
     });
   });
+  window.addEventListener('popstate', (e)=>{
+    const page = (e.state && e.state.page) || window.location.hash.replace('#','') || 'home';
+    if(VALID_PAGES.includes(page)) showPage(page, { skipHistory:true });
+  });
+  (function initialPageFromHash(){
+    const initial = window.location.hash.replace('#','');
+    if(initial && VALID_PAGES.includes(initial) && initial !== 'home'){
+      showPage(initial, { skipHistory:true });
+    }
+  })();
 
   initMap();
   initMiniMap();
@@ -3008,6 +3043,24 @@
       closeProfileModal();
       signOutUser();
     }
+  });
+  document.getElementById('withdraw-btn').addEventListener('click', async ()=>{
+    if(!myDeviceId) return;
+    const sure = confirm('정말 탈퇴하시겠어요?\n내가 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.');
+    if(!sure) return;
+    try{
+      await sb.from('courses').delete().eq('owner_id', myDeviceId);
+      await sb.from('bins').delete().eq('owner_id', myDeviceId);
+      await sb.from('reviews').delete().eq('owner_id', myDeviceId);
+      await sb.from('course_photos').delete().eq('uploader_id', myDeviceId);
+      await sb.from('walks').delete().eq('owner_id', myDeviceId);
+      await sb.from('active_walkers').delete().eq('owner_id', myDeviceId);
+      await sb.from('points_log').delete().eq('owner_id', myDeviceId);
+      await sb.from('profiles').delete().eq('owner_id', myDeviceId);
+      closeProfileModal();
+      await signOutUser();
+      toast('탈퇴 처리됐어요. 로그인 계정 자체를 완전히 삭제하고 싶으시면 문의해주세요 🐾');
+    }catch(e){ console.error(e); toast('처리 중 오류가 발생했어요. 다시 시도해주세요'); }
   });
   document.getElementById('nick-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'nick-overlay') closeNickModal();
