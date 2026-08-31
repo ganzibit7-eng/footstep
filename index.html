@@ -11,6 +11,8 @@
 <meta property="og:description" content="반려견 산책 코스, 배변봉투함, 동물병원·애견동반 식당·숙소를 지도에서 찾고 공유하는 서비스">
 <meta property="og:url" content="https://balzaguk.com">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://balzaguk.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="naver-site-verification" content="9b251cb6993878e0c84ba3d24bc4b0b1bd5b2234" />
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png" type="image/png">
@@ -20,6 +22,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70f6582eb185c9353f39a366aa0c793f&libraries=services&autoload=false"></script>
 <style>
@@ -745,6 +750,7 @@
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
           <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
           <span id="photo-upload-status" style="font-size:12px; color:#6B6550; margin-left:8px;"></span>
+          <button type="button" id="share-course-btn" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px;">🔗 공유하기</button>
         </div>
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
         <div id="modal-route-map"></div>
@@ -1816,10 +1822,11 @@
 
   function renderMap(){
     courseLayer.clearLayers();
+    coursePathLayer.clearLayers();
     binLayer.clearLayers();
     allCourses().filter(c => !isHidden('course', c.id)).forEach(c=>{
       if(c.path && c.path.length > 1){
-        L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(courseLayer);
+        L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(coursePathLayer);
       }
       L.marker([c.lat,c.lng], {icon:pawIcon()})
         .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a>`)
@@ -1854,14 +1861,22 @@
     renderMap();
   }
 
+  function currentTileUrl(){
+    return document.documentElement.getAttribute('data-theme') === 'dark'
+      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+      : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  }
+  let mainTileLayer, miniTileLayer, walkTileLayer;
+  let coursePathLayer; // 경로선 전용 레이어 (마커 클러스터와 분리)
   function initMap(){
     map = L.map('map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+    mainTileLayer = L.tileLayer(currentTileUrl(), {
+      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin'
     }).addTo(map);
-    courseLayer = L.layerGroup().addTo(map);
-    binLayer = L.layerGroup().addTo(map);
+    courseLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
+    coursePathLayer = L.layerGroup().addTo(map);
+    binLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
     poiLayer = L.layerGroup().addTo(map);
   }
 
@@ -2167,8 +2182,8 @@
 
   function initMiniMap(){
     miniMap = L.map('mini-map', {tap:true}).setView([36.5,127.8], 7);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+    miniTileLayer = L.tileLayer(currentTileUrl(), {
+      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin'
     }).addTo(miniMap);
 
@@ -2216,9 +2231,9 @@
       document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
-      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(binLayer); }
-      else if(f==='course'){ map.addLayer(courseLayer); map.removeLayer(binLayer); }
-      else { map.addLayer(binLayer); map.removeLayer(courseLayer); }
+      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); }
+      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); }
+      else { map.addLayer(binLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
     });
   });
 
@@ -2444,6 +2459,26 @@
     });
   }
 
+  async function shareCourse(courseId){
+    const c = allCourses().find(x=>x.id===courseId);
+    if(!c) return;
+    const url = `${window.location.origin}${window.location.pathname}?course=${courseId}`;
+    const shareData = { title:`발자국 - ${c.name}`, text:`${c.name} 코스를 확인해보세요 🐾`, url };
+    if(navigator.share){
+      try{ await navigator.share(shareData); }catch(e){ /* 사용자가 취소한 경우 등은 무시 */ }
+    } else {
+      try{
+        await navigator.clipboard.writeText(url);
+        toast('코스 링크가 복사됐어요! 친구에게 공유해보세요 🔗');
+      }catch(e){
+        prompt('아래 링크를 복사해서 공유해주세요:', url);
+      }
+    }
+  }
+  document.getElementById('share-course-btn').addEventListener('click', ()=>{
+    if(activeCourseId) shareCourse(activeCourseId);
+  });
+
   function openCourseDetail(courseId){
     const c = allCourses().find(x => x.id === courseId);
     if(!c) return;
@@ -2618,8 +2653,8 @@
   }
   function initWalkMap(){
     walkMap = L.map('walk-map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+    walkTileLayer = L.tileLayer(currentTileUrl(), {
+      attribution:'&copy; OpenStreetMap contributors, &copy; CARTO', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin'
     }).addTo(walkMap);
   }
@@ -2843,6 +2878,10 @@
     document.documentElement.setAttribute('data-theme', theme);
     document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
     try{ localStorage.setItem('paw_theme', theme); }catch(e){}
+    const url = currentTileUrl();
+    if(mainTileLayer) mainTileLayer.setUrl(url);
+    if(miniTileLayer) miniTileLayer.setUrl(url);
+    if(walkTileLayer) walkTileLayer.setUrl(url);
   }
   (function initTheme(){
     let saved = null;
@@ -2856,7 +2895,19 @@
   });
 
   captureReferralFromUrl();
-  seedIfNeeded().then(loadData);
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('sw.js').catch((e)=> console.error('SW 등록 실패', e));
+    });
+  }
+  seedIfNeeded().then(loadData).then(()=>{
+    const params = new URLSearchParams(window.location.search);
+    const sharedCourseId = params.get('course');
+    if(sharedCourseId && allCourses().some(c=>c.id===sharedCourseId)){
+      showPage('map');
+      setTimeout(()=> openCourseDetail(sharedCourseId), 300);
+    }
+  });
   initWeatherWidget();
   loadMonthlyChampion();
   loadActiveWalkerCounts();
