@@ -139,7 +139,7 @@
   .section-head{ margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .section-head h2{ font-size:clamp(26px,3.4vw,38px); }
   .section-head .kicker{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--clay); margin-bottom:8px; display:block;}
-  .section-head p{ max-width:52ch; color:#5B5645; font-size:15px; margin-top:8px;}
+  .section-head p{ max-width:56ch; color:#4A4636; font-size:15.5px; margin-top:8px; line-height:1.65;}
 
   /* ===== Map section ===== */
   .map-panel{
@@ -156,27 +156,27 @@
   .chip.active{ background:var(--pine-deep); border-color:var(--pine-deep); color:var(--paper); }
   .chip .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle;}
   #map{ height:460px; width:100%; }
-  .map-legend{ font-size:12px; color:#6B664F; padding:10px 18px; display:flex; gap:18px; flex-wrap:wrap; border-top:1px solid var(--line); }
+  .map-legend{ font-size:12px; color:#5B5645; padding:10px 18px; display:flex; gap:18px; flex-wrap:wrap; border-top:1px solid var(--line); }
 
   /* ===== Course list ===== */
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:18px; margin-top:28px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:22px; margin-top:28px; }
   .card{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:20px;
-    display:flex; flex-direction:column; gap:10px; transition:transform .15s ease, box-shadow .15s ease;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+    display:flex; flex-direction:column; gap:12px; transition:transform .15s ease, box-shadow .15s ease;
   }
   .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
   .card .row{ display:flex; align-items:center; justify-content:space-between; }
-  .card h3{ font-size:19px; }
+  .card h3{ font-size:20px; line-height:1.3; }
   .badge{
     font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;
   }
   .badge.easy{ background:#DCEBD6; color:#33612F; }
   .badge.mid{ background:#F3E3C4; color:#8A5F14; }
   .badge.hard{ background:#F2D6CE; color:var(--clay-dark); }
-  .card p.desc{ font-size:13.5px; color:#5B5645; margin:0; }
+  .card p.desc{ font-size:14.5px; color:#4A4636; margin:0; line-height:1.6; }
   .tag-row{ display:flex; gap:6px; flex-wrap:wrap; }
-  .tag-pill{ font-size:11px; background:var(--sand); color:#5B5645; padding:4px 9px; border-radius:8px; font-weight:600;}
-  .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--moss); margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
+  .tag-pill{ font-size:12px; background:var(--sand); color:#4A4636; padding:5px 10px; border-radius:8px; font-weight:600;}
+  .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:13px; color:#3F5A3D; margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
 
   /* ===== Register form ===== */
   .register-panel{
@@ -214,7 +214,7 @@
   }
   .submit-btn:hover{ background:var(--clay-dark); }
   .mini-map-wrap{ position:sticky; top:96px; }
-  .mini-map-note{ font-size:13px; color:#6B664F; background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
+  .mini-map-note{ font-size:13px; color:#5B5645; background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
   #mini-map{ height:360px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); touch-action:pan-x pan-y; }
   #mini-map.drawing-active{ touch-action:none; cursor:crosshair; }
 
@@ -270,12 +270,12 @@
   .review-item:last-child{ border-bottom:none; }
   .review-item .rh{ display:flex; justify-content:space-between; align-items:center; font-size:13px; font-weight:700; }
   .stars{ color:var(--gold); letter-spacing:2px; }
-  .review-item p{ font-size:13.5px; color:#5B5645; margin:4px 0 0; }
+  .review-item p{ font-size:14.5px; color:#4A4636; margin:5px 0 0; line-height:1.6; }
   .review-form{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
   .star-input{ display:flex; gap:4px; font-size:22px; cursor:pointer; }
   .star-input span{ color:var(--line); transition:color .1s; }
   .star-input span.on{ color:var(--gold); }
-  .empty-review{ font-size:13px; color:#8A8368; }
+  .empty-review{ font-size:13px; color:#6B6550; }
   .badge-shop-item{
     display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1.5px solid var(--line);
     border-radius:10px; margin-bottom:8px; background:#fff;
@@ -304,7 +304,7 @@
     background:none; border:none; color:var(--clay); font-size:12px; font-weight:700; cursor:pointer; padding:2px 4px;
   }
   .card-foot{ display:flex; justify-content:space-between; align-items:center; margin-top:2px; }
-  .card-owner-tag{ font-size:11px; color:var(--moss); font-weight:700; }
+  .card-owner-tag{ font-size:12px; color:#3F5A3D; font-weight:700; }
   .review-item .rh-actions{ display:flex; gap:8px; align-items:center; }
   .admin-toggle{
     position:fixed; bottom:24px; right:24px; background:var(--pine-deep); color:var(--paper); border:none;
@@ -324,7 +324,7 @@
   }
   .admin-actions .keep{ color:var(--moss); border-color:var(--moss); }
   .admin-actions .remove{ color:var(--clay); border-color:var(--clay); }
-  .empty-admin{ font-size:13.5px; color:#8A8368; padding:10px 0; }
+  .empty-admin{ font-size:13.5px; color:#6B6550; padding:10px 0; }
   .hidden-flag{ opacity:0.5; }
 
   .bottom-tab-bar{
@@ -335,7 +335,7 @@
   }
   .bottom-tab-bar button{
     background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:2px;
-    font-size:11px; font-weight:700; color:#9C9578; padding:6px 4px; cursor:pointer; flex:1;
+    font-size:11px; font-weight:700; color:#83795E; padding:6px 4px; cursor:pointer; flex:1;
   }
   .bottom-tab-bar button.active{ color:var(--clay); }
   .bottom-tab-bar .tab-icon{ font-size:20px; }
@@ -447,7 +447,7 @@
           <div class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</div>
           <div class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</div>
         </div>
-        <span class="mono" style="font-size:12px;color:#6B664F;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
+        <span class="mono" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
       <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
@@ -498,7 +498,7 @@
         </div>
       </div>
     </div>
-    <p id="course-count-label" style="font-size:13px; color:#8A8368; margin-bottom:4px;"></p>
+    <p id="course-count-label" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
     <div class="grid" id="course-grid"></div>
   </div>
 </section>
@@ -628,7 +628,7 @@
       <div class="card"><h3 style="font-size:16px;">🐕 입마개 필요 구역 확인</h3><p class="desc">"입마개필요" 태그가 붙은 코스에서는 관련 법령에 따라 입마개를 착용해주세요.</p></div>
       <div class="card"><h3 style="font-size:16px;">🙋 다른 강아지·사람 배려</h3><p class="desc">다른 반려견이나 아이들이 무서워할 수 있으니, 마주칠 땐 거리를 두고 인사해요.</p></div>
     </div>
-    <p style="font-size:12.5px; color:#8A8368; margin-top:28px; line-height:1.7;">
+    <p style="font-size:12.5px; color:#6B6550; margin-top:28px; line-height:1.7;">
       ⚠️ 이 사이트의 코스·시설 정보는 이용자들의 제보를 기반으로 하며, 실제 현장 상황(공사, 통제, 위험 요소 등)과 다를 수 있어요. 산책 전 현장 상황을 직접 확인해주시고, 맹견 지정견·입마개 의무견 등은 관련 법령을 반드시 준수해주세요. 이 정보를 이용해 발생한 문제에 대해 발자국은 책임을 지지 않습니다.
     </p>
   </div>
@@ -648,7 +648,7 @@
       이용자의 동의 없이 개인정보를 외부에 제공하지 않습니다. 다만 지도·장소 검색 기능 제공을 위해 카카오맵 API가, 데이터 저장을 위해 Supabase가 활용됩니다.</p>
       <p><strong>5. 문의처</strong><br>
       개인정보 관련 문의: <a href="mailto:footstepbiz@gmail.com" style="color:var(--clay);">footstepbiz@gmail.com</a></p>
-      <p style="margin-top:24px; color:#8A8368; font-size:12.5px;">본 방침은 서비스 운영 상황에 따라 변경될 수 있으며, 변경 시 사이트를 통해 공지합니다. (최종 개정일: 2026년 8월)</p>
+      <p style="margin-top:24px; color:#6B6550; font-size:12.5px;">본 방침은 서비스 운영 상황에 따라 변경될 수 있으며, 변경 시 사이트를 통해 공지합니다. (최종 개정일: 2026년 8월)</p>
     </div>
   </div>
 </section>
@@ -669,7 +669,7 @@
       이용자가 등록한 게시물의 저작권은 이용자 본인에게 있으며, 서비스는 이를 서비스 내에서 표시·운영하는 목적으로만 사용합니다.</p>
       <p><strong>제6조 (문의)</strong><br>
       서비스 이용 문의: <a href="mailto:footstepbiz@gmail.com" style="color:var(--clay);">footstepbiz@gmail.com</a></p>
-      <p style="margin-top:24px; color:#8A8368; font-size:12.5px;">(최종 개정일: 2026년 8월)</p>
+      <p style="margin-top:24px; color:#6B6550; font-size:12.5px;">(최종 개정일: 2026년 8월)</p>
     </div>
   </div>
 </section>
@@ -703,7 +703,7 @@
         <div id="photo-upload-wrap" style="margin:10px 0;">
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
           <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
-          <span id="photo-upload-status" style="font-size:12px; color:#8A8368; margin-left:8px;"></span>
+          <span id="photo-upload-status" style="font-size:12px; color:#6B6550; margin-left:8px;"></span>
         </div>
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
         <div id="modal-route-map"></div>
@@ -735,7 +735,7 @@
         <label style="margin-top:0;">이메일로 시작하기</label>
         <input type="email" id="email-login-input" placeholder="you@example.com">
         <button class="pin-btn" id="email-login-btn" style="margin-top:8px;">📧 로그인 링크 이메일로 받기</button>
-        <p id="email-login-note" style="font-size:12px; color:#8A8368; margin-top:8px;"></p>
+        <p id="email-login-note" style="font-size:12px; color:#6B6550; margin-top:8px;"></p>
       </div>
     </div>
   </div>
@@ -760,7 +760,7 @@
 
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
         <label style="margin-top:0;">📍 내 지역</label>
-        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">동네를 등록하면 홈 화면에 우리 동네 추천 코스가 먼저 보여요.</p>
+        <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">동네를 등록하면 홈 화면에 우리 동네 추천 코스가 먼저 보여요.</p>
         <input type="text" id="region-input" placeholder="예: 서울 마포구">
         <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
       </div>
@@ -777,13 +777,13 @@
 
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
         <label style="margin-top:0;">🎁 친구 추천하고 포인트 받기</label>
-        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">내 링크로 친구가 가입하면 나도, 친구도 50P씩 받아요.</p>
+        <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">내 링크로 친구가 가입하면 나도, 친구도 50P씩 받아요.</p>
         <button class="pin-btn" id="copy-referral-btn" style="border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC;">🔗 내 추천 링크 복사하기</button>
       </div>
 
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
         <label style="margin-top:0;">배지 꾸미기</label>
-        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">구매한 배지는 닉네임 옆에 표시돼요.</p>
+        <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">구매한 배지는 닉네임 옆에 표시돼요.</p>
         <div id="badge-shop"></div>
       </div>
     </div>
@@ -799,12 +799,12 @@
       <button class="modal-close" id="admin-close">✕</button>
       <div class="modal-body">
         <h3 style="font-size:22px;">🛡️ 신고된 항목 검수</h3>
-        <p style="font-size:13px; color:#8A8368; margin-top:4px;">관리자 전용 화면이에요.</p>
+        <p style="font-size:13px; color:#6B6550; margin-top:4px;">관리자 전용 화면이에요.</p>
         <div id="admin-list" style="margin-top:16px;"></div>
 
         <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
           <h3 style="font-size:20px;">👥 회원 활동 관리</h3>
-          <p style="font-size:13px; color:#8A8368; margin-top:4px;">닉네임·활동량 기준으로 정리했어요. (로그인 정보 자체는 표시되지 않아요)</p>
+          <p style="font-size:13px; color:#6B6550; margin-top:4px;">닉네임·활동량 기준으로 정리했어요. (로그인 정보 자체는 표시되지 않아요)</p>
           <div id="member-list" style="margin-top:16px;"></div>
         </div>
       </div>
@@ -884,6 +884,106 @@
       path:[[37.7959,128.8967],[37.7975,128.8985],[37.7990,128.9005],[37.7959,128.8967]] },
     { id:'c30', name:'속초 영랑호 산책로', desc:'설악산이 배경으로 보이는 호수 산책로. 인적이 드물어 조용히 걷기 좋아요.', lat:38.1934, lng:128.5942, tags:['그늘많음'], diff:'쉬움', distance:'3.2 km',
       path:[[38.1934,128.5942],[38.1948,128.5960],[38.1962,128.5978]] },
+    { id:'c31', name:'서울숲 산책로', desc:'사슴방사장과 넓은 잔디밭이 있는 도심 숲. 반려견 동반 인구가 많아 사교 산책하기도 좋아요.', lat:37.5443, lng:127.0374, tags:['잔디바닥','그늘많음','정수대있음'], diff:'쉬움', distance:'3.0 km',
+      path:[[37.5443,127.0374],[37.5458,127.0392],[37.5470,127.0410]] },
+    { id:'c32', name:'서울 올림픽공원 둘레길', desc:'넓은 부지의 대형 공원. 완만한 언덕과 잔디 광장이 번갈아 나와요.', lat:37.5219, lng:127.1215, tags:['잔디바닥','목줄해제가능'], diff:'보통', distance:'4.5 km',
+      path:[[37.5219,127.1215],[37.5235,127.1235],[37.5250,127.1255],[37.5219,127.1215]] },
+    { id:'c33', name:'서울 남산둘레길', desc:'경사가 있지만 완만하게 이어지는 순환형 산책로. 도심 전망이 예뻐요.', lat:37.5512, lng:126.9882, tags:['그늘많음'], diff:'보통', distance:'3.7 km',
+      path:[[37.5512,126.9882],[37.5525,126.9900],[37.5538,126.9918]] },
+    { id:'c34', name:'서울 보라매공원 산책로', desc:'동작구 도심 속 대형 공원. 평지 위주라 노견도 무난해요.', lat:37.4926, lng:126.9186, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'2.3 km',
+      path:[[37.4926,126.9186],[37.4940,126.9203],[37.4915,126.9215],[37.4926,126.9186]] },
+    { id:'c35', name:'안산 화랑유원지 산책로', desc:'호수를 낀 넓은 유원지. 벚꽃길이 특히 인기예요.', lat:37.3164, lng:126.8410, tags:['잔디바닥','그늘많음'], diff:'쉬움', distance:'2.8 km',
+      path:[[37.3164,126.8410],[37.3178,126.8428],[37.3190,126.8448]] },
+    { id:'c36', name:'고양 일산호수공원', desc:'국내 최대급 인공호수 공원. 둘레 전체가 평지라 유모차·휠체어도 다니기 편해요.', lat:37.6584, lng:126.7703, tags:['계단없음','정수대있음','잔디바닥'], diff:'쉬움', distance:'5.0 km',
+      path:[[37.6584,126.7703],[37.6600,126.7725],[37.6615,126.7748],[37.6584,126.7703]] },
+    { id:'c37', name:'성남 분당중앙공원 산책로', desc:'분당 도심 속 대형 공원. 습지원과 잔디광장이 함께 있어요.', lat:37.3789, lng:127.1265, tags:['잔디바닥','그늘많음'], diff:'쉬움', distance:'2.6 km',
+      path:[[37.3789,127.1265],[37.3803,127.1283],[37.3815,127.1300]] },
+    { id:'c38', name:'안양 평촌중앙공원', desc:'평촌신도시 한복판 공원. 산책로가 넓고 야간 조명이 잘 되어있어요.', lat:37.3928, lng:126.9822, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'2.0 km',
+      path:[[37.3928,126.9822],[37.3940,126.9838],[37.3952,126.9855]] },
+    { id:'c39', name:'부천 중앙공원 산책로', desc:'분수광장과 산책로가 함께 있는 도심 공원. 주말엔 사람이 많아요.', lat:37.5039, lng:126.7660, tags:['잔디바닥'], diff:'쉬움', distance:'1.8 km',
+      path:[[37.5039,126.7660],[37.5052,126.7678],[37.5065,126.7695]] },
+    { id:'c40', name:'대구 앞산공원 둘레길', desc:'대구 시내를 내려다보며 걷는 산길 코스. 경사가 있어 중형견 이상 추천해요.', lat:35.8232, lng:128.5701, tags:['그늘많음'], diff:'어려움', distance:'4.2 km',
+      path:[[35.8232,128.5701],[35.8248,128.5720],[35.8262,128.5740]] },
+    { id:'c41', name:'울산 선암호수공원', desc:'출렁다리와 호수 둘레길이 있는 공원. 야경 산책으로도 인기예요.', lat:35.5764, lng:129.3252, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'3.1 km',
+      path:[[35.5764,129.3252],[35.5778,129.3270],[35.5790,129.3290]] },
+    { id:'c42', name:'창원 진해 여좌천(로망스다리) 산책로', desc:'벚꽃철에 특히 유명한 하천길. 평소에도 조용히 걷기 좋아요.', lat:35.1499, lng:128.6822, tags:['계단없음'], diff:'쉬움', distance:'1.6 km',
+      path:[[35.1499,128.6822],[35.1512,128.6838],[35.1525,128.6855]] },
+    { id:'c43', name:'전주 오목대 산책로', desc:'한옥마을 뒤편 언덕길. 전주 시내 전망을 보며 걸을 수 있어요.', lat:35.8151, lng:127.1590, tags:['그늘많음'], diff:'보통', distance:'1.5 km',
+      path:[[35.8151,127.1590],[35.8163,127.1605],[35.8175,127.1620]] },
+    { id:'c44', name:'군산 은파호수공원', desc:'야간 조명이 아름다운 호수공원. 둘레 전체가 평지예요.', lat:35.9553, lng:126.6944, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'4.0 km',
+      path:[[35.9553,126.6944],[35.9568,126.6962],[35.9580,126.6982]] },
+    { id:'c45', name:'목포 갓바위 해안도로 산책로', desc:'바다를 끼고 걷는 해안 데크길. 노을이 특히 예뻐요.', lat:34.7929, lng:126.3853, tags:['잔디바닥'], diff:'쉬움', distance:'2.4 km',
+      path:[[34.7929,126.3853],[34.7943,126.3872],[34.7955,126.3892]] },
+    { id:'c46', name:'여수 오동도 산책로', desc:'동백나무 숲길을 지나 방파제까지 이어지는 코스. 바닷바람이 시원해요.', lat:34.7460, lng:127.7465, tags:['그늘많음'], diff:'보통', distance:'2.7 km',
+      path:[[34.7460,127.7465],[34.7475,127.7482],[34.7488,127.7500]] },
+    { id:'c47', name:'통영 강구안 문화마당 산책로', desc:'항구를 따라 걷는 도심 산책로. 동피랑 벽화마을과 이어져요.', lat:34.8455, lng:128.4331, tags:['계단없음'], diff:'쉬움', distance:'1.4 km',
+      path:[[34.8455,128.4331],[34.8468,128.4348],[34.8480,128.4365]] },
+    { id:'c48', name:'진주성 둘레길', desc:'남강을 낀 성곽 산책로. 역사 유적과 함께 걷는 코스예요.', lat:35.1932, lng:128.0850, tags:['그늘많음','계단없음'], diff:'쉬움', distance:'2.2 km',
+      path:[[35.1932,128.0850],[35.1945,128.0868],[35.1958,128.0885]] },
+    { id:'c49', name:'김해 봉황대공원', desc:'가야 유적이 있는 야산 공원. 완만한 숲길이 이어져요.', lat:35.2286, lng:128.8894, tags:['그늘많음'], diff:'보통', distance:'1.9 km',
+      path:[[35.2286,128.8894],[35.2298,128.8910],[35.2310,128.8928]] },
+    { id:'c50', name:'세종 중앙공원 산책로', desc:'금강을 낀 넓은 공원. 도로와 완전히 분리된 산책 전용 구간이 많아요.', lat:36.4870, lng:127.2827, tags:['잔디바닥','정수대있음','목줄해제가능'], diff:'쉬움', distance:'3.5 km',
+      path:[[36.4870,127.2827],[36.4885,127.2845],[36.4898,127.2865],[36.4870,127.2827]] },
+    { id:'c51', name:'서울 여의도한강공원', desc:'벚꽃길로 유명한 한강공원. 넓은 잔디밭에서 자유시간 갖기도 좋아요.', lat:37.5285, lng:126.9330, tags:['잔디바닥','정수대있음'], diff:'쉬움', distance:'3.8 km',
+      path:[[37.5285,126.9330],[37.5298,126.9350],[37.5310,126.9372]] },
+    { id:'c52', name:'서울 잠실한강공원', desc:'롯데월드타워 전망과 함께 걷는 한강변 코스. 자전거도로와 분리되어 있어요.', lat:37.5199, lng:127.0980, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'4.1 km',
+      path:[[37.5199,127.0980],[37.5215,127.1000],[37.5230,127.1022]] },
+    { id:'c53', name:'서울 광나루한강공원', desc:'조용하고 한적한 한강공원. 인파가 적어 여유롭게 걷기 좋아요.', lat:37.5457, lng:127.1080, tags:['잔디바닥'], diff:'쉬움', distance:'2.9 km',
+      path:[[37.5457,127.1080],[37.5470,127.1098],[37.5482,127.1118]] },
+    { id:'c54', name:'서울 이촌한강공원', desc:'국립중앙박물관과 가까운 한강공원. 그늘막 쉼터가 많아요.', lat:37.5177, lng:126.9700, tags:['그늘많음','정수대있음'], diff:'쉬움', distance:'3.2 km',
+      path:[[37.5177,126.9700],[37.5190,126.9720],[37.5203,126.9740]] },
+    { id:'c55', name:'서울 강서한강공원', desc:'습지생태원이 함께 있는 한강공원. 새 구경하며 걷기 좋아요.', lat:37.5763, lng:126.8256, tags:['잔디바닥','그늘많음'], diff:'쉬움', distance:'3.4 km',
+      path:[[37.5763,126.8256],[37.5778,126.8275],[37.5790,126.8296]] },
+    { id:'c56', name:'서울 청계천 산책로', desc:'도심 한복판 하천길. 퇴근길 짧은 산책 코스로 인기예요.', lat:37.5696, lng:126.9784, tags:['계단없음'], diff:'쉬움', distance:'2.1 km',
+      path:[[37.5696,126.9784],[37.5705,126.9805],[37.5715,126.9828]] },
+    { id:'c57', name:'서울 양재천 산책로', desc:'강남 도심 속 하천길. 평지에 벚꽃길이 예뻐요.', lat:37.4936, lng:127.0559, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'3.6 km',
+      path:[[37.4936,127.0559],[37.4950,127.0580],[37.4963,127.0602]] },
+    { id:'c58', name:'서울 중랑천 산책로', desc:'성동·중랑구를 잇는 긴 하천길. 자전거길과 분리된 구간이 있어요.', lat:37.5620, lng:127.0450, tags:['계단없음'], diff:'쉬움', distance:'4.4 km',
+      path:[[37.5620,127.0450],[37.5635,127.0470],[37.5648,127.0492]] },
+    { id:'c59', name:'부산 광안리해변 산책로', desc:'광안대교 야경을 보며 걷는 해변길. 저녁 산책으로 인기예요.', lat:35.1533, lng:129.1186, tags:['잔디바닥'], diff:'쉬움', distance:'1.8 km',
+      path:[[35.1533,129.1186],[35.1548,129.1205],[35.1560,129.1225]] },
+    { id:'c60', name:'부산 이기대공원 해안산책로', desc:'기암절벽을 따라 걷는 해안 코스. 경사가 있어 중형견 이상 추천해요.', lat:35.1330, lng:129.1210, tags:['그늘많음'], diff:'어려움', distance:'4.7 km',
+      path:[[35.1330,129.1210],[35.1345,129.1230],[35.1358,129.1252]] },
+    { id:'c61', name:'부산 태종대 유원지', desc:'울창한 숲과 바다 전망을 함께 즐기는 코스. 순환도로를 따라 걸어요.', lat:35.0510, lng:129.0873, tags:['그늘많음'], diff:'보통', distance:'4.3 km',
+      path:[[35.0510,129.0873],[35.0525,129.0892],[35.0538,129.0912]] },
+    { id:'c62', name:'인천 청라호수공원', desc:'청라국제도시 중심 호수공원. 산책로가 넓고 깔끔해요.', lat:37.5365, lng:126.6389, tags:['잔디바닥','정수대있음','계단없음'], diff:'쉬움', distance:'4.0 km',
+      path:[[37.5365,126.6389],[37.5380,126.6408],[37.5393,126.6428],[37.5365,126.6389]] },
+    { id:'c63', name:'인천 소래습지생태공원', desc:'염전과 갈대밭을 지나는 코스. 노을 산책으로 유명해요.', lat:37.3989, lng:126.7365, tags:['잔디바닥','목줄해제가능'], diff:'보통', distance:'3.3 km',
+      path:[[37.3989,126.7365],[37.4002,126.7385],[37.4015,126.7405]] },
+    { id:'c64', name:'대전 갑천 산책로', desc:'대전 도심을 가로지르는 하천길. 자전거도로와 분리된 구간이 많아요.', lat:36.3689, lng:127.3575, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'3.9 km',
+      path:[[36.3689,127.3575],[36.3705,127.3595],[36.3718,127.3618]] },
+    { id:'c65', name:'대전 유성 노은뜰공원', desc:'주거지 옆 작은 하천공원. 동네 주민들의 짧은 산책 코스예요.', lat:36.3745, lng:127.3151, tags:['계단없음'], diff:'쉬움', distance:'1.6 km',
+      path:[[36.3745,127.3151],[36.3758,127.3170],[36.3770,127.3190]] },
+    { id:'c66', name:'대구 동촌유원지', desc:'금호강변 유원지. 넓은 잔디밭과 자전거길이 함께 있어요.', lat:35.8823, lng:128.6981, tags:['잔디바닥','정수대있음'], diff:'쉬움', distance:'3.5 km',
+      path:[[35.8823,128.6981],[35.8838,128.7000],[35.8850,128.7022]] },
+    { id:'c67', name:'담양 광주호수생태원', desc:'습지와 왕버들나무숲을 지나는 생태 코스. 그늘이 많아 여름에도 좋아요.', lat:35.1567, lng:126.9503, tags:['그늘많음','잔디바닥'], diff:'쉬움', distance:'2.5 km',
+      path:[[35.1567,126.9503],[35.1580,126.9522],[35.1592,126.9542]] },
+    { id:'c68', name:'광주 상무시민공원', desc:'상무지구 도심 공원. 평지 위주라 산책하기 편해요.', lat:35.1508, lng:126.8494, tags:['계단없음','잔디바닥'], diff:'쉬움', distance:'2.0 km',
+      path:[[35.1508,126.8494],[35.1522,126.8512],[35.1535,126.8532]] },
+    { id:'c69', name:'울산대공원', desc:'장미원과 넓은 잔디광장이 있는 대형 공원. 반려견 놀이터도 있어요.', lat:35.5324, lng:129.2890, tags:['잔디바닥','목줄해제가능','정수대있음'], diff:'쉬움', distance:'4.6 km',
+      path:[[35.5324,129.2890],[35.5340,129.2910],[35.5353,129.2932],[35.5324,129.2890]] },
+    { id:'c70', name:'화성 동탄호수공원', desc:'동탄신도시 중심 호수공원. 산책로가 넓고 편의시설이 잘 되어있어요.', lat:37.2004, lng:127.0855, tags:['잔디바닥','정수대있음','계단없음'], diff:'쉬움', distance:'4.2 km',
+      path:[[37.2004,127.0855],[37.2020,127.0875],[37.2033,127.0898],[37.2004,127.0855]] },
+    { id:'c71', name:'하남 미사경정공원', desc:'한강변 넓은 잔디밭. 조정 경기장을 낀 트인 시야가 좋아요.', lat:37.5665, lng:127.1934, tags:['잔디바닥','목줄해제가능'], diff:'쉬움', distance:'5.0 km',
+      path:[[37.5665,127.1934],[37.5680,127.1955],[37.5693,127.1978]] },
+    { id:'c72', name:'남양주 다산생태공원', desc:'습지원과 갈대밭을 지나는 생태 코스. 조용하고 한적해요.', lat:37.6098, lng:127.2159, tags:['그늘많음','잔디바닥'], diff:'쉬움', distance:'2.8 km',
+      path:[[37.6098,127.2159],[37.6112,127.2178],[37.6125,127.2198]] },
+    { id:'c73', name:'구리 한강시민공원', desc:'한강과 왕숙천이 만나는 지점의 공원. 넓고 한적해요.', lat:37.5945, lng:127.1329, tags:['잔디바닥','정수대있음'], diff:'쉬움', distance:'3.6 km',
+      path:[[37.5945,127.1329],[37.5960,127.1348],[37.5973,127.1370]] },
+    { id:'c74', name:'양평 남한강 물맑은양평 산책로', desc:'남한강을 따라 걷는 한적한 강변길. 자전거길과 함께 있어요.', lat:37.4917, lng:127.4874, tags:['계단없음'], diff:'쉬움', distance:'4.5 km',
+      path:[[37.4917,127.4874],[37.4932,127.4895],[37.4945,127.4918]] },
+    { id:'c75', name:'원주 치악산 자락길(구룡사 입구)', desc:'울창한 숲길로 이어지는 완만한 자락길. 계곡물 소리를 들으며 걸어요.', lat:37.3567, lng:128.0142, tags:['그늘많음'], diff:'보통', distance:'3.0 km',
+      path:[[37.3567,128.0142],[37.3582,128.0160],[37.3595,128.0180]] },
+    { id:'c76', name:'홍천강 산책로', desc:'맑은 강물을 끼고 걷는 한적한 시골길. 여름엔 피서객이 많아요.', lat:37.6970, lng:127.8850, tags:['잔디바닥'], diff:'쉬움', distance:'2.6 km',
+      path:[[37.6970,127.8850],[37.6985,127.8870],[37.6998,127.8892]] },
+    { id:'c77', name:'공주 금강신관공원', desc:'금강을 낀 넓은 공원. 곰나루 전설이 깃든 산책로예요.', lat:36.4595, lng:127.1345, tags:['잔디바닥','정수대있음'], diff:'쉬움', distance:'3.1 km',
+      path:[[36.4595,127.1345],[36.4610,127.1365],[36.4623,127.1388]] },
+    { id:'c78', name:'보령 대천해수욕장 산책로', desc:'넓은 백사장을 낀 해변 데크길. 여름 성수기엔 혼잡할 수 있어요.', lat:36.3157, lng:126.5137, tags:['잔디바닥'], diff:'쉬움', distance:'2.3 km',
+      path:[[36.3157,126.5137],[36.3172,126.5157],[36.3185,126.5178]] },
+    { id:'c79', name:'충주 탄금호 산책로', desc:'호수를 크게 도는 둘레길. 탄금대와 이어져요.', lat:36.9615, lng:127.9202, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'4.8 km',
+      path:[[36.9615,127.9202],[36.9630,127.9222],[36.9643,127.9245]] },
+    { id:'c80', name:'제주 사려니숲길', desc:'삼나무 숲이 우거진 완만한 숲길. 반려동반 가능 구간을 확인하고 가세요.', lat:33.4106, lng:126.6784, tags:['그늘많음'], diff:'보통', distance:'5.5 km',
+      path:[[33.4106,126.6784],[33.4122,126.6805],[33.4135,126.6828]] },
   ];
 
   const SEED_REVIEWS = {
@@ -1227,8 +1327,10 @@
         const { error } = await sb.auth.updateUser({ data: { active_badge: badgeId } });
         if(error){ toast('장착에 실패했어요'); return; }
         myBadge = badgeId;
+        updateProfileLabel();
         await syncProfileTable();
         renderBadgeShop();
+        renderGrid();
         toast('배지를 장착했어요 🎉');
       }catch(e){ console.error(e); }
       return;
@@ -1243,9 +1345,11 @@
       if(error){ toast('구매에 실패했어요'); return; }
       myOwnedBadges = newOwned;
       myBadge = badgeId;
+      updateProfileLabel();
       await syncProfileTable();
       loadMyPoints();
       renderBadgeShop();
+      renderGrid();
       const balanceEl = document.getElementById('points-shop-balance');
       if(balanceEl) balanceEl.textContent = `보유 포인트: 🪙 ${(balance - shopItem.price).toLocaleString()}P`;
       toast(`${shopItem.emoji} ${shopItem.name} 배지를 구매했어요!`);
@@ -1362,7 +1466,8 @@
   }
 
   function updateProfileLabel(){
-    document.getElementById('profile-label').textContent = myNickname ? myNickname : '로그인';
+    const badgePrefix = myBadge ? badgeEmoji(myBadge) : '';
+    document.getElementById('profile-label').textContent = myNickname ? (badgePrefix + myNickname) : '로그인';
   }
 
   // ===== 포인트(발자국 포인트) 시스템 =====
@@ -2232,7 +2337,7 @@
       return `
       <div class="review-item">
         <div class="rh">
-          <span>${r.name}</span>
+          <span>${type==='user' ? authorLabel(r.ownerId, r.name) : r.name}</span>
           <div class="rh-actions"><span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${action}</div>
         </div>
         <p>${r.text}</p>
