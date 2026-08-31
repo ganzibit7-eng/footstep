@@ -210,6 +210,9 @@
   }
   .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
   .card .row{ display:flex; align-items:center; justify-content:space-between; }
+  .fav-btn{ background:none; border:none; font-size:18px; cursor:pointer; padding:2px; line-height:1; }
+  .fav-btn.active{ animation:pop .25s ease; }
+  @keyframes pop{ 0%{transform:scale(1);} 50%{transform:scale(1.3);} 100%{transform:scale(1);} }
   .card h3{ font-size:20px; line-height:1.3; }
   .badge{
     font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;
@@ -236,9 +239,9 @@
   }
   .type-btn.active{ border-color:var(--pine-deep); background:var(--pine-deep); color:var(--paper); }
   label{ display:block; font-size:13px; font-weight:700; margin:16px 0 6px; color:var(--pine-deep); }
-  input[type=text], textarea{
+  input[type=text], input[type=email], input[type=number], textarea{
     width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;
-    background:#fff; color:var(--ink);
+    background:var(--paper); color:var(--ink);
   }
   textarea{ min-height:70px; resize:vertical; }
   .pin-btn{
@@ -249,7 +252,7 @@
   .tag-check-group{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
   .tag-check{
     border:1.5px solid var(--line); border-radius:999px; padding:7px 13px; font-size:12.5px; font-weight:600; cursor:pointer;
-    background:#fff; user-select:none;
+    background:var(--paper); user-select:none;
   }
   .tag-check.on{ background:var(--gold); border-color:var(--gold); color:#3A2C08; }
   .submit-btn{
@@ -258,14 +261,14 @@
   }
   .submit-btn:hover{ background:var(--clay-dark); }
   .mini-map-wrap{ position:sticky; top:96px; }
-  .mini-map-note{ font-size:13px; color:#5B5645; background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
+  .mini-map-note{ font-size:13px; color:#5B5645; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
   #mini-map{ height:360px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); touch-action:pan-x pan-y; }
   #mini-map.drawing-active{ touch-action:none; cursor:crosshair; }
 
   /* ===== Draw mode toggle (pen vs tap) ===== */
   .draw-mode-toggle{ display:flex; gap:8px; margin:8px 0 10px; }
   .draw-mode-btn{
-    flex:1; padding:12px 10px; border-radius:10px; border:1.5px solid var(--line); background:#fff;
+    flex:1; padding:12px 10px; border-radius:10px; border:1.5px solid var(--line); background:var(--paper);
     font-weight:700; font-size:13.5px; cursor:pointer; text-align:center; transition:all .15s ease;
     display:flex; align-items:center; justify-content:center; gap:6px; min-height:44px;
   }
@@ -327,11 +330,11 @@
   @keyframes pulse{ 0%,100%{opacity:0.5;} 50%{opacity:1;} }
   .badge-shop-item{
     display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1.5px solid var(--line);
-    border-radius:10px; margin-bottom:8px; background:#fff;
+    border-radius:10px; margin-bottom:8px; background:var(--paper);
   }
   .badge-shop-item.equipped{ border-color:var(--clay); background:#FBF1EC; }
   .badge-shop-item button{
-    font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--clay); background:#fff; color:var(--clay);
+    font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--clay); background:var(--paper); color:var(--clay);
   }
   .badge-shop-item button:disabled{ opacity:0.5; cursor:default; }
 
@@ -369,7 +372,7 @@
   .admin-badge{ background:#F2D6CE; color:var(--clay-dark); font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; }
   .admin-actions{ display:flex; gap:8px; }
   .admin-actions button{
-    font-size:12px; font-weight:700; padding:7px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--line); background:#fff;
+    font-size:12px; font-weight:700; padding:7px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--line); background:var(--paper);
   }
   .admin-actions .keep{ color:var(--moss); border-color:var(--moss); }
   .admin-actions .remove{ color:var(--clay); border-color:var(--clay); }
@@ -545,6 +548,7 @@
           <div class="chip" data-tag-filter="그늘많음">그늘많음</div>
           <div class="chip" data-tag-filter="잔디바닥">잔디바닥</div>
           <div class="chip" data-tag-filter="계단없음">계단없음</div>
+          <div class="chip" id="fav-only-chip">❤️ 찜한 코스만</div>
         </div>
       </div>
     </div>
@@ -867,6 +871,14 @@
 </div>
 
 <div class="toast" id="toast"></div>
+<div id="offline-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:2200; background:var(--clay-dark); color:#fff; text-align:center; padding:10px; font-size:13px; font-weight:700;">
+  📡 인터넷 연결이 끊겼어요. 연결되면 자동으로 다시 시도해요.
+</div>
+
+<div class="modal-overlay" id="photo-lightbox" style="background:rgba(0,0,0,0.9); align-items:center;">
+  <button class="modal-close" id="photo-lightbox-close" aria-label="닫기" style="position:fixed; top:20px; right:20px;">✕</button>
+  <img id="photo-lightbox-img" src="" alt="코스 사진 확대보기" style="max-width:92vw; max-height:88vh; border-radius:8px; object-fit:contain;">
+</div>
 
 <script>
 (function(){
@@ -1080,6 +1092,15 @@
   let myDogName = null, myDogBreed = null, myDogAge = null;
   let myBadge = null, myOwnedBadges = [];
   let profilesMap = {};
+  let favoriteIds = new Set();
+  try{ favoriteIds = new Set(JSON.parse(localStorage.getItem('paw_favorites') || '[]')); }catch(e){}
+  function toggleFavorite(courseId){
+    if(favoriteIds.has(courseId)) favoriteIds.delete(courseId);
+    else favoriteIds.add(courseId);
+    try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(favoriteIds))); }catch(e){}
+    renderGrid();
+    loadNearbyRecommendations();
+  }
   let courseBoosts = {};
   let myRegionName = null, myRegionLat = null, myRegionLng = null;
   let map, miniMap, routeMap, courseLayer, binLayer;
@@ -1715,10 +1736,14 @@
       const isMine = c.ownerId && c.ownerId === myDeviceId;
       const walkerCount = activeWalkerCounts[c.id] || 0;
       const isBoosted = courseBoosts[c.id] && new Date(courseBoosts[c.id]) > new Date();
+      const isFav = favoriteIds.has(c.id);
       card.innerHTML = `
         <div class="row">
           <h3>${c.name}</h3>
-          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="찜하기">${isFav ? '❤️' : '🤍'}</button>
+            <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+          </div>
         </div>
         ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
         ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
@@ -1738,6 +1763,9 @@
       });
       containerEl.appendChild(card);
     });
+    containerEl.querySelectorAll('[data-fav-toggle]').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleFavorite(btn.dataset.favToggle); });
+    });
     containerEl.querySelectorAll('[data-course-report]').forEach(btn=>{
       btn.addEventListener('click', (e)=>{ e.stopPropagation(); fileReport('course', btn.dataset.courseReport); });
     });
@@ -1754,7 +1782,7 @@
   function isBoostedNow(courseId){
     return !!(courseBoosts[courseId] && new Date(courseBoosts[courseId]) > new Date());
   }
-  const listFilterState = { query:'', diff:'all', tags: new Set() };
+  const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false };
   const LIST_PAGE_SIZE = 12;
   let listShownCount = LIST_PAGE_SIZE;
   function renderGrid(){
@@ -1773,6 +1801,9 @@
     }
     if(listFilterState.tags.size > 0){
       list = list.filter(c => Array.from(listFilterState.tags).every(t => (c.tags||[]).includes(t)));
+    }
+    if(listFilterState.favOnly){
+      list = list.filter(c => favoriteIds.has(c.id));
     }
 
     list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
@@ -1972,13 +2003,16 @@
     try{
       const { data, error } = await sb.from('course_photos').select('*').eq('course_id', courseId).order('created_at', {ascending:false}).limit(3);
       if(!error && data && data.length){
-        gallery.innerHTML = data.map(p=>`<div class="photo-tile" style="background-image:url('${p.url}'); background-size:cover; background-position:center;"></div>`).join('');
+        gallery.innerHTML = data.map(p=>`<div class="photo-tile" data-photo-url="${p.url}" style="background-image:url('${p.url}'); background-size:cover; background-position:center; cursor:zoom-in;"></div>`).join('');
         while(gallery.children.length < 3){
           const tile = document.createElement('div');
           tile.className = 'photo-tile';
           tile.textContent = PHOTO_PLACEHOLDER_EMOJI[gallery.children.length] || '🐾';
           gallery.appendChild(tile);
         }
+        gallery.querySelectorAll('[data-photo-url]').forEach(tile=>{
+          tile.addEventListener('click', ()=> openPhotoLightbox(tile.dataset.photoUrl));
+        });
       } else {
         gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
       }
@@ -1987,6 +2021,18 @@
       gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
     }
   }
+  function openPhotoLightbox(url){
+    const lb = document.getElementById('photo-lightbox');
+    document.getElementById('photo-lightbox-img').src = url;
+    lb.classList.add('show');
+  }
+  function closePhotoLightbox(){
+    document.getElementById('photo-lightbox').classList.remove('show');
+  }
+  document.getElementById('photo-lightbox-close').addEventListener('click', closePhotoLightbox);
+  document.getElementById('photo-lightbox').addEventListener('click', (e)=>{
+    if(e.target.id === 'photo-lightbox') closePhotoLightbox();
+  });
   const MAX_PHOTO_MB = 5;
   function compressImage(file, maxDim, quality){
     return new Promise((resolve)=>{
@@ -2263,6 +2309,12 @@
     const chip = e.target.closest('.chip');
     if(!chip) return;
     chip.classList.toggle('active');
+    if(chip.id === 'fav-only-chip'){
+      listFilterState.favOnly = chip.classList.contains('active');
+      listShownCount = LIST_PAGE_SIZE;
+      renderGrid();
+      return;
+    }
     const tag = chip.dataset.tagFilter;
     if(listFilterState.tags.has(tag)) listFilterState.tags.delete(tag); else listFilterState.tags.add(tag);
     listShownCount = LIST_PAGE_SIZE;
@@ -2892,6 +2944,19 @@
     const current = document.documentElement.getAttribute('data-theme');
     applyTheme(current === 'dark' ? 'light' : 'dark');
   });
+
+  // ===== 오프라인 감지 =====
+  function updateOnlineStatus(){
+    const banner = document.getElementById('offline-banner');
+    if(navigator.onLine){
+      banner.style.display = 'none';
+    } else {
+      banner.style.display = '';
+    }
+  }
+  window.addEventListener('online', ()=>{ updateOnlineStatus(); toast('다시 연결됐어요 🐾'); loadData(); });
+  window.addEventListener('offline', updateOnlineStatus);
+  updateOnlineStatus();
 
   captureReferralFromUrl();
   if('serviceWorker' in navigator){
