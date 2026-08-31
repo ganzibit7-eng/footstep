@@ -1,0 +1,2808 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70f6582eb185c9353f39a366aa0c793f&libraries=services&autoload=false"></script>
+<style>
+  :root{
+    --pine:#1F3A2E;
+    --pine-deep:#152922;
+    --sand:#EFE6D3;
+    --paper:#FBF8F1;
+    --moss:#6E8F6B;
+    --clay:#B5502E;
+    --clay-dark:#933F24;
+    --ink:#26221C;
+    --line:#D8CBAE;
+    --gold:#C79A3C;
+    --radius:14px;
+    --shadow: 0 10px 30px -12px rgba(21,41,34,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  .app-page{ display:none; }
+  .app-page.active{ display:block; }
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Gowun Dodum', sans-serif;
+    line-height:1.7;
+  }
+  h1,h2,h3,.display{
+    font-family:'Gowun Batang', serif;
+    text-transform:none;
+    letter-spacing:0.01em;
+    font-weight:700;
+    color:var(--pine-deep);
+    margin:0;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,241,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1120px; margin:0 auto;}
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .logo .mark{ font-size:22px; }
+  .logo span{ font-family:'Gowun Batang', serif; font-weight:900; font-size:22px; color:var(--pine-deep); letter-spacing:0.03em; }
+  .nav-links{ display:flex; gap:28px; font-size:14px; font-weight:600; }
+  .nav-links a{ text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .15s; }
+  .nav-links a.active{ opacity:1; color:var(--clay); font-weight:700; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    background:var(--clay); color:var(--paper); padding:10px 18px; border-radius:999px;
+    font-weight:600; font-size:14px; text-decoration:none; border:none; cursor:pointer;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{ background:var(--clay-dark); transform:translateY(-1px); }
+  .poi-search-cta{
+    background:var(--clay); color:var(--paper); padding:10px 18px; border-radius:999px;
+    font-weight:600; font-size:14px; text-decoration:none; border:none; cursor:pointer;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .poi-search-cta:hover{ background:var(--clay-dark); transform:translateY(-1px); }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:var(--pine-deep);
+    color:var(--sand);
+    overflow:hidden;
+    padding:88px 24px 64px;
+  }
+  .contour-bg{
+    position:absolute; inset:0; opacity:0.35; pointer-events:none;
+  }
+  .hero-inner{ position:relative; max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold); border:1px solid rgba(199,154,60,0.5); padding:6px 12px; border-radius:999px; margin-bottom:20px;
+  }
+  .hero h1{ color:var(--paper); font-size:clamp(38px, 5.2vw, 62px); line-height:1.02; }
+  .hero h1 em{ font-style:normal; color:var(--gold); }
+  .hero p.lead{ margin-top:20px; font-size:17px; color:rgba(251,248,241,0.8); max-width:46ch; }
+  .hero-actions{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--clay); color:var(--paper); padding:14px 26px; border-radius:10px;
+    font-weight:700; text-decoration:none; border:none; cursor:pointer; font-size:15px;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn-primary:hover{ background:var(--clay-dark); transform:translateY(-2px); }
+  .btn-ghost{
+    background:transparent; color:var(--paper); padding:14px 26px; border-radius:10px;
+    font-weight:700; text-decoration:none; border:1px solid rgba(251,248,241,0.35); cursor:pointer; font-size:15px;
+    transition: background .15s ease;
+  }
+  .btn-ghost:hover{ background:rgba(251,248,241,0.08); }
+  .stat-row{ display:flex; gap:32px; margin-top:44px; flex-wrap:wrap; }
+  .stat{ }
+  .stat .num{ font-family:'Gowun Batang', serif; font-size:34px; font-weight:900; color:var(--paper); }
+  .stat .label{ font-size:12px; color:rgba(251,248,241,0.6); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
+
+  .hero-card{
+    background:var(--paper); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow);
+    color:var(--ink);
+  }
+  .hero-card .tag{
+    display:inline-block; background:var(--sand); color:var(--pine-deep); font-size:11px; font-weight:700;
+    padding:4px 10px; border-radius:999px; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .hero-card h3{ font-size:20px; margin-bottom:6px; }
+  .hero-card p{ font-size:14px; color:#54503F; margin:0 0 12px; }
+  .hero-card .meta{ display:flex; gap:14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--moss); border-top:1px dashed var(--line); padding-top:12px; }
+
+  /* ===== Section shells ===== */
+  section{ padding:72px 0; }
+  .section-head{ margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .section-head h2{ font-size:clamp(26px,3.4vw,38px); }
+  .section-head .kicker{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--clay); margin-bottom:8px; display:block;}
+  .section-head p{ max-width:52ch; color:#5B5645; font-size:15px; margin-top:8px;}
+
+  /* ===== Map section ===== */
+  .map-panel{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+  }
+  .map-toolbar{
+    display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line); flex-wrap:wrap; gap:12px;
+  }
+  .filter-group{ display:flex; gap:8px; flex-wrap:wrap; }
+  .chip{
+    border:1px solid var(--line); background:var(--sand); color:var(--ink); font-size:13px; font-weight:600;
+    padding:8px 14px; border-radius:999px; cursor:pointer; transition:all .15s ease; user-select:none;
+  }
+  .chip.active{ background:var(--pine-deep); border-color:var(--pine-deep); color:var(--paper); }
+  .chip .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle;}
+  #map{ height:460px; width:100%; }
+  .map-legend{ font-size:12px; color:#6B664F; padding:10px 18px; display:flex; gap:18px; flex-wrap:wrap; border-top:1px solid var(--line); }
+
+  /* ===== Course list ===== */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:18px; margin-top:28px; }
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:20px;
+    display:flex; flex-direction:column; gap:10px; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .card .row{ display:flex; align-items:center; justify-content:space-between; }
+  .card h3{ font-size:19px; }
+  .badge{
+    font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .badge.easy{ background:#DCEBD6; color:#33612F; }
+  .badge.mid{ background:#F3E3C4; color:#8A5F14; }
+  .badge.hard{ background:#F2D6CE; color:var(--clay-dark); }
+  .card p.desc{ font-size:13.5px; color:#5B5645; margin:0; }
+  .tag-row{ display:flex; gap:6px; flex-wrap:wrap; }
+  .tag-pill{ font-size:11px; background:var(--sand); color:#5B5645; padding:4px 9px; border-radius:8px; font-weight:600;}
+  .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--moss); margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
+
+  /* ===== Register form ===== */
+  .register-panel{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;
+  }
+  .form-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+  }
+  .type-toggle{ display:flex; gap:10px; margin-bottom:18px; }
+  .type-btn{
+    flex:1; padding:14px; border-radius:10px; border:1.5px solid var(--line); background:var(--sand);
+    font-weight:700; font-size:14px; cursor:pointer; text-align:center; transition:all .15s ease;
+  }
+  .type-btn.active{ border-color:var(--pine-deep); background:var(--pine-deep); color:var(--paper); }
+  label{ display:block; font-size:13px; font-weight:700; margin:16px 0 6px; color:var(--pine-deep); }
+  input[type=text], textarea{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;
+    background:#fff; color:var(--ink);
+  }
+  textarea{ min-height:70px; resize:vertical; }
+  .pin-btn{
+    width:100%; padding:12px; border-radius:8px; border:1.5px dashed var(--moss); background:#F4F7F1; color:var(--moss);
+    font-weight:700; cursor:pointer; font-size:14px; margin-top:6px;
+  }
+  .pin-btn.set{ background:#E5EEE1; border-style:solid; }
+  .tag-check-group{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+  .tag-check{
+    border:1.5px solid var(--line); border-radius:999px; padding:7px 13px; font-size:12.5px; font-weight:600; cursor:pointer;
+    background:#fff; user-select:none;
+  }
+  .tag-check.on{ background:var(--gold); border-color:var(--gold); color:#3A2C08; }
+  .submit-btn{
+    width:100%; margin-top:22px; padding:15px; border:none; border-radius:10px; background:var(--clay); color:var(--paper);
+    font-weight:800; font-size:15px; cursor:pointer; letter-spacing:0.02em;
+  }
+  .submit-btn:hover{ background:var(--clay-dark); }
+  .mini-map-wrap{ position:sticky; top:96px; }
+  .mini-map-note{ font-size:13px; color:#6B664F; background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
+  #mini-map{ height:360px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); touch-action:pan-x pan-y; }
+  #mini-map.drawing-active{ touch-action:none; cursor:crosshair; }
+
+  /* ===== Draw mode toggle (pen vs tap) ===== */
+  .draw-mode-toggle{ display:flex; gap:8px; margin:8px 0 10px; }
+  .draw-mode-btn{
+    flex:1; padding:12px 10px; border-radius:10px; border:1.5px solid var(--line); background:#fff;
+    font-weight:700; font-size:13.5px; cursor:pointer; text-align:center; transition:all .15s ease;
+    display:flex; align-items:center; justify-content:center; gap:6px; min-height:44px;
+  }
+  .draw-mode-btn.active{ border-color:var(--clay); background:#FBF1EC; color:var(--clay-dark); }
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); opacity:0;
+    background:var(--pine-deep); color:var(--paper); padding:14px 22px; border-radius:10px; font-weight:600; font-size:14px;
+    transition:all .25s ease; pointer-events:none; z-index:2100; box-shadow:var(--shadow);
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  footer{ background:var(--pine-deep); color:rgba(251,248,241,0.7); padding:36px 24px; margin-top:40px; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:13px; }
+
+  /* ===== Course detail modal ===== */
+  .card{ cursor:pointer; }
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(21,41,34,0.55); backdrop-filter:blur(2px);
+    display:none; align-items:flex-start; justify-content:center; z-index:2000; padding:40px 20px; overflow-y:auto;
+  }
+  .modal-overlay.show{ display:flex; }
+  .modal{
+    background:var(--paper); border-radius:18px; max-width:720px; width:100%; box-shadow:var(--shadow);
+    overflow:hidden; margin-bottom:40px;
+  }
+  .modal-gallery{ display:grid; grid-template-columns:2fr 1fr; gap:2px; height:220px; }
+  .photo-tile{
+    display:flex; align-items:center; justify-content:center; font-size:34px;
+    background: linear-gradient(135deg, var(--moss), var(--pine));
+    color:rgba(251,248,241,0.85);
+  }
+  .photo-tile:nth-child(2){ background:linear-gradient(135deg, var(--gold), var(--clay)); }
+  .photo-tile:nth-child(3){ background:linear-gradient(135deg, var(--pine), var(--pine-deep)); }
+  .modal-body{ padding:28px 30px 30px; }
+  .modal-close{
+    position:absolute; top:16px; right:16px; background:rgba(21,41,34,0.55); color:#fff; border:none;
+    width:34px; height:34px; border-radius:50%; font-size:16px; cursor:pointer; z-index:2;
+  }
+  .modal-inner-wrap{ position:relative; }
+  .modal-body h3{ font-size:26px; margin-bottom:6px; }
+  .modal-meta-row{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 16px; align-items:center; }
+  #modal-route-map{ height:200px; border-radius:10px; overflow:hidden; border:1px solid var(--line); margin:16px 0; }
+  .review-section{ margin-top:26px; border-top:1px solid var(--line); padding-top:20px; }
+  .review-section h4{ font-family:'Gowun Batang', serif; font-size:20px; color:var(--pine-deep); margin-bottom:14px; }
+  .review-item{ padding:12px 0; border-bottom:1px dashed var(--line); }
+  .review-item:last-child{ border-bottom:none; }
+  .review-item .rh{ display:flex; justify-content:space-between; align-items:center; font-size:13px; font-weight:700; }
+  .stars{ color:var(--gold); letter-spacing:2px; }
+  .review-item p{ font-size:13.5px; color:#5B5645; margin:4px 0 0; }
+  .review-form{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+  .star-input{ display:flex; gap:4px; font-size:22px; cursor:pointer; }
+  .star-input span{ color:var(--line); transition:color .1s; }
+  .star-input span.on{ color:var(--gold); }
+  .empty-review{ font-size:13px; color:#8A8368; }
+  .badge-shop-item{
+    display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1.5px solid var(--line);
+    border-radius:10px; margin-bottom:8px; background:#fff;
+  }
+  .badge-shop-item.equipped{ border-color:var(--clay); background:#FBF1EC; }
+  .badge-shop-item button{
+    font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--clay); background:#fff; color:var(--clay);
+  }
+  .badge-shop-item button:disabled{ opacity:0.5; cursor:default; }
+
+  /* ===== Identity / report / moderation ===== */
+  .profile-btn{
+    background:var(--sand); border:1px solid var(--line); color:var(--pine-deep); font-weight:700; font-size:13px;
+    padding:8px 14px; border-radius:999px; cursor:pointer;
+  }
+  .profile-btn .dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--moss); margin-right:6px; }
+  .nick-modal{ max-width:420px; max-height:88vh; overflow-y:auto; }
+  .nick-modal .modal-body{ padding:26px; }
+  .nick-modal input{ margin-top:8px; }
+  .report-btn{
+    background:none; border:none; color:#A79E7E; font-size:12px; font-weight:600; cursor:pointer; padding:2px 4px;
+  }
+  .report-btn:hover{ color:var(--clay); }
+  .owner-controls{ display:flex; gap:10px; }
+  .delete-btn{
+    background:none; border:none; color:var(--clay); font-size:12px; font-weight:700; cursor:pointer; padding:2px 4px;
+  }
+  .card-foot{ display:flex; justify-content:space-between; align-items:center; margin-top:2px; }
+  .card-owner-tag{ font-size:11px; color:var(--moss); font-weight:700; }
+  .review-item .rh-actions{ display:flex; gap:8px; align-items:center; }
+  .admin-toggle{
+    position:fixed; bottom:24px; right:24px; background:var(--pine-deep); color:var(--paper); border:none;
+    width:48px; height:48px; border-radius:50%; font-size:18px; cursor:pointer; box-shadow:var(--shadow); z-index:1200;
+  }
+  .admin-panel{ max-width:640px; }
+  .admin-row{
+    display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); gap:12px;
+  }
+  .admin-row:last-child{ border-bottom:none; }
+  .admin-row .info{ font-size:13.5px; }
+  .admin-row .info b{ display:block; font-size:14.5px; color:var(--pine-deep); }
+  .admin-badge{ background:#F2D6CE; color:var(--clay-dark); font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; }
+  .admin-actions{ display:flex; gap:8px; }
+  .admin-actions button{
+    font-size:12px; font-weight:700; padding:7px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--line); background:#fff;
+  }
+  .admin-actions .keep{ color:var(--moss); border-color:var(--moss); }
+  .admin-actions .remove{ color:var(--clay); border-color:var(--clay); }
+  .empty-admin{ font-size:13.5px; color:#8A8368; padding:10px 0; }
+  .hidden-flag{ opacity:0.5; }
+
+  .bottom-tab-bar{
+    display:none; position:fixed; bottom:0; left:0; right:0; z-index:1200;
+    background:var(--paper); border-top:1px solid var(--line); box-shadow:0 -4px 16px rgba(21,41,34,0.08);
+    padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+    justify-content:space-around; align-items:center;
+  }
+  .bottom-tab-bar button{
+    background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:2px;
+    font-size:11px; font-weight:700; color:#9C9578; padding:6px 4px; cursor:pointer; flex:1;
+  }
+  .bottom-tab-bar button.active{ color:var(--clay); }
+  .bottom-tab-bar .tab-icon{ font-size:20px; }
+
+  @media (max-width: 880px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .register-panel{ grid-template-columns:1fr; }
+    .mini-map-wrap{ position:static; order:1; }
+    .form-card{ order:2; }
+    #mini-map{ height:320px; }
+    .nav-links{ display:none; }
+    .nav-cta{ display:none; }
+    .draw-mode-btn{ font-size:13px; padding:12px 6px; }
+    .bottom-tab-bar{ display:flex; }
+    body{ padding-bottom:64px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo" data-page-nav="home" style="cursor:pointer;"><span class="mark">🐾</span><span>발자국</span></div>
+    <nav class="nav-links">
+      <a href="#" data-page-nav="map">지도</a>
+      <a href="#" data-page-nav="list">코스 목록</a>
+      <a href="#" data-page-nav="walk">산책 기록</a>
+      <a href="#" data-page-nav="register">코스 등록</a>
+      <a href="#" data-page-nav="etiquette">펫티켓</a>
+    </nav>
+    <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
+    <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot"></span><span id="profile-label">로그인</span></button>
+    <button id="points-badge" style="margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
+  </div>
+</header>
+
+<nav class="bottom-tab-bar" id="bottom-tab-bar">
+  <button data-page-nav="home"><span class="tab-icon">🏠</span><span>홈</span></button>
+  <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
+  <button data-page-nav="list"><span class="tab-icon">📋</span><span>목록</span></button>
+  <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>기록</span></button>
+  <button data-page-nav="register"><span class="tab-icon">➕</span><span>등록</span></button>
+</nav>
+
+<section class="hero app-page active" data-page-section="home">
+  <svg class="contour-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#C79A3C" stroke-width="1">
+      <path d="M-50,420 C 200,380 300,460 500,410 S 800,340 1000,400 S 1250,380 1300,420" opacity="0.5"/>
+      <path d="M-50,380 C 220,340 320,420 520,370 S 820,300 1020,360 S 1250,340 1300,380" opacity="0.4"/>
+      <path d="M-50,340 C 240,300 340,380 540,330 S 840,260 1040,320 S 1250,300 1300,340" opacity="0.3"/>
+      <path d="M-50,300 C 260,260 360,340 560,290 S 860,220 1060,280 S 1250,260 1300,300" opacity="0.2"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">전국 · 반려견 산책 지도</span>
+      <h1>동네에 숨은 <em>산책로</em>를,<br>함께 그려갑니다</h1>
+      <p class="lead">잔디밭, 그늘, 목줄 해제 구역까지 — 우리 강아지에게 맞는 산책 코스를 찾고, 배변봉투함 위치까지 한 지도에서 확인하세요. 정보는 이웃 반려인들이 직접 채워갑니다.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#" data-page-nav="map">지도 둘러보기</a>
+        <a class="btn-ghost" href="#" data-page-nav="register">내 코스 등록하기</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
+        <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함 위치</div></div>
+        <div class="stat"><div class="num">전국</div><div class="label">서비스 범위</div></div>
+      </div>
+    </div>
+    <div class="hero-card" id="weather-card">
+      <span class="tag">오늘 산책 날씨</span>
+      <h3 id="weather-title">불러오는 중...</h3>
+      <p id="weather-desc">위치 정보를 확인하고 있어요.</p>
+      <div class="meta" id="weather-meta"></div>
+    </div>
+  </div>
+</section>
+
+<section id="nearby-section" class="app-page active" data-page-section="home" style="background:var(--paper); padding:56px 0; border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin-bottom:32px; box-shadow:var(--shadow);">
+      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85; text-transform:uppercase;">Monthly Champion</div>
+      <div id="champion-name" style="font-family:'Gowun Batang',serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
+      <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
+    </div>
+    <div class="section-head">
+      <div>
+        <span class="kicker" id="nearby-kicker">Nearby Picks</span>
+        <h2 id="nearby-title">우리 동네 추천 코스</h2>
+        <p id="nearby-desc">프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.</p>
+      </div>
+    </div>
+    <div class="grid" id="nearby-grid"></div>
+  </div>
+</section>
+
+<section id="map-section" class="app-page" data-page-section="map">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Live Map</span>
+        <h2>지도에서 찾아보기</h2>
+        <p>산책 코스 시작점과 배변봉투함 위치를 한 지도에서 필터링해서 볼 수 있어요.</p>
+      </div>
+    </div>
+    <div class="map-panel">
+      <div class="map-toolbar">
+        <div class="filter-group" id="view-filter-group">
+          <div class="chip active" data-filter="all">전체</div>
+          <div class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</div>
+          <div class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</div>
+        </div>
+        <span class="mono" style="font-size:12px;color:#6B664F;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
+      </div>
+      <div class="map-toolbar" style="border-top:1px dashed var(--line);">
+        <div class="filter-group" id="poi-group">
+          <div class="chip" data-poi="vet">🏥 동물병원</div>
+          <div class="chip" data-poi="pet_shop">🛍️ 애견용품점</div>
+          <div class="chip" data-poi="restaurant">🍽️ 동반 식당·카페</div>
+          <div class="chip" data-poi="lodging">🏨 동반 숙소</div>
+        </div>
+        <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
+      </div>
+      <div id="map"></div>
+      <div class="map-legend">
+        <span>🐾 산책 코스 시작점</span>
+        <span>┈┈ 실제 산책 경로</span>
+        <span>🚮 배변봉투함</span>
+        <span>🏥 동물병원 · 🛍️ 애견용품점 · 🍽️ 동반식당·카페 · 🏨 동반숙소 (카카오 로컬 검색 제공)</span>
+        <span>마커를 누르면 상세 정보가 보여요</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="list-section" class="app-page" data-page-section="list" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Community Picks</span>
+        <h2>인기 산책 코스</h2>
+        <p>이웃 반려인들이 직접 걸어보고 남긴 코스예요. 조건에 맞는 곳을 찾아보세요.</p>
+      </div>
+    </div>
+    <div class="map-panel" style="margin-bottom:24px;">
+      <div class="map-toolbar">
+        <input type="text" id="course-search-input" placeholder="🔍 코스 이름·설명으로 검색 (예: 한강, 그늘)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
+      </div>
+      <div class="map-toolbar" style="border-top:1px dashed var(--line);">
+        <div class="filter-group" id="list-diff-filter">
+          <div class="chip active" data-diff-filter="all">전체 난이도</div>
+          <div class="chip" data-diff-filter="쉬움">쉬움</div>
+          <div class="chip" data-diff-filter="보통">보통</div>
+          <div class="chip" data-diff-filter="어려움">어려움</div>
+        </div>
+        <div class="filter-group" id="list-tag-filter">
+          <div class="chip" data-tag-filter="목줄해제가능">목줄해제가능</div>
+          <div class="chip" data-tag-filter="그늘많음">그늘많음</div>
+          <div class="chip" data-tag-filter="잔디바닥">잔디바닥</div>
+          <div class="chip" data-tag-filter="계단없음">계단없음</div>
+        </div>
+      </div>
+    </div>
+    <p id="course-count-label" style="font-size:13px; color:#8A8368; margin-bottom:4px;"></p>
+    <div class="grid" id="course-grid"></div>
+  </div>
+</section>
+
+<section id="walk-section" class="app-page" data-page-section="walk" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">GPS Walk Log</span>
+        <h2>산책 직접 기록하기</h2>
+        <p>지금 걷고 있는 산책을 GPS로 기록해보세요. 끝나면 바로 코스로 등록할 수도 있어요.</p>
+      </div>
+    </div>
+    <div class="register-panel">
+      <div class="form-card">
+        <div id="walk-idle-panel">
+          <p style="font-size:14px; color:#5B5645; margin:0 0 16px;">시작 버튼을 누르면 위치 접근 권한을 물어봐요. 허용하면 걷는 동안 실시간으로 경로가 그려져요.</p>
+          <label style="display:flex; align-items:center; gap:8px; margin:0 0 16px; font-size:13.5px; font-weight:600; color:var(--pine-deep); cursor:pointer;">
+            <input type="checkbox" id="battery-saver-toggle" style="width:16px; height:16px;">
+            🔋 배터리 절약 모드 (위치 정확도는 낮아져요)
+          </label>
+          <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
+        </div>
+        <div id="walk-active-panel" style="display:none;">
+          <div style="display:flex; gap:18px; margin-bottom:18px;">
+            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-time" style="font-size:26px;">00:00</div><div class="label">경과 시간</div></div></div>
+            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-dist" style="font-size:26px;">0.00</div><div class="label">거리 (km)</div></div></div>
+            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-pace" style="font-size:26px;">–</div><div class="label">평균 페이스</div></div></div>
+          </div>
+          <button type="button" class="submit-btn" id="walk-stop-btn" style="background:var(--pine-deep);">■ 산책 종료</button>
+        </div>
+        <div id="walk-done-panel" style="display:none;">
+          <p style="font-size:14px; color:#5B5645; margin:0 0 4px;">수고하셨어요! 이번 산책 기록이에요.</p>
+          <div style="display:flex; gap:18px; margin:12px 0 18px;">
+            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-done-time" style="font-size:22px;">00:00</div><div class="label">시간</div></div></div>
+            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-done-dist" style="font-size:22px;">0.00</div><div class="label">거리 (km)</div></div></div>
+          </div>
+          <button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
+          <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로로 코스 등록하기</button>
+          <button type="button" class="pin-btn" id="walk-discard-btn" style="margin-top:10px; color:#A79E7E;">기록 버리고 다시 시작</button>
+        </div>
+        <div id="my-walks-wrap" style="margin-top:24px; border-top:1px solid var(--line); padding-top:18px;">
+          <h4 style="font-family:'Gowun Batang', serif; font-size:18px; color:var(--pine-deep); margin-bottom:10px;">내 산책 기록</h4>
+          <div id="my-walks-list"><p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p></div>
+        </div>
+      </div>
+      <div class="mini-map-wrap">
+        <div id="walk-map" style="height:360px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow);"></div>
+        <div class="mini-map-note">GPS 정확도는 기기·환경에 따라 오차가 있을 수 있어요. 실외에서 더 정확해요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register-section" class="app-page" data-page-section="register">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Add to the Map</span>
+        <h2>코스 또는 배변봉투함 등록하기</h2>
+        <p>지도에 없는 곳을 발견했다면 알려주세요. 등록한 정보는 다른 반려인들에게도 함께 보여져요.</p>
+      </div>
+    </div>
+    <div class="register-panel">
+      <div class="form-card">
+        <div class="type-toggle">
+          <div class="type-btn active" data-type="course">🐾 산책 코스</div>
+          <div class="type-btn" data-type="bin">🚮 배변봉투함</div>
+        </div>
+        <form id="reg-form">
+          <label>이름</label>
+          <input type="text" id="f-name" placeholder="예: 한강 뚝섬 반려견 놀이터 코스" required>
+
+          <label id="label-desc">코스 설명</label>
+          <textarea id="f-desc" placeholder="바닥 상태, 그늘, 소요 시간 등을 적어주세요"></textarea>
+
+          <label id="label-pin">지도에서 경로 그리기</label>
+          <div class="draw-mode-toggle" id="draw-mode-toggle">
+            <div class="draw-mode-btn active" data-mode="pen">✏️ 펜으로 그리기</div>
+            <div class="draw-mode-btn" data-mode="tap">📍 점 찍어 잇기</div>
+          </div>
+          <button type="button" class="pin-btn" id="pin-btn">✏️ 오른쪽 지도를 손가락으로 눌러서 출발점부터 도착점까지 쭉 그어주세요</button>
+          <button type="button" class="pin-btn" id="path-reset-btn" style="margin-top:8px; border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC; display:none;">↺ 경로 다시 그리기</button>
+
+          <div id="course-only-fields">
+            <label>편의 요소</label>
+            <div class="tag-check-group" id="tag-group">
+              <div class="tag-check" data-tag="그늘많음">그늘많음</div>
+              <div class="tag-check" data-tag="잔디바닥">잔디바닥</div>
+              <div class="tag-check" data-tag="계단없음">계단없음</div>
+              <div class="tag-check" data-tag="목줄해제가능">목줄해제가능</div>
+              <div class="tag-check" data-tag="정수대있음">정수대있음</div>
+              <div class="tag-check" data-tag="입마개필요">입마개필요</div>
+              <div class="tag-check" data-tag="야생동물주의">야생동물주의</div>
+            </div>
+            <label>난이도</label>
+            <div class="tag-check-group" id="diff-group">
+              <div class="tag-check on" data-diff="쉬움">쉬움</div>
+              <div class="tag-check" data-diff="보통">보통</div>
+              <div class="tag-check" data-diff="어려움">어려움</div>
+            </div>
+          </div>
+
+          <button type="submit" id="reg-submit-btn" class="submit-btn">지도에 등록하기</button>
+        </form>
+      </div>
+      <div class="mini-map-wrap">
+        <div id="mini-map"></div>
+        <div class="mini-map-note">🐾 산책 코스는 출발점부터 도착점까지 순서대로 터치하면 지도에 경로가 이어져요. 🚮 배변봉투함은 위치 한 곳만 터치하면 돼요. 등록한 정보는 모든 방문자에게 함께 표시됩니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="etiquette-section" class="app-page" data-page-section="etiquette" style="background:var(--sand); padding:56px 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Trail Etiquette</span>
+        <h2>함께 지켜요, 펫티켓</h2>
+        <p>서로 다른 이웃과 함께 걷는 길이에요. 아래 매너를 지켜주시면 모두가 더 편하게 이용할 수 있어요.</p>
+      </div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill, minmax(240px,1fr));">
+      <div class="card"><h3 style="font-size:16px;">🦮 목줄은 기본이에요</h3><p class="desc">"목줄해제가능" 태그가 없는 코스에서는 반드시 목줄을 착용해주세요.</p></div>
+      <div class="card"><h3 style="font-size:16px;">💩 배변은 바로 처리</h3><p class="desc">가까운 배변봉투함을 지도에서 미리 확인하고, 없다면 직접 챙겨가주세요.</p></div>
+      <div class="card"><h3 style="font-size:16px;">🐕 입마개 필요 구역 확인</h3><p class="desc">"입마개필요" 태그가 붙은 코스에서는 관련 법령에 따라 입마개를 착용해주세요.</p></div>
+      <div class="card"><h3 style="font-size:16px;">🙋 다른 강아지·사람 배려</h3><p class="desc">다른 반려견이나 아이들이 무서워할 수 있으니, 마주칠 땐 거리를 두고 인사해요.</p></div>
+    </div>
+    <p style="font-size:12.5px; color:#8A8368; margin-top:28px; line-height:1.7;">
+      ⚠️ 이 사이트의 코스·시설 정보는 이용자들의 제보를 기반으로 하며, 실제 현장 상황(공사, 통제, 위험 요소 등)과 다를 수 있어요. 산책 전 현장 상황을 직접 확인해주시고, 맹견 지정견·입마개 의무견 등은 관련 법령을 반드시 준수해주세요. 이 정보를 이용해 발생한 문제에 대해 발자국은 책임을 지지 않습니다.
+    </p>
+  </div>
+</section>
+
+<section id="privacy-section" class="app-page" data-page-section="privacy" style="padding:56px 0;">
+  <div class="wrap" style="max-width:760px;">
+    <h2 style="margin-bottom:20px;">개인정보처리방침</h2>
+    <div style="font-size:14px; color:#5B5645; line-height:1.9;">
+      <p><strong>1. 수집하는 개인정보 항목</strong><br>
+      발자국은 카카오·구글·이메일 로그인을 통해 이메일 주소 및 프로필 정보(닉네임, 프로필 사진)를 수집합니다. 서비스 이용 과정에서 반려견 정보(이름, 견종, 나이), 등록 지역, GPS 위치 정보(산책 기록 시), 등록하신 코스·리뷰·사진 정보가 함께 저장됩니다.</p>
+      <p><strong>2. 개인정보의 수집 및 이용 목적</strong><br>
+      회원 식별 및 로그인, 코스·리뷰·산책 기록 등 이용자가 작성한 콘텐츠의 저장 및 표시, 우리 동네 맞춤 코스 추천, 포인트(리워드) 지급 및 관리를 위해 사용됩니다.</p>
+      <p><strong>3. 개인정보의 보유 및 이용 기간</strong><br>
+      회원 탈퇴 또는 삭제 요청 시까지 보유하며, 이후 지체 없이 파기합니다.</p>
+      <p><strong>4. 개인정보의 제3자 제공</strong><br>
+      이용자의 동의 없이 개인정보를 외부에 제공하지 않습니다. 다만 지도·장소 검색 기능 제공을 위해 카카오맵 API가, 데이터 저장을 위해 Supabase가 활용됩니다.</p>
+      <p><strong>5. 문의처</strong><br>
+      개인정보 관련 문의: <a href="mailto:footstepbiz@gmail.com" style="color:var(--clay);">footstepbiz@gmail.com</a></p>
+      <p style="margin-top:24px; color:#8A8368; font-size:12.5px;">본 방침은 서비스 운영 상황에 따라 변경될 수 있으며, 변경 시 사이트를 통해 공지합니다. (최종 개정일: 2026년 8월)</p>
+    </div>
+  </div>
+</section>
+
+<section id="terms-section" class="app-page" data-page-section="terms" style="padding:56px 0;">
+  <div class="wrap" style="max-width:760px;">
+    <h2 style="margin-bottom:20px;">이용약관</h2>
+    <div style="font-size:14px; color:#5B5645; line-height:1.9;">
+      <p><strong>제1조 (목적)</strong><br>
+      본 약관은 발자국(이하 "서비스")이 제공하는 강아지 산책 코스 공유 서비스의 이용 조건 및 절차를 규정합니다.</p>
+      <p><strong>제2조 (서비스 내용)</strong><br>
+      서비스는 이용자가 산책 코스, 배변봉투함 위치, 리뷰, 사진 등을 등록·공유하고, GPS 산책 기록, 주변 시설 검색 등을 이용할 수 있는 기능을 제공합니다.</p>
+      <p><strong>제3조 (이용자의 의무)</strong><br>
+      이용자는 허위 정보를 등록하거나 타인에게 피해를 주는 게시물을 작성해서는 안 되며, 관련 법령(동물보호법 등)을 준수해야 합니다.</p>
+      <p><strong>제4조 (면책조항)</strong><br>
+      서비스에 등록된 코스·시설 정보는 이용자 제보를 기반으로 하며, 실제 현장 상황(공사, 통제, 위험 요소 등)과 다를 수 있습니다. 이용자는 산책 전 현장 상황을 직접 확인해야 하며, 본 정보를 이용해 발생한 문제에 대해 서비스는 책임을 지지 않습니다.</p>
+      <p><strong>제5조 (콘텐츠의 저작권)</strong><br>
+      이용자가 등록한 게시물의 저작권은 이용자 본인에게 있으며, 서비스는 이를 서비스 내에서 표시·운영하는 목적으로만 사용합니다.</p>
+      <p><strong>제6조 (문의)</strong><br>
+      서비스 이용 문의: <a href="mailto:footstepbiz@gmail.com" style="color:var(--clay);">footstepbiz@gmail.com</a></p>
+      <p style="margin-top:24px; color:#8A8368; font-size:12.5px;">(최종 개정일: 2026년 8월)</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="flex-direction:column; gap:10px; align-items:flex-start;">
+    <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도 (프로토타입)</span>
+    <span>초기 데이터는 시연을 위한 샘플이며, 실제 위치와 다를 수 있어요.</span>
+    <div style="display:flex; gap:16px; font-size:13px;">
+      <a href="#" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
+      <a href="#" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
+      <a href="mailto:footstepbiz@gmail.com" style="color:rgba(251,248,241,0.8); text-decoration:underline;">문의하기</a>
+    </div>
+    <span style="font-size:12px; opacity:0.7;">© 2026 발자국. All rights reserved.</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-inner-wrap">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-gallery" id="modal-gallery">
+        <div class="photo-tile">🐕</div>
+        <div class="photo-tile">🌳</div>
+        <div class="photo-tile">🐾</div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-title">코스 이름</h3>
+        <div class="modal-meta-row" id="modal-meta"></div>
+        <p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
+        <div id="photo-upload-wrap" style="margin:10px 0;">
+          <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
+          <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
+          <span id="photo-upload-status" style="font-size:12px; color:#8A8368; margin-left:8px;"></span>
+        </div>
+        <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
+        <div id="modal-route-map"></div>
+        <div class="review-section">
+          <h4>다녀온 반려인들의 리뷰</h4>
+          <div id="review-list"></div>
+          <form class="review-form" id="review-form">
+            <div class="star-input" id="star-input">
+              <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+            </div>
+            <p id="review-as" style="font-size:12.5px; color:var(--moss); font-weight:600; margin:0;"></p>
+            <textarea id="review-text" placeholder="다녀온 소감을 남겨주세요" required></textarea>
+            <button type="submit" class="submit-btn" style="margin-top:0;">리뷰 남기기</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="nick-overlay">
+  <div class="modal nick-modal">
+    <div class="modal-body">
+      <h3 style="font-size:20px;">로그인해주세요</h3>
+      <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">등록한 코스·배변봉투함·리뷰에 닉네임이 표시되고, 내가 올린 글을 나중에 수정·삭제하거나 포인트를 모을 때 필요해요.</p>
+      <button class="submit-btn" id="kakao-login-btn" style="margin-top:14px; background:#FEE500; color:#191919;">💬 카카오로 시작하기</button>
+      <button class="submit-btn" id="google-login-btn" style="margin-top:10px; background:#fff; color:#3c4043; border:1.5px solid var(--line);">🔵 Google로 시작하기</button>
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">이메일로 시작하기</label>
+        <input type="email" id="email-login-input" placeholder="you@example.com">
+        <button class="pin-btn" id="email-login-btn" style="margin-top:8px;">📧 로그인 링크 이메일로 받기</button>
+        <p id="email-login-note" style="font-size:12px; color:#8A8368; margin-top:8px;"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="profile-overlay">
+  <div class="modal nick-modal">
+    <div class="modal-body">
+      <h3 style="font-size:20px;">내 프로필</h3>
+      <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">로그인 계정과 별개로, 사이트에 표시될 닉네임을 자유롭게 정하실 수 있어요. 실명이 아닌 별명을 추천해요.</p>
+      <label style="margin-top:14px;">표시 닉네임</label>
+      <input type="text" id="display-name-input" placeholder="예: 몽이맘" maxlength="16">
+      <button class="submit-btn" id="display-name-save-btn" style="margin-top:10px;">닉네임 저장</button>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">🐕 우리 강아지 정보</label>
+        <input type="text" id="dog-name-input" placeholder="이름 (예: 몽이)" style="margin-top:8px;">
+        <input type="text" id="dog-breed-input" placeholder="견종 (예: 말티즈)" style="margin-top:8px;">
+        <input type="number" id="dog-age-input" placeholder="나이 (세)" min="0" max="30" style="margin-top:8px;">
+        <button class="submit-btn" id="dog-info-save-btn" style="margin-top:10px;">강아지 정보 저장</button>
+      </div>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">📍 내 지역</label>
+        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">동네를 등록하면 홈 화면에 우리 동네 추천 코스가 먼저 보여요.</p>
+        <input type="text" id="region-input" placeholder="예: 서울 마포구">
+        <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
+      </div>
+      <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="points-shop-overlay">
+  <div class="modal nick-modal">
+    <div class="modal-body">
+      <h3 style="font-size:20px;">🪙 포인트 상점</h3>
+      <p id="points-shop-balance" style="font-size:14px; color:var(--clay); font-weight:700; margin-top:6px;"></p>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">🎁 친구 추천하고 포인트 받기</label>
+        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">내 링크로 친구가 가입하면 나도, 친구도 50P씩 받아요.</p>
+        <button class="pin-btn" id="copy-referral-btn" style="border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC;">🔗 내 추천 링크 복사하기</button>
+      </div>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">배지 꾸미기</label>
+        <p style="font-size:12.5px; color:#8A8368; margin:4px 0 8px;">구매한 배지는 닉네임 옆에 표시돼요.</p>
+        <div id="badge-shop"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button class="admin-toggle" id="admin-toggle" title="관리자 전용" style="display:none;">🛡️</button>
+
+<div class="modal-overlay" id="admin-overlay">
+  <div class="modal admin-panel">
+    <div class="modal-inner-wrap">
+      <button class="modal-close" id="admin-close">✕</button>
+      <div class="modal-body">
+        <h3 style="font-size:22px;">🛡️ 신고된 항목 검수</h3>
+        <p style="font-size:13px; color:#8A8368; margin-top:4px;">관리자 전용 화면이에요.</p>
+        <div id="admin-list" style="margin-top:16px;"></div>
+
+        <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
+          <h3 style="font-size:20px;">👥 회원 활동 관리</h3>
+          <p style="font-size:13px; color:#8A8368; margin-top:4px;">닉네임·활동량 기준으로 정리했어요. (로그인 정보 자체는 표시되지 않아요)</p>
+          <div id="member-list" style="margin-top:16px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  // ===== Supabase 연결 =====
+  const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  const REPORT_THRESHOLD = 3;
+
+  const SEED_COURSES = [
+    { id:'c1', name:'경춘선숲길 반려견 산책로', desc:'화랑대역 인근 철길 숲길. 나무 그늘이 많고 평지 위주라 노령견에게도 좋아요.', lat:37.6215, lng:127.0745, tags:['그늘많음','계단없음'], diff:'쉬움', distance:'2.1 km',
+      path:[[37.6215,127.0745],[37.6222,127.0761],[37.6231,127.0779],[37.6238,127.0798]] },
+    { id:'c2', name:'월드컵공원 → 하늘공원 코스', desc:'반려견 놀이터에서 뛴 뒤 억새길을 따라 걷는 왕복 코스. 하늘공원 오르는 계단 구간 있음.', lat:37.5691, lng:126.8969, tags:['목줄해제가능','정수대있음'], diff:'보통', distance:'3.9 km',
+      path:[[37.5691,126.8969],[37.5701,126.8982],[37.5715,126.9001],[37.5709,126.9021]] },
+    { id:'c3', name:'해운대 반려동반 해변산책로', desc:'백사장 옆 산책데크. 여름 성수기엔 혼잡할 수 있어요.', lat:35.1587, lng:129.1604, tags:['잔디바닥'], diff:'쉬움', distance:'1.8 km',
+      path:[[35.1587,129.1604],[35.1598,129.1622],[35.1610,129.1640]] },
+    { id:'c4', name:'한밭수목원 둘레길', desc:'수목원 외곽을 도는 완만한 코스. 그늘이 풍부해 한여름에도 걷기 좋아요.', lat:36.3728, lng:127.3777, tags:['그늘많음','잔디바닥','정수대있음'], diff:'쉬움', distance:'2.6 km',
+      path:[[36.3728,127.3777],[36.3740,127.3792],[36.3752,127.3775],[36.3735,127.3760],[36.3728,127.3777]] },
+    { id:'c5', name:'경의선숲길 연남동 구간', desc:'카페거리를 낀 도심 산책로. 사람이 많아 소형견 위주로 추천.', lat:37.5599, lng:126.9256, tags:['계단없음'], diff:'보통', distance:'1.4 km',
+      path:[[37.5599,126.9256],[37.5608,126.9270],[37.5617,126.9285]] },
+    { id:'c6', name:'인천 송도 센트럴파크 수변길', desc:'인공 수로를 따라 걷는 평지 코스. 넓고 쾌적해서 대형견도 편하게 걸을 수 있어요.', lat:37.3925, lng:126.6355, tags:['잔디바닥','정수대있음','계단없음'], diff:'쉬움', distance:'3.2 km',
+      path:[[37.3925,126.6355],[37.3938,126.6378],[37.3951,126.6402],[37.3944,126.6420]] },
+    { id:'c7', name:'수원 광교호수공원 둘레길', desc:'호수를 크게 도는 코스. 주말엔 사람이 많지만 평일엔 한적해요.', lat:37.2839, lng:127.0980, tags:['그늘많음','정수대있음'], diff:'보통', distance:'4.5 km',
+      path:[[37.2839,127.0980],[37.2855,127.1005],[37.2870,127.0990],[37.2858,127.0960],[37.2839,127.0980]] },
+    { id:'c8', name:'대구 수성못 둘레길', desc:'못 주변을 도는 완만한 코스. 밤에 조명이 예뻐서 야간 산책도 인기예요.', lat:35.8281, lng:128.6383, tags:['계단없음','잔디바닥'], diff:'쉬움', distance:'2.0 km',
+      path:[[35.8281,128.6383],[35.8290,128.6400],[35.8278,128.6415],[35.8265,128.6395],[35.8281,128.6383]] },
+    { id:'c9', name:'울산 태화강 국가정원 산책로', desc:'대나무숲과 강변을 함께 즐기는 코스. 여름엔 그늘이 많아 좋아요.', lat:35.5497, lng:129.2925, tags:['그늘많음','잔디바닥','목줄해제가능'], diff:'쉬움', distance:'3.6 km',
+      path:[[35.5497,129.2925],[35.5510,129.2948],[35.5522,129.2970]] },
+    { id:'c10', name:'전주 덕진공원 연못길', desc:'연꽃 연못을 도는 도심 속 코스. 벤치가 많아 쉬어가기 좋아요.', lat:35.8575, lng:127.1265, tags:['그늘많음','계단없음'], diff:'쉬움', distance:'1.9 km',
+      path:[[35.8575,127.1265],[35.8588,127.1280],[35.8595,127.1260],[35.8580,127.1250]] },
+    { id:'c11', name:'춘천 의암호 스카이워크 산책로', desc:'호수 전망이 좋은 강변 코스. 자전거와 함께 다니는 구간이라 목줄 필수예요.', lat:37.8228, lng:127.7047, tags:['정수대있음'], diff:'보통', distance:'3.0 km',
+      path:[[37.8228,127.7047],[37.8241,127.7065],[37.8255,127.7080]] },
+    { id:'c12', name:'성남 탄천 산책로', desc:'분당·성남을 가로지르는 하천길. 평지라 노견·소형견 모두 무난해요.', lat:37.4201, lng:127.1265, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'2.8 km',
+      path:[[37.4201,127.1265],[37.4218,127.1280],[37.4235,127.1295]] },
+    { id:'c13', name:'서울 안양천 산책로 (양천구 구간)', desc:'자전거길과 분리된 산책 전용 구간이 있어 안전해요.', lat:37.5347, lng:126.8564, tags:['잔디바닥','목줄해제가능'], diff:'쉬움', distance:'2.4 km',
+      path:[[37.5347,126.8564],[37.5360,126.8580],[37.5373,126.8595]] },
+    { id:'c14', name:'광주 중외공원 숲길', desc:'미술관 옆 조용한 숲길. 경사가 조금 있어 중형견 이상 추천.', lat:35.1867, lng:126.8895, tags:['그늘많음'], diff:'보통', distance:'2.7 km',
+      path:[[35.1867,126.8895],[35.1880,126.8910],[35.1892,126.8895],[35.1878,126.8880]] },
+    { id:'c15', name:'제주 올레길 7코스 해안 구간', desc:'바다를 끼고 걷는 절경 코스. 반려동반 가능 구간만 발췌했어요. 바람이 강할 수 있어요.', lat:33.2437, lng:126.5619, tags:['잔디바닥'], diff:'어려움', distance:'5.8 km',
+      path:[[33.2437,126.5619],[33.2455,126.5640],[33.2470,126.5665],[33.2460,126.5690]] },
+    { id:'c16', name:'서울 뚝섬한강공원 반려견 놀이터 코스', desc:'한강뷰가 좋은 평지 코스. 반려견 놀이터가 있어 자유시간도 함께 즐길 수 있어요.', lat:37.5304, lng:127.0663, tags:['잔디바닥','목줄해제가능','정수대있음'], diff:'쉬움', distance:'2.9 km',
+      path:[[37.5304,127.0663],[37.5318,127.0685],[37.5330,127.0710]] },
+    { id:'c17', name:'서울 반포한강공원 달빛무지개분수 산책로', desc:'저녁 분수쇼를 보며 걷는 코스. 주말 저녁엔 사람이 많아요.', lat:37.5085, lng:126.9971, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'2.2 km',
+      path:[[37.5085,126.9971],[37.5098,126.9990],[37.5110,127.0010]] },
+    { id:'c18', name:'서울 어린이대공원 둘레길', desc:'광진구 도심 속 숲길. 완만한 오르내림이 있어 적당한 운동이 돼요.', lat:37.5482, lng:127.0817, tags:['그늘많음'], diff:'보통', distance:'3.1 km',
+      path:[[37.5482,127.0817],[37.5495,127.0835],[37.5470,127.0850],[37.5482,127.0817]] },
+    { id:'c19', name:'부산 온천천 시민공원 산책로', desc:'동래·연제구를 가로지르는 하천길. 벚꽃철엔 특히 예뻐요.', lat:35.2049, lng:129.0788, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'3.4 km',
+      path:[[35.2049,129.0788],[35.2065,129.0805],[35.2080,129.0825]] },
+    { id:'c20', name:'부산 삼락생태공원 갈대숲길', desc:'낙동강변 갈대숲을 지나는 코스. 가을 억새 풍경이 좋아요.', lat:35.1791, lng:128.9598, tags:['잔디바닥','목줄해제가능'], diff:'보통', distance:'4.0 km',
+      path:[[35.1791,128.9598],[35.1805,128.9620],[35.1820,128.9645]] },
+    { id:'c21', name:'대구 신천 둔치 산책로', desc:'대구 도심을 남북으로 가로지르는 하천길. 그늘막 쉼터가 곳곳에 있어요.', lat:35.8624, lng:128.6039, tags:['정수대있음','계단없음'], diff:'쉬움', distance:'3.0 km',
+      path:[[35.8624,128.6039],[35.8640,128.6055],[35.8655,128.6070]] },
+    { id:'c22', name:'인천대공원 반려견 놀이터 코스', desc:'넓은 부지의 대형 공원. 반려견 놀이터와 숲길을 함께 즐길 수 있어요.', lat:37.4487, lng:126.7241, tags:['그늘많음','목줄해제가능'], diff:'보통', distance:'3.8 km',
+      path:[[37.4487,126.7241],[37.4500,126.7260],[37.4515,126.7280]] },
+    { id:'c23', name:'창원 용지공원 둘레길', desc:'창원 도심 한복판 호수 공원. 평지라 남녀노소, 견종 상관없이 편해요.', lat:35.2281, lng:128.6811, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'1.7 km',
+      path:[[35.2281,128.6811],[35.2293,128.6825],[35.2270,128.6835],[35.2281,128.6811]] },
+    { id:'c24', name:'청주 무심천 산책로', desc:'청주 시내를 가로지르는 하천길. 자전거도로와 분리된 산책 구간이 있어요.', lat:36.6357, lng:127.4830, tags:['계단없음'], diff:'쉬움', distance:'3.3 km',
+      path:[[36.6357,127.4830],[36.6372,127.4848],[36.6388,127.4865]] },
+    { id:'c25', name:'김포 한강 아라뱃길 산책로', desc:'운하 옆으로 뻗은 한적한 코스. 자전거 이용객이 많아 목줄은 필수예요.', lat:37.6198, lng:126.6206, tags:['잔디바닥'], diff:'보통', distance:'4.2 km',
+      path:[[37.6198,126.6206],[37.6212,126.6225],[37.6228,126.6245]] },
+    { id:'c26', name:'파주 운정호수공원', desc:'신도시 안 호수공원. 산책로가 넓고 깔끔하게 정비돼 있어요.', lat:37.7159, lng:126.7448, tags:['잔디바닥','정수대있음','계단없음'], diff:'쉬움', distance:'2.5 km',
+      path:[[37.7159,126.7448],[37.7172,126.7465],[37.7150,126.7480],[37.7159,126.7448]] },
+    { id:'c27', name:'포항 영일대해수욕장 산책로', desc:'바다를 바라보며 걷는 해변 데크길. 여름 성수기엔 혼잡할 수 있어요.', lat:36.0563, lng:129.3789, tags:['잔디바닥'], diff:'쉬움', distance:'1.9 km',
+      path:[[36.0563,129.3789],[36.0578,129.3805],[36.0592,129.3822]] },
+    { id:'c28', name:'순천만 국가정원 산책로', desc:'넓은 정원을 도는 완만한 코스. 반려동반 가능 구역을 미리 확인하고 가세요.', lat:34.9257, lng:127.5136, tags:['그늘많음','잔디바닥'], diff:'보통', distance:'3.5 km',
+      path:[[34.9257,127.5136],[34.9270,127.5152],[34.9285,127.5170]] },
+    { id:'c29', name:'강릉 경포호수 둘레길', desc:'호수를 한 바퀴 도는 인기 코스. 벚꽃철과 가을 단풍철이 특히 아름다워요.', lat:37.7959, lng:128.8967, tags:['계단없음','정수대있음'], diff:'쉬움', distance:'4.3 km',
+      path:[[37.7959,128.8967],[37.7975,128.8985],[37.7990,128.9005],[37.7959,128.8967]] },
+    { id:'c30', name:'속초 영랑호 산책로', desc:'설악산이 배경으로 보이는 호수 산책로. 인적이 드물어 조용히 걷기 좋아요.', lat:38.1934, lng:128.5942, tags:['그늘많음'], diff:'쉬움', distance:'3.2 km',
+      path:[[38.1934,128.5942],[38.1948,128.5960],[38.1962,128.5978]] },
+  ];
+
+  const SEED_REVIEWS = {
+    c1: [
+      { name:'몽이맘', rating:5, text:'그늘이 정말 많아서 한여름에도 괜찮았어요. 노견이라 평지 코스 찾고 있었는데 딱이에요.', date:'2026.07' },
+      { name:'보리아빠', rating:4, text:'평일 오전엔 한적해서 산책하기 좋아요. 화장실이 좀 멀어요.', date:'2026.06' }
+    ],
+    c2: [
+      { name:'초코누나', rating:4, text:'계단 구간이 있어서 소형견은 안고 가야 했어요. 뷰는 최고!', date:'2026.08' }
+    ],
+    c3: [
+      { name:'별이네', rating:5, text:'해질녘에 걸으면 정말 예뻐요. 여름 주말엔 사람이 많아 이른 아침 추천.', date:'2026.07' }
+    ],
+    c4: [],
+    c5: [
+      { name:'라떼맘', rating:3, text:'예쁘긴 한데 사람이 너무 많아서 소형견은 놀랄 수 있어요.', date:'2026.05' }
+    ],
+    c6: [
+      { name:'두부아빠', rating:5, text:'길이 넓고 평평해서 대형견 데리고 다니기 정말 편해요.', date:'2026.08' }
+    ],
+    c9: [
+      { name:'콩이맘', rating:5, text:'대나무숲 구간이 특히 시원해요. 여름 낮에도 산책 가능해요.', date:'2026.07' }
+    ],
+    c15: [
+      { name:'해피누나', rating:4, text:'경치는 최고인데 바람이 세서 소형견은 힘들어했어요. 대형견 추천.', date:'2026.06' }
+    ]
+  };
+  const SEED_BINS = [
+    { id:'b1', name:'월드컵공원 반려견 놀이터 입구', desc:'놀이터 출입구 바로 옆 비치.', lat:37.5688, lng:126.8975 },
+    { id:'b2', name:'경춘선숲길 화랑대역 인근', desc:'화랑대역 3번 출구 쪽 산책로 초입.', lat:37.6220, lng:127.0752 },
+    { id:'b3', name:'해운대 해변 산책로 입구', desc:'해변 진입로 초입 안내소 옆.', lat:35.1590, lng:129.1610 },
+    { id:'b4', name:'한밭수목원 서문', desc:'서문 매표소 옆 거치대.', lat:36.3720, lng:127.3760 },
+  ];
+
+  let courses = [], bins = [];
+  let reviews = {}; // { courseId: [ {name, rating, text, date, ownerId} ] }
+  let reports = {}; // { "type_id": { count, reporters:[] } }
+  let myDeviceId = null;
+  let myNickname = null;
+  let myDogName = null, myDogBreed = null, myDogAge = null;
+  let myBadge = null, myOwnedBadges = [];
+  let profilesMap = {};
+  let courseBoosts = {};
+  let myRegionName = null, myRegionLat = null, myRegionLng = null;
+  let map, miniMap, routeMap, courseLayer, binLayer;
+  let poiLayer;                 // 동물병원/애견용품점 마커 레이어
+  const activePoiCategories = new Set();
+  let walkMap, walkLiveLine, walkMarker;
+  let walkWatchId = null;
+  let walkPath = [];            // [[lat,lng], ...]
+  let walkStartTime = null;
+  let lastGpsTime = null;
+  let walkTimerInterval = null;
+  let lastSavedWalk = null;     // { path, distanceKm, durationSec }
+  let currentType = 'course';
+  let pendingLatLng = null;
+  let pinMarker = null;
+  let coursePath = [];        // [[lat,lng], ...] 산책 코스 등록용 경로
+  let editingBinId = null;    // 배변봉투함 수정 모드일 때 해당 id
+  let drawMode = 'pen';       // 'pen' | 'tap'
+  let pathPolyline = null;
+  let pathMarkers = [];       // Leaflet 마커들 (출발/경유/도착)
+  const selectedTags = new Set();
+  let selectedDiff = '쉬움';
+  let activeCourseId = null;
+  let activeStars = 5;
+
+  const toastEl = document.getElementById('toast');
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    setTimeout(()=> toastEl.classList.remove('show'), 2400);
+  }
+
+  function rowToCourse(row){
+    return {
+      id: row.id, name: row.name, desc: row.description,
+      lat: row.lat, lng: row.lng, path: row.path || null,
+      tags: row.tags || [], diff: row.diff || '쉬움', distance: row.distance,
+      ownerId: row.owner_id, author: row.author
+    };
+  }
+  function rowToBin(row){
+    return {
+      id: row.id, name: row.name, desc: row.description,
+      lat: row.lat, lng: row.lng, ownerId: row.owner_id, author: row.author
+    };
+  }
+
+  async function loadData(){
+    try{
+      const { data, error } = await sb.from('courses').select('*').order('created_at');
+      courses = (!error && data) ? data.map(rowToCourse) : [];
+    }catch(e){ console.error(e); courses = []; }
+
+    try{
+      const { data, error } = await sb.from('bins').select('*').order('created_at');
+      bins = (!error && data) ? data.map(rowToBin) : [];
+    }catch(e){ console.error(e); bins = []; }
+
+    try{
+      const { data, error } = await sb.from('reviews').select('*').order('created_at');
+      reviews = {};
+      if(!error && data){
+        data.forEach(r=>{
+          if(!reviews[r.course_id]) reviews[r.course_id] = [];
+          reviews[r.course_id].push({ dbId:r.id, name:r.name, rating:r.rating, text:r.text, ownerId:r.owner_id });
+        });
+      }
+    }catch(e){ console.error(e); reviews = {}; }
+
+    try{
+      const { data, error } = await sb.from('reports').select('*');
+      reports = {};
+      if(!error && data){
+        data.forEach(r=>{
+          const key = r.target_type + '_' + r.target_id;
+          if(!reports[key]) reports[key] = { count:0, reporters:[], reasons:[] };
+          reports[key].count += 1;
+          reports[key].reporters.push(r.reporter_id);
+          if(r.reason) reports[key].reasons.push(r.reason);
+        });
+      }
+    }catch(e){ console.error(e); reports = {}; }
+
+    try{
+      const ownerIds = new Set();
+      courses.forEach(c=>{ if(c.ownerId) ownerIds.add(c.ownerId); });
+      bins.forEach(b=>{ if(b.ownerId) ownerIds.add(b.ownerId); });
+      Object.values(reviews).forEach(list=> list.forEach(r=>{ if(r.ownerId) ownerIds.add(r.ownerId); }));
+      profilesMap = {};
+      if(ownerIds.size){
+        const { data } = await sb.from('profiles').select('*').in('owner_id', Array.from(ownerIds));
+        (data||[]).forEach(p=>{ profilesMap[p.owner_id] = p; });
+      }
+    }catch(e){ console.error(e); }
+
+    try{
+      const { data } = await sb.from('course_boosts').select('*').gt('boosted_until', new Date().toISOString());
+      courseBoosts = {};
+      (data||[]).forEach(b=>{ courseBoosts[b.course_id] = b.boosted_until; });
+    }catch(e){ console.error(e); courseBoosts = {}; }
+
+    renderAll();
+  }
+
+  // 기기별 임의 식별자 + 닉네임은 실제 배포 환경(브라우저)에서 동작해야 하므로 localStorage 사용
+  async function ensureIdentity(){
+    try{
+      const { data } = await sb.auth.getSession();
+      applySession(data.session);
+    }catch(e){ console.error(e); }
+    sb.auth.onAuthStateChange((event, session)=>{
+      applySession(session);
+      if(event === 'SIGNED_IN'){
+        closeNickModal();
+        toast(`"${myNickname}" 님으로 로그인됐어요 🐾`);
+        checkFirstLoginBonus();
+        syncProfileTable();
+        loadMyWalks();
+        renderAll();
+      }
+      if(event === 'SIGNED_OUT'){
+        toast('로그아웃됐어요');
+        loadMyWalks();
+        renderAll();
+      }
+    });
+  }
+  const ADMIN_UID = 'f5cbbb53-cdc8-4c05-8772-1309271b0681';
+  function applySession(session){
+    if(session && session.user){
+      myDeviceId = session.user.id;
+      const meta = session.user.user_metadata || {};
+      const emailPrefix = session.user.email ? session.user.email.split('@')[0] : null;
+      myNickname = meta.display_name || meta.name || meta.nickname || meta.full_name || meta.preferred_username || emailPrefix || '이용자';
+      myDogName = meta.dog_name || null;
+      myDogBreed = meta.dog_breed || null;
+      myDogAge = meta.dog_age || null;
+      myRegionName = meta.region_name || null;
+      myRegionLat = meta.region_lat != null ? Number(meta.region_lat) : null;
+      myRegionLng = meta.region_lng != null ? Number(meta.region_lng) : null;
+      myBadge = meta.active_badge || null;
+      myOwnedBadges = meta.owned_badges || [];
+    } else {
+      myDeviceId = null;
+      myNickname = null;
+      myDogName = null; myDogBreed = null; myDogAge = null;
+      myRegionName = null; myRegionLat = null; myRegionLng = null;
+      myBadge = null; myOwnedBadges = [];
+    }
+    updateProfileLabel();
+    const adminBtn = document.getElementById('admin-toggle');
+    if(adminBtn) adminBtn.style.display = (myDeviceId === ADMIN_UID) ? '' : 'none';
+  }
+  async function syncProfileTable(){
+    if(!myDeviceId) return;
+    try{
+      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, badge: myBadge, updated_at: new Date().toISOString() }]);
+    }catch(e){ console.error(e); }
+  }
+  async function saveDisplayName(){
+    const input = document.getElementById('display-name-input');
+    const val = input.value.trim();
+    if(!val){ toast('닉네임을 입력해주세요'); return; }
+    try{
+      const { error } = await sb.auth.updateUser({ data: { display_name: val } });
+      if(error){ toast('닉네임 저장에 실패했어요'); return; }
+      myNickname = val;
+      updateProfileLabel();
+      await syncProfileTable();
+      toast(`닉네임이 "${val}"(으)로 바뀌었어요 🐾`);
+    }catch(e){ console.error(e); toast('닉네임 저장에 실패했어요'); }
+  }
+  async function saveDogInfo(){
+    const name = document.getElementById('dog-name-input').value.trim();
+    const breed = document.getElementById('dog-breed-input').value.trim();
+    const age = document.getElementById('dog-age-input').value.trim();
+    try{
+      const { error } = await sb.auth.updateUser({ data: { dog_name: name, dog_breed: breed, dog_age: age } });
+      if(error){ toast('저장에 실패했어요'); return; }
+      myDogName = name; myDogBreed = breed; myDogAge = age;
+      toast('강아지 정보가 저장됐어요 🐾');
+    }catch(e){ console.error(e); toast('저장에 실패했어요'); }
+  }
+  function geocodeRegion(text){
+    return new Promise((resolve)=>{
+      if(!kakaoGeocoder){ resolve(null); return; }
+      kakaoGeocoder.addressSearch(text, (result, status)=>{
+        if(status === kakao.maps.services.Status.OK && result[0]){
+          resolve({ lat:Number(result[0].y), lng:Number(result[0].x) });
+        } else resolve(null);
+      });
+    });
+  }
+  async function saveRegion(){
+    const input = document.getElementById('region-input');
+    const text = input.value.trim();
+    if(!text){ toast('지역을 입력해주세요'); return; }
+    const geo = await geocodeRegion(text);
+    if(!geo){ toast('지역을 찾지 못했어요. 예: "서울 마포구"처럼 입력해보세요'); return; }
+    try{
+      const { error } = await sb.auth.updateUser({ data: { region_name:text, region_lat:geo.lat, region_lng:geo.lng } });
+      if(error){ toast('지역 저장에 실패했어요'); return; }
+      myRegionName = text; myRegionLat = geo.lat; myRegionLng = geo.lng;
+      toast(`"${text}" 지역으로 설정됐어요 📍`);
+      loadNearbyRecommendations();
+    }catch(e){ console.error(e); toast('지역 저장에 실패했어요'); }
+  }
+  const BOOST_COST = 200;
+  const BOOST_DAYS = 3;
+  function renderBoostUI(c){
+    const wrap = document.getElementById('boost-wrap');
+    const isMine = c.ownerId && c.ownerId === myDeviceId;
+    if(!isMine){ wrap.style.display = 'none'; wrap.innerHTML = ''; return; }
+    wrap.style.display = '';
+    if(isBoostedNow(c.id)){
+      const until = new Date(courseBoosts[c.id]);
+      wrap.innerHTML = `<p style="font-size:13px; color:var(--clay-dark); font-weight:700;">🌟 이 코스는 ${until.toLocaleDateString('ko-KR')}까지 홍보 중이에요</p>`;
+    } else {
+      wrap.innerHTML = `<button class="pin-btn" id="boost-buy-btn" style="border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC;">⭐ 포인트로 우리 코스 홍보하기 (${BOOST_COST}P, ${BOOST_DAYS}일간)</button>`;
+      document.getElementById('boost-buy-btn').addEventListener('click', ()=> buyCourseBoost(c.id));
+    }
+  }
+  async function buyCourseBoost(courseId){
+    const balance = await myPointBalance();
+    if(balance < BOOST_COST){ toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${BOOST_COST}P)`); return; }
+    if(!confirm(`${BOOST_COST}P를 사용해서 이 코스를 ${BOOST_DAYS}일간 홍보할까요?`)) return;
+    try{
+      const until = new Date(Date.now() + BOOST_DAYS*24*60*60*1000).toISOString();
+      await sb.from('points_log').insert([{ owner_id: myDeviceId, amount: -BOOST_COST, reason: '코스 홍보권 구매' }]);
+      const { error } = await sb.from('course_boosts').upsert([{ course_id: courseId, boosted_by: myDeviceId, boosted_until: until }]);
+      if(error){ console.error(error); toast('홍보 등록에 실패했어요'); return; }
+      courseBoosts[courseId] = until;
+      loadMyPoints();
+      renderGrid();
+      loadNearbyRecommendations();
+      const c = allCourses().find(x=>x.id===courseId);
+      if(c) renderBoostUI(c);
+      toast('코스가 홍보 노출되기 시작했어요 🌟');
+    }catch(e){ console.error(e); toast('홍보 등록에 실패했어요'); }
+  }
+
+  // ===== 이달의 산책왕 =====
+  async function loadMonthlyChampion(){
+    try{
+      const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
+      const { data, error } = await sb.from('points_log').select('owner_id, amount').gte('created_at', monthStart.toISOString());
+      if(error || !data || !data.length) return;
+      const totals = {};
+      data.forEach(r=>{ totals[r.owner_id] = (totals[r.owner_id]||0) + r.amount; });
+      let topId = null, topAmount = -Infinity;
+      Object.entries(totals).forEach(([id, amt])=>{ if(amt > topAmount){ topAmount = amt; topId = id; } });
+      if(!topId || topAmount <= 0) return;
+      const { data: profileRows } = await sb.from('profiles').select('*').eq('owner_id', topId).limit(1);
+      const nickname = (profileRows && profileRows[0] && profileRows[0].nickname) || '이름 없는 산책왕';
+      const badge = (profileRows && profileRows[0] && profileRows[0].badge) ? badgeEmoji(profileRows[0].badge) : '';
+      const el = document.getElementById('champion-card');
+      if(el){
+        el.style.display = '';
+        document.getElementById('champion-name').textContent = `👑 ${badge}${nickname}`;
+        document.getElementById('champion-points').textContent = `이번 달 ${topAmount.toLocaleString()}P 적립`;
+      }
+    }catch(e){ console.error(e); }
+  }
+  const BADGE_SHOP = [
+    { id:'paw', emoji:'🐾', name:'발자국', price:50 },
+    { id:'star', emoji:'🌟', name:'스타', price:100 },
+    { id:'medal', emoji:'🥇', name:'골드메달', price:150 },
+    { id:'crown', emoji:'👑', name:'왕관', price:300 },
+  ];
+  async function myPointBalance(){
+    try{
+      const { data, error } = await sb.from('points_log').select('amount').eq('owner_id', myDeviceId);
+      if(error || !data) return 0;
+      return data.reduce((s,r)=>s+r.amount, 0);
+    }catch(e){ return 0; }
+  }
+  function renderBadgeShop(){
+    const el = document.getElementById('badge-shop');
+    if(!myDeviceId){ el.innerHTML = ''; return; }
+    el.innerHTML = BADGE_SHOP.map(b=>{
+      const owned = myOwnedBadges.includes(b.id);
+      const equipped = myBadge === b.id;
+      const btnLabel = equipped ? '장착중' : (owned ? '장착하기' : `${b.price}P로 구매`);
+      return `
+        <div class="badge-shop-item ${equipped ? 'equipped' : ''}">
+          <span>${b.emoji} ${b.name}</span>
+          <button data-badge-buy="${b.id}" ${equipped ? 'disabled' : ''}>${btnLabel}</button>
+        </div>`;
+    }).join('');
+    el.querySelectorAll('[data-badge-buy]').forEach(btn=>{
+      btn.addEventListener('click', ()=> handleBadgeAction(btn.dataset.badgeBuy));
+    });
+  }
+  async function handleBadgeAction(badgeId){
+    const owned = myOwnedBadges.includes(badgeId);
+    if(owned){
+      // 이미 보유 -> 바로 장착
+      try{
+        const { error } = await sb.auth.updateUser({ data: { active_badge: badgeId } });
+        if(error){ toast('장착에 실패했어요'); return; }
+        myBadge = badgeId;
+        await syncProfileTable();
+        renderBadgeShop();
+        toast('배지를 장착했어요 🎉');
+      }catch(e){ console.error(e); }
+      return;
+    }
+    const shopItem = BADGE_SHOP.find(b=>b.id===badgeId);
+    const balance = await myPointBalance();
+    if(balance < shopItem.price){ toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${shopItem.price}P)`); return; }
+    try{
+      await sb.from('points_log').insert([{ owner_id: myDeviceId, amount: -shopItem.price, reason: `배지 구매(${shopItem.name})` }]);
+      const newOwned = myOwnedBadges.concat([badgeId]);
+      const { error } = await sb.auth.updateUser({ data: { owned_badges: newOwned, active_badge: badgeId } });
+      if(error){ toast('구매에 실패했어요'); return; }
+      myOwnedBadges = newOwned;
+      myBadge = badgeId;
+      await syncProfileTable();
+      loadMyPoints();
+      renderBadgeShop();
+      const balanceEl = document.getElementById('points-shop-balance');
+      if(balanceEl) balanceEl.textContent = `보유 포인트: 🪙 ${(balance - shopItem.price).toLocaleString()}P`;
+      toast(`${shopItem.emoji} ${shopItem.name} 배지를 구매했어요!`);
+    }catch(e){ console.error(e); toast('구매에 실패했어요'); }
+  }
+
+  function openProfileModal(){
+    document.getElementById('display-name-input').value = myNickname || '';
+    document.getElementById('dog-name-input').value = myDogName || '';
+    document.getElementById('dog-breed-input').value = myDogBreed || '';
+    document.getElementById('dog-age-input').value = myDogAge || '';
+    document.getElementById('region-input').value = myRegionName || '';
+    document.getElementById('profile-overlay').classList.add('show');
+  }
+  function closeProfileModal(){
+    document.getElementById('profile-overlay').classList.remove('show');
+  }
+  async function openPointsShop(){
+    if(!myDeviceId){ openNickModal(); toast('먼저 로그인해주세요'); return; }
+    const balance = await myPointBalance();
+    document.getElementById('points-shop-balance').textContent = `보유 포인트: 🪙 ${balance.toLocaleString()}P`;
+    renderBadgeShop();
+    document.getElementById('points-shop-overlay').classList.add('show');
+  }
+  function closePointsShop(){
+    document.getElementById('points-shop-overlay').classList.remove('show');
+  }
+  async function signInWithKakao(){
+    try{
+      await sb.auth.signInWithOAuth({
+        provider:'kakao',
+        options:{
+          redirectTo: window.location.origin + window.location.pathname,
+          scopes: 'profile_nickname profile_image'
+        }
+      });
+    }catch(e){ console.error(e); toast('로그인에 실패했어요'); }
+  }
+  async function signInWithGoogle(){
+    try{
+      await sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin + window.location.pathname } });
+    }catch(e){ console.error(e); toast('로그인에 실패했어요'); }
+  }
+  async function sendMagicLink(){
+    const input = document.getElementById('email-login-input');
+    const note = document.getElementById('email-login-note');
+    const email = input.value.trim();
+    if(!email || !email.includes('@')){ note.textContent = '올바른 이메일 주소를 입력해주세요'; return; }
+    const btn = document.getElementById('email-login-btn');
+    btn.disabled = true; btn.textContent = '전송 중...';
+    try{
+      const { error } = await sb.auth.signInWithOtp({
+        email, options:{ emailRedirectTo: window.location.origin + window.location.pathname }
+      });
+      if(error){ note.textContent = '전송에 실패했어요: ' + error.message; }
+      else{ note.textContent = `${email} 로 로그인 링크를 보냈어요. 메일함(스팸함도)을 확인해주세요.`; input.value=''; }
+    }catch(e){ console.error(e); note.textContent = '전송에 실패했어요'; }
+    btn.disabled = false; btn.textContent = '📧 로그인 링크 이메일로 받기';
+  }
+  async function signOutUser(){
+    try{ await sb.auth.signOut(); }catch(e){ console.error(e); }
+  }
+  async function checkFirstLoginBonus(){
+    if(!myDeviceId) return;
+    try{
+      const { data, error } = await sb.from('points_log').select('id').eq('owner_id', myDeviceId).limit(1);
+      if(!error && (!data || data.length === 0)){
+        await awardPoints(100, '회원가입 축하 포인트');
+        await applyReferralBonus();
+      } else {
+        loadMyPoints();
+      }
+    }catch(e){ console.error(e); }
+  }
+
+  // ===== 추천인 포인트 제도 =====
+  function captureReferralFromUrl(){
+    try{
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if(ref) localStorage.setItem('paw_pending_ref', ref);
+    }catch(e){}
+  }
+  async function applyReferralBonus(){
+    let refId = null;
+    try{ refId = localStorage.getItem('paw_pending_ref'); }catch(e){}
+    if(!refId || refId === myDeviceId) return; // 추천 링크 없거나 본인 링크
+    try{
+      await awardPoints(50, '추천 링크로 가입한 보너스');
+      const REFERRER_DAILY_CAP = 5;
+      const referrerToday = await todayCount(refId, '친구 추천 보너스');
+      if(referrerToday < REFERRER_DAILY_CAP){
+        await sb.from('points_log').insert([{ owner_id: refId, amount: 50, reason: '친구 추천 보너스' }]);
+        toast('추천 보너스 +50P! 추천해주신 분에게도 포인트가 적립됐어요 🎁');
+      } else {
+        toast('추천 보너스 +50P! (추천인은 오늘 지급 한도에 도달해서 이번엔 못 받았어요)');
+      }
+      try{ localStorage.removeItem('paw_pending_ref'); }catch(e){}
+    }catch(e){ console.error(e); }
+  }
+  function getMyReferralLink(){
+    if(!myDeviceId) return null;
+    return `${window.location.origin}${window.location.pathname}?ref=${myDeviceId}`;
+  }
+  async function copyReferralLink(){
+    const link = getMyReferralLink();
+    if(!link){ toast('로그인 후 이용해주세요'); return; }
+    try{
+      await navigator.clipboard.writeText(link);
+      toast('추천 링크가 복사됐어요! 친구에게 공유해보세요 🔗');
+    }catch(e){
+      prompt('아래 링크를 복사해서 공유해주세요:', link);
+    }
+  }
+
+  function updateProfileLabel(){
+    document.getElementById('profile-label').textContent = myNickname ? myNickname : '로그인';
+  }
+
+  // ===== 포인트(발자국 포인트) 시스템 =====
+  const DAILY_POINT_CAPS = { '코스 등록':5, '배변봉투함 등록':5, '리뷰 작성':10, '산책 기록 저장':5, '사진 등록':10 };
+  async function todayCount(ownerId, reason){
+    try{
+      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const { count } = await sb.from('points_log')
+        .select('id', { count:'exact', head:true })
+        .eq('owner_id', ownerId).eq('reason', reason)
+        .gte('created_at', todayStart.toISOString());
+      return count || 0;
+    }catch(e){ console.error(e); return 0; }
+  }
+  async function awardPoints(amount, reason){
+    try{
+      const cap = DAILY_POINT_CAPS[reason];
+      if(cap != null){
+        const c = await todayCount(myDeviceId, reason);
+        if(c >= cap){
+          toast(`오늘은 "${reason}"으로 받을 수 있는 포인트를 다 받았어요 (하루 ${cap}회까지)`);
+          return;
+        }
+      }
+      const { error } = await sb.from('points_log').insert([{ owner_id: myDeviceId, amount, reason }]);
+      if(error){ console.error(error); return; }
+      toast(`+${amount}P 적립! (${reason}) 🪙`);
+      loadMyPoints();
+    }catch(e){ console.error(e); }
+  }
+  async function loadMyPoints(){
+    const badge = document.getElementById('points-badge');
+    if(!myDeviceId){ badge.style.display = 'none'; return; }
+    try{
+      const { data, error } = await sb.from('points_log').select('amount').eq('owner_id', myDeviceId);
+      if(error || !data){ badge.style.display = 'none'; return; }
+      const total = data.reduce((sum, r) => sum + r.amount, 0);
+      badge.textContent = `🪙 ${total.toLocaleString()}P`;
+      badge.style.display = '';
+    }catch(e){ console.error(e); badge.style.display = 'none'; }
+  }
+
+  function reportKey(type, id){ return type + '_' + id; }
+  function reportCount(type, id){
+    const r = reports[reportKey(type,id)];
+    return r ? r.count : 0;
+  }
+  function isHidden(type, id){
+    return reportCount(type,id) >= REPORT_THRESHOLD;
+  }
+  const REPORT_REASONS = ['위치 정보가 잘못됨', '길이 사라짐/공사 중', '위험 요소 발견(유리조각·미끄러움 등)', '부적절한 내용', '기타'];
+  async function fileReport(type, id){
+    const pick = prompt(
+      '신고 사유를 선택해주세요 (숫자 입력):\n' + REPORT_REASONS.map((r,i)=>`${i+1}. ${r}`).join('\n'),
+      '1'
+    );
+    if(pick === null) return; // 취소
+    const idx = parseInt(pick, 10) - 1;
+    const reason = REPORT_REASONS[idx] || '기타';
+    try{
+      const { error } = await sb.from('reports').insert([{
+        target_type: type, target_id: String(id), reporter_id: myDeviceId, reason
+      }]);
+      if(error){
+        if(error.code === '23505'){ toast('이미 신고한 항목이에요'); return; }
+        console.error(error); toast('신고 접수에 실패했어요'); return;
+      }
+    }catch(e){ console.error(e); toast('신고 접수에 실패했어요'); return; }
+    toast(`신고가 접수됐어요 (${reason}) 🚩`);
+    await loadData();
+    renderAdminList();
+  }
+  async function resolveReport(type, id, action){
+    if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
+    if(action === 'remove'){
+      try{
+        if(type === 'course') await sb.from('courses').delete().eq('id', id);
+        if(type === 'bin') await sb.from('bins').delete().eq('id', id);
+        if(type === 'review') await sb.from('reviews').delete().eq('id', id);
+      }catch(e){ console.error(e); }
+    }
+    try{
+      await sb.from('reports').delete().eq('target_type', type).eq('target_id', String(id));
+    }catch(e){ console.error(e); }
+    await loadData();
+    renderAdminList();
+  }
+
+  async function insertCourseDB(course){
+    const { error } = await sb.from('courses').insert([{
+      id: course.id, name: course.name, description: course.desc,
+      lat: course.lat, lng: course.lng, path: course.path,
+      tags: course.tags, diff: course.diff, distance: course.distance,
+      owner_id: course.ownerId, author: course.author
+    }]);
+    if(error) console.error(error);
+    return !error;
+  }
+  async function insertBinDB(bin){
+    const { error } = await sb.from('bins').insert([{
+      id: bin.id, name: bin.name, description: bin.desc,
+      lat: bin.lat, lng: bin.lng, owner_id: bin.ownerId, author: bin.author
+    }]);
+    if(error) console.error(error);
+    return !error;
+  }
+  async function updateBinDB(id, fields){
+    const { error } = await sb.from('bins').update({
+      name: fields.name, description: fields.desc, lat: fields.lat, lng: fields.lng
+    }).eq('id', id);
+    if(error) console.error(error);
+    return !error;
+  }
+  async function insertReviewDB(courseId, review){
+    const { error } = await sb.from('reviews').insert([{
+      course_id: courseId, name: review.name, rating: review.rating,
+      text: review.text, owner_id: review.ownerId
+    }]);
+    if(error) console.error(error);
+    return !error;
+  }
+  async function deleteCourseDB(id){
+    const { error } = await sb.from('courses').delete().eq('id', id);
+    if(error) console.error(error);
+  }
+  async function deleteBinDB(id){
+    const { error } = await sb.from('bins').delete().eq('id', id);
+    if(error) console.error(error);
+  }
+  async function deleteReviewDB(id){
+    const { error } = await sb.from('reviews').delete().eq('id', id);
+    if(error) console.error(error);
+  }
+  function reviewsFor(courseId){
+    const userAdded = reviews[courseId] || [];
+    // seed_data.sql로 시드 리뷰를 DB에 넣은 경우 중복 표시를 막기 위해,
+    // 이미 DB에 해당 코스 리뷰가 있으면 로컬 시드 리뷰는 생략
+    const seeded = userAdded.length ? [] : (SEED_REVIEWS[courseId] || []);
+    return seeded.concat(userAdded);
+  }
+
+  function allCourses(){
+    const map = new Map();
+    SEED_COURSES.forEach(c => map.set(c.id, c));
+    courses.forEach(c => map.set(c.id, c)); // DB에 같은 id가 있으면 DB 값으로 덮어씀 (중복 방지)
+    return Array.from(map.values());
+  }
+  function allBins(){
+    const map = new Map();
+    SEED_BINS.forEach(b => map.set(b.id, b));
+    bins.forEach(b => map.set(b.id, b));
+    return Array.from(map.values());
+  }
+
+  function diffBadgeClass(d){
+    if(d==='쉬움') return 'easy';
+    if(d==='보통') return 'mid';
+    return 'hard';
+  }
+
+  function renderStats(){
+    document.getElementById('stat-courses').textContent = allCourses().length;
+    document.getElementById('stat-bins').textContent = allBins().length;
+  }
+
+  function avgRating(courseId){
+    const list = reviewsFor(courseId);
+    if(!list.length) return null;
+    const sum = list.reduce((a,r)=>a+r.rating,0);
+    return (sum/list.length).toFixed(1);
+  }
+
+  function badgeEmoji(badgeId){
+    const b = BADGE_SHOP.find(x=>x.id===badgeId);
+    return b ? b.emoji+' ' : '';
+  }
+  function authorLabel(ownerId, fallbackName){
+    const badge = ownerId && profilesMap[ownerId] ? badgeEmoji(profilesMap[ownerId].badge) : '';
+    return badge + (fallbackName || '');
+  }
+  function renderCourseCards(containerEl, courseList){
+    containerEl.innerHTML = '';
+    courseList.forEach(c=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      const avg = avgRating(c.id);
+      const isMine = c.ownerId && c.ownerId === myDeviceId;
+      const walkerCount = activeWalkerCounts[c.id] || 0;
+      const isBoosted = courseBoosts[c.id] && new Date(courseBoosts[c.id]) > new Date();
+      card.innerHTML = `
+        <div class="row">
+          <h3>${c.name}</h3>
+          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+        </div>
+        ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
+        ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
+        <p class="desc">${c.desc||''}</p>
+        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}</div>
+        <div class="meta-mono">${c.distance||'거리 정보 없음'}${avg ? ' · ★ '+avg+' ('+reviewsFor(c.id).length+')' : ''}</div>
+        <div class="card-foot">
+          <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
+          ${isMine
+            ? `<button class="delete-btn" data-course-del="${c.id}">내 글 삭제</button>`
+            : `<button class="report-btn" data-course-report="${c.id}">🚩 신고</button>`}
+        </div>
+      `;
+      card.addEventListener('click', (e)=>{
+        if(e.target.closest('button')) return;
+        openCourseDetail(c.id);
+      });
+      containerEl.appendChild(card);
+    });
+    containerEl.querySelectorAll('[data-course-report]').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); fileReport('course', btn.dataset.courseReport); });
+    });
+    containerEl.querySelectorAll('[data-course-del]').forEach(btn=>{
+      btn.addEventListener('click', async (e)=>{
+        e.stopPropagation();
+        if(!confirm('이 코스를 삭제할까요?')) return;
+        await deleteCourseDB(btn.dataset.courseDel);
+        await loadData();
+        toast('삭제됐어요');
+      });
+    });
+  }
+  function isBoostedNow(courseId){
+    return !!(courseBoosts[courseId] && new Date(courseBoosts[courseId]) > new Date());
+  }
+  const listFilterState = { query:'', diff:'all', tags: new Set() };
+  function renderGrid(){
+    let list = allCourses().filter(c => !isHidden('course', c.id));
+
+    if(listFilterState.query){
+      const q = listFilterState.query.toLowerCase();
+      list = list.filter(c =>
+        (c.name||'').toLowerCase().includes(q) ||
+        (c.desc||'').toLowerCase().includes(q) ||
+        (c.tags||[]).some(t=>t.toLowerCase().includes(q))
+      );
+    }
+    if(listFilterState.diff !== 'all'){
+      list = list.filter(c => (c.diff||'쉬움') === listFilterState.diff);
+    }
+    if(listFilterState.tags.size > 0){
+      list = list.filter(c => Array.from(listFilterState.tags).every(t => (c.tags||[]).includes(t)));
+    }
+
+    list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
+
+    const countLabel = document.getElementById('course-count-label');
+    if(countLabel) countLabel.textContent = `총 ${list.length}개 코스`;
+    renderCourseCards(document.getElementById('course-grid'), list);
+  }
+  function loadNearbyRecommendations(){
+    const visible = allCourses().filter(c => !isHidden('course', c.id));
+    let list;
+    if(myRegionLat != null && myRegionLng != null){
+      list = visible.slice().sort((a,b)=>
+        L.latLng(myRegionLat,myRegionLng).distanceTo(L.latLng(a.lat,a.lng)) -
+        L.latLng(myRegionLat,myRegionLng).distanceTo(L.latLng(b.lat,b.lng))
+      );
+      document.getElementById('nearby-title').textContent = `"${myRegionName}" 근처 추천 코스`;
+      document.getElementById('nearby-desc').textContent = '등록하신 지역과 가까운 순서로 보여드려요.';
+    } else {
+      list = visible.slice();
+      document.getElementById('nearby-title').textContent = '이런 코스는 어때요?';
+      document.getElementById('nearby-desc').textContent = '프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.';
+    }
+    list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0)).slice(0,6);
+    renderCourseCards(document.getElementById('nearby-grid'), list);
+  }
+
+  function pawIcon(color){
+    return L.divIcon({
+      className:'',
+      html:`<div style="font-size:22px; transform:translate(-3px,-6px);">🐾</div>`,
+      iconSize:[24,24]
+    });
+  }
+  function binIcon(){
+    return L.divIcon({
+      className:'',
+      html:`<div style="font-size:20px; transform:translate(-2px,-4px);">🚮</div>`,
+      iconSize:[22,22]
+    });
+  }
+
+  function renderMap(){
+    courseLayer.clearLayers();
+    binLayer.clearLayers();
+    allCourses().filter(c => !isHidden('course', c.id)).forEach(c=>{
+      if(c.path && c.path.length > 1){
+        L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(courseLayer);
+      }
+      L.marker([c.lat,c.lng], {icon:pawIcon()})
+        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a>`)
+        .addTo(courseLayer);
+    });
+    allBins().filter(b => !isHidden('bin', b.id)).forEach(b=>{
+      const isMine = b.ownerId && b.ownerId === myDeviceId;
+      const actionHtml = isMine
+        ? `<a href="#" onclick="window.__editBin('${b.id}');return false;" style="color:var(--moss);font-weight:700;">✏️ 수정</a> · <a href="#" onclick="window.__deleteBin('${b.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
+        : `<a href="#" onclick="window.__reportBin('${b.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
+      L.marker([b.lat,b.lng], {icon:binIcon()})
+        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml}`)
+        .addTo(binLayer);
+    });
+  }
+  window.__reportBin = (id)=> fileReport('bin', id);
+  window.__deleteBin = async (id)=>{
+    if(!confirm('이 배변봉투함 정보를 삭제할까요?')) return;
+    await deleteBinDB(id);
+    await loadData();
+    toast('삭제됐어요');
+  };
+  window.__editBin = (id)=>{
+    const b = allBins().find(x=>x.id===id);
+    if(b) startEditBin(b);
+  };
+
+  function renderAll(){
+    renderStats();
+    renderGrid();
+    loadNearbyRecommendations();
+    renderMap();
+  }
+
+  function initMap(){
+    map = L.map('map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin'
+    }).addTo(map);
+    courseLayer = L.layerGroup().addTo(map);
+    binLayer = L.layerGroup().addTo(map);
+    poiLayer = L.layerGroup().addTo(map);
+  }
+
+  // ===== 주변 시설(동물병원/애견용품점) — 카카오맵 Places(장소 검색) =====
+  let kakaoPlacesService = null;
+  let kakaoGeocoder = null;
+  if(window.kakao && kakao.maps && kakao.maps.load){
+    kakao.maps.load(()=>{
+      kakaoPlacesService = new kakao.maps.services.Places();
+      kakaoGeocoder = new kakao.maps.services.Geocoder();
+    });
+  }
+  const POI_EMOJI = { vet:'🏥', pet_shop:'🛍️', restaurant:'🍽️', lodging:'🏨' };
+  const POI_KEYWORDS = {
+    vet: ['동물병원', '동물의료센터'],
+    pet_shop: ['애견용품', '펫샵', '반려동물용품점'],
+    restaurant: ['애견동반식당', '반려동물동반식당', '애견동반카페', '반려동물동반카페', '펫프렌들리 식당'],
+    lodging: ['애견동반펜션', '반려동물동반숙소', '애견동반호텔', '펫프렌들리 숙소']
+  };
+  function poiIcon(cat){
+    const emoji = POI_EMOJI[cat] || '📍';
+    return L.divIcon({ className:'', html:`<div style="font-size:20px; transform:translate(-2px,-4px);">${emoji}</div>`, iconSize:[22,22] });
+  }
+  function kakaoKeywordSearch(keyword, bounds){
+    return new Promise((resolve)=>{
+      if(!kakaoPlacesService){ resolve([]); return; }
+      kakaoPlacesService.keywordSearch(keyword, (data, status)=>{
+        resolve(status === kakao.maps.services.Status.OK ? data : []);
+      }, { bounds });
+    });
+  }
+  async function searchNearbyPoi(){
+    if(activePoiCategories.size === 0){
+      toast('먼저 위에서 찾을 시설 종류를 선택해주세요');
+      return;
+    }
+    if(!kakaoPlacesService){
+      toast('지도 서비스를 불러오는 중이에요. 잠시 후 다시 시도해주세요');
+      return;
+    }
+    const b = map.getBounds();
+    const bounds = new kakao.maps.LatLngBounds(
+      new kakao.maps.LatLng(b.getSouth(), b.getWest()),
+      new kakao.maps.LatLng(b.getNorth(), b.getEast())
+    );
+    const btn = document.getElementById('poi-search-btn');
+    const originalText = btn.textContent;
+    btn.textContent = '검색 중...';
+    btn.disabled = true;
+    poiLayer.clearLayers();
+    let total = 0;
+    try{
+      for(const cat of activePoiCategories){
+        const keywords = POI_KEYWORDS[cat] || [];
+        const seenIds = new Set();
+        for(const keyword of keywords){
+          const results = await kakaoKeywordSearch(keyword, bounds);
+          results.forEach(p=>{
+            if(seenIds.has(p.id)) return; // 여러 검색어에 중복으로 걸린 장소는 한 번만 표시
+            seenIds.add(p.id);
+            L.marker([Number(p.y), Number(p.x)], {icon: poiIcon(cat)})
+              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}`)
+              .addTo(poiLayer);
+            total += 1;
+          });
+        }
+      }
+      toast(total > 0 ? `${total}곳을 찾았어요` : '이 지역에서는 결과를 찾지 못했어요. 지도를 옮기거나 확대/축소해보세요');
+    }catch(e){
+      console.error(e);
+      toast('시설 검색에 실패했어요. 잠시 후 다시 시도해주세요');
+    }
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }
+  document.getElementById('poi-group').addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    chip.classList.toggle('active');
+    const cat = chip.dataset.poi;
+    if(activePoiCategories.has(cat)) activePoiCategories.delete(cat); else activePoiCategories.add(cat);
+    if(activePoiCategories.size === 0) poiLayer.clearLayers();
+  });
+  document.getElementById('poi-search-btn').addEventListener('click', searchNearbyPoi);
+
+  // ===== 코스 사진 업로드 (Supabase Storage) =====
+  const PHOTO_PLACEHOLDER_EMOJI = ['🐕','🌳','🐾'];
+  async function loadCoursePhotos(courseId){
+    const gallery = document.getElementById('modal-gallery');
+    try{
+      const { data, error } = await sb.from('course_photos').select('*').eq('course_id', courseId).order('created_at', {ascending:false}).limit(3);
+      if(!error && data && data.length){
+        gallery.innerHTML = data.map(p=>`<div class="photo-tile" style="background-image:url('${p.url}'); background-size:cover; background-position:center;"></div>`).join('');
+        while(gallery.children.length < 3){
+          const tile = document.createElement('div');
+          tile.className = 'photo-tile';
+          tile.textContent = PHOTO_PLACEHOLDER_EMOJI[gallery.children.length] || '🐾';
+          gallery.appendChild(tile);
+        }
+      } else {
+        gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
+      }
+    }catch(e){
+      console.error(e);
+      gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
+    }
+  }
+  const MAX_PHOTO_MB = 5;
+  async function uploadCoursePhoto(file){
+    if(!myNickname){ openNickModal(); toast('사진을 올리려면 먼저 로그인해주세요'); return; }
+    if(!activeCourseId) return;
+    if(!file.type.startsWith('image/')){ toast('이미지 파일만 올릴 수 있어요'); return; }
+    if(file.size > MAX_PHOTO_MB * 1024 * 1024){
+      toast(`파일이 너무 커요. ${MAX_PHOTO_MB}MB 이하 사진으로 올려주세요 (현재 ${(file.size/1024/1024).toFixed(1)}MB)`);
+      return;
+    }
+    const statusEl = document.getElementById('photo-upload-status');
+    statusEl.textContent = '업로드 중...';
+    try{
+      const ext = file.name.split('.').pop();
+      const path = `${activeCourseId}/${Date.now()}.${ext}`;
+      const { error: upErr } = await sb.storage.from('course-photos').upload(path, file);
+      if(upErr){ console.error(upErr); statusEl.textContent = '업로드 실패 (course-photos 버킷이 있는지 확인해주세요)'; return; }
+      const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
+      const { error: insErr } = await sb.from('course_photos').insert([{
+        course_id: activeCourseId, url: urlData.publicUrl, uploader_id: myDeviceId
+      }]);
+      if(insErr){ console.error(insErr); statusEl.textContent = '업로드 실패'; return; }
+      statusEl.textContent = '';
+      toast('사진이 등록됐어요 📷');
+      await awardPoints(15, '사진 등록');
+      loadCoursePhotos(activeCourseId);
+    }catch(e){ console.error(e); statusEl.textContent = '업로드 실패'; }
+  }
+  document.getElementById('photo-upload-input').addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(file) uploadCoursePhoto(file);
+    e.target.value = '';
+  });
+
+  function pathPointIcon(kind){
+    // kind: 'start' | 'end' | 'mid'
+    const color = kind === 'start' ? '#6E8F6B' : (kind === 'end' ? '#B5502E' : '#C79A3C');
+    const label = kind === 'start' ? '출발' : (kind === 'end' ? '도착' : '');
+    return L.divIcon({
+      className:'',
+      html:`<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>${label?`<div style="position:relative; top:2px; left:18px; font-size:11px; font-weight:700; color:${color}; white-space:nowrap;">${label}</div>`:''}`,
+      iconSize:[14,14], iconAnchor:[7,7]
+    });
+  }
+
+  // 손으로 그은 삐뚤빼뚤한 점들을 부드러운 곡선으로 만들어주는 캣멀롬 스플라인
+  function smoothPath(points, segmentsPerPoint){
+    if(points.length < 3) return points.slice();
+    segmentsPerPoint = segmentsPerPoint || 6;
+    const p = points;
+    const n = p.length;
+    const result = [];
+    for(let i=0;i<n-1;i++){
+      const p0 = p[i-1] || p[i];
+      const p1 = p[i];
+      const p2 = p[i+1];
+      const p3 = p[i+2] || p2;
+      for(let t=0;t<segmentsPerPoint;t++){
+        const tt = t/segmentsPerPoint, tt2 = tt*tt, tt3 = tt2*tt;
+        const lat = 0.5*((2*p1[0]) + (-p0[0]+p2[0])*tt + (2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*tt2 + (-p0[0]+3*p1[0]-3*p2[0]+p3[0])*tt3);
+        const lng = 0.5*((2*p1[1]) + (-p0[1]+p2[1])*tt + (2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*tt2 + (-p0[1]+3*p1[1]-3*p2[1]+p3[1])*tt3);
+        result.push([lat,lng]);
+      }
+    }
+    result.push(p[n-1]);
+    return result;
+  }
+
+  function redrawCoursePath(){
+    if(pathPolyline){ miniMap.removeLayer(pathPolyline); pathPolyline = null; }
+    pathMarkers.forEach(m => miniMap.removeLayer(m));
+    pathMarkers = [];
+    if(coursePath.length === 0) return;
+    // 시작점, 끝점 표시
+    const startIcon = L.marker(coursePath[0], {icon: pathPointIcon('start')}).addTo(miniMap);
+    pathMarkers.push(startIcon);
+    if(coursePath.length > 1){
+      const endIcon = L.marker(coursePath[coursePath.length-1], {icon: pathPointIcon('end')}).addTo(miniMap);
+      pathMarkers.push(endIcon);
+      // 점찍기 모드에서는 중간 지점도 작은 점으로 보여줌 (펜 모드는 점이 너무 많아 생략)
+      if(drawMode === 'tap'){
+        for(let i=1;i<coursePath.length-1;i++){
+          const dot = L.circleMarker(coursePath[i], {radius:4, color:'#fff', weight:1.5, fillColor:'#C79A3C', fillOpacity:1}).addTo(miniMap);
+          pathMarkers.push(dot);
+        }
+      }
+      const drawPoints = drawMode === 'pen' ? smoothPath(coursePath) : coursePath;
+      pathPolyline = L.polyline(drawPoints, {color:'#B5502E', weight:5, lineCap:'round', lineJoin:'round'}).addTo(miniMap);
+    }
+    updatePinBtnForCourse();
+  }
+
+  function pathDistanceKm(){
+    let total = 0;
+    for(let i=1;i<coursePath.length;i++){
+      total += L.latLng(coursePath[i-1]).distanceTo(L.latLng(coursePath[i]));
+    }
+    return total / 1000;
+  }
+
+  function updatePinBtnForCourse(){
+    const btn = document.getElementById('pin-btn');
+    const resetBtn = document.getElementById('path-reset-btn');
+    const penHint = '✏️ 오른쪽 지도를 손가락으로 눌러서 출발점부터 도착점까지 쭉 그어주세요';
+    const tapHint = '📍 오른쪽 지도를 순서대로 터치해서 출발점 → 도착점까지 경로를 그려주세요';
+    if(coursePath.length === 0){
+      btn.textContent = drawMode === 'pen' ? penHint : tapHint;
+      btn.classList.remove('set');
+      resetBtn.style.display = 'none';
+    } else if(coursePath.length === 1){
+      btn.textContent = drawMode === 'pen'
+        ? '✏️ 출발점이 찍혔어요 — 손가락으로 눌러서 그어보세요'
+        : '📍 출발점이 찍혔어요 — 계속 이어서 터치해 경로를 그려주세요';
+      btn.classList.add('set');
+      resetBtn.style.display = '';
+    } else {
+      const km = pathDistanceKm();
+      btn.textContent = `📍 총 ${km.toFixed(1)}km 경로가 그려졌어요 — 마음에 안 들면 다시 그려보세요`;
+      btn.classList.add('set');
+      resetBtn.style.display = '';
+    }
+  }
+
+  function resetCoursePath(){
+    coursePath = [];
+    redrawCoursePath();
+  }
+
+  function resetBinPoint(){
+    pendingLatLng = null;
+    if(pinMarker){ miniMap.removeLayer(pinMarker); pinMarker = null; }
+    const btn = document.getElementById('pin-btn');
+    btn.textContent = '📍 오른쪽 지도를 클릭해서 위치를 지정하세요';
+    btn.classList.remove('set');
+  }
+
+  // ===== 펜 드로잉 (Pointer Events: 마우스/터치/펜 모두 지원) =====
+  let isStroking = false;
+  let lastStrokePoint = null; // 화면 좌표(px) 기준, 픽셀 거리로 샘플링 간격 판단
+  const MIN_PIXEL_GAP = 5; // 이 픽셀 간격 이상 움직여야 새 점을 채택 (너무 촘촘한 잡음 방지)
+
+  function onStrokeStart(e){
+    if(!(drawMode === 'pen' && currentType === 'course')) return;
+    e.preventDefault();
+    isStroking = true;
+    coursePath = [];
+    const cp = miniMap.mouseEventToContainerPoint(e);
+    lastStrokePoint = cp;
+    const ll = miniMap.containerPointToLatLng(cp);
+    coursePath.push([ll.lat, ll.lng]);
+    miniMap.dragging.disable();
+    document.getElementById('mini-map').classList.add('drawing-active');
+    try{ e.target.setPointerCapture(e.pointerId); }catch(err){}
+    redrawCoursePath();
+  }
+  function onStrokeMove(e){
+    if(!isStroking) return;
+    e.preventDefault();
+    const cp = miniMap.mouseEventToContainerPoint(e);
+    const dx = cp.x - lastStrokePoint.x, dy = cp.y - lastStrokePoint.y;
+    if((dx*dx + dy*dy) < MIN_PIXEL_GAP*MIN_PIXEL_GAP) return;
+    lastStrokePoint = cp;
+    const ll = miniMap.containerPointToLatLng(cp);
+    coursePath.push([ll.lat, ll.lng]);
+    redrawCoursePath();
+  }
+  function onStrokeEnd(e){
+    if(!isStroking) return;
+    isStroking = false;
+    miniMap.dragging.enable();
+    document.getElementById('mini-map').classList.remove('drawing-active');
+    // 최종 저장 시엔 부드러운 곡선 좌표로 확정
+    if(coursePath.length > 2) coursePath = smoothPath(coursePath, 4);
+    redrawCoursePath();
+  }
+
+  function initMiniMap(){
+    miniMap = L.map('mini-map', {tap:true}).setView([36.5,127.8], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin'
+    }).addTo(miniMap);
+
+    // 점 찍기 모드 & 배변봉투함 모드용 클릭 처리
+    miniMap.on('click', function(e){
+      if(currentType === 'course'){
+        if(drawMode !== 'tap') return; // 펜 모드에서는 클릭이 아니라 드래그로 처리
+        coursePath.push([e.latlng.lat, e.latlng.lng]);
+        redrawCoursePath();
+      } else {
+        pendingLatLng = e.latlng;
+        if(pinMarker) miniMap.removeLayer(pinMarker);
+        pinMarker = L.marker(e.latlng).addTo(miniMap);
+        const btn = document.getElementById('pin-btn');
+        btn.textContent = `📍 위치 설정됨 (${e.latlng.lat.toFixed(4)}, ${e.latlng.lng.toFixed(4)}) — 다시 클릭해서 변경`;
+        btn.classList.add('set');
+      }
+    });
+
+    // 펜 드로잉용 포인터 이벤트 (마우스 드래그 + 모바일 손가락 드래그 모두 지원)
+    const mapEl = document.getElementById('mini-map');
+    mapEl.addEventListener('pointerdown', onStrokeStart);
+    mapEl.addEventListener('pointermove', onStrokeMove);
+    mapEl.addEventListener('pointerup', onStrokeEnd);
+    mapEl.addEventListener('pointercancel', onStrokeEnd);
+    mapEl.addEventListener('pointerleave', (e)=>{ if(isStroking) onStrokeEnd(e); });
+  }
+  document.getElementById('path-reset-btn').addEventListener('click', resetCoursePath);
+
+  document.getElementById('draw-mode-toggle').addEventListener('click', (e)=>{
+    const btn = e.target.closest('.draw-mode-btn');
+    if(!btn) return;
+    document.querySelectorAll('.draw-mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    drawMode = btn.dataset.mode;
+    if(drawMode === 'pen'){
+      miniMap.dragging.enable(); // 드래그는 그리기 시작 시점(onStrokeStart)에 비활성화됨
+    }
+    resetCoursePath();
+  });
+
+  // Filter chips
+  document.querySelectorAll('#view-filter-group .chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(binLayer); }
+      else if(f==='course'){ map.addLayer(courseLayer); map.removeLayer(binLayer); }
+      else { map.addLayer(binLayer); map.removeLayer(courseLayer); }
+    });
+  });
+
+  // 코스 목록 검색/필터
+  let searchDebounce = null;
+  document.getElementById('course-search-input').addEventListener('input', (e)=>{
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(()=>{
+      listFilterState.query = e.target.value.trim();
+      renderGrid();
+    }, 250);
+  });
+  document.getElementById('list-diff-filter').addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    document.querySelectorAll('#list-diff-filter .chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    listFilterState.diff = chip.dataset.diffFilter;
+    renderGrid();
+  });
+  document.getElementById('list-tag-filter').addEventListener('click', (e)=>{
+    const chip = e.target.closest('.chip');
+    if(!chip) return;
+    chip.classList.toggle('active');
+    const tag = chip.dataset.tagFilter;
+    if(listFilterState.tags.has(tag)) listFilterState.tags.delete(tag); else listFilterState.tags.add(tag);
+    renderGrid();
+  });
+
+  // Type toggle
+  document.querySelectorAll('.type-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const changingType = currentType !== btn.dataset.type;
+      document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentType = btn.dataset.type;
+      const courseFields = document.getElementById('course-only-fields');
+      const descLabel = document.getElementById('label-desc');
+      const pinLabel = document.getElementById('label-pin');
+      const drawToggle = document.getElementById('draw-mode-toggle');
+      if(changingType){
+        resetCoursePath();
+        resetBinPoint();
+        if(editingBinId){
+          editingBinId = null;
+          document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+        }
+      }
+      if(currentType === 'bin'){
+        courseFields.style.display = 'none';
+        drawToggle.style.display = 'none';
+        descLabel.textContent = '배변봉투함 설명';
+        pinLabel.textContent = '지도에서 위치 선택';
+        document.getElementById('f-name').placeholder = '예: 뚝섬 한강공원 배변봉투함';
+        document.getElementById('f-desc').placeholder = '정확한 위치, 상시 비치 여부 등을 적어주세요';
+      } else {
+        courseFields.style.display = '';
+        drawToggle.style.display = '';
+        descLabel.textContent = '코스 설명';
+        pinLabel.textContent = '지도에서 경로 그리기';
+        document.getElementById('f-name').placeholder = '예: 한강 뚝섬 반려견 놀이터 코스';
+        document.getElementById('f-desc').placeholder = '바닥 상태, 그늘, 소요 시간 등을 적어주세요';
+      }
+      updatePinBtnForCourse();
+    });
+  });
+
+  // Tag / diff selectors
+  document.getElementById('tag-group').addEventListener('click', (e)=>{
+    const el = e.target.closest('.tag-check');
+    if(!el) return;
+    el.classList.toggle('on');
+    const t = el.dataset.tag;
+    if(selectedTags.has(t)) selectedTags.delete(t); else selectedTags.add(t);
+  });
+  document.getElementById('diff-group').addEventListener('click', (e)=>{
+    const el = e.target.closest('.tag-check');
+    if(!el) return;
+    document.querySelectorAll('#diff-group .tag-check').forEach(x=>x.classList.remove('on'));
+    el.classList.add('on');
+    selectedDiff = el.dataset.diff;
+  });
+
+  document.getElementById('pin-btn').addEventListener('click', ()=>{
+    document.getElementById('mini-map').scrollIntoView({behavior:'smooth', block:'center'});
+    if(currentType === 'course'){
+      toast('오른쪽 지도를 출발점부터 순서대로 터치해주세요');
+    } else {
+      toast('오른쪽 지도를 클릭해서 위치를 찍어주세요');
+    }
+  });
+
+  // Submit
+  document.getElementById('reg-form').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    const name = document.getElementById('f-name').value.trim();
+    const desc = document.getElementById('f-desc').value.trim();
+    if(!name){ toast('이름을 입력해주세요'); return; }
+
+    if(currentType === 'course'){
+      if(coursePath.length === 0){ toast('지도에서 출발점을 먼저 터치해주세요'); return; }
+      const hasPath = coursePath.length > 1;
+      const km = hasPath ? pathDistanceKm() : null;
+      const newCourse = {
+        id: 'u'+Date.now(),
+        name, desc,
+        lat: coursePath[0][0], lng: coursePath[0][1],
+        path: hasPath ? coursePath : null,
+        tags: Array.from(selectedTags),
+        diff: selectedDiff,
+        distance: hasPath ? km.toFixed(1) + ' km' : '거리 미입력',
+        ownerId: myDeviceId,
+        author: myNickname
+      };
+      const ok = await insertCourseDB(newCourse);
+      if(!ok){ toast('등록에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
+      await awardPoints(50, '코스 등록');
+    } else {
+      if(!pendingLatLng){ toast('지도에서 위치를 먼저 선택해주세요'); return; }
+      if(editingBinId){
+        const ok = await updateBinDB(editingBinId, { name, desc, lat: pendingLatLng.lat, lng: pendingLatLng.lng });
+        if(!ok){ toast('수정에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
+        toast('배변봉투함 정보를 수정했어요 ✏️');
+        editingBinId = null;
+        document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+        await loadData();
+        e.target.reset();
+        resetCoursePath();
+        resetBinPoint();
+        return;
+      }
+      const newBin = {
+        id: 'u'+Date.now(),
+        name, desc,
+        lat: pendingLatLng.lat, lng: pendingLatLng.lng,
+        ownerId: myDeviceId,
+        author: myNickname
+      };
+      const ok = await insertBinDB(newBin);
+      if(!ok){ toast('등록에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
+      await awardPoints(20, '배변봉투함 등록');
+    }
+
+    await loadData();
+    toast('등록되었어요! 지도와 목록에 반영됐어요 🐾');
+    e.target.reset();
+    selectedTags.clear();
+    document.querySelectorAll('#tag-group .tag-check').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('#diff-group .tag-check').forEach(x=>x.classList.remove('on'));
+    document.querySelector('#diff-group .tag-check[data-diff="쉬움"]').classList.add('on');
+    selectedDiff = '쉬움';
+    resetCoursePath();
+    resetBinPoint();
+  });
+
+  function startEditBin(bin){
+    showPage('register');
+    document.querySelector('.type-btn[data-type="bin"]').click();
+    editingBinId = bin.id;
+    document.getElementById('f-name').value = bin.name || '';
+    document.getElementById('f-desc').value = bin.desc || '';
+    document.getElementById('reg-submit-btn').textContent = '✏️ 수정 완료';
+    setTimeout(()=>{
+      pendingLatLng = { lat: bin.lat, lng: bin.lng };
+      if(pinMarker){ miniMap.removeLayer(pinMarker); }
+      pinMarker = L.marker([bin.lat, bin.lng]).addTo(miniMap);
+      miniMap.setView([bin.lat, bin.lng], 16);
+      miniMap.invalidateSize();
+      const btn = document.getElementById('pin-btn');
+      btn.textContent = '📍 현재 위치가 지정돼 있어요 — 다시 클릭해서 위치를 바꿀 수 있어요';
+      btn.classList.add('set');
+      toast('배변봉투함 정보를 수정해보세요');
+    }, 300);
+  }
+
+  function renderReviewList(courseId){
+    const userAdded = reviews[courseId] || [];
+    const seeded = userAdded.length ? [] : (SEED_REVIEWS[courseId] || []);
+    const el = document.getElementById('review-list');
+    const rows = [];
+    seeded.forEach((r)=> rows.push({r, type:'seed'}));
+    userAdded.forEach((r)=>{
+      if(!isHidden('review', r.dbId)) rows.push({r, type:'user'});
+    });
+    if(!rows.length){
+      el.innerHTML = '<p class="empty-review">아직 리뷰가 없어요. 첫 리뷰를 남겨보세요!</p>';
+      return;
+    }
+    el.innerHTML = rows.map(({r,type}) => {
+      const isMine = type==='user' && r.ownerId && r.ownerId === myDeviceId;
+      const action = type === 'seed' ? ''
+        : isMine
+          ? `<button class="delete-btn" data-review-del="${r.dbId}">삭제</button>`
+          : `<button class="report-btn" data-review-report="${r.dbId}">🚩 신고</button>`;
+      return `
+      <div class="review-item">
+        <div class="rh">
+          <span>${r.name}</span>
+          <div class="rh-actions"><span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${action}</div>
+        </div>
+        <p>${r.text}</p>
+      </div>`;
+    }).join('');
+    el.querySelectorAll('[data-review-report]').forEach(btn=>{
+      btn.addEventListener('click', ()=> fileReport('review', btn.dataset.reviewReport));
+    });
+    el.querySelectorAll('[data-review-del]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        if(!confirm('이 리뷰를 삭제할까요?')) return;
+        await deleteReviewDB(btn.dataset.reviewDel);
+        await loadData();
+        renderReviewList(courseId);
+        toast('삭제됐어요');
+      });
+    });
+  }
+
+  function openCourseDetail(courseId){
+    const c = allCourses().find(x => x.id === courseId);
+    if(!c) return;
+    activeCourseId = courseId;
+
+    document.getElementById('modal-title').textContent = c.name;
+    document.getElementById('modal-desc').textContent = c.desc || '';
+    document.getElementById('modal-meta').innerHTML = `
+      <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+      <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
+      ${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}
+    `;
+    renderReviewList(courseId);
+    document.getElementById('review-as').textContent = myNickname ? '"'+myNickname+'"로 리뷰가 등록돼요' : '리뷰를 남기려면 로그인이 필요해요';
+    loadCoursePhotos(courseId);
+    document.getElementById('photo-upload-status').textContent = '';
+    renderBoostUI(c);
+
+    document.getElementById('modal-overlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    // Route mini-map: rebuild each time to avoid stale Leaflet instance
+    const mapEl = document.getElementById('modal-route-map');
+    mapEl.innerHTML = '';
+    if(routeMap){ routeMap.remove(); routeMap = null; }
+    routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false}).setView([c.lat,c.lng], 14);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin'
+    }).addTo(routeMap);
+    if(c.path && c.path.length > 1){
+      const line = L.polyline(c.path, {color:'#B5502E', weight:4}).addTo(routeMap);
+      routeMap.fitBounds(line.getBounds(), {padding:[20,20]});
+    } else {
+      L.marker([c.lat,c.lng], {icon:pawIcon()}).addTo(routeMap);
+    }
+    setTimeout(()=> routeMap.invalidateSize(), 50);
+  }
+  window.__openCourse = openCourseDetail;
+
+  function closeModal(){
+    document.getElementById('modal-overlay').classList.remove('show');
+    document.body.style.overflow = '';
+    document.getElementById('review-form').reset();
+    activeStars = 5;
+    updateStarDisplay();
+  }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'modal-overlay') closeModal();
+  });
+
+  function updateStarDisplay(){
+    document.querySelectorAll('#star-input span').forEach(s=>{
+      s.classList.toggle('on', Number(s.dataset.v) <= activeStars);
+    });
+  }
+  document.getElementById('star-input').addEventListener('click', (e)=>{
+    const s = e.target.closest('span');
+    if(!s) return;
+    activeStars = Number(s.dataset.v);
+    updateStarDisplay();
+  });
+  updateStarDisplay();
+
+  document.getElementById('review-form').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    const name = myNickname;
+    const text = document.getElementById('review-text').value.trim();
+    if(!text){ toast('리뷰 내용을 입력해주세요'); return; }
+    const ok = await insertReviewDB(activeCourseId, { name, rating: activeStars, text, ownerId: myDeviceId });
+    if(!ok){ toast('리뷰 등록에 실패했어요'); return; }
+    await loadData();
+    renderReviewList(activeCourseId);
+    e.target.reset();
+    activeStars = 5;
+    updateStarDisplay();
+    await awardPoints(10, '리뷰 작성');
+  });
+
+  // ===== 날씨 & 미세먼지 위젯 (Open-Meteo, API 키 불필요) =====
+  function weatherEmoji(code){
+    if(code === 0) return '☀️';
+    if([1,2,3].includes(code)) return '⛅';
+    if([45,48].includes(code)) return '🌫️';
+    if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return '🌧️';
+    if([71,73,75,77,85,86].includes(code)) return '❄️';
+    if([95,96,99].includes(code)) return '⛈️';
+    return '🌤️';
+  }
+  function pmGrade(pm10){
+    if(pm10 == null) return null;
+    if(pm10 <= 30) return { label:'좋음', color:'#3B82F6' };
+    if(pm10 <= 80) return { label:'보통', color:'#22C55E' };
+    if(pm10 <= 150) return { label:'나쁨', color:'#F59E0B' };
+    return { label:'매우 나쁨', color:'#EF4444' };
+  }
+  async function loadWeatherWidget(lat, lng){
+    try{
+      const [wRes, aRes] = await Promise.all([
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`),
+        fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=pm10,pm2_5&timezone=Asia%2FSeoul`)
+      ]);
+      const wData = await wRes.json();
+      const aData = await aRes.json();
+      const temp = wData.current?.temperature_2m;
+      const code = wData.current?.weather_code;
+      const pm10 = aData.current?.pm10;
+      const pm25 = aData.current?.pm2_5;
+      const grade = pmGrade(pm10);
+
+      document.getElementById('weather-title').textContent = `${weatherEmoji(code)} ${temp != null ? temp.toFixed(0)+'°C' : '–'}`;
+
+      let advice = '🐾 지금 산책하기 좋은 날씨예요!';
+      if(temp != null && temp >= 28) advice = '🥵 한낮엔 아스팔트가 뜨거울 수 있어요. 그늘 많은 코스나 이른 아침·저녁 산책을 추천해요.';
+      else if(temp != null && temp <= 0) advice = '🥶 발바닥이 시릴 수 있어요. 짧게 산책하거나 신발을 챙겨주세요.';
+      else if(grade && (grade.label === '나쁨' || grade.label === '매우 나쁨')) advice = '😷 미세먼지가 안 좋아요. 실내 활동을 고려하거나 마스크를 챙겨주세요.';
+      document.getElementById('weather-desc').textContent = advice;
+
+      const metaEl = document.getElementById('weather-meta');
+      metaEl.innerHTML = grade
+        ? `<span style="color:${grade.color}; font-weight:700;">미세먼지 ${grade.label}</span><span>PM10 ${pm10 ?? '–'} · PM2.5 ${pm25 ?? '–'}</span>`
+        : '';
+    }catch(e){
+      console.error(e);
+      document.getElementById('weather-title').textContent = '날씨 정보 없음';
+      document.getElementById('weather-desc').textContent = '잠시 후 다시 확인해주세요.';
+    }
+  }
+  function initWeatherWidget(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        (pos)=> loadWeatherWidget(pos.coords.latitude, pos.coords.longitude),
+        ()=> loadWeatherWidget(37.5665, 126.9780), // 위치 거부 시 서울 기준
+        { timeout:8000 }
+      );
+    } else {
+      loadWeatherWidget(37.5665, 126.9780);
+    }
+  }
+
+  async function seedIfNeeded(){
+    try{
+      const courseRows = SEED_COURSES.map(c=>({
+        id:c.id, name:c.name, description:c.desc, lat:c.lat, lng:c.lng,
+        path:c.path, tags:c.tags, diff:c.diff, distance:c.distance,
+        owner_id:null, author:'발자국 팀'
+      }));
+      await sb.from('courses').upsert(courseRows, { onConflict:'id', ignoreDuplicates:true });
+      const binRows = SEED_BINS.map(b=>({
+        id:b.id, name:b.name, description:b.desc, lat:b.lat, lng:b.lng,
+        owner_id:null, author:'발자국 팀'
+      }));
+      await sb.from('bins').upsert(binRows, { onConflict:'id', ignoreDuplicates:true });
+    }catch(e){ console.error('시드 동기화 실패', e); }
+  }
+
+  // ===== GPS 산책 기록 =====
+  function formatDuration(sec){
+    sec = Math.floor(sec);
+    const h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
+    const pad = n => String(n).padStart(2,'0');
+    return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+  }
+  function walkDistanceKm(){
+    let total = 0;
+    for(let i=1;i<walkPath.length;i++){
+      total += L.latLng(walkPath[i-1]).distanceTo(L.latLng(walkPath[i]));
+    }
+    return total / 1000;
+  }
+  function initWalkMap(){
+    walkMap = L.map('walk-map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
+      referrerPolicy:'strict-origin-when-cross-origin'
+    }).addTo(walkMap);
+  }
+  function nearestCourseWithin(lat, lng, maxMeters){
+    let best = null, bestDist = Infinity;
+    allCourses().forEach(c=>{
+      const d = L.latLng(lat,lng).distanceTo(L.latLng(c.lat, c.lng));
+      if(d < bestDist){ bestDist = d; best = c; }
+    });
+    return (best && bestDist <= maxMeters) ? best.id : null;
+  }
+  let lastHeartbeatAt = 0;
+  async function upsertActiveWalker(lat, lng){
+    if(!myDeviceId) return;
+    const now = Date.now();
+    if(now - lastHeartbeatAt < 20000) return; // 20초에 한 번만 업데이트 (DB 부하 방지)
+    lastHeartbeatAt = now;
+    const courseId = nearestCourseWithin(lat, lng, 400);
+    try{
+      await sb.from('active_walkers').upsert([{
+        owner_id: myDeviceId, course_id: courseId, lat, lng, updated_at: new Date().toISOString()
+      }], { onConflict: 'owner_id' });
+    }catch(e){ console.error(e); }
+  }
+  async function clearActiveWalker(){
+    if(!myDeviceId) return;
+    try{ await sb.from('active_walkers').delete().eq('owner_id', myDeviceId); }catch(e){ console.error(e); }
+  }
+  let activeWalkerCounts = {};
+  async function loadActiveWalkerCounts(){
+    try{
+      const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
+      const { data, error } = await sb.from('active_walkers').select('course_id').gte('updated_at', fiveMinAgo).not('course_id','is',null);
+      const counts = {};
+      if(!error && data){
+        data.forEach(r=>{ counts[r.course_id] = (counts[r.course_id]||0) + 1; });
+      }
+      activeWalkerCounts = counts;
+      renderGrid();
+    }catch(e){ console.error(e); }
+  }
+
+  function startWalk(){
+    if(!navigator.geolocation){ toast('이 브라우저에서는 위치 기능을 쓸 수 없어요'); return; }
+    const batterySaver = document.getElementById('battery-saver-toggle').checked;
+    walkPath = [];
+    walkStartTime = Date.now();
+    lastGpsTime = null;
+    if(walkLiveLine){ walkMap.removeLayer(walkLiveLine); walkLiveLine = null; }
+    if(walkMarker){ walkMap.removeLayer(walkMarker); walkMarker = null; }
+    document.getElementById('walk-idle-panel').style.display = 'none';
+    document.getElementById('walk-done-panel').style.display = 'none';
+    document.getElementById('walk-active-panel').style.display = '';
+    document.getElementById('walk-time').textContent = '00:00';
+    document.getElementById('walk-dist').textContent = '0.00';
+    document.getElementById('walk-pace').textContent = '–';
+
+    const MAX_ACCURACY_M = 35;      // 이보다 오차범위가 크면 신뢰도 낮은 좌표로 보고 무시
+    const MAX_SPEED_MPS = 4.5;      // 사람이 뛰어도 이보다 빠르면(약 16km/h) GPS 튐으로 판단
+
+    walkWatchId = navigator.geolocation.watchPosition(
+      (pos)=>{
+        const { latitude, longitude, accuracy } = pos.coords;
+        const now = Date.now();
+
+        if(accuracy != null && accuracy > MAX_ACCURACY_M){
+          return; // 오차가 너무 큰 좌표는 지도에 반영하지 않음 (건물 사이·터널 등)
+        }
+        if(walkPath.length > 0 && lastGpsTime != null){
+          const last = walkPath[walkPath.length - 1];
+          const dist = L.latLng(last[0], last[1]).distanceTo(L.latLng(latitude, longitude));
+          const elapsedSec = (now - lastGpsTime) / 1000;
+          if(elapsedSec > 0 && (dist / elapsedSec) > MAX_SPEED_MPS){
+            return; // 순간이동처럼 튄 좌표는 건너뜀
+          }
+        }
+        lastGpsTime = now;
+
+        walkPath.push([latitude, longitude]);
+        if(!walkLiveLine){
+          walkLiveLine = L.polyline(walkPath, {color:'#B5502E', weight:5, lineCap:'round'}).addTo(walkMap);
+          walkMap.setView([latitude, longitude], 16);
+        } else {
+          walkLiveLine.addLatLng([latitude, longitude]);
+        }
+        if(!walkMarker){
+          walkMarker = L.marker([latitude, longitude], {icon: pathPointIcon('start')}).addTo(walkMap);
+        } else {
+          walkMarker.setLatLng([latitude, longitude]);
+        }
+        walkMap.panTo([latitude, longitude]);
+        document.getElementById('walk-dist').textContent = walkDistanceKm().toFixed(2);
+        upsertActiveWalker(latitude, longitude);
+      },
+      (err)=>{
+        console.error(err);
+        toast('위치 정보를 가져올 수 없어요. 위치 권한을 확인해주세요');
+      },
+      batterySaver
+        ? { enableHighAccuracy:false, maximumAge:15000, timeout:20000 }
+        : { enableHighAccuracy:true, maximumAge:2000, timeout:15000 }
+    );
+
+    walkTimerInterval = setInterval(()=>{
+      const elapsed = (Date.now() - walkStartTime) / 1000;
+      document.getElementById('walk-time').textContent = formatDuration(elapsed);
+      const km = walkDistanceKm();
+      if(km > 0.05){
+        const paceMinPerKm = (elapsed/60) / km;
+        const pm = Math.floor(paceMinPerKm), ps = Math.round((paceMinPerKm - pm) * 60);
+        document.getElementById('walk-pace').textContent = `${pm}'${String(ps).padStart(2,'0')}"/km`;
+      }
+    }, 1000);
+  }
+  function stopWalk(){
+    if(walkWatchId !== null){ navigator.geolocation.clearWatch(walkWatchId); walkWatchId = null; }
+    if(walkTimerInterval){ clearInterval(walkTimerInterval); walkTimerInterval = null; }
+    clearActiveWalker();
+    const durationSec = (Date.now() - walkStartTime) / 1000;
+    const km = walkDistanceKm();
+    lastSavedWalk = { path: walkPath.slice(), distanceKm: km, durationSec };
+    document.getElementById('walk-active-panel').style.display = 'none';
+    document.getElementById('walk-done-panel').style.display = '';
+    document.getElementById('walk-done-time').textContent = formatDuration(durationSec);
+    document.getElementById('walk-done-dist').textContent = km.toFixed(2);
+    if(walkPath.length > 1){
+      const endMarker = L.marker(walkPath[walkPath.length-1], {icon: pathPointIcon('end')}).addTo(walkMap);
+      walkMap.fitBounds(walkLiveLine.getBounds(), {padding:[24,24]});
+    }
+  }
+  async function saveWalkToDB(){
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('저장할 기록이 없어요'); return; }
+    try{
+      const { error } = await sb.from('walks').insert([{
+        owner_id: myDeviceId,
+        path: lastSavedWalk.path,
+        distance_km: Number(lastSavedWalk.distanceKm.toFixed(2)),
+        duration_sec: Math.round(lastSavedWalk.durationSec)
+      }]);
+      if(error){ console.error(error); toast('저장에 실패했어요. walks 테이블이 만들어졌는지 확인해주세요'); return; }
+      resetWalkPanels();
+      loadMyWalks();
+      await awardPoints(20, '산책 기록 저장');
+    }catch(e){ console.error(e); toast('저장에 실패했어요'); }
+  }
+  function resetWalkPanels(){
+    document.getElementById('walk-done-panel').style.display = 'none';
+    document.getElementById('walk-active-panel').style.display = 'none';
+    document.getElementById('walk-idle-panel').style.display = '';
+  }
+  function walkToCourseHandoff(){
+    if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('넘길 경로가 없어요'); return; }
+    showPage('register');
+    document.querySelector('.type-btn[data-type="course"]').click();
+    coursePath = lastSavedWalk.path.slice();
+    setTimeout(()=>{
+      redrawCoursePath();
+      if(miniMap && coursePath.length > 1){
+        miniMap.invalidateSize();
+        const tempLine = L.polyline(drawMode==='pen' ? smoothPath(coursePath) : coursePath);
+        miniMap.fitBounds(tempLine.getBounds(), {padding:[24,24]});
+      }
+      toast('산책 경로가 코스 등록 폼으로 옮겨졌어요. 이름과 설명을 채워주세요 🐾');
+    }, 400);
+    resetWalkPanels();
+  }
+  async function loadMyWalks(){
+    const el = document.getElementById('my-walks-list');
+    if(!myNickname || !myDeviceId){
+      el.innerHTML = '<p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p>';
+      return;
+    }
+    try{
+      const { data, error } = await sb.from('walks').select('*').eq('owner_id', myDeviceId).order('created_at', {ascending:false}).limit(10);
+      if(error || !data || !data.length){
+        el.innerHTML = '<p class="empty-review">아직 기록한 산책이 없어요. 위에서 시작해보세요!</p>';
+        return;
+      }
+      el.innerHTML = data.map(w=>{
+        const d = new Date(w.created_at);
+        const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
+        return `<div class="review-item"><div class="rh"><span>${dateStr} 산책</span><span class="meta-mono" style="border:none;padding:0;">${w.distance_km}km · ${formatDuration(w.duration_sec)}</span></div></div>`;
+      }).join('');
+    }catch(e){ console.error(e); }
+  }
+
+  document.getElementById('walk-start-btn').addEventListener('click', startWalk);
+  document.getElementById('walk-stop-btn').addEventListener('click', stopWalk);
+  document.getElementById('walk-save-btn').addEventListener('click', saveWalkToDB);
+  document.getElementById('walk-to-course-btn').addEventListener('click', walkToCourseHandoff);
+  document.getElementById('walk-discard-btn').addEventListener('click', resetWalkPanels);
+
+  // ===== 페이지 전환 (메뉴별 화면 분리) =====
+  let currentPage = 'home';
+  function showPage(page){
+    document.querySelectorAll('.app-page').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll(`.app-page[data-page-section="${page}"]`).forEach(el => el.classList.add('active'));
+    currentPage = page;
+    document.querySelectorAll('[data-page-nav]').forEach(el => el.classList.toggle('active', el.dataset.pageNav === page));
+    window.scrollTo({ top:0, behavior:'instant' in window ? 'instant' : 'auto' });
+    // 지도가 숨겨져 있다가 보이면 Leaflet이 크기를 다시 계산해야 정상적으로 그려짐
+    setTimeout(()=>{
+      if(page === 'map' && map) map.invalidateSize();
+      if(page === 'register' && miniMap) miniMap.invalidateSize();
+      if(page === 'walk' && walkMap) walkMap.invalidateSize();
+    }, 80);
+  }
+  document.querySelectorAll('[data-page-nav]').forEach(el=>{
+    el.addEventListener('click', (e)=>{
+      e.preventDefault();
+      showPage(el.dataset.pageNav);
+    });
+  });
+
+  initMap();
+  initMiniMap();
+  initWalkMap();
+  captureReferralFromUrl();
+  seedIfNeeded().then(loadData);
+  initWeatherWidget();
+  loadMonthlyChampion();
+  loadActiveWalkerCounts();
+  setInterval(loadActiveWalkerCounts, 30000);
+  window.addEventListener('beforeunload', ()=>{ if(walkWatchId !== null) clearActiveWalker(); });
+
+  // ===== 로그인 안내 모달 & 프로필 버튼 =====
+  function openNickModal(){
+    document.getElementById('nick-overlay').classList.add('show');
+  }
+  function closeNickModal(){
+    document.getElementById('nick-overlay').classList.remove('show');
+  }
+  document.getElementById('profile-btn').addEventListener('click', ()=>{
+    if(myNickname){
+      openProfileModal();
+    } else {
+      openNickModal();
+    }
+  });
+  document.getElementById('points-badge').addEventListener('click', openPointsShop);
+  document.getElementById('points-shop-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'points-shop-overlay') closePointsShop();
+  });
+  document.getElementById('profile-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'profile-overlay') closeProfileModal();
+  });
+  document.getElementById('display-name-save-btn').addEventListener('click', saveDisplayName);
+  document.getElementById('dog-info-save-btn').addEventListener('click', saveDogInfo);
+  document.getElementById('region-save-btn').addEventListener('click', saveRegion);
+  document.getElementById('copy-referral-btn').addEventListener('click', copyReferralLink);
+  document.getElementById('logout-btn').addEventListener('click', ()=>{
+    if(confirm('로그아웃 하시겠어요?')){
+      closeProfileModal();
+      signOutUser();
+    }
+  });
+  document.getElementById('nick-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'nick-overlay') closeNickModal();
+  });
+  document.getElementById('kakao-login-btn').addEventListener('click', signInWithKakao);
+  document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
+  document.getElementById('email-login-btn').addEventListener('click', sendMagicLink);
+
+  // ===== Admin (moderation) panel =====
+  function renderAdminList(){
+    const el = document.getElementById('admin-list');
+    if(!el) return;
+    const entries = Object.keys(reports).filter(k => reports[k].count > 0);
+    if(!entries.length){
+      el.innerHTML = '<p class="empty-admin">현재 신고된 항목이 없어요.</p>';
+      return;
+    }
+    el.innerHTML = entries.map(key=>{
+      const [type, ...rest] = key.split('_');
+      const id = rest.join('_');
+      const count = reports[key].count;
+      let title = id, sub = '';
+      if(type === 'course'){
+        const c = allCourses().find(x=>x.id===id);
+        title = c ? c.name : '(삭제된 코스)'; sub = '산책 코스';
+      } else if(type === 'bin'){
+        const b = allBins().find(x=>x.id===id);
+        title = b ? b.name : '(삭제된 배변봉투함)'; sub = '배변봉투함';
+      } else if(type === 'review'){
+        let found = null;
+        Object.values(reviews).forEach(list=>{
+          const m = list.find(r=>String(r.dbId)===id);
+          if(m) found = m;
+        });
+        title = found ? found.text.slice(0,30) : '(삭제된 리뷰)'; sub = '리뷰';
+      }
+      return `
+        <div class="admin-row">
+          <div class="info"><b>${title}</b>${sub} · 신고 ${count}건${reports[key].reasons && reports[key].reasons.length ? '<br><span style="color:var(--clay-dark);font-weight:700;">사유: '+reports[key].reasons.join(', ')+'</span>' : ''}</div>
+          <div class="admin-actions">
+            <span class="admin-badge">🚩 ${count}</span>
+            <button class="keep" data-resolve="${type}|${id}|keep">문제없음</button>
+            <button class="remove" data-resolve="${type}|${id}|remove">삭제</button>
+          </div>
+        </div>`;
+    }).join('');
+    el.querySelectorAll('[data-resolve]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const [type, id, action] = btn.dataset.resolve.split('|');
+        resolveReport(type, id, action === 'remove' ? 'remove' : 'keep');
+      });
+    });
+  }
+
+  // ===== 회원 활동 관리 (관리자 전용) =====
+  async function buildMemberStats(){
+    const stats = {}; // owner_id -> { author, courses, bins, reviews, points }
+    function bump(ownerId, field, author){
+      if(!ownerId) return;
+      if(!stats[ownerId]) stats[ownerId] = { author: author || '(닉네임 없음)', courses:0, bins:0, reviews:0, points:0 };
+      if(author) stats[ownerId].author = author;
+      stats[ownerId][field]++;
+    }
+    courses.forEach(c => bump(c.ownerId, 'courses', c.author));
+    bins.forEach(b => bump(b.ownerId, 'bins', b.author));
+    Object.values(reviews).forEach(list => list.forEach(r => bump(r.ownerId, 'reviews', r.name)));
+    try{
+      const { data } = await sb.from('points_log').select('owner_id, amount');
+      (data||[]).forEach(r=>{
+        if(!stats[r.owner_id]) stats[r.owner_id] = { author:'(닉네임 없음)', courses:0, bins:0, reviews:0, points:0 };
+        stats[r.owner_id].points += r.amount;
+      });
+    }catch(e){ console.error(e); }
+    return stats;
+  }
+  async function renderMemberList(){
+    const el = document.getElementById('member-list');
+    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    const stats = await buildMemberStats();
+    const ids = Object.keys(stats);
+    if(!ids.length){ el.innerHTML = '<p class="empty-admin">활동 내역이 있는 회원이 없어요.</p>'; return; }
+    ids.sort((a,b)=> (stats[b].courses+stats[b].bins+stats[b].reviews) - (stats[a].courses+stats[a].bins+stats[a].reviews));
+    el.innerHTML = ids.map(id=>{
+      const s = stats[id];
+      const isAdmin = id === ADMIN_UID;
+      return `
+        <div class="admin-row">
+          <div class="info"><b>${s.author}</b>${isAdmin ? ' (관리자)' : ''} · 코스 ${s.courses} · 배변함 ${s.bins} · 리뷰 ${s.reviews} · 🪙${s.points}P</div>
+          <div class="admin-actions">
+            ${isAdmin ? '' : `<button class="remove" data-wipe-member="${id}">게시물 전체 삭제</button>`}
+          </div>
+        </div>`;
+    }).join('');
+    el.querySelectorAll('[data-wipe-member]').forEach(btn=>{
+      btn.addEventListener('click', ()=> wipeMemberContent(btn.dataset.wipeMember));
+    });
+  }
+  async function wipeMemberContent(ownerId){
+    if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
+    if(!confirm('이 회원이 등록한 코스·배변봉투함·리뷰를 전부 삭제할까요? 되돌릴 수 없어요.')) return;
+    try{
+      await sb.from('courses').delete().eq('owner_id', ownerId);
+      await sb.from('bins').delete().eq('owner_id', ownerId);
+      await sb.from('reviews').delete().eq('owner_id', ownerId);
+      toast('해당 회원의 게시물을 모두 삭제했어요');
+      await loadData();
+      renderMemberList();
+    }catch(e){ console.error(e); toast('삭제 중 오류가 발생했어요'); }
+  }
+  document.getElementById('admin-toggle').addEventListener('click', ()=>{
+    if(myDeviceId !== ADMIN_UID){ toast('관리자만 접근할 수 있어요'); return; }
+    renderAdminList();
+    renderMemberList();
+    document.getElementById('admin-overlay').classList.add('show');
+  });
+  document.getElementById('admin-close').addEventListener('click', ()=>{
+    document.getElementById('admin-overlay').classList.remove('show');
+  });
+  document.getElementById('admin-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'admin-overlay') document.getElementById('admin-overlay').classList.remove('show');
+  });
+
+  ensureIdentity().then(()=>{
+    loadMyWalks();
+    loadMyPoints();
+  });
+})();
+</script>
+</body>
+</html>
