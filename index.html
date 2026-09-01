@@ -3727,6 +3727,14 @@
       const newHash = '#' + page;
       if(window.location.hash !== newHash) history.pushState({page}, '', newHash);
     }
+    // 등록 페이지로 들어올 때마다 이전에 남아있을 수 있는 수정 모드 상태를 초기화
+    // (startEditCourse/startEditBin은 이 showPage 호출 직후에 각자 editingXId를 다시 세팅하므로 순서상 안전함)
+    if(page === 'register'){
+      editingCourseId = null;
+      editingBinId = null;
+      const submitBtn = document.getElementById('reg-submit-btn');
+      if(submitBtn) submitBtn.textContent = '지도에 등록하기';
+    }
     // 지도가 숨겨져 있다가 보이면 Leaflet이 크기를 다시 계산해야 정상적으로 그려짐
     setTimeout(()=>{
       if(page === 'map' && map) map.invalidateSize();
@@ -3864,6 +3872,7 @@
   loadMonthlyChampion();
   loadActiveWalkerCounts();
   setInterval(loadActiveWalkerCounts, 30000);
+  setInterval(()=>{ if(myDeviceId) checkNotifications(); }, 5*60*1000);
   window.addEventListener('beforeunload', ()=>{ if(walkWatchId !== null) clearActiveWalker(); });
 
   // ===== 로그인 안내 모달 & 프로필 버튼 =====
@@ -4123,6 +4132,10 @@
   ensureIdentity().then(()=>{
     loadMyWalks();
     loadMyPoints();
+    if(myDeviceId){
+      checkNotifications();
+      syncFavoritesFromServer();
+    }
   });
 })();
 </script>
