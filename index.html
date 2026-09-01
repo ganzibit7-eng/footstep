@@ -928,6 +928,16 @@
         <p style="font-size:13px; color:#6B6550; margin-top:4px;">관리자 전용 화면이에요.</p>
         <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
+        <div style="margin-top:8px;">
+          <h4 style="font-family:'Gowun Batang',serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">📅 오늘의 활동</h4>
+          <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px;"></div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h4 style="font-family:'Gowun Batang',serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">🏆 인기 코스 TOP 5</h4>
+          <div id="admin-top-courses"></div>
+        </div>
+
         <div style="margin-top:8px; padding-top:20px; border-top:1px solid var(--line);">
           <h3 style="font-size:20px;">🚩 신고된 항목 검수</h3>
           <div id="admin-list" style="margin-top:16px;"></div>
@@ -967,6 +977,7 @@
       </div>
       <button class="submit-btn" id="onboarding-next-btn">다음</button>
       <button class="pin-btn" id="onboarding-skip-btn" style="margin-top:10px; color:#A79E7E;">건너뛰기</button>
+      <button class="pin-btn" id="onboarding-snooze-btn" style="margin-top:8px; color:#A79E7E; font-size:12px; border:none; background:none;">오늘 하루 보지 않기</button>
     </div>
   </div>
 </div>
@@ -3419,16 +3430,25 @@
     document.getElementById('onboarding-overlay').classList.remove('show');
     try{ localStorage.setItem('paw_onboarding_done', '1'); }catch(e){}
   }
+  function snoozeOnboardingToday(){
+    document.getElementById('onboarding-overlay').classList.remove('show');
+    const untilMidnight = new Date();
+    untilMidnight.setHours(24,0,0,0); // 오늘 자정까지
+    try{ localStorage.setItem('paw_onboarding_snooze_until', String(untilMidnight.getTime())); }catch(e){}
+    toast('오늘 하루는 다시 안 보여드릴게요. "?" 버튼으로 언제든 다시 볼 수 있어요');
+  }
   document.getElementById('onboarding-next-btn').addEventListener('click', ()=>{
     if(onboardingStep === ONBOARDING_STEPS.length-1){ closeOnboarding(); return; }
     onboardingStep++;
     renderOnboardingStep();
   });
   document.getElementById('onboarding-skip-btn').addEventListener('click', closeOnboarding);
+  document.getElementById('onboarding-snooze-btn').addEventListener('click', snoozeOnboardingToday);
   (function maybeShowOnboarding(){
-    let done = null;
+    let done = null, snoozeUntil = 0;
     try{ done = localStorage.getItem('paw_onboarding_done'); }catch(e){}
-    if(!done){
+    try{ snoozeUntil = Number(localStorage.getItem('paw_onboarding_snooze_until') || '0'); }catch(e){}
+    if(!done && Date.now() > snoozeUntil){
       renderOnboardingStep();
       setTimeout(()=> document.getElementById('onboarding-overlay').classList.add('show'), 600);
     }
@@ -3644,6 +3664,48 @@
       console.error(e);
       el.innerHTML = '<p class="empty-admin">통계를 불러오지 못했어요.</p>';
     }
+    renderAdminTodayStats();
+    renderAdminTopCourses();
+  }
+  async function renderAdminTodayStats(){
+    const el = document.getElementById('admin-today-stats');
+    if(!el) return;
+    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    try{
+      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const iso = todayStart.toISOString();
+      const [newCourses, newBins, newReviews, newMembers, newWalks] = await Promise.all([
+        sb.from('courses').select('id', { count:'exact', head:true }).gte('created_at', iso),
+        sb.from('bins').select('id', { count:'exact', head:true }).gte('created_at', iso),
+        sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
+        sb.from('profiles').select('owner_id', { count:'exact', head:true }).gte('updated_at', iso),
+        sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
+      ]);
+      const stats = [
+        { num: newCourses.count||0, label:'오늘 새 코스' },
+        { num: newBins.count||0, label:'오늘 새 배변함' },
+        { num: newReviews.count||0, label:'오늘 새 리뷰' },
+        { num: newWalks.count||0, label:'오늘 산책기록' },
+      ];
+      el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+    }catch(e){
+      console.error(e);
+      el.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>';
+    }
+  }
+  function renderAdminTopCourses(){
+    const el = document.getElementById('admin-top-courses');
+    if(!el) return;
+    const ranked = allCourses()
+      .map(c => ({ c, reviewCount: reviewsFor(c.id).length, avg: Number(avgRating(c.id))||0 }))
+      .filter(x => x.reviewCount > 0)
+      .sort((a,b) => b.reviewCount - a.reviewCount || b.avg - a.avg)
+      .slice(0, 5);
+    if(!ranked.length){ el.innerHTML = '<p class="empty-admin">아직 리뷰가 달린 코스가 없어요.</p>'; return; }
+    el.innerHTML = ranked.map((x,i)=>`
+      <div class="admin-row">
+        <div class="info"><b>${i+1}. ${x.c.name}</b>리뷰 ${x.reviewCount}개 · ★ ${x.avg.toFixed(1)}</div>
+      </div>`).join('');
   }
   document.getElementById('admin-toggle').addEventListener('click', ()=>{
     if(myDeviceId !== ADMIN_UID){ toast('관리자만 접근할 수 있어요'); return; }
