@@ -334,6 +334,8 @@
   .star-input span{ color:var(--line); transition:color .1s; }
   .star-input span.on{ color:var(--gold); }
   .empty-review{ font-size:13px; color:#6B6550; }
+  .onboarding-dot{ width:8px; height:8px; border-radius:50%; background:var(--line); display:inline-block; }
+  .onboarding-dot.active{ background:var(--clay); }
   .loading-state, .empty-course-state{
     grid-column:1/-1; text-align:center; padding:48px 20px; color:var(--muted-text); font-size:15px;
   }
@@ -492,6 +494,16 @@
       </div>
     </div>
     <div class="grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+
+    <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Recently Viewed</span>
+          <h2>최근 본 코스</h2>
+        </div>
+      </div>
+      <div class="grid" id="recent-viewed-grid"></div>
+    </div>
   </div>
 </section>
 
@@ -511,7 +523,7 @@
           <div class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</div>
           <div class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</div>
         </div>
-        <span class="mono" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
+        <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
       <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
@@ -901,6 +913,24 @@
 <div class="modal-overlay" id="photo-lightbox" style="background:rgba(0,0,0,0.9); align-items:center;">
   <button class="modal-close" id="photo-lightbox-close" aria-label="닫기" style="position:fixed; top:20px; right:20px;">✕</button>
   <img id="photo-lightbox-img" src="" alt="코스 사진 확대보기" style="max-width:92vw; max-height:88vh; border-radius:8px; object-fit:contain;">
+</div>
+
+<div class="modal-overlay" id="onboarding-overlay">
+  <div class="modal nick-modal">
+    <div class="modal-body" style="text-align:center;">
+      <div id="onboarding-emoji" style="font-size:52px; margin-bottom:12px;">🐾</div>
+      <h3 id="onboarding-title" style="font-size:20px;"></h3>
+      <p id="onboarding-desc" style="font-size:14px; color:var(--muted-text); margin-top:10px; line-height:1.6;"></p>
+      <div style="display:flex; justify-content:center; gap:6px; margin:20px 0;">
+        <span class="onboarding-dot" data-dot="0"></span>
+        <span class="onboarding-dot" data-dot="1"></span>
+        <span class="onboarding-dot" data-dot="2"></span>
+        <span class="onboarding-dot" data-dot="3"></span>
+      </div>
+      <button class="submit-btn" id="onboarding-next-btn">다음</button>
+      <button class="pin-btn" id="onboarding-skip-btn" style="margin-top:10px; color:#A79E7E;">건너뛰기</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1848,9 +1878,8 @@
   const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false, sort:'default' };
   const LIST_PAGE_SIZE = 12;
   let listShownCount = LIST_PAGE_SIZE;
-  function renderGrid(){
+  function getFilteredCourses(){
     let list = allCourses().filter(c => !isHidden('course', c.id));
-
     if(listFilterState.query){
       const q = listFilterState.query.toLowerCase();
       list = list.filter(c =>
@@ -1868,6 +1897,13 @@
     if(listFilterState.favOnly){
       list = list.filter(c => favoriteIds.has(c.id));
     }
+    return list;
+  }
+  function hasActiveListFilter(){
+    return !!(listFilterState.query || listFilterState.diff !== 'all' || listFilterState.tags.size > 0 || listFilterState.favOnly);
+  }
+  function renderGrid(){
+    let list = getFilteredCourses();
 
     if(listFilterState.sort === 'rating'){
       list = list.sort((a,b)=> (Number(avgRating(b.id))||0) - (Number(avgRating(a.id))||0));
@@ -1893,6 +1929,26 @@
         moreBtn.style.display = 'none';
       }
     }
+    renderMap();
+  }
+  function trackRecentlyViewed(courseId){
+    let ids = [];
+    try{ ids = JSON.parse(localStorage.getItem('paw_recent_viewed') || '[]'); }catch(e){}
+    ids = ids.filter(id => id !== courseId);
+    ids.unshift(courseId);
+    ids = ids.slice(0, 10);
+    try{ localStorage.setItem('paw_recent_viewed', JSON.stringify(ids)); }catch(e){}
+    renderRecentlyViewed();
+  }
+  function renderRecentlyViewed(){
+    let ids = [];
+    try{ ids = JSON.parse(localStorage.getItem('paw_recent_viewed') || '[]'); }catch(e){}
+    const wrap = document.getElementById('recent-viewed-wrap');
+    if(!wrap) return;
+    const list = ids.map(id => allCourses().find(c=>c.id===id)).filter(Boolean).slice(0,6);
+    if(list.length === 0){ wrap.style.display = 'none'; return; }
+    wrap.style.display = '';
+    renderCourseCards(document.getElementById('recent-viewed-grid'), list);
   }
   function loadNearbyRecommendations(){
     const visible = allCourses().filter(c => !isHidden('course', c.id));
@@ -1932,7 +1988,15 @@
     courseLayer.clearLayers();
     coursePathLayer.clearLayers();
     binLayer.clearLayers();
-    allCourses().filter(c => !isHidden('course', c.id)).forEach(c=>{
+    const filterActive = hasActiveListFilter();
+    const coursesToShow = filterActive ? getFilteredCourses() : allCourses().filter(c => !isHidden('course', c.id));
+    const noteEl = document.getElementById('map-filter-note');
+    if(noteEl){
+      noteEl.textContent = filterActive
+        ? `🔎 목록 필터 적용 중 · 코스 ${coursesToShow.length}개 표시`
+        : '지도를 드래그·확대해서 우리 동네를 찾아보세요';
+    }
+    coursesToShow.forEach(c=>{
       if(c.path && c.path.length > 1){
         L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(coursePathLayer);
       }
@@ -1966,6 +2030,7 @@
     renderStats();
     renderGrid();
     loadNearbyRecommendations();
+    renderRecentlyViewed();
     renderMap();
   }
 
@@ -2490,6 +2555,54 @@
   });
 
   // Submit
+  // ===== 코스 등록 임시저장 =====
+  const DRAFT_KEY = 'paw_register_draft';
+  let draftSaveTimer = null;
+  function saveRegisterDraft(){
+    clearTimeout(draftSaveTimer);
+    draftSaveTimer = setTimeout(()=>{
+      const draft = {
+        type: currentType,
+        name: document.getElementById('f-name').value,
+        desc: document.getElementById('f-desc').value,
+        diff: selectedDiff,
+        tags: Array.from(selectedTags),
+        savedAt: Date.now()
+      };
+      if(!draft.name && !draft.desc) return;
+      try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); }catch(e){}
+    }, 400);
+  }
+  function clearRegisterDraft(){
+    try{ localStorage.removeItem(DRAFT_KEY); }catch(e){}
+  }
+  function restoreRegisterDraftIfAny(){
+    let draft = null;
+    try{ draft = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null'); }catch(e){}
+    if(!draft) return;
+    // 24시간 넘은 임시저장은 무시
+    if(Date.now() - (draft.savedAt||0) > 24*60*60*1000){ clearRegisterDraft(); return; }
+    if(!confirm('작성 중이던 등록 내용이 있어요. 이어서 작성할까요?')){ clearRegisterDraft(); return; }
+    if(draft.type === 'bin'){
+      document.querySelector('.type-btn[data-type="bin"]').click();
+    }
+    document.getElementById('f-name').value = draft.name || '';
+    document.getElementById('f-desc').value = draft.desc || '';
+    if(draft.diff){
+      document.querySelectorAll('#diff-group .tag-check').forEach(x=>x.classList.remove('on'));
+      const diffEl = document.querySelector(`#diff-group .tag-check[data-diff="${draft.diff}"]`);
+      if(diffEl) diffEl.classList.add('on');
+      selectedDiff = draft.diff;
+    }
+    (draft.tags||[]).forEach(t=>{
+      const tagEl = document.querySelector(`#tag-group .tag-check[data-tag="${t}"]`);
+      if(tagEl){ tagEl.classList.add('on'); selectedTags.add(t); }
+    });
+    toast('작성하시던 내용을 불러왔어요. 위치만 다시 지정해주세요 📍');
+  }
+  document.getElementById('f-name').addEventListener('input', saveRegisterDraft);
+  document.getElementById('f-desc').addEventListener('input', saveRegisterDraft);
+
   document.getElementById('reg-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
@@ -2527,6 +2640,7 @@
         e.target.reset();
         resetCoursePath();
         resetBinPoint();
+        clearRegisterDraft();
         return;
       }
       const newBin = {
@@ -2551,6 +2665,7 @@
     selectedDiff = '쉬움';
     resetCoursePath();
     resetBinPoint();
+    clearRegisterDraft();
   });
 
   function startEditBin(bin){
@@ -2639,6 +2754,7 @@
     const c = allCourses().find(x => x.id === courseId);
     if(!c) return;
     activeCourseId = courseId;
+    trackRecentlyViewed(courseId);
 
     document.getElementById('modal-title').textContent = c.name;
     document.getElementById('modal-desc').textContent = c.desc || '';
@@ -3025,10 +3141,15 @@
       if(page === 'walk' && walkMap) walkMap.invalidateSize();
     }, 80);
   }
+  let draftCheckedOnce = false;
   document.querySelectorAll('[data-page-nav]').forEach(el=>{
     el.addEventListener('click', (e)=>{
       e.preventDefault();
       showPage(el.dataset.pageNav);
+      if(el.dataset.pageNav === 'register' && !draftCheckedOnce){
+        draftCheckedOnce = true;
+        setTimeout(restoreRegisterDraftIfAny, 350);
+      }
     });
   });
   window.addEventListener('popstate', (e)=>{
@@ -3074,6 +3195,41 @@
   window.addEventListener('online', ()=>{ updateOnlineStatus(); toast('다시 연결됐어요 🐾'); loadData(); });
   window.addEventListener('offline', updateOnlineStatus);
   updateOnlineStatus();
+
+  // ===== 온보딩 튜토리얼 =====
+  const ONBOARDING_STEPS = [
+    { emoji:'🗺️', title:'산책 코스를 지도에서 찾아보세요', desc:'전국 100여 개의 반려견 산책 코스가 지도에 표시돼요. 그늘·잔디밭·목줄해제 여부까지 태그로 확인할 수 있어요.' },
+    { emoji:'🐾', title:'GPS로 산책을 기록해보세요', desc:'걷는 동안 실시간으로 경로가 기록되고, 마음에 든 경로는 그대로 코스로 등록할 수 있어요.' },
+    { emoji:'🏥', title:'동물병원·애견동반 장소도 검색', desc:'낯선 동네에서도 동물병원, 애견동반 식당·카페·숙소를 지도에서 바로 찾을 수 있어요.' },
+    { emoji:'🪙', title:'활동하고 포인트도 받아보세요', desc:'코스 등록, 리뷰 작성, 산책 기록마다 포인트가 쌓여요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
+  ];
+  let onboardingStep = 0;
+  function renderOnboardingStep(){
+    const s = ONBOARDING_STEPS[onboardingStep];
+    document.getElementById('onboarding-emoji').textContent = s.emoji;
+    document.getElementById('onboarding-title').textContent = s.title;
+    document.getElementById('onboarding-desc').textContent = s.desc;
+    document.querySelectorAll('.onboarding-dot').forEach((d,i)=> d.classList.toggle('active', i===onboardingStep));
+    document.getElementById('onboarding-next-btn').textContent = onboardingStep === ONBOARDING_STEPS.length-1 ? '시작하기' : '다음';
+  }
+  function closeOnboarding(){
+    document.getElementById('onboarding-overlay').classList.remove('show');
+    try{ localStorage.setItem('paw_onboarding_done', '1'); }catch(e){}
+  }
+  document.getElementById('onboarding-next-btn').addEventListener('click', ()=>{
+    if(onboardingStep === ONBOARDING_STEPS.length-1){ closeOnboarding(); return; }
+    onboardingStep++;
+    renderOnboardingStep();
+  });
+  document.getElementById('onboarding-skip-btn').addEventListener('click', closeOnboarding);
+  (function maybeShowOnboarding(){
+    let done = null;
+    try{ done = localStorage.getItem('paw_onboarding_done'); }catch(e){}
+    if(!done){
+      renderOnboardingStep();
+      setTimeout(()=> document.getElementById('onboarding-overlay').classList.add('show'), 600);
+    }
+  })();
 
   captureReferralFromUrl();
   if('serviceWorker' in navigator){
