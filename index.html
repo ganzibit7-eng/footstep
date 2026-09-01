@@ -484,6 +484,7 @@
       <div class="stat-row">
         <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
         <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함 위치</div></div>
+        <div class="stat"><div class="num" id="stat-reviews">–</div><div class="label">이용자 리뷰</div></div>
         <div class="stat"><div class="num">전국</div><div class="label">서비스 범위</div></div>
       </div>
     </div>
@@ -511,6 +512,17 @@
       </div>
     </div>
     <div class="grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+
+    <div id="recent-added-wrap" style="display:none; margin-top:48px;">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Fresh Off the Trail</span>
+          <h2>방금 등록된 코스</h2>
+          <p>지금도 전국 곳곳에서 이웃 반려인들이 새 코스를 등록하고 있어요.</p>
+        </div>
+      </div>
+      <div class="grid" id="recent-added-grid"></div>
+    </div>
 
     <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
       <div class="section-head">
@@ -802,8 +814,8 @@
 
 <footer>
   <div class="wrap" style="flex-direction:column; gap:10px; align-items:flex-start;">
-    <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도 (프로토타입)</span>
-    <span>초기 데이터는 시연을 위한 샘플이며, 실제 위치와 다를 수 있어요.</span>
+    <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도</span>
+    <span>전국 반려인들과 함께 만들어가는 산책 정보 플랫폼이에요. 소중한 의견은 언제든 환영합니다 🐾</span>
     <div style="display:flex; gap:16px; font-size:13px;">
       <a href="#" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
       <a href="#" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
@@ -1356,7 +1368,7 @@
       id: row.id, name: row.name, desc: row.description,
       lat: row.lat, lng: row.lng, path: row.path || null,
       tags: row.tags || [], diff: row.diff || '쉬움', distance: row.distance,
-      ownerId: row.owner_id, author: row.author
+      ownerId: row.owner_id, author: row.author, createdAt: row.created_at
     };
   }
   function rowToBin(row){
@@ -1997,6 +2009,12 @@
   function renderStats(){
     document.getElementById('stat-courses').textContent = allCourses().length;
     document.getElementById('stat-bins').textContent = allBins().length;
+    let totalReviewCount = 0;
+    allCourses().forEach(c=>{
+      const userList = reviews[c.id] || [];
+      totalReviewCount += userList.length > 0 ? userList.length : (SEED_REVIEWS[c.id] || []).length;
+    });
+    document.getElementById('stat-reviews').textContent = totalReviewCount;
   }
 
   function avgRating(courseId){
@@ -2157,6 +2175,17 @@
     wrap.style.display = '';
     renderCourseCards(document.getElementById('recent-viewed-grid'), list);
   }
+  function renderRecentlyAdded(){
+    const wrap = document.getElementById('recent-added-wrap');
+    if(!wrap) return;
+    const list = allCourses()
+      .filter(c => c.createdAt && !isHidden('course', c.id))
+      .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 4);
+    if(list.length === 0){ wrap.style.display = 'none'; return; }
+    wrap.style.display = '';
+    renderCourseCards(document.getElementById('recent-added-grid'), list);
+  }
   function loadNearbyRecommendations(){
     const visible = allCourses().filter(c => !isHidden('course', c.id));
     let list;
@@ -2238,6 +2267,7 @@
     renderGrid();
     loadNearbyRecommendations();
     renderRecentlyViewed();
+    renderRecentlyAdded();
     renderMap();
   }
 
