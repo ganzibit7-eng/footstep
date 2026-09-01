@@ -106,6 +106,8 @@
     background:rgba(251,248,241,0.92);
     backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
   }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1120px; margin:0 auto;}
   .logo{ display:flex; align-items:center; gap:10px; }
@@ -409,6 +411,12 @@
     background:var(--paper); border-top:1px solid var(--line); box-shadow:0 -4px 16px rgba(21,41,34,0.08);
     padding:6px 4px calc(6px + env(safe-area-inset-bottom));
     justify-content:space-around; align-items:center;
+    /* iOS(특히 홈 화면 추가 PWA 모드)에서 position:fixed가 스크롤 중 풀리는 렌더링 버그 대응 */
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .bottom-tab-bar button{
     background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:2px;
