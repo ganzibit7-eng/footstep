@@ -444,7 +444,6 @@
     <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
     <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot"></span><span id="profile-label">로그인</span></button>
     <button id="points-badge" style="margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
-    <button id="theme-toggle" aria-label="다크모드 전환" style="margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">🌙</button>
     <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
   </div>
 </header>
@@ -3380,22 +3379,15 @@
   initMap();
   initMiniMap();
   initWalkMap();
-  // ===== 다크모드 =====
+  // ===== 다크모드 (현재 비활성화 — 필요 시 헤더에 theme-toggle 버튼과 아래 초기화/리스너를 복원하면 됨) =====
   function applyTheme(theme){
     document.documentElement.setAttribute('data-theme', theme);
-    document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+    const btn = document.getElementById('theme-toggle');
+    if(btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     try{ localStorage.setItem('paw_theme', theme); }catch(e){}
   }
-  (function initTheme(){
-    let saved = null;
-    try{ saved = localStorage.getItem('paw_theme'); }catch(e){}
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
-  })();
-  document.getElementById('theme-toggle').addEventListener('click', ()=>{
-    const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  });
+  // 다크모드 비활성화 상태이므로 항상 라이트 모드로 고정
+  applyTheme('light');
 
   // ===== 오프라인 감지 =====
   function updateOnlineStatus(){
@@ -3458,6 +3450,21 @@
     renderOnboardingStep();
     document.getElementById('onboarding-overlay').classList.add('show');
   });
+
+  // ===== 방문자 통계 =====
+  function getVisitorId(){
+    let id = null;
+    try{ id = localStorage.getItem('paw_visitor_id'); }catch(e){}
+    if(!id){
+      id = 'v' + Date.now() + Math.random().toString(36).slice(2,10);
+      try{ localStorage.setItem('paw_visitor_id', id); }catch(e){}
+    }
+    return id;
+  }
+  async function logPageView(){
+    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId() }]); }catch(e){ console.error(e); }
+  }
+  logPageView();
 
   captureReferralFromUrl();
   if('serviceWorker' in navigator){
@@ -3642,15 +3649,19 @@
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const [membersRes, pointsRes] = await Promise.all([
+      const [membersRes, pointsRes, pageViewsRes] = await Promise.all([
         sb.from('profiles').select('owner_id', { count:'exact', head:true }),
-        sb.from('points_log').select('amount').gt('amount', 0)
+        sb.from('points_log').select('amount').gt('amount', 0),
+        sb.from('page_views').select('visitor_id').limit(5000)
       ]);
       const userCourseCount = courses.filter(c=>c.ownerId).length;
       const seedCourseCount = allCourses().length - userCourseCount;
       const totalReviews = Object.values(reviews).reduce((s,list)=>s+list.length, 0);
       const totalMembers = membersRes.count || 0;
       const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+r.amount, 0);
+      const pvRows = pageViewsRes.data || [];
+      const totalPageViews = pvRows.length;
+      const totalUniqueVisitors = new Set(pvRows.map(r=>r.visitor_id)).size;
       const stats = [
         { num: allCourses().length, label:'전체 코스' },
         { num: userCourseCount, label:'사용자 등록 코스' },
@@ -3658,6 +3669,8 @@
         { num: totalReviews, label:'리뷰 수' },
         { num: totalMembers, label:'가입 회원' },
         { num: totalPointsIssued.toLocaleString(), label:'누적 지급 포인트' },
+        { num: totalUniqueVisitors.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 방문자(순)' },
+        { num: totalPageViews.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 페이지뷰' },
       ];
       el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
     }catch(e){
@@ -3674,14 +3687,20 @@
     try{
       const todayStart = new Date(); todayStart.setHours(0,0,0,0);
       const iso = todayStart.toISOString();
-      const [newCourses, newBins, newReviews, newMembers, newWalks] = await Promise.all([
+      const [newCourses, newBins, newReviews, newWalks, newSignups, todayViews] = await Promise.all([
         sb.from('courses').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('bins').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('profiles').select('owner_id', { count:'exact', head:true }).gte('updated_at', iso),
         sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
+        sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', iso),
+        sb.from('page_views').select('visitor_id').gte('created_at', iso).limit(5000),
       ]);
+      const todayVisitorRows = todayViews.data || [];
+      const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
       const stats = [
+        { num: todayUniqueVisitors, label:'오늘 방문자' },
+        { num: todayVisitorRows.length, label:'오늘 페이지뷰' },
+        { num: (newSignups.data||[]).length, label:'오늘 신규가입' },
         { num: newCourses.count||0, label:'오늘 새 코스' },
         { num: newBins.count||0, label:'오늘 새 배변함' },
         { num: newReviews.count||0, label:'오늘 새 리뷰' },
