@@ -444,12 +444,14 @@
       <a href="#" data-page-nav="etiquette">펫티켓</a>
     </nav>
     <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
-    <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
-    <button id="points-badge" style="margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
-    <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">
-      🔔<span id="notif-dot" style="display:none; position:absolute; top:4px; right:5px; width:9px; height:9px; border-radius:50%; background:var(--clay); border:2px solid var(--paper);"></span>
-    </button>
-    <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="profile-btn" id="profile-btn"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
+      <button id="points-badge" style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
+      <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">
+        🔔<span id="notif-dot" style="display:none; position:absolute; top:4px; right:5px; width:9px; height:9px; border-radius:50%; background:var(--clay); border:2px solid var(--paper);"></span>
+      </button>
+      <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
+    </div>
   </div>
 </header>
 
