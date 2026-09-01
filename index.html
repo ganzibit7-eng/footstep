@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="theme-color" content="#1F3A2E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
@@ -85,11 +85,11 @@
     margin:0;
     background:var(--sand);
     color:var(--ink);
-    font-family:'Gowun Dodum', sans-serif;
+    font-family:'Sunflower', sans-serif;
     line-height:1.7;
   }
   h1,h2,h3,.display{
-    font-family:'Gowun Batang', serif;
+    font-family:'Jua', sans-serif;
     text-transform:none;
     letter-spacing:0.01em;
     font-weight:700;
@@ -110,7 +110,7 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1120px; margin:0 auto;}
   .logo{ display:flex; align-items:center; gap:10px; }
   .logo .mark{ font-size:22px; }
-  .logo span{ font-family:'Gowun Batang', serif; font-weight:900; font-size:22px; color:var(--pine-deep); letter-spacing:0.03em; }
+  .logo span{ font-family:'Jua', sans-serif; font-weight:900; font-size:22px; color:var(--pine-deep); letter-spacing:0.03em; }
   .nav-links{ display:flex; gap:28px; font-size:14px; font-weight:600; }
   .nav-links a{ text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .15s; }
   .nav-links a.active{ opacity:1; color:var(--clay); font-weight:700; }
@@ -163,7 +163,7 @@
   .btn-ghost:hover{ background:rgba(251,248,241,0.08); }
   .stat-row{ display:flex; gap:32px; margin-top:44px; flex-wrap:wrap; }
   .stat{ }
-  .stat .num{ font-family:'Gowun Batang', serif; font-size:34px; font-weight:900; color:var(--paper); }
+  .stat .num{ font-family:'Jua', sans-serif; font-size:34px; font-weight:900; color:var(--paper); }
   .stat .label{ font-size:12px; color:rgba(251,248,241,0.6); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px;}
 
   .hero-card{
@@ -323,7 +323,7 @@
   .modal-meta-row{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 16px; align-items:center; }
   #modal-route-map{ height:200px; border-radius:10px; overflow:hidden; border:1px solid var(--line); margin:16px 0; }
   .review-section{ margin-top:26px; border-top:1px solid var(--line); padding-top:20px; }
-  .review-section h4{ font-family:'Gowun Batang', serif; font-size:20px; color:var(--pine-deep); margin-bottom:14px; }
+  .review-section h4{ font-family:'Jua', sans-serif; font-size:20px; color:var(--pine-deep); margin-bottom:14px; }
   .review-item{ padding:12px 0; border-bottom:1px dashed var(--line); }
   .review-item:last-child{ border-bottom:none; }
   .review-item .rh{ display:flex; justify-content:space-between; align-items:center; font-size:13px; font-weight:700; }
@@ -391,7 +391,7 @@
   .stat-card{
     background:var(--sand); border-radius:10px; padding:14px 10px; text-align:center;
   }
-  .stat-card .num{ font-family:'Gowun Batang',serif; font-size:24px; font-weight:700; color:var(--pine-deep); }
+  .stat-card .num{ font-family:'Jua',sans-serif; font-size:24px; font-weight:700; color:var(--pine-deep); }
   .stat-card .label{ font-size:11px; color:var(--muted-text); margin-top:2px; }
   .admin-actions{ display:flex; gap:8px; }
   .admin-actions button{
@@ -493,7 +493,7 @@
   <div class="wrap">
     <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin-bottom:32px; box-shadow:var(--shadow);">
       <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85; text-transform:uppercase;">Monthly Champion</div>
-      <div id="champion-name" style="font-family:'Gowun Batang',serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
+      <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
       <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
     </div>
     <div class="section-head">
@@ -622,7 +622,7 @@
             <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted-text);">오늘의 산책 만족도</div>
             <span id="streak-badge" style="display:none; font-size:12px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:4px 10px; border-radius:999px;">🔥 0일 연속</span>
           </div>
-          <div id="mood-message" style="font-family:'Gowun Batang',serif; font-size:19px; font-weight:700; color:var(--pine-deep); margin-top:2px;"></div>
+          <div id="mood-message" style="font-family:'Jua',sans-serif; font-size:19px; font-weight:700; color:var(--pine-deep); margin-top:2px;"></div>
           <div id="mood-detail" style="font-size:13px; color:var(--muted-text); margin-top:2px;"></div>
         </div>
       </div>
@@ -659,7 +659,7 @@
           <button type="button" class="pin-btn" id="walk-discard-btn" style="margin-top:10px; color:#A79E7E;">기록 버리고 다시 시작</button>
         </div>
         <div id="my-walks-wrap" style="margin-top:24px; border-top:1px solid var(--line); padding-top:18px;">
-          <h4 style="font-family:'Gowun Batang', serif; font-size:18px; color:var(--pine-deep); margin-bottom:10px;">내 산책 기록</h4>
+          <h4 style="font-family:'Jua', sans-serif; font-size:18px; color:var(--pine-deep); margin-bottom:10px;">내 산책 기록</h4>
           <div id="my-walks-list"><p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p></div>
         </div>
       </div>
@@ -928,12 +928,12 @@
         <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
         <div style="margin-top:8px;">
-          <h4 style="font-family:'Gowun Batang',serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">📅 오늘의 활동</h4>
+          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">📅 오늘의 활동</h4>
           <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px;"></div>
         </div>
 
         <div style="margin-top:24px;">
-          <h4 style="font-family:'Gowun Batang',serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">🏆 인기 코스 TOP 5</h4>
+          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">🏆 인기 코스 TOP 5</h4>
           <div id="admin-top-courses"></div>
         </div>
 
