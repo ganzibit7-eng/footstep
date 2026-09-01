@@ -618,9 +618,10 @@
 
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <span class="eyebrow">🐾 전국 · 반려견 산책 지도</span>
-      <h1>강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
-      <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요.</p>
+      <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
+      <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
+      <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
+      <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
 
       <div class="home-search">
         <span class="home-search-icon">⌕</span>
@@ -637,7 +638,6 @@
         <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
         <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함</div></div>
         <div class="stat"><div class="num" id="stat-reviews">–</div><div class="label">이용자 리뷰</div></div>
-        <div class="stat"><div class="num">전국</div><div class="label">서비스 범위</div></div>
       </div>
     </div>
 
@@ -843,7 +843,7 @@
           <div class="chip" data-diff-filter="어려움">어려움</div>
         </div>
         <div class="filter-group" id="list-tag-filter">
-          <div class="chip" data-tag-filter="목줄해제가능">목줄해제가능</div>
+          <div class="chip" data-tag-filter="목줄해제가능">🐕 오프리쉬 정보</div>
           <div class="chip" data-tag-filter="그늘많음">그늘많음</div>
           <div class="chip" data-tag-filter="잔디바닥">잔디바닥</div>
           <div class="chip" data-tag-filter="계단없음">계단없음</div>
@@ -962,11 +962,12 @@
               <div class="tag-check" data-tag="그늘많음">그늘많음</div>
               <div class="tag-check" data-tag="잔디바닥">잔디바닥</div>
               <div class="tag-check" data-tag="계단없음">계단없음</div>
-              <div class="tag-check" data-tag="목줄해제가능">목줄해제가능</div>
+              <div class="tag-check" data-tag="목줄해제가능">🐕 오프리쉬 정보</div>
               <div class="tag-check" data-tag="정수대있음">정수대있음</div>
               <div class="tag-check" data-tag="입마개필요">입마개필요</div>
               <div class="tag-check" data-tag="야생동물주의">야생동물주의</div>
             </div>
+            <p style="font-size:12px; color:var(--muted-text); margin:6px 0 0;">※ "오프리쉬 정보"는 이용자 제보이며, 현장 규정은 반드시 별도로 확인해주세요.</p>
             <label>난이도</label>
             <div class="tag-check-group" id="diff-group">
               <div class="tag-check on" data-diff="쉬움">쉬움</div>
@@ -1799,6 +1800,7 @@
       if(error){ toast('지역 저장에 실패했어요'); return; }
       myRegionName = text; myRegionLat = geo.lat; myRegionLng = geo.lng;
       toast(`"${text}" 지역으로 설정됐어요 📍`);
+      renderHeroGreeting();
       loadNearbyRecommendations();
     }catch(e){ console.error(e); toast('지역 저장에 실패했어요'); }
   }
@@ -2073,6 +2075,21 @@
       avatarEl.style.display = 'none';
       dotEl.style.display = '';
     }
+    renderHeroGreeting();
+  }
+
+  function renderHeroGreeting(){
+    const greetingEl = document.getElementById('hero-greeting');
+    const eyebrowEl = document.getElementById('hero-eyebrow');
+    if(!greetingEl || !eyebrowEl) return;
+    if(myDeviceId && myNickname){
+      greetingEl.textContent = `안녕하세요, ${myNickname}님 🐾`;
+      greetingEl.style.display = '';
+      eyebrowEl.textContent = myRegionName ? `📍 ${myRegionName} 근처 산책코스` : '📍 내 주변 강아지 산책코스';
+    } else {
+      greetingEl.style.display = 'none';
+      eyebrowEl.textContent = '📍 내 주변 강아지 산책코스';
+    }
   }
 
   // ===== 포인트(발자국 포인트) 시스템 =====
@@ -2242,14 +2259,29 @@
   }
 
   function renderStats(){
-    document.getElementById('stat-courses').textContent = allCourses().length;
-    document.getElementById('stat-bins').textContent = allBins().length;
+    const courseCount = allCourses().length;
+    const binCount = allBins().length;
     let totalReviewCount = 0;
     allCourses().forEach(c=>{
       const userList = reviews[c.id] || [];
       totalReviewCount += userList.length > 0 ? userList.length : (SEED_REVIEWS[c.id] || []).length;
     });
-    document.getElementById('stat-reviews').textContent = totalReviewCount;
+    const statMap = [
+      ['stat-courses', courseCount],
+      ['stat-bins', binCount],
+      ['stat-reviews', totalReviewCount],
+    ];
+    statMap.forEach(([id, count])=>{
+      const numEl = document.getElementById(id);
+      if(!numEl) return;
+      const statEl = numEl.closest('.stat');
+      if(count > 0){
+        numEl.textContent = count;
+        if(statEl) statEl.style.display = '';
+      } else if(statEl) {
+        statEl.style.display = 'none';
+      }
+    });
   }
 
   function avgRating(courseId){
@@ -2263,6 +2295,8 @@
     const b = BADGE_SHOP.find(x=>x.id===badgeId);
     return b ? b.emoji+' ' : '';
   }
+  const TAG_DISPLAY_LABELS = { '목줄해제가능':'🐕 오프리쉬 정보' };
+  function tagLabel(t){ return TAG_DISPLAY_LABELS[t] || t; }
   function authorLabel(ownerId, fallbackName){
     const badge = ownerId && profilesMap[ownerId] ? badgeEmoji(profilesMap[ownerId].badge) : '';
     const name = badge + (fallbackName || '');
@@ -2294,7 +2328,7 @@
         ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
         ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
         <p class="desc">${c.desc||''}</p>
-        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}</div>
+        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}</div>
         <div class="meta-mono">${c.distance||'거리 정보 없음'}${avg ? ' · ★ '+avg+' ('+reviewsFor(c.id).length+')' : ''}</div>
         <div class="card-foot">
           <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
@@ -3470,7 +3504,8 @@
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
       <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
-      ${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}
+      ${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}
+      ${(c.tags||[]).includes('목줄해제가능') ? '<div style="width:100%; font-size:12px; color:var(--muted-text); margin-top:6px;">※ 이용자 제보 정보이며, 현장 규정을 반드시 확인해주세요.</div>' : ''}
     `;
     renderReviewList(courseId);
     document.getElementById('review-as').textContent = myNickname ? '"'+myNickname+'"로 리뷰가 등록돼요' : '리뷰를 남기려면 로그인이 필요해요';
