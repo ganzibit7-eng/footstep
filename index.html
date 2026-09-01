@@ -427,8 +427,151 @@
     .nav-cta{ display:none; }
     .draw-mode-btn{ font-size:13px; padding:12px 6px; }
     .bottom-tab-bar{ display:flex; }
-    body{ padding-bottom:64px; }
+    body{ padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px)); }
+    input, select, textarea{ font-size:16px !important; }
+    #map{ height:50vh; min-height:320px; }
   }
+
+  /* ===== Home redesign ===== */
+  .home-content{ background:var(--paper); border-top:1px solid var(--line); padding:42px 0 88px; }
+  .hero-copy{min-width:0;}
+  .home-search{
+    display:flex; align-items:center; max-width:560px; margin-top:26px;
+    background:var(--paper); border:1px solid rgba(251,248,241,.22); border-radius:12px;
+    padding:5px 5px 5px 14px; box-shadow:0 10px 30px rgba(0,0,0,.12);
+  }
+  .home-search-icon{font-size:23px; color:#857b65; line-height:1; transform:rotate(-20deg); margin-right:7px;}
+  .home-search input{
+    min-width:0; flex:1; border:0; outline:0; background:transparent; color:var(--ink);
+    font:500 14px/1.2 'Sunflower',sans-serif; padding:11px 7px;
+  }
+  .home-search input::placeholder{color:#77705f;}
+  .home-search button{
+    border:0; border-radius:9px; background:var(--clay); color:#fff; font-weight:800;
+    padding:11px 17px; cursor:pointer; font-family:inherit;
+  }
+  .home-main-actions{margin-top:14px;}
+  .home-location-btn{box-shadow:0 8px 22px rgba(0,0,0,.14);}
+  .hero-side{display:flex; flex-direction:column; gap:12px;}
+  .hero-mini-card{
+    display:flex; align-items:center; gap:13px; background:rgba(251,248,241,.08);
+    border:1px solid rgba(251,248,241,.18); border-radius:var(--radius); padding:16px 18px; color:var(--paper);
+  }
+  .hero-mini-card .mini-card-icon{font-size:26px;}
+  .hero-mini-card strong{display:block; font-size:14px;}
+  .hero-mini-card span{display:block; font-size:12px; opacity:.65; margin-top:3px;}
+  .hero-mini-card a{margin-left:auto; color:var(--gold); font-size:22px; text-decoration:none;}
+  .home-stat-row{margin-top:30px; gap:26px;}
+  .home-stat-row .stat .num{font-size:30px;}
+  .home-quick-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:52px;
+  }
+  .quick-card{
+    display:flex; align-items:center; gap:12px; min-width:0; padding:17px 18px; border:1px solid var(--line);
+    background:var(--paper); border-radius:14px; box-shadow:0 4px 16px rgba(21,41,34,.04);
+    color:var(--ink); text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .quick-card:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:#cfc5ad;}
+  .quick-icon{width:42px;height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--sand);font-size:21px;}
+  .quick-card b{display:block;font-size:15px;color:var(--pine-deep);}
+  .quick-card small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted-text);}
+  .quick-arrow{margin-left:auto;color:var(--clay);font-size:18px;}
+  .home-section-head{margin-bottom:22px;}
+  .section-more{color:var(--clay);font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap;}
+  .home-map-cta{
+    display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:64px;
+    background:var(--pine-deep);color:var(--paper);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .home-map-copy{padding:34px 34px 36px;}
+  .home-map-copy .kicker,.home-walk-cta .kicker,.home-register-cta .kicker{color:var(--gold);}
+  .home-map-copy h2,.home-register-cta h2,.home-walk-cta h2{color:var(--paper);font-size:clamp(26px,3.2vw,36px);line-height:1.18;margin:8px 0 12px;}
+  .home-map-copy p,.home-register-cta p,.home-walk-cta p{color:rgba(251,248,241,.72);font-size:14px;line-height:1.7;max-width:48ch;margin-bottom:22px;}
+  .home-map-visual{position:relative;min-height:280px;background:#d8d6c6;overflow:hidden;}
+  .home-map-visual:before{content:"";position:absolute;inset:-15%;background:
+    linear-gradient(28deg,transparent 47%,rgba(255,255,255,.65) 48%,rgba(255,255,255,.65) 51%,transparent 52%),
+    linear-gradient(125deg,transparent 42%,rgba(255,255,255,.5) 43%,rgba(255,255,255,.5) 45%,transparent 46%),
+    repeating-linear-gradient(90deg,transparent 0 48px,rgba(78,92,68,.08) 49px 50px);
+    transform:rotate(-8deg);}
+  .fake-map-line{position:absolute;border:4px solid rgba(76,111,83,.38);border-radius:50%;width:330px;height:130px;transform:rotate(-18deg);}
+  .line-a{left:-30px;top:65px}.line-b{left:90px;top:135px;width:300px;height:100px}.line-c{right:-100px;top:10px;width:250px;height:100px;}
+  .fake-pin{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.16);font-size:18px;}
+  .pin-1{left:25%;top:27%}.pin-2{left:61%;top:54%}.pin-3{left:39%;top:70%}.pin-4{right:13%;top:25%}
+  .fake-you{position:absolute;z-index:3;left:49%;top:43%;font-size:29px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.18));}
+  .home-walk-cta{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:64px;
+    background:var(--sand);border:1px solid var(--line);border-radius:18px;padding:26px 28px;
+  }
+  .home-walk-cta h2{color:var(--pine-deep);font-size:25px;margin-top:5px;}
+  .home-walk-cta p{color:#57513f;margin:5px 0 0;max-width:58ch;}
+  .home-walk-cta .btn-primary{flex:0 0 auto;}
+  .home-register-cta{
+    margin-top:64px;background:linear-gradient(135deg,var(--clay-dark),var(--clay));border-radius:20px;
+    padding:32px 34px;display:flex;align-items:center;justify-content:space-between;gap:28px;color:#fff;box-shadow:var(--shadow);
+  }
+  .home-register-cta h2{margin-top:7px;}
+  .home-register-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;}
+  .home-register-cta .btn-ghost.light{border-color:rgba(255,255,255,.4);color:#fff;}
+  .home-etiquette{
+    display:flex;align-items:center;gap:14px;margin-top:24px;padding:17px 18px;border-top:1px solid var(--line);
+  }
+  .etiquette-icon{font-size:25px;}
+  .home-etiquette strong{display:block;color:var(--pine-deep);font-size:14px;}
+  .home-etiquette span{display:block;color:var(--muted-text);font-size:12px;margin-top:3px;}
+  .home-etiquette a{margin-left:auto;color:var(--clay);font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap;}
+  @media(max-width:880px){
+    .hero{padding:46px 18px 36px;}
+    .hero-inner{gap:24px;}
+    .hero h1{font-size:38px;line-height:1.06;}
+    .hero p.lead{font-size:15px;margin-top:14px;}
+    .home-search{margin-top:20px;}
+    .home-main-actions{display:block;}
+    .home-main-actions a{display:block;text-align:center;width:100%;box-sizing:border-box;}
+    .home-main-actions .btn-ghost{margin-top:9px;}
+    .home-stat-row{gap:17px;margin-top:25px;}
+    .home-stat-row .stat .num{font-size:24px;}
+    .home-stat-row .stat .label{font-size:9px;}
+    .hero-side{display:grid;grid-template-columns:1fr;gap:10px;}
+    .home-content{padding:24px 0 55px;}
+    .home-quick-grid{grid-template-columns:1fr;gap:9px;margin-bottom:38px;}
+    .quick-card{padding:14px 15px;}
+    .home-section-head{align-items:flex-start;gap:8px;margin-bottom:15px;}
+    .home-section-head h2{font-size:25px;}
+    .home-section-head p{font-size:13px;}
+    .section-more{padding-top:7px;}
+    .home-map-cta{grid-template-columns:1fr;margin-top:42px;border-radius:16px;}
+    .home-map-copy{padding:26px 22px 24px;}
+    .home-map-copy h2{font-size:27px;}
+    .home-map-visual{min-height:210px;}
+    .home-walk-cta{display:block;margin-top:42px;padding:23px 20px;}
+    .home-walk-cta h2{font-size:23px;}
+    .home-walk-cta .btn-primary{display:block;text-align:center;margin-top:17px;}
+    .home-register-cta{display:block;margin-top:42px;padding:26px 22px;border-radius:16px;}
+    .home-register-cta h2{font-size:27px;}
+    .home-register-actions{justify-content:stretch;}
+    .home-register-actions a{flex:1;text-align:center;padding-left:10px;padding-right:10px;}
+    .home-etiquette{align-items:flex-start;padding:16px 4px;}
+    .home-etiquette a{padding-top:5px;}
+  }
+  @media(max-width:430px){
+    .home-stat-row{justify-content:space-between;gap:7px;}
+    .home-stat-row .stat{min-width:0;}
+    .home-stat-row .stat .num{font-size:21px;}
+    .home-stat-row .stat .label{letter-spacing:.02em;}
+    .home-register-actions{display:block;}
+    .home-register-actions a{display:block;margin-top:8px;}
+  }
+
+  /* ===== 접근성/터치 개선 ===== */
+  body{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  button, a, input, select, textarea{ touch-action:manipulation; }
+  button{ cursor:pointer; }
+  button:disabled{ cursor:not-allowed; opacity:.55; }
+  img{ max-width:100%; height:auto; }
+  :focus-visible{ outline:3px solid rgba(197,122,49,.45); outline-offset:2px; }
+  @media(prefers-reduced-motion: reduce){
+    *, *::before, *::after{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -458,13 +601,13 @@
 <nav class="bottom-tab-bar" id="bottom-tab-bar" aria-label="주요 메뉴">
   <button data-page-nav="home"><span class="tab-icon">🏠</span><span>홈</span></button>
   <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
-  <button data-page-nav="list"><span class="tab-icon">📋</span><span>목록</span></button>
-  <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>기록</span></button>
+  <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>산책</span></button>
   <button data-page-nav="register"><span class="tab-icon">➕</span><span>등록</span></button>
 </nav>
 
+
 <section class="hero app-page active" data-page-section="home">
-  <svg class="contour-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="contour-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g fill="none" stroke="#C79A3C" stroke-width="1">
       <path d="M-50,420 C 200,380 300,460 500,410 S 800,340 1000,400 S 1250,380 1300,420" opacity="0.5"/>
       <path d="M-50,380 C 220,340 320,420 520,370 S 820,300 1020,360 S 1250,340 1300,380" opacity="0.4"/>
@@ -472,56 +615,127 @@
       <path d="M-50,300 C 260,260 360,340 560,290 S 860,220 1060,280 S 1250,260 1300,300" opacity="0.2"/>
     </g>
   </svg>
+
   <div class="wrap hero-inner">
-    <div>
-      <span class="eyebrow">전국 · 반려견 산책 지도</span>
-      <h1>동네에 숨은 <em>산책로</em>를,<br>함께 그려갑니다</h1>
-      <p class="lead">잔디밭, 그늘, 목줄 해제 구역까지 — 우리 강아지에게 맞는 산책 코스를 찾고, 배변봉투함 위치까지 한 지도에서 확인하세요. 정보는 이웃 반려인들이 직접 채워갑니다.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="#" data-page-nav="map">지도 둘러보기</a>
-        <a class="btn-ghost" href="#" data-page-nav="register">내 코스 등록하기</a>
+    <div class="hero-copy">
+      <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
+      <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
+      <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
+      <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
+
+      <div class="home-search">
+        <span class="home-search-icon">⌕</span>
+        <input id="home-course-search" type="search" placeholder="산책코스·지역을 검색해보세요" autocomplete="off" aria-label="산책코스 또는 지역 검색">
+        <button type="button" id="home-search-btn" aria-label="검색">검색</button>
       </div>
-      <div class="stat-row">
+
+      <div class="hero-actions home-main-actions">
+        <a class="btn-primary home-location-btn" href="#" data-page-nav="map">📍 내 주변 산책코스 찾기</a>
+        <a class="btn-ghost" href="#" data-page-nav="register">+ 우리 동네 코스 등록</a>
+      </div>
+
+      <div class="stat-row home-stat-row">
         <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
-        <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함 위치</div></div>
+        <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함</div></div>
         <div class="stat"><div class="num" id="stat-reviews">–</div><div class="label">이용자 리뷰</div></div>
-        <div class="stat"><div class="num">전국</div><div class="label">서비스 범위</div></div>
       </div>
     </div>
-    <div class="hero-card" id="weather-card">
-      <span class="tag">오늘 산책 날씨</span>
-      <h3 id="weather-title">불러오는 중...</h3>
-      <p id="weather-desc">위치 정보를 확인하고 있어요.</p>
-      <div class="meta" id="weather-meta"></div>
+
+    <div class="hero-side">
+      <div class="hero-card home-weather-card" id="weather-card">
+        <span class="tag">오늘 산책 날씨</span>
+        <h3 id="weather-title">불러오는 중...</h3>
+        <p id="weather-desc">위치 정보를 확인하고 있어요.</p>
+        <div class="meta" id="weather-meta"></div>
+      </div>
+
+      <div class="hero-mini-card">
+        <div class="mini-card-icon">🗺️</div>
+        <div>
+          <strong>우리 동네 산책 지도</strong>
+          <span>코스·봉투함·동반시설을 한눈에</span>
+        </div>
+        <a href="#" data-page-nav="map" aria-label="지도 보기">→</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="nearby-section" class="app-page active" data-page-section="home" style="background:var(--paper); padding:56px 0; border-top:1px solid var(--line);">
+<section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
-    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin-bottom:32px; box-shadow:var(--shadow);">
+
+    <div class="home-quick-grid">
+      <a href="#" class="quick-card" data-page-nav="map">
+        <span class="quick-icon">🗺️</span>
+        <span><b>산책코스 찾기</b><small>내 주변 코스를 지도에서</small></span>
+        <span class="quick-arrow">→</span>
+      </a>
+      <a href="#" class="quick-card" data-page-nav="walk">
+        <span class="quick-icon">🐾</span>
+        <span><b>오늘 산책하기</b><small>GPS로 걸은 길을 기록해요</small></span>
+        <span class="quick-arrow">→</span>
+      </a>
+      <a href="#" class="quick-card" data-page-nav="register">
+        <span class="quick-icon">➕</span>
+        <span><b>코스 등록하기</b><small>좋은 산책길을 함께 공유해요</small></span>
+        <span class="quick-arrow">→</span>
+      </a>
+    </div>
+
+    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:0 0 32px; box-shadow:var(--shadow);">
       <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85; text-transform:uppercase;">Monthly Champion</div>
       <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
       <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
     </div>
-    <div class="section-head">
+
+    <div class="section-head home-section-head">
       <div>
         <span class="kicker" id="nearby-kicker">Nearby Picks</span>
         <h2 id="nearby-title">우리 동네 추천 코스</h2>
-        <p id="nearby-desc">프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.</p>
+        <p id="nearby-desc">프로필에서 지역을 등록하면 우리 동네와 가까운 코스를 먼저 보여드려요.</p>
+      </div>
+      <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
+    </div>
+    <div class="grid home-course-grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+
+    <div class="home-map-cta">
+      <div class="home-map-copy">
+        <span class="kicker">Live Map</span>
+        <h2>내 주변 산책 지도를<br>한눈에 확인하세요.</h2>
+        <p>산책코스와 배변봉투함은 물론 동물병원, 애견용품점, 동반 식당·카페, 숙소까지 찾아볼 수 있어요.</p>
+        <a href="#" class="btn-primary" data-page-nav="map">🗺️ 지도 크게 보기</a>
+      </div>
+      <div class="home-map-visual" aria-hidden="true">
+        <div class="fake-map-line line-a"></div>
+        <div class="fake-map-line line-b"></div>
+        <div class="fake-map-line line-c"></div>
+        <span class="fake-pin pin-1">🐾</span>
+        <span class="fake-pin pin-2">🐾</span>
+        <span class="fake-pin pin-3">🚮</span>
+        <span class="fake-pin pin-4">🏥</span>
+        <span class="fake-you">📍</span>
       </div>
     </div>
-    <div class="grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <div id="recent-added-wrap" style="display:none; margin-top:48px;">
-      <div class="section-head">
+    <div id="recent-added-wrap" style="display:none; margin-top:64px;">
+      <div class="section-head home-section-head">
         <div>
           <span class="kicker">Fresh Off the Trail</span>
           <h2>방금 등록된 코스</h2>
           <p>지금도 전국 곳곳에서 이웃 반려인들이 새 코스를 등록하고 있어요.</p>
         </div>
+        <a href="#" class="section-more" data-page-nav="list">전체 보기 →</a>
       </div>
       <div class="grid" id="recent-added-grid"></div>
+    </div>
+
+    <div class="home-walk-cta">
+      <div>
+        <span class="kicker">GPS Walk Log</span>
+        <h2>오늘도 발자국을 남겨볼까요? 🐾</h2>
+        <p>걸은 거리와 시간을 기록하고, 나만의 산책 기록을 차곡차곡 쌓아보세요.</p>
+      </div>
+      <a href="#" class="btn-primary" data-page-nav="walk">산책 시작하기</a>
     </div>
 
     <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
@@ -532,6 +746,27 @@
         </div>
       </div>
       <div class="grid" id="recent-viewed-grid"></div>
+    </div>
+
+    <div class="home-register-cta">
+      <div>
+        <span class="kicker">Community</span>
+        <h2>우리 동네 산책길을<br>다른 반려인에게 알려주세요.</h2>
+        <p>지도에 없는 산책코스나 배변봉투함을 발견했다면 발자국에 등록해주세요.</p>
+      </div>
+      <div class="home-register-actions">
+        <a href="#" class="btn-primary" data-page-nav="register">+ 산책코스 등록</a>
+        <a href="#" class="btn-ghost light" data-page-nav="register">🚮 배변봉투함 등록</a>
+      </div>
+    </div>
+
+    <div class="home-etiquette">
+      <div class="etiquette-icon">🐕</div>
+      <div>
+        <strong>함께 걷는 우리 동네, 함께 지켜요.</strong>
+        <span>목줄은 기본 · 배변은 바로 처리 · 사람과 강아지를 서로 배려하기</span>
+      </div>
+      <a href="#" data-page-nav="etiquette">펫티켓 보기 →</a>
     </div>
   </div>
 </section>
@@ -608,7 +843,7 @@
           <div class="chip" data-diff-filter="어려움">어려움</div>
         </div>
         <div class="filter-group" id="list-tag-filter">
-          <div class="chip" data-tag-filter="목줄해제가능">목줄해제가능</div>
+          <div class="chip" data-tag-filter="목줄해제가능">🐕 오프리쉬 정보</div>
           <div class="chip" data-tag-filter="그늘많음">그늘많음</div>
           <div class="chip" data-tag-filter="잔디바닥">잔디바닥</div>
           <div class="chip" data-tag-filter="계단없음">계단없음</div>
@@ -727,11 +962,12 @@
               <div class="tag-check" data-tag="그늘많음">그늘많음</div>
               <div class="tag-check" data-tag="잔디바닥">잔디바닥</div>
               <div class="tag-check" data-tag="계단없음">계단없음</div>
-              <div class="tag-check" data-tag="목줄해제가능">목줄해제가능</div>
+              <div class="tag-check" data-tag="목줄해제가능">🐕 오프리쉬 정보</div>
               <div class="tag-check" data-tag="정수대있음">정수대있음</div>
               <div class="tag-check" data-tag="입마개필요">입마개필요</div>
               <div class="tag-check" data-tag="야생동물주의">야생동물주의</div>
             </div>
+            <p style="font-size:12px; color:var(--muted-text); margin:6px 0 0;">※ "오프리쉬 정보"는 이용자 제보이며, 현장 규정은 반드시 별도로 확인해주세요.</p>
             <label>난이도</label>
             <div class="tag-check-group" id="diff-group">
               <div class="tag-check on" data-diff="쉬움">쉬움</div>
@@ -966,15 +1202,26 @@
         <p style="font-size:13px; color:#6B6550; margin-top:4px;">관리자 전용 화면이에요.</p>
         <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
+        <div style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span id="live-visitor-dot" style="width:10px; height:10px; border-radius:50%; background:#3E9142; display:inline-block; box-shadow:0 0 0 4px rgba(62,145,66,.18);"></span>
+            <div>
+              <div style="font-family:'Jua',sans-serif; font-size:20px; color:var(--pine-deep);" id="live-visitor-count">–</div>
+              <div style="font-size:11.5px; color:var(--muted-text);">🟢 지금 접속 중 (최근 5분 기준)</div>
+            </div>
+          </div>
+          <span style="font-size:11px; color:var(--muted-text);" id="live-visitor-updated"></span>
+        </div>
+
         <div style="margin-top:8px;">
           <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">📅 오늘의 활동</h4>
           <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px;"></div>
         </div>
 
         <div style="margin-top:24px;">
-          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">⏰ 오늘 시간대별 방문자</h4>
-          <div id="admin-hourly-chart" style="display:flex; align-items:flex-end; gap:2px; height:100px; padding:8px; background:var(--sand); border-radius:10px;"></div>
-          <div id="admin-hourly-labels" style="display:flex; gap:2px; margin-top:4px; font-size:9px; color:var(--muted-text); text-align:center;"></div>
+          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">⏰ 시간대별 접속 현황 (오늘)</h4>
+          <div id="admin-hourly-stats" style="display:flex; align-items:flex-end; gap:3px; height:90px; padding:6px 2px; border-bottom:1px solid var(--line);"></div>
+          <div id="admin-hourly-labels" style="display:flex; gap:3px; font-size:9px; color:var(--muted-text); margin-top:4px;"></div>
         </div>
 
         <div style="margin-top:24px;">
@@ -988,9 +1235,15 @@
         </div>
 
         <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
-          <h3 style="font-size:20px;">👥 회원 활동 관리</h3>
-          <p style="font-size:13px; color:#6B6550; margin-top:4px;">닉네임·활동량 기준으로 정리했어요. (로그인 정보 자체는 표시되지 않아요)</p>
-          <input type="text" id="member-search-input" placeholder="🔍 닉네임으로 찾기" style="width:100%; margin-top:10px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13.5px;">
+          <h3 style="font-size:20px;">👥 전체 가입 회원 (<span id="all-member-count">0</span>명)</h3>
+          <p style="font-size:13px; color:#6B6550; margin-top:4px;">가입일 최신순이에요. 닉네임으로 검색할 수 있어요.</p>
+          <input type="text" id="all-member-search" placeholder="닉네임으로 검색" style="width:100%; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; margin:10px 0; font-family:inherit; font-size:13px;">
+          <div id="all-member-list" style="max-height:320px; overflow-y:auto;"></div>
+        </div>
+
+        <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
+          <h3 style="font-size:20px;">📌 회원 활동 관리</h3>
+          <p style="font-size:13px; color:#6B6550; margin-top:4px;">코스·배변함·리뷰를 등록한 회원만 모았어요. 문제 있는 게시물을 한 번에 정리할 때 써요.</p>
           <div id="member-list" style="margin-top:16px;"></div>
         </div>
       </div>
@@ -1571,6 +1824,7 @@
       if(error){ toast('지역 저장에 실패했어요'); return; }
       myRegionName = text; myRegionLat = geo.lat; myRegionLng = geo.lng;
       toast(`"${text}" 지역으로 설정됐어요 📍`);
+      renderHeroGreeting();
       loadNearbyRecommendations();
     }catch(e){ console.error(e); toast('지역 저장에 실패했어요'); }
   }
@@ -1845,6 +2099,21 @@
       avatarEl.style.display = 'none';
       dotEl.style.display = '';
     }
+    renderHeroGreeting();
+  }
+
+  function renderHeroGreeting(){
+    const greetingEl = document.getElementById('hero-greeting');
+    const eyebrowEl = document.getElementById('hero-eyebrow');
+    if(!greetingEl || !eyebrowEl) return;
+    if(myDeviceId && myNickname){
+      greetingEl.textContent = `안녕하세요, ${myNickname}님 🐾`;
+      greetingEl.style.display = '';
+      eyebrowEl.textContent = myRegionName ? `📍 ${myRegionName} 근처 산책코스` : '📍 내 주변 강아지 산책코스';
+    } else {
+      greetingEl.style.display = 'none';
+      eyebrowEl.textContent = '📍 내 주변 강아지 산책코스';
+    }
   }
 
   // ===== 포인트(발자국 포인트) 시스템 =====
@@ -2014,14 +2283,29 @@
   }
 
   function renderStats(){
-    document.getElementById('stat-courses').textContent = allCourses().length;
-    document.getElementById('stat-bins').textContent = allBins().length;
+    const courseCount = allCourses().length;
+    const binCount = allBins().length;
     let totalReviewCount = 0;
     allCourses().forEach(c=>{
       const userList = reviews[c.id] || [];
       totalReviewCount += userList.length > 0 ? userList.length : (SEED_REVIEWS[c.id] || []).length;
     });
-    document.getElementById('stat-reviews').textContent = totalReviewCount;
+    const statMap = [
+      ['stat-courses', courseCount],
+      ['stat-bins', binCount],
+      ['stat-reviews', totalReviewCount],
+    ];
+    statMap.forEach(([id, count])=>{
+      const numEl = document.getElementById(id);
+      if(!numEl) return;
+      const statEl = numEl.closest('.stat');
+      if(count > 0){
+        numEl.textContent = count;
+        if(statEl) statEl.style.display = '';
+      } else if(statEl) {
+        statEl.style.display = 'none';
+      }
+    });
   }
 
   function avgRating(courseId){
@@ -2035,6 +2319,8 @@
     const b = BADGE_SHOP.find(x=>x.id===badgeId);
     return b ? b.emoji+' ' : '';
   }
+  const TAG_DISPLAY_LABELS = { '목줄해제가능':'🐕 오프리쉬 정보' };
+  function tagLabel(t){ return TAG_DISPLAY_LABELS[t] || t; }
   function authorLabel(ownerId, fallbackName){
     const badge = ownerId && profilesMap[ownerId] ? badgeEmoji(profilesMap[ownerId].badge) : '';
     const name = badge + (fallbackName || '');
@@ -2066,7 +2352,7 @@
         ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
         ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
         <p class="desc">${c.desc||''}</p>
-        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}</div>
+        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}</div>
         <div class="meta-mono">${c.distance||'거리 정보 없음'}${avg ? ' · ★ '+avg+' ('+reviewsFor(c.id).length+')' : ''}</div>
         <div class="card-foot">
           <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
@@ -3242,7 +3528,8 @@
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
       <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
-      ${(c.tags||[]).map(t=>`<span class="tag-pill">${t}</span>`).join('')}
+      ${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}
+      ${(c.tags||[]).includes('목줄해제가능') ? '<div style="width:100%; font-size:12px; color:var(--muted-text); margin-top:6px;">※ 이용자 제보 정보이며, 현장 규정을 반드시 확인해주세요.</div>' : ''}
     `;
     renderReviewList(courseId);
     document.getElementById('review-as').textContent = myNickname ? '"'+myNickname+'"로 리뷰가 등록돼요' : '리뷰를 남기려면 로그인이 필요해요';
@@ -3861,6 +4148,19 @@
   }
   logPageView();
 
+  // 실시간 접속자 하트비트: 30초마다 내 방문자ID의 최근 접속시각을 갱신
+  async function sendHeartbeat(){
+    try{
+      await sb.from('presence').upsert(
+        [{ visitor_id: getVisitorId(), last_seen: new Date().toISOString(), page: currentPage || 'home' }],
+        { onConflict: 'visitor_id' }
+      );
+    }catch(e){ /* presence 테이블이 아직 없으면 조용히 무시 */ }
+  }
+  sendHeartbeat();
+  setInterval(()=>{ if(document.visibilityState === 'visible') sendHeartbeat(); }, 30000);
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'visible') sendHeartbeat(); });
+
   captureReferralFromUrl();
   if('serviceWorker' in navigator){
     window.addEventListener('load', ()=>{
@@ -4006,23 +4306,12 @@
     }catch(e){ console.error(e); }
     return stats;
   }
-  let cachedMemberStats = null;
   async function renderMemberList(){
     const el = document.getElementById('member-list');
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    cachedMemberStats = await buildMemberStats();
-    renderMemberListFiltered();
-  }
-  function renderMemberListFiltered(){
-    const el = document.getElementById('member-list');
-    const stats = cachedMemberStats;
-    if(!stats) return;
-    const query = (document.getElementById('member-search-input').value || '').trim().toLowerCase();
-    let ids = Object.keys(stats);
-    if(query){
-      ids = ids.filter(id => (stats[id].author||'').toLowerCase().includes(query));
-    }
-    if(!ids.length){ el.innerHTML = '<p class="empty-admin">조건에 맞는 회원이 없어요.</p>'; return; }
+    const stats = await buildMemberStats();
+    const ids = Object.keys(stats);
+    if(!ids.length){ el.innerHTML = '<p class="empty-admin">활동 내역이 있는 회원이 없어요.</p>'; return; }
     ids.sort((a,b)=> (stats[b].courses+stats[b].bins+stats[b].reviews) - (stats[a].courses+stats[a].bins+stats[a].reviews));
     el.innerHTML = ids.map(id=>{
       const s = stats[id];
@@ -4039,7 +4328,6 @@
       btn.addEventListener('click', ()=> wipeMemberContent(btn.dataset.wipeMember));
     });
   }
-  document.getElementById('member-search-input').addEventListener('input', renderMemberListFiltered);
   async function wipeMemberContent(ownerId){
     if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
     if(!confirm('이 회원이 등록한 코스·배변봉투함·리뷰를 전부 삭제할까요? 되돌릴 수 없어요.')) return;
@@ -4087,7 +4375,93 @@
     }
     renderAdminTodayStats();
     renderAdminTopCourses();
+    renderHourlyStats();
+    renderAllMemberList();
   }
+
+  // ===== 실시간 접속자 =====
+  let liveVisitorInterval = null;
+  async function renderLiveVisitorCount(){
+    const countEl = document.getElementById('live-visitor-count');
+    const updatedEl = document.getElementById('live-visitor-updated');
+    if(!countEl) return;
+    try{
+      const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
+      const { data, error } = await sb.from('presence').select('visitor_id').gte('last_seen', fiveMinAgo);
+      if(error){ countEl.textContent = '–'; if(updatedEl) updatedEl.textContent = '(presence 테이블 필요)'; return; }
+      const uniqueCount = new Set((data||[]).map(r=>r.visitor_id)).size;
+      countEl.textContent = uniqueCount + '명';
+      if(updatedEl){
+        const now = new Date();
+        updatedEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} 기준`;
+      }
+    }catch(e){ console.error(e); countEl.textContent = '–'; }
+  }
+
+  // ===== 시간대별(오늘) 접속 통계 =====
+  async function renderHourlyStats(){
+    const barsEl = document.getElementById('admin-hourly-stats');
+    const labelsEl = document.getElementById('admin-hourly-labels');
+    if(!barsEl || !labelsEl) return;
+    try{
+      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const { data, error } = await sb.from('page_views').select('created_at').gte('created_at', todayStart.toISOString()).limit(5000);
+      if(error) throw error;
+      const hourCounts = new Array(24).fill(0);
+      (data||[]).forEach(row=>{
+        const h = new Date(row.created_at).getHours();
+        hourCounts[h]++;
+      });
+      const maxCount = Math.max(1, ...hourCounts);
+      const nowHour = new Date().getHours();
+      barsEl.innerHTML = hourCounts.map((count, h)=>{
+        const heightPct = Math.max(3, Math.round((count / maxCount) * 100));
+        const isNow = h === nowHour;
+        return `<div title="${h}시: ${count}건" style="flex:1; height:${heightPct}%; background:${isNow ? 'var(--clay)' : 'var(--gold)'}; border-radius:3px 3px 0 0; min-width:3px;"></div>`;
+      }).join('');
+      labelsEl.innerHTML = hourCounts.map((_, h)=> h % 3 === 0 ? `<span style="flex:3; text-align:center;">${h}</span>` : `<span style="flex:1;"></span>`).join('');
+    }catch(e){
+      console.error(e);
+      barsEl.innerHTML = '<p class="empty-admin" style="font-size:12px;">시간대별 통계를 불러오지 못했어요.</p>';
+    }
+  }
+
+  // ===== 전체 가입 회원 목록 =====
+  let allMembersCache = [];
+  async function renderAllMemberList(){
+    const el = document.getElementById('all-member-list');
+    const countEl = document.getElementById('all-member-count');
+    if(!el) return;
+    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    try{
+      const { data, error } = await sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000);
+      if(error) throw error;
+      allMembersCache = data || [];
+      if(countEl) countEl.textContent = allMembersCache.length;
+      paintAllMemberList(allMembersCache);
+    }catch(e){
+      console.error(e);
+      el.innerHTML = '<p class="empty-admin">회원 목록을 불러오지 못했어요.</p>';
+    }
+  }
+  function paintAllMemberList(list){
+    const el = document.getElementById('all-member-list');
+    if(!el) return;
+    if(!list.length){ el.innerHTML = '<p class="empty-admin">가입한 회원이 없어요.</p>'; return; }
+    el.innerHTML = list.map(m=>{
+      const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
+      const isAdmin = m.owner_id === ADMIN_UID;
+      return `
+        <div class="admin-row">
+          <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined}</div>
+        </div>`;
+    }).join('');
+  }
+  document.getElementById('all-member-search').addEventListener('input', (e)=>{
+    const q = e.target.value.trim().toLowerCase();
+    if(!q){ paintAllMemberList(allMembersCache); return; }
+    paintAllMemberList(allMembersCache.filter(m => (m.nickname||'').toLowerCase().includes(q)));
+  });
   async function renderAdminTodayStats(){
     const el = document.getElementById('admin-today-stats');
     if(!el) return;
@@ -4101,7 +4475,7 @@
         sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', iso),
-        sb.from('page_views').select('visitor_id, created_at').gte('created_at', iso).limit(5000),
+        sb.from('page_views').select('visitor_id').gte('created_at', iso).limit(5000),
       ]);
       const todayVisitorRows = todayViews.data || [];
       const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
@@ -4115,31 +4489,10 @@
         { num: newWalks.count||0, label:'오늘 산책기록' },
       ];
       el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
-      renderAdminHourlyChart(todayVisitorRows);
     }catch(e){
       console.error(e);
       el.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>';
     }
-  }
-  function renderAdminHourlyChart(visitorRows){
-    const chartEl = document.getElementById('admin-hourly-chart');
-    const labelsEl = document.getElementById('admin-hourly-labels');
-    if(!chartEl) return;
-    const hourCounts = new Array(24).fill(0);
-    visitorRows.forEach(r=>{
-      const h = new Date(r.created_at).getHours();
-      hourCounts[h]++;
-    });
-    const max = Math.max(1, ...hourCounts);
-    const nowHour = new Date().getHours();
-    chartEl.innerHTML = hourCounts.map((count, h)=>{
-      const heightPct = Math.max(4, Math.round((count/max)*100));
-      const isNow = h === nowHour;
-      return `<div title="${h}시: ${count}명" style="flex:1; height:${heightPct}%; background:${isNow?'var(--clay)':'var(--moss)'}; border-radius:3px 3px 0 0; min-width:2px;"></div>`;
-    }).join('');
-    labelsEl.innerHTML = hourCounts.map((_, h)=>
-      `<div style="flex:1;">${h % 3 === 0 ? h : ''}</div>`
-    ).join('');
   }
   function renderAdminTopCourses(){
     const el = document.getElementById('admin-top-courses');
@@ -4160,14 +4513,38 @@
     renderAdminStats();
     renderAdminList();
     renderMemberList();
+    renderLiveVisitorCount();
+    if(liveVisitorInterval) clearInterval(liveVisitorInterval);
+    liveVisitorInterval = setInterval(renderLiveVisitorCount, 15000);
     document.getElementById('admin-overlay').classList.add('show');
   });
   document.getElementById('admin-close').addEventListener('click', ()=>{
     document.getElementById('admin-overlay').classList.remove('show');
+    if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
   });
   document.getElementById('admin-overlay').addEventListener('click', (e)=>{
-    if(e.target.id === 'admin-overlay') document.getElementById('admin-overlay').classList.remove('show');
+    if(e.target.id === 'admin-overlay'){
+      document.getElementById('admin-overlay').classList.remove('show');
+      if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
+    }
   });
+
+
+  // ===== Home redesign interactions =====
+  const homeSearchInput = document.getElementById('home-course-search');
+  const homeSearchBtn = document.getElementById('home-search-btn');
+  function runHomeSearch(){
+    const q = (homeSearchInput?.value || '').trim();
+    showPage('list');
+    const listInput = document.getElementById('course-search-input');
+    if(listInput){
+      listInput.value = q;
+      listInput.dispatchEvent(new Event('input', {bubbles:true}));
+      listInput.focus();
+    }
+  }
+  if(homeSearchBtn) homeSearchBtn.addEventListener('click', runHomeSearch);
+  if(homeSearchInput) homeSearchInput.addEventListener('keydown', e=>{ if(e.key==='Enter') runHomeSearch(); });
 
   ensureIdentity().then(()=>{
     loadMyWalks();
