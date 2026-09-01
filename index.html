@@ -375,6 +375,8 @@
   }
   .card-foot{ display:flex; justify-content:space-between; align-items:center; margin-top:2px; }
   .card-owner-tag{ font-size:12px; color:#3F5A3D; font-weight:700; }
+  .member-link{ cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
+  .member-link:hover{ color:var(--clay); }
   .review-item .rh-actions{ display:flex; gap:8px; align-items:center; }
   .admin-toggle{
     position:fixed; bottom:24px; right:24px; background:var(--pine-deep); color:var(--paper); border:none;
@@ -827,7 +829,14 @@
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
         <div id="modal-route-map"></div>
         <div class="review-section">
-          <h4>다녀온 반려인들의 리뷰</h4>
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
+            <select id="review-sort-select" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
+              <option value="latest">최신순</option>
+              <option value="rating">평점 높은순</option>
+              <option value="helpful">도움순</option>
+            </select>
+          </div>
           <div id="review-list"></div>
           <form class="review-form" id="review-form">
             <div class="star-input" id="star-input">
@@ -960,6 +969,19 @@
 <div class="modal-overlay" id="photo-lightbox" style="background:rgba(0,0,0,0.9); align-items:center;">
   <button class="modal-close" id="photo-lightbox-close" aria-label="닫기" style="position:fixed; top:20px; right:20px;">✕</button>
   <img id="photo-lightbox-img" src="" alt="코스 사진 확대보기" style="max-width:92vw; max-height:88vh; border-radius:8px; object-fit:contain;">
+</div>
+
+<div class="modal-overlay" id="member-profile-overlay">
+  <div class="modal admin-panel">
+    <div class="modal-inner-wrap">
+      <button class="modal-close" id="member-profile-close" aria-label="닫기">✕</button>
+      <div class="modal-body">
+        <h3 id="member-profile-name" style="font-size:22px;"></h3>
+        <p style="font-size:13px; color:#6B6550; margin-top:4px;">이 회원이 등록한 산책 코스예요.</p>
+        <div class="grid" id="member-profile-courses" style="margin-top:16px;"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal-overlay" id="onboarding-overlay">
@@ -1236,11 +1258,37 @@
   let favoriteIds = new Set();
   try{ favoriteIds = new Set(JSON.parse(localStorage.getItem('paw_favorites') || '[]')); }catch(e){}
   function toggleFavorite(courseId){
+    const nowFavorited = !favoriteIds.has(courseId);
     if(favoriteIds.has(courseId)) favoriteIds.delete(courseId);
     else favoriteIds.add(courseId);
     try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(favoriteIds))); }catch(e){}
+    if(myDeviceId){
+      if(nowFavorited){
+        sb.from('favorites').upsert([{ owner_id: myDeviceId, course_id: courseId }]).then(()=>{});
+      } else {
+        sb.from('favorites').delete().eq('owner_id', myDeviceId).eq('course_id', courseId).then(()=>{});
+      }
+    }
     renderGrid();
     loadNearbyRecommendations();
+  }
+  async function syncFavoritesFromServer(){
+    if(!myDeviceId) return;
+    try{
+      const { data } = await sb.from('favorites').select('course_id').eq('owner_id', myDeviceId);
+      const serverIds = (data||[]).map(r=>r.course_id);
+      const localIds = Array.from(favoriteIds);
+      // 서버 목록을 로컬과 합치고, 로컬에만 있던 항목은 서버에도 올려줌
+      const merged = new Set([...serverIds, ...localIds]);
+      favoriteIds = merged;
+      try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(merged))); }catch(e){}
+      const missingOnServer = localIds.filter(id => !serverIds.includes(id));
+      if(missingOnServer.length){
+        await sb.from('favorites').upsert(missingOnServer.map(id => ({ owner_id: myDeviceId, course_id: id })));
+      }
+      renderGrid();
+      loadNearbyRecommendations();
+    }catch(e){ console.error(e); }
   }
   let courseBoosts = {};
   let myRegionName = null, myRegionLat = null, myRegionLng = null;
@@ -1359,6 +1407,7 @@
         toast(`"${myNickname}" 님으로 로그인됐어요 🐾`);
         checkFirstLoginBonus();
         syncProfileTable();
+        syncFavoritesFromServer();
         loadMyWalks();
         renderAll();
       }
@@ -1872,7 +1921,9 @@
   }
   function authorLabel(ownerId, fallbackName){
     const badge = ownerId && profilesMap[ownerId] ? badgeEmoji(profilesMap[ownerId].badge) : '';
-    return badge + (fallbackName || '');
+    const name = badge + (fallbackName || '');
+    if(!ownerId) return name;
+    return `<span class="member-link" data-member="${ownerId}">${name}</span>`;
   }
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
@@ -1909,7 +1960,7 @@
         </div>
       `;
       card.addEventListener('click', (e)=>{
-        if(e.target.closest('button')) return;
+        if(e.target.closest('button') || e.target.closest('.member-link')) return;
         openCourseDetail(c.id);
       });
       containerEl.appendChild(card);
@@ -2259,6 +2310,42 @@
       gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
     }
   }
+  async function openMemberProfile(ownerId){
+    if(!ownerId) return;
+    const modalEl = document.getElementById('member-profile-overlay');
+    const nameEl = document.getElementById('member-profile-name');
+    const gridEl = document.getElementById('member-profile-courses');
+    nameEl.textContent = '불러오는 중...';
+    gridEl.innerHTML = '';
+    modalEl.classList.add('show');
+    try{
+      let profile = profilesMap[ownerId];
+      if(!profile){
+        const { data } = await sb.from('profiles').select('*').eq('owner_id', ownerId).limit(1);
+        profile = data && data[0];
+      }
+      const badge = profile && profile.badge ? badgeEmoji(profile.badge) : '';
+      const nickname = (profile && profile.nickname) || '이용자';
+      nameEl.textContent = `${badge}${nickname} 님의 코스`;
+      const memberCourses = allCourses().filter(c => c.ownerId === ownerId && !isHidden('course', c.id));
+      renderCourseCards(gridEl, memberCourses);
+    }catch(e){
+      console.error(e);
+      nameEl.textContent = '불러오지 못했어요';
+    }
+  }
+  function closeMemberProfile(){
+    document.getElementById('member-profile-overlay').classList.remove('show');
+  }
+  document.getElementById('member-profile-close').addEventListener('click', closeMemberProfile);
+  document.getElementById('member-profile-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'member-profile-overlay') closeMemberProfile();
+  });
+  document.addEventListener('click', (e)=>{
+    const link = e.target.closest('.member-link');
+    if(link){ e.stopPropagation(); openMemberProfile(link.dataset.member); }
+  });
+
   function openPhotoLightbox(url){
     const lb = document.getElementById('photo-lightbox');
     document.getElementById('photo-lightbox-img').src = url;
@@ -2319,6 +2406,9 @@
       loadCoursePhotos(activeCourseId);
     }catch(e){ console.error(e); statusEl.textContent = '업로드 실패'; }
   }
+  document.getElementById('review-sort-select').addEventListener('change', ()=>{
+    if(activeCourseId) renderReviewList(activeCourseId);
+  });
   document.getElementById('photo-upload-input').addEventListener('change', (e)=>{
     const file = e.target.files[0];
     if(file) uploadCoursePhoto(file);
@@ -2802,7 +2892,18 @@
         });
       }catch(e){ console.error(e); }
     }
-    el.innerHTML = rows.map(({r,type}) => {
+    const sortMode = document.getElementById('review-sort-select').value;
+    const userRows = rows.filter(x=>x.type==='user');
+    const seedRows = rows.filter(x=>x.type==='seed');
+    if(sortMode === 'rating'){
+      userRows.sort((a,b)=> b.r.rating - a.r.rating);
+    } else if(sortMode === 'helpful'){
+      userRows.sort((a,b)=> (helpfulMap[b.r.dbId]?.count||0) - (helpfulMap[a.r.dbId]?.count||0));
+    } else {
+      userRows.sort((a,b)=> b.r.dbId - a.r.dbId); // 최신순 (dbId가 클수록 최근 작성)
+    }
+    const sortedRows = seedRows.concat(userRows);
+    el.innerHTML = sortedRows.map(({r,type}) => {
       const isMine = type==='user' && r.ownerId && r.ownerId === myDeviceId;
       const action = type === 'seed' ? ''
         : isMine
