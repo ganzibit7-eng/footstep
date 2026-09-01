@@ -444,8 +444,11 @@
       <a href="#" data-page-nav="etiquette">펫티켓</a>
     </nav>
     <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
-    <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot"></span><span id="profile-label">로그인</span></button>
+    <button class="profile-btn" id="profile-btn" style="margin-left:10px;"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
     <button id="points-badge" style="margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
+    <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">
+      🔔<span id="notif-dot" style="display:none; position:absolute; top:4px; right:5px; width:9px; height:9px; border-radius:50%; background:var(--clay); border:2px solid var(--paper);"></span>
+    </button>
     <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="margin-left:8px; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
   </div>
 </header>
@@ -844,7 +847,10 @@
             </div>
             <p id="review-as" style="font-size:12.5px; color:var(--moss); font-weight:600; margin:0;"></p>
             <textarea id="review-text" placeholder="다녀온 소감을 남겨주세요" required></textarea>
-            <button type="submit" class="submit-btn" style="margin-top:0;">리뷰 남기기</button>
+            <label for="review-photo-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 14px; font-size:12.5px; margin-top:8px;">📷 사진 첨부(선택)</label>
+            <input type="file" id="review-photo-input" accept="image/*" style="display:none;">
+            <span id="review-photo-filename" style="font-size:12px; color:var(--muted-text); margin-left:6px;"></span>
+            <button type="submit" class="submit-btn" style="margin-top:10px;">리뷰 남기기</button>
           </form>
         </div>
       </div>
@@ -880,7 +886,12 @@
 
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
         <label style="margin-top:0;">🐕 우리 강아지 정보</label>
-        <input type="text" id="dog-name-input" placeholder="이름 (예: 몽이)" style="margin-top:8px;">
+        <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+          <div id="dog-avatar-preview" style="width:56px; height:56px; border-radius:50%; background:var(--sand); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;">🐕</div>
+          <label for="dog-avatar-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 14px; font-size:12.5px;">📷 강아지 사진 올리기</label>
+          <input type="file" id="dog-avatar-input" accept="image/*" style="display:none;">
+        </div>
+        <input type="text" id="dog-name-input" placeholder="이름 (예: 몽이)" style="margin-top:12px;">
         <input type="text" id="dog-breed-input" placeholder="견종 (예: 말티즈)" style="margin-top:8px;">
         <input type="number" id="dog-age-input" placeholder="나이 (세)" min="0" max="30" style="margin-top:8px;">
         <button class="submit-btn" id="dog-info-save-btn" style="margin-top:10px;">강아지 정보 저장</button>
@@ -980,6 +991,15 @@
         <p style="font-size:13px; color:#6B6550; margin-top:4px;">이 회원이 등록한 산책 코스예요.</p>
         <div class="grid" id="member-profile-courses" style="margin-top:16px;"></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="notif-overlay">
+  <div class="modal nick-modal">
+    <div class="modal-body">
+      <h3 style="font-size:20px;">🔔 알림</h3>
+      <div id="notif-list" style="margin-top:14px;"></div>
     </div>
   </div>
 </div>
@@ -1254,6 +1274,7 @@
   let myNickname = null;
   let myDogName = null, myDogBreed = null, myDogAge = null;
   let myBadge = null, myOwnedBadges = [];
+  let myAvatarUrl = null;
   let profilesMap = {};
   let favoriteIds = new Set();
   try{ favoriteIds = new Set(JSON.parse(localStorage.getItem('paw_favorites') || '[]')); }catch(e){}
@@ -1354,7 +1375,7 @@
       if(!error && data){
         data.forEach(r=>{
           if(!reviews[r.course_id]) reviews[r.course_id] = [];
-          reviews[r.course_id].push({ dbId:r.id, name:r.name, rating:r.rating, text:r.text, ownerId:r.owner_id });
+          reviews[r.course_id].push({ dbId:r.id, name:r.name, rating:r.rating, text:r.text, ownerId:r.owner_id, photoUrl:r.photo_url });
         });
       }
     }catch(e){ console.error(e); reviews = {}; }
@@ -1408,6 +1429,7 @@
         checkFirstLoginBonus();
         syncProfileTable();
         syncFavoritesFromServer();
+        checkNotifications();
         loadMyWalks();
         renderAll();
       }
@@ -1433,12 +1455,14 @@
       myRegionLng = meta.region_lng != null ? Number(meta.region_lng) : null;
       myBadge = meta.active_badge || null;
       myOwnedBadges = meta.owned_badges || [];
+      myAvatarUrl = meta.avatar_url || null;
     } else {
       myDeviceId = null;
       myNickname = null;
       myDogName = null; myDogBreed = null; myDogAge = null;
       myRegionName = null; myRegionLat = null; myRegionLng = null;
       myBadge = null; myOwnedBadges = [];
+      myAvatarUrl = null;
     }
     updateProfileLabel();
     const adminBtn = document.getElementById('admin-toggle');
@@ -1447,7 +1471,7 @@
   async function syncProfileTable(){
     if(!myDeviceId) return;
     try{
-      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, badge: myBadge, updated_at: new Date().toISOString() }]);
+      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, badge: myBadge, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
     }catch(e){ console.error(e); }
   }
   async function saveDisplayName(){
@@ -1474,6 +1498,31 @@
       toast('강아지 정보가 저장됐어요 🐾');
     }catch(e){ console.error(e); toast('저장에 실패했어요'); }
   }
+  async function uploadDogAvatar(file){
+    if(!myDeviceId){ openNickModal(); toast('먼저 로그인해주세요'); return; }
+    if(!file.type.startsWith('image/')){ toast('이미지 파일만 올릴 수 있어요'); return; }
+    if(file.size > MAX_PHOTO_MB * 1024 * 1024){ toast(`${MAX_PHOTO_MB}MB 이하 사진으로 올려주세요`); return; }
+    try{
+      const compressed = await compressImage(file, 400, 0.85);
+      const path = `avatars/${myDeviceId}.jpg`;
+      const { error: upErr } = await sb.storage.from('course-photos').upload(path, compressed, { contentType:'image/jpeg', upsert:true });
+      if(upErr){ console.error(upErr); toast('업로드에 실패했어요'); return; }
+      const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
+      const bustUrl = urlData.publicUrl + '?t=' + Date.now();
+      myAvatarUrl = bustUrl;
+      document.getElementById('dog-avatar-preview').style.backgroundImage = `url('${bustUrl}')`;
+      document.getElementById('dog-avatar-preview').textContent = '';
+      await sb.auth.updateUser({ data: { avatar_url: bustUrl } });
+      await syncProfileTable();
+      updateProfileLabel();
+      toast('강아지 사진이 등록됐어요 🐾');
+    }catch(e){ console.error(e); toast('업로드에 실패했어요'); }
+  }
+  document.getElementById('dog-avatar-input').addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(file) uploadDogAvatar(file);
+    e.target.value = '';
+  });
   function geocodeRegion(text){
     return new Promise((resolve)=>{
       if(!kakaoGeocoder){ resolve(null); return; }
@@ -1627,6 +1676,14 @@
     document.getElementById('dog-breed-input').value = myDogBreed || '';
     document.getElementById('dog-age-input').value = myDogAge || '';
     document.getElementById('region-input').value = myRegionName || '';
+    const avatarEl = document.getElementById('dog-avatar-preview');
+    if(myAvatarUrl){
+      avatarEl.style.backgroundImage = `url('${myAvatarUrl}')`;
+      avatarEl.textContent = '';
+    } else {
+      avatarEl.style.backgroundImage = '';
+      avatarEl.textContent = '🐕';
+    }
     document.getElementById('profile-overlay').classList.add('show');
   }
   function closeProfileModal(){
@@ -1743,6 +1800,16 @@
   function updateProfileLabel(){
     const badgePrefix = myBadge ? badgeEmoji(myBadge) : '';
     document.getElementById('profile-label').textContent = myNickname ? (badgePrefix + myNickname) : '로그인';
+    const avatarEl = document.getElementById('profile-avatar');
+    const dotEl = document.getElementById('profile-dot');
+    if(myAvatarUrl){
+      avatarEl.style.backgroundImage = `url('${myAvatarUrl}')`;
+      avatarEl.style.display = 'inline-block';
+      dotEl.style.display = 'none';
+    } else {
+      avatarEl.style.display = 'none';
+      dotEl.style.display = '';
+    }
   }
 
   // ===== 포인트(발자국 포인트) 시스템 =====
@@ -1859,7 +1926,7 @@
   async function insertReviewDB(courseId, review){
     const { error } = await sb.from('reviews').insert([{
       course_id: courseId, name: review.name, rating: review.rating,
-      text: review.text, owner_id: review.ownerId
+      text: review.text, owner_id: review.ownerId, photo_url: review.photoUrl || null
     }]);
     if(error) console.error(error);
     return !error;
@@ -2913,6 +2980,9 @@
       const helpfulBtn = type==='user'
         ? `<button class="helpful-btn ${hf.mine?'active':''}" data-helpful-toggle="${r.dbId}">👍 도움돼요${hf.count>0 ? ' '+hf.count : ''}</button>`
         : '';
+      const photoHtml = r.photoUrl
+        ? `<img src="${r.photoUrl}" alt="리뷰 사진" data-photo-url="${r.photoUrl}" style="width:72px; height:72px; object-fit:cover; border-radius:8px; margin-top:8px; cursor:zoom-in;">`
+        : '';
       return `
       <div class="review-item">
         <div class="rh">
@@ -2920,6 +2990,7 @@
           <div class="rh-actions"><span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${action}</div>
         </div>
         <p>${r.text}</p>
+        ${photoHtml}
         ${helpfulBtn ? `<div style="margin-top:6px;">${helpfulBtn}</div>` : ''}
       </div>`;
     }).join('');
@@ -2938,6 +3009,9 @@
     el.querySelectorAll('[data-helpful-toggle]').forEach(btn=>{
       btn.addEventListener('click', ()=> toggleReviewHelpful(btn.dataset.helpfulToggle, courseId));
     });
+    el.querySelectorAll('[data-photo-url]').forEach(img=>{
+      img.addEventListener('click', ()=> openPhotoLightbox(img.dataset.photoUrl));
+    });
   }
   async function toggleReviewHelpful(reviewId, courseId){
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
@@ -2947,10 +3021,49 @@
         await sb.from('review_helpful').delete().eq('review_id', reviewId).eq('owner_id', myDeviceId);
       } else {
         await sb.from('review_helpful').insert([{ review_id: reviewId, owner_id: myDeviceId }]);
+        const reviewOwner = (reviews[courseId] || []).find(r => String(r.dbId) === String(reviewId));
+        if(reviewOwner && reviewOwner.ownerId && reviewOwner.ownerId !== myDeviceId){
+          notifyUser(reviewOwner.ownerId, 'helpful', `${myNickname}님이 내 리뷰가 도움됐다고 했어요 👍`);
+        }
       }
       renderReviewList(courseId);
     }catch(e){ console.error(e); toast('처리에 실패했어요'); }
   }
+
+  // ===== 알림 =====
+  async function notifyUser(ownerId, type, message){
+    try{ await sb.from('notifications').insert([{ owner_id: ownerId, type, message }]); }catch(e){ console.error(e); }
+  }
+  async function checkNotifications(){
+    if(!myDeviceId) return;
+    try{
+      const { data } = await sb.from('notifications').select('id').eq('owner_id', myDeviceId).eq('read', false).limit(1);
+      document.getElementById('notif-dot').style.display = (data && data.length) ? '' : 'none';
+    }catch(e){ console.error(e); }
+  }
+  async function openNotifications(){
+    if(!myDeviceId){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    const listEl = document.getElementById('notif-list');
+    listEl.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    document.getElementById('notif-overlay').classList.add('show');
+    try{
+      const { data } = await sb.from('notifications').select('*').eq('owner_id', myDeviceId).order('created_at', {ascending:false}).limit(30);
+      if(!data || !data.length){
+        listEl.innerHTML = '<p class="empty-admin">아직 알림이 없어요.</p>';
+      } else {
+        listEl.innerHTML = data.map(n=>{
+          const d = new Date(n.created_at);
+          return `<div class="review-item"><p style="margin:0;">${n.message}</p><span style="font-size:11px; color:var(--muted-text);">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`;
+        }).join('');
+        await sb.from('notifications').update({ read:true }).eq('owner_id', myDeviceId).eq('read', false);
+        document.getElementById('notif-dot').style.display = 'none';
+      }
+    }catch(e){ console.error(e); listEl.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>'; }
+  }
+  document.getElementById('notif-btn').addEventListener('click', openNotifications);
+  document.getElementById('notif-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'notif-overlay') document.getElementById('notif-overlay').classList.remove('show');
+  });
 
   async function shareCourse(courseId){
     const c = allCourses().find(x=>x.id===courseId);
@@ -3038,6 +3151,10 @@
   });
   updateStarDisplay();
 
+  document.getElementById('review-photo-input').addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    document.getElementById('review-photo-filename').textContent = file ? `📎 ${file.name}` : '';
+  });
   document.getElementById('review-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
@@ -3048,14 +3165,37 @@
       toast('부적절한 표현이 포함되어 있어요. 내용을 수정해주세요 🙏');
       return;
     }
-    const ok = await insertReviewDB(activeCourseId, { name, rating: activeStars, text, ownerId: myDeviceId });
+    let photoUrl = null;
+    const photoFile = document.getElementById('review-photo-input').files[0];
+    if(photoFile){
+      if(photoFile.size > MAX_PHOTO_MB * 1024 * 1024){
+        toast(`사진이 너무 커요. ${MAX_PHOTO_MB}MB 이하로 올려주세요`);
+        return;
+      }
+      try{
+        const compressed = await compressImage(photoFile, 1200, 0.8);
+        const path = `reviews/${activeCourseId}/${Date.now()}.jpg`;
+        const { error: upErr } = await sb.storage.from('course-photos').upload(path, compressed, { contentType:'image/jpeg' });
+        if(!upErr){
+          const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
+          photoUrl = urlData.publicUrl;
+        }
+      }catch(e){ console.error(e); }
+    }
+    const ok = await insertReviewDB(activeCourseId, { name, rating: activeStars, text, ownerId: myDeviceId, photoUrl });
     if(!ok){ toast('리뷰 등록에 실패했어요'); return; }
     await loadData();
     renderReviewList(activeCourseId);
     e.target.reset();
+    document.getElementById('review-photo-filename').textContent = '';
     activeStars = 5;
     updateStarDisplay();
     await awardPoints(10, '리뷰 작성');
+    // 코스 등록자에게 알림
+    const c = allCourses().find(x=>x.id===activeCourseId);
+    if(c && c.ownerId && c.ownerId !== myDeviceId){
+      notifyUser(c.ownerId, 'review', `${myNickname}님이 "${c.name}"에 리뷰를 남겼어요 🐾`);
+    }
   });
 
   // ===== 날씨 & 미세먼지 위젯 (Open-Meteo, API 키 불필요) =====
