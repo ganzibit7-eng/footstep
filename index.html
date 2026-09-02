@@ -106,8 +106,6 @@
     background:rgba(251,248,241,0.92);
     backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
   }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1120px; margin:0 auto;}
   .logo{ display:flex; align-items:center; gap:10px; }
@@ -251,7 +249,7 @@
     font-weight:700; font-size:14px; cursor:pointer; text-align:center; transition:all .15s ease;
   }
   .type-btn.active{ border-color:var(--pine-deep); background:var(--pine-deep); color:var(--paper); }
-  label{ display:block; font-size:14px; font-weight:700; margin:16px 0 6px; color:var(--pine-deep); }
+  label{ display:block; font-size:13px; font-weight:700; margin:16px 0 6px; color:var(--pine-deep); }
   input[type=text], input[type=email], input[type=number], textarea{
     width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;
     background:var(--paper); color:var(--ink);
@@ -411,12 +409,6 @@
     background:var(--paper); border-top:1px solid var(--line); box-shadow:0 -4px 16px rgba(21,41,34,0.08);
     padding:6px 4px calc(6px + env(safe-area-inset-bottom));
     justify-content:space-around; align-items:center;
-    /* iOS(특히 홈 화면 추가 PWA 모드)에서 position:fixed가 스크롤 중 풀리는 렌더링 버그 대응 */
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    will-change: transform;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
   .bottom-tab-bar button{
     background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:2px;
@@ -598,10 +590,10 @@
     <div style="display:flex; align-items:center; gap:8px;">
       <button class="profile-btn" id="profile-btn"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
       <button id="points-badge" style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
-      <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:17px;">
+      <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">
         🔔<span id="notif-dot" style="display:none; position:absolute; top:4px; right:5px; width:9px; height:9px; border-radius:50%; background:var(--clay); border:2px solid var(--paper);"></span>
       </button>
-      <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px; font-weight:700; color:var(--pine-deep);">?</button>
+      <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
     </div>
   </div>
 </header>
@@ -789,6 +781,11 @@
       </div>
     </div>
     <div class="map-panel">
+      <div class="map-toolbar" style="position:relative;">
+        <input type="text" id="place-search-input" placeholder="🔍 지역·장소로 검색 (예: 강남역, 여의도한강공원)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
+        <button type="button" class="poi-search-cta" id="place-search-btn" style="font-size:12.5px; padding:10px 16px;">검색</button>
+        <div id="place-search-results" style="display:none; position:absolute; top:100%; left:18px; right:18px; z-index:500; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); margin-top:4px; max-height:260px; overflow-y:auto;"></div>
+      </div>
       <div class="map-toolbar">
         <div class="filter-group" id="view-filter-group">
           <div class="chip active" data-filter="all">전체</div>
@@ -1081,26 +1078,19 @@
       <div class="modal-body">
         <h3 id="modal-title">코스 이름</h3>
         <div class="modal-meta-row" id="modal-meta"></div>
-        <p id="modal-desc" style="color:#5B5645; font-size:14.5px; margin-top:10px;"></p>
-
-        <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
-          <div id="photo-upload-wrap" style="margin:0;">
-            <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:9px 16px; font-size:13px;">📷 사진 추가하기</label>
-            <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
-            <button type="button" id="share-course-btn" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:9px 16px; font-size:13px; margin-left:6px;">🔗 공유하기</button>
-            <div id="photo-upload-status" style="font-size:12px; color:#6B6550; margin-top:6px;"></div>
-          </div>
-          <div id="boost-wrap" style="margin:12px 0 0; display:none;"></div>
+        <p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
+        <div id="photo-upload-wrap" style="margin:10px 0;">
+          <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
+          <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
+          <span id="photo-upload-status" style="font-size:12px; color:#6B6550; margin-left:8px;"></span>
+          <button type="button" id="share-course-btn" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px;">🔗 공유하기</button>
+          <a id="modal-directions-link" href="#" target="_blank" rel="noopener" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px; text-decoration:none;">🧭 길찾기</a>
         </div>
-
-        <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
-          <label style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted-text); font-weight:700; display:block; margin-bottom:8px;">🗺️ 경로</label>
-          <div id="modal-route-map"></div>
-        </div>
-
-        <div class="review-section" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
+        <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
+        <div id="modal-route-map"></div>
+        <div class="review-section">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-            <h4 style="margin:0;">💬 다녀온 반려인들의 리뷰</h4>
+            <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
             <select id="review-sort-select" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
               <option value="latest">최신순</option>
               <option value="rating">평점 높은순</option>
@@ -1132,7 +1122,7 @@
       <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">등록한 코스·배변봉투함·리뷰에 닉네임이 표시되고, 내가 올린 글을 나중에 수정·삭제하거나 포인트를 모을 때 필요해요.</p>
       <label style="display:flex; align-items:flex-start; gap:8px; margin-top:14px; font-size:12.5px; font-weight:500; color:#5B5645; cursor:pointer;">
         <input type="checkbox" id="terms-agree-checkbox" style="margin-top:2px; width:16px; height:16px; flex-shrink:0;">
-        <span><a href="#" id="terms-link-from-login" data-page-nav="terms" style="color:var(--clay);">이용약관</a> 및 <a href="#" id="privacy-link-from-login" data-page-nav="privacy" style="color:var(--clay);">개인정보처리방침</a>에 동의합니다 (필수)</span>
+        <span><a href="#" data-page-nav="terms" style="color:var(--clay);">이용약관</a> 및 <a href="#" data-page-nav="privacy" style="color:var(--clay);">개인정보처리방침</a>에 동의합니다 (필수)</span>
       </label>
       <button class="submit-btn" id="kakao-login-btn" style="margin-top:14px; background:#FEE500; color:#191919;">💬 카카오로 시작하기</button>
       <button class="submit-btn" id="google-login-btn" style="margin-top:10px; background:#fff; color:#3c4043; border:1.5px solid var(--line);">🔵 Google로 시작하기</button>
@@ -1175,8 +1165,7 @@
         <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
       </div>
       <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
-      <button class="pin-btn" id="export-data-btn" style="margin-top:10px; color:var(--moss); font-size:12px; border:none; background:none;">📥 내 정보 다운로드</button>
-      <button class="pin-btn" id="withdraw-btn" style="margin-top:6px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
+      <button class="pin-btn" id="withdraw-btn" style="margin-top:10px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
     </div>
   </div>
 </div>
@@ -2547,7 +2536,7 @@
         L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(coursePathLayer);
       }
       L.marker([c.lat,c.lng], {icon:pawIcon()})
-        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a>`)
+        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a> · <a href="${kakaoLinkTo(c.name, c.lat, c.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(courseLayer);
     });
     allBins().filter(b => !isHidden('bin', b.id)).forEach(b=>{
@@ -2556,7 +2545,7 @@
         ? `<a href="#" onclick="window.__editBin('${b.id}');return false;" style="color:var(--moss);font-weight:700;">✏️ 수정</a> · <a href="#" onclick="window.__deleteBin('${b.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportBin('${b.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([b.lat,b.lng], {icon:binIcon()})
-        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml}`)
+        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml} · <a href="${kakaoLinkTo(b.name, b.lat, b.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(binLayer);
     });
   }
@@ -2624,6 +2613,62 @@
       }, { bounds });
     });
   }
+
+  // ===== 지도 화면 장소 검색 (카카오맵 검색과 동일한 방식) =====
+  function kakaoLinkTo(name, lat, lng){
+    return `https://map.kakao.com/link/to/${encodeURIComponent(name)},${lat},${lng}`;
+  }
+  let placeSearchMarker = null;
+  async function runPlaceSearch(){
+    const input = document.getElementById('place-search-input');
+    const resultsEl = document.getElementById('place-search-results');
+    const query = input.value.trim();
+    if(!query){ toast('검색어를 입력해주세요'); return; }
+    if(!kakaoPlacesService){ toast('지도 서비스를 불러오는 중이에요. 잠시 후 다시 시도해주세요'); return; }
+    const btn = document.getElementById('place-search-btn');
+    const original = btn.textContent;
+    btn.textContent = '...';
+    try{
+      const results = await kakaoKeywordSearch(query, null);
+      if(!results.length){
+        resultsEl.innerHTML = '<div style="padding:14px; font-size:13px; color:var(--muted-text);">검색 결과가 없어요</div>';
+        resultsEl.style.display = '';
+        return;
+      }
+      resultsEl.innerHTML = results.slice(0, 8).map((p, i) => `
+        <div class="place-result-row" data-idx="${i}" style="padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer;">
+          <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${p.place_name}</div>
+          <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${p.road_address_name || p.address_name || ''}</div>
+        </div>
+      `).join('');
+      resultsEl.style.display = '';
+      resultsEl.querySelectorAll('.place-result-row').forEach(row=>{
+        row.addEventListener('click', ()=>{
+          const p = results[Number(row.dataset.idx)];
+          goToPlace(p.place_name, Number(p.y), Number(p.x));
+          resultsEl.style.display = 'none';
+        });
+      });
+    }catch(e){ console.error(e); toast('검색에 실패했어요'); }
+    btn.textContent = original;
+  }
+  function goToPlace(name, lat, lng){
+    map.setView([lat, lng], 16);
+    if(placeSearchMarker) map.removeLayer(placeSearchMarker);
+    placeSearchMarker = L.marker([lat, lng]).addTo(map)
+      .bindPopup(`<strong>📍 ${name}</strong><br><a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
+      .openPopup();
+  }
+  document.getElementById('place-search-btn').addEventListener('click', runPlaceSearch);
+  document.getElementById('place-search-input').addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ e.preventDefault(); runPlaceSearch(); }
+  });
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('#place-search-input') && !e.target.closest('#place-search-results') && !e.target.closest('#place-search-btn')){
+      document.getElementById('place-search-results').style.display = 'none';
+    }
+  });
+
   async function searchNearbyPoi(){
     if(activePoiCategories.size === 0){
       toast('먼저 위에서 찾을 시설 종류를 선택해주세요');
@@ -2654,7 +2699,7 @@
             if(seenIds.has(p.id)) return; // 여러 검색어에 중복으로 걸린 장소는 한 번만 표시
             seenIds.add(p.id);
             L.marker([Number(p.y), Number(p.x)], {icon: poiIcon(cat)})
-              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}`)
+              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
               .addTo(poiLayer);
             total += 1;
           });
@@ -3542,6 +3587,7 @@
 
     document.getElementById('modal-title').textContent = c.name;
     document.getElementById('modal-desc').textContent = c.desc || '';
+    document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
       <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
@@ -4206,8 +4252,6 @@
   function closeNickModal(){
     document.getElementById('nick-overlay').classList.remove('show');
   }
-  document.getElementById('terms-link-from-login').addEventListener('click', closeNickModal);
-  document.getElementById('privacy-link-from-login').addEventListener('click', closeNickModal);
   document.getElementById('profile-btn').addEventListener('click', ()=>{
     if(myNickname){
       openProfileModal();
@@ -4233,79 +4277,22 @@
       signOutUser();
     }
   });
-  // ===== 회원 데이터 완전 삭제 (본인 탈퇴 / 관리자 강제 탈퇴 공용) =====
-  // ===== 내 정보 다운로드 =====
-  async function exportMyData(){
-    if(!myDeviceId){ toast('로그인 후 이용해주세요'); return; }
-    const btn = document.getElementById('export-data-btn');
-    const original = btn.textContent;
-    btn.textContent = '준비 중...';
-    try{
-      const [coursesRes, binsRes, reviewsRes, walksRes, pointsRes, favoritesRes] = await Promise.all([
-        sb.from('courses').select('*').eq('owner_id', myDeviceId),
-        sb.from('bins').select('*').eq('owner_id', myDeviceId),
-        sb.from('reviews').select('*').eq('owner_id', myDeviceId),
-        sb.from('walks').select('*').eq('owner_id', myDeviceId),
-        sb.from('points_log').select('*').eq('owner_id', myDeviceId),
-        sb.from('favorites').select('*').eq('owner_id', myDeviceId),
-      ]);
-      const exportData = {
-        내보낸_날짜: new Date().toISOString(),
-        프로필: {
-          닉네임: myNickname, 강아지이름: myDogName, 견종: myDogBreed, 나이: myDogAge,
-          지역: myRegionName, 배지: myBadge
-        },
-        내가_등록한_코스: coursesRes.data || [],
-        내가_등록한_배변봉투함: binsRes.data || [],
-        내가_남긴_리뷰: reviewsRes.data || [],
-        내_산책기록: walksRes.data || [],
-        포인트_내역: pointsRes.data || [],
-        찜한_코스: favoritesRes.data || [],
-      };
-      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type:'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `발자국_내정보_${new Date().toISOString().slice(0,10)}.json`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-      toast('내 정보를 다운로드했어요 📥');
-    }catch(e){ console.error(e); toast('다운로드에 실패했어요'); }
-    btn.textContent = original;
-  }
-  document.getElementById('export-data-btn').addEventListener('click', exportMyData);
-
-  async function wipeAllUserData(ownerId){
-    const results = await Promise.allSettled([
-      sb.from('courses').delete().eq('owner_id', ownerId),
-      sb.from('bins').delete().eq('owner_id', ownerId),
-      sb.from('reviews').delete().eq('owner_id', ownerId),
-      sb.from('course_photos').delete().eq('uploader_id', ownerId),
-      sb.from('walks').delete().eq('owner_id', ownerId),
-      sb.from('active_walkers').delete().eq('owner_id', ownerId),
-      sb.from('points_log').delete().eq('owner_id', ownerId),
-      sb.from('favorites').delete().eq('owner_id', ownerId),
-      sb.from('notifications').delete().eq('owner_id', ownerId),
-      sb.from('review_helpful').delete().eq('owner_id', ownerId),
-      sb.from('profiles').delete().eq('owner_id', ownerId),
-    ]);
-    // 각 테이블 결과에 RLS 등으로 인한 에러가 있었는지 확인 (조용히 실패하는 것 방지)
-    const failed = results.filter(r => r.status === 'rejected' || (r.value && r.value.error));
-    return failed.length === 0;
-  }
   document.getElementById('withdraw-btn').addEventListener('click', async ()=>{
     if(!myDeviceId) return;
     const sure = confirm('정말 탈퇴하시겠어요?\n내가 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.');
     if(!sure) return;
     try{
-      const ok = await wipeAllUserData(myDeviceId);
+      await sb.from('courses').delete().eq('owner_id', myDeviceId);
+      await sb.from('bins').delete().eq('owner_id', myDeviceId);
+      await sb.from('reviews').delete().eq('owner_id', myDeviceId);
+      await sb.from('course_photos').delete().eq('uploader_id', myDeviceId);
+      await sb.from('walks').delete().eq('owner_id', myDeviceId);
+      await sb.from('active_walkers').delete().eq('owner_id', myDeviceId);
+      await sb.from('points_log').delete().eq('owner_id', myDeviceId);
+      await sb.from('profiles').delete().eq('owner_id', myDeviceId);
       closeProfileModal();
       await signOutUser();
-      toast(ok
-        ? '탈퇴 처리됐어요. 로그인 계정 자체를 완전히 삭제하고 싶으시면 문의해주세요 🐾'
-        : '일부 데이터 삭제 중 문제가 있었어요. footstepbiz@gmail.com 으로 문의해주세요.');
+      toast('탈퇴 처리됐어요. 로그인 계정 자체를 완전히 삭제하고 싶으시면 문의해주세요 🐾');
     }catch(e){ console.error(e); toast('처리 중 오류가 발생했어요. 다시 시도해주세요'); }
   });
   document.getElementById('nick-overlay').addEventListener('click', (e)=>{
@@ -4530,26 +4517,8 @@
       return `
         <div class="admin-row">
           <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined}</div>
-          <div class="admin-actions">
-            ${isAdmin ? '' : `<button class="remove" data-force-withdraw="${m.owner_id}">탈퇴시키기</button>`}
-          </div>
         </div>`;
     }).join('');
-    el.querySelectorAll('[data-force-withdraw]').forEach(btn=>{
-      btn.addEventListener('click', ()=> adminForceWithdraw(btn.dataset.forceWithdraw));
-    });
-  }
-  async function adminForceWithdraw(ownerId){
-    if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
-    if(!confirm('이 회원을 탈퇴시킬까요?\n이 회원이 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.\n\n※ 참고: 로그인 계정(카카오/구글/이메일) 자체는 이 방법으로 삭제되지 않고, 다시 로그인은 여전히 가능해요. 앱 안의 활동 데이터만 초기화돼요.')) return;
-    try{
-      const ok = await wipeAllUserData(ownerId);
-      toast(ok ? '해당 회원을 탈퇴 처리했어요' : '일부 데이터 삭제에 실패했어요. 콘솔을 확인해주세요');
-      await loadData();
-      renderAllMemberList();
-      renderMemberList();
-      renderAdminStats();
-    }catch(e){ console.error(e); toast('처리 중 오류가 발생했어요'); }
   }
   document.getElementById('all-member-search').addEventListener('input', (e)=>{
     const q = e.target.value.trim().toLowerCase();
