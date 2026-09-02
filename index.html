@@ -1167,7 +1167,8 @@
         <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
       </div>
       <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
-      <button class="pin-btn" id="withdraw-btn" style="margin-top:10px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
+      <button class="pin-btn" id="export-data-btn" style="margin-top:10px; color:var(--moss); font-size:12px; border:none; background:none;">📥 내 정보 다운로드</button>
+      <button class="pin-btn" id="withdraw-btn" style="margin-top:6px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
     </div>
   </div>
 </div>
@@ -4223,6 +4224,49 @@
     }
   });
   // ===== 회원 데이터 완전 삭제 (본인 탈퇴 / 관리자 강제 탈퇴 공용) =====
+  // ===== 내 정보 다운로드 =====
+  async function exportMyData(){
+    if(!myDeviceId){ toast('로그인 후 이용해주세요'); return; }
+    const btn = document.getElementById('export-data-btn');
+    const original = btn.textContent;
+    btn.textContent = '준비 중...';
+    try{
+      const [coursesRes, binsRes, reviewsRes, walksRes, pointsRes, favoritesRes] = await Promise.all([
+        sb.from('courses').select('*').eq('owner_id', myDeviceId),
+        sb.from('bins').select('*').eq('owner_id', myDeviceId),
+        sb.from('reviews').select('*').eq('owner_id', myDeviceId),
+        sb.from('walks').select('*').eq('owner_id', myDeviceId),
+        sb.from('points_log').select('*').eq('owner_id', myDeviceId),
+        sb.from('favorites').select('*').eq('owner_id', myDeviceId),
+      ]);
+      const exportData = {
+        내보낸_날짜: new Date().toISOString(),
+        프로필: {
+          닉네임: myNickname, 강아지이름: myDogName, 견종: myDogBreed, 나이: myDogAge,
+          지역: myRegionName, 배지: myBadge
+        },
+        내가_등록한_코스: coursesRes.data || [],
+        내가_등록한_배변봉투함: binsRes.data || [],
+        내가_남긴_리뷰: reviewsRes.data || [],
+        내_산책기록: walksRes.data || [],
+        포인트_내역: pointsRes.data || [],
+        찜한_코스: favoritesRes.data || [],
+      };
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type:'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `발자국_내정보_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast('내 정보를 다운로드했어요 📥');
+    }catch(e){ console.error(e); toast('다운로드에 실패했어요'); }
+    btn.textContent = original;
+  }
+  document.getElementById('export-data-btn').addEventListener('click', exportMyData);
+
   async function wipeAllUserData(ownerId){
     const results = await Promise.allSettled([
       sb.from('courses').delete().eq('owner_id', ownerId),
