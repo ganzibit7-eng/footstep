@@ -781,11 +781,6 @@
       </div>
     </div>
     <div class="map-panel">
-      <div class="map-toolbar" style="position:relative;">
-        <input type="text" id="place-search-input" placeholder="🔍 지역·장소로 검색 (예: 강남역, 여의도한강공원)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
-        <button type="button" class="poi-search-cta" id="place-search-btn" style="font-size:12.5px; padding:10px 16px;">검색</button>
-        <div id="place-search-results" style="display:none; position:absolute; top:100%; left:18px; right:18px; z-index:500; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); margin-top:4px; max-height:260px; overflow-y:auto;"></div>
-      </div>
       <div class="map-toolbar">
         <div class="filter-group" id="view-filter-group">
           <div class="chip active" data-filter="all">전체</div>
@@ -945,7 +940,6 @@
         <div class="type-toggle">
           <div class="type-btn active" data-type="course">🐾 산책 코스</div>
           <div class="type-btn" data-type="bin">🚮 배변봉투함</div>
-          <div class="type-btn" data-type="facility">🏨 동반시설</div>
         </div>
         <form id="reg-form">
           <label>이름</label>
@@ -953,20 +947,6 @@
 
           <label id="label-desc">코스 설명</label>
           <textarea id="f-desc" placeholder="바닥 상태, 그늘, 소요 시간 등을 적어주세요"></textarea>
-
-          <div id="facility-only-fields" style="display:none;">
-            <label>시설 종류</label>
-            <div class="tag-check-group" id="facility-category-group">
-              <div class="tag-check on" data-facility-category="식당카페">🍽️ 동반 식당·카페</div>
-              <div class="tag-check" data-facility-category="숙소">🏨 동반 숙소</div>
-            </div>
-            <label>주소로 정확히 찾기 (선택)</label>
-            <div style="display:flex; gap:8px;">
-              <input type="text" id="facility-address-input" placeholder="예: 서울시 강남구 테헤란로 123" style="flex:1;">
-              <button type="button" class="pin-btn" id="facility-address-search-btn" style="width:auto; padding:0 16px;">찾기</button>
-            </div>
-            <p style="font-size:12px; color:var(--muted-text); margin-top:6px;">주소를 입력하고 "찾기"를 누르면 지도가 정확한 위치로 이동해요. 카카오 지도 검색에 안 나오는 곳도 이렇게 등록할 수 있어요.</p>
-          </div>
 
           <label id="label-pin">지도에서 경로 그리기</label>
           <div class="draw-mode-toggle" id="draw-mode-toggle">
@@ -1099,7 +1079,6 @@
           <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
           <span id="photo-upload-status" style="font-size:12px; color:#6B6550; margin-left:8px;"></span>
           <button type="button" id="share-course-btn" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px;">🔗 공유하기</button>
-          <a id="modal-directions-link" href="#" target="_blank" rel="noopener" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px; text-decoration:none;">🧭 길찾기</a>
         </div>
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
         <div id="modal-route-map"></div>
@@ -1567,7 +1546,7 @@
     { id:'b4', name:'한밭수목원 서문', desc:'서문 매표소 옆 거치대.', lat:36.3720, lng:127.3760 },
   ];
 
-  let courses = [], bins = [], facilities = [];
+  let courses = [], bins = [];
   let reviews = {}; // { courseId: [ {name, rating, text, date, ownerId} ] }
   let reports = {}; // { "type_id": { count, reporters:[] } }
   let myDeviceId = null;
@@ -1613,7 +1592,7 @@
   }
   let courseBoosts = {};
   let myRegionName = null, myRegionLat = null, myRegionLng = null;
-  let map, miniMap, routeMap, courseLayer, binLayer, facilityLayer;
+  let map, miniMap, routeMap, courseLayer, binLayer;
   let poiLayer;                 // 동물병원/애견용품점 마커 레이어
   const activePoiCategories = new Set();
   let walkMap, walkLiveLine, walkMarker;
@@ -1669,11 +1648,6 @@
       const { data, error } = await sb.from('bins').select('*').order('created_at');
       bins = (!error && data) ? data.map(rowToBin) : [];
     }catch(e){ console.error(e); bins = []; }
-
-    try{
-      const { data, error } = await sb.from('facilities').select('*').order('created_at');
-      facilities = (!error && data) ? data : [];
-    }catch(e){ console.error(e); facilities = []; }
 
     try{
       const { data, error } = await sb.from('reviews').select('*').order('created_at');
@@ -2261,19 +2235,6 @@
     if(error) console.error(error);
     return !error;
   }
-  async function insertFacilityDB(facility){
-    const { error } = await sb.from('facilities').insert([{
-      id: facility.id, name: facility.name, description: facility.desc, category: facility.category,
-      address: facility.address || null, lat: facility.lat, lng: facility.lng,
-      owner_id: facility.ownerId, author: facility.author
-    }]);
-    if(error) console.error(error);
-    return !error;
-  }
-  async function deleteFacilityDB(id){
-    const { error } = await sb.from('facilities').delete().eq('id', id);
-    if(error) console.error(error);
-  }
   async function insertReviewDB(courseId, review){
     const { error } = await sb.from('reviews').insert([{
       course_id: courseId, name: review.name, rating: review.rating,
@@ -2556,7 +2517,6 @@
     courseLayer.clearLayers();
     coursePathLayer.clearLayers();
     binLayer.clearLayers();
-    facilityLayer.clearLayers();
     const filterActive = hasActiveListFilter();
     const coursesToShow = filterActive ? getFilteredCourses() : allCourses().filter(c => !isHidden('course', c.id));
     const noteEl = document.getElementById('map-filter-note');
@@ -2570,7 +2530,7 @@
         L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(coursePathLayer);
       }
       L.marker([c.lat,c.lng], {icon:pawIcon()})
-        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a> · <a href="${kakaoLinkTo(c.name, c.lat, c.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a>`)
         .addTo(courseLayer);
     });
     allBins().filter(b => !isHidden('bin', b.id)).forEach(b=>{
@@ -2579,29 +2539,10 @@
         ? `<a href="#" onclick="window.__editBin('${b.id}');return false;" style="color:var(--moss);font-weight:700;">✏️ 수정</a> · <a href="#" onclick="window.__deleteBin('${b.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportBin('${b.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([b.lat,b.lng], {icon:binIcon()})
-        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml} · <a href="${kakaoLinkTo(b.name, b.lat, b.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml}`)
         .addTo(binLayer);
     });
-    facilities.filter(f => !isHidden('facility', f.id)).forEach(f=>{
-      const isMine = f.owner_id && f.owner_id === myDeviceId;
-      const emoji = f.category === '숙소' ? '🏨' : '🍽️';
-      const actionHtml = isMine
-        ? `<a href="#" onclick="window.__deleteFacility('${f.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
-        : `<a href="#" onclick="window.__reportFacility('${f.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
-      L.marker([f.lat, f.lng], {icon: poiIcon(f.category === '숙소' ? 'lodging' : 'restaurant')})
-        .bindPopup(`<strong>${emoji} ${f.name}</strong><br>${f.description||''}${f.author ? '<br><em>등록: '+f.author+'</em>' : ''}<br>${actionHtml} · <a href="${kakaoLinkTo(f.name, f.lat, f.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
-        .addTo(facilityLayer);
-    });
   }
-  window.__deleteFacility = async (id)=>{
-    const f = facilities.find(x=>x.id===id);
-    if(!f || (f.owner_id !== myDeviceId)){ toast('권한이 없어요'); return; }
-    if(!confirm('이 시설을 삭제할까요?')) return;
-    await deleteFacilityDB(id);
-    await loadData();
-    toast('삭제됐어요');
-  };
-  window.__reportFacility = (id)=> fileReport('facility', id);
   window.__reportBin = (id)=> fileReport('bin', id);
   window.__deleteBin = async (id)=>{
     if(!confirm('이 배변봉투함 정보를 삭제할까요?')) return;
@@ -2635,7 +2576,6 @@
     courseLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
     coursePathLayer = L.layerGroup().addTo(map);
     binLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
-    facilityLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
     poiLayer = L.layerGroup().addTo(map);
   }
 
@@ -2667,62 +2607,6 @@
       }, { bounds });
     });
   }
-
-  // ===== 지도 화면 장소 검색 (카카오맵 검색과 동일한 방식) =====
-  function kakaoLinkTo(name, lat, lng){
-    return `https://map.kakao.com/link/to/${encodeURIComponent(name)},${lat},${lng}`;
-  }
-  let placeSearchMarker = null;
-  async function runPlaceSearch(){
-    const input = document.getElementById('place-search-input');
-    const resultsEl = document.getElementById('place-search-results');
-    const query = input.value.trim();
-    if(!query){ toast('검색어를 입력해주세요'); return; }
-    if(!kakaoPlacesService){ toast('지도 서비스를 불러오는 중이에요. 잠시 후 다시 시도해주세요'); return; }
-    const btn = document.getElementById('place-search-btn');
-    const original = btn.textContent;
-    btn.textContent = '...';
-    try{
-      const results = await kakaoKeywordSearch(query, null);
-      if(!results.length){
-        resultsEl.innerHTML = '<div style="padding:14px; font-size:13px; color:var(--muted-text);">검색 결과가 없어요</div>';
-        resultsEl.style.display = '';
-        return;
-      }
-      resultsEl.innerHTML = results.slice(0, 8).map((p, i) => `
-        <div class="place-result-row" data-idx="${i}" style="padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer;">
-          <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${p.place_name}</div>
-          <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${p.road_address_name || p.address_name || ''}</div>
-        </div>
-      `).join('');
-      resultsEl.style.display = '';
-      resultsEl.querySelectorAll('.place-result-row').forEach(row=>{
-        row.addEventListener('click', ()=>{
-          const p = results[Number(row.dataset.idx)];
-          goToPlace(p.place_name, Number(p.y), Number(p.x));
-          resultsEl.style.display = 'none';
-        });
-      });
-    }catch(e){ console.error(e); toast('검색에 실패했어요'); }
-    btn.textContent = original;
-  }
-  function goToPlace(name, lat, lng){
-    map.setView([lat, lng], 16);
-    if(placeSearchMarker) map.removeLayer(placeSearchMarker);
-    placeSearchMarker = L.marker([lat, lng]).addTo(map)
-      .bindPopup(`<strong>📍 ${name}</strong><br><a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
-      .openPopup();
-  }
-  document.getElementById('place-search-btn').addEventListener('click', runPlaceSearch);
-  document.getElementById('place-search-input').addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter'){ e.preventDefault(); runPlaceSearch(); }
-  });
-  document.addEventListener('click', (e)=>{
-    if(!e.target.closest('#place-search-input') && !e.target.closest('#place-search-results') && !e.target.closest('#place-search-btn')){
-      document.getElementById('place-search-results').style.display = 'none';
-    }
-  });
-
   async function searchNearbyPoi(){
     if(activePoiCategories.size === 0){
       toast('먼저 위에서 찾을 시설 종류를 선택해주세요');
@@ -2753,7 +2637,7 @@
             if(seenIds.has(p.id)) return; // 여러 검색어에 중복으로 걸린 장소는 한 번만 표시
             seenIds.add(p.id);
             L.marker([Number(p.y), Number(p.x)], {icon: poiIcon(cat)})
-              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}`)
               .addTo(poiLayer);
             total += 1;
           });
@@ -3145,9 +3029,9 @@
       document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
-      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); }
-      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); }
-      else { map.addLayer(binLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
+      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); map.addLayer(facilityLayer); }
+      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); map.removeLayer(facilityLayer); }
+      else { map.addLayer(binLayer); map.addLayer(facilityLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
     });
   });
 
@@ -3214,32 +3098,6 @@
   });
 
   // Type toggle
-  // ===== 동반시설(식당·카페·숙소) 등록 관련 =====
-  let selectedFacilityCategory = '식당카페';
-  document.getElementById('facility-category-group').addEventListener('click', (e)=>{
-    const el = e.target.closest('.tag-check');
-    if(!el) return;
-    document.querySelectorAll('#facility-category-group .tag-check').forEach(x=>x.classList.remove('on'));
-    el.classList.add('on');
-    selectedFacilityCategory = el.dataset.facilityCategory;
-  });
-  document.getElementById('facility-address-search-btn').addEventListener('click', async ()=>{
-    const input = document.getElementById('facility-address-input');
-    const address = input.value.trim();
-    if(!address){ toast('주소를 입력해주세요'); return; }
-    const geo = await geocodeRegion(address);
-    if(!geo){ toast('주소를 찾지 못했어요. 정확한 지번·도로명 주소로 다시 시도해주세요'); return; }
-    pendingLatLng = { lat: geo.lat, lng: geo.lng };
-    if(pinMarker) miniMap.removeLayer(pinMarker);
-    pinMarker = L.marker([geo.lat, geo.lng]).addTo(miniMap);
-    miniMap.setView([geo.lat, geo.lng], 17);
-    miniMap.invalidateSize();
-    const btn = document.getElementById('pin-btn');
-    btn.textContent = `📍 주소로 위치를 찾았어요 — 다시 클릭해서 위치를 조정할 수 있어요`;
-    btn.classList.add('set');
-    toast('주소로 위치를 찾았어요! 지도에서 정확한지 확인해주세요 📍');
-  });
-
   document.querySelectorAll('.type-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const changingType = currentType !== btn.dataset.type;
@@ -3264,34 +3122,20 @@
       }
       if(currentType === 'bin'){
         courseFields.style.display = 'none';
-        document.getElementById('facility-only-fields').style.display = 'none';
         drawToggle.style.display = 'none';
         descLabel.textContent = '배변봉투함 설명';
         pinLabel.textContent = '지도에서 위치 선택';
         document.getElementById('f-name').placeholder = '예: 뚝섬 한강공원 배변봉투함';
         document.getElementById('f-desc').placeholder = '정확한 위치, 상시 비치 여부 등을 적어주세요';
-      } else if(currentType === 'facility'){
-        courseFields.style.display = 'none';
-        document.getElementById('facility-only-fields').style.display = '';
-        drawToggle.style.display = 'none';
-        descLabel.textContent = '시설 설명';
-        pinLabel.textContent = '지도에서 위치 선택';
-        document.getElementById('f-name').placeholder = '예: 반려동반 카페 이름';
-        document.getElementById('f-desc').placeholder = '반려동반 이용 안내, 특이사항 등을 적어주세요';
       } else {
         courseFields.style.display = '';
-        document.getElementById('facility-only-fields').style.display = 'none';
         drawToggle.style.display = '';
         descLabel.textContent = '코스 설명';
         pinLabel.textContent = '지도에서 경로 그리기';
         document.getElementById('f-name').placeholder = '예: 한강 뚝섬 반려견 놀이터 코스';
         document.getElementById('f-desc').placeholder = '바닥 상태, 그늘, 소요 시간 등을 적어주세요';
       }
-      if(currentType === 'course'){
-        updatePinBtnForCourse();
-      } else if(changingType){
-        resetBinPoint();
-      }
+      updatePinBtnForCourse();
     });
   });
 
@@ -3433,7 +3277,7 @@
       const ok = await insertCourseDB(newCourse);
       if(!ok){ toast('등록에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
       await awardPoints(50, '코스 등록');
-    } else if(currentType === 'bin'){
+    } else {
       if(!pendingLatLng){ toast('지도에서 위치를 먼저 선택해주세요'); return; }
       if(editingBinId){
         const ok = await updateBinDB(editingBinId, { name, desc, lat: pendingLatLng.lat, lng: pendingLatLng.lng });
@@ -3458,21 +3302,6 @@
       const ok = await insertBinDB(newBin);
       if(!ok){ toast('등록에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
       await awardPoints(20, '배변봉투함 등록');
-    } else if(currentType === 'facility'){
-      if(!pendingLatLng){ toast('지도에서 위치를 먼저 선택하거나, 주소로 찾기를 이용해주세요'); return; }
-      const newFacility = {
-        id: 'u'+Date.now(),
-        name, desc,
-        category: selectedFacilityCategory,
-        address: document.getElementById('facility-address-input').value.trim(),
-        lat: pendingLatLng.lat, lng: pendingLatLng.lng,
-        ownerId: myDeviceId,
-        author: myNickname
-      };
-      const ok = await insertFacilityDB(newFacility);
-      if(!ok){ toast('등록에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
-      await awardPoints(20, '동반시설 등록');
-      document.getElementById('facility-address-input').value = '';
     }
 
     await loadData();
@@ -3696,7 +3525,6 @@
 
     document.getElementById('modal-title').textContent = c.name;
     document.getElementById('modal-desc').textContent = c.desc || '';
-    document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
       <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
@@ -4600,15 +4428,23 @@
 
   // ===== 전체 가입 회원 목록 =====
   let allMembersCache = [];
+  let memberPointsMap = {};
   async function renderAllMemberList(){
     const el = document.getElementById('all-member-list');
     const countEl = document.getElementById('all-member-count');
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const { data, error } = await sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000);
-      if(error) throw error;
-      allMembersCache = data || [];
+      const [profilesRes, pointsRes] = await Promise.all([
+        sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000),
+        sb.from('points_log').select('owner_id, amount').limit(20000),
+      ]);
+      if(profilesRes.error) throw profilesRes.error;
+      allMembersCache = profilesRes.data || [];
+      memberPointsMap = {};
+      (pointsRes.data || []).forEach(p=>{
+        memberPointsMap[p.owner_id] = (memberPointsMap[p.owner_id] || 0) + p.amount;
+      });
       if(countEl) countEl.textContent = allMembersCache.length;
       paintAllMemberList(allMembersCache);
     }catch(e){
@@ -4623,11 +4459,38 @@
     el.innerHTML = list.map(m=>{
       const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
       const isAdmin = m.owner_id === ADMIN_UID;
+      const points = memberPointsMap[m.owner_id] || 0;
       return `
         <div class="admin-row">
-          <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined}</div>
+          <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined} · 🪙 ${points.toLocaleString()}P</div>
+          ${isAdmin ? '' : `
+          <div class="admin-actions">
+            <button class="remove" data-adjust-points="${m.owner_id}" style="background:var(--sand); color:var(--pine-deep);">포인트 조정</button>
+            <button class="remove" data-force-withdraw2="${m.owner_id}">탈퇴시키기</button>
+          </div>`}
         </div>`;
     }).join('');
+    el.querySelectorAll('[data-force-withdraw2]').forEach(btn=>{
+      btn.addEventListener('click', ()=> adminForceWithdraw(btn.dataset.forceWithdraw2));
+    });
+    el.querySelectorAll('[data-adjust-points]').forEach(btn=>{
+      btn.addEventListener('click', ()=> adjustMemberPoints(btn.dataset.adjustPoints));
+    });
+  }
+  async function adjustMemberPoints(ownerId){
+    if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
+    const current = memberPointsMap[ownerId] || 0;
+    const input = prompt(`현재 포인트: ${current}P\n\n더하거나 뺄 포인트를 입력해주세요.\n예) 지급하려면: 50 / 차감하려면: -30`, '0');
+    if(input === null) return;
+    const amount = parseInt(input, 10);
+    if(!amount || isNaN(amount)){ toast('숫자를 입력해주세요'); return; }
+    const reason = prompt('사유를 입력해주세요 (선택)', amount > 0 ? '관리자 지급' : '관리자 차감') || (amount > 0 ? '관리자 지급' : '관리자 차감');
+    try{
+      const { error } = await sb.from('points_log').insert([{ owner_id: ownerId, amount, reason }]);
+      if(error){ console.error(error); toast('처리에 실패했어요'); return; }
+      toast(`${amount > 0 ? '+' : ''}${amount}P 처리했어요`);
+      await renderAllMemberList();
+    }catch(e){ console.error(e); toast('처리에 실패했어요'); }
   }
   document.getElementById('all-member-search').addEventListener('input', (e)=>{
     const q = e.target.value.trim().toLowerCase();
