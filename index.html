@@ -395,6 +395,16 @@
   }
   .stat-card .num{ font-family:'Jua',sans-serif; font-size:24px; font-weight:700; color:var(--pine-deep); }
   .stat-card .label{ font-size:11px; color:var(--muted-text); margin-top:2px; }
+  .stat-card.clickable{ cursor:pointer; transition:transform .1s ease; }
+  .stat-card.clickable:active{ transform:scale(0.96); }
+  .stat-card.clickable .label::after{ content:' ›'; color:var(--clay); font-weight:700; }
+  .admin-accordion-head{
+    display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:4px 0; user-select:none;
+  }
+  .admin-accordion-head h4{ font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin:0; }
+  .admin-accordion-head .accordion-arrow{ color:var(--muted-text); font-size:14px; transition:transform .15s ease; }
+  .hourly-bar{ cursor:pointer; }
+  .hourly-bar:active{ opacity:0.7; }
   .admin-actions{ display:flex; gap:8px; }
   .admin-actions button{
     font-size:12px; font-weight:700; padding:7px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--line); background:var(--paper);
@@ -1199,8 +1209,10 @@
       <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
       <div class="modal-body">
         <h3 style="font-size:22px;">🛡️ 관리자 대시보드</h3>
-        <p style="font-size:13px; color:#6B6550; margin-top:4px;">관리자 전용 화면이에요.</p>
-        <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
+        <p style="font-size:13px; color:#6B6550; margin-top:4px;">항목을 눌러서 자세히 볼 수 있어요.</p>
+
+        <!-- 항상 보이는 핵심 요약 -->
+        <div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
         <div style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:10px;">
@@ -1213,38 +1225,81 @@
           <span style="font-size:11px; color:var(--muted-text);" id="live-visitor-updated"></span>
         </div>
 
-        <div style="margin-top:8px;">
-          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">📅 오늘의 활동</h4>
-          <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px;"></div>
+        <!-- 전체 통계 (방문자 클릭 시 추세 상세) -->
+        <div class="admin-accordion" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="stats">
+            <h4>📊 전체 누적 통계</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-stats" style="display:none;">
+            <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:12px 0;"></div>
+            <div id="visitor-trend-detail" style="display:none; background:var(--sand); border-radius:10px; padding:14px; margin-top:8px;"></div>
+          </div>
         </div>
 
-        <div style="margin-top:24px;">
-          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">⏰ 시간대별 접속 현황 (오늘)</h4>
-          <div id="admin-hourly-stats" style="display:flex; align-items:flex-end; gap:3px; height:90px; padding:6px 2px; border-bottom:1px solid var(--line);"></div>
-          <div id="admin-hourly-labels" style="display:flex; gap:3px; font-size:9px; color:var(--muted-text); margin-top:4px;"></div>
+        <!-- 오늘의 활동 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="today">
+            <h4>📅 오늘의 활동</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-today" style="display:none;">
+            <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin-top:12px;"></div>
+          </div>
         </div>
 
-        <div style="margin-top:24px;">
-          <h4 style="font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin-bottom:8px;">🏆 인기 코스 TOP 5</h4>
-          <div id="admin-top-courses"></div>
+        <!-- 시간대별 접속 현황 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="hourly">
+            <h4>⏰ 시간대별 접속 현황 (오늘)</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-hourly" style="display:none;">
+            <p style="font-size:12px; color:var(--muted-text); margin:10px 0 6px;">막대를 눌러보면 그 시간대 상세 인원이 나와요.</p>
+            <div id="admin-hourly-stats" style="display:flex; align-items:flex-end; gap:3px; height:90px; padding:6px 2px; border-bottom:1px solid var(--line);"></div>
+            <div id="admin-hourly-labels" style="display:flex; gap:3px; font-size:9px; color:var(--muted-text); margin-top:4px;"></div>
+            <div id="hourly-detail" style="margin-top:10px; font-size:13.5px; font-weight:700; color:var(--pine-deep); min-height:20px;"></div>
+          </div>
         </div>
 
-        <div style="margin-top:8px; padding-top:20px; border-top:1px solid var(--line);">
-          <h3 style="font-size:20px;">🚩 신고된 항목 검수</h3>
-          <div id="admin-list" style="margin-top:16px;"></div>
+        <!-- 인기 코스 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="top">
+            <h4>🏆 인기 코스 TOP 5</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-top" style="display:none;">
+            <div id="admin-top-courses" style="margin-top:12px;"></div>
+          </div>
         </div>
 
-        <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
-          <h3 style="font-size:20px;">👥 전체 가입 회원 (<span id="all-member-count">0</span>명)</h3>
-          <p style="font-size:13px; color:#6B6550; margin-top:4px;">가입일 최신순이에요. 닉네임으로 검색할 수 있어요.</p>
-          <input type="text" id="all-member-search" placeholder="닉네임으로 검색" style="width:100%; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; margin:10px 0; font-family:inherit; font-size:13px;">
-          <div id="all-member-list" style="max-height:320px; overflow-y:auto;"></div>
+        <!-- 신고 검수 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="reports">
+            <h4>🚩 신고된 항목 검수</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-reports" style="display:none;">
+            <div id="admin-list" style="margin-top:12px;"></div>
+          </div>
         </div>
 
-        <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--line);">
-          <h3 style="font-size:20px;">📌 회원 활동 관리</h3>
-          <p style="font-size:13px; color:#6B6550; margin-top:4px;">코스·배변함·리뷰를 등록한 회원만 모았어요. 문제 있는 게시물을 한 번에 정리할 때 써요.</p>
-          <div id="member-list" style="margin-top:16px;"></div>
+        <!-- 전체 가입 회원 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="allmembers">
+            <h4>👥 전체 가입 회원 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-allmembers" style="display:none;">
+            <p style="font-size:13px; color:#6B6550; margin-top:8px;">가입일 최신순이에요. 닉네임으로 검색할 수 있어요.</p>
+            <input type="text" id="all-member-search" placeholder="닉네임으로 검색" style="width:100%; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; margin:10px 0; font-family:inherit; font-size:13px;">
+            <div id="all-member-list" style="max-height:320px; overflow-y:auto;"></div>
+          </div>
+        </div>
+
+        <!-- 회원 활동 관리 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line); padding-bottom:8px;">
+          <div class="admin-accordion-head" data-accordion="activemembers">
+            <h4>📌 회원 활동 관리</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-activemembers" style="display:none;">
+            <p style="font-size:13px; color:#6B6550; margin-top:8px;">코스·배변함·리뷰를 등록한 회원만 모았어요. 문제 있는 게시물을 한 번에 정리할 때 써요.</p>
+            <div id="member-list" style="margin-top:16px;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -3029,9 +3084,9 @@
       document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
-      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); map.addLayer(facilityLayer); }
-      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); map.removeLayer(facilityLayer); }
-      else { map.addLayer(binLayer); map.addLayer(facilityLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
+      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); }
+      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); }
+      else { map.addLayer(binLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
     });
   });
 
@@ -4365,10 +4420,16 @@
         { num: totalReviews, label:'리뷰 수' },
         { num: totalMembers, label:'가입 회원' },
         { num: totalPointsIssued.toLocaleString(), label:'누적 지급 포인트' },
-        { num: totalUniqueVisitors.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 방문자(순)' },
-        { num: totalPageViews.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 페이지뷰' },
+        { num: totalUniqueVisitors.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 방문자(순)', detail:'visitors' },
+        { num: totalPageViews.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 페이지뷰', detail:'pageviews' },
       ];
-      el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.innerHTML = stats.map(s=>{
+        const clickable = s.detail ? ' clickable' : '';
+        return `<div class="stat-card${clickable}" ${s.detail ? `data-stat-detail="${s.detail}"` : ''}><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`;
+      }).join('');
+      el.querySelectorAll('[data-stat-detail]').forEach(card=>{
+        card.addEventListener('click', ()=> toggleVisitorTrend(card.dataset.statDetail));
+      });
     }catch(e){
       console.error(e);
       el.innerHTML = '<p class="empty-admin">통계를 불러오지 못했어요.</p>';
@@ -4417,9 +4478,19 @@
       barsEl.innerHTML = hourCounts.map((count, h)=>{
         const heightPct = Math.max(3, Math.round((count / maxCount) * 100));
         const isNow = h === nowHour;
-        return `<div title="${h}시: ${count}건" style="flex:1; height:${heightPct}%; background:${isNow ? 'var(--clay)' : 'var(--gold)'}; border-radius:3px 3px 0 0; min-width:3px;"></div>`;
+        return `<div class="hourly-bar" data-hour="${h}" data-count="${count}" title="${h}시: ${count}건" style="flex:1; height:${heightPct}%; background:${isNow ? 'var(--clay)' : 'var(--gold)'}; border-radius:3px 3px 0 0; min-width:3px;"></div>`;
       }).join('');
       labelsEl.innerHTML = hourCounts.map((_, h)=> h % 3 === 0 ? `<span style="flex:3; text-align:center;">${h}</span>` : `<span style="flex:1;"></span>`).join('');
+      const detailEl = document.getElementById('hourly-detail');
+      barsEl.querySelectorAll('.hourly-bar').forEach(bar=>{
+        bar.addEventListener('click', ()=>{
+          const h = Number(bar.dataset.hour);
+          const count = Number(bar.dataset.count);
+          const nextH = (h+1) % 24;
+          if(detailEl) detailEl.textContent = `🕐 ${h}시 ~ ${nextH}시 : 페이지뷰 ${count}건`;
+        });
+      });
+      if(detailEl && !detailEl.textContent) detailEl.textContent = '막대를 눌러서 시간대별 상세를 확인해보세요';
     }catch(e){
       console.error(e);
       barsEl.innerHTML = '<p class="empty-admin" style="font-size:12px;">시간대별 통계를 불러오지 못했어요.</p>';
@@ -4428,23 +4499,15 @@
 
   // ===== 전체 가입 회원 목록 =====
   let allMembersCache = [];
-  let memberPointsMap = {};
   async function renderAllMemberList(){
     const el = document.getElementById('all-member-list');
     const countEl = document.getElementById('all-member-count');
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const [profilesRes, pointsRes] = await Promise.all([
-        sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000),
-        sb.from('points_log').select('owner_id, amount').limit(20000),
-      ]);
-      if(profilesRes.error) throw profilesRes.error;
-      allMembersCache = profilesRes.data || [];
-      memberPointsMap = {};
-      (pointsRes.data || []).forEach(p=>{
-        memberPointsMap[p.owner_id] = (memberPointsMap[p.owner_id] || 0) + p.amount;
-      });
+      const { data, error } = await sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000);
+      if(error) throw error;
+      allMembersCache = data || [];
       if(countEl) countEl.textContent = allMembersCache.length;
       paintAllMemberList(allMembersCache);
     }catch(e){
@@ -4459,44 +4522,112 @@
     el.innerHTML = list.map(m=>{
       const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
       const isAdmin = m.owner_id === ADMIN_UID;
-      const points = memberPointsMap[m.owner_id] || 0;
       return `
         <div class="admin-row">
-          <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined} · 🪙 ${points.toLocaleString()}P</div>
-          ${isAdmin ? '' : `
-          <div class="admin-actions">
-            <button class="remove" data-adjust-points="${m.owner_id}" style="background:var(--sand); color:var(--pine-deep);">포인트 조정</button>
-            <button class="remove" data-force-withdraw2="${m.owner_id}">탈퇴시키기</button>
-          </div>`}
+          <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입일 ${joined}</div>
         </div>`;
     }).join('');
-    el.querySelectorAll('[data-force-withdraw2]').forEach(btn=>{
-      btn.addEventListener('click', ()=> adminForceWithdraw(btn.dataset.forceWithdraw2));
-    });
-    el.querySelectorAll('[data-adjust-points]').forEach(btn=>{
-      btn.addEventListener('click', ()=> adjustMemberPoints(btn.dataset.adjustPoints));
-    });
-  }
-  async function adjustMemberPoints(ownerId){
-    if(myDeviceId !== ADMIN_UID){ toast('관리자만 처리할 수 있어요'); return; }
-    const current = memberPointsMap[ownerId] || 0;
-    const input = prompt(`현재 포인트: ${current}P\n\n더하거나 뺄 포인트를 입력해주세요.\n예) 지급하려면: 50 / 차감하려면: -30`, '0');
-    if(input === null) return;
-    const amount = parseInt(input, 10);
-    if(!amount || isNaN(amount)){ toast('숫자를 입력해주세요'); return; }
-    const reason = prompt('사유를 입력해주세요 (선택)', amount > 0 ? '관리자 지급' : '관리자 차감') || (amount > 0 ? '관리자 지급' : '관리자 차감');
-    try{
-      const { error } = await sb.from('points_log').insert([{ owner_id: ownerId, amount, reason }]);
-      if(error){ console.error(error); toast('처리에 실패했어요'); return; }
-      toast(`${amount > 0 ? '+' : ''}${amount}P 처리했어요`);
-      await renderAllMemberList();
-    }catch(e){ console.error(e); toast('처리에 실패했어요'); }
   }
   document.getElementById('all-member-search').addEventListener('input', (e)=>{
     const q = e.target.value.trim().toLowerCase();
     if(!q){ paintAllMemberList(allMembersCache); return; }
     paintAllMemberList(allMembersCache.filter(m => (m.nickname||'').toLowerCase().includes(q)));
   });
+  // ===== 방문자/페이지뷰 카드 클릭 시 최근 7일 추세 =====
+  let visitorTrendOpenFor = null;
+  async function toggleVisitorTrend(kind){
+    const box = document.getElementById('visitor-trend-detail');
+    if(!box) return;
+    if(visitorTrendOpenFor === kind && box.style.display !== 'none'){
+      box.style.display = 'none';
+      visitorTrendOpenFor = null;
+      return;
+    }
+    visitorTrendOpenFor = kind;
+    box.style.display = '';
+    box.innerHTML = '<p class="empty-admin" style="margin:0;">불러오는 중...</p>';
+    try{
+      const start = new Date(); start.setDate(start.getDate() - 6); start.setHours(0,0,0,0);
+      const { data, error } = await sb.from('page_views').select('visitor_id, created_at').gte('created_at', start.toISOString()).limit(20000);
+      if(error) throw error;
+      const rows = data || [];
+      const dayMap = {}; // 'YYYY-MM-DD' -> {views, visitors:Set}
+      rows.forEach(r=>{
+        const d = new Date(r.created_at);
+        const key = d.toISOString().slice(0,10);
+        if(!dayMap[key]) dayMap[key] = { views:0, visitors:new Set() };
+        dayMap[key].views++;
+        dayMap[key].visitors.add(r.visitor_id);
+      });
+      const days = [];
+      for(let i=6; i>=0; i--){
+        const d = new Date(); d.setDate(d.getDate()-i);
+        const key = d.toISOString().slice(0,10);
+        const entry = dayMap[key] || { views:0, visitors:new Set() };
+        days.push({ label: `${d.getMonth()+1}/${d.getDate()}`, views: entry.views, visitors: entry.visitors.size });
+      }
+      const title = kind === 'visitors' ? '최근 7일 방문자(순) 추세' : '최근 7일 페이지뷰 추세';
+      const maxVal = Math.max(1, ...days.map(d => kind === 'visitors' ? d.visitors : d.views));
+      box.innerHTML = `
+        <div style="font-size:12.5px; font-weight:700; color:var(--pine-deep); margin-bottom:10px;">📈 ${title}</div>
+        <div style="display:flex; align-items:flex-end; gap:6px; height:70px;">
+          ${days.map(d=>{
+            const val = kind === 'visitors' ? d.visitors : d.views;
+            const h = Math.max(4, Math.round((val/maxVal)*100));
+            return `<div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
+              <div style="font-size:10px; color:var(--pine-deep); font-weight:700; margin-bottom:2px;">${val}</div>
+              <div style="width:100%; height:${h}%; background:var(--moss); border-radius:3px 3px 0 0;"></div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div style="display:flex; gap:6px; margin-top:4px;">
+          ${days.map(d=>`<div style="flex:1; text-align:center; font-size:10px; color:var(--muted-text);">${d.label}</div>`).join('')}
+        </div>`;
+    }catch(e){
+      console.error(e);
+      box.innerHTML = '<p class="empty-admin" style="margin:0;">추세를 불러오지 못했어요.</p>';
+    }
+  }
+
+  // ===== 관리자 대시보드 상단 요약 카드 =====
+  async function renderAdminSummary(){
+    const el = document.getElementById('admin-summary');
+    if(!el) return;
+    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    try{
+      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const [membersRes, todayViewsRes, todaySignupsRes] = await Promise.all([
+        sb.from('profiles').select('owner_id', { count:'exact', head:true }),
+        sb.from('page_views').select('visitor_id').gte('created_at', todayStart.toISOString()).limit(5000),
+        sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', todayStart.toISOString()),
+      ]);
+      const todayVisitorRows = todayViewsRes.data || [];
+      const todayUnique = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
+      const summary = [
+        { num: allCourses().length, label:'전체 코스' },
+        { num: membersRes.count || 0, label:'가입 회원' },
+        { num: todayUnique, label:'오늘 방문자' },
+        { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입' },
+      ];
+      el.innerHTML = summary.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+    }catch(e){
+      console.error(e);
+      el.innerHTML = '<p class="empty-admin">요약을 불러오지 못했어요.</p>';
+    }
+  }
+
+  // ===== 관리자 대시보드 아코디언(섹션 펼치기/접기) =====
+  document.querySelectorAll('.admin-accordion-head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      const key = head.dataset.accordion;
+      const body = document.getElementById('acc-' + key);
+      const arrow = head.querySelector('.accordion-arrow');
+      const isOpen = body.style.display !== 'none';
+      body.style.display = isOpen ? 'none' : '';
+      arrow.textContent = isOpen ? '▸' : '▾';
+    });
+  });
+
   async function renderAdminTodayStats(){
     const el = document.getElementById('admin-today-stats');
     if(!el) return;
@@ -4545,6 +4676,7 @@
   }
   document.getElementById('admin-toggle').addEventListener('click', ()=>{
     if(myDeviceId !== ADMIN_UID){ toast('관리자만 접근할 수 있어요'); return; }
+    renderAdminSummary();
     renderAdminStats();
     renderAdminList();
     renderMemberList();
