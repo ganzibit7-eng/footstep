@@ -1259,6 +1259,17 @@
           </div>
         </div>
 
+        <!-- 유입 경로 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="referrer">
+            <h4>🌐 유입 경로 (최근 7일)</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-referrer" style="display:none;">
+            <p style="font-size:12px; color:var(--muted-text); margin:10px 0 6px;">쓰레드·인스타 홍보 글이 실제로 방문자를 데려오는지 확인해보세요.</p>
+            <div id="admin-referrer-list" style="margin-top:8px;"></div>
+          </div>
+        </div>
+
         <!-- 인기 코스 -->
         <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
           <div class="admin-accordion-head" data-accordion="top">
@@ -4198,8 +4209,21 @@
     }
     return id;
   }
+  function getReferrerSource(){
+    // 카톡/인스타/쓰레드 등에서 유입 시 붙는 파라미터(?ref=threads) 우선, 없으면 브라우저 리퍼러 도메인 사용
+    try{
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if(ref) return ref;
+      if(document.referrer){
+        const host = new URL(document.referrer).hostname.replace('www.', '');
+        return host;
+      }
+    }catch(e){}
+    return '직접 방문';
+  }
   async function logPageView(){
-    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId() }]); }catch(e){ console.error(e); }
+    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: getReferrerSource() }]); }catch(e){ console.error(e); }
   }
   logPageView();
 
@@ -4590,6 +4614,42 @@
   }
 
   // ===== 관리자 대시보드 상단 요약 카드 =====
+  // ===== 유입 경로 =====
+  async function renderReferrerBreakdown(){
+    const el = document.getElementById('admin-referrer-list');
+    if(!el) return;
+    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    try{
+      const start = new Date(); start.setDate(start.getDate() - 6); start.setHours(0,0,0,0);
+      const { data, error } = await sb.from('page_views').select('referrer').gte('created_at', start.toISOString()).limit(20000);
+      if(error) throw error;
+      const counts = {};
+      (data||[]).forEach(r=>{
+        const key = r.referrer || '직접 방문';
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0, 10);
+      if(!sorted.length){ el.innerHTML = '<p class="empty-admin">아직 데이터가 없어요.</p>'; return; }
+      const total = sorted.reduce((s,[,c])=>s+c, 0);
+      el.innerHTML = sorted.map(([source, count])=>{
+        const pct = Math.round((count/total)*100);
+        return `
+          <div style="margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+              <span style="font-weight:700; color:var(--pine-deep);">${source}</span>
+              <span style="color:var(--muted-text);">${count}회 (${pct}%)</span>
+            </div>
+            <div style="background:var(--line); border-radius:999px; height:6px; overflow:hidden;">
+              <div style="width:${pct}%; height:100%; background:var(--moss);"></div>
+            </div>
+          </div>`;
+      }).join('');
+    }catch(e){
+      console.error(e);
+      el.innerHTML = '<p class="empty-admin">불러오지 못했어요. (SQL 마이그레이션이 아직 적용 안 됐을 수 있어요)</p>';
+    }
+  }
+
   async function renderAdminSummary(){
     const el = document.getElementById('admin-summary');
     if(!el) return;
@@ -4604,16 +4664,27 @@
       const todayVisitorRows = todayViewsRes.data || [];
       const todayUnique = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
       const summary = [
-        { num: allCourses().length, label:'전체 코스' },
-        { num: membersRes.count || 0, label:'가입 회원' },
-        { num: todayUnique, label:'오늘 방문자' },
-        { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입' },
+        { num: allCourses().length, label:'전체 코스', jump:'stats' },
+        { num: membersRes.count || 0, label:'가입 회원', jump:'allmembers' },
+        { num: todayUnique, label:'오늘 방문자', jump:'hourly' },
+        { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입', jump:'today' },
       ];
-      el.innerHTML = summary.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.querySelectorAll('[data-jump]').forEach(card=>{
+        card.addEventListener('click', ()=> expandAccordion(card.dataset.jump));
+      });
     }catch(e){
       console.error(e);
       el.innerHTML = '<p class="empty-admin">요약을 불러오지 못했어요.</p>';
     }
+  }
+  function expandAccordion(key){
+    const body = document.getElementById('acc-' + key);
+    const head = document.querySelector(`.admin-accordion-head[data-accordion="${key}"]`);
+    if(!body || !head) return;
+    body.style.display = '';
+    head.querySelector('.accordion-arrow').textContent = '▾';
+    head.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
   // ===== 관리자 대시보드 아코디언(섹션 펼치기/접기) =====
@@ -4670,9 +4741,17 @@
       .slice(0, 5);
     if(!ranked.length){ el.innerHTML = '<p class="empty-admin">아직 리뷰가 달린 코스가 없어요.</p>'; return; }
     el.innerHTML = ranked.map((x,i)=>`
-      <div class="admin-row">
+      <div class="admin-row" data-top-course="${x.c.id}" style="cursor:pointer;">
         <div class="info"><b>${i+1}. ${x.c.name}</b>리뷰 ${x.reviewCount}개 · ★ ${x.avg.toFixed(1)}</div>
       </div>`).join('');
+    el.querySelectorAll('[data-top-course]').forEach(row=>{
+      row.addEventListener('click', ()=>{
+        document.getElementById('admin-overlay').classList.remove('show');
+        if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
+        showPage('map');
+        setTimeout(()=> openCourseDetail(row.dataset.topCourse), 350);
+      });
+    });
   }
   document.getElementById('admin-toggle').addEventListener('click', ()=>{
     if(myDeviceId !== ADMIN_UID){ toast('관리자만 접근할 수 있어요'); return; }
@@ -4680,6 +4759,7 @@
     renderAdminStats();
     renderAdminList();
     renderMemberList();
+    renderReferrerBreakdown();
     renderLiveVisitorCount();
     if(liveVisitorInterval) clearInterval(liveVisitorInterval);
     liveVisitorInterval = setInterval(renderLiveVisitorCount, 15000);
