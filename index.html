@@ -1362,6 +1362,13 @@
                 <div class="tag-check" data-bulk-type="bin">🚮 배변봉투함</div>
                 <div class="tag-check" data-bulk-type="facility">🏨 동반시설</div>
               </div>
+              <div id="bulk-facility-category-wrap" style="display:none;">
+                <label>동반시설 종류</label>
+                <div class="tag-check-group" id="bulk-facility-category-group">
+                  <div class="tag-check on" data-bulk-facility-category="식당카페">🍽️ 식당·카페</div>
+                  <div class="tag-check" data-bulk-facility-category="숙소">🏨 숙소</div>
+                </div>
+              </div>
               <label>이름 컬럼 <span style="color:var(--clay);">*필수</span></label>
               <select id="bulk-col-name"></select>
               <label>위도(lat) 컬럼 <span style="color:var(--clay);">*필수</span></label>
@@ -5290,6 +5297,15 @@
     document.querySelectorAll('#bulk-type-group .tag-check').forEach(x=>x.classList.remove('on'));
     el.classList.add('on');
     bulkSelectedType = el.dataset.bulkType;
+    document.getElementById('bulk-facility-category-wrap').style.display = (bulkSelectedType === 'facility') ? '' : 'none';
+  });
+  let bulkSelectedFacilityCategory = '식당카페';
+  document.getElementById('bulk-facility-category-group').addEventListener('click', (e)=>{
+    const el = e.target.closest('.tag-check');
+    if(!el) return;
+    document.querySelectorAll('#bulk-facility-category-group .tag-check').forEach(x=>x.classList.remove('on'));
+    el.classList.add('on');
+    bulkSelectedFacilityCategory = el.dataset.bulkFacilityCategory;
   });
   document.getElementById('bulk-import-submit-btn').addEventListener('click', async ()=>{
     if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
@@ -5334,7 +5350,7 @@
           payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
         } else {
           table = 'facilities';
-          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, category:'식당카페', lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
+          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, category:bulkSelectedFacilityCategory, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
         }
         const { error } = await sb.from(table).insert(payload);
         if(error){ console.error(error); failed += chunk.length; }
@@ -5389,20 +5405,26 @@
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const todayStart = new Date(); todayStart.setHours(0,0,0,0);
-      const [membersRes, todayViewsRes, todaySignupsRes] = await Promise.all([
-        sb.from('profiles').select('owner_id', { count:'exact', head:true }),
-        sb.from('page_views').select('visitor_id').gte('created_at', todayStart.toISOString()).limit(5000),
+      const [todayViewsRes, todaySignupsRes] = await Promise.all([
+        sb.from('page_views').select('visitor_id, referrer').gte('created_at', todayStart.toISOString()).limit(5000),
         sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', todayStart.toISOString()),
       ]);
       const todayVisitorRows = todayViewsRes.data || [];
       const todayUnique = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
+      const referrerCounts = {};
+      todayVisitorRows.forEach(r=>{
+        const key = r.referrer || '직접 방문';
+        referrerCounts[key] = (referrerCounts[key] || 0) + 1;
+      });
+      const topReferrerEntry = Object.entries(referrerCounts).sort((a,b)=>b[1]-a[1])[0];
+      const topReferrer = topReferrerEntry ? `${topReferrerEntry[0]} (${topReferrerEntry[1]})` : '아직 없음';
       const summary = [
-        { num: allCourses().length, label:'전체 코스', jump:'stats' },
-        { num: membersRes.count || 0, label:'가입 회원', jump:'allmembers' },
+        { num: todayVisitorRows.length, label:'오늘 페이지클릭수', jump:'hourly' },
         { num: todayUnique, label:'오늘 방문자', jump:'hourly' },
         { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입', jump:'today' },
+        { num: topReferrer, label:'오늘 최다 유입', jump:'referrer' },
       ];
-      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num" style="font-size:${String(s.num).length>8?'15px':'24px'};">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
       el.querySelectorAll('[data-jump]').forEach(card=>{
         card.addEventListener('click', ()=> expandAccordion(card.dataset.jump));
       });
