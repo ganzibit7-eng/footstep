@@ -649,8 +649,7 @@
 
       <div class="stat-row home-stat-row">
         <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
-        <div class="stat"><div class="num" id="stat-bins">–</div><div class="label">배변봉투함</div></div>
-        <div class="stat"><div class="num" id="stat-reviews">–</div><div class="label">이용자 리뷰</div></div>
+        <div class="stat"><div class="num" id="stat-facilities">–</div><div class="label">애견동반 카페·숙소</div></div>
       </div>
     </div>
 
@@ -2612,16 +2611,10 @@
 
   function renderStats(){
     const courseCount = allCourses().length;
-    const binCount = allBins().length;
-    let totalReviewCount = 0;
-    allCourses().forEach(c=>{
-      const userList = reviews[c.id] || [];
-      totalReviewCount += userList.length > 0 ? userList.length : (SEED_REVIEWS[c.id] || []).length;
-    });
+    const facilityCount = facilities.length;
     const statMap = [
       ['stat-courses', courseCount],
-      ['stat-bins', binCount],
-      ['stat-reviews', totalReviewCount],
+      ['stat-facilities', facilityCount],
     ];
     statMap.forEach(([id, count])=>{
       const numEl = document.getElementById(id);
