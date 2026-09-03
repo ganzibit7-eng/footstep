@@ -1231,7 +1231,13 @@
       <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
       <div class="modal-body">
         <h3 style="font-size:22px;">🛡️ 관리자 대시보드</h3>
-        <p style="font-size:13px; color:#6B6550; margin-top:4px;">항목을 눌러서 자세히 볼 수 있어요.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:4px;">
+          <p style="font-size:13px; color:#6B6550; margin:0;">항목을 눌러서 자세히 볼 수 있어요.</p>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span id="admin-last-refreshed" style="font-size:11px; color:var(--muted-text);"></span>
+            <button type="button" id="admin-refresh-btn" class="pin-btn" style="width:auto; padding:8px 14px; font-size:12.5px;">🔄 지금 새로고침</button>
+          </div>
+        </div>
 
         <!-- 항상 보이는 핵심 요약 -->
         <div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
@@ -1241,14 +1247,13 @@
             <span id="live-visitor-dot" style="width:10px; height:10px; border-radius:50%; background:#3E9142; display:inline-block; box-shadow:0 0 0 4px rgba(62,145,66,.18);"></span>
             <div>
               <div style="font-family:'Jua',sans-serif; font-size:20px; color:var(--pine-deep);" id="live-visitor-count">–</div>
-              <div style="font-size:11.5px; color:var(--muted-text);">🟢 지금 접속 중 (최근 5분 기준)</div>
+              <div style="font-size:11.5px; color:var(--muted-text);">🟢 지금 접속 중 (최근 5분 기준) · 5초마다 자동 갱신</div>
             </div>
           </div>
           <span style="font-size:11px; color:var(--muted-text);" id="live-visitor-updated"></span>
         </div>
 
-        <!-- 전체 통계 (방문자 클릭 시 추세 상세) -->
-        <div class="admin-accordion" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
+        <!-- 전체 통계 (방문자 클릭 시 추세 상세) --><div class="admin-accordion" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
           <div class="admin-accordion-head" data-accordion="stats">
             <h4>📊 전체 누적 통계</h4><span class="accordion-arrow">▸</span>
           </div>
@@ -5182,6 +5187,18 @@
       });
     });
   }
+  function refreshAdminDashboard(){
+    renderAdminSummary();
+    renderAdminStats();
+    renderAdminList();
+    renderReferrerBreakdown();
+    renderLiveVisitorCount();
+    if(isSuperAdmin(myDeviceId)) renderManagerList();
+    const ts = document.getElementById('admin-last-refreshed');
+    if(ts) ts.textContent = `마지막 새로고침: ${new Date().toLocaleTimeString('ko-KR')}`;
+  }
+  document.getElementById('admin-refresh-btn').addEventListener('click', refreshAdminDashboard);
+
   document.getElementById('admin-toggle').addEventListener('click', ()=>{
     if(!isAdminUser(myDeviceId)){ toast('관리자만 접근할 수 있어요'); return; }
     renderAdminSummary();
@@ -5195,8 +5212,11 @@
       managerWrap.style.display = isSuperAdmin(myDeviceId) ? '' : 'none';
       if(isSuperAdmin(myDeviceId)) renderManagerList();
     }
+    const ts = document.getElementById('admin-last-refreshed');
+    if(ts) ts.textContent = `마지막 새로고침: ${new Date().toLocaleTimeString('ko-KR')}`;
     if(liveVisitorInterval) clearInterval(liveVisitorInterval);
-    liveVisitorInterval = setInterval(renderLiveVisitorCount, 15000);
+    // 실시간 접속자만 5초마다 자동 갱신 (다른 통계는 "지금 새로고침" 버튼으로 필요할 때만 갱신 — 불필요한 서버 요청 방지)
+    liveVisitorInterval = setInterval(renderLiveVisitorCount, 5000);
     document.getElementById('admin-overlay').classList.add('show');
   });
   document.getElementById('admin-close').addEventListener('click', ()=>{
