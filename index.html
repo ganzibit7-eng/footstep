@@ -4638,9 +4638,8 @@
     return '직접 방문';
   }
   async function logPageView(){
-    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: getReferrerSource() }]); }catch(e){ console.error(e); }
+    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: getReferrerSource(), owner_id: myDeviceId || null }]); }catch(e){ console.error(e); }
   }
-  logPageView();
 
   // 실시간 접속자 하트비트: 30초마다 내 방문자ID의 최근 접속시각을 갱신
   async function sendHeartbeat(){
@@ -4999,21 +4998,27 @@
   // ===== 전체 가입 회원 목록 =====
   let allMembersCache = [];
   let memberPointsMap = {};
+  let memberVisitMap = {};
   async function renderAllMemberList(){
     const el = document.getElementById('all-member-list');
     const countEl = document.getElementById('all-member-count');
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const [profilesRes, pointsRes] = await Promise.all([
+      const [profilesRes, pointsRes, visitsRes] = await Promise.all([
         sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000),
         sb.from('points_log').select('owner_id, amount').limit(20000),
+        sb.from('page_views').select('owner_id').not('owner_id', 'is', null).limit(50000),
       ]);
       if(profilesRes.error) throw profilesRes.error;
       allMembersCache = profilesRes.data || [];
       memberPointsMap = {};
       (pointsRes.data || []).forEach(p=>{
         memberPointsMap[p.owner_id] = (memberPointsMap[p.owner_id] || 0) + p.amount;
+      });
+      memberVisitMap = {};
+      (visitsRes.data || []).forEach(v=>{
+        memberVisitMap[v.owner_id] = (memberVisitMap[v.owner_id] || 0) + 1;
       });
       if(countEl) countEl.textContent = allMembersCache.length;
       paintAllMemberList(allMembersCache);
@@ -5041,9 +5046,10 @@
       const isAdmin = m.owner_id === ADMIN_UID;
       const points = memberPointsMap[m.owner_id] || 0;
       const lastActive = daysAgoLabel(m.updated_at);
+      const visitCount = memberVisitMap[m.owner_id] || 1;
       return `
         <div class="admin-row">
-          <div class="info"><b>${isNew ? '🆕 ' : ''}${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${joined} · 최근접속 ${lastActive} · 🪙 ${points.toLocaleString()}P</div>
+          <div class="info"><b>${isNew ? '🆕 ' : ''}${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${joined} · 최근접속 ${lastActive} · 방문 ${visitCount}회 · 🪙 ${points.toLocaleString()}P</div>
           ${isAdmin ? '' : `
           <div class="admin-actions">
             <button class="remove" data-adjust-points="${m.owner_id}" style="background:var(--sand); color:var(--pine-deep);">포인트 조정</button>
@@ -5620,6 +5626,7 @@
   ensureIdentity().then(()=>{
     loadMyWalks();
     loadMyPoints();
+    logPageView();
     if(myDeviceId){
       checkNotifications();
       syncFavoritesFromServer();
