@@ -1383,6 +1383,10 @@
               <div id="bulk-preview" style="margin-top:8px; overflow-x:auto; font-size:11.5px; background:var(--sand); border-radius:10px; padding:10px;"></div>
               <button type="button" class="submit-btn" id="bulk-import-submit-btn" style="margin-top:16px;">전체 등록하기</button>
               <div id="bulk-import-progress" style="margin-top:10px; font-size:13px; color:var(--pine-deep); font-weight:700;"></div>
+              <div style="margin-top:20px; padding-top:16px; border-top:1px dashed var(--line);">
+                <p style="font-size:12px; color:var(--muted-text);">중복 등록됐거나 처음부터 다시 올리고 싶으면, 지금까지 이 도구로 등록한 데이터를 한 번에 지울 수 있어요.</p>
+                <button type="button" class="pin-btn" id="bulk-cleanup-btn" style="color:var(--clay); border-color:var(--clay);">🗑️ 지자체 공공데이터로 등록한 것 전부 삭제</button>
+              </div>
             </div>
           </div>
         </div>
@@ -5326,8 +5330,10 @@
       const lat = parseFloat(r[latCol]);
       const lng = parseFloat(r[lngCol]);
       if(!name || isNaN(lat) || isNaN(lng) || lat === 0 || lng === 0){ skipped++; return; }
+      // 충돌 걱정 없는 고유 ID (시간 + 인덱스 + 랜덤값 조합)
+      const uniqueId = `pub${Date.now()}_${i}_${Math.random().toString(36).slice(2,8)}`;
       validRows.push({
-        id: `pub${Date.now()}${i}`,
+        id: uniqueId,
         name,
         desc: descCol ? (r[descCol]||'') : '',
         lat, lng,
@@ -5337,26 +5343,35 @@
     });
     if(!validRows.length){ toast('등록 가능한 행이 없어요. 컬럼 지정을 확인해주세요'); return; }
 
+    function toPayload(row){
+      if(bulkSelectedType === 'course') return { id:row.id, name:row.name, description:row.desc, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
+      if(bulkSelectedType === 'bin') return { id:row.id, name:row.name, description:row.desc, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
+      return { id:row.id, name:row.name, description:row.desc, category:bulkSelectedFacilityCategory, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
+    }
+    const table = bulkSelectedType === 'course' ? 'courses' : bulkSelectedType === 'bin' ? 'bins' : 'facilities';
+
     progressEl.textContent = `등록 중... 0 / ${validRows.length}`;
     const CHUNK = 200;
     let done = 0, failed = 0;
     for(let i = 0; i < validRows.length; i += CHUNK){
       const chunk = validRows.slice(i, i + CHUNK);
       try{
-        let payload, table;
-        if(bulkSelectedType === 'course'){
-          table = 'courses';
-          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
-        } else if(bulkSelectedType === 'bin'){
-          table = 'bins';
-          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
-        } else {
-          table = 'facilities';
-          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, category:bulkSelectedFacilityCategory, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
-        }
+        const payload = chunk.map(toPayload);
         const { error } = await sb.from(table).insert(payload);
-        if(error){ console.error(error); failed += chunk.length; }
-        else done += chunk.length;
+        if(error){
+          // 묶음 전체가 실패하면, 문제 있는 행 하나 때문에 나머지 좋은 데이터까지 날아가지 않도록
+          // 한 줄씩 다시 시도해서 살릴 수 있는 건 최대한 살림
+          console.error('묶음 등록 실패, 한 줄씩 재시도:', error);
+          for(const row of chunk){
+            try{
+              const { error: rowError } = await sb.from(table).insert([toPayload(row)]);
+              if(rowError){ failed++; console.error('행 등록 실패:', row.name, rowError); }
+              else done++;
+            }catch(e){ failed++; console.error(e); }
+          }
+        } else {
+          done += chunk.length;
+        }
       }catch(e){ console.error(e); failed += chunk.length; }
       progressEl.textContent = `등록 중... ${Math.min(i+CHUNK, validRows.length)} / ${validRows.length}`;
     }
@@ -5364,6 +5379,24 @@
     toast('공공데이터 일괄 등록이 끝났어요');
     await loadData();
     renderAdminStats();
+  });
+  document.getElementById('bulk-cleanup-btn').addEventListener('click', async ()=>{
+    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
+    if(!confirm('지금까지 "지자체 공공데이터"로 등록된 코스·배변봉투함·동반시설을 전부 삭제할까요?\n직접 등록한 것들은 영향 없어요. 되돌릴 수 없어요.')) return;
+    const progressEl = document.getElementById('bulk-import-progress');
+    progressEl.textContent = '삭제 중...';
+    try{
+      const results = await Promise.allSettled([
+        sb.from('courses').delete().eq('author', '지자체 공공데이터'),
+        sb.from('bins').delete().eq('author', '지자체 공공데이터'),
+        sb.from('facilities').delete().eq('author', '지자체 공공데이터'),
+      ]);
+      const failedOps = results.filter(r => r.status === 'rejected' || (r.value && r.value.error));
+      progressEl.textContent = failedOps.length ? '일부 삭제에 실패했어요. 콘솔을 확인해주세요' : '✅ 공공데이터로 등록한 항목을 모두 삭제했어요';
+      toast('삭제 완료');
+      await loadData();
+      renderAdminStats();
+    }catch(e){ console.error(e); progressEl.textContent = '삭제 중 오류가 발생했어요'; }
   });
 
   async function renderReferrerBreakdown(){
