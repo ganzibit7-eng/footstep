@@ -27,6 +27,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70f6582eb185c9353f39a366aa0c793f&libraries=services&autoload=false"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
   :root{
     --pine:#1F3A2E;
@@ -1343,6 +1344,40 @@
           </div>
         </div>
 
+        <!-- 공공데이터 일괄 등록 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="bulkimport">
+            <h4>📂 공공데이터 일괄 등록</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-bulkimport" style="display:none;">
+            <p style="font-size:12.5px; color:var(--muted-text); margin-top:8px; line-height:1.6;">
+              공공데이터포털(data.go.kr) 등에서 받은 CSV 파일(예: "반려동물 동반가능 공원 현황")을 업로드하면,<br>
+              컬럼을 지정해서 코스·배변봉투함·동반시설로 한 번에 등록할 수 있어요.
+            </p>
+            <input type="file" id="bulk-csv-input" accept=".csv" style="margin-top:12px; font-size:13px;">
+            <div id="bulk-import-mapping" style="display:none; margin-top:16px;">
+              <label style="margin-top:0;">어떤 데이터로 등록할까요?</label>
+              <div class="tag-check-group" id="bulk-type-group">
+                <div class="tag-check on" data-bulk-type="course">🐾 산책 코스</div>
+                <div class="tag-check" data-bulk-type="bin">🚮 배변봉투함</div>
+                <div class="tag-check" data-bulk-type="facility">🏨 동반시설</div>
+              </div>
+              <label>이름 컬럼 <span style="color:var(--clay);">*필수</span></label>
+              <select id="bulk-col-name"></select>
+              <label>위도(lat) 컬럼 <span style="color:var(--clay);">*필수</span></label>
+              <select id="bulk-col-lat"></select>
+              <label>경도(lng) 컬럼 <span style="color:var(--clay);">*필수</span></label>
+              <select id="bulk-col-lng"></select>
+              <label>설명 컬럼 (선택)</label>
+              <select id="bulk-col-desc"><option value="">— 사용 안 함 —</option></select>
+              <div style="margin-top:14px; font-size:12.5px; color:var(--muted-text);">미리보기 (최대 3행)</div>
+              <div id="bulk-preview" style="margin-top:8px; overflow-x:auto; font-size:11.5px; background:var(--sand); border-radius:10px; padding:10px;"></div>
+              <button type="button" class="submit-btn" id="bulk-import-submit-btn" style="margin-top:16px;">전체 등록하기</button>
+              <div id="bulk-import-progress" style="margin-top:10px; font-size:13px; color:var(--pine-deep); font-weight:700;"></div>
+            </div>
+          </div>
+        </div>
+
         <!-- 매니저 관리 (최고 관리자 전용) -->
         <div class="admin-accordion" id="manager-section-wrap" style="display:none; padding-top:16px; border-top:1px solid var(--line); padding-bottom:8px;">
           <div class="admin-accordion-head" data-accordion="managers">
@@ -1388,6 +1423,19 @@
     <div class="modal-body">
       <h3 style="font-size:20px;">🔔 알림</h3>
       <div id="notif-list" style="margin-top:14px;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="welcome-popup-overlay">
+  <div class="modal nick-modal">
+    <button class="modal-close" id="welcome-popup-close" aria-label="닫기">✕</button>
+    <div class="modal-body" style="text-align:center;">
+      <div style="font-size:64px; line-height:1;">🐕🐾</div>
+      <h3 style="font-size:21px; margin-top:14px;">지금 무료로 가입하고<br>더 많은 서비스를 이용해보세요!</h3>
+      <p style="font-size:13.5px; color:var(--muted-text); margin-top:10px; line-height:1.6;">코스 등록, GPS 산책 기록, 포인트 적립까지<br>발자국 회원이면 전부 무료예요 🐾</p>
+      <button class="submit-btn" id="welcome-popup-cta" style="margin-top:22px;">🎉 무료로 시작하기</button>
+      <button class="pin-btn" id="welcome-popup-later" style="margin-top:10px; color:#A79E7E; border:none; background:none;">나중에 할게요</button>
     </div>
   </div>
 </div>
@@ -4517,6 +4565,33 @@
     document.getElementById('onboarding-overlay').classList.add('show');
   });
 
+  // ===== 체류시간 2분 후 회원가입 유도 팝업 =====
+  const WELCOME_POPUP_COOLDOWN_MS = 3 * 24 * 60 * 60 * 1000; // 한 번 보면 3일간 다시 안 뜸
+  function closeWelcomePopup(){
+    document.getElementById('welcome-popup-overlay').classList.remove('show');
+  }
+  function markWelcomePopupShown(){
+    try{ localStorage.setItem('paw_welcome_popup_last_shown', String(Date.now())); }catch(e){}
+  }
+  setTimeout(()=>{
+    if(myNickname) return; // 이미 로그인한 사람에겐 안 띄움
+    if(document.querySelector('.modal-overlay.show')) return; // 다른 창이 이미 떠있으면 방해하지 않음
+    let lastShown = 0;
+    try{ lastShown = Number(localStorage.getItem('paw_welcome_popup_last_shown') || '0'); }catch(e){}
+    if(Date.now() - lastShown < WELCOME_POPUP_COOLDOWN_MS) return;
+    document.getElementById('welcome-popup-overlay').classList.add('show');
+    markWelcomePopupShown();
+  }, 2 * 60 * 1000); // 2분
+  document.getElementById('welcome-popup-close').addEventListener('click', closeWelcomePopup);
+  document.getElementById('welcome-popup-later').addEventListener('click', closeWelcomePopup);
+  document.getElementById('welcome-popup-cta').addEventListener('click', ()=>{
+    closeWelcomePopup();
+    openNickModal();
+  });
+  document.getElementById('welcome-popup-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'welcome-popup-overlay') closeWelcomePopup();
+  });
+
   // ===== 방문자 통계 =====
   function getVisitorId(){
     let id = null;
@@ -5148,6 +5223,129 @@
     resultsEl.querySelectorAll('[data-add-manager]').forEach(btn=>{
       btn.addEventListener('click', ()=> addManager(btn.dataset.addManager, btn.dataset.nickname));
     });
+  });
+
+  // ===== 공공데이터 CSV 일괄 등록 =====
+  let bulkParsedRows = [];
+  let bulkHeaders = [];
+  let bulkSelectedType = 'course';
+  document.getElementById('bulk-csv-input').addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    if(typeof Papa === 'undefined'){ toast('CSV 처리 도구를 불러오지 못했어요. 새로고침 후 다시 시도해주세요'); return; }
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      encoding: 'UTF-8',
+      complete: (results)=>{
+        bulkParsedRows = results.data;
+        bulkHeaders = results.meta.fields || [];
+        if(!bulkParsedRows.length){ toast('CSV에서 데이터를 찾지 못했어요'); return; }
+        populateBulkColumnSelects();
+        renderBulkPreview();
+        document.getElementById('bulk-import-mapping').style.display = '';
+        toast(`${bulkParsedRows.length}개 행을 불러왔어요. 컬럼을 지정해주세요`);
+      },
+      error: (err)=>{ console.error(err); toast('CSV를 읽는 데 실패했어요. 인코딩이 UTF-8인지 확인해주세요'); }
+    });
+  });
+  function populateBulkColumnSelects(){
+    const selects = ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'];
+    selects.forEach(id=>{
+      const sel = document.getElementById(id);
+      const keepEmpty = id === 'bulk-col-desc';
+      sel.innerHTML = (keepEmpty ? '<option value="">— 사용 안 함 —</option>' : '') +
+        bulkHeaders.map(h=>`<option value="${h}">${h}</option>`).join('');
+    });
+    // 흔한 공공데이터 컬럼명 자동 추정
+    const guess = (cands)=> bulkHeaders.find(h => cands.some(c => h.includes(c)));
+    const nameGuess = guess(['시설명','명칭','산책로명','공원명','이름']);
+    const latGuess = guess(['위도','lat','LAT','Y좌표']);
+    const lngGuess = guess(['경도','lng','LNG','X좌표']);
+    const descGuess = guess(['소재지','주소','설명','개요']);
+    if(nameGuess) document.getElementById('bulk-col-name').value = nameGuess;
+    if(latGuess) document.getElementById('bulk-col-lat').value = latGuess;
+    if(lngGuess) document.getElementById('bulk-col-lng').value = lngGuess;
+    if(descGuess) document.getElementById('bulk-col-desc').value = descGuess;
+  }
+  function renderBulkPreview(){
+    const nameCol = document.getElementById('bulk-col-name').value;
+    const latCol = document.getElementById('bulk-col-lat').value;
+    const lngCol = document.getElementById('bulk-col-lng').value;
+    const descCol = document.getElementById('bulk-col-desc').value;
+    const rows = bulkParsedRows.slice(0, 3);
+    const el = document.getElementById('bulk-preview');
+    el.innerHTML = `
+      <table style="width:100%; border-collapse:collapse;">
+        <tr style="font-weight:800; color:var(--pine-deep);"><td>이름</td><td>위도</td><td>경도</td><td>설명</td></tr>
+        ${rows.map(r=>`<tr><td>${r[nameCol]||'-'}</td><td>${r[latCol]||'-'}</td><td>${r[lngCol]||'-'}</td><td>${descCol ? (r[descCol]||'-') : '-'}</td></tr>`).join('')}
+      </table>`;
+  }
+  ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'].forEach(id=>{
+    document.getElementById(id).addEventListener('change', renderBulkPreview);
+  });
+  document.getElementById('bulk-type-group').addEventListener('click', (e)=>{
+    const el = e.target.closest('.tag-check');
+    if(!el) return;
+    document.querySelectorAll('#bulk-type-group .tag-check').forEach(x=>x.classList.remove('on'));
+    el.classList.add('on');
+    bulkSelectedType = el.dataset.bulkType;
+  });
+  document.getElementById('bulk-import-submit-btn').addEventListener('click', async ()=>{
+    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
+    const nameCol = document.getElementById('bulk-col-name').value;
+    const latCol = document.getElementById('bulk-col-lat').value;
+    const lngCol = document.getElementById('bulk-col-lng').value;
+    const descCol = document.getElementById('bulk-col-desc').value;
+    if(!nameCol || !latCol || !lngCol){ toast('이름·위도·경도 컬럼을 모두 지정해주세요'); return; }
+    if(!confirm(`${bulkParsedRows.length}개 행을 "${bulkSelectedType === 'course' ? '산책 코스' : bulkSelectedType === 'bin' ? '배변봉투함' : '동반시설'}"(으)로 일괄 등록할까요?`)) return;
+
+    const progressEl = document.getElementById('bulk-import-progress');
+    const validRows = [];
+    let skipped = 0;
+    bulkParsedRows.forEach((r, i)=>{
+      const name = (r[nameCol]||'').trim();
+      const lat = parseFloat(r[latCol]);
+      const lng = parseFloat(r[lngCol]);
+      if(!name || isNaN(lat) || isNaN(lng) || lat === 0 || lng === 0){ skipped++; return; }
+      validRows.push({
+        id: `pub${Date.now()}${i}`,
+        name,
+        desc: descCol ? (r[descCol]||'') : '',
+        lat, lng,
+        ownerId: null,
+        author: '지자체 공공데이터'
+      });
+    });
+    if(!validRows.length){ toast('등록 가능한 행이 없어요. 컬럼 지정을 확인해주세요'); return; }
+
+    progressEl.textContent = `등록 중... 0 / ${validRows.length}`;
+    const CHUNK = 200;
+    let done = 0, failed = 0;
+    for(let i = 0; i < validRows.length; i += CHUNK){
+      const chunk = validRows.slice(i, i + CHUNK);
+      try{
+        let payload, table;
+        if(bulkSelectedType === 'course'){
+          table = 'courses';
+          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
+        } else if(bulkSelectedType === 'bin'){
+          table = 'bins';
+          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
+        } else {
+          table = 'facilities';
+          payload = chunk.map(r => ({ id:r.id, name:r.name, description:r.desc, category:'식당카페', lat:r.lat, lng:r.lng, owner_id:null, author:r.author }));
+        }
+        const { error } = await sb.from(table).insert(payload);
+        if(error){ console.error(error); failed += chunk.length; }
+        else done += chunk.length;
+      }catch(e){ console.error(e); failed += chunk.length; }
+      progressEl.textContent = `등록 중... ${Math.min(i+CHUNK, validRows.length)} / ${validRows.length}`;
+    }
+    progressEl.textContent = `✅ 완료! 성공 ${done}개 · 실패 ${failed}개 · 스킵(값 누락) ${skipped}개`;
+    toast('공공데이터 일괄 등록이 끝났어요');
+    await loadData();
+    renderAdminStats();
   });
 
   async function renderReferrerBreakdown(){
