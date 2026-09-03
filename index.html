@@ -393,9 +393,11 @@
   .admin-badge{ background:#F2D6CE; color:var(--clay-dark); font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; }
   .stat-card{
     background:var(--sand); border-radius:10px; padding:14px 10px; text-align:center;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:78px; height:100%; gap:2px;
   }
-  .stat-card .num{ font-family:'Jua',sans-serif; font-size:24px; font-weight:700; color:var(--pine-deep); }
-  .stat-card .label{ font-size:11px; color:var(--muted-text); margin-top:2px; }
+  .stat-card .num{ font-family:'Jua',sans-serif; font-size:24px; font-weight:700; color:var(--pine-deep); line-height:1.2; word-break:break-word; }
+  .stat-card .label{ font-size:11px; color:var(--muted-text); line-height:1.4; }
   .stat-card.clickable{ cursor:pointer; transition:transform .1s ease; }
   .stat-card.clickable:active{ transform:scale(0.96); }
   .stat-card.clickable .label::after{ content:' ›'; color:var(--clay); font-weight:700; }
@@ -5417,14 +5419,17 @@
         referrerCounts[key] = (referrerCounts[key] || 0) + 1;
       });
       const topReferrerEntry = Object.entries(referrerCounts).sort((a,b)=>b[1]-a[1])[0];
-      const topReferrer = topReferrerEntry ? `${topReferrerEntry[0]} (${topReferrerEntry[1]})` : '아직 없음';
       const summary = [
         { num: todayVisitorRows.length, label:'오늘 페이지클릭수', jump:'hourly' },
         { num: todayUnique, label:'오늘 방문자', jump:'hourly' },
         { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입', jump:'today' },
-        { num: topReferrer, label:'오늘 최다 유입', jump:'referrer' },
+        {
+          num: topReferrerEntry ? topReferrerEntry[1] : 0,
+          label: topReferrerEntry ? `오늘 최다 유입 · ${topReferrerEntry[0]}` : '오늘 최다 유입 · 아직 없음',
+          jump: 'referrer'
+        },
       ];
-      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num" style="font-size:${String(s.num).length>8?'15px':'24px'};">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
       el.querySelectorAll('[data-jump]').forEach(card=>{
         card.addEventListener('click', ()=> expandAccordion(card.dataset.jump));
       });
