@@ -630,7 +630,7 @@
   </svg>
 
   <div class="wrap hero-inner">
-    <div class="hero-copy">
+    <div class="hero-copy" id="hero-style-0">
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
       <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
       <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
@@ -653,7 +653,64 @@
       </div>
     </div>
 
-    <div class="hero-side">
+    <!-- 스타일 1: 미니멀형 (?homestyle=1) -->
+    <div class="hero-copy" id="hero-style-1" style="display:none; text-align:center; max-width:520px; margin:0 auto;">
+      <div style="width:64px; height:64px; border-radius:50%; background:var(--sand); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:30px;">🐾</div>
+      <h1 style="font-size:38px;">우리 동네 산책 코스,<br>발자국에서</h1>
+      <p class="lead" style="margin:14px auto 28px;">전국 산책 코스와 배변봉투함 위치를 한눈에</p>
+      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block;">지도 보기</a>
+      <div class="stat-row" style="justify-content:center; margin-top:32px;">
+        <div class="stat"><div class="num" id="stat-courses-1">–</div><div class="label">등록된 코스</div></div>
+        <div class="stat"><div class="num" id="stat-facilities-1">–</div><div class="label">카페·숙소</div></div>
+      </div>
+    </div>
+
+    <!-- 스타일 2: 매거진(에디토리얼)형 (?homestyle=2) -->
+    <div class="hero-copy" id="hero-style-2" style="display:none;">
+      <span class="eyebrow">FOR EVERY WALK</span>
+      <h1 style="font-size:34px; line-height:1.35;">산책 나갈 때마다<br>고민하지 마세요</h1>
+      <p class="lead" style="margin-bottom:20px;">발자국 하나면 코스, 배변봉투함, 동물병원까지 전부 찾을 수 있어요.</p>
+      <div style="display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line);">
+        <span style="font-size:22px;">🗺️</span>
+        <div><b style="font-family:'Jua',sans-serif; font-size:15px;">전국 산책 코스</b><div style="font-size:13.5px; color:var(--muted-text);">실제 다녀온 사람들의 리뷰까지</div></div>
+      </div>
+      <div style="display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line);">
+        <span style="font-size:22px;">📍</span>
+        <div><b style="font-family:'Jua',sans-serif; font-size:15px;">GPS 자동 기록</b><div style="font-size:13.5px; color:var(--muted-text);">걷기만 하면 거리·시간이 저장돼요</div></div>
+      </div>
+      <div style="display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+        <span style="font-size:22px;">🪙</span>
+        <div><b style="font-family:'Jua',sans-serif; font-size:15px;">포인트 적립</b><div style="font-size:13.5px; color:var(--muted-text);">등록하고 걸을 때마다 리워드</div></div>
+      </div>
+      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block; margin-top:22px;">무료로 시작하기</a>
+    </div>
+
+    <!-- 스타일 3: 카드형 (?homestyle=3) -->
+    <div class="hero-copy" id="hero-style-3" style="display:none; max-width:640px;">
+      <h1 style="font-size:32px;">발자국</h1>
+      <p class="lead" style="margin-bottom:22px;">강아지와의 모든 산책, 여기서 시작해요</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <a href="#" data-page-nav="map" class="quick-card" style="text-decoration:none;">
+          <span class="quick-icon">🗺️</span>
+          <span><b>산책 코스</b><small id="stat-courses-3">– 개</small></span>
+        </a>
+        <a href="#" data-page-nav="map" class="quick-card" style="text-decoration:none;">
+          <span class="quick-icon">🏨</span>
+          <span><b>동반 카페·숙소</b><small id="stat-facilities-3">– 곳</small></span>
+        </a>
+        <a href="#" data-page-nav="walk" class="quick-card" style="text-decoration:none;">
+          <span class="quick-icon">📍</span>
+          <span><b>산책 기록</b><small>GPS 자동 저장</small></span>
+        </a>
+        <a href="#" data-page-nav="register" class="quick-card" style="text-decoration:none;">
+          <span class="quick-icon">🪙</span>
+          <span><b>포인트</b><small>걸을 때마다 적립</small></span>
+        </a>
+      </div>
+      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block; margin-top:18px;">지도에서 둘러보기</a>
+    </div>
+
+    <div class="hero-side" id="hero-side-wrap">
       <div class="hero-card home-weather-card" id="weather-card">
         <span class="tag">오늘 산책 날씨</span>
         <h3 id="weather-title">불러오는 중...</h3>
@@ -2617,6 +2674,8 @@
     const statMap = [
       ['stat-courses', courseCount],
       ['stat-facilities', facilityCount],
+      ['stat-courses-1', courseCount],
+      ['stat-facilities-1', facilityCount],
     ];
     statMap.forEach(([id, count])=>{
       const numEl = document.getElementById(id);
@@ -2629,7 +2688,25 @@
         statEl.style.display = 'none';
       }
     });
+    const c3 = document.getElementById('stat-courses-3');
+    if(c3) c3.textContent = `${courseCount}개`;
+    const f3 = document.getElementById('stat-facilities-3');
+    if(f3) f3.textContent = `${facilityCount}곳`;
   }
+
+  // ===== 홈 화면 히어로 스타일 미리보기 (?homestyle=1/2/3) =====
+  (function applyHeroStylePreview(){
+    const params = new URLSearchParams(window.location.search);
+    const style = params.get('homestyle');
+    if(!style || !['1','2','3'].includes(style)) return;
+    document.getElementById('hero-style-0').style.display = 'none';
+    document.getElementById('hero-style-' + style).style.display = '';
+    // 카드형(3번)은 옆 날씨카드 공간을 넓게 쓰도록 숨김, 나머지는 그대로 유지
+    if(style === '3'){
+      const sideWrap = document.getElementById('hero-side-wrap');
+      if(sideWrap) sideWrap.style.display = 'none';
+    }
+  })();
 
   function avgRating(courseId){
     const list = reviewsFor(courseId);
