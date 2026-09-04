@@ -803,6 +803,7 @@
           <div class="chip active" data-filter="all">전체</div>
           <div class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</div>
           <div class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</div>
+          <div class="chip" data-filter="facility"><span class="dot" style="background:var(--gold)"></span>동반시설</div>
         </div>
         <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
@@ -825,7 +826,8 @@
         <span>🐾 산책 코스 시작점</span>
         <span>┈┈ 실제 산책 경로</span>
         <span>🚮 배변봉투함</span>
-        <span>🏥 동물병원 · 🛍️ 애견용품점 · 🍽️ 동반식당·카페 · 🏨 동반숙소 (카카오 로컬 검색 제공)</span>
+        <span>🍽️ 동반식당·카페 · 🏨 동반숙소 (사용자 등록 + 공공데이터)</span>
+        <span>🏥 동물병원 · 🛍️ 애견용품점은 "지금 보이는 지역에서 찾기"로 실시간 검색돼요</span>
         <span>마커를 누르면 상세 정보가 보여요</span>
       </div>
     </div>
@@ -2931,6 +2933,7 @@
     });
   }
   const POI_EMOJI = { vet:'🏥', pet_shop:'🛍️', restaurant:'🍽️', lodging:'🏨' };
+  const POI_COLOR = { vet:'#E0554F', pet_shop:'#8B6FC9', restaurant:'#E8834A', lodging:'#3E8FB0' };
   const POI_KEYWORDS = {
     vet: ['동물병원', '동물의료센터'],
     pet_shop: ['애견용품', '펫샵', '반려동물용품점'],
@@ -2939,7 +2942,12 @@
   };
   function poiIcon(cat){
     const emoji = POI_EMOJI[cat] || '📍';
-    return L.divIcon({ className:'', html:`<div style="font-size:20px; transform:translate(-2px,-4px);">${emoji}</div>`, iconSize:[22,22] });
+    const color = POI_COLOR[cat] || '#5B5645';
+    return L.divIcon({
+      className:'',
+      html:`<div style="width:32px; height:32px; border-radius:50%; background:${color}; box-shadow:0 3px 8px rgba(0,0,0,0.35); border:2.5px solid #fff; display:flex; align-items:center; justify-content:center; font-size:17px; transform:translate(-16px,-32px);">${emoji}</div>`,
+      iconSize:[32,32]
+    });
   }
   function kakaoKeywordSearch(keyword, bounds){
     return new Promise((resolve)=>{
@@ -3427,9 +3435,15 @@
       document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
-      if(f==='all'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); map.addLayer(facilityLayer); }
-      else if(f==='course'){ map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); map.removeLayer(facilityLayer); }
-      else { map.addLayer(binLayer); map.addLayer(facilityLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); }
+      if(f==='all'){
+        map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); map.addLayer(facilityLayer);
+      } else if(f==='course'){
+        map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.removeLayer(binLayer); map.removeLayer(facilityLayer);
+      } else if(f==='bin'){
+        map.addLayer(binLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); map.removeLayer(facilityLayer);
+      } else if(f==='facility'){
+        map.addLayer(facilityLayer); map.removeLayer(courseLayer); map.removeLayer(coursePathLayer); map.removeLayer(binLayer);
+      }
     });
   });
 
