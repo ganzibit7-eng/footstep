@@ -388,6 +388,21 @@
     width:58px; height:58px; border-radius:50%; cursor:pointer; box-shadow:0 8px 20px rgba(199,154,60,0.45); z-index:1199;
     display:flex; align-items:center; justify-content:center; animation:aiBtnPulse 2.4s ease-in-out infinite;
   }
+  .ai-tooltip{
+    position:fixed; bottom:154px; right:20px; max-width:230px; background:var(--paper); border:1.5px solid var(--gold);
+    border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); z-index:1199;
+    animation:aiTooltipPop .3s ease;
+  }
+  .ai-tooltip:after{
+    content:''; position:absolute; bottom:-8px; right:26px; width:14px; height:14px; background:var(--paper);
+    border-right:1.5px solid var(--gold); border-bottom:1.5px solid var(--gold); transform:rotate(45deg);
+  }
+  .ai-tooltip b{ display:block; font-family:'Jua',sans-serif; font-size:13.5px; color:var(--pine-deep); margin-bottom:5px; }
+  .ai-tooltip p{ font-size:12px; color:var(--muted-text); line-height:1.5; margin:0; }
+  .ai-tooltip-close{
+    position:absolute; top:6px; right:8px; background:none; border:none; color:var(--muted-text); font-size:13px; cursor:pointer; padding:4px;
+  }
+  @keyframes aiTooltipPop{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
   @keyframes aiBtnPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
   .ai-assistant-modal{ max-width:420px; }
   .ai-assistant-header{ display:flex; align-items:center; gap:12px; padding-bottom:14px; border-bottom:1px solid var(--line); }
@@ -719,12 +734,6 @@
       <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
       <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
       <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
-
-      <div class="home-search">
-        <span class="home-search-icon">⌕</span>
-        <input id="home-course-search" type="search" placeholder="산책코스·지역을 검색해보세요" autocomplete="off" aria-label="산책코스 또는 지역 검색">
-        <button type="button" id="home-search-btn" aria-label="검색">검색</button>
-      </div>
 
       <div class="hero-quick-card-grid">
         <a href="#" data-page-nav="map" data-map-filter="course" class="quick-card" style="text-decoration:none;">
@@ -1280,7 +1289,12 @@
   </div>
 </div>
 
-<button class="ai-assistant-btn" id="ai-assistant-btn" aria-label="발이에게 코스 추천받기">
+<div class="ai-tooltip" id="ai-tooltip" style="display:none;">
+  <button class="ai-tooltip-close" id="ai-tooltip-close" aria-label="닫기">✕</button>
+  <b>몽이가 코스를 추천해줘요! 🐾</b>
+  <p>강아지 크기랑 원하는 조건만 알려주면<br>딱 맞는 산책 코스를 찾아드려요</p>
+</div>
+<button class="ai-assistant-btn" id="ai-assistant-btn" aria-label="몽이에게 코스 추천받기">
   <span style="font-size:26px;">🐕</span>
 </button>
 
@@ -1291,7 +1305,7 @@
       <div class="ai-assistant-header">
         <span style="font-size:38px;">🐕</span>
         <div>
-          <b style="font-family:'Jua',sans-serif; font-size:17px; color:var(--pine-deep);">발이</b>
+          <b style="font-family:'Jua',sans-serif; font-size:17px; color:var(--pine-deep);">몽</b>
           <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">우리 강아지에게 딱 맞는 코스를 찾아드려요</p>
         </div>
       </div>
@@ -2720,8 +2734,25 @@
     document.getElementById('hero-style-' + style).style.display = '';
   })();
 
-  // ===== AI 비서 "발이" — 규칙 기반 코스 추천 (외부 API 비용 없음) =====
-  const aiAnswers = { size:null, time:null, env:null };
+  // ===== AI 비서 "몽" — 규칙 기반 코스 추천 (외부 API 비용 없음) =====
+  const aiAnswers = { size:null, time:null, env:null, region:null };
+  // 대략적인 시도 경계 (정밀하지 않아도 추천 참고용으로는 충분해요)
+  const REGION_BOUNDS = {
+    '서울': { latMin:37.42, latMax:37.71, lngMin:126.76, lngMax:127.19 },
+    '경기': { latMin:36.9,  latMax:38.3,  lngMin:126.4,  lngMax:127.9 },
+    '충남': { latMin:35.9,  latMax:37.0,  lngMin:126.0,  lngMax:127.3 },
+    '충북': { latMin:36.0,  latMax:37.3,  lngMin:127.3,  lngMax:128.3 },
+    '경남': { latMin:34.7,  latMax:35.9,  lngMin:127.5,  lngMax:129.3 },
+    '경북': { latMin:35.7,  latMax:37.0,  lngMin:128.0,  lngMax:129.6 },
+    '전남': { latMin:34.0,  latMax:35.5,  lngMin:126.0,  lngMax:127.7 },
+    '전북': { latMin:35.4,  latMax:36.2,  lngMin:126.4,  lngMax:127.6 },
+    '제주': { latMin:33.1,  latMax:33.6,  lngMin:126.1,  lngMax:126.9 },
+  };
+  function courseInRegion(course, region){
+    const b = REGION_BOUNDS[region];
+    if(!b) return false;
+    return course.lat >= b.latMin && course.lat <= b.latMax && course.lng >= b.lngMin && course.lng <= b.lngMax;
+  }
   function parseDistanceKm(distStr){
     if(!distStr) return 2;
     const m = String(distStr).match(/[\d.]+/);
@@ -2731,7 +2762,7 @@
     const body = document.getElementById('ai-assistant-body');
     if(step === 0){
       body.innerHTML = `
-        <div class="ai-bubble">안녕하세요! 저는 발이예요 🐾<br>우리 강아지한테 딱 맞는 산책 코스, 3가지만 물어보고 찾아드릴게요!</div>
+        <div class="ai-bubble">안녕하세요! 저는 몽이에요 🐾<br>우리 강아지한테 딱 맞는 산책 코스, 3가지만 물어보고 찾아드릴게요!</div>
         <button class="ai-option-btn" data-ai-start="1">코스 추천받기 →</button>
       `;
       body.querySelector('[data-ai-start]').addEventListener('click', ()=> aiRenderStep(1));
@@ -2766,6 +2797,17 @@
         btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v; aiRenderStep(4); });
       });
     } else if(step === 4){
+      const regions = ['서울','경기','충남','충북','경남','경북','전남','전북','제주'];
+      body.innerHTML = `
+        <div class="ai-bubble">어느 지역 코스를 찾아드릴까요?</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          ${regions.map(r => `<button class="ai-option-btn" data-v="${r}" style="text-align:center; margin-bottom:0;">${r}</button>`).join('')}
+        </div>
+      `;
+      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.region = btn.dataset.v; aiRenderStep(5); });
+      });
+    } else if(step === 5){
       const results = aiRecommendCourses();
       if(!results.length){
         body.innerHTML = `
@@ -2775,7 +2817,7 @@
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${aiAnswers.size} · ${aiAnswers.time} 산책 · ${aiAnswers.env} 원하시는군요!<br>이 코스들 어때요? 🐾</div>
+          <div class="ai-bubble">${aiAnswers.region} · ${aiAnswers.size} · ${aiAnswers.time} 산책 · ${aiAnswers.env} 원하시는군요!<br>이 코스들 어때요? 🐾</div>
           ${results.map(aiRenderRecCard).join('')}
           <button class="ai-option-btn" data-ai-restart="1" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
         `;
@@ -2811,6 +2853,7 @@
       .map(c=>{
         let score = 0;
         const km = parseDistanceKm(c.distance);
+        if(aiAnswers.region && courseInRegion(c, aiAnswers.region)) score += 5;
         if(km >= timeRange[0] && km <= timeRange[1]) score += 2;
         if(sizeDiffPref.includes(c.diff)) score += 2;
         if((c.tags||[]).includes(aiAnswers.env)) score += 3;
@@ -2826,7 +2869,8 @@
     return allCourses().filter(c => !isHidden('course', c.id)).slice(0, 3);
   }
   document.getElementById('ai-assistant-btn').addEventListener('click', ()=>{
-    aiAnswers.size = null; aiAnswers.time = null; aiAnswers.env = null;
+    hideAiTooltip();
+    aiAnswers.size = null; aiAnswers.time = null; aiAnswers.env = null; aiAnswers.region = null;
     aiRenderStep(0);
     document.getElementById('ai-assistant-overlay').classList.add('show');
   });
@@ -2836,6 +2880,31 @@
   document.getElementById('ai-assistant-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'ai-assistant-overlay') document.getElementById('ai-assistant-overlay').classList.remove('show');
   });
+
+  // ===== 첫 방문 시 몽이 말풍선으로 사용 유도 =====
+  function hideAiTooltip(){
+    const tip = document.getElementById('ai-tooltip');
+    if(tip) tip.style.display = 'none';
+    try{ localStorage.setItem('paw_ai_tooltip_seen', '1'); }catch(e){}
+  }
+  document.getElementById('ai-tooltip-close').addEventListener('click', hideAiTooltip);
+  (function maybeShowAiTooltip(){
+    let seen = null;
+    try{ seen = localStorage.getItem('paw_ai_tooltip_seen'); }catch(e){}
+    if(seen) return;
+    setTimeout(()=>{
+      const tip = document.getElementById('ai-tooltip');
+      if(tip){
+        tip.style.display = '';
+        try{ localStorage.setItem('paw_ai_tooltip_seen', '1'); }catch(e){}
+      }
+    }, 1800);
+    // 12초 뒤엔 화면을 계속 가리지 않도록 자동으로 사라져요 (다시 보고 싶으면 새로고침해도 안 뜨고, 몽이 버튼은 항상 그대로 있어요)
+    setTimeout(()=>{
+      const tip = document.getElementById('ai-tooltip');
+      if(tip && tip.style.display !== 'none'){ tip.style.display = 'none'; }
+    }, 13800);
+  })();
 
   function avgRating(courseId){
     const list = reviewsFor(courseId);
