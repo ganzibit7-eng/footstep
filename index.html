@@ -630,16 +630,16 @@
   </svg>
 
   <div class="wrap hero-inner">
-    <div class="hero-copy" id="hero-style-0">
-      <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
-      <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
-      <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
+    <div class="hero-copy" id="hero-style-0" style="display:none;">
+      <p id="hero-greeting-unused" style="display:none;"></p>
+      <span class="eyebrow">📍 내 주변 강아지 산책코스</span>
+      <h1>강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
       <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
 
       <div class="home-search">
         <span class="home-search-icon">⌕</span>
-        <input id="home-course-search" type="search" placeholder="산책코스·지역을 검색해보세요" autocomplete="off" aria-label="산책코스 또는 지역 검색">
-        <button type="button" id="home-search-btn" aria-label="검색">검색</button>
+        <input type="search" placeholder="산책코스·지역을 검색해보세요" autocomplete="off" aria-label="산책코스 또는 지역 검색">
+        <button type="button" aria-label="검색">검색</button>
       </div>
 
       <div class="hero-actions home-main-actions">
@@ -648,8 +648,8 @@
       </div>
 
       <div class="stat-row home-stat-row">
-        <div class="stat"><div class="num" id="stat-courses">–</div><div class="label">등록된 코스</div></div>
-        <div class="stat"><div class="num" id="stat-facilities">–</div><div class="label">애견동반 카페·숙소</div></div>
+        <div class="stat"><div class="num">–</div><div class="label">등록된 코스</div></div>
+        <div class="stat"><div class="num">–</div><div class="label">애견동반 카페·숙소</div></div>
       </div>
     </div>
 
@@ -685,11 +685,20 @@
       <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block; margin-top:22px;">무료로 시작하기</a>
     </div>
 
-    <!-- 스타일 3: 카드형 (?homestyle=3) -->
-    <div class="hero-copy" id="hero-style-3" style="display:none; max-width:640px;">
-      <h1 style="font-size:32px;">발자국</h1>
-      <p class="lead" style="margin-bottom:22px;">강아지와의 모든 산책, 여기서 시작해요</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+    <!-- 스타일 3: 카드형 (기본값) -->
+    <div class="hero-copy" id="hero-style-3" style="max-width:640px;">
+      <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
+      <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
+      <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
+      <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
+
+      <div class="home-search">
+        <span class="home-search-icon">⌕</span>
+        <input id="home-course-search" type="search" placeholder="산책코스·지역을 검색해보세요" autocomplete="off" aria-label="산책코스 또는 지역 검색">
+        <button type="button" id="home-search-btn" aria-label="검색">검색</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;">
         <a href="#" data-page-nav="map" class="quick-card" style="text-decoration:none;">
           <span class="quick-icon">🗺️</span>
           <span><b>산책 코스</b><small id="stat-courses-3">– 개</small></span>
@@ -703,11 +712,10 @@
           <span><b>산책 기록</b><small>GPS 자동 저장</small></span>
         </a>
         <a href="#" data-page-nav="register" class="quick-card" style="text-decoration:none;">
-          <span class="quick-icon">🪙</span>
-          <span><b>포인트</b><small>걸을 때마다 적립</small></span>
+          <span class="quick-icon">➕</span>
+          <span><b>코스 등록</b><small>우리 동네 산책길 공유</small></span>
         </a>
       </div>
-      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block; margin-top:18px;">지도에서 둘러보기</a>
     </div>
 
     <div class="hero-side" id="hero-side-wrap">
@@ -770,18 +778,6 @@
         <span class="fake-pin pin-4">🏥</span>
         <span class="fake-you">📍</span>
       </div>
-    </div>
-
-    <div id="recent-added-wrap" style="display:none; margin-top:64px;">
-      <div class="section-head home-section-head">
-        <div>
-          <span class="kicker">Fresh Off the Trail</span>
-          <h2>방금 등록된 코스</h2>
-          <p>지금도 전국 곳곳에서 이웃 반려인들이 새 코스를 등록하고 있어요.</p>
-        </div>
-        <a href="#" class="section-more" data-page-nav="list">전체 보기 →</a>
-      </div>
-      <div class="grid" id="recent-added-grid"></div>
     </div>
 
     <div class="home-walk-cta">
@@ -2684,14 +2680,10 @@
   (function applyHeroStylePreview(){
     const params = new URLSearchParams(window.location.search);
     const style = params.get('homestyle');
-    if(!style || !['1','2','3'].includes(style)) return;
-    document.getElementById('hero-style-0').style.display = 'none';
+    // 기본값은 3번(카드형). ?homestyle=0/1/2 를 붙이면 예전 스타일들을 미리볼 수 있어요.
+    if(!style || !['0','1','2'].includes(style)) return;
+    document.getElementById('hero-style-3').style.display = 'none';
     document.getElementById('hero-style-' + style).style.display = '';
-    // 카드형(3번)은 옆 날씨카드 공간을 넓게 쓰도록 숨김, 나머지는 그대로 유지
-    if(style === '3'){
-      const sideWrap = document.getElementById('hero-side-wrap');
-      if(sideWrap) sideWrap.style.display = 'none';
-    }
   })();
 
   function avgRating(courseId){
