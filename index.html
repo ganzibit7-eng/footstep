@@ -699,11 +699,11 @@
       </div>
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;">
-        <a href="#" data-page-nav="map" class="quick-card" style="text-decoration:none;">
+        <a href="#" data-page-nav="map" data-map-filter="course" class="quick-card" style="text-decoration:none;">
           <span class="quick-icon">🗺️</span>
           <span><b>산책 코스</b><small id="stat-courses-3">– 개</small></span>
         </a>
-        <a href="#" data-page-nav="map" class="quick-card" style="text-decoration:none;">
+        <a href="#" data-page-nav="map" data-map-filter="facility" class="quick-card" style="text-decoration:none;">
           <span class="quick-icon">🏨</span>
           <span><b>동반 카페·숙소</b><small id="stat-facilities-3">– 곳</small></span>
         </a>
@@ -731,19 +731,6 @@
 
 <section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
-
-    <div class="home-quick-grid">
-      <a href="#" class="quick-card" data-page-nav="walk">
-        <span class="quick-icon">🐾</span>
-        <span><b>오늘 산책하기</b><small>GPS로 걸은 길을 기록해요</small></span>
-        <span class="quick-arrow">→</span>
-      </a>
-      <a href="#" class="quick-card" data-page-nav="map">
-        <span class="quick-icon">🏨</span>
-        <span><b>동반 카페·숙소 찾기</b><small>지도에서 동반시설만 모아보기</small></span>
-        <span class="quick-arrow">→</span>
-      </a>
-    </div>
 
     <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:0 0 32px; box-shadow:var(--shadow);">
       <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85; text-transform:uppercase;">Monthly Champion</div>
@@ -4567,6 +4554,12 @@
       if(el.dataset.pageNav === 'register' && !draftCheckedOnce){
         draftCheckedOnce = true;
         setTimeout(restoreRegisterDraftIfAny, 350);
+      }
+      if(el.dataset.pageNav === 'map' && el.dataset.mapFilter){
+        setTimeout(()=>{
+          const chip = document.querySelector(`#view-filter-group .chip[data-filter="${el.dataset.mapFilter}"]`);
+          if(chip) chip.click();
+        }, 100);
       }
     });
   });
