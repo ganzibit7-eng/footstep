@@ -132,7 +132,7 @@
   /* ===== Hero ===== */
   .hero{
     position:relative;
-    background:var(--pine-deep);
+    background:linear-gradient(160deg, #23452F 0%, #2F5A3D 100%);
     color:var(--sand);
     overflow:hidden;
     padding:88px 24px 64px;
@@ -717,15 +717,6 @@
         <p id="weather-desc">위치 정보를 확인하고 있어요.</p>
         <div class="meta" id="weather-meta"></div>
       </div>
-
-      <div class="hero-mini-card">
-        <div class="mini-card-icon">🗺️</div>
-        <div>
-          <strong>우리 동네 산책 지도</strong>
-          <span>코스·봉투함·동반시설을 한눈에</span>
-        </div>
-        <a href="#" data-page-nav="map" aria-label="지도 보기">→</a>
-      </div>
     </div>
   </div>
 </section>
@@ -734,19 +725,14 @@
   <div class="wrap">
 
     <div class="home-quick-grid">
-      <a href="#" class="quick-card" data-page-nav="map">
-        <span class="quick-icon">🗺️</span>
-        <span><b>산책코스 찾기</b><small>내 주변 코스를 지도에서</small></span>
-        <span class="quick-arrow">→</span>
-      </a>
       <a href="#" class="quick-card" data-page-nav="walk">
         <span class="quick-icon">🐾</span>
         <span><b>오늘 산책하기</b><small>GPS로 걸은 길을 기록해요</small></span>
         <span class="quick-arrow">→</span>
       </a>
-      <a href="#" class="quick-card" data-page-nav="register">
-        <span class="quick-icon">➕</span>
-        <span><b>코스 등록하기</b><small>좋은 산책길을 함께 공유해요</small></span>
+      <a href="#" class="quick-card" data-page-nav="map">
+        <span class="quick-icon">🏨</span>
+        <span><b>동반 카페·숙소 찾기</b><small>지도에서 동반시설만 모아보기</small></span>
         <span class="quick-arrow">→</span>
       </a>
     </div>
