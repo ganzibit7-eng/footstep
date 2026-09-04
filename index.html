@@ -383,6 +383,23 @@
     position:fixed; bottom:24px; right:24px; background:var(--pine-deep); color:var(--paper); border:none;
     width:48px; height:48px; border-radius:50%; font-size:18px; cursor:pointer; box-shadow:var(--shadow); z-index:1200;
   }
+  .ai-assistant-btn{
+    position:fixed; bottom:88px; right:24px; background:var(--gold); color:var(--pine-deep); border:none;
+    width:58px; height:58px; border-radius:50%; cursor:pointer; box-shadow:0 8px 20px rgba(199,154,60,0.45); z-index:1199;
+    display:flex; align-items:center; justify-content:center; animation:aiBtnPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes aiBtnPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
+  .ai-assistant-modal{ max-width:420px; }
+  .ai-assistant-header{ display:flex; align-items:center; gap:12px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+  .ai-option-btn{
+    display:block; width:100%; text-align:left; padding:13px 16px; margin-bottom:8px;
+    background:var(--sand); border:1.5px solid var(--line); border-radius:12px; cursor:pointer;
+    font-family:inherit; font-size:14px; color:var(--pine-deep); font-weight:600;
+  }
+  .ai-option-btn:active{ background:var(--gold); border-color:var(--gold); }
+  .ai-bubble{ background:var(--sand); border-radius:14px; padding:14px 16px; font-size:14px; color:var(--pine-deep); margin-bottom:14px; line-height:1.6; }
+  .ai-rec-card{ display:flex; gap:12px; align-items:center; padding:12px; border:1.5px solid var(--line); border-radius:12px; margin-bottom:10px; cursor:pointer; text-decoration:none; }
+  .ai-rec-card:active{ background:var(--sand); }
   .admin-panel{ max-width:640px; }
   .admin-row{
     display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); gap:12px;
@@ -402,8 +419,10 @@
   .stat-card.clickable:active{ transform:scale(0.96); }
   .stat-card.clickable .label::after{ content:' ›'; color:var(--clay); font-weight:700; }
   .admin-accordion-head{
-    display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:4px 0; user-select:none;
+    display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:10px 4px; margin:-6px -4px; user-select:none;
+    border-radius:10px; transition:background .12s ease;
   }
+  .admin-accordion-head:active{ background:var(--sand); }
   .admin-accordion-head h4{ font-family:'Jua',sans-serif; font-size:16px; color:var(--pine-deep); margin:0; }
   .admin-accordion-head .accordion-arrow{ color:var(--muted-text); font-size:14px; transition:transform .15s ease; }
   .hourly-bar{ cursor:pointer; }
@@ -479,6 +498,10 @@
   .home-quick-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:52px;
   }
+  .hero-quick-card-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
+  }
+  .hero-quick-card-grid .quick-card{ padding:14px; }
   .quick-card{
     display:flex; align-items:center; gap:12px; min-width:0; padding:17px 18px; border:1px solid var(--line);
     background:var(--paper); border-radius:14px; box-shadow:0 4px 16px rgba(21,41,34,.04);
@@ -547,6 +570,11 @@
     .home-content{padding:24px 0 55px;}
     .home-quick-grid{grid-template-columns:1fr;gap:9px;margin-bottom:38px;}
     .quick-card{padding:14px 15px;}
+    .hero-quick-card-grid{gap:9px;}
+    .hero-quick-card-grid .quick-card{padding:12px;}
+    .hero-quick-card-grid .quick-icon{width:34px;height:34px;flex:0 0 34px;font-size:17px;}
+    .hero-quick-card-grid b{font-size:13px;}
+    .hero-quick-card-grid small{font-size:10.5px;}
     .home-section-head{align-items:flex-start;gap:8px;margin-bottom:15px;}
     .home-section-head h2{font-size:25px;}
     .home-section-head p{font-size:13px;}
@@ -698,7 +726,7 @@
         <button type="button" id="home-search-btn" aria-label="검색">검색</button>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;">
+      <div class="hero-quick-card-grid">
         <a href="#" data-page-nav="map" data-map-filter="course" class="quick-card" style="text-decoration:none;">
           <span class="quick-icon">🗺️</span>
           <span><b>산책 코스</b><small id="stat-courses-3">– 개</small></span>
@@ -1252,6 +1280,25 @@
   </div>
 </div>
 
+<button class="ai-assistant-btn" id="ai-assistant-btn" aria-label="발이에게 코스 추천받기">
+  <span style="font-size:26px;">🐕</span>
+</button>
+
+<div class="modal-overlay" id="ai-assistant-overlay">
+  <div class="modal ai-assistant-modal">
+    <button class="modal-close" id="ai-assistant-close" aria-label="닫기">✕</button>
+    <div class="modal-body">
+      <div class="ai-assistant-header">
+        <span style="font-size:38px;">🐕</span>
+        <div>
+          <b style="font-family:'Jua',sans-serif; font-size:17px; color:var(--pine-deep);">발이</b>
+          <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">우리 강아지에게 딱 맞는 코스를 찾아드려요</p>
+        </div>
+      </div>
+      <div id="ai-assistant-body" style="margin-top:18px;"></div>
+    </div>
+  </div>
+</div>
 
 <button class="admin-toggle" id="admin-toggle" title="관리자 전용" aria-label="관리자 화면 열기" style="display:none;">🛡️</button>
 
@@ -2672,6 +2719,123 @@
     document.getElementById('hero-style-3').style.display = 'none';
     document.getElementById('hero-style-' + style).style.display = '';
   })();
+
+  // ===== AI 비서 "발이" — 규칙 기반 코스 추천 (외부 API 비용 없음) =====
+  const aiAnswers = { size:null, time:null, env:null };
+  function parseDistanceKm(distStr){
+    if(!distStr) return 2;
+    const m = String(distStr).match(/[\d.]+/);
+    return m ? parseFloat(m[0]) : 2;
+  }
+  function aiRenderStep(step){
+    const body = document.getElementById('ai-assistant-body');
+    if(step === 0){
+      body.innerHTML = `
+        <div class="ai-bubble">안녕하세요! 저는 발이예요 🐾<br>우리 강아지한테 딱 맞는 산책 코스, 3가지만 물어보고 찾아드릴게요!</div>
+        <button class="ai-option-btn" data-ai-start="1">코스 추천받기 →</button>
+      `;
+      body.querySelector('[data-ai-start]').addEventListener('click', ()=> aiRenderStep(1));
+    } else if(step === 1){
+      body.innerHTML = `
+        <div class="ai-bubble">우리 강아지 크기가 어떻게 되나요?</div>
+        <button class="ai-option-btn" data-v="소형견">🐕 소형견</button>
+        <button class="ai-option-btn" data-v="중형견">🐕‍🦺 중형견</button>
+        <button class="ai-option-btn" data-v="대형견">🐕‍🦺 대형견</button>
+      `;
+      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.size = btn.dataset.v; aiRenderStep(2); });
+      });
+    } else if(step === 2){
+      body.innerHTML = `
+        <div class="ai-bubble">오늘 산책은 얼마나 하고 싶으세요?</div>
+        <button class="ai-option-btn" data-v="짧게">⏱️ 짧게 (15분 이내)</button>
+        <button class="ai-option-btn" data-v="보통">⏱️ 보통 (30분 정도)</button>
+        <button class="ai-option-btn" data-v="길게">⏱️ 길게 (1시간 이상)</button>
+      `;
+      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.time = btn.dataset.v; aiRenderStep(3); });
+      });
+    } else if(step === 3){
+      body.innerHTML = `
+        <div class="ai-bubble">어떤 환경을 더 좋아하세요?</div>
+        <button class="ai-option-btn" data-v="그늘많음">🌳 그늘 많은 곳</button>
+        <button class="ai-option-btn" data-v="잔디바닥">🌱 잔디밭</button>
+        <button class="ai-option-btn" data-v="계단없음">🚶 평지(계단 없음)</button>
+      `;
+      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v; aiRenderStep(4); });
+      });
+    } else if(step === 4){
+      const results = aiRecommendCourses();
+      if(!results.length){
+        body.innerHTML = `
+          <div class="ai-bubble">앗, 조건에 딱 맞는 코스를 못 찾았어요 😅<br>대신 인기 코스 몇 개 보여드릴게요!</div>
+          ${aiFallbackCourses().map(aiRenderRecCard).join('')}
+          <button class="ai-option-btn" data-ai-restart="1" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+        `;
+      } else {
+        body.innerHTML = `
+          <div class="ai-bubble">${aiAnswers.size} · ${aiAnswers.time} 산책 · ${aiAnswers.env} 원하시는군요!<br>이 코스들 어때요? 🐾</div>
+          ${results.map(aiRenderRecCard).join('')}
+          <button class="ai-option-btn" data-ai-restart="1" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+        `;
+      }
+      body.querySelectorAll('[data-open-course]').forEach(card=>{
+        card.addEventListener('click', (e)=>{
+          e.preventDefault();
+          document.getElementById('ai-assistant-overlay').classList.remove('show');
+          showPage('map');
+          setTimeout(()=> openCourseDetail(card.dataset.openCourse), 300);
+        });
+      });
+      const restartBtn = body.querySelector('[data-ai-restart]');
+      if(restartBtn) restartBtn.addEventListener('click', ()=> aiRenderStep(0));
+    }
+  }
+  function aiRenderRecCard(c){
+    const rating = avgRating(c.id);
+    return `<a href="#" class="ai-rec-card" data-open-course="${c.id}">
+      <span style="font-size:26px;">🐾</span>
+      <span style="flex:1;">
+        <b style="display:block; font-size:14px; color:var(--pine-deep);">${c.name}</b>
+        <small style="color:var(--muted-text); font-size:12px;">${c.distance || ''} · ${c.diff || ''}${rating ? ' · ★'+rating : ''}</small>
+      </span>
+      <span style="color:var(--clay);">→</span>
+    </a>`;
+  }
+  function aiRecommendCourses(){
+    const timeRange = { '짧게':[0,2], '보통':[1.2,4.5], '길게':[3.5,999] }[aiAnswers.time] || [0,999];
+    const sizeDiffPref = { '소형견':['쉬움'], '중형견':['쉬움','보통'], '대형견':['보통','어려움'] }[aiAnswers.size] || [];
+    const scored = allCourses()
+      .filter(c => !isHidden('course', c.id))
+      .map(c=>{
+        let score = 0;
+        const km = parseDistanceKm(c.distance);
+        if(km >= timeRange[0] && km <= timeRange[1]) score += 2;
+        if(sizeDiffPref.includes(c.diff)) score += 2;
+        if((c.tags||[]).includes(aiAnswers.env)) score += 3;
+        return { c, score };
+      })
+      .filter(x => x.score > 0)
+      .sort((a,b) => b.score - a.score)
+      .slice(0, 3)
+      .map(x => x.c);
+    return scored;
+  }
+  function aiFallbackCourses(){
+    return allCourses().filter(c => !isHidden('course', c.id)).slice(0, 3);
+  }
+  document.getElementById('ai-assistant-btn').addEventListener('click', ()=>{
+    aiAnswers.size = null; aiAnswers.time = null; aiAnswers.env = null;
+    aiRenderStep(0);
+    document.getElementById('ai-assistant-overlay').classList.add('show');
+  });
+  document.getElementById('ai-assistant-close').addEventListener('click', ()=>{
+    document.getElementById('ai-assistant-overlay').classList.remove('show');
+  });
+  document.getElementById('ai-assistant-overlay').addEventListener('click', (e)=>{
+    if(e.target.id === 'ai-assistant-overlay') document.getElementById('ai-assistant-overlay').classList.remove('show');
+  });
 
   function avgRating(courseId){
     const list = reviewsFor(courseId);
