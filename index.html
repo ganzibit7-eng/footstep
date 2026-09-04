@@ -649,7 +649,6 @@
       <button id="notif-btn" aria-label="알림" title="알림" style="position:relative; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:16px;">
         🔔<span id="notif-dot" style="display:none; position:absolute; top:4px; right:5px; width:9px; height:9px; border-radius:50%; background:var(--clay); border:2px solid var(--paper);"></span>
       </button>
-      <button id="help-btn" aria-label="사용법 다시 보기" title="사용법 다시 보기" style="width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--sand); cursor:pointer; font-size:15px; font-weight:700; color:var(--pine-deep);">?</button>
     </div>
   </div>
 </header>
@@ -1540,25 +1539,6 @@
       <p style="font-size:13.5px; color:var(--muted-text); margin-top:10px; line-height:1.6;">코스 등록, GPS 산책 기록, 포인트 적립까지<br>발자국 회원이면 전부 무료예요 🐾</p>
       <button class="submit-btn" id="welcome-popup-cta" style="margin-top:22px;">🎉 무료로 시작하기</button>
       <button class="pin-btn" id="welcome-popup-later" style="margin-top:10px; color:#A79E7E; border:none; background:none;">나중에 할게요</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="onboarding-overlay">
-  <div class="modal nick-modal">
-    <div class="modal-body" style="text-align:center;">
-      <div id="onboarding-emoji" style="font-size:52px; margin-bottom:12px;">🐾</div>
-      <h3 id="onboarding-title" style="font-size:20px;"></h3>
-      <p id="onboarding-desc" style="font-size:14px; color:var(--muted-text); margin-top:10px; line-height:1.6;"></p>
-      <div style="display:flex; justify-content:center; gap:6px; margin:20px 0;">
-        <span class="onboarding-dot" data-dot="0"></span>
-        <span class="onboarding-dot" data-dot="1"></span>
-        <span class="onboarding-dot" data-dot="2"></span>
-        <span class="onboarding-dot" data-dot="3"></span>
-      </div>
-      <button class="submit-btn" id="onboarding-next-btn">다음</button>
-      <button class="pin-btn" id="onboarding-skip-btn" style="margin-top:10px; color:#A79E7E;">건너뛰기</button>
-      <button class="pin-btn" id="onboarding-snooze-btn" style="margin-top:8px; color:#A79E7E; font-size:12px; border:none; background:none;">오늘 하루 보지 않기</button>
     </div>
   </div>
 </div>
@@ -2735,7 +2715,7 @@
   })();
 
   // ===== AI 비서 "몽" — 규칙 기반 코스 추천 (외부 API 비용 없음) =====
-  const aiAnswers = { size:null, time:null, env:null, region:null };
+  const aiAnswers = { size:null, time:null, env:null, region:null, facilityCategory:null, facilityRegion:null };
   // 대략적인 시도 경계 (정밀하지 않아도 추천 참고용으로는 충분해요)
   const REGION_BOUNDS = {
     '서울': { latMin:37.42, latMax:37.71, lngMin:126.76, lngMax:127.19 },
@@ -2760,66 +2740,84 @@
   }
   function aiRenderStep(step){
     const body = document.getElementById('ai-assistant-body');
-    if(step === 0){
+    const backBtn = `<button class="ai-option-btn" data-ai-menu="1" style="text-align:center; background:none; border:none; color:var(--muted-text); font-weight:500; padding:8px;">← 메인으로</button>`;
+
+    if(step === 'menu'){
       body.innerHTML = `
-        <div class="ai-bubble">안녕하세요! 저는 몽이에요 🐾<br>우리 강아지한테 딱 맞는 산책 코스, 3가지만 물어보고 찾아드릴게요!</div>
-        <button class="ai-option-btn" data-ai-start="1">코스 추천받기 →</button>
+        <div class="ai-bubble">안녕하세요! 저는 몽이에요 🐾<br>뭘 도와드릴까요?</div>
+        <button class="ai-option-btn" data-go="c-size">🐾 산책 코스 추천받기</button>
+        <button class="ai-option-btn" data-go="f-category">🍽️🏨 동반 카페·숙소 추천받기</button>
+        <button class="ai-option-btn" data-go="guide-0">📖 발자국 사용법 보기</button>
+        <button class="ai-option-btn" data-go="faq">❓ 자주 묻는 질문</button>
       `;
-      body.querySelector('[data-ai-start]').addEventListener('click', ()=> aiRenderStep(1));
-    } else if(step === 1){
+      body.querySelectorAll('[data-go]').forEach(btn=>{
+        btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
+      });
+
+    // ---------- 산책 코스 추천 흐름 ----------
+    } else if(step === 'c-size'){
       body.innerHTML = `
         <div class="ai-bubble">우리 강아지 크기가 어떻게 되나요?</div>
         <button class="ai-option-btn" data-v="소형견">🐕 소형견</button>
         <button class="ai-option-btn" data-v="중형견">🐕‍🦺 중형견</button>
         <button class="ai-option-btn" data-v="대형견">🐕‍🦺 대형견</button>
+        ${backBtn}
       `;
-      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{ aiAnswers.size = btn.dataset.v; aiRenderStep(2); });
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.size = btn.dataset.v; aiRenderStep('c-time'); });
       });
-    } else if(step === 2){
+      aiWireBack(body);
+    } else if(step === 'c-time'){
       body.innerHTML = `
         <div class="ai-bubble">오늘 산책은 얼마나 하고 싶으세요?</div>
         <button class="ai-option-btn" data-v="짧게">⏱️ 짧게 (15분 이내)</button>
         <button class="ai-option-btn" data-v="보통">⏱️ 보통 (30분 정도)</button>
         <button class="ai-option-btn" data-v="길게">⏱️ 길게 (1시간 이상)</button>
+        ${backBtn}
       `;
-      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{ aiAnswers.time = btn.dataset.v; aiRenderStep(3); });
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.time = btn.dataset.v; aiRenderStep('c-env'); });
       });
-    } else if(step === 3){
+      aiWireBack(body);
+    } else if(step === 'c-env'){
       body.innerHTML = `
         <div class="ai-bubble">어떤 환경을 더 좋아하세요?</div>
         <button class="ai-option-btn" data-v="그늘많음">🌳 그늘 많은 곳</button>
         <button class="ai-option-btn" data-v="잔디바닥">🌱 잔디밭</button>
         <button class="ai-option-btn" data-v="계단없음">🚶 평지(계단 없음)</button>
+        ${backBtn}
       `;
-      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v; aiRenderStep(4); });
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v; aiRenderStep('c-region'); });
       });
-    } else if(step === 4){
-      const regions = ['서울','경기','충남','충북','경남','경북','전남','전북','제주'];
+      aiWireBack(body);
+    } else if(step === 'c-region'){
       body.innerHTML = `
         <div class="ai-bubble">어느 지역 코스를 찾아드릴까요?</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          ${regions.map(r => `<button class="ai-option-btn" data-v="${r}" style="text-align:center; margin-bottom:0;">${r}</button>`).join('')}
+          ${AI_REGIONS.map(r => `<button class="ai-option-btn" data-v="${r}" style="text-align:center; margin-bottom:0;">${r}</button>`).join('')}
         </div>
+        ${backBtn}
       `;
-      body.querySelectorAll('.ai-option-btn').forEach(btn=>{
-        btn.addEventListener('click', ()=>{ aiAnswers.region = btn.dataset.v; aiRenderStep(5); });
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.region = btn.dataset.v; aiRenderStep('c-result'); });
       });
-    } else if(step === 5){
+      aiWireBack(body);
+    } else if(step === 'c-result'){
       const results = aiRecommendCourses();
       if(!results.length){
         body.innerHTML = `
           <div class="ai-bubble">앗, 조건에 딱 맞는 코스를 못 찾았어요 😅<br>대신 인기 코스 몇 개 보여드릴게요!</div>
           ${aiFallbackCourses().map(aiRenderRecCard).join('')}
-          <button class="ai-option-btn" data-ai-restart="1" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+          <button class="ai-option-btn" data-go="c-size" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+          ${backBtn}
         `;
       } else {
         body.innerHTML = `
           <div class="ai-bubble">${aiAnswers.region} · ${aiAnswers.size} · ${aiAnswers.time} 산책 · ${aiAnswers.env} 원하시는군요!<br>이 코스들 어때요? 🐾</div>
           ${results.map(aiRenderRecCard).join('')}
-          <button class="ai-option-btn" data-ai-restart="1" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+          <button class="ai-option-btn" data-go="c-size" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
+          ${backBtn}
         `;
       }
       body.querySelectorAll('[data-open-course]').forEach(card=>{
@@ -2830,10 +2828,122 @@
           setTimeout(()=> openCourseDetail(card.dataset.openCourse), 300);
         });
       });
-      const restartBtn = body.querySelector('[data-ai-restart]');
-      if(restartBtn) restartBtn.addEventListener('click', ()=> aiRenderStep(0));
+      body.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go)));
+      aiWireBack(body);
+
+    // ---------- 동반 카페·숙소 추천 흐름 ----------
+    } else if(step === 'f-category'){
+      body.innerHTML = `
+        <div class="ai-bubble">어떤 곳을 찾아드릴까요?</div>
+        <button class="ai-option-btn" data-v="식당카페">🍽️ 동반 식당·카페</button>
+        <button class="ai-option-btn" data-v="숙소">🏨 동반 숙소</button>
+        ${backBtn}
+      `;
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.facilityCategory = btn.dataset.v; aiRenderStep('f-region'); });
+      });
+      aiWireBack(body);
+    } else if(step === 'f-region'){
+      body.innerHTML = `
+        <div class="ai-bubble">어느 지역에서 찾아드릴까요?</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          ${AI_REGIONS.map(r => `<button class="ai-option-btn" data-v="${r}" style="text-align:center; margin-bottom:0;">${r}</button>`).join('')}
+        </div>
+        ${backBtn}
+      `;
+      body.querySelectorAll('[data-v]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{ aiAnswers.facilityRegion = btn.dataset.v; aiRenderStep('f-result'); });
+      });
+      aiWireBack(body);
+    } else if(step === 'f-result'){
+      const results = aiRecommendFacilities();
+      const label = aiAnswers.facilityCategory === '숙소' ? '동반 숙소' : '동반 식당·카페';
+      if(!results.length){
+        body.innerHTML = `
+          <div class="ai-bubble">앗, ${aiAnswers.facilityRegion}에 등록된 ${label}를 못 찾았어요 😅<br>다른 지역으로 다시 찾아볼까요?</div>
+          <button class="ai-option-btn" data-go="f-region" style="text-align:center;">🔄 지역 다시 선택</button>
+          ${backBtn}
+        `;
+      } else {
+        body.innerHTML = `
+          <div class="ai-bubble">${aiAnswers.facilityRegion}의 ${label}예요! 🐾</div>
+          ${results.map(aiRenderFacilityCard).join('')}
+          <button class="ai-option-btn" data-go="f-region" style="margin-top:6px; text-align:center;">🔄 지역 다시 선택</button>
+          ${backBtn}
+        `;
+      }
+      body.querySelectorAll('[data-open-facility]').forEach(card=>{
+        card.addEventListener('click', (e)=>{
+          e.preventDefault();
+          document.getElementById('ai-assistant-overlay').classList.remove('show');
+          showPage('map');
+          const lat = Number(card.dataset.lat), lng = Number(card.dataset.lng);
+          setTimeout(()=>{
+            const chip = document.querySelector('#view-filter-group .chip[data-filter="facility"]');
+            if(chip) chip.click();
+            if(map) map.setView([lat, lng], 16);
+          }, 150);
+        });
+      });
+      body.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go)));
+      aiWireBack(body);
+
+    // ---------- 발자국 사용법 보기 ----------
+    } else if(String(step).startsWith('guide-')){
+      const idx = Number(step.split('-')[1]);
+      const s = ONBOARDING_STEPS[idx];
+      const isLast = idx === ONBOARDING_STEPS.length - 1;
+      body.innerHTML = `
+        <div class="ai-bubble" style="text-align:center;">
+          <div style="font-size:36px;">${s.emoji}</div>
+          <b style="display:block; margin:8px 0 4px; font-family:'Jua',sans-serif; color:var(--pine-deep);">${s.title}</b>
+          <span style="font-size:13px;">${s.desc}</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          ${idx > 0 ? `<button class="ai-option-btn" data-go="guide-${idx-1}" style="text-align:center;">← 이전</button>` : ''}
+          <button class="ai-option-btn" data-go="${isLast ? 'menu' : 'guide-'+(idx+1)}" style="text-align:center; background:var(--gold);">${isLast ? '메인으로' : '다음 →'}</button>
+        </div>
+        <div style="text-align:center; margin-top:8px; font-size:11.5px; color:var(--muted-text);">${idx+1} / ${ONBOARDING_STEPS.length}</div>
+      `;
+      body.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go)));
+
+    // ---------- 자주 묻는 질문 ----------
+    } else if(step === 'faq'){
+      body.innerHTML = `
+        <div class="ai-bubble">궁금한 걸 눌러보세요!</div>
+        <div id="ai-faq-list"></div>
+        ${backBtn}
+      `;
+      const listEl = body.querySelector('#ai-faq-list');
+      AI_FAQ.forEach((item, i)=>{
+        const q = document.createElement('button');
+        q.className = 'ai-option-btn';
+        q.textContent = `Q. ${item.q}`;
+        q.addEventListener('click', ()=>{
+          const a = document.createElement('div');
+          a.className = 'ai-bubble';
+          a.style.marginTop = '-2px';
+          a.textContent = `A. ${item.a}`;
+          q.after(a);
+          q.remove();
+        });
+        listEl.appendChild(q);
+      });
+      aiWireBack(body);
     }
   }
+  function aiWireBack(body){
+    const btn = body.querySelector('[data-ai-menu]');
+    if(btn) btn.addEventListener('click', ()=> aiRenderStep('menu'));
+  }
+  const AI_REGIONS = ['서울','경기','충남','충북','경남','경북','전남','전북','제주'];
+  const AI_FAQ = [
+    { q:'포인트는 어떻게 모아요?', a:'코스 등록(+50P), 배변봉투함·동반시설 등록(+20P), 산책기록(+20P), 리뷰 작성(+10P)으로 모을 수 있어요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
+    { q:'코스는 어떻게 등록해요?', a:'하단 "코스 등록" 메뉴에서 지도에 손가락으로 경로를 그려서 등록할 수 있어요.' },
+    { q:'회원가입 꼭 해야 하나요?', a:'코스·지도 둘러보는 건 로그인 없이도 자유롭게 가능해요. 코스 등록, 산책기록, 포인트 적립을 하려면 로그인이 필요해요.' },
+    { q:'배변봉투함 위치가 잘못됐어요', a:'지도에서 해당 마커를 눌러 "신고" 버튼으로 알려주시면 관리자가 확인 후 처리해요.' },
+    { q:'리뷰에 사진은 어떻게 올려요?', a:'코스 상세 화면에서 리뷰를 작성할 때 사진 첨부 버튼을 눌러 올릴 수 있어요.' },
+  ];
   function aiRenderRecCard(c){
     const rating = avgRating(c.id);
     return `<a href="#" class="ai-rec-card" data-open-course="${c.id}">
@@ -2868,10 +2978,31 @@
   function aiFallbackCourses(){
     return allCourses().filter(c => !isHidden('course', c.id)).slice(0, 3);
   }
+  function aiRenderFacilityCard(f){
+    const emoji = f.category === '숙소' ? '🏨' : '🍽️';
+    return `<a href="#" class="ai-rec-card" data-open-facility="${f.id}" data-lat="${f.lat}" data-lng="${f.lng}">
+      <span style="font-size:26px;">${emoji}</span>
+      <span style="flex:1;">
+        <b style="display:block; font-size:14px; color:var(--pine-deep);">${f.name}</b>
+        <small style="color:var(--muted-text); font-size:12px;">${(f.description||'').slice(0,28)}${(f.description||'').length>28?'...':''}</small>
+      </span>
+      <span style="color:var(--clay);">→</span>
+    </a>`;
+  }
+  function aiRecommendFacilities(){
+    const inRegion = facilities.filter(f =>
+      f.category === aiAnswers.facilityCategory &&
+      courseInRegion({ lat:f.lat, lng:f.lng }, aiAnswers.facilityRegion) &&
+      !isHidden('facility', f.id)
+    );
+    // 셔플해서 매번 다른 곳을 추천해줘요
+    return inRegion.sort(()=> Math.random() - 0.5).slice(0, 3);
+  }
   document.getElementById('ai-assistant-btn').addEventListener('click', ()=>{
     hideAiTooltip();
     aiAnswers.size = null; aiAnswers.time = null; aiAnswers.env = null; aiAnswers.region = null;
-    aiRenderStep(0);
+    aiAnswers.facilityCategory = null; aiAnswers.facilityRegion = null;
+    aiRenderStep('menu');
     document.getElementById('ai-assistant-overlay').classList.add('show');
   });
   document.getElementById('ai-assistant-close').addEventListener('click', ()=>{
@@ -4840,47 +4971,6 @@
     { emoji:'🏥', title:'동물병원·애견동반 장소도 검색', desc:'낯선 동네에서도 동물병원, 애견동반 식당·카페·숙소를 지도에서 바로 찾을 수 있어요.' },
     { emoji:'🪙', title:'활동하고 포인트도 받아보세요', desc:'코스 등록, 리뷰 작성, 산책 기록마다 포인트가 쌓여요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
   ];
-  let onboardingStep = 0;
-  function renderOnboardingStep(){
-    const s = ONBOARDING_STEPS[onboardingStep];
-    document.getElementById('onboarding-emoji').textContent = s.emoji;
-    document.getElementById('onboarding-title').textContent = s.title;
-    document.getElementById('onboarding-desc').textContent = s.desc;
-    document.querySelectorAll('.onboarding-dot').forEach((d,i)=> d.classList.toggle('active', i===onboardingStep));
-    document.getElementById('onboarding-next-btn').textContent = onboardingStep === ONBOARDING_STEPS.length-1 ? '시작하기' : '다음';
-  }
-  function closeOnboarding(){
-    document.getElementById('onboarding-overlay').classList.remove('show');
-    try{ localStorage.setItem('paw_onboarding_done', '1'); }catch(e){}
-  }
-  function snoozeOnboardingToday(){
-    document.getElementById('onboarding-overlay').classList.remove('show');
-    const untilMidnight = new Date();
-    untilMidnight.setHours(24,0,0,0); // 오늘 자정까지
-    try{ localStorage.setItem('paw_onboarding_snooze_until', String(untilMidnight.getTime())); }catch(e){}
-    toast('오늘 하루는 다시 안 보여드릴게요. "?" 버튼으로 언제든 다시 볼 수 있어요');
-  }
-  document.getElementById('onboarding-next-btn').addEventListener('click', ()=>{
-    if(onboardingStep === ONBOARDING_STEPS.length-1){ closeOnboarding(); return; }
-    onboardingStep++;
-    renderOnboardingStep();
-  });
-  document.getElementById('onboarding-skip-btn').addEventListener('click', closeOnboarding);
-  document.getElementById('onboarding-snooze-btn').addEventListener('click', snoozeOnboardingToday);
-  (function maybeShowOnboarding(){
-    let done = null, snoozeUntil = 0;
-    try{ done = localStorage.getItem('paw_onboarding_done'); }catch(e){}
-    try{ snoozeUntil = Number(localStorage.getItem('paw_onboarding_snooze_until') || '0'); }catch(e){}
-    if(!done && Date.now() > snoozeUntil){
-      renderOnboardingStep();
-      setTimeout(()=> document.getElementById('onboarding-overlay').classList.add('show'), 600);
-    }
-  })();
-  document.getElementById('help-btn').addEventListener('click', ()=>{
-    onboardingStep = 0;
-    renderOnboardingStep();
-    document.getElementById('onboarding-overlay').classList.add('show');
-  });
 
   // ===== 체류시간 2분 후 회원가입 유도 팝업 =====
   const WELCOME_POPUP_COOLDOWN_MS = 3 * 24 * 60 * 60 * 1000; // 한 번 보면 3일간 다시 안 뜸
