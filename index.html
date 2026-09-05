@@ -907,12 +907,6 @@
       <a href="#" data-page-nav="walk" class="btn-primary" style="white-space:nowrap;">산책 시작하기</a>
     </div>
 
-    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:32px 0 0; box-shadow:var(--shadow);">
-      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85;">이달의 산책왕</div>
-      <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
-      <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
-    </div>
-
     <div id="recent-viewed-wrap" style="display:none; margin-top:32px;">
       <div class="section-head">
         <div>
@@ -1349,6 +1343,8 @@
         </div>
       </div>
 
+      <button class="submit-btn" id="my-points-shop-btn" style="background:var(--gold); color:var(--pine-deep); margin-bottom:18px;">🪙 포인트샵 가기</button>
+
       <h3 style="font-size:20px;">내 프로필</h3>
       <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">로그인 계정과 별개로, 사이트에 표시될 닉네임을 자유롭게 정하실 수 있어요. 실명이 아닌 별명을 추천해요.</p>
       <label style="margin-top:14px;">표시 닉네임</label>
@@ -1402,6 +1398,15 @@
         <label style="margin-top:0;">배지 꾸미기</label>
         <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">구매한 배지는 닉네임 옆에 표시돼요.</p>
         <div id="badge-shop"></div>
+      </div>
+
+      <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
+        <label style="margin-top:0;">📣 내 코스 홍보하기</label>
+        <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">3일 동안 지도·목록 상단에 "홍보중" 표시로 노출돼요. (200P)</p>
+        <select id="shop-boost-course-select" style="width:100%; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
+          <option value="">홍보할 내 코스를 선택하세요</option>
+        </select>
+        <button class="pin-btn" id="shop-boost-btn" style="margin-top:8px; border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC;">🌟 200P로 3일간 홍보하기</button>
       </div>
     </div>
   </div>
@@ -2536,33 +2541,14 @@
     }catch(e){ console.error(e); toast('홍보 등록에 실패했어요'); }
   }
 
-  // ===== 이달의 산책왕 =====
-  async function loadMonthlyChampion(){
-    try{
-      const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
-      const { data, error } = await sb.from('points_log').select('owner_id, amount').gte('created_at', monthStart.toISOString());
-      if(error || !data || !data.length) return;
-      const totals = {};
-      data.forEach(r=>{ totals[r.owner_id] = (totals[r.owner_id]||0) + r.amount; });
-      let topId = null, topAmount = -Infinity;
-      Object.entries(totals).forEach(([id, amt])=>{ if(amt > topAmount){ topAmount = amt; topId = id; } });
-      if(!topId || topAmount <= 0) return;
-      const { data: profileRows } = await sb.from('profiles').select('*').eq('owner_id', topId).limit(1);
-      const nickname = (profileRows && profileRows[0] && profileRows[0].nickname) || '이름 없는 산책왕';
-      const badge = (profileRows && profileRows[0] && profileRows[0].badge) ? badgeEmoji(profileRows[0].badge) : '';
-      const el = document.getElementById('champion-card');
-      if(el){
-        el.style.display = '';
-        document.getElementById('champion-name').textContent = `👑 ${badge}${nickname}`;
-        document.getElementById('champion-points').textContent = `이번 달 ${topAmount.toLocaleString()}P 적립`;
-      }
-    }catch(e){ console.error(e); }
-  }
   const BADGE_SHOP = [
     { id:'paw', emoji:'🐾', name:'발자국', price:50 },
     { id:'star', emoji:'🌟', name:'스타', price:100 },
     { id:'medal', emoji:'🥇', name:'골드메달', price:150 },
     { id:'crown', emoji:'👑', name:'왕관', price:300 },
+    { id:'heart', emoji:'💛', name:'하트', price:80 },
+    { id:'rainbow', emoji:'🌈', name:'무지개', price:200 },
+    { id:'diamond', emoji:'💎', name:'다이아몬드', price:500 },
   ];
   async function myPointBalance(){
     try{
@@ -2671,6 +2657,10 @@
     const balance = await myPointBalance();
     document.getElementById('points-shop-balance').textContent = `보유 포인트: 🪙 ${balance.toLocaleString()}P`;
     renderBadgeShop();
+    const boostSelect = document.getElementById('shop-boost-course-select');
+    const myOwnCourses = allCourses().filter(c => c.ownerId === myDeviceId);
+    boostSelect.innerHTML = '<option value="">홍보할 내 코스를 선택하세요</option>' +
+      myOwnCourses.map(c => `<option value="${c.id}">${c.name}${isBoostedNow(c.id) ? ' (홍보중)' : ''}</option>`).join('');
     document.getElementById('points-shop-overlay').classList.add('show');
   }
   function closePointsShop(){
@@ -5466,12 +5456,23 @@
     }
     return id;
   }
-  function getReferrerSource(){
+  async function getReferrerSource(){
     // 카톡/인스타/쓰레드 등에서 유입 시 붙는 파라미터(?ref=threads) 우선, 없으면 브라우저 리퍼러 도메인 사용
     try{
       const params = new URLSearchParams(window.location.search);
       const ref = params.get('ref');
-      if(ref) return ref;
+      if(ref){
+        // 친구 추천 링크(?ref=사용자ID)로 들어온 경우, 복잡한 ID 대신 추천인 닉네임으로 보여줌
+        const isUid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(ref);
+        if(isUid){
+          try{
+            const { data } = await sb.from('profiles').select('nickname').eq('owner_id', ref).limit(1);
+            const nickname = data && data[0] && data[0].nickname;
+            return nickname ? `추천 링크(${nickname}님)` : '추천 링크';
+          }catch(e){ return '추천 링크'; }
+        }
+        return ref;
+      }
       if(document.referrer){
         const host = new URL(document.referrer).hostname.replace('www.', '');
         return host;
@@ -5480,7 +5481,7 @@
     return '직접 방문';
   }
   async function logPageView(){
-    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: getReferrerSource(), owner_id: myDeviceId || null }]); }catch(e){ console.error(e); }
+    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: await getReferrerSource(), owner_id: myDeviceId || null }]); }catch(e){ console.error(e); }
   }
 
   // 실시간 접속자 하트비트: 30초마다 내 방문자ID의 최근 접속시각을 갱신
@@ -5511,7 +5512,6 @@
     }
   });
   initWeatherWidget();
-  loadMonthlyChampion();
   loadActiveWalkerCounts();
   setInterval(loadActiveWalkerCounts, 30000);
   setInterval(()=>{ if(myDeviceId) checkNotifications(); }, 5*60*1000);
@@ -5535,6 +5535,16 @@
     if(myNickname){ openProfileModal(); } else { openNickModal(); }
   });
   document.getElementById('points-badge').addEventListener('click', openPointsShop);
+  document.getElementById('my-points-shop-btn').addEventListener('click', ()=>{
+    closeProfileModal();
+    openPointsShop();
+  });
+  document.getElementById('shop-boost-btn').addEventListener('click', ()=>{
+    const courseId = document.getElementById('shop-boost-course-select').value;
+    if(!courseId){ toast('먼저 홍보할 코스를 선택해주세요'); return; }
+    if(isBoostedNow(courseId)){ toast('이미 홍보 중인 코스예요'); return; }
+    buyCourseBoost(courseId);
+  });
   document.getElementById('points-shop-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'points-shop-overlay') closePointsShop();
   });
