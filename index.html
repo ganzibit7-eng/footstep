@@ -217,25 +217,38 @@
   /* ===== Course list ===== */
   .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:22px; margin-top:28px; }
   .card{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
-    display:flex; flex-direction:column; gap:12px; transition:transform .15s ease, box-shadow .15s ease;
+    background:var(--paper); border:1px solid var(--line); border-radius:18px;
+    display:flex; flex-direction:column; overflow:hidden; transition:transform .15s ease, box-shadow .15s ease;
   }
   .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .card-visual{
+    position:relative; height:112px; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--visual-a, #6E8F6B), var(--visual-b, #3F5A3D));
+  }
+  .card-visual .card-visual-emoji{ font-size:40px; opacity:0.9; filter:drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
+  .card-visual .fav-btn{
+    position:absolute; top:10px; right:10px; background:rgba(255,255,255,.85); border-radius:50%;
+    width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-size:15px; padding:0;
+  }
+  .card-visual .badge{ position:absolute; top:10px; left:10px; }
+  .card-body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
   .card .row{ display:flex; align-items:center; justify-content:space-between; }
   .fav-btn{ background:none; border:none; font-size:18px; cursor:pointer; padding:2px; line-height:1; }
   .fav-btn.active{ animation:pop .25s ease; }
   @keyframes pop{ 0%{transform:scale(1);} 50%{transform:scale(1.3);} 100%{transform:scale(1);} }
-  .card h3{ font-size:20px; line-height:1.3; }
+  .card h3{ font-size:18px; line-height:1.3; }
+  .card-quickmeta{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#3F5A3D; font-weight:700; }
+  .card-rating{ font-size:12.5px; color:#B5852E; font-weight:700; }
   .badge{
     font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;
   }
   .badge.easy{ background:#DCEBD6; color:#33612F; }
   .badge.mid{ background:#F3E3C4; color:#8A5F14; }
   .badge.hard{ background:#F2D6CE; color:var(--clay-dark); }
-  .card p.desc{ font-size:14.5px; color:#4A4636; margin:0; line-height:1.6; }
+  .card p.desc{ font-size:14px; color:#4A4636; margin:0; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .tag-row{ display:flex; gap:6px; flex-wrap:wrap; }
-  .tag-pill{ font-size:12px; background:var(--sand); color:#4A4636; padding:5px 10px; border-radius:8px; font-weight:600;}
-  .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:13px; color:#3F5A3D; margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
+  .tag-pill{ font-size:11.5px; background:var(--sand); color:#4A4636; padding:4px 9px; border-radius:8px; font-weight:600;}
+  .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted-text); margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
 
   /* ===== Register form ===== */
   .register-panel{
@@ -413,6 +426,13 @@
     font-family:inherit; font-size:14px; color:var(--pine-deep); font-weight:600;
   }
   .ai-option-btn:active{ background:var(--gold); border-color:var(--gold); }
+  .ai-chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; justify-content:center; }
+  .ai-chip{
+    display:inline-flex; align-items:center; gap:4px; padding:10px 16px; border-radius:999px;
+    background:var(--sand); border:1.5px solid var(--line); cursor:pointer;
+    font-family:inherit; font-size:13.5px; color:var(--pine-deep); font-weight:700; white-space:nowrap;
+  }
+  .ai-chip:active{ background:var(--gold); border-color:var(--gold); }
   .ai-bubble{ background:var(--sand); border-radius:14px; padding:14px 16px; font-size:14px; color:var(--pine-deep); margin-bottom:14px; line-height:1.6; }
   .ai-rec-card{ display:flex; gap:12px; align-items:center; padding:12px; border:1.5px solid var(--line); border-radius:12px; margin-bottom:10px; cursor:pointer; text-decoration:none; }
   .ai-rec-card:active{ background:var(--sand); }
@@ -666,6 +686,7 @@
   <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
   <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>산책</span></button>
   <button data-page-nav="register"><span class="tab-icon">➕</span><span>등록</span></button>
+  <button id="bottom-tab-my" type="button"><span class="tab-icon">🐕</span><span>MY</span></button>
 </nav>
 
 
@@ -2863,12 +2884,17 @@
 
     if(step === 'menu'){
       body.innerHTML = `
-        <div class="ai-bubble">안녕하세요! 저는 몽이에요 🐾<br>뭘 도와드릴까요?</div>
-        <button class="ai-option-btn" data-go="near-me">📍 내 위치에서 가까운 코스</button>
-        <button class="ai-option-btn" data-go="c-size">🐾 산책 코스 추천받기</button>
-        <button class="ai-option-btn" data-go="f-category">🍽️🏨 동반 카페·숙소 추천받기</button>
-        <button class="ai-option-btn" data-go="guide-0">📖 발자국 사용법 보기</button>
-        <button class="ai-option-btn" data-go="faq">❓ 자주 묻는 질문</button>
+        <div style="text-align:center; margin-bottom:4px;">
+          <p style="font-family:'Jua',sans-serif; font-size:14px; color:var(--clay); margin:0;">🐾 발자국 AI</p>
+          <h4 style="font-family:'Jua',sans-serif; font-size:19px; color:var(--pine-deep); margin:4px 0 0;">오늘 어디로 산책 갈까요?</h4>
+        </div>
+        <div class="ai-chip-row">
+          <button class="ai-chip" data-go="near-me">📍 내 주변 코스</button>
+          <button class="ai-chip" data-go="c-size">🐶 우리 강아지에게 좋은 코스</button>
+          <button class="ai-chip" data-go="f-category">☕ 동반 카페·숙소</button>
+          <button class="ai-chip" data-go="guide-0">📖 사용법</button>
+          <button class="ai-chip" data-go="faq">❓ 자주 묻는 질문</button>
+        </div>
       `;
       body.querySelectorAll('[data-go]').forEach(btn=>{
         btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
@@ -3109,11 +3135,13 @@
   ];
   function aiRenderRecCard(c){
     const rating = avgRating(c.id);
+    const km = parseFloat((c.distance||'').match(/[\d.]+/)) || null;
+    const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
     return `<a href="#" class="ai-rec-card" data-open-course="${c.id}">
       <span style="font-size:26px;">🐾</span>
       <span style="flex:1;">
         <b style="display:block; font-size:14px; color:var(--pine-deep);">${c.name}</b>
-        <small style="color:var(--muted-text); font-size:12px;">${c.distance || ''} · ${c.diff || ''}${rating ? ' · ★'+rating : ''}</small>
+        <small style="color:var(--muted-text); font-size:12px;">${c.distance || ''}${estMin ? ' · 약 '+estMin+'분' : ''}${rating ? ' · ★'+rating : ''}</small>
       </span>
       <span style="color:var(--clay);">→</span>
     </a>`;
@@ -3233,24 +3261,34 @@
       const walkerCount = activeWalkerCounts[c.id] || 0;
       const isBoosted = courseBoosts[c.id] && new Date(courseBoosts[c.id]) > new Date();
       const isFav = favoriteIds.has(c.id);
+      const km = parseFloat((c.distance||'').match(/[\d.]+/)) || null;
+      const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
+      const visualGradients = {
+        '쉬움': ['#7FA67C','#3F5A3D'], '보통': ['#C79A3C','#8A5F14'], '어려움': ['#C46A4A','#8A3F26'],
+      };
+      const [va, vb] = visualGradients[c.diff] || visualGradients['쉬움'];
       card.innerHTML = `
-        <div class="row">
-          <h3>${c.name}</h3>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="찜하기">${isFav ? '❤️' : '🤍'}</button>
-            <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
-          </div>
+        <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
+          <span class="card-visual-emoji">🐾</span>
+          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+          <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="찜하기">${isFav ? '❤️' : '🤍'}</button>
         </div>
-        ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
-        ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
-        <p class="desc">${c.desc||''}</p>
-        <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
-        <div class="meta-mono">${c.distance||'거리 정보 없음'}${avg ? ' · ★ '+avg+' ('+reviewsFor(c.id).length+')' : ''}</div>
-        <div class="card-foot">
-          <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
-          ${isMine
-            ? `<span><button class="report-btn" data-course-edit="${c.id}" style="color:var(--moss);">✏️ 수정</button> <button class="delete-btn" data-course-del="${c.id}">삭제</button></span>`
-            : `<button class="report-btn" data-course-report="${c.id}">🚩 신고</button>`}
+        <div class="card-body">
+          <h3>${c.name}</h3>
+          ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14; align-self:flex-start;">🌟 홍보중인 코스</span>` : ''}
+          ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F; align-self:flex-start;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
+          <div class="row" style="gap:10px;">
+            <span class="card-quickmeta">${c.distance||'거리 정보 없음'}${estMin ? ' · 약 '+estMin+'분' : ''}</span>
+            ${avg ? `<span class="card-rating">★ ${avg} (${reviewsFor(c.id).length})</span>` : ''}
+          </div>
+          <p class="desc">${c.desc||''}</p>
+          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
+          <div class="card-foot">
+            <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
+            ${isMine
+              ? `<span><button class="report-btn" data-course-edit="${c.id}" style="color:var(--moss);">✏️ 수정</button> <button class="delete-btn" data-course-del="${c.id}">삭제</button></span>`
+              : `<button class="report-btn" data-course-report="${c.id}">🚩 신고</button>`}
+          </div>
         </div>
       `;
       card.addEventListener('click', (e)=>{
@@ -4940,7 +4978,12 @@
     try{
       const { data, error } = await sb.from('walks').select('*').eq('owner_id', myDeviceId).order('created_at', {ascending:false}).limit(10);
       if(error || !data || !data.length){
-        el.innerHTML = '<p class="empty-review">아직 기록한 산책이 없어요. 위에서 시작해보세요!</p>';
+        el.innerHTML = `
+          <div style="text-align:center; padding:28px 16px;">
+            <div style="font-size:36px;">🐶</div>
+            <p style="font-weight:700; color:var(--pine-deep); margin:10px 0 4px;">아직 첫 산책 기록이 없어요</p>
+            <p style="font-size:13px; color:var(--muted-text); margin:0;">우리 강아지와 첫 산책을 시작해볼까요? 위 버튼으로 시작해보세요!</p>
+          </div>`;
       } else {
         el.innerHTML = data.map(w=>{
           const d = new Date(w.created_at);
@@ -5236,6 +5279,9 @@
     } else {
       openNickModal();
     }
+  });
+  document.getElementById('bottom-tab-my').addEventListener('click', ()=>{
+    if(myNickname){ openProfileModal(); } else { openNickModal(); }
   });
   document.getElementById('points-badge').addEventListener('click', openPointsShop);
   document.getElementById('points-shop-overlay').addEventListener('click', (e)=>{
