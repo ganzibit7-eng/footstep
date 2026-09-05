@@ -563,7 +563,6 @@
     .nav-cta{ display:none; }
     .draw-mode-btn{ font-size:13px; padding:12px 6px; }
     .bottom-tab-bar{ display:flex; }
-    #profile-btn{ display:none; }
     body{ padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px)); }
     input, select, textarea{ font-size:16px !important; }
     #map{ height:50vh; min-height:320px; }
@@ -2782,6 +2781,13 @@
     } else {
       avatarEl.style.display = 'none';
       dotEl.style.display = '';
+    }
+    // 모바일에서는: 로그인 전엔 상단에 "로그인" 버튼을 그대로 보여주고,
+    // 로그인 후엔 상단 버튼은 숨기고 하단 MY 탭으로만 프로필 관리하도록 함 (중복 방지)
+    const profileBtn = document.getElementById('profile-btn');
+    if(profileBtn){
+      const isMobile = window.matchMedia('(max-width:880px)').matches;
+      profileBtn.style.display = (isMobile && myNickname) ? 'none' : '';
     }
     renderHeroGreeting();
   }
