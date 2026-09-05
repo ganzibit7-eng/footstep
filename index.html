@@ -4967,12 +4967,10 @@
     }
   }
   function initWeatherWidget(){
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(
-        (pos)=> loadWeatherWidget(pos.coords.latitude, pos.coords.longitude),
-        ()=> loadWeatherWidget(37.5665, 126.9780), // 위치 거부 시 서울 기준
-        { timeout:8000 }
-      );
+    // 홈 화면 진입과 동시에 위치 권한을 묻지 않도록, 등록된 내 지역이 있으면 그걸 쓰고
+    // 없으면 서울 기준으로 보여줘요. 실제 GPS 위치는 지도의 "현위치" 버튼을 눌렀을 때만 물어봐요.
+    if(myRegionLat != null && myRegionLng != null){
+      loadWeatherWidget(myRegionLat, myRegionLng);
     } else {
       loadWeatherWidget(37.5665, 126.9780);
     }
