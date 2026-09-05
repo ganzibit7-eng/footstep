@@ -517,7 +517,14 @@
   .hero-quick-card-grid{
     display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
   }
-  .hero-quick-card-grid .quick-card{ padding:14px; }
+  .hero-quick-card-grid .quick-card{
+    flex-direction:column; align-items:center; text-align:center; gap:8px;
+    padding:18px 10px; min-height:108px; justify-content:center;
+  }
+  .hero-quick-card-grid .quick-icon{ margin:0; }
+  .hero-quick-card-grid b{ font-size:13.5px; line-height:1.3; }
+  .hero-quick-card-grid small{ font-size:11px; margin-top:1px; }
+  .hero-quick-card-grid .quick-arrow{ display:none; }
   .quick-card{
     display:flex; align-items:center; gap:12px; min-width:0; padding:17px 18px; border:1px solid var(--line);
     background:var(--paper); border-radius:14px; box-shadow:0 4px 16px rgba(21,41,34,.04);
@@ -526,7 +533,7 @@
   .quick-card:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:#cfc5ad;}
   .quick-icon{width:42px;height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:var(--sand);font-size:21px;}
   .quick-card b{display:block;font-size:15px;color:var(--pine-deep);}
-  .quick-card small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted-text);}
+  .quick-card small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .quick-arrow{margin-left:auto;color:var(--clay);font-size:18px;}
   .home-section-head{margin-bottom:22px;}
   .section-more{color:var(--clay);font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap;}
@@ -750,7 +757,7 @@
         </a>
         <a href="#" data-page-nav="register" class="quick-card" style="text-decoration:none;">
           <span class="quick-icon">➕</span>
-          <span><b>코스 등록</b><small>우리 동네 산책길 공유</small></span>
+          <span><b>코스 등록</b><small>동네 코스 공유하기</small></span>
         </a>
       </div>
     </div>
@@ -785,34 +792,6 @@
     </div>
     <div class="grid home-course-grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <div class="home-map-cta">
-      <div class="home-map-copy">
-        <span class="kicker">Live Map</span>
-        <h2>내 주변 산책 지도를<br>한눈에 확인하세요.</h2>
-        <p>산책코스와 배변봉투함은 물론 동물병원, 애견용품점, 동반 식당·카페, 숙소까지 찾아볼 수 있어요.</p>
-        <a href="#" class="btn-primary" data-page-nav="map">🗺️ 지도 크게 보기</a>
-      </div>
-      <div class="home-map-visual" aria-hidden="true">
-        <div class="fake-map-line line-a"></div>
-        <div class="fake-map-line line-b"></div>
-        <div class="fake-map-line line-c"></div>
-        <span class="fake-pin pin-1">🐾</span>
-        <span class="fake-pin pin-2">🐾</span>
-        <span class="fake-pin pin-3">🚮</span>
-        <span class="fake-pin pin-4">🏥</span>
-        <span class="fake-you">📍</span>
-      </div>
-    </div>
-
-    <div class="home-walk-cta">
-      <div>
-        <span class="kicker">GPS Walk Log</span>
-        <h2>오늘도 발자국을 남겨볼까요? 🐾</h2>
-        <p>걸은 거리와 시간을 기록하고, 나만의 산책 기록을 차곡차곡 쌓아보세요.</p>
-      </div>
-      <a href="#" class="btn-primary" data-page-nav="walk">산책 시작하기</a>
-    </div>
-
     <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
       <div class="section-head">
         <div>
@@ -821,18 +800,6 @@
         </div>
       </div>
       <div class="grid" id="recent-viewed-grid"></div>
-    </div>
-
-    <div class="home-register-cta">
-      <div>
-        <span class="kicker">Community</span>
-        <h2>우리 동네 산책길을<br>다른 반려인에게 알려주세요.</h2>
-        <p>지도에 없는 산책코스나 배변봉투함을 발견했다면 발자국에 등록해주세요.</p>
-      </div>
-      <div class="home-register-actions">
-        <a href="#" class="btn-primary" data-page-nav="register">+ 산책코스 등록</a>
-        <a href="#" class="btn-ghost light" data-page-nav="register">🚮 배변봉투함 등록</a>
-      </div>
     </div>
 
     <div class="home-etiquette">
@@ -3277,7 +3244,7 @@
         ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14;">🌟 홍보중인 코스</span>` : ''}
         ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
         <p class="desc">${c.desc||''}</p>
-        <div class="tag-row">${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}</div>
+        <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
         <div class="meta-mono">${c.distance||'거리 정보 없음'}${avg ? ' · ★ '+avg+' ('+reviewsFor(c.id).length+')' : ''}</div>
         <div class="card-foot">
           <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
