@@ -143,10 +143,18 @@
   .hero-inner{ position:relative; max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center; }
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.02em; font-weight:700;
     color:var(--gold); border:1px solid rgba(199,154,60,0.5); padding:6px 12px; border-radius:999px; margin-bottom:20px;
   }
   .hero h1{ color:var(--paper); font-size:clamp(38px, 5.2vw, 62px); line-height:1.02; }
+  @media (min-width:881px){
+    .hero h1{ font-size:clamp(44px, 4.6vw, 68px); line-height:1.05; letter-spacing:-0.01em; font-weight:800; }
+    .hero-card{
+      transform:rotate(1.4deg); box-shadow:0 24px 48px -16px rgba(21,41,34,0.45);
+      transition:transform .25s ease;
+    }
+    .hero-card:hover{ transform:rotate(0deg) translateY(-2px); }
+  }
   .hero h1 em{ font-style:normal; color:var(--gold); }
   .hero p.lead{ margin-top:20px; font-size:17px; color:rgba(251,248,241,0.8); max-width:46ch; }
   .hero-actions{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
@@ -183,12 +191,12 @@
   section{ padding:72px 0; }
   .section-head{ margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .section-head h2{ font-size:clamp(26px,3.4vw,38px); }
-  .section-head .kicker{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.12em; color:var(--clay); margin-bottom:8px; display:block;}
+  .section-head .kicker{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.02em; color:var(--clay); margin-bottom:8px; display:block; font-weight:700;}
   .section-head p{ max-width:56ch; color:#4A4636; font-size:15.5px; margin-top:8px; line-height:1.65;}
 
   /* ===== Map section ===== */
   .map-panel{
-    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    background:var(--paper); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:0 10px 28px rgba(21,41,34,.08);
   }
   .map-wrap-relative{ position:relative; }
   .locate-btn{
@@ -397,6 +405,23 @@
     position:fixed; bottom:24px; right:24px; background:var(--pine-deep); color:var(--paper); border:none;
     width:48px; height:48px; border-radius:50%; font-size:18px; cursor:pointer; box-shadow:var(--shadow); z-index:1200;
   }
+  .home-ai-banner{
+    display:flex; align-items:center; gap:16px; text-decoration:none;
+    background:linear-gradient(135deg, #23452F, #2F5A3D); border-radius:18px; padding:20px 22px;
+    margin-bottom:36px; box-shadow:0 8px 20px rgba(21,41,34,.15);
+  }
+  .home-ai-banner-icon{
+    width:52px; height:52px; flex:0 0 52px; border-radius:50%; background:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+  }
+  .home-ai-banner-text{ flex:1; display:flex; flex-direction:column; gap:2px; }
+  .home-ai-banner-text b{ font-family:'Jua',sans-serif; font-size:16px; color:var(--paper); }
+  .home-ai-banner-text span{ font-size:12.5px; color:rgba(251,248,241,.75); }
+  .home-ai-banner-arrow{ font-size:12.5px; font-weight:800; color:var(--gold); white-space:nowrap; }
+  @media (max-width:520px){
+    .home-ai-banner{ flex-wrap:wrap; }
+    .home-ai-banner-arrow{ width:100%; text-align:right; }
+  }
   .ai-assistant-btn{
     position:fixed; bottom:88px; right:24px; background:var(--gold); color:var(--pine-deep); border:none;
     width:58px; height:58px; border-radius:50%; cursor:pointer; box-shadow:0 8px 20px rgba(199,154,60,0.45); z-index:1199;
@@ -495,6 +520,7 @@
     .nav-cta{ display:none; }
     .draw-mode-btn{ font-size:13px; padding:12px 6px; }
     .bottom-tab-bar{ display:flex; }
+    #profile-btn{ display:none; }
     body{ padding-bottom:calc(70px + env(safe-area-inset-bottom, 0px)); }
     input, select, textarea{ font-size:16px !important; }
     #map{ height:50vh; min-height:320px; }
@@ -534,14 +560,25 @@
   .home-quick-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:52px;
   }
+  .hero .btn-primary{
+    background:#FFFDF8; color:var(--pine-deep); border-radius:16px; padding:17px 27px;
+    box-shadow:0 18px 38px rgba(0,0,0,.20); font-size:16px; width:100%; text-align:center;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .hero .btn-primary:hover{ transform:translateY(-2px) scale(1.005); box-shadow:0 22px 44px rgba(0,0,0,.24); background:#FFFDF8; }
   .hero-secondary-links{
-    display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:22px;
   }
   .hero-secondary-links a{
-    font-size:13.5px; font-weight:700; color:rgba(251,248,241,.78); text-decoration:none;
-    padding-bottom:2px; border-bottom:1px solid rgba(251,248,241,.3);
+    font-size:12px; font-weight:700; color:rgba(251,248,241,.78); text-decoration:none;
+    border:1px solid rgba(255,255,255,.16); border-radius:12px; padding:12px 4px; text-align:center;
   }
-  .hero-secondary-links a:hover{ color:var(--gold); border-color:var(--gold); }
+  .hero-secondary-links a:hover{ color:var(--gold); border-color:var(--gold); background:rgba(255,255,255,.04); }
+  @media (min-width:521px){
+    .hero .btn-primary{ width:auto; display:inline-block; }
+    .hero-secondary-links{ display:flex; flex-wrap:wrap; gap:8px 20px; }
+    .hero-secondary-links a{ border:none; padding:0 0 2px; border-bottom:1px solid rgba(251,248,241,.3); border-radius:0; }
+  }
   .quick-card{
     display:flex; align-items:center; gap:12px; min-width:0; padding:17px 18px; border:1px solid var(--line);
     background:var(--paper); border-radius:14px; box-shadow:0 4px 16px rgba(21,41,34,.04);
@@ -730,7 +767,7 @@
 
     <!-- 스타일 2: 매거진(에디토리얼)형 (?homestyle=2) -->
     <div class="hero-copy" id="hero-style-2" style="display:none;">
-      <span class="eyebrow">FOR EVERY WALK</span>
+      <span class="eyebrow">발자국의 주요 기능</span>
       <h1 style="font-size:34px; line-height:1.35;">산책 나갈 때마다<br>고민하지 마세요</h1>
       <p class="lead" style="margin-bottom:20px;">발자국 하나면 코스, 배변봉투함, 동물병원까지 전부 찾을 수 있어요.</p>
       <div style="display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line);">
@@ -778,15 +815,24 @@
 <section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
 
+    <a href="#" id="home-ai-banner" class="home-ai-banner">
+      <span class="home-ai-banner-icon">🐕</span>
+      <span class="home-ai-banner-text">
+        <b>몽이에게 물어보세요</b>
+        <span>우리 강아지에게 딱 맞는 산책 코스를 찾아드려요</span>
+      </span>
+      <span class="home-ai-banner-arrow">어디로 산책 갈까? →</span>
+    </a>
+
     <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:0 0 32px; box-shadow:var(--shadow);">
-      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85; text-transform:uppercase;">Monthly Champion</div>
+      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85;">이달의 산책왕</div>
       <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
       <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
     </div>
 
     <div class="section-head home-section-head">
       <div>
-        <span class="kicker" id="nearby-kicker">Nearby Picks</span>
+        <span class="kicker" id="nearby-kicker">내 주변 추천</span>
         <h2 id="nearby-title">우리 동네 추천 코스</h2>
         <p id="nearby-desc">프로필에서 지역을 등록하면 우리 동네와 가까운 코스를 먼저 보여드려요.</p>
       </div>
@@ -797,7 +843,7 @@
     <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
       <div class="section-head">
         <div>
-          <span class="kicker">Recently Viewed</span>
+          <span class="kicker">최근 본 코스</span>
           <h2>최근 본 코스</h2>
         </div>
       </div>
@@ -819,16 +865,16 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">Live Map</span>
+        <span class="kicker">지도에서 찾기</span>
         <h2>지도에서 찾아보기</h2>
         <p>산책 코스 시작점과 배변봉투함 위치를 한 지도에서 필터링해서 볼 수 있어요.</p>
       </div>
     </div>
     <div class="map-panel">
-      <div class="map-toolbar" style="position:relative;">
-        <input type="text" id="place-search-input" placeholder="🔍 지역·장소로 검색 (예: 강남역, 여의도한강공원)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
-        <button type="button" class="poi-search-cta" id="place-search-btn" style="font-size:12.5px; padding:10px 16px;">검색</button>
-        <div id="place-search-results" style="display:none; position:absolute; top:100%; left:18px; right:18px; z-index:500; background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow); margin-top:4px; max-height:260px; overflow-y:auto;"></div>
+      <div class="map-toolbar" style="position:relative; padding:18px 18px 14px;">
+        <input type="text" id="place-search-input" placeholder="🔍 어디로 산책 갈까요? (지역·장소 검색)" style="flex:1; min-width:180px; padding:13px 18px; border:1.5px solid var(--line); border-radius:999px; font-family:inherit; font-size:14px; background:var(--sand);">
+        <button type="button" class="poi-search-cta" id="place-search-btn" style="font-size:13px; padding:12px 20px; border-radius:999px;">검색</button>
+        <div id="place-search-results" style="display:none; position:absolute; top:100%; left:18px; right:18px; z-index:500; background:var(--paper); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); margin-top:6px; max-height:260px; overflow-y:auto;"></div>
       </div>
       <div class="map-toolbar">
         <div class="filter-group" id="view-filter-group">
@@ -867,7 +913,7 @@
     <div style="margin-top:44px;">
       <div class="home-section-head">
         <div>
-          <span class="kicker">Recommended</span>
+          <span class="kicker">주변 추천</span>
           <h2 style="font-size:24px;">주변 추천 코스</h2>
         </div>
         <a href="#" class="section-more" data-page-nav="list">전체 보기 →</a>
@@ -881,7 +927,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">Community Picks</span>
+        <span class="kicker">인기 산책 코스</span>
         <h2>인기 산책 코스</h2>
         <p>이웃 반려인들이 직접 걸어보고 남긴 코스예요. 조건에 맞는 곳을 찾아보세요.</p>
       </div>
@@ -925,7 +971,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">GPS Walk Log</span>
+        <span class="kicker">산책 기록하기</span>
         <h2>산책 직접 기록하기</h2>
         <p>지금 걷고 있는 산책을 GPS로 기록해보세요. 끝나면 바로 코스로 등록할 수도 있어요.</p>
       </div>
@@ -992,7 +1038,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">Add to the Map</span>
+        <span class="kicker">새로운 코스 등록</span>
         <h2>코스 또는 배변봉투함 등록하기</h2>
         <p>지도에 없는 곳을 발견했다면 알려주세요. 등록한 정보는 다른 반려인들에게도 함께 보여져요.</p>
       </div>
@@ -1068,7 +1114,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">Trail Etiquette</span>
+        <span class="kicker">함께 지켜요</span>
         <h2>함께 지켜요, 펫티켓</h2>
         <p>서로 다른 이웃과 함께 걷는 길이에요. 아래 매너를 지켜주시면 모두가 더 편하게 이용할 수 있어요.</p>
       </div>
@@ -3217,13 +3263,16 @@
     // 셔플해서 매번 다른 곳을 추천해줘요
     return inRegion.sort(()=> Math.random() - 0.5).slice(0, 3);
   }
-  document.getElementById('ai-assistant-btn').addEventListener('click', ()=>{
+  function openAiAssistant(){
     hideAiTooltip();
     aiAnswers.size = null; aiAnswers.time = null; aiAnswers.env = null; aiAnswers.region = null;
     aiAnswers.facilityCategory = null; aiAnswers.facilityRegion = null;
     aiRenderStep('menu');
     document.getElementById('ai-assistant-overlay').classList.add('show');
-  });
+  }
+  document.getElementById('ai-assistant-btn').addEventListener('click', openAiAssistant);
+  const homeAiBanner = document.getElementById('home-ai-banner');
+  if(homeAiBanner) homeAiBanner.addEventListener('click', (e)=>{ e.preventDefault(); openAiAssistant(); });
   document.getElementById('ai-assistant-close').addEventListener('click', ()=>{
     document.getElementById('ai-assistant-overlay').classList.remove('show');
   });
@@ -3310,7 +3359,7 @@
             ${avg ? `<span class="card-rating">★ ${avg} (${reviewsFor(c.id).length})</span>` : ''}
           </div>
           <p class="desc">${c.desc||''}</p>
-          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
+          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}${c.diff==='쉬움' ? `<span class="tag-pill" style="background:#EFE6D3; color:#8A5F14;">🐕 소형견 추천</span>` : ''}</div>
           <div class="card-foot">
             <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
             ${isMine
@@ -3452,10 +3501,10 @@
       document.getElementById('nearby-title').textContent = '이런 코스는 어때요?';
       document.getElementById('nearby-desc').textContent = '프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.';
     }
-    list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0)).slice(0,6);
-    renderCourseCards(document.getElementById('nearby-grid'), list);
+    const fullList = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
+    renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,3));
     const mapGrid = document.getElementById('map-recommend-grid');
-    if(mapGrid) renderCourseCards(mapGrid, list.slice(0,3));
+    if(mapGrid) renderCourseCards(mapGrid, fullList.slice(0,3));
   }
 
   function pawIcon(color){
