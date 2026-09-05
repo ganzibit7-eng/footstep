@@ -422,6 +422,49 @@
     .home-ai-banner{ flex-wrap:wrap; }
     .home-ai-banner-arrow{ width:100%; text-align:right; }
   }
+  .home-map-banner{
+    display:flex; align-items:center; gap:20px; text-decoration:none; color:var(--ink);
+    background:var(--sand); border:1px solid var(--line); border-radius:20px; padding:26px 28px;
+    margin:44px 0 28px; overflow:hidden; position:relative;
+  }
+  .home-map-banner-copy{ flex:1; min-width:0; }
+  .home-map-banner-copy h2{ font-size:24px; margin:4px 0 8px; color:var(--pine-deep); }
+  .home-map-banner-copy p{ font-size:13.5px; color:var(--muted-text); line-height:1.6; max-width:44ch; margin:0; }
+  .home-map-banner-cta{ display:inline-block; margin-top:14px; font-weight:800; color:var(--clay); font-size:14px; }
+  .home-map-banner-visual{
+    position:relative; width:120px; height:120px; flex:0 0 120px; border-radius:16px;
+    background:linear-gradient(135deg, #DCEBD6, #B9D6B0);
+  }
+  .fake-pin-2{ position:absolute; font-size:22px; filter:drop-shadow(0 2px 3px rgba(0,0,0,.2)); }
+  @media (max-width:640px){
+    .home-map-banner{ flex-direction:column; align-items:stretch; padding:22px 20px; }
+    .home-map-banner-visual{ width:100%; height:90px; flex:none; }
+  }
+  .home-gps-preview{
+    display:flex; align-items:center; gap:16px; background:var(--paper); border:1.5px solid var(--line);
+    border-radius:18px; padding:20px 22px; margin:44px 0 0;
+  }
+  .home-gps-preview-icon{
+    width:48px; height:48px; flex:0 0 48px; border-radius:50%; background:var(--sand);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+  }
+  .home-gps-preview-body{ flex:1; min-width:0; }
+  .home-gps-preview-body b{ display:block; font-family:'Jua',sans-serif; font-size:15px; color:var(--pine-deep); }
+  .home-gps-preview-body p{ font-size:12.5px; color:var(--muted-text); margin:2px 0 0; }
+  @media (max-width:560px){
+    .home-gps-preview{ flex-wrap:wrap; }
+    .home-gps-preview .btn-primary{ width:100%; text-align:center; margin-top:6px; }
+  }
+  .home-register-banner{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--pine-deep); color:var(--paper); border-radius:20px; padding:30px 32px; margin:44px 0 0;
+  }
+  .home-register-banner h2{ font-size:21px; color:var(--paper); margin:0 0 6px; }
+  .home-register-banner p{ font-size:13px; color:rgba(251,248,241,.75); margin:0; max-width:42ch; }
+  .btn-ghost-dark{
+    display:inline-block; background:var(--gold); color:var(--pine-deep); font-weight:800; font-size:14.5px;
+    padding:13px 24px; border-radius:12px; text-decoration:none; white-space:nowrap;
+  }
   .ai-assistant-btn{
     position:fixed; bottom:88px; right:24px; background:var(--gold); color:var(--pine-deep); border:none;
     width:58px; height:58px; border-radius:50%; cursor:pointer; box-shadow:0 8px 20px rgba(199,154,60,0.45); z-index:1199;
@@ -790,14 +833,11 @@
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
       <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
       <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
-      <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
+      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">우리 강아지에게 맞는 산책길을 찾고, 걸은 기록까지 남겨보세요.</p>
 
-      <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:inline-block; margin-top:22px; font-size:16px; padding:16px 30px;">🐾 내 주변 산책코스 찾기</a>
-
-      <div class="hero-secondary-links">
-        <a href="#" data-page-nav="walk">📍 산책 기록</a>
-        <a href="#" data-page-nav="register">➕ 코스 등록</a>
-        <a href="#" data-page-nav="map" data-map-filter="facility">☕ 동반 카페·숙소</a>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
+        <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
+        <a href="#" data-page-nav="walk" class="btn-ghost" style="display:block; text-align:center; font-size:15px; padding:15px 30px;">🐾 산책 시작하기</a>
       </div>
     </div>
 
@@ -815,21 +855,6 @@
 <section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
 
-    <a href="#" id="home-ai-banner" class="home-ai-banner">
-      <span class="home-ai-banner-icon">🐕</span>
-      <span class="home-ai-banner-text">
-        <b>몽이에게 물어보세요</b>
-        <span>우리 강아지에게 딱 맞는 산책 코스를 찾아드려요</span>
-      </span>
-      <span class="home-ai-banner-arrow">어디로 산책 갈까? →</span>
-    </a>
-
-    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:0 0 32px; box-shadow:var(--shadow);">
-      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85;">이달의 산책왕</div>
-      <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
-      <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
-    </div>
-
     <div class="section-head home-section-head">
       <div>
         <span class="kicker" id="nearby-kicker">내 주변 추천</span>
@@ -840,7 +865,56 @@
     </div>
     <div class="grid home-course-grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <div id="recent-viewed-wrap" style="display:none; margin-top:48px;">
+    <a href="#" id="home-map-banner" class="home-map-banner" data-page-nav="map">
+      <div class="home-map-banner-copy">
+        <span class="kicker" style="color:var(--gold);">지도 한 장으로 끝</span>
+        <h2>강아지와 갈 곳을 한눈에</h2>
+        <p>산책 코스, 배변봉투함, 동물병원, 애견용품점, 동반 식당·카페·숙소까지 — 발자국 지도 하나면 다 찾아요.</p>
+        <span class="home-map-banner-cta">지도 크게 보기 →</span>
+      </div>
+      <div class="home-map-banner-visual" aria-hidden="true">
+        <span class="fake-pin-2" style="top:20%; left:24%;">🐾</span>
+        <span class="fake-pin-2" style="top:55%; left:60%;">🚮</span>
+        <span class="fake-pin-2" style="top:35%; left:75%;">🏥</span>
+        <span class="fake-pin-2" style="top:70%; left:30%;">☕</span>
+      </div>
+    </a>
+
+    <a href="#" id="home-ai-banner" class="home-ai-banner">
+      <span class="home-ai-banner-icon">🐕</span>
+      <span class="home-ai-banner-text">
+        <b>어디로 산책 갈지 모르겠다면, 몽이에게 물어보세요</b>
+        <span>강아지 크기와 조건만 알려주면 딱 맞는 코스를 찾아드려요</span>
+      </span>
+      <span class="home-ai-banner-arrow">몽이에게 물어보기 →</span>
+    </a>
+
+    <div class="section-head home-section-head">
+      <div>
+        <span class="kicker">지금 인기있는 코스</span>
+        <h2>반려인들이 많이 찾는 산책길</h2>
+        <p>리뷰가 많고 평점이 높은 코스예요.</p>
+      </div>
+      <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
+    </div>
+    <div class="grid home-course-grid" id="popular-grid"></div>
+
+    <div id="home-gps-preview" class="home-gps-preview">
+      <div class="home-gps-preview-icon">🐾</div>
+      <div class="home-gps-preview-body">
+        <b id="home-gps-preview-title">오늘 산책, 아직이시죠?</b>
+        <p id="home-gps-preview-desc">GPS로 자동 기록되니까, 걷기만 하면 돼요.</p>
+      </div>
+      <a href="#" data-page-nav="walk" class="btn-primary" style="white-space:nowrap;">산책 시작하기</a>
+    </div>
+
+    <div id="champion-card" style="display:none; background:linear-gradient(135deg, var(--gold), var(--clay)); color:#fff; border-radius:var(--radius); padding:18px 22px; margin:32px 0 0; box-shadow:var(--shadow);">
+      <div style="font-size:12px; letter-spacing:0.08em; opacity:0.85;">이달의 산책왕</div>
+      <div id="champion-name" style="font-family:'Jua',sans-serif; font-size:22px; font-weight:700; margin-top:4px;"></div>
+      <div id="champion-points" style="font-size:13px; opacity:0.9; margin-top:2px;"></div>
+    </div>
+
+    <div id="recent-viewed-wrap" style="display:none; margin-top:32px;">
       <div class="section-head">
         <div>
           <span class="kicker">최근 본 코스</span>
@@ -848,6 +922,14 @@
         </div>
       </div>
       <div class="grid" id="recent-viewed-grid"></div>
+    </div>
+
+    <div class="home-register-banner">
+      <div>
+        <h2>우리 동네 산책길, 아직 없다면?</h2>
+        <p>직접 걸어본 코스를 등록하고 다른 반려인들과 나눠보세요.</p>
+      </div>
+      <a href="#" data-page-nav="register" class="btn-ghost-dark">+ 코스 등록하기</a>
     </div>
 
     <div class="home-etiquette">
@@ -2104,6 +2186,8 @@
     }
     renderGrid();
     loadNearbyRecommendations();
+      renderHomeGpsPreview();
+      renderPopularCourses();
   }
   async function syncFavoritesFromServer(){
     if(!myDeviceId) return;
@@ -2121,6 +2205,8 @@
       }
       renderGrid();
       loadNearbyRecommendations();
+      renderHomeGpsPreview();
+      renderPopularCourses();
     }catch(e){ console.error(e); }
   }
   let courseBoosts = {};
@@ -2398,6 +2484,8 @@
       toast(`"${text}" 지역으로 설정됐어요 📍`);
       renderHeroGreeting();
       loadNearbyRecommendations();
+      renderHomeGpsPreview();
+      renderPopularCourses();
     }catch(e){ console.error(e); toast('지역 저장에 실패했어요'); }
   }
   const BOOST_COST = 200;
@@ -2428,6 +2516,8 @@
       loadMyPoints();
       renderGrid();
       loadNearbyRecommendations();
+      renderHomeGpsPreview();
+      renderPopularCourses();
       const c = allCourses().find(x=>x.id===courseId);
       if(c) renderBoostUI(c);
       toast('코스가 홍보 노출되기 시작했어요 🌟');
@@ -3486,6 +3576,46 @@
     wrap.style.display = '';
     renderCourseCards(document.getElementById('recent-added-grid'), list);
   }
+  async function renderHomeGpsPreview(){
+    const titleEl = document.getElementById('home-gps-preview-title');
+    const descEl = document.getElementById('home-gps-preview-desc');
+    if(!titleEl || !descEl) return;
+    if(!myDeviceId) return; // 로그인 전엔 기본 문구 그대로
+    try{
+      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const { data, error } = await sb.from('walks').select('distance_km, duration_sec')
+        .eq('owner_id', myDeviceId).gte('created_at', todayStart.toISOString());
+      if(error || !data || !data.length) return; // 오늘 기록 없으면 기본 문구 유지
+      const totalKm = data.reduce((s,w)=>s+Number(w.distance_km||0), 0);
+      const totalSec = data.reduce((s,w)=>s+Number(w.duration_sec||0), 0);
+      titleEl.textContent = `오늘 ${totalKm.toFixed(2)}km 걸었어요 🐾`;
+      if(totalKm > 0 && totalSec > 0){
+        const paceSecPerKm = totalSec / totalKm;
+        const paceMin = Math.floor(paceSecPerKm / 60);
+        const paceSec = Math.round(paceSecPerKm % 60);
+        descEl.textContent = `${formatDuration(totalSec)} · 평균 ${paceMin}'${String(paceSec).padStart(2,'0')}"/km · 이번 산책도 기록해두세요.`;
+      } else {
+        descEl.textContent = '이번 산책도 기록해두세요.';
+      }
+    }catch(e){ console.error(e); }
+  }
+  function renderPopularCourses(){
+    const el = document.getElementById('popular-grid');
+    if(!el) return;
+    const visible = allCourses().filter(c => !isHidden('course', c.id));
+    let ranked = visible
+      .map(c => ({ c, reviewCount: reviewsFor(c.id).length, avg: Number(avgRating(c.id))||0 }))
+      .filter(x => x.reviewCount > 0)
+      .sort((a,b) => b.reviewCount - a.reviewCount || b.avg - a.avg)
+      .slice(0, 6)
+      .map(x => x.c);
+    if(ranked.length < 3){
+      // 리뷰 달린 코스가 적으면, 나머지는 그냥 대표 코스로 채워서 섹션이 비어보이지 않게 함
+      const fillers = visible.filter(c => !ranked.includes(c)).slice(0, 6 - ranked.length);
+      ranked = ranked.concat(fillers);
+    }
+    renderCourseCards(el, ranked);
+  }
   function loadNearbyRecommendations(){
     const visible = allCourses().filter(c => !isHidden('course', c.id));
     let list;
@@ -3588,6 +3718,8 @@
     renderStats();
     renderGrid();
     loadNearbyRecommendations();
+      renderHomeGpsPreview();
+      renderPopularCourses();
     renderRecentlyViewed();
     renderRecentlyAdded();
     renderMap();
