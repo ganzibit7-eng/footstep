@@ -1516,6 +1516,17 @@
           </div>
         </div>
 
+        <!-- 승인 대기 -->
+        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
+          <div class="admin-accordion-head" data-accordion="pending">
+            <h4>⏳ 승인 대기 중 (<span id="pending-count">0</span>)</h4><span class="accordion-arrow">▸</span>
+          </div>
+          <div class="admin-accordion-body" id="acc-pending" style="display:none;">
+            <p style="font-size:12.5px; color:var(--muted-text); margin:8px 0;">회원이 새로 등록한 코스·배변봉투함·동반시설이에요. 승인해야 지도에 공개돼요.</p>
+            <div id="pending-list" style="margin-top:8px;"></div>
+          </div>
+        </div>
+
         <!-- 신고 검수 -->
         <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
           <div class="admin-accordion-head" data-accordion="reports">
@@ -2246,13 +2257,15 @@
       id: row.id, name: row.name, desc: row.description,
       lat: row.lat, lng: row.lng, path: row.path || null,
       tags: row.tags || [], diff: row.diff || '쉬움', distance: row.distance,
-      ownerId: row.owner_id, author: row.author, createdAt: row.created_at
+      ownerId: row.owner_id, author: row.author, createdAt: row.created_at,
+      status: row.status || 'approved'
     };
   }
   function rowToBin(row){
     return {
       id: row.id, name: row.name, desc: row.description,
-      lat: row.lat, lng: row.lng, ownerId: row.owner_id, author: row.author
+      lat: row.lat, lng: row.lng, ownerId: row.owner_id, author: row.author,
+      status: row.status || 'approved'
     };
   }
 
@@ -2852,7 +2865,14 @@
     return r ? r.count : 0;
   }
   function isHidden(type, id){
-    return reportCount(type,id) >= REPORT_THRESHOLD;
+    if(reportCount(type,id) >= REPORT_THRESHOLD) return true;
+    // 승인 대기 중인 등록물은 관리자 승인 전까지 지도/목록에서 숨겨요 (제보 신고와는 별개 사유)
+    let item = null;
+    if(type === 'course') item = allCourses().find(c => c.id === id);
+    else if(type === 'bin') item = allBins().find(b => b.id === id);
+    else if(type === 'facility') item = facilities.find(f => f.id === id);
+    if(item && (item.status || 'approved') === 'pending') return true;
+    return false;
   }
   const REPORT_REASONS = ['위치 정보가 잘못됨', '길이 사라짐/공사 중', '위험 요소 발견(유리조각·미끄러움 등)', '부적절한 내용', '기타'];
   async function fileReport(type, id){
@@ -2897,7 +2917,8 @@
       id: course.id, name: course.name, description: course.desc,
       lat: course.lat, lng: course.lng, path: course.path,
       tags: course.tags, diff: course.diff, distance: course.distance,
-      owner_id: course.ownerId, author: course.author
+      owner_id: course.ownerId, author: course.author,
+      status: isAdminUser(course.ownerId) ? 'approved' : 'pending'
     }]);
     if(error) console.error(error);
     return !error;
@@ -2913,7 +2934,8 @@
   async function insertBinDB(bin){
     const { error } = await sb.from('bins').insert([{
       id: bin.id, name: bin.name, description: bin.desc,
-      lat: bin.lat, lng: bin.lng, owner_id: bin.ownerId, author: bin.author
+      lat: bin.lat, lng: bin.lng, owner_id: bin.ownerId, author: bin.author,
+      status: isAdminUser(bin.ownerId) ? 'approved' : 'pending'
     }]);
     if(error) console.error(error);
     return !error;
@@ -2929,7 +2951,8 @@
     const { error } = await sb.from('facilities').insert([{
       id: facility.id, name: facility.name, description: facility.desc, category: facility.category,
       address: facility.address || null, lat: facility.lat, lng: facility.lng,
-      owner_id: facility.ownerId, author: facility.author
+      owner_id: facility.ownerId, author: facility.author,
+      status: isAdminUser(facility.ownerId) ? 'approved' : 'pending'
     }]);
     if(error) console.error(error);
     return !error;
@@ -4596,7 +4619,9 @@
     }
 
     await loadData();
-    toast('등록되었어요! 지도와 목록에 반영됐어요 🐾');
+    toast(isAdminUser(myDeviceId)
+      ? '등록되었어요! 지도와 목록에 반영됐어요 🐾'
+      : '등록 요청이 접수됐어요! 관리자 승인 후 지도에 공개돼요 🐾');
     e.target.reset();
     selectedTags.clear();
     document.querySelectorAll('#tag-group .tag-check').forEach(x=>x.classList.remove('on'));
@@ -5610,6 +5635,58 @@
   document.getElementById('email-login-btn').addEventListener('click', sendMagicLink);
 
   // ===== Admin (moderation) panel =====
+  // ===== 승인 대기 중인 등록물 관리 =====
+  function renderPendingApprovals(){
+    const listEl = document.getElementById('pending-list');
+    const countEl = document.getElementById('pending-count');
+    if(!listEl) return;
+    const pendingCourses = allCourses().filter(c => c.status === 'pending').map(c => ({ type:'course', table:'courses', id:c.id, name:c.name, author:c.author, emoji:'🐾' }));
+    const pendingBins = allBins().filter(b => b.status === 'pending').map(b => ({ type:'bin', table:'bins', id:b.id, name:b.name, author:b.author, emoji:'🚮' }));
+    const pendingFacilities = facilities.filter(f => f.status === 'pending').map(f => ({ type:'facility', table:'facilities', id:f.id, name:f.name, author:f.author, emoji: f.category==='숙소'?'🏨':'🍽️' }));
+    const all = [...pendingCourses, ...pendingBins, ...pendingFacilities];
+    if(countEl) countEl.textContent = all.length;
+    if(!all.length){ listEl.innerHTML = '<p class="empty-admin">승인 대기 중인 항목이 없어요.</p>'; return; }
+    listEl.innerHTML = all.map(item => `
+      <div class="admin-row">
+        <div class="info"><b>${item.emoji} ${item.name}</b>${item.author ? '등록: '+item.author : ''}</div>
+        <div class="admin-actions">
+          <button class="remove" data-approve="${item.table}:${item.id}" style="background:#DCEBD6; color:#33612F;">✅ 승인</button>
+          <button class="remove" data-reject="${item.table}:${item.id}">거절</button>
+        </div>
+      </div>`).join('');
+    listEl.querySelectorAll('[data-approve]').forEach(btn=>{
+      btn.addEventListener('click', ()=> approvePending(btn.dataset.approve));
+    });
+    listEl.querySelectorAll('[data-reject]').forEach(btn=>{
+      btn.addEventListener('click', ()=> rejectPending(btn.dataset.reject));
+    });
+  }
+  async function approvePending(key){
+    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
+    const [table, id] = key.split(':');
+    try{
+      const { error } = await sb.from(table).update({ status: 'approved' }).eq('id', id);
+      if(error){ console.error(error); toast('승인 처리에 실패했어요'); return; }
+      toast('승인했어요! 이제 지도에 공개돼요 🐾');
+      await loadData();
+      renderPendingApprovals();
+      renderAdminStats();
+    }catch(e){ console.error(e); toast('승인 처리에 실패했어요'); }
+  }
+  async function rejectPending(key){
+    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
+    if(!confirm('이 등록 요청을 거절하고 삭제할까요? 되돌릴 수 없어요.')) return;
+    const [table, id] = key.split(':');
+    try{
+      const { error } = await sb.from(table).delete().eq('id', id);
+      if(error){ console.error(error); toast('거절 처리에 실패했어요'); return; }
+      toast('거절 처리했어요');
+      await loadData();
+      renderPendingApprovals();
+      renderAdminStats();
+    }catch(e){ console.error(e); toast('거절 처리에 실패했어요'); }
+  }
+
   function renderAdminList(){
     const el = document.getElementById('admin-list');
     if(!el) return;
@@ -6387,6 +6464,7 @@
     renderAdminSummary();
     renderAdminStats();
     renderAdminList();
+    renderPendingApprovals();
     renderReferrerBreakdown();
     renderLiveVisitorCount();
     if(isSuperAdmin(myDeviceId)) renderManagerList();
@@ -6400,6 +6478,7 @@
     renderAdminSummary();
     renderAdminStats();
     renderAdminList();
+    renderPendingApprovals();
     renderMemberList();
     renderReferrerBreakdown();
     renderLiveVisitorCount();
