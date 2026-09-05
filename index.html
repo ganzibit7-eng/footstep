@@ -215,7 +215,7 @@
   .map-legend{ font-size:12px; color:#5B5645; padding:10px 18px; display:flex; gap:18px; flex-wrap:wrap; border-top:1px solid var(--line); }
 
   /* ===== Course list ===== */
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:22px; margin-top:28px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:26px; margin-top:34px; }
   .card{
     background:var(--paper); border:1px solid var(--line); border-radius:18px;
     display:flex; flex-direction:column; overflow:hidden; transition:transform .15s ease, box-shadow .15s ease;
@@ -231,21 +231,21 @@
     width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-size:15px; padding:0;
   }
   .card-visual .badge{ position:absolute; top:10px; left:10px; }
-  .card-body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .card-body{ padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
   .card .row{ display:flex; align-items:center; justify-content:space-between; }
   .fav-btn{ background:none; border:none; font-size:18px; cursor:pointer; padding:2px; line-height:1; }
   .fav-btn.active{ animation:pop .25s ease; }
   @keyframes pop{ 0%{transform:scale(1);} 50%{transform:scale(1.3);} 100%{transform:scale(1);} }
   .card h3{ font-size:18px; line-height:1.3; }
-  .card-quickmeta{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:#3F5A3D; font-weight:700; }
-  .card-rating{ font-size:12.5px; color:#B5852E; font-weight:700; }
+  .card-quickmeta{ font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:var(--pine-deep); font-weight:800; letter-spacing:-0.01em; }
+  .card-rating{ font-size:13px; color:#B5852E; font-weight:800; }
   .badge{
     font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:0.04em;
   }
   .badge.easy{ background:#DCEBD6; color:#33612F; }
   .badge.mid{ background:#F3E3C4; color:#8A5F14; }
   .badge.hard{ background:#F2D6CE; color:var(--clay-dark); }
-  .card p.desc{ font-size:14px; color:#4A4636; margin:0; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card p.desc{ font-size:13.5px; color:var(--muted-text); margin:0; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .tag-row{ display:flex; gap:6px; flex-wrap:wrap; }
   .tag-pill{ font-size:11.5px; background:var(--sand); color:#4A4636; padding:4px 9px; border-radius:8px; font-weight:600;}
   .card .meta-mono{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted-text); margin-top:auto; padding-top:10px; border-top:1px dashed var(--line); }
@@ -501,7 +501,7 @@
   }
 
   /* ===== Home redesign ===== */
-  .home-content{ background:var(--paper); border-top:1px solid var(--line); padding:42px 0 88px; }
+  .home-content{ background:var(--paper); border-top:1px solid var(--line); padding:56px 0 100px; }
   .hero-copy{min-width:0;}
   .home-search{
     display:flex; align-items:center; max-width:560px; margin-top:26px;
@@ -534,17 +534,14 @@
   .home-quick-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:52px;
   }
-  .hero-quick-card-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:24px;
+  .hero-secondary-links{
+    display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px;
   }
-  .hero-quick-card-grid .quick-card{
-    flex-direction:column; align-items:center; text-align:center; gap:8px;
-    padding:18px 10px; min-height:108px; justify-content:center;
+  .hero-secondary-links a{
+    font-size:13.5px; font-weight:700; color:rgba(251,248,241,.78); text-decoration:none;
+    padding-bottom:2px; border-bottom:1px solid rgba(251,248,241,.3);
   }
-  .hero-quick-card-grid .quick-icon{ margin:0; }
-  .hero-quick-card-grid b{ font-size:13.5px; line-height:1.3; }
-  .hero-quick-card-grid small{ font-size:11px; margin-top:1px; }
-  .hero-quick-card-grid .quick-arrow{ display:none; }
+  .hero-secondary-links a:hover{ color:var(--gold); border-color:var(--gold); }
   .quick-card{
     display:flex; align-items:center; gap:12px; min-width:0; padding:17px 18px; border:1px solid var(--line);
     background:var(--paper); border-radius:14px; box-shadow:0 4px 16px rgba(21,41,34,.04);
@@ -555,7 +552,7 @@
   .quick-card b{display:block;font-size:15px;color:var(--pine-deep);}
   .quick-card small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted-text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .quick-arrow{margin-left:auto;color:var(--clay);font-size:18px;}
-  .home-section-head{margin-bottom:22px;}
+  .home-section-head{margin-bottom:28px;}
   .section-more{color:var(--clay);font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap;}
   .home-map-cta{
     display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:64px;
@@ -613,11 +610,6 @@
     .home-content{padding:24px 0 55px;}
     .home-quick-grid{grid-template-columns:1fr;gap:9px;margin-bottom:38px;}
     .quick-card{padding:14px 15px;}
-    .hero-quick-card-grid{gap:9px;}
-    .hero-quick-card-grid .quick-card{padding:12px;}
-    .hero-quick-card-grid .quick-icon{width:34px;height:34px;flex:0 0 34px;font-size:17px;}
-    .hero-quick-card-grid b{font-size:13px;}
-    .hero-quick-card-grid small{font-size:10.5px;}
     .home-section-head{align-items:flex-start;gap:8px;margin-bottom:15px;}
     .home-section-head h2{font-size:25px;}
     .home-section-head p{font-size:13px;}
@@ -763,23 +755,12 @@
       <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
       <p class="lead">내 주변 산책코스부터 배변봉투함, 강아지와 함께 갈 수 있는 장소까지 발자국에서 한눈에 찾아보세요. <span style="opacity:.7;">(전국 산책코스도 한눈에 확인할 수 있어요)</span></p>
 
-      <div class="hero-quick-card-grid">
-        <a href="#" data-page-nav="map" data-map-filter="course" class="quick-card" style="text-decoration:none;">
-          <span class="quick-icon">🗺️</span>
-          <span><b>산책 코스</b><small id="stat-courses-3">– 개</small></span>
-        </a>
-        <a href="#" data-page-nav="map" data-map-filter="facility" class="quick-card" style="text-decoration:none;">
-          <span class="quick-icon">🏨</span>
-          <span><b>동반 카페·숙소</b><small id="stat-facilities-3">– 곳</small></span>
-        </a>
-        <a href="#" data-page-nav="walk" class="quick-card" style="text-decoration:none;">
-          <span class="quick-icon">📍</span>
-          <span><b>산책 기록</b><small>GPS 자동 저장</small></span>
-        </a>
-        <a href="#" data-page-nav="register" class="quick-card" style="text-decoration:none;">
-          <span class="quick-icon">➕</span>
-          <span><b>코스 등록</b><small>동네 코스 공유하기</small></span>
-        </a>
+      <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:inline-block; margin-top:22px; font-size:16px; padding:16px 30px;">🐾 내 주변 산책코스 찾기</a>
+
+      <div class="hero-secondary-links">
+        <a href="#" data-page-nav="walk">📍 산책 기록</a>
+        <a href="#" data-page-nav="register">➕ 코스 등록</a>
+        <a href="#" data-page-nav="map" data-map-filter="facility">☕ 동반 카페·숙소</a>
       </div>
     </div>
 
@@ -881,6 +862,17 @@
         <span>🏥 동물병원 · 🛍️ 애견용품점은 "지금 보이는 지역에서 찾기"로 실시간 검색돼요</span>
         <span>마커를 누르면 상세 정보가 보여요</span>
       </div>
+    </div>
+
+    <div style="margin-top:44px;">
+      <div class="home-section-head">
+        <div>
+          <span class="kicker">Recommended</span>
+          <h2 style="font-size:24px;">주변 추천 코스</h2>
+        </div>
+        <a href="#" class="section-more" data-page-nav="list">전체 보기 →</a>
+      </div>
+      <div class="grid" id="map-recommend-grid"></div>
     </div>
   </div>
 </section>
@@ -1219,6 +1211,17 @@
 <div class="modal-overlay" id="profile-overlay">
   <div class="modal nick-modal">
     <div class="modal-body">
+      <div id="my-dog-profile-card" style="text-align:center; background:linear-gradient(160deg, #23452F, #2F5A3D); border-radius:16px; padding:24px 18px; margin-bottom:18px;">
+        <div id="my-dog-avatar-big" style="width:76px; height:76px; border-radius:50%; background:rgba(251,248,241,.15); background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; font-size:34px; margin:0 auto 10px; border:2.5px solid rgba(251,248,241,.4);">🐕</div>
+        <div id="my-dog-name-big" style="font-family:'Jua',sans-serif; font-size:20px; color:var(--paper);">우리 아이</div>
+        <div id="my-dog-sub-big" style="font-size:12.5px; color:rgba(251,248,241,.7); margin-top:2px;">강아지 정보를 등록해보세요</div>
+        <div style="display:flex; justify-content:center; gap:22px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(251,248,241,.2);">
+          <div><div id="my-stat-walks" style="font-family:'Jua',sans-serif; font-size:18px; color:var(--gold);">0</div><div style="font-size:10.5px; color:rgba(251,248,241,.65);">이번 달 산책</div></div>
+          <div><div id="my-stat-dist" style="font-family:'Jua',sans-serif; font-size:18px; color:var(--gold);">0</div><div style="font-size:10.5px; color:rgba(251,248,241,.65);">총 거리(km)</div></div>
+          <div><div id="my-stat-fav" style="font-family:'Jua',sans-serif; font-size:18px; color:var(--gold);">0</div><div style="font-size:10.5px; color:rgba(251,248,241,.65);">즐겨찾기</div></div>
+        </div>
+      </div>
+
       <h3 style="font-size:20px;">내 프로필</h3>
       <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">로그인 계정과 별개로, 사이트에 표시될 닉네임을 자유롭게 정하실 수 있어요. 실명이 아닌 별명을 추천해요.</p>
       <label style="margin-top:14px;">표시 닉네임</label>
@@ -2481,12 +2484,34 @@
     document.getElementById('dog-age-input').value = myDogAge || '';
     document.getElementById('region-input').value = myRegionName || '';
     const avatarEl = document.getElementById('dog-avatar-preview');
+    const avatarBigEl = document.getElementById('my-dog-avatar-big');
     if(myAvatarUrl){
       avatarEl.style.backgroundImage = `url('${myAvatarUrl}')`;
       avatarEl.textContent = '';
+      avatarBigEl.style.backgroundImage = `url('${myAvatarUrl}')`;
+      avatarBigEl.textContent = '';
     } else {
       avatarEl.style.backgroundImage = '';
       avatarEl.textContent = '🐕';
+      avatarBigEl.style.backgroundImage = '';
+      avatarBigEl.textContent = '🐕';
+    }
+    document.getElementById('my-dog-name-big').textContent = myDogName || '우리 아이';
+    document.getElementById('my-dog-sub-big').textContent = (myDogBreed || myDogAge)
+      ? `${myDogBreed || '견종 미등록'}${myDogAge ? ' · '+myDogAge+'살' : ''}`
+      : '강아지 정보를 등록해보세요';
+    document.getElementById('my-stat-fav').textContent = favoriteIds.size;
+    document.getElementById('my-stat-walks').textContent = '–';
+    document.getElementById('my-stat-dist').textContent = '–';
+    if(myDeviceId){
+      const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
+      sb.from('walks').select('distance_km, created_at').eq('owner_id', myDeviceId).gte('created_at', monthStart.toISOString())
+        .then(({ data, error })=>{
+          if(error || !data) return;
+          document.getElementById('my-stat-walks').textContent = data.length;
+          const totalKm = data.reduce((s,w)=>s+Number(w.distance_km||0), 0);
+          document.getElementById('my-stat-dist').textContent = totalKm.toFixed(1);
+        });
     }
     document.getElementById('profile-overlay').classList.add('show');
   }
@@ -2890,7 +2915,8 @@
         </div>
         <div class="ai-chip-row">
           <button class="ai-chip" data-go="near-me">📍 내 주변 코스</button>
-          <button class="ai-chip" data-go="c-size">🐶 우리 강아지에게 좋은 코스</button>
+          <button class="ai-chip" data-small-dog="1">🐶 소형견 코스</button>
+          <button class="ai-chip" data-go="c-size">🐾 우리 강아지에게 좋은 코스</button>
           <button class="ai-chip" data-go="f-category">☕ 동반 카페·숙소</button>
           <button class="ai-chip" data-go="guide-0">📖 사용법</button>
           <button class="ai-chip" data-go="faq">❓ 자주 묻는 질문</button>
@@ -2899,6 +2925,8 @@
       body.querySelectorAll('[data-go]').forEach(btn=>{
         btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
       });
+      const smallDogBtn = body.querySelector('[data-small-dog]');
+      if(smallDogBtn) smallDogBtn.addEventListener('click', ()=>{ aiAnswers.size = '소형견'; aiRenderStep('c-time'); });
 
     // ---------- 내 위치 기반 근처 코스 ----------
     } else if(step === 'near-me'){
@@ -3426,6 +3454,8 @@
     }
     list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0)).slice(0,6);
     renderCourseCards(document.getElementById('nearby-grid'), list);
+    const mapGrid = document.getElementById('map-recommend-grid');
+    if(mapGrid) renderCourseCards(mapGrid, list.slice(0,3));
   }
 
   function pawIcon(color){
@@ -5049,25 +5079,36 @@
       streakBadge.style.display = 'none';
     }
 
-    // 최근 7일 스트립
+    // 최근 7일 막대그래프 (거리 비례)
     const stripEl = document.getElementById('week-strip');
     const dayLabels = ['일','월','화','수','목','금','토'];
-    let html = '';
+    const dayDist = {};
+    walks.forEach(w=>{
+      const key = dateKey(new Date(w.created_at));
+      dayDist[key] = (dayDist[key] || 0) + Number(w.distance_km || 0);
+    });
+    const maxDist = Math.max(0.1, ...Object.values(dayDist));
+    let html = '<div style="display:flex; align-items:flex-end; gap:6px; height:64px; width:100%;">';
     for(let i=6; i>=0; i--){
       const d = new Date();
       d.setDate(d.getDate() - i);
-      const walked = walkedDates.has(dateKey(d));
+      const key = dateKey(d);
+      const dist = dayDist[key] || 0;
+      const walked = dist > 0;
       const isToday = i === 0;
+      const heightPct = walked ? Math.max(14, Math.round((dist / maxDist) * 100)) : 6;
       html += `
-        <div style="flex:1; text-align:center;">
-          <div style="width:28px; height:28px; margin:0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center;
-            background:${walked ? 'var(--moss)' : 'var(--line)'}; color:${walked ? '#fff' : 'var(--muted-text)'}; font-size:13px;
-            ${isToday ? 'box-shadow:0 0 0 2px var(--clay);' : ''}">
-            ${walked ? '🐾' : ''}
-          </div>
-          <div style="font-size:10px; color:var(--muted-text); margin-top:4px;">${dayLabels[d.getDay()]}</div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;" title="${dist.toFixed(1)}km">
+          <div style="width:100%; max-width:26px; height:${heightPct}%; border-radius:6px 6px 3px 3px;
+            background:${walked ? 'var(--moss)' : 'var(--line)'}; ${isToday ? 'box-shadow:0 0 0 2px var(--clay);' : ''}"></div>
         </div>`;
     }
+    html += '</div><div style="display:flex; gap:6px; margin-top:6px;">';
+    for(let i=6; i>=0; i--){
+      const d = new Date(); d.setDate(d.getDate() - i);
+      html += `<div style="flex:1; text-align:center; font-size:10px; color:var(--muted-text);">${dayLabels[d.getDay()]}</div>`;
+    }
+    html += '</div>';
     stripEl.innerHTML = html;
 
     // 이번주(최근 7일) 총 산책 시간/거리 요약
