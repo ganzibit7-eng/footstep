@@ -187,6 +187,18 @@
   .hero-card p{ font-size:14px; color:#54503F; margin:0 0 12px; }
   .hero-card .meta{ display:flex; gap:14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--moss); border-top:1px dashed var(--line); padding-top:12px; }
 
+  .hero-stat-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+  .hero-stat-box{
+    background:var(--paper); border-radius:14px; padding:14px 12px; box-shadow:0 6px 18px rgba(21,41,34,.06);
+    display:flex; align-items:center; gap:9px; min-width:0;
+  }
+  .hero-stat-icon{
+    width:36px; height:36px; flex:0 0 36px; border-radius:10px; background:var(--sand);
+    display:flex; align-items:center; justify-content:center; font-size:17px;
+  }
+  .hero-stat-num{ font-family:'Jua',sans-serif; font-size:18px; color:var(--pine-deep); line-height:1.2; white-space:nowrap; }
+  .hero-stat-label{ font-size:10px; color:var(--muted-text); margin-top:1px; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
   /* ===== Section shells ===== */
   section{ padding:72px 0; }
   .section-head{ margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
@@ -849,6 +861,22 @@
         <h3 id="weather-title">불러오는 중...</h3>
         <p id="weather-desc">위치 정보를 확인하고 있어요.</p>
         <div class="meta" id="weather-meta"></div>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat-box">
+          <span class="hero-stat-icon">🐾</span>
+          <div>
+            <div class="hero-stat-num" id="hero-stat-courses">–</div>
+            <div class="hero-stat-label">등록 코스</div>
+          </div>
+        </div>
+        <div class="hero-stat-box">
+          <span class="hero-stat-icon">☕</span>
+          <div>
+            <div class="hero-stat-num" id="hero-stat-facilities">–</div>
+            <div class="hero-stat-label">동반 카페·숙소</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2998,13 +3026,13 @@
   }
 
   function renderStats(){
-    const courseCount = allCourses().length;
-    const facilityCount = facilities.length;
+    const approvedCourseCount = allCourses().filter(c => (c.status || 'approved') === 'approved').length;
+    const approvedFacilityCount = facilities.filter(f => (f.status || 'approved') === 'approved').length;
     const statMap = [
-      ['stat-courses', courseCount],
-      ['stat-facilities', facilityCount],
-      ['stat-courses-1', courseCount],
-      ['stat-facilities-1', facilityCount],
+      ['stat-courses', approvedCourseCount],
+      ['stat-facilities', approvedFacilityCount],
+      ['stat-courses-1', approvedCourseCount],
+      ['stat-facilities-1', approvedFacilityCount],
     ];
     statMap.forEach(([id, count])=>{
       const numEl = document.getElementById(id);
@@ -3018,9 +3046,13 @@
       }
     });
     const c3 = document.getElementById('stat-courses-3');
-    if(c3) c3.textContent = `${courseCount}개`;
+    if(c3) c3.textContent = `${approvedCourseCount}개`;
     const f3 = document.getElementById('stat-facilities-3');
-    if(f3) f3.textContent = `${facilityCount}곳`;
+    if(f3) f3.textContent = `${approvedFacilityCount}곳`;
+    const heroCourses = document.getElementById('hero-stat-courses');
+    if(heroCourses) heroCourses.textContent = `${approvedCourseCount.toLocaleString()}개`;
+    const heroFacilities = document.getElementById('hero-stat-facilities');
+    if(heroFacilities) heroFacilities.textContent = `${approvedFacilityCount.toLocaleString()}곳`;
   }
 
   // ===== 홈 화면 히어로 스타일 미리보기 (?homestyle=1/2/3) =====
