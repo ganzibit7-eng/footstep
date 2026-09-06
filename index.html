@@ -2674,6 +2674,7 @@
     }
     const adminBtn = document.getElementById('my-admin-btn');
     if(adminBtn) adminBtn.style.display = isAdminUser(myDeviceId) ? '' : 'none';
+    loadMyPoints();
     document.getElementById('profile-overlay').classList.add('show');
   }
   function closeProfileModal(){
@@ -2866,13 +2867,20 @@
   }
   async function loadMyPoints(){
     const badge = document.getElementById('points-badge');
-    if(!myDeviceId){ badge.style.display = 'none'; return; }
+    const isMobile = window.matchMedia('(max-width:880px)').matches;
+    const myShopBtn = document.getElementById('my-points-shop-btn');
+    if(!myDeviceId){
+      badge.style.display = 'none';
+      if(myShopBtn) myShopBtn.textContent = '🪙 포인트샵 가기';
+      return;
+    }
     try{
       const { data, error } = await sb.from('points_log').select('amount').eq('owner_id', myDeviceId);
       if(error || !data){ badge.style.display = 'none'; return; }
       const total = data.reduce((sum, r) => sum + r.amount, 0);
       badge.textContent = `🪙 ${total.toLocaleString()}P`;
-      badge.style.display = '';
+      badge.style.display = isMobile ? 'none' : ''; // 모바일에선 MY 탭에서만 보여주고 헤더엔 안 띄움
+      if(myShopBtn) myShopBtn.textContent = `🪙 ${total.toLocaleString()}P · 포인트샵 가기`;
     }catch(e){ console.error(e); badge.style.display = 'none'; }
   }
 
