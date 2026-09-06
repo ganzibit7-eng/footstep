@@ -681,6 +681,18 @@
   .home-register-cta h2{margin-top:7px;}
   .home-register-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;}
   .home-register-cta .btn-ghost.light{border-color:rgba(255,255,255,.4);color:#fff;}
+
+  /* ===== 스크롤하면 섹션이 부드럽게 나타나는 효과 ===== */
+  .reveal-on-scroll{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);
+    will-change:opacity, transform;
+  }
+  .reveal-on-scroll.revealed{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal-on-scroll{ opacity:1; transform:none; transition:none; }
+  }
+
   .home-etiquette{
     display:flex;align-items:center;gap:14px;margin-top:24px;padding:17px 18px;border-top:1px solid var(--line);
   }
@@ -885,7 +897,7 @@
 <section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
 
-    <div class="section-head home-section-head">
+    <div class="section-head home-section-head reveal-on-scroll">
       <div>
         <span class="kicker" id="nearby-kicker">내 주변 추천</span>
         <h2 id="nearby-title">우리 동네 추천 코스</h2>
@@ -893,9 +905,9 @@
       </div>
       <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
-    <div class="grid home-course-grid" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+    <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <a href="#" id="home-map-banner" class="home-map-banner" data-page-nav="map">
+    <a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
       <div class="home-map-banner-copy">
         <span class="kicker" style="color:var(--gold);">지도 한 장으로 끝</span>
         <h2>강아지와 갈 곳을 한눈에</h2>
@@ -910,7 +922,7 @@
       </div>
     </a>
 
-    <a href="#" id="home-ai-banner" class="home-ai-banner">
+    <a href="#" id="home-ai-banner" class="home-ai-banner reveal-on-scroll">
       <span class="home-ai-banner-icon">🐕</span>
       <span class="home-ai-banner-text">
         <b>어디로 산책 갈지 모르겠다면, 몽이에게 물어보세요</b>
@@ -919,7 +931,7 @@
       <span class="home-ai-banner-arrow">몽이에게 물어보기 →</span>
     </a>
 
-    <div class="section-head home-section-head">
+    <div class="section-head home-section-head reveal-on-scroll">
       <div>
         <span class="kicker">지금 인기있는 코스</span>
         <h2>반려인들이 많이 찾는 산책길</h2>
@@ -927,9 +939,9 @@
       </div>
       <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
-    <div class="grid home-course-grid" id="popular-grid"></div>
+    <div class="grid home-course-grid reveal-on-scroll" id="popular-grid"></div>
 
-    <div id="home-gps-preview" class="home-gps-preview">
+    <div id="home-gps-preview" class="home-gps-preview reveal-on-scroll">
       <div class="home-gps-preview-icon">🐾</div>
       <div class="home-gps-preview-body">
         <b id="home-gps-preview-title">오늘 산책, 아직이시죠?</b>
@@ -948,7 +960,7 @@
       <div class="grid" id="recent-viewed-grid"></div>
     </div>
 
-    <div class="home-register-banner">
+    <div class="home-register-banner reveal-on-scroll">
       <div>
         <h2>우리 동네 산책길, 아직 없다면?</h2>
         <p>직접 걸어본 코스를 등록하고 다른 반려인들과 나눠보세요.</p>
@@ -956,7 +968,7 @@
       <a href="#" data-page-nav="register" class="btn-ghost-dark">+ 코스 등록하기</a>
     </div>
 
-    <div class="home-etiquette">
+    <div class="home-etiquette reveal-on-scroll">
       <div class="etiquette-icon">🐕</div>
       <div>
         <strong>함께 걷는 우리 동네, 함께 지켜요.</strong>
@@ -6574,6 +6586,29 @@
   }
   if(homeSearchBtn) homeSearchBtn.addEventListener('click', runHomeSearch);
   if(homeSearchInput) homeSearchInput.addEventListener('keydown', e=>{ if(e.key==='Enter') runHomeSearch(); });
+
+  // ===== 스크롤하면 섹션이 부드럽게 나타나는 효과 =====
+  (function initScrollReveal(){
+    const targets = document.querySelectorAll('.reveal-on-scroll');
+    if(!targets.length) return;
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(el => el.classList.add('revealed'));
+      return;
+    }
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.1, rootMargin:'0px 0px -60px 0px' });
+    targets.forEach(el => revealObserver.observe(el));
+    // 안전장치: 혹시 옵저버가 놓치는 경우를 대비해 3초 뒤엔 무조건 다 보이게 함 (콘텐츠가 영영 안 보이는 사고 방지)
+    setTimeout(()=>{
+      document.querySelectorAll('.reveal-on-scroll:not(.revealed)').forEach(el => el.classList.add('revealed'));
+    }, 3000);
+  })();
 
   ensureIdentity().then(()=>{
     loadMyWalks();
