@@ -11,8 +11,10 @@
 <meta property="og:description" content="반려견 산책 코스, 배변봉투함, 동물병원·애견동반 식당·숙소를 지도에서 찾고 공유하는 서비스">
 <meta property="og:url" content="https://balzaguk.com">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://balzaguk.com/og-image.png">
+<meta property="og:image" content="https://balzaguk.com/icon-512.png">
+<meta property="og:image:alt" content="발자국 서비스 로고">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="naver-site-verification" content="9b251cb6993878e0c84ba3d24bc4b0b1bd5b2234" />
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png" type="image/png">
@@ -1352,9 +1354,10 @@
 </div>
 
 <div class="modal-overlay" id="nick-overlay">
-  <div class="modal nick-modal">
+  <div class="modal nick-modal" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
+    <button class="modal-close" id="nick-close" aria-label="로그인 창 닫기">✕</button>
     <div class="modal-body">
-      <h3 style="font-size:20px;">로그인해주세요</h3>
+      <h3 id="login-modal-title" style="font-size:20px;">로그인해주세요</h3>
       <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">등록한 코스·배변봉투함·리뷰에 닉네임이 표시되고, 내가 올린 글을 나중에 수정·삭제하거나 포인트를 모을 때 필요해요.</p>
       <label style="display:flex; align-items:flex-start; gap:8px; margin-top:14px; font-size:12.5px; font-weight:500; color:#5B5645; cursor:pointer;">
         <input type="checkbox" id="terms-agree-checkbox" style="margin-top:2px; width:16px; height:16px; flex-shrink:0;">
@@ -1364,7 +1367,7 @@
       <button class="submit-btn" id="google-login-btn" style="margin-top:10px; background:#fff; color:#3c4043; border:1.5px solid var(--line);">🔵 Google로 시작하기</button>
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
         <label style="margin-top:0;">이메일로 시작하기</label>
-        <input type="email" id="email-login-input" placeholder="you@example.com">
+        <input type="email" id="email-login-input" placeholder="you@example.com" autocomplete="email" inputmode="email" aria-describedby="email-login-note">
         <button class="pin-btn" id="email-login-btn" style="margin-top:8px;">📧 로그인 링크 이메일로 받기</button>
         <p id="email-login-note" style="font-size:12px; color:#6B6550; margin-top:8px;"></p>
       </div>
@@ -1730,6 +1733,19 @@
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const REPORT_THRESHOLD = 3;
+
+  // DB·외부 API의 문자열을 HTML에 넣을 때 사용하는 공통 방어 함수
+  function escapeHtml(value){
+    return String(value ?? '').replace(/[&<>'"]/g, ch => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
+    })[ch]);
+  }
+  function safePublicImageUrl(value){
+    try{
+      const url = new URL(String(value || ''), window.location.origin);
+      return url.protocol === 'https:' ? url.href : '';
+    }catch(e){ return ''; }
+  }
 
   const SEED_COURSES = [
     { id:'c1', name:'경춘선숲길 반려견 산책로', desc:'화랑대역 인근 철길 숲길. 나무 그늘이 많고 평지 위주라 노령견에게도 좋아요.', lat:37.6215, lng:127.0745, tags:['그늘많음','계단없음'], diff:'쉬움', distance:'2.1 km',
@@ -2700,7 +2716,7 @@
     const boostSelect = document.getElementById('shop-boost-course-select');
     const myOwnCourses = allCourses().filter(c => c.ownerId === myDeviceId);
     boostSelect.innerHTML = '<option value="">홍보할 내 코스를 선택하세요</option>' +
-      myOwnCourses.map(c => `<option value="${c.id}">${c.name}${isBoostedNow(c.id) ? ' (홍보중)' : ''}</option>`).join('');
+      myOwnCourses.map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}${isBoostedNow(c.id) ? ' (홍보중)' : ''}</option>`).join('');
     document.getElementById('points-shop-overlay').classList.add('show');
   }
   function closePointsShop(){
@@ -2713,35 +2729,41 @@
   }
   async function signInWithKakao(){
     if(!isTermsAgreed()) return;
+    const btn = document.getElementById('kakao-login-btn');
+    btn.disabled = true; btn.textContent = '카카오로 이동 중...';
     try{
-      await sb.auth.signInWithOAuth({
+      const { error } = await sb.auth.signInWithOAuth({
         provider:'kakao',
         options:{
           redirectTo: window.location.origin + window.location.pathname,
           scopes: 'profile_nickname profile_image'
         }
       });
-    }catch(e){ console.error(e); toast('로그인에 실패했어요'); }
+      if(error) throw error;
+    }catch(e){ console.error(e); toast('카카오 로그인을 시작하지 못했어요. 잠시 후 다시 시도해주세요'); btn.disabled=false; btn.textContent='💬 카카오로 시작하기'; }
   }
   async function signInWithGoogle(){
     if(!isTermsAgreed()) return;
+    const btn = document.getElementById('google-login-btn');
+    btn.disabled = true; btn.textContent = 'Google로 이동 중...';
     try{
-      await sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin + window.location.pathname } });
-    }catch(e){ console.error(e); toast('로그인에 실패했어요'); }
+      const { error } = await sb.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin + window.location.pathname } });
+      if(error) throw error;
+    }catch(e){ console.error(e); toast('Google 로그인을 시작하지 못했어요. 잠시 후 다시 시도해주세요'); btn.disabled=false; btn.textContent='🔵 Google로 시작하기'; }
   }
   async function sendMagicLink(){
     if(!isTermsAgreed()) return;
     const input = document.getElementById('email-login-input');
     const note = document.getElementById('email-login-note');
     const email = input.value.trim();
-    if(!email || !email.includes('@')){ note.textContent = '올바른 이메일 주소를 입력해주세요'; return; }
+    if(!input.checkValidity()){ note.textContent = '올바른 이메일 주소를 입력해주세요'; input.focus(); return; }
     const btn = document.getElementById('email-login-btn');
     btn.disabled = true; btn.textContent = '전송 중...';
     try{
       const { error } = await sb.auth.signInWithOtp({
         email, options:{ emailRedirectTo: window.location.origin + window.location.pathname }
       });
-      if(error){ note.textContent = '전송에 실패했어요: ' + error.message; }
+      if(error){ console.error(error); note.textContent = '전송에 실패했어요. 잠시 후 다시 시도해주세요.'; }
       else{ note.textContent = `${email} 로 로그인 링크를 보냈어요. 메일함(스팸함도)을 확인해주세요.`; input.value=''; }
     }catch(e){ console.error(e); note.textContent = '전송에 실패했어요'; }
     btn.disabled = false; btn.textContent = '📧 로그인 링크 이메일로 받기';
@@ -3480,9 +3502,9 @@
   function tagLabel(t){ return TAG_DISPLAY_LABELS[t] || t; }
   function authorLabel(ownerId, fallbackName){
     const badge = ownerId && profilesMap[ownerId] ? badgeEmoji(profilesMap[ownerId].badge) : '';
-    const name = badge + (fallbackName || '');
+    const name = escapeHtml(badge + (fallbackName || ''));
     if(!ownerId) return name;
-    return `<span class="member-link" data-member="${ownerId}">${name}</span>`;
+    return `<span class="member-link" data-member="${escapeHtml(ownerId)}">${name}</span>`;
   }
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
@@ -3511,15 +3533,15 @@
           <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="찜하기">${isFav ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
-          <h3>${c.name}</h3>
+          <h3>${escapeHtml(c.name)}</h3>
           ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14; align-self:flex-start;">🌟 홍보중인 코스</span>` : ''}
           ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F; align-self:flex-start;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
           <div class="row" style="gap:10px;">
-            <span class="card-quickmeta">${c.distance||'거리 정보 없음'}${estMin ? ' · 약 '+estMin+'분' : ''}</span>
+            <span class="card-quickmeta">${escapeHtml(c.distance||'거리 정보 없음')}${estMin ? ' · 약 '+estMin+'분' : ''}</span>
             ${avg ? `<span class="card-rating">★ ${avg} (${reviewsFor(c.id).length})</span>` : ''}
           </div>
-          <p class="desc">${c.desc||''}</p>
-          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}${c.diff==='쉬움' ? `<span class="tag-pill" style="background:#EFE6D3; color:#8A5F14;">🐕 소형견 추천</span>` : ''}</div>
+          <p class="desc">${escapeHtml(c.desc||'')}</p>
+          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}${c.diff==='쉬움' ? `<span class="tag-pill" style="background:#EFE6D3; color:#8A5F14;">🐕 소형견 추천</span>` : ''}</div>
           <div class="card-foot">
             <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
             ${isMine
@@ -3740,7 +3762,7 @@
         L.polyline(c.path, {color:'#6E8F6B', weight:4, opacity:0.85, dashArray:'1,8', lineCap:'round'}).addTo(coursePathLayer);
       }
       L.marker([c.lat,c.lng], {icon:pawIcon()})
-        .bindPopup(`<strong>${c.name}</strong><br>${c.desc||''}<br><em>${c.distance||''} · ${c.diff||''}</em><br><a href="#" onclick="window.__openCourse('${c.id}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a> · <a href="${kakaoLinkTo(c.name, c.lat, c.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${escapeHtml(c.name)}</strong><br>${escapeHtml(c.desc||'')}<br><em>${escapeHtml(c.distance||'')} · ${escapeHtml(c.diff||'')}</em><br><a href="#" onclick="window.__openCourse('${escapeHtml(c.id)}');return false;" style="color:#B5502E;font-weight:700;">상세보기 →</a> · <a href="${escapeHtml(kakaoLinkTo(c.name, c.lat, c.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(courseLayer);
     });
     allBins().filter(b => !isHidden('bin', b.id)).forEach(b=>{
@@ -3749,7 +3771,7 @@
         ? `<a href="#" onclick="window.__editBin('${b.id}');return false;" style="color:var(--moss);font-weight:700;">✏️ 수정</a> · <a href="#" onclick="window.__deleteBin('${b.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportBin('${b.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([b.lat,b.lng], {icon:binIcon()})
-        .bindPopup(`<strong>🚮 ${b.name}</strong><br>${b.desc||''}${b.author ? '<br><em>등록: '+b.author+'</em>' : ''}<br>${actionHtml} · <a href="${kakaoLinkTo(b.name, b.lat, b.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>🚮 ${escapeHtml(b.name)}</strong><br>${escapeHtml(b.desc||'')}${b.author ? '<br><em>등록: '+escapeHtml(b.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(b.name, b.lat, b.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(binLayer);
     });
     facilities.filter(f => !isHidden('facility', f.id)).forEach(f=>{
@@ -3759,7 +3781,7 @@
         ? `<a href="#" onclick="window.__deleteFacility('${f.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportFacility('${f.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([f.lat, f.lng], {icon: poiIcon(f.category === '숙소' ? 'lodging' : 'restaurant')})
-        .bindPopup(`<strong>${emoji} ${f.name}</strong><br>${f.description||''}${f.author ? '<br><em>등록: '+f.author+'</em>' : ''}<br>${actionHtml} · <a href="${kakaoLinkTo(f.name, f.lat, f.lng)}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.description||'')}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(facilityLayer);
     });
   }
@@ -4007,7 +4029,10 @@
     try{
       const { data, error } = await sb.from('course_photos').select('*').eq('course_id', courseId).order('created_at', {ascending:false}).limit(3);
       if(!error && data && data.length){
-        gallery.innerHTML = data.map(p=>`<div class="photo-tile" data-photo-url="${p.url}" style="background-image:url('${p.url}'); background-size:cover; background-position:center; cursor:zoom-in;"></div>`).join('');
+        gallery.innerHTML = data.map(p=>{
+          const safeUrl = safePublicImageUrl(p.url);
+          return safeUrl ? `<div class="photo-tile" data-photo-url="${escapeHtml(safeUrl)}" style="background-image:url('${escapeHtml(safeUrl)}'); background-size:cover; background-position:center; cursor:zoom-in;"></div>` : '';
+        }).join('');
         while(gallery.children.length < 3){
           const tile = document.createElement('div');
           tile.className = 'photo-tile';
@@ -4340,7 +4365,7 @@
     let list = [];
     try{ list = JSON.parse(localStorage.getItem('paw_recent_searches') || '[]'); }catch(e){}
     const dl = document.getElementById('recent-search-list');
-    dl.innerHTML = list.map(q => `<option value="${q}"></option>`).join('');
+    dl.innerHTML = list.map(q => `<option value="${escapeHtml(q)}"></option>`).join('');
     return list;
   }
   function saveRecentSearch(query){
@@ -4769,16 +4794,17 @@
       const helpfulBtn = type==='user'
         ? `<button class="helpful-btn ${hf.mine?'active':''}" data-helpful-toggle="${r.dbId}">👍 도움돼요${hf.count>0 ? ' '+hf.count : ''}</button>`
         : '';
-      const photoHtml = r.photoUrl
-        ? `<img src="${r.photoUrl}" alt="리뷰 사진" data-photo-url="${r.photoUrl}" style="width:72px; height:72px; object-fit:cover; border-radius:8px; margin-top:8px; cursor:zoom-in;">`
+      const safePhotoUrl = safePublicImageUrl(r.photoUrl);
+      const photoHtml = safePhotoUrl
+        ? `<img src="${escapeHtml(safePhotoUrl)}" alt="리뷰 사진" data-photo-url="${escapeHtml(safePhotoUrl)}" style="width:72px; height:72px; object-fit:cover; border-radius:8px; margin-top:8px; cursor:zoom-in;">`
         : '';
       return `
       <div class="review-item">
         <div class="rh">
-          <span>${type==='user' ? authorLabel(r.ownerId, r.name) : r.name}</span>
+          <span>${type==='user' ? authorLabel(r.ownerId, r.name) : escapeHtml(r.name)}</span>
           <div class="rh-actions"><span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${action}</div>
         </div>
-        <p>${r.text}</p>
+        <p>${escapeHtml(r.text)}</p>
         ${photoHtml}
         ${helpfulBtn ? `<div style="margin-top:6px;">${helpfulBtn}</div>` : ''}
       </div>`;
@@ -4842,7 +4868,7 @@
       } else {
         listEl.innerHTML = data.map(n=>{
           const d = new Date(n.created_at);
-          return `<div class="review-item"><p style="margin:0;">${n.message}</p><span style="font-size:11px; color:var(--muted-text);">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`;
+          return `<div class="review-item"><p style="margin:0;">${escapeHtml(n.message)}</p><span style="font-size:11px; color:var(--muted-text);">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`;
         }).join('');
         await sb.from('notifications').update({ read:true }).eq('owner_id', myDeviceId).eq('read', false);
         document.getElementById('notif-dot').style.display = 'none';
@@ -4885,8 +4911,8 @@
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
-      <span class="tag-pill">${c.distance||'거리 정보 없음'}</span>
-      ${(c.tags||[]).map(t=>`<span class="tag-pill">${tagLabel(t)}</span>`).join('')}
+      <span class="tag-pill">${escapeHtml(c.distance||'거리 정보 없음')}</span>
+      ${(c.tags||[]).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}
       ${(c.tags||[]).includes('목줄해제가능') ? '<div style="width:100%; font-size:12px; color:var(--muted-text); margin-top:6px;">※ 이용자 제보 정보이며, 현장 규정을 반드시 확인해주세요.</div>' : ''}
     `;
     renderReviewList(courseId);
@@ -5113,11 +5139,10 @@
   let activeWalkerCounts = {};
   async function loadActiveWalkerCounts(){
     try{
-      const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
-      const { data, error } = await sb.from('active_walkers').select('course_id').gte('updated_at', fiveMinAgo).not('course_id','is',null);
+      const { data, error } = await sb.from('active_walker_counts').select('course_id, walker_count');
       const counts = {};
       if(!error && data){
-        data.forEach(r=>{ counts[r.course_id] = (counts[r.course_id]||0) + 1; });
+        data.forEach(r=>{ counts[r.course_id] = Number(r.walker_count || 0); });
       }
       activeWalkerCounts = counts;
       renderGrid();
@@ -5691,9 +5716,13 @@
   document.getElementById('nick-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'nick-overlay') closeNickModal();
   });
+  document.getElementById('nick-close').addEventListener('click', closeNickModal);
   document.getElementById('kakao-login-btn').addEventListener('click', signInWithKakao);
   document.getElementById('google-login-btn').addEventListener('click', signInWithGoogle);
   document.getElementById('email-login-btn').addEventListener('click', sendMagicLink);
+  document.getElementById('email-login-input').addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ e.preventDefault(); sendMagicLink(); }
+  });
 
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
@@ -5709,7 +5738,7 @@
     if(!all.length){ listEl.innerHTML = '<p class="empty-admin">승인 대기 중인 항목이 없어요.</p>'; return; }
     listEl.innerHTML = all.map(item => `
       <div class="admin-row">
-        <div class="info"><b>${item.emoji} ${item.name}</b>${item.author ? '등록: '+item.author : ''}</div>
+        <div class="info"><b>${item.emoji} ${escapeHtml(item.name)}</b>${item.author ? '등록: '+escapeHtml(item.author) : ''}</div>
         <div class="admin-actions">
           <button class="remove" data-approve="${item.table}:${item.id}" style="background:#DCEBD6; color:#33612F;">✅ 승인</button>
           <button class="remove" data-reject="${item.table}:${item.id}">거절</button>
@@ -5777,7 +5806,7 @@
       }
       return `
         <div class="admin-row">
-          <div class="info"><b>${title}</b>${sub} · 신고 ${count}건${reports[key].reasons && reports[key].reasons.length ? '<br><span style="color:var(--clay-dark);font-weight:700;">사유: '+reports[key].reasons.join(', ')+'</span>' : ''}</div>
+          <div class="info"><b>${escapeHtml(title)}</b>${escapeHtml(sub)} · 신고 ${count}건${reports[key].reasons && reports[key].reasons.length ? '<br><span style="color:var(--clay-dark);font-weight:700;">사유: '+reports[key].reasons.map(escapeHtml).join(', ')+'</span>' : ''}</div>
           <div class="admin-actions">
             <span class="admin-badge">🚩 ${count}</span>
             <button class="keep" data-resolve="${type}|${id}|keep">문제없음</button>
@@ -6007,7 +6036,7 @@
       const visitCount = memberVisitMap[m.owner_id] || 1;
       return `
         <div class="admin-row">
-          <div class="info"><b>${isNew ? '🆕 ' : ''}${m.nickname || '(닉네임 없음)'}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${joined} · 최근접속 ${lastActive} · 방문 ${visitCount}회 · 🪙 ${points.toLocaleString()}P</div>
+          <div class="info"><b>${isNew ? '🆕 ' : ''}${escapeHtml(m.nickname || '(닉네임 없음)')}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${escapeHtml(joined)} · 최근접속 ${escapeHtml(lastActive)} · 방문 ${visitCount}회 · 🪙 ${points.toLocaleString()}P</div>
           ${isAdmin ? '' : `
           <div class="admin-actions">
             <button class="remove" data-adjust-points="${m.owner_id}" style="background:var(--sand); color:var(--pine-deep);">포인트 조정</button>
@@ -6393,7 +6422,7 @@
         return `
           <div style="margin-bottom:10px;">
             <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
-              <span style="font-weight:700; color:var(--pine-deep);">${source}</span>
+              <span style="font-weight:700; color:var(--pine-deep);">${escapeHtml(source)}</span>
               <span style="color:var(--muted-text);">${count}회 (${pct}%)</span>
             </div>
             <div style="background:var(--line); border-radius:999px; height:6px; overflow:hidden;">
@@ -6435,7 +6464,7 @@
           jump: 'referrer'
         },
       ];
-      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${s.jump}"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${escapeHtml(s.jump)}"><div class="num">${s.num}</div><div class="label">${escapeHtml(s.label)}</div></div>`).join('');
       el.querySelectorAll('[data-jump]').forEach(card=>{
         card.addEventListener('click', ()=> expandAccordion(card.dataset.jump));
       });
@@ -6510,7 +6539,7 @@
     if(!ranked.length){ el.innerHTML = '<p class="empty-admin">아직 리뷰가 달린 코스가 없어요.</p>'; return; }
     el.innerHTML = ranked.map((x,i)=>`
       <div class="admin-row" data-top-course="${x.c.id}" style="cursor:pointer;">
-        <div class="info"><b>${i+1}. ${x.c.name}</b>리뷰 ${x.reviewCount}개 · ★ ${x.avg.toFixed(1)}</div>
+        <div class="info"><b>${i+1}. ${escapeHtml(x.c.name)}</b>리뷰 ${x.reviewCount}개 · ★ ${x.avg.toFixed(1)}</div>
       </div>`).join('');
     el.querySelectorAll('[data-top-course]').forEach(row=>{
       row.addEventListener('click', ()=>{
