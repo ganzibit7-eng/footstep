@@ -172,11 +172,54 @@
     background:linear-gradient(160deg, #23452F 0%, #2F5A3D 100%);
     color:var(--sand);
     overflow:hidden;
-    padding:88px 24px 64px;
+    padding:88px 24px 112px;
   }
   .contour-bg{
     position:absolute; inset:0; opacity:0.35; pointer-events:none;
   }
+  .hero-playground{
+    position:absolute; left:0; right:0; bottom:0; height:122px; overflow:hidden;
+    pointer-events:none; z-index:1; opacity:.96;
+  }
+  .hero-playground::after{
+    content:""; position:absolute; left:-5%; right:-5%; bottom:-30px; height:62px;
+    border-radius:50% 50% 0 0; background:rgba(110,143,107,.3);
+    box-shadow:0 -8px 28px rgba(21,41,34,.16);
+  }
+  .hero-chase-track{
+    position:absolute; left:-150px; bottom:19px; width:270px; height:100px; z-index:2;
+    animation:heroChaseRoute 17s linear infinite; will-change:transform,opacity;
+  }
+  .hero-running-dog{
+    position:absolute; left:0; bottom:0; width:112px; height:auto;
+    filter:drop-shadow(0 7px 7px rgba(8,20,14,.26));
+    animation:heroDogBounce .52s ease-in-out infinite alternate;
+    transform-origin:50% 100%;
+  }
+  .hero-butterfly{
+    position:absolute; left:145px; bottom:72px; width:23px; height:16px;
+    animation:heroButterflyFlight 1.25s ease-in-out infinite alternate;
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));
+  }
+  .hero-butterfly::before,.hero-butterfly::after{
+    content:""; position:absolute; top:1px; width:13px; height:14px;
+    background:linear-gradient(145deg,#F6D77A,#E89454); border:1px solid rgba(255,245,196,.75);
+  }
+  .hero-butterfly::before{ left:0; border-radius:70% 25% 65% 35%; transform:rotate(-24deg); transform-origin:100% 65%; animation:heroWingLeft .22s ease-in-out infinite alternate; }
+  .hero-butterfly::after{ right:0; border-radius:25% 70% 35% 65%; transform:rotate(24deg); transform-origin:0 65%; animation:heroWingRight .22s ease-in-out infinite alternate; }
+  .hero-butterfly-body{ position:absolute; z-index:2; left:10px; top:4px; width:3px; height:10px; border-radius:99px; background:#493C27; }
+  @keyframes heroChaseRoute{
+    0%{ transform:translateX(0); opacity:0; }
+    5%{ opacity:1; }
+    48%{ transform:translateX(calc(50vw - 20px)); }
+    92%{ opacity:1; }
+    100%{ transform:translateX(calc(100vw + 170px)); opacity:0; }
+  }
+  @keyframes heroDogBounce{ from{ transform:translateY(1px) rotate(-1deg); } to{ transform:translateY(-6px) rotate(1deg); } }
+  @keyframes heroButterflyFlight{ from{ transform:translate(0,4px) rotate(-5deg); } to{ transform:translate(12px,-15px) rotate(7deg); } }
+  @keyframes heroWingLeft{ from{ transform:rotate(-12deg) scaleX(.55); } to{ transform:rotate(-36deg) scaleX(1); } }
+  @keyframes heroWingRight{ from{ transform:rotate(12deg) scaleX(.55); } to{ transform:rotate(36deg) scaleX(1); } }
+  .hero-inner{ z-index:2; }
   .hero-inner{ position:relative; max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center; }
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
@@ -728,6 +771,8 @@
   .reveal-on-scroll.revealed{ opacity:1; transform:translateY(0); }
   @media (prefers-reduced-motion: reduce){
     .reveal-on-scroll{ opacity:1; transform:none; transition:none; }
+    .hero-chase-track{ animation:none; transform:translateX(calc(50vw - 135px)); opacity:.9; }
+    .hero-running-dog,.hero-butterfly,.hero-butterfly::before,.hero-butterfly::after{ animation:none; }
   }
 
   .home-etiquette{
@@ -738,7 +783,13 @@
   .home-etiquette span{display:block;color:var(--muted-text);font-size:12px;margin-top:3px;}
   .home-etiquette a{margin-left:auto;color:var(--clay);font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap;}
   @media(max-width:880px){
-    .hero{padding:46px 18px 36px;}
+    .hero{padding:46px 18px 92px;}
+    .hero-playground{height:92px;}
+    .hero-chase-track{bottom:11px;width:205px;height:72px;animation-duration:14s;}
+    .hero-running-dog{width:76px;}
+    .hero-butterfly{left:101px;bottom:51px;width:19px;height:14px;}
+    .hero-butterfly::before,.hero-butterfly::after{width:11px;height:12px;}
+    .hero-butterfly-body{left:8px;height:8px;}
     .hero-inner{gap:24px;}
     .hero h1{font-size:38px;line-height:1.06;}
     .hero p.lead{font-size:15px;margin-top:14px;}
@@ -778,6 +829,59 @@
     .home-stat-row .stat .label{letter-spacing:.02em;}
     .home-register-actions{display:block;}
     .home-register-actions a{display:block;margin-top:8px;}
+  }
+
+  /* ===== Premium mobile-first home hero ===== */
+  .hero[data-page-section="home"]{
+    isolation:isolate;color:#183C30;padding:54px 18px 100px;
+    background:radial-gradient(circle at 86% 12%,rgba(248,211,132,.78) 0 68px,transparent 69px),radial-gradient(circle at 10% 78%,rgba(255,255,255,.56) 0 120px,transparent 121px),linear-gradient(148deg,#F6F1E7 0%,#E8EEDB 46%,#CADDC4 100%);
+  }
+  .hero[data-page-section="home"]::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 72% 74%,rgba(255,255,255,.36) 0 5px,transparent 6px),radial-gradient(circle at 78% 69%,rgba(255,255,255,.26) 0 3px,transparent 4px),radial-gradient(circle at 18% 20%,rgba(255,255,255,.42) 0 4px,transparent 5px);}
+  .hero[data-page-section="home"] .contour-bg{opacity:.18;mix-blend-mode:multiply;}
+  .hero[data-page-section="home"] .contour-bg path{stroke:#688A69;}
+  .hero[data-page-section="home"] .hero-inner{grid-template-columns:1fr;gap:24px;align-items:center;}
+  .hero[data-page-section="home"] #hero-style-3{max-width:620px;}
+  .hero[data-page-section="home"] .eyebrow{color:#4E7255;background:rgba(255,255,255,.62);border:1px solid rgba(78,114,85,.2);box-shadow:0 8px 24px rgba(53,81,58,.08);backdrop-filter:blur(8px);padding:8px 13px;font-family:'Sunflower',sans-serif;font-size:12px;border-radius:999px;}
+  .hero[data-page-section="home"] h1{color:#183C30;font-family:'Jua',sans-serif;font-size:clamp(40px,12vw,55px);line-height:1.06;letter-spacing:-.025em;text-wrap:balance;text-shadow:0 2px 0 rgba(255,255,255,.54);}
+  .hero[data-page-section="home"] h1 em{color:#D56745;position:relative;display:inline-block;}
+  .hero[data-page-section="home"] h1 em::after{content:"";position:absolute;left:1%;right:1%;bottom:-3px;height:8px;border-radius:999px;background:rgba(239,169,116,.25);transform:rotate(-1.5deg);z-index:-1;}
+  .hero[data-page-section="home"] p.lead{color:#3D5A4B!important;opacity:1!important;font-size:15px;font-weight:600!important;line-height:1.72;max-width:42ch;margin-top:18px;}
+  .hero[data-page-section="home"] .hero-copy>div[style*="flex-direction:column"]{max-width:390px!important;gap:11px!important;margin-top:26px!important;}
+  .hero[data-page-section="home"] .btn-primary,.hero[data-page-section="home"] .btn-ghost{min-height:52px;border-radius:17px!important;font-family:'Jua',sans-serif;letter-spacing:.01em;display:flex!important;align-items:center;justify-content:center;text-align:center;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;}
+  .hero[data-page-section="home"] .btn-primary{color:#fff;background:linear-gradient(135deg,#D76C4B,#B94E36);border:1px solid rgba(130,52,33,.15);box-shadow:0 14px 28px rgba(162,75,49,.24),inset 0 1px 0 rgba(255,255,255,.28);}
+  .hero[data-page-section="home"] .btn-primary:hover{background:linear-gradient(135deg,#E07855,#BE5038);transform:translateY(-2px);box-shadow:0 17px 34px rgba(162,75,49,.28);}
+  .hero[data-page-section="home"] .btn-ghost{color:#315B46;background:rgba(255,255,255,.58);border:1px solid rgba(62,101,75,.2);box-shadow:0 8px 22px rgba(47,77,56,.08);backdrop-filter:blur(10px);}
+  .hero[data-page-section="home"] .btn-ghost:hover{background:rgba(255,255,255,.82);}
+  .hero[data-page-section="home"] .hero-side{gap:12px;max-width:620px;width:100%;}
+  .hero[data-page-section="home"] .hero-card{transform:none;background:rgba(255,253,248,.78);border:1px solid rgba(255,255,255,.78);border-radius:22px;padding:20px;box-shadow:0 18px 45px rgba(46,75,53,.13);backdrop-filter:blur(14px);color:#294737;}
+  .hero[data-page-section="home"] .hero-card:hover{transform:translateY(-2px);}
+  .hero[data-page-section="home"] .hero-card .tag{background:#EDF2E6;color:#537458;border-radius:999px;}
+  .hero[data-page-section="home"] .hero-card h3{color:#183C30;font-size:23px;}
+  .hero[data-page-section="home"] .hero-card p{color:#536457;}
+  .hero[data-page-section="home"] .hero-card .meta{color:#52705A;border-color:rgba(82,112,90,.2);}
+  .hero[data-page-section="home"] .hero-stat-box{background:rgba(255,253,248,.72);border:1px solid rgba(255,255,255,.76);border-radius:18px;box-shadow:0 12px 30px rgba(46,75,53,.1);backdrop-filter:blur(12px);}
+  .hero[data-page-section="home"] .hero-stat-icon{background:#EAF0E1;}
+  .hero[data-page-section="home"] .hero-stat-num{color:#244A38;}
+  .hero[data-page-section="home"] .hero-stat-label{color:#607064;}
+  .hero[data-page-section="home"] .hero-playground{height:92px;}
+  .hero[data-page-section="home"] .hero-playground::after{bottom:-34px;height:67px;background:linear-gradient(180deg,rgba(100,141,91,.28),rgba(82,125,78,.5));box-shadow:0 -10px 34px rgba(65,105,71,.09);}
+  .hero[data-page-section="home"] .hero-chase-track{bottom:12px;width:205px;height:72px;animation-duration:14s;}
+  .hero[data-page-section="home"] .hero-running-dog{width:76px;filter:drop-shadow(0 7px 7px rgba(53,74,53,.2));}
+  .hero[data-page-section="home"] .hero-butterfly{left:101px;bottom:51px;width:19px;height:14px;}
+  .hero[data-page-section="home"] .hero-butterfly::before,.hero[data-page-section="home"] .hero-butterfly::after{width:11px;height:12px;}
+  .hero[data-page-section="home"] .hero-butterfly-body{left:8px;height:8px;}
+  @media(min-width:881px){
+    .hero[data-page-section="home"]{padding:92px 24px 128px;}
+    .hero[data-page-section="home"] .hero-inner{grid-template-columns:1.08fr .92fr;gap:56px;}
+    .hero[data-page-section="home"] h1{font-size:clamp(52px,5vw,72px);line-height:1.03;}
+    .hero[data-page-section="home"] p.lead{font-size:17px;}
+    .hero[data-page-section="home"] .hero-side{max-width:none;}
+    .hero[data-page-section="home"] .hero-playground{height:120px;}
+    .hero[data-page-section="home"] .hero-chase-track{bottom:18px;width:270px;height:98px;animation-duration:17s;}
+    .hero[data-page-section="home"] .hero-running-dog{width:108px;}
+    .hero[data-page-section="home"] .hero-butterfly{left:142px;bottom:70px;width:23px;height:16px;}
+    .hero[data-page-section="home"] .hero-butterfly::before,.hero[data-page-section="home"] .hero-butterfly::after{width:13px;height:14px;}
+    .hero[data-page-section="home"] .hero-butterfly-body{left:10px;height:10px;}
   }
 
   /* ===== 접근성/터치 개선 ===== */
@@ -834,6 +938,13 @@
       <path d="M-50,300 C 260,260 360,340 560,290 S 860,220 1060,280 S 1250,260 1300,300" opacity="0.2"/>
     </g>
   </svg>
+
+  <div class="hero-playground" aria-hidden="true">
+    <div class="hero-chase-track">
+      <img class="hero-running-dog" src="assets/hero-running-dog-v1.webp" alt="" width="420" height="292" decoding="async">
+      <span class="hero-butterfly"><span class="hero-butterfly-body"></span></span>
+    </div>
+  </div>
 
   <div class="wrap hero-inner">
     <div class="hero-copy" id="hero-style-0" style="display:none;">
@@ -894,9 +1005,9 @@
     <!-- 스타일 3: 카드형 (기본값) -->
     <div class="hero-copy" id="hero-style-3" style="max-width:640px;">
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
-      <span class="eyebrow" id="hero-eyebrow">📍 내 주변 강아지 산책코스</span>
-      <h1 id="hero-title">강아지 산책할 곳,<br><em>어디가 좋을까요?</em></h1>
-      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">우리 강아지에게 맞는 산책길을 찾고, 걸은 기록까지 남겨보세요.</p>
+      <span class="eyebrow" id="hero-eyebrow">오늘도 같이 걷자 🐾</span>
+      <h1 id="hero-title">우리 아이가 좋아할 길,<br><em>발자국에서 찾아요</em></h1>
+      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">산책 코스부터 반려견 동반 장소까지, 가까운 곳에서 새로운 즐거움을 발견해보세요.</p>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
         <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
@@ -2900,10 +3011,10 @@
     if(myDeviceId && myNickname){
       greetingEl.textContent = `안녕하세요, ${myNickname}님 🐾`;
       greetingEl.style.display = '';
-      eyebrowEl.textContent = myRegionName ? `📍 ${myRegionName} 근처 산책코스` : '📍 내 주변 강아지 산책코스';
+      eyebrowEl.textContent = myRegionName ? `${myRegionName}에서 같이 걸어요 🐾` : '오늘도 같이 걷자 🐾';
     } else {
       greetingEl.style.display = 'none';
-      eyebrowEl.textContent = '📍 내 주변 강아지 산책코스';
+      eyebrowEl.textContent = '오늘도 같이 걷자 🐾';
     }
   }
 
