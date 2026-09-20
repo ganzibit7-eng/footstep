@@ -843,6 +843,7 @@
   .hero[data-page-section="home"] #hero-style-3{max-width:620px;}
   .hero[data-page-section="home"] .eyebrow{color:#4E7255;background:rgba(255,255,255,.62);border:1px solid rgba(78,114,85,.2);box-shadow:0 8px 24px rgba(53,81,58,.08);backdrop-filter:blur(8px);padding:8px 13px;font-family:'Sunflower',sans-serif;font-size:12px;border-radius:999px;}
   .hero[data-page-section="home"] h1{color:#183C30;font-family:'Jua',sans-serif;font-size:clamp(40px,12vw,55px);line-height:1.06;letter-spacing:-.025em;text-wrap:balance;text-shadow:0 2px 0 rgba(255,255,255,.54);}
+  .hero-title-line{display:block;white-space:nowrap;}
   .hero[data-page-section="home"] h1 em{color:#D56745;position:relative;display:inline-block;}
   .hero[data-page-section="home"] h1 em::after{content:"";position:absolute;left:1%;right:1%;bottom:-3px;height:8px;border-radius:999px;background:rgba(239,169,116,.25);transform:rotate(-1.5deg);z-index:-1;}
   .hero[data-page-section="home"] p.lead{color:#3D5A4B!important;opacity:1!important;font-size:15px;font-weight:600!important;line-height:1.72;max-width:42ch;margin-top:18px;}
@@ -870,6 +871,24 @@
   .hero[data-page-section="home"] .hero-butterfly{left:101px;bottom:51px;width:19px;height:14px;}
   .hero[data-page-section="home"] .hero-butterfly::before,.hero[data-page-section="home"] .hero-butterfly::after{width:11px;height:12px;}
   .hero[data-page-section="home"] .hero-butterfly-body{left:8px;height:8px;}
+  @media(max-width:880px){
+    .hero[data-page-section="home"]{padding:32px 18px 88px;}
+    .hero[data-page-section="home"] .hero-inner{gap:14px;}
+    .hero[data-page-section="home"] #hero-style-3{width:100%;}
+    .hero[data-page-section="home"] h1{font-size:clamp(33px,9.1vw,38px);line-height:1.08;letter-spacing:-.035em;}
+    .hero[data-page-section="home"] p.lead{font-size:13.5px;line-height:1.6;margin-top:13px;}
+    .hero[data-page-section="home"] .eyebrow{padding:7px 12px;margin-bottom:14px;}
+    .hero[data-page-section="home"] #hero-greeting{font-size:13px!important;margin-bottom:5px!important;}
+    .hero[data-page-section="home"] .hero-copy>div[style*="flex-direction:column"]{margin-top:18px!important;gap:8px!important;max-width:none!important;}
+    .hero[data-page-section="home"] .btn-primary,.hero[data-page-section="home"] .btn-ghost{min-height:48px;padding:12px 18px!important;font-size:14px!important;}
+    .hero[data-page-section="home"] .hero-side{gap:0;}
+    .hero[data-page-section="home"] .hero-card{padding:16px 17px;border-radius:18px;}
+    .hero[data-page-section="home"] .hero-card h3{font-size:20px;margin-bottom:3px;}
+    .hero[data-page-section="home"] .hero-card p{font-size:12.5px;margin-bottom:8px;}
+    .hero[data-page-section="home"] .hero-card .meta{font-size:11px;padding-top:8px;}
+    .hero[data-page-section="home"] .hero-stat-row{display:none;}
+    .hero[data-page-section="home"] .hero-chase-track{animation-delay:-3.2s;}
+  }
   @media(min-width:881px){
     .hero[data-page-section="home"]{padding:92px 24px 128px;}
     .hero[data-page-section="home"] .hero-inner{grid-template-columns:1.08fr .92fr;gap:56px;}
@@ -1006,7 +1025,7 @@
     <div class="hero-copy" id="hero-style-3" style="max-width:640px;">
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
       <span class="eyebrow" id="hero-eyebrow">오늘도 같이 걷자 🐾</span>
-      <h1 id="hero-title">우리 아이가 좋아할<br><em>산책길을 찾아요</em></h1>
+      <h1 id="hero-title"><span class="hero-title-line">우리 아이가 좋아할</span><em class="hero-title-line">산책길을 찾아요</em></h1>
       <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">산책 코스부터 반려견 동반 장소까지, 가까운 곳에서 새로운 즐거움을 발견해보세요.</p>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
