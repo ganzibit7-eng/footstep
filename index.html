@@ -4860,8 +4860,10 @@
     return BAD_WORDS.some(w => normalized.includes(w.toLowerCase()));
   }
 
+  let registrationSaving = false;
   document.getElementById('reg-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
+    if(registrationSaving) return;
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
     const name = document.getElementById('f-name').value.trim();
     const desc = document.getElementById('f-desc').value.trim();
@@ -4871,6 +4873,11 @@
       return;
     }
 
+    registrationSaving = true;
+    const saveButton = document.getElementById('reg-submit-btn');
+    saveButton.disabled = true;
+    saveButton.setAttribute('aria-busy','true');
+    try{
     if(currentType === 'course'){
       if(coursePath.length === 0){ toast('지도에서 출발점을 먼저 터치해주세요'); return; }
       const hasPath = coursePath.length > 1;
@@ -4971,6 +4978,14 @@
     resetCoursePath();
     resetBinPoint();
     clearRegisterDraft();
+    }catch(error){
+      console.error(error);
+      toast('처리 결과를 확인하지 못했어요. 중복 등록을 피하려면 내 등록 목록을 먼저 확인해 주세요.');
+    }finally{
+      registrationSaving = false;
+      saveButton.disabled = false;
+      saveButton.removeAttribute('aria-busy');
+    }
   });
 
   function startEditBin(bin){
@@ -5511,21 +5526,33 @@
       walkMap.fitBounds(walkLiveLine.getBounds(), {padding:[24,24]});
     }
   }
+  let walkSaving = false;
+  const savedWalkRecords = new WeakSet();
   async function saveWalkToDB(){
+    if(walkSaving) return;
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
     if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('저장할 기록이 없어요'); return; }
+    if(savedWalkRecords.has(lastSavedWalk)){ toast('이미 저장한 산책 기록이에요'); return; }
+    const record = lastSavedWalk;
+    const saveButton = document.getElementById('walk-save-btn');
+    walkSaving = true;
+    saveButton.disabled = true;
+    saveButton.setAttribute('aria-busy','true');
     try{
       const { error } = await sb.from('walks').insert([{
         owner_id: myDeviceId,
-        path: lastSavedWalk.path,
-        distance_km: Number(lastSavedWalk.distanceKm.toFixed(2)),
-        duration_sec: Math.round(lastSavedWalk.durationSec)
+        path: record.path,
+        distance_km: Number(record.distanceKm.toFixed(2)),
+        duration_sec: Math.round(record.durationSec)
       }]);
-      if(error){ console.error(error); toast('저장에 실패했어요. walks 테이블이 만들어졌는지 확인해주세요'); return; }
+      if(error){ console.error(error); toast('저장하지 못했어요. 로그인 상태와 연결을 확인해 주세요. 경로는 이 화면에 유지돼요.'); return; }
+      savedWalkRecords.add(record);
       resetWalkPanels();
       loadMyWalks();
+      toast('산책 기록을 저장했어요 🐾');
       await awardPoints(20, '산책 기록 저장');
-    }catch(e){ console.error(e); toast('저장에 실패했어요'); }
+    }catch(e){ console.error(e); toast(savedWalkRecords.has(record) ? '기록은 저장됐지만 후속 처리를 확인하지 못했어요.' : '저장 결과를 확인하지 못했어요. 내 산책 기록을 먼저 확인해 주세요.'); }
+    finally{ walkSaving = false; saveButton.disabled = false; saveButton.removeAttribute('aria-busy'); }
   }
   function resetWalkPanels(){
     document.getElementById('walk-done-panel').style.display = 'none';
