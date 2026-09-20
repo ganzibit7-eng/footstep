@@ -1708,7 +1708,7 @@
     <div class="modal-inner-wrap">
       <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
       <div class="modal-body">
-        <h3 style="font-size:22px;">🛡️ 관리자 대시보드</h3>
+        <h3 style="font-size:22px;">🛡️ 관리자 대시보드</h3><p style="font-size:12px;line-height:1.6;color:var(--muted-text);">한국 시간(KST) 기준 · 방문자는 브라우저 ID 기준이며 기기 변경·저장소 삭제 시 중복될 수 있습니다. 실시간은 최근 5분 활동이며, 페이지뷰는 기록된 화면 조회 수입니다. 조회 실패는 0으로 집계하지 않습니다.</p>
         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:4px;">
           <p style="font-size:13px; color:#6B6550; margin:0;">항목을 눌러서 자세히 볼 수 있어요.</p>
           <div style="display:flex; align-items:center; gap:10px;">
@@ -3092,7 +3092,7 @@
   const DAILY_POINT_CAPS = { '코스 등록':5, '배변봉투함 등록':5, '리뷰 작성':10, '산책 기록 저장':5, '사진 등록':10 };
   async function todayCount(ownerId, reason){
     try{
-      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const todayStart = adminDayStart();
       const { count } = await sb.from('points_log')
         .select('id', { count:'exact', head:true })
         .eq('owner_id', ownerId).eq('reason', reason)
@@ -3935,7 +3935,7 @@
     if(!titleEl || !descEl) return;
     if(!myDeviceId) return; // 로그인 전엔 기본 문구 그대로
     try{
-      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const todayStart = adminDayStart();
       const { data, error } = await sb.from('walks').select('distance_km, duration_sec')
         .eq('owner_id', myDeviceId).gte('created_at', todayStart.toISOString());
       if(error || !data || !data.length) return; // 오늘 기록 없으면 기본 문구 유지
@@ -5401,7 +5401,7 @@
   async function loadActiveWalkerCounts(){
     try{
       const { data, error } = await sb.from('active_walker_counts').select('course_id, walker_count');
-      const counts = {};
+      const counts = Object.create(null);
       if(!error && data){
         data.forEach(r=>{ counts[r.course_id] = Number(r.walker_count || 0); });
       }
@@ -5784,13 +5784,34 @@
   });
 
   // ===== 방문자 통계 =====
+  let memoryVisitorId = null;
+  function adminDayKey(value = Date.now()){
+    return new Date(new Date(value).getTime() + 9*60*60*1000).toISOString().slice(0,10);
+  }
+  function adminDayStart(daysAgo = 0){
+    return new Date(adminDayKey(Date.now()-daysAgo*86400000)+'T00:00:00+09:00');
+  }
+  async function adminReadRows(table, columns, since = null){
+    const rows = [];
+    for(let offset=0; offset<100000; offset+=500){
+      let query = sb.from(table).select(columns).order('id', {ascending:true}).range(offset,offset+499);
+      if(since) query = query.gte('created_at',since);
+      const {data,error} = await query;
+      if(error) throw error;
+      rows.push(...(data||[]));
+      if(!data || data.length<500) return {data:rows,error:null};
+    }
+    throw new Error('집계 범위를 초과했습니다. 서버 집계 전환이 필요합니다.');
+  }
   function getVisitorId(){
+    if(memoryVisitorId) return memoryVisitorId;
     let id = null;
     try{ id = localStorage.getItem('paw_visitor_id'); }catch(e){}
     if(!id){
       id = 'v' + Date.now() + Math.random().toString(36).slice(2,10);
       try{ localStorage.setItem('paw_visitor_id', id); }catch(e){}
     }
+    memoryVisitorId = id;
     return id;
   }
   async function getReferrerSource(){
@@ -5818,7 +5839,7 @@
     return '직접 방문';
   }
   async function logPageView(){
-    try{ await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: await getReferrerSource(), owner_id: myDeviceId || null }]); }catch(e){ console.error(e); }
+    try{ const {error} = await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: await getReferrerSource(), owner_id: myDeviceId || null }]); if(error) throw error; }catch(e){ console.error('방문 기록 저장 실패',e); }
   }
 
   // 실시간 접속자 하트비트: 30초마다 내 방문자ID의 최근 접속시각을 갱신
@@ -6147,14 +6168,15 @@
     try{
       const [membersRes, pointsRes, pageViewsRes] = await Promise.all([
         sb.from('profiles').select('owner_id', { count:'exact', head:true }),
-        sb.from('points_log').select('amount').gt('amount', 0),
-        sb.from('page_views').select('visitor_id').limit(5000)
+        adminReadRows('points_log','amount'),
+        adminReadRows('page_views','visitor_id')
       ]);
       const userCourseCount = courses.filter(c=>c.ownerId).length;
       const seedCourseCount = allCourses().length - userCourseCount;
       const totalReviews = Object.values(reviews).reduce((s,list)=>s+list.length, 0);
+      if(membersRes.error) throw membersRes.error;
       const totalMembers = membersRes.count || 0;
-      const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+r.amount, 0);
+      const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+Math.max(0,Number(r.amount)||0), 0);
       const pvRows = pageViewsRes.data || [];
       const totalPageViews = pvRows.length;
       const totalUniqueVisitors = new Set(pvRows.map(r=>r.visitor_id)).size;
@@ -6166,8 +6188,8 @@
         { num: totalReviews, label:'리뷰 수' },
         { num: totalMembers, label:'가입 회원' },
         { num: totalPointsIssued.toLocaleString(), label:'누적 지급 포인트' },
-        { num: totalUniqueVisitors.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 방문자(순)', detail:'visitors' },
-        { num: totalPageViews.toLocaleString() + (totalPageViews>=5000?'+':''), label:'누적 페이지뷰', detail:'pageviews' },
+        { num: totalUniqueVisitors.toLocaleString(), label:'누적 방문자(순)', detail:'visitors' },
+        { num: totalPageViews.toLocaleString(), label:'누적 페이지뷰', detail:'pageviews' },
       ];
       el.innerHTML = stats.map(s=>{
         const clickable = s.detail ? ' clickable' : '';
@@ -6194,10 +6216,9 @@
     if(!countEl) return;
     try{
       const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
-      const { data, error } = await sb.from('presence').select('visitor_id').gte('last_seen', fiveMinAgo);
-      if(error){ countEl.textContent = '–'; if(updatedEl) updatedEl.textContent = '(presence 테이블 필요)'; return; }
-      const uniqueCount = new Set((data||[]).map(r=>r.visitor_id)).size;
-      countEl.textContent = uniqueCount + '명';
+      const { count, error } = await sb.from('presence').select('visitor_id',{count:'exact',head:true}).gte('last_seen', fiveMinAgo);
+      if(error){ countEl.textContent = '확인 불가'; if(updatedEl) updatedEl.textContent = '권한 또는 집계 연결을 확인해 주세요'; return; }
+      countEl.textContent = (count ?? 0) + '개 브라우저';
       if(updatedEl){
         const now = new Date();
         updatedEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} 기준`;
@@ -6211,16 +6232,16 @@
     const labelsEl = document.getElementById('admin-hourly-labels');
     if(!barsEl || !labelsEl) return;
     try{
-      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
-      const { data, error } = await sb.from('page_views').select('created_at').gte('created_at', todayStart.toISOString()).limit(5000);
+      const todayStart = adminDayStart();
+      const { data, error } = await adminReadRows('page_views','created_at',todayStart.toISOString());
       if(error) throw error;
       const hourCounts = new Array(24).fill(0);
       (data||[]).forEach(row=>{
-        const h = new Date(row.created_at).getHours();
+        const h = new Date(new Date(row.created_at).getTime()+9*3600000).getUTCHours();
         hourCounts[h]++;
       });
       const maxCount = Math.max(1, ...hourCounts);
-      const nowHour = new Date().getHours();
+      const nowHour = new Date(Date.now()+9*3600000).getUTCHours();
       barsEl.innerHTML = hourCounts.map((count, h)=>{
         const heightPct = Math.max(3, Math.round((count / maxCount) * 100));
         const isNow = h === nowHour;
@@ -6380,24 +6401,24 @@
     box.style.display = '';
     box.innerHTML = '<p class="empty-admin" style="margin:0;">불러오는 중...</p>';
     try{
-      const start = new Date(); start.setDate(start.getDate() - 6); start.setHours(0,0,0,0);
-      const { data, error } = await sb.from('page_views').select('visitor_id, created_at').gte('created_at', start.toISOString()).limit(20000);
+      const start = adminDayStart(6);
+      const { data, error } = await adminReadRows('page_views','visitor_id, created_at',start.toISOString());
       if(error) throw error;
       const rows = data || [];
       const dayMap = {}; // 'YYYY-MM-DD' -> {views, visitors:Set}
       rows.forEach(r=>{
         const d = new Date(r.created_at);
-        const key = d.toISOString().slice(0,10);
+        const key = adminDayKey(d);
         if(!dayMap[key]) dayMap[key] = { views:0, visitors:new Set() };
         dayMap[key].views++;
         dayMap[key].visitors.add(r.visitor_id);
       });
       const days = [];
       for(let i=6; i>=0; i--){
-        const d = new Date(); d.setDate(d.getDate()-i);
-        const key = d.toISOString().slice(0,10);
+        const d = adminDayStart(i);
+        const key = adminDayKey(d);
         const entry = dayMap[key] || { views:0, visitors:new Set() };
-        days.push({ label: `${d.getMonth()+1}/${d.getDate()}`, views: entry.views, visitors: entry.visitors.size });
+        days.push({ label: key.slice(5).replace('-','/'), views: entry.views, visitors: entry.visitors.size });
       }
       const title = kind === 'visitors' ? '최근 7일 방문자(순) 추세' : '최근 7일 페이지뷰 추세';
       const maxVal = Math.max(1, ...days.map(d => kind === 'visitors' ? d.visitors : d.views));
@@ -6667,17 +6688,17 @@
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const start = new Date(); start.setDate(start.getDate() - 6); start.setHours(0,0,0,0);
-      const { data, error } = await sb.from('page_views').select('referrer').gte('created_at', start.toISOString()).limit(20000);
+      const start = adminDayStart(6);
+      const { data, error } = await adminReadRows('page_views','referrer',start.toISOString());
       if(error) throw error;
-      const counts = {};
+      const counts = Object.create(null);
       (data||[]).forEach(r=>{
         const key = r.referrer || '직접 방문';
         counts[key] = (counts[key] || 0) + 1;
       });
       const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0, 10);
       if(!sorted.length){ el.innerHTML = '<p class="empty-admin">아직 데이터가 없어요.</p>'; return; }
-      const total = sorted.reduce((s,[,c])=>s+c, 0);
+      const total = (data||[]).length;
       el.innerHTML = sorted.map(([source, count])=>{
         const pct = Math.round((count/total)*100);
         return `
@@ -6702,23 +6723,24 @@
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const todayStart = adminDayStart();
       const [todayViewsRes, todaySignupsRes] = await Promise.all([
-        sb.from('page_views').select('visitor_id, referrer').gte('created_at', todayStart.toISOString()).limit(5000),
+        adminReadRows('page_views','visitor_id, referrer',todayStart.toISOString()),
         sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', todayStart.toISOString()),
       ]);
+      if(todaySignupsRes.error) throw todaySignupsRes.error;
       const todayVisitorRows = todayViewsRes.data || [];
       const todayUnique = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
-      const referrerCounts = {};
+      const referrerCounts = Object.create(null);
       todayVisitorRows.forEach(r=>{
         const key = r.referrer || '직접 방문';
         referrerCounts[key] = (referrerCounts[key] || 0) + 1;
       });
       const topReferrerEntry = Object.entries(referrerCounts).sort((a,b)=>b[1]-a[1])[0];
       const summary = [
-        { num: todayVisitorRows.length, label:'오늘 페이지클릭수', jump:'hourly' },
+        { num: todayVisitorRows.length, label:'오늘 페이지뷰', jump:'hourly' },
         { num: todayUnique, label:'오늘 방문자', jump:'hourly' },
-        { num: (todaySignupsRes.data||[]).length, label:'오늘 신규가입', jump:'today' },
+        { num: (todaySignupsRes.data||[]).length, label:'오늘 가입축하 지급 건', jump:'today' },
         {
           num: topReferrerEntry ? topReferrerEntry[1] : 0,
           label: topReferrerEntry ? `오늘 최다 유입 · ${topReferrerEntry[0]}` : '오늘 최다 유입 · 아직 없음',
@@ -6760,7 +6782,7 @@
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
-      const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+      const todayStart = adminDayStart();
       const iso = todayStart.toISOString();
       const [newCourses, newBins, newFacilities, newReviews, newWalks, newSignups, todayViews] = await Promise.all([
         sb.from('courses').select('id', { count:'exact', head:true }).gte('created_at', iso),
@@ -6769,14 +6791,15 @@
         sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', iso),
-        sb.from('page_views').select('visitor_id').gte('created_at', iso).limit(5000),
+        adminReadRows('page_views','visitor_id',iso),
       ]);
+      for(const result of [newCourses,newBins,newFacilities,newReviews,newWalks,newSignups,todayViews]){if(result.error) throw result.error;}
       const todayVisitorRows = todayViews.data || [];
       const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
       const stats = [
         { num: todayUniqueVisitors, label:'오늘 방문자' },
         { num: todayVisitorRows.length, label:'오늘 페이지뷰' },
-        { num: (newSignups.data||[]).length, label:'오늘 신규가입' },
+        { num: (newSignups.data||[]).length, label:'오늘 가입축하 지급 건' },
         { num: newCourses.count||0, label:'오늘 새 코스' },
         { num: newBins.count||0, label:'오늘 새 배변함' },
         { num: newFacilities.count||0, label:'오늘 새 시설' },
