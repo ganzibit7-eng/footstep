@@ -1150,6 +1150,15 @@
       </div>
     </a>
 
+    <div style="padding:20px 0;line-height:1.8;">
+      <h2 style="font-size:22px;">강아지와 갈 곳, 종류별로 찾아보세요</h2>
+      <p>산책 코스의 거리와 편의 요소, 애견동반 장소의 주소와 등록 정보를 확인해 보세요.</p>
+      <nav aria-label="전국 반려견 장소 안내" style="display:flex;flex-wrap:wrap;gap:10px;">
+        <a class="chip" href="/discover.html#courses">🐾 강아지 산책 코스</a>
+        <a class="chip" href="/discover.html#places">☕ 애견동반 카페·숙소</a>
+        <a class="chip" href="/discover.html#bins">🚮 배변봉투함</a>
+      </nav>
+    </div>
     <a href="#" id="home-ai-banner" class="home-ai-banner reveal-on-scroll">
       <span class="home-ai-banner-icon">🐕</span>
       <span class="home-ai-banner-text">
@@ -1713,7 +1722,7 @@
 </div>
 
 
-<div class="modal-overlay" id="admin-overlay">
+<div class="modal-overlay" id="admin-overlay" data-nosnippet>
   <div class="modal admin-panel">
     <div class="modal-inner-wrap">
       <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
@@ -3021,7 +3030,7 @@
   function captureReferralFromUrl(){
     try{
       const params = new URLSearchParams(window.location.search);
-      const ref = params.get('ref');
+      const ref = params.get('utm_source') || params.get('ref');
       if(ref) localStorage.setItem('paw_pending_ref', ref);
     }catch(e){}
   }
