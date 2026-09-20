@@ -191,11 +191,13 @@
     animation:heroChaseRoute 17s linear infinite; will-change:transform,opacity;
   }
   .hero-running-dog{
-    position:absolute; left:0; bottom:0; width:112px; height:auto;
-    filter:drop-shadow(0 7px 7px rgba(8,20,14,.26));
-    animation:heroDogBounce .52s ease-in-out infinite alternate;
-    transform-origin:50% 100%;
+    position:absolute;left:0;bottom:0;width:112px;height:120px;overflow:hidden;
+    filter:drop-shadow(0 4px 4px rgba(8,20,14,.16));transform-origin:50% 100%;
+    animation:heroDogBodyRun .56s steps(5,end) infinite;
   }
+  .hero-running-dog img{display:block;width:600%;height:100%;max-width:none;animation:heroDogFrames .56s steps(5,end) infinite;will-change:transform;}
+  .hero-dog-shadow{position:absolute;left:10px;bottom:1px;width:90px;height:10px;border-radius:50%;background:rgba(43,73,47,.2);filter:blur(3px);animation:heroDogShadow .56s steps(5,end) infinite;}
+  .hero-meadow-details{position:absolute;left:0;right:0;bottom:0;height:48px;z-index:2;opacity:.9;background:radial-gradient(circle at 11% 44%,#F5CE68 0 2px,#FFF7D7 2.5px 4px,transparent 4.5px),radial-gradient(circle at 29% 60%,#E98E74 0 2px,#FFF3E9 2.5px 4px,transparent 4.5px),radial-gradient(circle at 67% 40%,#F5CE68 0 2px,#FFF7D7 2.5px 4px,transparent 4.5px),radial-gradient(circle at 88% 63%,#E98E74 0 2px,#FFF3E9 2.5px 4px,transparent 4.5px),repeating-linear-gradient(76deg,transparent 0 14px,rgba(67,118,66,.5) 15px 16px,transparent 17px 25px);clip-path:polygon(0 43%,4% 35%,8% 47%,13% 30%,18% 48%,23% 37%,29% 50%,34% 32%,40% 48%,46% 36%,52% 50%,58% 31%,64% 48%,70% 35%,76% 49%,82% 30%,88% 47%,94% 36%,100% 45%,100% 100%,0 100%);}
   .hero-butterfly{
     position:absolute; left:145px; bottom:72px; width:23px; height:16px;
     animation:heroButterflyFlight 1.25s ease-in-out infinite alternate;
@@ -215,7 +217,9 @@
     92%{ opacity:1; }
     100%{ transform:translateX(calc(100vw + 170px)); opacity:0; }
   }
-  @keyframes heroDogBounce{ from{ transform:translateY(1px) rotate(-1deg); } to{ transform:translateY(-6px) rotate(1deg); } }
+  @keyframes heroDogFrames{from{transform:translateX(0);}to{transform:translateX(-83.333333%);}}
+  @keyframes heroDogBodyRun{0%,100%{transform:translateY(0) rotate(-.8deg);}40%,60%{transform:translateY(-3px) rotate(.7deg);}}
+  @keyframes heroDogShadow{0%,100%{transform:scaleX(1);opacity:.28;}40%,60%{transform:scaleX(.62);opacity:.14;}}
   @keyframes heroButterflyFlight{ from{ transform:translate(0,4px) rotate(-5deg); } to{ transform:translate(12px,-15px) rotate(7deg); } }
   @keyframes heroWingLeft{ from{ transform:rotate(-12deg) scaleX(.55); } to{ transform:rotate(-36deg) scaleX(1); } }
   @keyframes heroWingRight{ from{ transform:rotate(12deg) scaleX(.55); } to{ transform:rotate(36deg) scaleX(1); } }
@@ -772,7 +776,7 @@
   @media (prefers-reduced-motion: reduce){
     .reveal-on-scroll{ opacity:1; transform:none; transition:none; }
     .hero-chase-track{ animation:none; transform:translateX(calc(50vw - 135px)); opacity:.9; }
-    .hero-running-dog,.hero-butterfly,.hero-butterfly::before,.hero-butterfly::after{ animation:none; }
+    .hero-running-dog,.hero-running-dog img,.hero-dog-shadow,.hero-butterfly,.hero-butterfly::before,.hero-butterfly::after{ animation:none; }
   }
 
   .home-etiquette{
@@ -786,7 +790,8 @@
     .hero{padding:46px 18px 92px;}
     .hero-playground{height:92px;}
     .hero-chase-track{bottom:11px;width:205px;height:72px;animation-duration:14s;}
-    .hero-running-dog{width:76px;}
+    .hero-running-dog{width:76px;height:82px;}
+    .hero-dog-shadow{left:7px;width:62px;height:7px;}
     .hero-butterfly{left:101px;bottom:51px;width:19px;height:14px;}
     .hero-butterfly::before,.hero-butterfly::after{width:11px;height:12px;}
     .hero-butterfly-body{left:8px;height:8px;}
@@ -867,7 +872,7 @@
   .hero[data-page-section="home"] .hero-playground{height:92px;}
   .hero[data-page-section="home"] .hero-playground::after{bottom:-34px;height:67px;background:linear-gradient(180deg,rgba(100,141,91,.28),rgba(82,125,78,.5));box-shadow:0 -10px 34px rgba(65,105,71,.09);}
   .hero[data-page-section="home"] .hero-chase-track{bottom:12px;width:205px;height:72px;animation-duration:14s;}
-  .hero[data-page-section="home"] .hero-running-dog{width:76px;filter:drop-shadow(0 7px 7px rgba(53,74,53,.2));}
+  .hero[data-page-section="home"] .hero-running-dog{width:76px;height:82px;filter:drop-shadow(0 4px 4px rgba(53,74,53,.16));}
   .hero[data-page-section="home"] .hero-butterfly{left:101px;bottom:51px;width:19px;height:14px;}
   .hero[data-page-section="home"] .hero-butterfly::before,.hero[data-page-section="home"] .hero-butterfly::after{width:11px;height:12px;}
   .hero[data-page-section="home"] .hero-butterfly-body{left:8px;height:8px;}
@@ -901,10 +906,47 @@
     .hero[data-page-section="home"] .hero-side{max-width:none;}
     .hero[data-page-section="home"] .hero-playground{height:120px;}
     .hero[data-page-section="home"] .hero-chase-track{bottom:18px;width:270px;height:98px;animation-duration:17s;}
-    .hero[data-page-section="home"] .hero-running-dog{width:108px;}
+    .hero[data-page-section="home"] .hero-running-dog{width:108px;height:116px;}
+    .hero[data-page-section="home"] .hero-dog-shadow{left:10px;width:86px;height:9px;}
     .hero[data-page-section="home"] .hero-butterfly{left:142px;bottom:70px;width:23px;height:16px;}
     .hero[data-page-section="home"] .hero-butterfly::before,.hero[data-page-section="home"] .hero-butterfly::after{width:13px;height:14px;}
     .hero[data-page-section="home"] .hero-butterfly-body{left:10px;height:10px;}
+  }
+
+  /* ===== App-wide visual polish (기능 코드는 변경하지 않음) ===== */
+  header{border-bottom:1px solid rgba(83,103,83,.14);box-shadow:0 5px 20px rgba(45,67,48,.05);}
+  .map-panel,.form-card,.card{border-color:rgba(117,124,96,.2);box-shadow:0 12px 32px rgba(37,62,43,.07);}
+  .map-panel{border-radius:22px;}
+  .card{border-radius:20px;}
+  .card-body{padding:19px 20px 21px;}
+  .card h3{letter-spacing:-.01em;}
+  .form-card{border-radius:20px;}
+  input[type=text],input[type=email],input[type=number],input[type=search],textarea,select{transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:#779274!important;box-shadow:0 0 0 4px rgba(119,146,116,.14);}
+  .chip{min-height:38px;display:inline-flex;align-items:center;justify-content:center;}
+  .chip.active{box-shadow:0 6px 16px rgba(24,60,48,.16);}
+  .modal{border:1px solid rgba(255,255,255,.74);box-shadow:0 24px 70px rgba(20,42,30,.24);}
+  .submit-btn,.pin-btn,.poi-search-cta{transition:transform .16s ease,box-shadow .16s ease,background .16s ease;}
+  .submit-btn:active,.pin-btn:active,.poi-search-cta:active{transform:scale(.985);}
+  .section-head h2,.home-section-head h2{letter-spacing:-.018em;}
+  @media(max-width:880px){
+    .wrap{padding-left:18px;padding-right:18px;}
+    section:not(.hero){padding-top:46px;padding-bottom:46px;}
+    .nav{padding:13px 18px;min-height:64px;}
+    .logo span{font-size:21px;}
+    .map-panel{border-radius:18px;}
+    .map-toolbar{padding:12px 13px;gap:9px;}
+    .filter-group{gap:6px;}
+    .chip{padding:8px 11px;font-size:12px;min-height:36px;}
+    .card{border-radius:18px;}
+    .card-body{padding:16px 17px 18px;}
+    .form-card{padding:21px 18px;border-radius:18px;}
+    .modal-overlay{padding:18px 12px;align-items:flex-start;}
+    .modal{border-radius:20px;margin-bottom:84px;}
+    .modal-body{padding:22px 19px 24px;}
+    .bottom-tab-bar{left:10px;right:10px;bottom:8px;border:1px solid rgba(109,113,86,.16);border-radius:20px;padding:7px 4px calc(7px + env(safe-area-inset-bottom));box-shadow:0 12px 35px rgba(26,47,33,.16);}
+    .bottom-tab-bar button{min-height:47px;border-radius:14px;}
+    .bottom-tab-bar button.active{background:#EEF2E7;color:#B5502E;}
   }
 
   /* ===== 접근성/터치 개선 ===== */
@@ -963,8 +1005,10 @@
   </svg>
 
   <div class="hero-playground" aria-hidden="true">
+    <div class="hero-meadow-details"></div>
     <div class="hero-chase-track">
-      <img class="hero-running-dog" src="assets/hero-running-dog-v1.webp" alt="" width="420" height="292" decoding="async">
+      <span class="hero-dog-shadow"></span>
+      <span class="hero-running-dog"><img src="assets/hero-running-dog-sprite-v2.webp" alt="" width="1200" height="215" decoding="async"></span>
       <span class="hero-butterfly"><span class="hero-butterfly-body"></span></span>
     </div>
   </div>
