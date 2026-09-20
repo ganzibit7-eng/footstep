@@ -420,6 +420,9 @@
   }
   .modal-overlay.show{ display:flex; }
   #ai-assistant-overlay.show{ align-items:center; }
+  #ai-assistant-overlay .modal{max-height:calc(100dvh - 48px);overflow-y:auto;margin-bottom:0;overscroll-behavior:contain;}
+  #mong-request{width:100%;box-sizing:border-box;min-height:48px;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:12px;font-size:16px;background:var(--paper);color:var(--pine-deep);}
+  @media(max-width:600px){#ai-assistant-overlay{padding:12px;}#ai-assistant-overlay .modal{max-height:calc(100dvh - 24px);}}
   .modal{
     background:var(--paper); border-radius:18px; max-width:720px; width:100%; box-shadow:var(--shadow);
     overflow:hidden; margin-bottom:40px;
@@ -1684,14 +1687,14 @@
 </button>
 
 <div class="modal-overlay" id="ai-assistant-overlay">
-  <div class="modal ai-assistant-modal">
+  <div class="modal ai-assistant-modal" role="dialog" aria-modal="true" aria-label="몽 산책 도우미">
     <button class="modal-close" id="ai-assistant-close" aria-label="닫기">✕</button>
     <div class="modal-body">
       <div class="ai-assistant-header">
         <span style="font-size:38px;">🐕</span>
         <div>
           <b style="font-family:'Jua',sans-serif; font-size:17px; color:var(--pine-deep);">몽</b>
-          <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">우리 강아지에게 딱 맞는 코스를 찾아드려요</p>
+          <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">등록 정보로 찾는 산책 도우미 · 외부 생성형 AI 미연결</p>
         </div>
       </div>
       <div id="ai-assistant-body" style="margin-top:18px;"></div>
@@ -3325,6 +3328,14 @@
   const aiAnswers = { size:null, time:null, env:null, region:null, facilityCategory:null, facilityRegion:null };
   // 대략적인 시도 경계 (정밀하지 않아도 추천 참고용으로는 충분해요)
   const REGION_BOUNDS = {
+    '부산': {latMin:35.0,latMax:35.4,lngMin:128.8,lngMax:129.3},
+    '대구': {latMin:35.6,latMax:36.3,lngMin:128.3,lngMax:128.9},
+    '인천': {latMin:37.2,latMax:37.9,lngMin:124.5,lngMax:126.8},
+    '광주': {latMin:35.0,latMax:35.3,lngMin:126.6,lngMax:127.0},
+    '대전': {latMin:36.1,latMax:36.5,lngMin:127.2,lngMax:127.6},
+    '울산': {latMin:35.3,latMax:35.8,lngMin:128.9,lngMax:129.5},
+    '세종': {latMin:36.4,latMax:36.8,lngMin:127.1,lngMax:127.4},
+    '강원': {latMin:37.0,latMax:38.7,lngMin:127.0,lngMax:129.4},
     '서울': { latMin:37.42, latMax:37.71, lngMin:126.76, lngMax:127.19 },
     '경기': { latMin:36.9,  latMax:38.3,  lngMin:126.4,  lngMax:127.9 },
     '충남': { latMin:35.9,  latMax:37.0,  lngMin:126.0,  lngMax:127.3 },
@@ -3345,16 +3356,24 @@
     const m = String(distStr).match(/[\d.]+/);
     return m ? parseFloat(m[0]) : 2;
   }
+  let mongRenderVersion = 0;
   function aiRenderStep(step){
+    const version = ++mongRenderVersion;
     const body = document.getElementById('ai-assistant-body');
     const backBtn = `<button class="ai-option-btn" data-ai-menu="1" style="text-align:center; background:none; border:none; color:var(--muted-text); font-weight:500; padding:8px;">← 메인으로</button>`;
 
     if(step === 'menu'){
       body.innerHTML = `
         <div style="text-align:center; margin-bottom:4px;">
-          <p style="font-family:'Jua',sans-serif; font-size:14px; color:var(--clay); margin:0;">🐾 발자국 AI</p>
+          <p style="font-family:'Jua',sans-serif; font-size:14px; color:var(--clay); margin:0;">🐾 발자국 산책 도우미</p>
           <h4 style="font-family:'Jua',sans-serif; font-size:19px; color:var(--pine-deep); margin:4px 0 0;">오늘 어디로 산책 갈까요?</h4>
         </div>
+        <form id="mong-request-form" style="margin-top:16px;">
+          <label for="mong-request">어떤 산책을 찾으세요?</label>
+          <input id="mong-request" type="text" maxlength="160" placeholder="예: 서울 소형견 짧게 그늘많음" autocomplete="off">
+          <button class="submit-btn" type="submit" style="margin-top:8px;">몽에게 찾아달라고 하기</button>
+          <p id="mong-request-note" role="status" style="font-size:12px;">지역·견종 크기·짧게/보통/길게·환경 단어를 인식해요. 자유 대화형 AI는 아니에요.</p>
+        </form>
         <div class="ai-chip-row">
           <button class="ai-chip" data-go="near-me">📍 내 주변 코스</button>
           <button class="ai-chip" data-small-dog="1">🐶 소형견 코스</button>
@@ -3368,6 +3387,21 @@
         btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
       });
       const smallDogBtn = body.querySelector('[data-small-dog]');
+      body.querySelector('#mong-request-form').addEventListener('submit', e=>{
+        e.preventDefault();
+        const query = body.querySelector('#mong-request').value.trim();
+        const region = AI_REGIONS.find(r=>query.includes(r));
+        if(!region){ body.querySelector('#mong-request-note').textContent='시·도 이름을 넣어주세요. 예: 서울, 부산, 경기, 제주'; return; }
+        aiAnswers.region = region;
+        aiAnswers.size = ['소형견','중형견','대형견'].find(v=>query.includes(v)) || null;
+        aiAnswers.time = ['짧게','보통','길게'].find(v=>query.includes(v)) || null;
+        aiAnswers.env = /그늘/.test(query) ? '그늘많음' : /계단\s*없|평지/.test(query) ? '계단없음' : /잔디/.test(query) ? '잔디바닥' : null;
+        if(/카페|식당|숙소|펜션/.test(query)){
+          aiAnswers.facilityRegion=region;
+          aiAnswers.facilityCategory=/숙소|펜션/.test(query)?'숙소':'식당카페';
+          aiRenderStep('f-result');
+        } else aiRenderStep('c-result');
+      });
       if(smallDogBtn) smallDogBtn.addEventListener('click', ()=>{ aiAnswers.size = '소형견'; aiRenderStep('c-time'); });
 
     // ---------- 내 위치 기반 근처 코스 ----------
@@ -3383,6 +3417,7 @@
       }
       navigator.geolocation.getCurrentPosition(
         (pos)=>{
+          if(version !== mongRenderVersion) return;
           const myLat = pos.coords.latitude, myLng = pos.coords.longitude;
           const results = allCourses()
             .filter(c => !isHidden('course', c.id))
@@ -3391,7 +3426,7 @@
             .slice(0, 3)
             .map(x => x.c);
           body.innerHTML = `
-            <div class="ai-bubble">내 위치에서 가까운 코스예요! 🐾</div>
+            <div class="ai-bubble">${results.length ? '등록 코스를 좌표상 가까운 순서로 찾았어요. 실제 이동 거리와는 달라요. 예상 시간은 시속 4km 기준이에요.' : '아직 추천할 등록 코스가 없어요.'}</div>
             ${results.map(aiRenderRecCard).join('')}
             ${backBtn}
           `;
@@ -3406,11 +3441,12 @@
           aiWireBack(body);
         },
         ()=>{
-          body.innerHTML = `<div class="ai-bubble">위치 확인을 허용해주지 않으셨네요 😅<br>대신 지역을 직접 골라주세요!</div>
+          if(version !== mongRenderVersion) return;
+          body.innerHTML = `<div class="ai-bubble">위치 확인에 실패했어요. 권한·신호 또는 시간 초과 때문일 수 있어요.<br>대신 지역을 직접 골라주세요!</div>
             <button class="ai-option-btn" data-go="c-region" style="text-align:center;">지역 직접 고르기</button>${backBtn}`;
           body.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go)));
           aiWireBack(body);
-        }
+        }, {timeout:10000, maximumAge:60000}
       );
 
     // ---------- 산책 코스 추천 흐름 ----------
@@ -3466,14 +3502,13 @@
       const results = aiRecommendCourses();
       if(!results.length){
         body.innerHTML = `
-          <div class="ai-bubble">앗, 조건에 딱 맞는 코스를 못 찾았어요 😅<br>대신 인기 코스 몇 개 보여드릴게요!</div>
-          ${aiFallbackCourses().map(aiRenderRecCard).join('')}
+          <div class="ai-bubble">선택한 지역에서 등록된 코스를 찾지 못했어요. 다른 지역이나 조건을 직접 선택해 주세요.</div>
           <button class="ai-option-btn" data-go="c-size" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
           ${backBtn}
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${aiAnswers.region} · ${aiAnswers.size} · ${aiAnswers.time} 산책 · ${aiAnswers.env} 원하시는군요!<br>이 코스들 어때요? 🐾</div>
+          <div class="ai-bubble">${escapeHtml([aiAnswers.region,aiAnswers.size,aiAnswers.time,aiAnswers.env].filter(Boolean).join(' · '))}<br>등록 정보 기준으로 거리·환경 조건이 맞는 코스를 우선 보여드려요. 모든 조건을 만족하는 것은 아니며, 체격만으로 적합성을 판단하지 않아요. 지역은 좌표 범위로 추정하므로 경계 인근은 확인해 주세요. 소요 시간은 시속 4km 기준이며, 반려견 상태·휴식에 따라 달라져요.</div>
           ${results.map(aiRenderRecCard).join('')}
           <button class="ai-option-btn" data-go="c-size" style="margin-top:6px; text-align:center;">🔄 다시 물어보기</button>
           ${backBtn}
@@ -3525,7 +3560,7 @@
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${aiAnswers.facilityRegion}의 ${label}예요! 🐾</div>
+          <div class="ai-bubble">${aiAnswers.facilityRegion} 주변 등록 ${label}를 이름순으로 보여드려요. 지역은 좌표 범위로 추정하므로 상세 위치를 확인해 주세요.</div>
           ${results.map(aiRenderFacilityCard).join('')}
           <button class="ai-option-btn" data-go="f-region" style="margin-top:6px; text-align:center;">🔄 지역 다시 선택</button>
           ${backBtn}
@@ -3595,7 +3630,7 @@
     const btn = body.querySelector('[data-ai-menu]');
     if(btn) btn.addEventListener('click', ()=> aiRenderStep('menu'));
   }
-  const AI_REGIONS = ['서울','경기','충남','충북','경남','경북','전남','전북','제주'];
+  const AI_REGIONS = ['서울','부산','대구','인천','광주','대전','울산','세종','경기','강원','충남','충북','경남','경북','전남','전북','제주'];
   const AI_FAQ = [
     { q:'포인트는 어떻게 모아요?', a:'코스 등록(+50P), 배변봉투함·동반시설 등록(+20P), 산책기록(+20P), 리뷰 작성(+10P)으로 모을 수 있어요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
     { q:'코스는 어떻게 등록해요?', a:'하단 "코스 등록" 메뉴에서 지도에 손가락으로 경로를 그려서 등록할 수 있어요.' },
@@ -3605,27 +3640,30 @@
   ];
   function aiRenderRecCard(c){
     const rating = avgRating(c.id);
-    const km = parseFloat((c.distance||'').match(/[\d.]+/)) || null;
+    const km = mongDistanceKm(c.distance);
     const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
-    return `<a href="#" class="ai-rec-card" data-open-course="${c.id}">
+    const reasons = [c.diff === '쉬움' ? '등록 난이도: 쉬움' : '', (c.tags||[]).includes(aiAnswers.env) ? aiAnswers.env : ''].filter(Boolean);
+    return `<a href="#" class="ai-rec-card" data-open-course="${escapeHtml(String(c.id))}">
       <span style="font-size:26px;">🐾</span>
       <span style="flex:1;">
-        <b style="display:block; font-size:14px; color:var(--pine-deep);">${c.name}</b>
-        <small style="color:var(--muted-text); font-size:12px;">${c.distance || ''}${estMin ? ' · 약 '+estMin+'분' : ''}${rating ? ' · ★'+rating : ''}</small>
+        <b style="display:block; font-size:14px; color:var(--pine-deep);">${escapeHtml(String(c.name||'이름 없는 코스'))}</b>
+        <small style="color:var(--muted-text); font-size:12px;">${escapeHtml(String(c.distance || '거리 미등록'))}${estMin ? ' · 예상 '+estMin+'분' : ''}${rating ? ' · ★'+escapeHtml(String(rating)) : ''}</small>
+        <small style="display:block;color:var(--muted-text);">${escapeHtml(reasons.join(' · ') || '선택 지역 주변 등록 코스')} · 세부 조건은 상세에서 확인</small>
       </span>
       <span style="color:var(--clay);">→</span>
     </a>`;
   }
   function aiRecommendCourses(){
     const timeRange = { '짧게':[0,2], '보통':[1.2,4.5], '길게':[3.5,999] }[aiAnswers.time] || [0,999];
-    const sizeDiffPref = { '소형견':['쉬움'], '중형견':['쉬움','보통'], '대형견':['보통','어려움'] }[aiAnswers.size] || [];
+    const sizeDiffPref = ['쉬움']; // 체격만으로 어려운 코스를 권하지 않습니다.
     const scored = allCourses()
       .filter(c => !isHidden('course', c.id))
+      .filter(c => !aiAnswers.region || courseInRegion(c, aiAnswers.region))
       .map(c=>{
         let score = 0;
-        const km = parseDistanceKm(c.distance);
+        const km = mongDistanceKm(c.distance);
         if(aiAnswers.region && courseInRegion(c, aiAnswers.region)) score += 5;
-        if(km >= timeRange[0] && km <= timeRange[1]) score += 2;
+        if(km !== null && km >= timeRange[0] && km <= timeRange[1]) score += 2;
         if(sizeDiffPref.includes(c.diff)) score += 2;
         if((c.tags||[]).includes(aiAnswers.env)) score += 3;
         return { c, score };
@@ -3636,16 +3674,19 @@
       .map(x => x.c);
     return scored;
   }
-  function aiFallbackCourses(){
-    return allCourses().filter(c => !isHidden('course', c.id)).slice(0, 3);
+  function mongDistanceKm(value){
+    const match = String(value || '').trim().match(/^(\d+(?:\.\d+)?)\s*(km|m|킬로미터|미터)$/i);
+    if(!match) return null;
+    const n = Number(match[1]);
+    return /^(m|미터)$/i.test(match[2]) ? n / 1000 : n;
   }
   function aiRenderFacilityCard(f){
     const emoji = f.category === '숙소' ? '🏨' : '🍽️';
-    return `<a href="#" class="ai-rec-card" data-open-facility="${f.id}" data-lat="${f.lat}" data-lng="${f.lng}">
+    return `<a href="#" class="ai-rec-card" data-open-facility="${escapeHtml(String(f.id))}" data-lat="${Number(f.lat)}" data-lng="${Number(f.lng)}">
       <span style="font-size:26px;">${emoji}</span>
       <span style="flex:1;">
-        <b style="display:block; font-size:14px; color:var(--pine-deep);">${f.name}</b>
-        <small style="color:var(--muted-text); font-size:12px;">${(f.description||'').slice(0,28)}${(f.description||'').length>28?'...':''}</small>
+        <b style="display:block; font-size:14px; color:var(--pine-deep);">${escapeHtml(String(f.name||'이름 없는 장소'))}</b>
+        <small style="color:var(--muted-text); font-size:12px;">${escapeHtml(String(f.description||'').slice(0,28))} · 방문 전 동반 규정·영업 여부 확인</small>
       </span>
       <span style="color:var(--clay);">→</span>
     </a>`;
@@ -3656,8 +3697,8 @@
       courseInRegion({ lat:f.lat, lng:f.lng }, aiAnswers.facilityRegion) &&
       !isHidden('facility', f.id)
     );
-    // 셔플해서 매번 다른 곳을 추천해줘요
-    return inRegion.sort(()=> Math.random() - 0.5).slice(0, 3);
+    // 같은 조건에서 안정적인 이름순 결과를 제공합니다.
+    return inRegion.slice().sort((a,b)=>String(a.name).localeCompare(String(b.name),'ko')).slice(0, 3);
   }
   function openAiAssistant(){
     hideAiTooltip();
@@ -3665,12 +3706,18 @@
     aiAnswers.facilityCategory = null; aiAnswers.facilityRegion = null;
     aiRenderStep('menu');
     document.getElementById('ai-assistant-overlay').classList.add('show');
+    document.getElementById('ai-assistant-close').focus();
   }
   document.getElementById('ai-assistant-btn').addEventListener('click', openAiAssistant);
   const homeAiBanner = document.getElementById('home-ai-banner');
   if(homeAiBanner) homeAiBanner.addEventListener('click', (e)=>{ e.preventDefault(); openAiAssistant(); });
   document.getElementById('ai-assistant-close').addEventListener('click', ()=>{
+    ++mongRenderVersion;
     document.getElementById('ai-assistant-overlay').classList.remove('show');
+    document.getElementById('ai-assistant-btn').focus();
+  });
+  document.getElementById('ai-assistant-overlay').addEventListener('keydown', e=>{
+    if(e.key === 'Escape'){e.preventDefault();document.getElementById('ai-assistant-close').click();}
   });
   document.getElementById('ai-assistant-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'ai-assistant-overlay') document.getElementById('ai-assistant-overlay').classList.remove('show');
