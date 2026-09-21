@@ -1108,6 +1108,36 @@
     },{once:true});
   }
 </script>
+
+<style>
+/* Shared mobile browsing surfaces */
+.card:focus-visible,.ai-rec-card:focus-visible,button:focus-visible,a:focus-visible{
+  outline:3px solid #B5502E;outline-offset:3px;
+}
+#course-grid .card .desc{overflow-wrap:anywhere;line-height:1.65;}
+#course-grid .card .row{flex-wrap:wrap;row-gap:5px;}
+#ai-assistant-body{overflow-wrap:anywhere;}
+.ai-rec-card{gap:12px;align-items:center;min-height:64px;}
+.ai-rec-card>span{min-width:0;}
+#course-count-label{font-variant-numeric:tabular-nums;}
+@media(max-width:600px){
+  #course-search-input{min-width:0!important;width:100%;flex-basis:100%!important;font-size:16px!important;min-height:44px;border-radius:12px!important;}
+  #course-sort-select{min-height:44px;max-width:100%;border-radius:12px!important;}
+  #review-sort-select{min-height:44px;max-width:44%;}
+  #modal-overlay .modal,#ai-assistant-overlay .modal{
+    max-height:calc(100svh - 24px);max-height:calc(100dvh - 24px);
+    overflow-y:auto;overscroll-behavior:contain;
+  }
+  #modal-overlay .modal-body{padding-bottom:calc(24px + env(safe-area-inset-bottom));}
+  #modal-overlay .review-item p{overflow-wrap:anywhere;line-height:1.7;}
+  #modal-overlay .rh{flex-wrap:wrap;gap:8px;}
+  #modal-overlay .helpful-btn,#modal-overlay .report-btn,#modal-overlay .delete-btn{min-height:40px;}
+  #ai-assistant-overlay .modal-body{padding:22px 18px calc(22px + env(safe-area-inset-bottom));}
+  #ai-assistant-overlay .ai-rec-card{padding:14px;border-radius:14px;}
+  #ai-assistant-overlay .ai-rec-card small{display:block;line-height:1.6;margin-top:5px;}
+  #place-search-results{max-height: min(320px,45svh);overflow-y:auto;overscroll-behavior:contain;}
+}
+</style>
 </head>
 <body>
 
@@ -1639,7 +1669,7 @@
 </footer>
 
 <div class="modal-overlay" id="modal-overlay">
-  <div class="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
     <div class="modal-inner-wrap">
       <button class="modal-close" id="modal-close" aria-label="닫기">✕</button>
       <div class="modal-gallery" id="modal-gallery">
@@ -3840,7 +3870,7 @@
     if(e.key === 'Escape'){e.preventDefault();document.getElementById('ai-assistant-close').click();}
   });
   document.getElementById('ai-assistant-overlay').addEventListener('click', (e)=>{
-    if(e.target.id === 'ai-assistant-overlay') document.getElementById('ai-assistant-overlay').classList.remove('show');
+    if(e.target.id === 'ai-assistant-overlay') document.getElementById('ai-assistant-close').click();
   });
 
   // ===== 첫 방문 시 몽이 말풍선으로 사용 유도 =====
@@ -3896,12 +3926,19 @@
     courseList.forEach(c=>{
       const card = document.createElement('div');
       card.className = 'card';
+      card.tabIndex = 0;
+      card.setAttribute('aria-label',c.name+' 코스 상세 보기');
+      card.addEventListener('keydown',e=>{
+        if(e.target === card && (e.key === 'Enter' || e.key === ' ')){
+          e.preventDefault();openCourseDetail(c.id);
+        }
+      });
       const avg = avgRating(c.id);
       const isMine = c.ownerId && c.ownerId === myDeviceId;
       const walkerCount = activeWalkerCounts[c.id] || 0;
       const isBoosted = courseBoosts[c.id] && new Date(courseBoosts[c.id]) > new Date();
       const isFav = favoriteIds.has(c.id);
-      const km = parseFloat((c.distance||'').match(/[\d.]+/)) || null;
+      const km = mongDistanceKm(c.distance);
       const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
       const visualGradients = {
         '쉬움': ['#7FA67C','#3F5A3D'], '보통': ['#C79A3C','#8A5F14'], '어려움': ['#C46A4A','#8A3F26'],
@@ -3911,7 +3948,7 @@
         <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
           <span class="card-visual-emoji">🐾</span>
           <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
-          <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="찜하기">${isFav ? '❤️' : '🤍'}</button>
+          <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="${isFav ? '찜 해제' : '찜하기'}" aria-pressed="${isFav}">${isFav ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
           <h3>${escapeHtml(c.name)}</h3>
@@ -4261,8 +4298,11 @@
     if(!query){ toast('검색어를 입력해주세요'); return; }
     if(!kakaoPlacesService){ toast('지도 서비스를 불러오는 중이에요. 잠시 후 다시 시도해주세요'); return; }
     const btn = document.getElementById('place-search-btn');
+    if(btn.disabled) return;
     const original = btn.textContent;
-    btn.textContent = '...';
+    btn.disabled = true;
+    btn.setAttribute('aria-busy','true');
+    btn.textContent = '검색 중…';
     try{
       const results = await kakaoKeywordSearch(query, null);
       if(!results.length){
@@ -4272,8 +4312,8 @@
       }
       resultsEl.innerHTML = results.slice(0, 8).map((p, i) => `
         <div class="place-result-row" data-idx="${i}" style="padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer;">
-          <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${p.place_name}</div>
-          <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${p.road_address_name || p.address_name || ''}</div>
+          <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${escapeHtml(p.place_name)}</div>
+          <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${escapeHtml(p.road_address_name || p.address_name || '')}</div>
         </div>
       `).join('');
       resultsEl.style.display = '';
@@ -4284,14 +4324,14 @@
           resultsEl.style.display = 'none';
         });
       });
-    }catch(e){ console.error(e); toast('검색에 실패했어요'); }
-    btn.textContent = original;
+    }catch(e){ console.error(e); toast('검색에 실패했어요. 다시 시도해주세요'); }
+    finally{ btn.textContent = original; btn.disabled = false; btn.removeAttribute('aria-busy'); }
   }
   function goToPlace(name, lat, lng){
     map.setView([lat, lng], 16);
     if(placeSearchMarker) map.removeLayer(placeSearchMarker);
     placeSearchMarker = L.marker([lat, lng]).addTo(map)
-      .bindPopup(`<strong>📍 ${name}</strong><br><a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
+      .bindPopup(`<strong>📍 ${escapeHtml(name)}</strong><br><a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
       .openPopup();
   }
   document.getElementById('place-search-btn').addEventListener('click', runPlaceSearch);
@@ -4334,7 +4374,7 @@
             if(seenIds.has(p.id)) return; // 여러 검색어에 중복으로 걸린 장소는 한 번만 표시
             seenIds.add(p.id);
             L.marker([Number(p.y), Number(p.x)], {icon: poiIcon(cat)})
-              .bindPopup(`<strong>${POI_EMOJI[cat]} ${p.place_name}</strong><br>${p.road_address_name || p.address_name || ''}${p.phone ? '<br>'+p.phone : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+              .bindPopup(`<strong>${POI_EMOJI[cat]} ${escapeHtml(p.place_name)}</strong><br>${escapeHtml(p.road_address_name || p.address_name || '')}${p.phone ? '<br>'+escapeHtml(p.phone) : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
               .addTo(poiLayer);
             total += 1;
           });
@@ -5149,7 +5189,9 @@
     }, 300);
   }
 
+  let reviewRenderVersion = 0;
   async function renderReviewList(courseId){
+    const version = ++reviewRenderVersion;
     const userAdded = reviews[courseId] || [];
     const seeded = userAdded.length ? [] : (SEED_REVIEWS[courseId] || []);
     const el = document.getElementById('review-list');
@@ -5174,6 +5216,7 @@
         });
       }catch(e){ console.error(e); }
     }
+    if(version !== reviewRenderVersion || activeCourseId !== courseId) return;
     const sortMode = document.getElementById('review-sort-select').value;
     const userRows = rows.filter(x=>x.type==='user');
     const seedRows = rows.filter(x=>x.type==='seed');
@@ -5195,6 +5238,7 @@
       const helpfulBtn = type==='user'
         ? `<button class="helpful-btn ${hf.mine?'active':''}" data-helpful-toggle="${r.dbId}">👍 도움돼요${hf.count>0 ? ' '+hf.count : ''}</button>`
         : '';
+      const rating = Math.min(5,Math.max(0,Math.round(Number(r.rating)||0)));
       const safePhotoUrl = safePublicImageUrl(r.photoUrl);
       const photoHtml = safePhotoUrl
         ? `<img src="${escapeHtml(safePhotoUrl)}" alt="리뷰 사진" data-photo-url="${escapeHtml(safePhotoUrl)}" style="width:72px; height:72px; object-fit:cover; border-radius:8px; margin-top:8px; cursor:zoom-in;">`
@@ -5203,7 +5247,7 @@
       <div class="review-item">
         <div class="rh">
           <span>${type==='user' ? authorLabel(r.ownerId, r.name) : escapeHtml(r.name)}</span>
-          <div class="rh-actions"><span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${action}</div>
+          <div class="rh-actions"><span class="stars">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</span>${action}</div>
         </div>
         <p>${escapeHtml(r.text)}</p>
         ${photoHtml}
@@ -5327,8 +5371,8 @@
 
     // Route mini-map: rebuild each time to avoid stale Leaflet instance
     const mapEl = document.getElementById('modal-route-map');
-    mapEl.innerHTML = '';
     if(routeMap){ routeMap.remove(); routeMap = null; }
+    mapEl.innerHTML = '';
     routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false}).setView([c.lat,c.lng], 14);
     L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
@@ -5340,11 +5384,15 @@
     } else {
       L.marker([c.lat,c.lng], {icon:pawIcon()}).addTo(routeMap);
     }
-    setTimeout(()=> routeMap.invalidateSize(), 50);
+    const currentRouteMap = routeMap;
+    setTimeout(()=>{ if(routeMap === currentRouteMap) currentRouteMap.invalidateSize(); }, 50);
   }
   window.__openCourse = openCourseDetail;
 
   function closeModal(){
+    ++reviewRenderVersion;
+    activeCourseId = null;
+    if(routeMap){routeMap.remove();routeMap=null;}
     document.getElementById('modal-overlay').classList.remove('show');
     document.body.style.overflow = '';
     document.getElementById('review-form').reset();
@@ -5373,9 +5421,13 @@
     const file = e.target.files[0];
     document.getElementById('review-photo-filename').textContent = file ? `📎 ${file.name}` : '';
   });
+  let reviewSubmitting = false;
   document.getElementById('review-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    const courseId = activeCourseId;
+    const rating = activeStars;
+    if(!courseId || reviewSubmitting) return;
     const name = myNickname;
     const text = document.getElementById('review-text').value.trim();
     if(!text){ toast('리뷰 내용을 입력해주세요'); return; }
@@ -5383,6 +5435,10 @@
       toast('부적절한 표현이 포함되어 있어요. 내용을 수정해주세요 🙏');
       return;
     }
+    reviewSubmitting = true;
+    const submitBtn = e.target.querySelector('[type="submit"]');
+    if(submitBtn) submitBtn.disabled = true;
+    try{
     let photoUrl = null;
     const photoFile = document.getElementById('review-photo-input').files[0];
     if(photoFile){
@@ -5392,7 +5448,7 @@
       }
       try{
         const compressed = await compressImage(photoFile, 1200, 0.8);
-        const path = `reviews/${activeCourseId}/${Date.now()}.jpg`;
+        const path = `reviews/${courseId}/${Date.now()}.jpg`;
         const { error: upErr } = await sb.storage.from('course-photos').upload(path, compressed, { contentType:'image/jpeg' });
         if(!upErr){
           const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
@@ -5400,20 +5456,25 @@
         }
       }catch(e){ console.error(e); }
     }
-    const ok = await insertReviewDB(activeCourseId, { name, rating: activeStars, text, ownerId: myDeviceId, photoUrl });
+    const ok = await insertReviewDB(courseId, { name, rating, text, ownerId: myDeviceId, photoUrl });
     if(!ok){ toast('리뷰 등록에 실패했어요'); return; }
     await loadData();
-    renderReviewList(activeCourseId);
+    if(activeCourseId === courseId){
+    renderReviewList(courseId);
     e.target.reset();
     document.getElementById('review-photo-filename').textContent = '';
     activeStars = 5;
     updateStarDisplay();
+    }
+    toast('리뷰가 등록됐어요');
     await awardPoints(10, '리뷰 작성');
     // 코스 등록자에게 알림
-    const c = allCourses().find(x=>x.id===activeCourseId);
+    const c = allCourses().find(x=>x.id===courseId);
     if(c && c.ownerId && c.ownerId !== myDeviceId){
       notifyUser(c.ownerId, 'review', `${myNickname}님이 "${c.name}"에 리뷰를 남겼어요 🐾`);
     }
+    }catch(error){console.error(error);toast('처리 중 오류가 발생했어요. 등록 여부를 확인해주세요');}
+    finally{reviewSubmitting=false;if(submitBtn) submitBtn.disabled=false;}
   });
 
   // ===== 날씨 & 미세먼지 위젯 (Open-Meteo, API 키 불필요) =====
@@ -6344,7 +6405,7 @@
       const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+Math.max(0,Number(r.amount)||0), 0);
       const pvRows = pageViewsRes.data || [];
       const totalPageViews = pvRows.length;
-      const totalUniqueVisitors = new Set(pvRows.map(r=>r.visitor_id)).size;
+      const totalUniqueVisitors = new Set(pvRows.map(r=>r.visitor_id).filter(Boolean)).size;
       const stats = [
         { num: allCourses().length, label:'전체 코스' },
         { num: userCourseCount, label:'사용자 등록 코스' },
