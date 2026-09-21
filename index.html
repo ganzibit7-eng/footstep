@@ -1015,7 +1015,7 @@
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
   @media(max-width:880px){
-    html.android-phone .hero[data-page-section="home"]{padding:14px 16px 82px;box-sizing:border-box;min-height:calc(var(--android-visible-height,100svh) - var(--android-header-height,64px) - var(--android-tabs-height,80px));}
+    html.android-phone .hero[data-page-section="home"]{padding:12px 16px 96px;box-sizing:border-box;min-height:var(--android-hero-height,calc(100svh - 160px));}
     html.android-phone .hero[data-page-section="home"] .hero-inner{gap:10px;padding:0;}
     html.android-phone .hero[data-page-section="home"] .eyebrow{padding:5px 10px;margin-bottom:9px;font-size:11px;}
     html.android-phone .hero[data-page-section="home"] h1{font-size:clamp(28px,8.4vw,34px);line-height:1.08;}
@@ -1030,20 +1030,35 @@
     html.android-phone .hero[data-page-section="home"] .hero-stat-row{margin-top:7px;}
     html.android-phone .hero[data-page-section="home"] .hero-stat-box{min-height:42px;padding:6px 8px;}
     html.android-phone .hero[data-page-section="home"] .hero-playground{
-      position:absolute;left:0;right:0;bottom:0;width:100%;height:82px;
+      position:absolute;left:0;right:0;bottom:0;width:100%;height:92px;
       margin:0;border-radius:0;isolation:isolate;
     }
     html.android-phone .hero[data-page-section="home"] .hero-running-dog{width:68px;height:73px;}
     html.android-phone .hero[data-page-section="home"] .hero-chase-track{
-      left:0;animation-name:androidHeroChase;animation-duration:10s;animation-delay:-1s;
+      left:-205px;bottom:12px;animation:androidHeroChase 10s linear -3s infinite normal;
     }
     @keyframes androidHeroChase{
-      0%,100%{left:0;transform:scaleX(1);opacity:1;}
-      45%,49%{left:calc(100% - 150px);transform:scaleX(1);opacity:1;}
-      50%{left:calc(100% - 150px);transform:scaleX(-1);opacity:1;}
-      95%,99%{left:0;transform:scaleX(-1);opacity:1;}
+      from{left:-205px;transform:none;opacity:1;}
+      to{left:100%;transform:none;opacity:1;}
     }
+    html.android-phone .hero[data-page-section="home"] .home-weather-card{
+      display:grid;grid-template-columns:auto 1fr;gap:5px 12px;align-items:center;
+    }
+    html.android-phone .hero[data-page-section="home"] .home-weather-card .tag{justify-self:start;}
+    html.android-phone .hero[data-page-section="home"] .home-weather-card h3{margin:0!important;font-size:22px!important;text-align:right;}
+    html.android-phone .hero[data-page-section="home"] .home-weather-card p{grid-column:1/-1;margin:0!important;line-height:1.4;}
+    html.android-phone .hero[data-page-section="home"] .home-weather-card .meta{grid-column:1/-1;flex-wrap:wrap;gap:3px 9px;line-height:1.4;}
+    html.android-phone .hero[data-page-section="home"].android-compact{padding-top:8px;}
+    html.android-phone .android-compact #hero-greeting{font-size:12px!important;margin-bottom:4px!important;}
+    html.android-phone .hero.android-compact .hero-inner{gap:7px;}
+    html.android-phone .hero.android-compact .eyebrow{margin-bottom:6px;padding:4px 9px;}
+    html.android-phone .hero.android-compact h1{font-size:clamp(26px,7.8vw,31px);}
+    html.android-phone .hero.android-compact p.lead{margin-top:7px;line-height:1.4;}
+    html.android-phone .hero.android-compact .hero-copy>div[style*="flex-direction:column"]{margin-top:8px!important;gap:6px!important;}
+    html.android-phone .hero.android-compact .hero-card{padding:8px 12px;}
+    html.android-phone .hero.android-compact .hero-stat-row{margin-top:5px;}
   }
+
   @media(prefers-reduced-motion:reduce){
     html.android-phone .hero[data-page-section="home"] .hero-chase-track{animation:none!important;left:20%;}
   }
@@ -1053,18 +1068,43 @@
   if(/Android/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent)){
     document.documentElement.classList.add('android-phone');
     document.addEventListener('DOMContentLoaded',()=>{
+      const hero=document.querySelector('.hero[data-page-section="home"]');
+      const inner=hero?.querySelector('.hero-inner');
+      const tabs=document.querySelector('.bottom-tab-bar');
+      if(!hero || !inner) return;
+      let frame=0;
       const updateHeight=()=>{
-        if(document.activeElement?.matches('input,textarea,select')) return;
-        const root=document.documentElement;
-        root.style.setProperty('--android-visible-height',(window.visualViewport?.height || window.innerHeight)+'px');
-        root.style.setProperty('--android-header-height',(document.querySelector('header')?.getBoundingClientRect().height || 64)+'px');
-        const tabs=document.querySelector('.bottom-tab-bar');
-        root.style.setProperty('--android-tabs-height',((tabs?.getBoundingClientRect().height || 70)+16)+'px');
+        frame=0;
+        if(document.activeElement?.matches('input,textarea,select') ||
+           !hero.getClientRects().length || window.innerWidth>880 ||
+           (window.visualViewport?.scale || 1)>1.05) return;
+        const viewport=window.visualViewport;
+        const visibleBottom=(viewport?.offsetTop || 0)+(viewport?.height || window.innerHeight);
+        const tabRect=tabs?.getBoundingClientRect();
+        const bottom=tabRect?.height ? Math.min(visibleBottom,tabRect.top) : visibleBottom;
+        // Recover the hero's initial document position even when the user scrolls.
+        const heroTop=hero.getBoundingClientRect().top+window.scrollY;
+        const available=Math.max(0,bottom-heroTop-8);
+        hero.classList.remove('android-compact');
+        const needed=()=>inner.getBoundingClientRect().height+
+          parseFloat(getComputedStyle(hero).paddingTop)+96;
+        if(needed()>available) hero.classList.add('android-compact');
+        // Never crop content or shrink accessibility text to force a fit.
+        hero.style.setProperty('--android-hero-height',Math.ceil(Math.max(available,needed()))+'px');
       };
-      updateHeight();
-      window.addEventListener('resize',updateHeight,{passive:true});
-      window.visualViewport?.addEventListener('resize',updateHeight,{passive:true});
-      document.fonts?.ready.then(updateHeight);
+      const schedule=()=>{if(!frame) frame=requestAnimationFrame(updateHeight);};
+      schedule();
+      window.addEventListener('resize',schedule,{passive:true});
+      window.visualViewport?.addEventListener('resize',schedule,{passive:true});
+      document.fonts?.ready.then(schedule);
+      new ResizeObserver(schedule).observe(inner);
+      if(tabs) new ResizeObserver(schedule).observe(tabs);
+      let wasActive=hero.classList.contains('active');
+      new MutationObserver(()=>{
+        const active=hero.classList.contains('active');
+        if(active!==wasActive){wasActive=active;schedule();}
+      }).observe(hero,{attributes:true,attributeFilter:['class']});
+
     },{once:true});
   }
 </script>
