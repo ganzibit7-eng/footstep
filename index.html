@@ -1714,7 +1714,7 @@
       </div>
       <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
       <button class="pin-btn" id="export-data-btn" style="margin-top:10px; color:var(--moss); font-size:12px; border:none; background:none;">📥 내 정보 다운로드</button>
-      <button class="pin-btn" id="withdraw-btn" style="margin-top:6px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 (내 데이터 삭제)</button>
+      <button class="pin-btn" id="withdraw-btn" style="margin-top:6px; color:var(--clay); font-size:12px; border:none; background:none;">내 활동 데이터 삭제</button><p style="font-size:12px;line-height:1.7;">이 기능만으로 로그인 계정·사진 원본까지 모두 삭제되지는 않습니다. <a href="mailto:footstepbiz@gmail.com?subject=발자국%20개인정보%20삭제%20요청">계정 및 개인정보 완전 삭제 요청</a></p>
     </div>
   </div>
 </div>
@@ -6100,18 +6100,25 @@
     const failed = results.filter(r => r.status === 'rejected' || (r.value && r.value.error));
     return failed.length === 0;
   }
+  let deletingOwnData = false;
   document.getElementById('withdraw-btn').addEventListener('click', async ()=>{
-    if(!myDeviceId) return;
-    const sure = confirm('정말 탈퇴하시겠어요?\n내가 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.');
+    if(!myDeviceId || deletingOwnData) return;
+    const sure = confirm('등록한 활동 데이터 삭제를 요청합니다. 삭제된 데이터는 복구하기 어렵습니다.\n로그인 계정·사진 원본·일부 접속 및 신고 기록은 별도 삭제 요청이 필요합니다.\n계속하시겠어요?');
     if(!sure) return;
+    const button = document.getElementById('withdraw-btn');
+    deletingOwnData = true;
+    button.disabled = true;
     try{
       const ok = await wipeAllUserData(myDeviceId);
+      if(!ok){
+        toast('일부 데이터 삭제가 실패했어요. 로그인 상태는 유지됩니다. 완전 삭제는 문의처로 요청해 주세요.');
+        return;
+      }
       closeProfileModal();
       await signOutUser();
-      toast(ok
-        ? '탈퇴 처리됐어요. 로그인 계정 자체를 완전히 삭제하고 싶으시면 문의해주세요 🐾'
-        : '일부 데이터 삭제 중 문제가 있었어요. footstepbiz@gmail.com 으로 문의해주세요.');
-    }catch(e){ console.error(e); toast('처리 중 오류가 발생했어요. 다시 시도해주세요'); }
+      toast('활동 데이터 삭제 요청을 처리했어요. 계정·사진 원본 등의 완전 삭제는 이메일로 요청해 주세요.');
+    }catch(e){ console.error(e); toast('삭제 결과를 확인하지 못했어요. 일부 데이터가 삭제됐을 수 있으니 문의처로 확인해 주세요.'); }
+    finally{deletingOwnData = false;button.disabled = false;}
   });
   document.getElementById('nick-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'nick-overlay') closeNickModal();
