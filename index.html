@@ -1013,13 +1013,27 @@
 
 </style>
 <style>
-  /* Android phones: reserve a scene beneath the title instead of the hero footer. */
+  /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
   @media(max-width:880px){
-    html.android-phone .hero[data-page-section="home"]{padding-bottom:24px;}
+    html.android-phone .hero[data-page-section="home"]{padding:14px 16px 82px;box-sizing:border-box;min-height:calc(var(--android-visible-height,100svh) - var(--android-header-height,64px) - var(--android-tabs-height,80px));}
+    html.android-phone .hero[data-page-section="home"] .hero-inner{gap:10px;padding:0;}
+    html.android-phone .hero[data-page-section="home"] .eyebrow{padding:5px 10px;margin-bottom:9px;font-size:11px;}
+    html.android-phone .hero[data-page-section="home"] h1{font-size:clamp(28px,8.4vw,34px);line-height:1.08;}
+    html.android-phone .hero[data-page-section="home"] p.lead{font-size:12px;line-height:1.5;margin-top:10px;}
+    html.android-phone .hero[data-page-section="home"] .hero-copy>div[style*="flex-direction:column"]{margin-top:12px!important;gap:7px!important;}
+    html.android-phone .hero[data-page-section="home"] .btn-primary,html.android-phone .hero[data-page-section="home"] .btn-ghost{min-height:44px;padding:9px 12px!important;font-size:13px!important;}
+    html.android-phone .hero[data-page-section="home"] .hero-card{padding:11px 14px;border-radius:18px;}
+    html.android-phone .hero[data-page-section="home"] .hero-card .tag{font-size:10px;padding:4px 8px;}
+    html.android-phone .hero[data-page-section="home"] .hero-card h3{font-size:21px;margin:7px 0 3px;}
+    html.android-phone .hero[data-page-section="home"] .hero-card p{font-size:12px;margin:3px 0 6px;}
+    html.android-phone .hero[data-page-section="home"] .hero-card .meta{padding-top:6px;font-size:10px;}
+    html.android-phone .hero[data-page-section="home"] .hero-stat-row{margin-top:7px;}
+    html.android-phone .hero[data-page-section="home"] .hero-stat-box{min-height:42px;padding:6px 8px;}
     html.android-phone .hero[data-page-section="home"] .hero-playground{
-      position:relative;left:auto;right:auto;bottom:auto;width:100%;height:96px;
-      margin:10px 0 6px;border-radius:16px;isolation:isolate;
+      position:absolute;left:0;right:0;bottom:0;width:100%;height:82px;
+      margin:0;border-radius:0;isolation:isolate;
     }
+    html.android-phone .hero[data-page-section="home"] .hero-running-dog{width:68px;height:73px;}
     html.android-phone .hero[data-page-section="home"] .hero-chase-track{
       left:0;animation-name:androidHeroChase;animation-duration:10s;animation-delay:-1s;
     }
@@ -1039,9 +1053,18 @@
   if(/Android/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent)){
     document.documentElement.classList.add('android-phone');
     document.addEventListener('DOMContentLoaded',()=>{
-      const heading=document.querySelector('#hero-style-3 h1');
-      const scene=document.querySelector('.hero-playground');
-      if(heading && scene) heading.insertAdjacentElement('afterend',scene);
+      const updateHeight=()=>{
+        if(document.activeElement?.matches('input,textarea,select')) return;
+        const root=document.documentElement;
+        root.style.setProperty('--android-visible-height',(window.visualViewport?.height || window.innerHeight)+'px');
+        root.style.setProperty('--android-header-height',(document.querySelector('header')?.getBoundingClientRect().height || 64)+'px');
+        const tabs=document.querySelector('.bottom-tab-bar');
+        root.style.setProperty('--android-tabs-height',((tabs?.getBoundingClientRect().height || 70)+16)+'px');
+      };
+      updateHeight();
+      window.addEventListener('resize',updateHeight,{passive:true});
+      window.visualViewport?.addEventListener('resize',updateHeight,{passive:true});
+      document.fonts?.ready.then(updateHeight);
     },{once:true});
   }
 </script>
