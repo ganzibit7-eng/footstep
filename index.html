@@ -959,6 +959,8 @@
   button:disabled{ cursor:not-allowed; opacity:.55; }
   img{ max-width:100%; height:auto; }
   :focus-visible{ outline:3px solid rgba(197,122,49,.45); outline-offset:2px; }
+  .footer-links a{white-space:nowrap;flex:0 0 auto;display:inline-flex;align-items:center;min-height:44px;}
+  @media(max-width:600px){footer .wrap{padding-left:18px;padding-right:18px;} .footer-links{column-gap:10px!important;font-size:12px!important;}}
   .card-body,.form-card,.modal-body{overflow-wrap:anywhere;}
   .form-card input:focus,.form-card textarea:focus,.form-card select:focus{border-color:var(--pine-deep);box-shadow:0 0 0 3px rgba(78,114,85,.13);}
   .empty-admin{line-height:1.7;padding:16px;border-radius:12px;background:var(--sand);}
@@ -1563,10 +1565,10 @@
   <div class="wrap" style="flex-direction:column; gap:10px; align-items:flex-start;">
     <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도</span>
     <span>전국 반려인들과 함께 만들어가는 산책 정보 플랫폼이에요. 소중한 의견은 언제든 환영합니다 🐾</span>
-    <div style="display:flex; gap:16px; font-size:13px;">
+    <div class="footer-links" style="display:flex; flex-wrap:wrap; gap:4px 12px; font-size:13px; width:100%;">
       <a href="#" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
       <a href="#" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
-      <a href="/discover.html" style="color:rgba(251,248,241,0.8); text-decoration:underline;">전국 반려견 장소·산책 코스</a>
+      <a href="/discover.html" aria-label="전국 반려견 장소·산책 코스" style="color:rgba(251,248,241,0.8); text-decoration:underline;">장소·코스</a>
       <a href="mailto:footstepbiz@gmail.com" style="color:rgba(251,248,241,0.8); text-decoration:underline;">문의하기</a>
     </div>
     <span style="font-size:12px; opacity:0.7;">© 2026 발자국. All rights reserved.</span>
@@ -1746,7 +1748,7 @@
         <span style="font-size:38px;">🐕</span>
         <div>
           <b style="font-family:'Jua',sans-serif; font-size:17px; color:var(--pine-deep);">몽</b>
-          <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">등록 정보로 찾는 산책 도우미 · 외부 생성형 AI 미연결</p>
+          <p style="font-size:12.5px; color:var(--muted-text); margin:2px 0 0;">등록 정보로 찾는 산책 도우미</p>
         </div>
       </div>
       <div id="ai-assistant-body" style="margin-top:18px;"></div>
