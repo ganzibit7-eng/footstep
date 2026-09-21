@@ -959,6 +959,42 @@
   button:disabled{ cursor:not-allowed; opacity:.55; }
   img{ max-width:100%; height:auto; }
   :focus-visible{ outline:3px solid rgba(197,122,49,.45); outline-offset:2px; }
+  /* Course discovery and detail: compact, consistent mobile surfaces. */
+  #modal-overlay .modal{max-width:760px;}
+  #modal-overlay .modal-gallery{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:240px;gap:4px;background:var(--paper);}
+  #modal-gallery[data-photo-count="3"] .photo-tile:first-child{grid-row:span 2;}
+  #modal-gallery[data-photo-count="1"]{grid-template-columns:1fr;grid-template-rows:1fr;}
+  #modal-gallery[data-photo-count="2"]{grid-template-rows:1fr;}
+  #modal-gallery[data-photo-count="0"]{display:flex;align-items:center;height:104px;padding:20px 64px 20px 24px;box-sizing:border-box;background:linear-gradient(120deg,var(--sand),var(--paper));}
+  .course-photo-empty{display:flex;align-items:center;gap:14px;color:var(--pine-deep);}
+  .course-photo-empty span{font-size:30px;}
+  .course-photo-empty p{margin:0;font-size:13px;line-height:1.7;}
+  #modal-gallery button.photo-tile{border:0;padding:0;width:100%;height:100%;min-height:0;border-radius:0;}
+  #modal-title{line-height:1.35;word-break:keep-all;overflow-wrap:anywhere;}
+  #modal-meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0;}
+  #modal-desc{line-height:1.85;margin-bottom:20px;}
+  #photo-upload-wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  #photo-upload-wrap .pin-btn{margin:0!important;border:1px solid var(--line);border-radius:12px;background:var(--sand);min-height:44px;box-sizing:border-box;display:inline-flex!important;align-items:center;justify-content:center;}
+  #photo-upload-status:empty{display:none;}
+  #modal-route-map{border-radius:16px;overflow:hidden;}
+  #modal-overlay .review-section{margin-top:24px;padding-top:22px;}
+  #modal-overlay .review-item{padding:16px 0;}
+  #modal-overlay .review-item .rh{flex-wrap:wrap;gap:8px;}
+  .card-body h3{line-height:1.4;word-break:keep-all;overflow-wrap:anywhere;}
+  .card-body p{line-height:1.75;}
+  .ai-rec-card{border-radius:16px;padding:15px;gap:12px;}
+  @media(max-width:600px){
+    #modal-overlay{padding:10px 8px;}
+    #modal-overlay .modal{margin-bottom:24px;border-radius:22px;}
+    #modal-overlay .modal-body{padding:20px 18px 28px;}
+    #modal-overlay #modal-title{font-size:23px;}
+    #modal-overlay .modal-gallery{height:184px;}
+    #modal-overlay #modal-gallery[data-photo-count="0"]{height:96px;}
+    #modal-close{width:40px;height:40px;top:12px;right:12px;z-index:5;}
+    #photo-upload-wrap .pin-btn{flex:1 1 auto;padding:10px!important;font-size:12px!important;white-space:nowrap;}
+    #photo-upload-status{flex-basis:100%;order:4;}
+    #modal-overlay .review-section h4{font-size:18px;}
+  }
   .footer-links a{white-space:nowrap;flex:0 0 auto;display:inline-flex;align-items:center;min-height:44px;}
   @media(max-width:600px){footer .wrap{padding-left:18px;padding-right:18px;} .footer-links{column-gap:10px!important;font-size:12px!important;}}
   .card-body,.form-card,.modal-body{overflow-wrap:anywhere;}
@@ -4342,30 +4378,35 @@
 
   // ===== 코스 사진 업로드 (Supabase Storage) =====
   const PHOTO_PLACEHOLDER_EMOJI = ['🐕','🌳','🐾'];
+  let coursePhotoRequest = 0;
   async function loadCoursePhotos(courseId){
     const gallery = document.getElementById('modal-gallery');
+    const request = ++coursePhotoRequest;
+    const empty = (message)=>{
+      gallery.dataset.photoCount = '0';
+      gallery.innerHTML = `<div class="course-photo-empty"><span aria-hidden="true">🐾</span><p>${escapeHtml(message)}</p></div>`;
+    };
+    empty('산책길 사진을 불러오고 있어요.');
     try{
       const { data, error } = await sb.from('course_photos').select('*').eq('course_id', courseId).order('created_at', {ascending:false}).limit(3);
+      if(request !== coursePhotoRequest) return;
+      if(error) throw error;
       if(!error && data && data.length){
         gallery.innerHTML = data.map(p=>{
           const safeUrl = safePublicImageUrl(p.url);
-          return safeUrl ? `<div class="photo-tile" data-photo-url="${escapeHtml(safeUrl)}" style="background-image:url('${escapeHtml(safeUrl)}'); background-size:cover; background-position:center; cursor:zoom-in;"></div>` : '';
+          return safeUrl ? `<button type="button" class="photo-tile" aria-label="산책길 사진 크게 보기" data-photo-url="${escapeHtml(safeUrl)}" style="background-image:url('${escapeHtml(safeUrl)}'); background-size:cover; background-position:center; cursor:zoom-in;"></button>` : '';
         }).join('');
-        while(gallery.children.length < 3){
-          const tile = document.createElement('div');
-          tile.className = 'photo-tile';
-          tile.textContent = PHOTO_PLACEHOLDER_EMOJI[gallery.children.length] || '🐾';
-          gallery.appendChild(tile);
-        }
+        gallery.dataset.photoCount = String(gallery.children.length);
+        if(!gallery.children.length) empty('아직 표시할 사진이 없어요. 첫 산책 사진을 남겨주세요.');
         gallery.querySelectorAll('[data-photo-url]').forEach(tile=>{
           tile.addEventListener('click', ()=> openPhotoLightbox(tile.dataset.photoUrl));
         });
       } else {
-        gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
+        empty('아직 등록된 사진이 없어요. 첫 산책 사진을 남겨주세요.');
       }
     }catch(e){
       console.error(e);
-      gallery.innerHTML = PHOTO_PLACEHOLDER_EMOJI.map(e=>`<div class="photo-tile">${e}</div>`).join('');
+      if(request === coursePhotoRequest) empty('사진을 불러오지 못했어요. 잠시 후 다시 열어주세요.');
     }
   }
   async function openMemberProfile(ownerId){
