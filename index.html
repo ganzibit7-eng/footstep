@@ -974,6 +974,39 @@
   }
 
 </style>
+<style>
+  /* Android phones: reserve a scene beneath the title instead of the hero footer. */
+  @media(max-width:880px){
+    html.android-phone .hero[data-page-section="home"]{padding-bottom:24px;}
+    html.android-phone .hero[data-page-section="home"] .hero-playground{
+      position:relative;left:auto;right:auto;bottom:auto;width:100%;height:96px;
+      margin:10px 0 6px;border-radius:16px;isolation:isolate;
+    }
+    html.android-phone .hero[data-page-section="home"] .hero-chase-track{
+      left:0;animation-name:androidHeroChase;animation-duration:10s;animation-delay:-1s;
+    }
+    @keyframes androidHeroChase{
+      0%,100%{left:0;transform:scaleX(1);opacity:1;}
+      45%,49%{left:calc(100% - 150px);transform:scaleX(1);opacity:1;}
+      50%{left:calc(100% - 150px);transform:scaleX(-1);opacity:1;}
+      95%,99%{left:0;transform:scaleX(-1);opacity:1;}
+    }
+  }
+  @media(prefers-reduced-motion:reduce){
+    html.android-phone .hero[data-page-section="home"] .hero-chase-track{animation:none!important;left:20%;}
+  }
+</style>
+<script>
+  // iPhone/iPad keep the original layout. Tablet and desktop layouts are unchanged.
+  if(/Android/i.test(navigator.userAgent) && /Mobile/i.test(navigator.userAgent)){
+    document.documentElement.classList.add('android-phone');
+    document.addEventListener('DOMContentLoaded',()=>{
+      const heading=document.querySelector('#hero-style-3 h1');
+      const scene=document.querySelector('.hero-playground');
+      if(heading && scene) heading.insertAdjacentElement('afterend',scene);
+    },{once:true});
+  }
+</script>
 </head>
 <body>
 
