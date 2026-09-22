@@ -107,7 +107,7 @@
   }
   html[data-theme="dark"] .photo-tile{ opacity:0.85; }
   html[data-theme="dark"] .map-tiles{
-    filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.85);
+    filter: none;
   }
   html[data-theme="dark"] .leaflet-control-attribution{
     background:rgba(36,43,38,0.8) !important; color:var(--muted-text) !important;
@@ -1011,6 +1011,7 @@
     *, *::before, *::after{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
   }
 
+.admin-traffic-panel{padding:16px;border:1px solid #b8c5b5;border-radius:16px;margin:16px 0}.admin-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.admin-tools input{flex:1;min-width:140px}.admin-tools input,.admin-tools select,.admin-tools button{font:inherit;padding:10px;border-radius:10px;border:1px solid #b8c5b5;max-width:100%}.admin-traffic-panel p{font-size:13px;line-height:1.6}.admin-table-scroll{overflow:auto;max-height:320px}.admin-traffic-panel table{width:100%;border-collapse:collapse;font-size:14px}.admin-traffic-panel th,.admin-traffic-panel td{padding:9px;text-align:left;border-bottom:1px solid #d8dfd3;white-space:nowrap}.admin-row .info{min-width:0;overflow-wrap:anywhere}.admin-actions{flex-wrap:wrap}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -1923,7 +1924,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>
 
         <!-- 항상 보이는 핵심 요약 -->
-        <div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
+        <section class="admin-traffic-panel"><h4>기간별 방문 통계</h4><div class="admin-tools"><select id="admin-traffic-period" aria-label="통계 기간"><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select><button id="admin-traffic-export" type="button" disabled>일별 통계 CSV</button></div><p>한국 시간 기준 · 방문자는 브라우저 식별자 기준으로 실제 인원과 다를 수 있어요.</p><div id="admin-traffic-result" aria-live="polite"></div></section><div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
         <div style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:10px;">
@@ -1997,7 +1998,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           </div>
           <div class="admin-accordion-body" id="acc-pending" style="display:none;">
             <p style="font-size:12.5px; color:var(--muted-text); margin:8px 0;">회원이 새로 등록한 코스·배변봉투함·동반시설이에요. 승인해야 지도에 공개돼요.</p>
-            <div id="pending-list" style="margin-top:8px;"></div>
+            <div class="admin-tools"><input id="admin-pending-search" type="search" aria-label="승인 대기 검색" placeholder="장소명·등록자 검색"></div><div id="pending-list" style="margin-top:8px;"></div>
           </div>
         </div>
 
@@ -4300,7 +4301,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     map = L.map('map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
     mainTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
     }).addTo(map);
     courseLayer = L.markerClusterGroup({ maxClusterRadius:50 }).addTo(map);
     coursePathLayer = L.layerGroup().addTo(map);
@@ -4785,7 +4786,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     miniMap = L.map('mini-map', {tap:true}).setView([36.5,127.8], 7);
     miniTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
     }).addTo(miniMap);
 
     // 점 찍기 모드 & 배변봉투함 모드용 클릭 처리
@@ -5434,7 +5435,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false}).setView([c.lat,c.lng], 14);
     L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
     }).addTo(routeMap);
     if(c.path && c.path.length > 1){
       const line = L.polyline(c.path, {color:'#B5502E', weight:4}).addTo(routeMap);
@@ -5628,7 +5629,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     walkMap = L.map('walk-map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
     walkTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
-      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles'
+      referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
     }).addTo(walkMap);
   }
   function nearestCourseWithin(lat, lng, maxMeters){
@@ -6339,7 +6340,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     const all = [...pendingCourses, ...pendingBins, ...pendingFacilities];
     if(countEl) countEl.textContent = all.length;
     if(!all.length){ listEl.innerHTML = '<p class="empty-admin">승인 대기 중인 항목이 없어요.</p>'; return; }
-    listEl.innerHTML = all.map(item => `
+    const query=document.getElementById('admin-pending-search').value.trim().toLowerCase();
+    const visible=all.filter(item=>`${item.name||''} ${item.author||''}`.toLowerCase().includes(query));
+    if(!visible.length){listEl.textContent='검색 결과가 없어요.';return;}
+    listEl.innerHTML = visible.map(item => `
       <div class="admin-row">
         <div class="info"><b>${item.emoji} ${escapeHtml(item.name)}</b>${item.author ? '등록: '+escapeHtml(item.author) : ''}</div>
         <div class="admin-actions">
@@ -6358,7 +6362,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
     const [table, id] = key.split(':');
     try{
-      const { error } = await sb.from(table).update({ status: 'approved' }).eq('id', id);
+      if(!['courses','bins','facilities'].includes(table)||!id)return;
+      const { data, error } = await sb.from(table).update({ status: 'approved' }).eq('id', id).eq('status','pending').select('id');
+      if(!error&&!data?.length){toast('이미 처리되었거나 권한이 없는 항목이에요. 새로고침해 주세요.');return;}
       if(error){ console.error(error); toast('승인 처리에 실패했어요'); return; }
       toast('승인했어요! 이제 지도에 공개돼요 🐾');
       await loadData();
@@ -6371,7 +6377,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!confirm('이 등록 요청을 거절하고 삭제할까요? 되돌릴 수 없어요.')) return;
     const [table, id] = key.split(':');
     try{
-      const { error } = await sb.from(table).delete().eq('id', id);
+      if(!['courses','bins','facilities'].includes(table)||!id)return;
+      const { data, error } = await sb.from(table).delete().eq('id', id).eq('status','pending').select('id');
+      if(!error&&!data?.length){toast('이미 처리되었거나 권한이 없는 항목이에요. 새로고침해 주세요.');return;}
       if(error){ console.error(error); toast('거절 처리에 실패했어요'); return; }
       toast('거절 처리했어요');
       await loadData();
@@ -7155,16 +7163,43 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     });
   }
-  function refreshAdminDashboard(){
-    renderAdminSummary();
-    renderAdminStats();
-    renderAdminList();
-    renderPendingApprovals();
-    renderReferrerBreakdown();
-    renderLiveVisitorCount();
-    if(isSuperAdmin(myDeviceId)) renderManagerList();
-    const ts = document.getElementById('admin-last-refreshed');
-    if(ts) ts.textContent = `마지막 새로고침: ${new Date().toLocaleTimeString('ko-KR')}`;
+
+ let adminTrafficData=null,adminTrafficRequest=0;
+ async function renderAdminTraffic(){
+  const request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export');
+  adminTrafficData=null;button.disabled=true;el.textContent='통계를 불러오고 있어요…';
+  try{
+   const {data,error}=await sb.rpc('admin_traffic_summary',{p_days:Number(document.getElementById('admin-traffic-period').value)});
+   if(request!==adminTrafficRequest)return;
+   if(error||!Array.isArray(data?.daily))throw error||new Error('invalid_stats');
+   adminTrafficData=data;
+   const num=x=>Number(x||0).toLocaleString('ko-KR'),delta=Number(data.views)-Number(data.previous_views);
+   el.innerHTML=`<p><strong>조회 ${num(data.views)}회 · 방문 브라우저 ${num(data.visitors)}개</strong><br>이전 동일 길이 기간 대비 조회 ${delta>0?'+':''}${num(delta)}회</p><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td></tr>`).join('')}</tbody></table></div><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}`;
+   button.disabled=false;
+  }catch(e){if(request===adminTrafficRequest)el.textContent='통계를 불러오지 못했어요. 관리자 로그인 상태를 확인하고 새로고침해 주세요.';}
+ }
+ document.getElementById('admin-traffic-period').addEventListener('change',renderAdminTraffic);
+ document.getElementById('admin-pending-search').addEventListener('input',renderPendingApprovals);
+ document.getElementById('admin-traffic-export').addEventListener('click',()=>{
+  if(!adminTrafficData||!isAdminUser(myDeviceId))return;
+  const rows=[['날짜(KST)','조회수','방문 브라우저 수'],...adminTrafficData.daily.map(r=>[r.date,Number(r.views),Number(r.visitors)])];
+  const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
+  a.href=url;a.download=`balzaguk-traffic-${adminTrafficData.days}days.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ });
+
+  async function refreshAdminDashboard(){
+    if(!isAdminUser(myDeviceId))return;
+    const button=document.getElementById('admin-refresh-btn');
+    if(button.disabled)return;
+    button.disabled=true;
+    try{
+      await loadData();
+      await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderReferrerBreakdown(),renderLiveVisitorCount()]);
+      if(isSuperAdmin(myDeviceId))await renderManagerList();
+      document.getElementById('admin-last-refreshed').textContent=`조회 종료: ${new Date().toLocaleTimeString('ko-KR')}`;
+    }catch(e){toast('새로고침에 실패했어요. 다시 시도해 주세요.');}
+    finally{button.disabled=false;}
   }
   document.getElementById('admin-refresh-btn').addEventListener('click', refreshAdminDashboard);
 
@@ -7175,6 +7210,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     renderAdminList();
     renderPendingApprovals();
     renderMemberList();
+    renderAdminTraffic();
     renderReferrerBreakdown();
     renderLiveVisitorCount();
     const managerWrap = document.getElementById('manager-section-wrap');
