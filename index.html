@@ -2804,18 +2804,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(publicDataFailed) toast('일부 최신 정보를 불러오지 못했어요. 기존 표시 정보가 남아 있을 수 있으니 연결 확인 후 새로고침해 주세요.');
 
     try{
-      const { data, error } = await sb.from('reports').select('*');
-      reports = {};
-      if(!error && data){
-        data.forEach(r=>{
-          const key = r.target_type + '_' + r.target_id;
-          if(!reports[key]) reports[key] = { count:0, reporters:[], reasons:[] };
-          reports[key].count += 1;
-          reports[key].reporters.push(r.reporter_id);
-          if(r.reason) reports[key].reasons.push(r.reason);
+      const {data:counts,error:countError}=await sb.from('report_counts').select('target_type,target_id,report_count');
+      if(countError)throw countError;
+      const nextReports={};
+      (counts||[]).forEach(r=>{
+        nextReports[r.target_type+'_'+r.target_id]={count:Number(r.report_count)||0,reporters:[],reasons:[]};
+      });
+      if(isAdminUser(myDeviceId)){
+        const {data:details,error:detailError}=await sb.from('reports').select('target_type,target_id,reporter_id,reason');
+        if(detailError)throw detailError;
+        (details||[]).forEach(r=>{
+          const key=r.target_type+'_'+r.target_id;
+          if(!nextReports[key])nextReports[key]={count:0,reporters:[],reasons:[]};
+          nextReports[key].reporters.push(r.reporter_id);
+          if(r.reason)nextReports[key].reasons.push(r.reason);
         });
       }
-    }catch(e){ console.error(e); reports = {}; }
+      reports=nextReports;
+    }catch(e){console.error('신고 정보 조회 실패',e);toast('신고 상태를 새로 불러오지 못했어요. 연결을 확인해 주세요.');}
+
 
     try{
       const ownerIds = new Set();
