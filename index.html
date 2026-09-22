@@ -1213,6 +1213,99 @@ document.addEventListener('DOMContentLoaded',()=>{
   tabs.addEventListener('focusin',show);
 });
 </script>
+
+<style id="balzaguk-design-polish">
+/* Shared visual language, scoped away from the first-screen hero geometry. */
+:root{--ui-border:rgba(58,83,61,.16);--ui-shadow:0 8px 28px rgba(32,61,46,.055);--ui-radius:22px}
+html[data-theme="dark"]{--ui-border:rgba(210,228,208,.2);--ui-shadow:0 8px 28px rgba(0,0,0,.15)}
+.app-page:not([data-page-section="home"])>.wrap{padding-top:12px}
+.section-head{align-items:flex-end;gap:20px}
+.section-head h2,.home-section-head h2{letter-spacing:-.035em;line-height:1.25;word-break:keep-all}
+.section-head p,.home-section-head p{max-width:58ch;line-height:1.75;color:var(--muted-text)}
+.kicker{display:inline-block;letter-spacing:.08em;font-size:11px!important;margin-bottom:10px}
+.grid{gap:20px}
+.card{border:1px solid var(--ui-border);border-radius:var(--ui-radius);box-shadow:var(--ui-shadow);background:var(--paper);isolation:isolate}
+.card-visual{height:148px;background:#e5ecdb;overflow:hidden}
+.course-landscape{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.card-visual-caption{position:absolute;bottom:12px;left:16px;font-size:10px;letter-spacing:.08em;color:#244a37;background:rgba(255,253,245,.9);padding:5px 9px;border-radius:20px}
+.card-visual .badge{top:14px;left:14px;padding:6px 10px;font-size:11px;letter-spacing:0}
+.card-visual .fav-btn{top:12px;right:12px;width:42px;height:42px;border:1px solid rgba(255,255,255,.8);background:#fffdf5;box-shadow:0 4px 12px #203d4614}
+.card-body{padding:20px;gap:12px}
+.card h3{font-size:21px;line-height:1.4;letter-spacing:-.025em;word-break:keep-all;overflow-wrap:anywhere}
+.card .desc{font-size:13px;line-height:1.8;color:var(--muted-text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .row{flex-wrap:wrap;gap:8px}
+.card-quickmeta{font-family:inherit;font-size:13px;font-weight:700}
+.card-rating{font-size:12px;white-space:nowrap}
+.tag-row{gap:6px}
+.tag-pill{font-size:11px;padding:6px 9px;border-radius:8px;letter-spacing:0}
+.card-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--ui-border);gap:8px;font-size:11px}
+.card-owner-tag{min-width:0;overflow-wrap:anywhere}
+.card-foot button{min-height:36px;padding:6px 8px}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.empty-course-state,.loading-state{grid-column:1/-1;width:100%;padding:32px 20px;border-radius:20px;background:var(--sand);border:1px dashed var(--ui-border);text-align:center;line-height:1.9;font-size:14px}
+.map-panel,.form-card{border:1px solid var(--ui-border);border-radius:var(--ui-radius);box-shadow:var(--ui-shadow)}
+.map-toolbar{gap:10px;padding:16px}
+.map-toolbar input{border-radius:14px!important}
+.filter-group{gap:8px;flex-wrap:wrap}
+.chip{font-family:inherit;min-height:40px;line-height:1.35;padding:9px 13px;border:1px solid var(--ui-border);box-shadow:none;letter-spacing:0}
+.chip.active{box-shadow:0 3px 8px #213c3014}
+.map-legend-details{padding:0 16px}
+.map-legend-details>summary{padding:15px 2px;font-size:12px;font-weight:700;color:var(--pine-deep);cursor:pointer}
+.map-legend-details .map-legend{padding:0 0 16px;border:0;gap:10px;line-height:1.6}
+.form-card{padding:26px}
+.form-card label{margin-top:20px;margin-bottom:8px;font-size:13px}
+.form-card input:not([type=checkbox]):not([type=radio]):not([type=file]),.form-card select,.form-card textarea{font-size:16px;line-height:1.5;border:1px solid var(--ui-border);border-radius:12px;min-height:48px;padding:12px 14px;width:100%;box-sizing:border-box}
+.form-card textarea{min-height:112px}
+.type-btn{min-height:48px;border-radius:12px}
+.tag-check{min-height:38px;display:inline-flex;align-items:center}
+.submit-btn,.poi-search-cta{min-height:46px;border-radius:13px;box-shadow:0 5px 12px #a84b2d16}
+.pin-btn{border-style:solid;border-radius:12px}
+#modal-overlay .modal{border-radius:26px;border:1px solid var(--ui-border)}
+#modal-overlay .modal-body{padding:26px}
+#modal-title{font-size:clamp(24px,4vw,32px);line-height:1.35;letter-spacing:-.035em;word-break:keep-all}
+#modal-meta{gap:7px;margin:15px 0;flex-wrap:wrap}
+#modal-desc{font-size:14px!important;line-height:1.85;overflow-wrap:anywhere}
+#photo-upload-wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0!important}
+#photo-upload-wrap .pin-btn{display:flex!important;align-items:center;justify-content:center;width:100%!important;margin:0!important;padding:11px 5px!important;font-size:12px!important;min-height:46px;box-sizing:border-box}
+#photo-upload-status{grid-column:1/-1;grid-row:2;margin:0!important}
+#modal-route-map{border:1px solid var(--ui-border);border-radius:18px;overflow:hidden}
+#modal-gallery[data-photo-count="0"]{height:166px;min-height:0}
+.course-photo-empty{position:relative;overflow:hidden;width:100%;height:100%;background:#e5ecdb}
+.course-photo-empty p{position:relative;z-index:1;align-self:flex-end;background:rgba(255,253,245,.93);color:#244a37;border-radius:12px;padding:9px 14px;margin:0 18px 14px;font-size:12px}
+.review-section{margin-top:26px;padding-top:24px;border-top:1px solid var(--ui-border)}
+.review-section h4{font-size:20px}
+.review-section select{min-height:42px;font-size:13px!important}
+.modal-close{min-width:42px;min-height:42px;z-index:5}
+#walk-section .form-card{box-shadow:var(--ui-shadow)}
+#walk-section .register-panel{gap:20px}
+#mong-request{line-height:1.6;border-radius:16px!important}
+#ai-assistant-overlay .modal{border-radius:24px}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(hover:none){.card:hover{transform:none}}
+@media(max-width:600px){
+.app-page:not([data-page-section="home"]) .section-head{margin-bottom:22px}
+.app-page:not([data-page-section="home"]) .section-head h2{font-size:28px}
+.section-head p{font-size:13px}
+.grid{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:22px}
+.card-visual{height:132px}
+.card-body{padding:18px}
+.card h3{font-size:21px}
+.form-card{padding:20px 16px}
+.register-panel{grid-template-columns:minmax(0,1fr);gap:18px}
+.mini-map-wrap{position:static}
+.map-toolbar{padding:12px!important}
+#place-search-input{min-width:0!important;flex:1 1 190px;font-size:16px!important}
+#place-search-btn{min-height:46px}
+#poi-search-btn{width:100%;margin-top:4px}
+#modal-overlay .modal-body{padding:22px 16px}
+#modal-overlay .modal{border-radius:22px}
+#modal-title{font-size:25px}
+#modal-gallery[data-photo-count="0"]{height:145px}
+#modal-route-map{height:230px}
+.card-foot{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){.card,.chip,.submit-btn,.type-btn{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -1479,25 +1572,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>
     <div class="map-panel">
       <div class="map-toolbar" style="position:relative; padding:18px 18px 14px;">
-        <input type="text" id="place-search-input" placeholder="🔍 어디로 산책 갈까요? (지역·장소 검색)" style="flex:1; min-width:180px; padding:13px 18px; border:1.5px solid var(--line); border-radius:999px; font-family:inherit; font-size:14px; background:var(--sand);">
+        <input type="text" id="place-search-input" aria-label="지역이나 장소 검색" placeholder="🔍 어디로 산책 갈까요? (지역·장소 검색)" style="flex:1; min-width:180px; padding:13px 18px; border:1.5px solid var(--line); border-radius:999px; font-family:inherit; font-size:14px; background:var(--sand);">
         <button type="button" class="poi-search-cta" id="place-search-btn" style="font-size:13px; padding:12px 20px; border-radius:999px;">검색</button>
         <div id="place-search-results" style="display:none; position:absolute; top:100%; left:18px; right:18px; z-index:500; background:var(--paper); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); margin-top:6px; max-height:260px; overflow-y:auto;"></div>
       </div>
       <div class="map-toolbar">
         <div class="filter-group" id="view-filter-group">
-          <div class="chip active" data-filter="all">전체</div>
-          <div class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</div>
-          <div class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</div>
-          <div class="chip" data-filter="facility"><span class="dot" style="background:var(--gold)"></span>동반시설</div>
+          <button type="button" class="chip active" data-filter="all">전체</button>
+          <button type="button" class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</button>
+          <button type="button" class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</button>
+          <button type="button" class="chip" data-filter="facility"><span class="dot" style="background:var(--gold)"></span>동반시설</button>
         </div>
         <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
       <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
-          <div class="chip" data-poi="vet">🏥 동물병원</div>
-          <div class="chip" data-poi="pet_shop">🛍️ 애견용품점</div>
-          <div class="chip" data-poi="restaurant">🍽️ 동반 식당·카페</div>
-          <div class="chip" data-poi="lodging">🏨 동반 숙소</div>
+          <button type="button" class="chip" data-poi="vet">🏥 동물병원</button>
+          <button type="button" class="chip" data-poi="pet_shop">🛍️ 애견용품점</button>
+          <button type="button" class="chip" data-poi="restaurant">🍽️ 동반 식당·카페</button>
+          <button type="button" class="chip" data-poi="lodging">🏨 동반 숙소</button>
         </div>
         <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
       </div>
@@ -1507,14 +1600,14 @@ document.addEventListener('DOMContentLoaded',()=>{
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm8.94 3H23v2h-2.06A9.005 9.005 0 0113 20.94V23h-2v-2.06A9.005 9.005 0 013.06 13H1v-2h2.06A9.005 9.005 0 0111 3.06V1h2v2.06A9.005 9.005 0 0120.94 11zM12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
         </button>
       </div>
-      <div class="map-legend">
+      <details class="map-legend-details"><summary>지도 표시와 이용 안내</summary><div class="map-legend">
         <span>🐾 산책 코스 시작점</span>
         <span>┈┈ 실제 산책 경로</span>
         <span>🚮 배변봉투함</span>
         <span>🍽️ 동반식당·카페 · 🏨 동반숙소 (사용자 등록 + 공공데이터)</span>
         <span>🏥 동물병원 · 🛍️ 애견용품점은 "지금 보이는 지역에서 찾기"로 실시간 검색돼요</span>
         <span>마커를 누르면 상세 정보가 보여요</span>
-      </div>
+      </div></details>
     </div>
 
     <div style="margin-top:44px;">
@@ -1541,7 +1634,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     </div>
     <div class="map-panel" style="margin-bottom:24px;">
       <div class="map-toolbar">
-        <input type="text" id="course-search-input" list="recent-search-list" placeholder="🔍 코스 이름·설명으로 검색 (예: 한강, 그늘)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
+        <input type="text" id="course-search-input" aria-label="산책 코스 검색" list="recent-search-list" placeholder="🔍 코스 이름·설명으로 검색 (예: 한강, 그늘)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
         <datalist id="recent-search-list"></datalist>
         <select id="course-sort-select" style="padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); color:var(--ink);">
           <option value="default">기본순</option>
@@ -1552,21 +1645,21 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
       <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="list-diff-filter">
-          <div class="chip active" data-diff-filter="all">전체 난이도</div>
-          <div class="chip" data-diff-filter="쉬움">쉬움</div>
-          <div class="chip" data-diff-filter="보통">보통</div>
-          <div class="chip" data-diff-filter="어려움">어려움</div>
+          <button type="button" class="chip active" data-diff-filter="all">전체 난이도</button>
+          <button type="button" class="chip" data-diff-filter="쉬움">쉬움</button>
+          <button type="button" class="chip" data-diff-filter="보통">보통</button>
+          <button type="button" class="chip" data-diff-filter="어려움">어려움</button>
         </div>
         <div class="filter-group" id="list-tag-filter">
-          <div class="chip" data-tag-filter="목줄해제가능">🐕 오프리쉬 정보</div>
-          <div class="chip" data-tag-filter="그늘많음">그늘많음</div>
-          <div class="chip" data-tag-filter="잔디바닥">잔디바닥</div>
-          <div class="chip" data-tag-filter="계단없음">계단없음</div>
-          <div class="chip" id="fav-only-chip">❤️ 찜한 코스만</div>
+          <button type="button" class="chip" data-tag-filter="목줄해제가능">🐕 오프리쉬 정보</button>
+          <button type="button" class="chip" data-tag-filter="그늘많음">그늘많음</button>
+          <button type="button" class="chip" data-tag-filter="잔디바닥">잔디바닥</button>
+          <button type="button" class="chip" data-tag-filter="계단없음">계단없음</button>
+          <button type="button" class="chip" id="fav-only-chip">❤️ 찜한 코스만</button>
         </div>
       </div>
     </div>
-    <p id="course-count-label" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
+    <p id="course-count-label" role="status" aria-live="polite" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
     <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
     <div class="grid" id="course-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
     <div style="text-align:center; margin-top:24px;">
@@ -4074,7 +4167,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const [va, vb] = visualGradients[c.diff] || visualGradients['쉬움'];
       card.innerHTML = `
         <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
-          <span class="card-visual-emoji">🐾</span>
+          <svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><span class="card-visual-caption">함께 걷기 좋은 길</span>
           <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
           <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="${isFav ? '찜 해제' : '찜하기'}" aria-pressed="${isFav}">${isFav ? '❤️' : '🤍'}</button>
         </div>
@@ -4581,7 +4674,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const request = ++coursePhotoRequest;
     const empty = (message)=>{
       gallery.dataset.photoCount = '0';
-      gallery.innerHTML = `<div class="course-photo-empty"><span aria-hidden="true">🐾</span><p>${escapeHtml(message)}</p></div>`;
+      gallery.innerHTML = `<div class="course-photo-empty"><svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><p>${escapeHtml(message)}</p></div>`;
     };
     empty('산책길 사진을 불러오고 있어요.');
     try{
