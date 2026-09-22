@@ -1032,6 +1032,15 @@
 #admin-overlay input{min-width:0}
 #admin-overlay #member-filter-status{font-size:12px;line-height:1.6}
 @media(max-width:600px){#admin-overlay .modal-body{padding:18px 12px 28px}#admin-overlay .admin-row{flex-direction:column}#admin-overlay .admin-actions{width:100%;justify-content:flex-start}#admin-overlay .admin-tools>*{flex:1 1 110px}#admin-overlay .admin-accordion-body{padding:0 12px 14px}#admin-overlay .admin-accordion-head{padding:16px 12px}}
+
+#weather-location{display:block;font-size:11px;color:var(--muted-text);margin:4px 0}
+#weather-meta{flex-wrap:wrap;gap:6px 10px}
+.search-feedback{display:flex;justify-content:flex-end;margin:8px 0 14px}
+.search-feedback .pin-btn{width:auto;padding:9px 14px}
+.search-feedback [hidden]{display:none!important}
+.app-page .section-head p{line-height:1.7}
+.app-page input:focus-visible,.app-page select:focus-visible,.app-page textarea:focus-visible{outline:3px solid #b68648;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.card,.reveal{transition:none!important}}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -1558,6 +1567,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
     </div>
     <p id="course-count-label" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
+    <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
     <div class="grid" id="course-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
     <div style="text-align:center; margin-top:24px;">
       <button type="button" id="course-load-more-btn" class="pin-btn" style="display:none; width:auto; padding:12px 28px;">더 보기</button>
@@ -2123,7 +2133,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="offline-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:2200; background:var(--clay-dark); color:#fff; text-align:center; padding:10px; font-size:13px; font-weight:700;">
   📡 인터넷 연결이 끊겼어요. 연결되면 자동으로 다시 시도해요.
 </div>
@@ -4157,6 +4167,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     list = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
 
+    const reset=document.getElementById('course-filter-reset');
+    if(reset)reset.hidden=!hasActiveListFilter();
     const countLabel = document.getElementById('course-count-label');
     if(countLabel) countLabel.textContent = `총 ${list.length}개 코스`;
 
@@ -4177,7 +4189,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   function trackRecentlyViewed(courseId){
     let ids = [];
     try{ ids = JSON.parse(localStorage.getItem('paw_recent_viewed') || '[]'); }catch(e){}
-    ids = ids.filter(id => id !== courseId);
+    ids = (Array.isArray(ids)?ids:[]).filter(id => typeof id==='string' && id !== courseId);
     ids.unshift(courseId);
     ids = ids.slice(0, 10);
     try{ localStorage.setItem('paw_recent_viewed', JSON.stringify(ids)); }catch(e){}
@@ -4188,7 +4200,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     try{ ids = JSON.parse(localStorage.getItem('paw_recent_viewed') || '[]'); }catch(e){}
     const wrap = document.getElementById('recent-viewed-wrap');
     if(!wrap) return;
-    const list = ids.map(id => allCourses().find(c=>c.id===id)).filter(Boolean).slice(0,6);
+    const list = (Array.isArray(ids)?ids:[]).map(id => allCourses().find(c=>c.id===id)).filter(c=>c&&!isHidden('course',c.id)).slice(0,6);
     if(list.length === 0){ wrap.style.display = 'none'; return; }
     wrap.style.display = '';
     renderCourseCards(document.getElementById('recent-viewed-grid'), list);
@@ -4961,6 +4973,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     listShownCount = LIST_PAGE_SIZE;
     renderGrid();
   });
+  document.getElementById('course-filter-reset').addEventListener('click',()=>{
+    clearTimeout(searchDebounce);
+    listFilterState.query='';listFilterState.diff='all';listFilterState.tags.clear();listFilterState.favOnly=false;
+    document.getElementById('course-search-input').value='';
+    document.querySelectorAll('#list-tag-filter .chip').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('#list-diff-filter .chip').forEach(c=>c.classList.toggle('active',c.dataset.diffFilter==='all'));
+    listShownCount=LIST_PAGE_SIZE;renderGrid();
+  });
   document.getElementById('course-load-more-btn').addEventListener('click', ()=>{
     listShownCount += LIST_PAGE_SIZE;
     renderGrid();
@@ -5605,45 +5625,47 @@ document.addEventListener('DOMContentLoaded',()=>{
     if([95,96,99].includes(code)) return '⛈️';
     return '🌤️';
   }
-  function pmGrade(pm10){
-    if(pm10 == null) return null;
-    if(pm10 <= 30) return { label:'좋음', color:'#3B82F6' };
-    if(pm10 <= 80) return { label:'보통', color:'#22C55E' };
-    if(pm10 <= 150) return { label:'나쁨', color:'#F59E0B' };
-    return { label:'매우 나쁨', color:'#EF4444' };
-  }
-  async function loadWeatherWidget(lat, lng){
-    try{
-      const [wRes, aRes] = await Promise.all([
-        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`),
-        fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=pm10,pm2_5&timezone=Asia%2FSeoul`)
-      ]);
-      const wData = await wRes.json();
-      const aData = await aRes.json();
-      const temp = wData.current?.temperature_2m;
-      const code = wData.current?.weather_code;
-      const pm10 = aData.current?.pm10;
-      const pm25 = aData.current?.pm2_5;
-      const grade = pmGrade(pm10);
 
-      document.getElementById('weather-title').textContent = `${weatherEmoji(code)} ${temp != null ? temp.toFixed(0)+'°C' : '–'}`;
+ function pmGrade(value,fine=false){
+  if(typeof value!=='number'||!Number.isFinite(value)||value<0)return null;
+  const levels=fine?[15,35,75]:[30,80,150],rank=value<=levels[0]?0:value<=levels[1]?1:value<=levels[2]?2:3;
+  return {rank,label:['좋음','보통','나쁨','매우 나쁨'][rank],color:['#2563eb','#327346','#9a5b00','#bc3434'][rank]};
+ }
+ let weatherRequest=0;
+ async function weatherJSON(url){
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+  try{const res=await fetch(url,{signal:controller.signal});if(!res.ok)throw Error('weather_http_'+res.status);return await res.json();}
+  finally{clearTimeout(timer);}
+ }
+ async function loadWeatherWidget(lat,lng){
+  const request=++weatherRequest;
+  const meta=document.getElementById('weather-meta');
+  const [weather,air]=await Promise.allSettled([
+   weatherJSON(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`),
+   weatherJSON(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lng}&current=pm10,pm2_5&timezone=Asia%2FSeoul`)
+  ]);
+  if(request!==weatherRequest)return;
+  const w=weather.status==='fulfilled'?weather.value.current:null,aq=air.status==='fulfilled'?air.value.current:null;
+  const temp=typeof w?.temperature_2m==='number'&&Number.isFinite(w.temperature_2m)?w.temperature_2m:null;
+  const code=w?.weather_code,g10=pmGrade(aq?.pm10),g25=pmGrade(aq?.pm2_5,true);
+  const badAir=(g10?.rank||0)>=2||(g25?.rank||0)>=2;
+  let advice='🐾 하늘과 노면 상태를 확인하고 산책을 준비하세요.';
+  if(temp===null)advice='날씨를 불러오지 못했어요. 잠시 후 다시 확인해 주세요.';
+  else if([95,96,99].includes(code))advice='⛈️ 뇌우 예보가 있어요. 야외 산책 전 기상 상황을 확인해 주세요.';
+  else if([51,53,55,56,57,61,63,65,66,67,80,81,82,71,73,75,77,85,86].includes(code))advice='🌧️ 비·눈 예보가 있어요. 젖거나 미끄러운 길을 주의해 주세요.';
+  else if(badAir)advice='대기질이 나빠요. 산책 전 지역 대기 정보를 확인해 주세요.';
+  else if(temp>=28)advice='🥵 더운 날씨예요. 그늘과 노면 온도를 확인해 주세요.';
+  else if(temp<=0)advice='🥶 추운 날씨예요. 결빙된 길을 주의해 주세요.';
+  else if(!g10||!g25)advice='대기질 정보가 일부 없어요. 산책 전 지역 정보를 확인해 주세요.';
+  document.getElementById('weather-title').textContent=temp===null?'날씨 정보 없음':`${weatherEmoji(code)} ${temp.toFixed(0)}°C`;
+  document.getElementById('weather-desc').textContent=advice;
+  meta.innerHTML=`<span style="color:${g10?.color||'inherit'}">미세 ${g10?.label||'정보 없음'}</span><span style="color:${g25?.color||'inherit'}">초미세 ${g25?.label||'정보 없음'}</span><span>PM10 ${g10?aq.pm10:'–'} · PM2.5 ${g25?aq.pm2_5:'–'}</span>`;
+  meta.title='Open-Meteo 예측 자료 · µg/m³ · 측정소 실측값과 다를 수 있습니다.';
+  let location=document.getElementById('weather-location');
+  if(!location){location=document.createElement('span');location.id='weather-location';meta.before(location);}
+  location.textContent=(myRegionLat!=null&&myRegionLng!=null?'등록 지역':'서울 기준')+' · 예측 날씨';
+ }
 
-      let advice = '🐾 지금 산책하기 좋은 날씨예요!';
-      if(temp != null && temp >= 28) advice = '🥵 한낮엔 아스팔트가 뜨거울 수 있어요. 그늘 많은 코스나 이른 아침·저녁 산책을 추천해요.';
-      else if(temp != null && temp <= 0) advice = '🥶 발바닥이 시릴 수 있어요. 짧게 산책하거나 신발을 챙겨주세요.';
-      else if(grade && (grade.label === '나쁨' || grade.label === '매우 나쁨')) advice = '😷 미세먼지가 안 좋아요. 실내 활동을 고려하거나 마스크를 챙겨주세요.';
-      document.getElementById('weather-desc').textContent = advice;
-
-      const metaEl = document.getElementById('weather-meta');
-      metaEl.innerHTML = grade
-        ? `<span style="color:${grade.color}; font-weight:700;">미세먼지 ${grade.label}</span><span>PM10 ${pm10 ?? '–'} · PM2.5 ${pm25 ?? '–'}</span>`
-        : '';
-    }catch(e){
-      console.error(e);
-      document.getElementById('weather-title').textContent = '날씨 정보 없음';
-      document.getElementById('weather-desc').textContent = '잠시 후 다시 확인해주세요.';
-    }
-  }
   function initWeatherWidget(){
     // 홈 화면 진입과 동시에 위치 권한을 묻지 않도록, 등록된 내 지역이 있으면 그걸 쓰고
     // 없으면 서울 기준으로 보여줘요. 실제 GPS 위치는 지도의 "현위치" 버튼을 눌렀을 때만 물어봐요.
@@ -6103,7 +6125,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     try{ localStorage.setItem('paw_welcome_popup_last_shown', String(Date.now())); }catch(e){}
   }
   setTimeout(()=>{
-    if(myNickname) return; // 이미 로그인한 사람에겐 안 띄움
+    if(myNickname || currentPage!=='home' || document.hidden || /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'')) return; // 탐색·작성 중에는 가입 안내를 띄우지 않음
     if(document.querySelector('.modal-overlay.show')) return; // 다른 창이 이미 떠있으면 방해하지 않음
     let lastShown = 0;
     try{ lastShown = Number(localStorage.getItem('paw_welcome_popup_last_shown') || '0'); }catch(e){}
