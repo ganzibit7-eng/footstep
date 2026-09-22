@@ -1304,6 +1304,37 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .leaflet-popup-content{font-family:inherit;font-size:14px;line-height:1.65}
 .leaflet-tooltip{font-family:inherit;font-size:13px;line-height:1.5}
 </style>
+<style id="course-card-final">
+.course-card{border-radius:24px;border-color:var(--ui-border);box-shadow:0 3px 6px rgba(31,60,43,.02),0 12px 28px rgba(31,60,43,.045);transition:transform .18s ease,box-shadow .18s ease}
+.course-card .card-visual{height:142px}
+.course-card[data-palette="1"] .card-visual{background:#f1ebdb}
+.course-card[data-palette="1"] .course-landscape>path:nth-of-type(1){fill:#d6cba5}
+.course-card[data-palette="1"] .course-landscape>path:nth-of-type(2){fill:#a7ad86}
+.course-card[data-palette="2"] .card-visual{background:#e2eceb}
+.course-card[data-palette="2"] .course-landscape>path:nth-of-type(1){fill:#b2c9c5}
+.course-card[data-palette="2"] .course-landscape>path:nth-of-type(2){fill:#80a6a0}
+.course-card .card-visual-caption{font-size:8px;letter-spacing:.12em;bottom:12px;background:rgba(255,253,245,.92)}
+.course-card .card-body{padding:20px;gap:14px}
+.course-card h3{margin:0;font-size:21px;line-height:1.45;letter-spacing:-.03em;overflow-wrap:anywhere}
+.course-card .course-metrics{display:flex;gap:20px;flex-wrap:wrap}
+.course-card .course-metric{display:flex;flex-direction:column;gap:3px}
+.course-card .course-metric small{font-size:10px;color:var(--muted-text);font-weight:500}
+.course-card .course-metric strong{font-size:15px;color:var(--pine-deep);font-variant-numeric:tabular-nums}
+.course-card .card-rating{font-size:14px;display:flex;flex-direction:column;gap:3px;text-align:right;margin-left:auto}
+.course-card .card-rating small{font-size:10px;font-weight:500;color:var(--muted-text)}
+.course-card .card-rating-empty{font-size:10px;color:var(--muted-text);font-weight:500;white-space:normal}
+.course-card .desc{margin:0;min-height:3.6em}
+.course-card .tag-row{display:flex;gap:6px;flex-wrap:wrap}
+.course-card .tag-pill{background:var(--sand);border:1px solid var(--ui-border);font-size:10px;padding:5px 8px;line-height:1.4}
+.course-detail-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 14px;border:1px solid var(--ui-border);border-radius:12px;background:var(--sand);color:var(--pine-deep);font:inherit;font-size:13px;font-weight:700;min-height:46px;cursor:pointer;margin-top:auto}
+.course-detail-cta>span:last-child{font-size:20px;line-height:1}
+.course-card .card-foot{margin-top:0;padding-top:10px;font-size:10px;align-items:center}
+.course-card .card-foot .report-btn{font-size:10px;color:var(--muted-text)}
+.course-card .card-owner-tag{font-size:10px;line-height:1.6}
+@media(hover:hover){.course-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(31,60,43,.1)}.course-detail-cta:hover{background:var(--pine-deep);color:var(--paper)}}
+@media(max-width:600px){.course-card .card-body{padding:18px;gap:12px}.course-card .card-visual{height:126px}.course-card h3{font-size:20px}.course-card .course-metrics{gap:18px}}
+@media(prefers-reduced-motion:reduce){.course-card{transition:none}}
+</style>
 </head>
 <body>
 
@@ -4144,7 +4175,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     }
     courseList.forEach(c=>{
       const card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card course-card';
+      card.dataset.palette = String(Array.from(String(c.id)).reduce((sum,ch)=>sum+ch.charCodeAt(0),0)%3);
       card.tabIndex = 0;
       card.setAttribute('aria-label',c.name+' 코스 상세 보기');
       card.addEventListener('keydown',e=>{
@@ -4165,8 +4197,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       const [va, vb] = visualGradients[c.diff] || visualGradients['쉬움'];
       card.innerHTML = `
         <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
-          <svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><span class="card-visual-caption">함께 걷기 좋은 길</span>
-          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+          <svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><span class="card-visual-caption">WALK WITH YOUR DOG</span>
+          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${escapeHtml(c.diff||'쉬움')}</span>
           <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="${isFav ? '찜 해제' : '찜하기'}" aria-pressed="${isFav}">${isFav ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
@@ -4174,11 +4206,12 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
           ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14; align-self:flex-start;">🌟 홍보중인 코스</span>` : ''}
           ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F; align-self:flex-start;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
           <div class="row" style="gap:10px;">
-            <span class="card-quickmeta">${escapeHtml(c.distance||'거리 정보 없음')}${estMin ? ' · 약 '+estMin+'분' : ''}</span>
-            ${avg ? `<span class="card-rating">★ ${avg} (${reviewsFor(c.id).length})</span>` : ''}
+            <div class="course-metrics"><span class="course-metric"><small>코스 거리</small><strong>${escapeHtml(c.distance||'정보 없음')}</strong></span>${estMin ? `<span class="course-metric"><small>예상 소요</small><strong>약 ${estMin}분</strong></span>` : ''}</div>
+            ${avg ? `<span class="card-rating" aria-label="평점 ${avg}, 리뷰 ${reviewsFor(c.id).length}개">★ ${avg}<small>리뷰 ${reviewsFor(c.id).length}</small></span>` : '<span class="card-rating card-rating-empty">첫 리뷰를 기다려요</span>'}
           </div>
-          <p class="desc">${escapeHtml(c.desc||'')}</p>
-          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}${c.diff==='쉬움' ? `<span class="tag-pill" style="background:#EFE6D3; color:#8A5F14;">🐕 소형견 추천</span>` : ''}</div>
+          <p class="desc">${escapeHtml(c.desc||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
+          <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
+          <button type="button" class="course-detail-cta" data-course-open="${escapeHtml(c.id)}" aria-label="${escapeHtml(c.name)} 자세히 보기"><span>코스 살펴보기</span><span aria-hidden="true">↗</span></button>
           <div class="card-foot">
             <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
             ${isMine
@@ -4193,6 +4226,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       });
       containerEl.appendChild(card);
     });
+    containerEl.querySelectorAll('[data-course-open]').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();openCourseDetail(btn.dataset.courseOpen);}));
     containerEl.querySelectorAll('[data-fav-toggle]').forEach(btn=>{
       btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleFavorite(btn.dataset.favToggle); });
     });
