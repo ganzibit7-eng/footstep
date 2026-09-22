@@ -1012,6 +1012,26 @@
   }
 
 .admin-traffic-panel{padding:16px;border:1px solid #b8c5b5;border-radius:16px;margin:16px 0}.admin-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.admin-tools input{flex:1;min-width:140px}.admin-tools input,.admin-tools select,.admin-tools button{font:inherit;padding:10px;border-radius:10px;border:1px solid #b8c5b5;max-width:100%}.admin-traffic-panel p{font-size:13px;line-height:1.6}.admin-table-scroll{overflow:auto;max-height:320px}.admin-traffic-panel table{width:100%;border-collapse:collapse;font-size:14px}.admin-traffic-panel th,.admin-traffic-panel td{padding:9px;text-align:left;border-bottom:1px solid #d8dfd3;white-space:nowrap}.admin-row .info{min-width:0;overflow-wrap:anywhere}.admin-actions{flex-wrap:wrap}
+
+#admin-overlay .admin-panel{width:min(960px,96vw);border-radius:26px;background:var(--cream,#faf8f2)}
+#admin-overlay .modal-body{padding:28px}
+#admin-overlay .modal-body>h3{padding:28px 20px!important;border-radius:18px;background:linear-gradient(125deg,#193e32,#32654e);color:white;font-size:24px!important}
+#admin-overlay .admin-accordion{border:1px solid var(--line)!important;border-radius:18px;padding:0!important;margin:12px 0!important;background:var(--paper,#fffdf8);overflow:hidden}
+#admin-overlay .admin-accordion-head{padding:18px;min-height:60px;gap:12px;scroll-margin-top:16px}
+#admin-overlay .admin-accordion-head h4{font-size:16px;margin:0}
+#admin-overlay .admin-accordion-head[aria-expanded="true"]{background:var(--sand)}
+#admin-overlay .admin-accordion-head:focus-visible{outline:3px solid #b57443;outline-offset:-3px}
+#admin-overlay .admin-accordion-body{padding:0 18px 18px}
+#admin-overlay .admin-section-details{border:1px solid var(--line);border-radius:18px;margin:12px 0}
+#admin-overlay .admin-section-details>summary{padding:18px;cursor:pointer;font-weight:700}
+#admin-overlay .admin-section-details .admin-traffic-panel{margin:0;border:0}
+#admin-overlay .admin-row{padding:16px 0;gap:12px;align-items:flex-start}
+#admin-overlay .admin-row .info{font-size:12px;line-height:1.9}
+#admin-overlay .admin-row .info b{display:block;font-size:16px}
+#admin-overlay button{min-height:40px}
+#admin-overlay input{min-width:0}
+#admin-overlay #member-filter-status{font-size:12px;line-height:1.6}
+@media(max-width:600px){#admin-overlay .modal-body{padding:18px 12px 28px}#admin-overlay .admin-row{flex-direction:column}#admin-overlay .admin-actions{width:100%;justify-content:flex-start}#admin-overlay .admin-tools>*{flex:1 1 110px}#admin-overlay .admin-accordion-body{padding:0 12px 14px}#admin-overlay .admin-accordion-head{padding:16px 12px}}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -2015,15 +2035,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         <!-- 전체 가입 회원 -->
         <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
           <div class="admin-accordion-head" data-accordion="allmembers">
-            <h4>👥 전체 가입 회원 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
+            <h4>👥 회원 관리 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
           </div>
           <div class="admin-accordion-body" id="acc-allmembers" style="display:none;">
-            <p style="font-size:13px; color:#6B6550; margin-top:8px;">가입일 최신순이에요. 닉네임으로 검색할 수 있어요.</p>
+            <p style="font-size:13px; color:#6B6550; margin-top:8px;">프로필 등록 회원 목록입니다. 로그인 계정 전체 수와 다를 수 있어요.</p>
             <div style="display:flex; gap:8px; margin:10px 0;">
-              <input type="text" id="all-member-search" placeholder="닉네임으로 검색" style="flex:1; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
+              <input type="text" id="all-member-search" placeholder="닉네임·회원 ID 검색" aria-label="회원 검색" style="flex:1; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
               <button type="button" id="export-members-csv-btn" class="pin-btn" style="width:auto; padding:0 16px; font-size:12.5px;">📥 CSV</button>
             </div>
-            <div id="all-member-list" style="max-height:320px; overflow-y:auto;"></div>
+            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 등록</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 등록순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="name">이름순</option></select></div><p id="member-filter-status" aria-live="polite"></p><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
           </div>
         </div>
 
@@ -6647,11 +6667,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const [profilesRes, pointsRes, visitsRes] = await Promise.all([
-        sb.from('profiles').select('*').order('created_at', { ascending:false }).limit(1000),
-        sb.from('points_log').select('owner_id, amount').limit(20000),
-        sb.from('page_views').select('owner_id').not('owner_id', 'is', null).limit(50000),
+        readReportPages('profiles','owner_id,nickname,created_at,updated_at,badge',['owner_id']).then(data=>({data,error:null})),
+        adminReadRows('points_log','owner_id,amount'),
+        adminReadRows('page_views','owner_id'),
       ]);
-      if(profilesRes.error) throw profilesRes.error;
+      for(const result of [profilesRes,pointsRes,visitsRes])if(result.error)throw result.error;
       allMembersCache = profilesRes.data || [];
       memberPointsMap = {};
       (pointsRes.data || []).forEach(p=>{
@@ -6662,7 +6682,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         memberVisitMap[v.owner_id] = (memberVisitMap[v.owner_id] || 0) + 1;
       });
       if(countEl) countEl.textContent = allMembersCache.length;
-      paintAllMemberList(allMembersCache);
+      applyMemberFilters();
     }catch(e){
       console.error(e);
       el.innerHTML = '<p class="empty-admin">회원 목록을 불러오지 못했어요.</p>';
@@ -6684,17 +6704,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     el.innerHTML = list.map(m=>{
       const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
       const isNew = m.created_at && (Date.now() - new Date(m.created_at).getTime()) < 7*86400000;
-      const isAdmin = m.owner_id === ADMIN_UID;
+      const isAdmin = isAdminUser(m.owner_id);
       const points = memberPointsMap[m.owner_id] || 0;
       const lastActive = daysAgoLabel(m.updated_at);
-      const visitCount = memberVisitMap[m.owner_id] || 1;
+      const visitCount = memberVisitMap[m.owner_id] || 0;
       return `
         <div class="admin-row">
-          <div class="info"><b>${isNew ? '🆕 ' : ''}${escapeHtml(m.nickname || '(닉네임 없음)')}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${escapeHtml(joined)} · 최근접속 ${escapeHtml(lastActive)} · 방문 ${visitCount}회 · 🪙 ${points.toLocaleString()}P</div>
+          <div class="info"><b>${isNew ? '🆕 ' : ''}${escapeHtml(m.nickname || '(닉네임 없음)')}</b>${isAdmin ? ' (관리자)' : ''} · 가입 ${escapeHtml(joined)} · 프로필 수정 ${escapeHtml(lastActive)} · 화면 조회 ${visitCount}회 · 🪙 ${points.toLocaleString()}P</div>
           ${isAdmin ? '' : `
           <div class="admin-actions">
             <button class="remove" data-adjust-points="${m.owner_id}" style="background:var(--sand); color:var(--pine-deep);">포인트 조정</button>
-            <button class="remove" data-force-withdraw2="${m.owner_id}">탈퇴시키기</button>
+            <button class="remove" data-force-withdraw2="${m.owner_id}">활동 데이터 삭제</button>
           </div>`}
         </div>`;
     }).join('');
@@ -6722,10 +6742,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   async function adminForceWithdraw(ownerId){
     if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(!confirm('이 회원을 탈퇴시킬까요?\n이 회원이 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.\n\n※ 참고: 로그인 계정(카카오/구글/이메일) 자체는 이 방법으로 삭제되지 않고, 다시 로그인은 여전히 가능해요. 앱 안의 활동 데이터만 초기화돼요.')) return;
+    if(isAdminUser(ownerId)){toast('관리자·매니저는 이 메뉴에서 삭제할 수 없어요.');return;}
+    if(!confirm('이 회원의 활동 데이터를 삭제할까요?\n이 회원이 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.\n\n※ 참고: 로그인 계정(카카오/구글/이메일) 자체는 이 방법으로 삭제되지 않고, 다시 로그인은 여전히 가능해요. 앱 안의 활동 데이터만 초기화돼요.')) return;
     try{
       const ok = await wipeAllUserData(ownerId);
-      toast(ok ? '해당 회원을 탈퇴 처리했어요' : '일부 데이터 삭제에 실패했어요. 콘솔을 확인해주세요');
+      toast(ok ? '활동 데이터를 삭제했어요. 로그인 계정은 유지됩니다.' : '일부 데이터 삭제에 실패했어요. 콘솔을 확인해주세요');
       await loadData();
       renderAllMemberList();
       renderMemberList();
@@ -6734,7 +6755,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   function exportMembersCSV(){
     if(!allMembersCache.length){ toast('내보낼 회원이 없어요'); return; }
-    const rows = [['닉네임','가입일','최근접속','포인트','배지']];
+    const rows = [['닉네임','프로필 등록일','프로필 수정일','포인트','배지']];
     allMembersCache.forEach(m=>{
       rows.push([
         m.nickname || '',
@@ -6754,11 +6775,45 @@ document.addEventListener('DOMContentLoaded',()=>{
     URL.revokeObjectURL(url);
   }
   document.getElementById('export-members-csv-btn').addEventListener('click', exportMembersCSV);
-  document.getElementById('all-member-search').addEventListener('input', (e)=>{
-    const q = e.target.value.trim().toLowerCase();
-    if(!q){ paintAllMemberList(allMembersCache); return; }
-    paintAllMemberList(allMembersCache.filter(m => (m.nickname||'').toLowerCase().includes(q)));
+  document.getElementById('all-member-search').addEventListener('input',()=>{memberPage=1;applyMemberFilters();});
+
+ let memberPage=1;
+ function applyMemberFilters(){
+  const q=document.getElementById('all-member-search').value.trim().toLowerCase(),role=document.getElementById('member-role-filter').value,sort=document.getElementById('member-sort').value;
+  const list=allMembersCache.filter(m=>{
+   const age=Date.now()-Date.parse(m.created_at),admin=isAdminUser(m.owner_id);
+   return `${m.nickname||''} ${m.owner_id||''}`.toLowerCase().includes(q)&&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000);
+  }).sort((a,b)=>sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
+  const pages=Math.max(1,Math.ceil(list.length/20));memberPage=Math.min(memberPage,pages);
+  paintAllMemberList(list.slice((memberPage-1)*20,memberPage*20));
+  document.getElementById('member-filter-status').textContent=`전체 ${allMembersCache.length}명 · 검색 결과 ${list.length}명 (CSV는 전체 회원)`;
+  document.getElementById('member-page-label').textContent=`${memberPage} / ${pages}`;
+  document.getElementById('member-page-prev').disabled=memberPage<=1;document.getElementById('member-page-next').disabled=memberPage>=pages;
+ }
+ for(const id of ['member-role-filter','member-sort'])document.getElementById(id).addEventListener('change',()=>{memberPage=1;applyMemberFilters();});
+ document.getElementById('member-page-prev').addEventListener('click',()=>{memberPage=Math.max(1,memberPage-1);applyMemberFilters();});
+ document.getElementById('member-page-next').addEventListener('click',()=>{memberPage++;applyMemberFilters();});
+ (function(){
+  const root=document.querySelector('#admin-overlay .modal-body');
+  const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
+  const traffic=root.querySelector('.admin-traffic-panel');
+  traffic.before(today);
+  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 기간별 방문 통계 · CSV';traffic.before(details);details.append(summary,traffic);
+  const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
+  for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
+  root.querySelectorAll('.admin-accordion-head').forEach(head=>{
+   const body=document.getElementById('acc-'+head.dataset.accordion),open=head.dataset.accordion==='today';
+   head.setAttribute('role','button');head.tabIndex=0;head.setAttribute('aria-controls',body.id);head.setAttribute('aria-expanded',String(open));
+   body.style.display=open?'':'none';head.querySelector('.accordion-arrow').textContent=open?'▾':'▸';
+   head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
+
   });
+  const nav=document.createElement('nav');nav.className='admin-tools';nav.setAttribute('aria-label','관리 바로가기');
+  for(const [key,label]of [['today','오늘'],['pending','승인 대기'],['reports','신고'],['allmembers','회원 관리']]){
+   const btn=document.createElement('button');btn.type='button';btn.textContent=label;btn.addEventListener('click',()=>{const head=root.querySelector(`[data-accordion="${key}"]`);if(document.getElementById('acc-'+key).style.display==='none')head.click();head.scrollIntoView({block:'start',behavior:'smooth'});head.focus({preventScroll:true});});nav.append(btn);
+  }today.before(nav);
+ })();
+
   // ===== 방문자/페이지뷰 카드 클릭 시 최근 7일 추세 =====
   let visitorTrendOpenFor = null;
   async function toggleVisitorTrend(kind){
@@ -7145,6 +7200,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const arrow = head.querySelector('.accordion-arrow');
       const isOpen = body.style.display !== 'none';
       body.style.display = isOpen ? 'none' : '';
+      head.setAttribute('aria-expanded',String(!isOpen));
       arrow.textContent = isOpen ? '▸' : '▾';
     });
   });
