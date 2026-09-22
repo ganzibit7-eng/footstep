@@ -2777,6 +2777,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     return all;
   }
+  async function readReportPages(table,columns,orderColumns){
+    const rows=[];
+    for(let offset=0;offset<100000;offset+=500){
+      let query=sb.from(table).select(columns);
+      for(const column of orderColumns)query=query.order(column,{ascending:true});
+      const {data,error}=await query.range(offset,offset+499);
+      if(error)throw error;
+      rows.push(...(data||[]));
+      if(!data || data.length<500)return rows;
+    }
+    throw new Error('신고 조회 범위를 초과했어요.');
+  }
+  function clearPrivateReportState(){
+    Object.values(reports).forEach(r=>{r.reporters=[];r.reasons=[];});
+    document.getElementById('admin-overlay')?.classList.remove('show');
+    const list=document.getElementById('admin-list');
+    if(list)list.replaceChildren();
+  }
+
   async function loadData(){
     let publicDataFailed = false;
     try{
@@ -2804,21 +2823,23 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(publicDataFailed) toast('일부 최신 정보를 불러오지 못했어요. 기존 표시 정보가 남아 있을 수 있으니 연결 확인 후 새로고침해 주세요.');
 
     try{
-      const {data:counts,error:countError}=await sb.from('report_counts').select('target_type,target_id,report_count');
-      if(countError)throw countError;
+      const reportViewer=myDeviceId;
+      const counts=await readReportPages('report_counts','target_type,target_id,report_count',['target_type','target_id']);
       const nextReports={};
       (counts||[]).forEach(r=>{
         nextReports[r.target_type+'_'+r.target_id]={count:Number(r.report_count)||0,reporters:[],reasons:[]};
       });
       if(isAdminUser(myDeviceId)){
-        const {data:details,error:detailError}=await sb.from('reports').select('target_type,target_id,reporter_id,reason');
-        if(detailError)throw detailError;
+        const details=await readReportPages('reports','target_type,target_id,reporter_id,reason',['id']);
         (details||[]).forEach(r=>{
           const key=r.target_type+'_'+r.target_id;
           if(!nextReports[key])nextReports[key]={count:0,reporters:[],reasons:[]};
           nextReports[key].reporters.push(r.reporter_id);
           if(r.reason)nextReports[key].reasons.push(r.reason);
         });
+      }
+      if(reportViewer!==myDeviceId || !isAdminUser(myDeviceId)){
+        Object.values(nextReports).forEach(r=>{r.reporters=[];r.reasons=[];});
       }
       reports=nextReports;
     }catch(e){console.error('신고 정보 조회 실패',e);toast('신고 상태를 새로 불러오지 못했어요. 연결을 확인해 주세요.');}
@@ -2853,7 +2874,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     }catch(e){ console.error(e); }
     await loadAdminSet();
     sb.auth.onAuthStateChange((event, session)=>{
+      const previousUser=myDeviceId;
       applySession(session);
+      if(previousUser!==myDeviceId || event==='SIGNED_OUT')clearPrivateReportState();
       if(event === 'SIGNED_IN'){
         closeNickModal();
         toast(`"${myNickname}" 님으로 로그인됐어요 🐾`);
