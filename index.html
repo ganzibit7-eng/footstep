@@ -1138,6 +1138,41 @@
   #place-search-results{max-height: min(320px,45svh);overflow-y:auto;overscroll-behavior:contain;}
 }
 </style>
+
+<style>
+@media(max-width:880px){
+  #bottom-tab-bar{transition:opacity .16s ease,visibility .16s ease;}
+  #bottom-tab-bar.is-scrolling{opacity:0;visibility:hidden;pointer-events:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  #bottom-tab-bar{transition:none;}
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const tabs=document.getElementById('bottom-tab-bar');
+  if(!tabs) return;
+  let idleTimer=0;
+  const show=()=>{
+    clearTimeout(idleTimer);
+    tabs.classList.remove('is-scrolling');
+    tabs.inert=false;
+  };
+  const onScroll=()=>{
+    if(window.innerWidth>880 || tabs.contains(document.activeElement)) return;
+    tabs.classList.add('is-scrolling');
+    tabs.inert=true;
+    clearTimeout(idleTimer);
+    idleTimer=setTimeout(show,260);
+  };
+  // Capture also covers scrolling inside lists and dialog panels.
+  document.addEventListener('scroll',onScroll,{passive:true,capture:true});
+  document.addEventListener('scrollend',show,{passive:true,capture:true});
+  window.addEventListener('pageshow',show);
+  window.addEventListener('resize',show,{passive:true});
+  tabs.addEventListener('focusin',show);
+});
+</script>
 </head>
 <body>
 
