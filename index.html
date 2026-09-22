@@ -5648,10 +5648,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     lastHeartbeatAt = now;
     const courseId = nearestCourseWithin(lat, lng, 400);
     try{
-      await sb.from('active_walkers').upsert([{
-        owner_id: myDeviceId, course_id: courseId, lat, lng, updated_at: new Date().toISOString()
+      const { error } = await sb.from('active_walkers').upsert([{
+        owner_id: myDeviceId, course_id: courseId, lat: null, lng: null, updated_at: new Date().toISOString()
       }], { onConflict: 'owner_id' });
-    }catch(e){ console.error(e); }
+      if(error) throw error;
+    }catch(e){ lastHeartbeatAt = 0; console.error('산책 인원 업데이트 실패', e); }
   }
   async function clearActiveWalker(){
     if(!myDeviceId) return;
