@@ -6737,20 +6737,32 @@ document.addEventListener('DOMContentLoaded',()=>{
       btn.addEventListener('click', ()=> adjustMemberPoints(btn.dataset.adjustPoints));
     });
   }
+  const memberPointActions=new Set();
   async function adjustMemberPoints(ownerId){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    const current = memberPointsMap[ownerId] || 0;
-    const input = prompt(`현재 포인트: ${current}P\n\n더하거나 뺄 포인트를 입력해주세요.\n예) 지급하려면: 50 / 차감하려면: -30`, '0');
-    if(input === null) return;
-    const amount = parseInt(input, 10);
-    if(!amount || isNaN(amount)){ toast('숫자를 입력해주세요'); return; }
-    const reason = prompt('사유를 입력해주세요 (선택)', amount > 0 ? '관리자 지급' : '관리자 차감') || (amount > 0 ? '관리자 지급' : '관리자 차감');
+    if(!isAdminUser(myDeviceId)){toast('관리자만 처리할 수 있어요');return;}
+    const member=allMembersCache.find(m=>m.owner_id===ownerId);
+    if(!member){toast('회원 목록을 새로고침한 뒤 다시 선택해 주세요.');return;}
+    if(memberPointActions.has(ownerId)){toast('이 회원의 포인트를 처리하고 있어요.');return;}
+    const viewer=myDeviceId;
+    memberPointActions.add(ownerId);
     try{
-      const { error } = await sb.from('points_log').insert([{ owner_id: ownerId, amount, reason }]);
-      if(error){ console.error(error); toast('처리에 실패했어요'); return; }
-      toast(`${amount > 0 ? '+' : ''}${amount}P 처리했어요`);
+      const current=memberPointsMap[ownerId]||0;
+      const input=prompt(`회원: ${member.nickname||'(닉네임 없음)'}\n조회된 포인트: ${current}P\n\n지급은 양수, 차감은 음수로 정수를 입력해 주세요.`,'0');
+      if(input===null)return;
+      const value=input.trim(),amount=Number(value);
+      if(!/^[+-]?\d+$/.test(value)||!Number.isSafeInteger(amount)||amount===0||amount < -2147483648||amount > 2147483647){toast('0이 아닌 정수를 정확히 입력해 주세요.');return;}
+      const reasonInput=prompt('조정 사유를 입력해 주세요. (1~200자)',amount>0?'관리자 지급':'관리자 차감');
+      if(reasonInput===null)return;
+      const reason=reasonInput.trim();
+      if(!reason||reason.length>200){toast('조정 사유는 1~200자로 입력해 주세요.');return;}
+      if(!confirm(`${member.nickname||'(닉네임 없음)'} 님에게 ${amount>0?'+':''}${amount.toLocaleString()}P를 반영할까요?\n사유: ${reason}\n\n다른 관리자의 작업에 따라 현재 잔액은 달라질 수 있어요.`))return;
+      if(viewer!==myDeviceId||!isAdminUser(myDeviceId))return;
+      const {error}=await sb.from('points_log').insert([{owner_id:ownerId,amount,reason}]);
+      if(error){console.error(error);toast('포인트 처리에 실패했어요. 최신 내역을 확인해 주세요.');return;}
+      toast(`${amount>0?'+':''}${amount}P 반영 완료`);
       await renderAllMemberList();
-    }catch(e){ console.error(e); toast('처리에 실패했어요'); }
+    }catch(e){console.error(e);toast('응답을 확인하지 못했어요. 중복 반영을 피하려면 최신 포인트를 확인해 주세요.');}
+    finally{memberPointActions.delete(ownerId);}
   }
   async function adminForceWithdraw(ownerId){
     if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
