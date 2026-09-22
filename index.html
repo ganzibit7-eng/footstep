@@ -1335,7 +1335,20 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 @media(max-width:600px){.course-card .card-body{padding:18px;gap:12px}.course-card .card-visual{height:126px}.course-card h3{font-size:20px}.course-card .course-metrics{gap:18px}}
 @media(prefers-reduced-motion:reduce){.course-card{transition:none}}
 </style>
-</head>
+<style id="course-detail-finish">
+.course-detail-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0;background:var(--sand);border:1px solid var(--ui-border);border-radius:16px;padding:16px 10px}
+.course-detail-summary>div{display:flex;flex-direction:column;gap:6px;padding:0 6px;min-width:0}
+.course-detail-summary>div+div{border-left:1px solid var(--ui-border)}
+.course-detail-summary span{font-size:10px;color:var(--muted-text)}
+.course-detail-summary strong{font-size:14px;line-height:1.5;color:var(--pine-deep);overflow-wrap:anywhere}
+.detail-map-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:22px 0 10px}
+.detail-map-heading h4{margin:0;font-size:18px}
+.detail-map-heading span{font-size:11px;color:var(--muted-text)}
+.course-visit-notes{border:1px solid var(--ui-border);border-radius:14px;margin-top:14px;padding:0 14px}
+.course-visit-notes summary{padding:13px 0;cursor:pointer;font-size:12px;font-weight:700}
+.course-visit-notes p{font-size:12px;line-height:1.8;margin:0 0 14px;color:var(--muted-text)}
+@media(max-width:380px){.course-detail-summary{padding:12px 6px;gap:4px}.course-detail-summary strong{font-size:12px}}
+</style></head>
 <body>
 
 <header>
@@ -1890,7 +1903,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       </div>
       <div class="modal-body">
         <h3 id="modal-title">코스 이름</h3>
-        <div class="modal-meta-row" id="modal-meta"></div>
+        <div id="course-detail-summary" class="course-detail-summary"></div><div class="modal-meta-row" id="modal-meta"></div>
         <p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
         <div id="photo-upload-wrap" style="margin:10px 0;">
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
@@ -1900,7 +1913,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
           <a id="modal-directions-link" href="#" target="_blank" rel="noopener" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px; text-decoration:none;">🧭 길찾기</a>
         </div>
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
-        <div id="modal-route-map"></div>
+        <div class="detail-map-heading"><h4>산책 위치</h4><span id="course-route-label"></span></div><div id="modal-route-map"></div><details class="course-visit-notes"><summary>방문 전에 확인해 주세요</summary><p>예상 시간은 시속 4km 기준입니다. 휴식·경사·반려견의 걸음에 따라 달라져요. 동반 규정과 코스 통제 여부는 방문 전 현장 안내를 확인해 주세요.</p></details>
         <div class="review-section">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
             <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
@@ -5615,7 +5628,17 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     trackRecentlyViewed(courseId);
 
     document.getElementById('modal-title').textContent = c.name;
-    document.getElementById('modal-desc').textContent = c.desc || '';
+    const distanceKm=mongDistanceKm(c.distance);
+    const estimatedMinutes=distanceKm?Math.max(5,Math.round(distanceKm/4*60)):null;
+    const rating=avgRating(c.id),reviewCount=reviewsFor(c.id).length;
+    document.getElementById('course-detail-summary').innerHTML=[
+      ['코스 거리',c.distance||'정보 없음'],
+      ['예상 소요',estimatedMinutes?'약 '+estimatedMinutes+'분':'정보 없음'],
+      ['이용자 평점',rating?'★ '+rating+' · '+reviewCount+'개':'아직 리뷰 없음']
+    ].map(([label,value])=>'<div><span>'+escapeHtml(label)+'</span><strong>'+escapeHtml(value)+'</strong></div>').join('');
+    document.getElementById('course-route-label').textContent=c.path&&c.path.length>1?'등록된 경로':'시작점 위치 · 경로 미등록';
+
+    document.getElementById('modal-desc').textContent = c.desc || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
