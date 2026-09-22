@@ -1306,6 +1306,11 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 }
 @media(prefers-reduced-motion:reduce){.card,.chip,.submit-btn,.type-btn{transition:none!important}}
 </style>
+<style id="map-label-clarity">
+.leaflet-container .leaflet-tile{image-rendering:auto;max-width:none!important;max-height:none!important}
+.leaflet-popup-content{font-family:inherit;font-size:14px;line-height:1.65}
+.leaflet-tooltip{font-family:inherit;font-size:13px;line-height:1.5}
+</style>
 </head>
 <body>
 
@@ -4462,7 +4467,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   let mainTileLayer, miniTileLayer, walkTileLayer;
   let coursePathLayer; // 경로선 전용 레이어 (마커 클러스터와 분리)
   function initMap(){
-    map = L.map('map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
+    map = L.map('map', {scrollWheelZoom:false, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([36.5,127.8], 7);
     mainTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
@@ -4947,7 +4952,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   }
 
   function initMiniMap(){
-    miniMap = L.map('mini-map', {tap:true}).setView([36.5,127.8], 7);
+    miniMap = L.map('mini-map', {tap:true, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([36.5,127.8], 7);
     miniTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
@@ -5604,7 +5609,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     const mapEl = document.getElementById('modal-route-map');
     if(routeMap){ routeMap.remove(); routeMap = null; }
     mapEl.innerHTML = '';
-    routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false}).setView([c.lat,c.lng], 14);
+    routeMap = L.map(mapEl, {zoomControl:false, dragging:true, scrollWheelZoom:false, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([c.lat,c.lng], 14);
     L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
@@ -5800,7 +5805,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     return total / 1000;
   }
   function initWalkMap(){
-    walkMap = L.map('walk-map', {scrollWheelZoom:false}).setView([36.5,127.8], 7);
+    walkMap = L.map('walk-map', {scrollWheelZoom:false, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([36.5,127.8], 7);
     walkTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
