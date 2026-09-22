@@ -1159,7 +1159,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     tabs.inert=false;
   };
   const onScroll=()=>{
-    if(window.innerWidth>880 || tabs.contains(document.activeElement)) return;
+    if(window.innerWidth>880) return;
+    const focused=document.activeElement;
+    // Keep keyboard navigation usable without treating a touch tap as keyboard focus.
+    if(tabs.contains(focused) && focused.matches(':focus-visible')) return;
+    if(tabs.contains(focused)) focused.blur();
     tabs.classList.add('is-scrolling');
     tabs.inert=true;
     clearTimeout(idleTimer);
@@ -1169,7 +1173,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.addEventListener('scroll',onScroll,{passive:true,capture:true});
   document.addEventListener('scrollend',show,{passive:true,capture:true});
   window.addEventListener('pageshow',show);
-  window.addEventListener('resize',show,{passive:true});
+  let viewportWidth=window.innerWidth;
+  window.addEventListener('resize',()=>{
+    if(window.innerWidth!==viewportWidth){
+      viewportWidth=window.innerWidth;
+      show();
+    }
+  },{passive:true});
   tabs.addEventListener('focusin',show);
 });
 </script>
@@ -1358,6 +1368,19 @@ document.addEventListener('DOMContentLoaded',()=>{
         <a class="chip" href="/discover.html#bins">🚮 배변봉투함</a>
       </nav>
     </div>
+    <section class="home-region-links" aria-labelledby="home-region-title" style="padding:18px 0 28px;">
+      <h2 id="home-region-title" style="font-size:22px;">지역별로 강아지와 갈 곳 찾기</h2>
+      <p style="font-size:14px;line-height:1.7;">등록된 주소와 장소 설명을 비교하고, 방문 전 동반 조건을 확인해 보세요.</p>
+      <nav aria-label="지역별 애견동반 장소" style="display:flex;flex-wrap:wrap;gap:10px;">
+        <a class="chip" href="/places/regions/seoul/">서울 애견동반 장소</a>
+        <a class="chip" href="/places/regions/gyeonggi/">경기 애견동반 장소</a>
+        <a class="chip" href="/places/regions/busan/">부산 애견동반 장소</a>
+        <a class="chip" href="/places/regions/jeju/">제주 애견동반 장소</a>
+        <a class="chip" href="/places/cafes/">전국 애견동반 카페·식당</a>
+        <a class="chip" href="/places/stays/">전국 애견동반 숙소</a>
+        <a class="chip" href="/discover.html">전체 지역 보기 →</a>
+      </nav>
+    </section>
     <a href="#" id="home-ai-banner" class="home-ai-banner reveal-on-scroll">
       <span class="home-ai-banner-icon">🐕</span>
       <span class="home-ai-banner-text">
