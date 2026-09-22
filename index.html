@@ -3364,6 +3364,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   const REPORT_REASONS = ['위치 정보가 잘못됨', '길이 사라짐/공사 중', '위험 요소 발견(유리조각·미끄러움 등)', '부적절한 내용', '기타'];
   async function fileReport(type, id){
+    if(!myDeviceId){toast('로그인 후 신고할 수 있어요.');return;}
     const pick = prompt(
       '신고 사유를 선택해주세요 (숫자 입력):\n' + REPORT_REASONS.map((r,i)=>`${i+1}. ${r}`).join('\n'),
       '1'
@@ -3384,20 +3385,28 @@ document.addEventListener('DOMContentLoaded',()=>{
     await loadData();
     renderAdminList();
   }
+  const reportActionsInFlight = new Set();
   async function resolveReport(type, id, action){
     if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(action === 'remove'){
-      try{
-        if(type === 'course') await sb.from('courses').delete().eq('id', id);
-        if(type === 'bin') await sb.from('bins').delete().eq('id', id);
-        if(type === 'review') await sb.from('reviews').delete().eq('id', id);
-      }catch(e){ console.error(e); }
-    }
+    const tables={course:'courses',bin:'bins',review:'reviews',facility:'facilities'};
+    if(!Object.prototype.hasOwnProperty.call(tables,type) || !['remove','keep'].includes(action) || !id){toast('처리할 수 없는 신고예요');return;}
+    const key=reportKey(type,id);
+    if(reportActionsInFlight.has(key))return;
+    if(action==='remove'&&!confirm('신고된 항목을 삭제할까요? 삭제한 항목은 되돌릴 수 없어요.'))return;
+    reportActionsInFlight.add(key);
     try{
-      await sb.from('reports').delete().eq('target_type', type).eq('target_id', String(id));
-    }catch(e){ console.error(e); }
-    await loadData();
-    renderAdminList();
+      if(action==='remove'){
+        const {data,error}=await sb.from(tables[type]).delete().eq('id',id).select('id');
+        if(error)throw error;
+        if(!data?.length){toast('항목이 이미 삭제되었거나 권한이 없어요. 신고는 유지했어요. 확인 후 문제없음으로 처리해 주세요.');return;}
+      }
+      const {data,error}=await sb.from('reports').delete().eq('target_type',type).eq('target_id',String(id)).select('id');
+      if(error){toast(action==='remove'?'항목은 삭제됐지만 신고 정리에 실패했어요. 새로고침 후 확인해 주세요.':'신고 처리에 실패했어요. 다시 시도해 주세요.');return;}
+      toast(data?.length?'신고를 처리했어요.':'이미 처리된 신고예요.');
+      await loadData();
+      renderAdminList();
+    }catch(e){console.error(e);toast('처리에 실패했어요. 신고 기록은 유지됩니다.');}
+    finally{reportActionsInFlight.delete(key);}
   }
 
   async function insertCourseDB(course){
@@ -6408,6 +6417,9 @@ document.addEventListener('DOMContentLoaded',()=>{
       } else if(type === 'bin'){
         const b = allBins().find(x=>x.id===id);
         title = b ? b.name : '(삭제된 배변봉투함)'; sub = '배변봉투함';
+      } else if(type === 'facility'){
+        const f = facilities.find(x=>String(x.id)===String(id));
+        title = f ? f.name : '(삭제된 장소)'; sub = '동반 카페·숙소';
       } else if(type === 'review'){
         let found = null;
         Object.values(reviews).forEach(list=>{
