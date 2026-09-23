@@ -1501,6 +1501,33 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('resize',updateKeyboard,{passive:true});
 });
 </script>
+
+<style id="mobile-detail-usability">
+.mobile-detail-top,.mobile-detail-actions{display:none}
+@media(max-width:600px){
+ #modal-overlay{padding:10px 8px calc(10px + env(safe-area-inset-bottom,0px));overflow:hidden;align-items:flex-start}
+ #modal-overlay>.modal{display:flex;flex-direction:column;max-height:calc(100dvh - 20px - env(safe-area-inset-bottom,0px));overflow:hidden;margin:0;border-radius:22px;min-height:0}
+ #modal-overlay .modal-inner-wrap{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scroll-padding:18px;-webkit-overflow-scrolling:touch}
+ .mobile-detail-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex:none;padding:8px 10px 8px 16px;background:var(--paper);border-bottom:1px solid var(--line)}
+ .mobile-detail-top>span{font:12px/1.5 system-ui,sans-serif;color:var(--muted-text)}
+ .mobile-detail-top button{min-height:44px;min-width:64px;border:0;border-radius:12px;background:var(--sand);color:var(--ink);font:14px system-ui,sans-serif;cursor:pointer}
+ #modal-overlay #modal-close,#modal-overlay #detail-favorite,#modal-overlay #course-prepare-walk{display:none}
+ .mobile-detail-actions{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,2fr);gap:8px;flex:none;padding:12px;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -6px 18px #18382909}
+ .mobile-detail-actions button{min-height:48px;border:1px solid var(--line);border-radius:13px;padding:10px 8px;background:var(--sand);color:var(--pine-deep);font:14px/1.5 system-ui,sans-serif;cursor:pointer}
+ .mobile-detail-actions #mobile-detail-prepare{background:var(--pine-deep);color:var(--paper);border-color:var(--pine-deep)}
+ .mobile-detail-actions #mobile-detail-save[aria-pressed="true"]{background:#e0ebd9;color:#244a37}
+ html.mobile-keyboard-open .mobile-detail-actions{display:none}
+ #photo-upload-wrap{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+ #photo-upload-wrap>.pin-btn{margin:0!important;min-height:44px;display:inline-flex!important;align-items:center;justify-content:center;flex:1 1 auto;padding:10px!important}
+ #photo-upload-status:empty{display:none}
+ #modal-desc{font-size:15px!important;line-height:1.85!important}
+ .detail-nearby a{align-items:flex-start;font-size:14px}
+ .detail-nearby a>span:first-child{min-width:0;overflow-wrap:anywhere}.detail-nearby a>span:last-child{white-space:nowrap}
+ #list-section .search-feedback{margin:4px 0 10px}#list-section .search-feedback:has([hidden]){display:none}
+ #course-filter-reset{min-height:44px}
+ .course-card .desc{font-size:14px}
+}
+</style>
 </head>
 <body>
 
@@ -2082,6 +2109,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+    <div class="mobile-detail-top"><span>다음 산책길 살펴보기</span><button type="button" id="mobile-detail-close" aria-label="코스 상세 닫기">닫기 ×</button></div>
     <div class="modal-inner-wrap">
       <button class="modal-close" id="modal-close" aria-label="닫기">✕</button>
       <div class="modal-gallery" id="modal-gallery">
@@ -2105,7 +2133,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <section id="detail-nearby" class="detail-nearby" aria-label="시작점 주변 시설"></section><button type="button" class="submit-btn" id="course-prepare-walk">이 코스로 산책 준비하기</button><div class="review-section">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
             <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
-            <select id="review-sort-select" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
+            <select id="review-sort-select" aria-label="리뷰 정렬" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
               <option value="latest">최신순</option>
               <option value="rating">평점 높은순</option>
               <option value="helpful">도움순</option>
@@ -2126,6 +2154,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>
       </div>
     </div>
+    <div class="mobile-detail-actions"><button type="button" id="mobile-detail-save" aria-pressed="false">♡ 찜하기</button><button type="button" id="mobile-detail-prepare">이 코스로 산책 준비 →</button></div>
   </div>
 </div>
 
@@ -4474,6 +4503,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const b=document.getElementById('detail-favorite');
     const saved=favoriteIds.has(activeCourseId);
     b.textContent=saved?'♥ 찜한 코스':'♡ 다음 산책길로 찜하기';b.setAttribute('aria-pressed',String(saved));
+    const mobileSave=document.getElementById('mobile-detail-save');
+    mobileSave.textContent=saved?'♥ 찜했어요':'♡ 찜하기';mobileSave.setAttribute('aria-pressed',String(saved));
   }
   document.getElementById('detail-favorite').addEventListener('click',()=>{if(activeCourseId)toggleFavorite(activeCourseId);});
   function renderWalkNearby(c){
@@ -5928,9 +5959,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(activeCourseId) shareCourse(activeCourseId);
   });
 
+  let detailReturnTarget=null;
+  let detailPreviousOverflow="";
   function openCourseDetail(courseId){
     const c = allCourses().find(x => x.id === courseId);
     if(!c) return;
+    if(!document.getElementById('modal-overlay').classList.contains('show')){
+      detailReturnTarget=document.activeElement;
+      detailPreviousOverflow=document.body.style.overflow;
+    }
     activeCourseId = courseId;
     trackRecentlyViewed(courseId);
 
@@ -5962,6 +5999,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     document.getElementById('modal-overlay').classList.add('show');
     document.body.style.overflow = 'hidden';
+    const detailOverlay=document.getElementById('modal-overlay');
+    detailOverlay.scrollTop=0;
+    detailOverlay.querySelector('.modal').scrollTop=0;
+    detailOverlay.querySelector('.modal-inner-wrap').scrollTop=0;
+    detailOverlay.querySelector('[role="dialog"]').focus({preventScroll:true});
 
     // Route mini-map: rebuild each time to avoid stale Leaflet instance
     const mapEl = document.getElementById('modal-route-map');
@@ -5985,15 +6027,33 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   function closeModal(){
     ++reviewRenderVersion;
+    const closedCourseId=activeCourseId;
     activeCourseId = null;
     if(routeMap){routeMap.remove();routeMap=null;}
     document.getElementById('modal-overlay').classList.remove('show');
-    document.body.style.overflow = '';
+    document.body.style.overflow = detailPreviousOverflow;
+    const fallback=Array.from(document.querySelectorAll('[data-course-open]')).find(b=>b.dataset.courseOpen===closedCourseId&&b.getClientRects().length);
+    const returnTarget=detailReturnTarget?.isConnected&&detailReturnTarget.getClientRects().length?detailReturnTarget:fallback;
+    returnTarget?.focus({preventScroll:true});detailReturnTarget=null;
     document.getElementById('review-form').reset();
     activeStars = 5;
     updateStarDisplay();
   }
   document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('mobile-detail-close').addEventListener('click',closeModal);
+  document.getElementById('mobile-detail-save').addEventListener('click',()=>{if(activeCourseId)toggleFavorite(activeCourseId);});
+  document.getElementById('mobile-detail-prepare').addEventListener('click',()=>document.getElementById('course-prepare-walk').click());
+  document.getElementById('modal-overlay').addEventListener('keydown',e=>{
+    if(Array.from(document.querySelectorAll('.modal-overlay.show')).some(el=>el.id!=='modal-overlay'))return;
+    if(e.key==='Escape'){e.preventDefault();closeModal();return;}
+    if(e.key!=='Tab')return;
+    const dialog=e.currentTarget.querySelector('[role="dialog"]');
+    const controls=Array.from(dialog.querySelectorAll('a[href],button,input,textarea,select,summary,[tabindex]')).filter(el=>!el.disabled&&el.tabIndex>=0&&el.getClientRects().length&&!el.closest('[hidden]'));
+    const first=controls[0],last=controls[controls.length-1];
+    if(!first){e.preventDefault();dialog.focus();return;}
+    if(e.shiftKey&&(document.activeElement===first||document.activeElement===dialog)){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  });
   document.getElementById('modal-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'modal-overlay') closeModal();
   });
