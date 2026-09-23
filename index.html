@@ -1376,6 +1376,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 #walk-prep-items input:checked+span{color:var(--muted-text)}
 #walk-prep-reset{font-size:11px;min-height:40px}
 @media(max-width:600px){.walk-time-options{display:grid;grid-template-columns:1fr 1fr}.walk-plan-box,.walk-prep{padding:16px}}
+</style><style id="walk-journey-finish">
+#walk-reference[hidden]{display:none!important}
+#walk-reference strong{display:block;font-size:18px;line-height:1.6}
+.walk-gps-status{padding:12px 14px;border-radius:12px;background:var(--sand);color:var(--pine-deep);font-size:12px;line-height:1.7;margin:0 0 18px}
 </style></head>
 <body>
 
@@ -1767,7 +1771,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 
     <div class="register-panel">
       <div class="form-card">
-        <div id="walk-idle-panel">
+        <div id="walk-reference" class="walk-plan-box" hidden><h3>이번 산책 참고 코스</h3><strong id="walk-reference-name"></strong><p>선택한 코스 정보입니다. GPS 기록은 시작 버튼을 누른 뒤 실제 이동 경로로 남아요.</p><button type="button" class="pin-btn" id="walk-reference-clear">선택 해제</button></div><div id="walk-idle-panel">
           <details class="walk-prep" open><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
           <p style="font-size:14px; color:#5B5645; margin:0 0 16px;">시작 버튼을 누르면 위치 접근 권한을 물어봐요. 허용하면 걷는 동안 실시간으로 경로가 그려져요.</p>
           <label style="display:flex; align-items:center; gap:8px; margin:0 0 16px; font-size:13.5px; font-weight:600; color:var(--pine-deep); cursor:pointer;">
@@ -1776,7 +1780,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
           </label>
           <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
         </div>
-        <div id="walk-active-panel" style="display:none;">
+        <div id="walk-active-panel" style="display:none;"><p id="walk-gps-status" role="status" aria-live="polite" class="walk-gps-status">GPS 수신을 기다리고 있어요.</p>
           <div style="display:flex; gap:18px; margin-bottom:18px;">
             <div><div class="stat" style="text-align:left;"><div class="num" id="walk-time" style="font-size:26px;">00:00</div><div class="label">경과 시간</div></div></div>
             <div><div class="stat" style="text-align:left;"><div class="num" id="walk-dist" style="font-size:26px;">0.00</div><div class="label">거리 (km)</div></div></div>
@@ -1944,7 +1948,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
         </div>
         <div id="boost-wrap" style="margin:0 0 10px; display:none;"></div>
         <div class="detail-map-heading"><h4>산책 위치</h4><span id="course-route-label"></span></div><div id="modal-route-map"></div><details class="course-visit-notes"><summary>방문 전에 확인해 주세요</summary><p>예상 시간은 시속 4km 기준입니다. 휴식·경사·반려견의 걸음에 따라 달라져요. 동반 규정과 코스 통제 여부는 방문 전 현장 안내를 확인해 주세요.</p></details>
-        <div class="review-section">
+        <button type="button" class="submit-btn" id="course-prepare-walk">이 코스로 산책 준비하기</button><div class="review-section">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
             <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
             <select id="review-sort-select" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
@@ -5949,6 +5953,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   }
 
   function startWalk(){
+    if(walkWatchId!==null)return;
+    document.getElementById('walk-gps-status').textContent='GPS 수신을 기다리고 있어요.';
     if(!navigator.geolocation){ toast('이 브라우저에서는 위치 기능을 쓸 수 없어요'); return; }
     const batterySaver = document.getElementById('battery-saver-toggle').checked;
     walkPath = [];
@@ -5972,6 +5978,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
         const now = Date.now();
 
         if(accuracy != null && accuracy > MAX_ACCURACY_M){
+          document.getElementById('walk-gps-status').textContent='GPS 오차가 커서 기록을 기다리고 있어요. 탁 트인 곳에서 확인해 주세요.';
           return; // 오차가 너무 큰 좌표는 지도에 반영하지 않음 (건물 사이·터널 등)
         }
         if(walkPath.length > 0 && lastGpsTime != null){
@@ -5983,6 +5990,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
           }
         }
         lastGpsTime = now;
+        document.getElementById('walk-gps-status').textContent='GPS 수신 중 · 실제 이동 경로를 기록하고 있어요.';
 
         walkPath.push([latitude, longitude]);
         if(!walkLiveLine){
@@ -6002,7 +6010,13 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       },
       (err)=>{
         console.error(err);
-        toast('위치 정보를 가져올 수 없어요. 위치 권한을 확인해주세요');
+        document.getElementById('walk-gps-status').textContent='GPS 신호를 확인하고 있어요. 수신되지 않은 구간은 기록되지 않습니다.';
+        if(err.code===1){
+          if(walkWatchId!==null){navigator.geolocation.clearWatch(walkWatchId);walkWatchId=null;}
+          if(walkTimerInterval){clearInterval(walkTimerInterval);walkTimerInterval=null;}
+          resetWalkPanels();
+          toast('위치 권한이 거절되어 시작을 취소했어요. 브라우저 설정에서 허용한 뒤 다시 시작해 주세요.');
+        }else{toast('GPS 신호가 약해요. 위치 설정과 주변 환경을 확인해 주세요.');}
       },
       batterySaver
         ? { enableHighAccuracy:false, maximumAge:15000, timeout:20000 }
@@ -6094,7 +6108,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     }
     try{
       const { data, error } = await sb.from('walks').select('*').eq('owner_id', myDeviceId).order('created_at', {ascending:false}).limit(10);
-      if(error || !data || !data.length){
+      if(error)throw error;
+      if(!data || !data.length){
         el.innerHTML = `
           <div style="text-align:center; padding:28px 16px;">
             <div style="font-size:36px;">🐶</div>
@@ -6209,6 +6224,18 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       : '이번 주 아직 기록이 없어요';
   }
 
+  document.getElementById('course-prepare-walk').addEventListener('click',()=>{
+    if(walkWatchId!==null){toast('이미 산책을 기록 중이에요.');closeModal();showPage('walk');return;}
+    const course=allCourses().find(c=>c.id===activeCourseId);
+    if(!course||isHidden('course',course.id)){toast('현재 선택할 수 없는 코스예요.');return;}
+    document.getElementById('walk-reference-name').textContent=course.name;
+    document.getElementById('walk-reference').hidden=false;
+    closeModal();showPage('walk');
+  });
+  document.getElementById('walk-reference-clear').addEventListener('click',()=>{
+    document.getElementById('walk-reference').hidden=true;
+    document.getElementById('walk-reference-name').textContent='';
+  });
   document.getElementById('walk-start-btn').addEventListener('click', startWalk);
   document.getElementById('walk-stop-btn').addEventListener('click', stopWalk);
   document.getElementById('walk-save-btn').addEventListener('click', saveWalkToDB);
