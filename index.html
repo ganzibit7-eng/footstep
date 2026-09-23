@@ -1380,6 +1380,21 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 #walk-reference[hidden]{display:none!important}
 #walk-reference strong{display:block;font-size:18px;line-height:1.6}
 .walk-gps-status{padding:12px 14px;border-radius:12px;background:var(--sand);color:var(--pine-deep);font-size:12px;line-height:1.7;margin:0 0 18px}
+</style><style id="home-map-art-finish">
+#home-map-banner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:30px;align-items:center;padding:30px;border:1px solid var(--ui-border);border-radius:26px;background:var(--paper);box-shadow:var(--ui-shadow);overflow:hidden}
+#home-map-banner .home-map-banner-copy{min-width:0}
+#home-map-banner h2{font-size:clamp(24px,3vw,30px);line-height:1.35;letter-spacing:-.035em;word-break:keep-all}
+#home-map-banner p{font-size:14px;line-height:1.8;word-break:keep-all}
+#home-map-banner .home-map-banner-visual{position:relative;display:block;width:100%;height:auto;min-width:0;flex:none;background:none;border:0;border-radius:0;overflow:visible}
+#home-map-banner .home-map-banner-visual::before,#home-map-banner .home-map-banner-visual::after{display:none}
+.neighborhood-map-art{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #d8dfce;box-sizing:border-box}
+.map-art-caption{display:block;text-align:right;font-size:10px;line-height:1.5;color:var(--muted-text);margin-top:8px}
+#home-map-banner .home-map-banner-cta{display:inline-flex;align-items:center;min-height:44px;padding:11px 16px;border-radius:12px;background:var(--pine-deep);color:var(--paper);font-size:13px;margin-top:18px}
+.home-category-directory,.home-region-links{border-top:1px solid var(--ui-border);margin-top:20px}
+.home-category-directory h2,.home-region-links h2{letter-spacing:-.025em;line-height:1.45}
+.home-category-directory p,.home-region-links p{font-size:13px;line-height:1.8;color:var(--muted-text);margin:8px 0 14px}
+.home-category-directory nav .chip,.home-region-links nav .chip{display:flex;align-items:center;min-height:44px;text-decoration:none;border-radius:12px}
+@media(max-width:680px){#home-map-banner{grid-template-columns:minmax(0,1fr);gap:20px;padding:22px 18px}#home-map-banner h2{font-size:25px}#home-map-banner p{font-size:13px}#home-map-banner .home-map-banner-visual{height:auto}#home-map-banner .home-map-banner-cta{margin-top:14px}.home-category-directory nav,.home-region-links nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}.home-category-directory nav .chip,.home-region-links nav .chip{font-size:12px;padding:10px;word-break:keep-all}.home-category-directory nav .chip:last-child{grid-column:1/-1}}
 </style></head>
 <body>
 
@@ -1545,18 +1560,34 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       <div class="home-map-banner-copy">
         <span class="kicker" style="color:var(--gold);">지도 한 장으로 끝</span>
         <h2>강아지와 갈 곳을 한눈에</h2>
-        <p>산책 코스, 배변봉투함, 동물병원, 애견용품점, 동반 식당·카페·숙소까지 — 발자국 지도 하나면 다 찾아요.</p>
-        <span class="home-map-banner-cta">지도 크게 보기 →</span>
+        <p>걷기 좋은 코스부터 배변봉투함, 동반 카페와 동물병원까지. 필요한 장소를 지도에서 함께 찾아보세요.</p>
+        <span class="home-map-banner-cta">우리 동네 지도 열기 ↗</span>
       </div>
-      <div class="home-map-banner-visual" aria-hidden="true">
-        <span class="fake-pin-2" style="top:20%; left:24%;">🐾</span>
-        <span class="fake-pin-2" style="top:55%; left:60%;">🚮</span>
-        <span class="fake-pin-2" style="top:35%; left:75%;">🏥</span>
-        <span class="fake-pin-2" style="top:70%; left:30%;">☕</span>
+      <div class="home-map-banner-visual">
+        <svg class="neighborhood-map-art" viewBox="0 0 480 300" role="img" aria-label="공원 산책길 주변의 카페, 동물병원, 배변봉투함을 함께 보여주는 안내 일러스트" focusable="false">
+          <rect width="480" height="300" rx="24" fill="#eef0e5"/>
+          <path d="M380-20C318 47 427 87 352 151S414 238 351 320" fill="none" stroke="#c8dfdf" stroke-width="36"/>
+          <g fill="#e1ddcc"><rect x="21" y="25" width="62" height="40" rx="9"/><rect x="104" y="21" width="48" height="47" rx="9"/><rect x="413" y="103" width="51" height="48" rx="9"/><rect x="405" y="202" width="52" height="34" rx="9"/><rect x="241" y="230" width="50" height="49" rx="9"/><rect x="27" y="218" width="45" height="54" rx="9"/></g>
+          <path d="M-20 93H493M90-10V310M-20 201H320M306-10V313" fill="none" stroke="#d6d5c8" stroke-width="21" stroke-linejoin="round"/>
+          <path d="M-20 93H493M90-10V310M-20 201H320M306-10V313" fill="none" stroke="#fffdf5" stroke-width="16" stroke-linejoin="round"/>
+          <rect x="124" y="120" width="151" height="62" rx="26" fill="#d1dfbc"/>
+          <path d="M145 161C147 133 230 128 251 150" fill="none" stroke="#f7f2d8" stroke-width="10" stroke-linecap="round"/>
+          <g fill="#769778" stroke="#668c69" stroke-width="2"><circle cx="135" cy="128" r="10"/><circle cx="259" cy="176" r="10"/><circle cx="435" cy="270" r="11"/><circle cx="43" cy="157" r="12"/></g>
+          <path d="M161 244L91 244V94H306V150H260" fill="none" stroke="#c27850" stroke-width="4" stroke-dasharray="5 8" stroke-linecap="round"/>
+          <circle cx="161" cy="244" r="9" fill="#315f48" stroke="#fffdf5" stroke-width="4"/>
+          <circle cx="259" cy="150" r="7" fill="#c27850" stroke="#fffdf5" stroke-width="3"/>
+          <g transform="translate(146 216)"><rect width="102" height="29" rx="14" fill="#fffdf5" stroke="#d8dfce"/><text x="51" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#315f48">산책 시작</text></g>
+          <g transform="translate(193 23)"><rect width="98" height="53" rx="14" fill="#fffdf5" stroke="#d8dfce"/><path d="M21 16h18v11a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7Zm18 2h3a5 5 0 0 1 0 10h-3" fill="none" stroke="#a36c47" stroke-width="2.5"/><path d="M19 37h22" stroke="#a36c47" stroke-width="2.5" stroke-linecap="round"/><text x="65" y="31" text-anchor="middle" font-size="13" font-weight="700" fill="#564b3c">카페</text></g>
+          <g transform="translate(335 36)"><rect width="128" height="52" rx="14" fill="#fffdf5" stroke="#d8dfce"/><rect x="15" y="14" width="25" height="25" rx="8" fill="#e4eddf"/><path d="M27.5 19v15M20 26.5h15" stroke="#517756" stroke-width="3" stroke-linecap="round"/><text x="81" y="31" text-anchor="middle" font-size="13" font-weight="700" fill="#315f48">동물병원</text></g>
+          <g transform="translate(12 110)"><rect width="113" height="42" rx="13" fill="#fffdf5" stroke="#d8dfce"/><path d="M17 123" fill="none"/><path d="M19 12h18v20H19zM22 12V8h12v4M25 21h6" fill="none" stroke="#a06c46" stroke-width="2.2" stroke-linejoin="round"/><text x="76" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#564b3c">배변봉투</text></g>
+          <text x="198" y="157" text-anchor="middle" font-size="13" font-weight="700" fill="#46674a">초록 산책길</text>
+          <g transform="translate(420 248)"><circle r="19" fill="#fffdf5" stroke="#d8dfce"/><path d="m0-11 6 18-6-4-6 4Z" fill="#54785b"/></g>
+        </svg>
+        <span class="map-art-caption">산책길과 주변 편의시설 · 서비스 안내 이미지</span>
       </div>
     </a>
 
-    <div style="padding:20px 0;line-height:1.8;">
+    <div class="home-category-directory" style="padding:20px 0;line-height:1.8;">
       <h2 style="font-size:22px;">강아지와 갈 곳, 종류별로 찾아보세요</h2>
       <p>산책 코스의 거리와 편의 요소, 애견동반 장소의 주소와 등록 정보를 확인해 보세요.</p>
       <nav aria-label="전국 반려견 장소 안내" style="display:flex;flex-wrap:wrap;gap:10px;">
