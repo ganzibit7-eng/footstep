@@ -1361,6 +1361,21 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .legal-reading .wrap{max-width:820px!important}.legal-reading h2{font-weight:800;font-size:30px;letter-spacing:-.04em}.legal-reading article{padding:24px 0!important;scroll-margin-top:100px}.legal-reading h3{font-size:18px!important;font-weight:750;line-height:1.6;margin-bottom:12px!important}.legal-reading article p{font-size:15px!important;line-height:1.95;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:anywhere}
 .legal-toc{padding:18px;border:1px solid var(--ui-border);border-radius:16px;background:var(--sand);margin:22px 0}.legal-toc summary{font-weight:700;cursor:pointer;font-size:14px}.legal-toc nav{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.legal-toc button{font:inherit;text-align:left;background:transparent;border:0;padding:8px;color:var(--pine-deep);font-size:13px;cursor:pointer;line-height:1.6}
 @media(max-width:600px){#all-member-list{grid-template-columns:1fr}.legal-toc nav{grid-template-columns:1fr}.legal-reading article p{font-size:14px!important;line-height:1.9}}
+</style><style id="walk-planning-features">
+.walk-plan-box,.walk-prep{border:1px solid var(--ui-border);border-radius:18px;background:var(--sand);padding:18px;margin:18px 0}
+.walk-plan-box h3{font-size:18px;margin:0 0 7px}
+.walk-plan-box p,.walk-prep p{font-size:12px;line-height:1.75;color:var(--muted-text);margin:8px 0 14px}
+.walk-time-options{display:flex;flex-wrap:wrap;gap:8px}
+.walk-time-options button{font:inherit;font-size:12px;min-height:44px;border:1px solid var(--ui-border);border-radius:12px;padding:10px 14px;background:var(--paper);color:var(--pine-deep);cursor:pointer}
+.walk-time-options button[aria-pressed="true"]{background:var(--pine-deep);color:var(--paper)}
+.walk-prep{margin:0 0 20px}
+.walk-prep summary{cursor:pointer;font-size:15px;font-weight:700;line-height:1.6}
+#walk-prep-count{font-size:11px;color:var(--muted-text);margin-left:8px}
+#walk-prep-items label{display:flex;align-items:center;gap:10px;margin:0;padding:10px 0;min-height:44px;font-size:13px}
+#walk-prep-items input{width:20px;height:20px;flex:0 0 20px;accent-color:var(--pine-deep)}
+#walk-prep-items input:checked+span{color:var(--muted-text)}
+#walk-prep-reset{font-size:11px;min-height:40px}
+@media(max-width:600px){.walk-time-options{display:grid;grid-template-columns:1fr 1fr}.walk-plan-box,.walk-prep{padding:16px}}
 </style></head>
 <body>
 
@@ -1714,6 +1729,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
         </div>
       </div>
     </div>
+    <section class="walk-plan-box" aria-labelledby="walk-plan-title"><h3 id="walk-plan-title">오늘은 얼마나 걸을까요?</h3><p>거리와 시속 4km를 기준으로 찾습니다. 휴식·경사에 따라 달라지며, 거리 정보가 없는 코스는 시간 검색에서 제외돼요.</p><div class="walk-time-options" id="walk-time-options"><button type="button" data-walk-minutes="0" aria-pressed="true">전체 시간</button><button type="button" data-walk-minutes="20" aria-pressed="false">20분 이내</button><button type="button" data-walk-minutes="40" aria-pressed="false">40분 이내</button><button type="button" data-walk-minutes="60" aria-pressed="false">1시간 이내</button></div></section>
     <p id="course-count-label" role="status" aria-live="polite" style="font-size:13px; color:#6B6550; margin-bottom:4px;"></p>
     <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
     <div class="grid" id="course-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
@@ -1752,6 +1768,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     <div class="register-panel">
       <div class="form-card">
         <div id="walk-idle-panel">
+          <details class="walk-prep" open><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
           <p style="font-size:14px; color:#5B5645; margin:0 0 16px;">시작 버튼을 누르면 위치 접근 권한을 물어봐요. 허용하면 걷는 동안 실시간으로 경로가 그려져요.</p>
           <label style="display:flex; align-items:center; gap:8px; margin:0 0 16px; font-size:13.5px; font-weight:600; color:var(--pine-deep); cursor:pointer;">
             <input type="checkbox" id="battery-saver-toggle" style="width:16px; height:16px;">
@@ -4279,7 +4296,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   function isBoostedNow(courseId){
     return !!(courseBoosts[courseId] && new Date(courseBoosts[courseId]) > new Date());
   }
-  const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false, sort:'default' };
+  const listFilterState = { query:'', diff:'all', tags: new Set(), favOnly:false, sort:'default', maxMinutes:0 };
   const LIST_PAGE_SIZE = 12;
   let listShownCount = LIST_PAGE_SIZE;
   function getFilteredCourses(){
@@ -4298,13 +4315,16 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     if(listFilterState.tags.size > 0){
       list = list.filter(c => Array.from(listFilterState.tags).every(t => (c.tags||[]).includes(t)));
     }
+    if(listFilterState.maxMinutes){
+      list=list.filter(c=>{const km=mongDistanceKm(c.distance);return Number.isFinite(km)&&km>0&&Math.max(5,Math.round(km/4*60))<=listFilterState.maxMinutes;});
+    }
     if(listFilterState.favOnly){
       list = list.filter(c => favoriteIds.has(c.id));
     }
     return list;
   }
   function hasActiveListFilter(){
-    return !!(listFilterState.query || listFilterState.diff !== 'all' || listFilterState.tags.size > 0 || listFilterState.favOnly);
+    return !!(listFilterState.query || listFilterState.diff !== 'all' || listFilterState.tags.size > 0 || listFilterState.favOnly || listFilterState.maxMinutes);
   }
   function renderGrid(){
     let list = getFilteredCourses();
@@ -5124,9 +5144,24 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     listShownCount = LIST_PAGE_SIZE;
     renderGrid();
   });
+  document.getElementById('walk-time-options').addEventListener('click',e=>{
+    const button=e.target.closest('[data-walk-minutes]');if(!button)return;
+    listFilterState.maxMinutes=Number(button.dataset.walkMinutes);
+    document.querySelectorAll('[data-walk-minutes]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    listShownCount=LIST_PAGE_SIZE;renderGrid();
+  });
+  function updateWalkPrep(){
+    const count=document.querySelectorAll('#walk-prep-items input:checked').length;
+    document.getElementById('walk-prep-count').textContent=count+' / 5'+(count===5?' · 확인 완료':'');
+  }
+  document.getElementById('walk-prep-items').addEventListener('change',updateWalkPrep);
+  document.getElementById('walk-prep-reset').addEventListener('click',()=>{
+    document.querySelectorAll('#walk-prep-items input').forEach(input=>input.checked=false);updateWalkPrep();
+  });
   document.getElementById('course-filter-reset').addEventListener('click',()=>{
     clearTimeout(searchDebounce);
-    listFilterState.query='';listFilterState.diff='all';listFilterState.tags.clear();listFilterState.favOnly=false;
+    listFilterState.query='';listFilterState.diff='all';listFilterState.tags.clear();listFilterState.favOnly=false;listFilterState.maxMinutes=0;
+    document.querySelectorAll('[data-walk-minutes]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.walkMinutes==='0')));
     document.getElementById('course-search-input').value='';
     document.querySelectorAll('#list-tag-filter .chip').forEach(c=>c.classList.remove('active'));
     document.querySelectorAll('#list-diff-filter .chip').forEach(c=>c.classList.toggle('active',c.dataset.diffFilter==='all'));
