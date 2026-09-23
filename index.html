@@ -1395,6 +1395,23 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .home-category-directory p,.home-region-links p{font-size:13px;line-height:1.8;color:var(--muted-text);margin:8px 0 14px}
 .home-category-directory nav .chip,.home-region-links nav .chip{display:flex;align-items:center;min-height:44px;text-decoration:none;border-radius:12px}
 @media(max-width:680px){#home-map-banner{grid-template-columns:minmax(0,1fr);gap:20px;padding:22px 18px}#home-map-banner h2{font-size:25px}#home-map-banner p{font-size:13px}#home-map-banner .home-map-banner-visual{height:auto}#home-map-banner .home-map-banner-cta{margin-top:14px}.home-category-directory nav,.home-region-links nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}.home-category-directory nav .chip,.home-region-links nav .chip{font-size:12px;padding:10px;word-break:keep-all}.home-category-directory nav .chip:last-child{grid-column:1/-1}}
+</style><style id="membership-invitation">
+.join-benefits[hidden],.favorite-join-note[hidden]{display:none!important}
+.join-benefits{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,1fr);align-items:center;gap:26px;margin:28px 0;padding:28px;border-radius:24px;border:1px solid var(--ui-border);background:var(--sand)}
+.join-eyebrow{font-size:11px;color:var(--clay);font-weight:700}
+.join-benefits h2{font-size:25px;line-height:1.4;letter-spacing:-.03em;margin:8px 0;word-break:keep-all}
+.join-benefits p{font-size:13px;color:var(--muted-text);line-height:1.8}
+.join-benefits ul{padding-left:19px;font-size:12px;line-height:2;color:var(--pine-deep);margin:12px 0 0}
+.join-benefits-action{display:flex;flex-direction:column;gap:9px;text-align:center}
+.join-benefits-action .submit-btn{margin:0;min-height:48px}
+.join-benefits-action>span{font-size:11px;color:var(--pine-deep)}
+.join-benefits-action>small{font-size:10px;line-height:1.6;color:var(--muted-text)}
+.favorite-join-note{position:fixed;right:20px;bottom:110px;z-index:1200;width:min(320px,calc(100vw - 32px));padding:20px;border:1px solid var(--ui-border);border-radius:20px;box-shadow:0 12px 40px #173d3026;background:var(--paper);box-sizing:border-box}
+.favorite-join-note strong{font-size:16px;padding-right:28px;display:block}
+.favorite-join-note p{font-size:12px;line-height:1.8;color:var(--muted-text);margin:8px 0 12px}
+.favorite-join-note button{font:inherit;font-size:12px;border:0;border-radius:10px;padding:10px;background:var(--sand);color:var(--pine-deep);cursor:pointer;min-height:40px}
+.favorite-join-note .favorite-join-close{position:absolute;right:8px;top:8px;width:40px;background:transparent;font-size:22px}
+@media(max-width:600px){.join-benefits{grid-template-columns:1fr;padding:22px 18px;gap:18px}.join-benefits h2{font-size:23px}.favorite-join-note{right:16px;bottom:calc(104px + env(safe-area-inset-bottom,0px))}}
 </style></head>
 <body>
 
@@ -1555,6 +1572,12 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+
+    <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title">
+      <div><span class="join-eyebrow">우리 강아지의 산책 노트</span><h2 id="join-benefits-title">마음에 든 길, 다음에도 함께 걸어요.</h2><p>발자국에 로그인하고 찜한 코스와 나의 산책 기록을 모아보세요.</p>
+      <ul><li>찜한 코스를 계정에 보관</li><li>걸었던 거리와 산책 기록 저장</li><li>우리 동네 설정으로 가까운 코스 탐색</li></ul></div>
+      <div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">내 산책 노트 시작하기</button><span>카카오 · Google · 이메일로 시작</span><small>이미 가입했다면 같은 방법으로 로그인하세요.</small></div>
+    </section>
 
     <a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
       <div class="home-map-banner-copy">
@@ -2010,8 +2033,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   <div class="modal nick-modal" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
     <button class="modal-close" id="nick-close" aria-label="로그인 창 닫기">✕</button>
     <div class="modal-body">
-      <h3 id="login-modal-title" style="font-size:20px;">로그인해주세요</h3>
-      <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">등록한 코스·배변봉투함·리뷰에 닉네임이 표시되고, 내가 올린 글을 나중에 수정·삭제하거나 포인트를 모을 때 필요해요.</p>
+      <h3 id="login-modal-title" style="font-size:20px;">우리 강아지의 산책 노트를 시작해요</h3>
+      <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">찜한 코스와 산책 기록을 계정에 모아보세요. 처음 방문한 분과 기존 회원 모두 아래 방법으로 시작할 수 있어요.</p>
       <label style="display:flex; align-items:flex-start; gap:8px; margin-top:14px; font-size:12.5px; font-weight:500; color:#5B5645; cursor:pointer;">
         <input type="checkbox" id="terms-agree-checkbox" style="margin-top:2px; width:16px; height:16px; flex-shrink:0;">
         <span><a href="#" data-page-nav="terms" style="color:var(--clay);">이용약관</a> 및 <a href="#" data-page-nav="privacy" style="color:var(--clay);">개인정보처리방침</a>에 동의합니다 (필수)</span>
@@ -2333,6 +2356,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   </div>
 </div>
 
+<aside class="favorite-join-note" id="favorite-join-note" hidden aria-label="찜한 코스 계정 보관 안내"><button type="button" id="favorite-join-close" class="favorite-join-close" aria-label="가입 안내 닫기">×</button><strong>이 기기에 찜했어요</strong><p>로그인하면 찜한 코스를 계정에도 보관할 수 있어요.</p><button type="button" data-open-join>로그인하고 보관하기 →</button></aside>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="offline-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:2200; background:var(--clay-dark); color:#fff; text-align:center; padding:10px; font-size:13px; font-weight:700;">
   📡 인터넷 연결이 끊겼어요. 연결되면 자동으로 다시 시도해요.
@@ -2900,8 +2924,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   let profilesMap = {};
   let favoriteIds = new Set();
   try{ favoriteIds = new Set(JSON.parse(localStorage.getItem('paw_favorites') || '[]')); }catch(e){}
+  let favoriteJoinShown=false;
   function toggleFavorite(courseId){
     const nowFavorited = !favoriteIds.has(courseId);
+    if(nowFavorited&&!myDeviceId&&!favoriteJoinShown){favoriteJoinShown=true;document.getElementById('favorite-join-note').hidden=false;}
     if(favoriteIds.has(courseId)) favoriteIds.delete(courseId);
     else favoriteIds.add(courseId);
     try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(favoriteIds))); }catch(e){}
@@ -3164,6 +3190,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       myAvatarUrl = null;
     }
     updateProfileLabel();
+    updateJoinVisibility();
   }
   async function syncProfileTable(){
     if(!myDeviceId) return;
@@ -6490,6 +6517,16 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
   window.addEventListener('beforeunload', ()=>{ if(walkWatchId !== null) clearActiveWalker(); });
 
   // ===== 로그인 안내 모달 & 프로필 버튼 =====
+  function updateJoinVisibility(){
+    document.querySelectorAll('[data-guest-join]').forEach(el=>el.hidden=!!myDeviceId);
+    if(myDeviceId)document.getElementById('favorite-join-note').hidden=true;
+  }
+  document.querySelectorAll('[data-open-join]').forEach(button=>button.addEventListener('click',()=>{
+    document.getElementById('favorite-join-note').hidden=true;
+    if(myDeviceId){openProfileModal();return;}
+    openNickModal();
+  }));
+  document.getElementById('favorite-join-close').addEventListener('click',()=>{document.getElementById('favorite-join-note').hidden=true;});
   function openNickModal(){
     document.getElementById('nick-overlay').classList.add('show');
   }
