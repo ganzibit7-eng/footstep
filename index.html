@@ -1396,8 +1396,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .home-category-directory nav .chip,.home-region-links nav .chip{display:flex;align-items:center;min-height:44px;text-decoration:none;border-radius:12px}
 @media(max-width:680px){#home-map-banner{grid-template-columns:minmax(0,1fr);gap:20px;padding:22px 18px}#home-map-banner h2{font-size:25px}#home-map-banner p{font-size:13px}#home-map-banner .home-map-banner-visual{height:auto}#home-map-banner .home-map-banner-cta{margin-top:14px}.home-category-directory nav,.home-region-links nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}.home-category-directory nav .chip,.home-region-links nav .chip{font-size:12px;padding:10px;word-break:keep-all}.home-category-directory nav .chip:last-child{grid-column:1/-1}}
 </style><style id="membership-invitation">
-.join-benefits[hidden],.favorite-join-note[hidden]{display:none!important}
+[data-guest-join][hidden],.join-benefits[hidden],.favorite-join-note[hidden]{display:none!important}
 .join-benefits{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,1fr);align-items:center;gap:26px;margin:28px 0;padding:28px;border-radius:24px;border:1px solid var(--ui-border);background:var(--sand)}
+.hero-join-button{font:inherit;font-weight:700;font-size:15px;min-height:50px;cursor:pointer;border:1px solid transparent;white-space:normal;line-height:1.5;padding:14px 18px;text-align:center}.hero-join-caption{margin:0 0 3px;font-size:12px;line-height:1.6;color:var(--paper)}.hero-join-button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .join-eyebrow{font-size:11px;color:var(--clay);font-weight:700}
 .join-benefits h2{font-size:25px;line-height:1.4;letter-spacing:-.03em;margin:8px 0;word-break:keep-all}
 .join-benefits p{font-size:13px;color:var(--muted-text);line-height:1.8}
@@ -1528,6 +1529,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
       <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">산책 코스부터 반려견 동반 장소까지, 가까운 곳에서 새로운 즐거움을 발견해보세요.</p>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
+        <button type="button" data-guest-join data-open-join hidden class="btn-primary hero-join-button">가입하고 우리 아이 산책 기록하기 →</button>
+        <p data-guest-join hidden class="hero-join-caption">찜한 코스 · 걸었던 거리 · 산책 기록을 내 계정에</p>
         <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
         <a href="#" data-page-nav="walk" class="btn-ghost" style="display:block; text-align:center; font-size:15px; padding:15px 30px;">🐾 산책 시작하기</a>
       </div>
@@ -1574,9 +1577,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
     <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title">
-      <div><span class="join-eyebrow">우리 강아지의 산책 노트</span><h2 id="join-benefits-title">마음에 든 길, 다음에도 함께 걸어요.</h2><p>발자국에 로그인하고 찜한 코스와 나의 산책 기록을 모아보세요.</p>
+      <div><span class="join-eyebrow">우리 강아지의 산책 노트</span><h2 id="join-benefits-title">오늘의 산책이 우리 아이의 기록으로.</h2><p>다시 걷고 싶은 길은 찜하고, 함께 걸었던 거리와 시간을 차곡차곡 모아보세요.</p>
       <ul><li>찜한 코스를 계정에 보관</li><li>걸었던 거리와 산책 기록 저장</li><li>우리 동네 설정으로 가까운 코스 탐색</li></ul></div>
-      <div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">내 산책 노트 시작하기</button><span>카카오 · Google · 이메일로 시작</span><small>이미 가입했다면 같은 방법으로 로그인하세요.</small></div>
+      <div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">가입하고 산책 노트 만들기</button><span>카카오 · Google · 이메일로 시작</span><small>지도와 코스는 가입 전에도 둘러볼 수 있어요.</small></div>
     </section>
 
     <a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
@@ -6406,7 +6409,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
     try{ localStorage.setItem('paw_welcome_popup_last_shown', String(Date.now())); }catch(e){}
   }
   setTimeout(()=>{
-    if(myNickname || currentPage!=='home' || document.hidden || /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'')) return; // 탐색·작성 중에는 가입 안내를 띄우지 않음
+    if(myDeviceId || myNickname || currentPage!=='home' || document.hidden || /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||'')) return; // 탐색·작성 중에는 가입 안내를 띄우지 않음
     if(document.querySelector('.modal-overlay.show')) return; // 다른 창이 이미 떠있으면 방해하지 않음
     let lastShown = 0;
     try{ lastShown = Number(localStorage.getItem('paw_welcome_popup_last_shown') || '0'); }catch(e){}
