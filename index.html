@@ -453,8 +453,8 @@
   .review-item p{ font-size:14.5px; color:#4A4636; margin:5px 0 0; line-height:1.6; }
   .review-form{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
   .star-input{ display:flex; gap:4px; font-size:22px; cursor:pointer; }
-  .star-input span{ color:var(--line); transition:color .1s; }
-  .star-input span.on{ color:var(--gold); }
+  .star-input button{border:0;background:transparent;font:inherit;min-width:44px;min-height:44px;padding:0;cursor:pointer; color:var(--line); transition:color .1s; }
+  .star-input button.on{ color:var(--gold); }
   .empty-review{ font-size:13px; color:#6B6550; }
   .onboarding-dot{ width:8px; height:8px; border-radius:50%; background:var(--line); display:inline-block; }
   .onboarding-dot.active{ background:var(--clay); }
@@ -1663,15 +1663,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
 <header>
   <div class="nav">
-    <div class="logo" data-page-nav="home" style="cursor:pointer;"><span class="mark">🐾</span><span>발자국</span></div>
+    <a class="logo" href="#home" data-page-nav="home" aria-label="발자국 홈" style="color:inherit;text-decoration:none;"><span class="mark" aria-hidden="true">🐾</span><span>발자국</span></a>
     <nav class="nav-links">
-      <a href="#" data-page-nav="map">지도</a>
-      <a href="#" data-page-nav="list">코스 목록</a>
-      <a href="#" data-page-nav="walk">산책 기록</a>
-      <a href="#" data-page-nav="register">코스 등록</a>
-      <a href="#" data-page-nav="etiquette">펫티켓</a>
+      <a href="#map" data-page-nav="map">지도</a>
+      <a href="#list" data-page-nav="list">코스 목록</a>
+      <a href="#walk" data-page-nav="walk">산책 기록</a>
+      <a href="#register" data-page-nav="register">코스 등록</a>
+      <a href="#etiquette" data-page-nav="etiquette">펫티켓</a>
     </nav>
-    <a class="nav-cta" href="#" data-page-nav="register">+ 코스 올리기</a>
+    <a class="nav-cta" href="#register" data-page-nav="register">+ 코스 올리기</a>
     <div style="display:flex; align-items:center; gap:8px;">
       <button class="profile-btn" id="profile-btn"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
       <button id="points-badge" style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
@@ -1724,8 +1724,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
 
       <div class="hero-actions home-main-actions">
-        <a class="btn-primary home-location-btn" href="#" data-page-nav="map">📍 내 주변 산책코스 찾기</a>
-        <a class="btn-ghost" href="#" data-page-nav="register">+ 우리 동네 코스 등록</a>
+        <a class="btn-primary home-location-btn" href="#map" data-page-nav="map">📍 내 주변 산책코스 찾기</a>
+        <a class="btn-ghost" href="#register" data-page-nav="register">+ 우리 동네 코스 등록</a>
       </div>
 
       <div class="stat-row home-stat-row">
@@ -1739,7 +1739,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div style="width:64px; height:64px; border-radius:50%; background:var(--sand); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:30px;">🐾</div>
       <h1 style="font-size:38px;">우리 동네 산책 코스,<br>발자국에서</h1>
       <p class="lead" style="margin:14px auto 28px;">전국 산책 코스와 배변봉투함 위치를 한눈에</p>
-      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block;">지도 보기</a>
+      <a class="btn-primary" href="#map" data-page-nav="map" style="display:inline-block;">지도 보기</a>
       <div class="stat-row" style="justify-content:center; margin-top:32px;">
         <div class="stat"><div class="num" id="stat-courses-1">–</div><div class="label">등록된 코스</div></div>
         <div class="stat"><div class="num" id="stat-facilities-1">–</div><div class="label">카페·숙소</div></div>
@@ -1763,7 +1763,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <span style="font-size:22px;">🪙</span>
         <div><b style="font-family:'Jua',sans-serif; font-size:15px;">포인트 적립</b><div style="font-size:13.5px; color:var(--muted-text);">등록하고 걸을 때마다 리워드</div></div>
       </div>
-      <a class="btn-primary" href="#" data-page-nav="map" style="display:inline-block; margin-top:22px;">무료로 시작하기</a>
+      <a class="btn-primary" href="#map" data-page-nav="map" style="display:inline-block; margin-top:22px;">무료로 시작하기</a>
     </div>
 
     <!-- 스타일 3: 카드형 (기본값) -->
@@ -1776,8 +1776,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
         <button type="button" data-guest-join data-open-join hidden class="btn-primary hero-join-button">가입하고 우리 아이 산책 기록하기 →</button>
         <p data-guest-join hidden class="hero-join-caption">찜한 코스 · 걸었던 거리 · 산책 기록을 내 계정에</p>
-        <a href="#" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
-        <a href="#" data-page-nav="walk" class="btn-ghost" style="display:block; text-align:center; font-size:15px; padding:15px 30px;">🐾 산책 시작하기</a>
+        <a href="#map" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
+        <a href="#walk" data-page-nav="walk" class="btn-ghost" style="display:block; text-align:center; font-size:15px; padding:15px 30px;">🐾 산책 시작하기</a>
       </div>
     </div>
 
@@ -1823,7 +1823,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <h2 id="nearby-title">우리 동네 추천 코스</h2>
         <p id="nearby-desc">프로필에서 지역을 등록하면 우리 동네와 가까운 코스를 먼저 보여드려요.</p>
       </div>
-      <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
+      <a href="#list" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
     <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
@@ -1831,7 +1831,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title"><div><h2 id="join-benefits-title">함께 걸은 길을 모아두세요.</h2><p>찜한 코스와 산책 기록을 내 계정에.</p></div><div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">산책 노트 만들기 →</button></div></section>
 
 
-<a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
+<a href="#map" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
       <div class="home-map-banner-copy">
         <span class="kicker" style="color:var(--gold);">지도 한 장으로 끝</span>
         <h2>강아지와 갈 곳을 한눈에</h2>
@@ -1909,7 +1909,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <h2>반려인들이 많이 찾는 산책길</h2>
         <p>리뷰가 많고 평점이 높은 코스예요.</p>
       </div>
-      <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
+      <a href="#list" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
     <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
     <div class="grid home-course-grid reveal-on-scroll" id="popular-grid"></div>
@@ -1920,7 +1920,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <b id="home-gps-preview-title">오늘 산책, 아직이시죠?</b>
         <p id="home-gps-preview-desc">GPS로 자동 기록되니까, 걷기만 하면 돼요.</p>
       </div>
-      <a href="#" data-page-nav="walk" class="btn-primary" style="white-space:nowrap;">산책 시작하기</a>
+      <a href="#walk" data-page-nav="walk" class="btn-primary" style="white-space:nowrap;">산책 시작하기</a>
     </div>
 
     <div class="home-register-banner reveal-on-scroll">
@@ -1928,7 +1928,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <h2>우리 동네 산책길, 아직 없다면?</h2>
         <p>직접 걸어본 코스를 등록하고 다른 반려인들과 나눠보세요.</p>
       </div>
-      <a href="#" data-page-nav="register" class="btn-ghost-dark">+ 코스 등록하기</a>
+      <a href="#register" data-page-nav="register" class="btn-ghost-dark">+ 코스 등록하기</a>
     </div>
 
     <div class="home-etiquette reveal-on-scroll">
@@ -1937,7 +1937,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <strong>함께 걷는 우리 동네, 함께 지켜요.</strong>
         <span>목줄은 기본 · 배변은 바로 처리 · 사람과 강아지를 서로 배려하기</span>
       </div>
-      <a href="#" data-page-nav="etiquette">펫티켓 보기 →</a>
+      <a href="#etiquette" data-page-nav="etiquette">펫티켓 보기 →</a>
     </div>
     </div></details>
   </div>
@@ -1999,9 +1999,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <span class="kicker">주변 추천</span>
           <h2 style="font-size:24px;">주변 추천 코스</h2>
         </div>
-        <a href="#" class="section-more" data-page-nav="list">전체 보기 →</a>
+        <a href="#list" class="section-more" data-page-nav="list">전체 보기 →</a>
       </div>
-      <div class="grid" id="map-recommend-grid"></div>
+      <p id="map-recommend-note" style="font-size:13px;line-height:1.7;color:var(--muted-text);" aria-live="polite">지도의 중심에서 가까운 코스를 찾아요.</p><div class="grid" id="map-recommend-grid"></div>
     </div>
   </div>
 </section>
@@ -2012,7 +2012,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div>
         <span class="kicker">우리 아이와 다음 산책</span>
         <h2>걷고 싶은 길을 찾아요</h2>
-        <p>이웃 반려인들이 직접 걸어보고 남긴 코스예요. 조건에 맞는 곳을 찾아보세요.</p>
+        <p>발자국에 등록된 산책길이에요. 거리와 편의 정보를 비교해 보세요.</p>
       </div>
     </div>
     <div class="map-panel" style="margin-bottom:24px;">
@@ -2230,8 +2230,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도</span>
     <span>전국 반려인들과 함께 만들어가는 산책 정보 플랫폼이에요. 소중한 의견은 언제든 환영합니다 🐾</span>
     <div class="footer-links" style="display:flex; flex-wrap:wrap; gap:4px 12px; font-size:13px; width:100%;">
-      <a href="#" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
-      <a href="#" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
+      <a href="#terms" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
+      <a href="#privacy" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
       <a href="/discover.html" aria-label="전국 반려견 장소·산책 코스" style="color:rgba(251,248,241,0.8); text-decoration:underline;">장소·코스</a>
       <a href="mailto:footstepbiz@gmail.com" style="color:rgba(251,248,241,0.8); text-decoration:underline;">문의하기</a>
     </div>
@@ -2273,8 +2273,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           </div>
           <div id="review-list"></div>
           <form class="review-form" id="review-form">
-            <div class="star-input" id="star-input">
-              <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+            <div class="star-input" id="star-input" role="group" aria-label="리뷰 별점 선택">
+              <button type="button" data-v="1" aria-label="1점" aria-pressed="false">★</button><button type="button" data-v="2" aria-label="2점" aria-pressed="false">★</button><button type="button" data-v="3" aria-label="3점" aria-pressed="false">★</button><button type="button" data-v="4" aria-label="4점" aria-pressed="false">★</button><button type="button" data-v="5" aria-label="5점" aria-pressed="true">★</button>
             </div>
             <p id="review-as" style="font-size:12.5px; color:var(--moss); font-weight:600; margin:0;"></p>
             <textarea id="review-text" placeholder="다녀온 소감을 남겨주세요" required></textarea>
@@ -2298,7 +2298,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <p style="font-size:13.5px; color:#5B5645; margin-top:6px;">찜한 코스와 산책 기록을 계정에 모아보세요. 처음 방문한 분과 기존 회원 모두 아래 방법으로 시작할 수 있어요.</p>
       <label style="display:flex; align-items:flex-start; gap:8px; margin-top:14px; font-size:12.5px; font-weight:500; color:#5B5645; cursor:pointer;">
         <input type="checkbox" id="terms-agree-checkbox" style="margin-top:2px; width:16px; height:16px; flex-shrink:0;">
-        <span><a href="#" data-page-nav="terms" style="color:var(--clay);">이용약관</a> 및 <a href="#" data-page-nav="privacy" style="color:var(--clay);">개인정보처리방침</a>에 동의합니다 (필수)</span>
+        <span><a href="#terms" data-page-nav="terms" style="color:var(--clay);">이용약관</a> 및 <a href="#privacy" data-page-nav="privacy" style="color:var(--clay);">개인정보처리방침</a>에 동의합니다 (필수)</span>
       </label>
       <button class="submit-btn" id="kakao-login-btn" style="margin-top:14px; background:#FEE500; color:#191919;">💬 카카오로 시작하기</button>
       <button class="submit-btn" id="google-login-btn" style="margin-top:10px; background:#fff; color:#3c4043; border:1.5px solid var(--line);">🔵 Google로 시작하기</button>
@@ -4850,8 +4850,20 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
     const fullList = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
     renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,3));
-    const mapGrid = document.getElementById('map-recommend-grid');
-    if(mapGrid) renderCourseCards(mapGrid, fullList.slice(0,3));
+    renderMapRecommendations();
+  }
+
+  function renderMapRecommendations(){
+    const host=document.getElementById('map-recommend-grid');
+    if(!map||!host)return;
+    const center=map.getCenter();
+    const nearby=allCourses().filter(c=>!isHidden('course',c.id)&&c.lat!=null&&c.lng!=null&&Number.isFinite(Number(c.lat))&&Number.isFinite(Number(c.lng)))
+      .map(c=>({course:c,distance:center.distanceTo(L.latLng(Number(c.lat),Number(c.lng)))}))
+      .sort((a,b)=>a.distance-b.distance).slice(0,3);
+    renderCourseCards(host,nearby.map(x=>x.course));
+    document.getElementById('map-recommend-note').textContent=nearby.length
+      ? '지도의 중심에서 가까운 순서예요. 가장 가까운 코스까지 직선거리 '+(nearby[0].distance/1000).toFixed(1)+'km · 실제 이동 거리와 달라요.'
+      : '이 지역에서 추천할 코스를 아직 찾지 못했어요.';
   }
 
   function pawIcon(color){
@@ -4950,6 +4962,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let coursePathLayer; // 경로선 전용 레이어 (마커 클러스터와 분리)
   function initMap(){
     map = L.map('map', {scrollWheelZoom:false, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([36.5,127.8], 7);
+    map.on('moveend',renderMapRecommendations);
     mainTileLayer = L.tileLayer(OSM_TILE_URL, {
       attribution:'&copy; OpenStreetMap contributors', maxZoom:19,
       referrerPolicy:'strict-origin-when-cross-origin', className:'map-tiles', detectRetina:true
@@ -5964,7 +5977,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function renderReviewList(courseId){
     const version = ++reviewRenderVersion;
     const userAdded = reviews[courseId] || [];
-    const seeded = userAdded.length ? [] : (SEED_REVIEWS[courseId] || []);
+    // Public reviews show only submitted member reviews, never illustrative samples.
+    const seeded = [];
     const el = document.getElementById('review-list');
     const rows = [];
     seeded.forEach((r)=> rows.push({r, type:'seed'}));
@@ -6216,12 +6230,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   });
 
   function updateStarDisplay(){
-    document.querySelectorAll('#star-input span').forEach(s=>{
+    document.querySelectorAll('#star-input button').forEach(s=>{
       s.classList.toggle('on', Number(s.dataset.v) <= activeStars);
+      s.setAttribute('aria-pressed',String(Number(s.dataset.v)===activeStars));
     });
   }
   document.getElementById('star-input').addEventListener('click', (e)=>{
-    const s = e.target.closest('span');
+    const s = e.target.closest('button[data-v]');
     if(!s) return;
     activeStars = Number(s.dataset.v);
     updateStarDisplay();
@@ -6753,6 +6768,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let draftCheckedOnce = false;
   document.querySelectorAll('[data-page-nav]').forEach(el=>{
     el.addEventListener('click', (e)=>{
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
       e.preventDefault();
       showPage(el.dataset.pageNav);
       if(el.dataset.pageNav === 'register' && !draftCheckedOnce){
