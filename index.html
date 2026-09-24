@@ -1528,6 +1528,12 @@ document.addEventListener('DOMContentLoaded',()=>{
  .course-card .desc{font-size:14px}
 }
 </style>
+
+<style id="discovery-editorial-design">
+.walk-drawer{margin:0 0 40px;padding:26px;border:1px solid var(--line);border-radius:24px;background:var(--paper)}.drawer-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}.drawer-heading h2{font-size:26px;letter-spacing:-.03em}.drawer-heading p{margin:6px 0 0;font:13px/1.7 system-ui,sans-serif;color:var(--muted-text)}.drawer-heading .kicker{margin-bottom:5px}.drawer-mark{display:grid;place-items:center;flex:none;width:60px;height:60px;border-radius:20px;background:#eee8d8;color:#896b48;font:36px system-ui,sans-serif;transform:rotate(7deg)}.drawer-tabs{display:flex;gap:6px;margin:20px 0 16px;padding:5px;background:var(--sand);border-radius:14px;width:fit-content;max-width:100%}.drawer-tabs button{display:flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border:0;border-radius:10px;background:transparent;color:var(--muted-text);font:14px system-ui,sans-serif;cursor:pointer}.drawer-tabs button[aria-pressed="true"]{background:var(--paper);color:var(--pine-deep);box-shadow:0 2px 6px #203d3010}.drawer-tabs span{font-size:11px;border-radius:20px;background:var(--sand);padding:2px 6px}.drawer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.drawer-course{display:flex;align-items:center;gap:12px;text-align:left;min-width:0;border:1px solid var(--line);background:var(--paper);border-radius:16px;padding:15px;color:var(--pine-deep);cursor:pointer}.drawer-course-icon{display:grid;place-items:center;flex:none;width:40px;height:46px;border-radius:13px;background:#e6eddf;color:#42654c;font:23px system-ui,sans-serif}.drawer-course-copy{flex:1;min-width:0}.drawer-course strong{display:block;font:600 14px/1.6 system-ui,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.drawer-course small{display:block;font:12px/1.6 system-ui,sans-serif;color:var(--muted-text);margin-top:5px}.drawer-note{font:12px/1.7 system-ui,sans-serif;color:var(--muted-text);margin:14px 0 0}.drawer-empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:16px;padding:22px}.drawer-empty strong{font-size:18px}.drawer-empty p{font:13px/1.8 system-ui,sans-serif;color:var(--muted-text);margin:6px 0 12px}.drawer-empty button,.drawer-all{min-height:44px;border:0;background:var(--sand);color:var(--pine-deep);padding:10px 14px;border-radius:12px;font:13px system-ui,sans-serif;cursor:pointer}.drawer-all{grid-column:1/-1}.collection-grid button{position:relative;overflow:hidden;padding-top:148px;min-height:265px}.collection-art{position:absolute;top:0;left:0;width:100%;height:130px;pointer-events:none}.collection-grid button>span{font-size:11px;letter-spacing:.02em}.collection-grid strong{line-height:1.35}.collection-grid small{margin-top:auto}.mobile-rail-hint{display:none}
+@media(max-width:700px){.walk-drawer{padding:20px 16px;margin-bottom:30px;border-radius:20px}.drawer-heading h2{font-size:23px}.drawer-mark{width:46px;height:46px;font-size:28px;border-radius:15px}.drawer-heading p{font-size:12px}.drawer-tabs{width:100%;gap:4px}.drawer-tabs button{flex:1;justify-content:center;padding:9px 7px;font-size:13px}.drawer-grid{grid-template-columns:1fr;gap:8px}.drawer-course{padding:12px}.drawer-empty{padding:18px 14px}.drawer-empty strong{font-size:17px}.collection-grid button{padding-top:108px;min-height:220px}.collection-art{height:95px}.collection-grid strong{font-size:18px}.home-content .home-course-grid{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:86%;overflow-x:auto;gap:12px;scroll-snap-type:x proximity;padding:2px 2px 14px;margin-right:-8px;overscroll-behavior-x:contain;scroll-padding-left:2px}.home-content .home-course-grid>.course-card{scroll-snap-align:start;min-width:0}.home-content .home-course-grid>.empty-course-state{white-space:normal;min-width:0}.mobile-rail-hint{display:block;font:12px/1.6 system-ui,sans-serif;color:var(--muted-text);margin:12px 0 0}.home-content .home-section-head{align-items:flex-start;gap:12px}.home-content .home-section-head .section-more{white-space:nowrap;font-size:12px;min-height:44px;display:flex;align-items:center}.home-content .home-section-head h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.home-content .home-course-grid{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
@@ -1685,6 +1691,12 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div><div class="home-search-field"><input id="home-course-query" type="search" maxlength="100" placeholder="동네·코스 이름, 예: 한강" autocomplete="off"><button type="submit">코스 찾기 ↗</button></div><div class="home-search-examples" aria-label="빠른 검색"><button type="button" data-home-query="한강">한강 산책</button><button type="button" data-home-query="숲길">초록 숲길</button><button type="button" data-home-query="호수">호수 한 바퀴</button></div></div>
     </form>
 
+
+    <section id="recent-viewed-wrap" class="walk-drawer" hidden aria-labelledby="walk-drawer-title">
+      <div class="drawer-heading"><div><span class="kicker">MY NEXT WALK</span><h2 id="walk-drawer-title">나의 산책 서랍</h2><p>눈여겨본 길, 다음 산책에서 다시 만나요.</p></div><span class="drawer-mark" aria-hidden="true">♡</span></div>
+      <div class="drawer-tabs" role="group" aria-label="산책 서랍 보기"><button type="button" data-drawer-mode="recent" aria-pressed="true">최근 본 코스 <span id="drawer-recent-count">0</span></button><button type="button" data-drawer-mode="saved" aria-pressed="false">찜한 코스 <span id="drawer-saved-count">0</span></button></div>
+      <div id="recent-viewed-grid" class="drawer-grid" aria-live="polite"></div><p class="drawer-note" id="drawer-note">최근 본 코스는 이 브라우저에 보관돼요.</p>
+    </section>
     <div class="section-head home-section-head reveal-on-scroll">
       <div>
         <span class="kicker" id="nearby-kicker">내 주변 추천</span>
@@ -1693,6 +1705,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
       <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
+    <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
     <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title">
@@ -1701,7 +1714,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">가입하고 산책 노트 만들기</button><span>카카오 · Google · 이메일로 시작</span><small>지도와 코스는 가입 전에도 둘러볼 수 있어요.</small></div>
     </section>
 
-    <section class="walk-collections" aria-labelledby="collection-title"><span class="kicker">오늘의 산책 취향</span><h2 id="collection-title">어떤 길을 걸어볼까요?</h2><p>등록된 거리와 특징으로 골라보세요.</p><div class="collection-grid"><button type="button" data-collection="short"><span>01 · 가볍게</span><strong>퇴근 후 20분</strong><small>짧게 걷고 기분 전환하기 ↗</small></button><button type="button" data-collection="shade"><span>02 · 느긋하게</span><strong>그늘 따라 걷기</strong><small>그늘이 많다고 등록된 길 ↗</small></button><button type="button" data-collection="cafe"><span>03 · 함께 쉬기</span><strong>산책 후 카페·식당</strong><small>시작점 1km 안의 등록 장소 ↗</small></button><button type="button" data-collection="saved"><span>04 · 나의 산책 노트</span><strong>다음에 갈 산책길</strong><small>찜해 둔 코스 모아보기 ↗</small></button></div></section><a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
+    <section class="walk-collections" aria-labelledby="collection-title"><span class="kicker">오늘의 산책 취향</span><h2 id="collection-title">어떤 길을 걸어볼까요?</h2><p>등록된 거리와 특징으로 골라보세요.</p><div class="collection-grid"><button type="button" data-collection="short"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><circle cx="186" cy="35" r="22" fill="#f1c768"/><path d="M0 100Q65 35 132 82T240 63V130H0Z" fill="#aec39b"/><path d="M95 130Q61 100 125 87T157 57" fill="none" stroke="#faf2d8" stroke-width="13"/><circle cx="55" cy="47" r="27" fill="#fbf7e9"/><path d="M55 29v18l12 8" fill="none" stroke="#36543f" stroke-width="4" stroke-linecap="round"/></svg><span>01 · 가볍게</span><strong>퇴근 후 20분</strong><small>짧게 걷고 기분 전환하기 ↗</small></button><button type="button" data-collection="shade"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 112Q90 64 240 103V130H0Z" fill="#adc5a4"/><path d="M141 130Q105 106 147 82" fill="none" stroke="#f1e7c9" stroke-width="12"/><path d="M49 110V48M186 112V40" stroke="#48624a" stroke-width="7"/><circle cx="49" cy="43" r="31" fill="#729b73"/><circle cx="74" cy="61" r="22" fill="#729b73"/><circle cx="186" cy="37" r="35" fill="#4c7a59"/><circle cx="157" cy="58" r="24" fill="#4c7a59"/></svg><span>02 · 느긋하게</span><strong>그늘 따라 걷기</strong><small>그늘이 많다고 등록된 길 ↗</small></button><button type="button" data-collection="cafe"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 112Q120 85 240 111V130H0Z" fill="#d9c8a2"/><path d="M48 61h90v51H48Z" fill="#fff4d9"/><path d="M40 63h106l-13-25H54Z" fill="#b76d4c"/><path d="M75 112V82h26v30" fill="#537961"/><path d="M170 55h35v25q0 20-35 0Z" fill="#fff9eb"/><path d="M205 60q24-1 15 16h-15M181 43q-8-10 0-19M196 43q-8-10 0-19" fill="none" stroke="#a5724d" stroke-width="4" stroke-linecap="round"/></svg><span>03 · 함께 쉬기</span><strong>산책 후 카페·식당</strong><small>시작점 1km 안의 등록 장소 ↗</small></button><button type="button" data-collection="saved"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 110Q90 77 240 112V130H0Z" fill="#bdc5b0"/><path d="M78 23h78v86H78Z" fill="#fbf5e6"/><path d="M78 23v86M95 80h43M95 91h29" stroke="#b3a58a" stroke-width="3"/><path d="M116 43c-16-16-31 8 0 25 31-17 16-41 0-25Z" fill="#b8765c"/><path d="M163 112v-28m-14 11 14-25 14 25" fill="#64846a" stroke="#64846a" stroke-width="3"/></svg><span>04 · 나의 산책 노트</span><strong>다음에 갈 산책길</strong><small>찜해 둔 코스 모아보기 ↗</small></button></div></section><a href="#" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
       <div class="home-map-banner-copy">
         <span class="kicker" style="color:var(--gold);">지도 한 장으로 끝</span>
         <h2>강아지와 갈 곳을 한눈에</h2>
@@ -1771,6 +1784,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       </div>
       <a href="#" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
+    <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
     <div class="grid home-course-grid reveal-on-scroll" id="popular-grid"></div>
 
     <div id="home-gps-preview" class="home-gps-preview reveal-on-scroll">
@@ -1780,16 +1794,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         <p id="home-gps-preview-desc">GPS로 자동 기록되니까, 걷기만 하면 돼요.</p>
       </div>
       <a href="#" data-page-nav="walk" class="btn-primary" style="white-space:nowrap;">산책 시작하기</a>
-    </div>
-
-    <div id="recent-viewed-wrap" style="display:none; margin-top:32px;">
-      <div class="section-head">
-        <div>
-          <span class="kicker">최근 본 코스</span>
-          <h2>최근 본 코스</h2>
-        </div>
-      </div>
-      <div class="grid" id="recent-viewed-grid"></div>
     </div>
 
     <div class="home-register-banner reveal-on-scroll">
@@ -4585,6 +4589,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     if(listFilterState.sort === 'default') list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
     syncExploreFilters();
+    renderRecentlyViewed();
 
     const reset=document.getElementById('course-filter-reset');
     if(reset)reset.hidden=!hasActiveListFilter();
@@ -4615,16 +4620,34 @@ document.addEventListener('DOMContentLoaded',()=>{
     try{ localStorage.setItem('paw_recent_viewed', JSON.stringify(ids)); }catch(e){}
     renderRecentlyViewed();
   }
+  let drawerMode='recent';
   function renderRecentlyViewed(){
-    let ids = [];
-    try{ ids = JSON.parse(localStorage.getItem('paw_recent_viewed') || '[]'); }catch(e){}
-    const wrap = document.getElementById('recent-viewed-wrap');
-    if(!wrap) return;
-    const list = (Array.isArray(ids)?ids:[]).map(id => allCourses().find(c=>c.id===id)).filter(c=>c&&!isHidden('course',c.id)).slice(0,6);
-    if(list.length === 0){ wrap.style.display = 'none'; return; }
-    wrap.style.display = '';
-    renderCourseCards(document.getElementById('recent-viewed-grid'), list);
+    const wrap=document.getElementById('recent-viewed-wrap');if(!wrap)return;
+    let ids=[];try{ids=JSON.parse(localStorage.getItem('paw_recent_viewed')||'[]');}catch(e){}
+    const courses=allCourses().filter(c=>!isHidden('course',c.id));
+    const recent=(Array.isArray(ids)?ids:[]).map(id=>courses.find(c=>c.id===id)).filter(Boolean);
+    const saved=courses.filter(c=>favoriteIds.has(c.id));
+    wrap.hidden=recent.length===0&&saved.length===0;
+    if(wrap.hidden)return;
+    document.getElementById('drawer-recent-count').textContent=recent.length;
+    document.getElementById('drawer-saved-count').textContent=saved.length;
+    document.querySelectorAll('[data-drawer-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.drawerMode===drawerMode)));
+    const list=(drawerMode==='saved'?saved:recent).slice(0,6),host=document.getElementById('recent-viewed-grid');host.replaceChildren();
+    document.getElementById('drawer-note').textContent=drawerMode==='recent'?'최근 본 코스는 이 브라우저에 보관돼요.':(myDeviceId?'로그인한 계정의 찜한 코스예요.':'가입 전에는 이 브라우저에 보관돼요. 로그인하면 계정에도 모을 수 있어요.');
+    if(!list.length){
+      const empty=document.createElement('div');empty.className='drawer-empty';
+      empty.innerHTML='<strong>'+(drawerMode==='saved'?'마음에 드는 길에 하트를 눌러보세요':'아직 눈여겨본 산책길이 없네요')+'</strong><p>'+(drawerMode==='saved'?'다음에 가고 싶은 코스를 한곳에서 다시 찾을 수 있어요.':'코스의 거리와 특징을 살펴보면 여기에 차곡차곡 모여요.')+'</p><button type="button">산책길 둘러보기 ↗</button>';
+      empty.querySelector('button').onclick=()=>{document.getElementById('course-filter-reset').click();showPage('list');};host.appendChild(empty);return;
+    }
+    list.forEach(c=>{
+      const b=document.createElement('button');b.type='button';b.className='drawer-course';b.dataset.drawerCourseId=c.id;
+      const km=mongDistanceKm(c.distance),minutes=km?Math.max(5,Math.round(km/4*60)):null;
+      b.innerHTML='<span class="drawer-course-icon" aria-hidden="true">'+(drawerMode==='saved'?'♡':'↗')+'</span><span class="drawer-course-copy"><strong>'+escapeHtml(c.name)+'</strong><small>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</small></span><span aria-hidden="true">↗</span>';
+      b.setAttribute('aria-label',c.name+' 코스 다시 보기');b.onclick=()=>openCourseDetail(c.id);host.appendChild(b);
+    });
+    if(drawerMode==='saved'&&saved.length>6){const all=document.createElement('button');all.type='button';all.className='drawer-all';all.textContent='찜한 코스 '+saved.length+'개 모두 보기 →';all.onclick=()=>document.querySelector('[data-collection="saved"]').click();host.appendChild(all);}
   }
+  document.querySelectorAll('[data-drawer-mode]').forEach(b=>b.addEventListener('click',()=>{drawerMode=b.dataset.drawerMode;renderRecentlyViewed();}));
   function renderRecentlyAdded(){
     const wrap = document.getElementById('recent-added-wrap');
     if(!wrap) return;
@@ -6032,7 +6055,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(routeMap){routeMap.remove();routeMap=null;}
     document.getElementById('modal-overlay').classList.remove('show');
     document.body.style.overflow = detailPreviousOverflow;
-    const fallback=Array.from(document.querySelectorAll('[data-course-open]')).find(b=>b.dataset.courseOpen===closedCourseId&&b.getClientRects().length);
+    const fallback=Array.from(document.querySelectorAll('[data-drawer-course-id],[data-course-open]')).find(b=>(b.dataset.drawerCourseId||b.dataset.courseOpen)===closedCourseId&&b.getClientRects().length);
     const returnTarget=detailReturnTarget?.isConnected&&detailReturnTarget.getClientRects().length?detailReturnTarget:fallback;
     returnTarget?.focus({preventScroll:true});detailReturnTarget=null;
     document.getElementById('review-form').reset();
