@@ -7024,23 +7024,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   document.getElementById('export-data-btn').addEventListener('click', exportMyData);
 
-  async function wipeAllUserData(ownerId){
-    const results = await Promise.allSettled([
-      sb.from('courses').delete().eq('owner_id', ownerId),
-      sb.from('bins').delete().eq('owner_id', ownerId),
-      sb.from('reviews').delete().eq('owner_id', ownerId),
-      sb.from('course_photos').delete().eq('uploader_id', ownerId),
-      sb.from('walks').delete().eq('owner_id', ownerId),
-      sb.from('active_walkers').delete().eq('owner_id', ownerId),
-      sb.from('points_log').delete().eq('owner_id', ownerId),
-      sb.from('favorites').delete().eq('owner_id', ownerId),
-      sb.from('notifications').delete().eq('owner_id', ownerId),
-      sb.from('review_helpful').delete().eq('owner_id', ownerId),
-      sb.from('facilities').delete().eq('owner_id', ownerId),
-      sb.from('profiles').delete().eq('owner_id', ownerId),
-    ]);
-    const failed = results.filter(r => r.status === 'rejected' || (r.value && r.value.error));
-    return failed.length === 0;
+  async function requestAccountDeletion(body){
+    const {data:sessionData,error:sessionError}=await sb.auth.getSession();
+    if(sessionError || !sessionData?.session?.access_token) return {error:'sign_in_required'};
+    const {data,error}=await sb.functions.invoke('delete-account',{
+      body,headers:{Authorization:`Bearer ${sessionData.session.access_token}`}
+    });
+    if(!error)return data || {error:'deletion_incomplete'};
+    if(error.context){try{return await error.context.clone().json();}catch(_){}}
+    return {error:error.context?.status===401?'sign_in_required':'deletion_incomplete'};
   }
   let deletingOwnData = false;
   document.getElementById('withdraw-btn').addEventListener('click', async ()=>{
@@ -7063,12 +7055,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     button.setAttribute('aria-busy','true');
     status.textContent = '계정과 데이터를 삭제하고 있습니다. 완료될 때까지 기다려주세요.';
     try{
-      const {data,error} = await sb.functions.invoke('delete-account',{body:{confirm:'DELETE_MY_ACCOUNT'}});
-      let result = data;
-      if(error?.context){
-        try{ result = await error.context.clone().json(); }catch(_){}
-      }
-      if(error || !result?.deleted){
+      const result = await requestAccountDeletion({confirm:'DELETE_MY_ACCOUNT'});
+      if(!result?.deleted){
         const code = result?.error;
         if(code === 'recent_sign_in_required' || code === 'sign_in_required'){
           status.textContent = '본인 확인을 위해 다시 로그인한 뒤 15분 이내에 탈퇴를 진행해주세요.';
@@ -7451,7 +7439,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <dl><div><dt>프로필 등록</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
           <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>최근 접속은 로그인 상태에서 화면 조회가 기록된 시각입니다. 현재 온라인 상태나 로그인 시각과 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
-          ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}">활동 데이터 삭제</button>`}</div>
+          ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}">회원 탈퇴시키기</button>`}</div>
         </article>`;
     }).join('');
     el.querySelectorAll('[data-member-courses]').forEach(btn=>btn.addEventListener('click',()=>openMemberProfile(btn.dataset.memberCourses)));
@@ -7490,18 +7478,32 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){console.error(e);toast('응답을 확인하지 못했어요. 중복 반영을 피하려면 최신 포인트를 확인해 주세요.');}
     finally{memberPointActions.delete(ownerId);}
   }
+  const memberDeletionActions=new Set();
   async function adminForceWithdraw(ownerId){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(isAdminUser(ownerId)){toast('관리자·매니저는 이 메뉴에서 삭제할 수 없어요.');return;}
-    if(!confirm('이 회원의 활동 데이터를 삭제할까요?\n이 회원이 등록한 코스·배변봉투함·리뷰·사진·포인트·프로필 정보가 모두 삭제되고 되돌릴 수 없어요.\n\n※ 참고: 로그인 계정(카카오/구글/이메일) 자체는 이 방법으로 삭제되지 않고, 다시 로그인은 여전히 가능해요. 앱 안의 활동 데이터만 초기화돼요.')) return;
+    if(!isAdminUser(myDeviceId)){toast('관리자만 처리할 수 있어요');return;}
+    if(isAdminUser(ownerId)){toast('관리자·매니저는 먼저 권한 이전이 필요해요.');return;}
+    if(memberDeletionActions.has(ownerId))return;
+    const member=allMembersCache.find(m=>m.owner_id===ownerId);
+    if(!member){toast('회원 목록을 새로고침하고 다시 선택해주세요.');return;}
+    if(!confirm(`${member.nickname||'(닉네임 없음)'} 님을 탈퇴시킬까요?\n회원 ID: ${ownerId}\n\n발자국 로그인 계정, 본인 업로드 사진, 게시물·리뷰·산책 기록과 활동 데이터를 삭제합니다. 삭제된 코스의 연결 리뷰·찜도 정리됩니다.\n외부 카카오·Google 계정과 백업·검색 캐시는 삭제하지 않습니다. 복구할 수 없으며 중간 실패 시 재시도가 필요할 수 있어요.`))return;
+    if(prompt('최종 확인: "회원탈퇴"를 입력해주세요.')!=='회원탈퇴')return;
+    memberDeletionActions.add(ownerId);
+    const buttons=Array.from(document.querySelectorAll('[data-force-withdraw2]')).filter(b=>b.dataset.forceWithdraw2===ownerId);
+    buttons.forEach(b=>{b.disabled=true;b.textContent='탈퇴 처리 중…';b.setAttribute('aria-busy','true');});
     try{
-      const ok = await wipeAllUserData(ownerId);
-      toast(ok ? '활동 데이터를 삭제했어요. 로그인 계정은 유지됩니다.' : '일부 데이터 삭제에 실패했어요. 콘솔을 확인해주세요');
+      const result=await requestAccountDeletion({confirm:'DELETE_MEMBER_ACCOUNT',user_id:ownerId});
+      if(!result?.deleted){
+        const messages={recent_sign_in_required:'다시 로그인한 뒤 15분 이내에 처리해주세요.',sign_in_required:'다시 로그인한 뒤 처리해주세요.',admin_only:'관리자 권한을 확인할 수 없어요.',admin_transfer_required:'관리자·매니저는 권한 이전 후 탈퇴할 수 있어요.',deletion_in_progress:'이미 탈퇴 처리 중이에요. 잠시 후 목록을 새로고침해주세요.',account_missing:'이미 삭제된 계정입니다. 회원 목록을 새로고침해주세요.'};
+        toast(messages[result?.error]||'완료를 확인하지 못했어요. 일부 삭제됐을 수 있으니 재시도하거나 운영 문의처로 연락해주세요.');
+        if(['recent_sign_in_required','sign_in_required'].includes(result?.error)){await signOutUser();openNickModal();}
+        return;
+      }
+      toast('회원 계정과 데이터 삭제를 완료했어요.');
       await loadData();
-      renderAllMemberList();
-      renderMemberList();
-      renderAdminStats();
-    }catch(e){ console.error(e); toast('처리 중 오류가 발생했어요'); }
+      await renderAllMemberList();
+      renderMemberList();renderAdminStats();
+    }catch(e){console.error(e);toast('연결이 끊겨 결과를 확인하지 못했어요. 목록을 확인한 뒤 재시도해주세요.');}
+    finally{memberDeletionActions.delete(ownerId);buttons.forEach(b=>{b.disabled=false;b.textContent='회원 탈퇴시키기';b.removeAttribute('aria-busy');});}
   }
   function csvSafeCell(value){
     const text=String(value??'');
