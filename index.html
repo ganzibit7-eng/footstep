@@ -1356,7 +1356,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .admin-member-card h5{font-size:17px;margin:0;overflow-wrap:anywhere}.admin-member-card small{font-size:11px;color:var(--muted-text)}
 .admin-member-card dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;margin:0}.admin-member-card dt{font-size:10px;color:var(--muted-text);margin-bottom:5px}.admin-member-card dd{margin:0;font-size:12px;font-weight:700;line-height:1.6}
 .admin-member-card details{margin:14px 0;font-size:12px;border-top:1px solid var(--ui-border);padding-top:12px}.admin-member-card summary{cursor:pointer}.admin-member-card code{display:block;overflow-wrap:anywhere;font-size:11px;margin:10px 0}.admin-member-card p{font-size:11px;line-height:1.7;color:var(--muted-text)}
-.admin-member-card .admin-actions{display:flex;flex-wrap:wrap;gap:6px}.admin-member-card button{font:inherit;font-size:11px;padding:8px 10px;border:1px solid var(--ui-border);border-radius:10px;background:var(--sand);color:var(--pine-deep);cursor:pointer}.admin-member-card button.member-danger{background:transparent;color:#b44b3d;border-color:#d6a49b}
+.admin-member-card .admin-actions{display:flex;flex-wrap:wrap;gap:6px}.admin-member-card button{font:inherit;font-size:11px;padding:8px 10px;border:1px solid var(--ui-border);border-radius:10px;background:var(--sand);color:var(--pine-deep);cursor:pointer}.admin-member-card button{min-height:44px}.admin-member-card button:disabled{opacity:.55;cursor:wait}#withdraw-btn{min-height:44px!important;font-size:14px!important}#withdraw-btn:disabled{opacity:.55;cursor:wait}.admin-member-card button.member-danger{background:transparent;color:#b44b3d;border-color:#d6a49b}
 .legal-reading,.legal-reading h2,.legal-reading h3,.legal-reading p{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans KR","Malgun Gothic",sans-serif!important}
 .legal-reading .wrap{max-width:820px!important}.legal-reading h2{font-weight:800;font-size:30px;letter-spacing:-.04em}.legal-reading article{padding:24px 0!important;scroll-margin-top:100px}.legal-reading h3{font-size:18px!important;font-weight:750;line-height:1.6;margin-bottom:12px!important}.legal-reading article p{font-size:15px!important;line-height:1.95;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:anywhere}
 .legal-toc{padding:18px;border:1px solid var(--ui-border);border-radius:16px;background:var(--sand);margin:22px 0}.legal-toc summary{font-weight:700;cursor:pointer;font-size:14px}.legal-toc nav{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.legal-toc button{font:inherit;text-align:left;background:transparent;border:0;padding:8px;color:var(--pine-deep);font-size:13px;cursor:pointer;line-height:1.6}
@@ -3747,7 +3747,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     btn.disabled = false; btn.textContent = '📧 로그인 링크 이메일로 받기';
   }
   async function signOutUser(){
-    try{ await sb.auth.signOut(); }catch(e){ console.error(e); }
+    try{
+      const {error}=await sb.auth.signOut();
+      if(error) throw error;
+    }catch(e){
+      console.error(e);
+      await sb.auth.signOut({scope:'local'});
+    }
   }
   async function checkFirstLoginBonus(){
     if(!myDeviceId) return;
@@ -6986,6 +6992,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(!myDeviceId){ toast('로그인 후 이용해주세요'); return; }
     const btn = document.getElementById('export-data-btn');
     const original = btn.textContent;
+    if(btn.disabled)return;
+    btn.disabled=true;
     btn.textContent = '준비 중...';
     try{
       const [coursesRes, binsRes, reviewsRes, walksRes, pointsRes, favoritesRes] = await Promise.all([
@@ -6996,6 +7004,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         sb.from('points_log').select('*').eq('owner_id', myDeviceId),
         sb.from('favorites').select('*').eq('owner_id', myDeviceId),
       ]);
+      if([coursesRes,binsRes,reviewsRes,walksRes,pointsRes,favoritesRes].some(result=>result.error)) throw new Error('export_incomplete');
       const exportData = {
         내보낸_날짜: new Date().toISOString(),
         프로필: {
@@ -7020,6 +7029,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       URL.revokeObjectURL(url);
       toast('내 정보를 다운로드했어요 📥');
     }catch(e){ console.error(e); toast('다운로드에 실패했어요'); }
+    btn.disabled=false;
     btn.textContent = original;
   }
   document.getElementById('export-data-btn').addEventListener('click', exportMyData);
@@ -7072,11 +7082,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         return;
       }
       status.textContent = '계정과 데이터 삭제가 완료됐습니다.';
-      await sb.auth.signOut({scope:'local'});
-      try{
-        localStorage.removeItem('paw_recent_viewed');
-        localStorage.removeItem('paw_pending_ref');
-      }catch(_){}
+      try{await sb.auth.signOut({scope:'local'});}catch(e){console.error('Local sign out failed',e);}
+      for(const key of ['paw_recent_viewed','paw_pending_ref','paw_favorites','paw_recent_searches','paw_register_draft']){
+        try{localStorage.removeItem(key);}catch(_){}
+      }
       window.location.replace('/');
     }catch(e){
       console.error('Account deletion request failed',e);
@@ -7404,7 +7413,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       document.getElementById('export-members-csv-btn').disabled=false;
     }catch(e){
       if(request!==memberListRequest||viewer!==myDeviceId)return;
-      allMembersCache=[];memberPointsMap={};memberVisitMap={};
+      allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};
       if(countEl)countEl.textContent='–';
       document.getElementById('member-filter-status').textContent='조회 실패 · 새로고침해 주세요.';
       document.getElementById('member-page-prev').disabled=true;
@@ -7439,7 +7448,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <dl><div><dt>프로필 등록</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
           <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>최근 접속은 로그인 상태에서 화면 조회가 기록된 시각입니다. 현재 온라인 상태나 로그인 시각과 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
-          ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}">회원 탈퇴시키기</button>`}</div>
+          ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
         </article>`;
     }).join('');
     el.querySelectorAll('[data-member-courses]').forEach(btn=>btn.addEventListener('click',()=>openMemberProfile(btn.dataset.memberCourses)));
@@ -7499,9 +7508,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         return;
       }
       toast('회원 계정과 데이터 삭제를 완료했어요.');
-      await loadData();
-      await renderAllMemberList();
-      renderMemberList();renderAdminStats();
+      allMembersCache=allMembersCache.filter(m=>m.owner_id!==ownerId);
+      delete memberPointsMap[ownerId];delete memberVisitMap[ownerId];delete memberLastSeenMap[ownerId];
+      applyMemberFilters();
+      document.getElementById('all-member-count').textContent=allMembersCache.length;
+      const refreshes=await Promise.allSettled([loadData(),renderAllMemberList(),renderMemberList(),renderAdminStats()]);
+      if(refreshes.some(r=>r.status==='rejected'))toast('탈퇴는 완료됐어요. 최신 목록은 새로고침해 주세요.');
     }catch(e){console.error(e);toast('연결이 끊겨 결과를 확인하지 못했어요. 목록을 확인한 뒤 재시도해주세요.');}
     finally{memberDeletionActions.delete(ownerId);buttons.forEach(b=>{b.disabled=false;b.textContent='회원 탈퇴시키기';b.removeAttribute('aria-busy');});}
   }
