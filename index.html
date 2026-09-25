@@ -1658,6 +1658,19 @@ html[data-theme="dark"] #nearby-section .home-search-field,html[data-theme="dark
 html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme="dark"] #nearby-section #home-map-banner,html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:var(--sand);color:var(--ink)}
 @media(max-width:700px){#nearby-section .collection-grid button{border-radius:16px}#nearby-section .collection-grid button strong{font-size:13px}#nearby-section .course-card h3{font-size:18px}#nearby-section #home-map-banner{border-radius:22px}}
 </style>
+
+<style id="thoughtful-discovery">
+#nearby-section .collection-grid button small{display:block;font:12px/1.5 'Sunflower',sans-serif;color:var(--muted-text);margin:5px 0 0}
+#nearby-section .collection-grid button{flex-direction:column;align-items:flex-start;justify-content:center}
+.course-compare-toggle{border:0;background:transparent;color:var(--pine);font:13px 'Sunflower',sans-serif;min-height:44px;cursor:pointer;text-align:left;border-radius:12px;padding:8px 12px}
+.course-compare-toggle[aria-pressed="true"]{background:var(--sand)}
+.course-compare-toggle:focus-visible,.compare-panel button:focus-visible{outline:3px solid var(--clay);outline-offset:2px}
+.compare-panel{margin:0 0 24px;border:1px solid var(--line);border-radius:22px;background:var(--paper);padding:18px;scroll-margin-top:96px}
+.compare-panel[hidden]{display:none}.compare-panel header{display:flex;align-items:center;justify-content:space-between;gap:12px}.compare-panel h3{font:22px 'Jua',sans-serif;margin:0}.compare-panel p{font:13px/1.7 'Sunflower',sans-serif;color:var(--muted-text)}
+.compare-panel button{min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--sand);color:var(--ink);padding:8px 12px;font:14px 'Sunflower',sans-serif;cursor:pointer}
+.compare-scroll{overflow-x:auto;overscroll-behavior-x:contain;border-radius:14px}.compare-panel table{width:100%;border-collapse:collapse;table-layout:fixed}.compare-panel th,.compare-panel td{padding:14px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font:14px/1.7 'Sunflower',sans-serif;overflow-wrap:anywhere}.compare-panel thead th{background:var(--sand);font-family:'Jua',sans-serif;font-size:17px}.compare-panel th:first-child{width:85px}.compare-panel tbody th{color:var(--muted-text)}
+@media(max-width:700px){.compare-panel{padding:14px 10px;border-radius:18px}.compare-panel h3{font-size:19px}.compare-panel table{min-width:570px}.compare-panel th:first-child{width:65px;position:sticky;left:0;background:var(--paper)}.compare-panel th,.compare-panel td{padding:12px 9px}.compare-panel header{flex-wrap:wrap}}
+</style>
 </head>
 <body>
 
@@ -2049,6 +2062,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <div class="explore-results-head"><p id="course-count-label" role="status" aria-live="polite" style="color:#6B6550;"></p><button type="button" id="explore-on-map" class="explore-view-button">지도에서 보기 ↗</button></div>
     <div id="list-active-filters" class="explore-active-filters" aria-label="선택한 검색 조건"></div>
     <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
+    <section id="course-compare" class="compare-panel" aria-labelledby="compare-title" hidden></section>
     <div class="grid" id="course-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
     <div style="text-align:center; margin-top:24px;">
       <button type="button" id="course-load-more-btn" class="pin-btn" style="display:none; width:auto; padding:12px 28px;">더 보기</button>
@@ -4540,6 +4554,41 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(!ownerId) return name;
     return `<span class="member-link" data-member="${escapeHtml(ownerId)}">${name}</span>`;
   }
+  const compareCourseIds=new Set();
+  function toggleCourseComparison(id){
+    id=String(id);
+    if(compareCourseIds.has(id))compareCourseIds.delete(id);
+    else{
+      if(compareCourseIds.size>=3){toast('한 번에 3개까지 비교할 수 있어요. 담아 둔 코스를 하나 빼주세요.');return;}
+      compareCourseIds.add(id);
+    }
+    renderCourseComparison();
+    if(compareCourseIds.size===2)toast('비교할 코스 2개를 담았어요. 목록 위에서 비교해보세요.');
+  }
+  function renderCourseComparison(){
+    const panel=document.getElementById('course-compare');
+    const available=allCourses().filter(c=>!isHidden('course',c.id));
+    for(const id of compareCourseIds)if(!available.some(c=>String(c.id)===id))compareCourseIds.delete(id);
+    document.querySelectorAll('[data-compare-course]').forEach(btn=>{const selected=compareCourseIds.has(btn.dataset.compareCourse);btn.setAttribute('aria-pressed',String(selected));btn.textContent=selected?'✓ 비교에 담음':'＋ 다른 코스와 비교';});
+    const rows=Array.from(compareCourseIds,id=>available.find(c=>String(c.id)===id));
+    panel.hidden=!rows.length;if(!rows.length){panel.replaceChildren();return;}
+    const value=(c,key)=>{
+      if(key==='distance')return c.distance||'정보 없음';
+      if(key==='time'){const km=mongDistanceKm(c.distance);return km?'약 '+Math.max(5,Math.round(km/4*60))+'분':'정보 없음';}
+      if(key==='diff')return c.diff||'정보 없음';
+      if(key==='tags')return (c.tags||[]).map(tagLabel).join(' · ')||'등록된 특징 없음';
+      const rating=avgRating(c.id);return rating?'★ '+rating+' · 리뷰 '+reviewsFor(c.id).length+'개':'아직 리뷰 없음';
+    };
+    panel.innerHTML='<header><h3 id="compare-title">어느 길로 걸을까요?</h3><button type="button" data-compare-clear>모두 비우기</button></header><p role="status">'+rows.length+'/3개 선택 · '+(rows.length<2?'아래에서 코스를 하나 더 담아보세요.':'거리와 특징을 나란히 비교해 보세요.')+'</p><div class="compare-scroll" tabindex="0" role="region" aria-label="산책 코스 비교표, 작은 화면에서는 좌우로 넘겨보세요"><table><thead><tr><th scope="col">비교 항목</th>'+rows.map(c=>'<th scope="col">'+escapeHtml(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['거리','distance'],['예상 시간','time'],['난이도','diff'],['등록 특징','tags'],['이용자 후기','reviews']].map(([label,key])=>'<tr><th scope="row">'+label+'</th>'+rows.map(c=>'<td>'+escapeHtml(value(c,key))+'</td>').join('')+'</tr>').join('')+'<tr><th scope="row">살펴보기</th>'+rows.map(c=>'<td><button type="button" data-compare-open="'+escapeHtml(c.id)+'">상세 보기 ↗</button> <button type="button" data-compare-remove="'+escapeHtml(c.id)+'" aria-label="'+escapeHtml(c.name)+' 비교에서 빼기">빼기</button></td>').join('')+'</tr></tbody></table></div><p>예상 시간은 시속 4km 기준이며 휴식·경사에 따라 달라요. 작은 화면에서는 표를 좌우로 넘겨보세요.</p>';
+    panel.querySelector('[data-compare-clear]').onclick=()=>{compareCourseIds.clear();renderCourseComparison();document.getElementById('course-search-input').focus();};
+    panel.querySelectorAll('[data-compare-open]').forEach(b=>b.onclick=()=>openCourseDetail(b.dataset.compareOpen));
+    panel.querySelectorAll('[data-compare-remove]').forEach(b=>b.onclick=()=>{toggleCourseComparison(b.dataset.compareRemove);(panel.querySelector('[data-compare-clear]')||document.getElementById('course-search-input')).focus();});
+  }
+  function updateCollectionHints(){
+    const visible=allCourses().filter(c=>!isHidden('course',c.id));
+    const counts={short:visible.filter(c=>{const km=mongDistanceKm(c.distance);return km&&Math.max(5,Math.round(km/4*60))<=20;}).length,shade:visible.filter(c=>(c.tags||[]).includes('그늘많음')).length,saved:visible.filter(c=>favoriteIds.has(c.id)).length};
+    for(const [type,count] of Object.entries(counts)){const label=document.querySelector('[data-collection="'+type+'"] small');if(label)label.textContent=type==='saved'?(count?count+'개 찜한 산책길':'마음에 드는 길을 찜해요'):count+'개 코스 둘러보기 ↗';}
+  }
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
     if(courseList.length === 0){
@@ -4586,6 +4635,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <p class="desc">${escapeHtml(c.desc||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
           <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
           <button type="button" class="course-detail-cta" data-course-open="${escapeHtml(c.id)}" aria-label="${escapeHtml(c.name)} 자세히 보기"><span>코스 살펴보기</span><span aria-hidden="true">↗</span></button>
+          ${containerEl.id==='course-grid'?`<button type="button" class="course-compare-toggle" data-compare-course="${escapeHtml(c.id)}" aria-pressed="${compareCourseIds.has(String(c.id))}">${compareCourseIds.has(String(c.id))?'✓ 비교에 담음':'＋ 다른 코스와 비교'}</button>`:''}
           <div class="card-foot">
             <span class="card-owner-tag">${c.author ? '등록: '+authorLabel(c.ownerId, c.author) : ''}</span>
             ${isMine
@@ -4602,6 +4652,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(photo){const img=document.createElement('img');img.className='course-real-photo';img.src=photo;img.alt=c.name+' 이용자 사진';img.loading='lazy';img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';},{once:true});card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent='이용자 산책 사진';}
       containerEl.appendChild(card);
     });
+    containerEl.querySelectorAll('[data-compare-course]').forEach(btn=>btn.addEventListener('click',()=>toggleCourseComparison(btn.dataset.compareCourse)));
     containerEl.querySelectorAll('[data-course-open]').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();openCourseDetail(btn.dataset.courseOpen);}));
     containerEl.querySelectorAll('[data-fav-toggle]').forEach(btn=>{
       btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleFavorite(btn.dataset.favToggle); });
@@ -4708,6 +4759,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return !!(listFilterState.query || listFilterState.diff !== 'all' || listFilterState.tags.size > 0 || listFilterState.favOnly || listFilterState.maxMinutes || listFilterState.collection);
   }
   function renderGrid(){
+    renderCourseComparison();
+    updateCollectionHints();
     let list = getFilteredCourses();
 
     if(listFilterState.sort === 'rating'){
