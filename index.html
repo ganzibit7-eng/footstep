@@ -1671,6 +1671,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 .compare-scroll{overflow-x:auto;overscroll-behavior-x:contain;border-radius:14px}.compare-panel table{width:100%;border-collapse:collapse;table-layout:fixed}.compare-panel th,.compare-panel td{padding:14px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font:14px/1.7 'Sunflower',sans-serif;overflow-wrap:anywhere}.compare-panel thead th{background:var(--sand);font-family:'Jua',sans-serif;font-size:17px}.compare-panel th:first-child{width:85px}.compare-panel tbody th{color:var(--muted-text)}
 @media(max-width:700px){.compare-panel{padding:14px 10px;border-radius:18px}.compare-panel h3{font-size:19px}.compare-panel table{min-width:570px}.compare-panel th:first-child{width:65px;position:sticky;left:0;background:var(--paper)}.compare-panel th,.compare-panel td{padding:12px 9px}.compare-panel header{flex-wrap:wrap}}
 </style>
+
+<style id="field-notes-polish">
+.map-extra-filters{border-top:1px dashed var(--line);background:var(--paper)}.map-extra-filters>summary{list-style:none;cursor:pointer;min-height:48px;padding:14px 18px;color:var(--pine-deep);font:14px/1.5 'Jua',sans-serif}.map-extra-filters>summary::-webkit-details-marker{display:none}.map-extra-filters>summary:after{content:'＋';float:right;font:18px 'Jua',sans-serif}.map-extra-filters[open]>summary:after{content:'−'}.map-extra-filters .map-toolbar{padding:10px 16px 16px;flex-wrap:wrap}.map-filter-reset{margin-left:auto}.walk-share-button{width:100%;min-height:48px;margin:10px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--sand);color:var(--pine-deep);font:15px 'Jua',sans-serif;cursor:pointer}.walk-share-button:disabled{opacity:.6;cursor:wait}.walk-share-note{font:12px/1.5 'Sunflower',sans-serif;color:var(--muted-text);margin:6px 0 0}
+@media(max-width:700px){.map-filter-reset{margin-left:0}.map-extra-filters>summary{font-size:15px}.map-extra-filters .map-toolbar{gap:8px}.map-extra-filters #poi-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.map-extra-filters #poi-group .chip{min-height:44px}.map-extra-filters #poi-search-btn{min-height:46px;width:100%}.map-toolbar #view-filter-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.map-toolbar #view-filter-group .chip{min-height:44px;justify-content:center;padding:8px 6px}.map-toolbar #map-filter-note{display:block;width:100%}}
+</style>
 </head>
 <body>
 
@@ -1742,8 +1747,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
 
       <div class="stat-row home-stat-row">
-        <div class="stat"><div class="num">–</div><div class="label">등록된 코스</div></div>
-        <div class="stat"><div class="num">–</div><div class="label">애견동반 카페·숙소</div></div>
+        <div class="stat"><div class="num" id="stat-courses-live" aria-live="polite">집계 중</div><div class="label">등록된 코스</div></div>
+        <div class="stat"><div class="num" id="stat-facilities-live" aria-live="polite">집계 중</div><div class="label">애견동반 장소</div></div>
       </div>
     </div>
 
@@ -1841,7 +1846,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title"><div><h2 id="join-benefits-title">함께 걸은 길을 모아두세요.</h2><p>찜한 코스와 산책 기록을 내 계정에.</p></div><div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">산책 노트 만들기 →</button></div></section>
+    <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title"><div><h2 id="join-benefits-title">우리 아이 산책을 내 기록으로 모아보세요.</h2><p>가입하면 찜한 길 저장 · GPS 산책 기록 · 우리 강아지 프로필 · 활동 포인트 적립을 이용할 수 있어요.</p></div><div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">무료로 시작하기 →</button><span>둘러보기는 로그인 없이 가능해요.</span></div></section>
 
 
 <a href="#map" id="home-map-banner" class="home-map-banner reveal-on-scroll" data-page-nav="map">
@@ -1974,14 +1979,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
       <div class="map-toolbar">
         <div class="filter-group" id="view-filter-group">
-          <button type="button" class="chip active" data-filter="all">전체</button>
-          <button type="button" class="chip" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책 코스</button>
-          <button type="button" class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>배변봉투함</button>
-          <button type="button" class="chip" data-filter="facility"><span class="dot" style="background:var(--gold)"></span>동반시설</button>
+          <button type="button" class="chip active" data-filter="course"><span class="dot" style="background:var(--moss)"></span>산책길</button>
+          <button type="button" class="chip" data-filter="facility"><span class="dot" style="background:var(--gold)"></span>동반 장소</button>
+          <button type="button" class="chip" data-filter="bin"><span class="dot" style="background:var(--clay)"></span>편의시설</button>
+          <button type="button" class="chip map-filter-reset" data-filter="all">전체</button>
         </div>
         <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
-      <div class="map-toolbar" style="border-top:1px dashed var(--line);">
+      <details class="map-extra-filters"><summary>필터 더 보기 · 병원·용품점·카페·숙소</summary><div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
           <button type="button" class="chip" data-poi="vet">🏥 동물병원</button>
           <button type="button" class="chip" data-poi="pet_shop">🛍️ 애견용품점</button>
@@ -1989,7 +1994,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <button type="button" class="chip" data-poi="lodging">🏨 동반 숙소</button>
         </div>
         <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
-      </div>
+      </div></details>
       <div class="map-wrap-relative">
         <div id="map"></div><aside id="map-course-peek" class="map-course-peek" hidden aria-label="선택한 산책 코스"></aside>
         <button type="button" id="locate-me-btn" class="locate-btn" aria-label="현재 위치로 이동" title="현재 위치로 이동">
@@ -2122,6 +2127,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <div><div class="stat" style="text-align:left;"><div class="num" id="walk-done-dist" style="font-size:22px;">0.00</div><div class="label">거리 (km)</div></div></div>
           </div>
           <button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
+          <button type="button" class="walk-share-button" id="walk-share-card-btn">🖼️ 산책 결과 카드 만들기</button><p class="walk-share-note">강아지 정보와 경로 좌표는 이미지에 넣지 않아요.</p>
           <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로로 코스 등록하기</button>
           <button type="button" class="pin-btn" id="walk-discard-btn" style="margin-top:10px; color:#A79E7E;">기록 버리고 다시 시작</button>
         </div>
@@ -4095,6 +4101,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(c3) c3.textContent = `${approvedCourseCount}개`;
     const f3 = document.getElementById('stat-facilities-3');
     if(f3) f3.textContent = `${approvedFacilityCount}곳`;
+    const liveCourses=document.getElementById('stat-courses-live');
+    if(liveCourses)liveCourses.textContent=approvedCourseCount.toLocaleString()+'개';
+    const liveFacilities=document.getElementById('stat-facilities-live');
+    if(liveFacilities)liveFacilities.textContent=approvedFacilityCount.toLocaleString()+'곳';
     const heroCourses = document.getElementById('hero-stat-courses');
     if(heroCourses) heroCourses.textContent = `${approvedCourseCount.toLocaleString()}개`;
     const heroFacilities = document.getElementById('hero-stat-facilities');
@@ -6591,6 +6601,40 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       walkMap.fitBounds(walkLiveLine.getBounds(), {padding:[24,24]});
     }
   }
+  let walkShareBusy=false;
+  async function shareWalkResultCard(){
+    if(!lastSavedWalk||walkShareBusy)return;
+    const button=document.getElementById('walk-share-card-btn');
+    walkShareBusy=true;button.disabled=true;button.textContent='카드를 만들고 있어요…';
+    try{
+      const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;
+      const ctx=canvas.getContext('2d');if(!ctx)throw new Error('canvas_unavailable');
+      const bg=ctx.createLinearGradient(0,0,1080,1350);bg.addColorStop(0,'#eef2e7');bg.addColorStop(1,'#faf5e9');ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1350);
+      ctx.fillStyle='#214832';ctx.beginPath();ctx.roundRect(58,58,964,1234,52);ctx.fill();
+      ctx.fillStyle='#d8e4d0';ctx.font='700 34px system-ui, sans-serif';ctx.fillText('🐾  발자국 산책 기록',112,148);
+      ctx.fillStyle='#f9f6ec';ctx.font='700 64px system-ui, sans-serif';ctx.fillText(myDogName?`${myDogName}와 함께 걸었어요`:'오늘도 함께 걸었어요',112,280,{maxWidth:850});
+      ctx.fillStyle='#d8e4d0';ctx.font='500 30px system-ui, sans-serif';ctx.fillText(new Intl.DateTimeFormat('ko-KR',{dateStyle:'long'}).format(new Date()),112,342);
+      // A decorative, location-free path conveys the walk without exposing GPS coordinates.
+      ctx.strokeStyle='#edc979';ctx.lineWidth=22;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(190,590);ctx.bezierCurveTo(310,430,425,750,540,600);ctx.bezierCurveTo(660,440,760,755,895,545);ctx.stroke();
+      for(const [x,y] of [[190,590],[540,600],[895,545]]){ctx.fillStyle='#f7eac4';ctx.beginPath();ctx.arc(x,y,23,0,Math.PI*2);ctx.fill();}
+      const km=Number(lastSavedWalk.distanceKm)||0,mins=Math.max(0,Math.round(lastSavedWalk.durationSec/60));
+      ctx.fillStyle='#f4d782';ctx.font='700 82px system-ui, sans-serif';ctx.fillText(km.toFixed(2)+' km',112,900);
+      ctx.fillStyle='#f9f6ec';ctx.font='600 50px system-ui, sans-serif';ctx.fillText(formatDuration(lastSavedWalk.durationSec)+'  ·  '+mins+'분',112,990);
+      ctx.fillStyle='#d8e4d0';ctx.font='500 30px system-ui, sans-serif';ctx.fillText('오늘의 걸음이 우리 아이의 좋은 추억이 되길 🐶',112,1132);
+      ctx.fillStyle='#f9f6ec';ctx.font='700 34px system-ui, sans-serif';ctx.fillText('balzaguk.com',112,1212);
+      const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+      if(!blob)throw new Error('image_encode_failed');
+      const file=new File([blob],`발자국_산책기록_${new Date().toISOString().slice(0,10)}.png`,{type:'image/png'});
+      if(navigator.share&&navigator.canShare?.({files:[file]})){
+        await navigator.share({files:[file],title:'발자국 산책 기록',text:'오늘도 우리 아이와 함께 걸었어요 🐾'});
+      }else{
+        const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+        toast('산책 기록 카드를 저장했어요. 사진을 친구와 공유해보세요 🐾');
+      }
+    }catch(e){if(e?.name!=='AbortError'){console.error('Walk share card failed',e);toast('카드를 만들지 못했어요. 잠시 후 다시 시도해주세요.');}}
+    finally{walkShareBusy=false;button.disabled=false;button.textContent='🖼️ 산책 결과 카드 만들기';}
+  }
+  document.getElementById('walk-share-card-btn').addEventListener('click',shareWalkResultCard);
   let walkSaving = false;
   const savedWalkRecords = new WeakSet();
   async function saveWalkToDB(){
