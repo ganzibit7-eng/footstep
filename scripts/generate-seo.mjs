@@ -108,6 +108,7 @@ const areaSlug = value => Buffer.from(String(value),'utf8').toString('base64url'
 const detailPath = (item,type) => `/${type.folder}/${safeSegment(item.id)}/`;
 const HUB_SIZE = 48;
 let searchHubs = [];
+let localOutingPages = [];
 let duplicateNamesByTable = new Map();
 let itemsByTable = new Map();
 let itemMetaByTable = new Map();
@@ -583,6 +584,46 @@ function guideHtml(guide){
   <p>반려견의 건강 상태와 날씨에 따라 적절한 산책 방식은 달라질 수 있습니다. 이상 징후가 있으면 수의사 등 전문가의 조언을 확인하세요.</p></main></body></html>`;
 }
 
+function localOutingHtml(page){
+  const {slug,region,courses,places}=page;
+  const pathName=`/with-dog/${slug}/`;
+  const url=SITE+pathName;
+  const title=`${region} 강아지와 갈만한 곳 | 산책 코스·애견동반 카페·숙소 | 발자국`;
+  const description=`${region}에서 강아지와 갈만한 곳을 찾는다면 산책 코스 ${courses.length}곳과 애견동반 카페·식당·숙소 ${places.length}곳을 한 번에 비교해 보세요.`;
+  const courseItems=courses.slice(0,12);
+  const placeItems=places.slice(0,12);
+  const itemList=[
+    ...courseItems.map((item,index)=>({'@type':'ListItem',position:index+1,name:item.name,url:SITE+detailPath(item,{folder:'courses'})})),
+    ...placeItems.map((item,index)=>({'@type':'ListItem',position:courseItems.length+index+1,name:item.name,url:SITE+detailPath(item,{folder:'places'})}))
+  ];
+  const schema=[
+    {'@context':'https://schema.org','@type':'CollectionPage','name':title,'description':description,'url':url,'isPartOf':{'@type':'WebSite','name':'발자국','url':SITE}},
+    {'@context':'https://schema.org','@type':'ItemList','name':`${region} 강아지와 갈만한 곳`,'itemListElement':itemList},
+    {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+      {'@type':'Question','name':`${region}에서 강아지와 갈만한 곳은 어떻게 고르면 되나요?`,'acceptedAnswer':{'@type':'Answer','text':'산책 거리와 난이도, 애견동반 가능 조건, 이동 시간과 반려견의 체력을 함께 비교하세요. 장소별 운영 조건은 방문 전에 다시 확인하는 것이 좋습니다.'}},
+      {'@type':'Question','name':'카페나 숙소의 반려견 동반 조건은 항상 같은가요?','acceptedAnswer':{'@type':'Answer','text':'아닙니다. 실내·테라스 동반 여부, 반려견 크기와 마릿수 제한, 이동장 조건과 추가 비용은 바뀔 수 있으므로 방문 전에 해당 장소에 확인하세요.'}}
+    ]},
+    {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+      {'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},
+      {'@type':'ListItem','position':2,'name':'전국 장소·산책 코스','item':SITE+'/discover.html'},
+      {'@type':'ListItem','position':3,'name':`${region} 강아지와 갈만한 곳`,'item':url}
+    ]}
+  ];
+  const courseRegion=searchHubs.find(h=>h.path===`/courses/regions/${slug}/`);
+  const placeRegion=searchHubs.find(h=>h.path===`/places/regions/${slug}/`);
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${url}">
+  <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="${escapeHtml(region)} 강아지와 갈만한 곳"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/icon-512.png">
+  <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
+  <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}.wrap{max-width:980px;margin:auto;padding:28px 20px}a{color:#1f3a2e}h1,h2{color:#152922}.hero,.section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:24px;margin:20px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;list-style:none;padding:0}li{background:#fff;border:1px solid #dedecf;border-radius:16px;padding:16px}.cta{display:inline-block;padding:11px 16px;border-radius:999px;background:#b5502e;color:#fff;text-decoration:none;font-weight:800}</style></head>
+  <body><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
+  <section class="hero"><h1>${escapeHtml(region)} 강아지와 갈만한 곳</h1><p>${escapeHtml(description)}</p><div class="links">${courseRegion?`<a href="${courseRegion.path}">${escapeHtml(region)} 산책 코스 전체</a>`:''}${placeRegion?`<a href="${placeRegion.path}">${escapeHtml(region)} 애견동반 장소 전체</a>`:''}<a href="/#map">지도에서 내 주변 찾기</a></div></section>
+  <section class="section"><h2>🐕 ${escapeHtml(region)} 강아지 산책 코스</h2><p>거리·난이도·태그를 비교해서 반려견 체력과 당일 날씨에 맞는 코스를 골라보세요.</p><ul>${courseItems.map(item=>`<li><a href="/courses/${safeSegment(item.id)}/"><strong>${escapeHtml(item.name)}</strong></a><br><small>${escapeHtml([item.distance,item.diff].filter(Boolean).join(' · ') || '등록 정보 확인')}</small></li>`).join('')}</ul></section>
+  <section class="section"><h2>🏡 ${escapeHtml(region)} 애견동반 카페·식당·숙소</h2><p>산책 전후 함께 들를 장소를 비교해 보세요. 동반 조건과 영업시간은 방문 전에 확인하세요.</p><ul>${placeItems.map(item=>`<li><a href="/places/${safeSegment(item.id)}/"><strong>${escapeHtml(item.name)}</strong></a><br><small>${escapeHtml([areaFor(item),item.category].filter(Boolean).join(' · ') || '장소 정보 확인')}</small></li>`).join('')}</ul></section>
+  <section class="section"><h2>방문 전에 확인하세요</h2><p>산책 코스의 노면·공사 상태와 애견동반 장소의 실내·테라스 이용 조건은 실제 현장 운영과 달라질 수 있습니다. 반려견의 나이·체력과 날씨도 함께 확인하세요.</p><a class="cta" href="/#map">발자국 지도에서 주변 장소 보기 →</a></section>
+  </main></body></html>`;
+}
+
 function directoryHtml(groups) {
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;
@@ -600,7 +641,7 @@ function directoryHtml(groups) {
   const nationalBinHubs=searchHubs.filter(h=>h.type.table==='bins'&&h.path==='/bins/');
   const regionalBinHubs=searchHubs.filter(h=>h.type.table==='bins'&&h.path.includes('/regions/'));
   const hubList=(items)=>items.length?`<ul>${items.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul>`:'<p>등록 데이터가 충분해지면 자동으로 추가됩니다.</p>';
-  const featuredHubs=[...themeCourseHubs,...regionalCourseHubs,...nationalPlaceHubs,...regionalPlaceHubs,...nationalBinHubs,...regionalBinHubs].slice(0,50);
+  const featuredHubs=[...localOutingPages.map(p=>({path:`/with-dog/${p.slug}/`,label:`${p.region} 강아지와 갈만한 곳`,items:[...p.courses,...p.places]})),...themeCourseHubs,...regionalCourseHubs,...nationalPlaceHubs,...regionalPlaceHubs,...nationalBinHubs,...regionalBinHubs].slice(0,50);
   const directoryTitle=`전국 강아지 산책 코스·애견동반 장소 ${total.toLocaleString('ko-KR')}곳 | 발자국`;
   const directoryDescription=`전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함 ${total.toLocaleString('ko-KR')}곳의 등록 정보를 지역·테마별로 찾아보세요.`;
   const directorySchema=[
@@ -608,7 +649,7 @@ function directoryHtml(groups) {
     {'@context':'https://schema.org','@type':'ItemList','name':'발자국 주요 탐색 목록','itemListElement':featuredHubs.map((h,index)=>({'@type':'ListItem','position':index+1,'name':h.label,'url':SITE+h.path}))},
     {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},{'@type':'ListItem','position':2,'name':'전국 장소·산책 코스','item':SITE+'/discover.html'}]}
   ];
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(directoryTitle)}</title><meta name="description" content="${escapeHtml(directoryDescription)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(directoryTitle)}"><meta property="og:description" content="${escapeHtml(directoryDescription)}"><meta property="og:url" content="${SITE}/discover.html"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 전국 강아지 산책 코스와 애견동반 장소"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(directoryTitle)}"><meta name="twitter:description" content="${escapeHtml(directoryDescription)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><script type="application/ld+json">${JSON.stringify(directorySchema).replaceAll('<','\\u003c')}</script><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2,h3{color:#152922}h3{margin:18px 0 6px;font-size:16px}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}.jump{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.jump a{padding:8px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="빠른 탐색" class="jump"><a href="#course-themes">테마별 산책 코스</a><a href="#course-regions">지역별 산책 코스</a><a href="#place-regions">지역별 애견동반 장소</a><a href="/bins/">배변봉투함 위치</a><a href="#bin-regions">지역별 배변봉투함</a><a href="#guides">산책 가이드</a><a href="#courses">대표 코스</a><a href="#places">대표 장소</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section id="guides"><h2>강아지 산책 가이드</h2><h3>기본·상시 가이드</h3><ul>${GUIDES.filter(g=>!['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul><h3>날씨·계절 가이드</h3><ul>${GUIDES.filter(g=>['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul></section><section id="course-themes"><h2>테마별 강아지 산책 코스</h2>${hubList(themeCourseHubs)}</section><section id="course-regions"><h2>지역별 강아지 산책 코스</h2>${hubList(regionalCourseHubs)}</section><section><h2>전국 애견동반 장소 종류</h2>${hubList(nationalPlaceHubs)}</section><section id="place-regions"><h2>광역 지역별 애견동반 장소</h2>${hubList(regionalPlaceHubs)}</section><section><h2>시·군·구별 애견동반 장소</h2>${hubList(areaPlaceHubs)}</section><section><h2>반려견 배변봉투함 찾기</h2>${hubList(nationalBinHubs)}</section><section id="bin-regions"><h2>지역별 반려견 배변봉투함</h2>${hubList(regionalBinHubs)}</section>${sections}</main></body></html>`;
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(directoryTitle)}</title><meta name="description" content="${escapeHtml(directoryDescription)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(directoryTitle)}"><meta property="og:description" content="${escapeHtml(directoryDescription)}"><meta property="og:url" content="${SITE}/discover.html"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 전국 강아지 산책 코스와 애견동반 장소"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(directoryTitle)}"><meta name="twitter:description" content="${escapeHtml(directoryDescription)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><script type="application/ld+json">${JSON.stringify(directorySchema).replaceAll('<','\\u003c')}</script><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2,h3{color:#152922}h3{margin:18px 0 6px;font-size:16px}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}.jump{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.jump a{padding:8px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="빠른 탐색" class="jump"><a href="#with-dog-regions">지역별 강아지와 갈만한 곳</a><a href="#course-themes">테마별 산책 코스</a><a href="#course-regions">지역별 산책 코스</a><a href="#place-regions">지역별 애견동반 장소</a><a href="/bins/">배변봉투함 위치</a><a href="#bin-regions">지역별 배변봉투함</a><a href="#guides">산책 가이드</a><a href="#courses">대표 코스</a><a href="#places">대표 장소</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section id="with-dog-regions"><h2>지역별 강아지와 갈만한 곳</h2>${localOutingPages.length?`<ul>${localOutingPages.map(p=>`<li><a href="/with-dog/${p.slug}/">${escapeHtml(p.region)} 강아지와 갈만한 곳</a> <small>산책 ${p.courses.length} · 장소 ${p.places.length}</small></li>`).join('')}</ul>`:'<p>지역 데이터가 충분해지면 자동으로 추가됩니다.</p>'}</section><section id="guides"><h2>강아지 산책 가이드</h2><h3>기본·상시 가이드</h3><ul>${GUIDES.filter(g=>!['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul><h3>날씨·계절 가이드</h3><ul>${GUIDES.filter(g=>['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul></section><section id="course-themes"><h2>테마별 강아지 산책 코스</h2>${hubList(themeCourseHubs)}</section><section id="course-regions"><h2>지역별 강아지 산책 코스</h2>${hubList(regionalCourseHubs)}</section><section><h2>전국 애견동반 장소 종류</h2>${hubList(nationalPlaceHubs)}</section><section id="place-regions"><h2>광역 지역별 애견동반 장소</h2>${hubList(regionalPlaceHubs)}</section><section><h2>시·군·구별 애견동반 장소</h2>${hubList(areaPlaceHubs)}</section><section><h2>반려견 배변봉투함 찾기</h2>${hubList(nationalBinHubs)}</section><section id="bin-regions"><h2>지역별 반려견 배변봉투함</h2>${hubList(regionalBinHubs)}</section>${sections}</main></body></html>`;
 }
 
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
@@ -645,7 +686,17 @@ duplicateNamesByTable = new Map(groups.map(group=>{
   return [group.type.table,new Set([...counts].filter(([,count])=>count>1).map(([name])=>name))];
 }));
 searchHubs = buildHubs(groups);
+{
+  const courses=groups.find(group=>group.type.table==='courses')?.items || [];
+  const places=groups.find(group=>group.type.table==='facilities')?.items || [];
+  localOutingPages=REGIONS.map(([slug,region])=>{
+    const regionalCourses=courses.filter(item=>regionFor(item)?.[0]===slug);
+    const regionalPlaces=places.filter(item=>regionFor(item)?.[0]===slug);
+    return {slug,region,courses:regionalCourses,places:regionalPlaces};
+  }).filter(page=>page.courses.length>=3 && page.places.length>=3);
+}
 for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: true, force: true });
+await rm(path.join(ROOT,'with-dog'),{recursive:true,force:true});
 const allItems = groups.flatMap(group=>group.items);
 const contentLastmod = newestDate(allItems) || new Date().toISOString().slice(0, 10);
 const sitemap = [{ url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
@@ -668,6 +719,15 @@ for (const hub of searchHubs) {
     await writeFile(path.join(dir,'index.html'),hubHtml(hub,page),'utf8');
     sitemap.push({url:SITE+relative,lastmod:newestDate(hub.items) || contentLastmod});
   }
+}
+for(const page of localOutingPages){
+  const dir=path.join(ROOT,'with-dog',page.slug);
+  await mkdir(dir,{recursive:true});
+  await writeFile(path.join(dir,'index.html'),localOutingHtml(page),'utf8');
+  sitemap.push({
+    url:`${SITE}/with-dog/${page.slug}/`,
+    lastmod:newestDate([...page.courses,...page.places]) || contentLastmod
+  });
 }
 await rm(path.join(ROOT, 'guides'), { recursive: true, force: true });
 for (const guide of GUIDES) {
