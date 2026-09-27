@@ -532,7 +532,9 @@ function guideHtml(guide){
 function directoryHtml(groups) {
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;
-    const featured=items.slice(0,limit);
+    const featured=[...items]
+      .sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||'')) || compact(a.name).localeCompare(compact(b.name),'ko'))
+      .slice(0,limit);
     return `<section id="${type.folder}"><h2>${type.icon} ${escapeHtml(type.label)} <small>${items.length.toLocaleString('ko-KR')}곳</small></h2><p>대표 ${featured.length}곳을 먼저 보여드립니다. 전체 목록은 위 지역·테마별 페이지에서 더 빠르게 찾아볼 수 있어요.</p><ul>${featured.map((item) => `<li><a href="/${type.folder}/${safeSegment(item.id)}/">${escapeHtml(item.name)}</a>${item.category ? ` <span>${escapeHtml(item.category)}</span>` : ''}</li>`).join('')}</ul></section>`;
   }).join('');
   const total=groups.reduce((sum,g)=>sum+g.items.length,0);
