@@ -360,13 +360,33 @@ function detailHtml(item, type, url) {
   const tags = Array.isArray(item.tags) ? item.tags.join(' · ') : '';
   const extras = [item.distance && `거리 ${item.distance}`, item.diff && `난이도 ${item.diff}`, tags].filter(Boolean).join(' · ');
   const schema = {
-    '@context': 'https://schema.org', '@type': 'Place', name: item.name,
-    description, url,
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: item.name,
+    description,
+    url,
+    additionalType: type.table==='courses'
+      ? 'https://schema.org/TouristAttraction'
+      : item.category==='숙소'
+        ? 'https://schema.org/LodgingBusiness'
+        : item.category==='식당카페'
+          ? 'https://schema.org/FoodEstablishment'
+          : undefined,
     ...(item.address ? { address: item.address } : {}),
     ...(item.lat != null && item.lng != null && item.lat !== '' && item.lng !== '' && Number.isFinite(Number(item.lat)) && Number.isFinite(Number(item.lng)) ? {
       geo: { '@type': 'GeoCoordinates', latitude: Number(item.lat), longitude: Number(item.lng) },
     } : {}),
-
+    ...(relatedItems.length || crossItems.length ? {
+      subjectOf: [...relatedItems.map(other=>({
+        '@type':'WebPage',
+        name:other.name,
+        url:SITE+detailPath(other,type)
+      })), ...(crossType?crossItems.map(other=>({
+        '@type':'WebPage',
+        name:other.name,
+        url:SITE+detailPath(other,crossType)
+      })):[])]
+    } : {}),
   };
   const appLink = type.table === 'courses'
     ? `${SITE}/?course=${encodeURIComponent(item.id)}`
