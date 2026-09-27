@@ -234,9 +234,10 @@ function hubHtml(hub,page){
       const stays=hub.items.filter(i=>i.category==='숙소').length;
       return [cafes&&`카페·식당 ${cafes}곳`,stays&&`숙소 ${stays}곳`].filter(Boolean).join(' · ');
     })();
+ const hubItemIds=new Set(hub.items.map(item=>item.id));
  const related=searchHubs
   .filter(h=>h.path!==hub.path&&h.type.table===hub.type.table)
-  .map(h=>({hub:h,overlap:h.items.reduce((n,item)=>n+(hub.items.some(base=>base.id===item.id)?1:0),0)}))
+  .map(h=>({hub:h,overlap:h.items.reduce((n,item)=>n+(hubItemIds.has(item.id)?1:0),0)}))
   .sort((a,b)=>b.overlap-a.overlap || b.hub.items.length-a.hub.items.length)
   .filter((entry,index)=>entry.overlap>0 || index<8)
   .slice(0,8)
