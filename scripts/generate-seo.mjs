@@ -106,6 +106,37 @@ function buildHubs(groups){
   path:'/courses/themes/short-under-2km/',label:'2km 이하 짧은 강아지 산책 코스',type:courses.type,items:shortCourses,
   intro:'등록 거리 기준 2km 이하 코스를 모았습니다. 짧은 외출이나 가벼운 산책을 찾을 때 비교해 보세요. 실제 이동 거리는 출발 지점과 동선에 따라 달라질 수 있습니다.'
  });
+ const hasTag=(item,tag)=>Array.isArray(item.tags)&&item.tags.includes(tag);
+ const comboThemes=[
+  {
+   path:'/courses/themes/shade-step-free/',
+   label:'그늘 많고 계단 없는 강아지 산책 코스',
+   test:i=>hasTag(i,'그늘많음')&&hasTag(i,'계단없음'),
+   intro:'등록 태그에서 그늘많음과 계단없음이 함께 표시된 코스를 모았습니다. 더운 날이나 계단 이동이 부담스러운 반려견과 산책할 때 비교해 보세요. 실제 그늘 범위와 경사는 시간·계절·현장 상태에 따라 달라질 수 있습니다.'
+  },
+  {
+   path:'/courses/themes/grass-step-free/',
+   label:'잔디 있고 계단 없는 강아지 산책 코스',
+   test:i=>hasTag(i,'잔디바닥')&&hasTag(i,'계단없음'),
+   intro:'등록 태그에서 잔디바닥과 계단없음이 함께 표시된 코스를 모았습니다. 부드러운 노면과 계단이 적은 동선을 찾을 때 참고하고, 잔디 출입 규정과 실제 경사는 현장에서 다시 확인하세요.'
+  },
+  {
+   path:'/courses/themes/easy-short/',
+   label:'초보 반려견용 2km 이하 쉬운 산책 코스',
+   test:i=>compact(i.diff).includes('쉬')&&distanceKm(i.distance)!==null&&distanceKm(i.distance)<=2,
+   intro:'등록 난이도가 쉽고 거리 정보가 2km 이하인 코스를 모았습니다. 산책 경험이 적거나 짧고 가벼운 동선을 찾는 반려견에게 비교하기 좋은 목록입니다. 당일 기온과 반려견 체력도 함께 확인하세요.'
+  },
+  {
+   path:'/courses/themes/short-step-free/',
+   label:'2km 이하 계단 없는 강아지 산책 코스',
+   test:i=>hasTag(i,'계단없음')&&distanceKm(i.distance)!==null&&distanceKm(i.distance)<=2,
+   intro:'등록 거리 2km 이하이면서 계단없음 태그가 있는 코스를 모았습니다. 짧은 산책과 이동 편의성을 함께 고려할 때 비교해 보세요. 실제 경사와 공사·통행 상태는 방문 전에 확인하세요.'
+  }
+ ];
+ for(const theme of comboThemes){
+  const items=courses.items.filter(theme.test);
+  if(items.length>=3) hubs.push({path:theme.path,label:theme.label,intro:theme.intro,type:courses.type,items});
+ }
  for(const [slug,region] of REGIONS){
   for(const [kind,label,category] of [['cafes','애견동반 식당·카페','식당카페'],['stays','애견동반 숙소','숙소']]){
    const items=g.items.filter(i=>regionFor(i)?.[0]===slug&&i.category===category);
@@ -204,7 +235,7 @@ for (const hub of searchHubs) {
     const dir=path.join(ROOT,relative.slice(1));
     await mkdir(dir,{recursive:true});
     await writeFile(path.join(dir,'index.html'),hubHtml(hub,page),'utf8');
-    sitemap.push({url:SITE+relative});
+    sitemap.push({url:SITE+relative,lastmod:new Date().toISOString().slice(0,10)});
   }
 }
 await writeFile(path.join(ROOT, 'discover.html'), directoryHtml(groups), 'utf8');
