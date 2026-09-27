@@ -187,7 +187,13 @@ function hubHtml(hub,page){
  const title=hub.label+(page>1?` - ${page}페이지`:'')+' | 발자국';
  const isCourse=hub.type.table==='courses';
  const description=`${hub.label} ${hub.items.length}곳의 ${isCourse?'거리·난이도·등록 태그':'주소와 장소 설명'}을 비교하세요. 발자국 지도에서 위치를 확인하고 반려견과의 ${isCourse?'산책':'방문'}을 준비하세요.`;
- const related=searchHubs.filter(h=>h.path!==hub.path&&h.type.table===hub.type.table).slice(0,8);
+ const related=searchHubs
+  .filter(h=>h.path!==hub.path&&h.type.table===hub.type.table)
+  .map(h=>({hub:h,overlap:h.items.reduce((n,item)=>n+(hub.items.some(base=>base.id===item.id)?1:0),0)}))
+  .sort((a,b)=>b.overlap-a.overlap || b.hub.items.length-a.hub.items.length)
+  .filter((entry,index)=>entry.overlap>0 || index<8)
+  .slice(0,8)
+  .map(entry=>entry.hub);
  const schema=[{'@context':'https://schema.org','@type':'CollectionPage',name:title,url,description},
  {'@context':'https://schema.org','@type':'ItemList',itemListElement:items.map((item,i)=>({'@type':'ListItem',position:(page-1)*HUB_SIZE+i+1,url:SITE+detailPath(item,hub.type),name:item.name}))},
  {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
@@ -200,6 +206,7 @@ function hubHtml(hub,page){
  {'@type':'ListItem',position:3,name:title,item:url}]}];
  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
  <title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${url}">
+ ${page>1?`<link rel="prev" href="${SITE+hub.path+(page-1>1?`page/${page-1}/`:'')}">`:''}${page<total?`<link rel="next" href="${SITE+hub.path+`page/${page+1}/`}">`:''}
  <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png">
  <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
  <style>body{margin:0;background:#fbf8f1;color:#183c30;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}main{max-width:960px;margin:auto;padding:24px 18px}h1{font-size:clamp(25px,6vw,36px);line-height:1.35}a{color:#315b43}nav{display:flex;flex-wrap:wrap;gap:12px}ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}li{padding:20px;border:1px solid #dedecf;border-radius:18px;background:#fff}li h2{font-size:19px;margin:0 0 8px}li p{margin:8px 0;overflow-wrap:anywhere;font-size:14px}.note{padding:18px;background:#eef2e7;border-radius:16px}.pagination a,.pagination strong{padding:8px 14px;min-height:28px;border:1px solid #dedecf;border-radius:10px}.pagination{margin:28px 0}</style></head>
