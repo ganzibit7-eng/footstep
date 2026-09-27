@@ -3800,7 +3800,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function captureReferralFromUrl(){
     try{
       const params = new URLSearchParams(window.location.search);
-      const ref = params.get('utm_source') || params.get('ref');
+      const ref = params.get('ref');
       if(ref) localStorage.setItem('paw_pending_ref', ref);
     }catch(e){}
   }
@@ -6992,13 +6992,20 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return id;
   }
   async function getReferrerSource(){
-    // 카톡/인스타/쓰레드 등에서 유입 시 붙는 파라미터(?ref=threads) 우선, 없으면 브라우저 리퍼러 도메인 사용
     try{
       const params = new URLSearchParams(window.location.search);
+      const utmSource = (params.get('utm_source') || '').trim();
+      const utmMedium = (params.get('utm_medium') || '').trim();
+      const utmCampaign = (params.get('utm_campaign') || '').trim();
+      if(utmSource){
+        const parts = [`utm:${utmSource}`];
+        if(utmMedium) parts.push(`medium:${utmMedium}`);
+        if(utmCampaign) parts.push(`campaign:${utmCampaign}`);
+        return parts.join(' · ').slice(0,240);
+      }
       const ref = params.get('ref');
       if(ref){
-        // 친구 추천 링크(?ref=사용자ID)로 들어온 경우, 복잡한 ID 대신 추천인 닉네임으로 보여줌
-        const isUid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(ref);
+        const isUid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(ref);
         if(isUid){
           try{
             const { data } = await sb.from('profiles').select('nickname').eq('owner_id', ref).limit(1);
@@ -7006,11 +7013,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             return nickname ? `추천 링크(${nickname}님)` : '추천 링크';
           }catch(e){ return '추천 링크'; }
         }
-        return ref;
+        return `ref:${String(ref).slice(0,180)}`;
       }
       if(document.referrer){
-        const host = new URL(document.referrer).hostname.replace('www.', '');
-        return host;
+        const url = new URL(document.referrer);
+        if(url.origin !== window.location.origin) return url.hostname.replace('www.', '');
       }
     }catch(e){}
     return '직접 방문';
