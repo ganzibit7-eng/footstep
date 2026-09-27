@@ -144,6 +144,37 @@ function buildHubs(groups){
   const items=courses.items.filter(theme.test);
   if(items.length>=3) hubs.push({path:theme.path,label:theme.label,intro:theme.intro,type:courses.type,items});
  }
+
+ // 지역명이 등록 설명/주소에 확인되는 산책 코스만 지역 허브로 생성합니다.
+ for(const [slug,region] of REGIONS){
+  const items=courses.items.filter(i=>regionFor(i)?.[0]===slug);
+  if(items.length>=3) hubs.push({
+   path:`/courses/regions/${slug}/`,
+   label:`${region} 강아지 산책 코스`,
+   type:courses.type,
+   items,
+   intro:`${region}에서 등록된 강아지 산책 코스를 모았습니다. 거리·난이도·태그를 비교하고 반려견 체력과 당일 날씨에 맞는 코스를 선택하세요.`
+  });
+ }
+
+ const courseAreaGroups=new Map();
+ for(const item of courses.items){
+  const region=regionFor(item), area=areaFor(item);
+  if(!region || !area) continue;
+  const key=`${region[0]}|${area}`;
+  if(!courseAreaGroups.has(key)) courseAreaGroups.set(key,{region,area,items:[]});
+  courseAreaGroups.get(key).items.push(item);
+ }
+ for(const {region,area,items} of courseAreaGroups.values()){
+  if(items.length>=3) hubs.push({
+   path:`/courses/regions/${region[0]}/areas/${areaSlug(area)}/`,
+   label:`${region[1]} ${area} 강아지 산책 코스`,
+   type:courses.type,
+   items,
+   intro:`${region[1]} ${area}에서 등록된 강아지 산책 코스를 모았습니다. 거리와 난이도, 등록 태그를 비교하고 실제 노면·통행 상태는 산책 전에 확인하세요.`
+  });
+ }
+
  for(const [slug,region] of REGIONS){
   for(const [kind,label,category] of [['cafes','애견동반 식당·카페','식당카페'],['stays','애견동반 숙소','숙소']]){
    const items=g.items.filter(i=>regionFor(i)?.[0]===slug&&i.category===category);
