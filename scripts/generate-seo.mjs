@@ -249,6 +249,17 @@ function hubHtml(hub,page){
    if(areaMatch) return h.path.includes(`/areas/${areaMatch[1]}/`);
    return !h.path.includes('/areas/');
   }):[]).slice(0,6);
+ const quickLinks=isCourse
+  ? [
+      ['/courses/themes/easy/','쉬운 산책길'],
+      ['/courses/themes/short-under-2km/','2km 이하'],
+      ['/courses/themes/shade/','그늘 많은 길'],
+      ['/courses/themes/step-free/','계단 없는 길']
+    ]
+  : [
+      ['/places/cafes/','애견동반 카페·식당'],
+      ['/places/stays/','애견동반 숙소']
+    ];
  const schema=[{'@context':'https://schema.org','@type':'CollectionPage',name:title,url,description},
  {'@context':'https://schema.org','@type':'ItemList',itemListElement:items.map((item,i)=>({'@type':'ListItem',position:(page-1)*HUB_SIZE+i+1,url:SITE+detailPath(item,hub.type),name:item.name}))},
  {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
@@ -264,9 +275,9 @@ function hubHtml(hub,page){
  ${page>1?`<link rel="prev" href="${SITE+hub.path+(page-1>1?`page/${page-1}/`:'')}">`:''}${page<total?`<link rel="next" href="${SITE+hub.path+`page/${page+1}/`}">`:''}
  <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png">
  <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
- <style>body{margin:0;background:#fbf8f1;color:#183c30;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}main{max-width:960px;margin:auto;padding:24px 18px}h1{font-size:clamp(25px,6vw,36px);line-height:1.35}a{color:#315b43}nav{display:flex;flex-wrap:wrap;gap:12px}ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}li{padding:20px;border:1px solid #dedecf;border-radius:18px;background:#fff}li h2{font-size:19px;margin:0 0 8px}li p{margin:8px 0;overflow-wrap:anywhere;font-size:14px}.note{padding:18px;background:#eef2e7;border-radius:16px}.pagination a,.pagination strong{padding:8px 14px;min-height:28px;border:1px solid #dedecf;border-radius:10px}.pagination{margin:28px 0}</style></head>
+ <style>body{margin:0;background:#fbf8f1;color:#183c30;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}main{max-width:960px;margin:auto;padding:24px 18px}h1{font-size:clamp(25px,6vw,36px);line-height:1.35}a{color:#315b43}nav{display:flex;flex-wrap:wrap;gap:12px}ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}li{padding:20px;border:1px solid #dedecf;border-radius:18px;background:#fff}li h2{font-size:19px;margin:0 0 8px}li p{margin:8px 0;overflow-wrap:anywhere;font-size:14px}.note{padding:18px;background:#eef2e7;border-radius:16px}.quick-links{margin:16px 0}.quick-links a{display:inline-block;padding:8px 12px;border:1px solid #dedecf;border-radius:999px;background:#fff;text-decoration:none;font-size:14px}.pagination a,.pagination strong{padding:8px 14px;min-height:28px;border:1px solid #dedecf;border-radius:10px}.pagination{margin:28px 0}</style></head>
  <body><main><nav aria-label="현재 위치"><a href="/">발자국 홈</a><a href="/discover.html">전국 장소·산책 코스</a></nav>
- <h1>${escapeHtml(hub.label)}</h1><p>${escapeHtml(description)}</p>${summaryText?`<p><strong>현재 등록 정보 요약</strong> · ${escapeHtml(summaryText)}</p>`:''}<div class="note"><strong>${isCourse?"산책 코스 고르는 방법":"방문 전에 확인하세요"}</strong><p>${escapeHtml(hub.intro || "반려견 동반 가능 공간, 크기·마릿수 제한, 이동장 사용 여부와 추가 요금을 장소에 직접 문의하세요. 등록 정보는 현장 운영과 다를 수 있습니다.")}</p></div>
+ <h1>${escapeHtml(hub.label)}</h1><p>${escapeHtml(description)}</p>${summaryText?`<p><strong>현재 등록 정보 요약</strong> · ${escapeHtml(summaryText)}</p>`:''}<nav aria-label="빠른 탐색" class="quick-links">${quickLinks.map(([href,label])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</nav><div class="note"><strong>${isCourse?"산책 코스 고르는 방법":"방문 전에 확인하세요"}</strong><p>${escapeHtml(hub.intro || "반려견 동반 가능 공간, 크기·마릿수 제한, 이동장 사용 여부와 추가 요금을 장소에 직접 문의하세요. 등록 정보는 현장 운영과 다를 수 있습니다.")}</p></div>
  <p>전체 ${hub.items.length}곳 · ${page}/${total}페이지</p><ul>${items.map(item=>`<li><h2><a href="${detailPath(item,hub.type)}">${escapeHtml(item.name)}</a></h2><p>${escapeHtml(isCourse?[item.distance && `거리 ${item.distance}`,item.diff && `난이도 ${item.diff}`].filter(Boolean).join(" · "):item.category)}</p><p>${escapeHtml(isCourse?(Array.isArray(item.tags)?item.tags.join(" · "):""):(item.address || "주소 미등록"))}</p><p>${escapeHtml(compact(item.description).slice(0,180))}</p></li>`).join('')}</ul>
  ${related.length?`<section class="note"><strong>관련해서 함께 찾는 목록</strong><p>${related.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</p></section>`:''}
 
