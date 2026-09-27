@@ -84,6 +84,7 @@ const areaSlug = value => Buffer.from(String(value),'utf8').toString('base64url'
 const detailPath = (item,type) => `/${type.folder}/${safeSegment(item.id)}/`;
 const HUB_SIZE = 48;
 let searchHubs = [];
+let duplicateNamesByTable = new Map();
 function buildHubs(groups){
  const g=groups.find(g=>g.type.table==='facilities'), hubs=[];
  for(const [slug,label,category] of [['cafes','애견동반 식당·카페','식당카페'],['stays','애견동반 숙소','숙소']]){
@@ -289,7 +290,11 @@ function hubHtml(hub,page){
 function detailHtml(item, type, url) {
   const label = item.category === '숙소' ? '애견동반 숙소' : item.category === '식당카페' ? '애견동반 식당·카페' : type.label;
   const region = regionFor(item);
-  const title = `${item.name} | ${region ? region[1]+' ' : ''}${label} | 발자국`;
+  const isDuplicateName = duplicateNamesByTable.get(type.table)?.has(compact(item.name));
+  const qualifier = isDuplicateName && type.table === 'courses'
+    ? [item.distance && compact(item.distance), item.diff && compact(item.diff)].filter(Boolean).join(' · ')
+    : '';
+  const title = `${item.name}${qualifier ? ' ('+qualifier+')' : ''} | ${region ? region[1]+' ' : ''}${label} | 발자국`;
   const hubs = hubLinks(item, type);
   const description = shortDescription(item, type);
   const location = [item.address, item.category].filter(Boolean).join(' · ');
@@ -391,6 +396,14 @@ function directoryHtml(groups) {
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
 const groups = await Promise.all(types.map(async type => ({type,items:await fetchApproved(type.table)})));
 for(const group of groups) if(group.type.table==='facilities') group.items=group.items.map(item=>({...item,address:addressFor(item)}));
+duplicateNamesByTable = new Map(groups.map(group=>{
+  const counts=new Map();
+  for(const item of group.items){
+    const name=compact(item.name);
+    if(name) counts.set(name,(counts.get(name)||0)+1);
+  }
+  return [group.type.table,new Set([...counts].filter(([,count])=>count>1).map(([name])=>name))];
+}));
 searchHubs = buildHubs(groups);
 for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: true, force: true });
 const sitemap = [{ url: `${SITE}/`, lastmod: new Date().toISOString().slice(0, 10) }, { url: `${SITE}/discover.html`, lastmod: new Date().toISOString().slice(0, 10) }];
