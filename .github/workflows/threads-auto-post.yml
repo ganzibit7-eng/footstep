@@ -1,0 +1,68 @@
+name: Threads daily post
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:10 KST (GitHub Actions schedule uses UTC)
+    - cron: '10 0 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: threads-daily-post
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check posting configuration
+        id: config
+        shell: bash
+        env:
+          THREADS_AUTO_POST_ENABLED: ${{ secrets.THREADS_AUTO_POST_ENABLED }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+        run: |
+          if [[ "$THREADS_AUTO_POST_ENABLED" != "true" ]]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "자동 게시가 비활성 상태입니다. THREADS_AUTO_POST_ENABLED를 true로 설정하면 시작됩니다."
+          elif [[ -z "$THREADS_ACCESS_TOKEN" || -z "$THREADS_USER_ID" ]]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Threads API 연결 정보가 없어 게시를 건너뜁니다."
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out main
+        if: steps.config.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        if: steps.config.outputs.enabled == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Publish today's post
+        if: steps.config.outputs.enabled == 'true'
+        run: node scripts/threads-auto-post.mjs
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+
+      - name: Save duplicate protection state
+        if: steps.config.outputs.enabled == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/threads-post-state.json
+          if git diff --cached --quiet; then
+            echo "게시 상태 변경 없음"
+          else
+            git commit -m "Record daily Threads post state"
+            git fetch origin main
+            git rebase origin/main
+            git push origin main
+          fi
