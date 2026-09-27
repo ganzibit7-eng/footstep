@@ -3594,10 +3594,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(balance < BOOST_COST){ toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${BOOST_COST}P)`); return; }
     if(!confirm(`${BOOST_COST}P를 사용해서 이 코스를 ${BOOST_DAYS}일간 홍보할까요?`)) return;
     try{
-      const until = new Date(Date.now() + BOOST_DAYS*24*60*60*1000).toISOString();
-      await sb.from('points_log').insert([{ owner_id: myDeviceId, amount: -BOOST_COST, reason: '코스 홍보권 구매' }]);
-      const { error } = await sb.from('course_boosts').upsert([{ course_id: courseId, boosted_by: myDeviceId, boosted_until: until }]);
+      const {data,error}=await sb.rpc('purchase_course_boost',{p_course_id:courseId});
       if(error){ console.error(error); toast('홍보 등록에 실패했어요'); return; }
+      if(!data?.purchased){
+        if(data?.error==='insufficient_points') toast(`포인트가 부족해요 (보유 ${Number(data.balance||0).toLocaleString()}P / 필요 ${BOOST_COST}P)`);
+        else toast('홍보 등록에 실패했어요');
+        return;
+      }
+      const until = data.boosted_until;
       courseBoosts[courseId] = until;
       loadMyPoints();
       renderGrid();
@@ -3663,10 +3667,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const balance = await myPointBalance();
     if(balance < shopItem.price){ toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${shopItem.price}P)`); return; }
     try{
-      await sb.from('points_log').insert([{ owner_id: myDeviceId, amount: -shopItem.price, reason: `배지 구매(${shopItem.name})` }]);
+      const {data:purchase,error:purchaseError}=await sb.rpc('purchase_badge_points',{p_badge:badgeId});
+      if(purchaseError){ console.error(purchaseError); toast('구매에 실패했어요'); return; }
+      if(!purchase?.purchased){
+        if(purchase?.error==='insufficient_points') toast(`포인트가 부족해요 (보유 ${Number(purchase.balance||0).toLocaleString()}P / 필요 ${shopItem.price}P)`);
+        else toast('구매에 실패했어요');
+        return;
+      }
       const newOwned = myOwnedBadges.concat([badgeId]);
       const { error } = await sb.auth.updateUser({ data: { owned_badges: newOwned, active_badge: badgeId } });
-      if(error){ toast('구매에 실패했어요'); return; }
+      if(error){ toast('배지는 결제됐지만 장착 저장에 실패했어요. 다시 시도해주세요'); loadMyPoints(); return; }
       myOwnedBadges = newOwned;
       myBadge = badgeId;
       updateProfileLabel();
@@ -3782,7 +3792,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(error){ console.error(error); note.textContent = '전송에 실패했어요. 잠시 후 다시 시도해주세요.'; }
       else{ note.textContent = `${email} 로 로그인 링크를 보냈어요. 메일함(스팸함도)을 확인해주세요.`; input.value=''; }
     }catch(e){ console.error(e); note.textContent = '전송에 실패했어요'; }
-    btn.disabled = false; btn.textContent = '📧 로그인 링크 이메일로 받기';
+    btn.disabled = false; btn.textContent = '📧 비밀번호 없이 로그인 링크 받기';
   }
   async function signOutUser(){
     try{
@@ -3796,14 +3806,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function checkFirstLoginBonus(){
     if(!myDeviceId) return;
     try{
-      const { data, error } = await sb.from('points_log').select('id').eq('owner_id', myDeviceId).limit(1);
-      if(!error && (!data || data.length === 0)){
-        await awardPoints(100, '회원가입 축하 포인트');
+      const { data, error } = await sb.rpc('claim_points',{ p_reason:'회원가입 축하 포인트' });
+      if(error){ console.error(error); loadMyPoints(); return; }
+      if(data?.awarded){
+        toast('+100P 적립! (회원가입 축하 포인트) 🪙');
         await applyReferralBonus();
-      } else {
-        loadMyPoints();
       }
-    }catch(e){ console.error(e); }
+      loadMyPoints();
+    }catch(e){ console.error(e); loadMyPoints(); }
   }
 
   // ===== 추천인 포인트 제도 =====
@@ -3817,18 +3827,17 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function applyReferralBonus(){
     let refId = null;
     try{ refId = localStorage.getItem('paw_pending_ref'); }catch(e){}
-    if(!refId || refId === myDeviceId) return; // 추천 링크 없거나 본인 링크
+    if(!refId || refId === myDeviceId) return;
     try{
-      await awardPoints(50, '추천 링크로 가입한 보너스');
-      const REFERRER_DAILY_CAP = 5;
-      const referrerToday = await todayCount(refId, '친구 추천 보너스');
-      if(referrerToday < REFERRER_DAILY_CAP){
-        await sb.from('points_log').insert([{ owner_id: refId, amount: 50, reason: '친구 추천 보너스' }]);
-        toast('추천 보너스 +50P! 추천해주신 분에게도 포인트가 적립됐어요 🎁');
-      } else {
-        toast('추천 보너스 +50P! (추천인은 오늘 지급 한도에 도달해서 이번엔 못 받았어요)');
+      const {data,error}=await sb.rpc('claim_referral_bonus',{p_referrer_id:refId});
+      if(error){ console.error(error); return; }
+      if(data?.awarded){
+        toast(data.referrer_awarded
+          ? '추천 보너스 +50P! 추천해주신 분에게도 포인트가 적립됐어요 🎁'
+          : '추천 보너스 +50P! (추천인은 오늘 지급 한도에 도달했어요)');
       }
       try{ localStorage.removeItem('paw_pending_ref'); }catch(e){}
+      loadMyPoints();
     }catch(e){ console.error(e); }
   }
   function getMyReferralLink(){
@@ -3907,17 +3916,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   async function awardPoints(amount, reason){
     try{
-      const cap = DAILY_POINT_CAPS[reason];
-      if(cap != null){
-        const c = await todayCount(myDeviceId, reason);
-        if(c >= cap){
-          toast(`오늘은 "${reason}"으로 받을 수 있는 포인트를 다 받았어요 (하루 ${cap}회까지)`);
-          return;
-        }
-      }
-      const { error } = await sb.from('points_log').insert([{ owner_id: myDeviceId, amount, reason }]);
+      const {data,error}=await sb.rpc('claim_points',{p_reason:reason});
       if(error){ console.error(error); return; }
-      toast(`+${amount}P 적립! (${reason}) 🪙`);
+      if(data?.awarded){
+        toast(`+${data.amount ?? amount}P 적립! (${reason}) 🪙`);
+      }else{
+        const cap=data?.cap ?? DAILY_POINT_CAPS[reason];
+        if(cap!=null) toast(`오늘은 "${reason}"으로 받을 수 있는 포인트를 다 받았어요 (하루 ${cap}회까지)`);
+      }
       loadMyPoints();
     }catch(e){ console.error(e); }
   }
@@ -7632,7 +7638,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(!reason||reason.length>200){toast('조정 사유는 1~200자로 입력해 주세요.');return;}
       if(!confirm(`${member.nickname||'(닉네임 없음)'} 님에게 ${amount>0?'+':''}${amount.toLocaleString()}P를 반영할까요?\n사유: ${reason}\n\n다른 관리자의 작업에 따라 현재 잔액은 달라질 수 있어요.`))return;
       if(viewer!==myDeviceId||!isAdminUser(myDeviceId))return;
-      const {error}=await sb.from('points_log').insert([{owner_id:ownerId,amount,reason}]);
+      const {error}=await sb.rpc('admin_adjust_points',{p_owner_id:ownerId,p_amount:amount,p_reason:reason});
       if(error){console.error(error);toast('포인트 처리에 실패했어요. 최신 내역을 확인해 주세요.');return;}
       toast(`${amount>0?'+':''}${amount}P 반영 완료`);
       await renderAllMemberList();
