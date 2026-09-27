@@ -414,6 +414,9 @@ function detailHtml(item, type, url) {
     {'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},
     {'@type':'ListItem',position:2,name:'전국 장소·산책 코스',item:SITE+'/discover.html'}
   ];
+  if(type.table==='bins'){
+    detailBreadcrumbs.push({'@type':'ListItem',position:detailBreadcrumbs.length+1,name:'전국 반려견 배변봉투함 위치',item:SITE+'/bins/'});
+  }
   const itemRegionInfo=type.table==='bins' ? binRegionFor(item) : regionFor(item);
   const itemRegionSlug=itemRegionInfo?.[0] || '';
   const itemRegionName=itemRegionInfo?.[1] || '';
