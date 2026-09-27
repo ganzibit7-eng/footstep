@@ -227,6 +227,14 @@ function hubHtml(hub,page){
   .filter((entry,index)=>entry.overlap>0 || index<8)
   .slice(0,8)
   .map(entry=>entry.hub);
+ const regionMatch=hub.path.match(/\/regions\/([^/]+)\//);
+ const areaMatch=hub.path.match(/\/areas\/([^/]+)\//);
+ const crossRelated=(regionMatch?searchHubs.filter(h=>{
+   if(h.type.table===hub.type.table) return false;
+   if(!h.path.includes(`/regions/${regionMatch[1]}/`)) return false;
+   if(areaMatch) return h.path.includes(`/areas/${areaMatch[1]}/`);
+   return !h.path.includes('/areas/');
+  }):[]).slice(0,6);
  const schema=[{'@context':'https://schema.org','@type':'CollectionPage',name:title,url,description},
  {'@context':'https://schema.org','@type':'ItemList',itemListElement:items.map((item,i)=>({'@type':'ListItem',position:(page-1)*HUB_SIZE+i+1,url:SITE+detailPath(item,hub.type),name:item.name}))},
  {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
@@ -247,6 +255,8 @@ function hubHtml(hub,page){
  <h1>${escapeHtml(hub.label)}</h1><p>${escapeHtml(description)}</p><div class="note"><strong>${isCourse?"산책 코스 고르는 방법":"방문 전에 확인하세요"}</strong><p>${escapeHtml(hub.intro || "반려견 동반 가능 공간, 크기·마릿수 제한, 이동장 사용 여부와 추가 요금을 장소에 직접 문의하세요. 등록 정보는 현장 운영과 다를 수 있습니다.")}</p></div>
  <p>전체 ${hub.items.length}곳 · ${page}/${total}페이지</p><ul>${items.map(item=>`<li><h2><a href="${detailPath(item,hub.type)}">${escapeHtml(item.name)}</a></h2><p>${escapeHtml(isCourse?[item.distance && `거리 ${item.distance}`,item.diff && `난이도 ${item.diff}`].filter(Boolean).join(" · "):item.category)}</p><p>${escapeHtml(isCourse?(Array.isArray(item.tags)?item.tags.join(" · "):""):(item.address || "주소 미등록"))}</p><p>${escapeHtml(compact(item.description).slice(0,180))}</p></li>`).join('')}</ul>
  ${related.length?`<section class="note"><strong>관련해서 함께 찾는 목록</strong><p>${related.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</p></section>`:''}
+
+ ${crossRelated.length?`<section class="note"><strong>같은 지역에서 함께 찾기</strong><p>${crossRelated.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</p></section>`:''}
  <nav class="pagination" aria-label="목록 페이지">${Array.from({length:total},(_,i)=>i+1).map(n=>n===page?`<strong aria-current="page">${n}</strong>`:`<a href="${hub.path+(n>1?`page/${n}/`:'')}">${n}</a>`).join('')}</nav>
  <section class="note"><strong>지도로 바로 확인하기</strong><p>목록에서 마음에 드는 곳을 찾았다면 발자국 지도에서 주변 코스와 애견동반 장소를 함께 비교해 보세요.</p><p><a href="/#map">내 주변 지도 보기</a> · <a href="/#register">우리 동네 코스 등록하기</a></p></section></main></body></html>`;
 }
