@@ -7072,6 +7072,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           if(map && Number.isFinite(Number(facility.lat)) && Number.isFinite(Number(facility.lng))){
             map.setView([Number(facility.lat), Number(facility.lng)], 16);
           }
+          toast(`${facility.name || '애견동반 장소'} 위치로 이동했어요 📍`);
         }, 300);
       }
     }
