@@ -425,7 +425,9 @@ function detailHtml(item, type, url) {
   };
   const appLink = type.table === 'courses'
     ? `${SITE}/?course=${encodeURIComponent(item.id)}`
-    : `${SITE}/#map`;
+    : type.table === 'facilities'
+      ? `${SITE}/?facility=${encodeURIComponent(item.id)}`
+      : `${SITE}/#map`;
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}">
