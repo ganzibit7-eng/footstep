@@ -330,7 +330,12 @@ const GUIDES = [
 function guideHtml(guide){
   const url=`${SITE}/guides/${guide.slug}/`;
   const schema=[
+    {'@context':'https://schema.org','@type':'WebPage','name':guide.title,'description':guide.description,'url':url,'isPartOf':{'@type':'WebSite','name':'발자국','url':SITE}},
     {'@context':'https://schema.org','@type':'Article','headline':guide.title,'description':guide.description,'mainEntityOfPage':url,'publisher':{'@type':'Organization','name':'발자국','url':SITE}},
+    {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+      {'@type':'Question','name':guide.title+'에서 가장 먼저 확인할 것은 무엇인가요?','acceptedAnswer':{'@type':'Answer','text':guide.tips.slice(0,2).join(', ')+' 등을 먼저 확인하세요.'}},
+      {'@type':'Question','name':'산책 코스는 어떻게 고르면 되나요?','acceptedAnswer':{'@type':'Answer','text':'반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.'}}
+    ]},
     {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
       {'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},
       {'@type':'ListItem','position':2,'name':'산책 가이드','item':SITE+'/discover.html#guides'},
@@ -344,6 +349,7 @@ function guideHtml(guide){
   <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.75}.wrap{max-width:820px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.card{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:28px;margin:24px 0}h1,h2{color:#152922}li{margin:10px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}</style></head>
   <body><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
   <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p><h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
+  <h2>자주 묻는 질문</h2><p><strong>${escapeHtml(guide.title)}에서 가장 먼저 확인할 것은?</strong><br>${escapeHtml(guide.tips.slice(0,2).join(' · '))} 등을 먼저 확인해 보세요.</p><p><strong>산책 코스는 어떻게 고르면 되나요?</strong><br>반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.</p>
   <h2>관련 산책 코스 찾기</h2><div class="links">${guide.links.map(([label,href])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</div>
   <p style="margin-top:24px"><a href="/#map">내 주변 산책 코스 지도에서 보기 →</a></p></article>
   <p>반려견의 건강 상태와 날씨에 따라 적절한 산책 방식은 달라질 수 있습니다. 이상 징후가 있으면 수의사 등 전문가의 조언을 확인하세요.</p></main></body></html>`;
