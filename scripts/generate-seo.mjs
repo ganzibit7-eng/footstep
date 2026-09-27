@@ -351,7 +351,8 @@ function guideHtml(guide){
   <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p><h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
   <h2>자주 묻는 질문</h2><p><strong>${escapeHtml(guide.title)}에서 가장 먼저 확인할 것은?</strong><br>${escapeHtml(guide.tips.slice(0,2).join(' · '))} 등을 먼저 확인해 보세요.</p><p><strong>산책 코스는 어떻게 고르면 되나요?</strong><br>반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.</p>
   <h2>관련 산책 코스 찾기</h2><div class="links">${guide.links.map(([label,href])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</div>
-  <p style="margin-top:24px"><a href="/#map">내 주변 산책 코스 지도에서 보기 →</a></p></article>
+  <h2>다른 산책 가이드</h2><div class="links">${GUIDES.filter(g=>g.slug!==guide.slug).map(g=>`<a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a>`).join('')}</div>
+  <p style="margin-top:24px"><a href="/discover.html#courses">전국 산책 코스 둘러보기</a> · <a href="/#map">내 주변 산책 코스 지도에서 보기 →</a></p></article>
   <p>반려견의 건강 상태와 날씨에 따라 적절한 산책 방식은 달라질 수 있습니다. 이상 징후가 있으면 수의사 등 전문가의 조언을 확인하세요.</p></main></body></html>`;
 }
 
