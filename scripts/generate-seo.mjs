@@ -215,11 +215,12 @@ const hubLinks = (item,type) => searchHubs.filter(h=>h.type.table===type.table &
 function hubHtml(hub,page){
  const pagePath=hub.path+(page>1?`page/${page}/`:''), url=SITE+pagePath;
  const items=hub.items.slice((page-1)*HUB_SIZE,page*HUB_SIZE), total=Math.ceil(hub.items.length/HUB_SIZE);
- const title=`${hub.label} ${hub.items.length}곳${page>1?` - ${page}페이지`:''} | 발자국`;
  const isCourse=hub.type.table==='courses';
+ const titleCore=hub.label.length>34 ? hub.label.replace('애견동반 카페·식당·숙소','애견동반 장소') : hub.label;
+ const title=`${titleCore}${page>1?` ${page}페이지`:''} | 발자국`;
  const description=isCourse
-  ? `${hub.label} ${hub.items.length}곳을 한눈에 비교하세요. 거리·난이도·등록 태그를 확인하고 내 반려견에게 맞는 산책 코스를 찾아보세요.`
-  : `${hub.label} ${hub.items.length}곳의 주소와 장소 설명을 비교하세요. 반려견과 함께 갈 카페·식당·숙소를 지역별로 빠르게 찾아보세요.`;
+  ? `${hub.label} ${hub.items.length}곳. 거리·난이도·그늘·계단 여부 등 등록 정보를 비교하고 반려견에게 맞는 산책 코스를 찾아보세요.`
+  : `${hub.label} ${hub.items.length}곳. 주소와 장소 설명을 비교하고 반려견과 함께 갈 카페·식당·숙소를 빠르게 찾아보세요.`;
  const summaryText=isCourse
   ? (()=>{
       const easy=hub.items.filter(i=>compact(i.diff).includes('쉬')).length;
