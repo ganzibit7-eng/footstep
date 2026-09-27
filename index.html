@@ -7058,9 +7058,22 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   seedIfNeeded().then(loadData).then(()=>{
     const params = new URLSearchParams(window.location.search);
     const sharedCourseId = params.get('course');
+    const sharedFacilityId = params.get('facility');
     if(sharedCourseId && allCourses().some(c=>c.id===sharedCourseId)){
       showPage('map');
       setTimeout(()=> openCourseDetail(sharedCourseId), 300);
+    } else if(sharedFacilityId){
+      const facility = facilities.find(f=>String(f.id)===sharedFacilityId);
+      if(facility){
+        showPage('map');
+        setTimeout(()=>{
+          const chip = document.querySelector('#view-filter-group .chip[data-filter="facility"]');
+          if(chip) chip.click();
+          if(map && Number.isFinite(Number(facility.lat)) && Number.isFinite(Number(facility.lng))){
+            map.setView([Number(facility.lat), Number(facility.lng)], 16);
+          }
+        }, 300);
+      }
     }
   });
   initWeatherWidget();
