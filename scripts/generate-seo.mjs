@@ -228,9 +228,9 @@ function hubHtml(hub,page){
  const isCourse=hub.type.table==='courses';
  const titleCore=hub.label.length>34 ? hub.label.replace('애견동반 카페·식당·숙소','애견동반 장소') : hub.label;
  const title=`${titleCore}${page>1?` ${page}페이지`:''} | 발자국`;
- const description=isCourse
+ const description=(isCourse
   ? `${hub.label} ${hub.items.length}곳. 거리·난이도·그늘·계단 여부 등 등록 정보를 비교하고 반려견에게 맞는 산책 코스를 찾아보세요.`
-  : `${hub.label} ${hub.items.length}곳. 주소와 장소 설명을 비교하고 반려견과 함께 갈 카페·식당·숙소를 빠르게 찾아보세요.`;
+  : `${hub.label} ${hub.items.length}곳. 주소와 장소 설명을 비교하고 반려견과 함께 갈 카페·식당·숙소를 빠르게 찾아보세요.`) + (page>1?` 현재 ${page}페이지입니다.`:'');
  const summaryText=isCourse
   ? (()=>{
       const easy=hub.items.filter(i=>compact(i.diff).includes('쉬')).length;
@@ -301,7 +301,7 @@ function hubHtml(hub,page){
  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
  <title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${url}">
  ${page>1?`<link rel="prev" href="${SITE+hub.path+(page-1>1?`page/${page-1}/`:'')}">`:''}${page<total?`<link rel="next" href="${SITE+hub.path+`page/${page+1}/`}">`:''}
- <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png">
+ <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/icon-512.png">
  <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
  <style>body{margin:0;background:#fbf8f1;color:#183c30;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}main{max-width:960px;margin:auto;padding:24px 18px}h1{font-size:clamp(25px,6vw,36px);line-height:1.35}a{color:#315b43}nav{display:flex;flex-wrap:wrap;gap:12px}ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}li{padding:20px;border:1px solid #dedecf;border-radius:18px;background:#fff}li h2{font-size:19px;margin:0 0 8px}li p{margin:8px 0;overflow-wrap:anywhere;font-size:14px}.note{padding:18px;background:#eef2e7;border-radius:16px}.quick-links{margin:16px 0}.quick-links a{display:inline-block;padding:8px 12px;border:1px solid #dedecf;border-radius:999px;background:#fff;text-decoration:none;font-size:14px}.pagination a,.pagination strong{padding:8px 14px;min-height:28px;border:1px solid #dedecf;border-radius:10px}.pagination{margin:28px 0}</style></head>
  <body><main><nav aria-label="현재 위치">${breadcrumbItems.map((item,index)=>index===breadcrumbItems.length-1?`<span aria-current="page">${escapeHtml(item.name)}</span>`:`<a href="${item.item.replace(SITE,'')||'/'}">${escapeHtml(item.name)}</a>`).join('')}</nav>
