@@ -22,10 +22,10 @@ GitHub Actions가 매일 오전 9시 10분(한국 시간)에 발자국 공식 �
 | `THREADS_USER_ID` | 인증된 Threads 계정 사용자 ID |
 | `THREADS_AUTO_POST_ENABLED` | 처음에는 `false`; 게시를 시작할 때 `true` |
 
-4. **Actions → Threads daily post → Run workflow**로 수동 실행해 첫 게시물을 확인합니다. 비활성화 상태라면 게시 없이 안전하게 종료됩니다.
-5. 실제 첫 게시를 확인한 뒤 `THREADS_AUTO_POST_ENABLED`를 `true`로 저장하면 매일 자동 게시가 시작됩니다.
+4. **Actions → Threads API connection check → Run workflow**를 실행해 계정 연결을 테스트합니다. 이 테스트는 프로필을 읽기만 하며 게시물을 올리지 않습니다.
+5. 연결 확인이 성공하면 `THREADS_AUTO_POST_ENABLED`를 `true`로 바꾸세요. 매일 자동 게시가 시작되고, **Threads daily post → Run workflow**를 직접 실행하면 오늘 글이 즉시 올라갑니다.
 
-## 토큰 관리
+## Meta 공식 안내\n\n- [Threads API 앱 설정 및 권한](https://developers.facebook.com/docs/threads/get-started/create-an-app/)\n- [게시물 만들기·게시하기](https://developers.facebook.com/docs/threads/posts/)\n- [장기 토큰 갱신](https://developers.facebook.com/documentation/threads/get-started/long-lived-tokens)\n\n## 토큰 관리
 
 Threads 장기 토큰은 만료 전에 Meta의 공식 토큰 갱신 절차로 교체해야 합니다. 새 토큰을 발급받으면 GitHub Actions의 `THREADS_ACCESS_TOKEN` Secret을 갱신하세요. 토큰이 만료되면 게시 작업은 실패하고, 기존 게시 상태는 유지됩니다.
 
