@@ -184,9 +184,11 @@ const hubLinks = (item,type) => searchHubs.filter(h=>h.type.table===type.table &
 function hubHtml(hub,page){
  const pagePath=hub.path+(page>1?`page/${page}/`:''), url=SITE+pagePath;
  const items=hub.items.slice((page-1)*HUB_SIZE,page*HUB_SIZE), total=Math.ceil(hub.items.length/HUB_SIZE);
- const title=hub.label+(page>1?` - ${page}페이지`:'')+' | 발자국';
+ const title=`${hub.label} ${hub.items.length}곳${page>1?` - ${page}페이지`:''} | 발자국`;
  const isCourse=hub.type.table==='courses';
- const description=`${hub.label} ${hub.items.length}곳의 ${isCourse?'거리·난이도·등록 태그':'주소와 장소 설명'}을 비교하세요. 발자국 지도에서 위치를 확인하고 반려견과의 ${isCourse?'산책':'방문'}을 준비하세요.`;
+ const description=isCourse
+  ? `${hub.label} ${hub.items.length}곳을 한눈에 비교하세요. 거리·난이도·등록 태그를 확인하고 내 반려견에게 맞는 산책 코스를 찾아보세요.`
+  : `${hub.label} ${hub.items.length}곳의 주소와 장소 설명을 비교하세요. 반려견과 함께 갈 카페·식당·숙소를 지역별로 빠르게 찾아보세요.`;
  const related=searchHubs
   .filter(h=>h.path!==hub.path&&h.type.table===hub.type.table)
   .map(h=>({hub:h,overlap:h.items.reduce((n,item)=>n+(hub.items.some(base=>base.id===item.id)?1:0),0)}))
@@ -250,7 +252,8 @@ function detailHtml(item, type, url) {
 
 function directoryHtml(groups) {
   const sections = groups.map(({ type, items }) => `<section id="${type.folder}"><h2>${type.icon} ${escapeHtml(type.label)} <small>${items.length.toLocaleString('ko-KR')}곳</small></h2><ul>${items.map((item) => `<li><a href="/${type.folder}/${safeSegment(item.id)}/">${escapeHtml(item.name)}</a>${item.category ? ` <span>${escapeHtml(item.category)}</span>` : ''}</li>`).join('')}</ul></section>`).join('');
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전국 강아지 산책 코스·애견동반 장소 | 발자국</title><meta name="description" content="전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함의 등록 정보를 확인하세요."><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2{color:#152922}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="장소 종류"><a href="#courses">강아지 산책 코스</a> · <a href="#places">애견동반 카페·숙소</a> · <a href="#bins">배변봉투함</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section><h2>테마별 산책 코스·지역별 애견동반 장소</h2><ul>${searchHubs.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul></section>${sections}</main></body></html>`;
+  const total=groups.reduce((sum,g)=>sum+g.items.length,0);
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전국 강아지 산책 코스·애견동반 장소 ${total.toLocaleString('ko-KR')}곳 | 발자국</title><meta name="description" content="전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함 ${total.toLocaleString('ko-KR')}곳의 등록 정보를 지역·테마별로 찾아보세요."><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2{color:#152922}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="장소 종류"><a href="#courses">강아지 산책 코스</a> · <a href="#places">애견동반 카페·숙소</a> · <a href="#bins">배변봉투함</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section><h2>테마별 산책 코스·지역별 애견동반 장소</h2><ul>${searchHubs.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul></section>${sections}</main></body></html>`;
 }
 
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
