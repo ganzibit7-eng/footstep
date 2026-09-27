@@ -82,6 +82,22 @@ const addressFor = item => {
  return REGIONS.some(r=>r[2].includes(candidate.split(' ')[0])) && candidate.includes(' ') ? candidate : '';
 };
 const regionFor = item => REGIONS.find(r => r[2].includes(addressFor(item).split(' ')[0]));
+const coordinateMetroRegion = item => {
+ const lat=Number(item.lat), lng=Number(item.lng);
+ if(!Number.isFinite(lat)||!Number.isFinite(lng)) return null;
+ const boxes=[
+  ['seoul',37.41,37.72,126.76,127.19],
+  ['busan',35.05,35.39,128.75,129.32],
+  ['daegu',35.75,36.05,128.35,129.00],
+  ['daejeon',36.18,36.50,127.25,127.55],
+  ['gwangju',35.02,35.30,126.70,127.05],
+  ['ulsan',35.35,35.75,129.00,129.50],
+  ['sejong',36.43,36.73,127.10,127.40]
+ ];
+ const hit=boxes.find(([,minLat,maxLat,minLng,maxLng])=>lat>=minLat&&lat<=maxLat&&lng>=minLng&&lng<=maxLng);
+ return hit ? REGIONS.find(([slug])=>slug===hit[0]) : null;
+};
+const binRegionFor = item => regionFor(item) || coordinateMetroRegion(item);
 const areaFor = item => {
  const parts=addressFor(item).split(/\s+/).filter(Boolean);
  if(parts.length<2 || !regionFor(item)) return null;
@@ -116,7 +132,7 @@ function buildHubs(groups){
    intro:'전국에 등록된 반려견 배변봉투함 위치를 한곳에서 확인하세요. 산책 전에 가까운 위치를 참고하고 실제 설치 여부와 봉투 비치 상태는 현장에서 다시 확인하세요.'
   });
   for(const [slug,region] of REGIONS){
-   const items=bins.items.filter(i=>regionFor(i)?.[0]===slug);
+   const items=bins.items.filter(i=>binRegionFor(i)?.[0]===slug);
    if(items.length>=3) hubs.push({
     path:`/bins/regions/${slug}/`,
     label:`${region} 반려견 배변봉투함`,
@@ -344,7 +360,7 @@ function hubHtml(hub,page){
 }
 function detailHtml(item, type, url) {
   const label = item.category === '숙소' ? '애견동반 숙소' : item.category === '식당카페' ? '애견동반 식당·카페' : type.label;
-  const region = regionFor(item);
+  const region = type.table==='bins' ? binRegionFor(item) : regionFor(item);
   const isDuplicateName = duplicateNamesByTable.get(type.table)?.has(compact(item.name));
   const qualifier = isDuplicateName
     ? type.table === 'courses'
@@ -398,7 +414,7 @@ function detailHtml(item, type, url) {
     {'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},
     {'@type':'ListItem',position:2,name:'전국 장소·산책 코스',item:SITE+'/discover.html'}
   ];
-  const itemRegionInfo=regionFor(item);
+  const itemRegionInfo=type.table==='bins' ? binRegionFor(item) : regionFor(item);
   const itemRegionSlug=itemRegionInfo?.[0] || '';
   const itemRegionName=itemRegionInfo?.[1] || '';
   const regionHub=itemRegionSlug ? searchHubs.find(h=>h.type.table===type.table && h.path===`/${type.folder}/regions/${itemRegionSlug}/`) : null;
@@ -601,7 +617,7 @@ itemMetaByTable = new Map(groups.map(group=>[
   new Map(group.items.map(item=>[
     item.id,
     {
-      region: regionFor(item)?.[0] || '',
+      region: (group.type.table==='bins' ? binRegionFor(item) : regionFor(item))?.[0] || '',
       area: areaFor(item) || '',
       category: item.category || ''
     }
