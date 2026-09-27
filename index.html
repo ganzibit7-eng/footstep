@@ -8013,26 +8013,48 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const start = adminDayStart(6);
-      const { data, error } = await adminReadRows('page_views','referrer',start.toISOString());
+      const { data, error } = await adminReadRows('page_views','visitor_id, referrer',start.toISOString());
       if(error) throw error;
-      const counts = Object.create(null);
+      const buckets = Object.create(null);
       (data||[]).forEach(r=>{
-        const key = r.referrer || '직접 방문';
-        counts[key] = (counts[key] || 0) + 1;
+        const raw = r.referrer || '직접 방문';
+        let key = raw;
+        if(raw.startsWith('utm:')){
+          const source = raw.split(' · ')[0].replace(/^utm:/,'').toLowerCase();
+          if(source.includes('threads')) key = 'Threads';
+          else if(source.includes('naver')) key = '네이버';
+          else if(source.includes('instagram')) key = 'Instagram';
+          else if(source.includes('kakao')) key = '카카오';
+          else if(source.includes('google')) key = 'Google';
+          else key = raw;
+        }else{
+          const low = raw.toLowerCase();
+          if(low.includes('search.naver') || low.includes('naver.com')) key = '네이버 검색/외부';
+          else if(low.includes('google.')) key = 'Google 검색/외부';
+          else if(low.includes('threads.net')) key = 'Threads';
+          else if(low.includes('instagram.com')) key = 'Instagram';
+        }
+        if(!buckets[key]) buckets[key] = {views:0,visitors:new Set()};
+        buckets[key].views++;
+        if(r.visitor_id) buckets[key].visitors.add(r.visitor_id);
       });
-      const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0, 10);
+      const sorted = Object.entries(buckets)
+        .map(([source,v])=>[source,v.views,v.visitors.size])
+        .sort((a,b)=>b[2]-a[2] || b[1]-a[1])
+        .slice(0,10);
       if(!sorted.length){ el.innerHTML = '<p class="empty-admin">아직 데이터가 없어요.</p>'; return; }
-      const total = (data||[]).length;
-      el.innerHTML = sorted.map(([source, count])=>{
-        const pct = Math.round((count/total)*100);
+      const allVisitors = new Set((data||[]).map(r=>r.visitor_id).filter(Boolean)).size || 1;
+      el.innerHTML = '<p style="font-size:12px;color:var(--muted-text);margin:0 0 12px;">순방문자 기준으로 정렬했어요. 홍보 링크에는 <code>?utm_source=threads</code>처럼 UTM을 붙이면 채널별 성과를 더 정확히 볼 수 있어요.</p>' +
+      sorted.map(([source, views, visitors])=>{
+        const pct = Math.round((visitors/allVisitors)*100);
         return `
-          <div style="margin-bottom:10px;">
-            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+          <div style="margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; gap:12px; font-size:13px; margin-bottom:4px;">
               <span style="font-weight:700; color:var(--pine-deep);">${escapeHtml(source)}</span>
-              <span style="color:var(--muted-text);">${count}회 (${pct}%)</span>
+              <span style="color:var(--muted-text);">${visitors}명 · ${views}뷰 (${pct}%)</span>
             </div>
             <div style="background:var(--line); border-radius:999px; height:6px; overflow:hidden;">
-              <div style="width:${pct}%; height:100%; background:var(--moss);"></div>
+              <div style="width:${Math.max(2,pct)}%; height:100%; background:var(--moss);"></div>
             </div>
           </div>`;
       }).join('');
@@ -8061,9 +8083,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         referrerCounts[key] = (referrerCounts[key] || 0) + 1;
       });
       const topReferrerEntry = Object.entries(referrerCounts).sort((a,b)=>b[1]-a[1])[0];
+      const dailyGoal = 200;
+      const goalPct = Math.min(100, Math.round((todayUnique/dailyGoal)*100));
       const summary = [
         { num: todayVisitorRows.length, label:'오늘 페이지뷰', jump:'hourly' },
-        { num: todayUnique, label:'오늘 방문자', jump:'hourly' },
+        { num: todayUnique, label:`오늘 방문자 · 목표 ${goalPct}%`, jump:'hourly' },
         { num: (todaySignupsRes.data||[]).length, label:'오늘 가입축하 지급 건', jump:'today' },
         {
           num: topReferrerEntry ? topReferrerEntry[1] : 0,
