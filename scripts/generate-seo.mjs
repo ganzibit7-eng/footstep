@@ -106,6 +106,19 @@ function buildHubs(groups){
   const items=g.items.filter(i=>regionFor(i)?.[0]===slug);
   if(items.length>=3) hubs.push({path:`/places/regions/${slug}/`,label:`${label} 애견동반 카페·식당·숙소`,type:g.type,items});
  }
+ const bins=groups.find(g=>g.type.table==='bins');
+ if(bins){
+  for(const [slug,region] of REGIONS){
+   const items=bins.items.filter(i=>regionFor(i)?.[0]===slug);
+   if(items.length>=3) hubs.push({
+    path:`/bins/regions/${slug}/`,
+    label:`${region} 반려견 배변봉투함`,
+    type:bins.type,
+    items,
+    intro:`${region}에 등록된 반려견 배변봉투함 위치를 모았습니다. 실제 설치 여부와 이용 가능 상태는 현장에서 다시 확인하세요.`
+   });
+  }
+ }
  const courses=groups.find(g=>g.type.table==='courses');
  for(const [slug,label,tag,intro] of [
   ['shade','그늘 많은 강아지 산책 코스','그늘많음','등록된 그늘많음 태그를 기준으로 모았습니다. 나무 그늘의 범위는 시간과 계절에 따라 달라지므로 산책 시간과 현장 기온을 함께 확인하세요.'],
@@ -228,11 +241,14 @@ function hubHtml(hub,page){
  const pagePath=hub.path+(page>1?`page/${page}/`:''), url=SITE+pagePath;
  const items=hub.items.slice((page-1)*HUB_SIZE,page*HUB_SIZE), total=Math.ceil(hub.items.length/HUB_SIZE);
  const isCourse=hub.type.table==='courses';
+ const isBin=hub.type.table==='bins';
  const titleCore=hub.label.length>34 ? hub.label.replace('애견동반 카페·식당·숙소','애견동반 장소') : hub.label;
  const title=`${titleCore}${page>1?` ${page}페이지`:''} | 발자국`;
  const description=(isCourse
   ? `${hub.label} ${hub.items.length}곳. 거리·난이도·그늘·계단 여부 등 등록 정보를 비교하고 반려견에게 맞는 산책 코스를 찾아보세요.`
-  : `${hub.label} ${hub.items.length}곳. 주소와 장소 설명을 비교하고 반려견과 함께 갈 카페·식당·숙소를 빠르게 찾아보세요.`) + (page>1?` 현재 ${page}페이지입니다.`:'');
+  : isBin
+    ? `${hub.label} ${hub.items.length}곳. 등록된 위치 정보를 확인하고 산책 동선 주변의 배변봉투함을 찾아보세요. 실제 설치·이용 가능 여부는 현장에서 확인하세요.`
+    : `${hub.label} ${hub.items.length}곳. 주소와 장소 설명을 비교하고 반려견과 함께 갈 카페·식당·숙소를 빠르게 찾아보세요.`) + (page>1?` 현재 ${page}페이지입니다.`:'');
  const summaryText=isCourse
   ? (()=>{
       const easy=hub.items.filter(i=>compact(i.diff).includes('쉬')).length;
@@ -241,11 +257,13 @@ function hubHtml(hub,page){
       const stepFree=hub.items.filter(i=>Array.isArray(i.tags)&&i.tags.includes('계단없음')).length;
       return [easy&&`쉬운 코스 ${easy}곳`,short&&`2km 이하 ${short}곳`,shade&&`그늘많음 ${shade}곳`,stepFree&&`계단없음 ${stepFree}곳`].filter(Boolean).join(' · ');
     })()
-  : (()=>{
-      const cafes=hub.items.filter(i=>i.category==='식당카페').length;
-      const stays=hub.items.filter(i=>i.category==='숙소').length;
-      return [cafes&&`카페·식당 ${cafes}곳`,stays&&`숙소 ${stays}곳`].filter(Boolean).join(' · ');
-    })();
+  : isBin
+    ? `등록 위치 ${hub.items.length}곳`
+    : (()=>{
+        const cafes=hub.items.filter(i=>i.category==='식당카페').length;
+        const stays=hub.items.filter(i=>i.category==='숙소').length;
+        return [cafes&&`카페·식당 ${cafes}곳`,stays&&`숙소 ${stays}곳`].filter(Boolean).join(' · ');
+      })();
  const hubItemIds=new Set(hub.items.map(item=>item.id));
  const related=searchHubs
   .filter(h=>h.path!==hub.path&&h.type.table===hub.type.table)
@@ -269,10 +287,12 @@ function hubHtml(hub,page){
       ['/courses/themes/shade/','그늘 많은 길'],
       ['/courses/themes/step-free/','계단 없는 길']
     ]
-  : [
-      ['/places/cafes/','애견동반 카페·식당'],
-      ['/places/stays/','애견동반 숙소']
-    ];
+  : isBin
+    ? []
+    : [
+        ['/places/cafes/','애견동반 카페·식당'],
+        ['/places/stays/','애견동반 숙소']
+      ];
  const breadcrumbItems=[
    {'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},
    {'@type':'ListItem',position:2,name:'전국 장소·산책 코스',item:SITE+'/discover.html'}
@@ -281,9 +301,9 @@ function hubHtml(hub,page){
    const regionSlug=regionMatch[1];
    const regionInfo=REGIONS.find(([slug])=>slug===regionSlug);
    const regionName=regionInfo?.[1] || regionSlug;
-   const regionPath=isCourse?`/courses/regions/${regionSlug}/`:`/places/regions/${regionSlug}/`;
+   const regionPath=`/${hub.type.folder}/regions/${regionSlug}/`;
    if(hub.path!==regionPath){
-     breadcrumbItems.push({'@type':'ListItem',position:breadcrumbItems.length+1,name:`${regionName} ${isCourse?'강아지 산책 코스':'애견동반 장소'}`,item:SITE+regionPath});
+     breadcrumbItems.push({'@type':'ListItem',position:breadcrumbItems.length+1,name:`${regionName} ${isCourse?'강아지 산책 코스':isBin?'반려견 배변봉투함':'애견동반 장소'}`,item:SITE+regionPath});
    }
    if(areaMatch){
      const areaHub=searchHubs.find(h=>h.type.table===hub.type.table && h.path===`${regionPath}areas/${areaMatch[1]}/`);
@@ -296,7 +316,7 @@ function hubHtml(hub,page){
  const schema=[{'@context':'https://schema.org','@type':'CollectionPage',name:title,url,description},
  {'@context':'https://schema.org','@type':'ItemList',itemListElement:items.map((item,i)=>({'@type':'ListItem',position:(page-1)*HUB_SIZE+i+1,url:SITE+detailPath(item,hub.type),name:item.name}))},
  {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
-  {'@type':'Question','name':isCourse?'강아지 산책 코스를 고를 때 무엇을 확인해야 하나요?':'애견동반 장소 방문 전에 무엇을 확인해야 하나요?','acceptedAnswer':{'@type':'Answer','text':isCourse?'거리와 난이도, 노면과 그늘 여부를 확인하고 반려견의 체력과 날씨에 맞는 코스를 선택하세요.':'실내·테라스 동반 여부, 반려견 크기·마릿수 제한, 이동장 조건과 영업시간을 방문 전에 확인하세요.'}},
+  {'@type':'Question','name':isCourse?'강아지 산책 코스를 고를 때 무엇을 확인해야 하나요?':isBin?'배변봉투함 위치는 어떻게 확인하나요?':'애견동반 장소 방문 전에 무엇을 확인해야 하나요?','acceptedAnswer':{'@type':'Answer','text':isCourse?'거리와 난이도, 노면과 그늘 여부를 확인하고 반려견의 체력과 날씨에 맞는 코스를 선택하세요.':isBin?'등록된 위치를 참고하되 실제 설치 여부와 봉투 비치 상태는 현장에서 다시 확인하세요.':'실내·테라스 동반 여부, 반려견 크기·마릿수 제한, 이동장 조건과 영업시간을 방문 전에 확인하세요.'}},
   {'@type':'Question','name':'발자국의 등록 정보는 최신인가요?','acceptedAnswer':{'@type':'Answer','text':'등록 정보와 실제 현장 운영은 달라질 수 있으므로 방문이나 산책 전에 현장 정보를 다시 확인하는 것을 권장합니다.'}}
  ]},
  {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:breadcrumbItems}];
@@ -551,8 +571,9 @@ function directoryHtml(groups) {
   const regionalPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&h.path.includes('/regions/')&&!h.path.includes('/areas/'));
   const areaPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&h.path.includes('/areas/'));
   const nationalPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&!h.path.includes('/regions/'));
+  const regionalBinHubs=searchHubs.filter(h=>h.type.table==='bins'&&h.path.includes('/regions/'));
   const hubList=(items)=>items.length?`<ul>${items.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul>`:'<p>등록 데이터가 충분해지면 자동으로 추가됩니다.</p>';
-  const featuredHubs=[...themeCourseHubs,...regionalCourseHubs,...nationalPlaceHubs,...regionalPlaceHubs].slice(0,50);
+  const featuredHubs=[...themeCourseHubs,...regionalCourseHubs,...nationalPlaceHubs,...regionalPlaceHubs,...regionalBinHubs].slice(0,50);
   const directoryTitle=`전국 강아지 산책 코스·애견동반 장소 ${total.toLocaleString('ko-KR')}곳 | 발자국`;
   const directoryDescription=`전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함 ${total.toLocaleString('ko-KR')}곳의 등록 정보를 지역·테마별로 찾아보세요.`;
   const directorySchema=[
@@ -560,7 +581,7 @@ function directoryHtml(groups) {
     {'@context':'https://schema.org','@type':'ItemList','name':'발자국 주요 탐색 목록','itemListElement':featuredHubs.map((h,index)=>({'@type':'ListItem','position':index+1,'name':h.label,'url':SITE+h.path}))},
     {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},{'@type':'ListItem','position':2,'name':'전국 장소·산책 코스','item':SITE+'/discover.html'}]}
   ];
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(directoryTitle)}</title><meta name="description" content="${escapeHtml(directoryDescription)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(directoryTitle)}"><meta property="og:description" content="${escapeHtml(directoryDescription)}"><meta property="og:url" content="${SITE}/discover.html"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 전국 강아지 산책 코스와 애견동반 장소"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(directoryTitle)}"><meta name="twitter:description" content="${escapeHtml(directoryDescription)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><script type="application/ld+json">${JSON.stringify(directorySchema).replaceAll('<','\\u003c')}</script><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2,h3{color:#152922}h3{margin:18px 0 6px;font-size:16px}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}.jump{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.jump a{padding:8px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="빠른 탐색" class="jump"><a href="#course-themes">테마별 산책 코스</a><a href="#course-regions">지역별 산책 코스</a><a href="#place-regions">지역별 애견동반 장소</a><a href="#guides">산책 가이드</a><a href="#courses">대표 코스</a><a href="#places">대표 장소</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section id="guides"><h2>강아지 산책 가이드</h2><h3>기본·상시 가이드</h3><ul>${GUIDES.filter(g=>!['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul><h3>날씨·계절 가이드</h3><ul>${GUIDES.filter(g=>['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul></section><section id="course-themes"><h2>테마별 강아지 산책 코스</h2>${hubList(themeCourseHubs)}</section><section id="course-regions"><h2>지역별 강아지 산책 코스</h2>${hubList(regionalCourseHubs)}</section><section><h2>전국 애견동반 장소 종류</h2>${hubList(nationalPlaceHubs)}</section><section id="place-regions"><h2>광역 지역별 애견동반 장소</h2>${hubList(regionalPlaceHubs)}</section><section><h2>시·군·구별 애견동반 장소</h2>${hubList(areaPlaceHubs)}</section>${sections}</main></body></html>`;
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(directoryTitle)}</title><meta name="description" content="${escapeHtml(directoryDescription)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(directoryTitle)}"><meta property="og:description" content="${escapeHtml(directoryDescription)}"><meta property="og:url" content="${SITE}/discover.html"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 전국 강아지 산책 코스와 애견동반 장소"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(directoryTitle)}"><meta name="twitter:description" content="${escapeHtml(directoryDescription)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><script type="application/ld+json">${JSON.stringify(directorySchema).replaceAll('<','\\u003c')}</script><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2,h3{color:#152922}h3{margin:18px 0 6px;font-size:16px}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}.jump{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.jump a{padding:8px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="빠른 탐색" class="jump"><a href="#course-themes">테마별 산책 코스</a><a href="#course-regions">지역별 산책 코스</a><a href="#place-regions">지역별 애견동반 장소</a><a href="#bin-regions">지역별 배변봉투함</a><a href="#guides">산책 가이드</a><a href="#courses">대표 코스</a><a href="#places">대표 장소</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section id="guides"><h2>강아지 산책 가이드</h2><h3>기본·상시 가이드</h3><ul>${GUIDES.filter(g=>!['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul><h3>날씨·계절 가이드</h3><ul>${GUIDES.filter(g=>['summer-dog-walk','rainy-day-dog-walk','winter-dog-walk'].includes(g.slug)).map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul></section><section id="course-themes"><h2>테마별 강아지 산책 코스</h2>${hubList(themeCourseHubs)}</section><section id="course-regions"><h2>지역별 강아지 산책 코스</h2>${hubList(regionalCourseHubs)}</section><section><h2>전국 애견동반 장소 종류</h2>${hubList(nationalPlaceHubs)}</section><section id="place-regions"><h2>광역 지역별 애견동반 장소</h2>${hubList(regionalPlaceHubs)}</section><section><h2>시·군·구별 애견동반 장소</h2>${hubList(areaPlaceHubs)}</section><section id="bin-regions"><h2>지역별 반려견 배변봉투함</h2>${hubList(regionalBinHubs)}</section>${sections}</main></body></html>`;
 }
 
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
