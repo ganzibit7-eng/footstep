@@ -3433,7 +3433,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(previousUser!==myDeviceId || event==='SIGNED_OUT')clearPrivateReportState();
       if(event === 'SIGNED_IN'){
         closeNickModal();
-        toast(`"${myNickname}" 님으로 로그인됐어요 🐾`);
+        toast(!myDogName
+          ? `"${myNickname}" 님으로 로그인됐어요 🐾 · MY에서 우리 강아지 프로필을 등록해보세요`
+          : `"${myNickname}" 님으로 로그인됐어요 🐾 · 찜과 산책 기록이 계정에 저장돼요`);
         checkFirstLoginBonus();
         syncProfileTable();
         syncFavoritesFromServer();
