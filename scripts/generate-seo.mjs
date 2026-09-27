@@ -355,6 +355,25 @@ function detailHtml(item, type, url) {
     .sort((a,b)=>b.score-a.score || compact(a.other.name).localeCompare(compact(b.other.name),'ko'))
     .slice(0,4)
     .map(entry=>entry.other);
+  const detailBreadcrumbs=[
+    {'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},
+    {'@type':'ListItem',position:2,name:'전국 장소·산책 코스',item:SITE+'/discover.html'}
+  ];
+  const itemRegionInfo=regionFor(item);
+  const itemRegionSlug=itemRegionInfo?.[0] || '';
+  const itemRegionName=itemRegionInfo?.[1] || '';
+  const regionHub=itemRegionSlug ? searchHubs.find(h=>h.type.table===type.table && h.path===`/${type.folder}/regions/${itemRegionSlug}/`) : null;
+  if(regionHub){
+    detailBreadcrumbs.push({'@type':'ListItem',position:detailBreadcrumbs.length+1,name:regionHub.label,item:SITE+regionHub.path});
+  }
+  if(itemRegionSlug && itemArea){
+    const areaSegment=areaSlug(itemArea);
+    const areaHub=searchHubs.find(h=>h.type.table===type.table && h.path===`/${type.folder}/regions/${itemRegionSlug}/areas/${areaSegment}/`);
+    if(areaHub){
+      detailBreadcrumbs.push({'@type':'ListItem',position:detailBreadcrumbs.length+1,name:areaHub.label,item:SITE+areaHub.path});
+    }
+  }
+  detailBreadcrumbs.push({'@type':'ListItem',position:detailBreadcrumbs.length+1,name:item.name,item:url});
   const description = shortDescription(item, type);
   const location = [item.address, item.category].filter(Boolean).join(' · ');
   const tags = Array.isArray(item.tags) ? item.tags.join(' · ') : '';
@@ -397,9 +416,9 @@ function detailHtml(item, type, url) {
 <meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="${url}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><meta name="twitter:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소">
-<script type="application/ld+json">${JSON.stringify([schema, {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},{'@type':'ListItem',position:2,name:type.label,item:SITE+'/discover.html#'+type.folder},{'@type':'ListItem',position:3,name:item.name,item:url}]}]).replaceAll('<', '\\u003c')}</script>
+<script type="application/ld+json">${JSON.stringify([schema, {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:detailBreadcrumbs}]).replaceAll('<', '\\u003c')}</script>
 <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}.wrap{max-width:760px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}.card{margin-top:32px;background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:30px;box-shadow:0 10px 30px -18px #152922}.icon{font-size:42px}h1{color:#152922;line-height:1.25;margin:12px 0}.meta{color:#6e8f6b;font-weight:700}.cta{display:inline-block;margin-top:18px;padding:12px 20px;border-radius:999px;background:#b5502e;color:white;text-decoration:none;font-weight:800}.note{font-size:13px;color:#5b5645;margin-top:24px}</style></head>
-<body><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="관련 장소 목록">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${location ? `<p><strong>위치·분류</strong><br>${escapeHtml(location)}</p>` : ''}<p>${escapeHtml(compact(item.description) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">우리 동네 코스·장소 등록하기</a></p><p class="note">현장 운영 정보와 이용 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>같은 지역에서 함께 보기</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'산책 후 함께 갈 곳':'주변 산책 코스도 보기'}</h2><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a>${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
+<body><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="현재 위치">${detailBreadcrumbs.map((b,i)=>i===detailBreadcrumbs.length-1?`<span aria-current="page">${escapeHtml(b.name)}</span>`:`<a href="${b.item.replace(SITE,'')||'/'}">${escapeHtml(b.name)}</a>`).join(' · ')}</nav><nav aria-label="관련 장소 목록" style="margin-top:12px">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${location ? `<p><strong>위치·분류</strong><br>${escapeHtml(location)}</p>` : ''}<p>${escapeHtml(compact(item.description) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">우리 동네 코스·장소 등록하기</a></p><p class="note">현장 운영 정보와 이용 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>같은 지역에서 함께 보기</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'산책 후 함께 갈 곳':'주변 산책 코스도 보기'}</h2><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a>${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
 }
 
 
