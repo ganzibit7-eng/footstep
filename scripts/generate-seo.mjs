@@ -28,6 +28,14 @@ const dateOnly = (value) => {
   const d = value ? new Date(value) : new Date();
   return Number.isNaN(d.getTime()) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10);
 };
+const newestDate = (items = []) => {
+  let newest = 0;
+  for (const item of items) {
+    const t = item?.created_at ? new Date(item.created_at).getTime() : 0;
+    if (Number.isFinite(t) && t > newest) newest = t;
+  }
+  return newest ? new Date(newest).toISOString().slice(0, 10) : null;
+};
 const distanceKm = (value) => {
   const raw = compact(value).toLowerCase().replaceAll(',', '');
   if (!raw) return null;
@@ -406,7 +414,9 @@ duplicateNamesByTable = new Map(groups.map(group=>{
 }));
 searchHubs = buildHubs(groups);
 for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: true, force: true });
-const sitemap = [{ url: `${SITE}/`, lastmod: new Date().toISOString().slice(0, 10) }, { url: `${SITE}/discover.html`, lastmod: new Date().toISOString().slice(0, 10) }];
+const allItems = groups.flatMap(group=>group.items);
+const contentLastmod = newestDate(allItems) || new Date().toISOString().slice(0, 10);
+const sitemap = [{ url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
 for (const {type,items} of groups) {
   for (const item of items) {
     const segment = safeSegment(item.id);
@@ -424,7 +434,7 @@ for (const hub of searchHubs) {
     const dir=path.join(ROOT,relative.slice(1));
     await mkdir(dir,{recursive:true});
     await writeFile(path.join(dir,'index.html'),hubHtml(hub,page),'utf8');
-    sitemap.push({url:SITE+relative,lastmod:new Date().toISOString().slice(0,10)});
+    sitemap.push({url:SITE+relative,lastmod:newestDate(hub.items) || contentLastmod});
   }
 }
 await rm(path.join(ROOT, 'guides'), { recursive: true, force: true });
@@ -432,7 +442,7 @@ for (const guide of GUIDES) {
   const dir=path.join(ROOT,'guides',guide.slug);
   await mkdir(dir,{recursive:true});
   await writeFile(path.join(dir,'index.html'),guideHtml(guide),'utf8');
-  sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:new Date().toISOString().slice(0,10)});
+  sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:contentLastmod});
 }
 await writeFile(path.join(ROOT, 'discover.html'), directoryHtml(groups), 'utf8');
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
