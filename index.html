@@ -3426,6 +3426,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     try{
       const { data } = await sb.auth.getSession();
       applySession(data.session);
+      await loadMyBadgeState();
     }catch(e){ console.error(e); }
     await loadAdminSet();
     sb.auth.onAuthStateChange((event, session)=>{
@@ -3439,6 +3440,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           : `"${myNickname}" 님으로 로그인됐어요 🐾 · 찜과 산책 기록이 계정에 저장돼요`);
         checkFirstLoginBonus();
         syncProfileTable();
+        loadMyBadgeState();
         syncFavoritesFromServer();
         checkNotifications();
         loadMyWalks();
@@ -3479,8 +3481,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       myRegionName = meta.region_name || null;
       myRegionLat = meta.region_lat != null ? Number(meta.region_lat) : null;
       myRegionLng = meta.region_lng != null ? Number(meta.region_lng) : null;
-      myBadge = meta.active_badge || null;
-      myOwnedBadges = meta.owned_badges || [];
+      myBadge = null;
+      myOwnedBadges = [];
       myAvatarUrl = meta.avatar_url || null;
     } else {
       myDeviceId = null;
@@ -3493,10 +3495,34 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     updateProfileLabel();
     updateJoinVisibility();
   }
+  async function loadMyBadgeState(){
+    if(!myDeviceId){
+      myBadge=null;
+      myOwnedBadges=[];
+      updateProfileLabel();
+      return;
+    }
+    try{
+      const {data,error}=await sb.from('user_badges')
+        .select('badge_id,active')
+        .eq('owner_id',myDeviceId);
+      if(error) throw error;
+      myOwnedBadges=(data||[]).map(row=>row.badge_id);
+      myBadge=(data||[]).find(row=>row.active)?.badge_id || null;
+      updateProfileLabel();
+      if(document.getElementById('badge-shop')) renderBadgeShop();
+      renderGrid();
+    }catch(e){
+      console.error('배지 정보 조회 실패',e);
+      myBadge=null;
+      myOwnedBadges=[];
+      updateProfileLabel();
+    }
+  }
   async function syncProfileTable(){
     if(!myDeviceId) return;
     try{
-      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, badge: myBadge, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
+      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
     }catch(e){ console.error(e); }
   }
   async function saveDisplayName(){
@@ -3649,48 +3675,45 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     });
   }
   async function handleBadgeAction(badgeId){
-    const owned = myOwnedBadges.includes(badgeId);
-    if(owned){
-      // 이미 보유 -> 바로 장착
-      try{
-        const { error } = await sb.auth.updateUser({ data: { active_badge: badgeId } });
-        if(error){ toast('장착에 실패했어요'); return; }
-        myBadge = badgeId;
-        updateProfileLabel();
-        await syncProfileTable();
-        renderBadgeShop();
-        renderGrid();
-        toast('배지를 장착했어요 🎉');
-      }catch(e){ console.error(e); }
-      return;
-    }
-    const shopItem = BADGE_SHOP.find(b=>b.id===badgeId);
-    const balance = await myPointBalance();
-    if(balance < shopItem.price){ toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${shopItem.price}P)`); return; }
-    try{
-      const {data:purchase,error:purchaseError}=await sb.rpc('purchase_badge_points',{p_badge:badgeId});
-      if(purchaseError){ console.error(purchaseError); toast('구매에 실패했어요'); return; }
-      if(!purchase?.purchased){
-        if(purchase?.error==='insufficient_points') toast(`포인트가 부족해요 (보유 ${Number(purchase.balance||0).toLocaleString()}P / 필요 ${shopItem.price}P)`);
-        else toast('구매에 실패했어요');
+    if(!myDeviceId){ openNickModal(); toast('먼저 로그인해주세요'); return; }
+    const shopItem=BADGE_SHOP.find(b=>b.id===badgeId);
+    if(!shopItem){ toast('배지 정보를 확인하지 못했어요'); return; }
+
+    const alreadyOwned=myOwnedBadges.includes(badgeId);
+    if(!alreadyOwned){
+      const balance=await myPointBalance();
+      if(balance<shopItem.price){
+        toast(`포인트가 부족해요 (보유 ${balance}P / 필요 ${shopItem.price}P)`);
         return;
       }
-      const newOwned = myOwnedBadges.concat([badgeId]);
-      const { error } = await sb.auth.updateUser({ data: { owned_badges: newOwned, active_badge: badgeId } });
-      if(error){ toast('배지는 결제됐지만 장착 저장에 실패했어요. 다시 시도해주세요'); loadMyPoints(); return; }
-      myOwnedBadges = newOwned;
-      myBadge = badgeId;
-      updateProfileLabel();
-      await syncProfileTable();
-      loadMyPoints();
-      renderBadgeShop();
-      renderGrid();
-      const balanceEl = document.getElementById('points-shop-balance');
-      if(balanceEl) balanceEl.textContent = `보유 포인트: 🪙 ${(balance - shopItem.price).toLocaleString()}P`;
-      toast(`${shopItem.emoji} ${shopItem.name} 배지를 구매했어요!`);
-    }catch(e){ console.error(e); toast('구매에 실패했어요'); }
-  }
+    }
 
+    try{
+      const {data,error}=await sb.rpc('purchase_badge_points',{p_badge:badgeId});
+      if(error){ console.error(error); toast('배지 처리에 실패했어요'); return; }
+      if(!data?.purchased){
+        if(data?.error==='insufficient_points'){
+          toast(`포인트가 부족해요 (보유 ${Number(data.balance||0).toLocaleString()}P / 필요 ${shopItem.price}P)`);
+        }else{
+          toast('배지 처리에 실패했어요');
+        }
+        return;
+      }
+
+      await loadMyBadgeState();
+      loadMyPoints();
+      const balanceEl=document.getElementById('points-shop-balance');
+      if(balanceEl && data.balance!=null){
+        balanceEl.textContent=`보유 포인트: 🪙 ${Number(data.balance).toLocaleString()}P`;
+      }
+      toast(data.new_purchase
+        ? `${shopItem.emoji} ${shopItem.name} 배지를 구매했어요!`
+        : `${shopItem.emoji} ${shopItem.name} 배지를 장착했어요 🎉`);
+    }catch(e){
+      console.error(e);
+      toast('배지 처리에 실패했어요');
+    }
+  }
   function openProfileModal(){
     document.getElementById('display-name-input').value = myNickname || '';
     document.getElementById('dog-name-input').value = myDogName || '';
