@@ -7040,17 +7040,24 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return '직접 방문';
   }
   async function logPageView(){
-    try{ const {error} = await sb.from('page_views').insert([{ visitor_id: getVisitorId(), referrer: await getReferrerSource(), owner_id: myDeviceId || null }]); if(error) throw error; }catch(e){ console.error('방문 기록 저장 실패',e); }
+    try{
+      const {error}=await sb.rpc('record_page_view',{
+        p_visitor_id:getVisitorId(),
+        p_referrer:await getReferrerSource()
+      });
+      if(error) throw error;
+    }catch(e){ console.error('방문 기록 저장 실패',e); }
   }
 
   // 실시간 접속자 하트비트: 30초마다 내 방문자ID의 최근 접속시각을 갱신
   async function sendHeartbeat(){
     try{
-      await sb.from('presence').upsert(
-        [{ visitor_id: getVisitorId(), last_seen: new Date().toISOString(), page: currentPage || 'home' }],
-        { onConflict: 'visitor_id' }
-      );
-    }catch(e){ /* presence 테이블이 아직 없으면 조용히 무시 */ }
+      const {error}=await sb.rpc('record_presence',{
+        p_visitor_id:getVisitorId(),
+        p_page:currentPage || 'home'
+      });
+      if(error) throw error;
+    }catch(e){ /* 방문 하트비트 실패는 사용자 흐름을 막지 않음 */ }
   }
   sendHeartbeat();
   setInterval(()=>{ if(document.visibilityState === 'visible') sendHeartbeat(); }, 30000);
