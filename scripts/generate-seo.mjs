@@ -74,6 +74,13 @@ const addressFor = item => {
  return REGIONS.some(r=>r[2].includes(candidate.split(' ')[0])) && candidate.includes(' ') ? candidate : '';
 };
 const regionFor = item => REGIONS.find(r => r[2].includes(addressFor(item).split(' ')[0]));
+const areaFor = item => {
+ const parts=addressFor(item).split(/\s+/).filter(Boolean);
+ if(parts.length<2 || !regionFor(item)) return null;
+ const area=parts[1];
+ return /(구|시|군)$/.test(area) ? area : null;
+};
+const areaSlug = value => Buffer.from(String(value),'utf8').toString('base64url');
 const detailPath = (item,type) => `/${type.folder}/${safeSegment(item.id)}/`;
 const HUB_SIZE = 48;
 let searchHubs = [];
@@ -142,6 +149,33 @@ function buildHubs(groups){
    const items=g.items.filter(i=>regionFor(i)?.[0]===slug&&i.category===category);
    if(items.length>=3) hubs.push({path:`/places/regions/${slug}/${kind}/`,label:`${region} ${label}`,type:g.type,items,
     intro:category==='숙소'?`${region}에서 반려견과 묵을 숙소를 찾을 때는 등록 주소와 설명부터 비교하세요. 예약 전 반려견 크기·마릿수 제한, 추가 비용, 이용 가능한 공용 공간을 숙소에 확인하세요.`:`${region}에서 강아지와 갈 식당이나 카페를 찾을 때는 주소와 장소 설명을 비교하세요. 실내·테라스 동반 여부와 이동장 조건, 영업시간은 방문 전 매장에 확인하세요.`});
+  }
+ }
+ const areaGroups=new Map();
+ for(const item of g.items){
+  const region=regionFor(item), area=areaFor(item);
+  if(!region || !area) continue;
+  const key=`${region[0]}|${area}`;
+  if(!areaGroups.has(key)) areaGroups.set(key,{region,area,items:[]});
+  areaGroups.get(key).items.push(item);
+ }
+ for(const {region,area,items} of areaGroups.values()){
+  if(items.length>=5) hubs.push({
+   path:`/places/regions/${region[0]}/areas/${areaSlug(area)}/`,
+   label:`${region[1]} ${area} 애견동반 카페·식당·숙소`,
+   type:g.type,items,
+   intro:`${region[1]} ${area}에서 반려견과 함께 갈 장소를 모았습니다. 등록 주소와 설명을 비교하고, 실내·테라스 동반 여부, 반려견 크기·마릿수 제한과 영업시간은 방문 전에 매장이나 숙소에 확인하세요.`
+  });
+  for(const [kind,label,category] of [['cafes','애견동반 카페·식당','식당카페'],['stays','애견동반 숙소','숙소']]){
+   const categoryItems=items.filter(i=>i.category===category);
+   if(categoryItems.length>=4) hubs.push({
+    path:`/places/regions/${region[0]}/areas/${areaSlug(area)}/${kind}/`,
+    label:`${region[1]} ${area} ${label}`,
+    type:g.type,items:categoryItems,
+    intro:category==='숙소'
+      ? `${region[1]} ${area}에서 반려견과 묵을 숙소를 비교하세요. 예약 전에 반려견 크기·마릿수 제한, 추가 비용과 이용 가능한 공간을 확인하세요.`
+      : `${region[1]} ${area}에서 강아지와 갈 카페·식당을 비교하세요. 실내·테라스 동반 여부와 이동장 조건, 영업시간은 방문 전에 확인하세요.`
+   });
   }
  }
  return hubs;
