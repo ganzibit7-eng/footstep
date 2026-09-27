@@ -36,5 +36,7 @@ jobs:
             echo "No SEO page changes"
           else
             git commit -m "검색용 상세 페이지 자동 갱신"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin main
           fi
