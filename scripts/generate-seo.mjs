@@ -445,6 +445,12 @@ for (const guide of GUIDES) {
   sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:contentLastmod});
 }
 await writeFile(path.join(ROOT, 'discover.html'), directoryHtml(groups), 'utf8');
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
+const sitemapByUrl = new Map();
+for (const entry of sitemap) {
+  const prev = sitemapByUrl.get(entry.url);
+  if (!prev || String(entry.lastmod || '') > String(prev.lastmod || '')) sitemapByUrl.set(entry.url, entry);
+}
+const uniqueSitemap = [...sitemapByUrl.values()].sort((a,b)=>a.url.localeCompare(b.url,'en'));
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${uniqueSitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 await writeFile(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
-console.log(`SEO 페이지 ${sitemap.length - 2}개와 사이트맵을 생성했습니다.`);
+console.log(`SEO 페이지 ${Math.max(0, uniqueSitemap.length - 2)}개와 사이트맵을 생성했습니다. (중복 URL ${sitemap.length - uniqueSitemap.length}개 제거)`);
