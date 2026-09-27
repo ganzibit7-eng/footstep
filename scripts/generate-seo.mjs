@@ -250,10 +250,68 @@ function detailHtml(item, type, url) {
 <body><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="관련 장소 목록">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${location ? `<p><strong>위치·분류</strong><br>${escapeHtml(location)}</p>` : ''}<p>${escapeHtml(compact(item.description) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">우리 동네 코스·장소 등록하기</a></p><p class="note">현장 운영 정보와 이용 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article><p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
 }
 
+
+const GUIDES = [
+  {
+    slug:'dog-walk-checklist',
+    title:'강아지 산책 준비물 체크리스트',
+    description:'강아지 산책 전에 챙기면 좋은 기본 준비물과 출발 전 확인사항을 한 번에 정리했습니다.',
+    intro:'산책은 거리보다 준비가 더 중요할 때가 많습니다. 반려견의 나이·체력·날씨에 맞게 기본 준비를 조정하세요.',
+    tips:['목줄 또는 하네스와 리드줄','배변봉투와 여분 봉투','물과 휴대용 물그릇','당일 기온과 코스 거리 확인'],
+    links:[['쉬운 산책 코스','/courses/themes/easy/'],['2km 이하 짧은 산책 코스','/courses/themes/short-under-2km/']]
+  },
+  {
+    slug:'summer-dog-walk',
+    title:'여름 강아지 산책 전 확인할 것',
+    description:'더운 계절 강아지 산책 전 시간대, 그늘, 물, 노면 상태를 확인하는 방법을 정리했습니다.',
+    intro:'여름에는 같은 코스라도 시간대와 노면 상태에 따라 부담이 크게 달라질 수 있습니다. 한낮을 피하고 현장 상태를 먼저 확인하세요.',
+    tips:['비교적 선선한 시간대 선택','그늘 있는 동선 확인','물과 휴식 지점 준비','아스팔트와 바닥 온도 확인'],
+    links:[['그늘 많은 산책 코스','/courses/themes/shade/'],['그늘 많고 계단 없는 코스','/courses/themes/shade-step-free/']]
+  },
+  {
+    slug:'rainy-day-dog-walk',
+    title:'비 오는 날 강아지 산책 체크리스트',
+    description:'비 오는 날 강아지 산책 시 코스 길이, 미끄러운 노면, 귀가 후 관리까지 확인할 항목을 정리했습니다.',
+    intro:'비 오는 날에는 평소보다 짧고 단순한 동선이 관리하기 쉽습니다. 미끄러운 바닥과 배수 상태를 확인하고 귀가 후 발과 털을 점검하세요.',
+    tips:['강수와 바람 확인','경사·계단이 적은 코스 선택','수건과 여분 배변봉투 준비','귀가 후 발가락 사이와 털 말리기'],
+    links:[['계단 없는 산책 코스','/courses/themes/step-free/'],['2km 이하 계단 없는 코스','/courses/themes/short-step-free/']]
+  },
+  {
+    slug:'winter-dog-walk',
+    title:'겨울 강아지 산책 준비 체크리스트',
+    description:'추운 날 강아지 산책 전 거리, 노면, 휴식, 귀가 후 발 관리까지 기본 확인사항을 정리했습니다.',
+    intro:'겨울에는 기온뿐 아니라 바람과 노면 상태도 함께 봐야 합니다. 짧은 코스부터 시작하고 평소보다 불편해하는지 자주 확인하세요.',
+    tips:['기온과 체감온도 확인','얼거나 미끄러운 구간 피하기','짧은 동선부터 시작','귀가 후 발바닥과 털 상태 확인'],
+    links:[['2km 이하 짧은 산책 코스','/courses/themes/short-under-2km/'],['쉬운 산책 코스','/courses/themes/easy/']]
+  }
+];
+
+function guideHtml(guide){
+  const url=`${SITE}/guides/${guide.slug}/`;
+  const schema=[
+    {'@context':'https://schema.org','@type':'Article','headline':guide.title,'description':guide.description,'mainEntityOfPage':url,'publisher':{'@type':'Organization','name':'발자국','url':SITE}},
+    {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+      {'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},
+      {'@type':'ListItem','position':2,'name':'산책 가이드','item':SITE+'/discover.html#guides'},
+      {'@type':'ListItem','position':3,'name':guide.title,'item':url}
+    ]}
+  ];
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>${escapeHtml(guide.title)} | 발자국</title><meta name="description" content="${escapeHtml(guide.description)}"><link rel="canonical" href="${url}">
+  <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="article"><meta property="og:title" content="${escapeHtml(guide.title)} | 발자국"><meta property="og:description" content="${escapeHtml(guide.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png">
+  <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
+  <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.75}.wrap{max-width:820px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.card{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:28px;margin:24px 0}h1,h2{color:#152922}li{margin:10px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}</style></head>
+  <body><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
+  <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p><h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
+  <h2>관련 산책 코스 찾기</h2><div class="links">${guide.links.map(([label,href])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</div>
+  <p style="margin-top:24px"><a href="/#map">내 주변 산책 코스 지도에서 보기 →</a></p></article>
+  <p>반려견의 건강 상태와 날씨에 따라 적절한 산책 방식은 달라질 수 있습니다. 이상 징후가 있으면 수의사 등 전문가의 조언을 확인하세요.</p></main></body></html>`;
+}
+
 function directoryHtml(groups) {
   const sections = groups.map(({ type, items }) => `<section id="${type.folder}"><h2>${type.icon} ${escapeHtml(type.label)} <small>${items.length.toLocaleString('ko-KR')}곳</small></h2><ul>${items.map((item) => `<li><a href="/${type.folder}/${safeSegment(item.id)}/">${escapeHtml(item.name)}</a>${item.category ? ` <span>${escapeHtml(item.category)}</span>` : ''}</li>`).join('')}</ul></section>`).join('');
   const total=groups.reduce((sum,g)=>sum+g.items.length,0);
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전국 강아지 산책 코스·애견동반 장소 ${total.toLocaleString('ko-KR')}곳 | 발자국</title><meta name="description" content="전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함 ${total.toLocaleString('ko-KR')}곳의 등록 정보를 지역·테마별로 찾아보세요."><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2{color:#152922}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="장소 종류"><a href="#courses">강아지 산책 코스</a> · <a href="#places">애견동반 카페·숙소</a> · <a href="#bins">배변봉투함</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section><h2>테마별 산책 코스·지역별 애견동반 장소</h2><ul>${searchHubs.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul></section>${sections}</main></body></html>`;
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>전국 강아지 산책 코스·애견동반 장소 ${total.toLocaleString('ko-KR')}곳 | 발자국</title><meta name="description" content="전국 강아지 산책 코스와 애견동반 식당·카페·숙소, 배변봉투함 ${total.toLocaleString('ko-KR')}곳의 등록 정보를 지역·테마별로 찾아보세요."><meta name="robots" content="index, follow"><link rel="canonical" href="${SITE}/discover.html"><style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.wrap{max-width:1000px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}h1,h2{color:#152922}section{background:#fbf8f1;border:1px solid #d8cbae;border-radius:18px;padding:24px;margin:22px 0}small,span{font-size:13px;color:#6e8f6b}ul{columns:3;gap:28px;padding-left:20px}li{break-inside:avoid;margin:6px 0}@media(max-width:760px){ul{columns:1}}</style></head><body><main class="wrap"><a class="brand" href="/">🐾 발자국 홈</a><h1>전국 반려견 장소·산책 코스</h1><nav aria-label="장소 종류"><a href="#courses">강아지 산책 코스</a> · <a href="#places">애견동반 카페·숙소</a> · <a href="#bins">배변봉투함</a></nav><p>지역과 장소 종류를 골라 주소·거리·설명을 비교하고, 산책 전 필요한 정보를 확인하세요.</p><section id="guides"><h2>강아지 산책 가이드</h2><ul>${GUIDES.map(g=>`<li><a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a></li>`).join('')}</ul></section><section><h2>테마별 산책 코스·지역별 애견동반 장소</h2><ul>${searchHubs.map(h=>`<li><a href="${h.path}">${escapeHtml(h.label)}</a> <small>${h.items.length}곳</small></li>`).join('')}</ul></section>${sections}</main></body></html>`;
 }
 
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
@@ -281,6 +339,13 @@ for (const hub of searchHubs) {
     await writeFile(path.join(dir,'index.html'),hubHtml(hub,page),'utf8');
     sitemap.push({url:SITE+relative,lastmod:new Date().toISOString().slice(0,10)});
   }
+}
+await rm(path.join(ROOT, 'guides'), { recursive: true, force: true });
+for (const guide of GUIDES) {
+  const dir=path.join(ROOT,'guides',guide.slug);
+  await mkdir(dir,{recursive:true});
+  await writeFile(path.join(dir,'index.html'),guideHtml(guide),'utf8');
+  sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:new Date().toISOString().slice(0,10)});
 }
 await writeFile(path.join(ROOT, 'discover.html'), directoryHtml(groups), 'utf8');
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
