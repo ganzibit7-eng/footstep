@@ -94,6 +94,8 @@ const HUB_SIZE = 48;
 let searchHubs = [];
 let duplicateNamesByTable = new Map();
 let itemsByTable = new Map();
+let itemMetaByTable = new Map();
+let itemsByRegionByTable = new Map();
 function buildHubs(groups){
  const g=groups.find(g=>g.type.table==='facilities'), hubs=[];
  for(const [slug,label,category] of [['cafes','애견동반 식당·카페','식당카페'],['stays','애견동반 숙소','숙소']]){
@@ -322,15 +324,18 @@ function detailHtml(item, type, url) {
     : '';
   const title = `${item.name}${qualifier ? ' ('+qualifier+')' : ''} | ${region ? region[1]+' ' : ''}${label} | 발자국`;
   const hubs = hubLinks(item, type);
-  const pool = itemsByTable.get(type.table) || [];
-  const itemRegion = regionFor(item)?.[0] || '';
-  const itemArea = areaFor(item) || '';
+  const meta=itemMetaByTable.get(type.table)?.get(item.id) || {};
+  const itemRegion = meta.region || '';
+  const itemArea = meta.area || '';
+  const regionalPool = itemRegion ? (itemsByRegionByTable.get(type.table)?.get(itemRegion) || []) : [];
+  const pool = regionalPool.length ? regionalPool : (itemsByTable.get(type.table) || []);
   const relatedItems = pool
     .filter(other=>other.id!==item.id)
     .map(other=>{
-      const sameRegion=itemRegion && regionFor(other)?.[0]===itemRegion;
-      const sameArea=itemArea && areaFor(other)===itemArea && sameRegion;
-      const sameCategory=item.category && other.category===item.category;
+      const otherMeta=itemMetaByTable.get(type.table)?.get(other.id) || {};
+      const sameRegion=itemRegion && otherMeta.region===itemRegion;
+      const sameArea=itemArea && otherMeta.area===itemArea && sameRegion;
+      const sameCategory=item.category && otherMeta.category===item.category;
       const score=(sameArea?4:0)+(sameRegion?2:0)+(sameCategory?1:0);
       return {other,score};
     })
@@ -343,11 +348,16 @@ function detailHtml(item, type, url) {
     : type.table==='facilities'
       ? types.find(t=>t.table==='courses')
       : null;
-  const crossPool = crossType ? (itemsByTable.get(crossType.table) || []) : [];
+  const crossPool = crossType
+    ? (itemRegion
+      ? (itemsByRegionByTable.get(crossType.table)?.get(itemRegion) || [])
+      : (itemsByTable.get(crossType.table) || []))
+    : [];
   const crossItems = crossPool
     .map(other=>{
-      const sameRegion=itemRegion && regionFor(other)?.[0]===itemRegion;
-      const sameArea=itemArea && areaFor(other)===itemArea && sameRegion;
+      const otherMeta=itemMetaByTable.get(crossType?.table)?.get(other.id) || {};
+      const sameRegion=itemRegion && otherMeta.region===itemRegion;
+      const sameArea=itemArea && otherMeta.area===itemArea && sameRegion;
       const score=(sameArea?4:0)+(sameRegion?2:0);
       return {other,score};
     })
@@ -543,6 +553,27 @@ function directoryHtml(groups) {
 const groups = await Promise.all(types.map(async type => ({type,items:await fetchApproved(type.table)})));
 for(const group of groups) if(group.type.table==='facilities') group.items=group.items.map(item=>({...item,address:addressFor(item)}));
 itemsByTable = new Map(groups.map(group=>[group.type.table,group.items]));
+itemMetaByTable = new Map(groups.map(group=>[
+  group.type.table,
+  new Map(group.items.map(item=>[
+    item.id,
+    {
+      region: regionFor(item)?.[0] || '',
+      area: areaFor(item) || '',
+      category: item.category || ''
+    }
+  ]))
+]));
+itemsByRegionByTable = new Map(groups.map(group=>{
+  const byRegion=new Map();
+  for(const item of group.items){
+    const region=itemMetaByTable.get(group.type.table)?.get(item.id)?.region || '';
+    if(!region) continue;
+    if(!byRegion.has(region)) byRegion.set(region,[]);
+    byRegion.get(region).push(item);
+  }
+  return [group.type.table,byRegion];
+}));
 duplicateNamesByTable = new Map(groups.map(group=>{
   const counts=new Map();
   for(const item of group.items){
