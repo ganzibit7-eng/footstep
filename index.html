@@ -3378,7 +3378,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
     try{
       const reportViewer=myDeviceId;
-      const counts=await readReportPages('report_counts','target_type,target_id,report_count',['target_type','target_id']);
+      const {data:counts,error:countError}=await sb.rpc('public_report_counts');
+      if(countError) throw countError;
       const nextReports={};
       (counts||[]).forEach(r=>{
         nextReports[r.target_type+'_'+r.target_id]={count:Number(r.report_count)||0,reporters:[],reasons:[]};
@@ -6517,7 +6518,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let activeWalkerCounts = {};
   async function loadActiveWalkerCounts(){
     try{
-      const { data, error } = await sb.from('active_walker_counts').select('course_id, walker_count');
+      const { data, error } = await sb.rpc('public_active_walker_counts');
       const counts = Object.create(null);
       if(!error && data){
         data.forEach(r=>{ counts[r.course_id] = Number(r.walker_count || 0); });
