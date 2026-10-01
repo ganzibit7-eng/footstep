@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://balzaguk.com/sitemap.xml
+Sitemap: https://balzaguk.com/walk-sitemap.xml
