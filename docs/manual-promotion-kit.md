@@ -13,6 +13,7 @@
 | 네이버 카페 | `https://balzaguk.com/courses/themes/step-free/?utm_source=naver_cafe&utm_medium=community&utm_campaign=dog_walk_discovery&utm_content=step_free` |
 | 인스타그램 | `https://balzaguk.com/places/cafes/?utm_source=instagram&utm_medium=social&utm_campaign=dog_walk_discovery&utm_content=pet_friendly_cafes` |
 | 카카오 단체방 | `https://balzaguk.com/bins/?utm_source=kakao&utm_medium=community&utm_campaign=dog_walk_discovery&utm_content=bag_stations` |
+| 산책 펫티켓 가이드 | `https://balzaguk.com/walk-etiquette/?utm_source=threads&utm_medium=social&utm_campaign=dog_walk_discovery&utm_content=etiquette` |
 
 ## Threads에 직접 올릴 글
 
@@ -33,6 +34,12 @@ https://balzaguk.com/courses/themes/step-free/?utm_source=threads&utm_medium=soc
 산책하고 강아지랑 들를 카페나 식당을 찾을 때는 동반 조건이 매장마다 달라요. 지역별 목록을 보고 후보를 고른 뒤, 방문 전에 매장에 확인해보세요.
 
 https://balzaguk.com/places/cafes/?utm_source=threads&utm_medium=social&utm_campaign=dog_walk_discovery&utm_content=pet_friendly_cafes
+
+### 산책 펫티켓 체크리스트
+
+산책할 때 배변봉투는 챙기는데 인식표나 다른 강아지와 인사하는 방법은 가끔 놓치더라. 농식품부 안내에 맞춰 목줄 길이부터 배변봉투까지 한 번에 볼 수 있게 정리했어 🐾
+
+https://balzaguk.com/walk-etiquette/?utm_source=threads&utm_medium=social&utm_campaign=dog_walk_discovery&utm_content=etiquette
 
 ## 네이버 블로그 초안
 
