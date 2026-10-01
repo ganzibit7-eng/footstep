@@ -207,11 +207,6 @@ function buildHubs(groups){
   if(items.length>=3) hubs.push({path:theme.path,label:theme.label,intro:theme.intro,type:courses.type,items});
  }
 
- const SEOUL_DISTRICTS=[["강남", "gangnam"], ["강동", "gangdong"], ["강북", "gangbuk"], ["강서", "gangseo"], ["관악", "gwanak"], ["광진", "gwangjin"], ["구로", "guro"], ["금천", "geumcheon"], ["노원", "nowon"], ["도봉", "dobong"], ["동대문", "dongdaemun"], ["동작", "dongjak"], ["마포", "mapo"], ["서대문", "seodaemun"], ["서초", "seocho"], ["성동", "seongdong"], ["성북", "seongbuk"], ["송파", "songpa"], ["양천", "yangcheon"], ["영등포", "yeongdeungpo"], ["용산", "yongsan"], ["은평", "eunpyeong"], ["종로", "jongno"], ["중", "jung"], ["중랑", "jungnang"]];
- for(const [district,slug] of SEOUL_DISTRICTS){
-  const items=courses.items.filter(i=>new RegExp('서울(?:특별시)?\\s+'+district+'구(?:의|\\s|[·.,])').test(CourseInfo.cleanDescription(i.description)));
-  if(items.length>=3)hubs.push({path:`/courses/areas/seoul-${slug}/`,label:`서울 ${district}구 강아지 산책 코스`,type:courses.type,items,intro:`서울 ${district}구의 등록 코스를 거리와 특징으로 비교하세요. 공식 출처가 있는 코스는 동반 조건과 안내 시간을 확인할 수 있습니다.`});
- }
  // 지역명이 등록 설명/주소에 확인되는 산책 코스만 지역 허브로 생성합니다.
  for(const [slug,region] of REGIONS){
   const items=courses.items.filter(i=>regionFor(i)?.[0]===slug);
