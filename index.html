@@ -1324,6 +1324,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .course-card .card-rating small{font-size:10px;font-weight:500;color:var(--muted-text)}
 .course-card .card-rating-empty{font-size:10px;color:var(--muted-text);font-weight:500;white-space:normal}
 .course-card .desc{margin:0;min-height:3.6em}
+.course-source-link{display:inline-flex;align-items:center;gap:6px;width:fit-content;max-width:100%;color:#32634e;font-size:12px;font-weight:750;text-decoration:none;border:1px solid #c9dccb;border-radius:999px;padding:7px 10px;background:#f4f8f1}
+.course-source-link:hover,.course-source-link:focus-visible{background:#e8f1e5;text-decoration:underline}
+.course-source-link small{font-size:10px;font-weight:600;color:#687a63}
+.badge-info{background:#eeeae1;color:#625c4f}
 .course-card .tag-row{display:flex;gap:6px;flex-wrap:wrap}
 .course-card .tag-pill{background:var(--sand);border:1px solid var(--ui-border);font-size:10px;padding:5px 8px;line-height:1.4}
 .course-detail-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 14px;border:1px solid var(--ui-border);border-radius:12px;background:var(--sand);color:var(--pine-deep);font:inherit;font-size:13px;font-weight:700;min-height:46px;cursor:pointer;margin-top:auto}
@@ -2718,6 +2722,19 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       return url.protocol === 'https:' ? url.href : '';
     }catch(e){ return ''; }
   }
+  function officialCourseSource(description){
+    const match=String(description||'').match(/공식안내:\\s*(https:\\/\\/[^\\s]+)/i);
+    if(!match)return null;
+    try{
+      const url=new URL(match[1]);
+      if(url.protocol!=='https:'||!['gil.seoul.go.kr','korean.visitkorea.or.kr'].includes(url.hostname))return null;
+      return url.href;
+    }catch(e){return null;}
+  }
+  function officialCourseCheckedDate(description){
+    const match=String(description||'').match(/확인일:\\s*(\\d{4}-\\d{2}-\\d{2})/);
+    return match?match[1]:'';
+  }
 
   const SEED_COURSES = [
     { id:'c1', name:'경춘선숲길 반려견 산책로', desc:'화랑대역 인근 철길 숲길. 나무 그늘이 많고 평지 위주라 노령견에게도 좋아요.', lat:37.6215, lng:127.0745, tags:['그늘많음','계단없음'], diff:'쉬움', distance:'2.1 km',
@@ -3300,7 +3317,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return {
       id: row.id, name: row.name, desc: row.description,
       lat: row.lat, lng: row.lng, path: row.path || null,
-      tags: row.tags || [], diff: row.diff || '쉬움', distance: row.distance,
+      tags: row.tags || [], diff: row.diff || null, distance: row.distance,
       ownerId: row.owner_id, author: row.author, createdAt: row.created_at,
       status: row.status || 'approved'
     };
@@ -4673,11 +4690,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const visualGradients = {
         '쉬움': ['#7FA67C','#3F5A3D'], '보통': ['#C79A3C','#8A5F14'], '어려움': ['#C46A4A','#8A3F26'],
       };
-      const [va, vb] = visualGradients[c.diff] || visualGradients['쉬움'];
+      const [va, vb] = visualGradients[c.diff] || ['#A9A292','#696354'];
+      const courseSource=officialCourseSource(c.desc);
+      const checkedDate=officialCourseCheckedDate(c.desc);
       card.innerHTML = `
         <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
           <svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><span class="card-visual-caption">산책길 일러스트</span>
-          <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${escapeHtml(c.diff||'쉬움')}</span>
+          <span class="badge ${c.diff?diffBadgeClass(c.diff):'badge-info'}">${escapeHtml(c.diff||'난이도 정보 없음')}</span>
           <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="${isFav ? '찜 해제' : '찜하기'}" aria-pressed="${isFav}">${isFav ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
@@ -4689,6 +4708,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             ${avg ? `<span class="card-rating" aria-label="평점 ${avg}, 리뷰 ${reviewsFor(c.id).length}개">★ ${avg}<small>리뷰 ${reviewsFor(c.id).length}</small></span>` : '<span class="card-rating card-rating-empty">첫 리뷰를 기다려요</span>'}
           </div>
           <p class="desc">${escapeHtml(c.desc||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
+          ${courseSource ? `<a class="course-source-link" href="${escapeHtml(courseSource)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${checkedDate?` <small>${escapeHtml(checkedDate)} 확인</small>`:''}<span aria-hidden="true">↗</span></a>` : ''}
           <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
           <button type="button" class="course-detail-cta" data-course-open="${escapeHtml(c.id)}" aria-label="${escapeHtml(c.name)} 자세히 보기"><span>코스 살펴보기</span><span aria-hidden="true">↗</span></button>
           ${containerEl.id==='course-grid'?`<button type="button" class="course-compare-toggle" data-compare-course="${escapeHtml(c.id)}" aria-pressed="${compareCourseIds.has(String(c.id))}">${compareCourseIds.has(String(c.id))?'✓ 비교에 담음':'＋ 다른 코스와 비교'}</button>`:''}
@@ -4701,7 +4721,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
       `;
       card.addEventListener('click', (e)=>{
-        if(e.target.closest('button') || e.target.closest('.member-link')) return;
+        if(e.target.closest('button') || e.target.closest('a') || e.target.closest('.member-link')) return;
         openCourseDetail(c.id);
       });
       const photo=reviewsFor(c.id).map(r=>safePublicImageUrl(r.photoUrl)).find(Boolean);
@@ -4797,7 +4817,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       );
     }
     if(listFilterState.diff !== 'all'){
-      list = list.filter(c => (c.diff||'쉬움') === listFilterState.diff);
+      list = list.filter(c => c.diff === listFilterState.diff);
     }
     if(listFilterState.tags.size > 0){
       list = list.filter(c => Array.from(listFilterState.tags).every(t => (c.tags||[]).includes(t)));
@@ -6064,9 +6084,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       x.classList.toggle('on', selectedTags.has(x.dataset.tag));
     });
     document.querySelectorAll('#diff-group .tag-check').forEach(x=>x.classList.remove('on'));
-    const diffEl = document.querySelector(`#diff-group .tag-check[data-diff="${course.diff||'쉬움'}"]`);
+    const diffEl = course.diff ? document.querySelector(`#diff-group .tag-check[data-diff="${course.diff}"]`) : null;
     if(diffEl) diffEl.classList.add('on');
-    selectedDiff = course.diff || '쉬움';
+    selectedDiff = course.diff || '';
     coursePath = course.path && course.path.length > 1 ? course.path.slice() : [[course.lat, course.lng]];
     document.getElementById('reg-submit-btn').textContent = '✏️ 수정 완료';
     setTimeout(()=>{
@@ -6266,9 +6286,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.getElementById('modal-desc').textContent = c.desc || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
-      <span class="badge ${diffBadgeClass(c.diff||'쉬움')}">${c.diff||'쉬움'}</span>
+      <span class="badge ${c.diff?diffBadgeClass(c.diff):'badge-info'}">${escapeHtml(c.diff||'난이도 정보 없음')}</span>
       <span class="tag-pill">${escapeHtml(c.distance||'거리 정보 없음')}</span>
       ${(c.tags||[]).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}
+      ${officialCourseSource(c.desc)?`<a class="course-source-link" href="${escapeHtml(officialCourseSource(c.desc))}" target="_blank" rel="noopener noreferrer">🏛 공식 안내${officialCourseCheckedDate(c.desc)?` · ${escapeHtml(officialCourseCheckedDate(c.desc))} 확인`:''} ↗</a>`:''}
       ${(c.tags||[]).includes('목줄해제가능') ? '<div style="width:100%; font-size:12px; color:var(--muted-text); margin-top:6px;">※ 이용자 제보 정보이며, 현장 규정을 반드시 확인해주세요.</div>' : ''}
     `;
     renderReviewList(courseId);
