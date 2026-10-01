@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/generate-seo.mjs'
+      - 'course-info.js'
       - '.github/workflows/generate-seo.yml'
       - 'database_sql/seed_verified_walking_courses_*.sql'
   schedule:

@@ -1327,6 +1327,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .course-source-link{display:inline-flex;align-items:center;gap:6px;width:fit-content;max-width:100%;color:#32634e;font-size:12px;font-weight:750;text-decoration:none;border:1px solid #c9dccb;border-radius:999px;padding:7px 10px;background:#f4f8f1}
 .course-source-link:hover,.course-source-link:focus-visible{background:#e8f1e5;text-decoration:underline}
 .course-source-link small{font-size:10px;font-weight:600;color:#687a63}
+.course-evidence{flex-basis:100%;padding:16px;margin-top:8px;background:#f0f5ec;border:1px solid #cfdfce;border-radius:18px;line-height:1.7}
+.course-evidence strong{font-size:14px;color:#32634e}.course-evidence p{font-size:12px;color:#64725e;margin:6px 0 10px}.course-evidence>div{display:flex;flex-wrap:wrap;gap:8px}.course-evidence a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid #c9dccb;border-radius:12px;background:#fff;color:#32634e;font-size:13px;font-weight:700;text-decoration:none;box-sizing:border-box}
 .badge-info{background:#eeeae1;color:#625c4f}
 .course-card .tag-row{display:flex;gap:6px;flex-wrap:wrap}
 .course-card .tag-pill{background:var(--sand);border:1px solid var(--ui-border);font-size:10px;padding:5px 8px;line-height:1.4}
@@ -2056,6 +2058,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <datalist id="recent-search-list"></datalist>
         <select id="course-sort-select" aria-label="코스 정렬" style="padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); color:var(--ink);">
           <option value="default">기본순</option>
+          <option value="official">공식 출처 먼저</option>
           <option value="rating">평점 높은순</option>
           <option value="reviews">리뷰 많은순</option>
           <option value="name">이름순</option>
@@ -2071,6 +2074,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <button type="button" class="chip" data-diff-filter="어려움">어려움</button>
         </div>
         <div class="filter-group" id="list-tag-filter">
+          <button type="button" class="chip" data-tag-filter="공식안내">🏛 공식 출처</button>
+          <button type="button" class="chip" data-tag-filter="숲길">🌲 숲길</button>
+          <button type="button" class="chip" data-tag-filter="하천길">💧 하천길</button>
+          <button type="button" class="chip" data-tag-filter="유모차가능">유모차 이용 안내</button>
           <button type="button" class="chip" data-tag-filter="목줄해제가능">🐕 오프리쉬 정보</button>
           <button type="button" class="chip" data-tag-filter="그늘많음">그늘많음</button>
           <button type="button" class="chip" data-tag-filter="잔디바닥">잔디바닥</button>
@@ -2080,7 +2087,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
       </details>
     </div>
-    <section class="walk-plan-box" aria-labelledby="walk-plan-title"><h3 id="walk-plan-title">오늘은 얼마나 걸을까요?</h3><p>거리와 시속 4km를 기준으로 찾습니다. 휴식·경사에 따라 달라지며, 거리 정보가 없는 코스는 시간 검색에서 제외돼요.</p><div class="walk-time-options" id="walk-time-options"><button type="button" data-walk-minutes="0" aria-pressed="true">전체 시간</button><button type="button" data-walk-minutes="20" aria-pressed="false">20분 이내</button><button type="button" data-walk-minutes="40" aria-pressed="false">40분 이내</button><button type="button" data-walk-minutes="60" aria-pressed="false">1시간 이내</button></div></section>
+    <section class="walk-plan-box" aria-labelledby="walk-plan-title"><h3 id="walk-plan-title">오늘은 얼마나 걸을까요?</h3><p>공식 안내 시간이 있으면 우선 사용하고, 없으면 거리와 시속 4km로 예상해요. 휴식·경사에 따라 달라질 수 있으며 시간·거리 정보가 모두 없는 코스는 제외돼요.</p><div class="walk-time-options" id="walk-time-options"><button type="button" data-walk-minutes="0" aria-pressed="true">전체 시간</button><button type="button" data-walk-minutes="20" aria-pressed="false">20분 이내</button><button type="button" data-walk-minutes="40" aria-pressed="false">40분 이내</button><button type="button" data-walk-minutes="60" aria-pressed="false">1시간 이내</button></div></section>
     <div class="explore-results-head"><p id="course-count-label" role="status" aria-live="polite" style="color:#6B6550;"></p><button type="button" id="explore-on-map" class="explore-view-button">지도에서 보기 ↗</button></div>
     <div id="list-active-filters" class="explore-active-filters" aria-label="선택한 검색 조건"></div>
     <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
@@ -2304,7 +2311,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <h4 style="margin:0;">다녀온 반려인들의 리뷰</h4>
             <select id="review-sort-select" aria-label="리뷰 정렬" style="padding:6px 10px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:12.5px; background:var(--paper); color:var(--ink);">
               <option value="latest">최신순</option>
-              <option value="rating">평점 높은순</option>
+              <option value="official">공식 출처 먼저</option>
+          <option value="rating">평점 높은순</option>
               <option value="helpful">도움순</option>
             </select>
           </div>
@@ -2701,6 +2709,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </div>
 
+<script src="course-info.js?v=20261001-2"></script>
 <script>
 (function(){
   // ===== Supabase 연결 =====
@@ -2722,18 +2731,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       return url.protocol === 'https:' ? url.href : '';
     }catch(e){ return ''; }
   }
-  function officialCourseSource(description){
-    const match=String(description||'').match(/공식안내:\s*(https:\/\/[^\s]+)/i);
-    if(!match)return null;
-    try{
-      const url=new URL(match[1]);
-      if(url.protocol!=='https:'||!['gil.seoul.go.kr','korean.visitkorea.or.kr'].includes(url.hostname))return null;
-      return url.href;
-    }catch(e){return null;}
-  }
-  function officialCourseCheckedDate(description){
-    const match=String(description||'').match(/확인일:\s*(\d{4}-\d{2}-\d{2})/);
-    return match?match[1]:'';
+  function officialCourseSource(description){return CourseInfo.sourceURL(description)||null;}
+  function officialCourseCheckedDate(description){return CourseInfo.checkedDate(description);}
+  function courseWalkTime(c){return CourseInfo.walkTime(c.desc,c.distance);}
+  function courseMinutes(c){return courseWalkTime(c).minutes;}
+  function courseEvidence(c){
+    const source=officialCourseSource(c.desc);
+    if(!source)return '';
+    const map=CourseInfo.mapURL(c.desc),date=officialCourseCheckedDate(c.desc);
+    return `<aside class="course-evidence"><strong>🏛 ${escapeHtml(CourseInfo.provider(c.desc))} 공식 자료</strong><p>${date?escapeHtml(date)+' 자료 확인 · ':''}현장 방문 확인과는 달라요. 출입 조건·통제 여부를 방문 전에 확인해 주세요.</p><div><a href="${escapeHtml(source)}" target="_blank" rel="noopener noreferrer">동반 조건·코스 안내 ↗</a>${map?`<a href="${escapeHtml(map)}" target="_blank" rel="noopener noreferrer">공식 경로 지도 ↗</a>`:''}</div></aside>`;
   }
 
   const SEED_COURSES = [
@@ -4501,7 +4507,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function aiRenderRecCard(c){
     const rating = avgRating(c.id);
     const km = mongDistanceKm(c.distance);
-    const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
+    const walkTime=courseWalkTime(c);
+      const estMin=walkTime.minutes;
     const reasons = [c.diff === '쉬움' ? '등록 난이도: 쉬움' : '', (c.tags||[]).includes(aiAnswers.env) ? aiAnswers.env : ''].filter(Boolean);
     return `<a href="#" class="ai-rec-card" data-open-course="${escapeHtml(String(c.id))}">
       <span style="font-size:26px;">🐾</span>
@@ -4647,19 +4654,19 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     panel.hidden=!rows.length;if(!rows.length){panel.replaceChildren();return;}
     const value=(c,key)=>{
       if(key==='distance')return c.distance||'정보 없음';
-      if(key==='time'){const km=mongDistanceKm(c.distance);return km?'약 '+Math.max(5,Math.round(km/4*60))+'분':'정보 없음';}
+      if(key==='time'){const time=courseWalkTime(c);return time.minutes?time.minutes+'분 · '+(time.official?'공식 안내':'평지 예상'):'정보 없음';}
       if(key==='diff')return c.diff||'정보 없음';
       if(key==='tags')return (c.tags||[]).map(tagLabel).join(' · ')||'등록된 특징 없음';
       const rating=avgRating(c.id);return rating?'★ '+rating+' · 리뷰 '+reviewsFor(c.id).length+'개':'아직 리뷰 없음';
     };
-    panel.innerHTML='<header><h3 id="compare-title">어느 길로 걸을까요?</h3><button type="button" data-compare-clear>모두 비우기</button></header><p role="status">'+rows.length+'/3개 선택 · '+(rows.length<2?'아래에서 코스를 하나 더 담아보세요.':'거리와 특징을 나란히 비교해 보세요.')+'</p><div class="compare-scroll" tabindex="0" role="region" aria-label="산책 코스 비교표, 작은 화면에서는 좌우로 넘겨보세요"><table><thead><tr><th scope="col">비교 항목</th>'+rows.map(c=>'<th scope="col">'+escapeHtml(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['거리','distance'],['예상 시간','time'],['난이도','diff'],['등록 특징','tags'],['이용자 후기','reviews']].map(([label,key])=>'<tr><th scope="row">'+label+'</th>'+rows.map(c=>'<td>'+escapeHtml(value(c,key))+'</td>').join('')+'</tr>').join('')+'<tr><th scope="row">살펴보기</th>'+rows.map(c=>'<td><button type="button" data-compare-open="'+escapeHtml(c.id)+'">상세 보기 ↗</button> <button type="button" data-compare-remove="'+escapeHtml(c.id)+'" aria-label="'+escapeHtml(c.name)+' 비교에서 빼기">빼기</button></td>').join('')+'</tr></tbody></table></div><p>예상 시간은 시속 4km 기준이며 휴식·경사에 따라 달라요. 작은 화면에서는 표를 좌우로 넘겨보세요.</p>';
+    panel.innerHTML='<header><h3 id="compare-title">어느 길로 걸을까요?</h3><button type="button" data-compare-clear>모두 비우기</button></header><p role="status">'+rows.length+'/3개 선택 · '+(rows.length<2?'아래에서 코스를 하나 더 담아보세요.':'거리와 특징을 나란히 비교해 보세요.')+'</p><div class="compare-scroll" tabindex="0" role="region" aria-label="산책 코스 비교표, 작은 화면에서는 좌우로 넘겨보세요"><table><thead><tr><th scope="col">비교 항목</th>'+rows.map(c=>'<th scope="col">'+escapeHtml(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['거리','distance'],['예상 시간','time'],['난이도','diff'],['등록 특징','tags'],['이용자 후기','reviews']].map(([label,key])=>'<tr><th scope="row">'+label+'</th>'+rows.map(c=>'<td>'+escapeHtml(value(c,key))+'</td>').join('')+'</tr>').join('')+'<tr><th scope="row">살펴보기</th>'+rows.map(c=>'<td><button type="button" data-compare-open="'+escapeHtml(c.id)+'">상세 보기 ↗</button> <button type="button" data-compare-remove="'+escapeHtml(c.id)+'" aria-label="'+escapeHtml(c.name)+' 비교에서 빼기">빼기</button></td>').join('')+'</tr></tbody></table></div><p>공식 안내 시간이 있으면 우선 표시합니다. 그 외에는 시속 4km로 예상하며 휴식·경사에 따라 달라요. 작은 화면에서는 표를 좌우로 넘겨보세요.</p>';
     panel.querySelector('[data-compare-clear]').onclick=()=>{compareCourseIds.clear();renderCourseComparison();document.getElementById('course-search-input').focus();};
     panel.querySelectorAll('[data-compare-open]').forEach(b=>b.onclick=()=>openCourseDetail(b.dataset.compareOpen));
     panel.querySelectorAll('[data-compare-remove]').forEach(b=>b.onclick=()=>{toggleCourseComparison(b.dataset.compareRemove);(panel.querySelector('[data-compare-clear]')||document.getElementById('course-search-input')).focus();});
   }
   function updateCollectionHints(){
     const visible=allCourses().filter(c=>!isHidden('course',c.id));
-    const counts={short:visible.filter(c=>{const km=mongDistanceKm(c.distance);return km&&Math.max(5,Math.round(km/4*60))<=20;}).length,shade:visible.filter(c=>(c.tags||[]).includes('그늘많음')).length,saved:visible.filter(c=>favoriteIds.has(c.id)).length};
+    const counts={short:visible.filter(c=>{const minutes=courseMinutes(c);return minutes&&minutes<=20;}).length,shade:visible.filter(c=>(c.tags||[]).includes('그늘많음')).length,saved:visible.filter(c=>favoriteIds.has(c.id)).length};
     for(const [type,count] of Object.entries(counts)){const label=document.querySelector('[data-collection="'+type+'"] small');if(label)label.textContent=type==='saved'?(count?count+'개 찜한 산책길':'마음에 드는 길을 찜해요'):count+'개 코스 둘러보기 ↗';}
   }
   function renderCourseCards(containerEl, courseList){
@@ -4686,7 +4693,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const isBoosted = courseBoosts[c.id] && new Date(courseBoosts[c.id]) > new Date();
       const isFav = favoriteIds.has(c.id);
       const km = mongDistanceKm(c.distance);
-      const estMin = km ? Math.max(5, Math.round(km / 4 * 60)) : null;
+      const walkTime=courseWalkTime(c);
+      const estMin=walkTime.minutes;
       const visualGradients = {
         '쉬움': ['#7FA67C','#3F5A3D'], '보통': ['#C79A3C','#8A5F14'], '어려움': ['#C46A4A','#8A3F26'],
       };
@@ -4704,11 +4712,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14; align-self:flex-start;">🌟 홍보중인 코스</span>` : ''}
           ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F; align-self:flex-start;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
           <div class="row" style="gap:10px;">
-            <div class="course-metrics"><span class="course-metric"><small>코스 거리</small><strong>${escapeHtml(c.distance||'정보 없음')}</strong></span>${estMin ? `<span class="course-metric"><small>예상 소요</small><strong>약 ${estMin}분</strong></span>` : ''}</div>
+            <div class="course-metrics"><span class="course-metric"><small>코스 거리</small><strong>${escapeHtml(c.distance||'정보 없음')}</strong></span>${estMin ? `<span class="course-metric"><small>${walkTime.official?'공식 안내 시간':'평지 예상 시간'}</small><strong>${walkTime.official?'':'약 '}${estMin}분</strong></span>` : ''}</div>
             ${avg ? `<span class="card-rating" aria-label="평점 ${avg}, 리뷰 ${reviewsFor(c.id).length}개">★ ${avg}<small>리뷰 ${reviewsFor(c.id).length}</small></span>` : '<span class="card-rating card-rating-empty">첫 리뷰를 기다려요</span>'}
           </div>
-          <p class="desc">${escapeHtml(c.desc||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
-          ${courseSource ? `<a class="course-source-link" href="${escapeHtml(courseSource)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${checkedDate?` <small>${escapeHtml(checkedDate)} 확인</small>`:''}<span aria-hidden="true">↗</span></a>` : ''}
+          <p class="desc">${escapeHtml(CourseInfo.cleanDescription(c.desc)||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
+          ${courseSource ? `<a class="course-source-link" href="${escapeHtml(courseSource)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${checkedDate?` <small>${escapeHtml(checkedDate)} 자료 확인</small>`:''}<span aria-hidden="true">↗</span></a>` : ''}
           <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
           <button type="button" class="course-detail-cta" data-course-open="${escapeHtml(c.id)}" aria-label="${escapeHtml(c.name)} 자세히 보기"><span>코스 살펴보기</span><span aria-hidden="true">↗</span></button>
           ${containerEl.id==='course-grid'?`<button type="button" class="course-compare-toggle" data-compare-course="${escapeHtml(c.id)}" aria-pressed="${compareCourseIds.has(String(c.id))}">${compareCourseIds.has(String(c.id))?'✓ 비교에 담음':'＋ 다른 코스와 비교'}</button>`:''}
@@ -4778,8 +4786,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       (rows.length?rows.map(({f,km})=>'<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(kakaoLinkTo(f.name,f.lat,f.lng))+'"><span><strong>'+escapeHtml(f.name)+'</strong><small>'+escapeHtml(f.category||'등록 장소')+' · 동반 조건 현장 확인</small></span><span>'+Math.round(km*1000)+'m ↗</span></a>').join(''):'<p>아직 가까운 등록 장소가 없어요. 지도에서 주변 장소를 찾아보세요.</p>');
   }
   function showMapCoursePeek(c){
-    const el=document.getElementById('map-course-peek'),km=mongDistanceKm(c.distance);
-    el.innerHTML='<button type="button" class="peek-close" aria-label="코스 요약 닫기">×</button><small>선택한 산책길</small><strong>'+escapeHtml(c.name)+'</strong><p>'+escapeHtml(c.distance||'거리 미등록')+(km?' · 약 '+Math.max(5,Math.round(km/4*60))+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</p><div><button type="button" data-peek-detail>코스 살펴보기 ↗</button><button type="button" data-peek-save></button></div>';
+    const el=document.getElementById('map-course-peek'),minutes=courseMinutes(c);
+    el.innerHTML='<button type="button" class="peek-close" aria-label="코스 요약 닫기">×</button><small>선택한 산책길</small><strong>'+escapeHtml(c.name)+'</strong><p>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</p><div><button type="button" data-peek-detail>코스 살펴보기 ↗</button><button type="button" data-peek-save></button></div>';
     el.dataset.courseId=String(c.id);el.hidden=false;
     const save=el.querySelector('[data-peek-save]');
     const sync=()=>{save.textContent=favoriteIds.has(c.id)?'♥ 찜 해제':'♡ 찜하기';save.setAttribute('aria-pressed',String(favoriteIds.has(c.id)));};sync();
@@ -4812,7 +4820,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const q = listFilterState.query.toLowerCase();
       list = list.filter(c =>
         (c.name||'').toLowerCase().includes(q) ||
-        (c.desc||'').toLowerCase().includes(q) ||
+        CourseInfo.cleanDescription(c.desc).toLowerCase().includes(q) ||
         (c.tags||[]).some(t=>t.toLowerCase().includes(q))
       );
     }
@@ -4820,10 +4828,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       list = list.filter(c => c.diff === listFilterState.diff);
     }
     if(listFilterState.tags.size > 0){
-      list = list.filter(c => Array.from(listFilterState.tags).every(t => (c.tags||[]).includes(t)));
+      list = list.filter(c => Array.from(listFilterState.tags).every(t => t==='공식안내'?!!officialCourseSource(c.desc):(c.tags||[]).includes(t)));
     }
     if(listFilterState.maxMinutes){
-      list=list.filter(c=>{const km=mongDistanceKm(c.distance);return Number.isFinite(km)&&km>0&&Math.max(5,Math.round(km/4*60))<=listFilterState.maxMinutes;});
+      list=list.filter(c=>{const minutes=courseMinutes(c);return minutes!==null&&minutes<=listFilterState.maxMinutes;});
     }
     if(listFilterState.collection==='cafe') list=list.filter(c=>nearbyWalkPlaces(c).some(x=>x.f.category!=='숙소'));
     if(listFilterState.favOnly){
@@ -4850,6 +4858,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const distance=c=>{const km=mongDistanceKm(c.distance);return Number.isFinite(km)&&km>0?km:Infinity;};
       list.sort((a,b)=>distance(a)-distance(b));
     }
+    if(listFilterState.sort === 'official')list.sort((a,b)=>Number(!!officialCourseSource(b.desc))-Number(!!officialCourseSource(a.desc)));
     if(listFilterState.sort === 'default') list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
     syncExploreFilters();
     renderRecentlyViewed();
@@ -4904,7 +4913,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
     list.forEach(c=>{
       const b=document.createElement('button');b.type='button';b.className='drawer-course';b.dataset.drawerCourseId=c.id;
-      const km=mongDistanceKm(c.distance),minutes=km?Math.max(5,Math.round(km/4*60)):null;
+      const minutes=courseMinutes(c);
       b.innerHTML='<span class="drawer-course-icon" aria-hidden="true">'+(drawerMode==='saved'?'♡':'↗')+'</span><span class="drawer-course-copy"><strong>'+escapeHtml(c.name)+'</strong><small>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</small></span><span aria-hidden="true">↗</span>';
       b.setAttribute('aria-label',c.name+' 코스 다시 보기');b.onclick=()=>openCourseDetail(c.id);host.appendChild(b);
     });
@@ -6274,22 +6283,23 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.getElementById('modal-title').textContent = c.name;
     updateDetailFavorite(); renderWalkNearby(c);
     const distanceKm=mongDistanceKm(c.distance);
-    const estimatedMinutes=distanceKm?Math.max(5,Math.round(distanceKm/4*60)):null;
+    const detailWalkTime=courseWalkTime(c);
+    const estimatedMinutes=detailWalkTime.minutes;
     const rating=avgRating(c.id),reviewCount=reviewsFor(c.id).length;
     document.getElementById('course-detail-summary').innerHTML=[
       ['코스 거리',c.distance||'정보 없음'],
-      ['예상 소요',estimatedMinutes?'약 '+estimatedMinutes+'분':'정보 없음'],
+      [detailWalkTime.official?'공식 안내 시간':'평지 예상 시간',estimatedMinutes?(detailWalkTime.official?'':'약 ')+estimatedMinutes+'분':'정보 없음'],
       ['이용자 평점',rating?'★ '+rating+' · '+reviewCount+'개':'아직 리뷰 없음']
     ].map(([label,value])=>'<div><span>'+escapeHtml(label)+'</span><strong>'+escapeHtml(value)+'</strong></div>').join('');
-    document.getElementById('course-route-label').textContent=c.path&&c.path.length>1?'등록된 경로':'시작점 위치 · 경로 미등록';
+    document.getElementById('course-route-label').textContent=c.path&&c.path.length>1?(CourseInfo.mapURL(c.desc)?'서울시 공식 지도 경로':'등록된 경로'):'지도 표시 위치 · 경로 미등록';
 
-    document.getElementById('modal-desc').textContent = c.desc || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
+    document.getElementById('modal-desc').textContent = CourseInfo.cleanDescription(c.desc) || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${c.diff?diffBadgeClass(c.diff):'badge-info'}">${escapeHtml(c.diff||'난이도 정보 없음')}</span>
       <span class="tag-pill">${escapeHtml(c.distance||'거리 정보 없음')}</span>
       ${(c.tags||[]).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}
-      ${officialCourseSource(c.desc)?`<a class="course-source-link" href="${escapeHtml(officialCourseSource(c.desc))}" target="_blank" rel="noopener noreferrer">🏛 공식 안내${officialCourseCheckedDate(c.desc)?` · ${escapeHtml(officialCourseCheckedDate(c.desc))} 확인`:''} ↗</a>`:''}
+      ${courseEvidence(c)}
       ${(c.tags||[]).includes('목줄해제가능') ? '<div style="width:100%; font-size:12px; color:var(--muted-text); margin-top:6px;">※ 이용자 제보 정보이며, 현장 규정을 반드시 확인해주세요.</div>' : ''}
     `;
     renderReviewList(courseId);

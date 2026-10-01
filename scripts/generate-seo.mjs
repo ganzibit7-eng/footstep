@@ -1,3 +1,4 @@
+import CourseInfo from '../course-info.js';
 import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -19,20 +20,13 @@ const escapeHtml = (value = '') => String(value)
 const safeSegment = (value) => String(value).replace(/[^a-zA-Z0-9_-]/g, '-');
 const compact = (value = '') => String(value ?? '').replace(/\s+/g, ' ').trim();
 const shortDescription = (item, type) => {
-  const detail = compact([item.address,item.description,item.distance].filter(Boolean).join(' · '));
+  const detail = compact([item.address,CourseInfo.cleanDescription(item.description),item.distance].filter(Boolean).join(' · '));
   const label = item.category === '숙소' ? '애견동반 숙소' : item.category === '식당카페' ? '애견동반 식당·카페' : type.label;
   const base = `${item.name} ${label} 정보`;
   return (detail ? `${base}. ${detail}` : base).slice(0, 155);
 };
-const officialSourceUrl = (item) => {
-  const match = String(item?.description ?? '').match(/공식안내:\s*(https:\/\/[^\s]+)/i);
-  if (!match) return '';
-  try {
-    const url = new URL(match[1]);
-    return url.protocol === 'https:' && ['gil.seoul.go.kr', 'korean.visitkorea.or.kr'].includes(url.hostname) ? url.href : '';
-  } catch { return ''; }
-};
-const checkedDate = (item) => String(item?.description ?? '').match(/확인일:\s*(\d{4}-\d{2}-\d{2})/)?.[1] ?? '';
+const officialSourceUrl = (item) => CourseInfo.sourceURL(item?.description);
+const checkedDate = (item) => CourseInfo.checkedDate(item?.description);
 const dateOnly = (value) => {
   const d = value ? new Date(value) : new Date();
   return Number.isNaN(d.getTime()) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10);
@@ -87,7 +81,7 @@ const REGIONS = [
 const addressFor = item => {
  const address=compact(item.address);
  if(address) return address;
- const candidate=compact(item.description).split(' · ')[0];
+ const candidate=compact(CourseInfo.cleanDescription(item.description)).split(' · ')[0];
  return REGIONS.some(r=>r[2].includes(candidate.split(' ')[0])) && candidate.includes(' ') ? candidate : '';
 };
 const regionFor = item => REGIONS.find(r => r[2].includes(addressFor(item).split(' ')[0]));
@@ -161,6 +155,16 @@ function buildHubs(groups){
   const items=courses.items.filter(i=>Array.isArray(i.tags)&&i.tags.includes(tag));
   if(items.length>=3) hubs.push({path:`/courses/themes/${slug}/`,label,intro,type:courses.type,items});
  }
+ for(const [slug,label,test,intro] of [
+  ['official-sources','공식 출처로 살펴보는 강아지 산책 코스',i=>!!officialSourceUrl(i),'지자체와 한국관광공사 등 공식 자료를 참고해 등록한 코스입니다. 자료 확인은 현장 방문 확인과 다르며, 반려견 동반 규정과 공사·통제 상태를 방문 전에 확인하세요.'],
+  ['forest','반려견과 걷는 숲길 산책 코스',i=>i.tags?.includes('숲길'),'숲길 태그가 있는 코스입니다. 공식 안내의 거리·소요 시간과 계단·경사 정보를 함께 살펴보세요.'],
+  ['riverside','반려견과 걷는 하천 산책 코스',i=>i.tags?.includes('하천길'),'하천길 태그가 있는 코스입니다. 자전거 통행·기상 상태와 출입 가능한 구간을 확인해 주세요.'],
+  ['stroller','유모차 이용 안내가 있는 강아지 산책 코스',i=>i.tags?.includes('유모차가능'),'공식 자료에 유모차 이용 가능으로 안내된 코스를 모았습니다. 실제 경사·노면·통제 상태는 달라질 수 있으니 공식 링크에서 출발 전 확인하세요.'],
+  ['official-under-30min','공식 안내 30분 이내 강아지 산책 코스',i=>{const n=CourseInfo.officialMinutes(i.description);return n!==null&&n<=30;},'공식 자료의 소요 시간이 30분 이내인 코스만 모았습니다. 반려견과 쉬어가면 더 오래 걸릴 수 있어요.']
+ ]){
+  const items=courses.items.filter(test);
+  if(items.length>=3)hubs.push({path:`/courses/themes/${slug}/`,label,intro,type:courses.type,items});
+ }
  const easyCourses=courses.items.filter(i=>compact(i.diff).includes('쉬'));
  if(easyCourses.length>=3) hubs.push({
   path:'/courses/themes/easy/',label:'초보 반려견과 걷기 좋은 쉬운 산책 코스',type:courses.type,items:easyCourses,
@@ -203,6 +207,11 @@ function buildHubs(groups){
   if(items.length>=3) hubs.push({path:theme.path,label:theme.label,intro:theme.intro,type:courses.type,items});
  }
 
+ const SEOUL_DISTRICTS=[["강남", "gangnam"], ["강동", "gangdong"], ["강북", "gangbuk"], ["강서", "gangseo"], ["관악", "gwanak"], ["광진", "gwangjin"], ["구로", "guro"], ["금천", "geumcheon"], ["노원", "nowon"], ["도봉", "dobong"], ["동대문", "dongdaemun"], ["동작", "dongjak"], ["마포", "mapo"], ["서대문", "seodaemun"], ["서초", "seocho"], ["성동", "seongdong"], ["성북", "seongbuk"], ["송파", "songpa"], ["양천", "yangcheon"], ["영등포", "yeongdeungpo"], ["용산", "yongsan"], ["은평", "eunpyeong"], ["종로", "jongno"], ["중", "jung"], ["중랑", "jungnang"]];
+ for(const [district,slug] of SEOUL_DISTRICTS){
+  const items=courses.items.filter(i=>new RegExp('서울(?:특별시)?\\s+'+district+'구(?:의|\\s|[·.,])').test(CourseInfo.cleanDescription(i.description)));
+  if(items.length>=3)hubs.push({path:`/courses/areas/seoul-${slug}/`,label:`서울 ${district}구 강아지 산책 코스`,type:courses.type,items,intro:`서울 ${district}구의 등록 코스를 거리와 특징으로 비교하세요. 공식 출처가 있는 코스는 동반 조건과 안내 시간을 확인할 수 있습니다.`});
+ }
  // 지역명이 등록 설명/주소에 확인되는 산책 코스만 지역 허브로 생성합니다.
  for(const [slug,region] of REGIONS){
   const items=courses.items.filter(i=>regionFor(i)?.[0]===slug);
@@ -361,7 +370,7 @@ function hubHtml(hub,page){
  <style>body{margin:0;background:#fbf8f1;color:#183c30;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}main{max-width:960px;margin:auto;padding:24px 18px}h1{font-size:clamp(25px,6vw,36px);line-height:1.35}a{color:#315b43}nav{display:flex;flex-wrap:wrap;gap:12px}ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}li{padding:20px;border:1px solid #dedecf;border-radius:18px;background:#fff}li h2{font-size:19px;margin:0 0 8px}li p{margin:8px 0;overflow-wrap:anywhere;font-size:14px}.note{padding:18px;background:#eef2e7;border-radius:16px}.quick-links{margin:16px 0}.quick-links a{display:inline-block;padding:8px 12px;border:1px solid #dedecf;border-radius:999px;background:#fff;text-decoration:none;font-size:14px}.pagination a,.pagination strong{padding:8px 14px;min-height:28px;border:1px solid #dedecf;border-radius:10px}.pagination{margin:28px 0}</style></head>
  <body><main><nav aria-label="현재 위치">${breadcrumbItems.map((item,index)=>index===breadcrumbItems.length-1?`<span aria-current="page">${escapeHtml(item.name)}</span>`:`<a href="${item.item.replace(SITE,'')||'/'}">${escapeHtml(item.name)}</a>`).join('')}</nav>
  <h1>${escapeHtml(hub.label)}</h1><p>${escapeHtml(description)}</p>${summaryText?`<p><strong>현재 등록 정보 요약</strong> · ${escapeHtml(summaryText)}</p>`:''}<nav aria-label="빠른 탐색" class="quick-links">${quickLinks.map(([href,label])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</nav><div class="note"><strong>${isCourse?"산책 코스 고르는 방법":"방문 전에 확인하세요"}</strong><p>${escapeHtml(hub.intro || "반려견 동반 가능 공간, 크기·마릿수 제한, 이동장 사용 여부와 추가 요금을 장소에 직접 문의하세요. 등록 정보는 현장 운영과 다를 수 있습니다.")}</p></div>
- <p>전체 ${hub.items.length}곳 · ${page}/${total}페이지</p><ul>${items.map(item=>{const duplicate=duplicateNamesByTable.get(hub.type.table)?.has(compact(item.name));const suffix=duplicate?(isCourse?[item.distance&&compact(item.distance),item.diff&&compact(item.diff)].filter(Boolean).join(' · '):[areaFor(item),item.category&&compact(item.category)].filter(Boolean).join(' · ')):'';return `<li><h2><a href="${detailPath(item,hub.type)}">${escapeHtml(item.name)}${suffix?` <small>(${escapeHtml(suffix)})</small>`:''}</a></h2><p>${escapeHtml(isCourse?[item.distance && `거리 ${item.distance}`,item.diff && `난이도 ${item.diff}`].filter(Boolean).join(" · "):item.category)}</p><p>${escapeHtml(isCourse?(Array.isArray(item.tags)?item.tags.join(" · "):""):(item.address || "주소 미등록"))}</p><p>${escapeHtml(compact(item.description).slice(0,180))}</p></li>`}).join('')}</ul>
+ <p>전체 ${hub.items.length}곳 · ${page}/${total}페이지</p><ul>${items.map(item=>{const duplicate=duplicateNamesByTable.get(hub.type.table)?.has(compact(item.name));const suffix=duplicate?(isCourse?[item.distance&&compact(item.distance),item.diff&&compact(item.diff)].filter(Boolean).join(' · '):[areaFor(item),item.category&&compact(item.category)].filter(Boolean).join(' · ')):'';return `<li><h2><a href="${detailPath(item,hub.type)}">${escapeHtml(item.name)}${suffix?` <small>(${escapeHtml(suffix)})</small>`:''}</a></h2><p>${escapeHtml(isCourse?[item.distance && `거리 ${item.distance}`,item.diff && `난이도 ${item.diff}`].filter(Boolean).join(" · "):item.category)}</p><p>${escapeHtml(isCourse?(Array.isArray(item.tags)?item.tags.join(" · "):""):(item.address || "주소 미등록"))}</p><p>${escapeHtml(compact(CourseInfo.cleanDescription(item.description)).slice(0,180))}</p></li>`}).join('')}</ul>
  ${related.length?`<section class="note"><strong>관련해서 함께 찾는 목록</strong><p>${related.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</p></section>`:''}
 
  ${crossRelated.length?`<section class="note"><strong>같은 지역에서 함께 찾기</strong><p>${crossRelated.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</p></section>`:''}
@@ -445,7 +454,8 @@ function detailHtml(item, type, url) {
   const description = shortDescription(item, type);
   const location = [item.address, item.category].filter(Boolean).join(' · ');
   const tags = Array.isArray(item.tags) ? item.tags.join(' · ') : '';
-  const extras = [item.distance && `거리 ${item.distance}`, item.diff && `난이도 ${item.diff}`, tags].filter(Boolean).join(' · ');
+  const walkTime=CourseInfo.walkTime(item.description,item.distance);
+  const extras = [item.distance && `거리 ${item.distance}`, walkTime.minutes&&`${walkTime.official?'공식 안내 시간':'평지 예상 시간'} ${walkTime.minutes}분`, item.diff && `난이도 ${item.diff}`, tags].filter(Boolean).join(' · ');
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Place',
@@ -485,6 +495,7 @@ function detailHtml(item, type, url) {
       ? `${SITE}/?facility=${encodeURIComponent(item.id)}`
       : `${SITE}/#map`;
   const sourceUrl = type.table === 'courses' ? officialSourceUrl(item) : '';
+  const officialMap = type.table === 'courses' ? CourseInfo.mapURL(item.description) : '';
   const sourceDate = checkedDate(item);
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -494,7 +505,7 @@ function detailHtml(item, type, url) {
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><meta name="twitter:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소">
 <script type="application/ld+json">${JSON.stringify([schema, webPageSchema, {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:detailBreadcrumbs}]).replaceAll('<', '\\u003c')}</script>
 <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}.wrap{max-width:760px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}.card{margin-top:32px;background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:30px;box-shadow:0 10px 30px -18px #152922}.icon{font-size:42px}h1{color:#152922;line-height:1.25;margin:12px 0}.meta{color:#6e8f6b;font-weight:700}.cta{display:inline-block;margin-top:18px;padding:12px 20px;border-radius:999px;background:#b5502e;color:white;text-decoration:none;font-weight:800}.source-link{display:inline-block;padding:8px 12px;border:1px solid #c9dccb;border-radius:999px;background:#f4f8f1;text-decoration:none;font-size:13px;font-weight:750}.note{font-size:13px;color:#5b5645;margin-top:24px}</style></head>
-<body><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="현재 위치">${detailBreadcrumbs.map((b,i)=>i===detailBreadcrumbs.length-1?`<span aria-current="page">${escapeHtml(b.name)}</span>`:`<a href="${b.item.replace(SITE,'')||'/'}">${escapeHtml(b.name)}</a>`).join(' · ')}</nav><nav aria-label="관련 장소 목록" style="margin-top:12px">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${location ? `<p><strong>위치·분류</strong><br>${escapeHtml(location)}</p>` : ''}<p>${escapeHtml(compact(item.description) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${sourceUrl?`<p><a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${sourceDate?` · ${escapeHtml(sourceDate)} 확인`:''} ↗</a></p>`:''}${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">우리 동네 코스·장소 등록하기</a></p><p class="note">현장 운영 정보와 이용 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>${itemRegion?'같은 지역에서 함께 보기':'비슷한 장소 함께 보기'}</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'산책 후 함께 갈 곳':'주변 산책 코스도 보기'}</h2><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a>${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
+<body><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="현재 위치">${detailBreadcrumbs.map((b,i)=>i===detailBreadcrumbs.length-1?`<span aria-current="page">${escapeHtml(b.name)}</span>`:`<a href="${b.item.replace(SITE,'')||'/'}">${escapeHtml(b.name)}</a>`).join(' · ')}</nav><nav aria-label="관련 장소 목록" style="margin-top:12px">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${location ? `<p><strong>위치·분류</strong><br>${escapeHtml(location)}</p>` : ''}<p>${escapeHtml(compact(CourseInfo.cleanDescription(item.description)) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${sourceUrl?`<p><a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${sourceDate?` · ${escapeHtml(sourceDate)} 자료 확인`:''} ↗</a>${officialMap?` · <a class="source-link" href="${escapeHtml(officialMap)}" target="_blank" rel="noopener noreferrer">공식 경로 지도 ↗</a>`:''}</p>`:''}${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">우리 동네 코스·장소 등록하기</a></p><p class="note">현장 운영 정보와 이용 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>${itemRegion?'같은 지역에서 함께 보기':'비슷한 장소 함께 보기'}</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'산책 후 함께 갈 곳':'주변 산책 코스도 보기'}</h2><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a>${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
 }
 
 
@@ -645,7 +656,7 @@ function directoryHtml(groups) {
   }).join('');
   const total=groups.reduce((sum,g)=>sum+g.items.length,0);
   const themeCourseHubs=searchHubs.filter(h=>h.type.table==='courses'&&h.path.includes('/themes/'));
-  const regionalCourseHubs=searchHubs.filter(h=>h.type.table==='courses'&&h.path.includes('/regions/'));
+  const regionalCourseHubs=searchHubs.filter(h=>h.type.table==='courses'&&(h.path.includes('/regions/')||h.path.includes('/areas/')));
   const regionalPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&h.path.includes('/regions/')&&!h.path.includes('/areas/'));
   const areaPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&h.path.includes('/areas/'));
   const nationalPlaceHubs=searchHubs.filter(h=>h.type.table==='facilities'&&!h.path.includes('/regions/'));
