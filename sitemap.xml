@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://balzaguk.com/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/bins/</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://balzaguk.com/bins/b1/</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://balzaguk.com/bins/b2/</loc><lastmod>2026-08-30</lastmod></url>
@@ -144,7 +144,16 @@
   <url><loc>https://balzaguk.com/courses/c220/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c221/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c222/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c223/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c224/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c225/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c226/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c227/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c228/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c229/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c23/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c230/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/c231/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c24/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c25/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c26/</loc><lastmod>2026-08-31</lastmod></url>
@@ -229,33 +238,35 @@
   <url><loc>https://balzaguk.com/courses/c98/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://balzaguk.com/courses/c99/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://balzaguk.com/courses/regions/daegu/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/easy-short/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/easy/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/easy/page/2/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/easy/page/3/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/easy/page/4/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/regions/seoul/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy-short/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy-short/page/2/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy/page/2/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy/page/3/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/easy/page/4/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/grass-step-free/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/grass/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/grass/page/2/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/shade-step-free/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/shade/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/shade/page/2/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/shade/page/3/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/shade/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/shade/page/2/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/shade/page/3/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/short-step-free/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/short-under-2km/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/courses/themes/short-under-2km/page/2/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/short-under-2km/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/courses/themes/short-under-2km/page/2/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/step-free/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/step-free/page/2/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://balzaguk.com/courses/themes/step-free/page/3/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/discover.html</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/dog-friendly-cafe-checklist/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/dog-friendly-stay-checklist/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/dog-walk-checklist/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/dog-walk-distance/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/dog-walk-time/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/rainy-day-dog-walk/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/summer-dog-walk/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://balzaguk.com/guides/winter-dog-walk/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/discover.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/dog-friendly-cafe-checklist/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/dog-friendly-stay-checklist/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/dog-walk-checklist/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/dog-walk-distance/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/dog-walk-time/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/rainy-day-dog-walk/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/summer-dog-walk/</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://balzaguk.com/guides/winter-dog-walk/</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://balzaguk.com/places/cafes/</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://balzaguk.com/places/cafes/page/10/</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://balzaguk.com/places/cafes/page/11/</loc><lastmod>2026-09-03</lastmod></url>
@@ -1821,4 +1832,5 @@
   <url><loc>https://balzaguk.com/places/stays/page/9/</loc><lastmod>2026-09-03</lastmod></url>
   <url><loc>https://balzaguk.com/places/u1788314115961/</loc><lastmod>2026-09-02</lastmod></url>
   <url><loc>https://balzaguk.com/with-dog/daegu/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://balzaguk.com/with-dog/seoul/</loc><lastmod>2026-10-01</lastmod></url>
 </urlset>
