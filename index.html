@@ -2723,7 +2723,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){ return ''; }
   }
   function officialCourseSource(description){
-    const match=String(description||'').match(/공식안내:\\s*(https:\\/\\/[^\\s]+)/i);
+    const match=String(description||'').match(/공식안내:\s*(https:\/\/[^\s]+)/i);
     if(!match)return null;
     try{
       const url=new URL(match[1]);
@@ -2732,7 +2732,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){return null;}
   }
   function officialCourseCheckedDate(description){
-    const match=String(description||'').match(/확인일:\\s*(\\d{4}-\\d{2}-\\d{2})/);
+    const match=String(description||'').match(/확인일:\s*(\d{4}-\d{2}-\d{2})/);
     return match?match[1]:'';
   }
 
