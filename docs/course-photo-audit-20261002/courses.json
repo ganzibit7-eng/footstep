@@ -1,0 +1,3897 @@
+{
+  "checked": "2026-10-02",
+  "totalCourses": 116,
+  "appliedCourses": 82,
+  "heldCourses": 34,
+  "uniquePhotos": 72,
+  "courses": [
+    {
+      "id": "c238",
+      "name": "서울 홍릉 두물길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "홍릉 두물길"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "신설동역",
+        "안암2교(성북천)",
+        "성북천교(성북천)",
+        "청계천",
+        "정릉천교(정릉천)",
+        "종암대교(정릉천)",
+        "홍릉터(홍릉숲",
+        "산림과학원)",
+        "영휘원",
+        "숭인원"
+      ],
+      "photo": {
+        "courses": {
+          "c286": "서울 성북천",
+          "c238": "서울 홍릉 두물길"
+        },
+        "src": "/assets/course-photos/c286.webp",
+        "place": "성북천·청계천 합류부",
+        "date": "2013-11-21",
+        "author": "Korea.net / 해외문화홍보원 (전한)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:KOCIS_Korea_Cheonggyecheon_2013_02_%2810988642386%29.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2e/KOCIS_Korea_Cheonggyecheon_2013_02_%2810988642386%29.jpg",
+        "title": "KOCIS Korea Cheonggyecheon 2013 02 (10988642386).jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 741
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c239",
+      "name": "서울 서초구 양재천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "서초구 양재천",
+        "Yangjaecheon Seocho"
+      ],
+      "commonsCandidateCount": 31,
+      "officialRouteWaypoints": [
+        "영동2교",
+        "칸트의 산책로",
+        "덩굴식물터널",
+        "영동1교",
+        "아이리스원",
+        "백일홍화단",
+        "무지개다리",
+        "상징쉼터",
+        "들꽃초화원",
+        "과천경계"
+      ],
+      "photo": {
+        "courses": {
+          "c239": "서울 서초구 양재천"
+        },
+        "src": "/assets/course-photos/c239.webp",
+        "place": "서초구 양재천 산책길",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60873",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O04016Bb10000.jpg",
+        "title": "양재천 (06O04016Bb10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c240",
+      "name": "서울 반포 수변길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "반포 수변길",
+        "반포 한강공원",
+        "Banpo Hangang Park"
+      ],
+      "commonsCandidateCount": 34,
+      "officialRouteWaypoints": [
+        "반포대교에서 동작역 방향으로 도보 1km 구간"
+      ],
+      "photo": {
+        "courses": {
+          "c240": "서울 반포 수변길"
+        },
+        "src": "/assets/course-photos/c240.webp",
+        "place": "반포한강공원",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60685",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O01902Ba62000.jpg",
+        "title": "반포한강공원 (06O01902Ba62000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c241",
+      "name": "서울 뚝섬 숲속길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "뚝섬 숲속길",
+        "뚝섬 한강공원",
+        "Ttukseom park"
+      ],
+      "commonsCandidateCount": 42,
+      "officialRouteWaypoints": [
+        "7호선 뚝섬유원지역 2",
+        "3번 출구로 나와 잠실대교 방향으로 300m이동",
+        "편백나무 숲(안내센터 앞 제2주차장 앞)",
+        "장미원",
+        "소나무 숲"
+      ],
+      "photo": {
+        "courses": {
+          "c241": "서울 뚝섬 숲속길"
+        },
+        "src": "/assets/course-photos/c241.webp",
+        "place": "뚝섬한강공원 나무그늘 (숲속길 주변)",
+        "date": "2026-04-16",
+        "author": "Motoko C. K.",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Ttukseom_Hangang_Park_20260416_4.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Ttukseom_Hangang_Park_20260416_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Ttukseom Hangang Park 20260416 4",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 640
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c242",
+      "name": "서울 당현천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "당현천",
+        "Danghyeoncheon"
+      ],
+      "commonsCandidateCount": 17,
+      "officialRouteWaypoints": [
+        "당고개입구오거리",
+        "상계역",
+        "새싹교",
+        "염광교",
+        "양지교",
+        "당현제2교",
+        "당현1교",
+        "당현3교",
+        "당현4교~중랑천"
+      ],
+      "photo": {
+        "courses": {
+          "c242": "서울 당현천"
+        },
+        "src": "/assets/course-photos/c242.webp",
+        "place": "당현천",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58365",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I01110Bb60000.jpg",
+        "title": "당현천 (06I01110Bb60000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c243",
+      "name": "서울 난지 갈대바람길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "난지 갈대바람길",
+        "난지한강공원",
+        "Nanji Hangang Park"
+      ],
+      "commonsCandidateCount": 24,
+      "officialRouteWaypoints": [
+        "난지한강공원 강변물놀이장",
+        "생태습지원"
+      ],
+      "photo": {
+        "courses": {
+          "c243": "서울 난지 갈대바람길"
+        },
+        "src": "/assets/course-photos/c243.webp",
+        "place": "난지한강공원 자전거공원 일대",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/59902",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06M00803Ba20000.jpg",
+        "title": "난지한강공원 (06M00803Ba20000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 593
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c244",
+      "name": "서울 강서 물새길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "강서 물새길",
+        "강서습지생태공원",
+        "Gangseo wetland"
+      ],
+      "commonsCandidateCount": 24,
+      "officialRouteWaypoints": [
+        "개화나들목에서 행주대교 방향으로 걸어서 1km 구간"
+      ],
+      "photo": {
+        "courses": {
+          "c244": "서울 강서 물새길"
+        },
+        "src": "/assets/course-photos/c244.webp",
+        "place": "강서한강공원",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56892",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06D00613Ba80000.jpg",
+        "title": "강서한강공원 (06D00613Ba80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c245",
+      "name": "서울 호암산 능선길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "호암산 능선길",
+        "호암산",
+        "Hoamsan"
+      ],
+      "commonsCandidateCount": 11,
+      "officialRouteWaypoints": [
+        "호압사",
+        "깔딱고개",
+        "석구상"
+      ],
+      "photo": null,
+      "decision": "호암산 주변 도시 전경·사찰 후보는 능선 숲길 사진으로 채택하지 않음."
+    },
+    {
+      "id": "c246",
+      "name": "서울 생각숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "생각숲길",
+        "관악산",
+        "Gwanaksan Seoul trail"
+      ],
+      "commonsCandidateCount": 18,
+      "officialRouteWaypoints": [
+        "은평구립도서관",
+        "불광근린공원",
+        "순환형 산책로",
+        "은평구립도서관"
+      ],
+      "photo": {
+        "courses": {
+          "c246": "서울 생각숲길"
+        },
+        "src": "/assets/course-photos/c246.webp",
+        "place": "불광근린공원",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62964",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06V01406Ac10000.jpg",
+        "title": "불광근린공원 (06V01406Ac10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c247",
+      "name": "서울 문화비축기지 산책로",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "문화비축기지 산책로",
+        "문화비축기지",
+        "Oil Tank Culture Park"
+      ],
+      "commonsCandidateCount": 40,
+      "officialRouteWaypoints": [
+        "안내동",
+        "T5",
+        "T4",
+        "T3",
+        "T2",
+        "T1",
+        "T6"
+      ],
+      "photo": null,
+      "decision": "개별 이용 조건은 확인했으나 탱크·현대 건축물 중심 후보는 이번 산책로 사진 선정에서 보류."
+    },
+    {
+      "id": "c248",
+      "name": "서울 서오릉고개 녹지연결로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "서오릉고개 녹지연결로",
+        "Seooreung forest Seoul"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "녹지연결로 계단(봉산쪽)",
+        "녹지연결로",
+        "갈현동 우남아파트 옆 산책로",
+        "녹지연결로 계단(앵봉산 쪽)"
+      ],
+      "photo": {
+        "courses": {
+          "c248": "서울 서오릉고개 녹지연결로"
+        },
+        "src": "/assets/course-photos/c248.webp",
+        "place": "서오릉 녹지연결로",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/63009",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06V01906Ac62000.jpg",
+        "title": "서오릉 녹지연결로 (06V01906Ac62000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 597
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c249",
+      "name": "서울 생태공원 둘레길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "생태공원 둘레길",
+        "강서 생태공원",
+        "Gangseo Ecological Park"
+      ],
+      "commonsCandidateCount": 6,
+      "officialRouteWaypoints": [
+        "우면산 자연생태공원(우면동 산34-1 등)"
+      ],
+      "photo": null,
+      "decision": "우면산 자연생태공원 코스이며 강서 생태공원 사진은 다른 장소라 제외. 확인한 우면산 사진은 도로·시가지 중심으로 채택하지 않음."
+    },
+    {
+      "id": "c250",
+      "name": "서울 삼청공원 순환산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "삼청공원 순환산책길",
+        "삼청공원",
+        "Samcheong Park"
+      ],
+      "commonsCandidateCount": 41,
+      "officialRouteWaypoints": [
+        "관리사무소",
+        "삼청공원 후문",
+        "말바위 입구",
+        "말바위 전망대",
+        "와룡공원 정상",
+        "성균관대 후문",
+        "감사원 후문",
+        "관리사무소"
+      ],
+      "photo": {
+        "courses": {
+          "c250": "서울 삼청공원 순환산책길",
+          "c328": "서울 북악 하늘 나들길"
+        },
+        "src": "/assets/course-photos/c250.webp",
+        "place": "삼청공원 숲길",
+        "date": "2014-12",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/49072",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05W06302Ac1000.jpg",
+        "title": "삼청공원 (05W06302Ac1000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c251",
+      "name": "서울 불암산 자락길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "불암산 자락길",
+        "불암산",
+        "Buramsan trail"
+      ],
+      "commonsCandidateCount": 26,
+      "officialRouteWaypoints": [
+        "불암산생태학습관",
+        "불암산 자락길",
+        "불암산생태학습관 (순환형)"
+      ],
+      "photo": null,
+      "decision": "불암산의 다른 둘레길 사진은 확인했으나 생태학습관 순환 자락길과 촬영 구간이 다름."
+    },
+    {
+      "id": "c252",
+      "name": "서울 배봉두메십리길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "배봉두메십리길",
+        "배봉산",
+        "Baebongsan"
+      ],
+      "commonsCandidateCount": 12,
+      "officialRouteWaypoints": [
+        "용두근린공원(용두역)",
+        "고미술상가",
+        "답십리촬영소 영화전시관",
+        "답십리2공원",
+        "답십리1공원",
+        "배봉산둘레길",
+        "배봉산 연육교",
+        "배봉산쉼터"
+      ],
+      "photo": {
+        "courses": {
+          "c252": "서울 배봉두메십리길"
+        },
+        "src": "/assets/course-photos/c252.webp",
+        "place": "배봉산",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/59051",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06K00812Ab50000.jpg",
+        "title": "배봉산 (06K00812Ab50000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c253",
+      "name": "서울 국사봉길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "국사봉길",
+        "Guksabong Seoul"
+      ],
+      "commonsCandidateCount": 10,
+      "officialRouteWaypoints": [
+        "숭실대입구 1번 출구",
+        "살피재",
+        "상도근린공원 관리사무소",
+        "국사봉 정상",
+        "생태놀이터",
+        "양녕대군 이제 묘역",
+        "버스정류장(롯데캐슬)"
+      ],
+      "photo": {
+        "courses": {
+          "c253": "서울 국사봉길"
+        },
+        "src": "/assets/course-photos/c253.webp",
+        "place": "국사봉 쉼터",
+        "date": "2010-03",
+        "author": "서울 2009/2010 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/40553",
+        "original": "https://data.si.re.kr/sites/default/files/photos/04E00302ac4000.jpg",
+        "title": "국사봉 (04E00302ac4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c254",
+      "name": "서울 관악산 무장애숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "관악산 무장애숲길",
+        "관악산 무장애",
+        "Gwanaksan barrier free"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "관악산 관문",
+        "야외식물원",
+        "제1광장(호수공원)",
+        "제2광장 화장실",
+        "모자봉 무장애 숲길"
+      ],
+      "photo": {
+        "courses": {
+          "c254": "서울 관악산 무장애숲길"
+        },
+        "src": "/assets/course-photos/c254.webp",
+        "place": "관악산 호수공원",
+        "date": "2015-02",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/45666",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05E00601Ac8000.jpg",
+        "title": "관악산호수공원 (05E00601Ac8000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c255",
+      "name": "서울 포이 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "포이 산책길",
+        "포이",
+        "Poi Park Seoul"
+      ],
+      "commonsCandidateCount": 10,
+      "officialRouteWaypoints": [
+        "매봉역",
+        "양재천",
+        "달터공원",
+        "구룡산 정상"
+      ],
+      "photo": {
+        "courses": {
+          "c255": "서울 포이 산책길"
+        },
+        "src": "/assets/course-photos/c255.webp",
+        "place": "구룡산 전망쉼터",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60586",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O00210Aa10000.jpg",
+        "title": "구룡산 (06O00210Aa10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c257",
+      "name": "서울 오패산 자락길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "오패산 자락길",
+        "오패산",
+        "Opaesan"
+      ],
+      "commonsCandidateCount": 5,
+      "officialRouteWaypoints": [
+        "주공4단지 408동 앞 정류장",
+        "강북구민운동장 좌측",
+        "강북구민운동장 좌측 쉼터",
+        "강북구민운동장 뒤편(족구장)",
+        "쉼터",
+        "금호아파트 뒤 자작나무숲",
+        "숲놀이터",
+        "오동근린공원 유아숲체험장",
+        "오동근린공원 실내배드민턴장 또는 번동주공5단지 508동(종점)"
+      ],
+      "photo": {
+        "courses": {
+          "c236": "오패산 나들길",
+          "c257": "서울 오패산 자락길"
+        },
+        "src": "/assets/course-photos/c236.webp",
+        "place": "오패산 오동근린공원",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56759",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06C02904Ac80000.jpg",
+        "title": "오동근린공원 (06C02904Ac80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c258",
+      "name": "서울 성동구 매봉산 치유숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "성동구 매봉산 치유숲길",
+        "매봉산 성동구",
+        "Maebongsan Seoul"
+      ],
+      "commonsCandidateCount": 34,
+      "officialRouteWaypoints": [
+        "옥수파크힐스아파트 124동 뒤 공원입구",
+        "치유숲길 만남데크",
+        "빛명상숲",
+        "기체조숲·단풍나무쉼터",
+        "숲길",
+        "명상의 숲",
+        "은행나무 쉼터",
+        "매봉산 팔각정",
+        "중구 황톳길",
+        "421번 버스종점"
+      ],
+      "photo": {
+        "courses": {
+          "c258": "서울 성동구 매봉산 치유숲길",
+          "c262": "서울 매봉산 전망대 산책길"
+        },
+        "src": "/assets/course-photos/c258.webp",
+        "place": "매봉산공원 숲길",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/64035",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06X01504Ab40000.jpg",
+        "title": "매봉산공원 (06X01504Ab40000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c259",
+      "name": "서울 방죽·샘터공원 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "방죽·샘터공원 산책길",
+        "방죽공원 샘터공원",
+        "Bangjuk park Seoul"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "고덕 평생학습관 뒤 방죽근린공원",
+        "고덕산자락길",
+        "샘터공원 약수터",
+        "샘터공원 운동장"
+      ],
+      "photo": {
+        "courses": {
+          "c259": "서울 방죽·샘터공원 산책길",
+          "c323": "서울 강동고덕산길"
+        },
+        "src": "/assets/course-photos/c259.webp",
+        "place": "고덕산 무장애자락길",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56445",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06B02603Db10000.jpg",
+        "title": "고덕산 무장애자락길 (06B02603Db10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c260",
+      "name": "서울 미성동 둘레길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "미성동 둘레길",
+        "미성동",
+        "Miseong park Seoul"
+      ],
+      "commonsCandidateCount": 14,
+      "officialRouteWaypoints": [
+        "민방위교육장",
+        "영산홍동산",
+        "선우생태공원",
+        "산울림다리",
+        "건영아파트·독산고 사잇길",
+        "관천교회"
+      ],
+      "photo": null,
+      "decision": "선우생태공원·산울림다리 구간에 맞는 재사용 허용 사진을 확보하지 못함."
+    },
+    {
+      "id": "c261",
+      "name": "서울 명일 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "명일 산책길",
+        "명일공원",
+        "Myeongil Park"
+      ],
+      "commonsCandidateCount": 9,
+      "officialRouteWaypoints": [
+        "동아아파트 앞 교차로",
+        "한영고등학교 옆 육교(숲길교)",
+        "이마트 교차로"
+      ],
+      "photo": {
+        "courses": {
+          "c261": "서울 명일 산책길"
+        },
+        "src": "/assets/course-photos/c261.webp",
+        "place": "명일근린공원",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56436",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06B02404Ac50000.jpg",
+        "title": "명일근린공원 (06B02404Ac50000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c262",
+      "name": "서울 매봉산 전망대 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "매봉산 전망대 산책길",
+        "매봉산 성동구",
+        "Maebongsan Observatory"
+      ],
+      "commonsCandidateCount": 21,
+      "officialRouteWaypoints": [
+        "한남테니스장",
+        "숲속유아쉼터",
+        "유아숲체험장",
+        "매봉산 팔각정",
+        "옥수동 극동그린아파트 뒤"
+      ],
+      "photo": {
+        "courses": {
+          "c258": "서울 성동구 매봉산 치유숲길",
+          "c262": "서울 매봉산 전망대 산책길"
+        },
+        "src": "/assets/course-photos/c258.webp",
+        "place": "매봉산공원 숲길",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/64035",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06X01504Ab40000.jpg",
+        "title": "매봉산공원 (06X01504Ab40000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c263",
+      "name": "서울 매봉산 자락길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "매봉산 자락길",
+        "매봉산 마포구",
+        "Maebongsan Mapo"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "월드컵경기장 북문 담소정 우측",
+        "무장애길전망대(매봉산자락길 시점)"
+      ],
+      "photo": {
+        "courses": {
+          "c263": "서울 매봉산 자락길"
+        },
+        "src": "/assets/course-photos/c263.webp",
+        "place": "마포 매봉산 자락길",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60020",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06M02602Ad40000.jpg",
+        "title": "매봉산자락길 (06M02602Ad40000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c264",
+      "name": "서울 망우산 사색의길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "망우산 사색의길",
+        "망우산",
+        "Mangusan Seoul"
+      ],
+      "commonsCandidateCount": 12,
+      "officialRouteWaypoints": [
+        "망우묘지공원 관리사무소",
+        "망우산 삼거리 북카페"
+      ],
+      "photo": null,
+      "decision": "공동묘지 도로·개별 묘역 후보는 사색의길 숲길 사진으로 채택하지 않음."
+    },
+    {
+      "id": "c265",
+      "name": "서울 독산 자락길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "독산 자락길",
+        "독산",
+        "Doksan forest Seoul"
+      ],
+      "commonsCandidateCount": 15,
+      "officialRouteWaypoints": [
+        "독산자연공원(만수천공원)",
+        "감로천생태공원",
+        "금천체육공원",
+        "산울림다리",
+        "산기슭공원",
+        "호압사"
+      ],
+      "photo": null,
+      "decision": "독산자연공원 후보는 주변 도시 전경 중심이며 자락길 촬영 구간을 확인하지 못함."
+    },
+    {
+      "id": "c266",
+      "name": "서울 대모산 숲길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "대모산 숲길",
+        "대모산",
+        "Daemosan"
+      ],
+      "commonsCandidateCount": 16,
+      "officialRouteWaypoints": [
+        "중산고등학교 옆 등산로 입구",
+        "일원터널",
+        "한솔마을 라이프아파트",
+        "유아숲체험장 입구",
+        "불국사",
+        "대모산 입구"
+      ],
+      "photo": null,
+      "decision": "대모산 정상·수서동 입구 사진을 일원동 숲길로 오인하지 않도록 제외."
+    },
+    {
+      "id": "c267",
+      "name": "서울 까치산길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "까치산길",
+        "Kkachisan Seoul"
+      ],
+      "commonsCandidateCount": 40,
+      "officialRouteWaypoints": [
+        "까치산 차없는거리(새오름교회)",
+        "까치산공원 관리사무소",
+        "솔밭로 생태다리",
+        "삼익그린뷰 아파트",
+        "까치산 진입 데크(까치산 생태육교)"
+      ],
+      "photo": null,
+      "decision": "화곡동 까치산역 사진은 관악구 까치산길과 다른 장소라 제외. 관악권 후보는 도로·건물 중심."
+    },
+    {
+      "id": "c268",
+      "name": "서울 궁동산 둘레길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "궁동산 둘레길",
+        "궁동산",
+        "Gungdongsan Seoul"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "서대문04 버스 종점",
+        "해병대 104고지 전적비",
+        "서대문자활센터",
+        "궁동산체육관",
+        "서대문04 버스 종점"
+      ],
+      "photo": {
+        "courses": {
+          "c268": "서울 궁동산 둘레길"
+        },
+        "src": "/assets/course-photos/c268.webp",
+        "place": "궁동근린공원",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60339",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06N00306Ac20000.jpg",
+        "title": "궁동근린공원 (06N00306Ac20000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c269",
+      "name": "서울 용왕산 순환길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "용왕산 순환길",
+        "용왕산",
+        "Yongwangsan"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "용왕정길 입구",
+        "무장애 숲길",
+        "용왕정",
+        "달거리약수터",
+        "다목적운동장",
+        "용왕정길 입구"
+      ],
+      "photo": {
+        "courses": {
+          "c269": "서울 용왕산 순환길"
+        },
+        "src": "/assets/course-photos/c269.webp",
+        "place": "용왕정",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62182",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06S02702Ac30000.jpg",
+        "title": "용왕정 (06S02702Ac30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c270",
+      "name": "서울 아차산성길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "아차산성길",
+        "Achasan fortress"
+      ],
+      "commonsCandidateCount": 33,
+      "officialRouteWaypoints": [
+        "아차산공원 입구",
+        "낙타고개",
+        "아차산성",
+        "아차산생태공원"
+      ],
+      "photo": {
+        "courses": {
+          "c270": "서울 아차산성길",
+          "c271": "서울 아차산 둘레길"
+        },
+        "src": "/assets/course-photos/c270.webp",
+        "place": "아차산생태공원",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/57574",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06F02304Ac10000.jpg",
+        "title": "아차산생태공원 (06F02304Ac10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c271",
+      "name": "서울 아차산 둘레길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "아차산 둘레길",
+        "아차산",
+        "Achasan ecological park"
+      ],
+      "commonsCandidateCount": 38,
+      "officialRouteWaypoints": [
+        "아차산공원 입구",
+        "무장애길",
+        "긴고랑길",
+        "긴고랑공원"
+      ],
+      "photo": {
+        "courses": {
+          "c270": "서울 아차산성길",
+          "c271": "서울 아차산 둘레길"
+        },
+        "src": "/assets/course-photos/c270.webp",
+        "place": "아차산생태공원",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/57574",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06F02304Ac10000.jpg",
+        "title": "아차산생태공원 (06F02304Ac10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c272",
+      "name": "서울 신정산 생태길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "신정산 생태길",
+        "신정산",
+        "Sinjeongsan Seoul"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "계남공원진입광장(장수초교 앞)",
+        "자락길",
+        "장군정(정상)",
+        "남명초교"
+      ],
+      "photo": {
+        "courses": {
+          "c272": "서울 신정산 생태길"
+        },
+        "src": "/assets/course-photos/c272.webp",
+        "place": "계남근린공원",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62020",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06S00307Ad80000.jpg",
+        "title": "계남근린공원 (06S00307Ad80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c273",
+      "name": "서울 수명산 숲속 탐방로",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "수명산 숲속 탐방로",
+        "수명산",
+        "Sumyeongsan"
+      ],
+      "commonsCandidateCount": 7,
+      "officialRouteWaypoints": [
+        "화곡고등학교",
+        "덕원여고 입구",
+        "강신초등학교",
+        "수명산 요양원",
+        "공원입구 광장",
+        "어린이놀이터",
+        "수명산 테니스장",
+        "덕원여고 옆길",
+        "덕원여고 정문"
+      ],
+      "photo": null,
+      "decision": "확인한 수명산 사진은 주변 시가지 전경이며 숲속 탐방로 사진으로 확인되지 않음."
+    },
+    {
+      "id": "c274",
+      "name": "서울 불암산 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "불암산 산책길",
+        "불암산",
+        "Buramsan"
+      ],
+      "commonsCandidateCount": 23,
+      "officialRouteWaypoints": [
+        "불암산관리사무소",
+        "생성약수터",
+        "넓은마당",
+        "철쭉동산"
+      ],
+      "photo": {
+        "courses": {
+          "c274": "서울 불암산 산책길",
+          "c277": "서울 불암산 설화길"
+        },
+        "src": "/assets/course-photos/c274.webp",
+        "place": "불암산 둘레길 (산책길·설화길 주변)",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58456",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I02109Ac70000.jpg",
+        "title": "불암산둘레길 (06I02109Ac70000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c275",
+      "name": "서울 봉산 팥배나무길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "봉산 팥배나무길",
+        "Bongsan Seoul"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "숭실고 후문 옆 팥배나무 군락지 입구",
+        "능선부 월드컵경기장 방향",
+        "나무 데크 관찰로",
+        "은평터널로5길"
+      ],
+      "photo": null,
+      "decision": "봉산 주변 전경·봉수대 사진을 팥배나무 군락 관찰로 사진으로 대체하지 않음."
+    },
+    {
+      "id": "c276",
+      "name": "서울 월드컵공원 메타세쿼이아길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "월드컵공원 메타세쿼이아길",
+        "World Cup Park metasequoia"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "희망의 숲 → 메타세쿼이아길"
+      ],
+      "photo": null,
+      "decision": "난지한강공원·하늘공원 사진은 메타세쿼이아길 자체의 촬영 지점으로 확인되지 않아 제외."
+    },
+    {
+      "id": "c277",
+      "name": "서울 불암산 설화길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "불암산 설화길",
+        "Buramsan forest"
+      ],
+      "commonsCandidateCount": 17,
+      "officialRouteWaypoints": [
+        "넓은 마당 → 불암산 전망대 → 학도암"
+      ],
+      "photo": {
+        "courses": {
+          "c274": "서울 불암산 산책길",
+          "c277": "서울 불암산 설화길"
+        },
+        "src": "/assets/course-photos/c274.webp",
+        "place": "불암산 둘레길 (산책길·설화길 주변)",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58456",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I02109Ac70000.jpg",
+        "title": "불암산둘레길 (06I02109Ac70000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c278",
+      "name": "서울 인왕산 자락길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "인왕산 자락길",
+        "인왕산",
+        "Inwangsan trail"
+      ],
+      "commonsCandidateCount": 45,
+      "officialRouteWaypoints": [
+        "최규식 경무관 동상",
+        "윤동주문학관",
+        "시인의 언덕",
+        "청운문학도서관",
+        "청운공원(분수대)",
+        "이빨바위",
+        "구름다리",
+        "버드나무 약수터",
+        "수성동계곡",
+        "누상동 풋살장",
+        "택견 수련터",
+        "황학정",
+        "사직단"
+      ],
+      "photo": {
+        "courses": {
+          "c278": "서울 인왕산 자락길",
+          "c301": "서울 인왕산 숲길"
+        },
+        "src": "/assets/course-photos/c278.webp",
+        "place": "청운공원과 시인의언덕",
+        "date": "2014-10",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/49423",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05W12304Ac2000.jpg",
+        "title": "청운공원과 시인의언덕 (05W12304Ac2000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c279",
+      "name": "서울 수락산 소망길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "수락산 소망길",
+        "Suraksan trail"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "수락산 갈림길",
+        "학림사",
+        "동막골",
+        "덕릉고개"
+      ],
+      "photo": {
+        "courses": {
+          "c279": "서울 수락산 소망길"
+        },
+        "src": "/assets/course-photos/c279.webp",
+        "place": "학림사",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58713",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I06201Ca82000.jpg",
+        "title": "학림사 (06I06201Ca82000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 610
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c280",
+      "name": "서울 세검정 계곡 숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "세검정 계곡 숲길",
+        "세검정 홍제천",
+        "Segeomjeong Hongjecheon"
+      ],
+      "commonsCandidateCount": 19,
+      "officialRouteWaypoints": [
+        "창의문",
+        "동양방앗간",
+        "산모퉁이 카페(백석동 길)",
+        "백석동천",
+        "백사실계곡",
+        "백사 이항복의 터",
+        "현통사",
+        "일붕선원",
+        "홍제천",
+        "세검정자",
+        "세검정삼거리 음악분수대",
+        "홍지문 및 탕춘대성"
+      ],
+      "photo": {
+        "courses": {
+          "c280": "서울 세검정 계곡 숲길"
+        },
+        "src": "/assets/course-photos/c280.webp",
+        "place": "백사실계곡 별서터 연못",
+        "date": "2017-05-28",
+        "author": "Chapchap123",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Baeksasil-2.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Baeksasil-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Baeksasil-2",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 640
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c281",
+      "name": "서울 산사길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "산사길",
+        "Jingwansa trail"
+      ],
+      "commonsCandidateCount": 14,
+      "officialRouteWaypoints": [
+        "여래사 → 용화사 → 숲속유치원 → 대덕사 → 대성사 → 홍법사 → 북악골프연습장 → 봉국사"
+      ],
+      "photo": null,
+      "decision": "이 코스는 북악산 일대 사찰길이며 진관사·은평구 북한산 사진은 다른 장소라 제외."
+    },
+    {
+      "id": "c282",
+      "name": "서울 천상병산길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "천상병산길",
+        "수락산",
+        "Suraksan valley"
+      ],
+      "commonsCandidateCount": 12,
+      "officialRouteWaypoints": [
+        "천상병 동상",
+        "천상병문화마당",
+        "수락산 숲속교실"
+      ],
+      "photo": null,
+      "decision": "수락산 정상·벽운계곡 사진은 천상병문화마당~숲속교실 구간으로 확인되지 않아 제외."
+    },
+    {
+      "id": "c283",
+      "name": "서울 현충원 한강 나들길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "현충원 한강 나들길",
+        "동작 한강",
+        "Dongjak Hangang Park"
+      ],
+      "commonsCandidateCount": 19,
+      "officialRouteWaypoints": [
+        "사육신공원",
+        "용양봉저정",
+        "효사정",
+        "국립서울현충원 안쪽",
+        "서달산자락길"
+      ],
+      "photo": {
+        "courses": {
+          "c312": "서울 현충원 외곽 산책길",
+          "c283": "서울 현충원 한강 나들길"
+        },
+        "src": "/assets/course-photos/c312.webp",
+        "place": "서달산 숲속 계단길",
+        "date": "2019-12",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/59618",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06L02404Ab10000.jpg",
+        "title": "서달산 (06L02404Ab10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c284",
+      "name": "서울 한양도성 역사문화 탐방로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "한양도성 역사문화 탐방로",
+        "서울 한양도성",
+        "Seoul city wall"
+      ],
+      "commonsCandidateCount": 40,
+      "officialRouteWaypoints": [
+        "독립문",
+        "독립공원",
+        "인왕산 IPARK 101동 뒤",
+        "무악재 약수터",
+        "무악 배드민턴장",
+        "인왕사 일주문",
+        "인왕사 국사당",
+        "선바위",
+        "한양도성 가는 길(외측)",
+        "102초소 앞",
+        "무악도시텃밭",
+        "딜큐사",
+        "홍난파 가옥",
+        "월암공원",
+        "경교장",
+        "돈의문 터"
+      ],
+      "photo": {
+        "courses": {
+          "c284": "서울 한양도성 역사문화 탐방로"
+        },
+        "src": "/assets/course-photos/c284.webp",
+        "place": "인왕산 한양도성 성곽길",
+        "date": "2015-03",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/49297",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05W10211Cb4000.jpg",
+        "title": "인왕산과성곽 (05W10211Cb4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c285",
+      "name": "서울 호압사 산책길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "호압사 산책길",
+        "호압사",
+        "Hoapsa"
+      ],
+      "commonsCandidateCount": 14,
+      "officialRouteWaypoints": [
+        "호압사",
+        "잣나무 산림욕장",
+        "석수역"
+      ],
+      "photo": null,
+      "decision": "사찰·불상 중심 후보를 숲길 사진으로 채택하지 않음."
+    },
+    {
+      "id": "c286",
+      "name": "서울 성북천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "성북천"
+      ],
+      "commonsCandidateCount": 1,
+      "officialRouteWaypoints": [
+        "성북3교",
+        "성북구청(하늘마당)",
+        "용문교",
+        "안암교(안암동)",
+        "보문동 주민센터",
+        "안암교(신설동)",
+        "성북천교(청계천 하늘물터)"
+      ],
+      "photo": {
+        "courses": {
+          "c286": "서울 성북천",
+          "c238": "서울 홍릉 두물길"
+        },
+        "src": "/assets/course-photos/c286.webp",
+        "place": "성북천·청계천 합류부",
+        "date": "2013-11-21",
+        "author": "Korea.net / 해외문화홍보원 (전한)",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:KOCIS_Korea_Cheonggyecheon_2013_02_%2810988642386%29.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/2/2e/KOCIS_Korea_Cheonggyecheon_2013_02_%2810988642386%29.jpg",
+        "title": "KOCIS Korea Cheonggyecheon 2013 02 (10988642386).jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 741
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c287",
+      "name": "서울 성내천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "성내천",
+        "Seongnaecheon"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "신천1교",
+        "성내교",
+        "오륜교"
+      ],
+      "photo": {
+        "courses": {
+          "c287": "서울 성내천"
+        },
+        "src": "/assets/course-photos/c287.webp",
+        "place": "성내천",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/61840",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06R02210Bb10000.jpg",
+        "title": "성내천 (06R02210Bb10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 595
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c288",
+      "name": "서울 서울둘레길 구룡산구간",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "서울둘레길 구룡산구간",
+        "구룡산 서울",
+        "Guryongsan Seoul"
+      ],
+      "commonsCandidateCount": 27,
+      "officialRouteWaypoints": [
+        "구룡터널 옆(개포1단지 맞은편) 등산로 입구",
+        "개암약수터",
+        "서울둘레길",
+        "유아숲체험장 인근"
+      ],
+      "photo": {
+        "courses": {
+          "c288": "서울 서울둘레길 구룡산구간"
+        },
+        "src": "/assets/course-photos/c288.webp",
+        "place": "구룡산",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60583",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O00207Aa30000.jpg",
+        "title": "구룡산 (06O00207Aa30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c289",
+      "name": "서울 불광천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "불광천"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "은평구 응암역",
+        "불광천",
+        "마포구 월드컵경기장역"
+      ],
+      "photo": {
+        "courses": {
+          "c289": "서울 불광천"
+        },
+        "src": "/assets/course-photos/c289.webp",
+        "place": "불광천",
+        "date": "2023-04-03",
+        "author": "Mobius6",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Bulgwangcheon_20230403_015.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/95/Bulgwangcheon_20230403_015.jpg",
+        "title": "Bulgwangcheon 20230403 015.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 800
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c290",
+      "name": "서울 봉제산 둘레길 사색구간",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "봉제산 둘레길 사색구간",
+        "봉제산",
+        "Bongjesan"
+      ],
+      "commonsCandidateCount": 15,
+      "officialRouteWaypoints": [
+        "화곡6동 산209번지",
+        "사색의 숲",
+        "화곡6동 산209번지"
+      ],
+      "photo": {
+        "courses": {
+          "c290": "서울 봉제산 둘레길 사색구간"
+        },
+        "src": "/assets/course-photos/c290.webp",
+        "place": "봉제산근린공원 자연체험학습원 (사색구간 주변)",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/57030",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06D03204Ac80000.jpg",
+        "title": "봉제산근린공원 (06D03204Ac80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c291",
+      "name": "서울 벚꽃십리길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "벚꽃십리길",
+        "안양천 벚꽃",
+        "Anyangcheon Seoul cherry"
+      ],
+      "commonsCandidateCount": 20,
+      "officialRouteWaypoints": [
+        "갈산초교 삼거리",
+        "오금교",
+        "신정교",
+        "오목교",
+        "신목동역"
+      ],
+      "photo": null,
+      "decision": "확인한 안양천 사진은 금천구 구간으로 양천구 벚꽃십리길과 다름."
+    },
+    {
+      "id": "c292",
+      "name": "서울 능골산 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "능골산 산책길",
+        "능골산",
+        "Neunggolsan Seoul"
+      ],
+      "commonsCandidateCount": 7,
+      "officialRouteWaypoints": [
+        "서서울호수공원 후문 입구",
+        "몬드리안 정원",
+        "미디어벽천",
+        "산자락 공원",
+        "다목적운동장",
+        "열린마당",
+        "사색의 공간",
+        "능골산",
+        "재생정원",
+        "서서울호수공원 정문"
+      ],
+      "photo": {
+        "courses": {
+          "c292": "서울 능골산 산책길"
+        },
+        "src": "/assets/course-photos/c292.webp",
+        "place": "서서울호수공원",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62082",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06S01101Ac70000.jpg",
+        "title": "서서울호수공원 (06S01101Ac70000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c293",
+      "name": "서울 긴고랑길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "긴고랑길",
+        "Gingorang Achasan"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "용마도시자연공원 긴골지구",
+        "아차산 능선"
+      ],
+      "photo": null,
+      "decision": "용마산 정상·아차산 다른 보루 사진은 긴고랑길 촬영 구간으로 확인되지 않아 보류."
+    },
+    {
+      "id": "c294",
+      "name": "서울 구로올레길 천왕산구간",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "구로올레길 천왕산구간",
+        "Cheonwangsan Seoul"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "푸른수목원",
+        "더불어 숲길",
+        "항동철길",
+        "천왕산 정상",
+        "천왕중학교"
+      ],
+      "photo": {
+        "courses": {
+          "c294": "서울 구로올레길 천왕산구간"
+        },
+        "src": "/assets/course-photos/c294.webp",
+        "place": "푸른수목원 산책길",
+        "date": "2018-05-27",
+        "author": "Shinfull",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Pureun_Arboretum_in_spring.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/3/38/Pureun_Arboretum_in_spring.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Pureun Arboretum in spring",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 596
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c295",
+      "name": "서울 공암나루길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "공암나루길",
+        "공암나루",
+        "Gongam Naru Seoul"
+      ],
+      "commonsCandidateCount": 14,
+      "officialRouteWaypoints": [
+        "공암나루근린공원",
+        "구암공원(광주바위)",
+        "허준박물관",
+        "허가바위",
+        "양천향교역"
+      ],
+      "photo": null,
+      "decision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음."
+    },
+    {
+      "id": "c296",
+      "name": "서울 고덕천 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "고덕천 산책길",
+        "고덕천",
+        "Godeokcheon"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "삼성엔지니어링",
+        "고덕교",
+        "에코하우스",
+        "고덕수변생태공원"
+      ],
+      "photo": {
+        "courses": {
+          "c296": "서울 고덕천 산책길"
+        },
+        "src": "/assets/course-photos/c296.webp",
+        "place": "고덕천",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56373",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06B01305Ac80000.jpg",
+        "title": "고덕천 (06B01305Ac80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c297",
+      "name": "서울 초안산 생태 탐방로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "초안산 생태 탐방로",
+        "초안산 생태",
+        "Choansan"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "초안산 생태공원",
+        "반딧불이 유아숲체험장",
+        "도심속 농작물체험장",
+        "창동고등학교"
+      ],
+      "photo": {
+        "courses": {
+          "c297": "서울 초안산 생태 탐방로"
+        },
+        "src": "/assets/course-photos/c297.webp",
+        "place": "초안산근린공원",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58949",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06J03707Ac20000.jpg",
+        "title": "초안산근린공원 (06J03707Ac20000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c298",
+      "name": "서울 중랑천 탐방로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "중랑천 탐방로",
+        "중랑천",
+        "Jungnangcheon"
+      ],
+      "commonsCandidateCount": 29,
+      "officialRouteWaypoints": [
+        "서울창포원",
+        "중랑천",
+        "방학천",
+        "방학사계광장",
+        "방학역"
+      ],
+      "photo": {
+        "courses": {
+          "c298": "서울 중랑천 탐방로"
+        },
+        "src": "/assets/course-photos/c298.webp",
+        "place": "중랑천",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58900",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06J02913Bb50000.jpg",
+        "title": "중랑천 (06J02913Bb50000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c299",
+      "name": "서울 장안벚꽃길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "장안벚꽃길",
+        "중랑천 장안",
+        "Jungnangcheon Jangan"
+      ],
+      "commonsCandidateCount": 5,
+      "officialRouteWaypoints": [
+        "중랑천 군자교 입구",
+        "장평교",
+        "장안교",
+        "휘경 빗물펌프장"
+      ],
+      "photo": {
+        "courses": {
+          "c299": "서울 장안벚꽃길"
+        },
+        "src": "/assets/course-photos/c299.webp",
+        "place": "중랑천체육공원",
+        "date": "2019-11",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/59243",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06K02917Bb10000.jpg",
+        "title": "중랑천체육공원 (06K02917Bb10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c300",
+      "name": "서울 장미테마길 중랑천",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "장미테마길 중랑천",
+        "중랑천 장미",
+        "Jungnangcheon rose park"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "묵동교",
+        "장미정원",
+        "장미아치터널",
+        "장미신선",
+        "연육교",
+        "이화교"
+      ],
+      "photo": null,
+      "decision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음."
+    },
+    {
+      "id": "c301",
+      "name": "서울 인왕산 숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "인왕산 숲길",
+        "인왕산",
+        "Inwangsan forest"
+      ],
+      "commonsCandidateCount": 39,
+      "officialRouteWaypoints": [
+        "A(자락길) 사직단",
+        "윤동주 문학관 B(숲길) 택견수련터",
+        "윤동주 문학관"
+      ],
+      "photo": {
+        "courses": {
+          "c278": "서울 인왕산 자락길",
+          "c301": "서울 인왕산 숲길"
+        },
+        "src": "/assets/course-photos/c278.webp",
+        "place": "청운공원과 시인의언덕",
+        "date": "2014-10",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/49423",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05W12304Ac2000.jpg",
+        "title": "청운공원과 시인의언덕 (05W12304Ac2000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c302",
+      "name": "서울 우이천",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "우이천",
+        "Uicheon"
+      ],
+      "commonsCandidateCount": 26,
+      "officialRouteWaypoints": [
+        "덕성여대 앞 근화교",
+        "쌍한교",
+        "신창교",
+        "월계2교"
+      ],
+      "photo": null,
+      "decision": "확인한 우이천 사진은 근화교~월계2교 촬영 구간으로 대조되지 않아 보류."
+    },
+    {
+      "id": "c303",
+      "name": "서울 용마산 자락길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "용마산 자락길",
+        "용마산",
+        "Yongmasan trail"
+      ],
+      "commonsCandidateCount": 5,
+      "officialRouteWaypoints": [
+        "면목동 용마경로복지센터",
+        "망우 사색의 길"
+      ],
+      "photo": null,
+      "decision": "용마산 정상의 암릉 사진은 면목동 복지센터~망우산 자락길과 다름."
+    },
+    {
+      "id": "c304",
+      "name": "서울 오동공원 공원길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "오동공원 공원길",
+        "오동공원",
+        "Odong Park Seoul"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "오동공원 관리사무소",
+        "오동공원 자락길",
+        "오동정",
+        "애기능터",
+        "월곡구민운동장",
+        "구민체육관",
+        "지압보도",
+        "북서울꿈의숲 입구"
+      ],
+      "photo": {
+        "courses": {
+          "c304": "서울 오동공원 공원길"
+        },
+        "src": "/assets/course-photos/c304.webp",
+        "place": "월곡 오동근린공원 전망",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/61495",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06Q03203Ad40000.jpg",
+        "title": "오동근린공원 (06Q03203Ad40000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c305",
+      "name": "서울 오금공원 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "오금공원 산책길",
+        "오금공원",
+        "Ogeum Park"
+      ],
+      "commonsCandidateCount": 46,
+      "officialRouteWaypoints": [
+        "관리사무소",
+        "문화류씨묘역",
+        "거창신씨묘역",
+        "벽천폭포",
+        "배드민턴장",
+        "진달래길",
+        "메타세콰이아길",
+        "유아숲체험장",
+        "관리사무소"
+      ],
+      "photo": {
+        "courses": {
+          "c305": "서울 오금공원 산책길"
+        },
+        "src": "/assets/course-photos/c305.webp",
+        "place": "오금공원",
+        "date": "2015-04",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/48037",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05R03206Ac4000.jpg",
+        "title": "오금공원 (05R03206Ac4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 675
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c306",
+      "name": "서울 영등포 수변둘레길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "영등포 수변둘레길",
+        "안양천 영등포",
+        "Anyangcheon Yeongdeungpo"
+      ],
+      "commonsCandidateCount": 20,
+      "officialRouteWaypoints": [
+        "안양천(신정교)",
+        "안양천(목동교)",
+        "안양천(양화교)",
+        "한강합수부"
+      ],
+      "photo": null,
+      "decision": "확인한 안양천 사진은 금천구 구간으로 영등포 신정교~한강 합수부 구간과 다름."
+    },
+    {
+      "id": "c307",
+      "name": "서울 염창산 산책길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "염창산 산책길",
+        "염창산",
+        "Yeomchangsan"
+      ],
+      "commonsCandidateCount": 9,
+      "officialRouteWaypoints": [
+        "성은교회 뒤",
+        "배드민턴장",
+        "체력단련장",
+        "정상부",
+        "한강방면 산책로"
+      ],
+      "photo": null,
+      "decision": "안양천·한강 전경을 염창산 산책길 사진으로 대체하지 않음."
+    },
+    {
+      "id": "c308",
+      "name": "서울 양화나루길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "양화나루길",
+        "양화 한강공원",
+        "Yanghwa Hangang Park"
+      ],
+      "commonsCandidateCount": 31,
+      "officialRouteWaypoints": [
+        "양화진 나루터 표석",
+        "양화진 성지공원(양화진 외국인선교사 묘원)",
+        "절두산 순교성지(잠두봉)",
+        "양화공원",
+        "망원정"
+      ],
+      "photo": {
+        "courses": {
+          "c308": "서울 양화나루길"
+        },
+        "src": "/assets/course-photos/c308.webp",
+        "place": "망원정 마당",
+        "date": "2015-01",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/46863",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05M02601Ac4000.jpg",
+        "title": "망원정 (05M02601Ac4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c309",
+      "name": "서울 안양천 벚나무길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "안양천 벚나무길",
+        "안양천",
+        "Anyangcheon Seoul"
+      ],
+      "commonsCandidateCount": 29,
+      "officialRouteWaypoints": [
+        "금천구청역",
+        "철산대교",
+        "광명교"
+      ],
+      "photo": {
+        "courses": {
+          "c309": "서울 안양천 벚나무길"
+        },
+        "src": "/assets/course-photos/c309.webp",
+        "place": "안양천",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58223",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06H03117Bb62000.jpg",
+        "title": "안양천 (06H03117Bb62000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c310",
+      "name": "서울 수락산 동막골길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "수락산 동막골길",
+        "Suraksan Dongmakgol"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "동막골 국궁장(수락정)",
+        "수암사",
+        "동막골 국궁장(수락정)"
+      ],
+      "photo": null,
+      "decision": "수락산 정상·벽운계곡 사진을 동막골 국궁장~수암사 코스에 대체하지 않음."
+    },
+    {
+      "id": "c311",
+      "name": "서울 홍제천",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "홍제천"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "사천교",
+        "연가교",
+        "홍남교",
+        "홍연2교",
+        "폭포마당",
+        "홍은대교",
+        "옥천암",
+        "홍지문"
+      ],
+      "photo": {
+        "courses": {
+          "c311": "서울 홍제천"
+        },
+        "src": "/assets/course-photos/c311.webp",
+        "place": "홍제천 인공폭포",
+        "date": "2023-10-31",
+        "author": "Huntsmanleader",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Hongjecheon_Artificial_Waterfall_2023-10-31.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Hongjecheon_Artificial_Waterfall_2023-10-31.jpg",
+        "title": "Hongjecheon Artificial Waterfall 2023-10-31.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 900
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c312",
+      "name": "서울 현충원 외곽 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "현충원 외곽 산책길",
+        "현충원 외곽",
+        "Seoul National Cemetery forest"
+      ],
+      "commonsCandidateCount": 18,
+      "officialRouteWaypoints": [
+        "동작역 3번 출구",
+        "정금마을 갈림길",
+        "사당출입문",
+        "상도출입문",
+        "동작대",
+        "서달산 생태다리",
+        "서달산 유아숲체험장",
+        "중앙대후문 정류장(마을버스 동작01",
+        "동작21)"
+      ],
+      "photo": {
+        "courses": {
+          "c312": "서울 현충원 외곽 산책길",
+          "c283": "서울 현충원 한강 나들길"
+        },
+        "src": "/assets/course-photos/c312.webp",
+        "place": "서달산 숲속 계단길",
+        "date": "2019-12",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/59618",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06L02404Ab10000.jpg",
+        "title": "서달산 (06L02404Ab10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c313",
+      "name": "서울 한양도성 순성길 남산구간",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "한양도성 순성길 남산구간",
+        "남산 성곽",
+        "Namsan city wall trail"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "장충체육관",
+        "신라호텔 옆 성곽길",
+        "서울클럽",
+        "반얀트리 호텔",
+        "국립극장"
+      ],
+      "photo": {
+        "courses": {
+          "c313": "서울 한양도성 순성길 남산구간"
+        },
+        "src": "/assets/course-photos/c313.webp",
+        "place": "장충동 한양도성 성곽길",
+        "date": "2015-03",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/50054",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05X10605Cb1000.jpg",
+        "title": "한양도성_장충동 (05X10605Cb1000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c314",
+      "name": "서울 하늘공원 하늘길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "하늘공원 하늘길",
+        "하늘공원"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "하늘공원 입구",
+        "왕벚나무·개나리길",
+        "모감주나무길",
+        "정상 입구",
+        "억새밭길",
+        "희망 전망대",
+        "지압로",
+        "포토존",
+        "정상 입구"
+      ],
+      "photo": {
+        "courses": {
+          "c314": "서울 하늘공원 하늘길"
+        },
+        "src": "/assets/course-photos/c314.webp",
+        "place": "하늘공원 억새밭길",
+        "date": "2013-11-13",
+        "author": "Vanessaliam",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Haneul-Park.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/6/60/Haneul-Park.jpg",
+        "title": "Haneul-Park.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 900
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c315",
+      "name": "서울 경춘선 숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "경춘선 숲길",
+        "경춘선숲길",
+        "Gyeongchun Line Forest Park"
+      ],
+      "commonsCandidateCount": 19,
+      "officialRouteWaypoints": [
+        "경춘철교",
+        "서울과기대입구",
+        "지하철 6호선 화랑대역",
+        "육사삼거리",
+        "옛 화랑대역",
+        "서울시계"
+      ],
+      "photo": {
+        "courses": {
+          "c315": "서울 경춘선 숲길"
+        },
+        "src": "/assets/course-photos/c315.webp",
+        "place": "경춘선숲길",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58286",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I00312Ac30000.jpg",
+        "title": "경춘선숲길 (06I00312Ac30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c316",
+      "name": "서울 관악산 도란도란 걷는 길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "관악산 도란도란 걷는 길",
+        "Gwanaksan Seoul Park"
+      ],
+      "commonsCandidateCount": 29,
+      "officialRouteWaypoints": [
+        "관악산 입구(관문)",
+        "관악산 주등산로",
+        "물레방아",
+        "우수경관",
+        "보덕사",
+        "삼성산 성지",
+        "호압사"
+      ],
+      "photo": null,
+      "decision": "관악산의 다른 구간·호수공원 사진을 보덕사~삼성산성지 등 경로 사진으로 대체하지 않음."
+    },
+    {
+      "id": "c317",
+      "name": "서울 계남근린공원 자락길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "계남근린공원 자락길",
+        "계남근린공원",
+        "Gyenam park"
+      ],
+      "commonsCandidateCount": 4,
+      "officialRouteWaypoints": [
+        "덕의근린공원",
+        "축구장",
+        "능골정",
+        "계남근린공원 올레길",
+        "고척동 철쭉동산"
+      ],
+      "photo": {
+        "courses": {
+          "c317": "서울 계남근린공원 자락길"
+        },
+        "src": "/assets/course-photos/c317.webp",
+        "place": "계남제1근린공원 (자락길 주변)",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62019",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06S00306Ad80000.jpg",
+        "title": "계남근린공원 (06S00306Ad80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c318",
+      "name": "서울 갈산 생태순환길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "갈산 생태순환길",
+        "갈산",
+        "Galsan Park Seoul"
+      ],
+      "commonsCandidateCount": 10,
+      "officialRouteWaypoints": [
+        "향림사",
+        "어린이교통공원",
+        "갈산분수광장",
+        "갈산정",
+        "메타세쿼이아 숲길",
+        "향림사"
+      ],
+      "photo": {
+        "courses": {
+          "c318": "서울 갈산 생태순환길"
+        },
+        "src": "/assets/course-photos/c318.webp",
+        "place": "갈산근린공원",
+        "date": "2014-11",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/48267",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05S02902Ac6000.jpg",
+        "title": "갈산근린공원 (05S02902Ac6000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c319",
+      "name": "서울 망우리 사잇길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "망우리 사잇길",
+        "Manguri Park"
+      ],
+      "commonsCandidateCount": 5,
+      "officialRouteWaypoints": [
+        "A(유명인사 탐방로) 망우리공원 진입광장",
+        "사잇길 분기점2",
+        "관리사무소 B(경관중심 탐방로) 망우리공원 진입광장",
+        "정상전망대",
+        "관리사무소"
+      ],
+      "photo": null,
+      "decision": "망우리의 다른 묘역·놀이시설 후보를 사잇길 탐방 구간으로 대체하지 않음."
+    },
+    {
+      "id": "c320",
+      "name": "서울 궁산 역사문화 둘레길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "궁산 역사문화 둘레길",
+        "궁산",
+        "Gungsan Seoul"
+      ],
+      "commonsCandidateCount": 15,
+      "officialRouteWaypoints": [
+        "발산I/C입구",
+        "소악루",
+        "양천고성지",
+        "겸재정선미술관",
+        "양천향교"
+      ],
+      "photo": {
+        "courses": {
+          "c320": "서울 궁산 역사문화 둘레길"
+        },
+        "src": "/assets/course-photos/c320.webp",
+        "place": "궁산근린공원",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56938",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06D01406Ac30000.jpg",
+        "title": "궁산근린공원 (06D01406Ac30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c321",
+      "name": "서울 경의선숲길공원",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "경의선숲길공원",
+        "경의선"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "용산문화체육센터",
+        "원효동 구간",
+        "새창고개 구간",
+        "염리동 구간",
+        "대흥동 구간",
+        "신수동 구간",
+        "와우교 구간",
+        "경의선 책거리",
+        "연남동 구간",
+        "사천교(가좌역)"
+      ],
+      "photo": {
+        "courses": {
+          "c321": "서울 경의선숲길공원"
+        },
+        "src": "/assets/course-photos/c321.webp",
+        "place": "경의선숲길",
+        "date": "2025-05-10",
+        "author": "Striker9498",
+        "license": "CC0 1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:20250510_%EA%B2%BD%EC%9D%98%EC%84%A0%EC%88%B2%EA%B8%B8_4.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/9/9f/20250510_%EA%B2%BD%EC%9D%98%EC%84%A0%EC%88%B2%EA%B8%B8_4.jpg",
+        "title": "20250510 경의선숲길 4.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 1200
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c322",
+      "name": "서울 개운산공원길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "개운산공원길",
+        "개운산",
+        "Gaeunsan"
+      ],
+      "commonsCandidateCount": 34,
+      "officialRouteWaypoints": [
+        "개운산중학교",
+        "다화정(정자)",
+        "성북구의회",
+        "개운산",
+        "유아숲체험장",
+        "개운산 공중화장실",
+        "개운산 마로니에마당"
+      ],
+      "photo": {
+        "courses": {
+          "c322": "서울 개운산공원길"
+        },
+        "src": "/assets/course-photos/c322.webp",
+        "place": "개운산",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/61318",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06Q00307Ab20000.jpg",
+        "title": "개운산 (06Q00307Ab20000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c323",
+      "name": "서울 강동고덕산길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "강동고덕산길",
+        "Godeoksan"
+      ],
+      "commonsCandidateCount": 7,
+      "officialRouteWaypoints": [
+        "고덕평생학습관",
+        "고덕산 자락길 입구",
+        "생태다리",
+        "강동아름숲",
+        "샘터근린공원 교차로",
+        "고덕산 전망대",
+        "암사아리수정수센터"
+      ],
+      "photo": {
+        "courses": {
+          "c259": "서울 방죽·샘터공원 산책길",
+          "c323": "서울 강동고덕산길"
+        },
+        "src": "/assets/course-photos/c259.webp",
+        "place": "고덕산 무장애자락길",
+        "date": "2020-05",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56445",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06B02603Db10000.jpg",
+        "title": "고덕산 무장애자락길 (06B02603Db10000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c324",
+      "name": "서울 한양도성 순성길 낙산구간",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "한양도성 순성길 낙산구간",
+        "낙산 성곽"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "동대문역 1번 출구",
+        "동대문성곽공원(한양도성박물관)",
+        "낙산성곽길",
+        "낙산공원",
+        "한성대입구 4번 출구"
+      ],
+      "photo": {
+        "courses": {
+          "c324": "서울 한양도성 순성길 낙산구간"
+        },
+        "src": "/assets/course-photos/c324.webp",
+        "place": "낙산공원 한양도성",
+        "date": "2016-09-17",
+        "author": "KO BYUNGSUK",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:%ED%95%9C%EC%96%91%EB%8F%84%EC%84%B1%EB%82%99%EC%82%B0%EA%B5%AC%EA%B0%84.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/b/b0/%ED%95%9C%EC%96%91%EB%8F%84%EC%84%B1%EB%82%99%EC%82%B0%EA%B5%AC%EA%B0%84.jpg",
+        "title": "한양도성낙산구간.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 791
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c325",
+      "name": "서울 천장산 산책로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "천장산 산책로",
+        "천장산",
+        "Cheonjangsan"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "의릉입구",
+        "소나무운동쉼터",
+        "돌뫼어린이공원",
+        "건강쉼터",
+        "전망대",
+        "어르신건강마당"
+      ],
+      "photo": {
+        "courses": {
+          "c325": "서울 천장산 산책로"
+        },
+        "src": "/assets/course-photos/c325.webp",
+        "place": "청량근린공원",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/61595",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06Q04804Ac60000.jpg",
+        "title": "청량근린공원 (06Q04804Ac60000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c326",
+      "name": "서울 인왕산 전망길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "인왕산 전망길",
+        "인왕산",
+        "Inwangsan"
+      ],
+      "commonsCandidateCount": 40,
+      "officialRouteWaypoints": [
+        "세검정삼거리 음악분수대",
+        "인왕산 탕춘대성 입구",
+        "기차바위 가는 길",
+        "돼지바위",
+        "기차바위",
+        "해골바위",
+        "인왕산 정상 삼거리(군부대 초소)",
+        "창의문 쪽 이동(군부대 앞 오른쪽)",
+        "만수천약수터",
+        "석굴암 입구",
+        "수성동계곡"
+      ],
+      "photo": {
+        "courses": {
+          "c326": "서울 인왕산 전망길"
+        },
+        "src": "/assets/course-photos/c326.webp",
+        "place": "인왕산 소나무숲 전경 (코스 주변)",
+        "date": "2008-04-29",
+        "author": "Gaël Chardon",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Inwangsan-11.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Korea-Seoul-Inwangsan-11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Korea-Seoul-Inwangsan-11 / IMG_9612",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 720
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c327",
+      "name": "서울 안산 초록숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "안산 초록숲길",
+        "안산",
+        "Ansan Seoul mountain"
+      ],
+      "commonsCandidateCount": 46,
+      "officialRouteWaypoints": [
+        "연흥약수터",
+        "무악정",
+        "봉수대",
+        "봉화약수터",
+        "메타세쿼이아 숲"
+      ],
+      "photo": {
+        "courses": {
+          "c133": "서울 안산자락길",
+          "c327": "서울 안산 초록숲길"
+        },
+        "src": "/assets/course-photos/c133.webp",
+        "place": "안산 봄 풍경 (자락길·초록숲길 주변)",
+        "date": "2015-04",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/47142",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05N02503Aa4000.jpg",
+        "title": "안산 (05N02503Aa4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c328",
+      "name": "서울 북악 하늘 나들길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "북악 하늘 나들길",
+        "북악 하늘",
+        "Bugak skyway"
+      ],
+      "commonsCandidateCount": 36,
+      "officialRouteWaypoints": [
+        "삼청공원",
+        "말바위전망대 가는 길",
+        "말바위",
+        "서울시 우수조망 명소",
+        "말바위 안내소",
+        "숙정문",
+        "팔각정 가는 길",
+        "삼청각 쉼터",
+        "성북전망대",
+        "팔각정"
+      ],
+      "photo": {
+        "courses": {
+          "c250": "서울 삼청공원 순환산책길",
+          "c328": "서울 북악 하늘 나들길"
+        },
+        "src": "/assets/course-photos/c250.webp",
+        "place": "삼청공원 숲길",
+        "date": "2014-12",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/49072",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05W06302Ac1000.jpg",
+        "title": "삼청공원 (05W06302Ac1000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c329",
+      "name": "서울 북악산 하늘길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "북악산 하늘길",
+        "북악산",
+        "Bugaksan"
+      ],
+      "commonsCandidateCount": 21,
+      "officialRouteWaypoints": [
+        "성북공원 하늘한마당",
+        "우정의공원"
+      ],
+      "photo": null,
+      "decision": "북악산 창의문·성곽 사진은 성북공원 하늘한마당~우정의공원 코스와 촬영 구간이 다름."
+    },
+    {
+      "id": "c330",
+      "name": "서울 백련산 초록숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "백련산 초록숲길",
+        "백련산",
+        "Baengnyeonsan"
+      ],
+      "commonsCandidateCount": 13,
+      "officialRouteWaypoints": [
+        "팔각정(서대문10번 마을버스정류장)",
+        "조망대",
+        "산골고개 생태연결로"
+      ],
+      "photo": {
+        "courses": {
+          "c330": "서울 백련산 초록숲길"
+        },
+        "src": "/assets/course-photos/c330.webp",
+        "place": "백련근린공원(백련산)",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60375",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06N01005Ac30000.jpg",
+        "title": "백련근린공원(백련산) (06N01005Ac30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c331",
+      "name": "서울 개화산 둘레길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "개화산 둘레길",
+        "개화산",
+        "Gaehwasan"
+      ],
+      "commonsCandidateCount": 37,
+      "officialRouteWaypoints": [
+        "개화산자락길 장애인주차장",
+        "북카페",
+        "하늘길전망대",
+        "신선바위",
+        "아라뱃길전망대",
+        "개화산전망대"
+      ],
+      "photo": {
+        "courses": {
+          "c331": "서울 개화산 둘레길"
+        },
+        "src": "/assets/course-photos/c331.webp",
+        "place": "강서둘레길",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56879",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06D00508Ac80000.jpg",
+        "title": "강서둘레길 (06D00508Ac80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c332",
+      "name": "서울 수락벽운계곡길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "수락벽운계곡길",
+        "수락산 벽운계곡",
+        "Suraksan valley"
+      ],
+      "commonsCandidateCount": 1,
+      "officialRouteWaypoints": [
+        "수락골 입구",
+        "염불사",
+        "수락산 새광장"
+      ],
+      "photo": {
+        "courses": {
+          "c332": "서울 수락벽운계곡길"
+        },
+        "src": "/assets/course-photos/c332.webp",
+        "place": "수락산 벽운계곡",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58550",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06I03607Ab30000.jpg",
+        "title": "수락산 벽운계곡 (06I03607Ab30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c333",
+      "name": "서울 관악산 시흥계곡 숲길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "관악산 시흥계곡 숲길",
+        "관악산 시흥계곡",
+        "Gwanaksan Siheung"
+      ],
+      "commonsCandidateCount": 4,
+      "officialRouteWaypoints": [
+        "시흥계곡 입구",
+        "삼성배드민턴장",
+        "호암2터널 입구"
+      ],
+      "photo": null,
+      "decision": "관악산 시흥계곡·호암2터널 구간 촬영 사진의 이용 허락과 장소를 확인하지 못함."
+    },
+    {
+      "id": "c237",
+      "name": "용마산 팔각정길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "용마산 팔각정길",
+        "Yongmasan trail"
+      ],
+      "commonsCandidateCount": 20,
+      "officialRouteWaypoints": [
+        "평강폭포",
+        "뻥튀기공원",
+        "팔각정",
+        "전망대",
+        "용마산 정상"
+      ],
+      "photo": {
+        "courses": {
+          "c237": "용마산 팔각정길"
+        },
+        "src": "/assets/course-photos/c237.webp",
+        "place": "용마산 정상으로 오르는 암릉",
+        "date": "2013-10-26",
+        "author": "Kellnerp",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Trail_leading_to_peak_of_Yongmasan_(%EC%9A%A9%EB%A7%88%EC%82%B0).JPG",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Trail_leading_to_peak_of_Yongmasan_%28%EC%9A%A9%EB%A7%88%EC%82%B0%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Trail leading to peak of Yongmasan (용마산)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 639
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c223",
+      "name": "둘리쌍문근린공원 산책로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "둘리쌍문근린공원 산책로",
+        "둘리쌍문근린공원",
+        "Ssangmun Park Seoul"
+      ],
+      "commonsCandidateCount": 10,
+      "officialRouteWaypoints": [
+        "한양아파트 1동 앞 버스정류장",
+        "둘리쌍문근린공원 입구(한양7차아파트 703동 옆)",
+        "청심천",
+        "둘리유아숲체험장",
+        "둘리뮤지엄",
+        "세심천 약수터",
+        "여행공원",
+        "우이빌라 앞 버스 정류장"
+      ],
+      "photo": {
+        "courses": {
+          "c223": "둘리쌍문근린공원 산책로"
+        },
+        "src": "/assets/course-photos/c223.webp",
+        "place": "쌍문근린공원",
+        "date": "2014-12",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/46365",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05J02102Ac3000.jpg",
+        "title": "쌍문근린공원 (05J02102Ac3000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c224",
+      "name": "대모산 숲이 좋은 길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "대모산 숲이 좋은 길",
+        "Daemosan"
+      ],
+      "commonsCandidateCount": 23,
+      "officialRouteWaypoints": [
+        "강남 보금자리 5단지",
+        "대모산 능선"
+      ],
+      "photo": null,
+      "decision": "대모산 정상·수서동 등산로 입구 사진은 확보했으나 이 코스의 강남 보금자리 5단지·능선 구간과 촬영 지점을 확인하지 못함."
+    },
+    {
+      "id": "c228",
+      "name": "청와대 앞길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "청와대 앞길",
+        "Cheongwadae road"
+      ],
+      "commonsCandidateCount": 31,
+      "officialRouteWaypoints": [
+        "청운효자동 주민센터",
+        "무궁화동산",
+        "청와대 앞길",
+        "공근혜갤러리",
+        "삼청동 주민센터"
+      ],
+      "photo": null,
+      "decision": "청와대 건물·근위병 중심 후보는 앞길 산책 사진으로 채택하지 않음."
+    },
+    {
+      "id": "c232",
+      "name": "인재개발원 잣나무숲길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "인재개발원 잣나무숲길",
+        "인재개발원 잣나무",
+        "Seoul Human Resources Development Center"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "인재개발원 야외화장실 뒤 쉼터",
+        "매실밭",
+        "육각정자",
+        "테니스장",
+        "숲속교실",
+        "유아숲",
+        "잣나무 숲길",
+        "종합운동장"
+      ],
+      "photo": null,
+      "decision": "인재개발원 잣나무숲 촬영 구간과 이용 허락을 확인한 사진을 확보하지 못함."
+    },
+    {
+      "id": "c225",
+      "name": "우장산 숲속 탐방로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "우장산 숲속 탐방로",
+        "우장산",
+        "Ujangsan"
+      ],
+      "commonsCandidateCount": 20,
+      "officialRouteWaypoints": [
+        "폴리텍대학",
+        "우장산 북카페",
+        "유아숲체험장",
+        "궁도장(공항정)",
+        "우장산 정상(운동기구 설치지역)",
+        "연결통로",
+        "검덕산 정상(새마을 기념탑)",
+        "우장약수터",
+        "강서구민회관",
+        "다목적운동장",
+        "폴리텍대학"
+      ],
+      "photo": {
+        "courses": {
+          "c225": "우장산 숲속 탐방로"
+        },
+        "src": "/assets/course-photos/c225.webp",
+        "place": "우장산공원",
+        "date": "2009-11",
+        "author": "서울 2009/2010 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/40502",
+        "original": "https://data.si.re.kr/sites/default/files/photos/04D01502ac2000.jpg",
+        "title": "우장산공원 (04D01502ac2000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 399
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c236",
+      "name": "오패산 나들길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "오패산 나들길",
+        "오패산",
+        "Opaesan"
+      ],
+      "commonsCandidateCount": 5,
+      "officialRouteWaypoints": [
+        "오동공원 미아경로당",
+        "야생초화원",
+        "율곡놀이터",
+        "꽃샘길",
+        "강북구민운동장",
+        "오동공원 유아숲체험장",
+        "야생초화원"
+      ],
+      "photo": {
+        "courses": {
+          "c236": "오패산 나들길",
+          "c257": "서울 오패산 자락길"
+        },
+        "src": "/assets/course-photos/c236.webp",
+        "place": "오패산 오동근린공원",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56759",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06C02904Ac80000.jpg",
+        "title": "오동근린공원 (06C02904Ac80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c133",
+      "name": "서울 안산자락길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "안산자락길",
+        "Ansan Jarak Seoul"
+      ],
+      "commonsCandidateCount": 30,
+      "officialRouteWaypoints": [
+        "박두진시비",
+        "북카페",
+        "천연마당",
+        "능안정",
+        "무악정",
+        "숲속무대",
+        "연흥약수터"
+      ],
+      "photo": {
+        "courses": {
+          "c133": "서울 안산자락길",
+          "c327": "서울 안산 초록숲길"
+        },
+        "src": "/assets/course-photos/c133.webp",
+        "place": "안산 봄 풍경 (자락길·초록숲길 주변)",
+        "date": "2015-04",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/47142",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05N02503Aa4000.jpg",
+        "title": "안산 (05N02503Aa4000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c235",
+      "name": "봉산 능선 산책길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "봉산 능선 산책길",
+        "봉산 능선",
+        "Bongsan Seoul mountain"
+      ],
+      "commonsCandidateCount": 7,
+      "officialRouteWaypoints": [
+        "증산체육공원",
+        "덕산정",
+        "봉산정",
+        "서오릉고개"
+      ],
+      "photo": null,
+      "decision": "확인한 봉산 주변 사진은 촬영 구간과 위치가 불명확해 능선 산책길 사진으로 사용하지 않음."
+    },
+    {
+      "id": "c234",
+      "name": "일자산 숲길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "일자산 숲길",
+        "일자산",
+        "Iljasan"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "서하남IC 강동그린웨이 입구",
+        "일자산 잔디광장",
+        "캠핑장",
+        "허브천문공원",
+        "길동생태문화센터"
+      ],
+      "photo": {
+        "courses": {
+          "c234": "일자산 숲길"
+        },
+        "src": "/assets/course-photos/c234.webp",
+        "place": "일자산허브천문공원",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56534",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06B04107Ac20000.jpg",
+        "title": "일자산허브천문공원 (06B04107Ac20000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c233",
+      "name": "청룡산 생태숲길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "청룡산 생태숲길",
+        "청룡산",
+        "Cheongnyongsan Seoul"
+      ],
+      "commonsCandidateCount": 38,
+      "officialRouteWaypoints": [
+        "관악구청",
+        "관악구민회관",
+        "청룡산 입구",
+        "생태연못",
+        "유아숲체험장",
+        "헬기장",
+        "산림욕장",
+        "청룡산 동네뒷산공원"
+      ],
+      "photo": null,
+      "decision": "청룡산 검색에 대구의 동명 산 사진이 섞임. 관악구 후보도 주변 시가지 중심으로 채택하지 않음."
+    },
+    {
+      "id": "c226",
+      "name": "한우물길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "한우물길",
+        "Hanumul Hoamsan"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "호암산폭포",
+        "칼바위전망대",
+        "불영암",
+        "한우물",
+        "한우물전망대",
+        "석구상(시흥동 산93-2)"
+      ],
+      "photo": {
+        "courses": {
+          "c226": "한우물길"
+        },
+        "src": "/assets/course-photos/c226.webp",
+        "place": "한우물",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58240",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06H03405Ad80000.jpg",
+        "title": "한우물 (06H03405Ad80000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c227",
+      "name": "청계산 원터골 산책길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "청계산 원터골 산책길",
+        "청계산 원터골",
+        "Cheonggyesan Wonteogol"
+      ],
+      "commonsCandidateCount": 0,
+      "officialRouteWaypoints": [
+        "원터골 등산로 입구",
+        "원터쉼터",
+        "진달래능선",
+        "원터골 등산로 입구"
+      ],
+      "photo": {
+        "courses": {
+          "c227": "청계산 원터골 산책길"
+        },
+        "src": "/assets/course-photos/c227.webp",
+        "place": "청계산",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60959",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O04811Ab60000.jpg",
+        "title": "청계산 (06O04811Ab60000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c31",
+      "name": "서울 서울숲 공원길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "서울숲 공원길",
+        "서울숲"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "수변휴게실 커뮤니티센터",
+        "숲속길",
+        "가족마당 북쪽 산책로",
+        "스케이트파크",
+        "군마상",
+        "갤러리정원",
+        "곤충식물원",
+        "이벤트마당",
+        "서울숲다리",
+        "수변휴게실 커뮤니티센터"
+      ],
+      "photo": {
+        "courses": {
+          "c31": "서울 서울숲 공원길"
+        },
+        "src": "/assets/course-photos/c31.webp",
+        "place": "서울숲 산책길",
+        "date": "2009-11-26",
+        "author": "Enigma7seven",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Seoulforest_001.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/5/59/Seoulforest_001.jpg",
+        "title": "Seoulforest 001.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1024,
+        "height": 768
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c159",
+      "name": "서울 서리풀공원 산책로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "서리풀공원 산책로",
+        "서리풀공원",
+        "Seoripul Park"
+      ],
+      "commonsCandidateCount": 1,
+      "officialRouteWaypoints": [
+        "고속터미널역",
+        "미도아파트 뒤 팔각정",
+        "참나무쉼터",
+        "누에다리",
+        "몽마르뜨공원",
+        "서리풀다리",
+        "할아버지쉼터",
+        "청권사쉼터",
+        "방배역"
+      ],
+      "photo": {
+        "courses": {
+          "c159": "서울 서리풀공원 산책로"
+        },
+        "src": "/assets/course-photos/c159.webp",
+        "place": "서리풀공원",
+        "date": "2020-06",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60779",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06O02810Ac40000.jpg",
+        "title": "서리풀공원 (06O02810Ac40000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c172",
+      "name": "서울 선유도길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "선유도길",
+        "선유도공원",
+        "Seonyudo Park"
+      ],
+      "commonsCandidateCount": 37,
+      "officialRouteWaypoints": [
+        "선유도공원 입구",
+        "온실",
+        "수질정화원",
+        "환경계류",
+        "녹색기둥의 정원",
+        "수생식물원",
+        "시간의 정원",
+        "환경체험마당",
+        "숲마당",
+        "전망대",
+        "선유교"
+      ],
+      "photo": {
+        "courses": {
+          "c172": "서울 선유도길"
+        },
+        "src": "/assets/course-photos/c172.webp",
+        "place": "선유도공원 산책길",
+        "date": "2014-08-24",
+        "author": "travel oriented",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Seonyudo_Park.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Seonyudo_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Seonyudo Park",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 642
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c33",
+      "name": "서울 남산공원 산책로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "남산공원 산책로",
+        "남산공원"
+      ],
+      "commonsCandidateCount": 8,
+      "officialRouteWaypoints": [
+        "남산도서관",
+        "북측순환로",
+        "국립극장",
+        "N서울타워",
+        "남측순환로",
+        "남산도서관"
+      ],
+      "photo": {
+        "courses": {
+          "c33": "서울 남산공원 산책로"
+        },
+        "src": "/assets/course-photos/c33.webp",
+        "place": "남산공원 입구",
+        "date": "2023-11-12",
+        "author": "Toobigtokale",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "source": "https://commons.wikimedia.org/wiki/File:Namsan_Park_Entrance.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Namsan_Park_Entrance.jpg",
+        "title": "Namsan Park Entrance.jpg",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 1200,
+        "height": 900
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c81",
+      "name": "서울 북서울꿈의숲 나들길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "북서울꿈의숲 나들길",
+        "북서울꿈의숲",
+        "Dream Forest Seoul"
+      ],
+      "commonsCandidateCount": 20,
+      "officialRouteWaypoints": [
+        "동문 입구",
+        "방문자 센터",
+        "3번 입구(강북 재활용 선별처리 시설)",
+        "9번 입구(참빛 어린이집)",
+        "11번 입구(현대아파트)",
+        "볼 프라자",
+        "서문 입구",
+        "꿈의 숲 아트센터",
+        "전망대",
+        "14번 입구",
+        "15번 입구",
+        "칠폭지"
+      ],
+      "photo": {
+        "courses": {
+          "c81": "서울 북서울꿈의숲 나들길"
+        },
+        "src": "/assets/course-photos/c81.webp",
+        "place": "북서울꿈의숲 연못 일대",
+        "date": "2010-02-07",
+        "author": "Seongbin Im",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dream_Forest_Park.jpg",
+        "original": "https://upload.wikimedia.org/wikipedia/commons/7/76/Dream_Forest_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "title": "Dream Forest Park",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 960,
+        "height": 281
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c51",
+      "name": "서울 여의도 한강 공원길",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "여의도 한강 공원길",
+        "여의도한강공원",
+        "Yeouido Hangang Park"
+      ],
+      "commonsCandidateCount": 40,
+      "officialRouteWaypoints": [
+        "국회의사당",
+        "서울마리나",
+        "한강조망대",
+        "물빛무대",
+        "물빛광장",
+        "여의도공원",
+        "녹음수광장",
+        "63빌딩"
+      ],
+      "photo": {
+        "courses": {
+          "c51": "서울 여의도 한강 공원길"
+        },
+        "src": "/assets/course-photos/c51.webp",
+        "place": "여의도공원 산책길 (코스 경유지)",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62439",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06T03508Ad30000.jpg",
+        "title": "여의도공원 (06T03508Ad30000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c83",
+      "name": "서울 응봉산 산책로",
+      "checked": "2026-10-02",
+      "status": "applied",
+      "commonsQueries": [
+        "응봉산 산책로",
+        "응봉산",
+        "Eungbongsan Seoul"
+      ],
+      "commonsCandidateCount": 38,
+      "officialRouteWaypoints": [
+        "응봉인공암벽장 앞",
+        "팔각정",
+        "금호 삼성래미안아파트 앞"
+      ],
+      "photo": {
+        "courses": {
+          "c83": "서울 응봉산 산책로"
+        },
+        "src": "/assets/course-photos/c83.webp",
+        "place": "응봉산 전망",
+        "date": "2019-12",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/61192",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06P02421Ab50000.jpg",
+        "title": "응봉산 (06P02421Ab50000)",
+        "changes": "공개 사진의 웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "사진의 실제 장소·개별 공개 조건 확인. 주변 사진은 캡션에 구별해 표시."
+    },
+    {
+      "id": "c256",
+      "name": "서울 일자산 치유의 숲길",
+      "checked": "2026-10-02",
+      "status": "held",
+      "commonsQueries": [
+        "일자산 치유의 숲길",
+        "일자산",
+        "Iljasan forest"
+      ],
+      "commonsCandidateCount": 3,
+      "officialRouteWaypoints": [
+        "일자산 치유의 숲길 입구",
+        "수상계류길",
+        "야외운동시설 및 관리실",
+        "숲속쉼터",
+        "바람길",
+        "초록숲길",
+        "소리길",
+        "일자산 치유의 숲길 입구"
+      ],
+      "photo": null,
+      "decision": "일자산 허브천문공원 사진은 별도 치유의 숲 순환 코스 사진으로 대체하지 않음."
+    }
+  ]
+}
