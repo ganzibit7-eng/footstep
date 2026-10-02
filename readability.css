@@ -1,0 +1,69 @@
+/* Balzaguk reading system. Hero artwork and its layout stay untouched. */
+:root{--reading-text:#293d32;--reading-muted:#526157;--reading-surface:#fffefb;--reading-line:#dce4d9;--reading-soft:#f2f5ed}
+html[data-theme="dark"]{--reading-text:#f0f3e9;--reading-muted:#c0cdbf;--reading-surface:#242e27;--reading-line:#455247;--reading-soft:#303b31}
+.app-page:not(.hero),footer,.modal{color:var(--reading-text)}
+.app-page:not(.hero) p,.modal p{letter-spacing:-.01em;word-break:keep-all;overflow-wrap:anywhere}
+.app-page:not(.hero) .section-head p,.home-section-head p{font-size:15px!important;line-height:1.85!important;color:var(--reading-muted)}
+.app-page:not(.hero) .section-head h2{font-size:clamp(27px,4vw,36px);line-height:1.4;letter-spacing:-.025em}
+.course-card{background:var(--reading-surface);border:1px solid var(--reading-line);box-shadow:0 8px 26px rgba(30,55,37,.045)}
+.course-card .card-body{padding:24px;gap:16px}
+.course-card h3{font-size:23px;line-height:1.45;word-break:keep-all;overflow-wrap:anywhere;color:var(--reading-text)}
+.course-card .course-metrics{gap:24px;align-items:flex-start}
+.course-card .course-metric small,.course-card .card-rating small,.course-card .card-rating-empty{font-size:12px;line-height:1.6;color:var(--reading-muted)}
+.course-card .course-metric strong{font-size:19px;font-weight:700;color:var(--reading-text)}
+.course-card .desc{font-size:15px;line-height:1.85;min-height:3.7em;color:var(--reading-muted)}
+.course-source-link{flex-wrap:wrap;border-radius:12px;font-size:13px;line-height:1.6;background:var(--reading-soft);border-color:var(--reading-line);color:var(--reading-text);padding:9px 12px}
+.course-source-link small{font-size:12px;color:var(--reading-muted)}
+.course-card .tag-pill{font-size:12px;padding:6px 10px;border-radius:9px;background:var(--reading-soft);color:var(--reading-muted);border-color:var(--reading-line)}
+.course-detail-cta{font-size:15px;min-height:48px;border-radius:14px;background:var(--reading-soft);border-color:var(--reading-line);color:var(--reading-text)}
+.course-card .card-foot,.course-card .card-owner-tag,.course-card .card-foot .report-btn{font-size:12px;line-height:1.7;color:var(--reading-muted)}
+.course-card .card-foot button{min-height:44px}
+#list-section .map-toolbar{gap:12px}
+#course-search-input,#course-sort-select{border:1px solid var(--reading-line)!important;background:var(--reading-surface);color:var(--reading-text);border-radius:14px!important;min-height:50px;font-size:16px!important}
+#course-advanced-filters{border:1px solid var(--reading-line);border-radius:18px;background:var(--reading-surface);overflow:hidden;margin:12px 0}
+#course-advanced-filters .map-toolbar{padding:16px}
+#list-section .chip,#walk-time-options .chip{font-size:14px;min-height:44px;padding:10px 14px}
+.walk-plan-box,.walk-prep{background:var(--reading-soft);border-color:var(--reading-line);padding:20px;border-radius:18px}
+.walk-plan-box p,.walk-prep p{font-size:14px;line-height:1.85;color:var(--reading-muted);max-width:68ch}
+.explore-results-head{padding:8px 0;margin:22px 0 18px}
+#modal-desc{font-size:16px!important;line-height:1.95!important;color:var(--reading-text)}
+.course-detail-summary{padding:20px 12px;background:var(--reading-soft);border-color:var(--reading-line)}
+.course-detail-summary span{font-size:13px;color:var(--reading-muted)}
+.course-detail-summary strong{font-size:18px;color:var(--reading-text)}
+.detail-map-heading span,.route-stop span,.route-stops-note,.course-route-guide p,.course-visit-notes p,.course-evidence p{font-size:14px!important;line-height:1.85;color:var(--reading-muted)}
+.course-visit-notes summary,.course-route-guide summary{font-size:15px;min-height:48px;line-height:1.7}
+.course-evidence strong,.route-stop strong{font-size:15px;color:var(--reading-text)}
+.course-evidence,.course-visit-notes{background:var(--reading-soft);border-color:var(--reading-line)}
+.form-card label{font-size:15px;line-height:1.7;color:var(--reading-text)}
+.form-card .mini-map-note,.form-card small,.review-item p{font-size:14px;line-height:1.85;color:var(--reading-muted)}
+.home-search-box p,.home-more-discovery small{font-size:14px;line-height:1.8}
+.home-search-box label{font-family:'Jua',sans-serif;line-height:1.5}
+.home-more-discovery>summary{min-height:60px;gap:12px}
+.home-region-links a,.home-category-directory a{display:inline-flex;align-items:center;min-height:44px;line-height:1.7}
+footer{font-size:14px;line-height:1.9}footer a{display:inline-flex;min-height:44px;align-items:center}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #8ba881;outline-offset:3px}
+/* Server-rendered discovery and detail pages share the same reading rhythm. */
+body.reading-page{background:#f4f5ed;color:#293d32;font-family:'Sunflower',system-ui,sans-serif;font-size:16px;line-height:1.9}
+.reading-page h1,.reading-page h2,.reading-page h3{font-family:'Jua',system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere;line-height:1.45;color:#213f2e}
+.reading-page p,.reading-page li{word-break:keep-all;overflow-wrap:anywhere}
+.reading-page main,.reading-page .wrap{padding:32px 24px}
+.reading-page .card,.reading-page section,.reading-page .section,.reading-page .hero{background:#fffefb;border-color:#dce4d9;border-radius:22px;box-shadow:0 8px 26px #1e372508}
+.reading-page li p{font-size:15px;line-height:1.85;color:#526157}
+.reading-page small,.reading-page .meta,.reading-page .note{color:#526157;font-size:14px;line-height:1.85}
+.reading-page nav a,.reading-page .links a,.reading-page .jump a,.reading-page .quick-links a{min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;line-height:1.6}
+@media(max-width:600px){
+.app-page:not(.hero) .section-head{align-items:flex-start;gap:10px;margin-bottom:22px}
+.course-card .card-body{padding:20px;gap:14px}.course-card h3{font-size:22px}
+.course-card .card-visual{height:112px}.course-card .course-metrics{gap:20px}
+.course-card .card-rating{max-width:110px;text-align:left;margin-left:0}
+.course-card .card-foot{gap:10px;align-items:flex-start}
+#course-advanced-filters>summary{font-size:15px;color:var(--reading-text);padding:14px 16px;min-height:52px;border-top:0}
+#course-advanced-filters .map-toolbar{padding:14px}
+.course-detail-summary{gap:6px;padding:16px 8px}.course-detail-summary strong{font-size:16px}.course-detail-summary span{font-size:12px}
+#modal-overlay .modal-body{padding:24px 18px}.course-evidence{padding:16px}
+#photo-upload-wrap{grid-template-columns:1fr 1fr}#photo-upload-wrap .pin-btn{font-size:14px!important;min-height:48px}#photo-upload-wrap .pin-btn:first-child{grid-column:1/-1}
+.walk-plan-box,.walk-prep{padding:18px 16px}
+.home-more-discovery>summary{flex-wrap:wrap}.home-more-discovery small{flex-basis:100%}
+.reading-page main,.reading-page .wrap{padding:24px 18px}.reading-page .card,.reading-page section{padding:22px 18px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.course-card{transition:none}}
