@@ -1689,7 +1689,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 .map-extra-filters{border-top:1px dashed var(--line);background:var(--paper)}.map-extra-filters>summary{list-style:none;cursor:pointer;min-height:48px;padding:14px 18px;color:var(--pine-deep);font:14px/1.5 'Jua',sans-serif}.map-extra-filters>summary::-webkit-details-marker{display:none}.map-extra-filters>summary:after{content:'＋';float:right;font:18px 'Jua',sans-serif}.map-extra-filters[open]>summary:after{content:'−'}.map-extra-filters .map-toolbar{padding:10px 16px 16px;flex-wrap:wrap}.map-filter-reset{margin-left:auto}.walk-share-button{width:100%;min-height:48px;margin:10px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--sand);color:var(--pine-deep);font:15px 'Jua',sans-serif;cursor:pointer}.walk-share-button:disabled{opacity:.6;cursor:wait}.walk-share-note{font:12px/1.5 'Sunflower',sans-serif;color:var(--muted-text);margin:6px 0 0}
 @media(max-width:700px){.map-filter-reset{margin-left:0}.map-extra-filters>summary{font-size:15px}.map-extra-filters .map-toolbar{gap:8px}.map-extra-filters #poi-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.map-extra-filters #poi-group .chip{min-height:44px}.map-extra-filters #poi-search-btn{min-height:46px;width:100%}.map-toolbar #view-filter-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.map-toolbar #view-filter-group .chip{min-height:44px;justify-content:center;padding:8px 6px}.map-toolbar #map-filter-note{display:block;width:100%}}
 </style>
-<style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}</style>
+<style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}#photo-lightbox-credit a{color:#f5d99d}#photo-lightbox-credit small{color:#eee}</style>
 </head>
 <body>
 
@@ -2676,9 +2676,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   📡 인터넷 연결이 끊겼어요. 연결되면 자동으로 다시 시도해요.
 </div>
 
-<div class="modal-overlay" id="photo-lightbox" style="background:rgba(0,0,0,0.9); align-items:center;">
+<div class="modal-overlay" id="photo-lightbox" role="dialog" aria-modal="true" aria-label="산책 코스 사진 확대보기" style="background:rgba(0,0,0,0.94); align-items:center; z-index:2400; flex-direction:column; padding:64px 16px 24px; box-sizing:border-box;">
   <button class="modal-close" id="photo-lightbox-close" aria-label="닫기" style="position:fixed; top:20px; right:20px;">✕</button>
-  <img id="photo-lightbox-img" src="" alt="코스 사진 확대보기" style="max-width:92vw; max-height:88vh; border-radius:8px; object-fit:contain;">
+  <img id="photo-lightbox-img" src="" alt="코스 사진 확대보기" style="max-width:92vw; max-height:66vh; border-radius:8px; object-fit:contain;">
+  <div id="photo-lightbox-credit" class="course-photo-credit" style="color:#eee;max-width:760px;max-height:18vh;overflow:auto;margin-top:12px;border:0"></div>
 </div>
 
 <div class="modal-overlay" id="member-profile-overlay">
@@ -2716,7 +2717,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </div>
 
-<script src="course-photos.js?v=20261002-1"></script>
+<script src="course-photos.js?v=20261002-2"></script>
 <script src="course-info.js?v=20261001-2"></script>
 <script src="course-routes.js?v=20261002-2"></script>
 <script>
@@ -4266,6 +4267,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(photo){
         const isCurated=photo===curatedPhoto?.src;
         const img=document.createElement('img');img.className='course-real-photo';img.src=photo;
+        if(isCurated){img.width=curatedPhoto.width;img.height=curatedPhoto.height;}
         img.alt=isCurated?curatedPhoto.place+' 실제 사진 ('+curatedPhoto.date+')':c.name+' 이용자 사진';img.loading='lazy';img.decoding='async';
         img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';card.querySelector('.course-photo-credit')?.remove();},{once:true});
         card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?'실제 장소 사진 · '+curatedPhoto.date.slice(0,4):'이용자 산책 사진';
@@ -4856,17 +4858,19 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const showPhotos=(rows)=>{
       const photos=[...(curated?[{url:curated.src,alt:curated.place+' 실제 사진 ('+curated.date+')',curated:true}]:[]),...rows].slice(0,3);
       gallery.replaceChildren();gallery.dataset.photoCount=String(photos.length);
+      credit.hidden=!curated;
       photos.forEach(p=>{
         const url=p.curated?new URL(p.url,window.location.origin).href:safePublicImageUrl(p.url);if(!url)return;
         const tile=document.createElement('button');tile.type='button';tile.className='photo-tile';tile.setAttribute('aria-label',(p.alt||'이용자 산책 사진')+' 크게 보기');
         const img=document.createElement('img');img.src=url;img.alt=p.alt||'이용자 산책 사진';img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';img.decoding='async';
-        img.addEventListener('error',()=>{if(request!==coursePhotoRequest)return;tile.remove();if(p.curated)credit.hidden=true;gallery.dataset.photoCount=String(gallery.children.length);if(!gallery.children.length)empty('사진을 표시하지 못했어요.');},{once:true});
-        tile.append(img);tile.addEventListener('click',()=>openPhotoLightbox(url));gallery.append(tile);
+        img.addEventListener('error',()=>{if(request!==coursePhotoRequest||!gallery.contains(tile))return;tile.remove();if(p.curated)credit.hidden=true;gallery.dataset.photoCount=String(gallery.children.length);if(!gallery.children.length)empty('사진을 표시하지 못했어요.');},{once:true});
+        tile.append(img);tile.addEventListener('click',()=>openPhotoLightbox(url,p.curated?curated:null,p.alt));gallery.append(tile);
       });
       gallery.dataset.photoCount=String(gallery.children.length);
       if(!gallery.children.length)empty('아직 등록된 사진이 없어요. 첫 산책 사진을 남겨주세요.');
     };
     const empty = (message)=>{
+      credit.hidden=true;
       gallery.dataset.photoCount = '0';
       gallery.innerHTML = `<div class="course-photo-empty"><svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><p>${escapeHtml(message)}</p></div>`;
     };
@@ -4917,17 +4921,35 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(link){ e.stopPropagation(); openMemberProfile(link.dataset.member); }
   });
 
-  function openPhotoLightbox(url){
-    const lb = document.getElementById('photo-lightbox');
-    document.getElementById('photo-lightbox-img').src = url;
+  let photoReturnTarget=null;
+  function openPhotoLightbox(url,curated=null,alt='이용자 산책 사진'){
+    const lb=document.getElementById('photo-lightbox');
+    photoReturnTarget=document.activeElement;
+    const img=document.getElementById('photo-lightbox-img');
+    img.src=url;img.alt=alt||'산책 코스 사진';
+    const credit=document.getElementById('photo-lightbox-credit');
+    credit.innerHTML=curated?CoursePhotos.credit(curated):'';credit.hidden=!curated;
     lb.classList.add('show');
+    document.getElementById('photo-lightbox-close').focus({preventScroll:true});
   }
   function closePhotoLightbox(){
     document.getElementById('photo-lightbox').classList.remove('show');
+    document.getElementById('photo-lightbox-img').removeAttribute('src');
+    document.getElementById('photo-lightbox-credit').replaceChildren();
+    if(photoReturnTarget?.isConnected)photoReturnTarget.focus({preventScroll:true});
+    photoReturnTarget=null;
   }
-  document.getElementById('photo-lightbox-close').addEventListener('click', closePhotoLightbox);
-  document.getElementById('photo-lightbox').addEventListener('click', (e)=>{
-    if(e.target.id === 'photo-lightbox') closePhotoLightbox();
+  document.getElementById('photo-lightbox-close').addEventListener('click',closePhotoLightbox);
+  document.getElementById('photo-lightbox').addEventListener('click',e=>{
+    if(e.target.id==='photo-lightbox')closePhotoLightbox();
+  });
+  document.getElementById('photo-lightbox').addEventListener('keydown',e=>{
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closePhotoLightbox();return;}
+    if(e.key!=='Tab')return;
+    const controls=Array.from(e.currentTarget.querySelectorAll('button,a[href]')).filter(el=>el.getClientRects().length&&!el.closest('[hidden]'));
+    const first=controls[0],last=controls[controls.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
   });
   const MAX_PHOTO_MB = 5;
   function compressImage(file, maxDim, quality){
@@ -5897,6 +5919,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   window.__openCourse = openCourseDetail;
 
   function closeModal(){
+    ++coursePhotoRequest;
     ++reviewRenderVersion;
     const closedCourseId=activeCourseId;
     activeCourseId = null;
