@@ -1,0 +1,4433 @@
+[
+  {
+    "id": "c245",
+    "name": "서울 호암산 능선길",
+    "checked": "2026-10-02",
+    "queries": "호암산 호압사",
+    "candidateCount": 97,
+    "reviewedRecords": 97,
+    "decision": "applied",
+    "previousDecision": "호암산 주변 도시 전경·사찰 후보는 능선 숲길 사진으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/58249",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사, 호암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58258",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46167",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사 주변"
+        ],
+        "details": [
+          "호암산 호압사, 금천구 시흥2동 234"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46166",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사 주변"
+        ],
+        "details": [
+          "호암산 호압사, 금천구 시흥2동 234"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58254",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58251",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58256",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58250",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58255",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58259",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58252",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58253",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/46162",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c247",
+    "name": "서울 문화비축기지 산책로",
+    "checked": "2026-10-02",
+    "queries": "문화비축기지",
+    "candidateCount": 13,
+    "reviewedRecords": 13,
+    "decision": "applied",
+    "previousDecision": "개별 이용 조건은 확인했으나 탱크·현대 건축물 중심 후보는 이번 산책로 사진 선정에서 보류.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/60030",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60029",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지 공연장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60031",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60027",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지안내동"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60026",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 월드컵북로43길 38"
+        ],
+        "details": [
+          "문화비축기지, 월드컵공원, 월드컵경기장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60028",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지 공연장, 상암카이저팰리스클래식아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60032",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "상암카이저팰리스클래식아파트, 문화비축기지내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60033",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 증산로 87"
+        ],
+        "details": [
+          "문화비축기지 , 월드컵경기장, 월드컵공원, 평화의공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60024",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구 상암동 1535"
+        ],
+        "details": [
+          "월트컵경기장, 문화비축기지, 상암월드컵파크아파트, 휴먼시아아파트, tbs교통방송, KBS미디어센터, DMC, 한샘사옥, DMC타워웨딩"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60025",
+        "title": [
+          "문화비축기지"
+        ],
+        "shootingPlace": [
+          "서울 마포구  월드컵북로 295"
+        ],
+        "details": [
+          "문화비축기지, 상암카이저팰리스클래식아파트, 상암월드컵파크아파트, 하늘공원, 한국지역난방공사중앙지사, 노을공원, 월드컵대교, 성산대교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60119",
+        "title": [
+          "월드컵경기장"
+        ],
+        "shootingPlace": [
+          "서울 마포구 월드컵로 235"
+        ],
+        "details": [
+          "서울 월드컵경기장, 문화비축기지, 성산시영아파트, 한샘사옥, DMC타워웨딩, 동아디지털미디어센터, 상암월드컵파크4단지아파트, MBC신사옥"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60159",
+        "title": [
+          "월드컵공원나들길"
+        ],
+        "shootingPlace": [
+          "서울 마포구 월드컵북로 224"
+        ],
+        "details": [
+          "서울월드컵경기장, 문화비축기지, 하늘공원, 상암월드컵파크아파트, 휴먼시아1단지아파트, 단지아파트, 에인하우스아파트, KBS미디어센터, tbs교통빙성, JTBC 플러스"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/60032",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c249",
+    "name": "서울 생태공원 둘레길",
+    "checked": "2026-10-02",
+    "queries": "우면산자연생태공원 우면산",
+    "candidateCount": 123,
+    "reviewedRecords": 123,
+    "decision": "held",
+    "previousDecision": "우면산 자연생태공원 코스이며 강서 생태공원 사진은 다른 장소라 제외. 확인한 우면산 사진은 도로·시가지 중심으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/42335",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "우면산"
+        ],
+        "details": [
+          "선바위길, 우면산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42336",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "우면산"
+        ],
+        "details": [
+          "우면산, 아쿠아육교, 타워팰리스"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52391",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "남부순환로"
+        ],
+        "details": [
+          "우면산, 예술의전당, 남부순환로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52392",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "남부순환로"
+        ],
+        "details": [
+          "우면산, 남부순환로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52393",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "남부순환로"
+        ],
+        "details": [
+          "우면산, 남부순환로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55124",
+        "title": [
+          "논현로 우면산방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "논현로 우면산방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60905",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "양재천로"
+        ],
+        "details": [
+          "바우뫼로12길, 바우뫼로, KT연구개발센터, 코오롱아파트, 대림아파트, 동고아파트, 우면한라아파트, 우면주공아파트, 우면산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47387",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "양재리본타워 1단지 102동"
+        ],
+        "details": [
+          "경부고속도로, 우면산, KT우면연구센터, 우면코오롱하늘채아파트, 우면한라아파트, 우면주공아파트, 동양고속건설아파트, 우면대림아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60910",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "방배로9길"
+        ],
+        "details": [
+          "방배로, 삼호한숲아파트, 방배그랑자이아파트, 방배신동아럭스빌아파트, 경남아파트앞교차로, 우면산, 임광아파트, 방배래미안아트힐아파트, 삼익아파트, 신구블레스밸리아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55125",
+        "title": [
+          "영동대로 우면산방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "영동대로 우면산방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47388",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "트라팰리스"
+        ],
+        "details": [
+          "한전아트센터, 동원베네스트아파트, 그레이스빌, 서초IC, 경부고속도로, 남부순환로, 우면산, 서초구립노인요양센터, 서울특별시소방학교, 신원아침도시아파트, 국제전자센터, 현대슈퍼빌,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60906",
+        "title": [
+          "우면산"
+        ],
+        "shootingPlace": [
+          "추사로"
+        ],
+        "details": [
+          "강남순환로, 양재대로, LH서초아파트, 주암교, 호반건설, 호반파크, 양재천, 서초힐스아파트, 서초네이처힐아파트, 태봉산, 서울우면초등학교, 삼성전자서울R&D캠퍼스, 우면산"
+        ]
+      }
+    ],
+    "decisionReason": "우면산 자연생태공원 코스이며 강서 생태공원 사진은 다른 장소라 제외. 확인한 우면산 사진은 도로·시가지 중심으로 채택하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c251",
+    "name": "서울 불암산 자락길",
+    "checked": "2026-10-02",
+    "queries": "불암산 생태학습관",
+    "candidateCount": 145,
+    "reviewedRecords": 145,
+    "decision": "held",
+    "previousDecision": "불암산의 다른 둘레길 사진은 확인했으나 생태학습관 순환 자락길과 촬영 구간이 다름.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/36281",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [
+          "불암산"
+        ],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44738",
+        "title": [
+          "망우1동과 불암산"
+        ],
+        "shootingPlace": [
+          "망우1동과 불암산"
+        ],
+        "details": [
+          "중앙선, 다우훼밀리아파트, 건영2차아파트, 대성유니드아파트, 중앙하이츠아파트, 신내동벽산아파트, 불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44740",
+        "title": [
+          "망우1동과 불암산"
+        ],
+        "shootingPlace": [
+          "망우1동과 불암산"
+        ],
+        "details": [
+          "중앙선, 망우역, 건영2차아파트, 중앙하이츠아파트, 다우훼밀리아파트, 프라우드아파트, 봉화산, 불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41172",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41167",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [
+          "불암산"
+        ],
+        "details": [
+          "불암산, 상계제일중학교, 중계중앙아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41170",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41171",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41173",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/30235",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36282",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [
+          "노원구"
+        ],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41169",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41174",
+        "title": [
+          "불암산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "불암산"
+        ]
+      }
+    ],
+    "decisionReason": "불암산의 다른 둘레길 사진은 확인했으나 생태학습관 순환 자락길과 촬영 구간이 다름. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c260",
+    "name": "서울 미성동 둘레길",
+    "checked": "2026-10-02",
+    "queries": "미성동 선우공원 선우생태공원 산울림다리",
+    "candidateCount": 4,
+    "reviewedRecords": 4,
+    "decision": "held",
+    "previousDecision": "선우생태공원·산울림다리 구간에 맞는 재사용 허용 사진을 확보하지 못함.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/57407",
+        "title": [
+          "호림박물관"
+        ],
+        "shootingPlace": [
+          "관악구 미성동 1572-14"
+        ],
+        "details": [
+          "호림박물관, 신림근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57408",
+        "title": [
+          "호림박물관"
+        ],
+        "shootingPlace": [
+          "관악구 미성동 1572-14"
+        ],
+        "details": [
+          "호림박물관, 신림근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57406",
+        "title": [
+          "호림박물관"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 미성동 1573-1"
+        ],
+        "details": [
+          "남부순환로152길, 호림박물관, 신림근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57405",
+        "title": [
+          "호림박물관"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 미성동 1573-1"
+        ],
+        "details": [
+          "남부순환로152길, 호림박물관, 신림근린공원"
+        ]
+      }
+    ],
+    "decisionReason": "선우생태공원·산울림다리 구간에 맞는 재사용 허용 사진을 확보하지 못함. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c264",
+    "name": "서울 망우산 사색의길",
+    "checked": "2026-10-02",
+    "queries": "망우리 망우산",
+    "candidateCount": 378,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "공동묘지 도로·개별 묘역 후보는 사색의길 숲길 사진으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/29094",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우산, 망우리 공동묘지, 중랑구시가지, 봉화산, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50159",
+        "title": [
+          "망우리고개"
+        ],
+        "shootingPlace": [
+          "망우리고개"
+        ],
+        "details": [
+          "망우리고개, 동부제일병원, 망우로, 중랑숲리가아파트,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29092",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우산, 망우리 공동묘지, 중랑구시가지, 봉화산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29093",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우산, 망우리 공동묘지, 중랑구시가지, 봉화산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44757",
+        "title": [
+          "망우역"
+        ],
+        "shootingPlace": [
+          "망우역"
+        ],
+        "details": [
+          "망우역"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29095",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우산, 망우리 공동묘지, 중랑구시가지, 봉화산, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44758",
+        "title": [
+          "망우역"
+        ],
+        "shootingPlace": [
+          "망우역"
+        ],
+        "details": [
+          "망우역 승강장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44748",
+        "title": [
+          "망우역사거리 주변"
+        ],
+        "shootingPlace": [
+          "망우역사거리 주변"
+        ],
+        "details": [
+          "망우로, 망우리공동묘지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44759",
+        "title": [
+          "망우역"
+        ],
+        "shootingPlace": [
+          "망우역"
+        ],
+        "details": [
+          "망우역, 건영2차아파트, 신내쌍용LG아파트, 프라우드아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29036",
+        "title": [
+          "망우동과 도봉산"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우동과 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29038",
+        "title": [
+          "망우동과 도봉산"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우동, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29096",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우리 공동묘지, 남산타워"
+        ]
+      }
+    ],
+    "decisionReason": "공동묘지 도로·개별 묘역 후보는 사색의길 숲길 사진으로 채택하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c265",
+    "name": "서울 독산 자락길",
+    "checked": "2026-10-02",
+    "queries": "독산 감로천 금천체육공원",
+    "candidateCount": 132,
+    "reviewedRecords": 132,
+    "decision": "applied",
+    "previousDecision": "독산자연공원 후보는 주변 도시 전경 중심이며 자락길 촬영 구간을 확인하지 못함.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/58088",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58089",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58090",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58084",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "독산로 54길, 금천체육공원, 독산배드민턴체육관, 베짱이유아숲유치원, 목골산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58085",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "독산로 54길, 금천체육공원, 금천구민문화체육센터, 독산동아아파트, 서울정심초등학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58086",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "독산로 54길, 금천체육공원, 금천구민문화체육센터, 독산동아아파트, 현대지식산업센터"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46127",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천정 정자"
+        ],
+        "details": [
+          "금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58087",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "금천구민 문화체육센터 근린공원"
+        ],
+        "details": [
+          "독산로 54길, 금천체육공원, 독산배드민턴체육관, 베짱이유아숲유치원, 목골산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46126",
+        "title": [
+          "금천체육공원"
+        ],
+        "shootingPlace": [
+          "공원 정문"
+        ],
+        "details": [
+          "금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58148",
+        "title": [
+          "베짱이유아숲체험원"
+        ],
+        "shootingPlace": [
+          "금천체육공원"
+        ],
+        "details": [
+          "독산로54길, 독산배드민턴체육관, 서울문교초등학교, 베짱이유아숲체험원, 금천체육공원, 목골산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46054",
+        "title": [
+          "감로천생태공원"
+        ],
+        "shootingPlace": [
+          "독산동아@옥상"
+        ],
+        "details": [
+          "감로천생태공원, 금천구민문화체육센터, 금천체육공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58063",
+        "title": [
+          "금천구립도서관"
+        ],
+        "shootingPlace": [
+          "독산로 68길"
+        ],
+        "details": [
+          "독산로 54길, 독산로 68길, 금천구립독산도서관, 독산 배드민턴 체육관, 금천 체육공원"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/58089",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c266",
+    "name": "서울 대모산 숲길",
+    "checked": "2026-10-02",
+    "queries": "대모산 불국사 일원터널",
+    "candidateCount": 170,
+    "reviewedRecords": 170,
+    "decision": "held",
+    "previousDecision": "대모산 정상·수서동 입구 사진을 일원동 숲길로 오인하지 않도록 제외.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/45080",
+        "title": [
+          "영동대로"
+        ],
+        "shootingPlace": [
+          "일원터널"
+        ],
+        "details": [
+          "영동대로, 일원터널사거리, 개포주공4단지아파트, 개포주공7단지아파트, 상록개포8·9단지아파트, 무역센터, 글라스타워, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44932",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [
+          "삼호 삼성푸른마을 111동"
+        ],
+        "details": [
+          "대모산, 일원동 한솔아파트, 일원동 상록수아파트, 대모산입구사거리, 광평로, 광평로20길, 일원터널"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55864",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "영동대로, 일원터널사거리, 개포프레지던스자이아파트(2023년예정), 대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45082",
+        "title": [
+          "영동대로"
+        ],
+        "shootingPlace": [
+          "일원터널"
+        ],
+        "details": [
+          "영동대로, 북한산, 무역센터, 글라스타워, kt&g서울사옥(대치동1002 영동대로416), 대치우성1차아파트(대치동63 영동대로230)"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/35796",
+        "title": [
+          "영동대로"
+        ],
+        "shootingPlace": [
+          "경기고등학교 앞"
+        ],
+        "details": [
+          "경기고교앞 사거리 일원터널방향, 삼보빌딩"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/35797",
+        "title": [
+          "영동대로"
+        ],
+        "shootingPlace": [
+          "경기고등학교 앞"
+        ],
+        "details": [
+          "경기고교앞 사거리 일원터널방향, 삼보빌딩"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44935",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [
+          "구룡마을"
+        ],
+        "details": [
+          "대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44930",
+        "title": [
+          "대모산 정상에서 본 시가지"
+        ],
+        "shootingPlace": [
+          "대모산 전망대"
+        ],
+        "details": [
+          "삼성타워팰리스, 개포동성당, 수도공고, 경기여고, 남산, 남산타워, 강남파이낸스타워, 개포우성1·2차아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55859",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "구룡마을, 대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55865",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [
+          "서울특별시 수서동 밤고개로"
+        ],
+        "details": [
+          "밤고개로, 서울둘레길대모산구간입구"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55867",
+        "title": [
+          "대모산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "밀알미술관, 중산고등학교, 대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55507",
+        "title": [
+          "대모산 남산방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "대모산 남산방향"
+        ]
+      }
+    ],
+    "decisionReason": "대모산 정상·수서동 입구 사진을 일원동 숲길로 오인하지 않도록 제외. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c267",
+    "name": "서울 까치산길",
+    "checked": "2026-10-02",
+    "queries": "까치산 솔밭로",
+    "candidateCount": 62,
+    "reviewedRecords": 62,
+    "decision": "applied",
+    "previousDecision": "화곡동 까치산역 사진은 관악구 까치산길과 다른 장소라 제외. 관악권 후보는 도로·건물 중심.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/45494",
+        "title": [
+          "솔밭공원"
+        ],
+        "shootingPlace": [
+          "솔밭공원"
+        ],
+        "details": [
+          "솔밭공원, 솔밭근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45493",
+        "title": [
+          "솔밭공원"
+        ],
+        "shootingPlace": [
+          "솔밭공원"
+        ],
+        "details": [
+          "솔밭공원, 솔밭근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45495",
+        "title": [
+          "솔밭공원"
+        ],
+        "shootingPlace": [
+          "솔밭공원"
+        ],
+        "details": [
+          "솔밭공원, 솔밭근린공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56701",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56706",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56703",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56704",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56702",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56705",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56707",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56700",
+        "title": [
+          "솔밭근린공원"
+        ],
+        "shootingPlace": [
+          "솔밭근린공원내"
+        ],
+        "details": [
+          "솔밭근린공원, 배드민턴장, 다니엘어린이집"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46606",
+        "title": [
+          "까치산근린공원"
+        ],
+        "shootingPlace": [
+          "동작구 솔밭로 65"
+        ],
+        "details": [
+          "까치산 근린공원, 까치산 공원, 관악로 30길, 관악푸르지오아파트,"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/photo/05L00803Ac1000",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c273",
+    "name": "서울 수명산 숲속 탐방로",
+    "checked": "2026-10-02",
+    "queries": "수명산 덕원",
+    "candidateCount": 16,
+    "reviewedRecords": 16,
+    "decision": "held",
+    "previousDecision": "확인한 수명산 사진은 주변 시가지 전경이며 숲속 탐방로 사진으로 확인되지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/57055",
+        "title": [
+          "수명산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "수명산, 수명로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57058",
+        "title": [
+          "수명산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "수명산, 강서힐스테이트아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57056",
+        "title": [
+          "수명산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "수명산, 수명로마곡수명산파크5단지아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57057",
+        "title": [
+          "수명산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "수명산, 강서힐스테이트아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40459",
+        "title": [
+          "강서마곡지구"
+        ],
+        "shootingPlace": [
+          "강서마곡지구"
+        ],
+        "details": [
+          "마곡수명산파크,수명산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60385",
+        "title": [
+          "불광천"
+        ],
+        "shootingPlace": [
+          "증산로"
+        ],
+        "details": [
+          "불광천, 덕원아파트, 증산로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44116",
+        "title": [
+          "인사동"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "인사동, 인사동길, 덕원갤러리,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38937",
+        "title": [
+          "인사동길"
+        ],
+        "shootingPlace": [
+          "종로구"
+        ],
+        "details": [
+          "인사동길, 지대방, 덕원겔러리"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56986",
+        "title": [
+          "마곡지구"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "수명로, 마곡엠밸리14단지아파트 "
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/60384",
+        "title": [
+          "불광천"
+        ],
+        "shootingPlace": [
+          "증산로"
+        ],
+        "details": [
+          "불광천, 덕원아파트, 증산로, 불광천길, 증산3교, 선정아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40463",
+        "title": [
+          "강서마곡지구"
+        ],
+        "shootingPlace": [
+          "강서마곡지구"
+        ],
+        "details": [
+          "가곡초교,명덕외국어고교,마곡수명산파크"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/62039",
+        "title": [
+          "목동 로데오거리"
+        ],
+        "shootingPlace": [
+          "신정중앙로"
+        ],
+        "details": [
+          "목동로, 신정중앙로, 홍익병원, 건영아파트, 사랑빌, 예지팰리스50차, 수명산"
+        ]
+      }
+    ],
+    "decisionReason": "확인한 수명산 사진은 주변 시가지 전경이며 숲속 탐방로 사진으로 확인되지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c275",
+    "name": "서울 봉산 팥배나무길",
+    "checked": "2026-10-02",
+    "queries": "봉산 팥배나무",
+    "candidateCount": 84,
+    "reviewedRecords": 84,
+    "decision": "held",
+    "previousDecision": "봉산 주변 전경·봉수대 사진을 팥배나무 군락 관찰로 사진으로 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/63010",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "앵봉산생태놀이터, 봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63009",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "서오릉로, 앵봉산생태놀이터, 봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41332",
+        "title": [
+          "창동역에서도봉산"
+        ],
+        "shootingPlace": [
+          "창동역에서도봉산"
+        ],
+        "details": [
+          "창동역, 창동그린아파트, 동아청솔아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55343",
+        "title": [
+          "봉산 백련산 방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산 백련산 방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63008",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "앵봉산생태놀이터"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41334",
+        "title": [
+          "창동역주변(우)도봉산"
+        ],
+        "shootingPlace": [
+          "창동역주변(우)도봉산"
+        ],
+        "details": [
+          "도봉구시설관리공단, 효성상아2차아파트, 창동대림아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55341",
+        "title": [
+          "봉산 도심부 방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산 도심부 방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41335",
+        "title": [
+          "창동역주변(우)도봉산"
+        ],
+        "shootingPlace": [
+          "창동역주변(우)도봉산"
+        ],
+        "details": [
+          "북한산한신플러스아파트, 아이파크아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/30431",
+        "title": [
+          "봉산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산, 망월산, 북한산, 창릉천, 덕양구 강매동 280일대, 한국항공대학교(과학관,기계관,전자관), 봉대산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/30432",
+        "title": [
+          "봉산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산, 망월산, 창릉천, 덕양구 강매동 280일대, 한국항공대학교(과학관,기계관,전자관), 봉대산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48707",
+        "title": [
+          "봉산도시자연공원"
+        ],
+        "shootingPlace": [
+          "봉산정주변"
+        ],
+        "details": [
+          "봉산, 우장산, 은평공영차고지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63033",
+        "title": [
+          "앵봉산"
+        ],
+        "shootingPlace": [
+          "서오릉로8길"
+        ],
+        "details": [
+          "역말로, 역말로10길, 역말로10가길, 서울대조초등학교, 갈현현대아파트, 코오롱하늘채아파트, 인우아파트, 앵봉산"
+        ]
+      }
+    ],
+    "decisionReason": "봉산 주변 전경·봉수대 사진을 팥배나무 군락 관찰로 사진으로 대체하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c276",
+    "name": "서울 월드컵공원 메타세쿼이아길",
+    "checked": "2026-10-02",
+    "queries": "메타세쿼이아",
+    "candidateCount": 0,
+    "reviewedRecords": 0,
+    "decision": "held",
+    "previousDecision": "난지한강공원·하늘공원 사진은 메타세쿼이아길 자체의 촬영 지점으로 확인되지 않아 제외.",
+    "candidates": [],
+    "decisionReason": "난지한강공원·하늘공원 사진은 메타세쿼이아길 자체의 촬영 지점으로 확인되지 않아 제외. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c281",
+    "name": "서울 산사길",
+    "checked": "2026-10-02",
+    "queries": "여래사 봉국사 대성사",
+    "candidateCount": 1,
+    "reviewedRecords": 1,
+    "decision": "held",
+    "previousDecision": "이 코스는 북악산 일대 사찰길이며 진관사·은평구 북한산 사진은 다른 장소라 제외.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/39109",
+        "title": [
+          "청계천"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "맑은내다리, 동평화패션타운, 대성사, 특호사"
+        ]
+      }
+    ],
+    "decisionReason": "이 코스는 북악산 일대 사찰길이며 진관사·은평구 북한산 사진은 다른 장소라 제외. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c282",
+    "name": "서울 천상병산길",
+    "checked": "2026-10-02",
+    "queries": "천상병",
+    "candidateCount": 0,
+    "reviewedRecords": 0,
+    "decision": "held",
+    "previousDecision": "수락산 정상·벽운계곡 사진은 천상병문화마당~숲속교실 구간으로 확인되지 않아 제외.",
+    "candidates": [],
+    "decisionReason": "수락산 정상·벽운계곡 사진은 천상병문화마당~숲속교실 구간으로 확인되지 않아 제외. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c285",
+    "name": "서울 호압사 산책길",
+    "checked": "2026-10-02",
+    "queries": "호압사 잣나무",
+    "candidateCount": 13,
+    "reviewedRecords": 13,
+    "decision": "applied",
+    "previousDecision": "사찰·불상 중심 후보를 숲길 사진으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/58258",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58254",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58251",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58256",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58249",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사, 호암산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58250",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58255",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58259",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58252",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58253",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58257",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사"
+        ],
+        "details": [
+          "호압사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46167",
+        "title": [
+          "호압사"
+        ],
+        "shootingPlace": [
+          "호압사 주변"
+        ],
+        "details": [
+          "호암산 호압사, 금천구 시흥2동 234"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/46167",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c291",
+    "name": "서울 벚꽃십리길",
+    "checked": "2026-10-02",
+    "queries": "오금교 신정교 오목교",
+    "candidateCount": 128,
+    "reviewedRecords": 128,
+    "decision": "applied",
+    "previousDecision": "확인한 안양천 사진은 금천구 구간으로 양천구 벚꽃십리길과 다름.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/38095",
+        "title": [
+          "신정교 사방"
+        ],
+        "shootingPlace": [
+          "신정교"
+        ],
+        "details": [
+          "신정교, 도림천로, 목동삼성아파트, 신정쌍용아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48036",
+        "title": [
+          "오금공원"
+        ],
+        "shootingPlace": [
+          "오금공원"
+        ],
+        "details": [
+          "오금공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38091",
+        "title": [
+          "오목교역부근"
+        ],
+        "shootingPlace": [
+          "오목교역 사거리"
+        ],
+        "details": [
+          "오목교역사거리, 동신한방병원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38097",
+        "title": [
+          "신정교 사방"
+        ],
+        "shootingPlace": [
+          "신정교"
+        ],
+        "details": [
+          "안양천, 오목교, 현대하이페리온, 현대2차아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48037",
+        "title": [
+          "오금공원"
+        ],
+        "shootingPlace": [
+          "오금공원"
+        ],
+        "details": [
+          "오금공원, 가락상아아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48259",
+        "title": [
+          "오목교"
+        ],
+        "shootingPlace": [
+          "현대월드24층 옥상"
+        ],
+        "details": [
+          "안양천, 오목교, 신정교, 목동아이스링크, 삼성쉐르빌오피스텔, 목동테니스장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38094",
+        "title": [
+          "오목교역부근"
+        ],
+        "shootingPlace": [
+          "오목교역 사거리"
+        ],
+        "details": [
+          "오목교역사거리, 청학빌딩, 오목로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38092",
+        "title": [
+          "오목교역부근"
+        ],
+        "shootingPlace": [
+          "오목교역 사거리"
+        ],
+        "details": [
+          "오목교역사거리, 목동하이페리온2, 목동트라팰리스, 목동금호1차아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/38093",
+        "title": [
+          "오목교역부근"
+        ],
+        "shootingPlace": [
+          "오목교역 사거리"
+        ],
+        "details": [
+          "오목교역사거리, 월드메르디앙아파트, 동신한방병원, 오목교역"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48033",
+        "title": [
+          "오금공원"
+        ],
+        "shootingPlace": [
+          "가락 SK허브파크"
+        ],
+        "details": [
+          "오금공원, 오금로, 삼부르네상스빌(오금동45, 오금로307)"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48257",
+        "title": [
+          "오목교"
+        ],
+        "shootingPlace": [
+          "힘찬병원 옥상"
+        ],
+        "details": [
+          "안양천, 오목교, 목동현대아파트, 오목교벽산블루밍아파트, 삼성래미안아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48393",
+        "title": [
+          "안양천 둑방길(양평교~신정교)"
+        ],
+        "shootingPlace": [
+          "오목교"
+        ],
+        "details": [
+          "안양천 둑방길, 벽산블루밍아파트, 문래동2차현대아파트, 삼성쉐르빌1"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/62144",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c293",
+    "name": "서울 긴고랑길",
+    "checked": "2026-10-02",
+    "queries": "긴고랑",
+    "candidateCount": 14,
+    "reviewedRecords": 14,
+    "decision": "held",
+    "previousDecision": "용마산 정상·아차산 다른 보루 사진은 긴고랑길 촬영 구간으로 확인되지 않아 보류.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/57661",
+        "title": [
+          "중랑천"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 13길"
+        ],
+        "details": [
+          "중랑천, 중랑교,동부간선도로, 남산서울타워, 남산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57655",
+        "title": [
+          "중곡제일시장"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 13길"
+        ],
+        "details": [
+          "중곡제일시장 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45838",
+        "title": [
+          "아차산 긴고랑마을"
+        ],
+        "shootingPlace": [
+          "용마산"
+        ],
+        "details": [
+          "아차산, 긴고랑마을, 잠실롯데월드타워, 강변테크노마트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57560",
+        "title": [
+          "아차산"
+        ],
+        "shootingPlace": [
+          "광진구 능동로 36길"
+        ],
+        "details": [
+          "아차산, 현대하이츠빌라, 긴고랑로, 서울동의초등학교, 영화사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45839",
+        "title": [
+          "아차산 긴고랑마을"
+        ],
+        "shootingPlace": [
+          "용마산"
+        ],
+        "details": [
+          "아차산, 긴고랑마을, 잠실롯데월드타워, 강변테크노마트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57496",
+        "title": [
+          "국립정신건강센터"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 19길"
+        ],
+        "details": [
+          "용마산, 국립정신건강센터, 용곡초등학교, 용곡중학교, 국립서울병원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57656",
+        "title": [
+          "중곡제일시장"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 13길"
+        ],
+        "details": [
+          "중곡제일시장 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57493",
+        "title": [
+          "국립정신건강센터"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 29길"
+        ],
+        "details": [
+          "국립정신건강센터, 용마산로, 동부간선도로, 국립서울병원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57658",
+        "title": [
+          "중곡제일시장"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 13길"
+        ],
+        "details": [
+          "중곡제일시장 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57659",
+        "title": [
+          "중곡제일시장"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 13길"
+        ],
+        "details": [
+          "중곡제일시장 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57494",
+        "title": [
+          "국립정신건강센터"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 41"
+        ],
+        "details": [
+          "용마산, 국립정신건강센터, 중광초등학교, 국립서울병원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57495",
+        "title": [
+          "국립정신건강센터"
+        ],
+        "shootingPlace": [
+          "광진구 긴고랑로 20길"
+        ],
+        "details": [
+          "용마산, 국립정신건강센터, 중광초등학교, 용곡초등학교, 용곡중학교, 국립서울병원"
+        ]
+      }
+    ],
+    "decisionReason": "용마산 정상·아차산 다른 보루 사진은 긴고랑길 촬영 구간으로 확인되지 않아 보류. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c295",
+    "name": "서울 공암나루길",
+    "checked": "2026-10-02",
+    "queries": "공암나루 허가바위 구암공원",
+    "candidateCount": 10,
+    "reviewedRecords": 10,
+    "decision": "applied",
+    "previousDecision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/45582",
+        "title": [
+          "구암공원"
+        ],
+        "shootingPlace": [
+          "공원허가바위 앞"
+        ],
+        "details": [
+          "대림경동아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57148",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 영등포공업고등학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57141",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준박물관, 공진중학교교차로 , 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57142",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57146",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57144",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57143",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57145",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 늘푸른나무복지관, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57147",
+        "title": [
+          "허가바위"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "허가바위, 허준로5길, 늘푸른나무복지관, 공암바위"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45583",
+        "title": [
+          "구암공원"
+        ],
+        "shootingPlace": [
+          "대림경동아파트옥상"
+        ],
+        "details": [
+          "탑산초등학교, 강서구보훈회관, 강서한강자이아파트, 한보아파트"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/57146",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c300",
+    "name": "서울 장미테마길 중랑천",
+    "checked": "2026-10-02",
+    "queries": "묵동교 이화교 장미정원",
+    "candidateCount": 244,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/52482",
+        "title": [
+          "성동교"
+        ],
+        "shootingPlace": [
+          "성동교"
+        ],
+        "details": [
+          "성동교, 중랑천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36288",
+        "title": [
+          "창동교"
+        ],
+        "shootingPlace": [
+          "창동교"
+        ],
+        "details": [
+          "중랑천 창동교, 한국전력북부지사, 상계주공3단지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44810",
+        "title": [
+          "중랑천과 이화교"
+        ],
+        "shootingPlace": [
+          "중랑천과 이화교"
+        ],
+        "details": [
+          "중랑천, 이화교, 현대아이파크"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52481",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 성동교, 지하철2호선"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36289",
+        "title": [
+          "창동교"
+        ],
+        "shootingPlace": [
+          "창동교"
+        ],
+        "details": [
+          "중랑천 창동교, 한국전력북부지사, 상계주공3단지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42579",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 동부간선도로, 성동교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42581",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 성동교, 동부간선도로, 응봉교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/62029",
+        "title": [
+          "목동교부근"
+        ],
+        "shootingPlace": [
+          "목동교"
+        ],
+        "details": [
+          "목동종합운동장, 경인초등학교, 목동5단지아파트, 국회대로, 안양천, 목동교, 안양천로, 용왕산, 개화산, 우장산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55305",
+        "title": [
+          "양화교"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "양화교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/53760",
+        "title": [
+          "인공폭포"
+        ],
+        "shootingPlace": [
+          "양화교"
+        ],
+        "details": [
+          "양화교폭포, 노들로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/53761",
+        "title": [
+          "인공폭포"
+        ],
+        "shootingPlace": [
+          "양화교"
+        ],
+        "details": [
+          "양화교 폭포"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/53765",
+        "title": [
+          "양화인공폭포"
+        ],
+        "shootingPlace": [
+          "양화교"
+        ],
+        "details": [
+          "양화교폭포, 노들로"
+        ]
+      }
+    ],
+    "decisionReason": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c302",
+    "name": "서울 우이천",
+    "checked": "2026-10-02",
+    "queries": "우이천 쌍한교",
+    "candidateCount": 91,
+    "reviewedRecords": 91,
+    "decision": "applied",
+    "previousDecision": "확인한 우이천 사진은 근화교~월계2교 촬영 구간으로 대조되지 않아 보류.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/56798",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "쌍한교 내"
+        ],
+        "details": [
+          "승화빌딩, 태영창동데시앙아파트, 가오천, 우이천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56800",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "쌍한교 내"
+        ],
+        "details": [
+          "수산트리플아파트, 건영캐스빌아파트, 부성주택, 가오천, 우이천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56799",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "쌍한교 내"
+        ],
+        "details": [
+          "승화빌딩, 태영창동데시앙아파트, 수산트리플아파트, 가오천, 우이천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56796",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "우이천로4길"
+        ],
+        "details": [
+          "초안2단지아파트, 번동주공4단지아파트, 우이천, 초안교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58620",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "우이천"
+        ],
+        "details": [
+          "우이천, 월계로42길, 한전로, 래미안장위퍼스트하이, 꿈의숲SK뷰아파트, 광운전자공업고등학교, 번동주공1단지아파트, 도봉산, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56801",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "쌍한교 내"
+        ],
+        "details": [
+          "혜성빌딩, 태영창동데시앙아파트, 번창교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58619",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "우이천"
+        ],
+        "details": [
+          "우이천, 서울선곡초등학교, 광운전자공업고등학교, 광운중학교, 남대문중학교, 광운초등학교, 시립성북청소년센터, 레미안장위포레카운티, 레미안장위퍼스트하이, 광운로1길, 도봉산, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45522",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "우이동"
+        ],
+        "details": [
+          "우이천,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45528",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "번동 612-3"
+        ],
+        "details": [
+          "우이천,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45521",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "우이동"
+        ],
+        "details": [
+          "우이천,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45527",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "번동 612-3"
+        ],
+        "details": [
+          "우이천, 한천로,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58624",
+        "title": [
+          "우이천"
+        ],
+        "shootingPlace": [
+          "동신아파트"
+        ],
+        "details": [
+          "우이천"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/56798",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c303",
+    "name": "서울 용마산 자락길",
+    "checked": "2026-10-02",
+    "queries": "용마산 망우사색",
+    "candidateCount": 224,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "용마산 정상의 암릉 사진은 면목동 복지센터~망우산 자락길과 다름.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/42537",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산"
+        ],
+        "details": [
+          "용마산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57604",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산 내부"
+        ],
+        "details": [
+          "용마산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57605",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산 내부"
+        ],
+        "details": [
+          "용마산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42536",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산"
+        ],
+        "details": [
+          "용마산, 용마폭포공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/64957",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산로"
+        ],
+        "details": [
+          "용마산, 용곡초등학교, 중곡동SK아파트, 용마산역코오롱하늘채아파트, 용마산로32길"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/39701",
+        "title": [
+          "용마산로"
+        ],
+        "shootingPlace": [
+          "용마산길"
+        ],
+        "details": [
+          "용마산로 용마산역방향, 한스프라자, 신성미소지움아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57603",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산 내부"
+        ],
+        "details": [
+          "중랑천, 동부간선도로, 용마산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57606",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "용마산 내부"
+        ],
+        "details": [
+          "용마산, 동부간선도로, 중랑천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/64959",
+        "title": [
+          "용마산코오롱하늘채"
+        ],
+        "shootingPlace": [
+          "용마산로"
+        ],
+        "details": [
+          "용마산역코오롱하늘채아파트, 면목도시개발아파트, 용마산, 용마산로, 면목현대아파트, 면목동삼호아파트, 망우산, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/64960",
+        "title": [
+          "용마산코오롱하늘채"
+        ],
+        "shootingPlace": [
+          "용마산로"
+        ],
+        "details": [
+          "용마산역코오롱하늘채아파트, 면목도시개발아파트, 용마산, 용마산로, 면목현대아파트, 면목동삼호아파트, 망우산, 도봉산, 용마폭포공원"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/59701",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "여의대방로36길 71 "
+        ],
+        "details": [
+          "용마산 내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57601",
+        "title": [
+          "용마산"
+        ],
+        "shootingPlace": [
+          "광진구 자양로 51길"
+        ],
+        "details": [
+          "용마산"
+        ]
+      }
+    ],
+    "decisionReason": "용마산 정상의 암릉 사진은 면목동 복지센터~망우산 자락길과 다름. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c306",
+    "name": "서울 영등포 수변둘레길",
+    "checked": "2026-10-02",
+    "queries": "신정교 목동교 양화교",
+    "candidateCount": 268,
+    "reviewedRecords": 200,
+    "decision": "applied",
+    "previousDecision": "확인한 안양천 사진은 금천구 구간으로 영등포 신정교~한강 합수부 구간과 다름.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/38095",
+        "title": [
+          "신정교 사방"
+        ],
+        "shootingPlace": [
+          "신정교"
+        ],
+        "details": [
+          "신정교, 도림천로, 목동삼성아파트, 신정쌍용아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52482",
+        "title": [
+          "성동교"
+        ],
+        "shootingPlace": [
+          "성동교"
+        ],
+        "details": [
+          "성동교, 중랑천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36288",
+        "title": [
+          "창동교"
+        ],
+        "shootingPlace": [
+          "창동교"
+        ],
+        "details": [
+          "중랑천 창동교, 한국전력북부지사, 상계주공3단지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44810",
+        "title": [
+          "중랑천과 이화교"
+        ],
+        "shootingPlace": [
+          "중랑천과 이화교"
+        ],
+        "details": [
+          "중랑천, 이화교, 현대아이파크"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/52481",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 성동교, 지하철2호선"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36289",
+        "title": [
+          "창동교"
+        ],
+        "shootingPlace": [
+          "창동교"
+        ],
+        "details": [
+          "중랑천 창동교, 한국전력북부지사, 상계주공3단지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42579",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 동부간선도로, 성동교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/42581",
+        "title": [
+          "중랑천과 성동교"
+        ],
+        "shootingPlace": [
+          "중랑천과 성동교"
+        ],
+        "details": [
+          "중랑천, 성동교, 동부간선도로, 응봉교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/62029",
+        "title": [
+          "목동교부근"
+        ],
+        "shootingPlace": [
+          "목동교"
+        ],
+        "details": [
+          "목동종합운동장, 경인초등학교, 목동5단지아파트, 국회대로, 안양천, 목동교, 안양천로, 용왕산, 개화산, 우장산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55305",
+        "title": [
+          "양화교"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "양화교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/53760",
+        "title": [
+          "인공폭포"
+        ],
+        "shootingPlace": [
+          "양화교"
+        ],
+        "details": [
+          "양화교폭포, 노들로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/53761",
+        "title": [
+          "인공폭포"
+        ],
+        "shootingPlace": [
+          "양화교"
+        ],
+        "details": [
+          "양화교 폭포"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/48386",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c307",
+    "name": "서울 염창산 산책길",
+    "checked": "2026-10-02",
+    "queries": "염창산",
+    "candidateCount": 112,
+    "reviewedRecords": 112,
+    "decision": "applied",
+    "previousDecision": "안양천·한강 전경을 염창산 산책길 사진으로 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/40498",
+        "title": [
+          "염창공원"
+        ],
+        "shootingPlace": [
+          "염창공원"
+        ],
+        "details": [
+          "염창동 산28번지, 증산, 염창산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40500",
+        "title": [
+          "염창공원"
+        ],
+        "shootingPlace": [
+          "염창공원"
+        ],
+        "details": [
+          "염창동 산30번지, 증산, 염창산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40499",
+        "title": [
+          "염창공원"
+        ],
+        "shootingPlace": [
+          "염창공원"
+        ],
+        "details": [
+          "염창동 산29번지, 증산, 염창산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40493",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "염창동"
+        ],
+        "details": [
+          "태진한솔아파트, 한화꿈에그린아파트, 등마루길, 아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57109",
+        "title": [
+          "염창역"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "염창역,공항대로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50741",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "성산대교"
+        ],
+        "details": [
+          "염창동"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40496",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "염창동"
+        ],
+        "details": [
+          "다세대, 다가구"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50740",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "성산대교"
+        ],
+        "details": [
+          "염창동"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40495",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "염창동"
+        ],
+        "details": [
+          "극동상록수아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40497",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "염창동"
+        ],
+        "details": [
+          "극동상록수아파트, 다세대, 다가구"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57110",
+        "title": [
+          "염창역"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "염창역,공항대로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40494",
+        "title": [
+          "염창동"
+        ],
+        "shootingPlace": [
+          "염창동"
+        ],
+        "details": [
+          "등마루길, 삼성한아름아파트"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/40499",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c310",
+    "name": "서울 수락산 동막골길",
+    "checked": "2026-10-02",
+    "queries": "수락정 수암사 동막골",
+    "candidateCount": 475,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "수락산 정상·벽운계곡 사진을 동막골 국궁장~수암사 코스에 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/36277",
+        "title": [
+          "수락산"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "수락산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36276",
+        "title": [
+          "수락산"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "수락산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58523",
+        "title": [
+          "송암사"
+        ],
+        "shootingPlace": [
+          "송암사"
+        ],
+        "details": [
+          "송암사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36274",
+        "title": [
+          "수락산"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "수락산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36275",
+        "title": [
+          "수락산"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "수락산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36279",
+        "title": [
+          "수락산"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "수락산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58522",
+        "title": [
+          "송암사"
+        ],
+        "shootingPlace": [
+          "송암사"
+        ],
+        "details": [
+          "송암사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/58524",
+        "title": [
+          "송암사"
+        ],
+        "shootingPlace": [
+          "송암사"
+        ],
+        "details": [
+          "송암사"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36310",
+        "title": [
+          "수락산역교차로"
+        ],
+        "shootingPlace": [
+          "수락산역"
+        ],
+        "details": [
+          "수락산역교차로 의정부IC방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/36309",
+        "title": [
+          "수락산역교차로"
+        ],
+        "shootingPlace": [
+          "수락산역"
+        ],
+        "details": [
+          "수락산역교차로 상계주공아파트방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/46252",
+        "title": [
+          "수락산일대개발"
+        ],
+        "shootingPlace": [
+          "수락산"
+        ],
+        "details": [
+          "도봉산역, 서울창포원, 수락리버시티1단지아파트, 수락리버시티2단지아파트, 수락리버시티3단지아파트, 도봉고등학교, 서울가든아파트, 도봉숲속마을, 송석문화재단,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41310",
+        "title": [
+          "수락시가지"
+        ],
+        "shootingPlace": [
+          "수락시가지"
+        ],
+        "details": [
+          "중랑천, 수락고등학교, 은빛1단지아파트, 수락산"
+        ]
+      }
+    ],
+    "decisionReason": "수락산 정상·벽운계곡 사진을 동막골 국궁장~수암사 코스에 대체하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c316",
+    "name": "서울 관악산 도란도란 걷는 길",
+    "checked": "2026-10-02",
+    "queries": "관악산 보덕사 삼성산성지",
+    "candidateCount": 301,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "관악산의 다른 구간·호수공원 사진을 보덕사~삼성산성지 등 경로 사진으로 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/40547",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "낙성현대2차아파트, 부미아띠랑스힐, 서울대입구삼성아파트, 관악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40549",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "신성1교, 신성교, 관악산, LIG5차, 신동아아파트,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40550",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "관악산, 베리타스오피스텔, LIG5차, 신동아아파트,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40546",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "동작대교, 현대아파트, 반도아파트, 한강, 국립현충원, 신동아아파트, 관악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/40548",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "관악산, 우성아파트, 관악대우푸르지오, 지구촌순복음교회, 브라운스톤관악"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45659",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "계곡다리"
+        ],
+        "details": [
+          "관악산, 관악산 등산로, 관악산 공원,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45662",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "무장애숲길"
+        ],
+        "details": [
+          "관악산, 관악산 등산로, 관악산 공원,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/51374",
+        "title": [
+          "동작대교(관악산배경)"
+        ],
+        "shootingPlace": [
+          "동작대교(관악산배경)"
+        ],
+        "details": [
+          "관악산, 동작대교, 한강"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/51375",
+        "title": [
+          "동작대교(관악산배경)"
+        ],
+        "shootingPlace": [
+          "동작대교(관악산배경)"
+        ],
+        "details": [
+          "관악산, 동작대교, 한강"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50848",
+        "title": [
+          "봉천본동 재개발지역과 관악산"
+        ],
+        "shootingPlace": [
+          "봉천본동 재개발지역과 관악산"
+        ],
+        "details": [
+          "봉천본동 재개발지역 관악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45658",
+        "title": [
+          "관악산"
+        ],
+        "shootingPlace": [
+          "클린하우스"
+        ],
+        "details": [
+          "관악산, 관악산 등산로, 관악산 클린하우스,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/34223",
+        "title": [
+          "관악구"
+        ],
+        "shootingPlace": [
+          "관악산"
+        ],
+        "details": [
+          "봉천동 지역, 관악산"
+        ]
+      }
+    ],
+    "decisionReason": "관악산의 다른 구간·호수공원 사진을 보덕사~삼성산성지 등 경로 사진으로 대체하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c319",
+    "name": "서울 망우리 사잇길",
+    "checked": "2026-10-02",
+    "queries": "망우리 사잇길",
+    "candidateCount": 243,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "망우리의 다른 묘역·놀이시설 후보를 사잇길 탐방 구간으로 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/50163",
+        "title": [
+          "망우리공동묘지"
+        ],
+        "shootingPlace": [
+          "망우리묘지"
+        ],
+        "details": [
+          "망우리공동묘지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50159",
+        "title": [
+          "망우리고개"
+        ],
+        "shootingPlace": [
+          "망우리고개"
+        ],
+        "details": [
+          "망우리고개, 동부제일병원, 망우로, 중랑숲리가아파트,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/34574",
+        "title": [
+          "망우리공동묘지"
+        ],
+        "shootingPlace": [
+          "망우리 공동묘지 주변"
+        ],
+        "details": [
+          "망우리공동묘지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/50164",
+        "title": [
+          "망우리공동묘지"
+        ],
+        "shootingPlace": [
+          "망우리묘지"
+        ],
+        "details": [
+          "망우리공동묘지"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48058",
+        "title": [
+          "우리금융아트홀"
+        ],
+        "shootingPlace": [
+          "우리금융아트홀"
+        ],
+        "details": [
+          "올림픽공원, 우리금융아트홀"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49219",
+        "title": [
+          "우리은행 종로4가지점"
+        ],
+        "shootingPlace": [
+          "우리은행종로4가"
+        ],
+        "details": [
+          "우리은행 종로4가지점"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29097",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우리 공동묘지, 남산타워"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29096",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우리 공동묘지, 남산타워"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29090",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우리 공동묘지, 남산타워"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/44755",
+        "title": [
+          "망우리공동묘지"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "망우리공동묘지내부"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29094",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우산, 망우리 공동묘지, 중랑구시가지, 봉화산, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29091",
+        "title": [
+          "망우산 일대"
+        ],
+        "shootingPlace": [
+          "망우리"
+        ],
+        "details": [
+          "망우리 공동묘지, 남산타워"
+        ]
+      }
+    ],
+    "decisionReason": "망우리의 다른 묘역·놀이시설 후보를 사잇길 탐방 구간으로 대체하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c329",
+    "name": "서울 북악산 하늘길",
+    "checked": "2026-10-02",
+    "queries": "북악산 하늘한마당 우정의공원",
+    "candidateCount": 446,
+    "reviewedRecords": 200,
+    "decision": "held",
+    "previousDecision": "북악산 창의문·성곽 사진은 성북공원 하늘한마당~우정의공원 코스와 촬영 구간이 다름.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/35565",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "북한산 문수봉"
+        ],
+        "details": [
+          "북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55129",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55206",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/29147",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "구 중앙청"
+        ],
+        "details": [
+          "북악산, 조선총독부건물"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/35861",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "강북구"
+        ],
+        "details": [
+          "북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55127",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/33288",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "경복궁"
+        ],
+        "details": [
+          "경복궁내부, 북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49018",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "창의문"
+        ],
+        "details": [
+          "북악산, 창의문, 자하문, 창의문로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49399",
+        "title": [
+          "창의문"
+        ],
+        "shootingPlace": [
+          "북악산"
+        ],
+        "details": [
+          "창의문, 인왕산, 북악산, 창의문교차로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49016",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "경기상고"
+        ],
+        "details": [
+          "북악산, 청운중학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49017",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "사직동 9 풍림스페이스본"
+        ],
+        "details": [
+          "북악산, 청운효자동일대, 북한산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/49019",
+        "title": [
+          "북악산"
+        ],
+        "shootingPlace": [
+          "견지동 68-14"
+        ],
+        "details": [
+          "북악산, 청와대, 북한산, 국립민속박물관"
+        ]
+      }
+    ],
+    "decisionReason": "북악산 창의문·성곽 사진은 성북공원 하늘한마당~우정의공원 코스와 촬영 구간이 다름. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c333",
+    "name": "서울 관악산 시흥계곡 숲길",
+    "checked": "2026-10-02",
+    "queries": "시흥계곡 호암2터널",
+    "candidateCount": 1,
+    "reviewedRecords": 1,
+    "decision": "held",
+    "previousDecision": "관악산 시흥계곡·호암2터널 구간 촬영 사진의 이용 허락과 장소를 확인하지 못함.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/58230",
+        "title": [
+          "은행나무사거리"
+        ],
+        "shootingPlace": [
+          "독산로"
+        ],
+        "details": [
+          "독산로, 금하로, 은행나무사거리, 서울백산초등학교, 시흥계곡"
+        ]
+      }
+    ],
+    "decisionReason": "관악산 시흥계곡·호암2터널 구간 촬영 사진의 이용 허락과 장소를 확인하지 못함. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c224",
+    "name": "대모산 숲이 좋은 길",
+    "checked": "2026-10-02",
+    "queries": "대모산 보금자리",
+    "candidateCount": 191,
+    "reviewedRecords": 191,
+    "decision": "held",
+    "previousDecision": "대모산 정상·수서동 등산로 입구 사진은 확보했으나 이 코스의 강남 보금자리 5단지·능선 구간과 촬영 지점을 확인하지 못함.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/45025",
+        "title": [
+          "세곡동보금자리주택"
+        ],
+        "shootingPlace": [
+          "가든파이브 Works관"
+        ],
+        "details": [
+          "세곡동보금자리주택(강남한양수자인), 숯내교, 자곡로, 탄천,대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45024",
+        "title": [
+          "세곡동보금자리주택"
+        ],
+        "shootingPlace": [
+          "가든파이브 Works관"
+        ],
+        "details": [
+          "세곡동보금자리주택(강남한양수자인), 동부간선도로, 탄천, 대모산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45027",
+        "title": [
+          "세곡동보금자리주택"
+        ],
+        "shootingPlace": [
+          "The Green 관"
+        ],
+        "details": [
+          "세곡동보금자리주택(래미안포레아파트), 율현초등학교, 밤고개로, 자곡로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45026",
+        "title": [
+          "세곡동보금자리주택"
+        ],
+        "shootingPlace": [
+          "가든파이브 Works관"
+        ],
+        "details": [
+          "세곡동보금자리주택(강남한양수자인), 동부간선도로, 숯내교, 자곡로, 탄천,대모산, 서울메트로수서차량사업소"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47415",
+        "title": [
+          "서초지구 보금자리"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "서초네이처힐, 한국교원단체총연합회, 삼성전자우면R&D센터, 서초지구보금자리, 렛츠런파크서울"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45028",
+        "title": [
+          "세곡동보금자리주택"
+        ],
+        "shootingPlace": [
+          "강남힐스테이트 에코"
+        ],
+        "details": [
+          "세곡동보금자리주택(래미안포레아파트), 율현초등학교, 밤고개로, 자곡로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47385",
+        "title": [
+          "우면2보금자리"
+        ],
+        "shootingPlace": [
+          "하이브랜드"
+        ],
+        "details": [
+          "서초네이처힐아파트, 한국교원단체총연합회, 우면산, 서울오토갤러리, LG화학 과천R&D센터, 양재천"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45417",
+        "title": [
+          "고덕보금자리"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "강일IC, 고덕차량기지, 서울외곽순환도로, 강일리버파크, 고덕리엔파크"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47412",
+        "title": [
+          "우면2보금자리"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "삼성전자우면R&D센터, 서초네이처힐, LG전자 서초R&D캠퍼스, 청계산, 한국교원단체총연합회"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/47384",
+        "title": [
+          "우면2보금자리"
+        ],
+        "shootingPlace": [
+          "양재리본타워 2단지 203동"
+        ],
+        "details": [
+          "서초네이처힐아파트, LH서초3·4·5아파트, LG화학 과천R&D센터, 양재천, 우면산, 관악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/37342",
+        "title": [
+          "서초구"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "선암IC, 양재천, 과천의왕간고속화도로, (현)서초보금자리지구"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48153",
+        "title": [
+          "성내천"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "성내천, 서울외곽순환도로, 서울오금보금자리"
+        ]
+      }
+    ],
+    "decisionReason": "대모산 정상·수서동 등산로 입구 사진은 확보했으나 이 코스의 강남 보금자리 5단지·능선 구간과 촬영 지점을 확인하지 못함. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c228",
+    "name": "청와대 앞길",
+    "checked": "2026-10-02",
+    "queries": "청와대앞길 무궁화동산 청와대로",
+    "candidateCount": 71,
+    "reviewedRecords": 71,
+    "decision": "applied",
+    "previousDecision": "청와대 건물·근위병 중심 후보는 앞길 산책 사진으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/49419",
+        "title": [
+          "청와대"
+        ],
+        "shootingPlace": [
+          "청와대앞길"
+        ],
+        "details": [
+          "청와대, 청와대 앞길, 청와대로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63355",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63354",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63353",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63356",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63351",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산, 인왕산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63352",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산, 북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63350",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산, 창의문로, 효자로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63357",
+        "title": [
+          "무궁화동산"
+        ],
+        "shootingPlace": [
+          "궁정동 55-3"
+        ],
+        "details": [
+          "무궁화동산, 창의문로, 효자로, 인왕산, 북악산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63778",
+        "title": [
+          "청와대앞길"
+        ],
+        "shootingPlace": [
+          "궁정동 98-2 일대"
+        ],
+        "details": [
+          "청와대사랑채, 청와대로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63788",
+        "title": [
+          "청와대앞길"
+        ],
+        "shootingPlace": [
+          "궁정동 98-2 일대"
+        ],
+        "details": [
+          "청와대, 청와대로, 효자로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63780",
+        "title": [
+          "청와대앞길"
+        ],
+        "shootingPlace": [
+          "궁정동 98-2 일대"
+        ],
+        "details": [
+          "청와대, 청와대로, 효자로"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/63784",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c232",
+    "name": "인재개발원 잣나무숲길",
+    "checked": "2026-10-02",
+    "queries": "인재개발원",
+    "candidateCount": 0,
+    "reviewedRecords": 0,
+    "decision": "held",
+    "previousDecision": "인재개발원 잣나무숲 촬영 구간과 이용 허락을 확인한 사진을 확보하지 못함.",
+    "candidates": [],
+    "decisionReason": "인재개발원 잣나무숲 촬영 구간과 이용 허락을 확인한 사진을 확보하지 못함. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c235",
+    "name": "봉산 능선 산책길",
+    "checked": "2026-10-02",
+    "queries": "봉산 증산체육공원",
+    "candidateCount": 92,
+    "reviewedRecords": 92,
+    "decision": "applied",
+    "previousDecision": "확인한 봉산 주변 사진은 촬영 구간과 위치가 불명확해 능선 산책길 사진으로 사용하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/48765",
+        "title": [
+          "증산"
+        ],
+        "shootingPlace": [
+          "증산체육공원"
+        ],
+        "details": [
+          "증산체육공원, 농구장, 축구장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/48766",
+        "title": [
+          "증산"
+        ],
+        "shootingPlace": [
+          "증산체육공원"
+        ],
+        "details": [
+          "증산체육공원, 풋살경기장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63010",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "앵봉산생태놀이터, 봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63009",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "서오릉로, 앵봉산생태놀이터, 봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41332",
+        "title": [
+          "창동역에서도봉산"
+        ],
+        "shootingPlace": [
+          "창동역에서도봉산"
+        ],
+        "details": [
+          "창동역, 창동그린아파트, 동아청솔아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55343",
+        "title": [
+          "봉산 백련산 방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산 백련산 방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/63008",
+        "title": [
+          "서오릉 녹지연결로"
+        ],
+        "shootingPlace": [
+          "앵봉산생태놀이터"
+        ],
+        "details": [
+          "앵봉산생태놀이터"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41334",
+        "title": [
+          "창동역주변(우)도봉산"
+        ],
+        "shootingPlace": [
+          "창동역주변(우)도봉산"
+        ],
+        "details": [
+          "도봉구시설관리공단, 효성상아2차아파트, 창동대림아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/55341",
+        "title": [
+          "봉산 도심부 방향"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산 도심부 방향"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/41335",
+        "title": [
+          "창동역주변(우)도봉산"
+        ],
+        "shootingPlace": [
+          "창동역주변(우)도봉산"
+        ],
+        "details": [
+          "북한산한신플러스아파트, 아이파크아파트, 도봉산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/30431",
+        "title": [
+          "봉산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산, 망월산, 북한산, 창릉천, 덕양구 강매동 280일대, 한국항공대학교(과학관,기계관,전자관), 봉대산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/30432",
+        "title": [
+          "봉산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "봉산, 망월산, 창릉천, 덕양구 강매동 280일대, 한국항공대학교(과학관,기계관,전자관), 봉대산"
+        ]
+      }
+    ],
+    "selected": "https://data.si.re.kr/node/48706",
+    "decisionReason": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시."
+  },
+  {
+    "id": "c233",
+    "name": "청룡산 생태숲길",
+    "checked": "2026-10-02",
+    "queries": "청룡산",
+    "candidateCount": 26,
+    "reviewedRecords": 26,
+    "decision": "held",
+    "previousDecision": "청룡산 검색에 대구의 동명 산 사진이 섞임. 관악구 후보도 주변 시가지 중심으로 채택하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/57394",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 서울여자상업고등학교, 서울문영여자고등학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57399",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "관악구 대학동 801"
+        ],
+        "details": [
+          "청룡산, 서울대입구교차로, 관악로, 서울대학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57393",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 신림로, 서울대입구교차로, 서울대학교(종합운동장)"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57398",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 도림천, 서울신성초등학교, 서울산업정보학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45742",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "관악구청옥상"
+        ],
+        "details": [
+          "생모리츠타운, 서울대입구 아이원 아파트, 청룡산,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57392",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 신림로, 서울대입구교차로, 서울대학교(종합운동장)"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57397",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, e편한세상서울대입구1차아파트, 제일성도교회"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57391",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 신림로, 신림중학교, 삼성중학교, 삼성고등학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45743",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "관악구청옥상"
+        ],
+        "details": [
+          "관악구민회관, 건영6차아파트 관악, 서울대입구 삼성아파트 관악, 갑을아파트 관악, 서울청룡초등학교, 서울관악 경찰서, 청룡산,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57395",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, 관악로, 관악구청, 건영6차아파트, 서울대입구삼성아파트, 서울여자상업고등학교"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57400",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "관악구 대학동 801"
+        ],
+        "details": [
+          "청룡산, 서울대입구교차로, 관악로, 서울대학교, 신림금호타운2차아파트"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/57396",
+        "title": [
+          "청룡산"
+        ],
+        "shootingPlace": [
+          "서울특별시 관악구 낙성대동 1601-4"
+        ],
+        "details": [
+          "청룡산, e편한세상서울대입구1차아파트, 서울대입구풍림아이원아파트, 서울관악초등학교"
+        ]
+      }
+    ],
+    "decisionReason": "청룡산 검색에 대구의 동명 산 사진이 섞임. 관악구 후보도 주변 시가지 중심으로 채택하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  },
+  {
+    "id": "c256",
+    "name": "서울 일자산 치유의 숲길",
+    "checked": "2026-10-02",
+    "queries": "일자산",
+    "candidateCount": 38,
+    "reviewedRecords": 38,
+    "decision": "held",
+    "previousDecision": "일자산 허브천문공원 사진은 별도 치유의 숲 순환 코스 사진으로 대체하지 않음.",
+    "candidates": [
+      {
+        "source": "https://data.si.re.kr/node/45363",
+        "title": [
+          "일자산"
+        ],
+        "shootingPlace": [
+          "일자산"
+        ],
+        "details": [
+          "일자산, 도시농업공원 생태연못, 강동구 도시농업공원,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45365",
+        "title": [
+          "일자산"
+        ],
+        "shootingPlace": [
+          "보훈병원10층병동"
+        ],
+        "details": [
+          "일자산, 동남로, 일자산해맞이공원, 일자산제1체육관,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45364",
+        "title": [
+          "일자산"
+        ],
+        "shootingPlace": [
+          "일자산 앞"
+        ],
+        "details": [
+          "동남로49길, 둔촌2동 일자산 제1도시텃밭, 동남로, 일자산해맞이공원,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45391",
+        "title": [
+          "일자산"
+        ],
+        "shootingPlace": [],
+        "details": [
+          "일자산, 중앙보훈병원, 둔촌신성미소지움, 동남로"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56517",
+        "title": [
+          "강동그린웨이가족캠핑장"
+        ],
+        "shootingPlace": [
+          "천호대로206길"
+        ],
+        "details": [
+          "천호대로206길, 일자산, 일자산가족캠핑장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56516",
+        "title": [
+          "강동그린웨이가족캠핑장"
+        ],
+        "shootingPlace": [
+          "천호대로206길"
+        ],
+        "details": [
+          "동남로, 천호대로206길, 일자산, 일자산가족캠핑장"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56431",
+        "title": [
+          "둔촌동주공아파트"
+        ],
+        "shootingPlace": [
+          "양재대로"
+        ],
+        "details": [
+          "양재대로, 일자산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/61898",
+        "title": [
+          "잠실대교"
+        ],
+        "shootingPlace": [
+          "한강"
+        ],
+        "details": [
+          "잠실대교, 일자산"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/45359",
+        "title": [
+          "일자산해맞이공원 잔디광장"
+        ],
+        "shootingPlace": [
+          "둔촌프라자아파트 3동"
+        ],
+        "details": [
+          "일자산해맞이공원,일자산해맞이공원 잔디광장, 일자산제1체육관, 일자산, 동남로,"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56329",
+        "title": [
+          "강동그린웨이"
+        ],
+        "shootingPlace": [
+          "일자산자연공원내부"
+        ],
+        "details": [
+          "서울 강동구 천호대로206길 92 일자산자연공원내"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/39803",
+        "title": [
+          "강남대로"
+        ],
+        "shootingPlace": [
+          "강남대로"
+        ],
+        "details": [
+          "미디어폴, U-street, 자산관리공사본관, 흥국생명빌딩"
+        ]
+      },
+      {
+        "source": "https://data.si.re.kr/node/56520",
+        "title": [
+          "일자산도시농업공원"
+        ],
+        "shootingPlace": [
+          "동남로"
+        ],
+        "details": [
+          "동남로, 일자산, 강동구도시농업공원, 일자산제1체육관"
+        ]
+      }
+    ],
+    "decisionReason": "일자산 허브천문공원 사진은 별도 치유의 숲 순환 코스 사진으로 대체하지 않음. 경유지·별칭으로 원자료 재검색했으나 정확한 촬영 구간을 확인한 추가 사진 없음."
+  }
+]

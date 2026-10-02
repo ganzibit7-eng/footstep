@@ -1304,5 +1304,221 @@
     "checked": "2026-10-02",
     "width": 960,
     "height": 640
+  },
+  {
+    "courses": {
+      "c245": "서울 호암산 능선길"
+    },
+    "src": "/assets/course-photos/c245.webp",
+    "place": "호암산 능선길 경유지 · 호암산성 석구상 주변",
+    "date": "2014-11",
+    "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/46162",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05H03701Ca0000.jpg",
+    "title": "호암산성 터 · 05H03701Ca0000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 600,
+    "height": 401
+  },
+  {
+    "courses": {
+      "c247": "서울 문화비축기지 산책로"
+    },
+    "src": "/assets/course-photos/c247.webp",
+    "place": "문화비축기지 내부 야외 공원",
+    "date": "2020-03",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/60032",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06M02709Ac80000.jpg",
+    "title": "문화비축기지 · 06M02709Ac80000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 600
+  },
+  {
+    "courses": {
+      "c265": "서울 독산 자락길"
+    },
+    "src": "/assets/course-photos/c265.webp",
+    "place": "독산 자락길 경유지 · 금천체육공원 산책로",
+    "date": "2020-01",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/58089",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06H01306Ac80000.jpg",
+    "title": "금천체육공원 · 06H01306Ac80000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 600
+  },
+  {
+    "courses": {
+      "c267": "서울 까치산길"
+    },
+    "src": "/assets/course-photos/c267.webp",
+    "place": "까치산근린공원 솔밭로 65 일대 산책로",
+    "date": "2015-01",
+    "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/photo/05L00803Ac1000",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05L00803Ac1000.jpg",
+    "title": "까치산근린공원 · 05L00803Ac1000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 600,
+    "height": 401
+  },
+  {
+    "courses": {
+      "c285": "서울 호압사 산책길"
+    },
+    "src": "/assets/course-photos/c285.webp",
+    "place": "호압사 산책길 경유지 · 호압사 경내",
+    "date": "2014-11",
+    "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/46167",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05H03802Ca0000.jpg",
+    "title": "호압사 · 05H03802Ca0000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 601
+  },
+  {
+    "courses": {
+      "c291": "서울 벚꽃십리길"
+    },
+    "src": "/assets/course-photos/c291.webp",
+    "place": "벚꽃십리길 신정교 북측 · 안양천생태공원 겨울 풍경",
+    "date": "2020-02",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/62144",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06S02111Ac80000.jpg",
+    "title": "안양천생태공원 · 06S02111Ac80000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 600
+  },
+  {
+    "courses": {
+      "c295": "서울 공암나루길"
+    },
+    "src": "/assets/course-photos/c295.webp",
+    "place": "공암나루길 경유지 · 허가바위 옆 산책로",
+    "date": "2020-01",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/57146",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06D05106Ab40000.jpg",
+    "title": "허가바위 · 06D05106Ab40000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 600
+  },
+  {
+    "courses": {
+      "c302": "서울 우이천"
+    },
+    "src": "/assets/course-photos/c302.webp",
+    "place": "우이천 쌍한교 주변 수변 산책공간",
+    "date": "2020-04",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/56798",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06C03511Bb42000.jpg",
+    "title": "우이천 · 06C03511Bb42000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 605
+  },
+  {
+    "courses": {
+      "c306": "서울 영등포 수변둘레길"
+    },
+    "src": "/assets/course-photos/c306.webp",
+    "place": "영등포 수변둘레길 · 안양천 목동교 부근 벚꽃 둑방길",
+    "date": "2015-04",
+    "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/48386",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05T02701Bb6000.jpg",
+    "title": "안양천 · 05T02701Bb6000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 601
+  },
+  {
+    "courses": {
+      "c307": "서울 염창산 산책길"
+    },
+    "src": "/assets/course-photos/c307.webp",
+    "place": "염창산 염창공원 숲길",
+    "date": "2009-12",
+    "author": "서울 2009/2010 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/40499",
+    "original": "https://data.si.re.kr/sites/default/files/photos/04D01402ac2000.jpg",
+    "title": "염창공원 · 04D01402ac2000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 600,
+    "height": 399
+  },
+  {
+    "courses": {
+      "c228": "청와대 앞길"
+    },
+    "src": "/assets/course-photos/c228.webp",
+    "place": "청와대로 보행로 · 청와대 앞길",
+    "date": "2020-02",
+    "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/63784",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06W09207Dc70000.jpg",
+    "title": "청와대앞길 · 06W09207Dc70000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 900,
+    "height": 600
+  },
+  {
+    "courses": {
+      "c235": "봉산 능선 산책길"
+    },
+    "src": "/assets/course-photos/c235.webp",
+    "place": "봉산 능선 산책길 경유지 · 봉산정 주변 전망광장",
+    "date": "2015-03",
+    "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://data.si.re.kr/node/48706",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05V01001Ad2000.jpg",
+    "title": "봉산도시자연공원 · 05V01001Ad2000",
+    "changes": "웹용 축소·WebP 변환",
+    "checked": "2026-10-02",
+    "width": 600,
+    "height": 401
   }
 ]

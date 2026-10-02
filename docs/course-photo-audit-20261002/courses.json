@@ -1,9 +1,9 @@
 {
   "checked": "2026-10-02",
   "totalCourses": 116,
-  "appliedCourses": 82,
-  "heldCourses": 34,
-  "uniquePhotos": 72,
+  "appliedCourses": 94,
+  "heldCourses": 22,
+  "uniquePhotos": 84,
   "courses": [
     {
       "id": "c238",
@@ -275,7 +275,7 @@
       "id": "c245",
       "name": "서울 호암산 능선길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "호암산 능선길",
         "호암산",
@@ -287,8 +287,34 @@
         "깔딱고개",
         "석구상"
       ],
-      "photo": null,
-      "decision": "호암산 주변 도시 전경·사찰 후보는 능선 숲길 사진으로 채택하지 않음."
+      "photo": {
+        "courses": {
+          "c245": "서울 호암산 능선길"
+        },
+        "src": "/assets/course-photos/c245.webp",
+        "place": "호암산 능선길 경유지 · 호암산성 석구상 주변",
+        "date": "2014-11",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/46162",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05H03701Ca0000.jpg",
+        "title": "호암산성 터 · 05H03701Ca0000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c245",
+        "name": "서울 호암산 능선길",
+        "checked": "2026-10-02",
+        "queries": "호암산 호압사",
+        "candidateCount": 97,
+        "reviewedRecords": 97,
+        "decision": "applied"
+      }
     },
     {
       "id": "c246",
@@ -331,7 +357,7 @@
       "id": "c247",
       "name": "서울 문화비축기지 산책로",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "문화비축기지 산책로",
         "문화비축기지",
@@ -347,8 +373,34 @@
         "T1",
         "T6"
       ],
-      "photo": null,
-      "decision": "개별 이용 조건은 확인했으나 탱크·현대 건축물 중심 후보는 이번 산책로 사진 선정에서 보류."
+      "photo": {
+        "courses": {
+          "c247": "서울 문화비축기지 산책로"
+        },
+        "src": "/assets/course-photos/c247.webp",
+        "place": "문화비축기지 내부 야외 공원",
+        "date": "2020-03",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/60032",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06M02709Ac80000.jpg",
+        "title": "문화비축기지 · 06M02709Ac80000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c247",
+        "name": "서울 문화비축기지 산책로",
+        "checked": "2026-10-02",
+        "queries": "문화비축기지",
+        "candidateCount": 13,
+        "reviewedRecords": 13,
+        "decision": "applied"
+      }
     },
     {
       "id": "c248",
@@ -401,7 +453,16 @@
         "우면산 자연생태공원(우면동 산34-1 등)"
       ],
       "photo": null,
-      "decision": "우면산 자연생태공원 코스이며 강서 생태공원 사진은 다른 장소라 제외. 확인한 우면산 사진은 도로·시가지 중심으로 채택하지 않음."
+      "decision": "우면산 자연생태공원 코스이며 강서 생태공원 사진은 다른 장소라 제외. 확인한 우면산 사진은 도로·시가지 중심으로 채택하지 않음.",
+      "followupResearch": {
+        "id": "c249",
+        "name": "서울 생태공원 둘레길",
+        "checked": "2026-10-02",
+        "queries": "우면산자연생태공원 우면산",
+        "candidateCount": 123,
+        "reviewedRecords": 123,
+        "decision": "held"
+      }
     },
     {
       "id": "c250",
@@ -462,7 +523,16 @@
         "불암산생태학습관 (순환형)"
       ],
       "photo": null,
-      "decision": "불암산의 다른 둘레길 사진은 확인했으나 생태학습관 순환 자락길과 촬영 구간이 다름."
+      "decision": "불암산의 다른 둘레길 사진은 확인했으나 생태학습관 순환 자락길과 촬영 구간이 다름.",
+      "followupResearch": {
+        "id": "c251",
+        "name": "서울 불암산 자락길",
+        "checked": "2026-10-02",
+        "queries": "불암산 생태학습관",
+        "candidateCount": 145,
+        "reviewedRecords": 145,
+        "decision": "held"
+      }
     },
     {
       "id": "c252",
@@ -764,7 +834,16 @@
         "관천교회"
       ],
       "photo": null,
-      "decision": "선우생태공원·산울림다리 구간에 맞는 재사용 허용 사진을 확보하지 못함."
+      "decision": "선우생태공원·산울림다리 구간에 맞는 재사용 허용 사진을 확보하지 못함.",
+      "followupResearch": {
+        "id": "c260",
+        "name": "서울 미성동 둘레길",
+        "checked": "2026-10-02",
+        "queries": "미성동 선우공원 선우생태공원 산울림다리",
+        "candidateCount": 4,
+        "reviewedRecords": 4,
+        "decision": "held"
+      }
     },
     {
       "id": "c261",
@@ -892,13 +971,22 @@
         "망우산 삼거리 북카페"
       ],
       "photo": null,
-      "decision": "공동묘지 도로·개별 묘역 후보는 사색의길 숲길 사진으로 채택하지 않음."
+      "decision": "공동묘지 도로·개별 묘역 후보는 사색의길 숲길 사진으로 채택하지 않음.",
+      "followupResearch": {
+        "id": "c264",
+        "name": "서울 망우산 사색의길",
+        "checked": "2026-10-02",
+        "queries": "망우리 망우산",
+        "candidateCount": 378,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c265",
       "name": "서울 독산 자락길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "독산 자락길",
         "독산",
@@ -913,8 +1001,34 @@
         "산기슭공원",
         "호압사"
       ],
-      "photo": null,
-      "decision": "독산자연공원 후보는 주변 도시 전경 중심이며 자락길 촬영 구간을 확인하지 못함."
+      "photo": {
+        "courses": {
+          "c265": "서울 독산 자락길"
+        },
+        "src": "/assets/course-photos/c265.webp",
+        "place": "독산 자락길 경유지 · 금천체육공원 산책로",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/58089",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06H01306Ac80000.jpg",
+        "title": "금천체육공원 · 06H01306Ac80000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c265",
+        "name": "서울 독산 자락길",
+        "checked": "2026-10-02",
+        "queries": "독산 감로천 금천체육공원",
+        "candidateCount": 132,
+        "reviewedRecords": 132,
+        "decision": "applied"
+      }
     },
     {
       "id": "c266",
@@ -936,13 +1050,22 @@
         "대모산 입구"
       ],
       "photo": null,
-      "decision": "대모산 정상·수서동 입구 사진을 일원동 숲길로 오인하지 않도록 제외."
+      "decision": "대모산 정상·수서동 입구 사진을 일원동 숲길로 오인하지 않도록 제외.",
+      "followupResearch": {
+        "id": "c266",
+        "name": "서울 대모산 숲길",
+        "checked": "2026-10-02",
+        "queries": "대모산 불국사 일원터널",
+        "candidateCount": 170,
+        "reviewedRecords": 170,
+        "decision": "held"
+      }
     },
     {
       "id": "c267",
       "name": "서울 까치산길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "까치산길",
         "Kkachisan Seoul"
@@ -955,8 +1078,34 @@
         "삼익그린뷰 아파트",
         "까치산 진입 데크(까치산 생태육교)"
       ],
-      "photo": null,
-      "decision": "화곡동 까치산역 사진은 관악구 까치산길과 다른 장소라 제외. 관악권 후보는 도로·건물 중심."
+      "photo": {
+        "courses": {
+          "c267": "서울 까치산길"
+        },
+        "src": "/assets/course-photos/c267.webp",
+        "place": "까치산근린공원 솔밭로 65 일대 산책로",
+        "date": "2015-01",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/photo/05L00803Ac1000",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05L00803Ac1000.jpg",
+        "title": "까치산근린공원 · 05L00803Ac1000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c267",
+        "name": "서울 까치산길",
+        "checked": "2026-10-02",
+        "queries": "까치산 솔밭로",
+        "candidateCount": 62,
+        "reviewedRecords": 62,
+        "decision": "applied"
+      }
     },
     {
       "id": "c268",
@@ -1170,7 +1319,16 @@
         "덕원여고 정문"
       ],
       "photo": null,
-      "decision": "확인한 수명산 사진은 주변 시가지 전경이며 숲속 탐방로 사진으로 확인되지 않음."
+      "decision": "확인한 수명산 사진은 주변 시가지 전경이며 숲속 탐방로 사진으로 확인되지 않음.",
+      "followupResearch": {
+        "id": "c273",
+        "name": "서울 수명산 숲속 탐방로",
+        "checked": "2026-10-02",
+        "queries": "수명산 덕원",
+        "candidateCount": 16,
+        "reviewedRecords": 16,
+        "decision": "held"
+      }
     },
     {
       "id": "c274",
@@ -1227,7 +1385,16 @@
         "은평터널로5길"
       ],
       "photo": null,
-      "decision": "봉산 주변 전경·봉수대 사진을 팥배나무 군락 관찰로 사진으로 대체하지 않음."
+      "decision": "봉산 주변 전경·봉수대 사진을 팥배나무 군락 관찰로 사진으로 대체하지 않음.",
+      "followupResearch": {
+        "id": "c275",
+        "name": "서울 봉산 팥배나무길",
+        "checked": "2026-10-02",
+        "queries": "봉산 팥배나무",
+        "candidateCount": 84,
+        "reviewedRecords": 84,
+        "decision": "held"
+      }
     },
     {
       "id": "c276",
@@ -1243,7 +1410,16 @@
         "희망의 숲 → 메타세쿼이아길"
       ],
       "photo": null,
-      "decision": "난지한강공원·하늘공원 사진은 메타세쿼이아길 자체의 촬영 지점으로 확인되지 않아 제외."
+      "decision": "난지한강공원·하늘공원 사진은 메타세쿼이아길 자체의 촬영 지점으로 확인되지 않아 제외.",
+      "followupResearch": {
+        "id": "c276",
+        "name": "서울 월드컵공원 메타세쿼이아길",
+        "checked": "2026-10-02",
+        "queries": "메타세쿼이아",
+        "candidateCount": 0,
+        "reviewedRecords": 0,
+        "decision": "held"
+      }
     },
     {
       "id": "c277",
@@ -1421,7 +1597,16 @@
         "여래사 → 용화사 → 숲속유치원 → 대덕사 → 대성사 → 홍법사 → 북악골프연습장 → 봉국사"
       ],
       "photo": null,
-      "decision": "이 코스는 북악산 일대 사찰길이며 진관사·은평구 북한산 사진은 다른 장소라 제외."
+      "decision": "이 코스는 북악산 일대 사찰길이며 진관사·은평구 북한산 사진은 다른 장소라 제외.",
+      "followupResearch": {
+        "id": "c281",
+        "name": "서울 산사길",
+        "checked": "2026-10-02",
+        "queries": "여래사 봉국사 대성사",
+        "candidateCount": 1,
+        "reviewedRecords": 1,
+        "decision": "held"
+      }
     },
     {
       "id": "c282",
@@ -1440,7 +1625,16 @@
         "수락산 숲속교실"
       ],
       "photo": null,
-      "decision": "수락산 정상·벽운계곡 사진은 천상병문화마당~숲속교실 구간으로 확인되지 않아 제외."
+      "decision": "수락산 정상·벽운계곡 사진은 천상병문화마당~숲속교실 구간으로 확인되지 않아 제외.",
+      "followupResearch": {
+        "id": "c282",
+        "name": "서울 천상병산길",
+        "checked": "2026-10-02",
+        "queries": "천상병",
+        "candidateCount": 0,
+        "reviewedRecords": 0,
+        "decision": "held"
+      }
     },
     {
       "id": "c283",
@@ -1534,7 +1728,7 @@
       "id": "c285",
       "name": "서울 호압사 산책길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "호압사 산책길",
         "호압사",
@@ -1546,8 +1740,34 @@
         "잣나무 산림욕장",
         "석수역"
       ],
-      "photo": null,
-      "decision": "사찰·불상 중심 후보를 숲길 사진으로 채택하지 않음."
+      "photo": {
+        "courses": {
+          "c285": "서울 호압사 산책길"
+        },
+        "src": "/assets/course-photos/c285.webp",
+        "place": "호압사 산책길 경유지 · 호압사 경내",
+        "date": "2014-11",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/46167",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05H03802Ca0000.jpg",
+        "title": "호압사 · 05H03802Ca0000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 601
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c285",
+        "name": "서울 호압사 산책길",
+        "checked": "2026-10-02",
+        "queries": "호압사 잣나무",
+        "candidateCount": 13,
+        "reviewedRecords": 13,
+        "decision": "applied"
+      }
     },
     {
       "id": "c286",
@@ -1734,7 +1954,7 @@
       "id": "c291",
       "name": "서울 벚꽃십리길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "벚꽃십리길",
         "안양천 벚꽃",
@@ -1748,8 +1968,34 @@
         "오목교",
         "신목동역"
       ],
-      "photo": null,
-      "decision": "확인한 안양천 사진은 금천구 구간으로 양천구 벚꽃십리길과 다름."
+      "photo": {
+        "courses": {
+          "c291": "서울 벚꽃십리길"
+        },
+        "src": "/assets/course-photos/c291.webp",
+        "place": "벚꽃십리길 신정교 북측 · 안양천생태공원 겨울 풍경",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/62144",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06S02111Ac80000.jpg",
+        "title": "안양천생태공원 · 06S02111Ac80000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c291",
+        "name": "서울 벚꽃십리길",
+        "checked": "2026-10-02",
+        "queries": "오금교 신정교 오목교",
+        "candidateCount": 128,
+        "reviewedRecords": 128,
+        "decision": "applied"
+      }
     },
     {
       "id": "c292",
@@ -1809,7 +2055,16 @@
         "아차산 능선"
       ],
       "photo": null,
-      "decision": "용마산 정상·아차산 다른 보루 사진은 긴고랑길 촬영 구간으로 확인되지 않아 보류."
+      "decision": "용마산 정상·아차산 다른 보루 사진은 긴고랑길 촬영 구간으로 확인되지 않아 보류.",
+      "followupResearch": {
+        "id": "c293",
+        "name": "서울 긴고랑길",
+        "checked": "2026-10-02",
+        "queries": "긴고랑",
+        "candidateCount": 14,
+        "reviewedRecords": 14,
+        "decision": "held"
+      }
     },
     {
       "id": "c294",
@@ -1852,7 +2107,7 @@
       "id": "c295",
       "name": "서울 공암나루길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "공암나루길",
         "공암나루",
@@ -1866,8 +2121,34 @@
         "허가바위",
         "양천향교역"
       ],
-      "photo": null,
-      "decision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음."
+      "photo": {
+        "courses": {
+          "c295": "서울 공암나루길"
+        },
+        "src": "/assets/course-photos/c295.webp",
+        "place": "공암나루길 경유지 · 허가바위 옆 산책로",
+        "date": "2020-01",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/57146",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06D05106Ab40000.jpg",
+        "title": "허가바위 · 06D05106Ab40000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c295",
+        "name": "서울 공암나루길",
+        "checked": "2026-10-02",
+        "queries": "공암나루 허가바위 구암공원",
+        "candidateCount": 10,
+        "reviewedRecords": 10,
+        "decision": "applied"
+      }
     },
     {
       "id": "c296",
@@ -2038,7 +2319,16 @@
         "이화교"
       ],
       "photo": null,
-      "decision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음."
+      "decision": "이번 조사에서 경로·장소와 재사용 조건을 함께 충족하는 산책로 사진을 확보하지 못함. 다른 장소 또는 권리 상태 미확인 사진은 사용하지 않음.",
+      "followupResearch": {
+        "id": "c300",
+        "name": "서울 장미테마길 중랑천",
+        "checked": "2026-10-02",
+        "queries": "묵동교 이화교 장미정원",
+        "candidateCount": 244,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c301",
@@ -2081,7 +2371,7 @@
       "id": "c302",
       "name": "서울 우이천",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "우이천",
         "Uicheon"
@@ -2093,8 +2383,34 @@
         "신창교",
         "월계2교"
       ],
-      "photo": null,
-      "decision": "확인한 우이천 사진은 근화교~월계2교 촬영 구간으로 대조되지 않아 보류."
+      "photo": {
+        "courses": {
+          "c302": "서울 우이천"
+        },
+        "src": "/assets/course-photos/c302.webp",
+        "place": "우이천 쌍한교 주변 수변 산책공간",
+        "date": "2020-04",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/56798",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06C03511Bb42000.jpg",
+        "title": "우이천 · 06C03511Bb42000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 605
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c302",
+        "name": "서울 우이천",
+        "checked": "2026-10-02",
+        "queries": "우이천 쌍한교",
+        "candidateCount": 91,
+        "reviewedRecords": 91,
+        "decision": "applied"
+      }
     },
     {
       "id": "c303",
@@ -2112,7 +2428,16 @@
         "망우 사색의 길"
       ],
       "photo": null,
-      "decision": "용마산 정상의 암릉 사진은 면목동 복지센터~망우산 자락길과 다름."
+      "decision": "용마산 정상의 암릉 사진은 면목동 복지센터~망우산 자락길과 다름.",
+      "followupResearch": {
+        "id": "c303",
+        "name": "서울 용마산 자락길",
+        "checked": "2026-10-02",
+        "queries": "용마산 망우사색",
+        "candidateCount": 224,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c304",
@@ -2201,7 +2526,7 @@
       "id": "c306",
       "name": "서울 영등포 수변둘레길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "영등포 수변둘레길",
         "안양천 영등포",
@@ -2214,14 +2539,40 @@
         "안양천(양화교)",
         "한강합수부"
       ],
-      "photo": null,
-      "decision": "확인한 안양천 사진은 금천구 구간으로 영등포 신정교~한강 합수부 구간과 다름."
+      "photo": {
+        "courses": {
+          "c306": "서울 영등포 수변둘레길"
+        },
+        "src": "/assets/course-photos/c306.webp",
+        "place": "영등포 수변둘레길 · 안양천 목동교 부근 벚꽃 둑방길",
+        "date": "2015-04",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/48386",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05T02701Bb6000.jpg",
+        "title": "안양천 · 05T02701Bb6000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 601
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c306",
+        "name": "서울 영등포 수변둘레길",
+        "checked": "2026-10-02",
+        "queries": "신정교 목동교 양화교",
+        "candidateCount": 268,
+        "reviewedRecords": 200,
+        "decision": "applied"
+      }
     },
     {
       "id": "c307",
       "name": "서울 염창산 산책길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "염창산 산책길",
         "염창산",
@@ -2235,8 +2586,34 @@
         "정상부",
         "한강방면 산책로"
       ],
-      "photo": null,
-      "decision": "안양천·한강 전경을 염창산 산책길 사진으로 대체하지 않음."
+      "photo": {
+        "courses": {
+          "c307": "서울 염창산 산책길"
+        },
+        "src": "/assets/course-photos/c307.webp",
+        "place": "염창산 염창공원 숲길",
+        "date": "2009-12",
+        "author": "서울 2009/2010 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/40499",
+        "original": "https://data.si.re.kr/sites/default/files/photos/04D01402ac2000.jpg",
+        "title": "염창공원 · 04D01402ac2000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 399
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c307",
+        "name": "서울 염창산 산책길",
+        "checked": "2026-10-02",
+        "queries": "염창산",
+        "candidateCount": 112,
+        "reviewedRecords": 112,
+        "decision": "applied"
+      }
     },
     {
       "id": "c308",
@@ -2328,7 +2705,16 @@
         "동막골 국궁장(수락정)"
       ],
       "photo": null,
-      "decision": "수락산 정상·벽운계곡 사진을 동막골 국궁장~수암사 코스에 대체하지 않음."
+      "decision": "수락산 정상·벽운계곡 사진을 동막골 국궁장~수암사 코스에 대체하지 않음.",
+      "followupResearch": {
+        "id": "c310",
+        "name": "서울 수락산 동막골길",
+        "checked": "2026-10-02",
+        "queries": "수락정 수암사 동막골",
+        "candidateCount": 475,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c311",
@@ -2550,7 +2936,16 @@
         "호압사"
       ],
       "photo": null,
-      "decision": "관악산의 다른 구간·호수공원 사진을 보덕사~삼성산성지 등 경로 사진으로 대체하지 않음."
+      "decision": "관악산의 다른 구간·호수공원 사진을 보덕사~삼성산성지 등 경로 사진으로 대체하지 않음.",
+      "followupResearch": {
+        "id": "c316",
+        "name": "서울 관악산 도란도란 걷는 길",
+        "checked": "2026-10-02",
+        "queries": "관악산 보덕사 삼성산성지",
+        "candidateCount": 301,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c317",
@@ -2647,7 +3042,16 @@
         "관리사무소"
       ],
       "photo": null,
-      "decision": "망우리의 다른 묘역·놀이시설 후보를 사잇길 탐방 구간으로 대체하지 않음."
+      "decision": "망우리의 다른 묘역·놀이시설 후보를 사잇길 탐방 구간으로 대체하지 않음.",
+      "followupResearch": {
+        "id": "c319",
+        "name": "서울 망우리 사잇길",
+        "checked": "2026-10-02",
+        "queries": "망우리 사잇길",
+        "candidateCount": 243,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c320",
@@ -3028,7 +3432,16 @@
         "우정의공원"
       ],
       "photo": null,
-      "decision": "북악산 창의문·성곽 사진은 성북공원 하늘한마당~우정의공원 코스와 촬영 구간이 다름."
+      "decision": "북악산 창의문·성곽 사진은 성북공원 하늘한마당~우정의공원 코스와 촬영 구간이 다름.",
+      "followupResearch": {
+        "id": "c329",
+        "name": "서울 북악산 하늘길",
+        "checked": "2026-10-02",
+        "queries": "북악산 하늘한마당 우정의공원",
+        "candidateCount": 446,
+        "reviewedRecords": 200,
+        "decision": "held"
+      }
     },
     {
       "id": "c330",
@@ -3158,7 +3571,16 @@
         "호암2터널 입구"
       ],
       "photo": null,
-      "decision": "관악산 시흥계곡·호암2터널 구간 촬영 사진의 이용 허락과 장소를 확인하지 못함."
+      "decision": "관악산 시흥계곡·호암2터널 구간 촬영 사진의 이용 허락과 장소를 확인하지 못함.",
+      "followupResearch": {
+        "id": "c333",
+        "name": "서울 관악산 시흥계곡 숲길",
+        "checked": "2026-10-02",
+        "queries": "시흥계곡 호암2터널",
+        "candidateCount": 1,
+        "reviewedRecords": 1,
+        "decision": "held"
+      }
     },
     {
       "id": "c237",
@@ -3253,13 +3675,22 @@
         "대모산 능선"
       ],
       "photo": null,
-      "decision": "대모산 정상·수서동 등산로 입구 사진은 확보했으나 이 코스의 강남 보금자리 5단지·능선 구간과 촬영 지점을 확인하지 못함."
+      "decision": "대모산 정상·수서동 등산로 입구 사진은 확보했으나 이 코스의 강남 보금자리 5단지·능선 구간과 촬영 지점을 확인하지 못함.",
+      "followupResearch": {
+        "id": "c224",
+        "name": "대모산 숲이 좋은 길",
+        "checked": "2026-10-02",
+        "queries": "대모산 보금자리",
+        "candidateCount": 191,
+        "reviewedRecords": 191,
+        "decision": "held"
+      }
     },
     {
       "id": "c228",
       "name": "청와대 앞길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "청와대 앞길",
         "Cheongwadae road"
@@ -3272,8 +3703,34 @@
         "공근혜갤러리",
         "삼청동 주민센터"
       ],
-      "photo": null,
-      "decision": "청와대 건물·근위병 중심 후보는 앞길 산책 사진으로 채택하지 않음."
+      "photo": {
+        "courses": {
+          "c228": "청와대 앞길"
+        },
+        "src": "/assets/course-photos/c228.webp",
+        "place": "청와대로 보행로 · 청와대 앞길",
+        "date": "2020-02",
+        "author": "서울 2019/2020 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/63784",
+        "original": "https://data.si.re.kr/sites/default/files/photos6/06W09207Dc70000.jpg",
+        "title": "청와대앞길 · 06W09207Dc70000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 900,
+        "height": 600
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c228",
+        "name": "청와대 앞길",
+        "checked": "2026-10-02",
+        "queries": "청와대앞길 무궁화동산 청와대로",
+        "candidateCount": 71,
+        "reviewedRecords": 71,
+        "decision": "applied"
+      }
     },
     {
       "id": "c232",
@@ -3297,7 +3754,16 @@
         "종합운동장"
       ],
       "photo": null,
-      "decision": "인재개발원 잣나무숲 촬영 구간과 이용 허락을 확인한 사진을 확보하지 못함."
+      "decision": "인재개발원 잣나무숲 촬영 구간과 이용 허락을 확인한 사진을 확보하지 못함.",
+      "followupResearch": {
+        "id": "c232",
+        "name": "인재개발원 잣나무숲길",
+        "checked": "2026-10-02",
+        "queries": "인재개발원",
+        "candidateCount": 0,
+        "reviewedRecords": 0,
+        "decision": "held"
+      }
     },
     {
       "id": "c225",
@@ -3428,7 +3894,7 @@
       "id": "c235",
       "name": "봉산 능선 산책길",
       "checked": "2026-10-02",
-      "status": "held",
+      "status": "applied",
       "commonsQueries": [
         "봉산 능선 산책길",
         "봉산 능선",
@@ -3441,8 +3907,34 @@
         "봉산정",
         "서오릉고개"
       ],
-      "photo": null,
-      "decision": "확인한 봉산 주변 사진은 촬영 구간과 위치가 불명확해 능선 산책길 사진으로 사용하지 않음."
+      "photo": {
+        "courses": {
+          "c235": "봉산 능선 산책길"
+        },
+        "src": "/assets/course-photos/c235.webp",
+        "place": "봉산 능선 산책길 경유지 · 봉산정 주변 전망광장",
+        "date": "2015-03",
+        "author": "서울 2014/2015 도시형태와 경관, 서울특별시 · 서울연구원",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "source": "https://data.si.re.kr/node/48706",
+        "original": "https://data.si.re.kr/sites/default/files/photos/05V01001Ad2000.jpg",
+        "title": "봉산도시자연공원 · 05V01001Ad2000",
+        "changes": "웹용 축소·WebP 변환",
+        "checked": "2026-10-02",
+        "width": 600,
+        "height": 401
+      },
+      "decision": "2026-10-02 재조사: 개별 공공누리 제1유형·CC BY 4.0 표시와 촬영 위치 확인. 실제 경유지 사진은 캡션으로 구별. 계절·촬영 연월 표시.",
+      "followupResearch": {
+        "id": "c235",
+        "name": "봉산 능선 산책길",
+        "checked": "2026-10-02",
+        "queries": "봉산 증산체육공원",
+        "candidateCount": 92,
+        "reviewedRecords": 92,
+        "decision": "applied"
+      }
     },
     {
       "id": "c234",
@@ -3504,7 +3996,16 @@
         "청룡산 동네뒷산공원"
       ],
       "photo": null,
-      "decision": "청룡산 검색에 대구의 동명 산 사진이 섞임. 관악구 후보도 주변 시가지 중심으로 채택하지 않음."
+      "decision": "청룡산 검색에 대구의 동명 산 사진이 섞임. 관악구 후보도 주변 시가지 중심으로 채택하지 않음.",
+      "followupResearch": {
+        "id": "c233",
+        "name": "청룡산 생태숲길",
+        "checked": "2026-10-02",
+        "queries": "청룡산",
+        "candidateCount": 26,
+        "reviewedRecords": 26,
+        "decision": "held"
+      }
     },
     {
       "id": "c226",
@@ -3891,7 +4392,16 @@
         "일자산 치유의 숲길 입구"
       ],
       "photo": null,
-      "decision": "일자산 허브천문공원 사진은 별도 치유의 숲 순환 코스 사진으로 대체하지 않음."
+      "decision": "일자산 허브천문공원 사진은 별도 치유의 숲 순환 코스 사진으로 대체하지 않음.",
+      "followupResearch": {
+        "id": "c256",
+        "name": "서울 일자산 치유의 숲길",
+        "checked": "2026-10-02",
+        "queries": "일자산",
+        "candidateCount": 38,
+        "reviewedRecords": 38,
+        "decision": "held"
+      }
     }
   ]
 }
