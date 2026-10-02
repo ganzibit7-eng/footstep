@@ -1689,6 +1689,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 .map-extra-filters{border-top:1px dashed var(--line);background:var(--paper)}.map-extra-filters>summary{list-style:none;cursor:pointer;min-height:48px;padding:14px 18px;color:var(--pine-deep);font:14px/1.5 'Jua',sans-serif}.map-extra-filters>summary::-webkit-details-marker{display:none}.map-extra-filters>summary:after{content:'＋';float:right;font:18px 'Jua',sans-serif}.map-extra-filters[open]>summary:after{content:'−'}.map-extra-filters .map-toolbar{padding:10px 16px 16px;flex-wrap:wrap}.map-filter-reset{margin-left:auto}.walk-share-button{width:100%;min-height:48px;margin:10px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--sand);color:var(--pine-deep);font:15px 'Jua',sans-serif;cursor:pointer}.walk-share-button:disabled{opacity:.6;cursor:wait}.walk-share-note{font:12px/1.5 'Sunflower',sans-serif;color:var(--muted-text);margin:6px 0 0}
 @media(max-width:700px){.map-filter-reset{margin-left:0}.map-extra-filters>summary{font-size:15px}.map-extra-filters .map-toolbar{gap:8px}.map-extra-filters #poi-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.map-extra-filters #poi-group .chip{min-height:44px}.map-extra-filters #poi-search-btn{min-height:46px;width:100%}.map-toolbar #view-filter-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.map-toolbar #view-filter-group .chip{min-height:44px;justify-content:center;padding:8px 6px}.map-toolbar #map-filter-note{display:block;width:100%}}
 </style>
+<style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}</style>
 </head>
 <body>
 
@@ -2715,6 +2716,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </div>
 
+<script src="course-photos.js?v=20261002-1"></script>
 <script src="course-info.js?v=20261001-2"></script>
 <script src="course-routes.js?v=20261002-2"></script>
 <script>
@@ -4259,8 +4261,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         if(e.target.closest('button') || e.target.closest('a') || e.target.closest('.member-link')) return;
         openCourseDetail(c.id);
       });
-      const photo=reviewsFor(c.id).map(r=>safePublicImageUrl(r.photoUrl)).find(Boolean);
-      if(photo){const img=document.createElement('img');img.className='course-real-photo';img.src=photo;img.alt=c.name+' 이용자 사진';img.loading='lazy';img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';},{once:true});card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent='이용자 산책 사진';}
+      const curatedPhoto=CoursePhotos.get(c);
+      const photo=reviewsFor(c.id).map(r=>safePublicImageUrl(r.photoUrl)).find(Boolean) || curatedPhoto?.src;
+      if(photo){
+        const isCurated=photo===curatedPhoto?.src;
+        const img=document.createElement('img');img.className='course-real-photo';img.src=photo;
+        img.alt=isCurated?curatedPhoto.place+' 실제 사진 ('+curatedPhoto.date+')':c.name+' 이용자 사진';img.loading='lazy';img.decoding='async';
+        img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';card.querySelector('.course-photo-credit')?.remove();},{once:true});
+        card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?'실제 장소 사진 · '+curatedPhoto.date.slice(0,4):'이용자 산책 사진';
+        if(isCurated){const credit=document.createElement('div');credit.className='course-photo-credit';credit.innerHTML=CoursePhotos.credit(curatedPhoto);card.querySelector('.card-body').append(credit);}
+      }
       containerEl.appendChild(card);
     });
     containerEl.querySelectorAll('[data-compare-course]').forEach(btn=>btn.addEventListener('click',()=>toggleCourseComparison(btn.dataset.compareCourse)));
@@ -4838,31 +4848,37 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function loadCoursePhotos(courseId){
     const gallery = document.getElementById('modal-gallery');
     const request = ++coursePhotoRequest;
+    const curated=CoursePhotos.get(allCourses().find(c=>String(c.id)===String(courseId)));
+    let credit=document.getElementById('modal-photo-credit');
+    if(!credit){credit=document.createElement('div');credit.id='modal-photo-credit';credit.className='course-photo-credit';gallery.after(credit);}
+    credit.innerHTML=curated?CoursePhotos.credit(curated):'';
+    credit.hidden=!curated;
+    const showPhotos=(rows)=>{
+      const photos=[...(curated?[{url:curated.src,alt:curated.place+' 실제 사진 ('+curated.date+')',curated:true}]:[]),...rows].slice(0,3);
+      gallery.replaceChildren();gallery.dataset.photoCount=String(photos.length);
+      photos.forEach(p=>{
+        const url=p.curated?new URL(p.url,window.location.origin).href:safePublicImageUrl(p.url);if(!url)return;
+        const tile=document.createElement('button');tile.type='button';tile.className='photo-tile';tile.setAttribute('aria-label',(p.alt||'이용자 산책 사진')+' 크게 보기');
+        const img=document.createElement('img');img.src=url;img.alt=p.alt||'이용자 산책 사진';img.style.cssText='width:100%;height:100%;object-fit:cover;display:block';img.decoding='async';
+        img.addEventListener('error',()=>{if(request!==coursePhotoRequest)return;tile.remove();if(p.curated)credit.hidden=true;gallery.dataset.photoCount=String(gallery.children.length);if(!gallery.children.length)empty('사진을 표시하지 못했어요.');},{once:true});
+        tile.append(img);tile.addEventListener('click',()=>openPhotoLightbox(url));gallery.append(tile);
+      });
+      gallery.dataset.photoCount=String(gallery.children.length);
+      if(!gallery.children.length)empty('아직 등록된 사진이 없어요. 첫 산책 사진을 남겨주세요.');
+    };
     const empty = (message)=>{
       gallery.dataset.photoCount = '0';
       gallery.innerHTML = `<div class="course-photo-empty"><svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><p>${escapeHtml(message)}</p></div>`;
     };
-    empty('산책길 사진을 불러오고 있어요.');
+    if(curated)showPhotos([]);else empty('산책길 사진을 불러오고 있어요.');
     try{
       const { data, error } = await sb.from('course_photos').select('*').eq('course_id', courseId).order('created_at', {ascending:false}).limit(3);
       if(request !== coursePhotoRequest) return;
       if(error) throw error;
-      if(!error && data && data.length){
-        gallery.innerHTML = data.map(p=>{
-          const safeUrl = safePublicImageUrl(p.url);
-          return safeUrl ? `<button type="button" class="photo-tile" aria-label="산책길 사진 크게 보기" data-photo-url="${escapeHtml(safeUrl)}" style="background-image:url('${escapeHtml(safeUrl)}'); background-size:cover; background-position:center; cursor:zoom-in;"></button>` : '';
-        }).join('');
-        gallery.dataset.photoCount = String(gallery.children.length);
-        if(!gallery.children.length) empty('아직 표시할 사진이 없어요. 첫 산책 사진을 남겨주세요.');
-        gallery.querySelectorAll('[data-photo-url]').forEach(tile=>{
-          tile.addEventListener('click', ()=> openPhotoLightbox(tile.dataset.photoUrl));
-        });
-      } else {
-        empty('아직 등록된 사진이 없어요. 첫 산책 사진을 남겨주세요.');
-      }
+      showPhotos((data||[]).filter(p=>safePublicImageUrl(p.url)));
     }catch(e){
       console.error(e);
-      if(request === coursePhotoRequest) empty('사진을 불러오지 못했어요. 잠시 후 다시 열어주세요.');
+      if(request === coursePhotoRequest && !curated) empty('사진을 불러오지 못했어요. 잠시 후 다시 열어주세요.');
     }
   }
   async function openMemberProfile(ownerId){
