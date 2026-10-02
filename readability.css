@@ -11,7 +11,7 @@ html[data-theme="dark"]{--reading-text:#f0f3e9;--reading-muted:#c0cdbf;--reading
 .course-card .course-metrics{gap:24px;align-items:flex-start}
 .course-card .course-metric small,.course-card .card-rating small,.course-card .card-rating-empty{font-size:12px;line-height:1.6;color:var(--reading-muted)}
 .course-card .course-metric strong{font-size:19px;font-weight:700;color:var(--reading-text)}
-.course-card p.desc{font-size:15px;line-height:1.85;min-height:3.7em;color:var(--reading-muted)}
+.course-card p.desc{font-size:15px!important;line-height:1.85;min-height:3.7em;color:var(--reading-muted)}
 .course-source-link{flex-wrap:wrap;border-radius:12px;font-size:13px;line-height:1.6;background:var(--reading-soft);border-color:var(--reading-line);color:var(--reading-text);padding:9px 12px}
 .course-source-link small{font-size:12px;color:var(--reading-muted)}
 .course-card .tag-pill{font-size:12px;padding:6px 10px;border-radius:9px;background:var(--reading-soft);color:var(--reading-muted);border-color:var(--reading-line)}
