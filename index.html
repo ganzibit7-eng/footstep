@@ -2717,9 +2717,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </div>
 
-<script src="course-photos.js?v=20261002-4"></script>
-<script src="course-info.js?v=20261001-2"></script>
-<script src="course-routes.js?v=20261002-2"></script>
+<script src="course-photos.js?v=20261002-expansion-20261002-4"></script>
+<script src="course-info.js?v=20261002-expansion-20261001-2"></script>
+<script src="course-routes.js?v=20261002-expansion-20261002-2"></script>
 <script>
 (function(){
   // ===== Supabase 연결 =====
@@ -5858,7 +5858,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       ['이용자 평점',rating?'★ '+rating+' · '+reviewCount+'개':'아직 리뷰 없음']
     ].map(([label,value])=>'<div><span>'+escapeHtml(label)+'</span><strong>'+escapeHtml(value)+'</strong></div>').join('');
     const verifiedRoute=CourseRoutes.get(c);
-    document.getElementById('course-route-label').textContent=verifiedRoute?'서울시 실제 경로 · '+(verifiedRoute.parts?verifiedRoute.parts.length+'개 구간':CourseRoutes.isLoop(verifiedRoute)?'양 끝 인접':'구간형'):'대표 위치 · 정확한 경로 미확보';
+    document.getElementById('course-route-label').textContent=verifiedRoute?(verifiedRoute.geometryProvider||CourseInfo.provider(c.desc)+' 공식 지도')+(verifiedRoute.segment?' 선택 구간':' 실제 경로')+' · '+(verifiedRoute.parts?verifiedRoute.parts.length+'개 구간':CourseRoutes.isLoop(verifiedRoute)?'양 끝 인접':'구간형'):'대표 위치 · 정확한 경로 미확보';
 
     document.getElementById('modal-desc').textContent = CourseInfo.cleanDescription(c.desc) || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
@@ -5908,7 +5908,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       routeMap.fitBounds(line.getBounds(),{padding:[36,36],maxZoom:17});
       const coordinate=p=>p[0].toFixed(5)+', '+p[1].toFixed(5);
       const stop=(point,title)=>'<a class="route-stop" href="'+escapeHtml(kakaoLinkTo(c.name+' '+title,point[0],point[1]))+'" target="_blank" rel="noopener noreferrer"><strong>'+title+'</strong><span>'+coordinate(point)+' · 길찾기 ↗</span></a>';
-      guide.innerHTML='<div class="route-stops">'+parts.map((part,index)=>stop(part[0],parts.length>1?'A'+(index+1)+' 구간 첫 지점':loop?'↻ 시작·도착 지점':'A 지도 경로 첫 지점')+(loop?'':stop(part[part.length-1],parts.length>1?'B'+(index+1)+' 구간 마지막 지점':'B 지도 경로 마지막 지점'))).join('')+'</div><p class="route-note">'+(parts.length>1?'이 코스는 공식 지도에서 '+parts.length+'개 구간으로 제공됩니다. 떨어진 구간 사이에 연결선을 만들지 않았어요. ':'')+'초록 선은 서울시 지도 좌표를 그대로 이은 실제 경로예요. 화살표는 지도 데이터의 배열 방향이며, 현장 권장 진행 방향과 다를 수 있어요.</p><details class="route-itinerary"><summary>공식 안내 경유지 보기</summary><p><strong>안내상 출발: '+escapeHtml(verifiedRoute.waypoints[0]||'공식 안내 확인')+'</strong><br><strong>안내상 도착: '+escapeHtml(verifiedRoute.waypoints[verifiedRoute.waypoints.length-1]||'공식 안내 확인')+'</strong></p><ol>'+verifiedRoute.waypoints.map(w=>'<li>'+escapeHtml(w)+'</li>').join('')+'</ol><p class="route-note">위 목록은 공식 안내 순서입니다. 지점 이름과 지도 선의 양 끝 좌표를 자동으로 대응시키지 않았어요.</p></details>';
+      guide.innerHTML='<div class="route-stops">'+parts.map((part,index)=>stop(part[0],parts.length>1?'A'+(index+1)+' 구간 첫 지점':loop?'↻ 시작·도착 지점':'A 지도 경로 첫 지점')+(loop?'':stop(part[part.length-1],parts.length>1?'B'+(index+1)+' 구간 마지막 지점':'B 지도 경로 마지막 지점'))).join('')+'</div><p class="route-note">'+(verifiedRoute.segment?'해파랑길 공식 GPX 중 선택한 일부 구간입니다. 전체 코스가 아니며 거리는 표시 구간 좌표로 계산했어요. ':'')+(parts.length>1?'이 코스는 공식 지도에서 '+parts.length+'개 구간으로 제공됩니다. 떨어진 구간 사이에 연결선을 만들지 않았어요. ':'')+'초록 선은 '+escapeHtml(verifiedRoute.geometryProvider||CourseInfo.provider(c.desc)+' 공식 지도')+' 좌표를 그대로 이은 실제 경로예요. 화살표는 지도 데이터의 배열 방향이며, 현장 권장 진행 방향과 다를 수 있어요.</p><details class="route-itinerary"><summary>'+(verifiedRoute.segment?'선택 구간 지점 보기':'공식 안내 경유지 보기')+'</summary><p><strong>안내상 출발: '+escapeHtml(verifiedRoute.waypoints[0]||'공식 안내 확인')+'</strong><br><strong>안내상 도착: '+escapeHtml(verifiedRoute.waypoints[verifiedRoute.waypoints.length-1]||'공식 안내 확인')+'</strong></p><ol>'+verifiedRoute.waypoints.map(w=>'<li>'+escapeHtml(w)+'</li>').join('')+'</ol><p class="route-note">위 목록은 공식 안내 순서입니다. 지점 이름과 지도 선의 양 끝 좌표를 자동으로 대응시키지 않았어요.</p></details>';
     } else {
       L.marker([c.lat,c.lng], {icon:pawIcon()}).bindTooltip('코스 대표 위치').addTo(routeMap);
       guide.innerHTML='<div class="route-unavailable"><strong>정확한 산책 경로를 확인 중이에요</strong><p>현재 핀은 대표 위치입니다. 실제 길이 확인되지 않은 좌표를 직선으로 연결하지 않습니다.</p>'+ (CourseInfo.mapURL(c.desc)?'<a href="'+escapeHtml(CourseInfo.mapURL(c.desc))+'" target="_blank" rel="noopener noreferrer">공식 지도에서 경로 확인 ↗</a>':'')+'</div>';

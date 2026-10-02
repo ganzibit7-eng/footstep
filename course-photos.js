@@ -367,7 +367,8 @@
   {
     "courses": {
       "c258": "서울 성동구 매봉산 치유숲길",
-      "c262": "서울 매봉산 전망대 산책길"
+      "c262": "서울 매봉산 전망대 산책길",
+      "c334": "서울숲 남산길 응봉근린공원 구간"
     },
     "src": "/assets/course-photos/c258.webp",
     "place": "매봉산공원 숲길",
@@ -1523,6 +1524,96 @@
     "checked": "2026-10-02",
     "width": 600,
     "height": 401
+  },
+  {
+    "courses": {
+      "c337": "양양 낙산해변 해안 산책길"
+    },
+    "src": "/assets/course-photos/c337.webp",
+    "place": "낙산해변",
+    "date": "2026-06-23 12:40:22",
+    "author": "Grapesurgeon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ANaksan_Beach_01.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Naksan_Beach_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "File:Naksan Beach 01.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-02",
+    "width": 960,
+    "height": 720
+  },
+  {
+    "courses": {
+      "c338": "속초 대포항 산책길"
+    },
+    "src": "/assets/course-photos/c338.webp",
+    "place": "대포항",
+    "date": "2022-12-10 12:56:19",
+    "author": "Mobius6",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ADaepo_Port_%28Sokcho%29_20221210_001.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/9/90/Daepo_Port_%28Sokcho%29_20221210_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "File:Daepo Port (Sokcho) 20221210 001.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-02",
+    "width": 960,
+    "height": 640
+  },
+  {
+    "courses": {
+      "c339": "속초해변 해안 산책길"
+    },
+    "src": "/assets/course-photos/c339.webp",
+    "place": "속초해변",
+    "date": "2019-02-18",
+    "author": "BBA97",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ASokcho_Beach_2019.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/7/73/Sokcho_Beach_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "File:Sokcho Beach 2019.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-02",
+    "width": 720,
+    "height": 960
+  },
+  {
+    "courses": {
+      "c340": "속초 아바이마을 산책길"
+    },
+    "src": "/assets/course-photos/c340.webp",
+    "place": "아바이마을",
+    "date": "2009-05-24 12:41:56",
+    "author": "Marie",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AAbai_Village.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/8/82/Abai_Village.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "File:Abai Village.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-02",
+    "width": 960,
+    "height": 720
+  },
+  {
+    "courses": {
+      "c341": "속초 영랑호 호반 산책길"
+    },
+    "src": "/assets/course-photos/c341.webp",
+    "place": "영랑호",
+    "date": "2018-10-04 17:38:30",
+    "author": "Christophe95",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AYeongnangho.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Yeongnangho.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "File:Yeongnangho.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-02",
+    "width": 960,
+    "height": 643
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
