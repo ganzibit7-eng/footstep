@@ -2060,9 +2060,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <div class="filter-group" id="poi-group">
           <button type="button" class="chip" data-poi="vet">🏥 동물병원</button>
           <button type="button" class="chip" data-poi="pet_shop">🛍️ 애견용품점</button>
-          <button type="button" class="chip" data-poi="restaurant">🍽️ 동반 식당·카페</button>
-          <button type="button" class="chip" data-poi="lodging">🏨 동반 숙소</button>
+          <button type="button" class="chip" data-poi="restaurant">🍽️ 식당·카페 후보</button>
+          <button type="button" class="chip" data-poi="lodging">🏨 숙소 후보</button>
         </div>
+        <p style="width:100%;font-size:12px;color:var(--muted-text);margin:0">일반 장소 검색 후보예요. 검색어에 ‘애견동반’이 포함돼도 허용 여부가 확인된 것은 아니에요.</p>
         <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
       </div></details>
       <div class="map-wrap-relative">
@@ -4781,7 +4782,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         ? `<a href="#" onclick="window.__deleteFacility('${f.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportFacility('${f.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([f.lat, f.lng], {icon: poiIcon(FacilityInfo.get(f.category).poi)})
-        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br>${escapeHtml(CourseInfo.cleanDescription(f.description))}<br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>'+ (CourseInfo.checkedDate(f.description)?'<br><small>'+escapeHtml(CourseInfo.checkedDate(f.description))+' 자료 확인 · 현장 운영은 방문 전 확인</small>':''):''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br><small>${escapeHtml(registeredPlaceLabel(f))}</small><br>${escapeHtml(CourseInfo.cleanDescription(f.description))}<br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>'+ (CourseInfo.checkedDate(f.description)?'<br><small>'+escapeHtml(CourseInfo.checkedDate(f.description))+' 자료 확인 · 현장 운영은 방문 전 확인</small>':''):''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(facilityLayer);
     });
   }
@@ -4878,47 +4879,46 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return `https://map.kakao.com/link/to/${encodeURIComponent(name)},${lat},${lng}`;
   }
   let placeSearchMarker = null;
-  async function runPlaceSearch(){
-    const input = document.getElementById('place-search-input');
-    const resultsEl = document.getElementById('place-search-results');
-    const query = input.value.trim();
-    if(!query){ toast('검색어를 입력해주세요'); return; }
-    if(!kakaoPlacesService){ toast('지도 서비스를 불러오는 중이에요. 잠시 후 다시 시도해주세요'); return; }
-    const btn = document.getElementById('place-search-btn');
-    if(btn.disabled) return;
-    const original = btn.textContent;
-    btn.disabled = true;
-    btn.setAttribute('aria-busy','true');
-    btn.textContent = '검색 중…';
-    try{
-      const results = await kakaoKeywordSearch(query, null);
-      if(!results.length){
-        resultsEl.innerHTML = '<div style="padding:14px; font-size:13px; color:var(--muted-text);">검색 결과가 없어요</div>';
-        resultsEl.style.display = '';
-        return;
-      }
-      resultsEl.innerHTML = '<p style="padding:10px 14px;font-size:12px;">일반 장소 검색 결과입니다. 반려견 동반 허용 여부는 방문 전 확인해 주세요.</p>'+results.slice(0, 8).map((p, i) => `
-        <div class="place-result-row" data-idx="${i}" style="padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer;">
-          <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${escapeHtml(p.place_name)}</div>
-          <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${escapeHtml(p.road_address_name || p.address_name || '')}</div>
-        </div>
-      `).join('');
-      resultsEl.style.display = '';
-      resultsEl.querySelectorAll('.place-result-row').forEach(row=>{
-        row.addEventListener('click', ()=>{
-          const p = results[Number(row.dataset.idx)];
-          goToPlace(p.place_name, Number(p.y), Number(p.x));
-          resultsEl.style.display = 'none';
-        });
-      });
-    }catch(e){console.error(e);resultsEl.innerHTML='<p style="padding:14px;font-size:13px;">검색 서비스를 불러오지 못했어요. 같은 검색어로 다시 시도해 주세요.</p>';resultsEl.style.display='';toast('검색에 실패했어요. 다시 시도해주세요');}
-    finally{ btn.textContent = original; btn.disabled = false; btn.removeAttribute('aria-busy'); }
+  function registeredPlaceLabel(f){return CourseInfo.sourceURL(f.description)?'공식 동반 안내 자료':'이용자 등록 · 동반 조건 확인 필요';}
+  function localMapSearch(query){
+    const terms=CourseAddresses.normalize(query).split(/\s+/).filter(Boolean);
+    const coords=c=>c.lat!=null&&c.lng!=null&&Number.isFinite(Number(c.lat))&&Number.isFinite(Number(c.lng));
+    return [
+      ...allCourses().filter(c=>!isHidden('course',c.id)&&coords(c)&&CourseAddresses.matches(c,query,CourseInfo.cleanDescription(c.desc))).slice(0,4).map(c=>({kind:'course',item:c})),
+      ...facilities.filter(f=>!isHidden('facility',f.id)&&coords(f)&&terms.every(t=>CourseAddresses.normalize([f.name,f.address,CourseInfo.cleanDescription(f.description)].join(' ')).includes(t))).slice(0,4).map(f=>({kind:'facility',item:f}))
+    ];
   }
-  function goToPlace(name, lat, lng){
+  async function runPlaceSearch(){
+    const input=document.getElementById('place-search-input'),resultsEl=document.getElementById('place-search-results'),btn=document.getElementById('place-search-btn');
+    const query=input.value.trim();if(!query){toast('검색어를 입력해주세요');return;}if(btn.disabled)return;
+    const original=btn.textContent;btn.disabled=true;btn.setAttribute('aria-busy','true');btn.textContent='검색 중…';
+    try{
+      const local=localMapSearch(query);let results=[],failed=false;
+      try{results=await kakaoKeywordSearch(query,null);}catch{failed=true;}
+      if(input.value.trim()!==query)return;
+      const entries=[...local,...results.slice(0,8).map(item=>({kind:'general',item}))];
+      const row=(entry,i)=>{
+        const p=entry.item,label=entry.kind==='course'?'발자국 산책 코스':entry.kind==='facility'?registeredPlaceLabel(p):'일반 장소 · 동반 여부 미확인';
+        const name=p.place_name||p.name,address=entry.kind==='course'?CourseAddresses.get(p)?.address:p.road_address_name||p.address_name||p.address;
+        return `<button type="button" class="place-result-row" data-idx="${i}" style="display:block;width:100%;text-align:left;padding:12px 14px;min-height:44px;border:0;border-bottom:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer"><small style="display:block;color:var(--muted-text)">${escapeHtml(label)}</small><strong>${escapeHtml(name)}</strong><span style="display:block;font-size:12px;margin-top:3px">${escapeHtml(address||'주소는 상세 안내에서 확인하세요.')}</span></button>`;
+      };
+      resultsEl.innerHTML='<p style="padding:10px 14px;font-size:12px;line-height:1.7">등록 코스·동반 장소와 일반 장소를 구분해 보여드려요. 동반 조건과 현재 운영 여부는 방문 전 확인해 주세요.</p>'+entries.map(row).join('')+(failed?'<p style="padding:12px 14px">일반 장소 검색에 연결하지 못했어요. 등록 정보는 계속 볼 수 있어요. 다시 검색해 주세요.</p>':!entries.length?'<p style="padding:12px 14px">검색 결과가 없어요.</p>':'');
+      resultsEl.style.display='';
+      resultsEl.querySelectorAll('.place-result-row').forEach(button=>button.addEventListener('click',()=>{
+        const {kind,item:p}=entries[Number(button.dataset.idx)];
+        if(kind==='course'){map.setView([p.lat,p.lng],15);openCourseDetail(p.id);}
+        else if(kind==='facility')goToPlace(p.name,Number(p.lat),Number(p.lng),p);
+        else goToPlace(p.place_name,Number(p.y),Number(p.x));
+        resultsEl.style.display='none';
+      }));
+    }catch(e){console.error(e);resultsEl.innerHTML='<p style="padding:14px">검색 정보를 표시하지 못했어요. 다시 시도해 주세요.</p>';resultsEl.style.display='';}
+    finally{btn.textContent=original;btn.disabled=false;btn.removeAttribute('aria-busy');}
+  }
+  function goToPlace(name, lat, lng, facility=null){
     map.setView([lat, lng], 16);
     if(placeSearchMarker) map.removeLayer(placeSearchMarker);
     placeSearchMarker = L.marker([lat, lng]).addTo(map)
-      .bindPopup(`<strong>📍 ${escapeHtml(name)}</strong><br><a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
+      .bindPopup(`<strong>📍 ${escapeHtml(name)}</strong><br>${facility ? escapeHtml(registeredPlaceLabel(facility))+'<br>'+escapeHtml(CourseInfo.cleanDescription(facility.description))+'<br><a href="/places/'+encodeURIComponent(facility.id)+'/">동반 조건·상세 안내 ↗</a><br>' : '일반 장소 검색 · 반려견 동반 여부 미확인<br>동반 가능 구역·견종·몸무게 조건은 방문 전 확인해 주세요.<br>'}<a href="${kakaoLinkTo(name, lat, lng)}" target="_blank" rel="noopener" style="color:#B5502E;font-weight:700;">🧭 길찾기 (카카오맵 열기)</a>`)
       .openPopup();
   }
   document.getElementById('place-search-btn').addEventListener('click', runPlaceSearch);
@@ -4961,7 +4961,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             if(seenIds.has(p.id)) return; // 여러 검색어에 중복으로 걸린 장소는 한 번만 표시
             seenIds.add(p.id);
             L.marker([Number(p.y), Number(p.x)], {icon: poiIcon(cat)})
-              .bindPopup(`<strong>${POI_EMOJI[cat]} ${escapeHtml(p.place_name)}</strong><br>${escapeHtml(p.road_address_name || p.address_name || '')}${p.phone ? '<br>'+escapeHtml(p.phone) : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+              .bindPopup(`<strong>${POI_EMOJI[cat]} ${escapeHtml(p.place_name)}</strong><br>${escapeHtml(p.road_address_name || p.address_name || '')}<br><small>일반 장소 검색 결과 · 반려견 동반 여부 미확인</small>${p.phone ? '<br>'+escapeHtml(p.phone) : ''}<br><a href="${kakaoLinkTo(p.place_name, Number(p.y), Number(p.x))}" target="_blank" rel="noopener" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
               .addTo(poiLayer);
             total += 1;
           });
