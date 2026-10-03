@@ -6,6 +6,8 @@
     'www.durunubi.kr':'한국관광공사 두루누비',
     'durunubi.kr':'한국관광공사 두루누비',
     'korean.visitkorea.or.kr':'한국관광공사',
+    'sjfmc.or.kr':'세종시설관리공단',
+    'www.suwon.go.kr':'수원시',
     'www.visitbusan.net':'부산시 관광 안내',
     'visitbusan.net':'부산시 관광 안내'
   };

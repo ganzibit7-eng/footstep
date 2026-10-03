@@ -1611,5 +1611,77 @@
     "checked": "2026-10-02",
     "width": 960,
     "height": 643
+  },
+  {
+    "courses": {
+      "c370": "석촌호수 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c370.webp",
+    "place": "석촌호수",
+    "date": "2015-10-20 15:30:48",
+    "author": "Jocelyndurrey",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%EC%84%9D%EC%B4%8C_%ED%98%B8%EC%88%98%EA%B3%B5%EC%9B%90_%EA%B8%B8_(3).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/7/7e/%EC%84%9D%EC%B4%8C_%ED%98%B8%EC%88%98%EA%B3%B5%EC%9B%90_%EA%B8%B8_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "석촌 호수공원 길 (3).jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-03",
+    "width": 960,
+    "height": 540
+  },
+  {
+    "courses": {
+      "c374": "월미산 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c374.webp",
+    "place": "월미산",
+    "date": "2013-07-20 19:34:30",
+    "author": "김만호",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%EC%9B%94%EB%AF%B8%EC%82%B0_%EA%B4%91%EC%9E%A5.JPG",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/c/c8/%EC%9B%94%EB%AF%B8%EC%82%B0_%EA%B4%91%EC%9E%A5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "월미산 광장.JPG",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-03",
+    "width": 960,
+    "height": 303
+  },
+  {
+    "courses": {
+      "c377": "성남 중앙공원 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c377.webp",
+    "place": "성남 중앙공원",
+    "date": "Taken on 12 May 2015, 13:03:08",
+    "author": "Jocelyndurrey\n\n This photo was taken with LG G3",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%EC%84%B1%EB%82%A8%EC%A4%91%EC%95%99%EA%B3%B5%EC%9B%90_%EA%B8%B8.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/9/96/%EC%84%B1%EB%82%A8%EC%A4%91%EC%95%99%EA%B3%B5%EC%9B%90_%EA%B8%B8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "성남중앙공원 길.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-03",
+    "width": 675,
+    "height": 1200
+  },
+  {
+    "courses": {
+      "c379": "돌산공원 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c379.webp",
+    "place": "돌산공원",
+    "date": "2018-04-14 18:53:13",
+    "author": "Choi2451",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dolsan_Bridge_seen_from_Dolsan_Park,_Yeosu.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/5/57/Dolsan_Bridge_seen_from_Dolsan_Park%2C_Yeosu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Dolsan Bridge seen from Dolsan Park, Yeosu.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-03",
+    "width": 960,
+    "height": 467
   }
 ]
