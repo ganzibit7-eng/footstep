@@ -67,3 +67,21 @@ body.reading-page{background:#f4f5ed;color:#293d32;font-family:'Sunflower',syste
 .reading-page main,.reading-page .wrap{padding:24px 18px}.reading-page .card,.reading-page section{padding:22px 18px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.course-card{transition:none}}
+
+/* Clear footer contrast in both themes; no translucent text. */
+footer.site-footer{background:#eff4ed;color:#213f2e;border-top:1px solid #c9d7c7;padding:36px 20px 40px}
+footer.site-footer .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:14px}
+.site-footer .footer-brand{font-size:24px;line-height:1.5;color:#213f2e}
+.site-footer .footer-tagline{font-size:18px;font-weight:700;line-height:1.7;color:#213f2e}
+.site-footer .footer-description{font-size:14px;line-height:1.9;color:#3f5748}
+.site-footer p{margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.site-footer .footer-links{display:flex;flex-wrap:wrap;gap:6px 18px;width:100%;margin-top:8px;padding-top:12px;border-top:1px solid #c9d7c7;font-size:14px!important}
+.site-footer .footer-links a{color:#234a32;text-decoration:underline;text-underline-offset:4px;opacity:1;min-height:44px;font-weight:600}
+.site-footer .footer-links a:hover{color:#102d1b}
+.site-footer .footer-links a:focus-visible{outline:3px solid #48744d;outline-offset:4px;border-radius:4px}
+.site-footer .footer-copyright{font-size:12px;color:#4b6152;opacity:1;line-height:1.8}
+html[data-theme="dark"] footer.site-footer{background:#203b2b;color:#f6f8ef;border-color:#567360}
+html[data-theme="dark"] .site-footer .footer-brand,html[data-theme="dark"] .site-footer .footer-tagline,html[data-theme="dark"] .site-footer .footer-links a{color:#f6f8ef}
+html[data-theme="dark"] .site-footer .footer-description,html[data-theme="dark"] .site-footer .footer-copyright{color:#d5e2d2}
+html[data-theme="dark"] .site-footer .footer-links{border-color:#567360}
+@media(max-width:600px){footer.site-footer{padding:28px 18px calc(32px + env(safe-area-inset-bottom,0px))}footer.site-footer .wrap{padding:0}.site-footer .footer-tagline{font-size:17px}.site-footer .footer-links{column-gap:16px!important}}
