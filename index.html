@@ -1715,7 +1715,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 #nearby-section .home-course-controls button:disabled{opacity:.35;cursor:default}
 .home-course-controls button:focus-visible{outline:3px solid var(--clay);outline-offset:2px}
 @media(max-width:900px) and (min-width:701px){#nearby-section #nearby-grid{grid-auto-columns:calc((100% - 18px)/2)}}
-@media(max-width:700px){#nearby-section #nearby-grid{grid-auto-columns:86%;gap:12px}#nearby-section .home-course-controls{align-items:flex-start}#nearby-section .home-course-controls p{font-size:12px;max-width:16ch;padding-top:5px}.home-course-controls>div{gap:4px}#nearby-position{min-width:60px}}
+@media(max-width:700px){#nearby-section #nearby-grid{box-sizing:border-box;grid-auto-columns:100%;gap:12px;padding-inline:7%;scroll-padding-inline:0}#nearby-grid>.course-card{scroll-snap-align:center;scroll-snap-stop:always}#nearby-section .home-course-controls{align-items:flex-start}#nearby-section .home-course-controls p{font-size:12px;max-width:16ch;padding-top:5px}.home-course-controls>div{gap:4px}#nearby-position{min-width:60px}}
 </style>
 <style>.detail-nearby .walk-place-item{border-top:1px solid var(--line)}.detail-nearby .walk-place-item>a{border-top:0}.detail-nearby .walk-place-directions{justify-content:flex-end;min-height:44px;padding:8px 0;font-size:12px}.detail-nearby .walk-place-item>a:first-child{padding-bottom:4px}</style>
 </head>
@@ -4645,7 +4645,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const card=rail.querySelector('.course-card');
     if(!card)return;
     const step=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(rail).columnGap)||0);
-    const count=Math.max(1,Math.floor((rail.clientWidth+2)/step));
+    const count=Math.max(1,Math.round(rail.clientWidth/step));
     rail.scrollBy({left:direction*step*count,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
   document.getElementById('nearby-prev').addEventListener('click',()=>moveNearbyRail(-1));
