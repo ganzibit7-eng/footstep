@@ -5,7 +5,7 @@ const read=name=>JSON.parse(zlib.gunzipSync(fs.readFileSync('docs/expansion-2026
 const addresses=read('course-address-evidence'),courses=read('route-evidence'),places=read('added-places');
 const routes=JSON.parse(fs.readFileSync('course-routes.js','utf8').split('const routes=')[1].split(';\nfunction get')[0]);
 assert.equal(addresses.length,215);assert.equal(new Set(addresses.map(r=>r.id)).size,215);
-for(const row of addresses){const c={id:row.id,name:row.name,path:routes[row.id].path};assert.equal(Address.get(c).address,row.address);assert(Address.matches(c,row.address));assert.equal(Address.get({...c,path:[[row.lat+.001,row.lng]]}),null);assert(row.address);if(row.offsetMeters){assert(row.offsetMeters<=200);assert(row.point.includes('인근'));}else assert.equal(row.point,'출발 지점');}
+for(const row of addresses){const c={id:row.id,name:row.name,path:routes[row.id].path};assert.equal(Address.get(c).address,Address.formatAddress(row.address));assert(Address.matches(c,row.address));assert.equal(Address.get({...c,path:[[row.lat+.001,row.lng]]}),null);assert(row.address);if(row.offsetMeters){assert(row.offsetMeters<=200);assert(row.point.includes('인근'));}else assert.equal(row.point,'출발 지점');}
 const seoul=addresses.find(r=>r.address.startsWith('서울'));assert(Address.matches({id:seoul.id,name:seoul.name,path:routes[seoul.id].path},'서울특별시 '+seoul.address.split(' ')[1]));
 assert(!Address.matches({id:seoul.id,name:seoul.name,path:routes[seoul.id].path},'없는동네12345'));
 assert.equal(places.length,1052);assert.equal(new Set(places.map(r=>r.id)).size,1052);
