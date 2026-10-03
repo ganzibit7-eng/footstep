@@ -1716,10 +1716,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <a href="#map" data-page-nav="map">지도</a>
       <a href="#list" data-page-nav="list">코스 목록</a>
       <a href="#walk" data-page-nav="walk">산책 기록</a>
-      <a href="#register" data-page-nav="register">코스 등록</a>
+      <a href="#register" data-page-nav="register">코스 제안</a>
       <a href="#etiquette" data-page-nav="etiquette">펫티켓</a>
     </nav>
-    <a class="nav-cta" href="#register" data-page-nav="register">+ 코스 올리기</a>
+    <a class="nav-cta" href="#list" data-page-nav="list">코스 둘러보기</a>
     <div style="display:flex; align-items:center; gap:8px;">
       <button class="profile-btn" id="profile-btn"><span class="dot" id="profile-dot"></span><span id="profile-avatar" style="display:none; width:18px; height:18px; border-radius:50%; background-size:cover; background-position:center; margin-right:6px; vertical-align:middle;"></span><span id="profile-label">로그인</span></button>
       <button id="points-badge" style="font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:8px 12px; border-radius:999px; display:none; border:none; cursor:pointer;">🪙 0P</button>
@@ -1734,7 +1734,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   <button data-page-nav="home"><span class="tab-icon">🏠</span><span>홈</span></button>
   <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
   <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>산책</span></button>
-  <button data-page-nav="register"><span class="tab-icon">➕</span><span>등록</span></button>
+  <button data-page-nav="register"><span class="tab-icon">➕</span><span>제안</span></button>
   <button id="bottom-tab-my" type="button"><span class="tab-icon">👤</span><span>MY</span></button>
 </nav>
 
@@ -1781,7 +1781,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
       <div class="hero-actions home-main-actions">
         <a class="btn-primary home-location-btn" href="#map" data-page-nav="map">📍 내 주변 산책코스 찾기</a>
-        <a class="btn-ghost" href="#register" data-page-nav="register">+ 우리 동네 코스 등록</a>
+        <a class="btn-ghost" href="#register" data-page-nav="register">+ 우리 동네 코스 제안</a>
       </div>
 
       <div class="stat-row home-stat-row">
@@ -1817,7 +1817,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
       <div style="display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
         <span style="font-size:22px;">🪙</span>
-        <div><b style="font-family:'Jua',sans-serif; font-size:15px;">포인트 적립</b><div style="font-size:13.5px; color:var(--muted-text);">등록하고 걸을 때마다 리워드</div></div>
+        <div><b style="font-family:'Jua',sans-serif; font-size:15px;">포인트 적립</b><div style="font-size:13.5px; color:var(--muted-text);">걷고 리뷰를 남기며 활동 포인트 적립</div></div>
       </div>
       <a class="btn-primary" href="#map" data-page-nav="map" style="display:inline-block; margin-top:22px;">무료로 시작하기</a>
     </div>
@@ -1979,10 +1979,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
     <div class="home-register-banner reveal-on-scroll">
       <div>
-        <h2>우리 동네 산책길, 아직 없다면?</h2>
-        <p>직접 걸어본 코스를 등록하고 다른 반려인들과 나눠보세요.</p>
+        <h2>좋은 산책길을 알고 계신가요?</h2>
+        <p>운영자가 경로와 동반 조건을 확인하며 코스를 추가합니다. 빠진 산책길은 제안해 주세요. 검토 후 공개해요.</p>
       </div>
-      <a href="#register" data-page-nav="register" class="btn-ghost-dark">+ 코스 등록하기</a>
+      <a href="#register" data-page-nav="register" class="btn-ghost-dark">산책길 제안하기</a>
     </div>
 
     <div class="home-etiquette reveal-on-scroll">
@@ -2174,7 +2174,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           </div>
           <button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
           <button type="button" class="walk-share-button" id="walk-share-card-btn">🖼️ 산책 결과 카드 만들기</button><p class="walk-share-note">강아지 정보와 경로 좌표는 이미지에 넣지 않아요.</p>
-          <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로로 코스 등록하기</button>
+          <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로를 산책 코스로 제안하기</button>
           <button type="button" class="pin-btn" id="walk-discard-btn" style="margin-top:10px; color:#A79E7E;">기록 버리고 다시 시작</button>
         </div>
         <div id="my-walks-wrap" style="margin-top:24px; border-top:1px solid var(--line); padding-top:18px;">
@@ -2194,9 +2194,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="kicker">새로운 코스 등록</span>
-        <h2>코스 또는 배변봉투함 등록하기</h2>
-        <p>지도에 없는 곳을 발견했다면 알려주세요. 등록한 정보는 다른 반려인들에게도 함께 보여져요.</p>
+        <span class="kicker" id="register-mode-note">운영자 검토 후 공개</span>
+        <h2 id="register-mode-title">산책길·장소 정보 제안하기</h2>
+        <p>발자국의 코스와 장소는 운영자가 자료를 확인하며 추가합니다. 알고 있는 산책길·동반 장소·배변봉투함을 제안해 주시면 검토 후 공개해요. 실제 경로와 반려견 동반 조건을 함께 알려주세요.</p>
       </div>
     </div>
     <div class="register-panel">
@@ -2258,12 +2258,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             </div>
           </div>
 
-          <button type="submit" id="reg-submit-btn" class="submit-btn">지도에 등록하기</button>
+          <button type="submit" id="reg-submit-btn" class="submit-btn">정보 제안 보내기</button>
         </form>
       </div>
       <div class="mini-map-wrap">
         <div id="mini-map"></div>
-        <div class="mini-map-note">🐾 산책 코스는 출발점부터 도착점까지 순서대로 터치하면 지도에 경로가 이어져요. 🚮 배변봉투함은 위치 한 곳만 터치하면 돼요. 등록한 정보는 모든 방문자에게 함께 표시됩니다.</div>
+        <div class="mini-map-note">🐾 산책 코스는 출발점부터 도착점까지 순서대로 터치하면 지도에 경로가 이어져요. 🚮 배변봉투함은 위치 한 곳만 터치하면 돼요. 제안한 정보는 운영자 검토 후 지도와 목록에 공개됩니다.</div>
       </div>
     </div>
   </div>
@@ -2297,7 +2297,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <footer>
   <div class="wrap" style="flex-direction:column; gap:10px; align-items:flex-start;">
     <span>🐾 발자국 — 강아지 산책 코스 &amp; 배변봉투함 지도</span>
-    <span>전국 반려인들과 함께 만들어가는 산책 정보 플랫폼이에요. 소중한 의견은 언제든 환영합니다 🐾</span>
+    <span>운영자가 산책 정보를 채우고, 반려인들의 리뷰·사진·정보 제보로 함께 보완합니다 🐾</span>
     <div class="footer-links" style="display:flex; flex-wrap:wrap; gap:4px 12px; font-size:13px; width:100%;">
       <a href="#terms" data-page-nav="terms" style="color:rgba(251,248,241,0.8); text-decoration:underline;">이용약관</a>
       <a href="#privacy" data-page-nav="privacy" style="color:rgba(251,248,241,0.8); text-decoration:underline;">개인정보처리방침</a>
@@ -2730,7 +2730,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <div class="modal-body" style="text-align:center;">
       <div style="font-size:64px; line-height:1;">🐕🐾</div>
       <h3 style="font-size:21px; margin-top:14px;">지금 무료로 가입하고<br>더 많은 서비스를 이용해보세요!</h3>
-      <p style="font-size:13.5px; color:var(--muted-text); margin-top:10px; line-height:1.6;">코스 등록, GPS 산책 기록, 포인트 적립까지<br>발자국 회원이면 전부 무료예요 🐾</p>
+      <p style="font-size:13.5px; color:var(--muted-text); margin-top:10px; line-height:1.6;">마음에 드는 코스 저장, GPS 산책 기록, 리뷰·사진 공유까지<br>발자국 회원이면 무료로 이용할 수 있어요 🐾</p>
       <button class="submit-btn" id="welcome-popup-cta" style="margin-top:22px;">🎉 무료로 시작하기</button>
       <button class="pin-btn" id="welcome-popup-later" style="margin-top:10px; color:#A79E7E; border:none; background:none;">나중에 할게요</button>
     </div>
@@ -4054,8 +4054,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const AI_REGIONS = ['서울','부산','대구','인천','광주','대전','울산','세종','경기','강원','충남','충북','경남','경북','전남','전북','제주'];
   const AI_FAQ = [
     { q:'포인트는 어떻게 모아요?', a:'코스 등록(+50P), 배변봉투함·동반시설 등록(+20P), 산책기록(+20P), 리뷰 작성(+10P)으로 모을 수 있어요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
-    { q:'코스는 어떻게 등록해요?', a:'하단 "코스 등록" 메뉴에서 지도에 손가락으로 경로를 그려서 등록할 수 있어요.' },
-    { q:'회원가입 꼭 해야 하나요?', a:'코스·지도 둘러보는 건 로그인 없이도 자유롭게 가능해요. 코스 등록, 산책기록, 포인트 적립을 하려면 로그인이 필요해요.' },
+    { q:'산책 코스는 누가 추가하나요?', a:'운영자가 경로와 반려견 동반 조건을 확인하며 추가해요. 빠진 곳은 코스 제안 메뉴에서 알려주세요. 사용자 제안은 운영자 검토 후 공개됩니다.' },
+    { q:'회원가입 꼭 해야 하나요?', a:'코스·지도 둘러보는 건 로그인 없이도 자유롭게 가능해요. 찜한 코스 저장, 산책 기록, 리뷰·사진 공유와 정보 제안에는 로그인이 필요해요.' },
     { q:'배변봉투함 위치가 잘못됐어요', a:'지도에서 해당 마커를 눌러 "신고" 버튼으로 알려주시면 관리자가 확인 후 처리해요.' },
     { q:'리뷰에 사진은 어떻게 올려요?', a:'코스 상세 화면에서 리뷰를 작성할 때 사진 첨부 버튼을 눌러 올릴 수 있어요.' },
   ];
@@ -4227,7 +4227,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
     if(courseList.length === 0){
-      containerEl.innerHTML = '<p class="empty-course-state">🐾 조건에 맞는 코스를 아직 못 찾았어요.<br>검색어나 필터를 조정해보시거나, 직접 첫 코스를 등록해보세요!</p>';
+      containerEl.innerHTML = '<p class="empty-course-state">🐾 조건에 맞는 코스를 아직 못 찾았어요.<br>검색어나 필터를 조정해보시거나, 운영자에게 산책길을 제안해 주세요!</p>';
       return;
     }
     courseList.forEach(c=>{
@@ -5414,11 +5414,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         resetBinPoint();
         if(editingBinId){
           editingBinId = null;
-          document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+          document.getElementById('reg-submit-btn').textContent = '정보 제안 보내기';
         }
         if(editingCourseId){
           editingCourseId = null;
-          document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+          document.getElementById('reg-submit-btn').textContent = '정보 제안 보내기';
         }
       }
       if(currentType === 'bin'){
@@ -5597,7 +5597,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         if(!ok){ toast('수정에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
         toast('코스 정보를 수정했어요 ✏️');
         editingCourseId = null;
-        document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+        document.getElementById('reg-submit-btn').textContent = '정보 제안 보내기';
         await loadData();
         e.target.reset();
         selectedTags.clear();
@@ -5632,7 +5632,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         if(!ok){ toast('수정에 실패했어요. 잠시 후 다시 시도해주세요'); return; }
         toast('배변봉투함 정보를 수정했어요 ✏️');
         editingBinId = null;
-        document.getElementById('reg-submit-btn').textContent = '지도에 등록하기';
+        document.getElementById('reg-submit-btn').textContent = '정보 제안 보내기';
         await loadData();
         e.target.reset();
         resetCoursePath();
@@ -5670,7 +5670,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     await loadData();
     toast(isAdminUser(myDeviceId)
       ? '등록되었어요! 지도와 목록에 반영됐어요 🐾'
-      : '등록 요청이 접수됐어요! 관리자 승인 후 지도에 공개돼요 🐾');
+      : '정보 제안이 접수됐어요! 운영자 검토 후 지도에 공개돼요 🐾');
     e.target.reset();
     selectedTags.clear();
     document.querySelectorAll('#tag-group .tag-check').forEach(x=>x.classList.remove('on'));
@@ -6405,7 +6405,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         const tempLine = L.polyline(drawMode==='pen' ? smoothPath(coursePath) : coursePath);
         miniMap.fitBounds(tempLine.getBounds(), {padding:[24,24]});
       }
-      toast('산책 경로가 코스 등록 폼으로 옮겨졌어요. 이름과 설명을 채워주세요 🐾');
+      toast('산책 경로가 제안 폼으로 옮겨졌어요. 이름과 동반 조건을 알려주세요 🐾');
     }, 400);
     resetWalkPanels();
   }
@@ -6579,7 +6579,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       editingCourseId = null;
       editingBinId = null;
       const submitBtn = document.getElementById('reg-submit-btn');
-      if(submitBtn) submitBtn.textContent = '지도에 등록하기';
+      const operator=isAdminUser(myDeviceId);
+      document.getElementById('register-mode-title').textContent=operator?'운영자 산책길·장소 추가':'산책길·장소 정보 제안하기';
+      document.getElementById('register-mode-note').textContent=operator?'경로·동반 조건 확인 후 추가':'운영자 검토 후 공개';
+      if(submitBtn) submitBtn.textContent=operator?'지도에 추가하기':'정보 제안 보내기';
     }
     // 지도가 숨겨져 있다가 보이면 Leaflet이 크기를 다시 계산해야 정상적으로 그려짐
     setTimeout(()=>{
@@ -6645,10 +6648,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
   // ===== 온보딩 튜토리얼 =====
   const ONBOARDING_STEPS = [
-    { emoji:'🗺️', title:'산책 코스를 지도에서 찾아보세요', desc:'전국 100여 개의 반려견 산책 코스가 지도에 표시돼요. 그늘·잔디밭·목줄해제 여부까지 태그로 확인할 수 있어요.' },
-    { emoji:'🐾', title:'GPS로 산책을 기록해보세요', desc:'걷는 동안 실시간으로 경로가 기록되고, 마음에 든 경로는 그대로 코스로 등록할 수 있어요.' },
+    { emoji:'🗺️', title:'산책 코스를 지도에서 찾아보세요', desc:'산책길의 경로·거리·출처와 등록된 특징을 비교해 보세요. 방문 전에 반려견 동반 조건도 확인해 주세요.' },
+    { emoji:'🐾', title:'GPS로 산책을 기록해보세요', desc:'걷는 동안 경로·거리·시간을 기록하고 나만의 산책 기록을 모아보세요.' },
     { emoji:'🏥', title:'동물병원·애견동반 장소도 검색', desc:'낯선 동네에서도 동물병원, 애견동반 식당·카페·숙소를 지도에서 바로 찾을 수 있어요.' },
-    { emoji:'🪙', title:'활동하고 포인트도 받아보세요', desc:'코스 등록, 리뷰 작성, 산책 기록마다 포인트가 쌓여요. 모은 포인트로 배지를 사거나 코스를 홍보할 수 있어요.' },
+    { emoji:'🪙', title:'활동하고 포인트도 받아보세요', desc:'산책 기록과 리뷰 작성 등 활동으로 포인트를 모을 수 있어요. 마음에 드는 길은 찜하고, 다녀온 경험은 리뷰와 사진으로 나눠주세요.' },
   ];
 
   // ===== 체류시간 2분 후 회원가입 유도 팝업 =====
