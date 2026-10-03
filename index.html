@@ -1712,7 +1712,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 #nearby-section #nearby-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;overscroll-behavior-x:contain;padding:2px 2px 16px;margin:0;align-items:stretch;scrollbar-width:thin}
 #nearby-grid>.course-card{scroll-snap-align:start;min-width:0}
 #nearby-grid:focus-visible{outline:3px solid var(--clay);outline-offset:4px;border-radius:18px}
-#nearby-section .home-course-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
+#nearby-section .home-region-form{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 18px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.home-region-form label{font-size:13px;color:var(--pine-deep)}.home-region-form input{flex:1;min-width:180px;border:1px solid var(--line);border-radius:10px;min-height:44px;padding:10px 12px;font:16px system-ui,sans-serif;background:var(--paper);color:var(--ink)}.home-region-form button{min-height:44px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--pine-deep);color:var(--paper);cursor:pointer}.home-region-form button:disabled{opacity:.6}.home-region-form #home-region-clear{background:var(--sand);color:var(--pine-deep)}.home-region-form p{width:100%;margin:0;font:12px/1.7 system-ui,sans-serif;color:var(--muted-text)}
+.home-course-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
 #nearby-section .home-course-controls p{font-size:13px;color:var(--muted-text);margin:0}
 .home-course-controls>div{display:flex;align-items:center;gap:8px;flex:none}
 #nearby-position{font:12px 'Sunflower',sans-serif;color:var(--muted-text);min-width:70px;text-align:center;font-variant-numeric:tabular-nums}
@@ -1885,10 +1886,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div>
         <span class="kicker" id="nearby-kicker">내 주변 추천</span>
         <h2 id="nearby-title">이런 코스는 어때요?</h2>
-        <p id="nearby-desc">프로필에서 지역을 등록하면 우리 동네와 가까운 코스를 먼저 보여드려요.</p>
+        <p id="nearby-desc">로그인 없이 지역을 선택하고 가까운 산책길을 찾아보세요.</p>
       </div>
       <a href="#list" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
+    <form id="home-region-form" class="home-region-form"><label for="home-region-input">추천 지역</label><input id="home-region-input" type="text" maxlength="80" placeholder="예: 서울 마포구, 부산 해운대구" autocomplete="off"><button type="submit" id="home-region-apply">지역 적용</button><button type="button" id="home-region-clear" hidden>선택 해제</button><p id="home-region-status" role="status" aria-live="polite">선택한 지역은 이 브라우저에만 기억해요. 프로필 지역은 바뀌지 않아요.</p></form>
     <div class="home-course-controls"><p>옆으로 넘겨 더 많은 산책길을 만나보세요.</p><div><span id="nearby-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="nearby-prev" aria-label="이전 추천 코스" aria-controls="nearby-grid" disabled>←</button><button type="button" id="nearby-next" aria-label="다음 추천 코스" aria-controls="nearby-grid" disabled>→</button></div></div>
     <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid" tabindex="0" role="region" aria-label="추천 산책 코스"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
@@ -2900,6 +2902,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     finally{if(favoriteSyncOwner===owner)favoriteSyncOwner=null;button.disabled=false;}
   });
   let courseBoosts = {};
+  const HOME_REGION_KEY='balzaguk_home_region_v1';
+  function validHomeRegion(value){return !!value&&typeof value.name==='string'&&value.name.trim().length>0&&value.name.length<=80&&typeof value.lat==='number'&&typeof value.lng==='number'&&Number.isFinite(value.lat)&&Number.isFinite(value.lng)&&value.lat>=32&&value.lat<=40&&value.lng>=124&&value.lng<=132;}
+  function readHomeRegion(){try{const value=JSON.parse(localStorage.getItem(HOME_REGION_KEY));return validHomeRegion(value)?value:null;}catch{return null;}}
+  let homeRegion=readHomeRegion(),homeRegionRequest=0;
+  function persistHomeRegion(){try{if(homeRegion)localStorage.setItem(HOME_REGION_KEY,JSON.stringify(homeRegion));else localStorage.removeItem(HOME_REGION_KEY);return true;}catch{return false;}}
   let myRegionName = null, myRegionLat = null, myRegionLng = null;
   let map, miniMap, routeMap, courseLayer, binLayer, facilityLayer;
   let poiLayer;                 // 동물병원/애견용품점 마커 레이어
@@ -3234,6 +3241,23 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       });
     });
   }
+  document.getElementById('home-region-form').addEventListener('submit',async e=>{
+    e.preventDefault();const input=document.getElementById('home-region-input'),button=document.getElementById('home-region-apply'),status=document.getElementById('home-region-status');
+    const name=input.value.trim();if(!name){status.textContent='시·군·구를 입력해 주세요. 예: 서울 마포구';input.focus();return;}
+    const request=++homeRegionRequest;button.disabled=true;status.textContent='지역을 찾고 있어요…';
+    try{
+      const geo=await geocodeRegion(name);if(request!==homeRegionRequest)return;
+      const next={name,lat:geo?.lat,lng:geo?.lng};
+      if(!validHomeRegion(next)){status.textContent='지역을 찾지 못했어요. 시·군·구 이름을 확인하고 다시 시도해 주세요.';return;}
+      homeRegion=next;const saved=persistHomeRegion();loadNearbyRecommendations();
+      status.textContent=saved?'선택한 지역은 이 브라우저에만 기억해요. 프로필 지역은 바뀌지 않아요.':'지역을 적용했어요. 브라우저 저장이 차단되어 새로고침하면 선택이 사라져요.';
+    }catch{if(request===homeRegionRequest)status.textContent='지역 검색이 원활하지 않아요. 잠시 후 다시 시도해 주세요.';}
+    finally{if(request===homeRegionRequest)button.disabled=false;}
+  });
+  document.getElementById('home-region-clear').addEventListener('click',()=>{
+    ++homeRegionRequest;homeRegion=null;persistHomeRegion();document.getElementById('home-region-apply').disabled=false;document.getElementById('home-region-input').value='';
+    document.getElementById('home-region-status').textContent='지역 선택을 해제했어요. 프로필 지역이 있으면 그 지역을 기준으로 추천해요.';loadNearbyRecommendations();
+  });
   async function saveRegion(){
     const input = document.getElementById('region-input');
     const text = input.value.trim();
@@ -4629,18 +4653,21 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   function loadNearbyRecommendations(){
     const visible = allCourses().filter(c => !isHidden('course', c.id));
+    const region=homeRegion||(myRegionLat!=null&&myRegionLng!=null?{name:myRegionName,lat:myRegionLat,lng:myRegionLng}:null);
+    const input=document.getElementById('home-region-input');if(document.activeElement!==input)input.value=region?.name||'';
+    document.getElementById('home-region-clear').hidden=!homeRegion;
     let list;
-    if(myRegionLat != null && myRegionLng != null){
+    if(region){
       list = visible.slice().sort((a,b)=>
-        L.latLng(myRegionLat,myRegionLng).distanceTo(L.latLng(a.lat,a.lng)) -
-        L.latLng(myRegionLat,myRegionLng).distanceTo(L.latLng(b.lat,b.lng))
+        L.latLng(region.lat,region.lng).distanceTo(L.latLng(a.lat,a.lng)) -
+        L.latLng(region.lat,region.lng).distanceTo(L.latLng(b.lat,b.lng))
       );
-      document.getElementById('nearby-title').textContent = `"${myRegionName}" 근처 추천 코스`;
-      document.getElementById('nearby-desc').textContent = '등록하신 지역과 가까운 순서로 보여드려요.';
+      document.getElementById('nearby-title').textContent = `"${region.name}" 근처 추천 코스`;
+      document.getElementById('nearby-desc').textContent = '선택 지역에서 코스 시작점까지 직선거리 기준이에요. 인근 코스가 적으면 먼 곳도 표시돼요.';
     } else {
       list = visible.slice();
       document.getElementById('nearby-title').textContent = '이런 코스는 어때요?';
-      document.getElementById('nearby-desc').textContent = '프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.';
+      document.getElementById('nearby-desc').textContent = '로그인 없이 지역을 선택하고 가까운 산책길을 찾아보세요.';
     }
     const fullList = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
     renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,24));
