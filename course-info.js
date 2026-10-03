@@ -46,7 +46,15 @@
     const km=value?Number(value[1])*(raw.includes('m')&&!raw.includes('km')?0.001:1):null;
     return {minutes:Number.isFinite(km)&&km>0?Math.max(5,Math.round(km/4*60)):null,official:false};
   }
-  const api=Object.freeze({sourceURL,mapURL,checkedDate,provider,cleanDescription,officialMinutes,walkTime});
+  function cardTitle(course){
+    const original=String(course?.name||'이름 없는 코스').trim();
+    // Display only: never mutate the canonical name used by search and photo matching.
+    let title=original.replace(/^(?:서울특별시|서울|부산광역시|부산|대구광역시|대구|울산광역시|울산)\s+/, '');
+    const partial=/\s*(?:\(공식 GPX 제공 구간\)|GPX (?:선택 )?구간)\s*$/.test(title);
+    title=title.replace(/\s*(?:\(공식 GPX 제공 구간\)|GPX (?:선택 )?구간)\s*$/, '').replace(/보행로 산책 코스$/, '보행로');
+    return {title:title||original,partial,extent:partial?'제공 구간 '+String(course.distance||'').trim():''};
+  }
+  const api=Object.freeze({sourceURL,mapURL,checkedDate,provider,cleanDescription,officialMinutes,walkTime,cardTitle});
   if(typeof module==='object'&&module.exports)module.exports=api;
   else root.CourseInfo=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

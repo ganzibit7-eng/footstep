@@ -2774,7 +2774,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
 <script src="traffic.js?v=20261003" data-manual></script>
 <script src="course-photos.js?v=20261003-credit"></script>
-<script src="course-info.js?v=20261003-evening"></script>
+<script src="course-info.js?v=20261003-titles"></script>
 <script src="facility-info.js?v=20261003"></script>
 <script src="course-routes.js?v=20261003-evening"></script>
 <script src="course-addresses.js?v=20261003-region"></script>
@@ -4351,7 +4351,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <button class="fav-btn ${isFav?'active':''}" data-fav-toggle="${c.id}" aria-label="${isFav ? '찜 해제' : '찜하기'}" aria-pressed="${isFav}">${isFav ? '❤️' : '🤍'}</button>
         </div>
         <div class="card-body">
-          <h3>${escapeHtml(c.name)}</h3>
+          <h3>${escapeHtml(CourseInfo.cardTitle(c).title)}</h3>
+          ${CourseInfo.cardTitle(c).partial ? `<span class="tag-pill course-extent">${escapeHtml(CourseInfo.cardTitle(c).extent)} · 전체 코스 아님</span>` : ''}
           ${isBoosted ? `<span class="tag-pill" style="background:#F3E3C4; color:#8A5F14; align-self:flex-start;">🌟 홍보중인 코스</span>` : ''}
           ${walkerCount > 0 ? `<span class="tag-pill" style="background:#DCEBD6; color:#33612F; align-self:flex-start;">🐕 지금 ${walkerCount}마리 산책 중</span>` : ''}
           <div class="row" style="gap:10px;">
