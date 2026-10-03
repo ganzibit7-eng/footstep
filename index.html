@@ -4632,11 +4632,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const rail=document.getElementById('nearby-grid');
     if(!rail.clientWidth)return;
     const cards=Array.from(rail.querySelectorAll('.course-card'));
-    const edge=rail.getBoundingClientRect();
-    const shown=cards.map((card,i)=>({i,rect:card.getBoundingClientRect()}))
-      .filter(x=>x.rect.right>edge.left+8&&x.rect.left<edge.right-8);
-    document.getElementById('nearby-position').textContent=shown.length
-      ? (shown[0].i+1)+'–'+(shown[shown.length-1].i+1)+' / '+cards.length : '';
+    const step=cards.length?cards[0].getBoundingClientRect().width+(parseFloat(getComputedStyle(rail).columnGap)||0):0;
+    const perPage=step?Math.max(1,Math.round(rail.clientWidth/step)):1;
+    const pages=Math.ceil(cards.length/perPage);
+    const page=step?Math.min(pages,Math.max(1,Math.round(rail.scrollLeft/(step*perPage))+1)):0;
+    const position=document.getElementById('nearby-position');
+    position.textContent=cards.length?String(page):'';
+    position.setAttribute('aria-label',cards.length?`추천 코스 ${pages}페이지 중 ${page}페이지`:'추천 코스 없음');
     document.getElementById('nearby-prev').disabled=rail.scrollLeft<=2;
     document.getElementById('nearby-next').disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-2;
   }
