@@ -2,6 +2,8 @@
 (function(root){
   'use strict';
   const SOURCES = {
+    'gocamping.or.kr':'한국관광공사 고캠핑',
+    'www.gocamping.or.kr':'한국관광공사 고캠핑',
     'gil.seoul.go.kr':'서울시',
     'www.durunubi.kr':'한국관광공사 두루누비',
     'durunubi.kr':'한국관광공사 두루누비',

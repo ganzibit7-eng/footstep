@@ -1325,6 +1325,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .leaflet-tooltip{font-family:inherit;font-size:13px;line-height:1.5}
 </style>
 <style id="course-card-final">
+.course-address{margin:0;font:13px/1.7 system-ui,-apple-system,sans-serif;color:var(--ink);overflow-wrap:anywhere}.course-address small{display:block;font-size:11px;color:var(--muted-text);margin-bottom:2px}.course-address span{display:block}.course-address-note{font:12px/1.65 system-ui,sans-serif;color:var(--muted-text);margin-top:4px}
 .course-card{border-radius:24px;border-color:var(--ui-border);box-shadow:0 3px 6px rgba(31,60,43,.02),0 12px 28px rgba(31,60,43,.045);transition:transform .18s ease,box-shadow .18s ease}
 .course-card .card-visual{height:142px}
 .course-card[data-palette="1"] .card-visual{background:#f1ebdb}
@@ -2088,7 +2089,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     </div>
     <div class="map-panel" style="margin-bottom:24px;">
       <div class="map-toolbar">
-        <input type="text" id="course-search-input" aria-label="산책 코스 검색" list="recent-search-list" placeholder="🔍 코스 이름·설명으로 검색 (예: 한강, 그늘)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
+        <input type="text" id="course-search-input" aria-label="산책 코스 검색" list="recent-search-list" placeholder="🔍 코스 이름·지역·주소 검색 (예: 성동구, 왕십리로)" style="flex:1; min-width:180px; padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px;">
         <datalist id="recent-search-list"></datalist>
         <select id="course-sort-select" aria-label="코스 정렬" style="padding:10px 14px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); color:var(--ink);">
           <option value="default">기본순</option>
@@ -2340,6 +2341,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div class="modal-body">
         <h3 id="modal-title">코스 이름</h3>
         <button type="button" id="detail-favorite" class="pin-btn" aria-pressed="false">찜하기</button><div id="course-detail-summary" class="course-detail-summary"></div><div class="modal-meta-row" id="modal-meta"></div>
+        <div id="modal-address"></div><p class="course-address-note">주소는 지도에 표시된 코스 출발 지점 기준입니다. 주차장·입구 주소와 다를 수 있어요.</p>
         <p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
         <div id="photo-upload-wrap" style="margin:10px 0;">
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
@@ -2759,9 +2761,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
 <script src="traffic.js?v=20261003" data-manual></script>
 <script src="course-photos.js?v=20261003b"></script>
-<script src="course-info.js?v=20261003"></script>
+<script src="course-info.js?v=20261003-evening"></script>
 <script src="facility-info.js?v=20261003"></script>
-<script src="course-routes.js?v=20261003b"></script>
+<script src="course-routes.js?v=20261003-evening"></script>
+<script src="course-addresses.js?v=20261003-evening"></script>
 <script src="walk-tracker.js?v=20261003"></script>
 <script>
 (function(){
@@ -2916,6 +2919,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     toastTimer = setTimeout(()=> toastEl.classList.remove('show'), 4000);
   }
 
+  function courseAddressHTML(c){
+    const address=CourseAddresses.get(c);
+    return address?'<p class="course-address"><small>'+escapeHtml(address.point+' · '+(address.roadAddress?'도로명':'지번'))+'</small><span>'+escapeHtml(address.address)+'</span></p>':'<p class="course-address"><small>출발 지점 주소</small><span>주소 확인 중 · 지도에서 위치를 확인해 주세요</span></p>';
+  }
   function rowToCourse(row){
     return {
       id: row.id, name: row.name, desc: row.description,
@@ -4138,6 +4145,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <span style="flex:1;">
         <b style="display:block; font-size:14px; color:var(--pine-deep);">${escapeHtml(String(c.name||'이름 없는 코스'))}</b>
         <small style="color:var(--muted-text); font-size:12px;">${escapeHtml(String(c.distance || '거리 미등록'))}${estMin ? ' · 예상 '+estMin+'분' : ''}${rating ? ' · ★'+escapeHtml(String(rating)) : ''}</small>
+        <small style="display:block;color:var(--ink);">${escapeHtml(CourseAddresses.get(c)?.address||'주소 확인 중')}</small>
         <small style="display:block;color:var(--muted-text);">${escapeHtml(reasons.join(' · ') || '선택 지역 주변 등록 코스')} · 세부 조건은 상세에서 확인</small>
       </span>
       <span style="color:var(--clay);">→</span>
@@ -4279,10 +4287,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(key==='distance')return c.distance||'정보 없음';
       if(key==='time'){const time=courseWalkTime(c);return time.minutes?time.minutes+'분 · '+(time.official?'공식 안내':'평지 예상'):'정보 없음';}
       if(key==='diff')return c.diff||'정보 없음';
+      if(key==='address')return CourseAddresses.get(c)?.address||'주소 확인 중';
       if(key==='tags')return (c.tags||[]).map(tagLabel).join(' · ')||'등록된 특징 없음';
       const rating=avgRating(c.id);return rating?'★ '+rating+' · 리뷰 '+reviewsFor(c.id).length+'개':'아직 리뷰 없음';
     };
-    panel.innerHTML='<header><h3 id="compare-title">어느 길로 걸을까요?</h3><button type="button" data-compare-clear>모두 비우기</button></header><p role="status">'+rows.length+'/3개 선택 · '+(rows.length<2?'아래에서 코스를 하나 더 담아보세요.':'거리와 특징을 나란히 비교해 보세요.')+'</p><div class="compare-scroll" tabindex="0" role="region" aria-label="산책 코스 비교표, 작은 화면에서는 좌우로 넘겨보세요"><table><thead><tr><th scope="col">비교 항목</th>'+rows.map(c=>'<th scope="col">'+escapeHtml(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['거리','distance'],['예상 시간','time'],['난이도','diff'],['등록 특징','tags'],['이용자 후기','reviews']].map(([label,key])=>'<tr><th scope="row">'+label+'</th>'+rows.map(c=>'<td>'+escapeHtml(value(c,key))+'</td>').join('')+'</tr>').join('')+'<tr><th scope="row">살펴보기</th>'+rows.map(c=>'<td><button type="button" data-compare-open="'+escapeHtml(c.id)+'">상세 보기 ↗</button> <button type="button" data-compare-remove="'+escapeHtml(c.id)+'" aria-label="'+escapeHtml(c.name)+' 비교에서 빼기">빼기</button></td>').join('')+'</tr></tbody></table></div><p>공식 안내 시간이 있으면 우선 표시합니다. 그 외에는 시속 4km로 예상하며 휴식·경사에 따라 달라요. 작은 화면에서는 표를 좌우로 넘겨보세요.</p>';
+    panel.innerHTML='<header><h3 id="compare-title">어느 길로 걸을까요?</h3><button type="button" data-compare-clear>모두 비우기</button></header><p role="status">'+rows.length+'/3개 선택 · '+(rows.length<2?'아래에서 코스를 하나 더 담아보세요.':'거리와 특징을 나란히 비교해 보세요.')+'</p><div class="compare-scroll" tabindex="0" role="region" aria-label="산책 코스 비교표, 작은 화면에서는 좌우로 넘겨보세요"><table><thead><tr><th scope="col">비교 항목</th>'+rows.map(c=>'<th scope="col">'+escapeHtml(c.name)+'</th>').join('')+'</tr></thead><tbody>'+[['출발 지점 주소','address'],['거리','distance'],['예상 시간','time'],['난이도','diff'],['등록 특징','tags'],['이용자 후기','reviews']].map(([label,key])=>'<tr><th scope="row">'+label+'</th>'+rows.map(c=>'<td>'+escapeHtml(value(c,key))+'</td>').join('')+'</tr>').join('')+'<tr><th scope="row">살펴보기</th>'+rows.map(c=>'<td><button type="button" data-compare-open="'+escapeHtml(c.id)+'">상세 보기 ↗</button> <button type="button" data-compare-remove="'+escapeHtml(c.id)+'" aria-label="'+escapeHtml(c.name)+' 비교에서 빼기">빼기</button></td>').join('')+'</tr></tbody></table></div><p>공식 안내 시간이 있으면 우선 표시합니다. 그 외에는 시속 4km로 예상하며 휴식·경사에 따라 달라요. 작은 화면에서는 표를 좌우로 넘겨보세요.</p>';
     panel.querySelector('[data-compare-clear]').onclick=()=>{compareCourseIds.clear();renderCourseComparison();document.getElementById('course-search-input').focus();};
     panel.querySelectorAll('[data-compare-open]').forEach(b=>b.onclick=()=>openCourseDetail(b.dataset.compareOpen));
     panel.querySelectorAll('[data-compare-remove]').forEach(b=>b.onclick=()=>{toggleCourseComparison(b.dataset.compareRemove);(panel.querySelector('[data-compare-clear]')||document.getElementById('course-search-input')).focus();});
@@ -4322,8 +4331,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         '쉬움': ['#7FA67C','#3F5A3D'], '보통': ['#C79A3C','#8A5F14'], '어려움': ['#C46A4A','#8A3F26'],
       };
       const [va, vb] = visualGradients[c.diff] || ['#A9A292','#696354'];
-      const courseSource=officialCourseSource(c.desc);
-      const checkedDate=officialCourseCheckedDate(c.desc);
       card.innerHTML = `
         <div class="card-visual" style="--visual-a:${va}; --visual-b:${vb};">
           <svg class="course-landscape" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><circle cx="316" cy="36" r="23" fill="#f7dc97"/><path d="M0 106Q80 42 180 94T400 70V160H0Z" fill="#bfd0ad"/><path d="M0 136Q100 79 219 124T400 111V160H0Z" fill="#7fa184"/><path d="M210 160Q163 137 211 122T258 91" fill="none" stroke="#f4e8c9" stroke-width="18"/><path d="M54 122v-28m-13 11 13-24 13 24M351 123V91m-15 13 15-28 15 28" fill="#315f48" stroke="#315f48" stroke-width="4" stroke-linecap="round"/><path d="m94 143 2-9m-6 5 10-1m207 9 2-9m-6 5 10-1" stroke="#f9edc9" stroke-width="3" stroke-linecap="round"/></svg><span class="card-visual-caption">산책길 일러스트</span>
@@ -4339,7 +4346,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             ${avg ? `<span class="card-rating" aria-label="평점 ${avg}, 리뷰 ${reviewsFor(c.id).length}개">★ ${avg}<small>리뷰 ${reviewsFor(c.id).length}</small></span>` : '<span class="card-rating card-rating-empty">첫 리뷰를 기다려요</span>'}
           </div>
           <p class="desc">${escapeHtml(CourseInfo.cleanDescription(c.desc)||'거리와 편의 정보를 확인하고 우리 강아지에게 맞는 코스인지 살펴보세요.')}</p>
-          ${courseSource ? `<a class="course-source-link" href="${escapeHtml(courseSource)}" target="_blank" rel="noopener noreferrer">🏛 공식 코스 안내${checkedDate?` <small>${escapeHtml(checkedDate)} 자료 확인</small>`:''}<span aria-hidden="true">↗</span></a>` : ''}
+          ${courseAddressHTML(c)}
           <div class="tag-row">${(c.tags||[]).slice(0,2).map(t=>`<span class="tag-pill">${escapeHtml(tagLabel(t))}</span>`).join('')}${(c.tags||[]).length>2 ? `<span class="tag-pill" style="background:var(--paper); border:1px dashed var(--line); color:var(--muted-text);">+${(c.tags||[]).length-2}</span>` : ''}</div>
           <button type="button" class="course-detail-cta" data-course-open="${escapeHtml(c.id)}" aria-label="${escapeHtml(c.name)} 자세히 보기"><span>코스 살펴보기</span><span aria-hidden="true">↗</span></button>
           ${containerEl.id==='course-grid'?`<button type="button" class="course-compare-toggle" data-compare-course="${escapeHtml(c.id)}" aria-pressed="${compareCourseIds.has(String(c.id))}">${compareCourseIds.has(String(c.id))?'✓ 비교에 담음':'＋ 다른 코스와 비교'}</button>`:''}
@@ -4422,7 +4429,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   function showMapCoursePeek(c){
     const el=document.getElementById('map-course-peek'),minutes=courseMinutes(c);
-    el.innerHTML='<button type="button" class="peek-close" aria-label="코스 요약 닫기">×</button><small>선택한 산책길</small><strong>'+escapeHtml(c.name)+'</strong><p>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</p><div><button type="button" data-peek-detail>코스 살펴보기 ↗</button><button type="button" data-peek-save></button></div>';
+    el.innerHTML='<button type="button" class="peek-close" aria-label="코스 요약 닫기">×</button><small>선택한 산책길</small><strong>'+escapeHtml(c.name)+'</strong><p>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</p>'+courseAddressHTML(c)+'<div><button type="button" data-peek-detail>코스 살펴보기 ↗</button><button type="button" data-peek-save></button></div>';
     el.dataset.courseId=String(c.id);el.hidden=false;
     const save=el.querySelector('[data-peek-save]');
     const sync=()=>{save.textContent=favoriteIds.has(c.id)?'♥ 찜 해제':'♡ 찜하기';save.setAttribute('aria-pressed',String(favoriteIds.has(c.id)));};sync();
@@ -4452,12 +4459,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function getFilteredCourses(){
     let list = allCourses().filter(c => !isHidden('course', c.id));
     if(listFilterState.query){
-      const q = listFilterState.query.toLowerCase();
-      list = list.filter(c =>
-        (c.name||'').toLowerCase().includes(q) ||
-        CourseInfo.cleanDescription(c.desc).toLowerCase().includes(q) ||
-        (c.tags||[]).some(t=>t.toLowerCase().includes(q))
-      );
+      list = list.filter(c => CourseAddresses.matches(c,listFilterState.query,CourseInfo.cleanDescription(c.desc)));
     }
     if(listFilterState.diff !== 'all'){
       list = list.filter(c => c.diff === listFilterState.diff);
@@ -6005,6 +6007,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const verifiedRoute=CourseRoutes.get(c);
     document.getElementById('course-route-label').textContent=verifiedRoute?(verifiedRoute.geometryProvider||CourseInfo.provider(c.desc)+' 공식 지도')+(verifiedRoute.proposed?' 제안 코스':verifiedRoute.segment?' 선택 구간':' 실제 경로')+' · '+(verifiedRoute.parts?verifiedRoute.parts.length+'개 구간':CourseRoutes.isLoop(verifiedRoute)?'양 끝 인접':'구간형'):'대표 위치 · 정확한 경로 미확보';
 
+    document.getElementById('modal-address').innerHTML=courseAddressHTML(c);
     document.getElementById('modal-desc').textContent = CourseInfo.cleanDescription(c.desc) || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
     document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
     document.getElementById('modal-meta').innerHTML = `
