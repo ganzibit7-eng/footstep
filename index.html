@@ -1731,11 +1731,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </header>
 
 <nav class="bottom-tab-bar" id="bottom-tab-bar" aria-label="주요 메뉴">
-  <button data-page-nav="home"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg></span><span>홈</span></button>
-  <button data-page-nav="map"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Zm6-2v16m6-14v16"/></svg></span><span>지도</span></button>
-  <button data-page-nav="walk"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="6" cy="8" rx="2" ry="3"/><ellipse cx="11" cy="5" rx="2" ry="3"/><ellipse cx="17" cy="7" rx="2" ry="3"/><path d="M5 18c0-3 4-7 7-7s7 4 7 7c0 4-4 2-7 2s-7 2-7-2Z"/></svg></span><span>산책</span></button>
-  <button data-page-nav="register"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 7v10m-5-5h10"/></svg></span><span>등록</span></button>
-  <button id="bottom-tab-my" type="button"><span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg></span><span>MY</span></button>
+  <button data-page-nav="home"><span class="tab-icon">🏠</span><span>홈</span></button>
+  <button data-page-nav="map"><span class="tab-icon">🗺️</span><span>지도</span></button>
+  <button data-page-nav="walk"><span class="tab-icon">🐾</span><span>산책</span></button>
+  <button data-page-nav="register"><span class="tab-icon">➕</span><span>등록</span></button>
+  <button id="bottom-tab-my" type="button"><span class="tab-icon">👤</span><span>MY</span></button>
 </nav>
 
 
@@ -1826,11 +1826,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <div class="hero-copy" id="hero-style-3" style="max-width:640px;">
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
       <span class="eyebrow" id="hero-eyebrow">오늘도 같이 걷자 🐾</span>
-      <h1 id="hero-title"><span class="hero-title-line">오늘은 어디로</span><em class="hero-title-line">걸을까요?</em></h1>
-      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">우리 아이에게 맞는 산책길을 찾아보세요.<br>산책 코스와 반려견 동반 장소를 한눈에.</p>
+      <h1 id="hero-title"><span class="hero-title-line">우리 아이가 좋아할</span><em class="hero-title-line">산책길을 찾아요</em></h1>
+      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">산책 코스부터 반려견 동반 장소까지, 가까운 곳에서 새로운 즐거움을 발견해보세요.</p>
 
       <div style="display:flex; flex-direction:column; gap:10px; margin-top:22px; max-width:360px;">
-        <a href="#map" data-page-nav="map" data-map-filter="course" class="btn-primary home-find-course" style="display:block; font-size:16px; padding:16px 30px;"><span>내 주변 산책코스 찾기</span><span aria-hidden="true">↗</span></a>
+        <a href="#map" data-page-nav="map" data-map-filter="course" class="btn-primary" style="display:block; font-size:16px; padding:16px 30px;">📍 내 주변 산책코스 찾기</a>
         <a href="#walk" data-page-nav="walk" class="btn-ghost" style="display:block; text-align:center; font-size:15px; padding:15px 30px;">🐾 산책 시작하기</a>
       </div>
     </div>
@@ -1846,14 +1846,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <div class="hero-stat-box">
           <span class="hero-stat-icon">🐾</span>
           <div>
-            <div class="hero-stat-num is-loading" id="hero-stat-courses" aria-label="코스 수 불러오는 중"></div>
+            <div class="hero-stat-num" id="hero-stat-courses">–</div>
             <div class="hero-stat-label">등록 코스</div>
           </div>
         </div>
         <div class="hero-stat-box">
           <span class="hero-stat-icon">☕</span>
           <div>
-            <div class="hero-stat-num is-loading" id="hero-stat-facilities" aria-label="동반 장소 수 불러오는 중"></div>
+            <div class="hero-stat-num" id="hero-stat-facilities">–</div>
             <div class="hero-stat-label">동반 장소</div>
           </div>
         </div>
@@ -1873,9 +1873,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <a href="#list" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
     <div class="home-course-controls"><p>옆으로 넘겨 더 많은 산책길을 만나보세요.</p><div><span id="nearby-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="nearby-prev" aria-label="이전 추천 코스" aria-controls="nearby-grid" disabled>←</button><button type="button" id="nearby-next" aria-label="다음 추천 코스" aria-controls="nearby-grid" disabled>→</button></div></div>
-    <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid" tabindex="0" role="region" aria-label="추천 산책 코스" aria-busy="true"><span class="sr-only" role="status">추천 코스를 불러오고 있어요.</span><div class="home-skeleton" aria-hidden="true"><div></div><span></span><span></span><span></span></div><div class="home-skeleton" aria-hidden="true"><div></div><span></span><span></span><span></span></div><div class="home-skeleton" aria-hidden="true"><div></div><span></span><span></span><span></span></div></div>
+    <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid" tabindex="0" role="region" aria-label="추천 산책 코스"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
-    <p id="nearby-data-notice" class="home-data-notice" role="status" hidden>최신 코스 정보를 불러오지 못했어요. <button type="button" id="home-retry-data">다시 불러오기</button></p>
     <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title"><div><span class="join-eyebrow">첫 가입 100P</span><h2 id="join-benefits-title">우리 아이 산책을 내 기록으로 모아보세요.</h2><p>찜한 길 저장 · GPS 산책 기록 · 우리 강아지 프로필 · 활동 포인트 적립을 한 계정에 모을 수 있어요.</p></div><div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">무료 가입하고 100P 받기 →</button><span>둘러보기는 로그인 없이 가능해요.</span></div></section>
 
 
@@ -2924,13 +2923,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(list)list.replaceChildren();
   }
 
-  let homeCoursesState="pending",homeFacilitiesState="pending";
   async function loadData(){
     let publicDataFailed = false;
     try{
       const data = await fetchAllRows('courses', 'created_at');
-      courses = data.map(rowToCourse);homeCoursesState="ready";
-    }catch(e){ console.error(e); publicDataFailed = true;homeCoursesState="failed"; }
+      courses = data.map(rowToCourse);
+    }catch(e){ console.error(e); publicDataFailed = true; }
 
     try{
       const data = await fetchAllRows('bins', 'created_at');
@@ -2938,8 +2936,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){ console.error(e); publicDataFailed = true; }
 
     try{
-      facilities = await fetchAllRows('facilities', 'created_at');homeFacilitiesState="ready";
-    }catch(e){ console.error(e); publicDataFailed = true;homeFacilitiesState="failed"; }
+      facilities = await fetchAllRows('facilities', 'created_at');
+    }catch(e){ console.error(e); publicDataFailed = true; }
 
     try{
       const data = await fetchAllRows('reviews', 'created_at');
@@ -3728,13 +3726,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(liveCourses)liveCourses.textContent=approvedCourseCount.toLocaleString()+'개';
     const liveFacilities=document.getElementById('stat-facilities-live');
     if(liveFacilities)liveFacilities.textContent=approvedFacilityCount.toLocaleString()+'곳';
-    [['hero-stat-courses',approvedCourseCount,'개',homeCoursesState],['hero-stat-facilities',approvedFacilityCount,'곳',homeFacilitiesState]].forEach(([id,count,unit,state])=>{
-      const el=document.getElementById(id);if(!el)return;
-      const box=el.closest('.hero-stat-box');
-      box.hidden=state!=='pending'&&count===0;
-      el.classList.toggle('is-loading',state==='pending');
-      if(state!=='pending'){el.removeAttribute('aria-label');el.textContent=count>0?count.toLocaleString()+unit:'';}
-    });
+    const heroCourses = document.getElementById('hero-stat-courses');
+    if(heroCourses) heroCourses.textContent = `${approvedCourseCount.toLocaleString()}개`;
+    const heroFacilities = document.getElementById('hero-stat-facilities');
+    if(heroFacilities) heroFacilities.textContent = `${approvedFacilityCount.toLocaleString()}곳`;
   }
 
   // ===== 홈 화면 히어로 스타일 미리보기 (?homestyle=1/2/3) =====
@@ -4231,7 +4226,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   function renderCourseCards(containerEl, courseList){
     containerEl.innerHTML = '';
-    if(containerEl.id==='nearby-grid')containerEl.setAttribute('aria-busy','false');
     if(courseList.length === 0){
       containerEl.innerHTML = '<p class="empty-course-state">🐾 조건에 맞는 코스를 아직 못 찾았어요.<br>검색어나 필터를 조정해보시거나, 직접 첫 코스를 등록해보세요!</p>';
       return;
@@ -4290,7 +4284,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
       `;
       card.addEventListener('click', (e)=>{
-        if(e.target.closest('button, a, summary, details, .member-link')) return;
+        if(e.target.closest('button') || e.target.closest('a') || e.target.closest('.member-link')) return;
         openCourseDetail(c.id);
       });
       const curatedPhoto=CoursePhotos.get(c);
@@ -4302,11 +4296,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         img.alt=isCurated?curatedPhoto.place+' 실제 사진 ('+curatedPhoto.date+')':c.name+' 이용자 사진';img.loading='lazy';img.decoding='async';
         img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';card.querySelector('.course-photo-credit')?.remove();},{once:true});
         card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?'실제 장소 사진 · '+curatedPhoto.date.slice(0,4):'이용자 산책 사진';
-        if(isCurated){
-          const credit=document.createElement(containerEl.id==='nearby-grid'?'details':'div');credit.className='course-photo-credit';
-          credit.innerHTML=(containerEl.id==='nearby-grid'?'<summary>사진 출처·이용 조건 <span aria-hidden="true">＋</span></summary>':'')+CoursePhotos.credit(curatedPhoto);
-          card.querySelector('.card-body').append(credit);
-        }
+        if(isCurated){const credit=document.createElement('div');credit.className='course-photo-credit';credit.innerHTML=CoursePhotos.credit(curatedPhoto);card.querySelector('.card-body').append(credit);}
       }
       containerEl.appendChild(card);
     });
@@ -4561,7 +4551,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       document.getElementById('nearby-desc').textContent = '프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.';
     }
     const fullList = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
-    document.getElementById('nearby-data-notice').hidden=homeCoursesState!=='failed';
     renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,24));
     document.getElementById('nearby-grid').scrollLeft=0;
     requestAnimationFrame(updateNearbyRail);
@@ -4588,7 +4577,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const count=Math.max(1,Math.floor((rail.clientWidth+2)/step));
     rail.scrollBy({left:direction*step*count,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
-  document.getElementById('home-retry-data').addEventListener('click',async e=>{const b=e.currentTarget;b.disabled=true;b.textContent='불러오는 중…';try{await loadData();}finally{b.disabled=false;b.textContent='다시 불러오기';}});
   document.getElementById('nearby-prev').addEventListener('click',()=>moveNearbyRail(-1));
   document.getElementById('nearby-next').addEventListener('click',()=>moveNearbyRail(1));
   document.getElementById('nearby-grid').addEventListener('scroll',updateNearbyRail,{passive:true});
@@ -8076,6 +8064,5 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 })();
 </script>
 <link rel="stylesheet" href="/readability.css?v=20261002-2">
-<link rel="stylesheet" href="/premium-home.css?v=20261003-1">
 </body>
 </html>
