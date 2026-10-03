@@ -1706,7 +1706,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 .map-extra-filters{border-top:1px dashed var(--line);background:var(--paper)}.map-extra-filters>summary{list-style:none;cursor:pointer;min-height:48px;padding:14px 18px;color:var(--pine-deep);font:14px/1.5 'Jua',sans-serif}.map-extra-filters>summary::-webkit-details-marker{display:none}.map-extra-filters>summary:after{content:'＋';float:right;font:18px 'Jua',sans-serif}.map-extra-filters[open]>summary:after{content:'−'}.map-extra-filters .map-toolbar{padding:10px 16px 16px;flex-wrap:wrap}.map-filter-reset{margin-left:auto}.walk-share-button{width:100%;min-height:48px;margin:10px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--sand);color:var(--pine-deep);font:15px 'Jua',sans-serif;cursor:pointer}.walk-share-button:disabled{opacity:.6;cursor:wait}.walk-share-note{font:12px/1.5 'Sunflower',sans-serif;color:var(--muted-text);margin:6px 0 0}
 @media(max-width:700px){.map-filter-reset{margin-left:0}.map-extra-filters>summary{font-size:15px}.map-extra-filters .map-toolbar{gap:8px}.map-extra-filters #poi-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.map-extra-filters #poi-group .chip{min-height:44px}.map-extra-filters #poi-search-btn{min-height:46px;width:100%}.map-toolbar #view-filter-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.map-toolbar #view-filter-group .chip{min-height:44px;justify-content:center;padding:8px 6px}.map-toolbar #map-filter-note{display:block;width:100%}}
 </style>
-<style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}#photo-lightbox-credit a{color:#f5d99d}#photo-lightbox-credit small{color:#eee}</style>
+<style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}#photo-lightbox-credit a{color:#f5d99d}#photo-lightbox-credit small{color:#eee}.course-card .course-photo-credit{font-size:12px;line-height:1.6;padding:10px 0 0}.photo-credit-edit{display:block;margin-top:2px}.course-card .course-photo-credit summary{cursor:pointer;padding:6px 0;color:var(--pine-deep);min-height:32px}.photo-credit-details{padding:4px 0 8px;line-height:1.7}</style>
 <style id="home-recommendation-rail">
 #nearby-section #nearby-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;overscroll-behavior-x:contain;padding:2px 2px 16px;margin:0;align-items:stretch;scrollbar-width:thin}
 #nearby-grid>.course-card{scroll-snap-align:start;min-width:0}
@@ -2773,7 +2773,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </div>
 
 <script src="traffic.js?v=20261003" data-manual></script>
-<script src="course-photos.js?v=20261003b"></script>
+<script src="course-photos.js?v=20261003-credit"></script>
 <script src="course-info.js?v=20261003-evening"></script>
 <script src="facility-info.js?v=20261003"></script>
 <script src="course-routes.js?v=20261003-evening"></script>
@@ -4372,7 +4372,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
       `;
       card.addEventListener('click', (e)=>{
-        if(e.target.closest('button') || e.target.closest('a') || e.target.closest('.member-link')) return;
+        if(e.target.closest('button') || e.target.closest('a') || e.target.closest('details') || e.target.closest('.member-link')) return;
         openCourseDetail(c.id);
       });
       const curatedPhoto=CoursePhotos.get(c);
@@ -4384,7 +4384,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         img.alt=isCurated?curatedPhoto.place+' 실제 사진 ('+curatedPhoto.date+')':c.name+' 이용자 사진';img.loading='lazy';img.decoding='async';
         img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';card.querySelector('.course-photo-credit')?.remove();},{once:true});
         card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?'실제 장소 사진 · '+curatedPhoto.date.slice(0,4):'이용자 산책 사진';
-        if(isCurated){const credit=document.createElement('div');credit.className='course-photo-credit';credit.innerHTML=CoursePhotos.credit(curatedPhoto);card.querySelector('.card-body').append(credit);}
+        if(isCurated){const credit=document.createElement('div');credit.className='course-photo-credit';credit.innerHTML=CoursePhotos.cardCredit(curatedPhoto);card.querySelector('.card-body').append(credit);}
       }
       containerEl.appendChild(card);
     });

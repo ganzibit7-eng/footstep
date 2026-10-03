@@ -10,6 +10,10 @@ for(const record of records){
  assert(fs.existsSync(path.join(root,record.src)));
  const binary=fs.readFileSync(path.join(root,record.src));assert.equal(binary.toString('ascii',0,4),'RIFF');assert.equal(binary.toString('ascii',8,12),'WEBP');
  assert(record.width>0&&record.height>0);
+ const compact=photos.cardCredit(record);
+ assert(compact.includes(record.source));assert(compact.includes(record.licenseUrl));
+ assert(compact.includes('<details>'));assert(compact.includes('웹용 편집본'));assert(compact.includes('편집본도'));
+
  for(const [id,name] of Object.entries(record.courses)){
   const markup=photos.figure({id,name});assert(markup.includes(`width="${record.width}" height="${record.height}"`));
   assert(markup.includes(record.licenseUrl));assert(markup.includes('편집본도'));assert.equal(photos.get({id,name:'다른 코스'}),null);assert.equal(photos.figure({id:'unknown',name}), '');

@@ -1962,7 +1962,8 @@
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function get(course){return records.find(p => Object.hasOwn(p.courses, String(course?.id)) && p.courses[String(course.id)] === course.name) || null;}
   function credit(p){return `<span>${escape(p.place)} · ${escape(p.date)} 촬영</span><br><a href="${escape(p.source)}" target="_blank" rel="noopener noreferrer">사진: ${escape(p.author)} · 원본</a> · <a href="${escape(p.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escape(p.license)}</a><br><small>${escape(p.changes)} · 편집본도 ${escape(p.license)} 적용 · 촬영 당시 장소 모습으로 현재 상태와 다를 수 있어요.</small>`;}
+  function cardCredit(p){return `<div class="photo-credit-attribution"><a href="${escape(p.source)}" target="_blank" rel="noopener noreferrer">사진: ${escape(p.author)} · 원본</a> · <a href="${escape(p.licenseUrl)}" target="_blank" rel="noopener noreferrer">${escape(p.license)}</a><span class="photo-credit-edit">웹용 편집본</span></div><details><summary>사진 정보</summary><div class="photo-credit-details">${escape(p.place)} · ${escape(p.date)} 촬영<br>${escape(p.changes)} · 편집본도 ${escape(p.license)} 적용<br>촬영 당시 장소 모습으로 현재 상태와 다를 수 있어요.</div></details>`;}
   function figure(course){const p=get(course);return p?`<figure class="curated-course-photo" style="margin:20px 0"><img src="${p.src}" alt="${escape(p.place)} 실제 사진 (${p.date})" width="${p.width}" height="${p.height}" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;max-height:540px;object-fit:contain;background:#eef1e9;border-radius:16px"><figcaption style="font-size:12px;line-height:1.7;margin-top:8px">${credit(p)}</figcaption></figure>`:'';}
-  const api=Object.freeze({get,credit,figure});
+  const api=Object.freeze({get,credit,cardCredit,figure});
   if(typeof module==='object'&&module.exports)module.exports=api;else root.CoursePhotos=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
