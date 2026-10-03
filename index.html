@@ -1058,6 +1058,7 @@
 .walk-metric-note,.walk-settings p{font-size:12px;line-height:1.7;color:var(--muted-text);margin:8px 0 14px}
 .walk-settings{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:16px}
 .walk-settings label{font-size:13px;line-height:1.8;display:block;color:var(--pine-deep)}
+.walk-start-note{font-size:13px;line-height:1.75;color:var(--muted-text);margin:12px 0 20px}.walk-options{border:1px solid var(--line);border-radius:18px;padding:0 16px;margin:12px 0 0}.walk-options summary{cursor:pointer;min-height:52px;align-content:center;font-size:15px;font-weight:700;color:var(--pine-deep)}.walk-options summary span{font-size:12px;font-weight:400;color:var(--muted-text);margin-left:8px}.walk-options[open] summary{margin-bottom:14px}.walk-options .walk-settings{border:0;padding:0;margin:0 0 12px}
 .walk-settings input[type=number]{width:72px;padding:7px;border:1px solid var(--line);border-radius:8px;background:#fff}
 .walk-controls{display:flex;gap:10px}.walk-controls>button{flex:1;width:auto}
 #walk-pause-btn[aria-pressed=true]{background:var(--sand)}
@@ -2177,14 +2178,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <div class="register-panel">
       <div class="form-card">
         <div id="walk-reference" class="walk-plan-box" hidden><h3>이번 산책 참고 코스</h3><strong id="walk-reference-name"></strong><p>선택한 코스 정보입니다. GPS 기록은 시작 버튼을 누른 뒤 실제 이동 경로로 남아요.</p><button type="button" class="pin-btn" id="walk-reference-clear">선택 해제</button></div><div id="walk-idle-panel">
-          <details class="walk-prep" open><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
-          <p style="font-size:14px; color:#5B5645; margin:0 0 16px;">시작 버튼을 누르면 위치 접근 권한을 물어봐요. 허용하면 걷는 동안 실시간으로 경로가 그려져요.</p>
+          <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
+          <p class="walk-start-note">시작하면 위치 권한을 요청해요. 허용 후 시간·거리·예상 걸음 수와 이동 경로를 기록합니다. 화면을 켜두면 GPS 기록이 더 안정적이에요.</p>
+          <details class="walk-prep"><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
+          <details class="walk-options" id="walk-options"><summary>기록 설정 <span>배터리 · 보폭 · 화면</span></summary>
           <label style="display:flex; align-items:center; gap:8px; margin:0 0 16px; font-size:13.5px; font-weight:600; color:var(--pine-deep); cursor:pointer;">
             <input type="checkbox" id="battery-saver-toggle" style="width:16px; height:16px;">
             🔋 배터리 절약 모드 (위치 정확도는 낮아져요)
           </label>
           <div class="walk-settings"><label for="walk-stride">보호자의 한 걸음 보폭 <input type="number" id="walk-stride" value="70" min="30" max="120" step="1" inputmode="numeric"> cm</label><p>예상 걸음 수 = GPS 이동 거리 ÷ 보폭. 기본값 70cm는 계산용이며 실제 걸음 수나 강아지 걸음 수가 아니에요.</p><label><input type="checkbox" id="walk-screen-on" checked> 기록 중 화면 켜두기</label><p>화면 잠금·다른 앱 전환 시 GPS 기록이 끊길 수 있어요. 이 화면을 켜두면 더 안정적이에요.</p></div>
-          <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
+          </details>
         </div>
         <div id="walk-active-panel" style="display:none;"><p id="walk-gps-status" role="status" aria-live="polite" class="walk-gps-status">GPS 수신을 기다리고 있어요.</p>
           <div class="walk-metrics">
@@ -6394,7 +6397,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(walkInProgress())return;
     if(!navigator.geolocation){toast('이 브라우저에서는 위치 기능을 쓸 수 없어요');return;}
     const stride=document.getElementById('walk-stride');
-    if(!stride.checkValidity()||!Number.isInteger(Number(stride.value))){stride.reportValidity();toast('보폭을 30~120cm 사이의 정수로 입력해 주세요.');return;}
+    if(!stride.checkValidity()||!Number.isInteger(Number(stride.value))){document.getElementById('walk-options').open=true;stride.reportValidity();toast('보폭을 30~120cm 사이의 정수로 입력해 주세요.');return;}
     lastSavedWalk=null;walkPath=[];walkSession=new WalkTracker.Tracker(Number(stride.value));walkSession.start(Date.now());
     if(walkLiveLine){walkMap.removeLayer(walkLiveLine);walkLiveLine=null;}
     if(walkMarker){walkMap.removeLayer(walkMarker);walkMarker=null;}
