@@ -8,6 +8,7 @@ const SITE = 'https://balzaguk.com';
 const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
+const withTraffic = html => html.replace('</body>', '<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
 
 const types = [
   { table: 'courses', folder: 'courses', label: '강아지 산책 코스', icon: '🐕' },
@@ -724,7 +725,7 @@ for (const {type,items} of groups) {
     const dir = path.join(ROOT, type.folder, segment);
     const url = `${SITE}/${type.folder}/${segment}/`;
     await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, 'index.html'), detailHtml(item, type, url), 'utf8');
+    await writeFile(path.join(dir, 'index.html'), withTraffic(detailHtml(item, type, url)), 'utf8');
     sitemap.push({ url, lastmod: dateOnly(item.created_at) });
   }
 }
@@ -734,14 +735,14 @@ for (const hub of searchHubs) {
     const relative=hub.path+(page>1?`page/${page}/`:'');
     const dir=path.join(ROOT,relative.slice(1));
     await mkdir(dir,{recursive:true});
-    await writeFile(path.join(dir,'index.html'),hubHtml(hub,page),'utf8');
+    await writeFile(path.join(dir,'index.html'),withTraffic(hubHtml(hub,page)),'utf8');
     sitemap.push({url:SITE+relative,lastmod:newestDate(hub.items) || contentLastmod});
   }
 }
 for(const page of localOutingPages){
   const dir=path.join(ROOT,'with-dog',page.slug);
   await mkdir(dir,{recursive:true});
-  await writeFile(path.join(dir,'index.html'),localOutingHtml(page),'utf8');
+  await writeFile(path.join(dir,'index.html'),withTraffic(localOutingHtml(page)),'utf8');
   sitemap.push({
     url:`${SITE}/with-dog/${page.slug}/`,
     lastmod:newestDate([...page.courses,...page.places]) || contentLastmod
@@ -751,10 +752,10 @@ await rm(path.join(ROOT, 'guides'), { recursive: true, force: true });
 for (const guide of GUIDES) {
   const dir=path.join(ROOT,'guides',guide.slug);
   await mkdir(dir,{recursive:true});
-  await writeFile(path.join(dir,'index.html'),guideHtml(guide),'utf8');
+  await writeFile(path.join(dir,'index.html'),withTraffic(guideHtml(guide)),'utf8');
   sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:contentLastmod});
 }
-await writeFile(path.join(ROOT, 'discover.html'), directoryHtml(groups), 'utf8');
+await writeFile(path.join(ROOT, 'discover.html'), withTraffic(directoryHtml(groups)), 'utf8');
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {
   const prev = sitemapByUrl.get(entry.url);
