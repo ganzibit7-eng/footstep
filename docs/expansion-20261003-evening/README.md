@@ -18,3 +18,5 @@ Address data is bound to the course ID and start coordinates, so moving the cour
 ## Verification
 
 `node tests/expansion-evening.cjs`, `node tests/expansion-integrity.cjs`, `node tests/feature-quality.cjs`, JS syntax checks, SEO generation, guarded database inserts and count/ID verification. Evidence records are factual public sources; source review is not an on-site visit. Existing homepage layout, centered mobile carousel, page numbers, login, reviews and recording are preserved.
+
+Production browser verification: homepage displayed 215 courses and 2,575 places; every home card showed its start address. Searching `신촌리 3403-2` returned only c430, with the matching Jeju-si parcel address and explicit partial-GPX title. `address-search-proof.jpg` records that result after successful Pages deployment.
