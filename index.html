@@ -6404,7 +6404,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function saveWalkToDB(){
     if(walkSaving) return;
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
-    if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('저장할 기록이 없어요'); return; }
+    if(!lastSavedWalk || !lastSavedWalk.path.length){ toast('GPS 위치가 수신된 기록이 없어요. 위치 권한과 신호를 확인해 주세요.'); return; }
     if(savedWalkRecords.has(lastSavedWalk)){ toast('이미 저장한 산책 기록이에요'); return; }
     const record = lastSavedWalk;
     const saveButton = document.getElementById('walk-save-btn');
@@ -6436,6 +6436,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.getElementById('walk-idle-panel').style.display = '';
   }
   function walkToCourseHandoff(){
+    if(walkSaving){toast('기록을 저장 중이에요. 잠시 기다려 주세요.');return;}
     if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('넘길 경로가 없어요'); return; }
     if(lastSavedWalk.parts?.length>1){toast('일시정지·GPS 공백이 있는 기록은 하나의 연속 코스로 제안할 수 없어요. 내 기록으로 저장해 주세요.');return;}
     showPage('register');
@@ -6593,7 +6594,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   document.getElementById('walk-stop-btn').addEventListener('click', stopWalk);
   document.getElementById('walk-save-btn').addEventListener('click', saveWalkToDB);
   document.getElementById('walk-to-course-btn').addEventListener('click', walkToCourseHandoff);
-  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(lastSavedWalk&&!confirm('저장하지 않은 산책 기록을 버릴까요?'))return;resetWalkPanels();});
+  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(walkSaving){toast('기록을 저장 중이에요. 잠시 기다려 주세요.');return;}if(lastSavedWalk&&!confirm('저장하지 않은 산책 기록을 버릴까요?'))return;resetWalkPanels();});
 
   // ===== 페이지 전환 (메뉴별 화면 분리) =====
   let currentPage = 'home';
