@@ -1706,6 +1706,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 @media(max-width:900px) and (min-width:701px){#nearby-section #nearby-grid{grid-auto-columns:calc((100% - 18px)/2)}}
 @media(max-width:700px){#nearby-section #nearby-grid{grid-auto-columns:86%;gap:12px}#nearby-section .home-course-controls{align-items:flex-start}#nearby-section .home-course-controls p{font-size:12px;max-width:16ch;padding-top:5px}.home-course-controls>div{gap:4px}#nearby-position{min-width:60px}}
 </style>
+<style>.detail-nearby .walk-place-item{border-top:1px solid var(--line)}.detail-nearby .walk-place-item>a{border-top:0}.detail-nearby .walk-place-directions{justify-content:flex-end;min-height:44px;padding:8px 0;font-size:12px}.detail-nearby .walk-place-item>a:first-child{padding-bottom:4px}</style>
 </head>
 <body>
 
@@ -4346,8 +4347,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   document.getElementById('detail-favorite').addEventListener('click',()=>{if(activeCourseId)toggleFavorite(activeCourseId);});
   function renderWalkNearby(c){
     const el=document.getElementById('detail-nearby'),rows=nearbyWalkPlaces(c).slice(0,3);
-    el.innerHTML='<h4>시작점 주변에서 함께 쉬어요</h4><p>직선거리 1km 안의 등록 장소입니다. 동반 조건과 영업 여부는 방문 전 확인해 주세요.</p>'+
-      (rows.length?rows.map(({f,km})=>'<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(kakaoLinkTo(f.name,f.lat,f.lng))+'"><span><strong>'+escapeHtml(f.name)+'</strong><small>'+escapeHtml(f.category||'등록 장소')+' · 동반 조건 현장 확인</small></span><span>'+Math.round(km*1000)+'m ↗</span></a>').join(''):'<p>아직 가까운 등록 장소가 없어요. 지도에서 주변 장소를 찾아보세요.</p>');
+    el.innerHTML='<h4>시작점 주변에서 함께 쉬어요</h4><p>직선거리 1km 안의 등록 장소입니다. 상세 안내에서 동반 조건을 확인하고 길찾기로 이동하세요. 실제 이동 거리와 다릅니다.</p>'+
+      (rows.length?rows.map(({f,km})=>{
+        const checked=CourseInfo.checkedDate(f.description),source=CourseInfo.sourceURL(f.description);
+        return '<div class="walk-place-item"><a target="_blank" rel="noopener noreferrer" href="/places/'+encodeURIComponent(f.id)+'/"><span><strong>'+escapeHtml(FacilityInfo.get(f.category).emoji+' '+f.name)+'</strong><small>'+escapeHtml(FacilityInfo.get(f.category).label)+' · 동반 조건·상세 안내'+(checked?' · '+escapeHtml(checked)+' 자료 확인':source?' · 공식 안내 있음':' · 동반 조건 방문 전 확인')+'</small></span><span>'+Math.round(km*1000)+'m ↗</span></a><a class="walk-place-directions" target="_blank" rel="noopener noreferrer" aria-label="'+escapeHtml(f.name)+' 길찾기" href="'+escapeHtml(kakaoLinkTo(f.name,f.lat,f.lng))+'">길찾기 ↗</a></div>';
+      }).join(''):'<p>아직 가까운 등록 장소가 없어요. 지도에서 주변 장소를 찾아보세요.</p>');
   }
   function showMapCoursePeek(c){
     const el=document.getElementById('map-course-peek'),minutes=courseMinutes(c);
@@ -4660,7 +4664,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         ? `<a href="#" onclick="window.__deleteFacility('${f.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportFacility('${f.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([f.lat, f.lng], {icon: poiIcon(FacilityInfo.get(f.category).poi)})
-        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br>${escapeHtml(CourseInfo.cleanDescription(f.description))}<br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>':''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br>${escapeHtml(CourseInfo.cleanDescription(f.description))}<br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>'+ (CourseInfo.checkedDate(f.description)?'<br><small>'+escapeHtml(CourseInfo.checkedDate(f.description))+' 자료 확인 · 현장 운영은 방문 전 확인</small>':''):''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(facilityLayer);
     });
   }
