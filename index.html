@@ -1456,8 +1456,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 @media(prefers-reduced-motion:reduce){.collection-grid button{transition:none}.collection-grid button:hover{transform:none}}
 </style>
 <style id="mobile-discovery-finish">
-#course-advanced-filters>summary{display:none;cursor:pointer;list-style:none;font:14px/1.5 system-ui,sans-serif;color:var(--pine-deep)}
+#course-advanced-filters>summary{display:flex;align-items:center;gap:10px;min-height:50px;padding:12px 18px;border-top:1px solid var(--line);cursor:pointer;list-style:none;font:14px/1.5 system-ui,sans-serif;color:var(--pine-deep)}
+#course-advanced-filters>summary:after{content:"＋";font-size:19px}#course-advanced-filters[open]>summary:after{content:"−"}
 #course-advanced-filters>summary::-webkit-details-marker{display:none}
+#list-section .course-common-filters{padding-top:8px;padding-bottom:12px}#list-section .course-time-filter{margin:12px 0;padding:14px 18px}.course-time-heading{display:flex;align-items:baseline;gap:16px;margin-bottom:10px}.course-time-heading h3{margin:0;white-space:nowrap;font-size:17px}.course-time-help summary{cursor:pointer;font-size:12px;min-height:36px;align-content:center;color:var(--muted-text)}.course-time-help p{max-width:520px;margin:8px 0!important}#list-section .course-time-filter .walk-time-options button{min-height:44px}
 #advanced-filter-count{margin-left:auto;color:var(--muted-text);font-size:12px}
 html[data-theme="dark"] .home-search-box,html[data-theme="dark"] .explore-empty,html[data-theme="dark"] .map-results-bridge,html[data-theme="dark"] .active-filter,html[data-theme="dark"] .collection-grid button,html[data-theme="dark"] .detail-nearby{background:var(--sand);color:var(--ink);border-color:var(--line)}
 html[data-theme="dark"] .home-search-box label,html[data-theme="dark"] .collection-grid strong,html[data-theme="dark"] .explore-empty h3,html[data-theme="dark"] #course-advanced-filters>summary{color:var(--ink)}
@@ -1513,9 +1515,7 @@ html[data-theme="dark"] .home-search-box label,html[data-theme="dark"] .collecti
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
   const advanced=document.getElementById('course-advanced-filters');
-  const mobile=window.matchMedia('(max-width:600px)');
-  const setFilterLayout=()=>{if(advanced)advanced.open=!mobile.matches;};
-  setFilterLayout();mobile.addEventListener('change',setFilterLayout);
+  if(advanced)advanced.open=false;
   const viewport=window.visualViewport;
   let baseline=viewport?.height||window.innerHeight;
   const updateKeyboard=()=>{
@@ -2114,14 +2114,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <option value="distance">거리 짧은순</option>
         </select>
       </div>
-      <details id="course-advanced-filters" open><summary>난이도·편의시설 필터 <span id="advanced-filter-count">전체</span></summary>
-      <div class="map-toolbar" style="border-top:1px dashed var(--line);">
+      <div class="map-toolbar course-common-filters" aria-label="자주 쓰는 조건">
         <div class="filter-group" id="list-diff-filter">
           <button type="button" class="chip active" data-diff-filter="all">전체 난이도</button>
           <button type="button" class="chip" data-diff-filter="쉬움">쉬움</button>
           <button type="button" class="chip" data-diff-filter="보통">보통</button>
           <button type="button" class="chip" data-diff-filter="어려움">어려움</button>
         </div>
+      </div>
+      <details id="course-advanced-filters"><summary>상세 필터 <span id="advanced-filter-count">전체</span></summary>
+      <div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="list-tag-filter">
           <button type="button" class="chip" data-tag-filter="공식안내">🏛 공식 출처</button>
           <button type="button" class="chip" data-tag-filter="숲길">🌲 숲길</button>
@@ -2136,7 +2138,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       </div>
       </details>
     </div>
-    <section class="walk-plan-box" aria-labelledby="walk-plan-title"><h3 id="walk-plan-title">오늘은 얼마나 걸을까요?</h3><p>공식 안내 시간이 있으면 우선 사용하고, 없으면 거리와 시속 4km로 예상해요. 휴식·경사에 따라 달라질 수 있으며 시간·거리 정보가 모두 없는 코스는 제외돼요.</p><div class="walk-time-options" id="walk-time-options"><button type="button" data-walk-minutes="0" aria-pressed="true">전체 시간</button><button type="button" data-walk-minutes="20" aria-pressed="false">20분 이내</button><button type="button" data-walk-minutes="40" aria-pressed="false">40분 이내</button><button type="button" data-walk-minutes="60" aria-pressed="false">1시간 이내</button></div></section>
+    <section class="walk-plan-box course-time-filter" aria-labelledby="walk-plan-title"><div class="course-time-heading"><h3 id="walk-plan-title">산책 시간</h3><details class="course-time-help"><summary>시간 기준 안내</summary><p>공식 안내 시간이 있으면 우선 사용하고, 없으면 거리와 시속 4km로 예상해요. 휴식·경사에 따라 달라질 수 있으며 시간·거리 정보가 모두 없는 코스는 제외돼요.</p></details></div><div class="walk-time-options" id="walk-time-options"><button type="button" data-walk-minutes="0" aria-pressed="true">전체 시간</button><button type="button" data-walk-minutes="20" aria-pressed="false">20분 이내</button><button type="button" data-walk-minutes="40" aria-pressed="false">40분 이내</button><button type="button" data-walk-minutes="60" aria-pressed="false">1시간 이내</button></div></section>
     <div class="explore-results-head"><p id="course-count-label" role="status" aria-live="polite" style="color:#6B6550;"></p><button type="button" id="explore-on-map" class="explore-view-button">지도에서 보기 ↗</button></div>
     <div id="list-active-filters" class="explore-active-filters" aria-label="선택한 검색 조건"></div>
     <div class="search-feedback"><button id="course-filter-reset" class="pin-btn" type="button" hidden>검색 조건 초기화</button></div>
