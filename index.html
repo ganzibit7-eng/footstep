@@ -1692,6 +1692,20 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 @media(max-width:700px){.map-filter-reset{margin-left:0}.map-extra-filters>summary{font-size:15px}.map-extra-filters .map-toolbar{gap:8px}.map-extra-filters #poi-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.map-extra-filters #poi-group .chip{min-height:44px}.map-extra-filters #poi-search-btn{min-height:46px;width:100%}.map-toolbar #view-filter-group{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.map-toolbar #view-filter-group .chip{min-height:44px;justify-content:center;padding:8px 6px}.map-toolbar #map-filter-note{display:block;width:100%}}
 </style>
 <style>.course-photo-credit{font-family:system-ui,sans-serif;font-size:11px;line-height:1.7;color:var(--muted-text);padding:10px 0;border-top:1px solid var(--line)}.course-photo-credit a{color:var(--pine-deep);text-decoration:underline}#modal-photo-credit{padding:12px 22px;margin:0;background:var(--paper)}.course-photo-credit small{font-size:10px}#photo-lightbox-credit a{color:#f5d99d}#photo-lightbox-credit small{color:#eee}</style>
+<style id="home-recommendation-rail">
+#nearby-section #nearby-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:2px;overscroll-behavior-x:contain;padding:2px 2px 16px;margin:0;align-items:stretch;scrollbar-width:thin}
+#nearby-grid>.course-card{scroll-snap-align:start;min-width:0}
+#nearby-grid:focus-visible{outline:3px solid var(--clay);outline-offset:4px;border-radius:18px}
+#nearby-section .home-course-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}
+#nearby-section .home-course-controls p{font-size:13px;color:var(--muted-text);margin:0}
+.home-course-controls>div{display:flex;align-items:center;gap:8px;flex:none}
+#nearby-position{font:12px 'Sunflower',sans-serif;color:var(--muted-text);min-width:70px;text-align:center;font-variant-numeric:tabular-nums}
+#nearby-section .home-course-controls button{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink);font:20px sans-serif;cursor:pointer}
+#nearby-section .home-course-controls button:disabled{opacity:.35;cursor:default}
+.home-course-controls button:focus-visible{outline:3px solid var(--clay);outline-offset:2px}
+@media(max-width:900px) and (min-width:701px){#nearby-section #nearby-grid{grid-auto-columns:calc((100% - 18px)/2)}}
+@media(max-width:700px){#nearby-section #nearby-grid{grid-auto-columns:86%;gap:12px}#nearby-section .home-course-controls{align-items:flex-start}#nearby-section .home-course-controls p{font-size:12px;max-width:16ch;padding-top:5px}.home-course-controls>div{gap:4px}#nearby-position{min-width:60px}}
+</style>
 </head>
 <body>
 
@@ -1850,23 +1864,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
 <section id="nearby-section" class="app-page active home-content" data-page-section="home">
   <div class="wrap">
-    <form id="home-course-search" class="home-search-box" role="search" aria-label="산책길 찾기">
-      <div><label for="home-course-query">다음 산책길을 찾아요</label><p>동네나 코스 이름으로 찾아보세요.</p></div>
-      <div><div class="home-search-field"><input id="home-course-query" type="search" maxlength="100" placeholder="동네·코스 이름, 예: 한강" autocomplete="off"><button type="submit">코스 찾기 ↗</button></div><div class="home-search-examples" aria-label="빠른 검색"><button type="button" data-home-query="한강">한강 산책</button><button type="button" data-home-query="숲길">초록 숲길</button><button type="button" data-home-query="호수">호수 한 바퀴</button></div></div>
-    </form>
-    <section class="walk-collections" aria-labelledby="collection-title"><span class="kicker">오늘의 산책 취향</span><h2 id="collection-title">이런 산책은 어때요?</h2><p>등록된 거리와 특징으로 골라보세요.</p><div class="collection-grid"><button type="button" data-collection="short"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><circle cx="186" cy="35" r="22" fill="#f1c768"/><path d="M0 100Q65 35 132 82T240 63V130H0Z" fill="#aec39b"/><path d="M95 130Q61 100 125 87T157 57" fill="none" stroke="#faf2d8" stroke-width="13"/><circle cx="55" cy="47" r="27" fill="#fbf7e9"/><path d="M55 29v18l12 8" fill="none" stroke="#36543f" stroke-width="4" stroke-linecap="round"/></svg><span>01 · 가볍게</span><strong>퇴근 후 20분</strong><small>짧게 걷고 기분 전환하기 ↗</small></button><button type="button" data-collection="shade"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 112Q90 64 240 103V130H0Z" fill="#adc5a4"/><path d="M141 130Q105 106 147 82" fill="none" stroke="#f1e7c9" stroke-width="12"/><path d="M49 110V48M186 112V40" stroke="#48624a" stroke-width="7"/><circle cx="49" cy="43" r="31" fill="#729b73"/><circle cx="74" cy="61" r="22" fill="#729b73"/><circle cx="186" cy="37" r="35" fill="#4c7a59"/><circle cx="157" cy="58" r="24" fill="#4c7a59"/></svg><span>02 · 느긋하게</span><strong>그늘 따라 걷기</strong><small>그늘이 많다고 등록된 길 ↗</small></button><button type="button" data-collection="cafe"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 112Q120 85 240 111V130H0Z" fill="#d9c8a2"/><path d="M48 61h90v51H48Z" fill="#fff4d9"/><path d="M40 63h106l-13-25H54Z" fill="#b76d4c"/><path d="M75 112V82h26v30" fill="#537961"/><path d="M170 55h35v25q0 20-35 0Z" fill="#fff9eb"/><path d="M205 60q24-1 15 16h-15M181 43q-8-10 0-19M196 43q-8-10 0-19" fill="none" stroke="#a5724d" stroke-width="4" stroke-linecap="round"/></svg><span>03 · 함께 쉬기</span><strong>산책 후 카페·식당</strong><small>시작점 1km 안의 등록 장소 ↗</small></button><button type="button" data-collection="saved"><svg class="collection-art" viewBox="0 0 240 130" aria-hidden="true" focusable="false"><path d="M0 110Q90 77 240 112V130H0Z" fill="#bdc5b0"/><path d="M78 23h78v86H78Z" fill="#fbf5e6"/><path d="M78 23v86M95 80h43M95 91h29" stroke="#b3a58a" stroke-width="3"/><path d="M116 43c-16-16-31 8 0 25 31-17 16-41 0-25Z" fill="#b8765c"/><path d="M163 112v-28m-14 11 14-25 14 25" fill="#64846a" stroke="#64846a" stroke-width="3"/></svg><span>04 · 나의 산책 노트</span><strong>다음에 갈 산책길</strong><small>찜해 둔 코스 모아보기 ↗</small></button></div></section>
-
-
     <div class="section-head home-section-head reveal-on-scroll">
       <div>
         <span class="kicker" id="nearby-kicker">내 주변 추천</span>
-        <h2 id="nearby-title">우리 동네 추천 코스</h2>
+        <h2 id="nearby-title">이런 코스는 어때요?</h2>
         <p id="nearby-desc">프로필에서 지역을 등록하면 우리 동네와 가까운 코스를 먼저 보여드려요.</p>
       </div>
       <a href="#list" class="section-more" data-page-nav="list">전체 코스 보기 →</a>
     </div>
-    <p class="mobile-rail-hint">옆으로 넘겨 산책길 비교하기 →</p>
-    <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
+    <div class="home-course-controls"><p>옆으로 넘겨 더 많은 산책길을 만나보세요.</p><div><span id="nearby-position" aria-live="polite" aria-atomic="true"></span><button type="button" id="nearby-prev" aria-label="이전 추천 코스" aria-controls="nearby-grid" disabled>←</button><button type="button" id="nearby-next" aria-label="다음 추천 코스" aria-controls="nearby-grid" disabled>→</button></div></div>
+    <div class="grid home-course-grid reveal-on-scroll" id="nearby-grid" tabindex="0" role="region" aria-label="추천 산책 코스"><p class="loading-state">🐾 코스를 불러오는 중이에요...</p></div>
 
     <section class="join-benefits" data-guest-join hidden aria-labelledby="join-benefits-title"><div><span class="join-eyebrow">첫 가입 100P</span><h2 id="join-benefits-title">우리 아이 산책을 내 기록으로 모아보세요.</h2><p>찜한 길 저장 · GPS 산책 기록 · 우리 강아지 프로필 · 활동 포인트 적립을 한 계정에 모을 수 있어요.</p></div><div class="join-benefits-action"><button type="button" data-open-join class="submit-btn">무료 가입하고 100P 받기 →</button><span>둘러보기는 로그인 없이 가능해요.</span></div></section>
 
@@ -4474,7 +4481,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       b.innerHTML='<span class="drawer-course-icon" aria-hidden="true">'+(drawerMode==='saved'?'♡':'↗')+'</span><span class="drawer-course-copy"><strong>'+escapeHtml(c.name)+'</strong><small>'+escapeHtml(c.distance||'거리 미등록')+(minutes?' · 약 '+minutes+'분':'')+' · '+escapeHtml(c.diff||'난이도 미등록')+'</small></span><span aria-hidden="true">↗</span>';
       b.setAttribute('aria-label',c.name+' 코스 다시 보기');b.onclick=()=>openCourseDetail(c.id);host.appendChild(b);
     });
-    if(drawerMode==='saved'&&saved.length>6){const all=document.createElement('button');all.type='button';all.className='drawer-all';all.textContent='찜한 코스 '+saved.length+'개 모두 보기 →';all.onclick=()=>document.querySelector('[data-collection="saved"]').click();host.appendChild(all);}
+    if(drawerMode==='saved'&&saved.length>6){const all=document.createElement('button');all.type='button';all.className='drawer-all';all.textContent='찜한 코스 '+saved.length+'개 모두 보기 →';all.onclick=()=>{document.getElementById('course-filter-reset').click();listFilterState.favOnly=true;document.getElementById('fav-only-chip').classList.add('active');listShownCount=LIST_PAGE_SIZE;renderGrid();showPage('list');};host.appendChild(all);}
   }
   document.querySelectorAll('[data-drawer-mode]').forEach(b=>b.addEventListener('click',()=>{drawerMode=b.dataset.drawerMode;renderRecentlyViewed();}));
   function renderRecentlyAdded(){
@@ -4544,9 +4551,41 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       document.getElementById('nearby-desc').textContent = '프로필에서 지역을 등록하면, 우리 동네와 가까운 코스를 여기서 먼저 보여드려요.';
     }
     const fullList = list.sort((a,b)=> (isBoostedNow(b.id)?1:0) - (isBoostedNow(a.id)?1:0));
-    renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,3));
+    renderCourseCards(document.getElementById('nearby-grid'), fullList.slice(0,24));
+    document.getElementById('nearby-grid').scrollLeft=0;
+    requestAnimationFrame(updateNearbyRail);
     renderMapRecommendations();
   }
+
+  function updateNearbyRail(){
+    const rail=document.getElementById('nearby-grid');
+    if(!rail.clientWidth)return;
+    const cards=Array.from(rail.querySelectorAll('.course-card'));
+    const edge=rail.getBoundingClientRect();
+    const shown=cards.map((card,i)=>({i,rect:card.getBoundingClientRect()}))
+      .filter(x=>x.rect.right>edge.left+8&&x.rect.left<edge.right-8);
+    document.getElementById('nearby-position').textContent=shown.length
+      ? (shown[0].i+1)+'–'+(shown[shown.length-1].i+1)+' / '+cards.length : '';
+    document.getElementById('nearby-prev').disabled=rail.scrollLeft<=2;
+    document.getElementById('nearby-next').disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-2;
+  }
+  function moveNearbyRail(direction){
+    const rail=document.getElementById('nearby-grid');
+    const card=rail.querySelector('.course-card');
+    if(!card)return;
+    const step=card.getBoundingClientRect().width+(parseFloat(getComputedStyle(rail).columnGap)||0);
+    const count=Math.max(1,Math.floor((rail.clientWidth+2)/step));
+    rail.scrollBy({left:direction*step*count,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  document.getElementById('nearby-prev').addEventListener('click',()=>moveNearbyRail(-1));
+  document.getElementById('nearby-next').addEventListener('click',()=>moveNearbyRail(1));
+  document.getElementById('nearby-grid').addEventListener('scroll',updateNearbyRail,{passive:true});
+  document.getElementById('nearby-grid').addEventListener('keydown',e=>{
+    if(e.target===e.currentTarget&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){
+      e.preventDefault();moveNearbyRail(e.key==='ArrowRight'?1:-1);
+    }
+  });
+  new ResizeObserver(updateNearbyRail).observe(document.getElementById('nearby-grid'));
 
   function renderMapRecommendations(){
     const host=document.getElementById('map-recommend-grid');
@@ -5284,14 +5323,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     host.querySelector('[data-empty-reset]').onclick=()=>document.getElementById('course-filter-reset').click();
     host.querySelector('[data-empty-map]').onclick=()=>{document.getElementById('course-filter-reset').click();showPage('map');};
   }
-  function searchFromHome(query){
-    document.getElementById('course-filter-reset').click();
-    listFilterState.query=query.trim().slice(0,100);
-    document.getElementById('course-search-input').value=listFilterState.query;
-    saveRecentSearch(listFilterState.query);renderGrid();showPage('list');
-  }
-  document.getElementById('home-course-search').addEventListener('submit',e=>{e.preventDefault();searchFromHome(document.getElementById('home-course-query').value);});
-  document.querySelectorAll('[data-home-query]').forEach(b=>b.addEventListener('click',()=>searchFromHome(b.dataset.homeQuery)));
   document.getElementById('map-clear-course-filters').addEventListener('click',()=>document.getElementById('course-filter-reset').click());
   document.getElementById('explore-on-map').addEventListener('click',()=>{
     clearTimeout(searchDebounce);listFilterState.query=document.getElementById('course-search-input').value.trim();renderGrid();
@@ -7983,22 +8014,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
   });
 
-
-  // ===== Home redesign interactions =====
-  const homeSearchInput = document.getElementById('home-course-search');
-  const homeSearchBtn = document.getElementById('home-search-btn');
-  function runHomeSearch(){
-    const q = (homeSearchInput?.value || '').trim();
-    showPage('list');
-    const listInput = document.getElementById('course-search-input');
-    if(listInput){
-      listInput.value = q;
-      listInput.dispatchEvent(new Event('input', {bubbles:true}));
-      listInput.focus();
-    }
-  }
-  if(homeSearchBtn) homeSearchBtn.addEventListener('click', runHomeSearch);
-  if(homeSearchInput) homeSearchInput.addEventListener('keydown', e=>{ if(e.key==='Enter') runHomeSearch(); });
 
   // ===== 스크롤하면 섹션이 부드럽게 나타나는 효과 =====
   (function initScrollReveal(){
