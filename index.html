@@ -1050,6 +1050,17 @@
 
 
 #registered-place-filters{flex-wrap:wrap}#registered-place-filters select{font:inherit;min-height:42px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}#facility-filter-count{font-size:13px;color:var(--muted-text)}
+/* Walk recording: scoped to the recording screen. */
+.walk-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.walk-metrics>div{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 12px;min-width:0}
+.walk-metrics strong{display:block;font-size:clamp(22px,5.5vw,32px);color:var(--pine-deep);font-variant-numeric:tabular-nums;line-height:1.2;overflow-wrap:anywhere}
+.walk-metrics span{display:block;font-size:12px;color:var(--muted-text);margin-top:7px}
+.walk-metric-note,.walk-settings p{font-size:12px;line-height:1.7;color:var(--muted-text);margin:8px 0 14px}
+.walk-settings{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:16px}
+.walk-settings label{font-size:13px;line-height:1.8;display:block;color:var(--pine-deep)}
+.walk-settings input[type=number]{width:72px;padding:7px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.walk-controls{display:flex;gap:10px}.walk-controls>button{flex:1;width:auto}
+#walk-pause-btn[aria-pressed=true]{background:var(--sand)}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -2128,7 +2139,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div>
         <span class="kicker">산책 기록하기</span>
         <h2>산책 직접 기록하기</h2>
-        <p>지금 걷고 있는 산책을 GPS로 기록해보세요. 끝나면 바로 코스로 등록할 수도 있어요.</p>
+        <p>시간·거리·예상 걸음 수를 확인하며 걸어보세요. 산책을 마치면 내 기록으로 저장할 수 있어요.</p>
       </div>
     </div>
 
@@ -2157,22 +2168,27 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <input type="checkbox" id="battery-saver-toggle" style="width:16px; height:16px;">
             🔋 배터리 절약 모드 (위치 정확도는 낮아져요)
           </label>
+          <div class="walk-settings"><label for="walk-stride">보호자의 한 걸음 보폭 <input type="number" id="walk-stride" value="70" min="30" max="120" step="1" inputmode="numeric"> cm</label><p>예상 걸음 수 = GPS 이동 거리 ÷ 보폭. 기본값 70cm는 계산용이며 실제 걸음 수나 강아지 걸음 수가 아니에요.</p><label><input type="checkbox" id="walk-screen-on" checked> 기록 중 화면 켜두기</label><p>화면 잠금·다른 앱 전환 시 GPS 기록이 끊길 수 있어요. 이 화면을 켜두면 더 안정적이에요.</p></div>
           <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
         </div>
         <div id="walk-active-panel" style="display:none;"><p id="walk-gps-status" role="status" aria-live="polite" class="walk-gps-status">GPS 수신을 기다리고 있어요.</p>
-          <div style="display:flex; gap:18px; margin-bottom:18px;">
-            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-time" style="font-size:26px;">00:00</div><div class="label">경과 시간</div></div></div>
-            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-dist" style="font-size:26px;">0.00</div><div class="label">거리 (km)</div></div></div>
-            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-pace" style="font-size:26px;">–</div><div class="label">평균 페이스</div></div></div>
+          <div class="walk-metrics">
+            <div><strong id="walk-time">00:00</strong><span>기록 시간</span></div>
+            <div><strong id="walk-dist">0.00</strong><span>이동 거리 · km</span></div>
+            <div><strong id="walk-steps">0</strong><span>예상 걸음 수 · 보</span></div>
+            <div><strong id="walk-pace">–</strong><span>평균 페이스 · /km</span></div>
+            <div><strong id="walk-speed">0.0</strong><span>평균 속도 · km/h</span></div>
+            <div><strong id="walk-rest">00:00</strong><span>일시정지 시간</span></div>
           </div>
-          <button type="button" class="submit-btn" id="walk-stop-btn" style="background:var(--pine-deep);">■ 산책 종료</button>
+          <p id="walk-step-note" class="walk-metric-note"></p>
+          <p id="walk-screen-status" class="walk-metric-note" role="status"></p>
+          <div class="walk-controls"><button type="button" class="pin-btn" id="walk-pause-btn">Ⅱ 일시정지</button><button type="button" class="submit-btn" id="walk-stop-btn" style="background:var(--pine-deep);">■ 산책 종료</button></div>
         </div>
         <div id="walk-done-panel" style="display:none;">
           <p style="font-size:14px; color:#5B5645; margin:0 0 4px;">수고하셨어요! 이번 산책 기록이에요.</p>
-          <div style="display:flex; gap:18px; margin:12px 0 18px;">
-            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-done-time" style="font-size:22px;">00:00</div><div class="label">시간</div></div></div>
-            <div><div class="stat" style="text-align:left;"><div class="num" id="walk-done-dist" style="font-size:22px;">0.00</div><div class="label">거리 (km)</div></div></div>
-          </div>
+          <div class="walk-metrics walk-result">
+            <div><strong id="walk-done-time">00:00</strong><span>기록 시간</span></div><div><strong id="walk-done-dist">0.00</strong><span>거리 · km</span></div><div><strong id="walk-done-steps">0</strong><span>예상 걸음 수 · 보</span></div><div><strong id="walk-done-pace">–</strong><span>평균 페이스 · /km</span></div>
+          </div><p id="walk-done-note" class="walk-metric-note"></p>
           <button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
           <button type="button" class="walk-share-button" id="walk-share-card-btn">🖼️ 산책 결과 카드 만들기</button><p class="walk-share-note">강아지 정보와 경로 좌표는 이미지에 넣지 않아요.</p>
           <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로를 산책 코스로 제안하기</button>
@@ -2291,7 +2307,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </section>
 
-<section id="privacy-section" class="app-page" data-page-section="privacy" style="padding:40px 0;"><div class="wrap" style="max-width:800px;"><h2 style="margin-bottom:12px;">개인정보처리방침</h2><p style="font-size:13px;color:var(--muted-text);">발자국 · 내용 갱신 2026.10.03</p><div style="font-size:14px;color:var(--ink);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;"><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">1. 운영 및 문의</h3><p>발자국은 반려견 산책 코스·장소 공유, 산책 기록 및 관련 회원 기능을 제공합니다. 개인정보 관련 열람·정정·삭제·처리정지·동의 철회 및 문의는 발자국 운영 담당자에게 이메일로 요청할 수 있습니다: <a href="mailto:footstepbiz@gmail.com">footstepbiz@gmail.com</a>.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">2. 회원·프로필 정보</h3><p>로그인 방식에 따라 인증 계정 식별자, 이메일, 카카오·Google이 이용자의 동의 범위에서 전달하는 프로필 정보를 처리합니다. 회원 식별과 계정 관리에 이용하며, 사용자가 입력한 닉네임·등록 지역과 선택 입력한 반려견 이름·견종·나이·사진은 프로필 표시와 지역 추천에 사용합니다. 선택 프로필 정보는 입력하지 않을 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">3. 게시물과 활동 정보</h3><p>코스·시설·배변봉투함의 제목·설명·위치·경로, 리뷰·평점·사진, 작성자 식별자·표시명·작성 시각을 등록·표시·수정·신고 처리에 이용합니다. 찜, 포인트 적립·사용, 알림 및 신고 기록은 해당 기능 운영에 사용합니다. 공개 장소 정보와 작성자 표시명 등은 검색용 상세 페이지에도 표시될 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">4. GPS와 산책 위치</h3><p>현재 위치 찾기와 산책 추적은 브라우저 위치 권한을 사용합니다. 산책 기록 저장 시 경로·거리·시간을 계정에 연결합니다. 산책 중 주변 활동 집계에는 현재 좌표, 계정 식별자, 인근 코스 및 갱신 시각이 서버로 전송됩니다. 종료 시 활동 정보 삭제를 요청하지만 비정상 종료나 통신 실패 시 즉시 삭제가 완료되지 않을 수 있습니다. 기기 설정에서 위치 권한을 철회할 수 있으며 이미 저장한 기록의 삭제는 별도로 요청해야 합니다. 위치 권한을 허용하지 않아도 공개 정보 열람은 가능합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">5. 접속 통계와 브라우저 저장소</h3><p>브라우저 방문자 ID, 조회 시각, 페이지 경로(검색어·쿼리 제외), 유입 출처·홍보 캠페인, 로그인과 연결된 식별자, 최근 활동 화면·시각, 화면이 보인 시간·클릭 횟수·스크롤 비율을 운영 통계에 사용합니다. 자동 접속 여부는 브라우저 신호와 요청 헤더로 추정하며 원본 IP·User-Agent는 이 방문 통계에 저장하지 않습니다. 관리자·작업 접속은 일반 방문 통계에서 제외합니다. 유입 출처에는 ref·utm_source 등의 URL 값과 브라우저가 전달하는 이전 사이트 정보가 사용될 수 있습니다. 로그인 세션·방문자 ID·설정·등록 초안은 브라우저 저장소에 보관될 수 있습니다. 사이트 데이터를 삭제하면 로그아웃되거나 초안이 사라질 수 있으며, 서버 기록까지 삭제되는 것은 아닙니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">6. 공개 사진과 이용자 선택</h3><p>등록한 사진은 공개 URL로 표시되는 저장소에 업로드됩니다. 링크를 가진 사람이 사진에 접근할 수 있으므로 타인의 얼굴·연락처·집 주소 등 불필요한 개인정보가 포함되지 않도록 확인해 주세요. 게시물 삭제와 사진 원본·검색용 페이지·외부 캐시의 삭제는 별도 처리가 필요할 수 있습니다. 삭제가 필요한 URL을 문의처로 알려주실 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">7. 저장 및 외부 서비스</h3><p>Supabase를 인증·데이터베이스·파일 저장에 사용하며, 확인된 주 데이터베이스 리전은 대한민국 서울(ap-northeast-2)입니다. 이 정보가 모든 외부 사업자의 처리가 국내에서만 이루어진다는 뜻은 아닙니다. 카카오·Google 로그인, OpenStreetMap 기반 지도 타일, 카카오 장소 검색, Open-Meteo 날씨·대기질 기능을 이용할 때 각 제공자와 통신합니다. 기능에 따라 조회 영역, 검색어, 조회 좌표 및 접속 정보가 전달될 수 있습니다. 위탁과 제3자 제공, 국외 이전의 해당 여부 및 계약별 상세 처리는 별도 확인이 필요합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">8. 보관 기간과 삭제의 현재 범위</h3><p>회원·게시물·산책 기록은 서비스 제공을 위해 저장됩니다. 최근 로그인 후 회원 탈퇴를 확인하면 본인 소유로 확인되는 업로드 사진 원본, 등록 게시물·리뷰·산책 기록·프로필·포인트·찜·알림·본인 신고 및 계정에 연결된 방문 기록을 정리하고 발자국 인증 계정을 삭제합니다. 삭제된 코스의 리뷰·찜 등 연결 데이터도 정리됩니다. 처리 중 새 데이터 작성을 제한하며, 중간 실패 시 일부 삭제 상태가 남을 수 있어 재시도 또는 문의가 필요합니다. 관리자 계정은 권한 이전이 선행되어야 합니다. 외부 로그인 제공자의 계정, 다른 이용자 소유 사진, 로그인과 연결되지 않은 방문 기록, 이메일 문의, 백업·외부 캐시는 이 자동 삭제 범위에 포함되지 않습니다. 항목별 보관 기한과 자동 파기 주기는 아직 확정되지 않았으며, 관련 삭제 요청은 문의처에서 별도로 확인합니다. 본 안내는 무기한 보관 동의를 의미하지 않습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">9. 권리 행사와 처리 문의</h3><p>프로필 수정, 내 정보 다운로드 및 탈퇴 기능을 이용하거나 이메일로 열람·정정·삭제·처리정지·동의 철회를 요청할 수 있습니다. 대리인 요청에는 권한 확인이 필요할 수 있습니다. 요청 시 비밀번호나 인증번호를 보내지 마세요. 처리 결과나 일부 실패가 확인되지 않으면 문의처로 알려주세요. 법령상 제한이 있는 요청은 해당 근거와 처리 범위를 확인해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">10. 변경과 안내 범위</h3><p>본 설명은 확인된 서비스 동작을 구체적으로 알리기 위해 2026년 10월 3일 갱신했습니다. 항목별 처리 근거·보관 기간, 외부 사업자별 이전·위탁 사항, 법적 운영 주체·보호책임자 정보, 아동 정보 처리 절차는 추가 확정이 필요합니다. 필요한 별도 동의를 이 문서 열람이나 포괄 동의로 갈음하지 않습니다. 중요한 처리 방식의 변경은 해당 내용과 적용 시점을 별도로 안내합니다.</p></article></div></div></section>
+<section id="privacy-section" class="app-page" data-page-section="privacy" style="padding:40px 0;"><div class="wrap" style="max-width:800px;"><h2 style="margin-bottom:12px;">개인정보처리방침</h2><p style="font-size:13px;color:var(--muted-text);">발자국 · 내용 갱신 2026.10.03</p><div style="font-size:14px;color:var(--ink);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;"><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">1. 운영 및 문의</h3><p>발자국은 반려견 산책 코스·장소 공유, 산책 기록 및 관련 회원 기능을 제공합니다. 개인정보 관련 열람·정정·삭제·처리정지·동의 철회 및 문의는 발자국 운영 담당자에게 이메일로 요청할 수 있습니다: <a href="mailto:footstepbiz@gmail.com">footstepbiz@gmail.com</a>.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">2. 회원·프로필 정보</h3><p>로그인 방식에 따라 인증 계정 식별자, 이메일, 카카오·Google이 이용자의 동의 범위에서 전달하는 프로필 정보를 처리합니다. 회원 식별과 계정 관리에 이용하며, 사용자가 입력한 닉네임·등록 지역과 선택 입력한 반려견 이름·견종·나이·사진은 프로필 표시와 지역 추천에 사용합니다. 선택 프로필 정보는 입력하지 않을 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">3. 게시물과 활동 정보</h3><p>코스·시설·배변봉투함의 제목·설명·위치·경로, 리뷰·평점·사진, 작성자 식별자·표시명·작성 시각을 등록·표시·수정·신고 처리에 이용합니다. 찜, 포인트 적립·사용, 알림 및 신고 기록은 해당 기능 운영에 사용합니다. 공개 장소 정보와 작성자 표시명 등은 검색용 상세 페이지에도 표시될 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">4. GPS와 산책 위치</h3><p>현재 위치 찾기와 산책 추적은 브라우저 위치 권한을 사용합니다. 산책 기록 저장 시 경로·거리·기록 시간·일시정지 시간·보폭과 예상 걸음 수를 계정에 연결합니다. 예상 걸음 수는 보호자 보폭과 GPS 거리로 계산하며 실제 측정한 걸음 수가 아닙니다. 산책 중 주변 활동 집계에는 현재 좌표, 계정 식별자, 인근 코스 및 갱신 시각이 서버로 전송됩니다. 종료 시 활동 정보 삭제를 요청하지만 비정상 종료나 통신 실패 시 즉시 삭제가 완료되지 않을 수 있습니다. 기기 설정에서 위치 권한을 철회할 수 있으며 이미 저장한 기록의 삭제는 별도로 요청해야 합니다. 위치 권한을 허용하지 않아도 공개 정보 열람은 가능합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">5. 접속 통계와 브라우저 저장소</h3><p>브라우저 방문자 ID, 조회 시각, 페이지 경로(검색어·쿼리 제외), 유입 출처·홍보 캠페인, 로그인과 연결된 식별자, 최근 활동 화면·시각, 화면이 보인 시간·클릭 횟수·스크롤 비율을 운영 통계에 사용합니다. 자동 접속 여부는 브라우저 신호와 요청 헤더로 추정하며 원본 IP·User-Agent는 이 방문 통계에 저장하지 않습니다. 관리자·작업 접속은 일반 방문 통계에서 제외합니다. 유입 출처에는 ref·utm_source 등의 URL 값과 브라우저가 전달하는 이전 사이트 정보가 사용될 수 있습니다. 로그인 세션·방문자 ID·설정·등록 초안은 브라우저 저장소에 보관될 수 있습니다. 사이트 데이터를 삭제하면 로그아웃되거나 초안이 사라질 수 있으며, 서버 기록까지 삭제되는 것은 아닙니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">6. 공개 사진과 이용자 선택</h3><p>등록한 사진은 공개 URL로 표시되는 저장소에 업로드됩니다. 링크를 가진 사람이 사진에 접근할 수 있으므로 타인의 얼굴·연락처·집 주소 등 불필요한 개인정보가 포함되지 않도록 확인해 주세요. 게시물 삭제와 사진 원본·검색용 페이지·외부 캐시의 삭제는 별도 처리가 필요할 수 있습니다. 삭제가 필요한 URL을 문의처로 알려주실 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">7. 저장 및 외부 서비스</h3><p>Supabase를 인증·데이터베이스·파일 저장에 사용하며, 확인된 주 데이터베이스 리전은 대한민국 서울(ap-northeast-2)입니다. 이 정보가 모든 외부 사업자의 처리가 국내에서만 이루어진다는 뜻은 아닙니다. 카카오·Google 로그인, OpenStreetMap 기반 지도 타일, 카카오 장소 검색, Open-Meteo 날씨·대기질 기능을 이용할 때 각 제공자와 통신합니다. 기능에 따라 조회 영역, 검색어, 조회 좌표 및 접속 정보가 전달될 수 있습니다. 위탁과 제3자 제공, 국외 이전의 해당 여부 및 계약별 상세 처리는 별도 확인이 필요합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">8. 보관 기간과 삭제의 현재 범위</h3><p>회원·게시물·산책 기록은 서비스 제공을 위해 저장됩니다. 최근 로그인 후 회원 탈퇴를 확인하면 본인 소유로 확인되는 업로드 사진 원본, 등록 게시물·리뷰·산책 기록·프로필·포인트·찜·알림·본인 신고 및 계정에 연결된 방문 기록을 정리하고 발자국 인증 계정을 삭제합니다. 삭제된 코스의 리뷰·찜 등 연결 데이터도 정리됩니다. 처리 중 새 데이터 작성을 제한하며, 중간 실패 시 일부 삭제 상태가 남을 수 있어 재시도 또는 문의가 필요합니다. 관리자 계정은 권한 이전이 선행되어야 합니다. 외부 로그인 제공자의 계정, 다른 이용자 소유 사진, 로그인과 연결되지 않은 방문 기록, 이메일 문의, 백업·외부 캐시는 이 자동 삭제 범위에 포함되지 않습니다. 항목별 보관 기한과 자동 파기 주기는 아직 확정되지 않았으며, 관련 삭제 요청은 문의처에서 별도로 확인합니다. 본 안내는 무기한 보관 동의를 의미하지 않습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">9. 권리 행사와 처리 문의</h3><p>프로필 수정, 내 정보 다운로드 및 탈퇴 기능을 이용하거나 이메일로 열람·정정·삭제·처리정지·동의 철회를 요청할 수 있습니다. 대리인 요청에는 권한 확인이 필요할 수 있습니다. 요청 시 비밀번호나 인증번호를 보내지 마세요. 처리 결과나 일부 실패가 확인되지 않으면 문의처로 알려주세요. 법령상 제한이 있는 요청은 해당 근거와 처리 범위를 확인해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">10. 변경과 안내 범위</h3><p>본 설명은 확인된 서비스 동작을 구체적으로 알리기 위해 2026년 10월 3일 갱신했습니다. 항목별 처리 근거·보관 기간, 외부 사업자별 이전·위탁 사항, 법적 운영 주체·보호책임자 정보, 아동 정보 처리 절차는 추가 확정이 필요합니다. 필요한 별도 동의를 이 문서 열람이나 포괄 동의로 갈음하지 않습니다. 중요한 처리 방식의 변경은 해당 내용과 적용 시점을 별도로 안내합니다.</p></article></div></div></section>
 
 <section id="terms-section" class="app-page" data-page-section="terms" style="padding:40px 0;"><div class="wrap" style="max-width:800px;"><h2 style="margin-bottom:12px;">이용약관</h2><p style="font-size:13px;color:var(--muted-text);">발자국 · 내용 갱신 2026.10.03</p><div style="font-size:14px;color:var(--ink);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere;"><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">1. 목적 및 운영</h3><p>이 약관은 발자국의 코스·장소 공유 및 산책 관련 서비스 이용 조건을 설명합니다. 문의와 이의 제기는 <a href="mailto:footstepbiz@gmail.com">footstepbiz@gmail.com</a>으로 접수할 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">2. 제공 기능</h3><p>산책 코스·배변봉투함·동반 장소 조회와 등록, 검색, GPS 산책 기록, 리뷰·사진·찜, 프로필, 포인트 및 알림을 제공합니다. 기능에 따라 로그인이나 위치 권한이 필요할 수 있습니다. 몽은 등록 정보와 선택 조건을 바탕으로 장소를 찾는 산책 도우미이며 현장 적합성이나 안전을 보증하는 수단이 아닙니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">3. 계정 관리</h3><p>이용자는 본인이 사용할 권한이 있는 계정과 정확한 정보를 사용해야 하며 타인 사칭이나 계정 도용을 해서는 안 됩니다. 계정 도용이나 정보 오류가 의심되면 운영자에게 알려주세요. 가입·인증 및 개인정보 처리는 해당 화면과 개인정보처리방침의 안내를 함께 확인해 주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">4. 등록 및 공개</h3><p>이용자는 직접 작성하거나 적법한 사용 권한이 있는 설명·사진·경로를 등록해야 합니다. 승인 대상 정보는 검토 후 공개될 수 있으며 허위·중복·권리 침해 정보는 반려되거나 제한될 수 있습니다. 공개된 장소 정보는 지도·목록·검색용 상세 페이지와 검색엔진을 통해 노출될 수 있습니다. 연락처나 사적 주거지 등 불필요한 개인정보를 공개하지 마세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">5. 이용자가 지켜야 할 사항</h3><p>권리 침해, 명예훼손, 불법·유해 게시물, 스팸, 사칭, 악성 코드, 서비스 방해, 권한 없는 정보 접근·수집, 보상 부정 적립을 금지합니다. 장소를 이용할 때는 현장 출입 제한과 반려견 동반 규정 및 관계 법령을 준수해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">6. 신고 및 제한</h3><p>운영자는 신고와 위반 내용을 검토하여 수정 요청, 비공개, 삭제 또는 이용 제한을 할 수 있습니다. 조치는 피해와 위반 정도를 고려하여 필요한 범위에서 이루어져야 하며, 이의가 있는 이용자는 대상과 사유를 문의처로 제출할 수 있습니다. 긴급한 피해 방지를 위한 조치와 일반적인 오류 제보를 구분하여 처리합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">7. 산책 기록과 현장 정보</h3><p>GPS·지도·거리·예상 시간·날씨는 기기 상태, 위치 오차, 화면 잠금, 통신 및 외부 제공자의 상황에 따라 실제와 다를 수 있습니다. 저장 결과를 확인해 주세요. 코스와 시설의 운영 시간, 동반 조건, 공사·통제 등은 방문 전에 확인해야 합니다. 산책 기록과 몽은 긴급 구조·안전 감시 또는 수의학적 진단을 대체하지 않습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">8. 저작권</h3><p>이용자가 등록한 콘텐츠의 권리는 이용자 또는 원 권리자에게 있습니다. 서비스는 기존 약관에서 정한 서비스 표시·운영 목적 범위에서 콘텐츠를 이용합니다. 별도 광고 등 운영 범위를 벗어나는 사용에는 필요한 권한을 확보해야 합니다. 침해 신고 시 해당 게시물 URL과 권리 관계를 알려주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">9. 포인트와 외부 거래</h3><p>포인트는 기능 화면에 안내된 조건에 따라 적립·사용됩니다. 부정 적립이나 오류가 발생하면 관련 내역을 확인하여 정정할 수 있습니다. 이 약관만으로 현금 환급·양도·새로운 유효 기간을 부여하거나 기존 포인트를 소멸시키지 않습니다. 외부 시설의 예약·구매·입장 조건은 해당 거래 당사자의 안내를 확인해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">10. 변경·중단과 탈퇴</h3><p>점검, 장애 또는 외부 제공자 변경으로 기능이 일시 중단되거나 변경될 수 있습니다. 중요한 변경·종료에는 내용과 이용자 자료 처리 방법을 안내해야 합니다. 이용자는 제공된 탈퇴 기능 또는 문의처로 종료를 요청할 수 있으며 구체적인 삭제 범위는 개인정보처리방침과 탈퇴 안내를 확인해 주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">11. 책임 및 분쟁</h3><p>이용자와 운영자는 자신의 귀책사유에 대해 관계 법령에 따른 책임을 부담합니다. 외부 정보의 한계를 안내하는 것이 운영자의 고의·과실 등 법적 책임을 일괄 면제한다는 뜻은 아닙니다. 분쟁은 문의처를 통한 해결을 요청할 수 있으며 해결되지 않은 분쟁의 관할과 절차는 관계 법령에 따릅니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3 style="font-size:18px;margin-bottom:9px;">12. 변경 안내</h3><p>내용 정리일은 2026년 9월 21일입니다. 본 개정으로 이용자의 권리를 소급하여 제한하거나 추가 개인정보 처리에 동의한 것으로 간주하지 않습니다. 별도 고지·동의가 필요한 변경은 해당 절차를 거쳐 적용합니다.</p></article></div></div></section>
 
@@ -2743,6 +2759,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <script src="course-info.js?v=20261003"></script>
 <script src="facility-info.js?v=20261003"></script>
 <script src="course-routes.js?v=20261003b"></script>
+<script src="walk-tracker.js?v=20261003"></script>
 <script>
 (function(){
   // ===== Supabase 연결 =====
@@ -2843,8 +2860,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let walkMap, walkLiveLine, walkMarker;
   let walkWatchId = null;
   let walkPath = [];            // [[lat,lng], ...]
-  let walkStartTime = null;
-  let lastGpsTime = null;
+  let walkSession = null;
+  let walkWakeLock = null;
+  let walkWakePending = false;
   let walkTimerInterval = null;
   let lastSavedWalk = null;     // { path, distanceKm, durationSec }
   let currentType = 'course';
@@ -6179,12 +6197,44 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const pad = n => String(n).padStart(2,'0');
     return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
   }
-  function walkDistanceKm(){
-    let total = 0;
-    for(let i=1;i<walkPath.length;i++){
-      total += L.latLng(walkPath[i-1]).distanceTo(L.latLng(walkPath[i]));
-    }
-    return total / 1000;
+  function walkDistanceKm(){ return walkSession ? walkSession.distanceM / 1000 : 0; }
+  function walkInProgress(){ return walkSession && ['running','paused'].includes(walkSession.state); }
+  function formatWalkPace(seconds){
+    if(!Number.isFinite(seconds))return '–';
+    const rounded=Math.round(seconds);return `${Math.floor(rounded/60)}:${String(rounded%60).padStart(2,'0')}`;
+  }
+  function renderWalkMetrics(){
+    if(!walkSession)return;
+    const stats=walkSession.stats(Date.now());
+    document.getElementById('walk-time').textContent=formatDuration(stats.durationSec);
+    document.getElementById('walk-dist').textContent=stats.distanceKm.toFixed(2);
+    document.getElementById('walk-steps').textContent=stats.steps.toLocaleString('ko-KR');
+    document.getElementById('walk-pace').textContent=formatWalkPace(stats.paceSec);
+    document.getElementById('walk-speed').textContent=stats.speedKmh.toFixed(1);
+    document.getElementById('walk-rest').textContent=formatDuration(stats.pausedSec);
+    document.getElementById('walk-step-note').textContent=`보호자 보폭 ${stats.strideCm}cm 기준 예상치 · 일시정지 시간과 이동은 제외해요.`;
+    if(walkSession.state==='running'&&walkSession.lastFix!==null&&Date.now()-walkSession.lastFix>30000)document.getElementById('walk-gps-status').textContent='GPS 수신이 끊겼어요. 시간은 계속 기록하며, 끊긴 구간의 거리는 추정하지 않아요.';
+  }
+  async function releaseWalkScreen(){
+    const lock=walkWakeLock;walkWakeLock=null;
+    if(lock)try{await lock.release();}catch(e){}
+  }
+  async function keepWalkScreen(){
+    const el=document.getElementById('walk-screen-status');
+    if(!walkInProgress()||walkSession.state!=='running'||!document.getElementById('walk-screen-on').checked){await releaseWalkScreen();el.textContent='화면 유지 꺼짐';return;}
+    if(!navigator.wakeLock){el.textContent='이 브라우저는 화면 유지를 지원하지 않아요. 화면 잠금 설정을 확인해 주세요.';return;}
+    if(walkWakeLock||walkWakePending||document.visibilityState!=='visible')return;
+    walkWakePending=true;
+    try{
+      const lock=await navigator.wakeLock.request('screen');
+      if(!walkInProgress()||walkSession.state!=='running'||!document.getElementById('walk-screen-on').checked){await lock.release();return;}
+      walkWakeLock=lock;el.textContent='화면 켜두기 활성 · 배터리 사용이 늘 수 있어요.';
+      lock.addEventListener('release',()=>{if(walkWakeLock===lock){walkWakeLock=null;el.textContent='화면 유지가 해제됐어요. 돌아오면 다시 시도해요.';}});
+    }catch(e){el.textContent='화면 유지가 허용되지 않았어요. 자동 잠금 설정을 확인해 주세요.';}
+    finally{walkWakePending=false;}
+  }
+  function endWalkWatch(){
+    if(walkWatchId!==null){navigator.geolocation.clearWatch(walkWatchId);walkWatchId=null;}
   }
   function initWalkMap(){
     walkMap = L.map('walk-map', {scrollWheelZoom:false, zoomSnap:1, zoomDelta:1, zoomAnimation:false, fadeAnimation:false, bounceAtZoomLimits:false}).setView([36.5,127.8], 7);
@@ -6232,104 +6282,89 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){ console.error(e); }
   }
 
-  function startWalk(){
-    if(walkWatchId!==null)return;
+  function beginWalkWatch(){
+    const session=walkSession;
     document.getElementById('walk-gps-status').textContent='GPS 수신을 기다리고 있어요.';
-    if(!navigator.geolocation){ toast('이 브라우저에서는 위치 기능을 쓸 수 없어요'); return; }
-    const batterySaver = document.getElementById('battery-saver-toggle').checked;
-    walkPath = [];
-    walkStartTime = Date.now();
-    lastGpsTime = null;
-    if(walkLiveLine){ walkMap.removeLayer(walkLiveLine); walkLiveLine = null; }
-    if(walkMarker){ walkMap.removeLayer(walkMarker); walkMarker = null; }
-    document.getElementById('walk-idle-panel').style.display = 'none';
-    document.getElementById('walk-done-panel').style.display = 'none';
-    document.getElementById('walk-active-panel').style.display = '';
-    document.getElementById('walk-time').textContent = '00:00';
-    document.getElementById('walk-dist').textContent = '0.00';
-    document.getElementById('walk-pace').textContent = '–';
-
-    const MAX_ACCURACY_M = 35;      // 이보다 오차범위가 크면 신뢰도 낮은 좌표로 보고 무시
-    const MAX_SPEED_MPS = 4.5;      // 사람이 뛰어도 이보다 빠르면(약 16km/h) GPS 튐으로 판단
-
-    walkWatchId = navigator.geolocation.watchPosition(
-      (pos)=>{
-        const { latitude, longitude, accuracy } = pos.coords;
-        const now = Date.now();
-
-        if(accuracy != null && accuracy > MAX_ACCURACY_M){
-          document.getElementById('walk-gps-status').textContent='GPS 오차가 커서 기록을 기다리고 있어요. 탁 트인 곳에서 확인해 주세요.';
-          return; // 오차가 너무 큰 좌표는 지도에 반영하지 않음 (건물 사이·터널 등)
-        }
-        if(walkPath.length > 0 && lastGpsTime != null){
-          const last = walkPath[walkPath.length - 1];
-          const dist = L.latLng(last[0], last[1]).distanceTo(L.latLng(latitude, longitude));
-          const elapsedSec = (now - lastGpsTime) / 1000;
-          if(elapsedSec > 0 && (dist / elapsedSec) > MAX_SPEED_MPS){
-            return; // 순간이동처럼 튄 좌표는 건너뜀
-          }
-        }
-        lastGpsTime = now;
-        document.getElementById('walk-gps-status').textContent='GPS 수신 중 · 실제 이동 경로를 기록하고 있어요.';
-
-        walkPath.push([latitude, longitude]);
-        if(!walkLiveLine){
-          walkLiveLine = L.polyline(walkPath, {color:'#B5502E', weight:5, lineCap:'round'}).addTo(walkMap);
-          walkMap.setView([latitude, longitude], 16);
-        } else {
-          walkLiveLine.addLatLng([latitude, longitude]);
-        }
-        if(!walkMarker){
-          walkMarker = L.marker([latitude, longitude], {icon: pathPointIcon('start')}).addTo(walkMap);
-        } else {
-          walkMarker.setLatLng([latitude, longitude]);
-        }
-        walkMap.panTo([latitude, longitude]);
-        document.getElementById('walk-dist').textContent = walkDistanceKm().toFixed(2);
-        upsertActiveWalker(latitude, longitude);
-      },
-      (err)=>{
-        console.error(err);
-        document.getElementById('walk-gps-status').textContent='GPS 신호를 확인하고 있어요. 수신되지 않은 구간은 기록되지 않습니다.';
-        if(err.code===1){
-          if(walkWatchId!==null){navigator.geolocation.clearWatch(walkWatchId);walkWatchId=null;}
-          if(walkTimerInterval){clearInterval(walkTimerInterval);walkTimerInterval=null;}
-          resetWalkPanels();
-          toast('위치 권한이 거절되어 시작을 취소했어요. 브라우저 설정에서 허용한 뒤 다시 시작해 주세요.');
-        }else{toast('GPS 신호가 약해요. 위치 설정과 주변 환경을 확인해 주세요.');}
-      },
-      batterySaver
-        ? { enableHighAccuracy:false, maximumAge:15000, timeout:20000 }
-        : { enableHighAccuracy:true, maximumAge:2000, timeout:15000 }
-    );
-
-    walkTimerInterval = setInterval(()=>{
-      const elapsed = (Date.now() - walkStartTime) / 1000;
-      document.getElementById('walk-time').textContent = formatDuration(elapsed);
-      const km = walkDistanceKm();
-      if(km > 0.05){
-        const paceMinPerKm = (elapsed/60) / km;
-        const pm = Math.floor(paceMinPerKm), ps = Math.round((paceMinPerKm - pm) * 60);
-        document.getElementById('walk-pace').textContent = `${pm}'${String(ps).padStart(2,'0')}"/km`;
+    const batterySaver=document.getElementById('battery-saver-toggle').checked;
+    walkWatchId=navigator.geolocation.watchPosition(pos=>{
+      if(walkSession!==session||session.state!=='running')return;
+      const outcome=session.add(pos,Date.now());
+      const status=document.getElementById('walk-gps-status');
+      if(outcome==='accuracy'){status.textContent=`GPS 오차 ±${Math.round(pos.coords.accuracy)}m · 더 정확한 위치를 기다리고 있어요.`;return;}
+      if(outcome==='jump'){status.textContent='GPS 위치가 갑자기 튀어 해당 좌표를 제외했어요.';return;}
+      if(outcome==='stale'||outcome==='invalid')return;
+      status.textContent=`GPS 수신 중 · 오차 ±${Math.round(pos.coords.accuracy)}m${outcome==='still'?' · 작은 위치 흔들림은 거리에서 제외해요.':''}`;
+      if(outcome==='accepted'){
+        walkPath=session.parts.flat();
+        if(!walkLiveLine){walkLiveLine=L.polyline(session.parts,{color:'#B5502E',weight:5,lineCap:'round'}).addTo(walkMap);walkMap.setView(walkPath[0],16);}
+        else walkLiveLine.setLatLngs(session.parts);
+        const point=walkPath[walkPath.length-1];
+        if(!walkMarker)walkMarker=L.marker(point,{icon:pathPointIcon('start')}).addTo(walkMap);
+        else walkMarker.setLatLng(point);
+        walkMap.panTo(point);upsertActiveWalker(...point);
       }
-    }, 1000);
+      renderWalkMetrics();
+    },err=>{
+      if(walkSession!==session||session.state!=='running')return;
+      console.error(err);
+      if(err.code===1){
+        if(session.parts.flat().length){pauseWalk();document.getElementById('walk-gps-status').textContent='위치 권한이 해제되어 일시정지했어요. 지금까지의 기록은 유지돼요.';}
+        else{endWalkWatch();clearInterval(walkTimerInterval);walkTimerInterval=null;resetWalkPanels();toast('위치 권한을 허용한 뒤 다시 시작해 주세요.');}
+      }else document.getElementById('walk-gps-status').textContent='GPS 신호가 약해요. 수신되지 않은 구간은 거리에서 제외해요.';
+    },{enableHighAccuracy:!batterySaver,maximumAge:0,timeout:20000});
   }
+  function startWalk(){
+    if(walkInProgress())return;
+    if(!navigator.geolocation){toast('이 브라우저에서는 위치 기능을 쓸 수 없어요');return;}
+    const stride=document.getElementById('walk-stride');
+    if(!stride.checkValidity()||!Number.isInteger(Number(stride.value))){stride.reportValidity();toast('보폭을 30~120cm 사이의 정수로 입력해 주세요.');return;}
+    lastSavedWalk=null;walkPath=[];walkSession=new WalkTracker.Tracker(Number(stride.value));walkSession.start(Date.now());
+    if(walkLiveLine){walkMap.removeLayer(walkLiveLine);walkLiveLine=null;}
+    if(walkMarker){walkMap.removeLayer(walkMarker);walkMarker=null;}
+    if(walkEndMarker){walkMap.removeLayer(walkEndMarker);walkEndMarker=null;}
+    document.getElementById('walk-idle-panel').style.display='none';
+    document.getElementById('walk-done-panel').style.display='none';
+    document.getElementById('walk-active-panel').style.display='';
+    document.getElementById('walk-pause-btn').textContent='Ⅱ 일시정지';
+    document.getElementById('walk-pause-btn').setAttribute('aria-pressed','false');
+    renderWalkMetrics();beginWalkWatch();keepWalkScreen();
+    walkTimerInterval=setInterval(renderWalkMetrics,1000);
+  }
+  function pauseWalk(){
+    if(!walkInProgress())return;
+    const button=document.getElementById('walk-pause-btn');
+    if(walkSession.state==='running'){
+      walkSession.pause(Date.now());endWalkWatch();clearActiveWalker();releaseWalkScreen();
+      button.textContent='▶ 이어 걷기';button.setAttribute('aria-pressed','true');
+      document.getElementById('walk-gps-status').textContent='일시정지 중 · 기록 시간·거리·예상 걸음 수가 멈춰 있어요.';
+      document.getElementById('walk-screen-status').textContent='일시정지 중 화면 유지 꺼짐';
+    }else{
+      walkSession.resume(Date.now());button.textContent='Ⅱ 일시정지';button.setAttribute('aria-pressed','false');
+      beginWalkWatch();keepWalkScreen();
+    }
+    renderWalkMetrics();
+  }
+  let walkEndMarker=null;
   function stopWalk(){
-    if(walkWatchId !== null){ navigator.geolocation.clearWatch(walkWatchId); walkWatchId = null; }
-    if(walkTimerInterval){ clearInterval(walkTimerInterval); walkTimerInterval = null; }
-    clearActiveWalker();
-    const durationSec = (Date.now() - walkStartTime) / 1000;
-    const km = walkDistanceKm();
-    lastSavedWalk = { path: walkPath.slice(), distanceKm: km, durationSec };
-    document.getElementById('walk-active-panel').style.display = 'none';
-    document.getElementById('walk-done-panel').style.display = '';
-    document.getElementById('walk-done-time').textContent = formatDuration(durationSec);
-    document.getElementById('walk-done-dist').textContent = km.toFixed(2);
-    if(walkPath.length > 1){
-      const endMarker = L.marker(walkPath[walkPath.length-1], {icon: pathPointIcon('end')}).addTo(walkMap);
-      walkMap.fitBounds(walkLiveLine.getBounds(), {padding:[24,24]});
+    if(!walkInProgress())return;
+    endWalkWatch();clearInterval(walkTimerInterval);walkTimerInterval=null;clearActiveWalker();releaseWalkScreen();
+    walkSession.stop(Date.now());lastSavedWalk=walkSession.result(Date.now());
+    document.getElementById('walk-active-panel').style.display='none';
+    document.getElementById('walk-done-panel').style.display='';
+    document.getElementById('walk-done-time').textContent=formatDuration(lastSavedWalk.durationSec);
+    document.getElementById('walk-done-dist').textContent=lastSavedWalk.distanceKm.toFixed(2);
+    document.getElementById('walk-done-steps').textContent=lastSavedWalk.steps.toLocaleString('ko-KR');
+    document.getElementById('walk-done-pace').textContent=formatWalkPace(lastSavedWalk.paceSec);
+    document.getElementById('walk-done-note').textContent=`휴식 ${formatDuration(lastSavedWalk.pausedSec)} 제외 · 보폭 ${lastSavedWalk.strideCm}cm 기준 예상 걸음 수. GPS 미수신 구간의 경로와 거리는 제외했어요.`;
+    if(lastSavedWalk.path.length){
+      walkEndMarker=L.marker(lastSavedWalk.path[lastSavedWalk.path.length-1],{icon:pathPointIcon('end')}).addTo(walkMap);
+      if(walkLiveLine)walkMap.fitBounds(walkLiveLine.getBounds(),{padding:[24,24],maxZoom:17});
     }
   }
+  document.getElementById('walk-pause-btn').addEventListener('click',pauseWalk);
+  document.getElementById('walk-screen-on').addEventListener('change',keepWalkScreen);
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){renderWalkMetrics();keepWalkScreen();}});
+  window.addEventListener('beforeunload',event=>{if(walkInProgress()||(lastSavedWalk&&!savedWalkRecords.has(lastSavedWalk))){event.preventDefault();event.returnValue='';}});
   let walkShareBusy=false;
   async function shareWalkResultCard(){
     if(!lastSavedWalk||walkShareBusy)return;
@@ -6349,7 +6384,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const km=Number(lastSavedWalk.distanceKm)||0,mins=Math.max(0,Math.round(lastSavedWalk.durationSec/60));
       ctx.fillStyle='#f4d782';ctx.font='700 82px system-ui, sans-serif';ctx.fillText(km.toFixed(2)+' km',112,900);
       ctx.fillStyle='#f9f6ec';ctx.font='600 50px system-ui, sans-serif';ctx.fillText(formatDuration(lastSavedWalk.durationSec)+'  ·  '+mins+'분',112,990);
-      ctx.fillStyle='#d8e4d0';ctx.font='500 30px system-ui, sans-serif';ctx.fillText('오늘의 걸음이 우리 아이의 좋은 추억이 되길 🐶',112,1132);
+      ctx.fillStyle='#d8e4d0';ctx.font='500 30px system-ui, sans-serif';ctx.fillText(`예상 ${lastSavedWalk.steps.toLocaleString('ko-KR')}보 · 보호자 보폭 ${lastSavedWalk.strideCm}cm 기준`,112,1132);
       ctx.fillStyle='#f9f6ec';ctx.font='700 34px system-ui, sans-serif';ctx.fillText('balzaguk.com',112,1212);
       const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
       if(!blob)throw new Error('image_encode_failed');
@@ -6381,7 +6416,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         owner_id: myDeviceId,
         path: record.path,
         distance_km: Number(record.distanceKm.toFixed(2)),
-        duration_sec: Math.round(record.durationSec)
+        duration_sec: Math.round(record.durationSec),
+        estimated_steps: record.steps, stride_cm: record.strideCm, paused_sec: Math.round(record.pausedSec), path_segments: record.parts
       }]);
       if(error){ console.error(error); toast('저장하지 못했어요. 로그인 상태와 연결을 확인해 주세요. 경로는 이 화면에 유지돼요.'); return; }
       savedWalkRecords.add(record);
@@ -6393,12 +6429,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     finally{ walkSaving = false; saveButton.disabled = false; saveButton.removeAttribute('aria-busy'); }
   }
   function resetWalkPanels(){
+    endWalkWatch();if(walkTimerInterval){clearInterval(walkTimerInterval);walkTimerInterval=null;}
+    releaseWalkScreen();walkSession=null;lastSavedWalk=null;
     document.getElementById('walk-done-panel').style.display = 'none';
     document.getElementById('walk-active-panel').style.display = 'none';
     document.getElementById('walk-idle-panel').style.display = '';
   }
   function walkToCourseHandoff(){
     if(!lastSavedWalk || lastSavedWalk.path.length < 2){ toast('넘길 경로가 없어요'); return; }
+    if(lastSavedWalk.parts?.length>1){toast('일시정지·GPS 공백이 있는 기록은 하나의 연속 코스로 제안할 수 없어요. 내 기록으로 저장해 주세요.');return;}
     showPage('register');
     document.querySelector('.type-btn[data-type="course"]').click();
     coursePath = lastSavedWalk.path.slice();
@@ -6434,12 +6473,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         el.innerHTML = data.map(w=>{
           const d = new Date(w.created_at);
           const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
-          return `<div class="review-item"><div class="rh"><span>${dateStr} 산책</span><span class="meta-mono" style="border:none;padding:0;">${w.distance_km}km · ${formatDuration(w.duration_sec)}</span></div></div>`;
+          return `<div class="review-item"><div class="rh"><span>${dateStr} 산책</span><span class="meta-mono" style="border:none;padding:0;">${Number(w.distance_km).toFixed(2)}km · ${formatDuration(w.duration_sec)}</span></div><p class="walk-metric-note">${w.estimated_steps!=null?`예상 ${Number(w.estimated_steps).toLocaleString('ko-KR')}보 · 보폭 ${Number(w.stride_cm)}cm`:'걸음 수 미기록'}${w.paused_sec?` · 휴식 ${formatDuration(w.paused_sec)}`:''}</p></div>`;
         }).join('');
       }
       // 스트릭·주간 스트립 계산용으로 최근 30일치를 별도로 넓게 조회 (개수 제한 없이)
       const monthAgo = new Date(); monthAgo.setDate(monthAgo.getDate() - 30);
-      const { data: moodData } = await sb.from('walks').select('created_at, distance_km')
+      const { data: moodData } = await sb.from('walks').select('created_at, distance_km, duration_sec')
         .eq('owner_id', myDeviceId).gte('created_at', monthAgo.toISOString());
       updateTodayMood(moodData || data || []);
     }catch(e){ console.error(e); }
@@ -6539,7 +6578,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
 
   document.getElementById('course-prepare-walk').addEventListener('click',()=>{
-    if(walkWatchId!==null){toast('이미 산책을 기록 중이에요.');closeModal();showPage('walk');return;}
+    if(walkInProgress()){toast('이미 산책을 기록 중이에요.');closeModal();showPage('walk');return;}
     const course=allCourses().find(c=>c.id===activeCourseId);
     if(!course||isHidden('course',course.id)){toast('현재 선택할 수 없는 코스예요.');return;}
     document.getElementById('walk-reference-name').textContent=course.name;
@@ -6554,7 +6593,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   document.getElementById('walk-stop-btn').addEventListener('click', stopWalk);
   document.getElementById('walk-save-btn').addEventListener('click', saveWalkToDB);
   document.getElementById('walk-to-course-btn').addEventListener('click', walkToCourseHandoff);
-  document.getElementById('walk-discard-btn').addEventListener('click', resetWalkPanels);
+  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(lastSavedWalk&&!confirm('저장하지 않은 산책 기록을 버릴까요?'))return;resetWalkPanels();});
 
   // ===== 페이지 전환 (메뉴별 화면 분리) =====
   let currentPage = 'home';
@@ -6928,7 +6967,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       status.textContent = '관리자 계정은 먼저 권한 이전이 필요합니다. 운영 문의처로 연락해주세요.';
       return;
     }
-    if(walkWatchId !== null){
+    if(walkInProgress()){
       status.textContent = '진행 중인 산책을 먼저 종료한 뒤 탈퇴해주세요.';
       return;
     }
