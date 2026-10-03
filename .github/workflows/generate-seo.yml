@@ -7,6 +7,9 @@ on:
     paths:
       - 'scripts/generate-seo.mjs'
       - 'course-info.js'
+      - 'facility-info.js'
+      - 'database_sql/seed_expansion_*.sql'
+      - 'course-routes.js'
       - 'course-photos.js'
       - '.github/workflows/generate-seo.yml'
       - 'database_sql/seed_verified_walking_courses_*.sql'

@@ -1048,6 +1048,8 @@
 .route-stops{display:grid;grid-template-columns:1fr 1fr;gap:10px}.route-stop{display:flex;flex-direction:column;gap:5px;padding:14px;border:1px solid #d3dfcd;border-radius:15px;background:#f2f6ed;text-decoration:none;color:#244f3e;min-height:44px}.route-stop span{font-size:12px;overflow-wrap:anywhere}.route-note{font-size:12px;color:var(--muted-text);line-height:1.7;margin:12px 0}.route-itinerary{border:1px solid var(--ui-border);border-radius:15px;padding:14px}.route-itinerary summary{font-weight:700;cursor:pointer;min-height:28px}.route-itinerary ol{padding-left:24px;line-height:1.9;font-size:14px}.route-unavailable{padding:16px;border:1px solid var(--ui-border);border-radius:15px;font-size:14px;line-height:1.7}.route-unavailable p{margin:8px 0;font-size:13px}
 @media(max-width:600px){#modal-route-map{height:300px}.route-stops{grid-template-columns:1fr}.route-stop{padding:12px}}
 
+
+#registered-place-filters{flex-wrap:wrap}#registered-place-filters select{font:inherit;min-height:42px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}#facility-filter-count{font-size:13px;color:var(--muted-text)}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -1838,7 +1840,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <span class="hero-stat-icon">☕</span>
           <div>
             <div class="hero-stat-num" id="hero-stat-facilities">–</div>
-            <div class="hero-stat-label">동반 카페·숙소</div>
+            <div class="hero-stat-label">동반 장소</div>
           </div>
         </div>
       </div>
@@ -1918,7 +1920,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <a class="chip" href="/guides/dog-walk-checklist/">🎒 산책 준비물</a>
         <a class="chip" href="/guides/summer-dog-walk/">☀️ 여름 산책 가이드</a>
         <a class="chip" href="/guides/rainy-day-dog-walk/">🌧️ 비 오는 날 산책</a>
-        <a class="chip" href="/discover.html#places">☕ 애견동반 카페·숙소</a>
+        <a class="chip" href="/discover.html#places">☕ 애견동반 장소</a>
         <a class="chip" href="/discover.html#bins">🚮 배변봉투함</a>
       </nav>
     </div>
@@ -2013,6 +2015,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
         <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
+      <div class="map-toolbar" id="registered-place-filters">
+        <label>동반 장소 종류 <select id="facility-filter-category" aria-label="동반 장소 종류"><option value="">전체 종류</option><option value="식당카페">식당·카페</option><option value="숙소">숙소</option><option value="공원관광">공원·관광지</option><option value="캠핑">캠핑장</option><option value="쇼핑">쇼핑·체험</option></select></label>
+        <input id="facility-filter-query" type="search" aria-label="등록된 동반 장소 검색" placeholder="동반 장소 이름·주소 검색" style="min-width:160px;flex:1;padding:10px;border:1px solid var(--line);border-radius:12px">
+        <span id="facility-filter-count" aria-live="polite"></span>
+      </div>
       <details class="map-extra-filters"><summary>필터 더 보기 · 병원·용품점·카페·숙소</summary><div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
           <button type="button" class="chip" data-poi="vet">🏥 동물병원</button>
@@ -2032,7 +2039,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <span>🐾 산책 코스 시작점</span>
         <span>┈┈ 실제 산책 경로</span>
         <span>🚮 배변봉투함</span>
-        <span>🍽️ 동반식당·카페 · 🏨 동반숙소 (사용자 등록 + 공공데이터)</span>
+        <span>🍽️ 동반식당·카페 · 🏨 숙소 · 🌳 공원·관광지 · ⛺ 캠핑장 (사용자 등록 + 공공데이터)</span>
         <span>🏥 동물병원 · 🛍️ 애견용품점은 "지금 보이는 지역에서 찾기"로 실시간 검색돼요</span>
         <span>마커를 누르면 상세 정보가 보여요</span>
       </div></details>
@@ -2204,6 +2211,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <div class="tag-check-group" id="facility-category-group">
               <div class="tag-check on" data-facility-category="식당카페">🍽️ 동반 식당·카페</div>
               <div class="tag-check" data-facility-category="숙소">🏨 동반 숙소</div>
+              <div class="tag-check" data-facility-category="공원관광">🌳 공원·관광지</div>
+              <div class="tag-check" data-facility-category="캠핑">⛺ 캠핑장</div>
+              <div class="tag-check" data-facility-category="쇼핑">🛍️ 쇼핑·체험</div>
             </div>
             <label for="facility-address-input">주소로 정확히 찾기 (선택)</label>
             <div style="display:flex; gap:8px;">
@@ -2635,6 +2645,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
                 <div class="tag-check-group" id="bulk-facility-category-group">
                   <div class="tag-check on" data-bulk-facility-category="식당카페">🍽️ 식당·카페</div>
                   <div class="tag-check" data-bulk-facility-category="숙소">🏨 숙소</div>
+              <div class="tag-check" data-bulk-facility-category="공원관광">🌳 공원·관광지</div>
+              <div class="tag-check" data-bulk-facility-category="캠핑">⛺ 캠핑장</div>
+              <div class="tag-check" data-bulk-facility-category="쇼핑">🛍️ 쇼핑·체험</div>
                 </div>
               </div>
               <label>이름 컬럼 <span style="color:var(--clay);">*필수</span></label>
@@ -2720,6 +2733,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <script src="traffic.js?v=20261003" data-manual></script>
 <script src="course-photos.js?v=20261003b"></script>
 <script src="course-info.js?v=20261003"></script>
+<script src="facility-info.js?v=20261003"></script>
 <script src="course-routes.js?v=20261003b"></script>
 <script>
 (function(){
@@ -3775,7 +3789,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <button class="ai-chip" data-go="near-me">📍 내 주변 코스</button>
           <button class="ai-chip" data-small-dog="1">🐶 소형견 코스</button>
           <button class="ai-chip" data-go="c-size">🐾 우리 강아지에게 좋은 코스</button>
-          <button class="ai-chip" data-go="f-category">☕ 동반 카페·숙소</button>
+          <button class="ai-chip" data-go="f-category">☕ 동반 장소</button>
           <button class="ai-chip" data-go="guide-0">📖 사용법</button>
           <button class="ai-chip" data-go="faq">❓ 자주 묻는 질문</button>
         </div>
@@ -3922,12 +3936,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       body.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go)));
       aiWireBack(body);
 
-    // ---------- 동반 카페·숙소 추천 흐름 ----------
+    // ---------- 동반 장소 추천 흐름 ----------
     } else if(step === 'f-category'){
       body.innerHTML = `
         <div class="ai-bubble">어떤 곳을 찾아드릴까요?</div>
         <button class="ai-option-btn" data-v="식당카페">🍽️ 동반 식당·카페</button>
         <button class="ai-option-btn" data-v="숙소">🏨 동반 숙소</button>
+        <button class="ai-option-btn" data-v="공원관광">🌳 공원·관광지</button>
+        <button class="ai-option-btn" data-v="캠핑">⛺ 캠핑장</button>
+        <button class="ai-option-btn" data-v="쇼핑">🛍️ 쇼핑·체험</button>
         ${backBtn}
       `;
       body.querySelectorAll('[data-v]').forEach(btn=>{
@@ -3948,7 +3965,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       aiWireBack(body);
     } else if(step === 'f-result'){
       const results = aiRecommendFacilities();
-      const label = aiAnswers.facilityCategory === '숙소' ? '동반 숙소' : '동반 식당·카페';
+      const label = '동반 '+FacilityInfo.get(aiAnswers.facilityCategory).label;
       if(!results.length){
         body.innerHTML = `
           <div class="ai-bubble">앗, ${aiAnswers.facilityRegion}에 등록된 ${label}를 못 찾았어요 😅<br>다른 지역으로 다시 찾아볼까요?</div>
@@ -4079,7 +4096,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return /^(m|미터)$/i.test(match[2]) ? n / 1000 : n;
   }
   function aiRenderFacilityCard(f){
-    const emoji = f.category === '숙소' ? '🏨' : '🍽️';
+    const emoji = FacilityInfo.get(f.category).emoji;
     return `<a href="#" class="ai-rec-card" data-open-facility="${escapeHtml(String(f.id))}" data-lat="${Number(f.lat)}" data-lng="${Number(f.lng)}">
       <span style="font-size:26px;">${emoji}</span>
       <span style="flex:1;">
@@ -4373,7 +4390,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(listFilterState.maxMinutes){
       list=list.filter(c=>{const minutes=courseMinutes(c);return minutes!==null&&minutes<=listFilterState.maxMinutes;});
     }
-    if(listFilterState.collection==='cafe') list=list.filter(c=>nearbyWalkPlaces(c).some(x=>x.f.category!=='숙소'));
+    if(listFilterState.collection==='cafe') list=list.filter(c=>nearbyWalkPlaces(c).some(x=>x.f.category==='식당카페'));
     if(listFilterState.favOnly){
       list = list.filter(c => favoriteIds.has(c.id));
     }
@@ -4593,14 +4610,18 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         .bindPopup(`<strong>🚮 ${escapeHtml(b.name)}</strong><br>${escapeHtml(b.desc||'')}${b.author ? '<br><em>등록: '+escapeHtml(b.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(b.name, b.lat, b.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(binLayer);
     });
-    facilities.filter(f => !isHidden('facility', f.id)).forEach(f=>{
+    const facilityCategory=document.getElementById('facility-filter-category').value;
+    const facilityQuery=document.getElementById('facility-filter-query').value.trim().toLowerCase();
+    const visibleFacilities=facilities.filter(f => !isHidden('facility',f.id)&&(!facilityCategory||f.category===facilityCategory)&&(!facilityQuery||[f.name,f.address,CourseInfo.cleanDescription(f.description)].join(' ').toLowerCase().includes(facilityQuery))&&Number.isFinite(Number(f.lat))&&Number.isFinite(Number(f.lng)));
+    document.getElementById('facility-filter-count').textContent='등록 장소 '+visibleFacilities.length+'곳';
+    visibleFacilities.forEach(f=>{
       const isMine = f.owner_id && f.owner_id === myDeviceId;
-      const emoji = f.category === '숙소' ? '🏨' : '🍽️';
+      const emoji = FacilityInfo.get(f.category).emoji;
       const actionHtml = isMine
         ? `<a href="#" onclick="window.__deleteFacility('${f.id}');return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportFacility('${f.id}');return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
-      L.marker([f.lat, f.lng], {icon: poiIcon(f.category === '숙소' ? 'lodging' : 'restaurant')})
-        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.description||'')}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+      L.marker([f.lat, f.lng], {icon: poiIcon(FacilityInfo.get(f.category).poi)})
+        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br>${escapeHtml(CourseInfo.cleanDescription(f.description))}<br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>':''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(facilityLayer);
     });
   }
@@ -4662,8 +4683,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       kakaoGeocoder = new kakao.maps.services.Geocoder();
     });
   }
-  const POI_EMOJI = { vet:'🏥', pet_shop:'🛍️', restaurant:'🍽️', lodging:'🏨' };
-  const POI_COLOR = { vet:'#E0554F', pet_shop:'#8B6FC9', restaurant:'#E8834A', lodging:'#3E8FB0' };
+  const POI_EMOJI = { vet:'🏥', pet_shop:'🛍️', restaurant:'🍽️', lodging:'🏨', park:'🌳', camping:'⛺', shopping:'🛍️' };
+  const POI_COLOR = { vet:'#E0554F', pet_shop:'#8B6FC9', restaurant:'#E8834A', lodging:'#3E8FB0', park:'#386b55', camping:'#8a6739', shopping:'#8B6FC9' };
   const POI_KEYWORDS = {
     vet: ['동물병원', '동물의료센터'],
     pet_shop: ['애견용품', '펫샵', '반려동물용품점'],
@@ -5196,6 +5217,15 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     resetCoursePath();
   });
 
+  let facilityFilterTimer;
+  for(const id of ['facility-filter-category','facility-filter-query'])document.getElementById(id).addEventListener(id.endsWith('query')?'input':'change',()=>{
+    clearTimeout(facilityFilterTimer);facilityFilterTimer=setTimeout(()=>{
+    renderMap();document.querySelector('#view-filter-group [data-filter="facility"]').click();
+    const category=document.getElementById('facility-filter-category').value,query=document.getElementById('facility-filter-query').value.trim().toLowerCase();
+    const points=facilities.filter(f=>!isHidden('facility',f.id)&&(!category||f.category===category)&&(!query||[f.name,f.address,CourseInfo.cleanDescription(f.description)].join(' ').toLowerCase().includes(query))).map(f=>[Number(f.lat),Number(f.lng)]).filter(p=>p.every(Number.isFinite));
+    if(points.length&&query)map.fitBounds(points,{maxZoom:15,padding:[30,30]});
+    },180);
+  });
   // Filter chips
   document.querySelectorAll('#view-filter-group .chip').forEach(chip=>{
     chip.addEventListener('click', ()=>{
@@ -6714,7 +6744,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   seedIfNeeded().then(loadData).then(()=>{
     const params = new URLSearchParams(window.location.search);
     const sharedCourseId = params.get('course');
-    const sharedFacilityId = params.get('facility');
+    const sharedFacilityId = params.get('facility')?FacilityInfo.resolveId(params.get('facility')):null;
     if(sharedCourseId && allCourses().some(c=>c.id===sharedCourseId)){
       showPage('map');
       setTimeout(()=> openCourseDetail(sharedCourseId), 300);
@@ -6923,7 +6953,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(!listEl) return;
     const pendingCourses = allCourses().filter(c => c.status === 'pending').map(c => ({ type:'course', table:'courses', id:c.id, name:c.name, author:c.author, emoji:'🐾' }));
     const pendingBins = allBins().filter(b => b.status === 'pending').map(b => ({ type:'bin', table:'bins', id:b.id, name:b.name, author:b.author, emoji:'🚮' }));
-    const pendingFacilities = facilities.filter(f => f.status === 'pending').map(f => ({ type:'facility', table:'facilities', id:f.id, name:f.name, author:f.author, emoji: f.category==='숙소'?'🏨':'🍽️' }));
+    const pendingFacilities = facilities.filter(f => f.status === 'pending').map(f => ({ type:'facility', table:'facilities', id:f.id, name:f.name, author:f.author, emoji: FacilityInfo.get(f.category).emoji }));
     const all = [...pendingCourses, ...pendingBins, ...pendingFacilities];
     if(countEl) countEl.textContent = all.length;
     if(!all.length){ listEl.innerHTML = '<p class="empty-admin">승인 대기 중인 항목이 없어요.</p>'; return; }
@@ -6996,7 +7026,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         title = b ? b.name : '(삭제된 배변봉투함)'; sub = '배변봉투함';
       } else if(type === 'facility'){
         const f = facilities.find(x=>String(x.id)===String(id));
-        title = f ? f.name : '(삭제된 장소)'; sub = '동반 카페·숙소';
+        title = f ? f.name : '(삭제된 장소)'; sub = '동반 장소';
       } else if(type === 'review'){
         let found = null;
         Object.values(reviews).forEach(list=>{
@@ -7579,7 +7609,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     el.innerHTML = `
       <table style="width:100%; border-collapse:collapse;">
         <tr style="font-weight:800; color:var(--pine-deep);"><td>이름</td><td>위도</td><td>경도</td><td>설명</td></tr>
-        ${rows.map(r=>`<tr><td>${r[nameCol]||'-'}</td><td>${r[latCol]||'-'}</td><td>${r[lngCol]||'-'}</td><td>${descCol ? (r[descCol]||'-') : '-'}</td></tr>`).join('')}
+        ${rows.map(r=>`<tr><td>${escapeHtml(r[nameCol]||'-')}</td><td>${escapeHtml(r[latCol]||'-')}</td><td>${escapeHtml(r[lngCol]||'-')}</td><td>${escapeHtml(descCol ? (r[descCol]||'-') : '-')}</td></tr>`).join('')}
       </table>`;
   }
   ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'].forEach(id=>{
@@ -7612,12 +7642,19 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
     const progressEl = document.getElementById('bulk-import-progress');
     const validRows = [];
+    const bulkSeen=new Set();
+    const existingBulk=bulkSelectedType==='course'?allCourses():bulkSelectedType==='bin'?allBins():facilities;
+    const bulkKey=(name,lat,lng)=>name.replace(/\s+/g,'').toLowerCase()+'|'+Number(lat).toFixed(4)+'|'+Number(lng).toFixed(4);
+    existingBulk.forEach(row=>bulkSeen.add(bulkKey(row.name||'',row.lat,row.lng)));
     let skipped = 0;
     bulkParsedRows.forEach((r, i)=>{
       const name = (r[nameCol]||'').trim();
-      const lat = parseFloat(r[latCol]);
-      const lng = parseFloat(r[lngCol]);
-      if(!name || isNaN(lat) || isNaN(lng) || lat === 0 || lng === 0){ skipped++; return; }
+      const lat = Number(String(r[latCol]||'').trim());
+      const lng = Number(String(r[lngCol]||'').trim());
+      if(!name || name.length>120 || !Number.isFinite(lat) || !Number.isFinite(lng) || lat<33 || lat>39.5 || lng<124 || lng>132){ skipped++; return; }
+      const key=bulkKey(name,lat,lng);
+      if(bulkSeen.has(key)){skipped++;return;}
+      bulkSeen.add(key);
       // 충돌 걱정 없는 고유 ID (시간 + 인덱스 + 랜덤값 조합)
       const uniqueId = `pub${Date.now()}_${i}_${Math.random().toString(36).slice(2,8)}`;
       validRows.push({
@@ -7663,7 +7700,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       }catch(e){ console.error(e); failed += chunk.length; }
       progressEl.textContent = `등록 중... ${Math.min(i+CHUNK, validRows.length)} / ${validRows.length}`;
     }
-    progressEl.textContent = `✅ 완료! 성공 ${done}개 · 실패 ${failed}개 · 스킵(값 누락) ${skipped}개`;
+    progressEl.textContent = `✅ 완료! 성공 ${done}개 · 실패 ${failed}개 · 제외(중복·잘못된 값) ${skipped}개`;
     toast('공공데이터 일괄 등록이 끝났어요');
     await loadData();
     renderAdminStats();
