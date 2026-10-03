@@ -2133,6 +2133,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </section>
 
+<div class="wrap" id="data-load-notice" role="status" hidden style="margin:12px auto;padding:14px;border:1px solid var(--line);border-radius:12px;"><span>일부 정보를 불러오지 못했어요. 이전 표시 정보가 남아 있을 수 있어요.</span> <button type="button" class="pin-btn" id="data-load-retry">다시 불러오기</button></div>
 <section id="walk-section" class="app-page" data-page-section="walk" style="background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <div class="section-head">
@@ -2148,7 +2149,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <div id="mood-emoji" style="font-size:48px; line-height:1;">🐕</div>
         <div style="flex:1;">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-            <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted-text);">오늘의 산책 만족도</div>
+            <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted-text);">오늘의 산책 기록</div>
             <span id="streak-badge" style="display:none; font-size:12px; font-weight:700; color:var(--clay); background:#FBF1EC; padding:4px 10px; border-radius:999px;">🔥 0일 연속</span>
           </div>
           <div id="mood-message" style="font-family:'Jua',sans-serif; font-size:19px; font-weight:700; color:var(--pine-deep); margin-top:2px;"></div>
@@ -2196,7 +2197,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
         <div id="my-walks-wrap" style="margin-top:24px; border-top:1px solid var(--line); padding-top:18px;">
           <h4 style="font-family:'Jua', sans-serif; font-size:18px; color:var(--pine-deep); margin-bottom:10px;">내 산책 기록</h4>
-          <div id="my-walks-list"><p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p></div>
+          <button type="button" class="pin-btn" id="my-walks-refresh">기록 새로고침</button><div id="my-walks-list"><p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p></div>
         </div>
       </div>
       <div class="mini-map-wrap">
@@ -2442,6 +2443,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <input type="text" id="region-input" placeholder="예: 서울 마포구">
         <button class="submit-btn" id="region-save-btn" style="margin-top:10px;">지역 저장</button>
       </div>
+      <button type="button" class="pin-btn" id="favorite-import-btn" style="margin-top:12px;">이 기기의 비로그인 찜 가져오기</button>
       <button class="pin-btn" id="logout-btn" style="margin-top:16px; color:#A79E7E;">로그아웃</button>
       <button class="pin-btn" id="export-data-btn" style="margin-top:10px; color:var(--moss); font-size:12px; border:none; background:none;">📥 내 정보 다운로드</button>
       <button class="pin-btn" id="withdraw-btn" style="margin-top:6px; color:var(--clay); font-size:12px; border:none; background:none;">회원 탈퇴 및 데이터 삭제</button><p id="withdraw-status" role="status" aria-live="polite" style="font-size:12px;line-height:1.7;">최근 로그인 후 본인 계정·업로드 사진·활동 데이터를 삭제합니다. 삭제 범위와 제외 항목을 먼저 확인해 주세요. <a href="mailto:footstepbiz@gmail.com?subject=발자국%20개인정보%20삭제%20요청">삭제 관련 문의</a></p>
@@ -2707,7 +2709,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   </div>
 </div>
 
-<aside class="favorite-join-note" id="favorite-join-note" hidden aria-label="찜한 코스 계정 보관 안내"><button type="button" id="favorite-join-close" class="favorite-join-close" aria-label="가입 안내 닫기">×</button><strong>찜 목록에 추가했어요</strong><p>로그인하면 찜한 코스를 계정에도 보관할 수 있어요.</p><button type="button" data-open-join>로그인하고 보관하기 →</button></aside>
+<aside class="favorite-join-note" id="favorite-join-note" hidden aria-label="찜한 코스 계정 보관 안내"><button type="button" id="favorite-join-close" class="favorite-join-close" aria-label="가입 안내 닫기">×</button><strong>찜 목록에 추가했어요</strong><p>비로그인 찜은 이 기기에 보관돼요. 로그인 후 MY에서 이 기기의 찜을 내 계정으로 가져올 수 있어요.</p><button type="button" data-open-join>로그인하고 보관하기 →</button></aside>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="offline-banner" style="display:none; position:fixed; top:0; left:0; right:0; z-index:2200; background:var(--clay-dark); color:#fff; text-align:center; padding:10px; font-size:13px; font-weight:700;">
   📡 인터넷 연결이 끊겼어요. 연결되면 자동으로 다시 시도해요.
@@ -2810,48 +2812,71 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let myBadge = null, myOwnedBadges = [];
   let myAvatarUrl = null;
   let profilesMap = {};
-  let favoriteIds = new Set();
-  try{ favoriteIds = new Set(JSON.parse(localStorage.getItem('paw_favorites') || '[]')); }catch(e){}
+  function favoriteStorageKey(owner){return 'paw_favorites_v2_'+(owner||'guest');}
+  function readFavoriteCache(owner){
+    try{const data=JSON.parse(localStorage.getItem(favoriteStorageKey(owner))||'[]');return new Set(Array.isArray(data)?data.filter(x=>typeof x==='string'):[]);}catch(e){return new Set();}
+  }
+  let favoriteIds=readFavoriteCache(null),favoriteOwner=null,favoriteSyncOwner=null;
+  let favoriteSyncVersion=0,favoriteRevision=0;
+  const favoritePending=new Set();
   let favoriteJoinShown=false;
-  function toggleFavorite(courseId){
-    const nowFavorited = !favoriteIds.has(courseId);
-    if(nowFavorited&&!myDeviceId&&!favoriteJoinShown){favoriteJoinShown=true;document.getElementById('favorite-join-note').hidden=false;}
-    if(favoriteIds.has(courseId)) favoriteIds.delete(courseId);
-    else favoriteIds.add(courseId);
-    try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(favoriteIds))); }catch(e){}
-    if(myDeviceId){
-      if(nowFavorited){
-        sb.from('favorites').upsert([{ owner_id: myDeviceId, course_id: courseId }]).then(()=>{});
-      } else {
-        sb.from('favorites').delete().eq('owner_id', myDeviceId).eq('course_id', courseId).then(()=>{});
-      }
+  function switchFavoriteOwner(){
+    if(favoriteOwner===myDeviceId)return;
+    favoriteOwner=myDeviceId;favoriteIds=readFavoriteCache(myDeviceId);favoriteRevision++;favoriteSyncVersion++;
+  }
+  function persistFavorites(){try{localStorage.setItem(favoriteStorageKey(myDeviceId),JSON.stringify([...favoriteIds]));}catch(e){}}
+  function refreshFavoriteViews(){
+    updateDetailFavorite();renderGrid();loadNearbyRecommendations();renderHomeGpsPreview();renderPopularCourses();
+    const peek=document.getElementById('map-course-peek'),button=peek?.querySelector('[data-peek-save]');
+    if(button){const saved=favoriteIds.has(peek.dataset.courseId);button.textContent=saved?'♥ 찜 해제':'♡ 찜하기';button.setAttribute('aria-pressed',String(saved));}
+  }
+  async function toggleFavorite(courseId){
+    const owner=myDeviceId,key=(owner||'guest')+':'+courseId;
+    if(favoritePending.has(key))return;
+    if(owner&&favoriteSyncOwner===owner){toast('찜 목록을 동기화 중이에요. 잠시 후 다시 눌러주세요.');return;}
+    const wasSaved=favoriteIds.has(courseId);favoriteRevision++;
+    if(wasSaved)favoriteIds.delete(courseId);else favoriteIds.add(courseId);
+    if(!owner){
+      persistFavorites();if(!wasSaved&&!favoriteJoinShown){favoriteJoinShown=true;document.getElementById('favorite-join-note').hidden=false;}
+      refreshFavoriteViews();return;
     }
-    updateDetailFavorite();
-    renderGrid();
-    loadNearbyRecommendations();
-      renderHomeGpsPreview();
-      renderPopularCourses();
+    favoritePending.add(key);refreshFavoriteViews();
+    try{
+      const {error}=wasSaved
+        ? await sb.from('favorites').delete().eq('owner_id',owner).eq('course_id',courseId)
+        : await sb.from('favorites').upsert([{owner_id:owner,course_id:courseId}]);
+      if(error)throw error;
+      if(myDeviceId===owner){persistFavorites();toast(wasSaved?'찜을 해제했어요':'내 계정에 찜했어요 ♥');}
+    }catch(e){
+      console.error(e);
+      if(myDeviceId===owner){if(wasSaved)favoriteIds.add(courseId);else favoriteIds.delete(courseId);favoriteRevision++;refreshFavoriteViews();toast('찜 저장에 실패해 이전 상태로 되돌렸어요. 다시 시도해 주세요.');}
+    }finally{favoritePending.delete(key);}
   }
   async function syncFavoritesFromServer(){
-    if(!myDeviceId) return;
+    const owner=myDeviceId;if(!owner||favoriteSyncOwner===owner)return;
+    const version=++favoriteSyncVersion,revision=favoriteRevision;favoriteSyncOwner=owner;
     try{
-      const { data } = await sb.from('favorites').select('course_id').eq('owner_id', myDeviceId);
-      const serverIds = (data||[]).map(r=>r.course_id);
-      const localIds = Array.from(favoriteIds);
-      // 서버 목록을 로컬과 합치고, 로컬에만 있던 항목은 서버에도 올려줌
-      const merged = new Set([...serverIds, ...localIds]);
-      favoriteIds = merged;
-      try{ localStorage.setItem('paw_favorites', JSON.stringify(Array.from(merged))); }catch(e){}
-      const missingOnServer = localIds.filter(id => !serverIds.includes(id));
-      if(missingOnServer.length){
-        await sb.from('favorites').upsert(missingOnServer.map(id => ({ owner_id: myDeviceId, course_id: id })));
-      }
-      renderGrid();
-      loadNearbyRecommendations();
-      renderHomeGpsPreview();
-      renderPopularCourses();
-    }catch(e){ console.error(e); }
+      const {data,error}=await sb.from('favorites').select('course_id').eq('owner_id',owner);
+      if(error)throw error;
+      if(myDeviceId!==owner||version!==favoriteSyncVersion||revision!==favoriteRevision)return;
+      // The server is authoritative; do not re-add removed favorites from another device or account.
+      favoriteIds=new Set((data||[]).map(r=>r.course_id));persistFavorites();refreshFavoriteViews();
+    }catch(e){console.error(e);if(myDeviceId===owner)toast('찜 목록을 동기화하지 못했어요. 연결 확인 후 다시 시도해 주세요.');}
+    finally{if(favoriteSyncOwner===owner)favoriteSyncOwner=null;}
   }
+  document.getElementById('favorite-import-btn').addEventListener('click',async()=>{
+    const owner=myDeviceId;if(!owner){openNickModal();return;}
+    const guest=[...readFavoriteCache(null)];if(!guest.length){toast('가져올 비로그인 찜이 없어요.');return;}
+    if(favoriteSyncOwner===owner||[...favoritePending].some(k=>k.startsWith(owner+':'))){toast('찜 처리 중이에요. 잠시 후 다시 시도해 주세요.');return;}
+    if(!confirm(`이 기기의 비로그인 찜 ${guest.length}개를 현재 계정에 가져올까요?`))return;
+    const button=document.getElementById('favorite-import-btn');button.disabled=true;favoriteSyncOwner=owner;
+    try{
+      const {error}=await sb.from('favorites').upsert(guest.map(id=>({owner_id:owner,course_id:id})));if(error)throw error;
+      localStorage.removeItem(favoriteStorageKey(null));
+      if(myDeviceId===owner){guest.forEach(id=>favoriteIds.add(id));persistFavorites();refreshFavoriteViews();toast('내 계정에 찜을 가져왔어요.');}
+    }catch(e){console.error(e);toast('찜을 가져오지 못했어요. 이 기기의 찜은 유지돼요.');}
+    finally{if(favoriteSyncOwner===owner)favoriteSyncOwner=null;button.disabled=false;}
+  });
   let courseBoosts = {};
   let myRegionName = null, myRegionLat = null, myRegionLng = null;
   let map, miniMap, routeMap, courseLayer, binLayer, facilityLayer;
@@ -2914,7 +2939,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     let from = 0;
     const PAGE = 1000;
     while(true){
-      const { data, error } = await sb.from(table).select('*').order(orderCol).range(from, from + PAGE - 1);
+      let query=sb.from(table).select('*').order(orderCol);
+      if(orderCol!=='id')query=query.order('id');
+      const {data,error}=await query.range(from,from+PAGE-1);
       if(error) throw error;
       if(!data || !data.length) break;
       all = all.concat(data);
@@ -2943,30 +2970,29 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
 
   async function loadData(){
-    let publicDataFailed = false;
-    try{
-      const data = await fetchAllRows('courses', 'created_at');
-      courses = data.map(rowToCourse);
-    }catch(e){ console.error(e); publicDataFailed = true; }
-
-    try{
-      const data = await fetchAllRows('bins', 'created_at');
-      bins = data.map(rowToBin);
-    }catch(e){ console.error(e); publicDataFailed = true; }
-
-    try{
-      facilities = await fetchAllRows('facilities', 'created_at');
-    }catch(e){ console.error(e); publicDataFailed = true; }
-
-    try{
-      const data = await fetchAllRows('reviews', 'created_at');
-      reviews = {};
-      data.forEach(r=>{
-        if(!reviews[r.course_id]) reviews[r.course_id] = [];
-        reviews[r.course_id].push({ dbId:r.id, name:r.name, rating:r.rating, text:r.text, ownerId:r.owner_id, photoUrl:r.photo_url });
-      });
-    }catch(e){ console.error(e); publicDataFailed = true; }
-    if(publicDataFailed) toast('일부 최신 정보를 불러오지 못했어요. 기존 표시 정보가 남아 있을 수 있으니 연결 확인 후 새로고침해 주세요.');
+    const notice=document.getElementById('data-load-notice'),retry=document.getElementById('data-load-retry');
+    notice.hidden=false;notice.querySelector('span').textContent='코스·장소 정보를 불러오는 중이에요…';retry.hidden=true;
+    const results=await Promise.allSettled([
+      fetchAllRows('courses','created_at'),fetchAllRows('bins','created_at'),
+      fetchAllRows('facilities','created_at'),fetchAllRows('reviews','created_at')
+    ]);
+    let publicDataFailed=false;
+    results.forEach((result,index)=>{
+      if(result.status==='rejected'){console.error(result.reason);publicDataFailed=true;return;}
+      const data=result.value;
+      if(index===0)courses=data.map(rowToCourse);
+      else if(index===1)bins=data.map(rowToBin);
+      else if(index===2)facilities=data;
+      else{
+        reviews={};data.forEach(r=>{
+          if(!reviews[r.course_id])reviews[r.course_id]=[];
+          reviews[r.course_id].push({dbId:r.id,name:r.name,rating:r.rating,text:r.text,ownerId:r.owner_id,photoUrl:r.photo_url});
+        });
+      }
+    });
+    notice.hidden=!publicDataFailed;retry.hidden=false;
+    notice.querySelector('span').textContent='일부 정보를 불러오지 못했어요. 이전 표시 정보가 남아 있을 수 있어요.';
+    if(publicDataFailed)toast('일부 정보를 불러오지 못했어요. 다시 불러오기 버튼으로 재시도할 수 있어요.');
 
     try{
       const reportViewer=myDeviceId;
@@ -3013,6 +3039,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     renderAll();
   }
 
+  document.getElementById('data-load-retry').addEventListener('click',async()=>{
+    const button=document.getElementById('data-load-retry');if(button.disabled)return;
+    button.disabled=true;button.textContent='불러오는 중…';
+    try{await loadData();}finally{button.disabled=false;button.textContent='다시 불러오기';}
+  });
   // 기기별 임의 식별자 + 닉네임은 실제 배포 환경(브라우저)에서 동작해야 하므로 localStorage 사용
   async function ensureIdentity(){
     try{
@@ -3084,6 +3115,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       myBadge = null; myOwnedBadges = [];
       myAvatarUrl = null;
     }
+    switchFavoriteOwner();
     updateProfileLabel();
     updateJoinVisibility();
   }
@@ -3670,8 +3702,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return !error;
   }
   async function deleteFacilityDB(id){
-    const { error } = await sb.from('facilities').delete().eq('id', id);
-    if(error) console.error(error);
+    try{
+      const {data,error}=await sb.from('facilities').delete().eq('id',id).select('id');
+      if(error)throw error;
+      if(!data?.length){toast('삭제 권한이나 이미 처리된 상태를 확인해 주세요.');return false;}
+      return true;
+    }catch(e){console.error(e);toast('삭제하지 못했어요. 기록은 그대로 두고 다시 시도해 주세요.');return false;}
   }
   async function insertReviewDB(courseId, review){
     const { error } = await sb.from('reviews').insert([{
@@ -3682,16 +3718,28 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     return !error;
   }
   async function deleteCourseDB(id){
-    const { error } = await sb.from('courses').delete().eq('id', id);
-    if(error) console.error(error);
+    try{
+      const {data,error}=await sb.from('courses').delete().eq('id',id).select('id');
+      if(error)throw error;
+      if(!data?.length){toast('삭제 권한이나 이미 처리된 상태를 확인해 주세요.');return false;}
+      return true;
+    }catch(e){console.error(e);toast('삭제하지 못했어요. 기록은 그대로 두고 다시 시도해 주세요.');return false;}
   }
   async function deleteBinDB(id){
-    const { error } = await sb.from('bins').delete().eq('id', id);
-    if(error) console.error(error);
+    try{
+      const {data,error}=await sb.from('bins').delete().eq('id',id).select('id');
+      if(error)throw error;
+      if(!data?.length){toast('삭제 권한이나 이미 처리된 상태를 확인해 주세요.');return false;}
+      return true;
+    }catch(e){console.error(e);toast('삭제하지 못했어요. 기록은 그대로 두고 다시 시도해 주세요.');return false;}
   }
   async function deleteReviewDB(id){
-    const { error } = await sb.from('reviews').delete().eq('id', id);
-    if(error) console.error(error);
+    try{
+      const {data,error}=await sb.from('reviews').delete().eq('id',id).select('id');
+      if(error)throw error;
+      if(!data?.length){toast('삭제 권한이나 이미 처리된 상태를 확인해 주세요.');return false;}
+      return true;
+    }catch(e){console.error(e);toast('삭제하지 못했어요. 기록은 그대로 두고 다시 시도해 주세요.');return false;}
   }
   function reviewsFor(courseId){
     // 예시 리뷰는 실제 이용자 평점과 인기순 집계에 포함하지 않습니다.
@@ -4331,7 +4379,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       btn.addEventListener('click', async (e)=>{
         e.stopPropagation();
         if(!confirm('이 코스를 삭제할까요?')) return;
-        await deleteCourseDB(btn.dataset.courseDel);
+        if(!await deleteCourseDB(btn.dataset.courseDel))return;
         await loadData();
         toast('삭제됐어요');
       });
@@ -4377,7 +4425,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     el.dataset.courseId=String(c.id);el.hidden=false;
     const save=el.querySelector('[data-peek-save]');
     const sync=()=>{save.textContent=favoriteIds.has(c.id)?'♥ 찜 해제':'♡ 찜하기';save.setAttribute('aria-pressed',String(favoriteIds.has(c.id)));};sync();
-    save.onclick=()=>{toggleFavorite(c.id);sync();};
+    save.onclick=async()=>{await toggleFavorite(c.id);sync();};
     el.querySelector('[data-peek-detail]').onclick=()=>openCourseDetail(c.id);
     el.querySelector('.peek-close').onclick=()=>{el.hidden=true;};
   }
@@ -4690,7 +4738,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const f = facilities.find(x=>x.id===id);
     if(!f || (f.owner_id !== myDeviceId)){ toast('권한이 없어요'); return; }
     if(!confirm('이 시설을 삭제할까요?')) return;
-    await deleteFacilityDB(id);
+    if(!await deleteFacilityDB(id))return;
     await loadData();
     toast('삭제됐어요');
   };
@@ -4698,7 +4746,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   window.__reportBin = (id)=> fileReport('bin', id);
   window.__deleteBin = async (id)=>{
     if(!confirm('이 배변봉투함 정보를 삭제할까요?')) return;
-    await deleteBinDB(id);
+    if(!await deleteBinDB(id))return;
     await loadData();
     toast('삭제됐어요');
   };
@@ -4761,12 +4809,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       iconSize:[32,32]
     });
   }
-  function kakaoKeywordSearch(keyword, bounds){
-    return new Promise((resolve)=>{
-      if(!kakaoPlacesService){ resolve([]); return; }
-      kakaoPlacesService.keywordSearch(keyword, (data, status)=>{
-        resolve(status === kakao.maps.services.Status.OK ? data : []);
-      }, { bounds });
+  function kakaoKeywordSearch(keyword,bounds){
+    return new Promise((resolve,reject)=>{
+      if(!kakaoPlacesService){reject(new Error('지도 서비스를 아직 불러오지 못했어요.'));return;}
+      const timer=setTimeout(()=>reject(new Error('검색 응답이 늦어요. 다시 시도해 주세요.')),12000);
+      kakaoPlacesService.keywordSearch(keyword,(data,status)=>{
+        clearTimeout(timer);
+        if(status===kakao.maps.services.Status.OK)resolve(data);
+        else if(status===kakao.maps.services.Status.ZERO_RESULT)resolve([]);
+        else reject(new Error('지도 검색 서비스에 연결하지 못했어요.'));
+      },{bounds});
     });
   }
 
@@ -4794,7 +4846,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         resultsEl.style.display = '';
         return;
       }
-      resultsEl.innerHTML = results.slice(0, 8).map((p, i) => `
+      resultsEl.innerHTML = '<p style="padding:10px 14px;font-size:12px;">일반 장소 검색 결과입니다. 반려견 동반 허용 여부는 방문 전 확인해 주세요.</p>'+results.slice(0, 8).map((p, i) => `
         <div class="place-result-row" data-idx="${i}" style="padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer;">
           <div style="font-weight:700; font-size:13.5px; color:var(--pine-deep);">${escapeHtml(p.place_name)}</div>
           <div style="font-size:11.5px; color:var(--muted-text); margin-top:2px;">${escapeHtml(p.road_address_name || p.address_name || '')}</div>
@@ -4808,7 +4860,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           resultsEl.style.display = 'none';
         });
       });
-    }catch(e){ console.error(e); toast('검색에 실패했어요. 다시 시도해주세요'); }
+    }catch(e){console.error(e);resultsEl.innerHTML='<p style="padding:14px;font-size:13px;">검색 서비스를 불러오지 못했어요. 같은 검색어로 다시 시도해 주세요.</p>';resultsEl.style.display='';toast('검색에 실패했어요. 다시 시도해주세요');}
     finally{ btn.textContent = original; btn.disabled = false; btn.removeAttribute('aria-busy'); }
   }
   function goToPlace(name, lat, lng){
@@ -5540,6 +5592,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         desc: document.getElementById('f-desc').value,
         diff: selectedDiff,
         tags: Array.from(selectedTags),
+        address:document.getElementById('facility-address-input').value,
+        category:selectedFacilityCategory,
         savedAt: Date.now()
       };
       if(!draft.name && !draft.desc) return;
@@ -5556,25 +5610,28 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     // 24시간 넘은 임시저장은 무시
     if(Date.now() - (draft.savedAt||0) > 24*60*60*1000){ clearRegisterDraft(); return; }
     if(!confirm('작성 중이던 등록 내용이 있어요. 이어서 작성할까요?')){ clearRegisterDraft(); return; }
-    if(draft.type === 'bin'){
-      document.querySelector('.type-btn[data-type="bin"]').click();
-    }
+    if(['course','bin','facility'].includes(draft.type))document.querySelector('.type-btn[data-type="'+draft.type+'"]').click();
+    document.getElementById('facility-address-input').value=typeof draft.address==='string'?draft.address:'';
+    const categoryButton=Array.from(document.querySelectorAll('#facility-category-group [data-facility-category]')).find(x=>x.dataset.facilityCategory===draft.category);
+    categoryButton?.click();
     document.getElementById('f-name').value = draft.name || '';
     document.getElementById('f-desc').value = draft.desc || '';
     if(draft.diff){
       document.querySelectorAll('#diff-group .tag-check').forEach(x=>x.classList.remove('on'));
-      const diffEl = document.querySelector(`#diff-group .tag-check[data-diff="${draft.diff}"]`);
+      const diffEl=Array.from(document.querySelectorAll('#diff-group .tag-check')).find(x=>x.dataset.diff===draft.diff);
       if(diffEl) diffEl.classList.add('on');
       selectedDiff = draft.diff;
     }
-    (draft.tags||[]).forEach(t=>{
-      const tagEl = document.querySelector(`#tag-group .tag-check[data-tag="${t}"]`);
+    (Array.isArray(draft.tags)?draft.tags:[]).forEach(t=>{
+      const tagEl=Array.from(document.querySelectorAll('#tag-group .tag-check')).find(x=>x.dataset.tag===t);
       if(tagEl){ tagEl.classList.add('on'); selectedTags.add(t); }
     });
     toast('작성하시던 내용을 불러왔어요. 위치만 다시 지정해주세요 📍');
   }
   document.getElementById('f-name').addEventListener('input', saveRegisterDraft);
   document.getElementById('f-desc').addEventListener('input', saveRegisterDraft);
+  document.getElementById('facility-address-input').addEventListener('input',saveRegisterDraft);
+  document.getElementById('facility-category-group').addEventListener('click',saveRegisterDraft);
 
   // ===== 간단한 부적절 콘텐츠 필터 =====
   const BAD_WORDS = ['시발','씨발','ㅅㅂ','병신','ㅄ','개새끼','좆','fuck','shit','씹','지랄','미친놈','미친년','걸레','존나'];
@@ -5833,7 +5890,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     el.querySelectorAll('[data-review-del]').forEach(btn=>{
       btn.addEventListener('click', async ()=>{
         if(!confirm('이 리뷰를 삭제할까요?')) return;
-        await deleteReviewDB(btn.dataset.reviewDel);
+        if(!await deleteReviewDB(btn.dataset.reviewDel))return;
         await loadData();
         renderReviewList(courseId);
         toast('삭제됐어요');
@@ -5846,21 +5903,22 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       img.addEventListener('click', ()=> openPhotoLightbox(img.dataset.photoUrl));
     });
   }
-  async function toggleReviewHelpful(reviewId, courseId){
-    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+  const helpfulPending=new Set();
+  async function toggleReviewHelpful(reviewId,courseId){
+    if(!myNickname){openNickModal();toast('먼저 로그인을 해주세요');return;}
+    const owner=myDeviceId,key=owner+':'+reviewId;if(helpfulPending.has(key))return;
+    helpfulPending.add(key);const nickname=myNickname;
     try{
-      const { data } = await sb.from('review_helpful').select('*').eq('review_id', reviewId).eq('owner_id', myDeviceId);
-      if(data && data.length){
-        await sb.from('review_helpful').delete().eq('review_id', reviewId).eq('owner_id', myDeviceId);
-      } else {
-        await sb.from('review_helpful').insert([{ review_id: reviewId, owner_id: myDeviceId }]);
-        const reviewOwner = (reviews[courseId] || []).find(r => String(r.dbId) === String(reviewId));
-        if(reviewOwner && reviewOwner.ownerId && reviewOwner.ownerId !== myDeviceId){
-          notifyUser(reviewOwner.ownerId, 'helpful', `${myNickname}님이 내 리뷰가 도움됐다고 했어요 👍`);
-        }
-      }
-      renderReviewList(courseId);
-    }catch(e){ console.error(e); toast('처리에 실패했어요'); }
+      const {data,error}=await sb.from('review_helpful').select('review_id').eq('review_id',reviewId).eq('owner_id',owner);
+      if(error)throw error;
+      const result=data?.length
+        ? await sb.from('review_helpful').delete().eq('review_id',reviewId).eq('owner_id',owner)
+        : await sb.from('review_helpful').insert([{review_id:reviewId,owner_id:owner}]);
+      if(result.error)throw result.error;
+      if(!data?.length){const reviewOwner=(reviews[courseId]||[]).find(r=>String(r.dbId)===String(reviewId));if(reviewOwner?.ownerId&&reviewOwner.ownerId!==owner)notifyUser(reviewOwner.ownerId,'helpful',`${nickname}님이 내 리뷰가 도움됐다고 했어요 👍`);}
+      if(myDeviceId===owner&&activeCourseId===courseId)await renderReviewList(courseId);
+    }catch(e){console.error(e);toast('도움돼요 반영에 실패했어요. 다시 시도해 주세요.');}
+    finally{helpfulPending.delete(key);}
   }
 
   // ===== 알림 =====
@@ -6070,7 +6128,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const courseId = activeCourseId;
     const rating = activeStars;
     if(!courseId || reviewSubmitting) return;
-    const name = myNickname;
+    const name = myNickname, reviewOwnerId=myDeviceId;
     const text = document.getElementById('review-text').value.trim();
     if(!text){ toast('리뷰 내용을 입력해주세요'); return; }
     if(containsBadWord(text)){
@@ -6079,7 +6137,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
     reviewSubmitting = true;
     const submitBtn = e.target.querySelector('[type="submit"]');
-    if(submitBtn) submitBtn.disabled = true;
+    if(submitBtn){submitBtn.disabled=true;submitBtn.setAttribute('aria-busy','true');}
     try{
     let photoUrl = null;
     const photoFile = document.getElementById('review-photo-input').files[0];
@@ -6092,13 +6150,12 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         const compressed = await compressImage(photoFile, 1200, 0.8);
         const path = `reviews/${courseId}/${Date.now()}.jpg`;
         const { error: upErr } = await sb.storage.from('course-photos').upload(path, compressed, { contentType:'image/jpeg' });
-        if(!upErr){
-          const { data: urlData } = sb.storage.from('course-photos').getPublicUrl(path);
-          photoUrl = urlData.publicUrl;
-        }
-      }catch(e){ console.error(e); }
+        if(upErr)throw upErr;
+        const {data:urlData}=sb.storage.from('course-photos').getPublicUrl(path);photoUrl=urlData.publicUrl;
+      }catch(e){console.error(e);toast('사진을 업로드하지 못해 리뷰 등록을 멈췄어요. 내용은 유지돼요. 사진을 다시 선택하거나 빼고 등록해 주세요.');return;}
     }
-    const ok = await insertReviewDB(courseId, { name, rating, text, ownerId: myDeviceId, photoUrl });
+    if(myDeviceId!==reviewOwnerId){toast('로그인 계정이 변경됐어요. 내용을 확인한 뒤 다시 등록해 주세요.');return;}
+    const ok = await insertReviewDB(courseId, { name, rating, text, ownerId: reviewOwnerId, photoUrl });
     if(!ok){ toast('리뷰 등록에 실패했어요'); return; }
     await loadData();
     if(activeCourseId === courseId){
@@ -6116,7 +6173,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       notifyUser(c.ownerId, 'review', `${myNickname}님이 "${c.name}"에 리뷰를 남겼어요 🐾`);
     }
     }catch(error){console.error(error);toast('처리 중 오류가 발생했어요. 등록 여부를 확인해주세요');}
-    finally{reviewSubmitting=false;if(submitBtn) submitBtn.disabled=false;}
+    finally{reviewSubmitting=false;if(submitBtn){submitBtn.disabled=false;submitBtn.removeAttribute('aria-busy');}}
   });
 
   // ===== 날씨 & 미세먼지 위젯 (Open-Meteo, API 키 불필요) =====
@@ -6453,7 +6510,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }, 400);
     resetWalkPanels();
   }
+  let walksRenderVersion=0,walksLimit=10;
+  document.getElementById('my-walks-refresh').addEventListener('click',()=>loadMyWalks());
   async function loadMyWalks(){
+    const version=++walksRenderVersion,owner=myDeviceId;
     const el = document.getElementById('my-walks-list');
     if(!myNickname || !myDeviceId){
       el.innerHTML = '<p class="empty-review">닉네임을 설정하면 내 기록이 여기 쌓여요.</p>';
@@ -6461,9 +6521,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       return;
     }
     try{
-      const { data, error } = await sb.from('walks').select('*').eq('owner_id', myDeviceId).order('created_at', {ascending:false}).limit(10);
+      const { data, error } = await sb.from('walks').select('*').eq('owner_id', owner).order('created_at', {ascending:false}).limit(walksLimit+1);
       if(error)throw error;
-      if(!data || !data.length){
+      if(version!==walksRenderVersion||owner!==myDeviceId)return;
+      const hasMore=data?.length>walksLimit,rows=(data||[]).slice(0,walksLimit);
+      if(!rows.length){
         el.innerHTML = `
           <div style="text-align:center; padding:28px 16px;">
             <div style="font-size:36px;">🐶</div>
@@ -6471,29 +6533,28 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <p style="font-size:13px; color:var(--muted-text); margin:0;">우리 강아지와 첫 산책을 시작해볼까요? 위 버튼으로 시작해보세요!</p>
           </div>`;
       } else {
-        el.innerHTML = data.map(w=>{
+        el.innerHTML = rows.map(w=>{
           const d = new Date(w.created_at);
           const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
           return `<div class="review-item"><div class="rh"><span>${dateStr} 산책</span><span class="meta-mono" style="border:none;padding:0;">${Number(w.distance_km).toFixed(2)}km · ${formatDuration(w.duration_sec)}</span></div><p class="walk-metric-note">${w.estimated_steps!=null?`예상 ${Number(w.estimated_steps).toLocaleString('ko-KR')}보 · 보폭 ${Number(w.stride_cm)}cm`:'걸음 수 미기록'}${w.paused_sec?` · 휴식 ${formatDuration(w.paused_sec)}`:''}</p></div>`;
         }).join('');
       }
+      if(hasMore){const button=document.createElement('button');button.type='button';button.className='pin-btn';button.textContent='이전 산책 기록 더 보기';button.onclick=()=>{walksLimit+=10;loadMyWalks();};el.append(button);}
       // 스트릭·주간 스트립 계산용으로 최근 30일치를 별도로 넓게 조회 (개수 제한 없이)
       const monthAgo = new Date(); monthAgo.setDate(monthAgo.getDate() - 30);
-      const { data: moodData } = await sb.from('walks').select('created_at, distance_km, duration_sec')
-        .eq('owner_id', myDeviceId).gte('created_at', monthAgo.toISOString());
-      updateTodayMood(moodData || data || []);
-    }catch(e){ console.error(e); }
+      const {data:moodData,error:moodError}=await sb.from('walks').select('created_at, distance_km, duration_sec').eq('owner_id',owner).gte('created_at',monthAgo.toISOString());
+      if(version!==walksRenderVersion||owner!==myDeviceId)return;
+      if(!moodError)updateTodayMood(moodData||rows);
+    }catch(e){console.error(e);if(version===walksRenderVersion&&owner===myDeviceId){el.innerHTML='<p class="empty-review">기록을 불러오지 못했어요. 위 새로고침 버튼으로 다시 시도해 주세요.</p>';document.getElementById('mood-card').style.display='none';}}
   }
 
-  // ===== 오늘의 산책 만족도 (강아지 표정 이모티콘) =====
-  // 기준 근거: 소형견·노령견은 하루 최소 20~30분, 이상적으로는 30분~1시간(아침저녁 분할),
-  // 활동량 많은 대형/고에너지 견종은 1시간 이상 권장 (수의사·반려동물 매체 가이드 기준)
+  // ===== 오늘의 산책 기록 (강아지 표정 이모티콘) =====
   const MOOD_TIERS = [
-    { min:0,  max:0,        emoji:'🐕😴', message:'아직 산책 전이에요', detail:'전문가들은 하루 최소 20~30분 산책을 권장해요' },
-    { min:0,  max:20,       emoji:'🐕😔', message:'조금 아쉬워요',      detail:'권장 최소 시간(20~30분)에는 살짝 못 미쳐요' },
-    { min:20, max:40,       emoji:'🐕🙂', message:'적당히 잘 걸었어요', detail:'권장 최소 기준은 채웠어요!' },
-    { min:40, max:70,       emoji:'🐕😄', message:'오늘 산책 완전 좋았어요!', detail:'이상적인 산책 시간(30분~1시간)이에요' },
-    { min:70, max:Infinity, emoji:'🐕🤩', message:'최고의 산책날이에요!!', detail:'활동량 많은 아이도 만족할 만큼 걸었어요' },
+    {min:0,max:0,emoji:'🐕',message:'아직 오늘 기록이 없어요',detail:'산책을 저장하면 오늘의 시간과 거리를 모아볼 수 있어요.'},
+    {min:0,max:20,emoji:'🐾',message:'오늘의 산책이 기록됐어요',detail:'저장된 기록의 시간 기준이며 강아지의 만족도나 건강 평가는 아니에요.'},
+    {min:20,max:40,emoji:'🐕',message:'함께 걸은 시간을 모았어요',detail:'휴식·기온·체력에 맞춰 우리 아이의 속도로 걸어주세요.'},
+    {min:40,max:70,emoji:'🐾',message:'산책 추억이 쌓였어요',detail:'더 오래 걷는 것이 목표는 아니에요. 오늘의 기록을 확인해 보세요.'},
+    {min:70,max:Infinity,emoji:'🐕',message:'오늘의 산책 기록을 확인해요',detail:'저장한 기록의 합계입니다. 강아지 상태에 맞춰 쉬어 주세요.'}
   ];
   function updateTodayMood(walks){
     const card = document.getElementById('mood-card');
@@ -6998,6 +7059,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         return;
       }
       status.textContent = '계정과 데이터 삭제가 완료됐습니다.';
+      try{localStorage.removeItem(favoriteStorageKey(myDeviceId));}catch(e){}
       try{await sb.auth.signOut({scope:'local'});}catch(e){console.error('Local sign out failed',e);}
       for(const key of ['paw_recent_viewed','paw_pending_ref','paw_favorites','paw_recent_searches','paw_register_draft']){
         try{localStorage.removeItem(key);}catch(_){}
