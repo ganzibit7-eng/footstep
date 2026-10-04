@@ -1,0 +1,145 @@
+-- Classify known crawlers in analytics without blocking website access.
+-- Historical rows without request identity are preserved without speculative relabeling.
+CREATE OR REPLACE FUNCTION private.traffic_client_kind(user_agent text, automated boolean DEFAULT false)
+RETURNS text LANGUAGE sql IMMUTABLE SECURITY INVOKER SET search_path='' AS $$
+SELECT CASE
+ WHEN coalesce(user_agent,'') ~* 'Mediapartners-Google|AdsBot-Google' THEN 'google_ads_crawler'
+ WHEN coalesce(user_agent,'') ~* 'meta-externalagent|meta-externalfetcher|facebookexternalhit|Facebot' THEN 'meta_crawler'
+ WHEN coalesce(user_agent,'') ~* 'Yeti/' THEN 'naver_crawler'
+ WHEN coalesce(automated,false) OR coalesce(user_agent,'') ~* '(bot|crawler|spider|headless|playwright|puppeteer|selenium)' THEN 'automation_signal'
+ ELSE 'browser' END;
+$$;
+REVOKE ALL ON FUNCTION private.traffic_client_kind(text,boolean) FROM PUBLIC,anon,authenticated;
+
+CREATE OR REPLACE FUNCTION private.record_traffic_visit(p_payload jsonb)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+declare
+ vid text:=p_payload->>'visitor_id'; tok uuid; loc text:=p_payload->>'path';
+ uid text:=auth.uid()::text; headers jsonb; automated boolean; kind text; n integer;
+ a integer; c integer; d integer; counts jsonb:='{}'::jsonb; key text;
+begin
+ if octet_length(p_payload::text)>4096 or vid is null or vid!~'^v[0-9]{10,16}[a-z0-9]{4,20}$' then raise exception 'invalid_payload'; end if;
+ if loc is null or length(loc)>180 or loc!~'^/[A-Za-z0-9/_-]*(\.html)?$' then raise exception 'invalid_path'; end if;
+ tok:=(p_payload->>'view_token')::uuid;
+ if tok is null then raise exception 'invalid_token'; end if;
+ if uid is not null and coalesce(public.is_admin(uid),false) then
+  insert into private.traffic_exclusions(visitor_id,reason) values(vid,'admin') on conflict(visitor_id) do nothing;
+ end if;
+ if exists(select 1 from private.traffic_exclusions where visitor_id=vid) then return jsonb_build_object('excluded',true); end if;
+ headers:=coalesce(nullif(current_setting('request.headers',true),''),'{}')::jsonb;
+ kind:=private.traffic_client_kind(headers->>'user-agent',coalesce((p_payload->>'automated')::boolean,false));
+ automated:=kind<>'browser';
+ a:=least(86400,greatest(0,coalesce((p_payload->>'active_seconds')::integer,0)));
+ c:=least(1000,greatest(0,coalesce((p_payload->>'clicks')::integer,0)));
+ d:=least(100,greatest(0,coalesce((p_payload->>'depth')::integer,0)));
+ foreach key in array array['link','button','search','navigation'] loop
+  counts:=counts||jsonb_build_object(key,least(1000,greatest(0,coalesce((p_payload->'actions'->>key)::integer,0))));
+ end loop;
+ -- Bound per-browser creation volume; pings update the same token, never add views.
+ if not exists(select 1 from public.page_views where view_token=tok) then
+  select count(*) into n from public.page_views where visitor_id=vid and created_at>now()-interval '1 hour';
+  if n>=120 then return jsonb_build_object('limited',true); end if;
+ end if;
+ insert into public.page_views(visitor_id,owner_id,referrer,view_token,path,last_page,utm_medium,utm_campaign,client_kind,last_event_at)
+ values(vid,uid,left(coalesce(nullif(p_payload->>'source',''),'직접 방문 / 출처 미상'),120),tok,loc,left(coalesce(p_payload->>'page',loc),180),
+ left(p_payload->>'medium',80),left(p_payload->>'campaign',80),kind,now())
+ on conflict(view_token) where view_token is not null do nothing;
+ update public.page_views set
+  active_seconds=greatest(active_seconds,least(a,greatest(0,extract(epoch from now()-created_at)::integer+2))),
+  click_count=greatest(click_count,c),scroll_depth=greatest(scroll_depth,d),action_counts=counts,
+  last_page=left(coalesce(p_payload->>'page',loc),180),last_event_at=now(),owner_id=coalesce(owner_id,uid),
+  client_kind=case when automated then kind else client_kind end
+ where view_token=tok and visitor_id=vid and path=loc and created_at>now()-interval '1 day';
+ return jsonb_build_object('excluded',automated);
+end $function$;
+
+CREATE OR REPLACE FUNCTION public.record_presence(p_visitor_id text, p_page text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+begin
+ if private.traffic_client_kind(coalesce(nullif(current_setting('request.headers',true),''),'{}')::jsonb->>'user-agent')<>'browser' then return; end if;
+ if p_visitor_id is null or p_visitor_id!~'^v[0-9]{10,16}[a-z0-9]{4,20}$' then raise exception 'invalid_visitor_id'; end if;
+ if coalesce(public.is_admin(auth.uid()::text),false) or exists(select 1 from private.traffic_exclusions where visitor_id=p_visitor_id) then return; end if;
+ if p_page is null or length(p_page) not between 1 and 64 then raise exception 'invalid_page'; end if;
+ insert into public.presence(visitor_id,last_seen,page) values(p_visitor_id,now(),p_page)
+ on conflict(visitor_id) do update set last_seen=excluded.last_seen,page=excluded.page;
+end $function$;
+
+CREATE OR REPLACE FUNCTION public.record_page_view(p_visitor_id text, p_referrer text)
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+begin
+ if p_visitor_id is null or p_visitor_id!~'^v[0-9]{10,16}[a-z0-9]{4,20}$' then raise exception 'invalid_visitor_id'; end if;
+ if coalesce(public.is_admin(auth.uid()::text),false) then
+  insert into private.traffic_exclusions(visitor_id,reason) values(p_visitor_id,'admin') on conflict(visitor_id) do nothing;
+ end if;
+ if exists(select 1 from private.traffic_exclusions where visitor_id=p_visitor_id) then return; end if;
+ insert into public.page_views(visitor_id,referrer,owner_id,client_kind) values(p_visitor_id,left(coalesce(nullif(btrim(p_referrer),''),'직접 방문'),240),auth.uid()::text,private.traffic_client_kind(coalesce(nullif(current_setting('request.headers',true),''),'{}')::jsonb->>'user-agent'));
+end $function$;
+
+CREATE OR REPLACE FUNCTION private.traffic_included(vid text, uid text, kind text)
+ RETURNS boolean
+ LANGUAGE sql
+ STABLE SECURITY DEFINER
+ SET search_path TO ''
+AS $function$
+ select not exists(select 1 from private.traffic_exclusions where visitor_id=vid)
+ and not coalesce(public.is_admin(uid),false) and kind not in ('automation_signal','google_ads_crawler','meta_crawler','naver_crawler');
+$function$;
+
+CREATE OR REPLACE FUNCTION public.admin_traffic_summary_v2(p_days integer DEFAULT 7)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+ STABLE
+ SET search_path TO ''
+AS $function$
+declare start_at timestamptz; cutoff timestamptz:=now(); result jsonb;
+begin
+ if auth.uid() is null or not coalesce(public.is_admin(auth.uid()::text),false) then raise exception 'admin_only' using errcode='42501'; end if;
+ if p_days not in(1,7,30,90) then raise exception 'invalid_period'; end if;
+ start_at:=((now() at time zone 'Asia/Seoul')::date-(p_days-1))::timestamp at time zone 'Asia/Seoul';
+ with raw as(select * from public.page_views where created_at>=start_at and created_at<=cutoff),
+ clean as(select * from raw where private.traffic_included(visitor_id,owner_id,client_kind)),
+ first_touch as(select distinct on(visitor_id) visitor_id,referrer from clean order by visitor_id,created_at,id),
+ daily as(select (created_at at time zone 'Asia/Seoul')::date date,count(*) views,count(distinct visitor_id) visitors,
+ count(distinct visitor_id) filter(where client_kind='browser' and (active_seconds>=10 or click_count>0)) engaged from clean group by 1),
+ dates as(select (start_at at time zone 'Asia/Seoul')::date+n date from generate_series(0,p_days-1)n),
+ sources as(select case when coalesce(referrer,'') in ('','직접 방문','직접 방문 / 출처 미상') then '직접 방문 / 출처 미상' else referrer end source,count(*) visitors from first_touch group by 1),
+ source_views as(select case when coalesce(referrer,'') in ('','직접 방문','직접 방문 / 출처 미상') then '직접 방문 / 출처 미상' else referrer end source,count(*) views from clean group by 1),
+ paths as(select coalesce(path,'이전 기록 · 페이지 미수집') path,count(*) views,count(distinct visitor_id) visitors from clean group by 1 order by views desc limit 15),
+ campaigns as(select referrer source,utm_medium medium,utm_campaign campaign,count(*) views,count(distinct visitor_id) visitors from clean where coalesce(utm_campaign,'')<>'' group by 1,2,3 order by views desc limit 15),
+ previous as(select * from public.traffic_clean_page_views where created_at>=start_at-make_interval(days=>p_days) and created_at<=cutoff-make_interval(days=>p_days))
+ select jsonb_build_object('days',p_days,'from',start_at,'to',cutoff,'views',(select count(*) from clean),'visitors',(select count(distinct visitor_id) from clean),
+ 'raw_views',(select count(*) from raw),'excluded_views',(select count(*) from raw where not private.traffic_included(visitor_id,owner_id,client_kind)),
+ 'automation_views',(select count(*) from raw where client_kind in ('automation_signal','google_ads_crawler','meta_crawler','naver_crawler')),
+ 'engaged_visitors',(select count(distinct visitor_id) from clean where client_kind='browser' and (active_seconds>=10 or click_count>0)),
+ 'unmeasured_views',(select count(*) from clean where client_kind='legacy'),
+ 'previous_views',(select count(*) from previous),'previous_visitors',(select count(distinct visitor_id) from previous),
+ 'daily',(select jsonb_agg(jsonb_build_object('date',dates.date,'views',coalesce(daily.views,0),'visitors',coalesce(daily.visitors,0),'engaged',coalesce(daily.engaged,0)) order by dates.date) from dates left join daily using(date)),
+ 'sources',coalesce((select jsonb_agg(jsonb_build_object('source',sources.source,'visitors',sources.visitors,'views',coalesce(source_views.views,0)) order by sources.visitors desc) from sources left join source_views using(source)),'[]'::jsonb),
+ 'paths',coalesce((select jsonb_agg(to_jsonb(paths)) from paths),'[]'::jsonb),'campaigns',coalesce((select jsonb_agg(to_jsonb(campaigns)) from campaigns),'[]'::jsonb)) into result;
+ return result;
+end $function$;
+
+CREATE OR REPLACE FUNCTION public.admin_live_traffic_count()
+ RETURNS bigint
+ LANGUAGE plpgsql
+ STABLE
+ SET search_path TO ''
+AS $function$
+declare result bigint;
+begin
+ if auth.uid() is null or not coalesce(public.is_admin(auth.uid()::text),false) then raise exception 'admin_only' using errcode='42501'; end if;
+ select count(distinct visitor_id) into result from public.presence p where last_seen>now()-interval '5 minutes' and private.traffic_included(p.visitor_id,null,'browser') and not exists(select 1 from public.page_views v where v.visitor_id=p.visitor_id and v.client_kind in ('automation_signal','google_ads_crawler','meta_crawler','naver_crawler') and v.created_at>now()-interval '5 minutes');
+ return result;
+end $function$;
