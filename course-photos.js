@@ -1957,6 +1957,186 @@
     "checked": "2026-10-03",
     "width": 1000,
     "height": 667
+  },
+  {
+    "courses": {
+      "c402": "만석공원 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c402.webp",
+    "place": "만석공원 호수 주변 산책 공간",
+    "date": "2020-09-20",
+    "author": "kepper",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%EB%A7%8C%EC%84%9D%EA%B3%B5%EC%9B%90_%ED%95%9C_%EB%B0%94%ED%80%B4_(2020.09.20)_03.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/4/42/%EB%A7%8C%EC%84%9D%EA%B3%B5%EC%9B%90_%ED%95%9C_%EB%B0%94%ED%80%B4_%282020.09.20%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "만석공원 한 바퀴 (2020.09.20) 03.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "courses": {
+      "c376": "대왕암공원 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c376.webp",
+    "place": "대왕암공원 해안 산책 구간",
+    "date": "2016-06-18",
+    "author": "Shinfull",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Daewangam_Park.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/3/35/Daewangam_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Daewangam Park.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 692
+  },
+  {
+    "courses": {
+      "c365": "세종호수공원 C코스"
+    },
+    "src": "/assets/course-photos/c365.webp",
+    "place": "세종호수공원 호숫가 산책 공간",
+    "date": "2019-06-09",
+    "author": "*Youngjin",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sejong_lake_park_190609_01.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Sejong_lake_park_190609_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Sejong lake park 190609 01.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "courses": {
+      "c395": "제주 송악산 해안 둘레길 GPX 구간"
+    },
+    "src": "/assets/course-photos/c395.webp",
+    "place": "송악산 해안 둘레길에서 바라본 바다",
+    "date": "2014-03-05",
+    "author": "Lcarrion88",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Songaksan.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Songaksan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Songaksan.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 773
+  },
+  {
+    "courses": {
+      "c362": "포천 산정호수 둘레길"
+    },
+    "src": "/assets/course-photos/c362.webp",
+    "place": "산정호수 둘레길 겨울 풍경",
+    "date": "2016-12-14",
+    "author": "Explicit",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sanjeong_Lake_(%ED%8F%AC%EC%B2%9C_%EC%82%B0%EC%A0%95%ED%98%B8%EC%88%98),_December_2016.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Sanjeong_Lake_%28%ED%8F%AC%EC%B2%9C_%EC%82%B0%EC%A0%95%ED%98%B8%EC%88%98%29%2C_December_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Sanjeong Lake (포천 산정호수), December 2016.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 675
+  },
+  {
+    "courses": {
+      "c385": "자유공원(인천) 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/c385.webp",
+    "place": "자유공원 보행로",
+    "date": "2008-06-01",
+    "author": "Dohuskor",
+    "license": "Public domain",
+    "licenseUrl": "https://commons.wikimedia.org/wiki/File:Jayuwalkway.jpg#Licensing",
+    "source": "https://commons.wikimedia.org/wiki/File:Jayuwalkway.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Jayuwalkway.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Jayuwalkway.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "courses": {
+      "c427": "여주시 여강길 8코스 파사성길"
+    },
+    "src": "/assets/course-photos/c427.webp",
+    "place": "여강길 8코스 경유지 · 파사성 성벽",
+    "date": "2011-02-09",
+    "author": "Eggmoon",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pasaseong_Castle_at_Yeoju,_Korea_04.JPG",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/0/02/Pasaseong_Castle_at_Yeoju%2C_Korea_04.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Pasaseong Castle at Yeoju, Korea 04.JPG",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "courses": {
+      "c419": "종로구 서울한양도성 6코스 인왕산구간"
+    },
+    "src": "/assets/course-photos/c419.webp",
+    "place": "한양도성 인왕산 구간",
+    "date": "2008-04-29",
+    "author": "Gaël Chardon",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Korea-Seoul-Inwangsan-12.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Korea-Seoul-Inwangsan-12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Korea-Seoul-Inwangsan-12.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "courses": {
+      "c433": "경주시 보문호반길"
+    },
+    "src": "/assets/course-photos/c433.webp",
+    "place": "보문호 호반 풍경",
+    "date": "2012-05-03",
+    "author": "ProjectManhattan",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Bomun_Lake.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Bomun_Lake.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Bomun Lake.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "courses": {
+      "c434": "포천시 한탄강 주상절리길 1코스 구라이길"
+    },
+    "src": "/assets/course-photos/c434.webp",
+    "place": "구라이길 출발부 · 비둘기낭폭포",
+    "date": "2017-05-06",
+    "author": "Jjw",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Columnar_jointed_basalt_in_Bidulginang(Dove%27s_pocket)_Fall_at_Pocheon,_Gyeonggi-do,_South_Korea,_image_1.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/0/03/Columnar_jointed_basalt_in_Bidulginang%28Dove%27s_pocket%29_Fall_at_Pocheon%2C_Gyeonggi-do%2C_South_Korea%2C_image_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "Columnar jointed basalt in Bidulginang(Dove's pocket) Fall at Pocheon, Gyeonggi-do, South Korea, image 1.jpg",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-04",
+    "width": 1200,
+    "height": 800
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
