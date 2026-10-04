@@ -5,6 +5,7 @@
     'gocamping.or.kr':'한국관광공사 고캠핑',
     'www.gocamping.or.kr':'한국관광공사 고캠핑',
     'gil.seoul.go.kr':'서울시',
+    'www.foodsafetykorea.go.kr':'식품안전나라',
     'korean.visitseoul.net':'서울관광재단',
     'www.durunubi.kr':'한국관광공사 두루누비',
     'durunubi.kr':'한국관광공사 두루누비',
