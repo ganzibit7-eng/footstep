@@ -407,7 +407,8 @@ function nearbyEntries(item, pool) {
 }
 
 function detailHtml(item, type, url) {
-  const label = item.category === '숙소' ? '애견동반 숙소' : item.category ? '애견동반 '+FacilityInfo.get(item.category).label : type.label;
+  const needsPetCheck = type.table==='courses' && (item.tags||[]).includes('동반 확인 필요');
+  const label = needsPetCheck ? '걷기 코스 · 반려견 동반 확인 필요' : item.category === '숙소' ? '애견동반 숙소' : item.category ? '애견동반 '+FacilityInfo.get(item.category).label : type.label;
   const region = type.table==='bins' ? binRegionFor(item) : regionFor(item);
   const isDuplicateName = duplicateNamesByTable.get(type.table)?.has(compact(item.name));
   const qualifier = isDuplicateName
