@@ -1,0 +1,20 @@
+/* Legal pages: readable on both the app and direct policy URLs. */
+.legal-reading .wrap{max-width:820px!important;padding-left:20px;padding-right:20px}
+.legal-reading h2{font-size:clamp(26px,5vw,34px)!important;letter-spacing:-.04em;margin-bottom:12px}
+.legal-reading .legal-content{font-size:15px;line-height:1.9}
+.legal-reading article{padding:24px!important;margin:16px 0;border:1px solid #e1e6dd!important;border-radius:16px;background:#fff;scroll-margin-top:100px}
+.legal-reading article h3{margin:0 0 14px!important;font-size:18px!important;line-height:1.6;color:#294537}
+.legal-reading article p,.legal-reading li{font-size:15px!important;line-height:1.9!important;overflow-wrap:anywhere;word-break:keep-all}
+.legal-reading article p{margin:0 0 12px}.legal-reading article p:last-child{margin-bottom:0}
+.legal-reading ul{padding-left:22px;margin:10px 0}.legal-reading li+li{margin-top:8px}
+.legal-reading a{color:#315e46;text-decoration:underline;text-underline-offset:3px}
+.legal-reading a:focus-visible,.legal-toc button:focus-visible{outline:3px solid #c17b3b;outline-offset:4px}
+.legal-summary{background:#edf3e9;border:1px solid #d7e3d0;border-radius:18px;padding:22px;margin:24px 0;color:#294537}
+.legal-summary strong{font-size:18px}.legal-summary>a{font-size:13px}
+.legal-doc{margin:0;background:#f7f8f4;color:#25352d;font-family:system-ui,-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif}
+.legal-doc header,.legal-doc footer{max-width:820px;margin:auto;padding:24px 20px;font-size:14px}
+.legal-doc header a,.legal-doc footer a{color:#315e46;text-underline-offset:3px}
+.legal-doc .wrap{margin:auto}.legal-doc .legal-toc{background:#fff;border:1px solid #e1e6dd;border-radius:16px;padding:18px;margin:24px 0}
+.legal-doc .legal-toc nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.legal-doc .legal-toc a{font-size:14px;line-height:1.6;padding:6px}
+@media(max-width:600px){.legal-reading article{padding:18px!important;border-radius:12px}.legal-reading article p,.legal-reading li{font-size:14px!important}.legal-summary{padding:18px}.legal-doc .legal-toc nav{grid-template-columns:1fr}}
