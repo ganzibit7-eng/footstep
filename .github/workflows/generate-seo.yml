@@ -13,6 +13,7 @@ on:
       - 'course-routes.js'
       - 'course-photos.js'
       - 'scripts/import-course-photos.mjs'
+      - 'scripts/convert-course-photo.py'
       - 'docs/walks-300-20261004/photo-downloads.json'
       - '.github/workflows/generate-seo.yml'
       - 'database_sql/seed_verified_walking_courses_*.sql'
@@ -34,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Install photo conversion library
+        run: python3 -m pip install Pillow==12.3.0
       - name: Import verified course photographs
         run: node scripts/import-course-photos.mjs
       - name: Generate static search pages

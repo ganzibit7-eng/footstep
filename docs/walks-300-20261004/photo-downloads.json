@@ -2,14 +2,14 @@
   "checked": "2026-10-04",
   "photos": [
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/%EB%8C%80%EA%B5%AC_%EB%B6%88%EB%A1%9C%EB%8F%99_%EA%B3%A0%EB%B6%84%EA%B5%B0_%EC%96%B8%EB%8D%95_%EB%82%98%EB%AC%B4.jpg/1280px-%EB%8C%80%EA%B5%AC_%EB%B6%88%EB%A1%9C%EB%8F%99_%EA%B3%A0%EB%B6%84%EA%B5%B0_%EC%96%B8%EB%8D%95_%EB%82%98%EB%AC%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "15a218107a41a5890f4baf87cdc8a650405ff240f924ed0227a2f6782aef2de1",
-      "bytes": 226035,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/%EB%8C%80%EA%B5%AC_%EB%B6%88%EB%A1%9C%EB%8F%99_%EA%B3%A0%EB%B6%84%EA%B5%B0_%EC%96%B8%EB%8D%95_%EB%82%98%EB%AC%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "6870022a21644065f6b5ae3de80eaf6580d30ce39c892b081b02cb3ed96ec87f",
+      "bytes": 1522449,
       "record": {
         "courses": {
           "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
         },
-        "src": "/assets/course-photos/osm_665502044.jpg",
+        "src": "/assets/course-photos/osm_665502044.webp",
         "place": "불로동 고분군 산책길",
         "date": "2018-01-27",
         "author": "샬럿 Han",
@@ -18,10 +18,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:%EB%8C%80%EA%B5%AC_%EB%B6%88%EB%A1%9C%EB%8F%99_%EA%B3%A0%EB%B6%84%EA%B5%B0_%EC%96%B8%EB%8D%95_%EB%82%98%EB%AC%B4.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/1/1d/%EB%8C%80%EA%B5%AC_%EB%B6%88%EB%A1%9C%EB%8F%99_%EA%B3%A0%EB%B6%84%EA%B5%B0_%EC%96%B8%EB%8D%95_%EB%82%98%EB%AC%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "대구 불로동 고분군 언덕 나무.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2018-01-27",
@@ -29,17 +29,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "5~6세기의 삼국시대로 추청되는 수십개의 커다란 무덤들이 모인  '불로동 고분군' 정해진 길없이 걸어다니다 끝없이 펼쳐진 그 끝에 보이는 나무"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Sancheong_Gun_56_%2816505951899%29.jpg/1280px-Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "d06bf206d21a81554d390900b1d97be322fa55bab865a2e968c47dd851b84dc6",
-      "bytes": 211181,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "62a6aa3be33fabbe946945862557a2c6ef8a0f0ed440f3ed9e3c364c5f4e3306",
+      "bytes": 10154595,
       "record": {
         "courses": {
           "osm_1217000590": "산청군 산청 동의보감촌 보행로 산책 코스"
         },
-        "src": "/assets/course-photos/osm_1217000590.jpg",
+        "src": "/assets/course-photos/osm_1217000590.webp",
         "place": "동의보감촌 야외 경관",
         "date": "2015-02-26",
         "author": "Republic of Korea from Seoul, Republic of Korea",
@@ -48,10 +49,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Sancheong_Gun_56_(16505951899).jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Sancheong Gun 56 (16505951899).jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 697
+        "width": 1200,
+        "height": 653
       },
       "evidence": {
         "DateTimeOriginal": "2015-02-26 16:17",
@@ -59,17 +60,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
         "Restrictions": "",
         "ImageDescription": "<p>Sancheong-Gun\n</p><p>Donguibogamchon Village is a cluster of museums, galleries and institutions related to traditional medicine and medicinal plants.\n</p><p>February 26, 2015\n</p><p>Sancheong-gun, Gyeongsangnam-do \n</p><p>Ministry of Culture, Sports and Tourism\nKorean Culture and Information Service\nKorea.net (&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net\">http://www.korea.net</a>\" rel=\"nofollow\"&gt;www.korea.net&lt;/a&gt;)\nOfficial Photographer: Jeon Han\n</p><p>-Related Articles-\n</p><p>-Cheong Wa Dae(Presidential Office of Republic of Korea)-\nGreen county of Sancheong will heal you\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9573&amp;srh[detail_no]=1295\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>Sancheong offers natural breathing space\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9536&amp;srh[detail_no]=1293\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>Sancheong, a natural sanctuary abutting Jirisan Mountain\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9535&amp;srh[detail_no]=1292\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>-Korea.net-\n-English-\nGreen county of Sancheong will heal you\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/People/view?articleId=125961\">http://www.korea.net/NewsFocus/People/view?articleId=125961</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/People/view?articleId=125961&lt;/a&gt;\n</p><p>Sancheong offers natural breathing space\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/Travel/view?articleId=125924\">http://www.korea.net/NewsFocus/Travel/view?articleId=125924</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/Travel/view?articleId=125924&lt;/a&gt;\n</p><p>Sancheong, a natural sanctuary abutting Jirisan Mountain\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/Travel/view?articleId=125906\">http://www.korea.net/NewsFocus/Travel/view?articleId=125906</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/Travel/view?articleId=125906&lt;/a&gt;\n</p><p>-日本語-\n韓国紀行： 智異山を抱いた清浄な町、山清（サンチョン）\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://japanese.korea.net/NewsFocus/Travel/view?articleId=125907\">http://japanese.korea.net/NewsFocus/Travel/view?articleId=125907</a>\" rel=\"nofollow\"&gt;japanese.korea.net/NewsFocus/Travel/view?articleId=125907&lt;/a&gt;\n</p><p>- Русский-\nСанчон, естественный заповедник у подножия гор Чирисан\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://russian.korea.net/NewsFocus/Travel/view?articleId=125922\">http://russian.korea.net/NewsFocus/Travel/view?articleId=125922</a>\" rel=\"nofollow\"&gt;russian.korea.net/NewsFocus/Travel/view?articleId=125922&lt;/a&gt;\n</p><p>This official Republic of Korea photograph is being made available only for publication by news organizations and/or for personal printing by the subject(s) of the photograph. The photograph may not be manipulated in any way. Also, it may not be used in any type of commercial, advertisement, product or promotion that in any way suggests approval or endorsement from the government of the Republic of Korea. \n</p>\n<hr>\n<p>‘힐링의 고장’ 산청군\n</p><p>2015-02-26\n</p><p>경상남도 산청군\n</p><p>문화체육관광부\n해외문화홍보원\n코리아넷\n</p>\n전한"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Eerie_Dumulmeori_%2876234361%29.jpeg/1280px-Eerie_Dumulmeori_%2876234361%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "3b2d6ee5e0b21b85e8fccfa50e880e69a88ce8ea8afae83b06d43b47bb1de31b",
-      "bytes": 202687,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Eerie_Dumulmeori_%2876234361%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "718d90493702d01baf5e274911e4cab0ff585ccd830a286e6b2f3733ecdae4cf",
+      "bytes": 272461,
       "record": {
         "courses": {
           "osm_832185825": "양평군 양평 두물머리 보행로 산책 코스"
         },
-        "src": "/assets/course-photos/osm_832185825.jpg",
+        "src": "/assets/course-photos/osm_832185825.webp",
         "place": "양평 두물머리 강변",
         "date": "2014",
         "author": "Rhie Cudanin",
@@ -78,10 +80,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Eerie_Dumulmeori_(76234361).jpeg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Eerie_Dumulmeori_%2876234361%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Eerie Dumulmeori (76234361).jpeg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 811,
+        "width": 1200,
+        "height": 761,
         "dateNote": "촬영일 미상 · 2014년 이전 공개"
       },
       "evidence": {
@@ -90,17 +92,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by/3.0",
         "Restrictions": "",
         "ImageDescription": "<div class=\"description\">\n500px provided description: - Eerie Dumulmeori - [#mistymorning ,#Eerie ,#yangsuri ,#dumulmeori]</div>"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Kyesan_Cathedral_Front.jpg/1280px-Kyesan_Cathedral_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "2e99f0b885a4fc731b68f0b9111485eb6abe3594a748e5dda61f4c92db7baf65",
-      "bytes": 643552,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Kyesan_Cathedral_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "f8918bf5060136fe92dd72ff5107c94ed020531fb334917e9dd1178b043b4cf0",
+      "bytes": 3124846,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000000475": "대구 중구 대구 중구 골목투어 2코스 근대문화골목"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000000475.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000000475.webp",
         "place": "근대문화골목 · 계산성당 외관",
         "date": "2013-05-25",
         "author": "Himuka tachibana",
@@ -109,10 +112,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Kyesan_Cathedral_Front.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Kyesan_Cathedral_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Kyesan Cathedral Front.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 1707
+        "width": 900,
+        "height": 1200
       },
       "evidence": {
         "DateTimeOriginal": "2013-05-25 15:02:39",
@@ -120,17 +123,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "桂山聖堂正面。"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Gazebo_in_Ppuri_Park.jpg/1280px-Gazebo_in_Ppuri_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "c44b6fc4a6169a040295034e4443fe865b81f7c2f7f4051b6d2b10e32e2de1c3",
-      "bytes": 376314,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Gazebo_in_Ppuri_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "404d2da5281ea708824207fbee05f52e6fa6b25f066343d5f3d74ffea2035064",
+      "bytes": 978493,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003696": "대전 중구 역사문화길 뿌리공원 둘레길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003696.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003696.webp",
         "place": "뿌리공원 야외 정자",
         "date": "2016-03-26",
         "author": "Sarang",
@@ -139,27 +143,28 @@
         "source": "https://commons.wikimedia.org/wiki/File:Gazebo_in_Ppuri_Park.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/1/19/Gazebo_in_Ppuri_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Gazebo in Ppuri Park.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 892
+        "width": 1200,
+        "height": 836
       },
       "evidence": {
         "DateTimeOriginal": "2016-03-26",
         "LicenseShortName": "Public domain",
         "Restrictions": "",
         "ImageDescription": "Small pavilion in the sunset light"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/North_Gate_of_the_Dongnae_eupseong_site.JPG/1280px-North_Gate_of_the_Dongnae_eupseong_site.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "c266844e21a4be89ff0a057cad5dc966ace65993cf26363509bb05b900d9ccbf",
-      "bytes": 365100,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/North_Gate_of_the_Dongnae_eupseong_site.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "a1d092ea1ef1fd9d971074c5ba67a5a5872afda72ba2540e8eb1a69021ca8bc7",
+      "bytes": 3459112,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003273": "부산 동래구 얼쑤옛길 1코스 동래읍성 뿌리길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003273.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003273.webp",
         "place": "동래읍성 뿌리길 · 동래읍성 북문",
         "date": "2009-06-06",
         "author": "Oh Dong-geon",
@@ -168,10 +173,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:North_Gate_of_the_Dongnae_eupseong_site.JPG",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/38/North_Gate_of_the_Dongnae_eupseong_site.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "North Gate of the Dongnae eupseong site.JPG",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2009-06-06",
@@ -179,17 +184,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "Notrh Gate of the Dongnaeeupseong Fortress Site"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Gapado_scenery.JPG/1280px-Gapado_scenery.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "717e14914b368ae86ccdb7891e4e117310b880b46a4c4ad4c9d928b57686b797",
-      "bytes": 343042,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Gapado_scenery.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "bd928d42c7362d39169ebab96a65864ed38923d33350f558863c36eae0f256cb",
+      "bytes": 3972875,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000001262": "제주 서귀포시 제주올레길 10-1코스(가파도 올레)"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001262.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001262.webp",
         "place": "가파도 올레 주변 경관",
         "date": "2012-04-14",
         "author": "Naturehead",
@@ -198,10 +204,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Gapado_scenery.JPG",
         "original": "https://upload.wikimedia.org/wikipedia/commons/4/49/Gapado_scenery.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Gapado scenery.JPG",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 857
+        "width": 1200,
+        "height": 803
       },
       "evidence": {
         "DateTimeOriginal": "2012-04-14",
@@ -209,17 +215,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "A view from Gapado Island. Sanbangsan(Mt. Sanbang) and Songaksan are shown at left side of the center."
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Sancheong_Gun_56_%2816505951899%29.jpg/1280px-Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "d06bf206d21a81554d390900b1d97be322fa55bab865a2e968c47dd851b84dc6",
-      "bytes": 211181,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "62a6aa3be33fabbe946945862557a2c6ef8a0f0ed440f3ed9e3c364c5f4e3306",
+      "bytes": 10154595,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003643": "경남 산청군 동의보감 허준순례길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003643.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003643.webp",
         "place": "동의보감촌 야외 경관",
         "date": "2015-02-26",
         "author": "Republic of Korea from Seoul, Republic of Korea",
@@ -228,10 +235,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Sancheong_Gun_56_(16505951899).jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Sancheong Gun 56 (16505951899).jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 697
+        "width": 1200,
+        "height": 653
       },
       "evidence": {
         "DateTimeOriginal": "2015-02-26 16:17",
@@ -239,17 +246,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
         "Restrictions": "",
         "ImageDescription": "<p>Sancheong-Gun\n</p><p>Donguibogamchon Village is a cluster of museums, galleries and institutions related to traditional medicine and medicinal plants.\n</p><p>February 26, 2015\n</p><p>Sancheong-gun, Gyeongsangnam-do \n</p><p>Ministry of Culture, Sports and Tourism\nKorean Culture and Information Service\nKorea.net (&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net\">http://www.korea.net</a>\" rel=\"nofollow\"&gt;www.korea.net&lt;/a&gt;)\nOfficial Photographer: Jeon Han\n</p><p>-Related Articles-\n</p><p>-Cheong Wa Dae(Presidential Office of Republic of Korea)-\nGreen county of Sancheong will heal you\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9573&amp;srh[detail_no]=1295\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>Sancheong offers natural breathing space\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9536&amp;srh[detail_no]=1293\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>Sancheong, a natural sanctuary abutting Jirisan Mountain\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://english1.president.go.kr/korea/korea.php?srh\">http://english1.president.go.kr/korea/korea.php?srh</a>[board_no]=29&amp;srh[view_mode]=detail&amp;srh[seq]=9535&amp;srh[detail_no]=1292\" rel=\"nofollow\"&gt;english1.president.go.kr/korea/korea.php?srh%5Bboard_no%5...&lt;/a&gt;\n</p><p>-Korea.net-\n-English-\nGreen county of Sancheong will heal you\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/People/view?articleId=125961\">http://www.korea.net/NewsFocus/People/view?articleId=125961</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/People/view?articleId=125961&lt;/a&gt;\n</p><p>Sancheong offers natural breathing space\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/Travel/view?articleId=125924\">http://www.korea.net/NewsFocus/Travel/view?articleId=125924</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/Travel/view?articleId=125924&lt;/a&gt;\n</p><p>Sancheong, a natural sanctuary abutting Jirisan Mountain\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://www.korea.net/NewsFocus/Travel/view?articleId=125906\">http://www.korea.net/NewsFocus/Travel/view?articleId=125906</a>\" rel=\"nofollow\"&gt;www.korea.net/NewsFocus/Travel/view?articleId=125906&lt;/a&gt;\n</p><p>-日本語-\n韓国紀行： 智異山を抱いた清浄な町、山清（サンチョン）\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://japanese.korea.net/NewsFocus/Travel/view?articleId=125907\">http://japanese.korea.net/NewsFocus/Travel/view?articleId=125907</a>\" rel=\"nofollow\"&gt;japanese.korea.net/NewsFocus/Travel/view?articleId=125907&lt;/a&gt;\n</p><p>- Русский-\nСанчон, естественный заповедник у подножия гор Чирисан\n&lt;a href=\"<a rel=\"nofollow\" class=\"external free\" href=\"http://russian.korea.net/NewsFocus/Travel/view?articleId=125922\">http://russian.korea.net/NewsFocus/Travel/view?articleId=125922</a>\" rel=\"nofollow\"&gt;russian.korea.net/NewsFocus/Travel/view?articleId=125922&lt;/a&gt;\n</p><p>This official Republic of Korea photograph is being made available only for publication by news organizations and/or for personal printing by the subject(s) of the photograph. The photograph may not be manipulated in any way. Also, it may not be used in any type of commercial, advertisement, product or promotion that in any way suggests approval or endorsement from the government of the Republic of Korea. \n</p>\n<hr>\n<p>‘힐링의 고장’ 산청군\n</p><p>2015-02-26\n</p><p>경상남도 산청군\n</p><p>문화체육관광부\n해외문화홍보원\n코리아넷\n</p>\n전한"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Yang_Dong_Farm_Houses_in_the_Sun_-_panoramio.jpg/1280px-Yang_Dong_Farm_Houses_in_the_Sun_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "e5348613857750035517185d9cf9ab6fc6729ce8f484b25f7d2c12bc8dca0ebe",
-      "bytes": 361600,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Yang_Dong_Farm_Houses_in_the_Sun_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "9bacbe10f17090f716cdc4c47e4abaa5ff786d91dd12166687ed40b40b10301c",
+      "bytes": 3417964,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000001026": "경북 경주시 양동마을 녹색길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001026.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001026.webp",
         "place": "양동마을 전통가옥과 마을길",
         "date": "2011-07-17",
         "author": "Schölla Schwarz",
@@ -258,10 +266,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Yang_Dong_Farm_Houses_in_the_Sun_-_panoramio.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/2/22/Yang_Dong_Farm_Houses_in_the_Sun_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Yang Dong Farm Houses in the Sun - panoramio.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 644
+        "width": 1200,
+        "height": 603
       },
       "evidence": {
         "DateTimeOriginal": "Taken on 17 July 2011",
@@ -269,17 +277,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by/3.0",
         "Restrictions": "",
         "ImageDescription": "Yang Dong Farm Houses in the Sun"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/%EC%97%B0%EB%8F%99%EA%B5%90%ED%9A%8C%28AMJ%29.jpg/1280px-%EC%97%B0%EB%8F%99%EA%B5%90%ED%9A%8C%28AMJ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "10b4b09bd59ed9b269d85dddcca0c9cde3be47215dda58b31f46233a70d29bf4",
-      "bytes": 290491,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/78/%EC%97%B0%EB%8F%99%EA%B5%90%ED%9A%8C%28AMJ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "a391039d963ea9c1559699fb97acce55d81b0fbfa0433afb7b7d8d301980b8d0",
+      "bytes": 4101916,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000005449": "서울 종로구 골목길탐방코스 김마리아길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005449.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005449.webp",
         "place": "김마리아길 출발부 · 연동교회 외관",
         "date": "2022-10-24",
         "author": "칼빈500",
@@ -288,10 +297,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:%EC%97%B0%EB%8F%99%EA%B5%90%ED%9A%8C(AMJ).jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/7/78/%EC%97%B0%EB%8F%99%EA%B5%90%ED%9A%8C%28AMJ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "연동교회(AMJ).jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 720
+        "width": 1200,
+        "height": 675
       },
       "evidence": {
         "DateTimeOriginal": "2022-10-24 13:18:48",
@@ -299,17 +308,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "서울 연동교회"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/%EA%B9%80%EB%85%95%EC%84%B1%EC%84%B8%EA%B8%B0%ED%95%B4%EB%B3%80.JPG/1280px-%EA%B9%80%EB%85%95%EC%84%B1%EC%84%B8%EA%B8%B0%ED%95%B4%EB%B3%80.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "21ed3dc8dd168089661bf68b67635edefdb9fbb9ff6e0a5ac78dce2ecb7129a6",
-      "bytes": 227103,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/%EA%B9%80%EB%85%95%EC%84%B1%EC%84%B8%EA%B8%B0%ED%95%B4%EB%B3%80.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "e21482837ad2dc90bd303b2e897ce530e9c43ad9f57af2643d04d980cd768794",
+      "bytes": 1850959,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003809": "제주 제주시 제주 지질트레일 김녕코스"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003809.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003809.webp",
         "place": "김녕 지질트레일 · 김녕성세기해변",
         "date": "2015-08-25",
         "author": "Bohyunlee",
@@ -318,10 +328,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:%EA%B9%80%EB%85%95%EC%84%B1%EC%84%B8%EA%B8%B0%ED%95%B4%EB%B3%80.JPG",
         "original": "https://upload.wikimedia.org/wikipedia/commons/a/a6/%EA%B9%80%EB%85%95%EC%84%B1%EC%84%B8%EA%B8%B0%ED%95%B4%EB%B3%80.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "김녕성세기해변.JPG",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2015-08-25 18:32:05",
@@ -329,17 +339,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "김녕성세기해변 일몰"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Anmok_Beach_20220430_001.jpg/1280px-Anmok_Beach_20220430_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "137ac2f13329c519d6a10252b34aa4295bd06f4df5cc80fc2a4d515129297bb6",
-      "bytes": 215640,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Anmok_Beach_20220430_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "d969cb443ac4fb29a10478f105db924a32db554b80fb07e938ecee7c55895a2e",
+      "bytes": 844504,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000000243": "강원 강릉시 관동팔경 녹색경관길 안목 남항진 해변길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000000243.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000000243.webp",
         "place": "안목 남항진 해변길 · 안목해변",
         "date": "2022-04-30",
         "author": "Mobius6",
@@ -348,10 +359,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Anmok_Beach_20220430_001.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/7/71/Anmok_Beach_20220430_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Anmok Beach 20220430 001.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 800
+        "width": 1200,
+        "height": 750
       },
       "evidence": {
         "DateTimeOriginal": "2022-04-30 16:16:01",
@@ -359,17 +370,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "Anmok Beach, Gangneung, South Korea"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/The_Jebu_Beach.jpg/1280px-The_Jebu_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "e7e49ea9725dab234ee3a104d07af2c7b4487d71c7fd294cc315dea505f09986",
-      "bytes": 297251,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/The_Jebu_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "0feef05fa3ab852ea5877b8330835bb0fb188fbca925699bfe5c37cad0922ad7",
+      "bytes": 2644155,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000004911": "경기 화성시 화성실크로드 2-1코스 제비꼬리길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000004911.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000004911.webp",
         "place": "제비꼬리길 · 제부해변",
         "date": "2022-07-01",
         "author": "Moonhayun",
@@ -378,10 +390,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:The_Jebu_Beach.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/d/d0/The_Jebu_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "The Jebu Beach.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2022-07-01",
@@ -389,17 +401,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "The Jebu Beach"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/%EC%84%B1%EC%A3%BC_%EA%B2%BD%EC%82%B0%EB%A6%AC_%EC%84%B1%EB%B0%96%EC%88%B2.jpg/1280px-%EC%84%B1%EC%A3%BC_%EA%B2%BD%EC%82%B0%EB%A6%AC_%EC%84%B1%EB%B0%96%EC%88%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "fd4afb5d062cc6fa980e12d7ac85a4acfbfe25f5b7cd96b4e39b874d2f699a1f",
-      "bytes": 372883,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/%EC%84%B1%EC%A3%BC_%EA%B2%BD%EC%82%B0%EB%A6%AC_%EC%84%B1%EB%B0%96%EC%88%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "019968264f9eae666bb983ef019915a803f9624e4d3aeff1997a1516745ac810",
+      "bytes": 12074237,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000005104": "경북 성주군 성주 별고을길 2코스"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005104.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005104.webp",
         "place": "별고을길 출발부 · 성밖숲",
         "date": "2017-05-22",
         "author": "최옥석",
@@ -408,10 +421,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:%EC%84%B1%EC%A3%BC_%EA%B2%BD%EC%82%B0%EB%A6%AC_%EC%84%B1%EB%B0%96%EC%88%B2.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/f/f5/%EC%84%B1%EC%A3%BC_%EA%B2%BD%EC%82%B0%EB%A6%AC_%EC%84%B1%EB%B0%96%EC%88%B2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "성주 경산리 성밖숲.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 853
+        "width": 1200,
+        "height": 800
       },
       "evidence": {
         "DateTimeOriginal": "2017-05-22 14:40:28",
@@ -419,17 +432,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "경북 성주군 성주읍 서문밖에 만들어진 왕버들 숲이다\n( 대한민국 천연기념물제403호 )"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/518%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90.jpg/1280px-518%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "8bd4512482455cfc57c7679eb3983f0846db29ce5cf9a2f2906d5af98ce3917a",
-      "bytes": 299679,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/518%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "507d15b044806275f2416f8b45ef63de64882eb9a604b36ddb47ae4e2f2a9f0c",
+      "bytes": 6355492,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000001097": "광주 서구 오월인권길 열정코스"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001097.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001097.webp",
         "place": "5·18기념공원",
         "date": "2020-02-01",
         "author": "기여자",
@@ -438,10 +452,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:518%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/7/7e/518%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "518기념공원.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2020-02-01 15:52:57",
@@ -449,17 +463,18 @@
         "LicenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
         "Restrictions": "",
         "ImageDescription": "광주광역시의 5.18 기념공원"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Ikseon-dong_%EC%9D%B5%EC%84%A0%EB%8F%99_October_1_2020_1.jpg/1280px-Ikseon-dong_%EC%9D%B5%EC%84%A0%EB%8F%99_October_1_2020_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "6000dc0114b948860815a9e64c79123447450d63afc23881899d3c4eeb24d506",
-      "bytes": 295605,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Ikseon-dong_%EC%9D%B5%EC%84%A0%EB%8F%99_October_1_2020_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "a44f3f9a51c8bab8df51ae5b163895342f2fe1159b919080a17b4899730f9702",
+      "bytes": 8161974,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000005452": "서울 종로구 골목길탐방코스 익선동 A코스"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005452.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005452.webp",
         "place": "익선동 A코스 · 한옥 골목",
         "date": "2020-10-01",
         "author": "S h y numis",
@@ -468,10 +483,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Ikseon-dong_%EC%9D%B5%EC%84%A0%EB%8F%99_October_1_2020_1.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Ikseon-dong_%EC%9D%B5%EC%84%A0%EB%8F%99_October_1_2020_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Ikseon-dong 익선동 October 1 2020 1.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 853
+        "width": 1200,
+        "height": 800
       },
       "evidence": {
         "DateTimeOriginal": "2020-10-01 12:28:28",
@@ -479,17 +494,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "서울시 종로구 익선동의 골목길. 2020년 10월 1일 촬영."
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Daewangam_Park_on_August_17th%2C_2018.jpg/1280px-Daewangam_Park_on_August_17th%2C_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "f343cef37a0ff7d5a5f30872e47d32331a7850498fd280e22fbe79041321e8ca",
-      "bytes": 375097,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Daewangam_Park_on_August_17th%2C_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "603226b5bdef9ead9a3113a4e868cf42475e3f58f26cdaea4873b01a983b1bf2",
+      "bytes": 4431583,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003523": "울산 동구 해안누리길 대왕암길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003523.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003523.webp",
         "place": "울산 대왕암공원",
         "date": "2018-08-17",
         "author": "Choi2451",
@@ -498,10 +514,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Daewangam_Park_on_August_17th,_2018.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/6/66/Daewangam_Park_on_August_17th%2C_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Daewangam Park on August 17th, 2018.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2018-08-17 13:14:32",
@@ -509,17 +525,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "2018년 8월 울산대왕암공원. 건너편에 보이는 공장은 현대중공업이다."
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/%ED%95%A8%EB%B2%BD%EB%A3%A81.jpg/1280px-%ED%95%A8%EB%B2%BD%EB%A3%A81.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "aaed0662e2d56052b15447b48b6ed334e77fe10320c02d96d97fe141b9bfbbd4",
-      "bytes": 473874,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/%ED%95%A8%EB%B2%BD%EB%A3%A81.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "d9df02452bedbd7a35a8e16a3dc12590450627efbd6fbf693cdaeaba96d23ad2",
+      "bytes": 5774612,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000001641": "경남 합천군 황강마실길 1코스 황강마실길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001641.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001641.webp",
         "place": "황강마실길 · 함벽루",
         "date": "2023-03-12",
         "author": "Dittwjfsdgkvkdjg",
@@ -528,10 +545,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:%ED%95%A8%EB%B2%BD%EB%A3%A81.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/d/d2/%ED%95%A8%EB%B2%BD%EB%A3%A81.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "함벽루1.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 720
+        "width": 1200,
+        "height": 675
       },
       "evidence": {
         "DateTimeOriginal": "2023-03-12 14:49:17",
@@ -539,17 +556,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "'Hambyeongnu' Gyeongsangnam-do Cultural Material No.59"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Yeongdo_Bridge_20200523_005.jpg/1280px-Yeongdo_Bridge_20200523_005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "193b3dcad6f8469aff234123530f9bdd3aeb743bab67b8a8559ad8ea6152ec40",
-      "bytes": 247291,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Yeongdo_Bridge_20200523_005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "0dc747ec384cac4f7d5d78bfac8238690deca0f5f641178eecac1a1b6d7bd879",
+      "bytes": 3197241,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003710": "부산 영도구 부산원도심 스토리투어 영도다리길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003710.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003710.webp",
         "place": "영도다리길 · 영도대교",
         "date": "2020-05-23",
         "author": "Mobius6",
@@ -558,10 +576,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Yeongdo_Bridge_20200523_005.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/6/67/Yeongdo_Bridge_20200523_005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Yeongdo Bridge 20200523 005.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 853
+        "width": 1200,
+        "height": 800
       },
       "evidence": {
         "DateTimeOriginal": "2020-05-23 08:53:22",
@@ -569,17 +587,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "Yeongdo Bridge in Busan, South korea"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Entrance_to_Tapgol_Park.jpg/1280px-Entrance_to_Tapgol_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "d570e7872e0b8b88422a74ac5cfe1eca3f6a1af788d199ac3f002ecfa899ce48",
-      "bytes": 370900,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Entrance_to_Tapgol_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "f11890647204eb4bf28006b79456a604d124f106142c62a87f8bd236972968da",
+      "bytes": 3926330,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000005453": "서울 종로구 골목길탐방코스 익선동 B코스"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005453.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005453.webp",
         "place": "익선동 B코스 · 탑골공원 입구",
         "date": "2018-10-18",
         "author": "GtDX8NNO3Efn2oF6q0s3",
@@ -588,10 +607,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Entrance_to_Tapgol_Park.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Entrance_to_Tapgol_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Entrance to Tapgol Park.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 720
+        "width": 1200,
+        "height": 675
       },
       "evidence": {
         "DateTimeOriginal": "2018-10-18",
@@ -599,17 +618,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "Entrance to Tapgol Park.  Center writing says \"3 1 Door\" where \"3 1\" refers to the March 1st 1919 Independence Movement."
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Maryang_Camellia_Forest_in_Winter.jpg/1280px-Maryang_Camellia_Forest_in_Winter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "a0a3baf2b1d6cc9f5fa67fc0276fb8a1d29dc7eba8e779a329bc40ef3a5638da",
-      "bytes": 389347,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Maryang_Camellia_Forest_in_Winter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "d9b2d854eca83f3b59156f55593e62d95218b009a6c45b0c62e66d5c7a839f18",
+      "bytes": 6412250,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000001380": "충남 서천군 철새나그네길 2코스 해지게길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001380.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001380.webp",
         "place": "해지게길 출발부 · 마량리 동백나무숲",
         "date": "2017-01-03",
         "author": "Mailzzang+aus",
@@ -618,10 +638,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Maryang_Camellia_Forest_in_Winter.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/4/40/Maryang_Camellia_Forest_in_Winter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Maryang Camellia Forest in Winter.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 720
+        "width": 1200,
+        "height": 675
       },
       "evidence": {
         "DateTimeOriginal": "2017-01-03 13:49:45",
@@ -629,17 +649,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "서천 마량리 동백나무 숲\t(겨울)"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Jeongdongjin_Beach.jpg/1280px-Jeongdongjin_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "04db469f4fb9ca008896cb12bb25d9d45c37a07bdec438aecf65ff959d94a20e",
-      "bytes": 76111,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Jeongdongjin_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "797ff38c30c7dbd8d102fd3fd5caf6a30d215a300c03a6759b6b2f1fc7bc8c23",
+      "bytes": 238642,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003446": "강원 강릉시 관동팔경 녹색경관길 정동진 해안산악길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003446.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003446.webp",
         "place": "정동진 해안산악길 출발부 · 정동진 해변",
         "date": "2008-03-22",
         "author": "Loewelad",
@@ -648,10 +669,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Jeongdongjin_Beach.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Jeongdongjin_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Jeongdongjin Beach.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 362
+        "width": 1200,
+        "height": 340
       },
       "evidence": {
         "DateTimeOriginal": "2008-03-22",
@@ -659,17 +680,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
         "Restrictions": "",
         "ImageDescription": "Jeongdongjin Beach"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Entrance_to_Sewing_Street_Museum_of_Changsin-dong.jpg/1280px-Entrance_to_Sewing_Street_Museum_of_Changsin-dong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "a3a2e8f5676c76e819a745d4a0ba234407f8eaec775eb1012d99764cf13e0f74",
-      "bytes": 353284,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Entrance_to_Sewing_Street_Museum_of_Changsin-dong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "b73e2756581918c7d034ba6a3436baf5ff786c2418b30e4dc6af7cee2d360ade",
+      "bytes": 2065976,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000005448": "서울 종로구 골목길탐방코스 창신동 B코스(봉제마을)"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005448.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005448.webp",
         "place": "창신동 봉제마을 · 이음피음 봉제역사관 외관",
         "date": "2020-08-11",
         "author": "오모군",
@@ -678,10 +700,10 @@
         "source": "https://commons.wikimedia.org/wiki/File:Entrance_to_Sewing_Street_Museum_of_Changsin-dong.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/d/db/Entrance_to_Sewing_Street_Museum_of_Changsin-dong.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Entrance to Sewing Street Museum of Changsin-dong.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2020-08-11 12:58:48",
@@ -689,17 +711,18 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by/3.0",
         "Restrictions": "",
         "ImageDescription": "an entrance to Sewing Street Museum of Changsin-dong"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Changnyeong_upper_tombs_wide.jpg/1280px-Changnyeong_upper_tombs_wide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "ffccfe79a7c7b86e70bb52ab8656e8d438d01b165cb8b382541c48a257ce6eb0",
-      "bytes": 229445,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Changnyeong_upper_tombs_wide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "c32499e26a88615f1cf0b0074009f27d858f3993f50659136f0ca00bab6b6fb3",
+      "bytes": 315705,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003653": "경남 창녕군 송현이길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003653.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003653.webp",
         "place": "송현이길 · 창녕 교동·송현동 고분군",
         "date": "2007-01-27",
         "author": "Visviva",
@@ -708,27 +731,28 @@
         "source": "https://commons.wikimedia.org/wiki/File:Changnyeong_upper_tombs_wide.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Changnyeong_upper_tombs_wide.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "Changnyeong upper tombs wide.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 960
+        "width": 1200,
+        "height": 900
       },
       "evidence": {
         "DateTimeOriginal": "2007-01-27",
         "LicenseShortName": "Public domain",
         "Restrictions": "",
         "ImageDescription": "Wide view of the upper Bihwa Gaya royal tumuli in Changnyeong, Gyeongsangnam-do, South Korea."
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%EB%AA%B0%EC%9A%B4%EB%8C%80.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%EB%AA%B0%EC%9A%B4%EB%8C%80.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
       "sha256": "9ff4e703133b29c56af4cd199cb4aa5215c563d6a42336c18b80f0dfcea51cee",
       "bytes": 148954,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000003713": "부산 사하구 해안누리길 몰운대길"
         },
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003713.jpg",
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003713.webp",
         "place": "몰운대 해안 풍경",
         "date": "1972-06-26",
         "author": "Korea Heritage Service",
@@ -737,7 +761,7 @@
         "source": "https://commons.wikimedia.org/wiki/File:%EB%AA%B0%EC%9A%B4%EB%8C%80.jpg",
         "original": "https://upload.wikimedia.org/wikipedia/commons/c/cd/%EB%AA%B0%EC%9A%B4%EB%8C%80.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "몰운대.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
         "checked": "2026-10-04",
         "width": 750,
         "height": 517
@@ -748,12 +772,13 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "부산광역시 기념물 제27호, 몰운대 (沒雲臺)"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/%EC%84%B1%EB%AA%A8%EB%8B%B9.jpg/1280px-%EC%84%B1%EB%AA%A8%EB%8B%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "182b4a6fc528587c5490ed992de13a9a6ea7206205b7cb167cf22efa64c57fe9",
-      "bytes": 464476,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%EC%84%B1%EB%AA%A8%EB%8B%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "bcd7e8f3814e918799faff152781f035ec445876f95d8701e973f2d28ea6ea80",
+      "bytes": 14415705,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000000478": "대구 중구 대구 중구 골목투어 5코스 남산 100년 향수길"
@@ -767,10 +792,10 @@
         "original": "https://upload.wikimedia.org/wikipedia/commons/4/4e/%EC%84%B1%EB%AA%A8%EB%8B%B9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "성모당.jpg",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 853,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000000478.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "width": 1200,
+        "height": 800,
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000000478.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "DateTimeOriginal": "2016-09-14 14:13:21",
@@ -778,12 +803,13 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "대구 남산동에 있는 성모당"
-      }
+      },
+      "convert": true
     },
     {
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/%EC%9D%B4%EC%9E%A5%EC%9A%B0_%EA%B0%80%EC%98%A52_-_%EC%A0%95%EC%9B%90.jpg/1280px-%EC%9D%B4%EC%9E%A5%EC%9A%B0_%EA%B0%80%EC%98%A52_-_%EC%A0%95%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "sha256": "e0ca2e15deaf2d00d2be0dc670b949a2782a9780069a75ad6b27151374b17cab",
-      "bytes": 308530,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%EC%9D%B4%EC%9E%A5%EC%9A%B0_%EA%B0%80%EC%98%A52_-_%EC%A0%95%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "sha256": "d0a8e6c5fd808a985e962be9375015a4a0ddc361ccfa4ce40a5d02db805c623f",
+      "bytes": 3339196,
       "record": {
         "courses": {
           "duru_T_CRS_MNG0000002859": "광주 남구 양림동 둘레길"
@@ -797,10 +823,10 @@
         "original": "https://upload.wikimedia.org/wikipedia/commons/4/4b/%EC%9D%B4%EC%9E%A5%EC%9A%B0_%EA%B0%80%EC%98%A52_-_%EC%A0%95%EC%9B%90.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
         "title": "이장우 가옥2 - 정원.jpg",
         "checked": "2026-10-04",
-        "width": 1280,
-        "height": 598,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000002859.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "width": 1200,
+        "height": 560,
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000002859.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "DateTimeOriginal": "2025-06-28 11:57:33",
@@ -808,7 +834,8 @@
         "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "Restrictions": "",
         "ImageDescription": "이장우 가옥"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/2023New/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC/thumnail/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC%20%EC%8D%B8%EB%84%A4%EC%9D%BC%20%EB%B3%80%ED%99%98/15.%20%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/02.%20%EC%BD%98%ED%85%90%EC%B8%A0/%EA%B1%B7%EA%B8%B0%EC%97%AC%ED%96%89%EA%B8%B8_0997_2020_%EA%B0%95%EC%9B%90_%EC%9D%B8%EC%A0%9C_%EC%86%8C%EC%96%91%EA%B0%95%EB%91%98%EB%A0%88%EA%B8%B8_076_detail_thumnail.jpg",
@@ -845,7 +872,8 @@
         "photoIndex": 75,
         "sourceInstitution": "한국관광공사",
         "licenseType": "3"
-      }
+      },
+      "convert": false
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%EC%A6%9D%ED%8F%89%EA%B5%B0/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%82%BC%EA%B8%B0%EC%A0%80%EC%88%98%EC%A7%801_thumnailList_1579.jpg",
@@ -874,15 +902,16 @@
         },
         "width": 640,
         "height": 425,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001310.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001310.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "84029",
         "photoIndex": 0,
         "sourceInstitution": "충청북도 증평군",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_3598_%5B%ED%8F%89%ED%83%9D%5D%20%ED%8F%89%ED%83%9D%ED%98%B8%EA%B4%80%EA%B4%91%EB%8B%A8%EC%A7%80.jpg",
@@ -911,15 +940,16 @@
         },
         "width": 427,
         "height": 640,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001464.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001464.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "37210",
         "photoIndex": 0,
         "sourceInstitution": "경기도",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%92%8D%EA%B2%BD/%ED%92%8D%EA%B2%BD/%EC%86%A1%EB%A6%BC%EA%B0%AF%EB%B2%8C1.jpg",
@@ -948,15 +978,16 @@
         },
         "width": 600,
         "height": 338,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001383.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001383.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "86502",
         "photoIndex": 0,
         "sourceInstitution": "충남문화관광재단",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/20240610/02.%20%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%EC%B2%AD/01.%20DAEGU%20VIEW/0097_%EA%B3%A0%ED%99%94%EC%A7%88%EB%8C%80%EA%B5%AC_%EB%8F%99%EA%B5%AC%2C%20%EB%B6%81%EC%A7%80%EC%9E%A5%EC%82%AC.jpg",
@@ -985,15 +1016,16 @@
         },
         "width": 760,
         "height": 507,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000000479.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000000479.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "63493",
         "photoIndex": 0,
         "sourceInstitution": "대구광역시",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2842_%5B%EC%9D%98%EC%99%95%5D%20%EB%B0%B1%EC%9A%B4%ED%98%B8%EC%88%98.jpg",
@@ -1022,15 +1054,16 @@
         },
         "width": 760,
         "height": 507,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003437.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003437.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "37160",
         "photoIndex": 0,
         "sourceInstitution": "경기도",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%EC%A7%80%EC%97%AD%EB%B3%84%EB%AC%B8%ED%99%94%EC%9E%AC/%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%8F%99%EA%B5%AC/thumb_%EB%AC%B8%ED%99%94%EC%9E%AC%EC%9E%90%EB%A3%8C%EC%A0%9C13%ED%98%B8_%EC%B2%A8%EB%B0%B1%EB%8B%B9_%EB%8C%80%EB%AC%B8.jpg",
@@ -1059,15 +1092,16 @@
         },
         "width": 760,
         "height": 507,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000001457.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000001457.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "1423",
         "photoIndex": 1,
         "sourceInstitution": "국가유산청",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/20240610/02.%20%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%EC%B2%AD/01.%20DAEGU%20VIEW/0086_%EA%B3%A0%ED%99%94%EC%A7%88%EB%8C%80%EA%B5%AC_%EB%8F%99%EA%B5%AC%2C%20%EC%95%88%EC%8B%AC%EC%8A%B5%EC%A7%80.jpg",
@@ -1096,15 +1130,16 @@
         },
         "width": 760,
         "height": 543,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005077.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005077.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "63497",
         "photoIndex": 0,
         "sourceInstitution": "대구광역시",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/%EC%9D%B4%EB%AF%B8%EC%A7%80/%EA%B4%80%EA%B4%91%2C%EC%B6%95%EC%A0%9C/%EA%B4%80%EA%B4%91%2C%EC%B6%95%EC%A0%9C/%EA%B3%A0%EC%82%AC%ED%8F%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5_thumnailList_10916.jpg",
@@ -1133,15 +1168,16 @@
         },
         "width": 640,
         "height": 427,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000003772.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000003772.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "177583",
         "photoIndex": 0,
         "sourceInstitution": "전북특별자치도 부안군",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%EC%A7%80%EC%97%AD%EB%B3%84%EB%AC%B8%ED%99%94%EC%9E%AC/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C/%EC%A2%85%EB%A1%9C/thumb_%EC%82%AC%EC%A0%81%EC%A0%9C283%ED%98%B8_%EC%84%9C%EC%9A%B8%EC%A4%91%EC%95%99%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%EB%8F%99%EA%B4%80_%EB%8F%99%EA%B4%80.jpg",
@@ -1170,15 +1206,16 @@
         },
         "width": 757,
         "height": 600,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000005450.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000005450.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "1555",
         "photoIndex": 0,
         "sourceInstitution": "국가유산청",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/%EC%82%AC%EC%A7%84%EC%A0%84%EB%AC%B8%EA%B0%80/%EC%82%AC%EC%A7%84%EA%B0%A4%EB%9F%AC%EB%A6%AC_2643_168%EA%B3%84%EB%8B%A8%20%EB%AA%A8%EB%85%B8%EB%A0%88%EC%9D%BC.jpg",
@@ -1207,15 +1244,16 @@
         },
         "width": 760,
         "height": 507,
-        "src": "/assets/course-photos/duru_T_CRS_MNG0000002684.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "src": "/assets/course-photos/duru_T_CRS_MNG0000002684.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
       "evidence": {
         "collection": "38058",
         "photoIndex": 0,
         "sourceInstitution": "한국관광공사",
         "licenseType": "1"
-      }
+      },
+      "convert": true
     },
     {
       "url": "https://www.gyeongju.go.kr/upload//board/board_1342/bod_203373//683D8742E8944A899B70B66C0049B7EA.jpg",
@@ -1235,12 +1273,13 @@
         "original": "https://www.gyeongju.go.kr/upload//board/board_1342/bod_203373//683D8742E8944A899B70B66C0049B7EA.jpg",
         "title": "전국 최대 LED 테마꽃정원, 경주 빛누리정원 개장",
         "checked": "2026-10-04",
-        "width": 2400,
-        "height": 1350,
-        "src": "/assets/course-photos/osm_1196816794.jpg",
-        "changes": "제공 이미지 사용 · 화면 비율에 따라 가장자리 잘림"
+        "width": 1200,
+        "height": 675,
+        "src": "/assets/course-photos/osm_1196816794.webp",
+        "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림"
       },
-      "evidence": {}
+      "evidence": {},
+      "convert": true
     }
   ]
 }
