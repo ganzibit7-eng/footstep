@@ -12,6 +12,8 @@ on:
       - 'database_sql/seed_expansion_*.sql'
       - 'course-routes.js'
       - 'course-photos.js'
+      - 'scripts/import-course-photos.mjs'
+      - 'docs/walks-300-20261004/photo-downloads.json'
       - '.github/workflows/generate-seo.yml'
       - 'database_sql/seed_verified_walking_courses_*.sql'
   schedule:
@@ -32,13 +34,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Import verified course photographs
+        run: node scripts/import-course-photos.mjs
       - name: Generate static search pages
         run: node scripts/generate-seo.mjs
       - name: Commit changed pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add courses places bins guides with-dog discover.html sitemap.xml
+          git add courses places bins guides with-dog discover.html sitemap.xml assets/course-photos course-photos.js
           if git diff --cached --quiet; then
             echo "No SEO page changes"
           else
