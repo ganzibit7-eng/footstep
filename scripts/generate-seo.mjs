@@ -376,6 +376,23 @@ function hubHtml(hub,page){
  <nav class="pagination" aria-label="목록 페이지">${Array.from({length:total},(_,i)=>i+1).map(n=>n===page?`<strong aria-current="page">${n}</strong>`:`<a href="${hub.path+(n>1?`page/${n}/`:'')}">${n}</a>`).join('')}</nav>
  <section class="note"><strong>지도로 바로 확인하기</strong><p>목록에서 마음에 드는 곳을 찾았다면 발자국 지도에서 주변 코스와 애견동반 장소를 함께 비교해 보세요.</p><p><a href="/#map">내 주변 지도 보기</a> · <a href="/#register">우리 동네 코스 등록하기</a></p></section></main></body></html>`;
 }
+// Coordinate proximity crosses administrative borders; this is not a walking distance.
+function straightLineKm(a, b) {
+  const coords = [a.lat,a.lng,b.lat,b.lng];
+  if (coords.some(v=>v===null || v===undefined || v==='' || !Number.isFinite(Number(v)))) return Infinity;
+  const [lat1,lng1,lat2,lng2] = coords.map(Number);
+  if (Math.abs(lat1)>90 || Math.abs(lat2)>90 || Math.abs(lng1)>180 || Math.abs(lng2)>180) return Infinity;
+  const rad = value=>value*Math.PI/180;
+  const h = Math.sin(rad(lat2-lat1)/2)**2 + Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(rad(lng2-lng1)/2)**2;
+  return 6371*2*Math.asin(Math.sqrt(Math.min(1,h)));
+}
+function nearbyEntries(item, pool) {
+  return pool.map(other=>({other,km:straightLineKm(item,other)}))
+    .filter(entry=>entry.km<=3)
+    .sort((a,b)=>a.km-b.km || String(a.other.id).localeCompare(String(b.other.id)))
+    .slice(0,6);
+}
+
 function detailHtml(item, type, url) {
   const label = item.category === '숙소' ? '애견동반 숙소' : item.category ? '애견동반 '+FacilityInfo.get(item.category).label : type.label;
   const region = type.table==='bins' ? binRegionFor(item) : regionFor(item);
@@ -411,23 +428,9 @@ function detailHtml(item, type, url) {
     : type.table==='facilities'
       ? types.find(t=>t.table==='courses')
       : null;
-  const crossPool = crossType
-    ? (itemRegion
-      ? (itemsByRegionByTable.get(crossType.table)?.get(itemRegion) || [])
-      : (itemsByTable.get(crossType.table) || []))
-    : [];
-  const crossItems = crossPool
-    .map(other=>{
-      const otherMeta=itemMetaByTable.get(crossType?.table)?.get(other.id) || {};
-      const sameRegion=itemRegion && otherMeta.region===itemRegion;
-      const sameArea=itemArea && otherMeta.area===itemArea && sameRegion;
-      const score=(sameArea?4:0)+(sameRegion?2:0);
-      return {other,score};
-    })
-    .filter(entry=>entry.score>0)
-    .sort((a,b)=>b.score-a.score || compact(a.other.name).localeCompare(compact(b.other.name),'ko'))
-    .slice(0,4)
-    .map(entry=>entry.other);
+  const nearby = crossType ? nearbyEntries(item, itemsByTable.get(crossType.table) || []) : [];
+  const crossItems = nearby.map(entry=>entry.other);
+  const nearbyDistances = new Map(nearby.map(entry=>[entry.other.id,entry.km]));
   const detailBreadcrumbs=[
     {'@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},
     {'@type':'ListItem',position:2,name:'전국 장소·산책 코스',item:SITE+'/discover.html'}
@@ -503,8 +506,22 @@ function detailHtml(item, type, url) {
 <meta property="og:type" content="website"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(title)}"><meta name="twitter:description" content="${escapeHtml(description)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><meta name="twitter:image:alt" content="발자국 - 강아지 산책 코스와 애견동반 장소">
 <script type="application/ld+json">${JSON.stringify([schema, webPageSchema, {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:detailBreadcrumbs}]).replaceAll('<', '\\u003c')}</script>
-<style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}.wrap{max-width:760px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}.card{margin-top:32px;background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:30px;box-shadow:0 10px 30px -18px #152922}.icon{font-size:42px}h1{color:#152922;line-height:1.25;margin:12px 0}.meta{color:#6e8f6b;font-weight:700}.cta{display:inline-block;margin-top:18px;padding:12px 20px;border-radius:999px;background:#b5502e;color:white;text-decoration:none;font-weight:800}.source-link{display:inline-block;padding:8px 12px;border:1px solid #c9dccb;border-radius:999px;background:#f4f8f1;text-decoration:none;font-size:13px;font-weight:750}.note{font-size:13px;color:#5b5645;margin-top:24px}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap"><link rel="stylesheet" href="/readability.css?v=20261002-1"></head>
-<body class="reading-page"><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="현재 위치">${detailBreadcrumbs.map((b,i)=>i===detailBreadcrumbs.length-1?`<span aria-current="page">${escapeHtml(b.name)}</span>`:`<a href="${b.item.replace(SITE,'')||'/'}">${escapeHtml(b.name)}</a>`).join(' · ')}</nav><nav aria-label="관련 장소 목록" style="margin-top:12px">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.table==='facilities'?FacilityInfo.get(item.category).emoji:type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${type.table==='courses'?CoursePhotos.figure(item):''}${location ? `<p><strong>${type.table==='courses'?'출발 지점 주소':'위치·분류'}</strong><br>${escapeHtml(location)}</p>` : ''}${type.table==='courses'&&item.address?'<p class="note">카카오 좌표 주소 · 지도에 표시된 GPX 출발 지점 기준입니다. 주차장·입구 주소와 다를 수 있습니다.</p>':''}${type.table==='facilities'?'<h2>동반 조건·이용 안내</h2>':''}<p>${escapeHtml(compact(CourseInfo.cleanDescription(item.description)) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${sourceUrl?`<p><a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">🏛 공식 안내${sourceDate?` · ${escapeHtml(sourceDate)} 자료 확인`:''} ↗</a>${officialMap?` · <a class="source-link" href="${escapeHtml(officialMap)}" target="_blank" rel="noopener noreferrer">공식 경로 지도 ↗</a>`:''}</p>`:''}${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a><p><a href="${SITE}/#register">산책길·장소 정보 제안하기</a></p><p class="note">자료 확인 날짜는 공식 안내를 검토한 날짜이며 현장 방문 확인과 다릅니다. 운영 정보와 동반 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>${itemRegion?'같은 지역에서 함께 보기':'비슷한 장소 함께 보기'}</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'산책 후 함께 갈 곳':'주변 산책 코스도 보기'}</h2><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a>${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main></body></html>`;
+<style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.7}.wrap{max-width:760px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.brand{font-weight:800;text-decoration:none}.card{margin-top:32px;background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:30px;box-shadow:0 10px 30px -18px #152922}.icon{font-size:42px}h1{color:#152922;line-height:1.25;margin:12px 0}.meta{color:#6e8f6b;font-weight:700}.cta{display:inline-block;margin-top:18px;padding:12px 20px;border-radius:999px;background:#b5502e;color:white;text-decoration:none;font-weight:800}.share-button{font:inherit;border:0;cursor:pointer;background:#42654a}#share-status{font-size:14px;color:#42654a}.source-link{display:inline-block;padding:8px 12px;border:1px solid #c9dccb;border-radius:999px;background:#f4f8f1;text-decoration:none;font-size:13px;font-weight:750}.note{font-size:13px;color:#5b5645;margin-top:24px}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap"><link rel="stylesheet" href="/readability.css?v=20261002-1"></head>
+<body class="reading-page"><main class="wrap"><a class="brand" href="${SITE}/">🐾 발자국</a><nav aria-label="현재 위치">${detailBreadcrumbs.map((b,i)=>i===detailBreadcrumbs.length-1?`<span aria-current="page">${escapeHtml(b.name)}</span>`:`<a href="${b.item.replace(SITE,'')||'/'}">${escapeHtml(b.name)}</a>`).join(' · ')}</nav><nav aria-label="관련 장소 목록" style="margin-top:12px">${hubs.map(h=>`<a href="${h.path}">${escapeHtml(h.label)}</a>`).join(' · ')}</nav><article class="card"><div class="icon">${type.table==='facilities'?FacilityInfo.get(item.category).emoji:type.icon}</div><p class="meta">${escapeHtml(type.label)}${item.category ? ` · ${escapeHtml(item.category)}` : ''}</p><h1>${escapeHtml(item.name)}</h1>${type.table==='courses'?CoursePhotos.figure(item):''}${location ? `<p><strong>${type.table==='courses'?'출발 지점 주소':'위치·분류'}</strong><br>${escapeHtml(location)}</p>` : ''}${type.table==='courses'&&item.address?'<p class="note">카카오 좌표 주소 · 지도에 표시된 GPX 출발 지점 기준입니다. 주차장·입구 주소와 다를 수 있습니다.</p>':''}${type.table==='facilities'?'<h2>동반 조건·이용 안내</h2>':''}<p>${escapeHtml(compact(CourseInfo.cleanDescription(item.description)) || '발자국 사용자들과 함께 확인하는 반려견 생활 정보입니다.')}</p>${sourceUrl?`<p><a class="source-link" href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">🏛 공식 안내${sourceDate?` · ${escapeHtml(sourceDate)} 자료 확인`:''} ↗</a>${officialMap?` · <a class="source-link" href="${escapeHtml(officialMap)}" target="_blank" rel="noopener noreferrer">공식 경로 지도 ↗</a>`:''}</p>`:''}${extras ? `<p class="meta">${escapeHtml(extras)}</p>` : ''}<a class="cta" href="${appLink}">발자국 지도에서 보기</a> <button type="button" class="cta share-button" id="share-detail">링크 공유하기</button><p id="share-status" role="status" aria-live="polite"></p><p><a href="${SITE}/#register">산책길·장소 정보 제안하기</a></p><p class="note">자료 확인 날짜는 공식 안내를 검토한 날짜이며 현장 방문 확인과 다릅니다. 운영 정보와 동반 조건은 변경될 수 있으니 방문 전에 직접 확인해 주세요.</p></article>${relatedItems.length?`<section class="card"><h2>${itemRegion?'같은 지역에서 함께 보기':'비슷한 장소 함께 보기'}</h2><ul>${relatedItems.map(other=>`<li><a href="${detailPath(other,type)}">${escapeHtml(other.name)}</a>${type.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:''}</li>`).join('')}</ul></section>`:''}${crossItems.length&&crossType?`<section class="card"><h2>${type.table==='courses'?'3km 이내 애견동반 장소':'3km 이내 산책 코스'}</h2><p>좌표 기준 직선 거리입니다. 실제 이동 거리·출입구·반려견 동반 조건은 지도와 공식 안내에서 확인하세요.</p><ul>${crossItems.map(other=>`<li><a href="${detailPath(other,crossType)}">${escapeHtml(other.name)}</a> · 직선 ${nearbyDistances.get(other.id).toFixed(1)}km${crossType.table==='courses'&&other.distance?` · ${escapeHtml(other.distance)}`:other.category?` · ${escapeHtml(other.category==='식당카페'?'애견동반 카페·식당':other.category)}`:''}</li>`).join('')}</ul></section>`:''}<p><a href="${SITE}/discover.html">전국 장소·산책 코스 목록</a></p></main><script>
+(function(){
+  var button=document.getElementById('share-detail'),status=document.getElementById('share-status');
+  button.addEventListener('click',async function(){
+    var url=new URL(document.querySelector('link[rel="canonical"]').href);
+    url.searchParams.set('utm_source','share');url.searchParams.set('utm_medium','referral');url.searchParams.set('utm_campaign','place_detail');
+    var data={title:document.querySelector('h1').textContent,text:'반려견과 함께 갈 곳을 발자국에서 확인해 보세요.',url:url.href};
+    try{
+      if(navigator.share){await navigator.share(data);status.textContent='';}
+      else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(data.url);status.textContent='링크를 복사했습니다. 원하는 곳에 붙여넣어 공유하세요.';}
+      else{status.textContent='공유할 링크: '+data.url;}
+    }catch(error){if(error.name!=='AbortError')status.textContent='공유를 완료하지 못했습니다. 주소창의 링크를 복사해 주세요.';}
+  });
+})();
+</script></body></html>`;
 }
 
 
