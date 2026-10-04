@@ -19,5 +19,8 @@
  }
  form.addEventListener('submit',function(e){e.preventDefault();search();});
  kind.addEventListener('change',search);more.addEventListener('click',function(){limit+=20;render();});
+ var params=new URLSearchParams(window.location.search),initialQuery=(params.get('q')||'').slice(0,100),initialKind=params.get('kind')||'';
+ if(['courses','facilities','bins'].includes(initialKind))kind.value=initialKind;
+ if(initialQuery){query.value=initialQuery;search();}else if(kind.value){search();}
 })();
 </script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body></html>
