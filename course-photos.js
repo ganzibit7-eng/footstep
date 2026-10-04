@@ -2160,26 +2160,6 @@
   },
   {
     "courses": {
-      "osm_1217000590": "산청군 산청 동의보감촌 보행로 산책 코스"
-    },
-    "src": "/assets/course-photos/osm_1217000590.webp",
-    "place": "동의보감촌 야외 경관",
-    "date": "2015-02-26",
-    "author": "Republic of Korea from Seoul, Republic of Korea",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Sancheong_Gun_56_(16505951899).jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-    "title": "Sancheong Gun 56 (16505951899).jpg",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-04",
-    "width": 1200,
-    "height": 653,
-    "sourceSha256": "62a6aa3be33fabbe946945862557a2c6ef8a0f0ed440f3ed9e3c364c5f4e3306",
-    "assetSha256": "625a32cb5ac09f605fd88b358a41c42e962708368e27d1893c26af4520cc05d3"
-  },
-  {
-    "courses": {
       "osm_832185825": "양평군 양평 두물머리 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_832185825.webp",
@@ -2278,26 +2258,6 @@
     "height": 803,
     "sourceSha256": "bd928d42c7362d39169ebab96a65864ed38923d33350f558863c36eae0f256cb",
     "assetSha256": "8ddf464f88f3a0b8971c63c75d200040b195fcc54debb2933f5634f8f35d7ddf"
-  },
-  {
-    "courses": {
-      "duru_T_CRS_MNG0000003643": "경남 산청군 동의보감 허준순례길"
-    },
-    "src": "/assets/course-photos/duru_T_CRS_MNG0000003643.webp",
-    "place": "동의보감촌 야외 경관",
-    "date": "2015-02-26",
-    "author": "Republic of Korea from Seoul, Republic of Korea",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Sancheong_Gun_56_(16505951899).jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Sancheong_Gun_56_%2816505951899%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-    "title": "Sancheong Gun 56 (16505951899).jpg",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-04",
-    "width": 1200,
-    "height": 653,
-    "sourceSha256": "62a6aa3be33fabbe946945862557a2c6ef8a0f0ed440f3ed9e3c364c5f4e3306",
-    "assetSha256": "625a32cb5ac09f605fd88b358a41c42e962708368e27d1893c26af4520cc05d3"
   },
   {
     "courses": {

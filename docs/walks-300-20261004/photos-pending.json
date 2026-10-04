@@ -306,5 +306,19 @@
     "petStatus": "needs_confirmation",
     "addressStatus": "complete",
     "photoStatus": "needs_verified_commercial_photo"
+  },
+  {
+    "id": "osm_1217000590",
+    "name": "산청군 산청 동의보감촌 보행로 산책 코스",
+    "addressStatus": "complete",
+    "photoStatus": "needs_verified_commercial_photo",
+    "reason": "Source carries conflicting usage restrictions; excluded pending clarification."
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003643",
+    "name": "경남 산청군 동의보감 허준순례길",
+    "addressStatus": "complete",
+    "photoStatus": "needs_verified_commercial_photo",
+    "reason": "Source carries conflicting usage restrictions; excluded pending clarification."
   }
 ]
