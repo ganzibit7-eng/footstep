@@ -25,7 +25,7 @@ for(const entry of manifest.photos){
  if(entry.convert){bytes=undefined;}
  if(!bytes||hash(bytes)!==entry.sha256){
   for(let attempt=0;attempt<3;attempt++){
-   try{const response=await fetch(entry.url,{headers:{'User-Agent':'FootstepPhotoAudit/1.0 (footstepbiz@gmail.com)'},signal:AbortSignal.timeout(60000)});if(!response.ok)throw Error('Photo HTTP '+response.status);bytes=Buffer.from(await response.arrayBuffer());if(bytes.length!==entry.bytes||hash(bytes)!==entry.sha256)throw Error('Photo content changed: '+Object.keys(p.courses).join(', '));break;}
+   try{await new Promise(resolve=>setTimeout(resolve,6500));const response=await fetch(entry.url,{headers:{'User-Agent':'FootstepPhotoAudit/1.0 (footstepbiz@gmail.com)'},signal:AbortSignal.timeout(60000)});if(!response.ok){if(response.status===429){const seconds=Number(response.headers.get('retry-after'));await new Promise(resolve=>setTimeout(resolve,Number.isFinite(seconds)&&seconds>0?Math.min(seconds,300)*1000:30000));}throw Error('Photo HTTP '+response.status+' '+Object.keys(p.courses).join(', '));}bytes=Buffer.from(await response.arrayBuffer());if(bytes.length!==entry.bytes||hash(bytes)!==entry.sha256)throw Error('Photo content changed: '+Object.keys(p.courses).join(', '));break;}
    catch(err){if(attempt===2)throw err;await new Promise(resolve=>setTimeout(resolve,1500));}
   }
  }
