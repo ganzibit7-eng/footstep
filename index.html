@@ -1049,7 +1049,7 @@
 @media(max-width:600px){#modal-route-map{height:300px}.route-stops{grid-template-columns:1fr}.route-stop{padding:12px}}
 
 
-#registered-place-filters{flex-wrap:wrap}#registered-place-filters select{font:inherit;min-height:42px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}#facility-filter-count{font-size:13px;color:var(--muted-text)}
+#registered-place-filters[hidden]{display:none}#registered-place-filters{flex-wrap:wrap}#registered-place-filters select{font:inherit;min-height:42px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}#facility-filter-count{font-size:13px;color:var(--muted-text)}
 /* Walk recording: scoped to the recording screen. */
 .walk-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
 .walk-metrics>div{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 12px;min-width:0}
@@ -2051,19 +2051,17 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
         <span class="mono" id="map-filter-note" style="font-size:12px;color:#5B5645;">지도를 드래그·확대해서 우리 동네를 찾아보세요</span>
       </div>
-      <div class="map-toolbar" id="registered-place-filters">
-        <label>동반 장소 종류 <select id="facility-filter-category" aria-label="동반 장소 종류"><option value="">전체 종류</option><option value="식당카페">식당·카페</option><option value="숙소">숙소</option><option value="공원관광">공원·관광지</option><option value="캠핑">캠핑장</option><option value="쇼핑">쇼핑·체험</option></select></label>
+      <div class="map-toolbar" id="registered-place-filters" hidden>
+        <label>장소 종류 <select id="facility-filter-category" aria-label="동반 장소 종류"><option value="">전체 종류</option><option value="식당카페">식당·카페</option><option value="숙소">숙소</option><option value="공원관광">공원·관광지</option><option value="캠핑">캠핑장</option><option value="쇼핑">쇼핑·체험</option></select></label>
         <input id="facility-filter-query" type="search" aria-label="등록된 동반 장소 검색" placeholder="동반 장소 이름·주소 검색" style="min-width:160px;flex:1;padding:10px;border:1px solid var(--line);border-radius:12px">
         <span id="facility-filter-count" aria-live="polite"></span>
       </div>
-      <details class="map-extra-filters"><summary>필터 더 보기 · 병원·용품점·카페·숙소</summary><div class="map-toolbar" style="border-top:1px dashed var(--line);">
+      <details class="map-extra-filters"><summary>주변 편의시설 · 병원·용품점</summary><div class="map-toolbar" style="border-top:1px dashed var(--line);">
         <div class="filter-group" id="poi-group">
           <button type="button" class="chip" data-poi="vet">🏥 동물병원</button>
           <button type="button" class="chip" data-poi="pet_shop">🛍️ 애견용품점</button>
-          <button type="button" class="chip" data-poi="restaurant">🍽️ 식당·카페 후보</button>
-          <button type="button" class="chip" data-poi="lodging">🏨 숙소 후보</button>
         </div>
-        <p style="width:100%;font-size:12px;color:var(--muted-text);margin:0">일반 장소 검색 후보예요. 검색어에 ‘애견동반’이 포함돼도 허용 여부가 확인된 것은 아니에요.</p>
+        <p style="width:100%;font-size:12px;color:var(--muted-text);margin:0">병원·용품점은 일반 장소 검색 결과예요. 식당·카페·숙소는 위의 동반 장소에서 찾아보세요.</p>
         <button type="button" class="poi-search-cta" id="poi-search-btn" style="font-size:12.5px; padding:8px 14px;">📍 지금 보이는 지역에서 찾기</button>
       </div></details>
       <div class="map-wrap-relative">
@@ -4686,7 +4684,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const pages=Math.ceil(cards.length/perPage);
     const page=step?Math.min(pages,Math.max(1,Math.round(rail.scrollLeft/(step*perPage))+1)):0;
     const position=document.getElementById('nearby-position');
-    position.textContent=cards.length?String(page):'';
+    position.textContent=cards.length?`${page}/${pages}`:'';
     position.setAttribute('aria-label',cards.length?`추천 코스 ${pages}페이지 중 ${page}페이지`:'추천 코스 없음');
     document.getElementById('nearby-prev').disabled=rail.scrollLeft<=2;
     document.getElementById('nearby-next').disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-2;
@@ -5396,6 +5394,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       document.querySelectorAll('#view-filter-group .chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
+      document.getElementById('registered-place-filters').hidden=!(f==='facility'||f==='all');
+      poiLayer.clearLayers();activePoiCategories.clear();document.querySelectorAll('#poi-group .chip').forEach(c=>c.classList.remove('active'));
       if(f==='all'){
         map.addLayer(courseLayer); map.addLayer(coursePathLayer); map.addLayer(binLayer); map.addLayer(facilityLayer);
       } else if(f==='course'){
