@@ -1,0 +1,21 @@
+{
+  "checkedDate": "2026-10-04",
+  "addedCourses": 2,
+  "addedPlaces": 135,
+  "courseIds": [
+    "c433",
+    "c434"
+  ],
+  "expectedApprovedCourses": 217,
+  "expectedApprovedPlaces": 2710,
+  "categories": {
+    "식당카페": 83,
+    "공원관광": 41,
+    "숙소": 5,
+    "캠핑": 5,
+    "쇼핑": 1
+  },
+  "addedPhotos": 10,
+  "existingCoursesNewPhotos": 8,
+  "totalPhotoBindings": 130
+}
