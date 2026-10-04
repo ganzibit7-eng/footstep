@@ -2544,7 +2544,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         </div>
 
         <!-- 항상 보이는 핵심 요약 -->
-        <section class="admin-traffic-panel"><h4>기간별 방문 통계</h4><div class="admin-tools"><select id="admin-traffic-period" aria-label="통계 기간"><option value="1">오늘</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select><button id="admin-traffic-export" type="button" disabled>일별 통계 CSV</button></div><p>한국 시간 기준 · 방문자는 브라우저 식별자 기준으로 실제 인원과 다를 수 있어요.</p><div id="admin-traffic-result" aria-live="polite"></div></section><div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
+        <section class="admin-traffic-panel"><h4>기간별 방문 통계</h4><div class="admin-tools"><select id="admin-traffic-period" aria-label="통계 기간"><option value="1">오늘</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select><button id="admin-traffic-export" type="button" disabled>일별 통계 CSV</button></div><p>한국 시간 기준 · 방문자는 브라우저 식별자 기준으로 실제 인원과 다를 수 있어요.</p><div id="admin-traffic-result" aria-live="polite"></div><div id="admin-bot-result" aria-live="polite"></div></section><div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
         <div style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:10px;">
@@ -2587,17 +2587,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <div id="admin-hourly-stats" style="display:flex; align-items:flex-end; gap:3px; height:90px; padding:6px 2px; border-bottom:1px solid var(--line);"></div>
             <div id="admin-hourly-labels" style="display:flex; gap:3px; font-size:9px; color:var(--muted-text); margin-top:4px;"></div>
             <div id="hourly-detail" style="margin-top:10px; font-size:13.5px; font-weight:700; color:var(--pine-deep); min-height:20px;"></div>
-          </div>
-        </div>
-
-        <!-- 유입 경로 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="referrer">
-            <h4>🌐 유입 경로 (최근 7일)</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-referrer" style="display:none;">
-            <p style="font-size:12px; color:var(--muted-text); margin:10px 0 6px;">쓰레드·인스타 홍보 글이 실제로 방문자를 데려오는지 확인해보세요.</p>
-            <div id="admin-referrer-list" style="margin-top:8px;"></div>
           </div>
         </div>
 
@@ -2780,6 +2769,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <script src="course-routes.js?v=20261004-expansion"></script>
 <script src="course-addresses.js?v=20261004-expansion"></script>
 <script src="walk-tracker.js?v=20261003"></script>
+<script src="admin-bot-panel.js?v=20261004"></script>
 <script>
 (function(){
   // ===== Supabase 연결 =====
@@ -7611,7 +7601,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
   const traffic=root.querySelector('.admin-traffic-panel');
   traffic.before(today);
-  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 기간별 방문 통계 · CSV';traffic.before(details);details.append(summary,traffic);
+  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';traffic.before(details);details.append(summary,traffic);
   const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
   for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
   root.querySelectorAll('.admin-accordion-head').forEach(head=>{
@@ -8015,7 +8005,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         {
           num: topReferrerEntry ? topReferrerEntry[1] : 0,
           label: topReferrerEntry ? `오늘 최다 유입 · ${topReferrerEntry[0]}` : '오늘 최다 유입 · 아직 없음',
-          jump: 'referrer'
+          jump: 'traffic'
         },
       ];
       el.innerHTML = summary.map(s=>`<div class="stat-card clickable" data-jump="${escapeHtml(s.jump)}"><div class="num">${s.num}</div><div class="label">${escapeHtml(s.label)}</div></div>`).join('');
@@ -8028,6 +8018,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
   }
   function expandAccordion(key){
+    if(key==='traffic'){const panel=document.querySelector('.admin-traffic-panel'),details=panel.closest('details');if(details)details.open=true;panel.scrollIntoView({behavior:'smooth',block:'start'});return;}
     const body = document.getElementById('acc-' + key);
     const head = document.querySelector(`.admin-accordion-head[data-accordion="${key}"]`);
     if(!body || !head) return;
@@ -8069,10 +8060,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const todayVisitorRows = todayViews.data || [];
       const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
       const stats = [
-        { num: todayUniqueVisitors, label:'오늘 방문자' },
-        { num: todayVisitorRows.length, label:'오늘 페이지뷰' },
-        { num: (newSignups.data||[]).length, label:'오늘 가입축하 지급 건' },
-        { num: newCourses.count||0, label:'오늘 새 코스' },
+                                { num: newCourses.count||0, label:'오늘 새 코스' },
         { num: newBins.count||0, label:'오늘 새 배변함' },
         { num: newFacilities.count||0, label:'오늘 새 시설' },
         { num: newReviews.count||0, label:'오늘 새 리뷰' },
@@ -8107,6 +8095,29 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     });
   }
 
+
+ function adminTrafficPageLink(path){
+  const p=String(path||'');
+  if(!/^\/[A-Za-z0-9/_-]*(\.html)?$/.test(p))return escapeHtml(p);
+  const match=p.match(/^\/(courses|places)\/([A-Za-z0-9_-]+)\/?$/);
+  const entry=match?(match[1]==='courses'?allCourses():facilities).find(c=>String(c.id)===match[2]):null;
+  const labels={'/':'발자국 홈','/index.html':'발자국 홈','/discover.html':'산책 코스 탐색'};
+  const title=entry?.name||labels[p]||p;
+  return '<a href="'+escapeHtml(p)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(title)+' ↗</a>'+(title!==p?'<br><small>'+escapeHtml(p)+'</small>':'');
+ }
+ let adminBotRequest=0;
+ async function renderAdminBots(){
+  const el=document.getElementById('admin-bot-result'),request=++adminBotRequest;
+  if(!el||!isAdminUser(myDeviceId))return;
+  el.textContent='자동 접속 기록을 불러오고 있어요…';
+  try{
+   const {data,error}=await sb.rpc('admin_bot_traffic',{p_days:Number(document.getElementById('admin-traffic-period').value)});
+   if(request!==adminBotRequest)return;
+   if(error||!data)throw error||new Error('invalid_bot_stats');
+   el.innerHTML=AdminBotPanel.render(data,adminTrafficPageLink);
+  }catch(e){if(request===adminBotRequest)el.textContent='자동 접속 기록을 불러오지 못했어요. 새로고침해 주세요.';}
+ }
+
  let adminTrafficData=null,adminTrafficRequest=0;
  async function renderAdminTraffic(){
   const request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export');
@@ -8117,8 +8128,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
    if(error||!Array.isArray(data?.daily))throw error||new Error('invalid_stats');
    adminTrafficData=data;
    const num=x=>Number(x||0).toLocaleString('ko-KR'),delta=Number(data.views)-Number(data.previous_views);
-   el.innerHTML=`<p><strong>조회 ${num(data.views)}회 · 방문 브라우저 ${num(data.visitors)}개 · 활동 확인 ${num(data.engaged_visitors)}개</strong><br>관리자·작업 접속 및 자동 접속 신호 ${num(data.excluded_views)}회 제외 · 원본 ${num(data.raw_views)}회<br><small>활동 확인: 화면 노출 10초 이상 또는 클릭 기록. 실제 사람 인증은 아닙니다. 이전 기록 ${num(data.unmeasured_views)}회는 활동·페이지 정보 미수집입니다.</small><br>이전 동일 길이 기간 대비 조회 ${delta>0?'+':''}${num(delta)}회</p><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${escapeHtml(r.path)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
+   el.innerHTML=`<p><strong>조회 ${num(data.views)}회 · 방문 브라우저 ${num(data.visitors)}개 · 활동 확인 ${num(data.engaged_visitors)}개</strong><br>관리자·작업 접속 및 자동 접속 신호 ${num(data.excluded_views)}회 제외 · 원본 ${num(data.raw_views)}회<br><small>활동 확인: 화면 노출 10초 이상 또는 클릭 기록. 실제 사람 인증은 아닙니다. 이전 기록 ${num(data.unmeasured_views)}회는 활동·페이지 정보 미수집입니다.</small><br>이전 동일 길이 기간 대비 조회 ${delta>0?'+':''}${num(delta)}회</p><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${adminTrafficPageLink(r.path)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
    button.disabled=false;
+   renderAdminBots();
   }catch(e){if(request===adminTrafficRequest)el.textContent='통계를 불러오지 못했어요. 관리자 로그인 상태를 확인하고 새로고침해 주세요.';}
  }
  document.getElementById('admin-traffic-period').addEventListener('change',renderAdminTraffic);
@@ -8138,7 +8150,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     button.disabled=true;
     try{
       await loadData();
-      await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderReferrerBreakdown(),renderLiveVisitorCount()]);
+      await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderLiveVisitorCount()]);
       if(isSuperAdmin(myDeviceId))await renderManagerList();
       document.getElementById('admin-last-refreshed').textContent=`조회 종료: ${new Date().toLocaleTimeString('ko-KR')}`;
     }catch(e){toast('새로고침에 실패했어요. 다시 시도해 주세요.');}
@@ -8158,7 +8170,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     renderPendingApprovals();
     renderMemberList();
     renderAdminTraffic();
-    renderReferrerBreakdown();
     renderLiveVisitorCount();
     const managerWrap = document.getElementById('manager-section-wrap');
     if(managerWrap){
