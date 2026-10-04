@@ -1063,6 +1063,7 @@
 .walk-settings input[type=number]{width:72px;padding:7px;border:1px solid var(--line);border-radius:8px;background:#fff}
 .walk-controls{display:flex;gap:10px}.walk-controls>button{flex:1;width:auto}
 #walk-pause-btn[aria-pressed=true]{background:var(--sand)}
+ .course-arrival-info{display:grid;gap:12px;margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--sand);font:13px/1.7 system-ui,sans-serif}.course-arrival-info strong,.course-arrival-info span{display:block}.course-arrival-info span{color:var(--muted-text);overflow-wrap:anywhere}
 </style>
 <style>
   /* Same hero order as iPhone; compact Android spacing accommodates browser chrome. */
@@ -2354,7 +2355,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       <div class="modal-body">
         <h3 id="modal-title">코스 이름</h3>
         <button type="button" id="detail-favorite" class="pin-btn" aria-pressed="false">찜하기</button><div id="course-detail-summary" class="course-detail-summary"></div><div class="modal-meta-row" id="modal-meta"></div>
-        <div id="modal-address"></div><p class="course-address-note">주소는 지도에 표시된 코스 출발 지점 기준입니다. 주차장·입구 주소와 다를 수 있어요.</p>
+        <div id="modal-address"></div><p class="course-address-note">주소는 출발 좌표 또는 인근 위치 안내입니다. 공원 입구·주차장 위치와 다를 수 있어요.</p><div id="course-arrival-info" class="course-arrival-info"></div>
         <p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
         <div id="photo-upload-wrap" style="margin:10px 0;">
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
@@ -2940,6 +2941,16 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function courseAddressHTML(c){
     const address=CourseAddresses.get(c);
     return address?'<p class="course-address"><small>'+escapeHtml(address.point+' · '+(address.roadAddress?'도로명':'지번'))+'</small><span>'+escapeHtml(address.address)+'</span></p>':'<p class="course-address"><small>출발 지점 주소</small><span>주소 확인 중 · 지도에서 위치를 확인해 주세요</span></p>';
+  }
+  function courseArrivalPoint(c){
+    const route=CourseRoutes.get(c);
+    const point=route&&Array.isArray(c.path)&&c.path.length?c.path[0]:[c.lat,c.lng];
+    const lat=Number(point?.[0]),lng=Number(point?.[1]);
+    return Number.isFinite(lat)&&Number.isFinite(lng)&&lat>=-90&&lat<=90&&lng>=-180&&lng<=180?{lat,lng,verified:!!route}:null;
+  }
+  function courseArrivalHTML(c){
+    const point=courseArrivalPoint(c);
+    return '<div><strong>'+(point?.verified?'지도 경로 출발 좌표':'대표 위치 좌표')+'</strong><span>'+(point?point.lat.toFixed(6)+', '+point.lng.toFixed(6):'좌표 정보 없음')+'</span></div><div><strong>주차 안내</strong><span>확인된 주차장 정보가 아직 없어요. 위 주소를 주차장 목적지로 사용하기 전에 현장 안내를 확인해 주세요.</span></div>';
   }
   function rowToCourse(row){
     return {
@@ -6054,7 +6065,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
     document.getElementById('modal-address').innerHTML=courseAddressHTML(c);
     document.getElementById('modal-desc').textContent = CourseInfo.cleanDescription(c.desc) || '아직 자세한 소개가 없어요. 위치와 편의 정보를 확인해 주세요.';
-    document.getElementById('modal-directions-link').href = kakaoLinkTo(c.name, c.lat, c.lng);
+    document.getElementById('course-arrival-info').innerHTML=courseArrivalHTML(c);
+    const arrival=courseArrivalPoint(c);
+    const directions=document.getElementById('modal-directions-link');
+    directions.href=kakaoLinkTo(c.name,arrival?.lat??c.lat,arrival?.lng??c.lng);
+    directions.textContent=arrival?.verified?'🧭 출발점 길찾기 ↗':'🧭 대표 위치 길찾기 ↗';
     document.getElementById('modal-meta').innerHTML = `
       <span class="badge ${c.diff?diffBadgeClass(c.diff):'badge-info'}">${escapeHtml(c.diff||'난이도 정보 없음')}</span>
       <span class="tag-pill">${escapeHtml(c.distance||'거리 정보 없음')}</span>
