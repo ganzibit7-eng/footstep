@@ -1,0 +1,2281 @@
+[
+  {
+    "id": "osm_665502044",
+    "requestedCoordinate": [
+      35.9123508,
+      128.6434823
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 동구 불로동 495-4",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "불로동",
+            "mountain_yn": "N",
+            "main_address_no": "495",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "osm_1196816794",
+    "requestedCoordinate": [
+      35.8641078,
+      129.208622
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 경주시 황성동 955-1",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "경주시",
+            "region_3depth_name": "황성동",
+            "mountain_yn": "N",
+            "main_address_no": "955",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "osm_1116526039",
+    "requestedCoordinate": [
+      34.9361934,
+      127.4973447
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 순천시 오천동 801-1",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "순천시",
+            "region_3depth_name": "오천동",
+            "mountain_yn": "N",
+            "main_address_no": "801",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "osm_1217000590",
+    "requestedCoordinate": [
+      35.4395655,
+      127.8264006
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 산청군 금서면 특리 1300-30",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "산청군",
+            "region_3depth_name": "금서면 특리",
+            "mountain_yn": "N",
+            "main_address_no": "1300",
+            "sub_address_no": "30",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "osm_832185825",
+    "requestedCoordinate": [
+      37.5369966,
+      127.3138757
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 양평군 양서면 양수리 754-1",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "양평군",
+            "region_3depth_name": "양서면 양수리",
+            "mountain_yn": "N",
+            "main_address_no": "754",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "osm_1036807544",
+    "requestedCoordinate": [
+      35.5776464,
+      128.1686656
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 합천군 합천읍 영창리 898",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "합천군",
+            "region_3depth_name": "합천읍 영창리",
+            "mountain_yn": "N",
+            "main_address_no": "898",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000960",
+    "requestedCoordinate": [
+      38.03812015,
+      128.17602390000002
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 인제군 인제읍 남북리 산 14-1",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "인제군",
+            "region_3depth_name": "인제읍 남북리",
+            "mountain_yn": "Y",
+            "main_address_no": "14",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005433",
+    "requestedCoordinate": [
+      37.362048,
+      126.949414
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 군포시 금정동 608-18",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "군포시",
+            "region_3depth_name": "금정동",
+            "mountain_yn": "N",
+            "main_address_no": "608",
+            "sub_address_no": "18",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001642",
+    "requestedCoordinate": [
+      35.562430452069655,
+      128.15366258261258
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 합천군 합천읍 합천리 940-27",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "합천군",
+            "region_3depth_name": "합천읍 합천리",
+            "mountain_yn": "N",
+            "main_address_no": "940",
+            "sub_address_no": "27",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000828",
+    "requestedCoordinate": [
+      36.28632195,
+      128.77078857000004
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 의성군 사곡면 화전리 1121-1",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "의성군",
+            "region_3depth_name": "사곡면 화전리",
+            "mountain_yn": "N",
+            "main_address_no": "1121",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003667",
+    "requestedCoordinate": [
+      35.143845995,
+      126.925859212
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 동구 서석동 465-2",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "서석동",
+            "mountain_yn": "N",
+            "main_address_no": "465",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000475",
+    "requestedCoordinate": [
+      35.8675002,
+      128.585191
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 중구 동산동 194",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "중구",
+            "region_3depth_name": "동산동",
+            "mountain_yn": "N",
+            "main_address_no": "194",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003696",
+    "requestedCoordinate": [
+      36.2848768,
+      127.3846305
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대전 중구 안영동 638",
+            "region_1depth_name": "대전",
+            "region_2depth_name": "중구",
+            "region_3depth_name": "안영동",
+            "mountain_yn": "N",
+            "main_address_no": "638",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003273",
+    "requestedCoordinate": [
+      35.2021474989323,
+      129.083733558655
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "부산 동래구 수안동 643",
+            "region_1depth_name": "부산",
+            "region_2depth_name": "동래구",
+            "region_3depth_name": "수안동",
+            "mountain_yn": "N",
+            "main_address_no": "643",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004081",
+    "requestedCoordinate": [
+      37.578105125711694,
+      126.80475561838534
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 강서구 개화동 산 91-2",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "강서구",
+            "region_3depth_name": "개화동",
+            "mountain_yn": "Y",
+            "main_address_no": "91",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001424",
+    "requestedCoordinate": [
+      35.52898448584975,
+      129.42763605963273
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "울산 동구 서부동 614-3",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "서부동",
+            "mountain_yn": "N",
+            "main_address_no": "614",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001397",
+    "requestedCoordinate": [
+      34.18322250729987,
+      126.86032080346706
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 완도군 청산면 도청리 483-3",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "완도군",
+            "region_3depth_name": "청산면 도청리",
+            "mountain_yn": "N",
+            "main_address_no": "483",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001364",
+    "requestedCoordinate": [
+      35.815583,
+      127.138651
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전북특별자치도 전주시 완산구 중화산동1가 150-1",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "전주시 완산구",
+            "region_3depth_name": "중화산동1가",
+            "mountain_yn": "N",
+            "main_address_no": "150",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001262",
+    "requestedCoordinate": [
+      33.1745077,
+      126.2709117
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "제주특별자치도 서귀포시 대정읍 가파리 373-2",
+            "region_1depth_name": "제주특별자치도",
+            "region_2depth_name": "서귀포시",
+            "region_3depth_name": "대정읍 가파리",
+            "mountain_yn": "N",
+            "main_address_no": "373",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001035",
+    "requestedCoordinate": [
+      36.23160213782446,
+      126.85745319049033
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 부여군 장암면 합곡리 768",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "부여군",
+            "region_3depth_name": "장암면 합곡리",
+            "mountain_yn": "N",
+            "main_address_no": "768",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001310",
+    "requestedCoordinate": [
+      36.72317224878039,
+      127.62198060750961
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충북 증평군 증평읍 남차리 산 58-3",
+            "region_1depth_name": "충북",
+            "region_2depth_name": "증평군",
+            "region_3depth_name": "증평읍 남차리",
+            "mountain_yn": "Y",
+            "main_address_no": "58",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001659",
+    "requestedCoordinate": [
+      37.37676961456529,
+      128.4102392177731
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 평창군 평창읍 중리 산 10-3",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "평창군",
+            "region_3depth_name": "평창읍 중리",
+            "mountain_yn": "Y",
+            "main_address_no": "10",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001464",
+    "requestedCoordinate": [
+      36.915050918570074,
+      126.9127392887583
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 평택시 현덕면 권관리 551-13",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "평택시",
+            "region_3depth_name": "현덕면 권관리",
+            "mountain_yn": "N",
+            "main_address_no": "551",
+            "sub_address_no": "13",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003643",
+    "requestedCoordinate": [
+      35.441597474,
+      127.82905519
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 산청군 금서면 특리 1300-30",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "산청군",
+            "region_3depth_name": "금서면 특리",
+            "mountain_yn": "N",
+            "main_address_no": "1300",
+            "sub_address_no": "30",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001026",
+    "requestedCoordinate": [
+      35.989325804287354,
+      129.2556663792211
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 경주시 강동면 인동리 734-2",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "경주시",
+            "region_3depth_name": "강동면 인동리",
+            "mountain_yn": "N",
+            "main_address_no": "734",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000002859",
+    "requestedCoordinate": [
+      35.136623,
+      126.91654300000005
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": {
+            "address_name": "전남광주통합특별시 남구 정율성로 7",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "남구",
+            "region_3depth_name": "",
+            "road_name": "정율성로",
+            "underground_yn": "N",
+            "main_building_no": "7",
+            "sub_building_no": "",
+            "building_name": "광주양림휴먼시아 203동",
+            "zone_no": "61663"
+          },
+          "address": {
+            "address_name": "전남광주통합특별시 남구 양림동 506",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "남구",
+            "region_3depth_name": "양림동",
+            "mountain_yn": "N",
+            "main_address_no": "506",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000478",
+    "requestedCoordinate": [
+      35.8661556005319,
+      128.59326142327882
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 중구 덕산동 110",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "중구",
+            "region_3depth_name": "덕산동",
+            "mountain_yn": "N",
+            "main_address_no": "110",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000002684",
+    "requestedCoordinate": [
+      35.115977433864785,
+      129.0398437168176
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "부산 동구 초량동 1206-1",
+            "region_1depth_name": "부산",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "초량동",
+            "mountain_yn": "N",
+            "main_address_no": "1206",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005449",
+    "requestedCoordinate": [
+      37.5711092,
+      127.0018458
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 종로구 종로5가 82-1",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "종로구",
+            "region_3depth_name": "종로5가",
+            "mountain_yn": "N",
+            "main_address_no": "82",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004252",
+    "requestedCoordinate": [
+      35.58053354026479,
+      129.45241286616033
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": {
+            "address_name": "울산광역시 북구 아름1길 4",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "북구",
+            "region_3depth_name": "",
+            "road_name": "아름1길",
+            "underground_yn": "N",
+            "main_building_no": "4",
+            "sub_building_no": "",
+            "building_name": "",
+            "zone_no": "44235"
+          },
+          "address": {
+            "address_name": "울산 북구 당사동 526",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "북구",
+            "region_3depth_name": "당사동",
+            "mountain_yn": "N",
+            "main_address_no": "526",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000837",
+    "requestedCoordinate": [
+      34.39476586,
+      126.28240159999996
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 진도군 의신면 금갑리 639-9",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "진도군",
+            "region_3depth_name": "의신면 금갑리",
+            "mountain_yn": "N",
+            "main_address_no": "639",
+            "sub_address_no": "9",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003769",
+    "requestedCoordinate": [
+      35.729483,
+      127.110025
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전북특별자치도 완주군 구이면 원기리 1069-12",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "완주군",
+            "region_3depth_name": "구이면 원기리",
+            "mountain_yn": "N",
+            "main_address_no": "1069",
+            "sub_address_no": "12",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003809",
+    "requestedCoordinate": [
+      33.5568099,
+      126.758709
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "제주특별자치도 제주시 구좌읍 김녕리 497-4",
+            "region_1depth_name": "제주특별자치도",
+            "region_2depth_name": "제주시",
+            "region_3depth_name": "구좌읍 김녕리",
+            "mountain_yn": "N",
+            "main_address_no": "497",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001383",
+    "requestedCoordinate": [
+      36.014147,
+      126.66632400000003
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 서천군 장항읍 송림리 산 64-9",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "서천군",
+            "region_3depth_name": "장항읍 송림리",
+            "mountain_yn": "Y",
+            "main_address_no": "64",
+            "sub_address_no": "9",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005474",
+    "requestedCoordinate": [
+      36.982288,
+      128.343812
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충북 단양군 단양읍 상진리 278-1",
+            "region_1depth_name": "충북",
+            "region_2depth_name": "단양군",
+            "region_3depth_name": "단양읍 상진리",
+            "mountain_yn": "N",
+            "main_address_no": "278",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000243",
+    "requestedCoordinate": [
+      37.774813454455305,
+      128.94407614945987
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 강릉시 견소동 268-7",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "강릉시",
+            "region_3depth_name": "견소동",
+            "mountain_yn": "N",
+            "main_address_no": "268",
+            "sub_address_no": "7",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004911",
+    "requestedCoordinate": [
+      37.17818917706609,
+      126.62127532996237
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 화성시 만세구 서신면 제부리 289-14",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "화성시 만세구",
+            "region_3depth_name": "서신면 제부리",
+            "mountain_yn": "N",
+            "main_address_no": "289",
+            "sub_address_no": "14",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001649",
+    "requestedCoordinate": [
+      35.31186644194275,
+      128.97732639889125
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 양산시 물금읍 물금리 863-1",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "양산시",
+            "region_3depth_name": "물금읍 물금리",
+            "mountain_yn": "N",
+            "main_address_no": "863",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005104",
+    "requestedCoordinate": [
+      35.914687585453876,
+      128.28129064923405
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 성주군 성주읍 경산리 765-4",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "성주군",
+            "region_3depth_name": "성주읍 경산리",
+            "mountain_yn": "N",
+            "main_address_no": "765",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001097",
+    "requestedCoordinate": [
+      35.15859137770438,
+      126.85750233862302
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 서구 쌍촌동 1268",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "서구",
+            "region_3depth_name": "쌍촌동",
+            "mountain_yn": "N",
+            "main_address_no": "1268",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000479",
+    "requestedCoordinate": [
+      35.96399338856523,
+      128.69789365337294
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 동구 도학동 648",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "도학동",
+            "mountain_yn": "N",
+            "main_address_no": "648",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005452",
+    "requestedCoordinate": [
+      37.57261,
+      126.9894969
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 종로구 낙원동 117-4",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "종로구",
+            "region_3depth_name": "낙원동",
+            "mountain_yn": "N",
+            "main_address_no": "117",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003523",
+    "requestedCoordinate": [
+      35.491071,
+      129.436525
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "울산 동구 일산동 905",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "일산동",
+            "mountain_yn": "N",
+            "main_address_no": "905",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001463",
+    "requestedCoordinate": [
+      35.33069389083096,
+      126.85704776410557
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 장성군 북하면 월성리 산 121",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "장성군",
+            "region_3depth_name": "북하면 월성리",
+            "mountain_yn": "Y",
+            "main_address_no": "121",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005254",
+    "requestedCoordinate": [
+      35.44808972161263,
+      126.65013237856328
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전북특별자치도 고창군 고창읍 죽림리 667-3",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "고창군",
+            "region_3depth_name": "고창읍 죽림리",
+            "mountain_yn": "N",
+            "main_address_no": "667",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003848",
+    "requestedCoordinate": [
+      36.6071223,
+      126.7910457
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 예산군 대흥면 동서리 82-1",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "예산군",
+            "region_3depth_name": "대흥면 동서리",
+            "mountain_yn": "N",
+            "main_address_no": "82",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003887",
+    "requestedCoordinate": [
+      36.76082547,
+      127.83881642
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충북 괴산군 칠성면 사은리 산 32-3",
+            "region_1depth_name": "충북",
+            "region_2depth_name": "괴산군",
+            "region_3depth_name": "칠성면 사은리",
+            "mountain_yn": "Y",
+            "main_address_no": "32",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000822",
+    "requestedCoordinate": [
+      37.1454470999362,
+      128.5914939619713
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 영월군 김삿갓면 예밀리 205-1",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "영월군",
+            "region_3depth_name": "김삿갓면 예밀리",
+            "mountain_yn": "N",
+            "main_address_no": "205",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000280",
+    "requestedCoordinate": [
+      37.35842447,
+      126.93302203999997
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 군포시 산본동 1179",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "군포시",
+            "region_3depth_name": "산본동",
+            "mountain_yn": "N",
+            "main_address_no": "1179",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001641",
+    "requestedCoordinate": [
+      35.5649664042886,
+      128.17162664230386
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 합천군 합천읍 합천리 109-3",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "합천군",
+            "region_3depth_name": "합천읍 합천리",
+            "mountain_yn": "N",
+            "main_address_no": "109",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004655",
+    "requestedCoordinate": [
+      35.966668,
+      128.266653
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 성주군 초전면 칠선리 490-2",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "성주군",
+            "region_3depth_name": "초전면 칠선리",
+            "mountain_yn": "N",
+            "main_address_no": "490",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001456",
+    "requestedCoordinate": [
+      35.95356393495507,
+      128.69131525960995
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 동구 백안동 527-7",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "백안동",
+            "mountain_yn": "N",
+            "main_address_no": "527",
+            "sub_address_no": "7",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003710",
+    "requestedCoordinate": [
+      35.09771065,
+      129.03208951
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "부산 중구 남포동4가 37-2",
+            "region_1depth_name": "부산",
+            "region_2depth_name": "중구",
+            "region_3depth_name": "남포동4가",
+            "mountain_yn": "N",
+            "main_address_no": "37",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005453",
+    "requestedCoordinate": [
+      37.5757223,
+      126.9867235
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 종로구 운니동 114-23",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "종로구",
+            "region_3depth_name": "운니동",
+            "mountain_yn": "N",
+            "main_address_no": "114",
+            "sub_address_no": "23",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000170",
+    "requestedCoordinate": [
+      35.590879004372184,
+      129.3054451768761
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "울산 중구 성안동 1594",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "중구",
+            "region_3depth_name": "성안동",
+            "mountain_yn": "N",
+            "main_address_no": "1594",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001347",
+    "requestedCoordinate": [
+      34.991064414189616,
+      126.67142507637823
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 나주시 진포동 192",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "나주시",
+            "region_3depth_name": "진포동",
+            "mountain_yn": "N",
+            "main_address_no": "192",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001076",
+    "requestedCoordinate": [
+      35.44063478642112,
+      127.2028004640456
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전북특별자치도 순창군 적성면 석산리 산 138",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "순창군",
+            "region_3depth_name": "적성면 석산리",
+            "mountain_yn": "Y",
+            "main_address_no": "138",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001380",
+    "requestedCoordinate": [
+      36.138043678128646,
+      126.49363428354263
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 서천군 서면 마량리 313-4",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "서천군",
+            "region_3depth_name": "서면 마량리",
+            "mountain_yn": "N",
+            "main_address_no": "313",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005473",
+    "requestedCoordinate": [
+      36.992681,
+      128.357639
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충북 단양군 단양읍 별곡리 162",
+            "region_1depth_name": "충북",
+            "region_2depth_name": "단양군",
+            "region_3depth_name": "단양읍 별곡리",
+            "mountain_yn": "N",
+            "main_address_no": "162",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003446",
+    "requestedCoordinate": [
+      37.66484538383633,
+      129.053236271164
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 강릉시 강동면 심곡리 162",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "강릉시",
+            "region_3depth_name": "강동면 심곡리",
+            "mountain_yn": "N",
+            "main_address_no": "162",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000281",
+    "requestedCoordinate": [
+      37.3601300672329,
+      126.92895596846938
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 군포시 산본동 1197",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "군포시",
+            "region_3depth_name": "산본동",
+            "mountain_yn": "N",
+            "main_address_no": "1197",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001643",
+    "requestedCoordinate": [
+      35.569836006784676,
+      128.15538224053194
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 합천군 합천읍 합천리 1394",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "합천군",
+            "region_3depth_name": "합천읍 합천리",
+            "mountain_yn": "N",
+            "main_address_no": "1394",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003493",
+    "requestedCoordinate": [
+      36.671707,
+      127.99535200000003
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 문경시 가은읍 완장리 96",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "문경시",
+            "region_3depth_name": "가은읍 완장리",
+            "mountain_yn": "N",
+            "main_address_no": "96",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001457",
+    "requestedCoordinate": [
+      35.93052637250661,
+      128.69492013143667
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 동구 평광동 1543-1",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "평광동",
+            "mountain_yn": "N",
+            "main_address_no": "1543",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001406",
+    "requestedCoordinate": [
+      35.20958835626583,
+      129.01776406433873
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "부산 북구 덕천동 809-5",
+            "region_1depth_name": "부산",
+            "region_2depth_name": "북구",
+            "region_3depth_name": "덕천동",
+            "mountain_yn": "N",
+            "main_address_no": "809",
+            "sub_address_no": "5",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005448",
+    "requestedCoordinate": [
+      37.5804456,
+      127.0089698
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 성북구 삼선동1가 305-54",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "성북구",
+            "region_3depth_name": "삼선동1가",
+            "mountain_yn": "N",
+            "main_address_no": "305",
+            "sub_address_no": "54",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004683",
+    "requestedCoordinate": [
+      35.58723913756464,
+      129.2669266525736
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "울산 울주군 범서읍 서사리 425-3",
+            "region_1depth_name": "울산",
+            "region_2depth_name": "울주군",
+            "region_3depth_name": "범서읍 서사리",
+            "mountain_yn": "N",
+            "main_address_no": "425",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001002",
+    "requestedCoordinate": [
+      35.222796442935426,
+      127.12891277707786
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 곡성군 오산면 단사리 441-3",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "곡성군",
+            "region_3depth_name": "오산면 단사리",
+            "mountain_yn": "N",
+            "main_address_no": "441",
+            "sub_address_no": "3",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003777",
+    "requestedCoordinate": [
+      35.44694977,
+      127.19961798
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전북특별자치도 순창군 적성면 석산리 33-14",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "순창군",
+            "region_3depth_name": "적성면 석산리",
+            "mountain_yn": "N",
+            "main_address_no": "33",
+            "sub_address_no": "14",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005486",
+    "requestedCoordinate": [
+      36.868886389,
+      126.609644266
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 당진시 행정동 842-9",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "당진시",
+            "region_3depth_name": "행정동",
+            "mountain_yn": "N",
+            "main_address_no": "842",
+            "sub_address_no": "9",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000002714",
+    "requestedCoordinate": [
+      36.13017201817459,
+      127.67701788173349
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충북 영동군 양산면 송호리 278-1",
+            "region_1depth_name": "충북",
+            "region_2depth_name": "영동군",
+            "region_3depth_name": "양산면 송호리",
+            "mountain_yn": "N",
+            "main_address_no": "278",
+            "sub_address_no": "1",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000023",
+    "requestedCoordinate": [
+      37.327286372729134,
+      128.37116888840148
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 평창군 평창읍 도돈리 29-2",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "평창군",
+            "region_3depth_name": "평창읍 도돈리",
+            "mountain_yn": "N",
+            "main_address_no": "29",
+            "sub_address_no": "2",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003437",
+    "requestedCoordinate": [
+      37.40147236964103,
+      126.9758793636876
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 안양시 동안구 관양동 1488-32",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "안양시 동안구",
+            "region_3depth_name": "관양동",
+            "mountain_yn": "N",
+            "main_address_no": "1488",
+            "sub_address_no": "32",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003653",
+    "requestedCoordinate": [
+      35.546150974,
+      128.504837751
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경남 창녕군 창녕읍 교리 1073-72",
+            "region_1depth_name": "경남",
+            "region_2depth_name": "창녕군",
+            "region_3depth_name": "창녕읍 교리",
+            "mountain_yn": "N",
+            "main_address_no": "1073",
+            "sub_address_no": "72",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001517",
+    "requestedCoordinate": [
+      36.600353,
+      129.412187
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경북 영덕군 병곡면 병곡리 58-4",
+            "region_1depth_name": "경북",
+            "region_2depth_name": "영덕군",
+            "region_3depth_name": "병곡면 병곡리",
+            "mountain_yn": "N",
+            "main_address_no": "58",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ],
+      "resolvedPathIndex": 1,
+      "resolvedCoordinate": [
+        36.600301,
+        129.411883
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005077",
+    "requestedCoordinate": [
+      35.87102500721812,
+      128.73359397053719
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "대구 동구 괴전동 162-4",
+            "region_1depth_name": "대구",
+            "region_2depth_name": "동구",
+            "region_3depth_name": "괴전동",
+            "mountain_yn": "N",
+            "main_address_no": "162",
+            "sub_address_no": "4",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003713",
+    "requestedCoordinate": [
+      35.049732,
+      128.960567
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "부산 사하구 다대동 1543",
+            "region_1depth_name": "부산",
+            "region_2depth_name": "사하구",
+            "region_3depth_name": "다대동",
+            "mountain_yn": "N",
+            "main_address_no": "1543",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005450",
+    "requestedCoordinate": [
+      37.5759348,
+      126.9839019
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "서울 종로구 안국동 175-92",
+            "region_1depth_name": "서울",
+            "region_2depth_name": "종로구",
+            "region_3depth_name": "안국동",
+            "mountain_yn": "N",
+            "main_address_no": "175",
+            "sub_address_no": "92",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001396",
+    "requestedCoordinate": [
+      34.19660424982116,
+      126.86583950087254
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "전남광주통합특별시 완도군 청산면 지리 1180",
+            "region_1depth_name": "전남광주통합특별시",
+            "region_2depth_name": "완도군",
+            "region_3depth_name": "청산면 지리",
+            "mountain_yn": "N",
+            "main_address_no": "1180",
+            "sub_address_no": "",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003772",
+    "requestedCoordinate": [
+      35.674773,
+      126.526574
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": {
+            "address_name": "전북특별자치도 부안군 변산면 송포길 71-1",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "부안군",
+            "region_3depth_name": "변산면",
+            "road_name": "송포길",
+            "underground_yn": "N",
+            "main_building_no": "71",
+            "sub_building_no": "1",
+            "building_name": "",
+            "zone_no": "56342"
+          },
+          "address": {
+            "address_name": "전북특별자치도 부안군 변산면 대항리 523-24",
+            "region_1depth_name": "전북특별자치도",
+            "region_2depth_name": "부안군",
+            "region_3depth_name": "변산면 대항리",
+            "mountain_yn": "N",
+            "main_address_no": "523",
+            "sub_address_no": "24",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000433",
+    "requestedCoordinate": [
+      36.891509180688494,
+      126.82322621687831
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "충남 당진시 신평면 운정리 214-5",
+            "region_1depth_name": "충남",
+            "region_2depth_name": "당진시",
+            "region_3depth_name": "신평면 운정리",
+            "mountain_yn": "N",
+            "main_address_no": "214",
+            "sub_address_no": "5",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000250",
+    "requestedCoordinate": [
+      37.634483758992246,
+      129.04486200859833
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "강원특별자치도 강릉시 옥계면 금진리 산 103-6",
+            "region_1depth_name": "강원특별자치도",
+            "region_2depth_name": "강릉시",
+            "region_3depth_name": "옥계면 금진리",
+            "mountain_yn": "Y",
+            "main_address_no": "103",
+            "sub_address_no": "6",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000316",
+    "requestedCoordinate": [
+      37.84372474621032,
+      127.06204827698366
+    ],
+    "response": {
+      "meta": {
+        "total_count": 1
+      },
+      "documents": [
+        {
+          "road_address": null,
+          "address": {
+            "address_name": "경기 양주시 덕정동 350-139",
+            "region_1depth_name": "경기",
+            "region_2depth_name": "양주시",
+            "region_3depth_name": "덕정동",
+            "mountain_yn": "N",
+            "main_address_no": "350",
+            "sub_address_no": "139",
+            "zip_code": ""
+          }
+        }
+      ]
+    }
+  }
+]
