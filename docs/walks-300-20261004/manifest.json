@@ -1,0 +1,449 @@
+{
+  "before": 217,
+  "added": 83,
+  "after": 300,
+  "officialGpx": 77,
+  "placeScopeOsm": 6,
+  "regions": {
+    "동구": 1,
+    "경주시": 1,
+    "순천시": 1,
+    "산청군": 1,
+    "양평군": 1,
+    "합천군": 1,
+    "강원": 7,
+    "경기": 7,
+    "경남": 6,
+    "경북": 6,
+    "광주": 3,
+    "대구": 6,
+    "대전": 1,
+    "부산": 5,
+    "서울": 6,
+    "울산": 5,
+    "전남": 6,
+    "전북": 6,
+    "제주": 2,
+    "충남": 6,
+    "충북": 5
+  },
+  "reviewedGpx": 150,
+  "geometryCheck": "continuous original nodes; distance ratio 0.7–1.3; max GPX jump 220m; new/existing overlap threshold 30%",
+  "courses": [
+    {
+      "id": "osm_665502044",
+      "name": "동구 대구 불로동 고분군 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "osm_1196816794",
+      "name": "경주시 빛누리정원 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "osm_1116526039",
+      "name": "순천시 순천 오천그린광장 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "osm_1217000590",
+      "name": "산청군 산청 동의보감촌 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "osm_832185825",
+      "name": "양평군 양평 두물머리 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "osm_1036807544",
+      "name": "합천군 신소양체육공원 보행로 산책 코스",
+      "petStatus": "official_place_scope"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000960",
+      "name": "강원 인제군 소양강둘레길 2코스 내린길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005433",
+      "name": "경기 군포시 군포수릿길 도심테마길 공단옛길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001642",
+      "name": "경남 합천군 황강마실길 2코스 농촌경관길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000828",
+      "name": "경북 의성군 산수유마을 생태탐방로",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003667",
+      "name": "광주 동구 도심건강길 3코스 푸른길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000475",
+      "name": "대구 중구 대구 중구 골목투어 2코스 근대문화골목",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003696",
+      "name": "대전 중구 역사문화길 뿌리공원 둘레길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003273",
+      "name": "부산 동래구 얼쑤옛길 1코스 동래읍성 뿌리길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000004081",
+      "name": "서울 강서구 개화산자락길(무장애 숲길)",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001424",
+      "name": "울산 동구 큰마을저수지 둘레길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001397",
+      "name": "전남 완도군 청산도 슬로길 11코스 미로길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001364",
+      "name": "전북 전주시 천년전주 마실길 노송천 가는길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001262",
+      "name": "제주 서귀포시 제주올레길 10-1코스(가파도 올레)",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001035",
+      "name": "충남 부여군 장암 송죽 억새길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001310",
+      "name": "충북 증평군 증평둘레길 삼기저수지 등잔길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001659",
+      "name": "강원 평창군 효석문학100리길 5-2코스 평창강따라 걷는 길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001464",
+      "name": "경기 평택시 평택호관광지 수변테크 사색의길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003643",
+      "name": "경남 산청군 동의보감 허준순례길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001026",
+      "name": "경북 경주시 양동마을 녹색길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000002859",
+      "name": "광주 남구 양림동 둘레길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000478",
+      "name": "대구 중구 대구 중구 골목투어 5코스 남산 100년 향수길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000002684",
+      "name": "부산 동구 초량 이바구길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005449",
+      "name": "서울 종로구 골목길탐방코스 김마리아길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000004252",
+      "name": "울산 북구 강동사랑길 7-A코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000837",
+      "name": "전남 진도군 삼별초역사 체험탐방로 굼갑 연대봉 숲길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003769",
+      "name": "전북 완주군 모악산 마실길 완주구간 1코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003809",
+      "name": "제주 제주시 제주 지질트레일 김녕코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001383",
+      "name": "충남 서천군 철새나그네길 5코스 해찬솔길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005474",
+      "name": "충북 단양군 느림보강물길 5코스 수양개역사문화길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000243",
+      "name": "강원 강릉시 관동팔경 녹색경관길 안목 남항진 해변길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000004911",
+      "name": "경기 화성시 화성실크로드 2-1코스 제비꼬리길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001649",
+      "name": "경남 양산시 황산강 베랑길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005104",
+      "name": "경북 성주군 성주 별고을길 2코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001097",
+      "name": "광주 서구 오월인권길 열정코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000479",
+      "name": "대구 동구 대구올레(팔공산올레길) 1코스 북지장사 가는길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005452",
+      "name": "서울 종로구 골목길탐방코스 익선동 A코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003523",
+      "name": "울산 동구 해안누리길 대왕암길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001463",
+      "name": "전남 장성군 편백숲 트레킹길 4코스[임도]",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005254",
+      "name": "전북 고창군 운곡습지생태길 1코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003848",
+      "name": "충남 예산군 느린꼬부랑길 3코스 사랑길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003887",
+      "name": "충북 괴산군 산막이옛길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000822",
+      "name": "강원 영월군 산꼬라데이길 예밀길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000280",
+      "name": "경기 군포시 군포수릿길 도심테마길 도장공원길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001641",
+      "name": "경남 합천군 황강마실길 1코스 황강마실길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000004655",
+      "name": "경북 성주군 칠선-용성간 숲길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001456",
+      "name": "대구 동구 팔공산 왕건길 5코스 고진감래길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003710",
+      "name": "부산 영도구 부산원도심 스토리투어 영도다리길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005453",
+      "name": "서울 종로구 골목길탐방코스 익선동 B코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000170",
+      "name": "울산 중구 걷고 싶은 중구 둘레길 3코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001347",
+      "name": "전남 나주시 진포동 녹색 석관황포길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001076",
+      "name": "전북 순창군 예향천리 마실길 순창 3코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001380",
+      "name": "충남 서천군 철새나그네길 2코스 해지게길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005473",
+      "name": "충북 단양군 느림보강물길 4코스 상상의거리",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003446",
+      "name": "강원 강릉시 관동팔경 녹색경관길 정동진 해안산악길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000281",
+      "name": "경기 군포시 군포수릿길 도심테마길 느티나무길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001643",
+      "name": "경남 합천군 황강마실길 3코스 생태하천길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003493",
+      "name": "경북 문경시 선유동천 나들길 1코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001457",
+      "name": "대구 동구 팔공산 왕건길 6코스 호연지기길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001406",
+      "name": "부산 북구 초록누리길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005448",
+      "name": "서울 종로구 골목길탐방코스 창신동 B코스(봉제마을)",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000004683",
+      "name": "울산 중구 걷고 싶은 중구 둘레길 2코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001002",
+      "name": "전남 곡성군 심청 효행길 3코스 삼백석길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003777",
+      "name": "전북 순창군 예향천리 마실길 순창 1코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005486",
+      "name": "충남 당진시 내포문화숲길 원효깨달음길 7-1코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000002714",
+      "name": "충북 영동군 양산팔경 금강둘레길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000023",
+      "name": "강원 평창군 happy700길 매화마을 녹색길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003437",
+      "name": "경기 안양시 경기옛길 삼남길 2코스 인덕원길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003653",
+      "name": "경남 창녕군 송현이길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001517",
+      "name": "경북 영덕군 해안누리길 고래불 명사이십리길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005077",
+      "name": "대구 동구 안심창조밸리 천천둘레길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003713",
+      "name": "부산 사하구 해안누리길 몰운대길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000005450",
+      "name": "서울 종로구 골목길탐방코스 3.1운동길 A코스",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000001396",
+      "name": "전남 완도군 청산도 슬로길 10코스 노을길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000003772",
+      "name": "전북 부안군 변산마실길 2코스 노루목 상사화길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000433",
+      "name": "충남 당진시 바다사랑길",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000250",
+      "name": "강원 강릉시 관동팔경 녹색경관길 헌화로",
+      "petStatus": "needs_confirmation"
+    },
+    {
+      "id": "duru_T_CRS_MNG0000000316",
+      "name": "경기 양주시 김삿갓 풍류길 2구간 청담천길",
+      "petStatus": "needs_confirmation"
+    }
+  ]
+}
