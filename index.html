@@ -1748,6 +1748,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
  html.galaxy-phone .home-update-anchor:has(.home-update-toast[hidden]){margin-bottom:0}
 }
 </style>
+<style>#admin-overlay .member-provider-tag{display:inline-block;margin-top:5px;padding:3px 8px;border:1px solid var(--ui-border);border-radius:7px;font:600 11px/1.6 system-ui,sans-serif;background:var(--sand);color:var(--pine-deep)}#admin-overlay .member-extra-filters label{font:12px/1.7 system-ui,sans-serif;display:flex;gap:7px;align-items:center;flex-wrap:wrap}#admin-overlay .member-extra-filters input[type="date"]{min-width:135px;flex:none}#member-summary button{font-weight:650}#acc-today #admin-summary{margin-top:12px!important}</style>
 </head>
 <body>
 
@@ -2586,7 +2587,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         <!-- 항상 보이는 핵심 요약 -->
         <section class="admin-traffic-panel"><h4>기간별 방문 통계</h4><div class="admin-tools"><select id="admin-traffic-period" aria-label="통계 기간"><option value="1">오늘</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select><button id="admin-traffic-export" type="button" disabled>일별 통계 CSV</button></div><p>한국 시간 기준 · 방문자는 브라우저 식별자 기준으로 실제 인원과 다를 수 있어요.</p><div id="admin-traffic-result" aria-live="polite"></div><div id="admin-bot-result" aria-live="polite"></div></section><div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
 
-        <div style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div id="admin-live-activity" style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:10px;">
             <span id="live-visitor-dot" style="width:10px; height:10px; border-radius:50%; background:#3E9142; display:inline-block; box-shadow:0 0 0 4px rgba(62,145,66,.18);"></span>
             <div>
@@ -2673,7 +2674,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
               <button type="button" id="members-refresh-btn" class="pin-btn" style="width:auto;padding:0 12px;font-size:12px;">↻ 회원 새로고침</button>
               <button type="button" id="export-members-csv-btn" class="pin-btn" style="width:auto; padding:0 16px; font-size:12.5px;">📥 CSV</button>
             </div>
-            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 가입</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 가입순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="lastseen">최근 접속순</option><option value="name">이름순</option></select></div><p id="member-filter-status" aria-live="polite"></p><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
+            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 가입</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 가입순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="lastseen">최근 접속순</option><option value="name">이름순</option></select></div><div class="admin-tools member-extra-filters"><select id="member-provider-filter" aria-label="가입 방식"><option value="all">모든 가입 방식</option><option value="google">구글 가입</option><option value="kakao">카카오 가입</option><option value="other">기타 가입 방식</option></select><select id="member-activity-filter" aria-label="회원 활동 상태"><option value="all">모든 활동 상태</option><option value="recent">최근 7일 접속</option><option value="inactive">30일 이상 미접속</option><option value="never">로그인 기록 없음</option></select><label>가입일부터 <input type="date" id="member-date-from" aria-label="가입일 시작"></label><label>가입일까지 <input type="date" id="member-date-to" aria-label="가입일 종료"></label><button id="member-filters-reset" type="button">필터 초기화</button><button id="export-members-filtered-btn" type="button" disabled>검색 결과 CSV</button></div><p id="member-filter-status" aria-live="polite"></p><div id="member-summary" class="admin-tools" aria-label="회원 가입 방식 요약"></div><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
           </div>
         </div>
 
@@ -7507,10 +7508,32 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let memberVisitMap = {};
   let memberLastSeenMap={};
   let memberListRequest=0;
+  function memberProviderLabel(provider){return ({google:'구글',kakao:'카카오',email:'이메일',phone:'전화번호'})[provider]||'기타';}
+  function memberActivityAt(member){return Math.max(memberLastSeenMap[member.owner_id]||0,Date.parse(member.last_sign_in_at)||0);}
+  function getFilteredMembers(){
+    const value=id=>document.getElementById(id).value;
+    const q=value('all-member-search').trim().toLowerCase(),role=value('member-role-filter'),provider=value('member-provider-filter'),activity=value('member-activity-filter'),from=value('member-date-from'),to=value('member-date-to'),sort=value('member-sort');
+    const now=Date.now();
+    if(from&&to&&from>to)return [];
+    return allMembersCache.filter(m=>{
+      const age=now-Date.parse(m.created_at),admin=isAdminUser(m.owner_id),day=Number.isFinite(Date.parse(m.created_at))?adminDayKey(m.created_at):'',active=memberActivityAt(m),inactiveAge=active?now-active:Infinity;
+      return `${m.nickname||''} ${m.owner_id||''} ${memberProviderLabel(m.signup_provider)}`.toLowerCase().includes(q)
+        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000)
+        &&(provider==='all'||provider==='other'&&!['google','kakao'].includes(m.signup_provider)||provider===m.signup_provider)
+        &&(activity==='all'||activity==='recent'&&active>0&&inactiveAge<=604800000||activity==='inactive'&&active>0&&inactiveAge>=2592000000||activity==='never'&&!m.last_sign_in_at)
+        &&(!(from||to)||!!day)&&(!from||day>=from)&&(!to||day<=to);
+    }).sort((a,b)=>sort==='lastseen'?memberActivityAt(b)-memberActivityAt(a):sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
+  }
+  function renderMemberSummary(){
+    const el=document.getElementById('member-summary');
+    const counts=[['all','전체',allMembersCache.length],['google','구글',allMembersCache.filter(m=>m.signup_provider==='google').length],['kakao','카카오',allMembersCache.filter(m=>m.signup_provider==='kakao').length]];
+    el.innerHTML=counts.map(([provider,label,count])=>`<button type="button" data-member-provider="${provider}">${label} ${count.toLocaleString()}명</button>`).join('');
+    el.querySelectorAll('[data-member-provider]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('member-provider-filter').value=button.dataset.memberProvider;memberPage=1;applyMemberFilters();}));
+  }
   async function readSignupMembers(){
     const rows=[];let after=null;
     while(true){
-      const {data,error}=await sb.rpc('admin_signup_members',{p_after:after,p_limit:500});
+      const {data,error}=await sb.rpc('admin_signup_members_v2',{p_after:after,p_limit:500});
       if(error)throw error;
       const page=data||[];rows.push(...page);
       if(page.length<500)return rows;
@@ -7530,7 +7553,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const countEl = document.getElementById('all-member-count');
     if(!el) return;
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    document.getElementById('export-members-csv-btn').disabled=true;
+    document.getElementById('export-members-csv-btn').disabled=true;document.getElementById('export-members-filtered-btn').disabled=true;
     try{
       const [profilesRes, pointsRes, visitsRes] = await Promise.all([
         readSignupMembers().then(data=>({data,error:null})),
@@ -7552,11 +7575,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         memberVisitMap[v.owner_id] = (memberVisitMap[v.owner_id] || 0) + 1;
       });
       if(countEl) countEl.textContent = allMembersCache.length;
-      applyMemberFilters();
-      document.getElementById('export-members-csv-btn').disabled=false;
+      renderMemberSummary();applyMemberFilters();
+      document.getElementById('export-members-csv-btn').disabled=false;document.getElementById('export-members-filtered-btn').disabled=false;
     }catch(e){
       if(request!==memberListRequest||viewer!==myDeviceId)return;
-      allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};
+      allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};document.getElementById('member-summary').textContent='';
       if(countEl)countEl.textContent='–';
       document.getElementById('member-filter-status').textContent='조회 실패 · 새로고침해 주세요.';
       document.getElementById('member-page-prev').disabled=true;
@@ -7587,9 +7610,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const visitCount = memberVisitMap[m.owner_id] || 0;
       return `
         <article class="admin-member-card">
-          <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''}</small></div></header>
-          <dl><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
-          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>최근 접속은 로그인 상태의 화면 조회 시각입니다. 화면 조회가 없으면 마지막 로그인 시각을 표시합니다. 현재 온라인 상태와 다를 수 있어요.</p></details>
+          <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
+          <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
+          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 로그인 상태의 화면 조회 시각입니다. 화면 조회가 없으면 마지막 로그인 시각을 표시합니다. 현재 온라인 상태와 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
         </article>`;
@@ -7664,18 +7687,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const text=String(value??'');
     return /^[\s]*[=+@-]/.test(text)||/^[\t\r\n]/.test(text) ? "'"+text : text;
   }
-  function exportMembersCSV(){
+  function exportMembersCSV(filtered=false){
     if(!isAdminUser(myDeviceId)||document.getElementById('export-members-csv-btn').disabled)return;
-    if(!allMembersCache.length){ toast('내보낼 회원이 없어요'); return; }
-    const rows = [['닉네임','가입일','프로필 수정일','포인트','배지']];
-    allMembersCache.forEach(m=>{
-      rows.push([
-        m.nickname || '',
-        m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '',
-        m.updated_at ? new Date(m.updated_at).toLocaleDateString('ko-KR') : '',
-        memberPointsMap[m.owner_id] || 0,
-        m.badge || ''
-      ]);
+    const list=filtered?getFilteredMembers():allMembersCache;
+    if(!list.length){toast('내보낼 회원이 없어요');return;}
+    const rows = [['닉네임','회원 ID','가입 방식','가입일','최근 로그인(KST)','화면 조회','포인트','배지']];
+    list.forEach(m=>{
+      rows.push([m.nickname||'',m.owner_id,memberProviderLabel(m.signup_provider),m.created_at?new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}):'',m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'',memberVisitMap[m.owner_id]||0,memberPointsMap[m.owner_id]||0,m.badge||'']);
     });
     const csv = '\uFEFF' + rows.map(r => r.map(v => `"${csvSafeCell(v).replace(/"/g,'""')}"`).join(',')).join('\n');
     const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
@@ -7686,23 +7704,21 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
   }
-  document.getElementById('export-members-csv-btn').addEventListener('click', exportMembersCSV);
+  document.getElementById('export-members-csv-btn').addEventListener('click',()=>exportMembersCSV(false));
+  document.getElementById('export-members-filtered-btn').addEventListener('click',()=>exportMembersCSV(true));
   document.getElementById('all-member-search').addEventListener('input',()=>{memberPage=1;applyMemberFilters();});
 
  let memberPage=1;
  function applyMemberFilters(){
-  const q=document.getElementById('all-member-search').value.trim().toLowerCase(),role=document.getElementById('member-role-filter').value,sort=document.getElementById('member-sort').value;
-  const list=allMembersCache.filter(m=>{
-   const age=Date.now()-Date.parse(m.created_at),admin=isAdminUser(m.owner_id);
-   return `${m.nickname||''} ${m.owner_id||''}`.toLowerCase().includes(q)&&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000);
-  }).sort((a,b)=>sort==='lastseen'?(memberLastSeenMap[b.owner_id]||Date.parse(b.last_sign_in_at)||0)-(memberLastSeenMap[a.owner_id]||Date.parse(a.last_sign_in_at)||0):sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
+  const list=getFilteredMembers();
   const pages=Math.max(1,Math.ceil(list.length/20));memberPage=Math.min(memberPage,pages);
   paintAllMemberList(list.slice((memberPage-1)*20,memberPage*20));
-  document.getElementById('member-filter-status').textContent=`전체 ${allMembersCache.length}명 · 검색 결과 ${list.length}명 (CSV는 전체 회원)`;
+  document.getElementById('member-filter-status').textContent=`전체 ${allMembersCache.length}명 · 검색 결과 ${list.length}명 (전체 CSV / 검색 결과 CSV 선택 가능)`;
   document.getElementById('member-page-label').textContent=`${memberPage} / ${pages}`;
   document.getElementById('member-page-prev').disabled=memberPage<=1;document.getElementById('member-page-next').disabled=memberPage>=pages;
  }
- for(const id of ['member-role-filter','member-sort'])document.getElementById(id).addEventListener('change',()=>{memberPage=1;applyMemberFilters();});
+ for(const id of ['member-role-filter','member-sort','member-provider-filter','member-activity-filter','member-date-from','member-date-to'])document.getElementById(id).addEventListener('change',()=>{memberPage=1;applyMemberFilters();});
+ document.getElementById('member-filters-reset').addEventListener('click',()=>{for(const id of ['all-member-search','member-date-from','member-date-to'])document.getElementById(id).value='';for(const id of ['member-role-filter','member-provider-filter','member-activity-filter'])document.getElementById(id).value='all';document.getElementById('member-sort').value='new';memberPage=1;applyMemberFilters();});
  document.getElementById('member-page-prev').addEventListener('click',()=>{memberPage=Math.max(1,memberPage-1);applyMemberFilters();});
  document.getElementById('member-page-next').addEventListener('click',()=>{memberPage++;applyMemberFilters();});
  (function(){
@@ -7710,6 +7726,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
   const traffic=root.querySelector('.admin-traffic-panel');
   traffic.before(today);
+  const todayBody=document.getElementById('acc-today');
+  todayBody.prepend(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'));
   const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';traffic.before(details);details.append(summary,traffic);
   const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
   for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
@@ -8359,6 +8377,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </script>
 </body>
 </html>
+
 
 
 
