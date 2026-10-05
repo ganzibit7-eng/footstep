@@ -7606,13 +7606,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       const isNew = m.created_at && (Date.now() - new Date(m.created_at).getTime()) < 7*86400000;
       const isAdmin = isAdminUser(m.owner_id);
       const points = memberPointsMap[m.owner_id] || 0;
-      const lastActive = memberLastSeenMap[m.owner_id]?new Date(memberLastSeenMap[m.owner_id]).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+' (로그인)':'기록 없음';
+      const activityAt=memberActivityAt(m),activitySource=activityAt&&(Date.parse(m.last_sign_in_at)||0)>=(memberLastSeenMap[m.owner_id]||0)?'로그인':'화면 조회';
+      const lastActive=activityAt?new Date(activityAt).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+' ('+activitySource+')':'기록 없음';
       const visitCount = memberVisitMap[m.owner_id] || 0;
       return `
         <article class="admin-member-card">
           <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
           <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
-          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 로그인 상태의 화면 조회 시각입니다. 화면 조회가 없으면 마지막 로그인 시각을 표시합니다. 현재 온라인 상태와 다를 수 있어요.</p></details>
+          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 마지막 로그인과 통계에 포함된 화면 조회 중 더 최근 시각입니다. 관리자·봇 등 통계 제외 조회는 포함되지 않으며, 현재 온라인 상태와 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
         </article>`;
