@@ -2664,7 +2664,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 
         <!-- 전체 가입 회원 -->
         <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="allmembers">
+          <p id="member-auto-status" style="padding:0 18px;font-size:12px;color:var(--muted)" aria-live="polite">관리자 화면에서 10초마다 신규 가입을 자동 확인합니다.</p>
+<div class="admin-accordion-head" data-accordion="allmembers">
             <h4>👥 회원 관리 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
           </div>
           <div class="admin-accordion-body" id="acc-allmembers" style="display:none;">
@@ -7546,6 +7547,32 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const button=document.getElementById('members-refresh-btn');if(button.disabled)return;
     button.disabled=true;try{await renderAllMemberList();}finally{button.disabled=false;}
   });
+
+  let memberAutoRefreshBusy=false;
+  async function refreshSignupMembersAutomatically(){
+    const overlay=document.getElementById('admin-overlay');
+    if(memberAutoRefreshBusy||document.hidden||!navigator.onLine||!overlay?.classList.contains('show')||!isAdminUser(myDeviceId)||document.getElementById('members-refresh-btn').disabled)return;
+    memberAutoRefreshBusy=true;
+    const viewer=myDeviceId,request=memberListRequest;
+    try{
+      const rows=await readSignupMembers();
+      if(request!==memberListRequest||viewer!==myDeviceId||!isAdminUser(myDeviceId)||!overlay.classList.contains('show'))return;
+      if(JSON.stringify(rows)!==JSON.stringify(allMembersCache)){
+        allMembersCache=rows;
+        document.getElementById('all-member-count').textContent=rows.length;
+        renderMemberSummary();applyMemberFilters();
+        document.getElementById('export-members-csv-btn').disabled=false;
+        document.getElementById('export-members-filtered-btn').disabled=false;
+      }
+      document.getElementById('member-auto-status').textContent='10초마다 가입 회원 확인 · '+new Date().toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul'});
+    }catch(e){
+      if(viewer===myDeviceId&&overlay.classList.contains('show'))document.getElementById('member-auto-status').textContent='자동 확인 실패 · 기존 목록 유지 · 다시 확인 중';
+    }finally{memberAutoRefreshBusy=false;}
+  }
+  setInterval(refreshSignupMembersAutomatically,10000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshSignupMembersAutomatically();});
+  window.addEventListener('online',refreshSignupMembersAutomatically);
+
   async function renderAllMemberList(){
     if(!isAdminUser(myDeviceId))return;
     const request=++memberListRequest,viewer=myDeviceId;
@@ -8278,6 +8305,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     renderAdminList();
     renderPendingApprovals();
     renderMemberList();
+    renderAllMemberList();
     renderAdminTraffic();
     renderLiveVisitorCount();
     const managerWrap = document.getElementById('manager-section-wrap');
@@ -8291,6 +8319,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     // 실시간 접속자만 5초마다 자동 갱신 (다른 통계는 "지금 새로고침" 버튼으로 필요할 때만 갱신 — 불필요한 서버 요청 방지)
     liveVisitorInterval = setInterval(renderLiveVisitorCount, 5000);
     document.getElementById('admin-overlay').classList.add('show');
+    refreshSignupMembersAutomatically();
     document.querySelector('#admin-overlay .modal-inner-wrap').scrollTop=0;
     document.querySelector('#admin-overlay .modal').scrollTop=0;
   }
