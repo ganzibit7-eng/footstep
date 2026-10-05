@@ -1731,7 +1731,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <link rel="stylesheet" href="/home-premium.css?v=20261004-restore-top">
 <style>.course-pet-check{font:600 13px/1.6 system-ui,sans-serif!important;background:#fff3d8;color:#755018;padding:9px 12px;border:1px solid #e9d3a9;border-radius:10px;margin:8px 0}.course-pet-check[hidden]{display:none}</style>
 <style>
-.home-updates{background:#f6f0e8;border-bottom:1px solid #e6ddd1;padding:12px 0;color:#4e4136}.home-updates details{border:1px solid #e4d9cb;border-radius:12px;background:#fffaf3;padding:12px 16px}.home-updates summary{cursor:pointer;font-size:13px;line-height:1.7}.home-updates summary>span:first-child{font-weight:750;color:#934529}.home-updates time{font-variant-numeric:tabular-nums;margin:0 10px;color:#786b5e}.update-more{float:right;font-size:12px;color:#8b5139}.update-history{border-top:1px solid #e8ded1;margin-top:12px;padding-top:4px}.update-history article+article{border-top:1px solid #eee4d8}.update-history h2{font-size:14px;margin:14px 0 8px}.update-history h2 time{margin:0}.update-history ul{padding-left:20px;font-size:13px;line-height:1.85}.update-history strong{color:#934529}.update-history p{font-size:12px;line-height:1.7;color:#776b60;margin-bottom:14px}@media(max-width:640px){.update-preview{display:block}.update-more{float:none;display:block}.home-updates{padding:9px 0}.home-updates details{padding:10px 12px}}
+.home-update-anchor{position:relative;isolation:isolate}.home-update-anchor:has(.home-update-toast:not([hidden]))>#hero-eyebrow{visibility:hidden}.home-update-toast{position:absolute;left:0;top:0;width:min(100%,470px);height:44px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:4px 5px 4px 12px;background:#fffaf3;border:1px solid #ddcdbb;border-radius:12px;box-shadow:0 5px 18px rgba(80,56,31,.1);z-index:5;color:#4e4136}.home-update-toast[hidden]{display:none}.home-update-toast p{margin:0;flex:1;min-width:0;font-size:11px;line-height:16px}.home-update-toast strong{font-size:12px;color:#934529}.home-update-toast time{margin-left:8px;color:#766655;font-variant-numeric:tabular-nums}.home-update-toast p span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.home-update-toast button{cursor:pointer;border:0;background:transparent;color:#744936;padding:4px;font:600 11px/1.4 system-ui,sans-serif;flex:none}.home-update-toast .update-close{width:36px;height:36px;font-size:22px}.home-update-toast button:focus-visible,.update-dialog button:focus-visible{outline:2px solid #934529;outline-offset:2px}.update-dialog{width:min(560px,calc(100vw - 32px));max-height:75dvh;box-sizing:border-box;padding:20px;border:1px solid #e0d3c4;border-radius:18px;background:#fffaf3;color:#4e4136;overflow:auto}.update-dialog::backdrop{background:rgba(35,31,26,.38)}.update-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.update-dialog-head h2{font-size:17px;margin:0}.update-dialog-head button{width:40px;height:40px;border:0;background:transparent;cursor:pointer;font-size:24px;color:#744936}.update-history{margin-top:12px;border-top:1px solid #e6dacd}.update-history article+article{border-top:1px solid #e6dacd}.update-history h2{font-size:14px;margin:14px 0 8px}.update-history ul{padding-left:20px;font-size:13px;line-height:1.85}.update-history strong{color:#934529}.update-history p{font-size:12px;line-height:1.7;color:#776b60}
 </style>
 </head>
 <body>
@@ -1766,21 +1766,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </nav>
 
 
-<section class="app-page active home-updates" data-page-section="home" aria-label="발자국 업데이트 안내">
-  <div class="wrap">
-    <details>
-      <summary><span>새로워진 발자국</span> <time datetime="2026-10-05">2026.10.05</time> <span class="update-preview">위치 권한 · 오프라인 산책 기록 개선</span><span class="update-more">업데이트 내역 보기</span></summary>
-      <div class="update-history">
-        <article><h2><time datetime="2026-10-05">2026.10.05</time> · 산책 기록 개선</h2><ul>
-          <li><strong>추가</strong> 오프라인 기기 저장과 새로고침 후 기록 복구. 인터넷 연결 후 내 기록에 저장할 수 있어요.</li>
-          <li><strong>수정</strong> 시작 버튼을 누르면 위치를 먼저 요청해요. 권한 차단 시 설정 방법을 안내해요.</li>
-          <li><strong>수정</strong> 다른 앱에서 돌아오면 GPS를 다시 연결해요. 수신되지 않은 구간의 거리는 추정하지 않아요.</li>
-        </ul><p>웹 브라우저는 다른 앱 사용·화면 잠금 중 GPS가 중단될 수 있어요. 오프라인 지도 배경에는 인터넷이 필요하며, 첫 방문은 온라인으로 해 주세요.</p></article>
-        <article><h2><time datetime="2026-10-05">2026.10.05</time> · 장소 정보 보강</h2><ul><li><strong>추가</strong> 주소와 반려견 동반 조건을 확인할 수 있는 장소 20곳.</li><li><strong>보강</strong> 산책 코스 7곳에 사진 연결. 장소별 동반 조건은 방문 전에 다시 확인해 주세요.</li></ul></article>
-      </div>
-    </details>
-  </div>
-</section>
+
 
 <section class="hero app-page active" data-page-section="home">
   <svg class="contour-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1868,7 +1854,14 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <!-- 스타일 3: 카드형 (기본값) -->
     <div class="hero-copy" id="hero-style-3" style="max-width:640px;">
       <p id="hero-greeting" style="display:none; font-family:'Jua',sans-serif; font-size:15px; color:var(--gold); margin:0 0 8px;"></p>
+      <div class="home-update-anchor">
       <span class="eyebrow" id="hero-eyebrow">오늘도 같이 걷자 🐾</span>
+      <aside class="home-update-toast" id="home-update-toast" aria-label="최신 업데이트">
+        <p><strong>발자국 업데이트</strong><time datetime="2026-10-05">2026.10.05</time><span>위치 권한 · 오프라인 기록 · 홈 안내창 개선</span></p>
+        <button type="button" id="home-update-open" aria-haspopup="dialog">내역 보기</button>
+        <button type="button" class="update-close" id="home-update-close" aria-label="홈을 다시 방문할 때까지 업데이트 안내 닫기">×</button>
+      </aside>
+      </div>
       <h1 id="hero-title"><span class="hero-title-line">우리 아이가 좋아할</span><em class="hero-title-line">산책길을 찾아요</em></h1>
       <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">산책 코스부터 반려견 동반 장소까지, 가까운 곳에서 새로운 즐거움을 발견해보세요.</p>
 
@@ -6798,6 +6791,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const VALID_PAGES = ['home','map','list','walk','register','etiquette','privacy','terms'];
   function showPage(page, opts){
     opts = opts || {};
+    if(page==='home'&&currentPage!=='home'){const notice=document.getElementById('home-update-toast');if(notice)notice.hidden=false;}
     const availablePages = new Set(Array.from(document.querySelectorAll('.app-page[data-page-section]'),el=>el.dataset.pageSection));
     if(!availablePages.has(page)) page = 'home';
     document.querySelectorAll('.app-page').forEach(el => el.classList.remove('active'));
@@ -8311,6 +8305,24 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 })();
 </script>
 <link rel="stylesheet" href="/readability.css?v=20261003-footer">
+<dialog class="update-dialog" id="home-update-dialog" aria-labelledby="home-update-dialog-title"><div class="update-dialog-head"><h2 id="home-update-dialog-title">발자국 업데이트 내역</h2><button type="button" id="home-update-dialog-close" aria-label="업데이트 내역 닫기">×</button></div><div class="update-history">
+        <article><h2><time datetime="2026-10-05">2026.10.05</time> · 산책 기록 개선</h2><ul>
+          <li><strong>수정</strong> 홈 업데이트 안내를 작은 창으로 표시하고 X로 닫을 수 있도록 개선했어요.</li>
+          <li><strong>추가</strong> 오프라인 기기 저장과 새로고침 후 기록 복구. 인터넷 연결 후 내 기록에 저장할 수 있어요.</li>
+          <li><strong>수정</strong> 시작 버튼을 누르면 위치를 먼저 요청해요. 권한 차단 시 설정 방법을 안내해요.</li>
+          <li><strong>수정</strong> 다른 앱에서 돌아오면 GPS를 다시 연결해요. 수신되지 않은 구간의 거리는 추정하지 않아요.</li>
+        </ul><p>웹 브라우저는 다른 앱 사용·화면 잠금 중 GPS가 중단될 수 있어요. 오프라인 지도 배경에는 인터넷이 필요하며, 첫 방문은 온라인으로 해 주세요.</p></article>
+        <article><h2><time datetime="2026-10-05">2026.10.05</time> · 장소 정보 보강</h2><ul><li><strong>추가</strong> 주소와 반려견 동반 조건을 확인할 수 있는 장소 20곳.</li><li><strong>보강</strong> 산책 코스 7곳에 사진 연결. 장소별 동반 조건은 방문 전에 다시 확인해 주세요.</li></ul></article>
+      </div></dialog>
+<script>
+(function(){
+ const notice=document.getElementById('home-update-toast'),dialog=document.getElementById('home-update-dialog');
+ document.getElementById('home-update-close').addEventListener('click',()=>{notice.hidden=true;});
+ document.getElementById('home-update-open').addEventListener('click',()=>dialog.showModal());
+ document.getElementById('home-update-dialog-close').addEventListener('click',()=>dialog.close());
+})();
+</script>
 </body>
 </html>
+
 
