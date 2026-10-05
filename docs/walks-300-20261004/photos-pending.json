@@ -126,22 +126,8 @@
     "photoStatus": "needs_verified_commercial_photo"
   },
   {
-    "id": "duru_T_CRS_MNG0000005254",
-    "name": "전북 고창군 운곡습지생태길 1코스",
-    "petStatus": "needs_confirmation",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
     "id": "duru_T_CRS_MNG0000003848",
     "name": "충남 예산군 느린꼬부랑길 3코스 사랑길",
-    "petStatus": "needs_confirmation",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
-    "id": "duru_T_CRS_MNG0000003887",
-    "name": "충북 괴산군 산막이옛길",
     "petStatus": "needs_confirmation",
     "addressStatus": "complete",
     "photoStatus": "needs_verified_commercial_photo"
@@ -259,13 +245,6 @@
     "photoStatus": "needs_verified_commercial_photo"
   },
   {
-    "id": "duru_T_CRS_MNG0000002714",
-    "name": "충북 영동군 양산팔경 금강둘레길",
-    "petStatus": "needs_confirmation",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
     "id": "duru_T_CRS_MNG0000000023",
     "name": "강원 평창군 happy700길 매화마을 녹색길",
     "petStatus": "needs_confirmation",
@@ -287,38 +266,10 @@
     "photoStatus": "needs_verified_commercial_photo"
   },
   {
-    "id": "duru_T_CRS_MNG0000000433",
-    "name": "충남 당진시 바다사랑길",
-    "petStatus": "needs_confirmation",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
-    "id": "duru_T_CRS_MNG0000000250",
-    "name": "강원 강릉시 관동팔경 녹색경관길 헌화로",
-    "petStatus": "needs_confirmation",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
     "id": "duru_T_CRS_MNG0000000316",
     "name": "경기 양주시 김삿갓 풍류길 2구간 청담천길",
     "petStatus": "needs_confirmation",
     "addressStatus": "complete",
     "photoStatus": "needs_verified_commercial_photo"
-  },
-  {
-    "id": "osm_1217000590",
-    "name": "산청군 산청 동의보감촌 보행로 산책 코스",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo",
-    "reason": "Source carries conflicting usage restrictions; excluded pending clarification."
-  },
-  {
-    "id": "duru_T_CRS_MNG0000003643",
-    "name": "경남 산청군 동의보감 허준순례길",
-    "addressStatus": "complete",
-    "photoStatus": "needs_verified_commercial_photo",
-    "reason": "Source carries conflicting usage restrictions; excluded pending clarification."
   }
 ]

@@ -6,7 +6,7 @@ import {execFileSync} from 'node:child_process';
 import os from 'node:os';
 const manifest=JSON.parse(await fs.readFile('docs/walks-300-20261004/photo-downloads.json','utf8'));
 const courses=new Map(JSON.parse(await fs.readFile('docs/walks-300-20261004/manifest.json','utf8')).courses.map(c=>[c.id,c.name]));
-const hosts=new Set(['upload.wikimedia.org','thumb.wikimedia.org','www.kogl.or.kr','www.gyeongju.go.kr']);
+const hosts=new Set(['upload.wikimedia.org','thumb.wikimedia.org','www.kogl.or.kr','www.gyeongju.go.kr','gongu.copyright.or.kr','www.welchon.com']);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const pending=[];
 const previous=JSON.parse(await fs.readFile('assets/course-photos/credits.json','utf8'));
@@ -16,7 +16,7 @@ for(const entry of manifest.photos){
  if(!/^\/assets\/course-photos\/(osm_\d+|duru_T_CRS_MNG\d+)\.(jpg|png|webp)$/.test(p.src))throw Error('Invalid asset path');
  if(!Object.entries(p.courses).every(([id,name])=>courses.get(id)===name))throw Error('Photo course name mismatch');
  if(!/^[a-f0-9]{64}$/.test(entry.sha256)||entry.bytes<100||entry.bytes>35000000)throw Error('Invalid photo checksum/size');
- if(!['CC BY-SA 4.0','CC BY-SA 3.0','CC BY-SA 2.0','CC BY 3.0','CC BY 4.0','CC0','Public domain','공공누리 제1유형','공공누리 제3유형'].includes(p.license))throw Error('Unreviewed image license');
+ if(!['CC BY-SA 4.0','CC BY-SA 3.0','CC BY-SA 2.0','CC BY 3.0','CC BY 4.0','CC0','Public domain','기증저작물 자유이용','공공누리 제1유형','공공누리 제3유형'].includes(p.license))throw Error('Unreviewed image license');
  if(p.license==='공공누리 제3유형'&&!p.noCrop)throw Error('No-change photo must retain its ratio');
  const dest=p.src.slice(1);let bytes;
  try{bytes=await fs.readFile(dest);}catch{}
