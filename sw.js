@@ -1,47 +1,12 @@
-// 발자국 - 최소 서비스워커 (PWA 설치 조건 충족용)
-const CACHE_NAME = 'balzaguk-shell-v2';
-const SHELL_FILES = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_FILES)).catch(()=>{})
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
-  );
-  self.clients.claim();
-});
-
-// 네트워크 우선, 실패 시 캐시로 대체 (지도/DB 등 실시간 데이터는 항상 최신을 우선함)
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-
-  // DB/API/지도 타일/사용자 사진은 캐시에 저장하지 않습니다.
-  // 오프라인 캐시에 개인정보와 대용량 타일이 쌓이는 것을 방지합니다.
-  if (url.origin !== self.location.origin) return;
-
-  const isShellFile = SHELL_FILES.some((path) => {
-    const shellUrl = new URL(path, self.location.origin);
-    return shellUrl.pathname === url.pathname;
-  });
-  if (!isShellFile && event.request.mode !== 'navigate') return;
-
-  event.respondWith(
-    fetch(event.request)
-      .then((res) => {
-        if (res.ok) {
-          const resClone = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone)).catch(()=>{});
-        }
-        return res;
-      })
-      .catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html')))
-  );
+// Offline app shell only: no database responses, location data, ads or map tiles.
+const CACHE_NAME='balzaguk-shell-v3-walk-offline';
+const SHELL_FILES=["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2", "https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js", "/legal.css?v=20261004", "/home-premium.css?v=20261004-restore-top", "traffic.js?v=20261003", "course-photos.js?v=20261004-expansion", "course-info.js?v=20261004-mfds-sources", "facility-info.js?v=20261003", "course-routes.js?v=20261004-expansion", "course-expansion-300.js?v=20261004-300", "course-addresses.js?v=20261004-expansion", "walk-tracker.js?v=20261005-offline", "admin-bot-panel.js?v=20261004", "/readability.css?v=20261003-footer"];
+const allowed=new Set(SHELL_FILES.map(path=>new URL(path,self.location.href).href));
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>Promise.allSettled(SHELL_FILES.map(path=>cache.add(path)))).then(()=>self.skipWaiting()));});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('balzaguk-shell-')&&k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',event=>{
+ if(event.request.method!=='GET')return;
+ const url=new URL(event.request.url),navigation=url.origin===self.location.origin&&event.request.mode==='navigate';
+ if(!navigation&&!allowed.has(url.href))return;
+ event.respondWith(fetch(event.request).then(response=>{if(response.ok&&(allowed.has(url.href)||navigation)){const copy=response.clone();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)).catch(()=>{}));}return response;}).catch(async()=>{const cache=await caches.open(CACHE_NAME);const hit=await cache.match(event.request);if(hit)return hit;if(navigation)return (await cache.match('./index.html'))||Response.error();return Response.error();}));
 });

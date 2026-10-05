@@ -2185,7 +2185,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     <div class="register-panel">
       <div class="form-card">
         <div id="walk-reference" class="walk-plan-box" hidden><h3>이번 산책 참고 코스</h3><strong id="walk-reference-name"></strong><p>선택한 코스 정보입니다. GPS 기록은 시작 버튼을 누른 뒤 실제 이동 경로로 남아요.</p><button type="button" class="pin-btn" id="walk-reference-clear">선택 해제</button></div><div id="walk-idle-panel">
-          <button type="button" class="submit-btn" id="walk-start-btn">▶ 산책 기록 시작</button>
+          <p id="walk-local-status" role="status" aria-live="polite">위치 확인 후 시작해요. 오프라인 기록은 이 기기에 보관돼요.</p>
+          <button type="button" class="submit-btn" id="walk-start-btn">📍 위치 권한 확인하고 시작</button>
+          <button type="button" class="submit-btn" id="walk-recover-btn" hidden>↻ 기기에 남은 기록 복구</button>
+          <button type="button" id="walk-discard-btn" hidden>기기 기록 삭제</button>
           <p class="walk-start-note">시작하면 위치 권한을 요청해요. 허용 후 시간·거리·예상 걸음 수와 이동 경로를 기록합니다. 화면을 켜두면 GPS 기록이 더 안정적이에요.</p>
           <details class="walk-prep"><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
           <details class="walk-options" id="walk-options"><summary>기록 설정 <span>배터리 · 보폭 · 화면</span></summary>
@@ -2779,7 +2782,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <script src="course-routes.js?v=20261004-expansion"></script>
 <script src="course-expansion-300.js?v=20261004-300"></script>
 <script src="course-addresses.js?v=20261004-expansion"></script>
-<script src="walk-tracker.js?v=20261003"></script>
+<script src="walk-tracker.js?v=20261005-offline"></script>
 <script src="admin-bot-panel.js?v=20261004"></script>
 <script>
 (function(){
@@ -3183,7 +3186,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
   }
   async function syncProfileTable(){
-    if(!myDeviceId) return;
+    if(!myDeviceId || navigator.onLine===false) return;
     try{
       await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
     }catch(e){ console.error(e); }
@@ -3508,7 +3511,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }
   }
   async function checkFirstLoginBonus(){
-    if(!myDeviceId) return;
+    if(!myDeviceId || navigator.onLine===false) return;
     try{
       const { data, error } = await sb.rpc('claim_points',{ p_reason:'회원가입 축하 포인트' });
       if(error){ console.error(error); loadMyPoints(); return; }
@@ -4621,7 +4624,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const titleEl = document.getElementById('home-gps-preview-title');
     const descEl = document.getElementById('home-gps-preview-desc');
     if(!titleEl || !descEl) return;
-    if(!myDeviceId) return; // 로그인 전엔 기본 문구 그대로
+    if(!myDeviceId || navigator.onLine===false) return; // 로그인 전엔 기본 문구 그대로
     try{
       const todayStart = adminDayStart();
       const { data, error } = await sb.from('walks').select('distance_km, duration_sec')
@@ -5708,7 +5711,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   document.getElementById('reg-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(registrationSaving) return;
-    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    if(navigator.onLine===false){persistWalkDraft();toast('산책을 이 기기에 보관했어요. 인터넷 연결 후 이 버튼을 눌러 내 기록에 저장해 주세요.');return;}
+    if(walkDraftOwner&&walkDraftOwner!==myDeviceId){toast('이 기록을 시작한 계정으로 로그인해 주세요.');return;}
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요. 기록은 이 기기에 남아 있어요.'); return; }
     const name = document.getElementById('f-name').value.trim();
     const desc = document.getElementById('f-desc').value.trim();
     if(!name){ toast('이름을 입력해주세요'); return; }
@@ -5989,7 +5994,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     try{ await sb.from('notifications').insert([{ owner_id: ownerId, type, message }]); }catch(e){ console.error(e); }
   }
   async function checkNotifications(){
-    if(!myDeviceId) return;
+    if(!myDeviceId || navigator.onLine===false) return;
     try{
       const { data } = await sb.from('notifications').select('id').eq('owner_id', myDeviceId).eq('read', false).limit(1);
       document.getElementById('notif-dot').style.display = (data && data.length) ? '' : 'none';
@@ -6192,7 +6197,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let reviewSubmitting = false;
   document.getElementById('review-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
-    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    if(navigator.onLine===false){persistWalkDraft();toast('산책을 이 기기에 보관했어요. 인터넷 연결 후 이 버튼을 눌러 내 기록에 저장해 주세요.');return;}
+    if(walkDraftOwner&&walkDraftOwner!==myDeviceId){toast('이 기록을 시작한 계정으로 로그인해 주세요.');return;}
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요. 기록은 이 기기에 남아 있어요.'); return; }
     const courseId = activeCourseId;
     const rating = activeStars;
     if(!courseId || reviewSubmitting) return;
@@ -6322,6 +6329,37 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     const pad = n => String(n).padStart(2,'0');
     return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
   }
+  const WALK_DRAFT_KEY='balzaguk.walk.draft.v1';
+  let walkDraftOwner=null,walkStarting=false,walkStorageWarning=false;
+  function readWalkDraft(){try{return JSON.parse(localStorage.getItem(WALK_DRAFT_KEY)||'null');}catch(e){return null;}}
+  function persistWalkDraft(){
+    if(!walkSession)return;
+    try{localStorage.setItem(WALK_DRAFT_KEY,JSON.stringify({owner:walkDraftOwner,tracker:walkSession.snapshot(Date.now())}));}
+    catch(e){if(!walkStorageWarning){walkStorageWarning=true;toast('기기 저장 공간을 사용할 수 없어요. 이 화면을 닫으면 기록이 사라질 수 있어요.');}}
+  }
+  function refreshWalkLocalStatus(){
+    const draft=readWalkDraft(),status=document.getElementById('walk-local-status');
+    document.getElementById('walk-recover-btn').hidden=!draft;
+    document.getElementById('walk-discard-btn').hidden=!draft;
+    status.textContent=draft?'이 기기에 저장하지 않은 산책이 있어요. 복구한 뒤 이어 걷거나 종료해 주세요.':navigator.onLine===false?'오프라인 · GPS 기록은 가능해요. 지도 배경·서버 저장에는 인터넷이 필요해요.':'위치 확인 후 시작해요. 오프라인 기록은 이 기기에 보관돼요.';
+  }
+  function recoverWalkDraft(){
+    const draft=readWalkDraft();if(!draft||walkInProgress())return;
+    if(draft.owner&&draft.owner!==myDeviceId){toast('이 기록을 시작한 계정으로 로그인해 주세요.');return;}
+    try{walkSession=WalkTracker.Tracker.restore(draft.tracker,Date.now());walkDraftOwner=draft.owner;walkPath=walkSession.parts.flat();
+      if(walkLiveLine)walkMap.removeLayer(walkLiveLine);
+      walkLiveLine=walkPath.length?L.polyline(walkSession.parts,{color:'#B5502E',weight:5}).addTo(walkMap):null;
+      if(walkLiveLine)walkMap.fitBounds(walkLiveLine.getBounds(),{padding:[24,24],maxZoom:17});
+      document.getElementById('walk-idle-panel').style.display='none';document.getElementById('walk-active-panel').style.display='';
+      if(walkSession.state==='done'){walkSession.state='paused';stopWalk();}
+      else{document.getElementById('walk-pause-btn').textContent='▶ 이어 걷기';document.getElementById('walk-pause-btn').setAttribute('aria-pressed','true');renderWalkMetrics();document.getElementById('walk-gps-status').textContent='기기 기록을 복구했어요. 닫혀 있던 시간·거리는 더하지 않아요. 이어 걷기를 눌러 주세요.';walkTimerInterval=setInterval(renderWalkMetrics,1000);}
+    }catch(e){toast('기기 기록을 읽지 못했어요. 새 기록을 시작하려면 기기 기록을 삭제해 주세요.');}
+  }
+  document.getElementById('walk-recover-btn').addEventListener('click',recoverWalkDraft);
+  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(confirm('기기에 남은 산책 기록을 삭제할까요? 복구할 수 없어요.')){try{localStorage.removeItem(WALK_DRAFT_KEY);}catch(e){}refreshWalkLocalStatus();}});
+  refreshWalkLocalStatus();
+  window.addEventListener('online',refreshWalkLocalStatus);window.addEventListener('offline',()=>{persistWalkDraft();refreshWalkLocalStatus();toast('오프라인이에요. GPS 기록을 기기에 보관하고 인터넷 연결 후 서버에 저장해 주세요.');});
+  window.addEventListener('pagehide',persistWalkDraft);
   function walkDistanceKm(){ return walkSession ? walkSession.distanceM / 1000 : 0; }
   function walkInProgress(){ return walkSession && ['running','paused'].includes(walkSession.state); }
   function formatWalkPace(seconds){
@@ -6378,7 +6416,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   let lastHeartbeatAt = 0;
   async function upsertActiveWalker(lat, lng){
-    if(!myDeviceId) return;
+    if(!myDeviceId || navigator.onLine===false) return;
     const now = Date.now();
     if(now - lastHeartbeatAt < 20000) return; // 20초에 한 번만 업데이트 (DB 부하 방지)
     lastHeartbeatAt = now;
@@ -6391,7 +6429,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){ lastHeartbeatAt = 0; console.error('산책 인원 업데이트 실패', e); }
   }
   async function clearActiveWalker(){
-    if(!myDeviceId) return;
+    if(!myDeviceId || navigator.onLine===false) return;
     try{ await sb.from('active_walkers').delete().eq('owner_id', myDeviceId); }catch(e){ console.error(e); }
   }
   let activeWalkerCounts = {};
@@ -6420,7 +6458,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       if(outcome==='stale'||outcome==='invalid')return;
       status.textContent=`GPS 수신 중 · 오차 ±${Math.round(pos.coords.accuracy)}m${outcome==='still'?' · 작은 위치 흔들림은 거리에서 제외해요.':''}`;
       if(outcome==='accepted'){
-        walkPath=session.parts.flat();
+        persistWalkDraft();walkPath=session.parts.flat();
         if(!walkLiveLine){walkLiveLine=L.polyline(session.parts,{color:'#B5502E',weight:5,lineCap:'round'}).addTo(walkMap);walkMap.setView(walkPath[0],16);}
         else walkLiveLine.setLatLngs(session.parts);
         const point=walkPath[walkPath.length-1];
@@ -6436,14 +6474,21 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         if(session.parts.flat().length){pauseWalk();document.getElementById('walk-gps-status').textContent='위치 권한이 해제되어 일시정지했어요. 지금까지의 기록은 유지돼요.';}
         else{endWalkWatch();clearInterval(walkTimerInterval);walkTimerInterval=null;resetWalkPanels();toast('위치 권한을 허용한 뒤 다시 시작해 주세요.');}
       }else document.getElementById('walk-gps-status').textContent='GPS 신호가 약해요. 수신되지 않은 구간은 거리에서 제외해요.';
-    },{enableHighAccuracy:!batterySaver,maximumAge:0,timeout:20000});
+    },{enableHighAccuracy:true,maximumAge:0,timeout:20000});
   }
   function startWalk(){
-    if(walkInProgress())return;
+    if(walkInProgress()||walkStarting)return;
+    if(readWalkDraft()){recoverWalkDraft();return;}
     if(!navigator.geolocation){toast('이 브라우저에서는 위치 기능을 쓸 수 없어요');return;}
     const stride=document.getElementById('walk-stride');
     if(!stride.checkValidity()||!Number.isInteger(Number(stride.value))){document.getElementById('walk-options').open=true;stride.reportValidity();toast('보폭을 30~120cm 사이의 정수로 입력해 주세요.');return;}
-    lastSavedWalk=null;walkPath=[];walkSession=new WalkTracker.Tracker(Number(stride.value));walkSession.start(Date.now());
+    walkStarting=true;const startButton=document.getElementById('walk-start-btn');startButton.disabled=true;
+    document.getElementById('walk-local-status').textContent='위치를 요청하고 있어요. 브라우저의 위치 권한 창에서 허용을 선택해 주세요.';
+    navigator.geolocation.getCurrentPosition(pos=>{
+    walkStarting=false;startButton.disabled=false;
+    walkDraftOwner=myDeviceId||null;
+    lastSavedWalk=null;walkPath=[];walkSession=new WalkTracker.Tracker(Number(stride.value));walkSession.start(Math.min(Date.now(),Number(pos.timestamp)||Date.now()));
+    walkSession.add(pos,Date.now());persistWalkDraft();
     if(walkLiveLine){walkMap.removeLayer(walkLiveLine);walkLiveLine=null;}
     if(walkMarker){walkMap.removeLayer(walkMarker);walkMarker=null;}
     if(walkEndMarker){walkMap.removeLayer(walkEndMarker);walkEndMarker=null;}
@@ -6453,7 +6498,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.getElementById('walk-pause-btn').textContent='Ⅱ 일시정지';
     document.getElementById('walk-pause-btn').setAttribute('aria-pressed','false');
     renderWalkMetrics();beginWalkWatch();keepWalkScreen();
-    walkTimerInterval=setInterval(renderWalkMetrics,1000);
+    walkTimerInterval=setInterval(()=>{renderWalkMetrics();persistWalkDraft();},1000);
+    },err=>{walkStarting=false;startButton.disabled=false;document.getElementById('walk-local-status').textContent=err.code===1?'위치 권한이 차단되어 있어요. 주소창의 사이트 설정 → 위치 → 허용으로 변경한 뒤 다시 눌러 주세요. 이미 허용·차단된 경우 브라우저가 권한 창을 다시 띄우지 않을 수 있어요.':'위치를 확인하지 못했어요. 휴대폰 위치 설정을 켜고 야외에서 다시 시도해 주세요. 오프라인에서도 기기의 GPS가 필요해요.';}, {enableHighAccuracy:true,maximumAge:0,timeout:20000});
   }
   function pauseWalk(){
     if(!walkInProgress())return;
@@ -6467,13 +6513,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       walkSession.resume(Date.now());button.textContent='Ⅱ 일시정지';button.setAttribute('aria-pressed','false');
       beginWalkWatch();keepWalkScreen();
     }
-    renderWalkMetrics();
+    renderWalkMetrics();persistWalkDraft();
   }
   let walkEndMarker=null;
   function stopWalk(){
     if(!walkInProgress())return;
     endWalkWatch();clearInterval(walkTimerInterval);walkTimerInterval=null;clearActiveWalker();releaseWalkScreen();
-    walkSession.stop(Date.now());lastSavedWalk=walkSession.result(Date.now());
+    walkSession.stop(Date.now());lastSavedWalk=walkSession.result(Date.now());persistWalkDraft();
     document.getElementById('walk-active-panel').style.display='none';
     document.getElementById('walk-done-panel').style.display='';
     document.getElementById('walk-done-time').textContent=formatDuration(lastSavedWalk.durationSec);
@@ -6488,7 +6534,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   }
   document.getElementById('walk-pause-btn').addEventListener('click',pauseWalk);
   document.getElementById('walk-screen-on').addEventListener('change',keepWalkScreen);
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){renderWalkMetrics();keepWalkScreen();}});
+  document.addEventListener('visibilitychange',()=>{persistWalkDraft();if(document.visibilityState!=='visible'&&walkSession?.state==='running'){walkSession.breakNext=true;walkSession.anchor=null;}if(document.visibilityState==='visible'){if(walkSession?.state==='running'){endWalkWatch();beginWalkWatch();}renderWalkMetrics();keepWalkScreen();}});
   window.addEventListener('beforeunload',event=>{if(walkInProgress()||(lastSavedWalk&&!savedWalkRecords.has(lastSavedWalk))){event.preventDefault();event.returnValue='';}});
   let walkShareBusy=false;
   async function shareWalkResultCard(){
@@ -6528,7 +6574,9 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const savedWalkRecords = new WeakSet();
   async function saveWalkToDB(){
     if(walkSaving) return;
-    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요'); return; }
+    if(navigator.onLine===false){persistWalkDraft();toast('산책을 이 기기에 보관했어요. 인터넷 연결 후 이 버튼을 눌러 내 기록에 저장해 주세요.');return;}
+    if(walkDraftOwner&&walkDraftOwner!==myDeviceId){toast('이 기록을 시작한 계정으로 로그인해 주세요.');return;}
+    if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요. 기록은 이 기기에 남아 있어요.'); return; }
     if(!lastSavedWalk || !lastSavedWalk.path.length){ toast('GPS 위치가 수신된 기록이 없어요. 위치 권한과 신호를 확인해 주세요.'); return; }
     if(savedWalkRecords.has(lastSavedWalk)){ toast('이미 저장한 산책 기록이에요'); return; }
     const record = lastSavedWalk;
@@ -6544,9 +6592,10 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         duration_sec: Math.round(record.durationSec),
         estimated_steps: record.steps, stride_cm: record.strideCm, paused_sec: Math.round(record.pausedSec), path_segments: record.parts
       }]);
-      if(error){ console.error(error); toast('저장하지 못했어요. 로그인 상태와 연결을 확인해 주세요. 경로는 이 화면에 유지돼요.'); return; }
+      if(error){ console.error(error); toast('저장하지 못했어요. 로그인 상태와 연결을 확인해 주세요. 기록은 이 기기에 보관돼요. 인터넷 연결 후 다시 저장해 주세요.'); return; }
       savedWalkRecords.add(record);
-      resetWalkPanels();
+      try{localStorage.removeItem(WALK_DRAFT_KEY);}catch(e){}
+      resetWalkPanels();refreshWalkLocalStatus();
       loadMyWalks();
       toast('산책 기록을 저장했어요 🐾');
       await awardPoints(20, '산책 기록 저장');
@@ -6576,7 +6625,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       }
       toast('산책 경로가 제안 폼으로 옮겨졌어요. 이름과 동반 조건을 알려주세요 🐾');
     }, 400);
-    resetWalkPanels();
+    persistWalkDraft();resetWalkPanels();refreshWalkLocalStatus();
   }
   let walksRenderVersion=0,walksLimit=10;
   document.getElementById('my-walks-refresh').addEventListener('click',()=>loadMyWalks());
@@ -8245,3 +8294,4 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <link rel="stylesheet" href="/readability.css?v=20261003-footer">
 </body>
 </html>
+

@@ -30,13 +30,15 @@ assert.equal(t.stats(245000).durationSec,84);
 // Exercise the real page handlers with fake GPS/DB; no real location or user records.
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
 const section=html.slice(html.indexOf('  // ===== GPS 산책 기록 ====='),html.indexOf('  async function loadMyWalks(){'));
-let now=100000,callback,errback,inserted,failed=true;
+let now=100000,callback,errback,permissionError=null,inserted,failed=true;
+const storage=new Map();
 const elements=new Map();
 function element(id){if(!elements.has(id))elements.set(id,{textContent:'',style:{},checked:id==='walk-screen-on',value:'70',disabled:false,checkValidity:()=>true,reportValidity(){},setAttribute(){},removeAttribute(){},addEventListener(){}});return elements.get(id);}
 const layer=()=>({addTo(){return this;},setLatLngs(){},setLatLng(){},getBounds(){return [];}});
 const context={WalkTracker:{Tracker},console,Date:class extends Date{static now(){return now;}},
   document:{getElementById:element,addEventListener(){},visibilityState:'visible'},window:{addEventListener(){}},
-  navigator:{geolocation:{watchPosition(fn,err){callback=fn;errback=err;return 1;},clearWatch(){}}},
+  localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},confirm:()=>true,
+  navigator:{onLine:true,geolocation:{getCurrentPosition(fn,err){if(permissionError)err(permissionError);else fn(fix(now));},watchPosition(fn,err){callback=fn;errback=err;return 1;},clearWatch(){}}},
   L:{polyline:layer,marker:layer},setInterval:()=>1,clearInterval(){},
   sb:{from(){return {insert:async rows=>{inserted=rows[0];return failed?{error:{message:'offline'}}:{error:null};},delete(){return {eq:async()=>({})};}};}},
   walkMap:{removeLayer(){},setView(){},panTo(){},fitBounds(){}},
@@ -52,6 +54,14 @@ context.stopWalk();assert.equal(context.lastSavedWalk.parts.length,2);
   assert.equal(inserted.estimated_steps,context.lastSavedWalk.steps);assert.equal(inserted.path_segments.length,2);
   assert.equal(inserted.paused_sec,60);failed=false;await context.saveWalkToDB();
   assert.equal(context.lastSavedWalk,null);assert.equal(element('walk-idle-panel').style.display,'');
-  context.startWalk();errback({code:1});assert.equal(context.walkSession,null,'denied GPS resets idle');
+  permissionError={code:1};context.startWalk();assert.equal(context.walkSession,null,'denied GPS must not start timer');assert.match(element('walk-local-status').textContent,/사이트 설정/);
+  permissionError=null;context.startWalk();now+=10000;callback(fix(now,37.0001));context.stopWalk();context.navigator.onLine=false;await context.saveWalkToDB();assert.ok(storage.size,'offline save retains device draft');context.resetWalkPanels();now+=3600000;context.recoverWalkDraft();assert.ok(context.lastSavedWalk);assert.equal(context.lastSavedWalk.durationSec,10,'closed period must not count');
   console.log('Walk tracking: jitter, jumps, stale fixes, pauses, GPS gaps, metrics, save failures and permission denial passed.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
+
+const active=new Tracker();active.start(1000);active.add(fix(1000),1000);active.add(fix(11000,37.0001),11000);
+const recovered=Tracker.restore(JSON.parse(JSON.stringify(active.snapshot(12000))),1000000);
+assert.equal(recovered.state,'paused');assert.equal(recovered.stats(1000000).durationSec,11);const priorDistance=recovered.distanceM;
+recovered.resume(1000000);recovered.add(fix(1000000,38),1000000);assert.equal(recovered.distanceM,priorDistance);
+assert.throws(()=>Tracker.restore({version:1,state:'running',parts:[[[NaN,1]]]},1000));

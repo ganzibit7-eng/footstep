@@ -45,9 +45,18 @@
       this.anchor={point,time:timestamp,accuracy};this.lastFix=timestamp;
       return 'accepted';
     }
+    snapshot(now){
+      const stats=this.stats(now);
+      return {version:1,strideCm:this.strideCm,state:this.state,parts:this.parts, distanceM:this.distanceM,activeMs:stats.durationSec*1000,pausedMs:stats.pausedSec*1000,savedAt:now};
+    }
+    static restore(data,now){
+      if(!data||data.version!==1||!["running","paused","done"].includes(data.state)||!Array.isArray(data.parts)||!data.parts.every(part=>Array.isArray(part)&&part.every(p=>Array.isArray(p)&&p.length===2&&Number.isFinite(p[0])&&Number.isFinite(p[1])&&Math.abs(p[0])<=90&&Math.abs(p[1])<=180))||![data.distanceM,data.activeMs,data.pausedMs,data.savedAt].every(n=>Number.isFinite(n)&&n>=0))throw new Error("invalid_walk_draft");
+      const tracker=new Tracker(data.strideCm);tracker.parts=data.parts.map(p=>p.map(x=>x.slice()));tracker.distanceM=data.distanceM;tracker.activeMs=data.activeMs;tracker.pausedMs=data.pausedMs;tracker.since=now;tracker.state=data.state==="done"?"done":"paused";return tracker;
+    }
     result(now){return {...this.stats(now),path:this.parts.flat().map(p=>p.slice()),parts:this.parts.map(p=>p.map(x=>x.slice()))};}
   }
   const api={Tracker,meters};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else root.WalkTracker=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
+
