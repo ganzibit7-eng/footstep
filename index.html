@@ -1731,7 +1731,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 <link rel="stylesheet" href="/home-premium.css?v=20261004-restore-top">
 <style>.course-pet-check{font:600 13px/1.6 system-ui,sans-serif!important;background:#fff3d8;color:#755018;padding:9px 12px;border:1px solid #e9d3a9;border-radius:10px;margin:8px 0}.course-pet-check[hidden]{display:none}</style>
 <style>
-.home-update-anchor{position:relative;isolation:isolate}.home-update-anchor:has(.home-update-toast:not([hidden]))>#hero-eyebrow{visibility:hidden}.home-update-toast{position:absolute;left:0;top:0;width:min(100%,470px);height:44px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:4px 5px 4px 12px;background:#fffaf3;border:1px solid #ddcdbb;border-radius:12px;box-shadow:0 5px 18px rgba(80,56,31,.1);z-index:5;color:#4e4136}.home-update-toast[hidden]{display:none}.home-update-toast p{margin:0;flex:1;min-width:0;font-size:11px;line-height:16px}.home-update-toast strong{font-size:12px;color:#934529}.home-update-toast time{margin-left:8px;color:#766655;font-variant-numeric:tabular-nums}.home-update-toast p span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.home-update-toast button{cursor:pointer;border:0;background:transparent;color:#744936;padding:4px;font:600 11px/1.4 system-ui,sans-serif;flex:none}.home-update-toast .update-close{width:36px;height:36px;font-size:22px}.home-update-toast button:focus-visible,.update-dialog button:focus-visible{outline:2px solid #934529;outline-offset:2px}.update-dialog{width:min(560px,calc(100vw - 32px));max-height:75dvh;box-sizing:border-box;padding:20px;border:1px solid #e0d3c4;border-radius:18px;background:#fffaf3;color:#4e4136;overflow:auto}.update-dialog::backdrop{background:rgba(35,31,26,.38)}.update-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.update-dialog-head h2{font-size:17px;margin:0}.update-dialog-head button{width:40px;height:40px;border:0;background:transparent;cursor:pointer;font-size:24px;color:#744936}.update-history{margin-top:12px;border-top:1px solid #e6dacd}.update-history article+article{border-top:1px solid #e6dacd}.update-history h2{font-size:14px;margin:14px 0 8px}.update-history ul{padding-left:20px;font-size:13px;line-height:1.85}.update-history strong{color:#934529}.update-history p{font-size:12px;line-height:1.7;color:#776b60}
+.home-update-anchor{position:relative;isolation:isolate}.home-update-anchor:has(.home-update-toast:not([hidden]))>#hero-eyebrow{visibility:hidden}.home-update-toast{position:absolute;left:0;top:-26px;width:min(100%,470px);height:70px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:4px 5px 4px 12px;background:#fffaf3;border:1px solid #ddcdbb;border-radius:12px;box-shadow:0 5px 18px rgba(80,56,31,.1);z-index:5;color:#4e4136}.home-update-toast[hidden]{display:none}.home-update-toast p{margin:0;flex:1;min-width:0;font-size:11px;line-height:16px}.home-update-toast strong{font-size:12px;color:#934529}.home-update-toast time{margin-left:8px;color:#766655;font-variant-numeric:tabular-nums}.home-update-toast p span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.home-update-toast button{cursor:pointer;border:0;background:transparent;color:#744936;padding:4px;font:600 11px/1.4 system-ui,sans-serif;flex:none}.home-update-toast .update-close{width:36px;height:36px;font-size:22px}.home-update-toast button:focus-visible,.update-dialog button:focus-visible{outline:2px solid #934529;outline-offset:2px}.update-dialog{width:min(560px,calc(100vw - 32px));max-height:75dvh;box-sizing:border-box;padding:20px;border:1px solid #e0d3c4;border-radius:18px;background:#fffaf3;color:#4e4136;overflow:auto}.update-dialog::backdrop{background:rgba(35,31,26,.38)}.update-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px}.update-dialog-head h2{font-size:17px;margin:0}.update-dialog-head button{width:40px;height:40px;border:0;background:transparent;cursor:pointer;font-size:24px;color:#744936}.update-history{margin-top:12px;border-top:1px solid #e6dacd}.update-history article+article{border-top:1px solid #e6dacd}.update-history h2{font-size:14px;margin:14px 0 8px}.update-history ul{padding-left:20px;font-size:13px;line-height:1.85}.update-history strong{color:#934529}.update-history p{font-size:12px;line-height:1.7;color:#776b60}
+@media(max-width:880px){.home-update-anchor{padding-top:26px}.home-update-toast{top:0}}
 </style>
 </head>
 <body>
@@ -2652,12 +2653,13 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
             <h4>👥 회원 관리 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
           </div>
           <div class="admin-accordion-body" id="acc-allmembers" style="display:none;">
-            <p style="font-size:13px; color:#6B6550; margin-top:8px;">프로필 등록 회원 목록입니다. 로그인 계정 전체 수와 다를 수 있어요.</p>
+            <p style="font-size:13px; color:#6B6550; margin-top:8px;">실제 가입 계정 전체 목록입니다. 프로필 등록 여부와 관계없이 표시하며, 가입일은 계정 생성일 기준입니다.</p>
             <div style="display:flex; gap:8px; margin:10px 0;">
               <input type="text" id="all-member-search" placeholder="닉네임·회원 ID 검색" aria-label="회원 검색" style="flex:1; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
+              <button type="button" id="members-refresh-btn" class="pin-btn" style="width:auto;padding:0 12px;font-size:12px;">↻ 회원 새로고침</button>
               <button type="button" id="export-members-csv-btn" class="pin-btn" style="width:auto; padding:0 16px; font-size:12.5px;">📥 CSV</button>
             </div>
-            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 등록</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 등록순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="lastseen">최근 접속순</option><option value="name">이름순</option></select></div><p id="member-filter-status" aria-live="polite"></p><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
+            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 가입</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 가입순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="lastseen">최근 접속순</option><option value="name">이름순</option></select></div><p id="member-filter-status" aria-live="polite"></p><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
           </div>
         </div>
 
@@ -3103,6 +3105,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     try{
       const { data } = await sb.auth.getSession();
       applySession(data.session);
+      await syncProfileTable();
       await loadMyBadgeState();
     }catch(e){ console.error(e); }
     await loadAdminSet();
@@ -3200,7 +3203,8 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   async function syncProfileTable(){
     if(!myDeviceId || navigator.onLine===false) return;
     try{
-      await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
+      const {error}=await sb.from('profiles').upsert([{ owner_id: myDeviceId, nickname: myNickname, avatar_url: myAvatarUrl, updated_at: new Date().toISOString() }]);
+      if(error)throw error;
     }catch(e){ console.error(e); }
   }
   async function saveDisplayName(){
@@ -7386,7 +7390,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const [membersRes, pointsRes, pageViewsRes] = await Promise.all([
-        sb.from('profiles').select('owner_id', { count:'exact', head:true }),
+        readSignupMembers().then(data=>({count:data.length,error:null})),
         adminReadRows('points_log','amount'),
         adminReadRows('page_views','visitor_id')
       ]);
@@ -7489,6 +7493,22 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   let memberVisitMap = {};
   let memberLastSeenMap={};
   let memberListRequest=0;
+  async function readSignupMembers(){
+    const rows=[];let after=null;
+    while(true){
+      const {data,error}=await sb.rpc('admin_signup_members',{p_after:after,p_limit:500});
+      if(error)throw error;
+      const page=data||[];rows.push(...page);
+      if(page.length<500)return rows;
+      const next=page[page.length-1].owner_id;
+      if(next===after)throw new Error('회원 조회 커서가 진행되지 않았습니다.');
+      after=next;
+    }
+  }
+  document.getElementById('members-refresh-btn').addEventListener('click',async()=>{
+    const button=document.getElementById('members-refresh-btn');if(button.disabled)return;
+    button.disabled=true;try{await renderAllMemberList();}finally{button.disabled=false;}
+  });
   async function renderAllMemberList(){
     if(!isAdminUser(myDeviceId))return;
     const request=++memberListRequest,viewer=myDeviceId;
@@ -7499,7 +7519,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     document.getElementById('export-members-csv-btn').disabled=true;
     try{
       const [profilesRes, pointsRes, visitsRes] = await Promise.all([
-        readReportPages('profiles','owner_id,nickname,created_at,updated_at,badge',['owner_id']).then(data=>({data,error:null})),
+        readSignupMembers().then(data=>({data,error:null})),
         adminReadRows('points_log','owner_id,amount'),
         adminReadRows('page_views','owner_id,created_at'),
       ]);
@@ -7511,6 +7531,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
         memberPointsMap[p.owner_id] = (memberPointsMap[p.owner_id] || 0) + p.amount;
       });
       memberVisitMap = {};memberLastSeenMap={};
+
       (visitsRes.data || []).forEach(v=>{
         if(!v.owner_id)return;
         const at=Date.parse(v.created_at);if(Number.isFinite(at)&&at>(memberLastSeenMap[v.owner_id]||0))memberLastSeenMap[v.owner_id]=at;
@@ -7544,17 +7565,17 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     if(!el) return;
     if(!list.length){ el.innerHTML = '<p class="empty-admin">조건에 맞는 회원이 없어요. 검색어나 필터를 바꿔보세요.</p>'; return; }
     el.innerHTML = list.map(m=>{
-      const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
+      const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '-';
       const isNew = m.created_at && (Date.now() - new Date(m.created_at).getTime()) < 7*86400000;
       const isAdmin = isAdminUser(m.owner_id);
       const points = memberPointsMap[m.owner_id] || 0;
-      const lastActive = memberLastSeenMap[m.owner_id]?new Date(memberLastSeenMap[m.owner_id]).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음';
+      const lastActive = memberLastSeenMap[m.owner_id]?new Date(memberLastSeenMap[m.owner_id]).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+' (로그인)':'기록 없음';
       const visitCount = memberVisitMap[m.owner_id] || 0;
       return `
         <article class="admin-member-card">
           <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''}</small></div></header>
-          <dl><div><dt>프로필 등록</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
-          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>최근 접속은 로그인 상태에서 화면 조회가 기록된 시각입니다. 현재 온라인 상태나 로그인 시각과 다를 수 있어요.</p></details>
+          <dl><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${visitCount.toLocaleString()}회</dd></div><div><dt>포인트</dt><dd>${points.toLocaleString()}P</dd></div></dl>
+          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>최근 접속은 로그인 상태의 화면 조회 시각입니다. 화면 조회가 없으면 마지막 로그인 시각을 표시합니다. 현재 온라인 상태와 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}">포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
         </article>`;
@@ -7632,11 +7653,11 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function exportMembersCSV(){
     if(!isAdminUser(myDeviceId)||document.getElementById('export-members-csv-btn').disabled)return;
     if(!allMembersCache.length){ toast('내보낼 회원이 없어요'); return; }
-    const rows = [['닉네임','프로필 등록일','프로필 수정일','포인트','배지']];
+    const rows = [['닉네임','가입일','프로필 수정일','포인트','배지']];
     allMembersCache.forEach(m=>{
       rows.push([
         m.nickname || '',
-        m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '',
+        m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '',
         m.updated_at ? new Date(m.updated_at).toLocaleDateString('ko-KR') : '',
         memberPointsMap[m.owner_id] || 0,
         m.badge || ''
@@ -7660,7 +7681,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   const list=allMembersCache.filter(m=>{
    const age=Date.now()-Date.parse(m.created_at),admin=isAdminUser(m.owner_id);
    return `${m.nickname||''} ${m.owner_id||''}`.toLowerCase().includes(q)&&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000);
-  }).sort((a,b)=>sort==='lastseen'?(memberLastSeenMap[b.owner_id]||0)-(memberLastSeenMap[a.owner_id]||0):sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
+  }).sort((a,b)=>sort==='lastseen'?(memberLastSeenMap[b.owner_id]||Date.parse(b.last_sign_in_at)||0)-(memberLastSeenMap[a.owner_id]||Date.parse(a.last_sign_in_at)||0):sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
   const pages=Math.max(1,Math.ceil(list.length/20));memberPage=Math.min(memberPage,pages);
   paintAllMemberList(list.slice((memberPage-1)*20,memberPage*20));
   document.getElementById('member-filter-status').textContent=`전체 ${allMembersCache.length}명 · 검색 결과 ${list.length}명 (CSV는 전체 회원)`;
@@ -7767,7 +7788,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
       allMembersCache.forEach(m => { nicknameMap[m.owner_id] = m.nickname; });
       el.innerHTML = managersCache.map(m=>{
         const nickname = nicknameMap[m.owner_id] || m.owner_id.slice(0,8)+'...';
-        const since = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR') : '-';
+        const since = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '-';
         return `
           <div class="admin-row">
             <div class="info"><b>🔑 ${nickname}</b> · ${since}부터 매니저</div>
@@ -8324,5 +8345,6 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </script>
 </body>
 </html>
+
 
 
