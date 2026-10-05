@@ -2967,6 +2967,153 @@
     "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
     "sourceSha256": "2fd00663a12170ac71e34d261293769458b2ba4008d33148a337e0d888124e2b",
     "assetSha256": "fab7508b7075fdaddbf2a474e0b23da91f44f95c49b7a4350cddb4fe35a4b394"
+  },
+  {
+    "courses": {
+      "osm_1217000590": "산청군 산청 동의보감촌 보행로 산책 코스"
+    },
+    "src": "/assets/course-photos/osm_1217000590.webp",
+    "place": "동의보감촌 야외 산책 공간",
+    "date": "2013-09-27",
+    "dateNote": "2013-09-27 촬영 · 엑스포 당시 모습",
+    "author": "Korea.net·해외문화홍보원·전한",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:KOCIS_Korea_Sancheong_Traditional_Medicine_EXPO_12_(9993929455).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/KOCIS_Korea_Sancheong_Traditional_Medicine_EXPO_12_%289993929455%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "KOCIS Korea Sancheong Traditional Medicine EXPO 12 (9993929455)",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 1200,
+    "height": 694,
+    "sourceSha256": "6a4a349c6217d23d56b537211bab818e000712202f8abb283440748d02d58952",
+    "assetSha256": "def2877b1c7ac5ee36b9300b756569fef3a3ec497bac5ca30d8af5eee0ed8d6e"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003643": "경남 산청군 동의보감 허준순례길"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003643.webp",
+    "place": "동의보감촌 야외 산책 공간",
+    "date": "2013-09-27",
+    "dateNote": "2013-09-27 촬영 · 엑스포 당시 모습",
+    "author": "Korea.net·해외문화홍보원·전한",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:KOCIS_Korea_Sancheong_Traditional_Medicine_EXPO_12_(9993929455).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/6d/KOCIS_Korea_Sancheong_Traditional_Medicine_EXPO_12_%289993929455%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "title": "KOCIS Korea Sancheong Traditional Medicine EXPO 12 (9993929455)",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 1200,
+    "height": 694,
+    "sourceSha256": "6a4a349c6217d23d56b537211bab818e000712202f8abb283440748d02d58952",
+    "assetSha256": "def2877b1c7ac5ee36b9300b756569fef3a3ec497bac5ca30d8af5eee0ed8d6e"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005254": "전북 고창군 운곡습지생태길 1코스"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005254.webp",
+    "place": "운곡습지 생태길 · 오베이골 산책로",
+    "date": "2014-10-07",
+    "dateNote": "2014-10-07 창작일 표기",
+    "author": "박정병·한국저작권위원회",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?menuNo=200018&wrtSn=11051620",
+    "original": "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=11051620&filePath=L2Rpc2sxL25ld2RhdGEvMjAxNC8yMS9DTFM2L2RpZ2lfMTEwNTE2MjBfMDEyMDE0MTEwNzA2&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006",
+    "title": "운곡습지 _00002",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 1110,
+    "height": 740,
+    "sourceSha256": "f4874238bcb9bb8749b1feafc34dec4674c658770419427091ebd27083b7fd43",
+    "assetSha256": "835a34bf655408a56345120eddedfb95f36ca633f40bd215b2601dc04b26f85c"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000002714": "충북 영동군 양산팔경 금강둘레길"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000002714.webp",
+    "place": "충북 영동 송호 국민관광지005",
+    "date": "2016-11-09",
+    "dateNote": "2016-11-09 창작일 표기",
+    "author": "박동식·한국저작권위원회",
+    "license": "기증저작물 자유이용",
+    "licenseUrl": "https://gongu.copyright.or.kr/gongu/main/contents.do?menuNo=200092",
+    "source": "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13272501&menuNo=200018",
+    "original": "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13272501&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC85OC9DTFMxMDAwNi8xMzI3MjUwMV9XUlRfOThfQ0xTMTAwMDZfMjAyMDEyMThfMQ==&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006",
+    "title": "충북 영동 송호 국민관광지005",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 1110,
+    "height": 740,
+    "sourceSha256": "6bc888943063f65c1c5d213118a6da414f92f7aef70613c7d8c780e2ce817c66",
+    "assetSha256": "575979c7bb93fd665cf3d35b946e8ba8da0adb42ae5dfed6eab6462efe245265"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000433": "충남 당진시 바다사랑길"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000433.webp",
+    "place": "하늘에서 내려본 당진 삽교호 방조제_1",
+    "date": "2020-09-21",
+    "dateNote": "2020-09-21 창작일 표기",
+    "author": "이정운·채재혁·이원호·한국저작권위원회",
+    "license": "기증저작물 자유이용",
+    "licenseUrl": "https://gongu.copyright.or.kr/gongu/main/contents.do?menuNo=200092",
+    "source": "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13274926&menuNo=200018",
+    "original": "https://gongu.copyright.or.kr/gongu/wrt/cmmn/wrtFileImageView.do?wrtSn=13274926&filePath=L2Rpc2sxL25ld2RhdGEvMjAyMC85OC9DTFMxMDAwNi8xMzI3NDkyNl9XUlRfOThfQ0xTMTAwMDZfMjAyMDEyMThfMQ==&thumbAt=Y&thumbSe=b_tbumb&wrtTy=10006",
+    "title": "하늘에서 내려본 당진 삽교호 방조제_1",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 987,
+    "height": 740,
+    "sourceSha256": "a0d6a4e3200b8c340bf3c24107f5b7066c032e3e3bbb36086b2f79c631ded99e",
+    "assetSha256": "69ebc1c8a632971d242b22a7281bae175487f76e9a89dcc5b21309d43f840b25"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000250": "강원 강릉시 관동팔경 녹색경관길 헌화로"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000250.webp",
+    "place": "헌화로 해안 경관",
+    "date": "2023",
+    "dateNote": "2023-09-18 공개 · 촬영일 미상",
+    "author": "한국농어촌공사·웰촌",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2212067",
+    "original": "https://www.welchon.com/upload/editor/images/000045/20230918140338569_00SQB2FO.jpg",
+    "title": "백두대간의 품에 안긴 채 휴식을, 강릉 왕산한옥마을",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 720,
+    "height": 480,
+    "sourceSha256": "6984684f61d6c7a7a631e2d51bff995c0fb9218286f39e1cee0c10a30657193c",
+    "assetSha256": "d5cfd9fb3d77fe970959073ad20877e66bccdd3a4cc5d6529c675dbe9d4ee8ed"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003887": "충북 괴산군 산막이옛길"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003887.webp",
+    "place": "산막이옛길 진입로",
+    "date": "2019",
+    "dateNote": "2019-07-26 공개 · 촬영일 미상",
+    "author": "한국농어촌공사·웰촌",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2207704",
+    "original": "https://www.welchon.com/upload/namo/images/000167/20190726110344699_KCRCDI7B.jpg",
+    "title": "청정 자연에서 옥수수 따고, 올갱이 잡고 충북 괴산 둔율올갱이마을",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-05",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
+    "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
