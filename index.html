@@ -2207,7 +2207,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
           <p id="walk-local-status" role="status" aria-live="polite">위치 확인 후 시작해요. 오프라인 기록은 이 기기에 보관돼요.</p>
           <button type="button" class="submit-btn" id="walk-start-btn">📍 위치 권한 확인하고 시작</button>
           <button type="button" class="submit-btn" id="walk-recover-btn" hidden>↻ 기기에 남은 기록 복구</button>
-          <button type="button" id="walk-discard-btn" hidden>기기 기록 삭제</button>
+          <button type="button" id="walk-draft-discard-btn" hidden>기기 기록 삭제</button>
           <p class="walk-start-note">시작하면 위치 권한을 요청해요. 허용 후 시간·거리·예상 걸음 수와 이동 경로를 기록합니다. 화면을 켜두면 GPS 기록이 더 안정적이에요.</p>
           <details class="walk-prep"><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
           <details class="walk-options" id="walk-options"><summary>기록 설정 <span>배터리 · 보폭 · 화면</span></summary>
@@ -6359,7 +6359,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function refreshWalkLocalStatus(){
     const draft=readWalkDraft(),status=document.getElementById('walk-local-status');
     document.getElementById('walk-recover-btn').hidden=!draft;
-    document.getElementById('walk-discard-btn').hidden=!draft;
+    document.getElementById('walk-draft-discard-btn').hidden=!draft;
     status.textContent=draft?'이 기기에 저장하지 않은 산책이 있어요. 복구한 뒤 이어 걷거나 종료해 주세요.':navigator.onLine===false?'오프라인 · GPS 기록은 가능해요. 지도 배경·서버 저장에는 인터넷이 필요해요.':'위치 확인 후 시작해요. 오프라인 기록은 이 기기에 보관돼요.';
   }
   function recoverWalkDraft(){
@@ -6375,7 +6375,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
     }catch(e){toast('기기 기록을 읽지 못했어요. 새 기록을 시작하려면 기기 기록을 삭제해 주세요.');}
   }
   document.getElementById('walk-recover-btn').addEventListener('click',recoverWalkDraft);
-  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(confirm('기기에 남은 산책 기록을 삭제할까요? 복구할 수 없어요.')){try{localStorage.removeItem(WALK_DRAFT_KEY);}catch(e){}refreshWalkLocalStatus();}});
+  document.getElementById('walk-draft-discard-btn').addEventListener('click',()=>{if(confirm('기기에 남은 산책 기록을 삭제할까요? 복구할 수 없어요.')){try{localStorage.removeItem(WALK_DRAFT_KEY);}catch(e){}refreshWalkLocalStatus();}});
   refreshWalkLocalStatus();
   window.addEventListener('online',refreshWalkLocalStatus);window.addEventListener('offline',()=>{persistWalkDraft();refreshWalkLocalStatus();toast('오프라인이에요. GPS 기록을 기기에 보관하고 인터넷 연결 후 서버에 저장해 주세요.');});
   window.addEventListener('pagehide',persistWalkDraft);
@@ -6791,7 +6791,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   document.getElementById('walk-stop-btn').addEventListener('click', stopWalk);
   document.getElementById('walk-save-btn').addEventListener('click', saveWalkToDB);
   document.getElementById('walk-to-course-btn').addEventListener('click', walkToCourseHandoff);
-  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(walkSaving){toast('기록을 저장 중이에요. 잠시 기다려 주세요.');return;}if(lastSavedWalk&&!confirm('저장하지 않은 산책 기록을 버릴까요?'))return;resetWalkPanels();});
+  document.getElementById('walk-discard-btn').addEventListener('click',()=>{if(walkSaving){toast('기록을 저장 중이에요. 잠시 기다려 주세요.');return;}if(lastSavedWalk&&!confirm('저장하지 않은 산책 기록을 버릴까요?'))return;try{localStorage.removeItem(WALK_DRAFT_KEY);}catch(e){}resetWalkPanels();refreshWalkLocalStatus();});
 
   // ===== 페이지 전환 (메뉴별 화면 분리) =====
   let currentPage = 'home';
