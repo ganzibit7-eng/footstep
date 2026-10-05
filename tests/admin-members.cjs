@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const html=fs.readFileSync(process.argv[2]||'member-current-index.html','utf8');
+const html=fs.readFileSync(process.argv[2]||require.resolve('../index.html'),'utf8');
 const begin=html.indexOf('  async function readSignupMembers(){'),end=html.indexOf("  document.getElementById('members-refresh-btn')",begin);
 const rows=Array.from({length:1001},(_,i)=>({owner_id:String(i).padStart(5,'0')}));let requests=0,fail=false;
 const context={sb:{rpc:async(name,{p_after,p_limit})=>{assert.equal(name,'admin_signup_members');requests++;return fail?{error:{message:'permission denied'}}:{data:rows.filter(r=>!p_after||r.owner_id>p_after).slice(0,p_limit)};}}};
