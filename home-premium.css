@@ -49,3 +49,22 @@ html[data-theme="dark"] #nearby-section :is(.service-intro-heading p,.service-in
 html[data-theme="dark"] #nearby-section :is(.service-intro-eyebrow,.service-intro-action){color:#e2b895}
 html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30;color:#e2b895}
 @media(prefers-reduced-motion:reduce){#nearby-section .service-intro-item{transition:none}}
+
+/* Useful preparation advice; affiliate buttons appear only for configured links. */
+#nearby-section .walk-shopping{padding:26px;margin:28px 0;border:1px solid var(--line);border-radius:22px;background:var(--paper);}
+.walk-shopping-heading>span{color:var(--clay);font-size:12px;font-weight:700}
+.walk-shopping-heading h2{font-size:24px;line-height:1.45;margin:8px 0}
+.walk-shopping-heading p{font-size:13px;color:var(--muted-text);line-height:1.8;margin:0 0 18px}
+.walk-shopping-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.walk-shopping-card{display:flex;flex-direction:column;min-width:0;background:var(--sand);padding:20px;border-radius:16px;border:1px solid var(--line)}
+.walk-shopping-icon{font-size:26px;color:var(--pine-deep);margin-bottom:10px}
+.walk-shopping-card small{font-size:11px;color:var(--muted-text);line-height:1.6}
+.walk-shopping-card h3{font-size:19px;margin:7px 0 10px;line-height:1.5}
+.walk-shopping-card p{font-size:13px;line-height:1.85;margin:0 0 12px}
+.walk-shopping-card .walk-shopping-check{font-size:12px;color:var(--muted-text);margin-bottom:18px}
+.walk-shopping-link{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:auto;padding:8px 10px;border-radius:12px;background:var(--pine-deep);color:var(--paper);font-size:13px;font-weight:700;text-decoration:none;text-align:center}
+.walk-shopping-disclosure{font-size:13px;line-height:1.8;color:var(--pine-deep);background:var(--sand);padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin:12px 0 18px}
+.walk-shopping-disclosure[hidden]{display:none!important}
+.walk-shopping-guide{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:var(--pine-deep);font-size:13px;font-weight:700}
+.walk-shopping :is(a,button):focus-visible{outline:3px solid var(--clay);outline-offset:4px}
+@media(max-width:600px){#nearby-section .walk-shopping{padding:20px 16px}.walk-shopping-heading h2{font-size:21px}.walk-shopping-items{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;scroll-snap-type:x mandatory}.walk-shopping-card{flex:0 0 82%;box-sizing:border-box;scroll-snap-align:center}.walk-shopping-link{min-height:48px}}
