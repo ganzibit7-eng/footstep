@@ -97,4 +97,5 @@ export async function handleRequest(req, create = createClient, env = Deno.env) 
       message:"일부 삭제가 진행됐을 수 있습니다. 다시 로그인하여 재시도하거나 문의해주세요."});
   }
 }
-Deno.serve(handleRequest);
+// Serve supplies connection metadata as its second argument; do not pass it as createClient.
+Deno.serve(req => handleRequest(req));

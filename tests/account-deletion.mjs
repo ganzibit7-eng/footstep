@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 // Mock Auth/Storage: these tests never delete a real account.
-const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/,'').replace('Deno.serve(handleRequest);','');
+const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/,'').replace('Deno.serve(req => handleRequest(req));','');
 const {handleRequest}=await import('data:text/javascript,'+encodeURIComponent(source));
 const self='11111111-1111-4111-8111-111111111111',target='22222222-2222-4222-8222-222222222222';
 async function run(body,opts={}){
@@ -52,3 +52,10 @@ console.log('Client: one authentication retry, account-switch protection, stage 
 for(const [opts,code] of [[{authThrows:true},'auth_unavailable'],[{signOutFail:true},'session_cleanup_failed'],[{deleteFail:true},'auth_delete_failed']]){r=await run({confirm:'DELETE_MY_ACCOUNT'},opts);assert.equal(r.status,503);assert.equal(r.data.error,code);if(!opts.authThrows)assert(r.calls.some(c=>c[0]==='finish_account_deletion'&&c[1].p_success===false));}
 r=await run({confirm:'DELETE_MY_ACCOUNT'},{finishThrows:true});assert.equal(r.data.deleted,true);assert.equal(r.data.cleanup_pending,true);assert(!r.calls.some(c=>c[0]==='finish_account_deletion'&&c[1].p_success===false));
 console.log('Server: Auth outage, sign-out/delete failures, post-deletion completion failure passed.');
+let served;
+const deployedSource=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/,'').replace('export async function','async function');
+new Function('createClient','Deno',deployedSource)(()=>({auth:{getUser:async()=>({error:{status:401}})}}),{env:{get:()=> 'test'},serve:handler=>{served=handler;}});
+const entrypointResponse=await served(new Request('https://test',{method:'POST',headers:{authorization:'Bearer invalid','content-type':'application/json'},body:JSON.stringify({confirm:'DELETE_MY_ACCOUNT'})}),{remoteAddr:{hostname:'127.0.0.1'}});
+assert.equal(entrypointResponse.status,401);
+assert.equal((await entrypointResponse.json()).error,'sign_in_required');
+console.log('Deno entrypoint: connection metadata does not overwrite createClient passed.');
