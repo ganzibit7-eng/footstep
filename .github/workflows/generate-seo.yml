@@ -9,6 +9,7 @@ on:
       - 'course-info.js'
       - 'course-addresses.js'
       - 'facility-info.js'
+      - 'bin-info.js'
       - 'database_sql/seed_expansion_*.sql'
       - 'course-routes.js'
       - 'course-photos.js'
