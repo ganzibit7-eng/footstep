@@ -126,3 +126,20 @@ html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="d
 #profile-overlay .account-settings #withdraw-status{font-size:11px!important;margin:10px 2px 0!important;}
 @media(hover:hover){.my-setting summary:hover{color:var(--account-accent);}}
 @media(max-width:600px){#profile-overlay .modal-body{padding:16px 18px;}#profile-overlay #my-dog-profile-card{padding:18px!important;}.my-setting summary{min-height:56px;}}
+
+/* Keep the full login form compact; scrolling remains available on short viewports. */
+#nick-overlay .auth-dialog-header{min-height:42px;padding-top:0;padding-bottom:0;}
+#nick-overlay .modal-body{padding:0 26px 14px;}
+#nick-overlay #login-modal-title{font-size:28px;margin:0 0 6px;line-height:1.25;}
+#nick-overlay #login-modal-description{font-size:12px;line-height:1.6;}
+#nick-overlay .auth-consent{margin:12px 0;line-height:1.6;}
+#nick-overlay .auth-email label{margin-bottom:6px;font-size:11px;}
+#nick-overlay #email-login-input{min-height:46px;padding:10px 12px;}
+#nick-overlay .auth-provider{min-height:46px;padding-top:10px;padding-bottom:10px;}
+#nick-overlay .auth-email-button{min-height:46px;margin-top:10px;}
+#nick-overlay #email-login-note{margin-top:8px;font-size:11px;line-height:1.6;}
+#nick-overlay .auth-divider{margin:12px 0;}
+#nick-overlay .auth-providers{gap:8px;}
+#nick-overlay .auth-browse{margin-top:10px;min-height:44px;}
+#nick-overlay .auth-feedback{font-size:11px;padding:8px 10px;line-height:1.6;margin-bottom:8px;}
+@media(max-height:650px){#nick-overlay .modal-body{padding-bottom:8px;}#nick-overlay .auth-dialog-header{min-height:38px;}#nick-overlay #login-modal-title{font-size:25px;}#nick-overlay .auth-consent{margin:10px 0;}#nick-overlay .auth-divider{margin:10px 0;}#nick-overlay .auth-browse{margin-top:6px;}}
