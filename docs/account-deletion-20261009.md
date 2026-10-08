@@ -1,0 +1,11 @@
+# Account deletion update — 2026-10-09 (Asia/Seoul)
+
+Self withdrawal and administrator withdrawal share `account-deletion-client.js`. The client refreshes a rejected session once, stops if the acting account changes, and does not automatically retry ambiguous network or partial cleanup failures. Administrative deletion refreshes the member summary/list on success.
+
+The Edge Function authenticates the supplied token through Auth.getUser before any privileged operation. Administrator targets require server-side is_admin verification; protected administrators cannot be deleted. Recent sign-in (15 minutes) is required. Gateway JWT verification is disabled because authentication is performed in the function and supports current signing keys. Storage objects are removed using the Storage API before transactional activity cleanup and Auth deletion. Errors identify the failed stage and release the retry lease. Once Auth deletion succeeds, a final bookkeeping failure is returned as deleted with cleanup_pending.
+
+The database cleanup now removes user_badges and reports referencing reviews cascaded by a deleted course. Restrictive badge write policies prevent writes by deleted or deletion-in-progress accounts. Deletion RPCs remain callable only by service_role.
+
+Validation: `node tests/account-deletion.mjs` exercises self/admin targets, protections, storage order, failures, lease release, one session retry, switched accounts, uncertain network failures and post-delete bookkeeping errors. A database transaction used two synthetic users and asserted badge/course/review/report cleanup plus preservation of unrelated data, then rolled back. All 16 existing members remain; no test users or jobs remain. No real member was deleted. Deployed endpoint returned 401 for missing authentication and 204 for the allowed origin preflight.
+
+The browser clears local saved-place/registration context after successful self withdrawal. External provider accounts, backups and external caches are outside this deletion flow. Actual Auth/Storage destructive operations are covered by mocks; they were not run against an existing member for validation.

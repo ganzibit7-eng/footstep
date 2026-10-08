@@ -1,0 +1,4 @@
+[functions.delete-account]
+# The function verifies the session JWT with Auth.getUser before every privileged action.
+# Custom authentication supports current signing keys and publishable clients.
+verify_jwt = false
