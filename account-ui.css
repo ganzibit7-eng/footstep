@@ -68,7 +68,7 @@ html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="d
 
 /* Glass panel over the existing homepage; Korean copy and passwordless Auth. */
 #nick-overlay{--account-bg:transparent;--account-card:#fff;--account-ink:#fff;--account-muted:#d6dce2;--account-line:#ffffff40;--account-accent:#e7edf1;background:rgba(18,35,26,.22);backdrop-filter:none;isolation:isolate;}
-#nick-overlay .auth-modal{max-width:440px;border:1px solid #ffffff60;border-radius:25px;background:linear-gradient(140deg,#33443ce6,#1a2823d1);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 26px 80px #080d1855,inset 0 1px 0 #ffffff35;color:#fff;}
+#nick-overlay .auth-modal{max-width:440px;border:1px solid #ffffff60;border-radius:25px;background:linear-gradient(140deg,#26343baa,#25333999);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 26px 80px #080d1855,inset 0 1px 0 #ffffff35;color:#fff;}
 #nick-overlay .auth-dialog-header{border:0;background:transparent;min-height:52px;color:#eef1f5;font-size:12px;}
 #nick-overlay .modal-close{color:#fff;}
 #nick-overlay .modal-body{display:flex;flex-direction:column;padding:8px 32px 24px;}
