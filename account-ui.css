@@ -65,3 +65,37 @@ html[data-theme="dark"] #nick-overlay .auth-email-button,html[data-theme="dark"]
 html[data-theme="dark"] #nick-overlay .auth-feedback{background:#452b28;color:#ffc1b7;}
 html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="dark"] #profile-overlay .account-settings #withdraw-btn{color:#ffc1b7!important;}
 @media(prefers-reduced-motion:reduce){#nick-overlay .auth-provider{transition:none;}}
+
+/* Glass panel over the existing homepage; Korean copy and passwordless Auth. */
+#nick-overlay{--account-bg:transparent;--account-card:#fff;--account-ink:#fff;--account-muted:#d6dce2;--account-line:#ffffff40;--account-accent:#e7edf1;background:rgba(18,35,26,.22);backdrop-filter:none;isolation:isolate;}
+#nick-overlay .auth-modal{max-width:440px;border:1px solid #ffffff60;border-radius:25px;background:linear-gradient(140deg,#33443ce6,#1a2823d1);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 26px 80px #080d1855,inset 0 1px 0 #ffffff35;color:#fff;}
+#nick-overlay .auth-dialog-header{border:0;background:transparent;min-height:52px;color:#eef1f5;font-size:12px;}
+#nick-overlay .modal-close{color:#fff;}
+#nick-overlay .modal-body{display:flex;flex-direction:column;padding:8px 32px 24px;}
+#nick-overlay .auth-brand-mark{display:none;}
+#nick-overlay .auth-welcome{display:none;}
+#nick-overlay #login-modal-title{font-size:34px;letter-spacing:-.04em;color:#fff;margin:0 0 12px;}
+#nick-overlay #login-modal-description{color:#eef1f5;font-size:13px;}
+#nick-overlay :is(.auth-benefits,.auth-bonus){display:none;}
+#nick-overlay .auth-consent{margin:22px 0 14px;color:#e1e6ec;font-size:11px;}
+#nick-overlay .auth-consent :is(a,em){color:#fff;}
+#nick-overlay .auth-email summary{display:none;}
+#nick-overlay .auth-email-content{padding:0;}
+#nick-overlay .auth-email label{color:#fff;font-weight:500;}
+#nick-overlay #email-login-input{background:#fff;color:#1d2631;border:1px solid #303844;min-height:50px;border-radius:10px;box-shadow:0 1px 1px #0002;}
+#nick-overlay .auth-email-button{background:#080b10;color:#fff;border:1px solid #080b10;border-radius:10px;min-height:50px;margin-top:12px;}
+#nick-overlay #email-login-note{color:#e2e7ee;font-size:11px;margin-top:10px;}
+#nick-overlay #email-login-note[data-state="error"]{color:#ffe3dc;background:#58271fcc;padding:10px;border-radius:9px;}
+#nick-overlay #email-login-note[data-state="success"]{background:#243f32;color:#e9ffef;}
+#nick-overlay .auth-feedback{background:#58271fcc;color:#ffe3dc;}
+#nick-overlay .auth-divider{margin:22px 0;color:#e1e6ec;}
+#nick-overlay .auth-providers{padding:0 18px;gap:12px;}
+#nick-overlay .auth-provider{font-weight:550;font-size:13px;}
+#nick-overlay .auth-google{border-radius:999px;color:#171e28;background:#fff;border-color:#fff;}
+#nick-overlay .auth-kakao{border-radius:999px;color:#191919;}
+#nick-overlay .auth-existing{color:#f1f4f6;line-height:1.8;margin-top:24px;font-size:11px;}
+#nick-overlay .auth-browse{color:#fff;font-size:11px;margin-top:4px;}
+#nick-overlay :is(button,input,a,summary):focus-visible{outline:3px solid #fee500;outline-offset:3px;}
+@media(max-width:600px){#nick-overlay .modal-body{padding:4px 22px 20px;}#nick-overlay .auth-modal{max-width:390px;}#nick-overlay #login-modal-title{font-size:31px;}#nick-overlay .auth-providers{padding:0 12px;}}
+@media(max-height:730px){#nick-overlay .auth-dialog-header{min-height:46px;}#nick-overlay .auth-consent{margin-top:16px;}#nick-overlay .auth-divider{margin:16px 0;}#nick-overlay .auth-existing{margin-top:18px;}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){#nick-overlay .auth-modal{background:#4b5665;}}
