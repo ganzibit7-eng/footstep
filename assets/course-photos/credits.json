@@ -2886,6 +2886,28 @@
   },
   {
     "courses": {
+      "duru_T_CRS_MNG0000003493": "경북 문경시 선유동천 나들길 1코스"
+    },
+    "place": "선유동천 나들길 1코스 입구 표석과 보행로",
+    "date": "2026-10-09",
+    "dateNote": "2026-10-09 출처 확인일 · 촬영일 미표기",
+    "author": "문경시 · 경상북도 제공",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType3.do",
+    "source": "https://www.gb.go.kr/Main/finace/page.do?mnu_uid=16163",
+    "original": "https://www.gb.go.kr/Main/Images1/section/forest/status/sub02/sub01_02_04_img01.jpg",
+    "title": "선유동천 나들길",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003493.jpg",
+    "width": 821,
+    "height": 368,
+    "sourceSha256": "a378092170b2e4bf5e2499d5b38e14be8a864b7af9f574b63b37f711e0d10a51",
+    "assetSha256": "a378092170b2e4bf5e2499d5b38e14be8a864b7af9f574b63b37f711e0d10a51",
+    "changes": "원본 그대로 · 비율 유지",
+    "checked": "2026-10-09",
+    "noCrop": true
+  },
+  {
+    "courses": {
       "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_665502044.webp",
@@ -3860,27 +3882,5 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
-  },
-  {
-    "courses": {
-      "duru_T_CRS_MNG0000003493": "경북 문경시 선유동천 나들길 1코스"
-    },
-    "place": "선유동천 나들길 1코스 입구 표석과 보행로",
-    "date": "2026-10-09",
-    "dateNote": "2026-10-09 출처 확인일 · 촬영일 미표기",
-    "author": "문경시 · 경상북도 제공",
-    "license": "공공누리 제3유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType3.do",
-    "source": "https://www.gb.go.kr/Main/finace/page.do?mnu_uid=16163",
-    "original": "https://www.gb.go.kr/Main/Images1/section/forest/status/sub02/sub01_02_04_img01.jpg",
-    "title": "선유동천 나들길",
-    "src": "/assets/course-photos/duru_T_CRS_MNG0000003493.jpg",
-    "width": 821,
-    "height": 368,
-    "sourceSha256": "a378092170b2e4bf5e2499d5b38e14be8a864b7af9f574b63b37f711e0d10a51",
-    "assetSha256": "a378092170b2e4bf5e2499d5b38e14be8a864b7af9f574b63b37f711e0d10a51",
-    "changes": "원본 그대로 · 비율 유지",
-    "checked": "2026-10-09",
-    "noCrop": true
   }
 ]
