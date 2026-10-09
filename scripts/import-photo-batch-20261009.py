@@ -15,7 +15,8 @@ inputs = Path(sys.argv[1])
 registry_path = root / "assets/course-photos/credits.json"
 registry = json.loads(registry_path.read_text())
 existing = {i for p in registry for i in p["courses"]}
-batch = json.loads((root / "docs/photo-expansion-20261009/batch.json").read_text())
+manifest = Path(sys.argv[2]) if len(sys.argv) > 2 else root / "docs/photo-expansion-20261009/batch.json"
+batch = json.loads(manifest.read_text())
 for entry in batch:
     if all(i in existing for i in entry["courses"]):
         continue
