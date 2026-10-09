@@ -29,7 +29,7 @@ assert.equal(t.stats(245000).durationSec,84);
 
 // Exercise the real page handlers with fake GPS/DB; no real location or user records.
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
-const section=html.slice(html.indexOf('  // ===== GPS 산책 기록 ====='),html.indexOf('  async function loadMyWalks(){'));
+const section=html.slice(html.indexOf('  // ===== GPS 산책 기록 ====='),html.indexOf('  let walksRenderVersion=0,walksLimit=10;'));
 let now=100000,callback,errback,permissionError=null,inserted,failed=true;
 const storage=new Map();
 const elements=new Map();
