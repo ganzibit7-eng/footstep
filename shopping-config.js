@@ -3,11 +3,11 @@
 (function(root){
   'use strict';
   root.PawShoppingConfig={
-    disclosure:'이 영역은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받을 수 있습니다.',
+    disclosure:'이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.',
     items:[
-      {id:'waste-bags',icon:'♻',name:'배변봉투',context:'배변 수거 장소까지 깔끔하게',reason:'산책 중 사용한 봉투를 수거함까지 들고 갈 수 있도록 여분을 챙겨요.',check:'크기·두께·매수와 묶기 편한 형태를 확인하세요.',url:''},
-      {id:'water-bottle',icon:'◉',name:'휴대용 급수병',context:'걸으며 쉬는 시간에',reason:'물과 그릇을 한 번에 챙겨 산책 중 잠깐 쉴 때 꺼내기 편해요.',check:'물 용량·휴대 무게·누수 방지 구조와 세척 방법을 확인하세요.',url:''},
-      {id:'harness-leash',icon:'♡',name:'목줄·하네스',context:'출발 전 우리 아이에게 맞게',reason:'이번 산책 전에 현재 쓰는 용품의 크기와 연결 부위를 확인해요.',check:'몸 치수와 사이즈표·조절 범위·연결 방식이 맞는지 비교하세요.',url:''}
+      {id:'waste-bags',icon:'♻',name:'배변봉투',context:'배변 수거 장소까지 깔끔하게',product:'코멧 펫 배변봉투 리필형',option:'초록색 · 15개입 × 8개',reason:'매일 쓰는 준비물부터. 산책 가방에 여분을 넣고, 사용한 봉투는 배출 가능한 곳까지 챙겨요.',check:'보유한 케이스에 맞는 크기인지 확인하세요.',url:'https://link.coupang.com/a/hHjJ8nlsJg'},
+      {id:'water-bottle',icon:'◉',name:'휴대용 물병',context:'조금 긴 산책을 준비한다면',product:'딩동펫 버튼식 물병 + 풉백',option:'민트 · 1세트',reason:'걷다 쉬어갈 때 마실 물을 챙겨요. 물병과 풉백이 함께 구성된 산책용품이에요.',check:'물 용량·세척 방법·구성품을 확인하세요.',url:'https://link.coupang.com/a/hHjPJ6DMUS'},
+      {id:'harness-leash',icon:'♡',name:'하네스·리드줄',context:'출발 전, 몸에 맞는지 확인',product:'베니즈 베이직 하네스 + 리드줄',option:'블랙 · 1세트',reason:'하네스와 리드줄을 함께 살펴볼 때. 견종이나 몸무게보다 실제 몸 치수와 사이즈표를 먼저 비교해요.',check:'목·가슴둘레와 사이즈 옵션을 확인하세요.',url:'https://link.coupang.com/a/hHjVHyyABU'}
     ]
   };
 })(globalThis);
