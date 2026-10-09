@@ -2600,6 +2600,292 @@
   },
   {
     "courses": {
+      "c266": "서울 대모산 숲길"
+    },
+    "place": "대모산 도시자연공원 숲길 (촬영 당시 겨울 모습)",
+    "date": "2019-12",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/55879",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06A02502Aa10000.jpg",
+    "title": "대모산자연도시공원",
+    "src": "/assets/course-photos/c266.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "46a5e3ff7eb5e4050a9a737ee8277e18c145225d98fac5b9193996312913386d",
+    "assetSha256": "de1dfd8c44cfbd91ba33ca7a99ec0342866cff07b94472a021d19aa6769a6e32",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c256": "서울 일자산 치유의 숲길"
+    },
+    "place": "일자산 자연공원 숲길 (치유의 숲길 주변)",
+    "date": "2020-06",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/56331",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06B00209Ac20000.jpg",
+    "title": "강동그린웨이",
+    "src": "/assets/course-photos/c256.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "8db4800eb3c955a279ffabb02064c694e877de5d2ad2560862201e60bb224798",
+    "assetSha256": "1d7aa15146e9547d3612caf570e4a1329a0bbc834f0156c6fb308c052684fbfe",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c264": "서울 망우산 사색의길",
+      "c319": "서울 망우리 사잇길"
+    },
+    "place": "망우리 역사문화공원 산책로와 묘역 주변 (촬영 당시 모습)",
+    "date": "2010-05",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/44756",
+    "original": "https://data.si.re.kr/sites/default/files/photos/04Y01006ac0000.jpg",
+    "title": "망우리공동묘지",
+    "src": "/assets/course-photos/c264.webp",
+    "width": 600,
+    "height": 401,
+    "sourceSha256": "b279de176c20bf04703eb67780d7c1c105b5901db08a4f9c460bd770fd967933",
+    "assetSha256": "86940ccc940b645f38fbca2b91213126fb3d54f9713a47953173a22c5d5943bb",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c300": "서울 장미테마길 중랑천"
+    },
+    "place": "중랑천 장미거리 아치 산책로 (촬영 당시 겨울 모습)",
+    "date": "2014-12",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/50216",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05Y01702Ac0000.jpg",
+    "title": "장미거리",
+    "src": "/assets/course-photos/c300.webp",
+    "width": 600,
+    "height": 401,
+    "sourceSha256": "350b8f7de14afb0c439780068bad834a882f4ed04c56d11a950756ab5b790644",
+    "assetSha256": "b3097a30bbcad716cb945407e386e1746fbf54523772826a6be9189f3f567205",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000004081": "서울 강서구 개화산자락길(무장애 숲길)"
+    },
+    "place": "개화산 둘레길 무장애 데크 (촬영 당시 겨울 모습)",
+    "date": "2020-01",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/56872",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06D00501Ac60000.jpg",
+    "title": "강서둘레길",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004081.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "1a8f7f3cb204d600546a99e383442832098ab7972564eab1878dd4b162762334",
+    "assetSha256": "aede74ac278cf1958ab9528b00b235713798bba916726b7c748f04663e443bfc",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c282": "서울 천상병산길"
+    },
+    "place": "수락산 만남의광장 숲길 (천상병산길 경유지 주변)",
+    "date": "2020-04",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/58569",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06I03903Ac50000.jpg",
+    "title": "수락산 만남의광장",
+    "src": "/assets/course-photos/c282.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "722f62c2ae7c2857f77e5d1a64405c8308c86b1d3f6ab82ab65c1c82d0038d40",
+    "assetSha256": "7d42973abe38480a928636bde3ff9b38c497e08c0a2a23067b49c8c7b33fecd4",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c373": "등나무근린공원 보행로 산책 코스"
+    },
+    "place": "등나무근린공원 보행로 (촬영 당시 봄 모습)",
+    "date": "2020-04",
+    "author": "서울연구원",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://data.si.re.kr/node/58400",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06I01509Ac42000.jpg",
+    "title": "등나무 근린공원",
+    "src": "/assets/course-photos/c373.webp",
+    "width": 900,
+    "height": 596,
+    "sourceSha256": "1490bf3b37b29adf1542ceab559df055751d30c532e7ca69339e8fc97bb0b53d",
+    "assetSha256": "a61b29abf0ba1a51d9ba6c535726d8bcd8e85e3e0195d66ce87501924552d782",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c367": "부산 낙동강 하구 생태길 2코스 삼락 물억새길"
+    },
+    "place": "삼락생태공원 연꽃과 정자 풍경 (여름 참고사진)",
+    "date": "2023-12-08",
+    "author": "부산광역시",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.busan.go.kr/galmaetgil/notice02/1602279",
+    "original": "https://www.busan.go.kr/comm/getFile?srvcId=BBSTY3&upperNo=1602279&fileTy=ATTACH&fileNo=1",
+    "title": "[갈맷길 플라워 포인트] 삼락생태공원",
+    "dateNote": "게시일 · 촬영일 미표기",
+    "src": "/assets/course-photos/c367.webp",
+    "width": 1200,
+    "height": 800,
+    "sourceSha256": "d955cd1abafd6a90fefb21b5ae068861df965137bf3bf23c45d380ac8886c7f8",
+    "assetSha256": "abb4dbab445f8a7e4fdeca5bc5d132127238dca34697a0ff9fc03aca3bbcebe1",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c368": "부산 낙동강 하구 생태길 1코스 삼락 맹꽁이길"
+    },
+    "place": "삼락생태공원 벚꽃 산책 풍경 (봄철 참고사진)",
+    "date": "2020",
+    "author": "부산광역시",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=14128",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/지역별관광지/부산광역시/부산여행사진/537.jpg",
+    "title": "삼락생태공원",
+    "src": "/assets/course-photos/c368.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "bc7994a368ea7d52814fcf5b69f248eea47e035861b900fbbaa2a6f3fc6fdf87",
+    "assetSha256": "9457d41795d1331a6d110ca385589ba56834e12bf1d7bc38beb9ff45d0590bd7",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c400": "고모호수공원 보행로 산책 코스"
+    },
+    "place": "고모호수공원 수변 산책로와 호수 (여름 참고사진)",
+    "date": "2025-03-09",
+    "author": "경기뉴스광장 유애형 기자",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202503090155538509C094&s_code=C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202503/20250309015553377336553.jpg",
+    "title": "고모호수공원 여름 풍경",
+    "dateNote": "게시일 · 촬영일 미표기",
+    "src": "/assets/course-photos/c400.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "ba27128a4d491f61d2c1c324e66659bb4bed9ef1e3a07fe050f4affe087ccf56",
+    "assetSha256": "bab420cfb0571db145170f89273909ce898d92bf6000331498953f90e3f9e77f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c430": "제주시 해안누리길 닭머르해안길 (공식 GPX 제공 구간)"
+    },
+    "place": "닭머르해안길 신촌포구 주변 풍경",
+    "date": "2019-11",
+    "author": "ⓒ한국관광공사 사진갤러리-김지호",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://korean1.visitkorea.or.kr/kor/nphotogallery/photo.kto?func_name=photo_view&newphotoDTO.photo_code=2719019201911001k",
+    "original": "https://tong.visitkorea.or.kr/cms/resource_photo/25/2643225_image2_1.jpg",
+    "title": "닭머르해안길",
+    "src": "/assets/course-photos/c430.webp",
+    "width": 680,
+    "height": 453,
+    "sourceSha256": "e583e845fa664b7f1115ea9c9ab76b023b660e6e4dfc232dd3d7b91c41daaf07",
+    "assetSha256": "e7dc022935e830af9a977480dc44d61325a8395f84003ed3a2274fd85f42695a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001649": "경남 양산시 황산강 베랑길"
+    },
+    "place": "황산강 베랑길 낙동강 수변 데크",
+    "date": "2026-10-09",
+    "author": "한국관광공사(두루누비) · 양산시 제공",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://yangsan.go.kr/tour/contents.do?mid=0301010300",
+    "original": "https://yangsan.go.kr/tour/img/sub/03/img010103_01.jpg",
+    "title": "황산강 베랑길",
+    "dateNote": "출처 확인일 · 촬영일 미표기",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001649.webp",
+    "width": 1035,
+    "height": 510,
+    "sourceSha256": "ad21cf4b1aa18e088b1ab27c34c11e8c90881330afcbf7810c9ba173d429adc5",
+    "assetSha256": "3232f0d0d4604bf5038cf42f27e25bc9605213fa323d60b9b0383b0ab840a164",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001517": "경북 영덕군 해안누리길 고래불 명사이십리길"
+    },
+    "place": "고래불해수욕장 입구 광장과 조형물 (코스 경유지 참고사진)",
+    "date": "2023-03-16",
+    "dateNote": "게시일 · 촬영일 미표기",
+    "author": "한국농어촌공사 웰촌",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2211636",
+    "original": "https://www.welchon.com/upload/editor/images/000019/20230316091148837_VY88QVOT.jpg",
+    "title": "영덕 인량전통테마마을에서 느끼는 봄의 정취 · 고래불해수욕장",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001517.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "e6f0fbf87a7ba4495820161ca353e8415fdc4038853301b609e4cbb63164988e",
+    "assetSha256": "7ad0a8d013979dd60cfa4c05034b02723831ea439c252f80b0f6a406684653ab",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c364": "완주 경천애인징검다리길"
+    },
+    "place": "완주 오복마을 구룡천 징검다리 (경천애인징검다리길 경유지)",
+    "date": "2021-12-30",
+    "dateNote": "게시일 · 촬영일 미표기",
+    "author": "한국농어촌공사 웰촌 · 완주 오복마을",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2210538",
+    "original": "https://www.welchon.com/upload/namo/images/000253/20211230104343110_0EZ4FE22.jpg",
+    "title": "당신이 꿈꾸던 농촌마을, 완주 오복마을 · 구룡천 징검다리",
+    "src": "/assets/course-photos/c364.webp",
+    "width": 1200,
+    "height": 801,
+    "sourceSha256": "96c37db6cf129054e8404ae801e67ac1009d876c605103f122168f30f5e4ef41",
+    "assetSha256": "1c159c041a134927d7c5c8534a49f2f63dda479059968674297e5c3bf688c5a3",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
       "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_665502044.webp",
@@ -3574,291 +3860,5 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
-  },
-  {
-    "courses": {
-      "c266": "서울 대모산 숲길"
-    },
-    "place": "대모산 도시자연공원 숲길 (촬영 당시 겨울 모습)",
-    "date": "2019-12",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/55879",
-    "original": "https://data.si.re.kr/sites/default/files/photos6/06A02502Aa10000.jpg",
-    "title": "대모산자연도시공원",
-    "src": "/assets/course-photos/c266.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "46a5e3ff7eb5e4050a9a737ee8277e18c145225d98fac5b9193996312913386d",
-    "assetSha256": "de1dfd8c44cfbd91ba33ca7a99ec0342866cff07b94472a021d19aa6769a6e32",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c256": "서울 일자산 치유의 숲길"
-    },
-    "place": "일자산 자연공원 숲길 (치유의 숲길 주변)",
-    "date": "2020-06",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/56331",
-    "original": "https://data.si.re.kr/sites/default/files/photos6/06B00209Ac20000.jpg",
-    "title": "강동그린웨이",
-    "src": "/assets/course-photos/c256.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "8db4800eb3c955a279ffabb02064c694e877de5d2ad2560862201e60bb224798",
-    "assetSha256": "1d7aa15146e9547d3612caf570e4a1329a0bbc834f0156c6fb308c052684fbfe",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c264": "서울 망우산 사색의길",
-      "c319": "서울 망우리 사잇길"
-    },
-    "place": "망우리 역사문화공원 산책로와 묘역 주변 (촬영 당시 모습)",
-    "date": "2010-05",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/44756",
-    "original": "https://data.si.re.kr/sites/default/files/photos/04Y01006ac0000.jpg",
-    "title": "망우리공동묘지",
-    "src": "/assets/course-photos/c264.webp",
-    "width": 600,
-    "height": 401,
-    "sourceSha256": "b279de176c20bf04703eb67780d7c1c105b5901db08a4f9c460bd770fd967933",
-    "assetSha256": "86940ccc940b645f38fbca2b91213126fb3d54f9713a47953173a22c5d5943bb",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c300": "서울 장미테마길 중랑천"
-    },
-    "place": "중랑천 장미거리 아치 산책로 (촬영 당시 겨울 모습)",
-    "date": "2014-12",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/50216",
-    "original": "https://data.si.re.kr/sites/default/files/photos/05Y01702Ac0000.jpg",
-    "title": "장미거리",
-    "src": "/assets/course-photos/c300.webp",
-    "width": 600,
-    "height": 401,
-    "sourceSha256": "350b8f7de14afb0c439780068bad834a882f4ed04c56d11a950756ab5b790644",
-    "assetSha256": "b3097a30bbcad716cb945407e386e1746fbf54523772826a6be9189f3f567205",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "duru_T_CRS_MNG0000004081": "서울 강서구 개화산자락길(무장애 숲길)"
-    },
-    "place": "개화산 둘레길 무장애 데크 (촬영 당시 겨울 모습)",
-    "date": "2020-01",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/56872",
-    "original": "https://data.si.re.kr/sites/default/files/photos6/06D00501Ac60000.jpg",
-    "title": "강서둘레길",
-    "src": "/assets/course-photos/duru_T_CRS_MNG0000004081.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "1a8f7f3cb204d600546a99e383442832098ab7972564eab1878dd4b162762334",
-    "assetSha256": "aede74ac278cf1958ab9528b00b235713798bba916726b7c748f04663e443bfc",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c282": "서울 천상병산길"
-    },
-    "place": "수락산 만남의광장 숲길 (천상병산길 경유지 주변)",
-    "date": "2020-04",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/58569",
-    "original": "https://data.si.re.kr/sites/default/files/photos6/06I03903Ac50000.jpg",
-    "title": "수락산 만남의광장",
-    "src": "/assets/course-photos/c282.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "722f62c2ae7c2857f77e5d1a64405c8308c86b1d3f6ab82ab65c1c82d0038d40",
-    "assetSha256": "7d42973abe38480a928636bde3ff9b38c497e08c0a2a23067b49c8c7b33fecd4",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c373": "등나무근린공원 보행로 산책 코스"
-    },
-    "place": "등나무근린공원 보행로 (촬영 당시 봄 모습)",
-    "date": "2020-04",
-    "author": "서울연구원",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://data.si.re.kr/node/58400",
-    "original": "https://data.si.re.kr/sites/default/files/photos6/06I01509Ac42000.jpg",
-    "title": "등나무 근린공원",
-    "src": "/assets/course-photos/c373.webp",
-    "width": 900,
-    "height": 596,
-    "sourceSha256": "1490bf3b37b29adf1542ceab559df055751d30c532e7ca69339e8fc97bb0b53d",
-    "assetSha256": "a61b29abf0ba1a51d9ba6c535726d8bcd8e85e3e0195d66ce87501924552d782",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c367": "부산 낙동강 하구 생태길 2코스 삼락 물억새길"
-    },
-    "place": "삼락생태공원 연꽃과 정자 풍경 (여름 참고사진)",
-    "date": "2023-12-08",
-    "author": "부산광역시",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://www.busan.go.kr/galmaetgil/notice02/1602279",
-    "original": "https://www.busan.go.kr/comm/getFile?srvcId=BBSTY3&upperNo=1602279&fileTy=ATTACH&fileNo=1",
-    "title": "[갈맷길 플라워 포인트] 삼락생태공원",
-    "dateNote": "게시일 · 촬영일 미표기",
-    "src": "/assets/course-photos/c367.webp",
-    "width": 1200,
-    "height": 800,
-    "sourceSha256": "d955cd1abafd6a90fefb21b5ae068861df965137bf3bf23c45d380ac8886c7f8",
-    "assetSha256": "abb4dbab445f8a7e4fdeca5bc5d132127238dca34697a0ff9fc03aca3bbcebe1",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c368": "부산 낙동강 하구 생태길 1코스 삼락 맹꽁이길"
-    },
-    "place": "삼락생태공원 벚꽃 산책 풍경 (봄철 참고사진)",
-    "date": "2020",
-    "author": "부산광역시",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=14128",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/지역별관광지/부산광역시/부산여행사진/537.jpg",
-    "title": "삼락생태공원",
-    "src": "/assets/course-photos/c368.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "bc7994a368ea7d52814fcf5b69f248eea47e035861b900fbbaa2a6f3fc6fdf87",
-    "assetSha256": "9457d41795d1331a6d110ca385589ba56834e12bf1d7bc38beb9ff45d0590bd7",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c400": "고모호수공원 보행로 산책 코스"
-    },
-    "place": "고모호수공원 수변 산책로와 호수 (여름 참고사진)",
-    "date": "2025-03-09",
-    "author": "경기뉴스광장 유애형 기자",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202503090155538509C094&s_code=C094",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202503/20250309015553377336553.jpg",
-    "title": "고모호수공원 여름 풍경",
-    "dateNote": "게시일 · 촬영일 미표기",
-    "src": "/assets/course-photos/c400.webp",
-    "width": 1200,
-    "height": 900,
-    "sourceSha256": "ba27128a4d491f61d2c1c324e66659bb4bed9ef1e3a07fe050f4affe087ccf56",
-    "assetSha256": "bab420cfb0571db145170f89273909ce898d92bf6000331498953f90e3f9e77f",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c430": "제주시 해안누리길 닭머르해안길 (공식 GPX 제공 구간)"
-    },
-    "place": "닭머르해안길 신촌포구 주변 풍경",
-    "date": "2019-11",
-    "author": "ⓒ한국관광공사 사진갤러리-김지호",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://korean1.visitkorea.or.kr/kor/nphotogallery/photo.kto?func_name=photo_view&newphotoDTO.photo_code=2719019201911001k",
-    "original": "https://tong.visitkorea.or.kr/cms/resource_photo/25/2643225_image2_1.jpg",
-    "title": "닭머르해안길",
-    "src": "/assets/course-photos/c430.webp",
-    "width": 680,
-    "height": 453,
-    "sourceSha256": "e583e845fa664b7f1115ea9c9ab76b023b660e6e4dfc232dd3d7b91c41daaf07",
-    "assetSha256": "e7dc022935e830af9a977480dc44d61325a8395f84003ed3a2274fd85f42695a",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "duru_T_CRS_MNG0000001649": "경남 양산시 황산강 베랑길"
-    },
-    "place": "황산강 베랑길 낙동강 수변 데크",
-    "date": "2026-10-09",
-    "author": "한국관광공사(두루누비) · 양산시 제공",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://yangsan.go.kr/tour/contents.do?mid=0301010300",
-    "original": "https://yangsan.go.kr/tour/img/sub/03/img010103_01.jpg",
-    "title": "황산강 베랑길",
-    "dateNote": "출처 확인일 · 촬영일 미표기",
-    "src": "/assets/course-photos/duru_T_CRS_MNG0000001649.webp",
-    "width": 1035,
-    "height": 510,
-    "sourceSha256": "ad21cf4b1aa18e088b1ab27c34c11e8c90881330afcbf7810c9ba173d429adc5",
-    "assetSha256": "3232f0d0d4604bf5038cf42f27e25bc9605213fa323d60b9b0383b0ab840a164",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "duru_T_CRS_MNG0000001517": "경북 영덕군 해안누리길 고래불 명사이십리길"
-    },
-    "place": "고래불해수욕장 입구 광장과 조형물 (코스 경유지 참고사진)",
-    "date": "2023-03-16",
-    "dateNote": "게시일 · 촬영일 미표기",
-    "author": "한국농어촌공사 웰촌",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2211636",
-    "original": "https://www.welchon.com/upload/editor/images/000019/20230316091148837_VY88QVOT.jpg",
-    "title": "영덕 인량전통테마마을에서 느끼는 봄의 정취 · 고래불해수욕장",
-    "src": "/assets/course-photos/duru_T_CRS_MNG0000001517.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "e6f0fbf87a7ba4495820161ca353e8415fdc4038853301b609e4cbb63164988e",
-    "assetSha256": "7ad0a8d013979dd60cfa4c05034b02723831ea439c252f80b0f6a406684653ab",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c364": "완주 경천애인징검다리길"
-    },
-    "place": "완주 오복마을 구룡천 징검다리 (경천애인징검다리길 경유지)",
-    "date": "2021-12-30",
-    "dateNote": "게시일 · 촬영일 미표기",
-    "author": "한국농어촌공사 웰촌 · 완주 오복마을",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://www.welchon.com/web/lay1/program/S1T23C24/travelHistory/view.do?bbs_idx=2210538",
-    "original": "https://www.welchon.com/upload/namo/images/000253/20211230104343110_0EZ4FE22.jpg",
-    "title": "당신이 꿈꾸던 농촌마을, 완주 오복마을 · 구룡천 징검다리",
-    "src": "/assets/course-photos/c364.webp",
-    "width": 1200,
-    "height": 801,
-    "sourceSha256": "96c37db6cf129054e8404ae801e67ac1009d876c605103f122168f30f5e4ef41",
-    "assetSha256": "1c159c041a134927d7c5c8534a49f2f63dda479059968674297e5c3bf688c5a3",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
   }
 ]
