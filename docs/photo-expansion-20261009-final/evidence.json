@@ -1,0 +1,95 @@
+[
+  {
+    "node": 55879,
+    "courses": [
+      "c266"
+    ],
+    "cameraLat": "37.47983333",
+    "cameraLng": "127.0810717",
+    "nearestPathMeters": {
+      "c266": 64
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/55879"
+  },
+  {
+    "node": 56331,
+    "courses": [
+      "c256"
+    ],
+    "cameraLat": "37.53098333",
+    "cameraLng": "127.1510217",
+    "nearestPathMeters": {
+      "c256": 16
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/56331"
+  },
+  {
+    "node": 44756,
+    "courses": [
+      "c264",
+      "c319"
+    ],
+    "cameraLat": "37.594758333333",
+    "cameraLng": "127.11241666667",
+    "nearestPathMeters": {
+      "c264": 100,
+      "c319": 101
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/44756"
+  },
+  {
+    "node": 50216,
+    "courses": [
+      "c300"
+    ],
+    "cameraLat": "37.607361111111",
+    "cameraLng": "127.073",
+    "nearestPathMeters": {
+      "c300": 64
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/50216"
+  },
+  {
+    "node": 56872,
+    "courses": [
+      "duru_T_CRS_MNG0000004081"
+    ],
+    "cameraLat": "37.58128167",
+    "cameraLng": "126.8074383",
+    "nearestPathMeters": {
+      "duru_T_CRS_MNG0000004081": 11
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/56872"
+  },
+  {
+    "node": 58569,
+    "courses": [
+      "c282"
+    ],
+    "cameraLat": "37.67528167",
+    "cameraLng": "127.0623167",
+    "nearestPathMeters": {
+      "c282": 17
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/58569"
+  },
+  {
+    "node": 58400,
+    "courses": [
+      "c373"
+    ],
+    "cameraLat": "37.63987667",
+    "cameraLng": "127.0671783",
+    "nearestPathMeters": {
+      "c373": 22
+    },
+    "license": "KOGL1 / CC BY 4.0",
+    "source": "https://data.si.re.kr/node/58400"
+  }
+]
