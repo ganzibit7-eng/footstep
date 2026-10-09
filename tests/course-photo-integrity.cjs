@@ -6,17 +6,22 @@ const root=path.resolve(__dirname,'..');
 const photos=require('../course-photos.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'assets/course-photos/credits.json')));
 let count=0;
+const escaped=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll("'",'&#39;');
 for(const record of records){
  assert(fs.existsSync(path.join(root,record.src)));
- const binary=fs.readFileSync(path.join(root,record.src));assert.equal(binary.toString('ascii',0,4),'RIFF');assert.equal(binary.toString('ascii',8,12),'WEBP');
+ const binary=fs.readFileSync(path.join(root,record.src));
+ if(record.noCrop&&/\.jpe?g$/.test(record.src))assert.equal(binary.readUInt16BE(0),0xffd8);
+ else {assert.equal(binary.toString('ascii',0,4),'RIFF');assert.equal(binary.toString('ascii',8,12),'WEBP');}
  assert(record.width>0&&record.height>0);
  const compact=photos.cardCredit(record);
- assert(compact.includes(record.source));assert(compact.includes(record.licenseUrl));
- assert(compact.includes('<details>'));assert(compact.includes('웹용 편집본'));assert(compact.includes('편집본도'));
+ assert(compact.includes(escaped(record.source)));assert(compact.includes(escaped(record.licenseUrl)));
+ assert(compact.includes('<details>'));assert(compact.includes(record.noCrop?'비율 유지':'웹용 표시'));
+ assert(compact.includes(record.changes));
+ if(/BY-SA/.test(record.license))assert(compact.includes('편집본에도 '+record.license+' 적용'));
 
  for(const [id,name] of Object.entries(record.courses)){
   const markup=photos.figure({id,name});assert(markup.includes(`width="${record.width}" height="${record.height}"`));
-  assert(markup.includes(record.licenseUrl));assert(markup.includes('편집본도'));assert.equal(photos.get({id,name:'다른 코스'}),null);assert.equal(photos.figure({id:'unknown',name}), '');
+  assert(markup.includes(record.licenseUrl));assert(markup.includes(record.changes));assert.equal(photos.get({id,name:'다른 코스'}),null);assert.equal(photos.figure({id:'unknown',name}), '');
   const published=fs.readFileSync(path.join(root,'courses',id,'index.html'),'utf8');assert(published.includes(markup));count++;
  }
 }
