@@ -2140,6 +2140,300 @@
   },
   {
     "courses": {
+      "c347": "여주 여강길 3-1코스 (강천섬길)"
+    },
+    "place": "강천섬 잔디마당",
+    "author": "경기도",
+    "date": "촬영 시기 미상",
+    "dateNote": "출처의 2000년 표기는 촬영일로 확정하지 않음",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37107",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2228_%5B%EC%97%AC%EC%A3%BC%5D%20%EA%B0%95%EC%B2%9C%EC%84%AC.jpg",
+    "title": "경기관광포털_2228_[여주] 강천섬.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c347.webp",
+    "width": 760,
+    "height": 570,
+    "sourceSha256": "e935a3572252905d27b2cf5f2c2a40bfe9e7a664ddd7f37b8839296dec9bb69f",
+    "assetSha256": "b02ef51c6279c2cca38b11c4bb8b8cb476efd81e036af05390efb3cabcc38ca4",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c352": "포항 호미반도 해안둘레길 2코스 선바우길"
+    },
+    "place": "호미반도 선바우와 해안 데크길",
+    "author": "한국관광공사",
+    "date": "2020",
+    "dateNote": "출처 페이지 촬영연도 표기",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37909",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/%EC%82%AC%EC%A7%84%EC%A0%84%EB%AC%B8%EA%B0%80/%EC%82%AC%EC%A7%84%EA%B0%A4%EB%9F%AC%EB%A6%AC_0243_%ED%98%B8%EB%AF%B8%EB%B0%98%EB%8F%84%20%ED%95%B4%EC%95%88%EB%91%98%EB%A0%88%EA%B8%B8.jpg",
+    "title": "사진갤러리_0243_호미반도 해안둘레길.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c352.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "9352466d6a293dcb9dedd2d85b89ef7c9810b63551670b54a0e2204a0fdb6b95",
+    "assetSha256": "01c41fee9132c17629dcf756b4516cc12affe6ddb5524713a545db20fac4c7cd",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c384": "뿌리공원 보행로 산책 코스"
+    },
+    "place": "뿌리공원 전경",
+    "author": "김민아·대전광역시",
+    "date": "2018",
+    "dateNote": "출처 페이지 촬영연도 표기",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=36758",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%AC%B4%EC%8A%A8%20%EC%82%AC%EC%A7%84%EC%9D%BC%EA%B9%8C/%EA%B3%B5%EB%AA%A8%EC%A0%84_0178_%EB%BF%8C%EB%A6%AC%EA%B3%B5%EC%9B%90%20%EC%A0%84%EA%B2%BD.jpg",
+    "title": "공모전_0178_뿌리공원 전경.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c384.webp",
+    "width": 760,
+    "height": 412,
+    "sourceSha256": "0eb7e9adbc879ea3775bd0fb11d41ad7a6a360f22677718996e6a0fdc797f6e7",
+    "assetSha256": "a4c149999af39d60cf33710e1ae5f09f7b97a716a765a58a93ac74ace6710f7e",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c386": "영덕해맞이공원 보행로 산책 코스"
+    },
+    "place": "영덕해맞이공원 창포말등대와 전망데크",
+    "author": "한국관광공사",
+    "date": "2020",
+    "dateNote": "출처 페이지 촬영연도 표기",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37892",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/%EC%82%AC%EC%A7%84%EC%A0%84%EB%AC%B8%EA%B0%80/%EC%82%AC%EC%A7%84%EA%B0%A4%EB%9F%AC%EB%A6%AC_0067_%EC%98%81%EB%8D%95%20%ED%95%B4%EB%A7%9E%EC%9D%B4%EA%B3%B5%EC%9B%90.jpg",
+    "title": "사진갤러리_0067_영덕 해맞이공원.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c386.webp",
+    "width": 427,
+    "height": 640,
+    "sourceSha256": "daa52fea5169b01daea6fdd3a766dc317f62f90342a44aff926941141100147c",
+    "assetSha256": "a8101784a115db11a4da3c1ac03c6f2fd2b04fe146eabb22d7339b2c30e02423",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c393": "아산 곡교천 은행나무길"
+    },
+    "place": "아산 곡교천 은행나무길",
+    "author": "아산시",
+    "date": "2020",
+    "dateNote": "출처 페이지 촬영연도 표기",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=58281",
+    "original": "https://www.kogl.or.kr/upload_recommend/2023New/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC/thumnail/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC%20%EC%8D%B8%EB%84%A4%EC%9D%BC%20%EB%B3%80%ED%99%98/13.%20%EC%95%84%EC%82%B0%EC%8B%9C/02.%20%EC%BD%98%ED%85%90%EC%B8%A0/01.%20%EB%AC%B8%ED%99%94%EA%B4%80%EA%B4%91/%EC%95%84%EC%82%B0%EC%8B%9C%EB%AC%B8%ED%99%94%EA%B4%80%EA%B4%91_0086_%EC%95%84%EC%82%B0%20%EC%9D%80%ED%96%89%EB%82%98%EB%AC%B4%EA%B8%B8_detail_thumnail.jpg",
+    "title": "아산시문화관광_0086_아산 은행나무길_detail_thumnail.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c393.webp",
+    "width": 700,
+    "height": 466,
+    "sourceSha256": "c79c5dece6e0398129ecdc795a937e9beb71760c6bd75233badd52303988a09f",
+    "assetSha256": "5b34178ab7df63e65a84370c49ab85944c361174d61311544b49f1dae3db9eee",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c343": "여주 여강길 3코스 바위늪구비길"
+    },
+    "place": "여강길 경유지 · 신륵사 입구",
+    "author": "경기도",
+    "date": "촬영 시기 미상",
+    "dateNote": "공공누리 제공 사진 · 촬영일 미상",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37113",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2292_%5B%EC%97%AC%EC%A3%BC%5D%20%EC%8B%A0%EB%A5%B5%EC%82%AC.JPG",
+    "title": "경기관광포털_2292_[여주] 신륵사.JPG",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c343.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "4487698ab74e1c94c669379078941ad33d8f2302f878cb72cbe7e78e2233c955",
+    "assetSha256": "c2cc03f9933f7b9101dbf24284fef0355f013bedc7ba7b994ad219696b2fa653",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c380": "다산생태공원 보행로 산책 코스"
+    },
+    "place": "다산생태공원 입구와 잔디마당",
+    "author": "최병용 기자·경기도",
+    "date": "2023-09-14",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202309141628417534C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202309/20230914042841795704989.jpg",
+    "title": "다산생태공원 입구와 잔디마당",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c380.webp",
+    "width": 966,
+    "height": 451,
+    "sourceSha256": "0eb87df04f22047a6e8ede1d356c1a2dac4652c8e54e90cb2421903f3c52a585",
+    "assetSha256": "3a80ccd42ea92bed463041b8daaab43d0384c367513a3789e23ca2cdb0d5f5d6",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c383": "설봉공원 보행로 산책 코스"
+    },
+    "place": "설봉공원 호반 산책로",
+    "author": "조영진 기자·경기도",
+    "date": "2015-07-22",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201507221041136438C083",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201507/20150722104113256603504.jpg",
+    "title": "설봉공원 호반 산책로",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c383.webp",
+    "width": 677,
+    "height": 403,
+    "sourceSha256": "981221cd098b5852d2b67ae61e0ff0f8006bb6acc2c50d871c4816c5997905cc",
+    "assetSha256": "376f28caf4659baaeef8815e2b63abafba762f5dbfcb0d3d4715f2a2588c890c",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c397": "가평 호명호수 호반 GPX 구간"
+    },
+    "place": "호명호수 호반 풍경",
+    "author": "경기도블로그·경기도",
+    "date": "2016-04-14",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201604141310357788C093",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201604/20160414131035393155720.jpg",
+    "title": "호명호수 호반 풍경",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c397.webp",
+    "width": 773,
+    "height": 513,
+    "sourceSha256": "81875e1c228399a5b51360b6ee8380d5bd3463dc991d61735dedc10519ff9c8f",
+    "assetSha256": "5dcdc9d648e38dcce96734ccf11b5e0d4322064573302db81960bfa282ac37d7",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c388": "서호공원 보행로 산책 코스"
+    },
+    "place": "서호공원 산책길에서 바라본 축만제",
+    "author": "이서영 기자·경기도",
+    "date": "2018-11-19",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201811191637434991C083",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201811/20181119163743457164080.jpg",
+    "title": "서호공원 산책길에서 바라본 축만제",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c388.webp",
+    "width": 800,
+    "height": 578,
+    "sourceSha256": "60e341b41be29f0d9487aaf7eec4ad06622cc51bf22b64874ae48e809205a784",
+    "assetSha256": "34e1bcaf9f16832cd892fab34a7aac42ece8a96ab4f5ff3687269e1fb6153b8f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c371": "동백호수공원 보행로 산책 코스"
+    },
+    "place": "용인 동백호수공원 밤풍경",
+    "author": "이유주 기자·경기도",
+    "date": "2024-08-30",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202408301444221218C076",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202408/2024083004285540937187.jpg",
+    "title": "용인 동백호수공원 밤풍경",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c371.webp",
+    "width": 1024,
+    "height": 472,
+    "sourceSha256": "3d2b04983bae8fa3c694e7fef7cc0faa1ed650b25c5e8cfe2f152c90ebb8f119",
+    "assetSha256": "c08513a7ac9309bed5c07ce06935d7826cd4dc4d4effefeee4d226a16fe3b3c3",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c431": "여주시 여강길 4코스 5일장터길"
+    },
+    "place": "여강길 4코스 강변 산책길 풍경",
+    "author": "경기도블로그·경기도",
+    "date": "2016-04-18",
+    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201604181300571673C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201604/20160418130057271797103.jpg",
+    "title": "여강길 4코스 강변 산책길 풍경",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c431.webp",
+    "width": 773,
+    "height": 1149,
+    "sourceSha256": "b124dcd75083b6c5398ab83271fab64dd3469df54f2eec9eb885f9889c182933",
+    "assetSha256": "14f119e995d0a15fd827b1cc7e046fea665a7ded03dc43d3be6702183c7e715f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c372": "물의 정원 보행로 산책 코스"
+    },
+    "place": "물의 정원 북한강변 산책 공간",
+    "author": "이창룡·경기도블로그·경기도",
+    "date": "2017-08-28",
+    "dateNote": "2017-08-28 공개 · 촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201708281551093103C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201708/20170828155109772223555.jpg",
+    "title": "경기도 사진 찍기 좋은 곳 북한강 물의 정원",
+    "src": "/assets/course-photos/c372.webp",
+    "width": 900,
+    "height": 600,
+    "sourceSha256": "dc962d94e3e32f352260c0df5d4aa6f7465bbfb77cc6c4ca07c35d61ad35c288",
+    "assetSha256": "ba14ac430f12aac009f903346749960e4f67b4b5cbccd0729919a4f845b5f375",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c381": "국채보상운동기념공원 보행로 산책 코스"
+    },
+    "place": "국채보상운동기념공원 달구벌대종 전경",
+    "author": "대구광역시",
+    "date": "2020",
+    "dateNote": "출처 페이지 촬영연도 표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=63291",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/20240610/02.%20%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%EC%B2%AD/04.%20%EB%8C%80%EA%B5%AC%EC%82%AC%EC%A7%84%20%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C/2705_%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C_%EA%B5%AD%EC%B1%84%EB%B3%B4%EC%83%81%EC%9A%B4%EB%8F%99%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90%20%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%8C%80%EC%A2%85%20%EC%A0%84%EA%B2%BD.jpg",
+    "title": "국채보상운동기념공원 달구벌대종 전경",
+    "src": "/assets/course-photos/c381.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "967bb63a2d991f48194e918a885d898af05a89ba636e04a569e0f21395b7c6e0",
+    "assetSha256": "ca47d178e4b5dda71e0053ac8492cc6f514a16b00a30fa6195c86d07fd4c7b7a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
       "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_665502044.webp",
@@ -3114,299 +3408,5 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
-  },
-  {
-    "courses": {
-      "c347": "여주 여강길 3-1코스 (강천섬길)"
-    },
-    "place": "강천섬 잔디마당",
-    "author": "경기도",
-    "date": "촬영 시기 미상",
-    "dateNote": "출처의 2000년 표기는 촬영일로 확정하지 않음",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37107",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2228_%5B%EC%97%AC%EC%A3%BC%5D%20%EA%B0%95%EC%B2%9C%EC%84%AC.jpg",
-    "title": "경기관광포털_2228_[여주] 강천섬.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c347.webp",
-    "width": 760,
-    "height": 570,
-    "sourceSha256": "e935a3572252905d27b2cf5f2c2a40bfe9e7a664ddd7f37b8839296dec9bb69f",
-    "assetSha256": "b02ef51c6279c2cca38b11c4bb8b8cb476efd81e036af05390efb3cabcc38ca4",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c352": "포항 호미반도 해안둘레길 2코스 선바우길"
-    },
-    "place": "호미반도 선바우와 해안 데크길",
-    "author": "한국관광공사",
-    "date": "2020",
-    "dateNote": "출처 페이지 촬영연도 표기",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37909",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/%EC%82%AC%EC%A7%84%EC%A0%84%EB%AC%B8%EA%B0%80/%EC%82%AC%EC%A7%84%EA%B0%A4%EB%9F%AC%EB%A6%AC_0243_%ED%98%B8%EB%AF%B8%EB%B0%98%EB%8F%84%20%ED%95%B4%EC%95%88%EB%91%98%EB%A0%88%EA%B8%B8.jpg",
-    "title": "사진갤러리_0243_호미반도 해안둘레길.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c352.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "9352466d6a293dcb9dedd2d85b89ef7c9810b63551670b54a0e2204a0fdb6b95",
-    "assetSha256": "01c41fee9132c17629dcf756b4516cc12affe6ddb5524713a545db20fac4c7cd",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c384": "뿌리공원 보행로 산책 코스"
-    },
-    "place": "뿌리공원 전경",
-    "author": "김민아·대전광역시",
-    "date": "2018",
-    "dateNote": "출처 페이지 촬영연도 표기",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=36758",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%AC%B4%EC%8A%A8%20%EC%82%AC%EC%A7%84%EC%9D%BC%EA%B9%8C/%EA%B3%B5%EB%AA%A8%EC%A0%84_0178_%EB%BF%8C%EB%A6%AC%EA%B3%B5%EC%9B%90%20%EC%A0%84%EA%B2%BD.jpg",
-    "title": "공모전_0178_뿌리공원 전경.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c384.webp",
-    "width": 760,
-    "height": 412,
-    "sourceSha256": "0eb7e9adbc879ea3775bd0fb11d41ad7a6a360f22677718996e6a0fdc797f6e7",
-    "assetSha256": "a4c149999af39d60cf33710e1ae5f09f7b97a716a765a58a93ac74ace6710f7e",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c386": "영덕해맞이공원 보행로 산책 코스"
-    },
-    "place": "영덕해맞이공원 창포말등대와 전망데크",
-    "author": "한국관광공사",
-    "date": "2020",
-    "dateNote": "출처 페이지 촬영연도 표기",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37892",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%ED%95%9C%EA%B5%AD%EA%B4%80%EA%B4%91%EA%B3%B5%EC%82%AC/%EC%82%AC%EC%A7%84%EC%A0%84%EB%AC%B8%EA%B0%80/%EC%82%AC%EC%A7%84%EA%B0%A4%EB%9F%AC%EB%A6%AC_0067_%EC%98%81%EB%8D%95%20%ED%95%B4%EB%A7%9E%EC%9D%B4%EA%B3%B5%EC%9B%90.jpg",
-    "title": "사진갤러리_0067_영덕 해맞이공원.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c386.webp",
-    "width": 427,
-    "height": 640,
-    "sourceSha256": "daa52fea5169b01daea6fdd3a766dc317f62f90342a44aff926941141100147c",
-    "assetSha256": "a8101784a115db11a4da3c1ac03c6f2fd2b04fe146eabb22d7339b2c30e02423",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c393": "아산 곡교천 은행나무길"
-    },
-    "place": "아산 곡교천 은행나무길",
-    "author": "아산시",
-    "date": "2020",
-    "dateNote": "출처 페이지 촬영연도 표기",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=58281",
-    "original": "https://www.kogl.or.kr/upload_recommend/2023New/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC/thumnail/%EA%B3%B5%EA%B3%B5%EB%88%84%EB%A6%AC%20%EC%8D%B8%EB%84%A4%EC%9D%BC%20%EB%B3%80%ED%99%98/13.%20%EC%95%84%EC%82%B0%EC%8B%9C/02.%20%EC%BD%98%ED%85%90%EC%B8%A0/01.%20%EB%AC%B8%ED%99%94%EA%B4%80%EA%B4%91/%EC%95%84%EC%82%B0%EC%8B%9C%EB%AC%B8%ED%99%94%EA%B4%80%EA%B4%91_0086_%EC%95%84%EC%82%B0%20%EC%9D%80%ED%96%89%EB%82%98%EB%AC%B4%EA%B8%B8_detail_thumnail.jpg",
-    "title": "아산시문화관광_0086_아산 은행나무길_detail_thumnail.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c393.webp",
-    "width": 700,
-    "height": 466,
-    "sourceSha256": "c79c5dece6e0398129ecdc795a937e9beb71760c6bd75233badd52303988a09f",
-    "assetSha256": "5b34178ab7df63e65a84370c49ab85944c361174d61311544b49f1dae3db9eee",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c343": "여주 여강길 3코스 바위늪구비길"
-    },
-    "place": "여강길 경유지 · 신륵사 입구",
-    "author": "경기도",
-    "date": "촬영 시기 미상",
-    "dateNote": "공공누리 제공 사진 · 촬영일 미상",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37113",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2292_%5B%EC%97%AC%EC%A3%BC%5D%20%EC%8B%A0%EB%A5%B5%EC%82%AC.JPG",
-    "title": "경기관광포털_2292_[여주] 신륵사.JPG",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c343.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "4487698ab74e1c94c669379078941ad33d8f2302f878cb72cbe7e78e2233c955",
-    "assetSha256": "c2cc03f9933f7b9101dbf24284fef0355f013bedc7ba7b994ad219696b2fa653",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c380": "다산생태공원 보행로 산책 코스"
-    },
-    "place": "다산생태공원 입구와 잔디마당",
-    "author": "최병용 기자·경기도",
-    "date": "2023-09-14",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202309141628417534C094",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202309/20230914042841795704989.jpg",
-    "title": "다산생태공원 입구와 잔디마당",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c380.webp",
-    "width": 966,
-    "height": 451,
-    "sourceSha256": "0eb87df04f22047a6e8ede1d356c1a2dac4652c8e54e90cb2421903f3c52a585",
-    "assetSha256": "3a80ccd42ea92bed463041b8daaab43d0384c367513a3789e23ca2cdb0d5f5d6",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c383": "설봉공원 보행로 산책 코스"
-    },
-    "place": "설봉공원 호반 산책로",
-    "author": "조영진 기자·경기도",
-    "date": "2015-07-22",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201507221041136438C083",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201507/20150722104113256603504.jpg",
-    "title": "설봉공원 호반 산책로",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c383.webp",
-    "width": 677,
-    "height": 403,
-    "sourceSha256": "981221cd098b5852d2b67ae61e0ff0f8006bb6acc2c50d871c4816c5997905cc",
-    "assetSha256": "376f28caf4659baaeef8815e2b63abafba762f5dbfcb0d3d4715f2a2588c890c",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c397": "가평 호명호수 호반 GPX 구간"
-    },
-    "place": "호명호수 호반 풍경",
-    "author": "경기도블로그·경기도",
-    "date": "2016-04-14",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201604141310357788C093",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201604/20160414131035393155720.jpg",
-    "title": "호명호수 호반 풍경",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c397.webp",
-    "width": 773,
-    "height": 513,
-    "sourceSha256": "81875e1c228399a5b51360b6ee8380d5bd3463dc991d61735dedc10519ff9c8f",
-    "assetSha256": "5dcdc9d648e38dcce96734ccf11b5e0d4322064573302db81960bfa282ac37d7",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c388": "서호공원 보행로 산책 코스"
-    },
-    "place": "서호공원 산책길에서 바라본 축만제",
-    "author": "이서영 기자·경기도",
-    "date": "2018-11-19",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201811191637434991C083",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201811/20181119163743457164080.jpg",
-    "title": "서호공원 산책길에서 바라본 축만제",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c388.webp",
-    "width": 800,
-    "height": 578,
-    "sourceSha256": "60e341b41be29f0d9487aaf7eec4ad06622cc51bf22b64874ae48e809205a784",
-    "assetSha256": "34e1bcaf9f16832cd892fab34a7aac42ece8a96ab4f5ff3687269e1fb6153b8f",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c371": "동백호수공원 보행로 산책 코스"
-    },
-    "place": "용인 동백호수공원 밤풍경",
-    "author": "이유주 기자·경기도",
-    "date": "2024-08-30",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202408301444221218C076",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202408/2024083004285540937187.jpg",
-    "title": "용인 동백호수공원 밤풍경",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c371.webp",
-    "width": 1024,
-    "height": 472,
-    "sourceSha256": "3d2b04983bae8fa3c694e7fef7cc0faa1ed650b25c5e8cfe2f152c90ebb8f119",
-    "assetSha256": "c08513a7ac9309bed5c07ce06935d7826cd4dc4d4effefeee4d226a16fe3b3c3",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c431": "여주시 여강길 4코스 5일장터길"
-    },
-    "place": "여강길 4코스 강변 산책길 풍경",
-    "author": "경기도블로그·경기도",
-    "date": "2016-04-18",
-    "dateNote": "촬영일 미상 · 출처 페이지 공개일 기준",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201604181300571673C094",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201604/20160418130057271797103.jpg",
-    "title": "여강길 4코스 강변 산책길 풍경",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c431.webp",
-    "width": 773,
-    "height": 1149,
-    "sourceSha256": "b124dcd75083b6c5398ab83271fab64dd3469df54f2eec9eb885f9889c182933",
-    "assetSha256": "14f119e995d0a15fd827b1cc7e046fea665a7ded03dc43d3be6702183c7e715f",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c372": "물의 정원 보행로 산책 코스"
-    },
-    "place": "물의 정원 북한강변 산책 공간",
-    "author": "이창룡·경기도블로그·경기도",
-    "date": "2017-08-28",
-    "dateNote": "2017-08-28 공개 · 촬영일 미상",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=201708281551093103C094",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201708/20170828155109772223555.jpg",
-    "title": "경기도 사진 찍기 좋은 곳 북한강 물의 정원",
-    "src": "/assets/course-photos/c372.webp",
-    "width": 900,
-    "height": 600,
-    "sourceSha256": "dc962d94e3e32f352260c0df5d4aa6f7465bbfb77cc6c4ca07c35d61ad35c288",
-    "assetSha256": "ba14ac430f12aac009f903346749960e4f67b4b5cbccd0729919a4f845b5f375",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c381": "국채보상운동기념공원 보행로 산책 코스"
-    },
-    "place": "국채보상운동기념공원 달구벌대종 전경",
-    "author": "대구광역시",
-    "date": "2020",
-    "dateNote": "출처 페이지 촬영연도 표기",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=63291",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/20240610/02.%20%EB%8C%80%EA%B5%AC%EA%B4%91%EC%97%AD%EC%8B%9C%EC%B2%AD/04.%20%EB%8C%80%EA%B5%AC%EC%82%AC%EC%A7%84%20%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C/2705_%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C_%EA%B5%AD%EC%B1%84%EB%B3%B4%EC%83%81%EC%9A%B4%EB%8F%99%EA%B8%B0%EB%85%90%EA%B3%B5%EC%9B%90%20%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%8C%80%EC%A2%85%20%EC%A0%84%EA%B2%BD.jpg",
-    "title": "국채보상운동기념공원 달구벌대종 전경",
-    "src": "/assets/course-photos/c381.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "967bb63a2d991f48194e918a885d898af05a89ba636e04a569e0f21395b7c6e0",
-    "assetSha256": "ca47d178e4b5dda71e0053ac8492cc6f514a16b00a30fa6195c86d07fd4c7b7a",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
   }
 ]
