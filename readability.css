@@ -193,3 +193,17 @@ body.reading-page{--rp-bg:#f6f4ef;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
   .reading-page .place-join h2{font-size:22px}
   .place-home{margin-left:0;display:block}
 }
+
+/* Shared browsing refinement: regional lists and static detail pages. */
+.reading-page :is(input,select,textarea,button){font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;letter-spacing:-.02em}
+.reading-page :is(input,select,textarea){transition:border-color .18s,box-shadow .18s}
+.reading-page :is(input,select,textarea):focus-visible{outline:3px solid #a64d32;outline-offset:3px}
+.reading-page .brand{font-size:19px;font-weight:700}
+.reading-page :is(.jump,.quick-links) a{border-radius:11px;font-weight:550}
+.reading-page #place-results li{border-color:var(--rp-line);border-radius:14px}
+.reading-page #place-results li>a{font-size:18px;font-weight:650;line-height:1.65;letter-spacing:-.025em}
+.reading-page .region-counts span{border:1px solid var(--rp-line);background:transparent}
+.reading-page .listing-photo{border-radius:16px}
+@media(hover:hover){.reading-page :is(.jump,.quick-links) a:hover{background:var(--rp-paper);border-color:var(--rp-muted)}}
+@media(max-width:600px){.reading-page :is(input,select,textarea){font-size:16px}.reading-page :is(.jump,.quick-links) a{min-height:44px;font-size:13px}.reading-page #place-results li>a{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.reading-page :is(input,select,textarea){transition:none}}

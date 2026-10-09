@@ -1,0 +1,93 @@
+/* Balzaguk: quiet surfaces, clear decisions and consistent Korean typography. */
+:root{--experience-font:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;--experience-text:#243c32;--experience-muted:#59675e;--experience-line:#e0e2d9;--experience-soft:#eef2eb;--experience-accent:#a64d32;--experience-shadow:0 8px 28px rgba(28,52,39,.045)}
+html[data-theme="dark"]{--experience-text:#edf2e9;--experience-muted:#b9c6b8;--experience-line:#435047;--experience-soft:#2e3b32;--experience-accent:#efab8e;--experience-shadow:none}
+body{font-family:var(--experience-font);letter-spacing:-.018em}
+body :is(h1,h2,h3,h4){font-family:var(--experience-font);letter-spacing:-.04em}
+body :is(button,input,select,textarea){font-family:var(--experience-font)}
+body :is(button,a,input,select,textarea,summary):focus-visible{outline:3px solid var(--experience-accent);outline-offset:4px}
+header .nav{gap:20px;padding-top:14px;padding-bottom:14px}
+header .nav-links{gap:6px;align-items:center}
+header .nav-links a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:10px;font-size:14px;font-weight:550;color:var(--experience-text);opacity:1;white-space:nowrap;transition:background .18s,color .18s}
+header .nav-links a.active{background:var(--experience-soft);color:var(--experience-text);font-weight:700}
+header .nav-cta{min-height:44px;display:flex;align-items:center;box-sizing:border-box;border-radius:12px;padding:8px 16px;font-size:13px;font-weight:650;background:var(--experience-text);color:var(--paper)}
+header .profile-btn{min-height:44px;padding:8px 14px;border-radius:12px;font:600 13px/1.5 var(--experience-font)}
+header #notif-btn{min-width:44px;min-height:44px;background:transparent!important;border-radius:12px!important}
+.hero[data-page-section="home"] #hero-title{font-family:var(--experience-font);font-size:clamp(40px,4.25vw,57px);font-weight:800;letter-spacing:-.065em;line-height:1.18;text-shadow:none}
+.hero[data-page-section="home"] #hero-title em{font-style:normal}
+.hero[data-page-section="home"] .lead{font-family:var(--experience-font);font-weight:450!important;line-height:1.85;letter-spacing:-.025em;max-width:38ch}
+.hero[data-page-section="home"] :is(.btn-primary,.btn-ghost){font-family:var(--experience-font);font-weight:650;letter-spacing:-.025em;box-shadow:0 6px 16px rgba(41,66,46,.08)}
+.hero[data-page-section="home"] .hero-card{box-shadow:var(--experience-shadow)}
+.hero[data-page-section="home"] :is(.hero-stat-num,.hero-card b,.hero-card strong){font-family:var(--experience-font);letter-spacing:-.03em}
+.journey-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 38px}
+.journey-shortcuts a{display:flex;align-items:center;gap:16px;padding:20px;border:1px solid var(--experience-line);border-radius:16px;background:var(--paper);text-decoration:none;color:var(--experience-text);transition:background .18s,border-color .18s}
+.journey-shortcuts svg{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.journey-shortcuts span{min-width:0;flex:1}
+.journey-shortcuts strong{display:block;font-size:15px;font-weight:650;line-height:1.6}
+.journey-shortcuts small{display:block;margin-top:3px;color:var(--experience-muted);font-size:12px;line-height:1.7}
+.journey-shortcuts i{font-style:normal;font-size:18px;color:var(--experience-muted)}
+.app-page:not(.hero) :is(.section-head,.home-section-head){margin-bottom:24px}
+.app-page:not(.hero) :is(.section-head h2,.home-section-head h2){font-weight:750;color:var(--experience-text);letter-spacing:-.045em}
+.app-page:not(.hero) .section-head .kicker{font:600 12px/1.7 var(--experience-font)!important;letter-spacing:0;color:var(--experience-accent)}
+.app-page:not(.hero) .section-head p{font-size:14px!important;line-height:1.8!important;color:var(--experience-muted);margin:12px 0 0}
+#nearby-section .course-card,#course-grid .course-card,#map-recommend-grid .course-card{border-color:var(--experience-line);border-radius:18px;box-shadow:none}
+#nearby-section .course-card h3,.course-card h3{font-family:var(--experience-font);font-weight:700;font-size:20px;line-height:1.5;letter-spacing:-.035em}
+.course-card .card-visual{height:204px;background:var(--experience-soft)}
+.course-card .card-body{gap:12px;padding:22px}
+.course-card .card-visual .fav-btn{display:grid;place-items:center;width:44px;height:44px;color:#324b3b;background:#fffefa;border:1px solid #ffffffb3;box-shadow:0 2px 9px #243c3214}
+.fav-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.fav-btn[aria-pressed="true"]{color:#a64d32!important}
+.fav-btn[aria-pressed="true"] svg{fill:currentColor}
+.course-card .course-metrics strong{font-family:var(--experience-font);font-weight:650;font-size:18px;font-variant-numeric:tabular-nums}
+.course-card .card-rating{font-family:var(--experience-font)}
+.course-card .badge{font-family:var(--experience-font);font-size:12px;padding:5px 10px;box-shadow:none}
+.course-card .course-detail-cta{font-weight:650;min-height:46px;background:var(--experience-soft);border-color:var(--experience-line);border-radius:11px}
+.course-card .course-compare-toggle{font-family:var(--experience-font);font-size:12px;color:var(--experience-muted);min-height:44px}
+#nearby-section .home-region-form{background:var(--paper);border-color:var(--experience-line);border-radius:16px;padding:16px 18px}
+#home-region-status{color:var(--experience-muted);font-size:12px}
+#list-section>.wrap>.section-head{margin-bottom:24px}
+#list-section .course-search-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start;background:var(--paper);border-color:var(--experience-line);border-radius:18px;box-shadow:var(--experience-shadow);overflow:visible}
+#list-section .course-search-panel>.map-toolbar:first-child{grid-column:1/-1;padding:16px;border:0}
+#list-section .course-common-filters{border:0;padding:0 16px 14px;gap:8px;align-items:flex-start;flex-wrap:wrap}
+#list-section .course-common-filters .filter-group{gap:6px}
+.course-filter-label{width:100%;font:600 12px/1.7 var(--experience-font);color:var(--experience-muted);margin-bottom:0}
+#list-section .course-time-filter{margin:0;padding:0 16px 14px;background:transparent;border:0;border-radius:0;box-shadow:none}
+#list-section .course-time-heading{gap:12px;margin:0 0 8px;flex-wrap:wrap}
+#list-section .course-time-heading h3{font:600 12px/1.7 var(--experience-font);color:var(--experience-muted)}
+#list-section .course-time-help summary{font-size:12px;min-height:24px}
+#list-section .course-time-help p{font-size:12px;line-height:1.8}
+#list-section .walk-time-options{gap:6px;display:flex;flex-wrap:wrap}
+#list-section :is(.chip,.walk-time-options button){min-height:40px;font:500 13px/1.4 var(--experience-font);padding:9px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--experience-line);color:var(--experience-text);box-shadow:none}
+#list-section .chip.active,#list-section .walk-time-options [aria-pressed="true"]{background:var(--experience-text);border-color:var(--experience-text);color:var(--paper);font-weight:600}
+#list-section .course-search-panel>#course-advanced-filters{grid-column:1/-1;border:0;border-top:1px solid var(--experience-line);border-radius:0 0 18px 18px;margin:0;background:transparent}
+#list-section #course-advanced-filters>summary{min-height:48px;padding:10px 16px;border:0;box-sizing:border-box;font-size:13px}
+#list-section #course-advanced-filters .map-toolbar{padding:14px 16px;border:0!important}
+#course-search-input,#course-sort-select,#place-search-input{font-family:var(--experience-font)!important;border-color:var(--experience-line)!important;box-shadow:none;min-height:48px}
+#list-section .explore-results-head{margin:18px 0 12px}
+#course-grid{margin-top:18px;gap:20px}
+#list-section #course-count-label{font-size:14px;font-weight:600;color:var(--experience-text)!important}
+.explore-view-button{border-color:var(--experience-line);background:var(--paper);color:var(--experience-text);font-size:13px;font-weight:600;border-radius:10px;min-height:44px}
+.active-filter{border-color:var(--experience-line);background:var(--experience-soft);color:var(--experience-text)}
+.map-results-bridge{background:var(--experience-soft);border-color:var(--experience-line);border-radius:14px}
+.map-panel,.form-card{box-shadow:var(--experience-shadow);border-color:var(--experience-line)}
+.map-toolbar .chip{font-family:var(--experience-font)}
+#map-section :is(.map-legend-details,.map-filter-note){color:var(--experience-muted)}
+#walk-section .walk-dashboard strong,#walk-section h3{font-family:var(--experience-font);font-variant-numeric:tabular-nums}
+#walk-section .walk-metric-note{color:var(--experience-muted);font-size:13px;line-height:1.8}
+#register-section :is(input,select,textarea){border-color:var(--experience-line)}
+#modal-overlay :is(h3,h4,.course-detail-summary strong,.review-section h4){font-family:var(--experience-font);color:var(--experience-text)}
+#modal-overlay .modal{border-color:var(--experience-line);box-shadow:0 22px 80px #122d302e}
+#modal-overlay .course-detail-summary{background:var(--experience-soft);border-color:var(--experience-line);border-radius:14px}
+#modal-overlay .modal-meta-row .tag-pill{background:var(--experience-soft);color:var(--experience-text)}
+#modal-overlay .review-section{border-color:var(--experience-line)}
+#modal-overlay :is(.modal-close,.mobile-detail-close){font-family:var(--experience-font)}
+.walk-shopping :is(h2,h3,p,small,a){font-family:var(--experience-font)!important}
+.walk-shopping :is(h2,h3){color:var(--experience-text)}
+.walk-shopping-link{background:var(--experience-text);border-radius:11px;font-weight:600}
+.walk-shopping-disclosure{color:var(--experience-text);line-height:1.8}
+@media(hover:hover){header .nav-links a:hover{background:var(--experience-soft)}.journey-shortcuts a:hover{background:var(--experience-soft);border-color:#bbc7b6}.course-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px #243c3210}}
+@media(min-width:881px){#list-section{padding-top:30px}.hero[data-page-section="home"] .hero-copy .hero-actions-refined{max-width:480px!important;flex-direction:row!important;align-items:stretch;gap:12px!important}.hero-actions-refined a{padding:14px 18px!important;font-size:14px!important;min-height:52px;border-radius:13px!important}.hero-actions-refined a:first-child{flex:1.2}.hero-actions-refined a:last-child{flex:1}}
+@media(max-width:1100px) and (min-width:881px){header .nav{gap:10px}header .nav-links a{padding:0 8px}header .nav-cta{display:none}}
+@media(max-width:880px){header .nav{padding-top:10px;padding-bottom:10px}header .nav-cta{display:none}.hero[data-page-section="home"] #hero-title{font-size:clamp(34px,8.7vw,48px);line-height:1.18}.hero[data-page-section="home"] .lead{font-size:14px}.journey-shortcuts{gap:8px;margin-bottom:28px}.journey-shortcuts a{padding:16px 10px;gap:10px}.journey-shortcuts small{display:none}.journey-shortcuts i{display:none}.journey-shortcuts strong{font-size:14px}.journey-shortcuts svg{width:20px;height:20px}.bottom-tab-bar{background:var(--paper);border-top-color:var(--experience-line);box-shadow:0 -4px 20px #243c3207}.bottom-tab-bar button{font:500 11px/1.5 var(--experience-font);color:var(--experience-muted)}.bottom-tab-bar button.active{color:var(--experience-text);font-weight:700}}
+@media(max-width:700px){#list-section .course-search-panel{grid-template-columns:minmax(0,1fr)}#list-section .course-search-panel>.map-toolbar:first-child{padding:14px;gap:8px}#list-section .course-common-filters{padding:0 14px 12px;gap:6px}#list-section .course-time-filter{padding:0 14px 14px}#list-section .walk-time-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}#list-section :is(.chip,.walk-time-options button){min-height:44px;font-size:12px;padding:8px 10px}#list-section #course-advanced-filters>summary{padding:10px 14px}#course-sort-select{width:100%;max-width:none!important}#course-grid{gap:16px}.course-card .card-visual{height:210px}.course-card .card-body{padding:20px}.course-card h3{font-size:21px}#nearby-section .course-card .card-visual{height:190px}.journey-shortcuts a{flex-direction:column;align-items:center;text-align:center;gap:8px;min-height:86px;box-sizing:border-box}.journey-shortcuts strong{font-size:13px}.app-page:not(.hero) .section-head h2{font-size:28px}.app-page:not(.hero) .section-head p{font-size:13px!important}.hero-actions-refined a{font-family:var(--experience-font)!important}}
+@media(max-width:350px){.journey-shortcuts{gap:6px}.journey-shortcuts a{padding:14px 6px}.journey-shortcuts strong{font-size:12px}.hero[data-page-section="home"] #hero-title{font-size:32px}#list-section .chip{padding:8px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){header .nav-links a,.journey-shortcuts a,.course-card{transition:none!important}.course-card:hover{transform:none!important}}
