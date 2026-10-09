@@ -47,7 +47,7 @@ header #notif-btn{min-width:44px;min-height:44px;background:transparent!importan
 #list-section>.wrap>.section-head{margin-bottom:24px}
 #list-section .course-search-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:start;background:var(--paper);border-color:var(--experience-line);border-radius:18px;box-shadow:var(--experience-shadow);overflow:visible}
 #list-section .course-search-panel>.map-toolbar:first-child{grid-column:1/-1;padding:16px;border:0}
-#list-section .course-common-filters{border:0;padding:0 16px 14px;gap:8px;align-items:flex-start;flex-wrap:wrap}
+#list-section .course-common-filters{border:0;padding:0 16px 14px;gap:8px;align-items:flex-start;justify-content:flex-start;flex-wrap:wrap}
 #list-section .course-common-filters .filter-group{gap:6px}
 .course-filter-label{width:100%;font:600 12px/1.7 var(--experience-font);color:var(--experience-muted);margin-bottom:0}
 #list-section .course-time-filter{margin:0;padding:0 16px 14px;background:transparent;border:0;border-radius:0;box-shadow:none}

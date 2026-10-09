@@ -1,0 +1,23 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
+const controls=new Map();
+function element(id){if(!controls.has(id))controls.set(id,{id,dataset:{},active:false,handlers:{},classList:{add(){},remove(){},toggle(){}},addEventListener(type,fn){this.handlers[type]=fn;},setAttribute(){}});return controls.get(id);}
+const state={diff:'all',tags:new Set(),favOnly:false,maxMinutes:0,query:'성동구'};
+let renders=0;
+const context={document:{getElementById:element,querySelectorAll:()=>[]},listFilterState:state,listShownCount:24,LIST_PAGE_SIZE:12,renderGrid(){renders++;}};
+vm.createContext(context);
+vm.runInContext(html.slice(html.indexOf("  document.getElementById('list-diff-filter').addEventListener"),html.indexOf('  function updateWalkPrep(){')),context);
+element('fav-only-chip').handlers.click();
+assert.equal(state.favOnly,true);assert.equal(state.diff,'all');assert.equal(state.query,'성동구');assert.equal(state.tags.size,0);assert.equal(context.listShownCount,12);
+element('fav-only-chip').handlers.click();assert.equal(state.favOnly,false);
+const target={dataset:{tagFilter:'숲길'},classList:{toggle(){}}};
+element('list-tag-filter').handlers.click({target:{closest:()=>target}});
+assert.equal(state.tags.has('숲길'),true);assert.equal(state.favOnly,false);
+element('fav-only-chip').handlers.click();
+assert.equal(state.tags.has('숲길'),true);assert.equal(state.favOnly,true);assert.equal(state.maxMinutes,0);
+element('list-tag-filter').handlers.click({target:{closest:()=>target}});assert.equal(state.tags.size,0);assert.equal(state.favOnly,true);
+assert.equal(renders,5);
+const common=html.slice(html.indexOf('<div class="map-toolbar course-common-filters"'),html.indexOf('<details id="course-advanced-filters">',html.indexOf('<section id="list-section"')));
+assert.match(common,/id="fav-only-chip"/);
+assert.equal((html.match(/id="fav-only-chip"/g)||[]).length,1);
+console.log('PASS: relocated saved filter toggles independently, preserves search/difficulty/tags/time and resets pagination');
