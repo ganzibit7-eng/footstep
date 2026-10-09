@@ -1,0 +1,652 @@
+[
+  {
+    "id": "duru_T_CRS_MNG0000005521",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005527",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005539",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c362",
+        "name": "포천 산정호수 둘레길",
+        "newOverlap": 0.296,
+        "existingOverlap": 0.7017543859649122
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005544",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005545",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005547",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005556",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005560",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005577",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005593",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005594",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005595",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000376",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000377",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000378",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005722",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c347",
+        "name": "여주 여강길 3-1코스 (강천섬길)",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005239",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005401",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c344",
+        "name": "여주 여강길 6코스 왕터쌀길",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005402",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005403",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c427",
+        "name": "여주시 여강길 8코스 파사성길",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005723",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c348",
+        "name": "여주 여강길 9-1코스 (양촌달빛길)",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005405",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005406",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c346",
+        "name": "여주 여강길 10-1코스 싸리산길",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005724",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c349",
+        "name": "여주 여강길 11코스 (동학의길)",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005699",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003971",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005102",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "duru_T_CRS_MNG0000003273",
+        "name": "부산 동래구 얼쑤옛길 1코스 동래읍성 뿌리길",
+        "newOverlap": 0.2413793103448276,
+        "existingOverlap": 0.4117647058823529
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005103",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005506",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005507",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001087",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004718",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001089",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001090",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001091",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000634",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004909",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004480",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004479",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005441",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005505",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004913",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001197",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001198",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000682",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000683",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004257",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c365",
+        "name": "세종호수공원 C코스",
+        "newOverlap": 0.8148148148148148,
+        "existingOverlap": 0.4
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004256",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c365",
+        "name": "세종호수공원 C코스",
+        "newOverlap": 0.9130434782608695,
+        "existingOverlap": 0.6545454545454545
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004255",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c365",
+        "name": "세종호수공원 C코스",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000002276",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001203",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001204",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001205",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001207",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001209",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001211",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003736",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c385",
+        "name": "자유공원(인천) 보행로 산책 코스",
+        "newOverlap": 0.09615384615384616,
+        "existingOverlap": 0.6666666666666666
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003737",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005234",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004470",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001323",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000670",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004611",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003616",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c420",
+        "name": "김포시 문수산 등산로 1코스",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      },
+      {
+        "id": "c421",
+        "name": "김포시 문수산 등산로 2코스",
+        "newOverlap": 0.65625,
+        "existingOverlap": 0.48484848484848486
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003617",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c420",
+        "name": "김포시 문수산 등산로 1코스",
+        "newOverlap": 0.48484848484848486,
+        "existingOverlap": 0.65625
+      },
+      {
+        "id": "c421",
+        "name": "김포시 문수산 등산로 2코스",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      },
+      {
+        "id": "c422",
+        "name": "김포시 문수산 등산로 3코스",
+        "newOverlap": 0.6212121212121212,
+        "existingOverlap": 0.7049180327868853
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003618",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c421",
+        "name": "김포시 문수산 등산로 2코스",
+        "newOverlap": 0.7049180327868853,
+        "existingOverlap": 0.6212121212121212
+      },
+      {
+        "id": "c422",
+        "name": "김포시 문수산 등산로 3코스",
+        "newOverlap": 1.0,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001099",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003656",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001092",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001093",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001094",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001095",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004386",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004385",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004384",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003400",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003475",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003476",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003490",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003491",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000662",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000663",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000664",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000665",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004407",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000000667",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003669",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "duru_T_CRS_MNG0000003667",
+        "name": "광주 동구 도심건강길 3코스 푸른길",
+        "newOverlap": 0.7288135593220338,
+        "existingOverlap": 0.7916666666666666
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003494",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001048",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "c379",
+        "name": "돌산공원 보행로 산책 코스",
+        "newOverlap": 0.08695652173913043,
+        "existingOverlap": 1.0
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001230",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001231",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003094",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005388",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005390",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005391",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003770",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001039",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001040",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003471",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001001",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003472",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004692",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003721",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003722",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "duru_T_CRS_MNG0000003721",
+        "name": "원수산 둘레길 1코스",
+        "newOverlap": 0.5185185185185185,
+        "existingOverlap": 0.42105263157894735
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003723",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003724",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001235",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001236",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "duru_T_CRS_MNG0000001235",
+        "name": "전월산 둘레길 1코스",
+        "newOverlap": 0.6923076923076923,
+        "existingOverlap": 0.5094339622641509
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000001239",
+    "decision": "accept"
+  }
+]

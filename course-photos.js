@@ -3927,6 +3927,330 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "c403": "덕봉산 해안생태탐방로 보행로 산책 코스"
+    },
+    "place": "덕봉산 해안생태탐방로 전망·보행 데크",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2720434",
+    "original": "https://tong.visitkorea.or.kr/cms/resource_photo/15/3542015_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c403.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "4a2227e9c0aecaf062aee2205a2df1ab106877dce13880c812cbd45093697bf6",
+    "assetSha256": "742153c4860b16c786897336602096fdeb72f964e8c6764af33a567526181683",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c405": "경천섬 보행로 산책 코스"
+    },
+    "place": "경천섬공원 전경 (주변 전망대에서 촬영한 참고사진)",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2756567",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/33/3407833_image2_1.png",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c405.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "6d2280482a47493d42e48f3afa1edcac5cefdc6e50feb3c01232ec122670fe2b",
+    "assetSha256": "d68d997e1c174d008e562dac40645202b0e8cb01a9f6c4207052d80683d397f6",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c378": "삼사해상공원 보행로 산책 코스"
+    },
+    "place": "삼사해상공원 경북대종 주변",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=126143",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/55/4076755_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c378.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "d83cda7a9d1184ffbbc6976e93019489fffd353284a7265b07b3f3cb978f8292",
+    "assetSha256": "d8250f179619a25e968931c79a0a47c9c6dfe33c7cb96caddb821e9580b065fb",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c375": "정안천생태공원 보행로 산책 코스"
+    },
+    "place": "정안천 메타세쿼이아길 (2024년 보도자료 사진)",
+    "source": "https://www.gongju.go.kr/prog/saeolNews/sub04_02_01/view.do?newsEpctNo=17623",
+    "original": "https://eminwon.gongju.go.kr/emwp/jsp/ofr/FileDown.jsp",
+    "author": "공주시 의당면",
+    "date": "2024-05-31 게시일 · 촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c375.webp",
+    "width": 720,
+    "height": 960,
+    "sourceSha256": "940974eba59897ddf12e307c323bc290f7deb87d6f43a3c8c4200f08a8548fae",
+    "assetSha256": "586bc1441ebfa574a34e0337d5a8ee94edfcdd7c2b4bfe4ae120b353310c95ad",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c329": "서울 북악산 하늘길"
+    },
+    "place": "북악산 하늘길 주변 팔각정에서 바라본 전망 (2014년 참고사진)",
+    "source": "https://data.si.re.kr/photo/05q01704ad4000",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05Q01704Ad4000.jpg",
+    "author": "서울연구원",
+    "date": "2014-09",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c329.webp",
+    "width": 600,
+    "height": 401,
+    "sourceSha256": "c547341a033ee883deeb2695712e3d02bf43dd776b81393229cd5a953f4447ab",
+    "assetSha256": "89a72c2f53bbef22b01ed18e623edfeabbcaa9cac8b4a1d6d34e6b3df4e9b77a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c251": "서울 불암산 자락길"
+    },
+    "place": "불암산 산세 (자락길 주변 산의 2009년 겨울 참고사진)",
+    "source": "https://data.si.re.kr/photo/04i01008aa4000",
+    "original": "https://data.si.re.kr/sites/default/files/photos/04I01008aa4000.jpg",
+    "author": "서울연구원",
+    "date": "2009-12",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c251.webp",
+    "width": 600,
+    "height": 401,
+    "sourceSha256": "a2e8264b1e6ce12652e3a1a3b7776bad769fc1685dc283c1a57779e327d20af0",
+    "assetSha256": "ae043fe5fc54d0ac806657602f19c1f505f9064a993b10f5e1971b65683fc972",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c406": "완산공원 보행로 산책 코스"
+    },
+    "place": "완산공원 꽃동산 봄 풍경 (코스 주변 계절 참고사진)",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=126627",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/45/3529545_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c406.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "2d4cc53f082ed0a297c1bad5d9cd94d850429d03066d5d96a95c1e1362ac9185",
+    "assetSha256": "22ddc6620702f0329e7d6fb121972b1ceb72813aa53c17afca80db9eec35daec",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c415": "동해 한섬해변 GPX 선택 구간"
+    },
+    "place": "한섬해변 감성바닷길 보행 데크",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2710184",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/34/3353534_image2_1.jpg",
+    "author": "강원관광 / 한국관광공사 제공",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c415.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "12e5410c5b171b7dd9ed4e2b5bda3d5cd735d2005abe0a5988cd68fbe6499c43",
+    "assetSha256": "02a31fe26ca46810726dd6374e7e1d6796ac43e0e909452f2bd06344b349922a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c399": "제천 비룡담 저수지 GPX 구간"
+    },
+    "place": "비룡담저수지 수변 데크와 마법의 성",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=3025007",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/84/3024984_image2_1.JPG",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c399.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "ec76d2d34e1e667fc68b4c3c45fae12e8b4a1ab2ad15d2aab023350ae9392d5e",
+    "assetSha256": "8dad74e0ce7728def5276aa999f58cb6481c916cf2aabeb3ab7bb905925e669f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c417": "강릉 순포해변 GPX 선택 구간"
+    },
+    "place": "순포해변 해안 전경",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2775497",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/02/2921902_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c417.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "d0b3514f3880448770d170f53c194fb97d86a217b86f939182e7b8aaa0556d86",
+    "assetSha256": "3036db827c10e4be29b65c7fba2a6c91af1f74a50abd8fe4e43bea5fdfdbc4d7",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c412": "삼척 이사부길 GPX 선택 구간",
+      "c424": "삼척시 이사부길"
+    },
+    "place": "삼척 이사부길 해안 보행 데크와 표지 조형물",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2610236",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/07/3503607_image2_1.jpg",
+    "author": "삼척시 공식 블로그 / 한국관광공사 제공",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c412.webp",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "752cbdf0d9b6ba90fabb9caf5755e5ed7dff1be03bfb48b3f9d43d008cc14049",
+    "assetSha256": "54c3f06e1e80637d05f0c281940b1a85bee964e4c8aa1cda3d195f9c1f5eb033",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c366": "대구 앞산자락길"
+    },
+    "place": "앞산자락길 고산골 메타세쿼이아 산책길",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2366115",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/96/3519596_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c366.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "87a39e525ba06400b1b5278b14e959092e2aba4c72d11b47b119fc7cca071135",
+    "assetSha256": "faaf9f73b026fd93489d4dc8bfe0c34c745417d40f72deee27cbd5d7b355f2c0",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c391": "거창 감악산 물맞이길 3코스 전망대 가는길"
+    },
+    "place": "거창 감악산 전망대 주변에서 바라본 산세 (전망 참고사진)",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=1576464",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/93/4007893_image2_1.jpg",
+    "author": "다님 9기 김덕식 / 한국관광공사 제공",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c391.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "4c950f7c90ba49acac7636aee301d17c745079e8ac5388081592601258c8b638",
+    "assetSha256": "a4ecd3ba8e4ff3d28635aff9031d4f3b0418fdb041e845ee24dc55d740fe695b",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "osm_1036807544": "합천군 신소양체육공원 보행로 산책 코스"
+    },
+    "place": "신소양체육공원 핑크뮬리 산책길 (가을 계절 참고사진)",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2744501",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/73/3565873_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/osm_1036807544.webp",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "cfc11a736ba62775e8181890d069517b1ac85274fbfcd0616879266d06ff4cb2",
+    "assetSha256": "b5309089af1b855f1d627ddce5bd66a489b7fb73915458574161c0e54250b012",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=126117",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/16/4059616_image2_1.jpg",
+    "courses": {
+      "duru_T_CRS_MNG0000004913": "경남 창원시 주남저수지 탐방길  주남저수지 둘레길"
+    },
+    "place": "주남저수지 탐방 데크와 저수지 전경",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004913.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "7bfbe7a557333b8b659b4e499fb20790fb13fb6585c7ea68c64f017eeb6746b0",
+    "assetSha256": "749caf94ffce6a0c1270f85012ae5576cb823f39a6f53413f40b1b87020a1eac",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=2750713",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/16/3339216_image2_1.jpg",
+    "courses": {
+      "duru_T_CRS_MNG0000004470": "경남 창원시 봉암수원지둘레길 순환코스"
+    },
+    "place": "봉암수원지 둘레길 주변 저수지 전경",
+    "author": "창원시청 / 한국관광공사 제공",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004470.webp",
+    "width": 940,
+    "height": 457,
+    "sourceSha256": "7740c50a7f1bd3901ea871f23a93f76ae54521f81f836afdf021e43c9537a556",
+    "assetSha256": "8d7dac3ee4ed20b6547a49ab0edfb9861e35fdfe4e7f7b8e7cadae8d1ede273a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?contentType=G&targetId=126845",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/89/3350089_image2_1.jpg",
+    "courses": {
+      "duru_T_CRS_MNG0000001092": "경기 오산시 오산 도보여행코스 독산성길"
+    },
+    "place": "독산성길 경유지 · 독산성 성벽과 보행 계단",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001092.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "a53e696e13055af97ccc9f0c468b9f161ae0f514dd42e499e281ba1593d67081",
+    "assetSha256": "c3c17cea7e47a491dd931697d96cf47411a00f6c1048eef5a80fdac934178803",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
