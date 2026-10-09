@@ -52,6 +52,7 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 
 /* Useful preparation advice; affiliate buttons appear only for configured links. */
 #nearby-section .walk-shopping{padding:26px;margin:28px 0;border:1px solid var(--line);border-radius:22px;background:var(--paper);}
+#walk-shopping{scroll-margin-top:100px}
 .walk-shopping-heading>span{color:var(--clay);font-size:12px;font-weight:700}
 .walk-shopping-heading h2{font-size:24px;line-height:1.45;margin:8px 0}
 .walk-shopping-heading p{font-size:13px;color:var(--muted-text);line-height:1.8;margin:0 0 18px}
