@@ -3882,5 +3882,47 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000004458": "경기 양평군 물소리길 1코스 문화유적길"
+    },
+    "place": "물소리길 1코스 경유지 · 한음 이덕형 신도비",
+    "date": "2021-04-28",
+    "dateNote": "2021-04-28 게시일 · 촬영일 미표기",
+    "author": "이난희 · 경기도블로그",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202104280925513374C094&s_code=C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202104/20210428092551814295069.jpg",
+    "title": "물소리길 1코스 경유지 · 한음 이덕형 신도비",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004458.webp",
+    "width": 966,
+    "height": 544,
+    "sourceSha256": "51d4e3c1ccd6ae9dd29dbea7cc17fbf01421cc740a8584ba8c7ef446e095077d",
+    "assetSha256": "f925c11c33d35c7326260ec266ba14c0e579d38c9a08138e69e052ce327656a8",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000004390": "경기 양평군 물소리길 3코스 강변이야기길"
+    },
+    "place": "물소리길 3코스 경유지 · 양평 물안개공원 인공폭포",
+    "date": "2024-05-03",
+    "dateNote": "2024-05-03 게시일 · 촬영일 미표기",
+    "author": "이재형 · 경기도뉴스포털",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?number=202405031418053516C094&s_code=C094",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202405/20240503022452271939193.jpg",
+    "title": "물소리길 3코스 경유지 · 양평 물안개공원 인공폭포",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004390.webp",
+    "width": 966,
+    "height": 725,
+    "sourceSha256": "ba453eeca6e892463e93074f15e8345e777411a6832123201d8454511f015c0a",
+    "assetSha256": "508be55e5127f47ae02dd650af5c2e2be1716ebc212c41735ebd18da40b4a99f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
   }
 ]

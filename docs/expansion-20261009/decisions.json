@@ -1,0 +1,89 @@
+[
+  {
+    "id": "duru_T_CRS_MNG0000003971",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004458",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004393",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004390",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004389",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004388",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000004910",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005697",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005698",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005699",
+    "decision": "hold",
+    "reason": "coordinate discontinuity"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005101",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005102",
+    "decision": "hold_overlap",
+    "matches": [
+      {
+        "id": "duru_T_CRS_MNG0000003273",
+        "name": "부산 동래구 얼쑤옛길 1코스 동래읍성 뿌리길",
+        "newOverlap": 0.2413793103448276,
+        "existingOverlap": 0.4117647058823529
+      }
+    ]
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005103",
+    "decision": "hold",
+    "reason": "endpoint mismatch"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005239",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005506",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005507",
+    "decision": "hold",
+    "reason": "not one connected segment"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000003439",
+    "decision": "accept"
+  },
+  {
+    "id": "duru_T_CRS_MNG0000005721",
+    "decision": "hold",
+    "reason": "distance disagreement"
+  }
+]

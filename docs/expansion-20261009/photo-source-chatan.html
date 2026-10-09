@@ -1,0 +1,1418 @@
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="ko">
+<head>
+
+
+
+
+<link rel="canonical" href="https://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&s_code=C094">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" lang="ko" content="경기도뉴스포털"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta property="fb:app_id" content="140586622674265"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&s_code=C094" />
+<meta property="og:image" content="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438464401674.jpg"/>
+<meta property="og:description" content="" />
+<meta property="og:title" content="겨울의 끝에서 자연과 함께 떠나는 국내 트레킹 여행 코스 추천, 연천 `차탄천 에움길`"/>
+<meta property="og:site_name" content="경기도뉴스포털"/>
+<title>겨울의 끝에서 자연과 함께 떠나는 국내 트레킹 여행 코스 추천, 연천 `차탄천 에움길`</title> 
+
+    <link type="text/css" rel="stylesheet" href="/css/new2025/layout.css" />
+    <link type="text/css" rel="stylesheet" href="/css/new2025/layout_1400.css" />
+    <link type="text/css" rel="stylesheet" href="/css/new2025/layout_780.css" />
+    <link type="text/css" rel="stylesheet" href="/css/new2025/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/new2025/front_common.css">
+    <link rel="stylesheet" type="text/css" href="/css/newsroomLayout.css">
+<style type="text/css">
+console.log("news_detail2026.jsp");
+/* 에디터 본문을 감싸는 컨테이너 클래스 (예시: .editor-content) */
+.postbody table {
+    width: 100% !important;
+    max-width: 100%;
+    border-collapse: collapse;
+    table-layout: auto !important; /* 내부 콘텐츠에 맞게 조절 */
+}
+
+/* 모바일 등 작은 화면에서 가로 스크롤을 유도하는 반응형 클래스 */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+    margin-bottom: 15px;
+}
+
+</style>
+    <script type="text/javascript" src="/js/new2024/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="/js/new2024/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="/js/new2024/common.js"></script>
+    <script type="text/javascript" src="/js/new2024/TweenMax.min.js"></script>
+    <script type="text/javascript" src="/js/new2024/cmmn_front_web_script.js"></script>
+    <script type="text/javascript" src="/js/newsroomPager.js" defer></script>
+    
+    <!-- NAVER Analytics -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script type="text/javascript">
+		if(!wcs_add) var wcs_add = {};
+		wcs_add["wa"] = "f9482ec0cc07b0";
+		if(window.wcs) {
+		  wcs_do();
+		}
+	</script>
+<script type="text/javascript">
+
+
+var isRun = false;	
+
+//btnLike 클릭시
+function clickLike(){
+
+	if(isRun == true) {
+		alert("이미 참여하셨습니다.");
+		return;
+	}
+	
+	isRun = true;
+	
+	var likeYn = $("#likeDiv").hasClass("on") == true ? 'Y' : 'N';
+	var params = {"CA_CODE" : $("#caCode").val(),
+				  "LIKE_YN" : likeYn};
+
+	$.ajax({
+		url: "/news/news_like.do"
+	    ,type: "POST"
+   	    ,dataType: "json"
+  	    ,data: params
+  	    ,beforeSend:function(){
+  	    }
+  	  	,error:function(xhr, status, error) {   	          	
+	    	if ( xhr.status == 401 || xhr.status == 403 ) {
+			}else{
+		    	console.log("status code: " + xhr.status + "\n" + "message: " + xhr.responseText + "\n" + "status: " + status + "\n" + "error: " + error);
+				if (typeof fail !== 'undefined' && $.isFunction(fail)) {
+		        	fail(xhr, status, error);
+		    	}
+			}
+	    }
+  	    ,success:function(data) {
+
+  	    	$("#likeCnt").html(data.count);
+  	    	
+  	    	if(likeYn == 'Y') {
+	  	    	$("#likeDiv").removeClass('on');
+	  	    	$("#likeDiv").addClass('off');
+	  	    	
+	  	    	isRun = true;
+	  	    }//else{
+	  	    	//$("#likeDiv").removeClass('off');
+	  	    	//$("#likeDiv").addClass('on');
+			//}
+				
+  	    	//isRun = false;
+  	    }
+	});
+}
+
+$(document).ready(function(){
+	$(".p_news-element").hide();
+	var sCode = "C094";
+	var numberIdx = "201802231504385099C094";
+	var ccCode = 'C094';
+	var sTitle = "경기뉴스광장";
+	var subMenuNm2 = "";
+	var sNum = 2;
+	
+	if(sCode == "C401" || sCode == "C052"  ){
+		sTitle = "경기뉴스광장";
+		sNum = 2;
+		subMenuNm2 = fnTitleChang2(ccCode);
+		$(".p_news-element").show("");
+	}else if(sCode == "C048"){
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = fnTitleChang2(ccCode);
+		sNum = 2;
+		$(".p_news-element").show("");
+	}else if(sCode == "C059" ){
+		sNum = 4;
+		sTitle = "나의 경기도";
+	}else if(sCode == "C111" ){
+		sNum = 5;
+		sTitle = "의정소식";
+	}else if(sCode == "CALL" ){
+		sNum = 3;
+		sTitle = "기회기자단";
+		
+		var number = numberIdx.substring(18,22);
+		
+		if(sCode == number){
+			subMenuNm2 = fnTitleChang(numberIdx);
+		}else{
+			subMenuNm2 = fnTitleChang2(ccCode);	
+		}
+		
+	}else if(sCode == "C109"){
+		sNum = 2;
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = "달라지는경기";
+		$(".p_news-element").show("");
+	}else if(sCode == "C400"){
+		sNum = 2;
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = "나를위한경기";		
+		$(".p_news-element").show("");
+	}else if(sCode == "C049"){
+		sNum = 2;
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = "일상속에경기";	
+		$(".p_news-element").show("");
+	}else if(sCode == "C124"){
+		sNum = 2;
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = "카드뉴스";	
+		$(".p_news-element").show("");
+	}else if(sCode == "C076"  || sCode == "C083"  || sCode == "C056"  || sCode == "C094"){
+		sNum = 3;
+		sTitle = "기회기자단";
+		
+		
+		subMenuNm2 = fnTitleChang(numberIdx);			
+	}else if(sCode == "daily" ){
+		sTitle = "GTV도정뉴스";
+		subMenuNm2 = "일일뉴스";
+		sNum = 2;
+		$(".p_news-element").show("");
+	}else if(sCode == "C119" ){
+		sTitle = "GTV도정뉴스";
+		subMenuNm2 = "주간브리핑";
+		sNum = 2;
+		$(".p_news-element").show("");
+	}else if(sCode == "C071" ){
+		sTitle = "GTV도정뉴스";
+		subMenuNm2 = "기획영상";
+		sNum = 2;
+		$(".p_news-element").show("");
+	}else if(sCode == "C117" ){
+		sTitle = "GTV도정뉴스";
+		subMenuNm2 = "정책기자회견";
+		sNum = 2;
+		$(".p_news-element").show("");
+	}else if(sCode == "C045" ){
+		sTitle = "GTV도정뉴스";
+		subMenuNm2 = "도정열린회의&기회경기포럼";
+		sNum = 2;			
+		
+		$(".p_news-element").show("");
+	}else if(sCode == "C070" ){
+		sTitle = "경기뉴스광장";
+		subMenuNm2 = "정책플러스";
+		sNum = 2;			
+		
+		//$(".p_news-element").show("");
+	}else{
+		sNum = 2;
+		sTitle = "경기뉴스광장";
+		$(".p_news-element").show("");
+	}		
+	
+	console.log("subMenuNm2 : "+subMenuNm2);
+	
+
+	fnMenuSelect(sNum , sTitle, subMenuNm2);
+	
+}); 
+
+$(document).ready(function() {
+    // .editor-content 안의 모든 table 태그를 div로 감싸기
+    $('.postbody table').wrap('<div class="table-responsive"></div>');
+});
+
+</script>
+
+</head>
+
+
+<body>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NQ1EQT2KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3NQ1EQT2KN');
+  
+  document.addEventListener("keydown", function (event) {
+	    if (event.key === "Escape" || event.keyCode === 27) {
+	        closeMenu();
+	    }
+	});
+  
+
+	function closeMenu() {
+	    const activeMenu = document.querySelector(".gnb.active");
+	    if (activeMenu) {
+	        activeMenu.classList.remove("active");
+	    }
+	}
+</script>
+<header>
+	<a href="#contents" class="skip-to">본문 바로가기</a>
+      <!--menu-top-->
+      <div class="menu-top">
+        <!--sub-menu-->
+        <div class="sub_menu">
+          <a href="https://gg.go.kr/" class="go_ggd">경기도청 바로가기</a>
+          <dl>
+            <dd><a href="http://www.gg.go.kr/myggd" target="_blank" style="border: 1px solid #0051a4" title="새 창 열림">나의 경기도</a></dd>
+            <dd><a href="https://gg.go.kr/myggd_hot" target="_blank" style="border: 1px solid #00515A" title="새 창 열림">나의 경기도 Hot!</a></dd>
+            <dd><a href="https://gnews.gg.go.kr/media" target="_blank" style="border: 1px solid #0aa4b5" title="새 창 열림">멀티미디어자료실</a></dd>
+          </dl>
+        </div>
+        <!--sub-menu-->
+      </div>
+      <!--menu-top-->
+      <!-- [s] : PC nav -->
+      <div class="headerinnerwrap">
+        <div class="header_inner">
+          <div class="m_menu">
+            <a href="" class="menu"><span></span></a>
+          </div>
+          <h1 class="logo"><a href="/index.do"><img src="/img/new2024/common/bi.png" alt="공정, 혁신, 포용의 경기, 경기도뉴스포털"  style="width: 350px;"/></a></h1>
+          <nav class="gnb">
+          <h2 class="blind">메뉴</h2>
+          <div class="gnb_bg"></div>
+          <ul>
+            <li>
+              <a href="/briefing/brief_gongbo.do">보도자료</a>
+              <div class="gnb-2dep">
+                <ul>
+					<li><a href="/briefing/brief_gongbo.do">보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo_PBOD.do?subject_Code=PBOD">사진 보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo.do?subject_Code=MOBI">그래픽 보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo.do?subject_Code=BO03">사실은 이렇습니다</a></li>
+					<li><a href="/briefing/brief_ggi.do">공공기관 보도자료</a></li>
+					<li><a href="/briefing/brief_sigun.do">시군 보도자료</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/news_list.do?s_code=C401">경기뉴스룸</a>
+              <div class="gnb-2dep">
+                <ul>
+                  <li>
+                    <a href="/news/news_list.do?s_code=C401">경기뉴스광장</a>
+                    <dl>
+						<dd><a href="/news/news_list.do?s_code=C109">달라지는경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C400">나를위한경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C049">일상속에경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C124">카드뉴스</a></dd>
+					</dl>
+                  </li>
+                  <li>
+                    <a href="/news/news_tv.do?s_code=C500">GTV도정뉴스</a>
+                    <dl>
+                      <dd><a href="/news/news_tv.do?s_code=daily">일일뉴스</a></dd>
+                    </dl>
+                    <!--<dl>
+						<dd><a href="/news/news_tv.do?s_code=C119">주간브리핑</a></dd>
+					</dl>-->
+					<dl>
+						<dd><a href="/news/news_tv.do?s_code=C071">기획영상</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_tv.do?s_code=C117">정책기자회견</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_tv.do?s_code=C045">도정열린회의&amp;기회경기포럼</a></dd>
+					</dl>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/domin_list.do">소통참여마당</a>
+              <div class="gnb-2dep">
+				<ul>
+					<li><a href="/news/domin_list.do">기회기자단</a>
+						<dl>
+							<dd>
+								<a href="/news/domin_list.do?s_code=C076">꿈나무기자단</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="/news/domin_list.do?s_code=C083">청소년기자단</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="/news/domin_list.do?s_code=C056">대학생기자단</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="/news/domin_list.do?s_code=C094">일반기자단</a>
+							</dd>
+						</dl></li>
+					<li><a href="https://www.youtube.com/channel/UCIuDua3JS1-m9zi4CuAqBVw?sub_confirmation=1" target="_blank" title="새 창 열림">경기도청 YouTube</a>
+						<dl>
+							<dd>
+								<a href="https://www.youtube.com/@ggholics/streams" target="_blank" title="새 창 열림">주요도정 생중계</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="https://www.youtube.com/playlist?list=PLJv7ALOEoaFrGONS0XHarYlkDcztQujSK" target="_blank" title="새 창 열림">경기도 이야기</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="https://www.youtube.com/playlist?list=PLJv7ALOEoaFqsgFmldzE9XFYMWKtWBCqu" target="_blank" title="새 창 열림">SML경기</a>
+							</dd>
+						</dl>
+						<dl>
+							<dd>
+								<a href="https://www.youtube.com/@ggholics/shorts" target="_blank" title="새 창 열림">SHORTS</a>
+							</dd>
+						</dl></li>
+					<li><a href="/briefing/cardNewsList.do">도민여론</a></li>
+					<li><a href="/briefing/competition.do">공모전</a></li>
+				</ul>
+			</div>
+            </li>
+            <li>
+              <a href="/briefing/brief_ggcggcfopen.do">경기라이프</a>
+              <div class="gnb-2dep">
+                <ul>
+					<li><a href="http://www.gg.go.kr/myggd" target="_blank" title="새 창 열림">나의 경기도</a></li>
+					<li><a href="https://gg.go.kr/myggd_hot" target="_blank" title="새 창 열림">나의 경기도 Hot!</a></li>
+					<li><a href="/briefing/brief_ggcggcfopen.do">문화행사</a></li>
+					<li><a href="/briefing/newInfographicList.do">인포그래픽</a></li>
+					<li><a href="/news/webmz_list2.do?s_code=WZ01">공공기관 소식지</a></li>
+					<li><a href="/news/webmz_list3.do?s_code=WZ02">시군소식지</a></li>
+					<li><a href="/news/child_news_list.do?BS_CODE=S050&amp;sel=">어린이신문</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/news_list.do?s_code=C111">의회소식</a>
+              <div class="gnb-2dep">
+                <ul>
+					<li><a href="/news/news_list.do?s_code=C111">의정소식</a></li>
+					<li><a href="/news/hot_news_list.do?BS_CODE=S046&amp;sel=BO08">의회소식지</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+          <div class="btn_search" >
+            <a href="" id="btn_search">검색하기 열기</a>
+          </div>
+        </div>
+        
+        	
+      </div>
+      <!-- [e] : PC nav -->
+      <!-- [s] : mobile nav -->
+      <nav class="m_gnb">
+        <div class="left">
+          <ul class="gnb-1dep">
+            <li class="active">
+              <a href="/briefing/brief_gongbo.do">보도자료</a>
+              <div class="gnb-2dep">
+                <ul>
+					<li><a href="/briefing/brief_gongbo.do">보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo_PBOD.do?subject_Code=PBOD">사진 보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo.do?subject_Code=MOBI">그래픽 보도자료</a></li>
+					<li><a href="/briefing/brief_gongbo.do?subject_Code=BO03">사실은 이렇습니다</a></li>
+					<li><a href="/briefing/brief_ggi.do">공공기관 보도자료</a></li>
+					<li><a href="/briefing/brief_sigun.do">시군 보도자료</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/news_list.do?s_code=C401">경기뉴스룸</a>
+              <div class="gnb-2dep">
+                <ul>
+                  <li>
+                    <a href="/news/news_list.do?s_code=C401">경기뉴스광장</a>
+                    <div class="hide">
+                    <dl>
+						<dd><a href="/news/news_list.do?s_code=C109">달라지는경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C400">나를위한경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C049">일상속에경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_list.do?s_code=C124">카드뉴스</a></dd>
+					</dl>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="/news/news_tv.do?s_code=C500">GTV도정뉴스</a>
+                    <div class="hide">
+                      <dl>
+                        	<dd><a href="/news/news_tv.do?s_code=daily">일일뉴스</a></dd>
+                      </dl>
+                      <!--<dl>
+						<dd><a href="/news/news_tv.do?s_code=C119">주간브리핑</a></dd>
+					  </dl>-->
+                      <dl>
+                        	<dd><a href="/news/news_tv.do?s_code=C071">기획영상</a></dd>
+                      </dl>
+                      <dl>
+						<dd><a href="/news/news_tv.do?s_code=C117">정책기자회견</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/news_tv.do?s_code=C045">도정열린회의&amp;기회경기포럼</a></dd>
+					</dl>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/domin_list.do">소통참여마당</a>
+              <div class="gnb-2dep">
+                <ul>
+                  <li>
+                    <a href="/news/domin_list.do">기회기자단</a>
+                    <div class="hide">
+                    <dl>
+						<dd><a href="/news/domin_list.do?s_code=C076">꿈나무기자단</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/domin_list.do?s_code=C083">청소년기자단</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/domin_list.do?s_code=C056">대학생기자단</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="/news/domin_list.do?s_code=C094">일반기자단</a></dd>
+					</dl>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/channel/UCIuDua3JS1-m9zi4CuAqBVw?sub_confirmation=1" target="_blank" title="새 창 열림">경기도청 YouTube</a>
+                    <div class="hide">
+                     <dl>
+						<dd><a href="https://www.youtube.com/@ggholics/streams" target="_blank" title="새 창 열림">주요도정 생중계</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="https://www.youtube.com/playlist?list=PLJv7ALOEoaFrGONS0XHarYlkDcztQujSK" target="_blank" title="새 창 열림">경기도 이야기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="https://www.youtube.com/playlist?list=PLJv7ALOEoaFqsgFmldzE9XFYMWKtWBCqu" target="_blank" title="새 창 열림">SML경기</a></dd>
+					</dl>
+					<dl>
+						<dd><a href="https://www.youtube.com/@ggholics/shorts" target="_blank" title="새 창 열림">SHORTS</a></dd>
+					</dl>
+                    </div>
+                  </li>
+	                <li><a href="/briefing/cardNewsList.do">도민여론</a></li>
+					<li><a href="/briefing/competition.do">공모전</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/briefing/brief_ggcggcfopen.do">경기라이프</a>
+              <div class="gnb-2dep">
+                <ul>
+                  	<li><a href="http://www.gg.go.kr/myggd" target="_blank" title="새 창 열림">나의 경기도</a></li>
+                  	<li><a href="https://gg.go.kr/myggd_hot" target="_blank" title="새 창 열림">나의 경기도 Hot!</a></li>
+					<li><a href="/briefing/brief_ggcggcfopen.do">문화행사</a></li>
+					<li><a href="/briefing/newInfographicList.do">인포그래픽</a></li>
+					<li><a href="/news/webmz_list2.do?s_code=WZ01">공공기관 소식지</a></li>
+					<li><a href="/news/webmz_list3.do?s_code=WZ02">시군소식지</a></li>
+					<li><a href="/news/child_news_list.do?BS_CODE=S050&amp;sel=">어린이신문</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="/news/news_list.do?s_code=C111">의회소식</a>
+              <div class="gnb-2dep">
+                <ul>
+                	<li><a href="/news/news_list.do?s_code=C111">의정소식</a></li>
+					<li><a href="/news/hot_news_list.do?BS_CODE=S046&amp;sel=BO08">의회소식지</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <div class="links"><a href="https://gg.go.kr/" >경기도청</a>
+          <a href="http://www.gg.go.kr/myggd" target="_blank" title="새 창 열림">나의 경기도</a>
+          <a href="https://gg.go.kr/myggd_hot" target="_blank" title="새 창 열림">나의 경기도 Hot!</a>
+          <a href="https://gnews.gg.go.kr/media" target="_blank" title="새 창 열림">멀티미디어 자료실</a></div>
+        </div>
+      </nav>
+      <!-- [e] : mobile nav -->
+     
+
+<script type="text/javascript">
+$(document).ready(function (){
+	$('.rm_search li a').click(function(event){
+		debugger;
+		event.preventDefault();
+		$("#search_keyword").val(this.text.replace("#",""));
+	});
+
+});
+</script>
+	<nav class="search">
+      <h2 class="blind">검색팝업</h2>
+      <form name="GNBsearchForm" id="AKCFrm"  autocomplete="off" method="get" action="/search/search.do" target="_self">
+      <div class="input_area">
+        <input type="text" name="search_keyword" id="search_keyword" placeholder="검색어를 입력하세요." title="검색어를 입력하세요." onkeydown="if (event.keyCode == 13) {fn_go_total_search()};" />
+        <button onclick="fn_go_total_search();"><img src="/img/new2024/common/ico_search.png" alt="검색" /></button>
+        <ul class="rm_search">
+          <li><a href="#">#THE경기패스</a></li>
+          <li><a href="#">#공모전</a></li>
+          <li><a href="#">#아동양육비</a></li>
+          <li><a href="#">#주택가격안내</a></li>
+          <li><a href="#">#경기도뉴스레터</a></li>
+        </ul>
+      </div>
+		<input type="hidden" name="search_word" value="" />
+		<input type="hidden" name="kwd" value="" />
+		<input type="hidden" name="sort" value="d" />
+      </form>
+      
+      <svg class="blobCont">
+        <image xlink:href="/img/new2024/common/search_bg.jpg" mask="url(#mask)" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" />
+        <defs>
+          <mask id="mask" x="0" y="0">
+            <g style="filter: url(#gooey)">
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" stroke="white" />
+              <circle class="blob" cx="50%" cy="10%" r="40" fill="white" stroke="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" stroke="white" />
+              <circle class="blob" cx="90%" cy="20%" r="120" fill="white" stroke="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" stroke="white" />
+              <circle class="blob" cx="50%" cy="60%" r="80" fill="white" stroke="white" />
+              <circle class="blob" cx="70%" cy="90%" r="10" fill="white" stroke="white" />
+              <circle class="blob" cx="90%" cy="60%" r="90" fill="white" stroke="white" />
+              <circle class="blob" cx="30%" cy="90%" r="80" fill="white" stroke="white" />
+              <circle class="blob" cx="10%" cy="10%" r="80" fill="white" stroke="white" />
+              <circle class="blob" cx="50%" cy="10%" r="20" fill="white" stroke="white" />
+              <circle class="blob" cx="17%" cy="15%" r="70" fill="white" stroke="white" />
+              <circle class="blob" cx="40%" cy="20%" r="120" fill="white" stroke="white" />
+              <circle class="blob" cx="30%" cy="25%" r="30" fill="white" stroke="white" />
+              <circle class="blob" cx="80%" cy="60%" r="80" fill="white" stroke="white" />
+              <circle class="blob" cx="17%" cy="10%" r="100" fill="white" stroke="white" />
+              <circle class="blob" cx="40%" cy="60%" r="90" fill="white" stroke="white" />
+              <circle class="blob" cx="10%" cy="50%" r="80" fill="white" stroke="white" />
+            </g>
+          </mask>
+          <filter id="gooey" height="130%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          </filter>
+        </defs>
+      </svg>
+    </nav>
+
+</header>
+
+<form id="obj_search" name="obj_search" action="/news/news_detail.do;jsessionid=7B4729568BA04D8F79F5A1C0BFF6644C.ajp13?number=201802231504385099C094&amp;s_code=C094" method="get">
+<div class="wapper-element">
+<div class="header-bar"><span></span></div>
+	<!-- header -->
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 2025년 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- //header -->
+
+	<main>
+        <div class="sub-con-element news_detail">
+           <div class="sub-nav">
+          <!--sub-menu-->
+          <div id="sub-menu">
+            <ul>
+              <li><a href="/" title="메인페이지 이동"></a></li>
+              <li>
+                <a href="#"><span id="menuNm">경기뉴스룸</span></a>
+                <ul>
+                  <li><a href="/briefing/brief_gongbo.do" onclick="fnMenuSelect(1);">보도자료</a></li>
+                  <li><a href="/news/news_list.do?s_code=C401" onclick="fnMenuSelect(2);">경기뉴스룸</a></li>
+                  <li><a href="/news/domin_list.do" onclick="fnMenuSelect(3);">소통참여마당</a></li>
+                  <li><a href="/briefing/brief_ggcggcfopen.do" onclick="fnMenuSelect(4);">경기라이프</a></li>
+                  <li><a href="/news/news_list.do?s_code=C111" onclick="fnMenuSelect(5);">의회소식</a></li>
+                </ul>
+              </li>
+              	<li id="subMenuList"></li>
+				
+				 	
+				<li id="subMenuList2"></li>
+				
+            </ul>
+          </div>
+          <!--sub-menu-->
+        </div>
+
+            <!-- 📌 여기서부터 변경됩니다(레이아웃) { -->
+            <section id="wrap-layout">
+                <!-- 📍[본문 출력 영역(동일) : 제목,부제목,작성자 정보, 기타 버튼, 본문] -->
+                <div class="wrap" id="contents">
+		          <h3>겨울의 끝에서 자연과 함께 떠나는 국내 트레킹 여행 코스 추천, 연천 `차탄천 에움길`</h3>
+		          <p></p>
+		          <div class="postmenu">
+		            <div class="postinfo">
+		              	
+							
+							  <div><span>작성자</span>경기도블로그</div>
+				              <div class="mail"></div>
+				              <div>
+				              
+							  2018.02.23 15:04
+							  </div>
+							
+						
+						
+		            </div>
+		            
+
+
+
+
+
+
+
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+  integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+
+<script>
+  Kakao.init('5861c670b6c32e01846cf6de2620b99b'); // 사용하려는 앱의 JavaScript 키 입력
+  
+  function clip(){
+
+		var url = $("#url_text").val();
+		var textarea = document.createElement("textarea");
+		document.body.appendChild(textarea);
+		url = window.document.location.href;
+		textarea.value = url;
+		textarea.select();
+		document.execCommand("copy");
+		document.body.removeChild(textarea);
+		alert("URL이 복사되었습니다.")	
+	}
+  
+  document.addEventListener('DOMContentLoaded', function () {
+	  const txtBtn = document.getElementById('txt_id'); // 글자크기 버튼
+	  const popWrap = txtBtn.nextElementSibling; // 바로 뒤의 .pop_wrap
+
+	  txtBtn.addEventListener('click', function (e) {
+	    e.preventDefault();
+
+	    // pop_wrap 토글 (열림/닫힘)
+	    const isOpen = popWrap.classList.toggle('active');
+
+	    // 텍스트 변경
+	    if (isOpen) {
+	      txtBtn.textContent = '글자크기닫기';
+	      $('#txt_id').removeAttr('title');
+	    } else {
+	      txtBtn.textContent = '글자크기열기';
+	      $('#txt_id').removeAttr('title');
+	    }
+	  });
+	  
+	 
+	});
+  
+  document.addEventListener('DOMContentLoaded', function () {
+	  const snsBtn = document.getElementById('sns_id'); // 글자크기 버튼
+	  const popWrap = snsBtn.nextElementSibling; // 바로 뒤의 .pop_wrap
+
+	  snsBtn.addEventListener('click', function (e) {
+	    e.preventDefault();
+
+	    // pop_wrap 토글 (열림/닫힘)
+	    const isOpen = popWrap.classList.toggle('active');
+
+	    // 텍스트 변경
+	    if (isOpen) {
+	    	snsBtn.textContent = 'SNS공유닫기';
+	    } else {
+	    	snsBtn.textContent = 'SNS공유열기';
+	    	$('#sns_id').removeAttr('title');
+	    }
+	  });
+	  
+	 
+	});  
+</script>
+<style>
+<!--
+.blind {
+position: absolute;
+width: 1px;
+height: 1px;
+margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+}
+-->
+</style>
+<ul>
+    <li class="txt_btn">
+      <a href="" id="txt_id">글자크기열기</a>
+      <div class="pop_wrap">
+        <ul>
+          <li>
+            <a href="">가</a>
+            <span>아주작게</span>
+          </li>
+          <li>
+            <a href="">가</a>
+            <span>작게</span>
+          </li>
+          <li class="active">
+            <a href="" title="보통 선택됨">가</a>
+            <span>보통</span>
+          </li>
+          <li>
+            <a href="">가</a>
+            <span>크게</span>
+          </li>
+          <li>
+            <a href="">가</a>
+            <span>아주크게</span>
+          </li>
+        </ul>
+      </div>
+    </li>
+	<li class="share_btn">
+	  <a href="" id="sns_id">SNS공유열기</a>
+	  <div class="pop_wrap">
+	    <div class="pop_up">
+	      <div class="title">
+	        <div>SNS공유하기</div>
+	        <a href="" class="close" title="SNS닫기"><img src="/img/new2024/sub/ico_close.png" alt="SNS닫기" /></a>
+	      </div>
+	      <div class="pop_in">
+	        <ul>
+	          <li>
+	            <a href="javascript:goArticleSNS('facebook','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" onclick="goArticleSNS('facebook','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" title="페이스북 공유 새창으로  열림">
+	              <img src="/img/new2024/sub/ico_facebook.png" alt="" />
+	              <span>페이스북</span>
+	            </a>
+	          </li>
+	          <li>
+	            <a href="javascript:goArticleSNS('twitter','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" onclick="goArticleSNS('twitter','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" title="엑스 공유 새창으로  열림">
+	              <img src="/img/new2024/sub/ico_x.png" alt="" />
+	              <span>엑스</span>
+	            </a>
+	          </li>
+	          <li>
+	            <a href="javascript:goArticleSNS('naver','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" onclick="goArticleSNS('naver','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" title="네이버 공유 새창으로  열림">
+	              <img src="/img/new2024/sub/ico_naver.png" alt="" />
+	              <span>네이버</span>
+	            </a>
+	          </li>
+	          <li>
+	            <a id="kakaotalk-sharing-btn" href="javascript:goArticleSNS('kakaolink','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" onclick="goArticleSNS('kakaolink','http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N');" title="카카오톡 공유 새창으로  열림">
+	              <img src="/img/new2024/sub/ico_kakao.png" alt="" />
+	              <span>카카오톡</span>
+	            </a>
+	          </li>
+	        </ul>
+	       <div class="copy">
+	          <label for="url_text" class="blind">공유 URL</label>
+	          <input type="text" id="url_text" value="http://gnews.gg.go.kr/news/news_detail.do?number=201802231504385099C094&amp;s_code=C094&amp;newsType=N"/ title="공유 URL" readonly>
+	          <button onclick="clip(); return false;">URL복사</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</li>
+	
+	
+	
+	
+	
+		<li class="print_btn"><a title="프린터 하기" href="javascript:window.print();" onclick="window.print();">프린트</a></li>
+	
+	
+
+</ul>
+
+		          </div>
+		          <div class="postbody">
+		          	
+						
+						
+					
+					
+					
+						<br /><br />
+						
+						<img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438399396504.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+차탄천은 북에서 남으로 흐르는 전체 길이 36.8km 철원 금악산 북쪽 계곡에서 시작합니다. 신탄리, 개광리, 연천읍을 거쳐 전곡에서 한탄강과 합류하는 연천 주민의 젖줄과 같은 하천으로, 일반 하천에서 볼 수 없는 특이한 지질과 지형을 볼 수 있는 협곡으로 되어 있는 기이한 현상을 보여주고 있는데요. 
+
+하류구간에서는 제주에서나 볼 법한 현무암 주상절리가  군무를 보는듯한 장엄한 풍경을 보여주고 있어 그 모습을 감상하며 트레킹 하기 위해 새벽 일찍 집을 나섰습니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438419096694.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+에움길이란 빙 둘러서 가는 길이나 우회로를 일컫는 표현이라 합니다. 목적지인 연천군 연천읍 차탄리 현충탑&#40;버스 정류장&#41; 아래 차탄천 이야기라는 표지판 인근에는 2대 정도의 주차할 수 있는 주차공간이 있습니다. 그곳에서부터 에움길 여정을 시작합니다.
+　
+현충탑 인근에서 바라본 경원선 철도 건너편에서 시작하게 되는데요. 위에 차탄교를 건너면서 시작되는 구간으로 `현충탑→  이방원 정자터 → 차탄천 주상절리 → 은대리 주상절리 → 은대리 습곡구조 →선바위 →장진교 주상절리→ 삼형제바위 →은대리성→연천군보건의료원&#40;도착&#41;` 총 9.9km 거리, 3시간 30분 정도를 예상을 하며 걷기 시작합니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438413653578.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+차탄천의 유래는 조선시대 후에 태종이 되는 이방원이 조선의 건국을 반대하는 연천으로 낙향한 친구 이양소를 만나기 위해 연천에 오는 도중 이 여울에서 수레가 빠졌다 하여, ‘수레’가 ‘여울’에 빠졌다는 의미에서 수레 여울, 한자로 옮기면서 `차탄천`이라 불리게 되었다고 합니다. 
+
+`차탄천 에움길` 전체가 암석 박물관이라 해도 과언이 아닌 지질공원을 걸어봅니다. 어떤 기이한 현상들을 만나볼 수 있을까요&#63;
+　
+새벽에 출발할 때는 경기도 남부권에는 하얀 눈이 소복하게 쌓여 있어 연천까지 가는 길이 조금은 걱정이 되었는데, 연천 도착하니  눈 쌓인 모습을 볼 수 없었습니다. 차탄천 에움길 표지판을 좌측으로 하고 천변으로 걸어 내려갑니다.
+　
+40여 분 걸었을까요&#63; 드디어 협곡처럼 보이기 시작합니다. 이곳에서부터 그 넓던 하늘이 작아 보이는 것이 하늘도 빼꼼해지고 점점 그 풍경 속으로 몰입되는데요. 개천가에 나뒹구는 돌멩이들 중 송송 구멍이 난 현무암들을 보게 됩니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438431422076.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+‘이방원 정자터’가 아닌가 싶습니다. 앞으로 계속 걸어가야 할 길이 만만치 않으니 그곳은 뒤로하고 차탄천 길을 계속 질주합니다. 차탄천 에움길 전 구간은 현재 오수용 차집관로 개선 공사 중으로 조금은 어수선한 분위기를 볼 수 있는데요. 특별하게 이정표가 없어도 개울 따라 걸으면 목적지에 도착할 수 있습니다.
+　
+걷다 보게 되는 기이한 현상으로 마치 조각조각 난 암석을 다시 맞추기라도 하듯 정교하게 빈틈조차 내어주지 않은 듯한 모습을 보게 됩니다. 인도를 겸한 바닥은 더욱 짱짱하게 메워져 있습니다.
+　
+겨울철 풍경이라 더욱 삭막할 것 같지만, 지금 이 계절에 차탄천 주상절리를 감상하기에는 최적이 아닌가 싶습니다. 강수량이 적어 기암절벽을 가장 가까이서 감상할 수 있는 연천에서 가장 오래된 암석&#40;19억 년 전 선바위&#41; 편암부터 신생대 제4기&#40;약 55만 년 전에서 12만 년 전&#41;의 현무암 주상절리까지 다양한 암석과 지질을 만날 수 있는 초자연적인 암석 박물관이나 다름없지요.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438438824238.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+출발지 현충탑 아래 인근에 화장실이 있으며, 두 번째로 보는 전망대에 있는 화장실입니다. 지금은 동파를 우려해 사용 금지 상태이나 봄이 오면 사용 가능할 것 같습니다. 
+
+계속되는 개천으로 걷는 길에는 편의시설이 없어, 출발 전 간단하게 간식 정도는 챙겨 떠나면 좋을 것 같습니다. 매번 길 떠나기 트레킹을 하다보면 식사를 거를 때가 있는데요. 겨울철에는 컵 라면조차도 보온병 물이 쉽게 차가워져 이번에는 연천으로 가는 길에 휴게소에서 햄버거를 점심으로 준비했습니다.
+　
+공사 중으로 약간은 어수선하지만, 그래도 조심스레 건널 수 있는 현무암 돌다리들도 있어 심심치 않았던 것 같습니다. 공사가 완공&#40;2019. 6&#41; 되면 걷는 길이 더욱 편하지 않을까 싶습니다.
+　
+정오가 가까워지면서 하늘에 구름도 생성되고 맑은 하늘빛은 요 근래 보지 못했던 것으로 걸음을 멈출 수밖에 없었습니다. 여름 내내 초록 초록을 보여주었을 나무들은 깡마른 체구를 보여주고 있는데요. 하늘빛이 유독 예뻐서였을까&#63; 주상절리 위에 있는 나무들은 마치 태어난 지 얼마 되지 않은 아기의 배냇머리처럼 하늘 향해 있는 모습을 보여주고 있었습니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438448423277.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+누가 빚어 놓았을까&#63; 숙련된 석공의 솜씨가 이토록 수려할까&#63; 마치 켜켜이 쌓아 놓은 듯 기이한 현상 앞에서 보이는 모든 것들이 자연이 완성해 놓은 작품인 것 같습니다. 
+　
+겨우내 꽁꽁 얼었던 두꺼운 얼음판도 봄이 곧 다가왔음을 알리듯 졸졸졸 물소리조차 경쾌하게 들립니다. 얼음 한 조각 떼어 입에 물고 싶을 정도로 깨끗했습니다.
+   
+암석 바위에서 얼고 얼고를 반복하면서 만들어낸 얼음 기둥&#40;폭포&#41;이 마치 곧 하얀 속살을 보여줄 듯한 형상을 하고 있는데 그 옆에는 까만 암석들이 마치 물을 만나 하늘로 승천하기 위한 수만 마리의 용들의 군무를 보는 것 같았습니다.
+　
+초자연적인 현상으로 만들어진 깎아 놓은 듯 암석들을 보고만 있어도 경이로움이 파고들고 어쩜, 아무 생각 없이 멍 때리며 감상하기에도 좋은 곳 같습니다. 강수량이 풍부할 때면 물속에 반영되는 판상절리의 빼어난 절경을 볼 수 있는 곳인데요 이곳에는 천연기념물 물거미 서식지이기도 하답니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438441213379.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+계속 천 따라 내려오다 보게 된 차탄천 에움길 안내 표지판입니다. 현재 공사 중이라 그런지 별다른 이정표가 없어 물 따라 걸었습니다. 중간중간에 갈라지는 길이 있지만, 쭉 내려 걸어가면 별 무리 없이 도착할 수 있습니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438466672435.jpg" alt="겨울의 끝에서 연천 차탄천 에움길" /><div class="picDescription">겨울의 끝에서 연천 차탄천 에움길&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+협곡으로 이뤄진 기암절벽은 자연 그대로의 풍광으로 눈이 호사를 했던 코스로 차탄천 에움길인 것 같습니다. 지난달에 걸었던 평화 누리길 11코스 임진 적벽 길에서는 강 건너에서 감상으로 아쉬움이 남았는데요. 이곳에서는 지척에서 감상할 수 있는 호사를 누린 것 같습니다.
+　
+목적지가 거의 다가왔습니다. 예상했던 3시간 30분을 초과하게 되었는데요. 그 이상이 되었다 해도 이번 코스는 전체가 지질공원으로 충만했던 보물들을 만난, 길 떠나기였던 것 같습니다.
+　
+이곳은 한탄강과 차탄천의 합류지점으로 마치 강원도 정선의 한반도 지형을 보는 것 같았는데요. 합류지점에 세 개의 바위&#40;삼형제 바위&#41;가 자리하고 있습니다.
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438466612710.jpg" alt="연천 은대리성" /><div class="picDescription">연천 은대리성&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+한탄강과 차탄천의 합류지점에 형성된 삼국시대 성곽으로 연천 은대리성입니다. 동쪽으로 가면 점차 넓어지는 형태를 볼 수 있는데요 이곳은 수심이 낮아 강을 쉽게 건널 수 있는 군사적 요충지라고 합니다. 성의 규모는 동서 길이 400m 남북 길이 130m 총 길이 1005m입니다. 
+
+은대리성 앞에 넓게 펼쳐진 잔디밭을 지나면 연천군 보건의료원이 있습니다. 연천군 보건의료원에서 다시 출발지로 돌아갈 때에는 택시를 이용한 방법으로 되돌아갔는데요. 의료원 길 건너에서 따복버스 70번이 지나가므로 시간 맞춰 이용해도 좋을 것 같습니다. &#40;택시 소요시간 15분, 요금 11,000원&#41;
+
+차탄천 에움길 9.9km, 총 소요 시간 4시간 5분으로 그야말로 전체 코스가 암석 박물관으로 머리와 눈이 호사를 했던 잊지 못할 시간이었습니다.
+
+※ 차탄천 에움길 트레킹 여행정보
+- 차탄천 에움길 코스 : 현충탑 - 이방원정자터 - 황림리가마소 - 삼단폭포 - 차탄천 주상절리 - 해동양수장 - 은대리주상절리
+- 은대리 수평절리- 선바위 - 장진교 주상절리 - 삼형제바위 - 은대리성 - 연천군의료원
+- 출발지&#40;현충탑&#41; 주소 : 경기도 연천군 연천읍 차탄리 136-1번지
+- 교통정보 : 대중교통 이용 시 `전곡시외버스터미널 → 현충탑` &#40;시내버스 39-2, 39-2, 100, 39-1 이용&#41;
+- 트레킹 소요 시간 : 약 4시간
+- 트레킹 코스 난이도 : 하 &#40;대부분 평지 길&#41;
+- 참고사항 : 편의시설 없음, 간단한 간식거리&#40;음료 등&#41; 필히 준비
+- 한탄 임진강 지질공원 안내 : http://hantangeopark.kr/yc/
+
+<br/><br/><img src="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438464401674.jpg" alt="2018 경기소셜락커 신명숙 락커" /><div class="picDescription">2018 경기소셜락커 신명숙 락커&nbsp;&nbsp;ⓒ&nbsp;경기도블로그</div><br/><br/>
+
+
+
+<strong style="font-size:1.14em;color:#000;">[출처:경기도 블로그]<br/>[작성자:2018 경기소셜락커 신명숙 락커]</strong ><br/><a href="http://blog.naver.com/gyeonggi_gov/221213927535" target=_blank><strong style="font-size:1.14em;color:#f5a500;">원문보러가기</strong ></a><br/>
+
+
+
+
+					
+					
+				
+					
+						 
+		          </div>
+				</div>
+
+                <!-- [aside 묶음]{ -->
+                <article class="asd-wrap">
+                    <!-- [관련기사]{ -->
+                    <aside class="asd related">
+                        <h6 class="asd-title">관련기사</h6>
+                        <div class="asd-list-wrap  asd-list-wrap-related">
+                            <ul class="asd-list asd-list-related">
+                            	
+	                            	<li class="asd-listitem">
+	                                    <a href="javascript:void(0);" onclick="Go_Link_View2026('202610081102306675C048','N','C048');" class="asd-link asd-link-related">
+	                                        <span class="asd-listitem-idx">1</span>
+	                                        <p class="asd-listitem-text">출퇴근은 이제 편하G버스와 함께 편하게 이동해요!</p>
+	                                    </a>
+	                                </li>
+                            	
+	                            	<li class="asd-listitem">
+	                                    <a href="javascript:void(0);" onclick="Go_Link_View2026('202610071741174046C124','N','C124');" class="asd-link asd-link-related">
+	                                        <span class="asd-listitem-idx">2</span>
+	                                        <p class="asd-listitem-text">[카드뉴스] 경기편하G버스 이렇게 타면 더 편하G!</p>
+	                                    </a>
+	                                </li>
+                            	
+	                            	<li class="asd-listitem">
+	                                    <a href="javascript:void(0);" onclick="Go_Link_View2026('202609291839361652C094','N','C094');" class="asd-link asd-link-related">
+	                                        <span class="asd-listitem-idx">3</span>
+	                                        <p class="asd-listitem-text">7호선 장암역 10월 2일부터 29일간 임시 휴업… 경기도, 무료 셔틀버스 운행</p>
+	                                    </a>
+	                                </li>
+                            	
+	                            	<li class="asd-listitem">
+	                                    <a href="javascript:void(0);" onclick="Go_Link_View2026('202609140858087642C048','N','C048');" class="asd-link asd-link-related">
+	                                        <span class="asd-listitem-idx">4</span>
+	                                        <p class="asd-listitem-text">7호선 장암역 10월 2~30일까지 휴업. 도봉산역에서 무료 셔틀 이용</p>
+	                                    </a>
+	                                </li>
+                            	
+	                            	<li class="asd-listitem">
+	                                    <a href="javascript:void(0);" onclick="Go_Link_View2026('202609091347258972C111','N','C111');" class="asd-link asd-link-related">
+	                                        <span class="asd-listitem-idx">5</span>
+	                                        <p class="asd-listitem-text">건설교통위원회, 철도·도로공사 현장 시찰 ‘민생추경’ 당부</p>
+	                                    </a>
+	                                </li>
+                            	
+                            </ul>
+                        </div>
+                    </aside><!-- }관련기사 -->
+
+                    <!-- [인기뉴스]{ -->
+                    <aside class="asd popular">
+                        <h6 class="asd-title">인기뉴스</h6>
+                        <div class="asd-list-wrap asd-list-wrap-popular">
+                            <ul class="asd-list asd-list-popular"> <li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202610020817265515C049','N','C049','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">포천 명성산부터 화성 우음도까지…10월 ‘인생샷’ 남기는 경기도 억...</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202610/2026100208281247952102.webp" alt="포천 명성산부터 화성 우음도까지…10월 ‘인생샷’ 남기는 경기도 억새·갈대 명소 5곳" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202610011327277243C049','N','C049','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">꽃 따라 물드는 가을, 경기도에서 만나는 10월의 풍경</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202610/20261001013524669492142.webp" alt="꽃 따라 물드는 가을, 경기도에서 만나는 10월의 풍경" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202610081113594129C049','N','C049','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">“한글의 숨결 따라 걷고, 읽고, 체험하다”…한글날 경기 기행</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202610/20261008111359947978495.webp" alt="“한글의 숨결 따라 걷고, 읽고, 체험하다”…한글날 경기 기행" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202610060911035139C049','N','C049','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">올가을 단풍 언제 가장 예쁠까? ‘한반도 단풍절정 검색서비스’로 확...</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202610/20261006092555207951885.webp" alt="올가을 단풍 언제 가장 예쁠까? ‘한반도 단풍절정 검색서비스’로 확인하세요!" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202609291358541786C052','N','C109','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">창릉 첫 입주 앞두고 교통·토양정화 점검… 추미애 지사, 3기 신도...</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202609/20260929020130779832539.webp" alt="창릉 첫 입주 앞두고 교통·토양정화 점검… 추미애 지사, 3기 신도시 제도개선 13개 과제 제시 “선 교통·후 입주 가능하도록 제도 개선 시급”" /></div></a></li></ul> <ul class="asd-list asd-list-popular"> <li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202609301117426633C049','N','C049','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">경기도, ‘광릉숲포럼 2026’ 개최…‘560년 광릉숲의 시간에 스...</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202609/20260930112614500393694.webp" alt="경기도, ‘광릉숲포럼 2026’ 개최…‘560년 광릉숲의 시간에 스며들다!’" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202609291518365141C052','N','C109','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">경기도, 미래대응기금 활용 관련 3가지 사항 건의</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202609/20260929031836789617338.webp" alt="경기도, 미래대응기금 활용 관련 3가지 사항 건의" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202609301109344458C052','N','C052','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">혁신 스타트업에게 날개를! ‘2026 경기 스타트업 서밋’에서 만나...</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202609/20260930110934830634140.webp" alt="혁신 스타트업에게 날개를! ‘2026 경기 스타트업 서밋’에서 만나보세요!" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202609291357595803C048','N','C048','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">경기도, 제8회 대한민국 사회연대경제박람회 참가기업 모집</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202609/20260929015759686272013.webp" alt="경기도, 제8회 대한민국 사회연대경제박람회 참가기업 모집" /></div></a></li><li class="asd-listitem"><a href="javascript:void(0);" onclick="javascript:Go_Page_View_RC2026('202610011402307299C048','N','C048','','','','')" class="asd-link asd-link-popular"> <p class="asd-listitem-text">제30회 노인의 날 기념식 개최… 100세 어르신에 청려장 전달</p><div class="asd-listitem-thumbwrap asd-listitem-thumbwrap-popular"><img src="/OP_UPDATA/UP_DATA/_FILEZ/202610/20261001020616218853355.webp" alt="제30회 노인의 날 기념식 개최… 100세 어르신에 청려장 전달" /></div></a></li>	</ul> 
+
+                        </div>
+                        <!-- 목록 전환 페이저{ -->
+                        <div class="asd-pager" data-key="popular">
+                            <button type="button" class="asd-pager-btn on" data-idx="1"><span
+                                    class="asd-pager-btn-txt">인기뉴스 페이지
+                                    1</span></button>
+                            <button type="button" class="asd-pager-btn" data-idx="2"><span
+                                    class="asd-pager-btn-txt">인기뉴스 페이지
+                                    2</span></button>
+                        </div><!-- }목록 전환 페이저 -->
+                    </aside><!-- }인기뉴스 -->
+                </article><!-- }aside 묶음 -->
+            </section><!-- } 변경 완료(레이아웃) -->
+
+            <!-- 📌cc(동일) -->
+            <div class="cc">
+          		<img src="/img/new2024/sub/img_opentype01.png" alt="공공누리 공공저작물 자유이용허락(출처표시)" style="width: 180px" />
+          		<p>위 기사는 "공공누리" <a href="http://www.kogl.or.kr/info/licenseType1.do" target="_blank" title="새창">제1유형:출처표시 조건</a>에 따라 이용 할 수 있습니다.</p>
+        	</div>
+        	<a href="javascript:Get_list_view('C094','','1','','');" class="btn_list"> 목록 </a>
+        </div><!--  -->
+    </main>
+    
+    
+	<!--footer-->
+	
+
+
+
+
+
+
+
+<footer>
+      <!--footer-element-->
+      <div class="footer-element">
+        <!--utility-area-->
+        <div class="utility-area">
+          <!--box-->
+          <div class="box">
+            <dl>
+              <dd><a href="https://www.gg.go.kr/pripolicy2/forward.do" class="on" target="_blank" title="개인정보처리방침-새창">개인정보처리방침</a></dd>
+              <dd><a href="/rss/gnews_guide.do">경기도뉴스포털 API 가이드</a></dd>
+              <dd><a href="/rss/gnews_rss_main.do">경기도뉴스포털 RSS 소개</a></dd>
+              <dd><a href="https://www.gg.go.kr/contents/contents.do?ciIdx=1377&amp;menuId=3187" target="_blank" title="찾아오시는길-새창">찾아오시는 길</a></dd>
+            </dl>
+          </div>
+          <!--box-->
+        </div>
+        <!--utility-area-->
+        <!--footers-->
+        <div class="footers">
+          <!--box-->
+          <div class="box">
+            <!--left-area-->
+            <div class="left-area">
+              <img src="/img/new2024/common/img-footer-logo.png" alt="경기도" />
+            </div>
+            <!--left-area-->
+            <!--center-area-->
+            <div class="center-area">
+              <dl>
+                <dt>경기도청&nbsp;</dt>
+                <dd>16508 경기도  수원시 영통구 도청로 30 (이의동)</dd>
+              </dl>
+              <dl>
+                <dt>북부청사&nbsp;</dt>
+                <dd>11780 경기도 의정부시 청사로 1 (신곡동)</dd>
+              </dl>
+              <dl>
+                <dt>경기도 콜센터&nbsp;</dt>
+                <dd>031-120&nbsp;</dd>
+              </dl>
+              <dl>
+                <dd>© GYEONGGI PROVINCE All Rights Reserved.</dd>
+              </dl>
+            </div>
+            <!--center-area-->
+            <!--right-area-->
+            <div class="right-area">
+              <img src="/img/new2024/common/ico_wa.png" width="73px" height="52px" alt="한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크(WA인증마크)" />
+            </div>
+            <!--right-area-->
+          </div>
+          <!--box-->
+        </div>
+        <!--footers-->
+      </div>
+      <!--footer-element-->
+</footer>
+
+	<!-- //footer -->
+
+</div>
+<!-- // wrap -->
+
+</form>
+<script>
+
+	document.addEventListener("DOMContentLoaded", function () {
+	    const url = window.location.href;
+	    if (url.includes("news_detail")) {
+	        document.body.classList.add("fs2");
+	    }
+	});
+
+		$(document).ready(function () {
+        //글자크기팝업,공유하기 팝업 서로 눌렀을때 닫히기
+        $(".postmenu ul > li > a").click(function () {
+		
+	         if (!$(this).parent().hasClass("active")) {
+        		$(".postmenu ul > li > a").each(function () {
+    				$(this).removeAttr("title");
+    				$(this).removeAttr("aria-current");  
+    			});
+	    			
+	           $(this).parent().addClass("active").siblings().removeClass("active");
+	           $(this).next(".pop_wrap").addClass("active");
+	           $(this).parent().siblings().find(".pop_wrap").removeClass("active");
+	           const parentAId = $(this).closest('li.txt_btn').find('> a').attr('id');
+	           console.log(parentAId); // 결과: txt_id
+	           
+	           if(parentAId != $(this).attr('id') && "sns_id" != $(this).attr('id')){
+	           		const $this = $(this);
+	           		const $li = $this.closest('li'); // 현재 <li>
+	           		const label = $li.find('span').text(); // 예: '아주크게'
+
+	           		// 모든 li 초기화
+	           		$li.siblings().removeClass('active').find('a').removeAttr('title');
+
+	           		// 현재 li 활성화
+	           		$li.addClass('active');
+	           		$this.attr('title', label + ' 선택됨'); // 예: "아주크게 선택됨"
+                     
+	           		
+	           }else{
+	        	   console.log("1111");
+	        	   const activeA = document.querySelector('.pop_wrap li.active a');
+
+	        	   if (activeA) {
+	        	     activeA.setAttribute('title', '보통 선택됨'); // title 설정
+	        	     activeA.focus(); // 🔥 포커스 이동
+	        	   }
+	           }	
+	         
+	         } else {
+	           $(this).parent().removeClass("active");
+	           $(this).next(".pop_wrap").removeClass("active");
+	         }
+         return false;
+       });
+
+       //공유하기 팝업 닫기
+       $(".postmenu ul > li.share_btn .close").click(function () {
+         $(this).parents(".pop_wrap").removeClass("active");
+         $(this).parents(".share_btn").removeClass("active");
+         return false;
+       });
+
+       //글자크기
+       $(".postmenu ul > li.txt_btn .pop_wrap a").click(function () {
+    	   
+         $(this).parent().addClass("active").siblings().removeClass("active");
+         var idx = $(this).parent().index();
+         $(this)
+           .parents("body")
+           .attr("class", "fs" + idx);
+         return false;
+       });
+     });
+</script>
+<script type="text/javascript">
+if('C094' == 'C124'){
+	var elements = document.querySelectorAll('.picDescription');
+	
+	elements.forEach(elements => {
+		//elements.style.display = 'none';
+	})
+}
+if('C094' == 'C124'){
+	var elements = document.querySelectorAll('.picDescription');
+	
+	elements.forEach(elements => {
+		//elements.style.display = 'none';
+	})
+}
+</script>
+<script>
+	function cleanImageSizeForMobile() {
+	  if (window.innerWidth <= 768) { // 모바일 화면 조건
+	    document.querySelectorAll('img').forEach(img => {
+	      // 1. width, height attribute 제거
+	      img.removeAttribute('width');
+	      img.removeAttribute('height');
+
+	      // 2. style 속성 안의 width, height 제거
+	      const style = img.getAttribute('style');
+	      if (style) {
+	        const cleanedStyle = style
+	          .replace(/(?:\s*width\s*:\s*[^;]+;?)/gi, '')
+	          .replace(/(?:\s*height\s*:\s*[^;]+;?)/gi, '')
+	          .trim();
+
+	        if (cleanedStyle) {
+	          img.setAttribute('style', cleanedStyle);
+	        } else {
+	          img.removeAttribute('style');
+	        }
+	      }
+	    });
+	  }
+	}
+
+	// 초기 실행 + 화면 크기 변경 시 재확인
+	cleanImageSizeForMobile();
+	window.addEventListener('resize', cleanImageSizeForMobile);
+</script>
+<form name="frmSNS" method="post">
+	<input type="hidden" name="cont" value="겨울의 끝에서 자연과 함께 떠나는 국내 트레킹 여행 코스 추천, 연천 `차탄천 에움길`" />
+	<input type="hidden" name="desc" value="차탄천은 북에서 남으로 흐르는 전체 ..." />
+	<input type="hidden" name="thum" value="" />
+	<input type="hidden" name="thum_fb" value="http://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/201802/20180223150438464401674.jpg" />
+</form>
+
+</body>
+</html>
