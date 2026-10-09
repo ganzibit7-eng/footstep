@@ -3,7 +3,7 @@ const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
 const slice=(start,end)=>html.slice(html.indexOf(start),html.indexOf(end,html.indexOf(start)));
 const elements=new Map(),storage=new Map(),messages=[];
 function element(id){if(!elements.has(id))elements.set(id,{hidden:false,textContent:'',innerHTML:'',value:'좋은 산책길',files:[],disabled:false,style:{},listeners:{},dataset:{},setAttribute(){},removeAttribute(){},querySelector(){return null;},addEventListener(type,fn){this.listeners[type]=fn;}});return elements.get(id);}
-const context={myDeviceId:null,myNickname:'테스트',console:{error(){}},
+const context={navigator:{onLine:true},walkDraftOwner:null,myDeviceId:null,myNickname:'테스트',console:{error(){}},
   localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},
   document:{getElementById:element},toast:s=>messages.push(s),confirm:()=>true,openNickModal(){},
   updateDetailFavorite(){},renderGrid(){},loadNearbyRecommendations(){},renderHomeGpsPreview(){},renderPopularCourses(){}};

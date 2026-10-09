@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { readBoundedJson, audit } from "../_shared/security.js";
 
 export async function handleRequest(req, create = createClient, env = Deno.env) {
   const origin = req.headers.get("origin");
@@ -7,26 +8,32 @@ export async function handleRequest(req, create = createClient, env = Deno.env) 
     "Access-Control-Allow-Headers":"authorization, apikey, content-type, x-client-info, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
     "Access-Control-Allow-Methods":"POST, OPTIONS"};
   if(origin && allowed.has(origin)) headers["Access-Control-Allow-Origin"] = origin;
-  const reply = (status, body) => new Response(JSON.stringify(body),{status,headers});
+  let auditClient=null,actor=null;
+  const reply = async (status, body) => {
+    if(auditClient){const event=body.deleted?"account_deleted":body.error==="admin_only"?"admin_access_denied":body.error==="sign_in_required"||body.error==="recent_sign_in_required"?"invalid_session":status>=500?"account_delete_failed":status>=400?"invalid_request":null;
+      if(event)await audit(auditClient,env,req,event,actor);}
+    return new Response(JSON.stringify(body),{status,headers});
+  };
   if(origin && !allowed.has(origin)) return reply(403,{error:"origin_not_allowed"});
   if(req.method === "OPTIONS") return new Response(null,{status:204,headers});
   if(req.method !== "POST") return reply(405,{error:"method_not_allowed"});
   const authorization=req.headers.get("authorization") || "";
   if(!authorization.startsWith("Bearer ")) return reply(401,{error:"sign_in_required"});
   let body;
-  try { body=await req.json(); } catch { return reply(400,{error:"invalid_request"}); }
+  try { body=await readBoundedJson(req); } catch { return reply(400,{error:"invalid_request"}); }
   const isAdminRequest=body?.confirm === "DELETE_MEMBER_ACCOUNT";
   if(body?.confirm !== "DELETE_MY_ACCOUNT" && !isAdminRequest) return reply(400,{error:"confirmation_required"});
   const url=env.get("SUPABASE_URL"), key=env.get("SUPABASE_SERVICE_ROLE_KEY");
   if(!url || !key) return reply(503,{error:"service_unavailable"});
   const admin=create(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
+  auditClient=admin;
   const token=authorization.slice(7);
   let identity,authError;
   try{({data:identity,error:authError}=await admin.auth.getUser(token));}catch{return reply(503,{error:"auth_unavailable"});}
   if(authError && (authError.status>=500 || authError.name==="AuthRetryableFetchError"))return reply(503,{error:"auth_unavailable"});
   if(authError || !identity?.user || identity.user.is_anonymous)
     return reply(401,{error:"sign_in_required"});
-  const user=identity.user;
+  const user=identity.user;actor=user.id;
   let targetId=user.id;
   if(isAdminRequest){
     let authorized,permissionError;
@@ -40,10 +47,10 @@ export async function handleRequest(req, create = createClient, env = Deno.env) 
   }else if(body.user_id && body.user_id!==user.id){
     return reply(403,{error:"invalid_target"});
   }
-  // Only a verified administrator may supply a different target account.
-  const signInAge=Date.now()-Date.parse(user.last_sign_in_at || "");
-  if(!Number.isFinite(signInAge) || signInAge < -60000 || signInAge > 15*60*1000)
-    return reply(403,{error:"recent_sign_in_required"});
+  // getUser verifies the signature; only then decode the session identifier.
+  let sessionId;try{const claims=JSON.parse(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));sessionId=claims.session_id;}catch{}
+  if(typeof sessionId!=='string'||!/^[0-9a-f-]{36}$/i.test(sessionId))return reply(401,{error:'sign_in_required'});
+  try{const {data,error}=await admin.rpc('validate_sensitive_session',{p_user_id:user.id,p_session_id:sessionId});if(error)return reply(503,{error:'permission_unavailable'});if(data!==true)return reply(403,{error:'recent_sign_in_required'});}catch{return reply(503,{error:'permission_unavailable'});}
   let started=false,stage="deletion_start_failed";
   try {
     const {error:startError}=await admin.rpc("begin_account_deletion",{p_user_id:targetId});

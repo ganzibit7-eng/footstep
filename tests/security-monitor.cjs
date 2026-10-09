@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const monitor=require('../security-monitor.js');
+const hostile='<img src=x onerror="alert(1)">';
+const html=monitor.render({server_count:1,browser_count:1,events:[{source:'browser',event:hostile,path:hostile,created_at:new Date().toISOString()}]});
+assert(!html.includes('<img'));assert(html.includes('&lt;img'));assert(html.includes('브라우저 보고'));assert(html.includes('0건은 공격이 없었다는 뜻이 아닙니다'));
+const site=fs.readFileSync('index.html','utf8');
+for(const expr of ['b.id','f.id'])assert(!site.includes("('${"+expr+"}')"));
+assert(site.includes('escapeHtml(JSON.stringify(String(b.id)))'));
+assert(site.includes('escapeHtml(JSON.stringify(String(f.id)))'));
+assert(site.includes('data-fav-toggle="${escapeHtml(c.id)}"'));
+assert(!site.includes("sb.from('notifications').insert"));
+for(const m of site.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g))if(!m[1].includes('src=')&&!m[1].includes('ld+json'))new vm.Script(m[2]);
+(async()=>{let n=0;const report=monitor.createReporter({functions:{invoke:async(name,args)=>{n++;assert.equal(name,'security-monitor');assert.equal(args.body.path,'/');assert(!JSON.stringify(args).includes('private-token'));}}},()=> '/?token=private-token#email');await report('auth_failed');await report('auth_failed');await report('unknown');assert.equal(n,1);console.log('PASS security: hostile audit content, popup JavaScript-string encoding, notification ownership, report throttle/query removal and syntax');})();

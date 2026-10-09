@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 // Mock Auth/Storage: these tests never delete a real account.
-const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/,'').replace('Deno.serve(req => handleRequest(req));','');
-const {handleRequest}=await import('data:text/javascript,'+encodeURIComponent(source));
+const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('Deno.serve(req => handleRequest(req));','');
+const shared=fs.readFileSync(new URL('../supabase/functions/_shared/security.js',import.meta.url),'utf8').replaceAll('export ','');
+const {handleRequest}=await import('data:text/javascript,'+encodeURIComponent(shared+'\n'+source));
+const token='e30.'+Buffer.from(JSON.stringify({session_id:'33333333-3333-4333-8333-333333333333'})).toString('base64url')+'.signature';
 const self='11111111-1111-4111-8111-111111111111',target='22222222-2222-4222-8222-222222222222';
 async function run(body,opts={}){
  const calls=[];let filesRead=false;
@@ -10,7 +12,9 @@ async function run(body,opts={}){
   auth:{getUser:async()=>{if(opts.authThrows)throw new Error('unavailable');return ({data:{user:opts.noUser?null:{id:self,last_sign_in_at:new Date(Date.now()-(opts.stale?3600000:0)).toISOString()}}});},admin:{signOut:async()=>{calls.push(['signOut']);return opts.signOutFail?{error:{message:'fail'}}:{};},deleteUser:async id=>{calls.push(['deleteUser',id]);return opts.deleteFail?{error:{message:'fail'}}:{};}}},
   storage:{from:bucket=>({remove:async names=>{calls.push(['remove',{bucket,names}]);return opts.storageFail?{error:{message:'failed'}}:{};}})},
   rpc:async(name,args)=>{
+   if(name==='record_security_event')return {data:true};
    calls.push([name,args]);
+   if(name==='validate_sensitive_session')return {data:!opts.stale&&!opts.revoked};
    if(name==='finish_account_deletion'&&args.p_success&&opts.finishThrows)throw new Error('unavailable');
    if(name==='is_admin')return {data:!!opts.admin};
    if(name==='begin_account_deletion'&&opts.protected)return {error:{message:'admin_transfer_required'}};
@@ -19,14 +23,14 @@ async function run(body,opts={}){
    return {};
   }
  };
- const res=await handleRequest(new Request('https://test',{method:'POST',headers:{authorization:'Bearer test','content-type':'application/json',origin:'https://balzaguk.com'},body:JSON.stringify(body)}),()=>client,{get:()=> 'test'});
+ const res=await handleRequest(new Request('https://test',{method:'POST',headers:{authorization:'Bearer '+token,'content-type':'application/json',origin:'https://balzaguk.com'},body:JSON.stringify(body)}),()=>client,{get:()=> 'test'});
  return {status:res.status,data:await res.json(),calls};
 }
 let r=await run({confirm:'DELETE_MY_ACCOUNT'});assert.equal(r.data.deleted,true);assert(r.calls.some(c=>c[0]==='deleteUser'&&c[1]===self));
 r=await run({confirm:'DELETE_MY_ACCOUNT',user_id:target});assert.equal(r.status,403);assert.equal(r.calls.length,0);
 r=await run({confirm:'DELETE_MEMBER_ACCOUNT',user_id:target});assert.equal(r.status,403);assert.deepEqual(r.calls.map(c=>c[0]),['is_admin']);
-r=await run({confirm:'DELETE_MEMBER_ACCOUNT',user_id:target},{admin:true,files:true});assert.equal(r.data.deleted,true);assert(!r.calls.some(c=>c[0]==='signOut'));assert(r.calls.some(c=>c[0]==='deleteUser'&&c[1]===target));assert(r.calls.filter(c=>c[1]?.p_user_id).every(c=>c[1].p_user_id===target));assert(r.calls.findIndex(c=>c[0]==='remove')<r.calls.findIndex(c=>c[0]==='deleteUser'));
-for(const opts of [{stale:true},{noUser:true},{protected:true}]){r=await run({confirm:'DELETE_MY_ACCOUNT'},opts);assert(r.status>=400);assert(!r.calls.some(c=>c[0]==='deleteUser'));}
+r=await run({confirm:'DELETE_MEMBER_ACCOUNT',user_id:target},{admin:true,files:true});assert.equal(r.data.deleted,true);assert(!r.calls.some(c=>c[0]==='signOut'));assert(r.calls.some(c=>c[0]==='deleteUser'&&c[1]===target));assert(r.calls.filter(c=>c[1]?.p_user_id&&c[0]!=='validate_sensitive_session').every(c=>c[1].p_user_id===target));assert(r.calls.findIndex(c=>c[0]==='remove')<r.calls.findIndex(c=>c[0]==='deleteUser'));
+for(const opts of [{stale:true},{revoked:true},{noUser:true},{protected:true}]){r=await run({confirm:'DELETE_MY_ACCOUNT'},opts);assert(r.status>=400);assert(!r.calls.some(c=>c[0]==='deleteUser'));}
 for(const opts of [{fail:true},{files:true,storageFail:true}]){r=await run({confirm:'DELETE_MY_ACCOUNT'},opts);assert.equal(r.status,503);assert(!r.calls.some(c=>c[0]==='deleteUser'));assert(r.calls.some(c=>c[0]==='finish_account_deletion'&&c[1].p_success===false));}
 console.log('Account deletion: identity, permissions, storage ordering, failures, retry lease passed.');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
@@ -53,8 +57,8 @@ for(const [opts,code] of [[{authThrows:true},'auth_unavailable'],[{signOutFail:t
 r=await run({confirm:'DELETE_MY_ACCOUNT'},{finishThrows:true});assert.equal(r.data.deleted,true);assert.equal(r.data.cleanup_pending,true);assert(!r.calls.some(c=>c[0]==='finish_account_deletion'&&c[1].p_success===false));
 console.log('Server: Auth outage, sign-out/delete failures, post-deletion completion failure passed.');
 let served;
-const deployedSource=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/,'').replace('export async function','async function');
-new Function('createClient','Deno',deployedSource)(()=>({auth:{getUser:async()=>({error:{status:401}})}}),{env:{get:()=> 'test'},serve:handler=>{served=handler;}});
+const deployedSource=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('export async function','async function');
+new Function('createClient','Deno',shared+'\n'+deployedSource)(()=>({auth:{getUser:async()=>({error:{status:401}})}}),{env:{get:()=> 'test'},serve:handler=>{served=handler;}});
 const entrypointResponse=await served(new Request('https://test',{method:'POST',headers:{authorization:'Bearer invalid','content-type':'application/json'},body:JSON.stringify({confirm:'DELETE_MY_ACCOUNT'})}),{remoteAddr:{hostname:'127.0.0.1'}});
 assert.equal(entrypointResponse.status,401);
 assert.equal((await entrypointResponse.json()).error,'sign_in_required');

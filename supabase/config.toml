@@ -2,3 +2,7 @@
 # The function verifies the session JWT with Auth.getUser before every privileged action.
 # Custom authentication supports current signing keys and publishable clients.
 verify_jwt = false
+
+[functions.security-monitor]
+# Public-key reports are explicitly verified and labelled as untrusted browser signals.
+verify_jwt = false
