@@ -26,4 +26,6 @@
 - https://partners.coupang.com/#help/operating-policy
 - https://partners.coupang.com/#help/faq
 
-검증: `node tests/shopping.cjs` 및 운영 사이트의 실제 렌더링 확인. 배포 후 광고·대가성 문구가 함께 보이는 홈페이지 스크린샷을 해당 미디어의 검수 자료로 제출.
+검증: `node tests/shopping.cjs` 통과 및 운영 사이트에서 세 상품 사진의 정상 표시 확인. 배포 후 상품 사진·제휴 링크·대가성 문구가 함께 보이는 홈페이지 스크린샷을 해당 미디어의 검수 자료로 업로드했으며, 추가 인증 후 ‘내 정보가 성공적으로 변경되었습니다’ 메시지로 저장 완료를 확인했다. 최종 승인은 쿠팡의 별도 심사 대상이다.
+
+적용 화면: [coupang-partners-20261009.jpg](coupang-partners-20261009.jpg)
