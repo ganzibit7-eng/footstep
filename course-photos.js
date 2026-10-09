@@ -2437,6 +2437,172 @@
   },
   {
     "courses": {
+      "c411": "제주 광치기해변 GPX 선택 구간"
+    },
+    "place": "광치기해변에서 바라본 성산일출봉",
+    "author": "Republic of  Korea from Seoul, Republic of Korea",
+    "date": "2014-11-27",
+    "source": "https://commons.wikimedia.org/wiki/File:Jeju_Island_20141127_25_(15892738751).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Jeju_Island_20141127_25_%2815892738751%29.jpg",
+    "title": "Jeju Island 20141127 25 (15892738751).jpg",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "src": "/assets/course-photos/c411.webp",
+    "width": 1200,
+    "height": 743,
+    "sourceSha256": "657eea994e0a64cd464dcd9e1f41fed3ec05db6103912e1ad6a67e741060a4e9",
+    "assetSha256": "944582648d127a72e07a6ae03ee63c948a0afec958a2aa183234f2f88ac836ac",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c335": "서울 진경산수화길",
+      "c429": "종로구 골목길탐방코스 인왕산자락예술가길"
+    },
+    "place": "수성동계곡에서 바라본 인왕산 (코스 경유지)",
+    "author": "Republic of  Korea from Seoul, Republic of Korea",
+    "date": "2016-11-02",
+    "source": "https://commons.wikimedia.org/wiki/File:Inwangsan_Mountain_20161102_01_(30091798783).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/3/38/Inwangsan_Mountain_20161102_01_%2830091798783%29.jpg",
+    "title": "Inwangsan Mountain 20161102 01 (30091798783).jpg",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "src": "/assets/course-photos/c335.webp",
+    "width": 848,
+    "height": 1200,
+    "sourceSha256": "c8fd1fb54afaa3c595e1ffb709df4b9c69e941965bdd73e4dfbb5a28d466e673",
+    "assetSha256": "a46a9670e48c631825e0789464ddc3632ea85383f2bc727da2872b10052dee02",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c418": "경주시 파도소리길"
+    },
+    "place": "양남 주상절리 해안 (파도소리길 경유지)",
+    "author": "Serena Kang",
+    "date": "2017-05-04",
+    "source": "https://commons.wikimedia.org/wiki/File:Gyeongju_Yangnam_Jusangjeolli_Cliff.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/63/Gyeongju_Yangnam_Jusangjeolli_Cliff.jpg",
+    "title": "Gyeongju Yangnam Jusangjeolli Cliff.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "src": "/assets/course-photos/c418.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "5ce041a05171bd87c0f1519db3668c029d663bd2e5a11badbf6a0e4b263db113",
+    "assetSha256": "5aba7aad2b95aa06af4cfe9ed72e6f700ef8e2aba11d6695a34bc48d1aa96d98",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c425": "강릉시 바우길 17코스 안반데기 운유길"
+    },
+    "place": "안반데기 운유길 경유지의 고랭지 밭 풍경",
+    "author": "Choi Kwang-mo",
+    "date": "2020-07-12",
+    "source": "https://commons.wikimedia.org/wiki/File:20200711_163410_items_places_in_south_korea_IMG_3406.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/20200711_163410_items_places_in_south_korea_IMG_3406.jpg",
+    "title": "20200711 163410 items places in south korea IMG 3406.jpg",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "dateNote": "촬영일은 원본 메타데이터 기준; 파일명 날짜와 차이가 있음",
+    "src": "/assets/course-photos/c425.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "a313ecb143bb2e88916d2e084c7df0e6286c37f858cff30701a8f710175d9e59",
+    "assetSha256": "d382667f785c1b238182156124de5d13f17691d8e5d955f2955a5016ad3cb426",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c382": "우암사적공원 보행로 산책 코스"
+    },
+    "place": "우암사적공원 인함각",
+    "author": "김원일 · 대전광역시",
+    "date": "2016",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=36698",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%AC%B4%EC%8A%A8%20%EC%82%AC%EC%A7%84%EC%9D%BC%EA%B9%8C/%EA%B3%B5%EB%AA%A8%EC%A0%84_0118_%EC%9A%B0%EC%95%94%EC%82%AC%EC%A0%81%EA%B3%B5%EC%9B%90%20%EC%9D%B8%ED%95%A8%EA%B0%81.jpg",
+    "title": "공모전_0118_우암사적공원 인함각.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c382.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "a095b18cc64a7d857af55ba7a75be0a71d890564ab141289b1522bc93fe9ce58",
+    "assetSha256": "ea54caefa67e090a3367177fa694cbd043503621d259c232be27d6379ffd7f38",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c394": "부산 절영해안산책로 GPX 구간"
+    },
+    "place": "절영해안산책로",
+    "author": "부산광역시",
+    "date": "2020",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=14613",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%EC%A7%80%EC%97%AD%EB%B3%84%EA%B4%80%EA%B4%91%EC%A7%80/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%B6%80%EC%82%B0%EC%97%AC%ED%96%89%EC%82%AC%EC%A7%84/1022.jpg",
+    "title": "1022.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c394.webp",
+    "width": 760,
+    "height": 428,
+    "sourceSha256": "eba8db2d16efc09d3a1ff93dcb32867a0f3207c58caea14045eec426ab71d4c6",
+    "assetSha256": "c270929601b391867e0a9924934f8f76b2e9a8ae20cc109115675adc397119c9",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c420": "김포시 문수산 등산로 1코스",
+      "c421": "김포시 문수산 등산로 2코스",
+      "c422": "김포시 문수산 등산로 3코스"
+    },
+    "place": "문수산성 성벽과 산길 (문수산 등산로 주변)",
+    "author": "경기도",
+    "date": "촬영 시기 미상",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37006",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_0862_%5B%EA%B9%80%ED%8F%AC%5D%20%EB%AC%B8%EC%88%98%EC%82%B0%EC%84%B1.jpg",
+    "title": "경기관광포털_0862_[김포] 문수산성.jpg",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "dateNote": "출처의 2000년 표기는 촬영일로 확정하지 않음",
+    "src": "/assets/course-photos/c420.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "32ea3cda38549bfe325185c4d807cef1dba23bf6fc9d7129ddb588de49ab80c2",
+    "assetSha256": "92aa7507108b474cc70198296be5513665156d25bdeb4373985a8f01f22e96f8",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
+      "c342": "여주 여강길 1코스 옛나루터길"
+    },
+    "place": "여강길 옛나루터길 일대 갈대 풍경",
+    "author": "이종민 · 경기도뉴스포털",
+    "date": "촬영 시기 미상",
+    "dateNote": "2009-11-02 기사 게재; 촬영일 미표기",
+    "source": "https://gnews.gg.go.kr/news/news_detail.do?newsType=N&number=200911021004274463C049&s_code=C049",
+    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/200911/20091102100427033191975.jpg",
+    "title": "은모래 금모래 반짝이는 여강길",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c342.webp",
+    "width": 500,
+    "height": 220,
+    "sourceSha256": "08404f9d3d808e491234ffe2c711e64ccbbd8dc252ff0cf9aa31cc7c1f0fd4c6",
+    "assetSha256": "8dbc8334362d6e0d5449c3eb0c8c8f8be4105e9dfee6fcd58699a275a5e5051c",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-09"
+  },
+  {
+    "courses": {
       "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_665502044.webp",
@@ -3411,172 +3577,6 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
-  },
-  {
-    "courses": {
-      "c411": "제주 광치기해변 GPX 선택 구간"
-    },
-    "place": "광치기해변에서 바라본 성산일출봉",
-    "author": "Republic of  Korea from Seoul, Republic of Korea",
-    "date": "2014-11-27",
-    "source": "https://commons.wikimedia.org/wiki/File:Jeju_Island_20141127_25_(15892738751).jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Jeju_Island_20141127_25_%2815892738751%29.jpg",
-    "title": "Jeju Island 20141127 25 (15892738751).jpg",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "src": "/assets/course-photos/c411.webp",
-    "width": 1200,
-    "height": 743,
-    "sourceSha256": "657eea994e0a64cd464dcd9e1f41fed3ec05db6103912e1ad6a67e741060a4e9",
-    "assetSha256": "944582648d127a72e07a6ae03ee63c948a0afec958a2aa183234f2f88ac836ac",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c335": "서울 진경산수화길",
-      "c429": "종로구 골목길탐방코스 인왕산자락예술가길"
-    },
-    "place": "수성동계곡에서 바라본 인왕산 (코스 경유지)",
-    "author": "Republic of  Korea from Seoul, Republic of Korea",
-    "date": "2016-11-02",
-    "source": "https://commons.wikimedia.org/wiki/File:Inwangsan_Mountain_20161102_01_(30091798783).jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/3/38/Inwangsan_Mountain_20161102_01_%2830091798783%29.jpg",
-    "title": "Inwangsan Mountain 20161102 01 (30091798783).jpg",
-    "license": "CC BY-SA 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-    "src": "/assets/course-photos/c335.webp",
-    "width": 848,
-    "height": 1200,
-    "sourceSha256": "c8fd1fb54afaa3c595e1ffb709df4b9c69e941965bdd73e4dfbb5a28d466e673",
-    "assetSha256": "a46a9670e48c631825e0789464ddc3632ea85383f2bc727da2872b10052dee02",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c418": "경주시 파도소리길"
-    },
-    "place": "양남 주상절리 해안 (파도소리길 경유지)",
-    "author": "Serena Kang",
-    "date": "2017-05-04",
-    "source": "https://commons.wikimedia.org/wiki/File:Gyeongju_Yangnam_Jusangjeolli_Cliff.jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/6/63/Gyeongju_Yangnam_Jusangjeolli_Cliff.jpg",
-    "title": "Gyeongju Yangnam Jusangjeolli Cliff.jpg",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "src": "/assets/course-photos/c418.webp",
-    "width": 1200,
-    "height": 900,
-    "sourceSha256": "5ce041a05171bd87c0f1519db3668c029d663bd2e5a11badbf6a0e4b263db113",
-    "assetSha256": "5aba7aad2b95aa06af4cfe9ed72e6f700ef8e2aba11d6695a34bc48d1aa96d98",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c425": "강릉시 바우길 17코스 안반데기 운유길"
-    },
-    "place": "안반데기 운유길 경유지의 고랭지 밭 풍경",
-    "author": "Choi Kwang-mo",
-    "date": "2020-07-12",
-    "source": "https://commons.wikimedia.org/wiki/File:20200711_163410_items_places_in_south_korea_IMG_3406.jpg",
-    "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/20200711_163410_items_places_in_south_korea_IMG_3406.jpg",
-    "title": "20200711 163410 items places in south korea IMG 3406.jpg",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "dateNote": "촬영일은 원본 메타데이터 기준; 파일명 날짜와 차이가 있음",
-    "src": "/assets/course-photos/c425.webp",
-    "width": 1200,
-    "height": 900,
-    "sourceSha256": "a313ecb143bb2e88916d2e084c7df0e6286c37f858cff30701a8f710175d9e59",
-    "assetSha256": "d382667f785c1b238182156124de5d13f17691d8e5d955f2955a5016ad3cb426",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c382": "우암사적공원 보행로 산책 코스"
-    },
-    "place": "우암사적공원 인함각",
-    "author": "김원일 · 대전광역시",
-    "date": "2016",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=36698",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EB%8C%80%EC%A0%84%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%AC%B4%EC%8A%A8%20%EC%82%AC%EC%A7%84%EC%9D%BC%EA%B9%8C/%EA%B3%B5%EB%AA%A8%EC%A0%84_0118_%EC%9A%B0%EC%95%94%EC%82%AC%EC%A0%81%EA%B3%B5%EC%9B%90%20%EC%9D%B8%ED%95%A8%EA%B0%81.jpg",
-    "title": "공모전_0118_우암사적공원 인함각.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c382.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "a095b18cc64a7d857af55ba7a75be0a71d890564ab141289b1522bc93fe9ce58",
-    "assetSha256": "ea54caefa67e090a3367177fa694cbd043503621d259c232be27d6379ffd7f38",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c394": "부산 절영해안산책로 GPX 구간"
-    },
-    "place": "절영해안산책로",
-    "author": "부산광역시",
-    "date": "2020",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=14613",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%EC%A7%80%EC%97%AD%EB%B3%84%EA%B4%80%EA%B4%91%EC%A7%80/%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C/%EB%B6%80%EC%82%B0%EC%97%AC%ED%96%89%EC%82%AC%EC%A7%84/1022.jpg",
-    "title": "1022.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c394.webp",
-    "width": 760,
-    "height": 428,
-    "sourceSha256": "eba8db2d16efc09d3a1ff93dcb32867a0f3207c58caea14045eec426ab71d4c6",
-    "assetSha256": "c270929601b391867e0a9924934f8f76b2e9a8ae20cc109115675adc397119c9",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c420": "김포시 문수산 등산로 1코스",
-      "c421": "김포시 문수산 등산로 2코스",
-      "c422": "김포시 문수산 등산로 3코스"
-    },
-    "place": "문수산성 성벽과 산길 (문수산 등산로 주변)",
-    "author": "경기도",
-    "date": "촬영 시기 미상",
-    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37006",
-    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_0862_%5B%EA%B9%80%ED%8F%AC%5D%20%EB%AC%B8%EC%88%98%EC%82%B0%EC%84%B1.jpg",
-    "title": "경기관광포털_0862_[김포] 문수산성.jpg",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "dateNote": "출처의 2000년 표기는 촬영일로 확정하지 않음",
-    "src": "/assets/course-photos/c420.webp",
-    "width": 760,
-    "height": 507,
-    "sourceSha256": "32ea3cda38549bfe325185c4d807cef1dba23bf6fc9d7129ddb588de49ab80c2",
-    "assetSha256": "92aa7507108b474cc70198296be5513665156d25bdeb4373985a8f01f22e96f8",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
-  },
-  {
-    "courses": {
-      "c342": "여주 여강길 1코스 옛나루터길"
-    },
-    "place": "여강길 옛나루터길 일대 갈대 풍경",
-    "author": "이종민 · 경기도뉴스포털",
-    "date": "촬영 시기 미상",
-    "dateNote": "2009-11-02 기사 게재; 촬영일 미표기",
-    "source": "https://gnews.gg.go.kr/news/news_detail.do?newsType=N&number=200911021004274463C049&s_code=C049",
-    "original": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/200911/20091102100427033191975.jpg",
-    "title": "은모래 금모래 반짝이는 여강길",
-    "license": "공공누리 제1유형",
-    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
-    "src": "/assets/course-photos/c342.webp",
-    "width": 500,
-    "height": 220,
-    "sourceSha256": "08404f9d3d808e491234ffe2c711e64ccbbd8dc252ff0cf9aa31cc7c1f0fd4c6",
-    "assetSha256": "8dbc8334362d6e0d5449c3eb0c8c8f8be4105e9dfee6fcd58699a275a5e5051c",
-    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
-    "checked": "2026-10-09"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
