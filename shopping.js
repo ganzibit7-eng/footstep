@@ -31,7 +31,7 @@
         linked++;
         const option=root.document.createElement('p');option.className='walk-shopping-option';option.textContent='제휴 상품 · '+(item.option||item.name);
         body.append(option,check);
-        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 상품 정보 보기 ↗';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;body.append(a);
+        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 상품 정보 보기 ↗';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;a.dataset.shoppingPlacement='home-walk-shopping';body.append(a);
       }else body.append(reason,check);
       container.append(card);
     });

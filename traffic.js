@@ -27,6 +27,20 @@
     return saved;
   }
   let entry;
+  const affiliateRecent=new Map();
+  function affiliateClick(event){
+    if(!event.isTrusted||!started||excluded||!visitor||!entry||!client||navigator.webdriver)return;
+    if(event.type==='auxclick'?event.button!==1:event.button!==undefined&&event.button!==0)return;
+    const el=event.target?.closest?.('a[data-shopping-item]');if(!el)return;
+    let url;try{url=new URL(el.href);if(url.origin!=='https://link.coupang.com'||!/^\/a\/[A-Za-z0-9]+$/.test(url.pathname)||url.search||url.hash||url.username||url.password)return;}catch{return;}
+    const key=el.dataset.shoppingItem+'|'+url.href,now=Date.now();
+    if(now-(affiliateRecent.get(key)||0)<700)return;affiliateRecent.set(key,now);
+    const body={event_id:root.crypto.randomUUID(),visitor_id:visitor,product_id:el.dataset.shoppingItem,
+      url:url.href,path:location.pathname,section:/^[a-z_-]{1,32}$/.test(page)?page:'home',
+      placement:el.dataset.shoppingPlacement||'home-walk-shopping',source:entry.source,automated:!!navigator.webdriver};
+    // Never delay or replace the user's direct affiliate navigation.
+    try{Promise.resolve(client.rpc('record_affiliate_click',{p_payload:body})).catch(()=>{});}catch{}
+  }
   function tick(){const now=Date.now();if(document.visibilityState==='visible')active+=Math.min(2,Math.max(0,(now-lastTick)/1000));lastTick=now;}
   function payload(){return {visitor_id:visitor,view_token:view,path:location.pathname,page,source:entry.source,medium:entry.medium,campaign:entry.campaign,active_seconds:Math.floor(active),clicks,depth,actions,automated:!!navigator.webdriver};}
   async function send(){
@@ -37,6 +51,7 @@
     return state.promise;
   }
   function interaction(event){
+    affiliateClick(event);
     if(!event.isTrusted||!started||excluded)return;
     const el=event.target?.closest?.('a,button,[role="button"],input[type="submit"]');if(!el)return;
     clicks=Math.min(1000,clicks+1);const kind=el.closest('nav')?'navigation':el.matches('a')?'link':'button';actions[kind]=Math.min(1000,actions[kind]+1);if(Date.now()-lastSent>2000)send();
@@ -48,6 +63,7 @@
     if(!/^v[0-9]{10,16}[a-z0-9]{4,20}$/.test(visitor||'')){visitor='v'+Date.now()+Math.random().toString(36).slice(2,10);storage('localStorage','paw_visitor_id',visitor);}
     view=root.crypto.randomUUID();entry=attribution();lastTick=Date.now();
     document.addEventListener('click',interaction,true);
+    document.addEventListener('auxclick',affiliateClick,true);
     document.addEventListener('submit',e=>{if(e.isTrusted&&e.target?.matches?.('[role="search"],form[data-search]')){actions.search=Math.min(1000,actions.search+1);send();}},true);
     document.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;if(h>0)depth=Math.max(depth,Math.min(100,Math.round(scrollY/h*100)));},{passive:true});
     document.addEventListener('visibilitychange',()=>{tick();send();lastTick=Date.now();});
