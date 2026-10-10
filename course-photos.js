@@ -4251,6 +4251,705 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "c249": "서울 생태공원 둘레길"
+    },
+    "place": "우면산자연생태공원 수변 산책공간",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2757831&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/96/3540696_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c249.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "ba3352a89a6fc28d28abdf31acac18c004c93ee651c49fadde8beac86ffd404e",
+    "assetSha256": "cdbddbc92fdf70ae0e6cb8aef92c0421aebcc899e5959055f7be768047d9e875",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c363": "포천 청계호수 산책로"
+    },
+    "place": "청계호수 수면과 주변 숲 전경",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=125527&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/83/3519783_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c363.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "8b217854feae6d840dc8ab58177849251c3aec51821efce0c4ac8ae14cf1b2e4",
+    "assetSha256": "953b733da7a284cc410dafdbad6af24db80bf9c32e0434f9056d6846587b9764",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c409": "중외공원 보행로 산책 코스"
+    },
+    "place": "중외공원 야외 공원 공간",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=126324&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/55/3514755_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c409.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "ae05a178c9fd0a0107603d991468e7c3e2a063373c859342f5dce32b14627e36",
+    "assetSha256": "bd6328ab5d758fa797b51b81b93a0bbafc5cf5ba12dacb1f7c8d07a09424f4a1",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c423": "밀양시 밀양아리랑길 추화산성길"
+    },
+    "place": "추화산성 경유지 · 봉수대 주변",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2793017&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/03/3499803_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c423.webp",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "e5428a0873e32df1cef212dd39bbfb9a54314471326cdd54b0fec62e00e5d5dd",
+    "assetSha256": "708db875c704fb5915adf05cbb150a8b6a7e1996cb9fc8e6f36be1b28be68cf9",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c351": "포항 호미반도 해안둘레길 3코스 구룡소길"
+    },
+    "place": "구룡소길 경유지 · 구룡소 해안 암석",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2614482&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/77/2614477_image2_1.bmp",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c351.webp",
+    "width": 700,
+    "height": 394,
+    "sourceSha256": "fe7449b399c85ed28d60c7f38b0650efd6bba7dd9701067ab311b9f58eac6050",
+    "assetSha256": "330a808ad67023919576dcd30e9bfb0019fcb729d6ef8e73714da115ed2986a8",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c353": "포항 호미반도 해안둘레길 1코스 연오랑세오녀길"
+    },
+    "place": "연오랑세오녀길 경유지 · 귀비고 주변",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2633900&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/40/2638640_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c353.webp",
+    "width": 700,
+    "height": 467,
+    "sourceSha256": "4e2f815c21f6b9960951b0aa0e18d25bd6acf0991e7be4226440d2712834199a",
+    "assetSha256": "e04f282d8ab23fb8b0452e310b3c522b4fb91d84ea20691758db3620ee133729",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c355": "울산 간절곶소망길 1코스 연인의길"
+    },
+    "place": "연인의길 시작 구간 · 진하해수욕장",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=126096&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/33/3060633_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c355.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "c4757aa11c182d08d7576007ad296b3912d2d97c5f777aed57ef8b98481d7c1a",
+    "assetSha256": "c353f81da5a45f5c71ce8349ca3712f577faa085795c5cf22eaf997e8031174f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c389": "거창 감악산 물맞이길 1코스 물 맞으러 가는 길"
+    },
+    "place": "감악산 정상 주변 전망 · 경유지 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1576464&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/93/4007893_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c389.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "4c950f7c90ba49acac7636aee301d17c745079e8ac5388081592601258c8b638",
+    "assetSha256": "a4ecd3ba8e4ff3d28635aff9031d4f3b0418fdb041e845ee24dc55d740fe695b",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c413": "동해 대진해변 GPX 선택 구간"
+    },
+    "place": "동해시 대진 해수욕장 · 해변 전경",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2774430&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/33/2774433_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c413.webp",
+    "width": 699,
+    "height": 466,
+    "sourceSha256": "c4727aafb7baab5bada375a0171adfaf6a3f25a1e666e2e21ab2d370a155aa38",
+    "assetSha256": "e9aa1872665972e81ece0bcbf3a99738397a63d4d26a3567a695245d45cbe72c",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001463": "전남 장성군 편백숲 트레킹길 4코스[임도]"
+    },
+    "place": "축령산 편백숲 · 주변 숲 경관 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=127394&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/47/3546847_image2_1.JPG",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001463.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "40f40fbc917921ac1ab0e60fbf48aecedbca4633d06fe79b3e903bd749b608ac",
+    "assetSha256": "b882b80e114ee95b95fff43d0ae69f4f7b1fda3f9f773d4c945930b92533d502",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003721": "세종 세종특별자치시 원수산 둘레길 1코스"
+    },
+    "place": "원수산 둘레길 출발 구간 · 습지생태원 보행 데크",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2758472&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/49/2758449_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003721.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "86c760b80b0dc65ac024d2b1540d5e3e868ea525710a49a5fd88a15f1fdf9f70",
+    "assetSha256": "07dd928646340470345517b7101f07e228f3de2ffa520d9f287f222c8cdc21d9",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003094": "강원 원주시 원주굽이길 1코스 배부른산길"
+    },
+    "place": "배부른산 숲속 보행 계단 · 경유지 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=3069902&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/90/3069890_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003094.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "5df59c944d393c7e691f44ce29117f72636b958499674f56f3d836e0b7009ff0",
+    "assetSha256": "df978f5fb5acc3788cfeaa4ea1a89d6ea6b920eba56e34d9b17bc400e6e94fb2",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000023": "강원 평창군 happy700길 매화마을 녹색길"
+    },
+    "place": "매화마을 녹색길 숲길",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2702539&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/36/3410236_image2_1.JPG",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000023.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "89b412dc2522e1fc28dd7aff24dd0bdb6d8a71a6a6e77c724492eeb308a9eae8",
+    "assetSha256": "42224157ee35b88e7f9d4ea6882ca6f664e38151a69bfb63129ba7d53684aef0",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003656": "경남 사천시 이순신바닷길 4코스 실안 노을길"
+    },
+    "place": "실안 노을길 경유지 · 실안해안도로 보행로",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2791454&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/81/3515581_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003656.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "655055f2b2ffa6a27779b7675dba94fc1f754dc71c3508f75e939ab09bb3538e",
+    "assetSha256": "d444a64453d3ddf942ad4cf7529fa6787e80fe00faef2b8b6da187d05473ae48",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000663": "전남 화순군 무등산자락 무돌길 10길 수만리길"
+    },
+    "place": "수만리길 경유지 · 수만리들국화마을 주변",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=129368&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/56/3590556_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000663.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "edefd82f6b8e2f8a885d7a123f186edd6091819f36de7395f3ce88be0292ab2f",
+    "assetSha256": "7cead6fd8b90066b83c6dd3c6daaca2eb17495a07ad7974cfcfef72e19918ebe",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000664": "전남 화순군 무등산자락 무돌길 11길 화순산림길"
+    },
+    "place": "화순산림길 주변 · 수만리생태숲공원 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2754463&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/31/2754531_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000664.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "613c934fcbe5874403c37a3b66e70403e31f544a3455fa19cdf2d05c881ce18b",
+    "assetSha256": "c4790d0156157023a34f7e609d4a4f8cf6d918f77c0a479c7764d4e403408b34",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000665": "전남 화순군 무등산자락 무돌길 12길 만연길"
+    },
+    "place": "만연산 봄 풍경 · 주변 산 경관 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=128990&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/98/2604598_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000665.webp",
+    "width": 700,
+    "height": 467,
+    "sourceSha256": "8259cb65cfb3a1f0e070129db091924c943375cd0bb19dbb34acfcf9e7f82f0a",
+    "assetSha256": "bc9ff4b5faef9a620906d621f244ad30a14d5486ad7c38d7d8fb73d1aa4d9667",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c426": "여주시 여강길 7코스 부처울습지길"
+    },
+    "place": "부처울습지길 종착 구간 · 당남리섬 유채꽃 계절 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2743841&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/61/3540461_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c426.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "814bab30b9c0a7a6c46189240413c17d4a05854383da8f3515688fb15896fc81",
+    "assetSha256": "3f5cb0caa6b5f6fec23981fd5c1998a2f9c18c0cbf9b422208e49327918a8536",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000002276": "충북 충주시 비내길 1코스"
+    },
+    "place": "비내길 관광공사 안내 사진 · 강변 구간 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2434847&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/50/3504950_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000002276.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "11634fef553ead50780a76792c12858103f5e3db13826a855b4a9d8b59b86492",
+    "assetSha256": "61dcf980e4337bf6e429fb715031e67fcc0337605e3815218a840b49d902c644",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003667": "광주 동구 도심건강길 3코스 푸른길"
+    },
+    "place": "푸른길 경유지 · 푸른길분수공원",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2774008&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/09/3528409_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003667.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "4eaf3e513aadc665b34a46085e3ccfa9ce9ea8089a0d5934b259cd69fd183f6a",
+    "assetSha256": "ed1fa736b291487ab464929d2f0b362e0187d8ba099da1536689763f69019692",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c293": "서울 긴고랑길"
+    },
+    "place": "긴고랑길에서 바라본 계곡과 동네의 저녁 풍경",
+    "source": "https://commons.wikimedia.org/wiki/File:%EC%95%84%EC%B0%A8%EC%82%B0,_%EA%B8%B4%EA%B3%A0%EB%9E%91.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/%EC%95%84%EC%B0%A8%EC%82%B0%2C_%EA%B8%B4%EA%B3%A0%EB%9E%91.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/%EC%95%84%EC%B0%A8%EC%82%B0%2C_%EA%B8%B4%EA%B3%A0%EB%9E%91.jpg/1280px-%EC%95%84%EC%B0%A8%EC%82%B0%2C_%EA%B8%B4%EA%B3%A0%EB%9E%91.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Cho han bum",
+    "date": "2017-02-27 18:03:41",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "coordinates": [
+      {
+        "lat": 37.562837,
+        "lon": 127.096145,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:아차산, 긴고랑.jpg",
+    "src": "/assets/course-photos/c293.webp",
+    "width": 1200,
+    "height": 675,
+    "sourceSha256": "f9cfbce222d3011c3f504afb2cdd15e35c2fee7df0152696e495ed41df37e87c",
+    "assetSha256": "1733c7caf2db4cfb9c588a1fc8f5770e3497b3807c92b12ccfd05038ebe39d8f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c276": "서울 월드컵공원 메타세쿼이아길"
+    },
+    "place": "메타세쿼이아길 보행로 주변 · 야간 벤치와 나무길",
+    "source": "https://commons.wikimedia.org/wiki/File:Bench_(%EB%B2%A4%EC%B9%98)_-_panoramio.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/0/07/Bench_%28%EB%B2%A4%EC%B9%98%29_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Bench_%28%EB%B2%A4%EC%B9%98%29_-_panoramio.jpg/1280px-Bench_%28%EB%B2%A4%EC%B9%98%29_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "골뱅이",
+    "date": "24 October 2010 (original upload date)",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "coordinates": [
+      {
+        "lat": 37.563042,
+        "lon": 126.888046,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Bench (벤치) - panoramio.jpg",
+    "src": "/assets/course-photos/c276.webp",
+    "width": 1200,
+    "height": 872,
+    "sourceSha256": "b2af95211b57963df8f7aa609eb24041ecf1e45a3a07f2801a08a00f5fec2c87",
+    "assetSha256": "69ed95eedc1a3fd14163787982339b71a64f233190c1eddc26c6d8eba29f3fa9",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c316": "서울 관악산 도란도란 걷는 길"
+    },
+    "place": "도란도란 걷는 길 경유지 · 관악정 주변 숲속 시내",
+    "source": "https://commons.wikimedia.org/wiki/File:%EA%B4%80%EC%95%85%EC%A0%95_%EA%B3%BC%EB%85%81%EA%B3%BC_%EC%82%AC%EB%8C%80_%EC%82%AC%EC%9D%B4%EC%9D%98_%EC%8B%9C%EB%82%B4_-_panoramio.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/68/%EA%B4%80%EC%95%85%EC%A0%95_%EA%B3%BC%EB%85%81%EA%B3%BC_%EC%82%AC%EB%8C%80_%EC%82%AC%EC%9D%B4%EC%9D%98_%EC%8B%9C%EB%82%B4_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/%EA%B4%80%EC%95%85%EC%A0%95_%EA%B3%BC%EB%85%81%EA%B3%BC_%EC%82%AC%EB%8C%80_%EC%82%AC%EC%9D%B4%EC%9D%98_%EC%8B%9C%EB%82%B4_-_panoramio.jpg/1280px-%EA%B4%80%EC%95%85%EC%A0%95_%EA%B3%BC%EB%85%81%EA%B3%BC_%EC%82%AC%EB%8C%80_%EC%82%AC%EC%9D%B4%EC%9D%98_%EC%8B%9C%EB%82%B4_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "FlesYm",
+    "date": "Taken on 15 August 2010",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "coordinates": [
+      {
+        "lat": 37.457463,
+        "lon": 126.933436,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:관악정 과녁과 사대 사이의 시내 - panoramio.jpg",
+    "src": "/assets/course-photos/c316.webp",
+    "width": 900,
+    "height": 1200,
+    "sourceSha256": "8168174e950a97ed5fa4b8d9e072670a424a2a01d10a1ebd7dd83f97cbbc8ef8",
+    "assetSha256": "aa943e540b1b5a334e97e52a19dd2fa6e5b8fab22adb44c63b932ec29fd14daf",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005101": "부산 동래구 얼쑤옛길 2코스 동래읍성 장대길"
+    },
+    "place": "동래읍성 장대길 경유지 · 장영실과학동산",
+    "source": "https://commons.wikimedia.org/wiki/File:Jang_Yeong-sil_Science_Garden_13-11832.JPG",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Jang_Yeong-sil_Science_Garden_13-11832.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Jang_Yeong-sil_Science_Garden_13-11832.JPG/1280px-Jang_Yeong-sil_Science_Garden_13-11832.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Steve46814",
+    "date": "2013-11-06 16:31:40",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "coordinates": [
+      {
+        "lat": 35.20915306,
+        "lon": 129.08995,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Jang Yeong-sil Science Garden 13-11832.JPG",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005101.webp",
+    "width": 1200,
+    "height": 639,
+    "sourceSha256": "517c6c6d9d264c18d9af00b4b09a4611c34946d797890312c2441ae0df1a822f",
+    "assetSha256": "8cdb55f9de99761f9c9766d286e0454ae03eb26cb1e30daf2866a67288636e2e",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001198": "전남 장흥군 이청준 한승원 문학길 2코스 이청준 소설문학길"
+    },
+    "place": "이청준 소설문학길 경유지 · 회진면 해안 풍경",
+    "source": "https://commons.wikimedia.org/wiki/File:Hoejin-myeon_February_27_2022.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Hoejin-myeon_February_27_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Hoejin-myeon_February_27_2022.jpg/1280px-Hoejin-myeon_February_27_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Harmy123",
+    "date": "2022-02-27 16:42:43",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "coordinates": [
+      {
+        "lat": 34.46825,
+        "lon": 126.94068889,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Hoejin-myeon February 27 2022.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001198.webp",
+    "width": 1200,
+    "height": 1179,
+    "sourceSha256": "6a2cfa969af5052fa80e5ba0f767e3d2b45a3a8facac57bf48f09f37c464a9ff",
+    "assetSha256": "7a0661797275966486b6b4c947e79c9acc55f743a98907359f8f9011f018502e",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005441": "경기 성남시 성남누비길 6구간 청계산길"
+    },
+    "place": "성남누비길 청계산 구간 · 전망 보행 공간",
+    "source": "https://commons.wikimedia.org/wiki/File:View_from_Cheonggyesan_in_2026.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/f/f0/View_from_Cheonggyesan_in_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/View_from_Cheonggyesan_in_2026.jpg/1280px-View_from_Cheonggyesan_in_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Sadopaul",
+    "date": "2026-09-05 12:10:54",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "coordinates": [
+      {
+        "lat": 37.421236,
+        "lon": 127.044133,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:View from Cheonggyesan in 2026.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005441.webp",
+    "width": 1200,
+    "height": 370,
+    "sourceSha256": "c2f50ac9a6c2891fcb1c2832fd56aabaee2a021b1cf47871ed29432c5a85251b",
+    "assetSha256": "2750173b0b486451886b66d21940e6563478c882285d891c500ff80404cf82b0",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001099": "광주 북구 오월인권길 횃불코스"
+    },
+    "place": "오월인권길 경유지 · 옛 전남도청 외관",
+    "source": "https://commons.wikimedia.org/wiki/File:Former_Provincial_government_main_building_of_Jeollanam-do_20190521_083242.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Former_Provincial_government_main_building_of_Jeollanam-do_20190521_083242.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Former_Provincial_government_main_building_of_Jeollanam-do_20190521_083242.jpg/1280px-Former_Provincial_government_main_building_of_Jeollanam-do_20190521_083242.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "LERK",
+    "date": "Taken on 21 May 2019 08:32:42 KST (UTC+9)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "coordinates": [
+      {
+        "lat": 35.14727778,
+        "lon": 126.91986111,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Former Provincial government main building of Jeollanam-do 20190521 083242.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001099.webp",
+    "width": 1200,
+    "height": 675,
+    "sourceSha256": "f8d7e6bde805965bb6087173a5cef40537b5baa497c88b1a43cbd3c0787bb202",
+    "assetSha256": "7fa59fa07fc0423248440d024d0f47feab947d51a160d96c81cef31ac657d353",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005390": "강원 원주시 원주굽이길 원4코스 명봉산진달래길"
+    },
+    "place": "명봉산진달래길 출발 구간 · 동화마을수목원 방문자센터",
+    "source": "https://commons.wikimedia.org/wiki/File:20250412_%EC%9B%90%EC%A3%BC_%ED%8F%AC%ED%86%A0%EC%9B%8C%ED%81%AC_%EC%9B%A8%EC%A0%9C_11.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/d/dd/20250412_%EC%9B%90%EC%A3%BC_%ED%8F%AC%ED%86%A0%EC%9B%8C%ED%81%AC_%EC%9B%A8%EC%A0%9C_11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/20250412_%EC%9B%90%EC%A3%BC_%ED%8F%AC%ED%86%A0%EC%9B%8C%ED%81%AC_%EC%9B%A8%EC%A0%9C_11.jpg/1280px-20250412_%EC%9B%90%EC%A3%BC_%ED%8F%AC%ED%86%A0%EC%9B%8C%ED%81%AC_%EC%9B%A8%EC%A0%9C_11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "웨제",
+    "date": "2025-04-12 16:22:14",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "coordinates": [
+      {
+        "lat": 37.314342,
+        "lon": 127.855767,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:20250412 원주 포토워크 웨제 11.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005390.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "f8f8cbc7f144bfa9b2d8edd64da3011b686bd82d9c243d7f763320a9710e691a",
+    "assetSha256": "8a3256a445fd4dc01f6381cca27f4f244818056f75debab129ddbec65d354dd9",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005505": "대구 중구 경제신화 도보길"
+    },
+    "place": "경제신화 도보길 경유지 · 대구은행파크 외관",
+    "source": "https://commons.wikimedia.org/wiki/File:Daegu_Bank_Park_with_mascots.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/64/Daegu_Bank_Park_with_mascots.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Daegu_Bank_Park_with_mascots.jpg/1280px-Daegu_Bank_Park_with_mascots.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Haena96",
+    "date": "2024-07-27 17:26:11",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "coordinates": [
+      {
+        "lat": 35.880178,
+        "lon": 128.588836,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Daegu Bank Park with mascots.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005505.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "866d5f9387ef80fbde65c38544c8ff95fc3518712ba308861cb49d062b51849b",
+    "assetSha256": "9912bc17d6af724af4cd301a1c58d4a79c20c49662d8523271e66e04d861015f",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000005547": "경기 가평군 경기 둘레길 가평 23코스"
+    },
+    "place": "경기 둘레길 가평 23코스 · 신청평대교 주변 도로 · 2015년 참고사진",
+    "source": "https://commons.wikimedia.org/wiki/File:ROK_National_Route_37_-_Sincheongpyeong_Bridge_Gyeongchunro_Direction(2015_Summer_Evening).jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/8/80/ROK_National_Route_37_-_Sincheongpyeong_Bridge_Gyeongchunro_Direction%282015_Summer_Evening%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/ROK_National_Route_37_-_Sincheongpyeong_Bridge_Gyeongchunro_Direction%282015_Summer_Evening%29.jpg/1280px-ROK_National_Route_37_-_Sincheongpyeong_Bridge_Gyeongchunro_Direction%282015_Summer_Evening%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Jhcbs1019\n\n This photo was taken with Samsung WB350F",
+    "date": "Taken on 7 July 2015, 19:49:46",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "coordinates": [
+      {
+        "lat": 37.71840552,
+        "lon": 127.41070206,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:ROK National Route 37 - Sincheongpyeong Bridge Gyeongchunro Direction(2015 Summer Evening).jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000005547.webp",
+    "width": 1200,
+    "height": 900,
+    "sourceSha256": "33362842708b6afafc3c1d9c3013cf021953651a7c3654509b80a9e01b29f7b2",
+    "assetSha256": "48263733e4672412cbbacf4ee8e06b33e0125f9fcf281cc7fb7f26cdc7a6ba67",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001076": "전북 순창군 예향천리 마실길 순창 3코스"
+    },
+    "place": "순창 마실길 3코스 경유지 · 장군목 인증센터",
+    "source": "https://commons.wikimedia.org/wiki/File:Janggunmok_Certification_Center.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/4/43/Janggunmok_Certification_Center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Janggunmok_Certification_Center.jpg/1280px-Janggunmok_Certification_Center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Kstevens97",
+    "date": "2026-04-19 16:05:26",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "coordinates": [
+      {
+        "lat": 35.460517,
+        "lon": 127.201398,
+        "primary": "",
+        "globe": "earth"
+      }
+    ],
+    "title": "File:Janggunmok Certification Center.jpg",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001076.webp",
+    "width": 900,
+    "height": 1200,
+    "sourceSha256": "e7d533779f85cf8b7bccfee567cf65842fd16a607435749e0886b8c065dc2c46",
+    "assetSha256": "94b4943c69503534415916df03958ac326fe29bb1f49459bb6b3e4e21d7e1e70",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
