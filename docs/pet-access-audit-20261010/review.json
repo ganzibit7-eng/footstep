@@ -392,13 +392,22 @@
     "id": "c402",
     "name": "만석공원 보행로 산책 코스",
     "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
-    "positive": false,
+    "positive": true,
     "pathSha256": "6d737fa89a2ed83e6eea9c939c2ac45324dbd6ee648a44354ecf4a960fdf4021",
-    "reason": "'NoneType' object is not subscriptable",
-    "conditions": null,
+    "reason": "Suwon municipal park operator explicitly recommends this named park for dog walking; checked 2026-10-10. Outdoor connected OSM walking path retained.",
+    "conditions": {
+      "scope": "공원 야외 산책로",
+      "requirements": [
+        "목줄 착용",
+        "배설물 수거",
+        "맹견 입마개",
+        "실내 시설·현장 통제 구역 제외"
+      ],
+      "operatorPageUpdated": "2026-06-11"
+    },
     "scopeReview": null,
     "hasPhoto": true,
-    "publish": false
+    "publish": true
   },
   {
     "id": "c352",
@@ -1366,13 +1375,22 @@
     "id": "c387",
     "name": "광교호수공원 보행로 산책 코스",
     "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
-    "positive": false,
+    "positive": true,
     "pathSha256": "a110ab1d8cb915ed6dd1646a529fe25e836c7a78baee88ae88ba5d85b1b3682e",
-    "reason": "'NoneType' object is not subscriptable",
-    "conditions": null,
+    "reason": "Suwon municipal park operator explicitly recommends this named park for dog walking; checked 2026-10-10. Outdoor connected OSM walking path retained.",
+    "conditions": {
+      "scope": "공원 야외 산책로",
+      "requirements": [
+        "목줄 착용",
+        "배설물 수거",
+        "맹견 입마개",
+        "실내 시설·현장 통제 구역 제외"
+      ],
+      "operatorPageUpdated": "2026-06-11"
+    },
     "scopeReview": null,
     "hasPhoto": true,
-    "publish": false
+    "publish": true
   },
   {
     "id": "c257",
@@ -2751,13 +2769,22 @@
     "id": "c388",
     "name": "서호공원 보행로 산책 코스",
     "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
-    "positive": false,
+    "positive": true,
     "pathSha256": "f52b89c38b9b2bc4f85d778b3a59de0a191a9af4a16254b577145294b751d4b1",
-    "reason": "'NoneType' object is not subscriptable",
-    "conditions": null,
+    "reason": "Suwon municipal park operator explicitly recommends this named park for dog walking; checked 2026-10-10. Outdoor connected OSM walking path retained.",
+    "conditions": {
+      "scope": "공원 야외 산책로",
+      "requirements": [
+        "목줄 착용",
+        "배설물 수거",
+        "맹견 입마개",
+        "실내 시설·현장 통제 구역 제외"
+      ],
+      "operatorPageUpdated": "2026-06-11"
+    },
     "scopeReview": null,
     "hasPhoto": true,
-    "publish": false
+    "publish": true
   },
   {
     "id": "c401",

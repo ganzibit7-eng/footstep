@@ -4,7 +4,7 @@ const courses=JSON.parse(zlib.gunzipSync(fs.readFileSync('docs/pet-access-audit-
 const review=JSON.parse(fs.readFileSync('docs/pet-access-audit-20261010/review.json'));
 const context=vm.createContext({CourseInfo:require('../course-info.js')});
 for(const name of ['course-routes.js','course-expansion-300.js','course-expansion-20261009.js','course-expansion-20261009-night.js'])vm.runInContext(fs.readFileSync(name,'utf8'),context);
-assert.equal(courses.length,200);
+assert.equal(courses.length,JSON.parse(fs.readFileSync('docs/pet-access-audit-20261010/summary.json')).publicCourses);
 for(const c of courses){
  const r=review.find(r=>r.id===c.id);assert(r.publish && r.hasPhoto);assert(r.positive||r.scopeReview);
  assert.equal(crypto.createHash('sha256').update(JSON.stringify(c.path)).digest('hex'),r.pathSha256);
@@ -22,4 +22,4 @@ for(const c of courses){
 for(const r of review.filter(r=>!r.publish))assert(!fs.existsSync('courses/'+r.id+'/index.html'),'Held route still publicly emitted: '+r.id);
 assert(!fs.existsSync('courses/duru_T_CRS_MNG0000000243/index.html'));
 const html=fs.readFileSync('index.html','utf8');assert(html.includes('!CoursePetAccess.get(item) || !CoursePhotos.get(item)'));assert(!html.includes('총 691개'));
-console.log('PASS: 200 public courses have bound original geometry, operator permission and licensed matching photos; edited and held routes excluded.');
+console.log('PASS: public courses have bound original geometry, operator permission and licensed matching photos; edited and held routes excluded.');

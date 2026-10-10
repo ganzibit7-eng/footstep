@@ -1,0 +1,19 @@
+{
+  "checkedDate": "2026-10-10",
+  "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+  "operator": "수원시 공원관리과",
+  "operatorUpdated": "2026-06-11",
+  "ids": [
+    "c387",
+    "c388",
+    "c402"
+  ],
+  "verification": "Operator explicitly recommends named parks for walking with dogs. Existing connected outdoor OSM geometry and individually licensed place photographs retained. This is a proposed walking route, not an official designated course or field survey.",
+  "photoAssets": [
+    "/assets/course-photos/c387.webp",
+    "/assets/course-photos/c388.webp",
+    "/assets/course-photos/c402.webp"
+  ],
+  "permissionScope": "Outdoor walking paths; keep leash, clean waste and follow on-site closures. Indoor facilities excluded.",
+  "auditCorrection": "Previous KTO-only parser failed on this non-KTO municipal source; permission is now checked directly against the operator page."
+}
