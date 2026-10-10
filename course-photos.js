@@ -5798,6 +5798,158 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000828": "경북 의성군 산수유마을 생태탐방로"
+    },
+    "place": "산수유마을 생태탐방로 주변 · 화전리 산수유꽃길 봄 풍경 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=968157&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/60/3482060_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000828.webp",
+    "width": 940,
+    "height": 631,
+    "sourceSha256": "d5c94653f3b6322c7a0de3660270dbb0ce7b4c8207d1cd01edff6bef98b40852",
+    "assetSha256": "1d143d9a6e70de7286365c61b7325e7b4b13a18f4024f30c156adb4b8de0829d",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000004389": "경기 양평군 물소리길 4코스 버드나무나루께길"
+    },
+    "place": "버드나무나루께길 경유지 · 갈산공원 남한강변 보행로",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2755829&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/69/3445169_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004389.webp",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "c93a7fe35efa1977a313533c1b34dfe43f455aa13a526180163460f482db3b87",
+    "assetSha256": "8525bfad51e94ac3d9b8c9710da13902ec13d3c31e34de656465d29350fad716",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001659": "강원 평창군 효석문학100리길 5-2코스 평창강따라 걷는 길"
+    },
+    "place": "평창강따라 걷는 길 출발지 · 평창 바위공원 산책로",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2707151&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/27/3501927_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001659.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "20e3ce58f61574fc1c531862f47c7db64533e01092437d1b8b7763aa642aec72",
+    "assetSha256": "2c284b5090a9605a7411d1157f37ebf00eeae57255d0b2304fabec1d8b805d50",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000000683": "전남 장흥군 문학 탐방길 2코스 문학길"
+    },
+    "place": "문학길 종점 주변 · 선학동마을 봄 유채꽃 풍경 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=786376&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/18/3303318_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000000683.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "5f7686d6b9409255ddcae23df98e8750fe0a753a9aab9709e3151d7562d659d2",
+    "assetSha256": "f6023fe8e641226091cb913f07bc7f155156b4b7abd8d67d30130dd7afb3e502",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003769": "전북 완주군 모악산 마실길 완주구간 1코스"
+    },
+    "place": "모악산 마실길 출발 구간 주변 · 전북도립미술관과 산자락 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2037231&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/89/3560989_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003769.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "d261f1559fbc210e7217796888f32fbeb77d8521cbb072f31e824cedc36782c9",
+    "assetSha256": "3fd152f30559f4ca4d40bd92e87384df8ad1f3636e9a5ba68c6d6606bf31d84c",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c273": "서울 수명산 숲속 탐방로"
+    },
+    "place": "수명산 숲속 탐방로 주변 · 수명산 전경 참고사진",
+    "source": "https://data.si.re.kr/photo/06D03603Ab72000",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06D03603Ab72000.jpg",
+    "author": "서울 2019 도시형태와 경관, 서울특별시 · 서울연구데이터서비스, 서울연구원",
+    "date": "2020-02",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c273.webp",
+    "width": 900,
+    "height": 607,
+    "sourceSha256": "6b630004e44c2f79a4f5f23b59bda2b179f1b13bda9d676e96bd0ed1e2528f92",
+    "assetSha256": "39de177ddcf803cb3a7a494bd1b5a34c817824edaab5b24078fce826e99f35a0",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c233": "청룡산 생태숲길"
+    },
+    "place": "청룡산 생태숲길 주변 · 청룡산 산림 전경 참고사진",
+    "source": "https://data.si.re.kr/node/57394",
+    "original": "https://data.si.re.kr/sites/default/files/photos6/06E03604Ab72000.jpg",
+    "author": "서울 2019 도시형태와 경관, 서울특별시 · 서울연구데이터서비스, 서울연구원",
+    "date": "2020-01",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c233.webp",
+    "width": 900,
+    "height": 586,
+    "sourceSha256": "0b015503cfc21e8794b855df8e3c650a95dac8e2360fa55c683b609c99a1d83f",
+    "assetSha256": "4cabaaa7c53d5e768cafd19f4c73def50e1cad519b7aeaf61d8f3d723dab0d35",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c232": "인재개발원 잣나무숲길"
+    },
+    "place": "잣나무숲길 주변 · 우면산 북쪽 산자락 경관 참고사진",
+    "source": "https://data.si.re.kr/node/47386",
+    "original": "https://data.si.re.kr/sites/default/files/photos/05O06801Aa4000.jpg",
+    "author": "서울 2014 도시형태와 경관, 서울특별시 · 서울연구데이터서비스, 서울연구원",
+    "date": "2015-02",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c232.webp",
+    "width": 600,
+    "height": 450,
+    "sourceSha256": "681b67b6c08e66643d3e77b21d27b9f4b6d5229c92d4a3955aa7d20a8ee13978",
+    "assetSha256": "2efbc1b4ae18dfe9d02ab43605d46e3d6642e6fd47b3b320bd149a25692adbfc",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
