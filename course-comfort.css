@@ -12,3 +12,5 @@
 .comfort-detail a{color:var(--pine-deep,#294b38)}
 .comfort-filter button:focus-visible,.comfort-filter summary:focus-visible,.comfort-options input:focus-visible{outline:3px solid var(--clay,#b86b40);outline-offset:3px}
 @media(max-width:380px){.comfort-options{grid-template-columns:1fr}.comfort-filter,.comfort-detail{padding:14px}}
+
+fieldset.comfort-filter{min-width:0;margin:12px 0}fieldset.comfort-filter legend{font-weight:700;padding:0 6px}
