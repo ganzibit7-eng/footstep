@@ -8,6 +8,8 @@ on:
       - 'scripts/generate-seo.mjs'
       - 'course-info.js'
       - 'course-pet-access.js'
+      - 'course-comfort.js'
+      - 'course-comfort.css'
       - 'course-addresses.js'
       - 'facility-info.js'
       - 'bin-info.js'

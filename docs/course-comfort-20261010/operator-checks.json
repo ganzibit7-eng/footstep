@@ -1,0 +1,90 @@
+[
+  {
+    "id": "c402",
+    "name": "만석공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "checked": "2026-10-10",
+    "sourceSha256": "2b2664a4b99a03728448d846d38d36e2b55fc0d90d761bb9cf41f8f1094e9891",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c387",
+    "name": "광교호수공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "checked": "2026-10-10",
+    "sourceSha256": "2b2664a4b99a03728448d846d38d36e2b55fc0d90d761bb9cf41f8f1094e9891",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c257",
+    "name": "서울 오패산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=154&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "d0bb3c96a7f0e37db37cff70b6a800a85f0e594c182bcc831ddf518fd8b9f58d",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c258",
+    "name": "서울 성동구 매봉산 치유숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=153&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "22219089bf02994aab53cb977984322407161c96b7684f9079f8990fcdd76495",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c262",
+    "name": "서울 매봉산 전망대 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=147&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "5b64aaf960f94e6d3b563dedb03582688421b2b24d5c1602eba4bcbfcd20b01a",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c325",
+    "name": "서울 천장산 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=68&sc_trailSeCd=SE003",
+    "checked": "2026-10-10",
+    "sourceSha256": "42e6e5bea78d4226cd4f96c86b98bc8a055289b4c509cb67081589d49504aaf5",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c232",
+    "name": "인재개발원 잣나무숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=155&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "5e2476174df5b2dd30b528ba05c80eb997630646f6ca57f8968b8e6c019cf629",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c133",
+    "name": "서울 안산자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=132&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "7c7b6cbb09024afea177dc149fe82b1933c64d3e45018512dbedcabd3ef10585",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c227",
+    "name": "청계산 원터골 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=44&sc_trailSeCd=SE005",
+    "checked": "2026-10-10",
+    "sourceSha256": "18456fcee876a8640dc1b782f53b55743109e37dd910cb82c69b292b69c48103",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c256",
+    "name": "서울 일자산 치유의 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=156&sc_trailSeCd=SE001",
+    "checked": "2026-10-10",
+    "sourceSha256": "3e1646578afe2c4a560236ac144edb1f6bd78a0f89072504e4235c89456cf507",
+    "restMentionVerified": true
+  },
+  {
+    "id": "c388",
+    "name": "서호공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "checked": "2026-10-10",
+    "sourceSha256": "2b2664a4b99a03728448d846d38d36e2b55fc0d90d761bb9cf41f8f1094e9891",
+    "restMentionVerified": true
+  }
+]

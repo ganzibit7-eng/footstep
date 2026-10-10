@@ -1,0 +1,171 @@
+{
+  "c402": {
+    "name": "만석공원 보행로 산책 코스",
+    "descriptionSignature": "3416121251",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "공원 안내에 벤치·휴식 공간이 소개돼요. 경사 안내는 공원 자료의 설명 기준이며 이 경로 전 구간의 측정값은 없어요. 개별 벤치 위치와 경로에서의 접근 거리는 미확인입니다.",
+    "sources": [
+      {
+        "label": "수원시 공원 안내",
+        "url": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp"
+      }
+    ]
+  },
+  "c387": {
+    "name": "광교호수공원 보행로 산책 코스",
+    "descriptionSignature": "3105580783",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": true,
+    "rest": true,
+    "note": "공원 안내에 벤치·휴식 공간이 소개돼요. 경사 안내는 공원 자료의 설명 기준이며 이 경로 전 구간의 측정값은 없어요. 개별 벤치 위치와 경로에서의 접근 거리는 미확인입니다.",
+    "sources": [
+      {
+        "label": "수원시 공원 안내",
+        "url": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp"
+      }
+    ]
+  },
+  "c257": {
+    "name": "서울 오패산 자락길",
+    "descriptionSignature": "2044731084",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=154&sc_trailSeCd=SE001"
+      }
+    ]
+  },
+  "c258": {
+    "name": "서울 성동구 매봉산 치유숲길",
+    "descriptionSignature": "2609090591",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=153&sc_trailSeCd=SE001"
+      }
+    ]
+  },
+  "c262": {
+    "name": "서울 매봉산 전망대 산책길",
+    "descriptionSignature": "2064437957",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=147&sc_trailSeCd=SE001"
+      }
+    ]
+  },
+  "c325": {
+    "name": "서울 천장산 산책로",
+    "descriptionSignature": "3393114486",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=68&sc_trailSeCd=SE003"
+      }
+    ]
+  },
+  "c232": {
+    "name": "인재개발원 잣나무숲길",
+    "descriptionSignature": "2707848644",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=155&sc_trailSeCd=SE001"
+      }
+    ]
+  },
+  "c133": {
+    "name": "서울 안산자락길",
+    "descriptionSignature": "1608081322",
+    "checked": "2026-10-10",
+    "stairs": "none",
+    "gentle": true,
+    "rest": true,
+    "note": "7km 자락길에 계단이 없고 경사가 완만한 것으로 안내돼요. 북카페·너와집·이끼숲 주변 쉼터가 소개돼요. 진입로와 별도 등산로는 이 안내에 포함되지 않아요.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=132&sc_trailSeCd=SE001"
+      },
+      {
+        "label": "서울시 안산자락길 기사 · 2026.05.14",
+        "url": "https://mediahub.seoul.go.kr/archives/2018076"
+      }
+    ]
+  },
+  "c227": {
+    "name": "청계산 원터골 산책길",
+    "descriptionSignature": "320461584",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=44&sc_trailSeCd=SE005"
+      }
+    ]
+  },
+  "c256": {
+    "name": "서울 일자산 치유의 숲길",
+    "descriptionSignature": "741571206",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": false,
+    "rest": true,
+    "note": "코스 자료에 쉼터 경유지가 소개돼요. 개별 시설의 위치·운영 상태와 휴식 간격은 미확인입니다.",
+    "sources": [
+      {
+        "label": "서울시 코스 안내",
+        "url": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=156&sc_trailSeCd=SE001"
+      }
+    ]
+  },
+  "c388": {
+    "name": "서호공원 보행로 산책 코스",
+    "descriptionSignature": "1908238082",
+    "checked": "2026-10-10",
+    "stairs": null,
+    "gentle": true,
+    "rest": true,
+    "note": "공원 안내에 벤치·휴식 공간이 소개돼요. 경사 안내는 공원 자료의 설명 기준이며 이 경로 전 구간의 측정값은 없어요. 개별 벤치 위치와 경로에서의 접근 거리는 미확인입니다.",
+    "sources": [
+      {
+        "label": "수원시 공원 안내",
+        "url": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp"
+      }
+    ]
+  }
+}
