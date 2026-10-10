@@ -1,0 +1,3392 @@
+[
+  {
+    "id": "c334",
+    "name": "서울숲 남산길 응봉근린공원 구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=98&sc_trailSeCd=SE004",
+    "positive": false,
+    "pathSha256": "83668490ba1679e3d54308c50e544b8eed4eded6e59b19dcd096858a344f8803",
+    "reason": "Full-route permission requires scope review",
+    "conditions": [],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c335",
+    "name": "서울 진경산수화길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=173&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "6edd8749c6a599065a903813d1ed7c5fbdb558059b9aeb01f29f674fb38b452b",
+    "reason": "",
+    "conditions": [
+      "음 -윤동주문학관에 화장실 있음 -유모차와 휠체어 이용 불가능(일부구간 가능) -반려견 출입가능(목줄사용) 테마산책길 풍경 ‘진경산수화길’을 걸으면서 ‘인왕제색’, ‘청풍계’, ‘수성구지’, ‘인곡유거’, ‘창의문’, ‘백운동’, ‘한양전경’, ‘장안연우’, ‘세검정’ 등 장동팔경첩의 그림 속 장소를 직접 찾아가 당시의 풍경을 상상해보고 지금의 풍경과 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c336",
+    "name": "서울 지양산 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=116&sc_trailSeCd=SE004",
+    "positive": false,
+    "pathSha256": "c53306653b2bf6c66e338098ffc2ab8f0faac0ab9b83f97217e8fcf724c82656",
+    "reason": "Full-route permission requires scope review",
+    "conditions": [],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c337",
+    "name": "양양 낙산해변 해안 산책길",
+    "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004213",
+    "positive": false,
+    "pathSha256": "e45741f7e95a32c78ce284701549fd7546c624c3fd383a89c57929aadfb1e743",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c338",
+    "name": "속초 대포항 산책길",
+    "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004221",
+    "positive": false,
+    "pathSha256": "8f39b55bad66c23ae23f2a1db4c8eebe7f61c0e54c114b5b25d959616a2d9331",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c339",
+    "name": "속초해변 해안 산책길",
+    "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004221",
+    "positive": false,
+    "pathSha256": "b0d1087708b21b2d7e218852b8c2d9963dbfa9fb4f31a8ee4eceb13b1493f1de",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c340",
+    "name": "속초 아바이마을 산책길",
+    "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004221",
+    "positive": false,
+    "pathSha256": "6293279bf154bc5642889cfeb4fe0dbcf377d30ef0be101a105c149d2a46ce53",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c341",
+    "name": "속초 영랑호 호반 산책길",
+    "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004221",
+    "positive": false,
+    "pathSha256": "4d913e5fd12638c66b3d9801a9e925b0d83e36629427a88927ed8717a144c918",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c389",
+    "name": "거창 감악산 물맞이길 1코스 물 맞으러 가는 길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2eae5873-c9cb-4a3d-8969-821ffd20d08f",
+    "positive": true,
+    "pathSha256": "07a0fdc9c3c7b5ceecbc7ba2692a8df682a7c9791a2c69ead874aecf53f2d3e6",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c390",
+    "name": "거창 감악산 물맞이길 2코스 고행의 둘레길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2eae5873-c9cb-4a3d-8969-821ffd20d08f",
+    "positive": true,
+    "pathSha256": "d533250dfccf91c0e3c5d458c74b36123ec0f478dcefe7c9a1d5287156aae165",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c391",
+    "name": "거창 감악산 물맞이길 3코스 전망대 가는길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2eae5873-c9cb-4a3d-8969-821ffd20d08f",
+    "positive": true,
+    "pathSha256": "681f86e96d9ff92a2c8247da46c9c4fbb05701de900446449c8e88a405468db0",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c410",
+    "name": "동락공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=71749b63-f69e-4b28-8096-0583d4ee7afa",
+    "positive": false,
+    "pathSha256": "3bb0bd15ac1c5f34fd6fa8d95d861841862abdf6101e6ec0a95ba0f89e8a3df4",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "입마개 착용,목줄 착용",
+      "동반 관련 상세정보": "반려동물 놀이터엔 동물등록이 완료된 반려견만 입장 가능",
+      "구비시설": "펜스,산책로,놀이기구",
+      "사고 대비사항": "이용방법 및 규칙 비치"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c342",
+    "name": "여주 여강길 1코스 옛나루터길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "0095f27494a1005fc95022c3f9da17864ca927e81fd296509b91d510a3c123c9",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c343",
+    "name": "여주 여강길 3코스 바위늪구비길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "3cbef8242edf34f5a094c2f8c25401db51abc2b4b6dbb9f8aa709448ade30449",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c344",
+    "name": "여주 여강길 6코스 왕터쌀길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "9361c66638d67b268c93e4ec65347ba7a6e3d2b1302bb4c9a0b48627d415c351",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c345",
+    "name": "여주 여강길 9코스 너른들길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "ca2769a4ec7bca765030dd56d88b46217f1b634be936d83cff5eed1af7aed08c",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c346",
+    "name": "여주 여강길 10-1코스 싸리산길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "8cbfeb915f6ba5cbf51dadeb0e455c1535caabcc7f4c939e752aa1809e60e3dd",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c392",
+    "name": "거창 감악산 물맞이길 4코스 심신도량 하는 길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2eae5873-c9cb-4a3d-8969-821ffd20d08f",
+    "positive": true,
+    "pathSha256": "16cd6966c36123a454f83d21c31f86d615384791e1c0e6c9ef5343d2b8f9e755",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c393",
+    "name": "아산 곡교천 은행나무길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=39e1198c-0c52-46ae-8786-c7b2889c481f",
+    "positive": true,
+    "pathSha256": "1d5de940b9a72ee5ff6c50fff0a3398a51999558e43a59a8a013ecf58282446f",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c347",
+    "name": "여주 여강길 3-1코스 (강천섬길)",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "ccd6cd1d17efe57c3a24eddaac27599b7ccb42556c584a04f50c5347276b1380",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c348",
+    "name": "여주 여강길 9-1코스 (양촌달빛길)",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "1f39c8372d0cabf1f5cca40415d15e7928063f094138a232a6ee6159c670fbd4",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c349",
+    "name": "여주 여강길 11코스 (동학의길)",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "7ee902bf8e0d0f9bf50e06af8794e18782ae89c8e2708b911c45f5811665e8c4",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c350",
+    "name": "포항 호미반도 해안둘레길 4코스 호미길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=abbe0a2e-9e07-498a-bf59-25d71b9c121a",
+    "positive": true,
+    "pathSha256": "8fe36b543582e7f7839500a58e5b530b1bcbc343b94505d22c5ac5893c217af2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c351",
+    "name": "포항 호미반도 해안둘레길 3코스 구룡소길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=abbe0a2e-9e07-498a-bf59-25d71b9c121a",
+    "positive": true,
+    "pathSha256": "cb77e50dfaaf709d9d2baa1bdf680c815403e750d29ab8a13360913655c13a40",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c394",
+    "name": "부산 절영해안산책로 GPX 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ae491430-3bfe-4156-88ba-88bb17477423",
+    "positive": true,
+    "pathSha256": "e1a9045cd2176e2304afc1fab0bdc2ed3824c860a41c89fb88182cfddcbe07a2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c402",
+    "name": "만석공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "positive": false,
+    "pathSha256": "6d737fa89a2ed83e6eea9c939c2ac45324dbd6ee648a44354ecf4a960fdf4021",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c352",
+    "name": "포항 호미반도 해안둘레길 2코스 선바우길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=abbe0a2e-9e07-498a-bf59-25d71b9c121a",
+    "positive": true,
+    "pathSha256": "b83629cc27404f71f2f8198e5d2f417e517de024039b8d84c599e9e430d6ba50",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c353",
+    "name": "포항 호미반도 해안둘레길 1코스 연오랑세오녀길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=abbe0a2e-9e07-498a-bf59-25d71b9c121a",
+    "positive": true,
+    "pathSha256": "42dc69912e7932daef9cbc43c706db1ab84e3e2b5045e72509c5f29d8b3a7225",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c354",
+    "name": "울산 간절곶소망길 5코스 행복의길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b6d692ee-6e2b-4860-baf3-54f64afb0aad",
+    "positive": true,
+    "pathSha256": "321b6837ce320b73d614a81f36a351d691ead1a0a25adc0d78320cdac0d9a260",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c355",
+    "name": "울산 간절곶소망길 1코스 연인의길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b6d692ee-6e2b-4860-baf3-54f64afb0aad",
+    "positive": true,
+    "pathSha256": "8049bb27299b5c8008acfaf42afe527460d167304429778082a23c66458c94e3",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c356",
+    "name": "울산 간절곶소망길 2코스 낭만의길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b6d692ee-6e2b-4860-baf3-54f64afb0aad",
+    "positive": true,
+    "pathSha256": "d1e2d4e54eabb2b82c077ea48837ca7b2df98ba0fdcc2dbe8399b98e8d479a6e",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c395",
+    "name": "제주 송악산 해안 둘레길 GPX 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=7015e538-5097-4783-9dd9-4ae0d1828f20",
+    "positive": true,
+    "pathSha256": "45f1759e9d9a15fd42e561e72728c71525eaee841ef1e7c15f5221e2553d8402",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c357",
+    "name": "울산 간절곶소망길 3코스 소망의길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b6d692ee-6e2b-4860-baf3-54f64afb0aad",
+    "positive": true,
+    "pathSha256": "0a0af8b4beef40dc509a5ffd2f5c1cfc29e693c4e8b7de839cd987d57743f103",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c358",
+    "name": "울산 간절곶소망길 4코스 사랑의길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b6d692ee-6e2b-4860-baf3-54f64afb0aad",
+    "positive": true,
+    "pathSha256": "687ccdac77b5b06d7fc91b4457a0f4d8e5da2df88f89d313a0a7b78dcd9968ed",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c359",
+    "name": "목포 유달산둘레길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=22bce50c-489d-4216-ba08-2d2ef5b730f3",
+    "positive": true,
+    "pathSha256": "f7d105ae3ed1ee7c5f210f63e1aff4f93b12b68891a39ed5c5a8d58739b46265",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c360",
+    "name": "익산 미륵산 둘레길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=40f89bdf-6448-4fea-a665-ec5e65242487",
+    "positive": true,
+    "pathSha256": "42d07d79b4756fa1d9dcea335eb651257b75e6e3af2c5620e820ee2ff86c9f37",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c361",
+    "name": "인천둘레길 1코스 계양산",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=cbc679cc-4dae-4f9a-887c-b650912a100e",
+    "positive": true,
+    "pathSha256": "938a35622626548c8f6f01028792d4e91d2c57c3281e3c3e7f8eb3c02970ea60",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c396",
+    "name": "여주 여강길 2코스 세물머리길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "9b4311d4a4ed30c2790a8484b388681712edc1a4d8f3e3adb194c25122fc2443",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c403",
+    "name": "덕봉산 해안생태탐방로 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=a2a967de-8178-4be9-8cf2-eafb61f94797",
+    "positive": true,
+    "pathSha256": "65cafb4962b9e24b6f44311bfcd25e72415dc4d00ef1585d58a47478cfc0b2c1",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c362",
+    "name": "포천 산정호수 둘레길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=fed74f79-c3f1-4e3b-86f3-244c82c25306",
+    "positive": true,
+    "pathSha256": "294ce6bc4a767aa6b39a22e9efd24ddae680c277d5198072b451f596fffe13bd",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c363",
+    "name": "포천 청계호수 산책로",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2d613c5e-598b-4567-879a-e673e53f78fe",
+    "positive": true,
+    "pathSha256": "ac7ebd1c19e4cfac8cabb178b7f2404ec19223e7003f2d53da6e464496495496",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c364",
+    "name": "완주 경천애인징검다리길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=af9347f9-c5f1-4f9b-883a-c4e02929f046",
+    "positive": true,
+    "pathSha256": "7335b6cee0d45c33e90a77dc9b0e87aa09e522f6bc107b3f30dac07e066e7a6f",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c365",
+    "name": "세종호수공원 C코스",
+    "source": "https://sjfmc.or.kr/sjpark/sub01_03_02.do",
+    "positive": false,
+    "pathSha256": "30e4b124063cfbf36381a9c74ca781a5917b220361129ab4a5f1b562ce0506b2",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c366",
+    "name": "대구 앞산자락길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=f415a11f-41fd-4b08-9b4f-0685745536c4",
+    "positive": true,
+    "pathSha256": "bffe050e9d41307ee7d59d91f31e637c6de79a5922e1c420a954bdfec3293458",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c397",
+    "name": "가평 호명호수 호반 GPX 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=a209ece5-af74-47bc-8430-4138adbab6cc",
+    "positive": true,
+    "pathSha256": "e0e56727799a5bdef5578636706f9dad352412b8221718612716af7a09ebc000",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c367",
+    "name": "부산 낙동강 하구 생태길 2코스 삼락 물억새길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=dccb86d3-df25-4dea-a0e5-56fd5987751e",
+    "positive": true,
+    "pathSha256": "b8c9f452a0e0900869cfe1e320d454490b42829a24e904c879ddf630f05a6844",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c368",
+    "name": "부산 낙동강 하구 생태길 1코스 삼락 맹꽁이길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=dccb86d3-df25-4dea-a0e5-56fd5987751e",
+    "positive": true,
+    "pathSha256": "a421caf78c273ac24349eaf152828afea13445497a166b30682db1e254377ec0",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c369",
+    "name": "일산호수공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=02e24733-9e25-4f84-9d19-09c68a7a75f5",
+    "positive": true,
+    "pathSha256": "26cf7842fdc6d0b2019a442512867df5892c260bc53d1b5c4efbb1e6c803457a",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c370",
+    "name": "석촌호수 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d824e33b-bb7c-4b85-be9e-d59b15ec31c6",
+    "positive": true,
+    "pathSha256": "200ca6f6f1435566c4e76c14894313c3000a253023b45c89991a893b63be8436",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용,반려동물 유모차 탑승,이동장(켄넬)사용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c371",
+    "name": "동백호수공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0b416eb7-ad41-4f60-abfc-f59f0c0f1488",
+    "positive": true,
+    "pathSha256": "4345987195321597e8e1694e224e8b889e7a0b25b1f1c553acaa8870952701a6",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c398",
+    "name": "제천 의림지 호반 GPX 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=1cce14df-2858-4561-b045-e8020e5f83da",
+    "positive": true,
+    "pathSha256": "d8fc24d1ea97c981d1fed2c58af86241621890034cb2c04d6dc911288fb0eab7",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c372",
+    "name": "물의 정원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9709dda6-1ce0-4548-88c9-810fe37a229d",
+    "positive": true,
+    "pathSha256": "08ed426fd8c589a3959ea576770ba61ae1b801fcfdd90993f4977d9e5ca5488a",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c373",
+    "name": "등나무근린공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9c54325c-d018-4f00-9fc1-394df541c3c6",
+    "positive": true,
+    "pathSha256": "0c7ab741ac615246a9f0245a3c06244eca4d7e3228ec69024eb095a373b68e92",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c374",
+    "name": "월미산 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d1a77b06-3849-416b-bb5d-864f3d064717",
+    "positive": true,
+    "pathSha256": "1b51ff2a3d482fd5a1fd2459f5911c8bf60a4102f4f5abb4297f73b4b5f52e4c",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c375",
+    "name": "정안천생태공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=025643cc-15f1-4d11-9fdc-f80a8f19be1d",
+    "positive": true,
+    "pathSha256": "86a80b522f4c7ad4d9076de6032d8a241e080fa66b7fcabd2cc0dce90aaeb6cd",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 생태공원 내부에 독사 및 독충이 있어 보호자 주의 필요 - 생태공원 내 황톳길도 반려동물과 함께 맨발 체험 가능 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수",
+      "사고 대비사항": "부주의로 인한 사고는 보호자에 책임이 있음"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c376",
+    "name": "대왕암공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9e0f6d0d-ae33-4032-ac05-620137804c00",
+    "positive": true,
+    "pathSha256": "600238be12d992b6ec7e6476806c96da351ce2551bdd6dc0adf9f4ec1202e10a",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c377",
+    "name": "성남 중앙공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=713d7e8f-a9fc-4db3-8489-a584096565d5",
+    "positive": true,
+    "pathSha256": "0f4e50f021133ef47bdda43177cac21f95323f7d2b96853bbc3db17a26a447eb",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수",
+      "구비시설": "어질리티, 배변공간, 음수대"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c378",
+    "name": "삼사해상공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0212ad30-3705-4e8e-b2c8-5bc7f2f740cc",
+    "positive": true,
+    "pathSha256": "18f99b2268bc47c8d038efa5d595b9ba017d2c235a13756d14cdd64ca4f2d01b",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c379",
+    "name": "돌산공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=67c8cefb-2648-494d-a1cd-490e7d845bee",
+    "positive": true,
+    "pathSha256": "a028593af0d2da9692a64e4be3bf91e95e892d5fba786a5a1734dd8df53196a6",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c380",
+    "name": "다산생태공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b529819a-258a-4b23-bd17-d51b351537ce",
+    "positive": true,
+    "pathSha256": "215e9852d8801117a1044f9e98e5d6870161f2de35ccd82ae34dac9622de2160",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c381",
+    "name": "국채보상운동기념공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=edea978b-1d79-41b8-b403-49158cf196eb",
+    "positive": true,
+    "pathSha256": "057b433270a9618bbd8f1d6f90f51c5eccf651910e39d70ff5334ea0ca7de8e0",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수",
+      "비치 품목": "배변봉투"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c382",
+    "name": "우암사적공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=5c71f94b-ea6f-4b04-92f1-d5c93b185764",
+    "positive": true,
+    "pathSha256": "3bea799c93fc9af8b3a07b10ac676f06bc219d6f183db3d720ff00e006117852",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c383",
+    "name": "설봉공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=6ac1281a-cce8-4ae1-b1ee-ff27482a3466",
+    "positive": true,
+    "pathSha256": "a3272510fb6b5d7b768ef413e5bf50a7d5fede80156e6ea69e6dfc06a98df223",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c384",
+    "name": "뿌리공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=3732f9d0-1c50-45ef-81d6-0b25a83e86da",
+    "positive": true,
+    "pathSha256": "cc6e30dbec69553cd1a1c34afffb9b2e2b60f5cb228c8c650fbabf81227ae708",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c385",
+    "name": "자유공원(인천) 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=5916e4d0-5fdf-4e21-9ee4-909457a204e9",
+    "positive": true,
+    "pathSha256": "2c7f441f401b68c6d01e6324ba67335eaefc5dcdcdd965c270f8f71b4e07cff4",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c386",
+    "name": "영덕해맞이공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=839eeaf7-3f42-483b-934e-dfcef83849f3",
+    "positive": true,
+    "pathSha256": "b835102d5af555846a3d4a30bdbb7113b08b6a44d3cc340a40a797e3a65f46b2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c399",
+    "name": "제천 비룡담 저수지 GPX 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=897c9635-d479-4ef9-91c0-626683319c0d",
+    "positive": true,
+    "pathSha256": "7ed5e4cb124119ca9a254d78f1006764d00adee051c1f426375323720d7550ad",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c400",
+    "name": "고모호수공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=17a5d4fd-2f87-4b3c-ac29-88c47e27beda",
+    "positive": true,
+    "pathSha256": "55130d407db2f80e490d7276f35c7714aa7a0247eaec4bab96dc9246a539d0fc",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c238",
+    "name": "서울 홍릉 두물길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=184&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "d62d50e04cd5615283edef14d65733c7827ce4375c1ca7d9fa39bd06ff7af1de",
+    "reason": "",
+    "conditions": [
+      "장 별도로 없음 - 화장실 산림과학원에 있음 - 유모차와 휠체어 이용 불가능 - 반려견 출입 가능(목줄 사용) 테마산책길 풍경 1922년 우리나라 최초로 조성된 수목원인 홍릉숲은 도심 속 ‘시크릿가든’이라고 불릴 만큼 우뚝 솟은 나무와 울창한 숲으로 폭 파묻혀 있다. 국내외 다양한 식물들을 연구하고 보존하는 곳이기에 사계절 내내 형형색색의 아름다움을 느"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c239",
+    "name": "서울 서초구 양재천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=183&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "2b3c4b3446a3663786a5315e61dfb02091c73dbeda513c4387b61b06dac240c3",
+    "reason": "",
+    "conditions": [
+      " 별도로 없음 / 화장실과 휴게시설 별도로 있음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 양재천의 작은 섬에 조성된 ‘칸트의 산책로’는 칸트가 매일 산책을 통해 몸과 마음을 치유했다는 데 착안해서 만들었다고 한다. 가장 눈길을 끄는 것은 야간에 산책하면서 책을 읽을 수 있도록 설치되어 있는 ‘독서 조명등’이다. 칸트"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c245",
+    "name": "서울 호암산 능선길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=175&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "26434a5b79eb7edda90f0ee88d7a008482ab12ce52a87c9bb63557484e181ba9",
+    "reason": "",
+    "conditions": [
+      " 호압사에 있음 / 매점과 식수대 별도로 없음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 깔딱고개를 지나 시야가 트이는 곳으로 시선을 돌리면 푸른 숲 너머로 금천구 일대가 한눈에 들어온다. 특히 능선을 따라 시시각각 변하는 금천구 시가지의 풍경이 산 아래로 통쾌하게 펼쳐져 있어 걷는 재미와 보는 즐거움이 있다. 호압"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c240",
+    "name": "서울 반포 수변길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=182&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "679e8ca564ecc5eb10a5648e37747dab3146b70b0ec045ba503039783c1ce03d",
+    "reason": "",
+    "conditions": [
+      " 주차장 이용 -화장실 반포한강공원 안에 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 가장 고즈넉한 산책길과 아름다운 야경을 동시에 즐길 수 있는 곳은 어디일까? 묻지도 따지지도 말고 반포한강공원으로 가면 된다. 그곳에 버드나무, 갈대 등의 길동무들과 함께 강을 따라 걷는 ‘반포수변길’이 있다.해질 녘에 오면 반"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c241",
+    "name": "서울 뚝섬 숲속길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=181&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "93e4ddc7f5a817f94a6620396ae130f013a88277a3f4d8ec4e34044c5bbf0631",
+    "reason": "",
+    "conditions": [
+      "이용 - 화장실과 휴게시설 뚝섬한강공원에 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 뚝섬한강공원 안에 시원한 강바람을 맞으며 폐부 깊숙이 피톤치드까지 흡입할 수 있는 ‘일거양득’의 보석 같은 숲길이 숨어있다니 놀라울 따름이다. 또한 야경이 아름답기로도 유명하니 저녁 시간대에 슬슬 나와서 피톤치드의 혜택과 더불어"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c242",
+    "name": "서울 당현천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=180&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "bf9439bf3e036f82616fc59c21f05d898a08599a5d523d4d44c4e373475e4e34",
+    "reason": "",
+    "conditions": [
+      "원, 달맞이근린공원, 들국화어린이공원)에 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 당현천에 물이 흐르자 많은 변화가 생겼다. 우선 버들치나 피라미 등 물고기들이 살아나고, 오리나 백로 등 조류들이 하나둘 찾아오기 시작했다. 그리고 하천을 따라 심어놓은 각종 수생식물들과 나무들이 풍성해지면서 아름다운 풍경을 선"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c243",
+    "name": "서울 난지 갈대바람길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=179&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "c26bad9ea243ea78ab092445d3cec981a0aad6ee2683f380abf5eb8c8e18caa6",
+    "reason": "",
+    "conditions": [
+      "공원 주차장 이용 -화장실과 휴게시설 별도로 있음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 가을이 되면 한강은 갈대와 물억새의 은빛 물결로 장관을 이룬다. 갈대나 억새는 오색찬란한 단풍처럼 화려하지는 않지만 단아한 운치가 있다. 바람 따라 출렁이는 은빛 물결을 보고 있으면 메말랐던 가슴 속 낭만까지 되살아난다. 이렇게"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c244",
+    "name": "서울 강서 물새길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=177&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "e21e7b1ddb62605d4c98cd193d4555aa7910f7d9340cc326d454a76ad637327c",
+    "reason": "",
+    "conditions": [
+      "광장, 강서안내센터) -휴게시설 있음(개화나들목) -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 산책로를 따라 걷다 보면 버드나무와 갈대가 바람에 휘날리는 모습과 함께 물위를 떠다니는 민물가마우지, 큰기러기, 왜가리, 흰죽지 등 도심에서는 보기 힘든 철새들의 무리를 만날 수 있다. 산책길 중간에는 새들을 좀 더 가까이에서 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c246",
+    "name": "서울 생각숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=172&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "cd1e45da46f713b5408ffc13e9c3c0c7f87cbfeb9bb23c1a66a91faf93539e26",
+    "reason": "",
+    "conditions": [
+      " 이용(유료) -도서관에 화장실과 휴게시설 있음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 도서관 산책은 ‘생각숲길’의 백미라 할 수 있다. 특히 도서관은 해질 무렵 노을이 드리울 때 가장 아름답게 빛난다. 그래서 ‘석양의 신전’이라는 별칭이 붙었다고 한다. 큰 창을 통해 노을을 바라보며 조용히 사색에 잠길 수 있다니"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c247",
+    "name": "서울 문화비축기지 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=171&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "f9196cc73edf61aaba8914ec5e9f7d0c552b2c1eff4463da121142db2d8e8acc",
+    "reason": "",
+    "conditions": [
+      "경기장 주차장 이용 -카페와 휴게시설 별도로 있음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 T5는 ‘이야기관 ’T4는 복합문화공간 T3은 5개 탱크 중 유일하게 원형 100% 보존된 곳 T2는 실내 공연장과 야외무대로 T1은 석유를 저장하던 철판을 모두 뜯어내고 대신 유리로 외벽을 만들어 주변 풍광을 조망할 수 있게 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c248",
+    "name": "서울 서오릉고개 녹지연결로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=170&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "1f89beff4850f51fb49e87ed8f3a6ff8b733313d1fc4b4ab502325e88a21d226",
+    "reason": "",
+    "conditions": [
+      "도로 없음 / 화장실과 휴게시설 별도로 없음 - 유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 7만 3,000㎡ 의 대규모 ‘팥배나무 군락지’로 유명한 봉산은 희귀성과 생태학적 가치를 인정받아 2007년 서울시 생태경관보전지역으로 지정되었다. 그리고 일명 ‘꾀꼬리산’이라 불리는 앵봉산에 가면 노래하는 꾀꼬리의 아름다운 울"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c249",
+    "name": "서울 생태공원 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=168&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "742bab633bde2ea3a6145b0199e9a07258508c8b08626b4a665c555e23f9e996",
+    "reason": "",
+    "conditions": [
+      "장 별도로 없음 -화장실, 휴게시설 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 산 속 주택가인 향촌마을을 지나 돌계단을 따라 조금만 올라가면 산 그림자 비치는 작은 저수지가 반겨준다. 밭에 물을 대는 용으로 만들어진 저수지에는 온갖 습지생물과 식물들이 살고 있다. 최소한 손을 대지 않고 최대한 숲을 가까이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c250",
+    "name": "서울 삼청공원 순환산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=167&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "030cf2f03828d8dbea5e5fdf7cce7e75f24c9eab2a98af43c33366dca4f999e4",
+    "reason": "",
+    "conditions": [
+      " 없음 / 화장실과 휴게시설 삼청공원 내 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 공원을 거닐다 보면 ‘말바위전망대’ 이정표가 보인다. 나무계단 좌우로 굽고 휜 소나무 숲길을 따라 전망대에 오르면 주변의 성곽과 서울의 도심 풍경이 멋지게 펼쳐진다. 삼청공원까지 이어지는 산책로에 아름다운 벚꽃들이 흐드러지게 피"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c251",
+    "name": "서울 불암산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=166&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "2de97c4281c64829735768cee581177f152695ba4c9fbfb14a88ccde9c4a6c09",
+    "reason": "",
+    "conditions": [
+      "주차장 별도로 없음 / 생태학습관에 화장실 있음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 능선이 길게 뻗어있어 시원한 경치를 맛볼 수 있고 산길도 험하지 않아 가볍게 오를 수 있는 곳이다. 그렇다보니 불암산은 지역 주민들이 자연과 더불어 살아갈 수 있게 해주는 노원구 최대의 보물이라 할 수 있다. 불암산자락길 불암산"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c252",
+    "name": "서울 배봉두메십리길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=165&sc_trailSeCd=SE001",
+    "positive": false,
+    "pathSha256": "4a4c7f313f4d8ea6997e1080114e1c183254038ca4bcd11b3795413039065bd3",
+    "reason": "HTTP Error 502: Bad Gateway",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c253",
+    "name": "서울 국사봉길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=162&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "e8a2238af424b2b4fb2b38c60320d91a25fa459a65c8c8df33ebaaa50550d074",
+    "reason": "",
+    "conditions": [
+      "관리사무소, 생태놀이터, 양녕대군 이제 묘역) -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 옛날 이곳에 수목이 울창하고 도둑이 많아서 고개를 넘어가는 사람들에게 “살펴가라”고 당부했다 하여 그 이름이 붙여졌다. 오르락내리락하며 정상에 이르니 ‘국사봉(國師峰)’이라 쓰여 있는 비석이 반긴다. 저 멀리 한강과 남산 그리고"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c254",
+    "name": "서울 관악산 무장애숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=161&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "9dfe281fe47870501ab14144de827b41cba1bcdc3a36192302739c4da5c661e6",
+    "reason": "",
+    "conditions": [
+      "장실 있음 -관악산 제1광장에 음수대와 매점 있음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 지그재그로 설치된 나무데크길을 올라가다 보면 점점 시야가 트이면서 등산의 묘미가 느껴진다. 서울대와 관악산 능선을 바라보며 걷다 보면 무장애 숲길의 끝이자 정자가 있는 전망쉼터가 나온다. 근처 서울대학교 교정은 물론 남산타워와 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c255",
+    "name": "서울 포이 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=159&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "6951501f3a97f119ba35dbb9602e48c3e23c960e2c15eb7bc2a992a93093f562",
+    "reason": "",
+    "conditions": [
+      "로 없음 -포이근린공원에 화장실과 휴게시설 있음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 양재천에서 물 구경을 실컷 하고 중간에 양재천을 건너 달터공원으로 향한다. 양재천부터 구룡산 입구까지를 잇는 작은 능선 자락에 꾸며진 달터공원은 참나무와 소나무가 그늘을 드리운 울창한 숲 아래 눈높이에 맞춰 무성하게 핀 진달래와"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c387",
+    "name": "광교호수공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "positive": false,
+    "pathSha256": "a110ab1d8cb915ed6dd1646a529fe25e836c7a78baee88ae88ba5d85b1b3682e",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c257",
+    "name": "서울 오패산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=154&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "c43458b4e282d04d51fe8b8d91d3eb301383609ae03f7ee065bc355e6e4c92cc",
+    "reason": "",
+    "conditions": [
+      "별도로 없음 / 화장실 강북구민운동장에 있음 / -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 30분 정도의 짧은 코스이지만 워낙 숲이 울창하고 놀 거리가 풍부하여 남녀노소 누구나 알찬 휴식을 누릴 수 있다. 복자기나무숲, 자작나무숲 등 각기 다른 숲길이 속속들이 나타나고 중간에서 만나는 작은 계곡에서는 희미하게나마 물소"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c258",
+    "name": "서울 성동구 매봉산 치유숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=153&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "fe2df2c8e13de9569e71b039fef6f34d1111b5e6d7b7c24067673c1a4d3613f0",
+    "reason": "",
+    "conditions": [
+      "각정과 421번 버스 종점 -사이에 화장실 있음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 매봉산은 인근 주민들에게 천금 같은 휴식처로 산림치유에도 최적의 공간이다. 치유숲길은 산림욕 베드와 평상에 누워 따스한 햇살을 느끼며 명상할 수 있는 빛 명상 숲, 통나무 의자에 앉아 자연의 소리를 들으며 잠시 쉬어가는 쉼터, "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c259",
+    "name": "서울 방죽·샘터공원 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=151&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "5ffcb487dac0464c5bb2482c341274d28f67095d4b7592671b4190452742d529",
+    "reason": "",
+    "conditions": [
+      " 있음 -유모차·휠체어 이용 가능(고덕산자락길 구간만) -점자 안내 표시 있음 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 봄에는 개나리, 진달래, 벚꽃 등이 만발해서 내 집 앞에 꾸며놓은 정원처럼 소담스럽다. 조금만 걸어나가면 자연의 싱그러움으로 충전할 수 있다. ‘고덕산자락길’은 방죽공원에서 샘터공원까지 700m 길이로 순환할 수 있게 조성되어 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c260",
+    "name": "서울 미성동 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=150&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "bc6bf1dafb93d537cb25dd5d91c09eb083a80c244e921d99f31691c5c1d47784",
+    "reason": "",
+    "conditions": [
+      "음 -화장실, 식수대, 매점은 선우생태공원에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 지형 여건을 최대한 살려 물길이 모이는 아래쪽에 생태연못을 만들었다. 개구리연못, 연지(蓮池) 등 3개의 생태연못에는 수생식물과 개구리 등 다양한 수서생물이 살고 있다. 이 외에도 숲 속 쉼터, 야생화원"
+    ],
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c261",
+    "name": "서울 명일 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=148&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "f151fe479b2bcf101299c6b5619e5adb3906663e7122a16173a9a78ce3f11b3a",
+    "reason": "",
+    "conditions": [
+      " 제한 없음 -화장실, 식수대, 매점 별도로 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 편안한 흙길에 시원한 나무그늘이 끝없이 이어지니 걷기에는 어느 숲길에도 뒤지지 않는 매력을 지녔다. 녹음이 짙고 향긋한 솔향이 주변으로 퍼져서 아파트 단지 안에 숨겨놓은 산소공장의 역할을 충실히 하고 있"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c262",
+    "name": "서울 매봉산 전망대 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=147&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "fae5c7be633b0489bb049d77d46a98f10a3ec32eaa4acffe6bd698869949d07e",
+    "reason": "",
+    "conditions": [
+      "음 -화장실 없음 -한남테니스장 일대에 주차 가능 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 봄이면 벚꽃이나 철쭉꽃, 조팝나무 꽃이 화려하게 피어 꽃 터널을 만들고, 가을에는 산책로를 따라 심어져있는 단풍나무, 벚나무 등이 형형색색으로 물들어 청명한 가을 하늘 아래 산책의 운치를 더해준다. 정상에 있는 팔각정에서 내려다"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c279",
+    "name": "서울 수락산 소망길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=110&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "4af418c70ebc970a1a381944b7c3ca68732df18ea6d278949af28ff78432af30",
+    "reason": "",
+    "conditions": [
+      "한 없음 -식수대나 매점 따로 없음 -화장실 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 학림사 청학루에서 바라보는 불암산의 능선과 봉우리는 환상적 실루엣으로 선이 빚은 미학 그 자체다. 아늑하고 한적하여 번잡한 일상을 잠시 접고 신선놀음을 하며 행복을 기원하기에 딱 좋은 길이다. 수락산 소망길1 수락산 소망길2 수"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c263",
+    "name": "서울 매봉산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=146&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "c8752a5adc7834b934a8e76f16451df2bacd0ff2945ad6a094863b55a22336fa",
+    "reason": "",
+    "conditions": [
+      "식수대나 매점 따로 없음 -화장실 없음 -상암월드컵경기장 주차장 이용(요금제) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 매봉산은 멀리서 보면 월드컵경기장을 품은 듯 활모양으로 휘어져 있다. 생태계가 잘 보존되어 있고, 월드컵공원·평화의공원·하늘공원·난지천공원·노을공원 등 내로라하는 공원들이 가까이에 있어서 한번 가본 사람들은 자꾸 찾아가게 되는 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c264",
+    "name": "서울 망우산 사색의길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=145&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "6faa9f32510dda014744a056b51bc53d465f0bf87d303eedd1cd7d9bc7e7737e",
+    "reason": "",
+    "conditions": [
+      "점 없음 -화장실 없음 -망우묘지공원 주차장 이용 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 걷다 보면 나무들 사이로 한강과 북한산과 도봉산이 살짝살짝 보였다가 시야가 트이는 순간에 서울의 풍경이 한눈에 펼쳐진다. 망우산 사색의 길에는 역사와 문화, 생과 사를 넘나드는 삶의 풍경이 어우러져 있다. 유명과 무명을 달리했던"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c265",
+    "name": "서울 독산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=144&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "3673ea4b3dc07ca0031c47f6af51dbfe574959bb62813ad6665bb20212164376",
+    "reason": "",
+    "conditions": [
+      "없음 -화장실은 독산자연공원, 금천체육공원에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 ‘독산 자락길’ 산책은 미네랄이 풍부한 약수로 유명한 만수천공원에서 출발하여 감로천생태공원에서 절정을 이룬다. 작은 습지와 숲길로 조성되어 있는 공원은 하늘이 보이지 않을 만큼 숲이 우거져 있어 아이들은"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c266",
+    "name": "서울 대모산 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=143&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "90a998cc080a4cc0bab7bab08e400a2a267e033b1bf22ec9f2f4b530b6695779",
+    "reason": "",
+    "conditions": [
+      "-식수대와 매점 없음 / 별도 주차장 시설 없음 -유모차·휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 아파트 단지 뒤쪽으로 10여 분쯤 걸어가면 전혀 도심 한가운데라고 느껴지지 않을 정도로 빼어난 경관의 산책로가 이어진다. 하늘 위로 곧게 뻗은 나무들 사이로 무성하게 자라는 풀들의 모습은 호젓한 산책길의 즐거움을 더한다. 이 숲"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c267",
+    "name": "서울 까치산길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=138&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "0ffbbd928cdad900ebf0a5981babf2c2951c5bb25513a13f0e9c1092371c796f",
+    "reason": "",
+    "conditions": [
+      "없음 -화장실은 까치산공원 관리사무소 근처에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 산이라기엔 낮고, 공원이라기엔 높은 지형이지만 꽃과 나무와 동물들로 속이 꽉 차 있어서 산이라고 불리기에 부족함이 없다. 그렇다보니 까치산길을 다 걷고 나면 마치 깊은 산속을 다녀온 것처럼 피톤치드로 건강해지는 기분을 맛볼 수 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c268",
+    "name": "서울 궁동산 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=137&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "ccd41c52dcb2bec67085ef9bc4639eb5f280d65c5f9273c67011583f3e2298e6",
+    "reason": "",
+    "conditions": [
+      " 근처에 있음 -식수대는 궁동산체육관 근처에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 궁동근린공원은 작고 낮은 규모의 공원이라 큰 힘을 들이지 않고도 봄과 여름에는 꽃놀이, 가을에는 단풍구경, 겨울에는 연희동 골목 산책 등 사시사철 즐길 수 있는 곳이다. 궁동산 둘레길1 궁동산 둘레길2 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c269",
+    "name": "서울 용왕산 순환길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=135&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "3bfb815d8eacd965e8bddf502d24c3fe67e053c6c8c636878e444d0ef5b37cc8",
+    "reason": "",
+    "conditions": [
+      "장실, 식수대는 다목적운동장에 있음 -유모차·휠체어는 무장애 숲길만 이용 가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 산 정상에 있는 조망명소로 유명한 용왕정에 올라서면 서울의 북쪽과 동쪽, 남쪽이 파노라마처럼 펼쳐진다. 가깝게는 한강을 비롯해 월드컵공원과 성산대교, 목동의 초고층 건물 등이 한눈에 들어온다. 맑은 날에"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c270",
+    "name": "서울 아차산성길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=131&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "9e2d64bf2900d3714b270143ec5158e8eba963244e3026d2888d011639b184a2",
+    "reason": "",
+    "conditions": [
+      ", 식수대, 매점은 아차산공원 입구 근처에 있음 -유모차·휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) / 아차산생태공원 주차장 이용 테마산책길 풍경 아차산하면 소나무 라는 명성을 뽐내기라도 하듯 소나무 숲의 기품이 위풍당당하다. 그리고 아차산생태공원은 테마별로 아기자기하게 꾸며놓은 공원이라 산책의 여흥을 달랠 겸 잠시 쉬어가기 좋은 곳이다. 아"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c271",
+    "name": "서울 아차산 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=130&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "ee235ef9e1f9c8ddbc2d046989da12139ace6633d1977f1a93b1e6acf1a953a8",
+    "reason": "",
+    "conditions": [
+      "점 아차산공원 입구 근처에 있음 -유모차·휠체어 이용 일부 가능(무장애 숲길) -반려견 출입 가능(목줄 사용) -아차산 생태공원 주차장 이용 테마산책길 풍경 언제부터 누가 쌓기 시작했는지 알 수 없는 돌탑도 볼거리를 제공해주고, 울창한 숲길과 널따란 바위에서 바라보는 서울 풍경이 다가왔다 물러가기를 반복하는 동안, 어느새 발걸음은 아차산의 골짜기를 따라"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c272",
+    "name": "서울 신정산 생태길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=129&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "3f2a99b00c6f8c2e2e4448f8616ca3bd5448a240577331eb2a3db376c69c83e9",
+    "reason": "",
+    "conditions": [
+      "광장 야외무대에 화장실 있음 -유모차, 휠체어 이용 가능(신정산 자락길 구간) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 구간을 벗어나 신정산 생태길을 걷다 보면 생태통로와 우렁바위를 만날 수 있다. 생태통로에는 야생동물이 좋아하는 먹이식물을 심고, 돌무더기나 장작더미 등 생물서식공간(Bio-top)이 조성되어 있다 신정산 생태길1 신정산 생태길2"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c273",
+    "name": "서울 수명산 숲속 탐방로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=128&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "8fd6bbdbb6adad5961f06c2e3ba5b2c8818a0d9d056652603760f322e72921cf",
+    "reason": "",
+    "conditions": [
+      " 근처에 있음 -식수대는 배드민턴장 근처에 있음 / 유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) / 별도 주차장 시설 없음 테마산책길 풍경 강서구가 산책길의 낡은 계단을 철거하고 나무 계단으로 말끔하게 정비하고, 난간도 설치하면서 안전한 숲길로 탈바꿈하였다. 그리고 산벚나무, 팥배나무, 조팝나무, 산철쭉 등의 나무들을 새로이 심어서 신록이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c274",
+    "name": "서울 불암산 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=124&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "0810d82400ec8ac9690172ee17dfae5162850b261391f92852235a72b6dcc80a",
+    "reason": "",
+    "conditions": [
+      "없음 -화장실은 불암산관리사무소, 넓은마당에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 요즘에는 산 정상에 오르는 것을 목표로 하는 수직적 등산보다 휴식을 겸해 자연을 즐기며 산책하는 사람들이 늘고 있다. ‘불암산 산책길’은 이런 추세에 딱 들어맞는 산책길이다. 꼭 정상까지 올라가지 않더라"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c275",
+    "name": "서울 봉산 팥배나무길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=120&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "fc88fc868a1541c2ee7d99a9590668ece362349f73272b783166d6d30606176b",
+    "reason": "",
+    "conditions": [
+      "간 제한 없음 -식수대나 매점 없음 -화장실 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 서울시 은평구와 경기도 고양시의 경계를 넘나드는 봉산은 팥배나무길로 유명하다. 봉산의 팥배나무 숲은 서울지역에서 찾아보기 힘든 대규모 군락지(73,000m2)를 형성하고 있어 그 희귀성과 가치를 인정받아 2007년에 서울시 생태"
+    ],
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "c276",
+    "name": "서울 월드컵공원 메타세쿼이아길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=114&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "a21fb3c7e887777737ec455fab292c91d48bc1743c51ce45c0f7a6f8576cc383",
+    "reason": "",
+    "conditions": [
+      "-난지천공원·평화의공원 주차장 이용 -유모차·휠체어 이용 가능(평평한 흙길임) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 메타세쿼이아길 오른쪽으로는 제철에 피어나는 다양한 야생화를 보는 맛이 있고, 왼쪽으로는 찻길 건너 한강의 푸른 물결을 따라 걷는 맛이 있다. 강변북로를 달리는 차 소리가 조용한 산책을 방해하는 것이 아쉽기는 하지만 쭉쭉 뻗은 나"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c277",
+    "name": "서울 불암산 설화길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=113&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "eab7c4de10a29f4bd0d5a4659724b1b03e24d4a0a03f4a4e9075920a2231e66b",
+    "reason": "",
+    "conditions": [
+      "점 따로 없음 -학도암 근처에 화장실 1개소 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 우람한 바위산으로 화강암 봉우리가 보여주는 조형미가 뛰어나고, 산속에는 기기묘묘한 암반들이 조각전을 펼친다. 잎 넓은 나무들이 푸른 그늘을 만들어주는 푹신한 흙길이 실타래처럼 얽혀있고 사방으로 전망 또한 좋다. 불암산 설화길 불"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c278",
+    "name": "서울 인왕산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=111&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "81c195ca6297e102d0f59845d99f1a5f8e399845c9ba3f946ceef40d66d1ad18",
+    "reason": "",
+    "conditions": [
+      "앞에 식수대 있음 -청운공원에 화장실 2개소 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 예로부터 수려한 경치를 감상하며 풍류를 즐기던 화가나 시인들의 주 활동 무대였던 인왕산이다. 인왕산 자락길의 백미는 수성동계곡이다. 산과 계곡의 웅장한 기운이 마치 강원도 산골의 폭포를 보는 것 같아 이곳이 서울이라는 것을 잠시"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c280",
+    "name": "서울 세검정 계곡 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=109&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "d358a9736a4aaad8791f1e281e49c54650ddd03f4d2be568e428fceaf66cb0ce",
+    "reason": "",
+    "conditions": [
+      "한 없음 -식수대나 매점 따로 없음 -화장실 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 세검정 계곡 숲길 산책은 유서 깊은 부암동의 과거와 현재를 보여주는 골목을 거닐면서 점점 흥이 오른다. 향수를 불러일으키는 동네 풍경 속에 멋스럽고 개성 넘치는 카페와 음식점, 갤러리들이 어우러져 신선한 느낌을 준다. 세검정 계"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c281",
+    "name": "서울 산사길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=108&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "7f8930d6f0013b585be7c67ce20040644088abb4cd9377ab76f3beaa5e6eda66",
+    "reason": "",
+    "conditions": [
+      "식수대나 매점 없음 -숲유치원 근처에 화장실 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 저마다의 운치를 자아내며 어느새 산속의 풍경이 되어버린 도량이나 불상, 탑 등을 구경하는 묘미가 꽤 괜찮다. 바위 꼭대기에 올라서면 아래로는 도심의 풍경이, 위로는 기암괴석의 능선이 반을 가르며 풍경의 조화를 이룬다. 능선을 따"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c282",
+    "name": "서울 천상병산길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=105&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "ef786d72fe9c161170c3b6b51a5842fe3dc91f13e97c4467722e1eac45cfb439",
+    "reason": "",
+    "conditions": [
+      "마당 가기 전에 있음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 생전에 그는 수락산 자락(노원구 상계동)에서 8년을 지내면서 왕성한 집필활동을 펼쳤다. 방문만 열면 바위산이 보이는 누옥에 살면서 여름이면 계곡물에 첨벙첨벙 목욕을 하며 살았다고 한다. 그는 수락산에 대한 사랑을 , 등의 많은 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c283",
+    "name": "서울 현충원 한강 나들길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=104&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "8d9459bfe2fd0803ae378c1576a5843f62bc69703f6d22f43061cadd51cc05ed",
+    "reason": "",
+    "conditions": [
+      " 있음 -현충원에 화장실 있음 -유모차·휠체어 이용 가능(서달산자락길 구간만) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 출발점인 사육신공원은 조선시대 사육신의 묘역이 모셔져 있는 곳으로, 공원으로 조성되면서 꽃과 나무들이 울창한 도심 속의 초록지대로 변신하였다. 해질 녘, 사육신공원의 전망대에서 바라보는 강변 낙조는 서울 하늘 아래 최고의 명장면"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c284",
+    "name": "서울 한양도성 역사문화 탐방로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=103&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "296e8ab3b31abef5058a75138f70055c6e9c3580cc620d8b347ae969e7de0c3f",
+    "reason": "",
+    "conditions": [
+      "장실 3개소 있음(무악배드민턴장과 인왕사 국사당) -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 조선시대 백성들의 삶의 애환이 서려있는 ‘무악재’를 지나면, 동네 뒷산의 풍경으로 바뀌면서 인왕산 들머리가 시작된다. 인왕산을 대표하는 기암괴석을 바로 코앞에서 구경할 수 있다 한양도성 역사문화탐방로1 한양도성 역사문화탐방로2 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c285",
+    "name": "서울 호압사 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=102&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "c580a056025483b5e3306763f7d1ac677153ddf3bb03a9cfe3debd0eedd34bbe",
+    "reason": "",
+    "conditions": [
+      "압사부터 호암산폭포까지 1km 나무 데크 설치 구간만 유모차·휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 유유자적 문화유산을 답사하다 보면 칼처럼 뾰족해서 이름 붙여진 칼바위와 호암산폭포를 만난다. 종착점인 석수역까지는 6부 능선을 따라 숲길을 걷는다. 산책길에 소나무와 멋있는 바위가 자주 나타나 눈이 즐겁다 호압사 산책길1 호압사"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c286",
+    "name": "서울 성북천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=101&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "9c55e52bd766b39f08d42de2a68b0351fb8fa1b100bb34958d10de26009feaef",
+    "reason": "",
+    "conditions": [
+      "시설 별도로 없음 / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 산책로, 자전거도로, 운동시설, 음악분수, 바람마당, 징검다리 등이 조성되어 지역주민들의 여가 생활을 풍요롭게 해주고는 있다. 2012년에는 재활용품을 활용한 조형물과 주민들이 직접 만든 작품들을 전시해 놓아서 생태하천으로 거듭"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c287",
+    "name": "서울 성내천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=100&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "c223a0066d7151eef172d29e766fcb3a4a4c6844a166b6de3100966a9fc2e530",
+    "reason": "",
+    "conditions": [
+      "장 이용(협소함) / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 성내천 주변의 벚꽃과 야생화 등 철마다 바뀌는 꽃들의 향연은 지역주민들에게 공동의 정원이 되어주고, 벽천분수나 항아리 물놀이장은 낭만과 추억을 선사하는 동네 개울가의 역할을 톡톡히 해준다 성내천1 성내천4 성내천3 성내천2 페이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c288",
+    "name": "서울 서울둘레길 구룡산구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=96&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "4166a904bf368c8f76ef4e3fe75c8617f361e77d39dc21f6e4bbd37344620053",
+    "reason": "",
+    "conditions": [
+      "시설 별도로 없음 -식수대와 매점 별도로 없음 / 유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 코스 대부분이 숲길로 이루어져 햇빛이 비추는 여름에도 시원한 그늘 밑을 걸을 수 있으며 높거나 산길이 험하지 않아 부담 없이 산행을 즐길 수 있다. 흙내음과 풀내음을 맡으며 등산로 옆에 마련된 벤치에 앉아 잠시 쉬고 있으면 우거"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c289",
+    "name": "서울 불광천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=95&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "c511bf35a9bf3e56d00798e5ff3540d63fa27077a137b7596eb8106e6d565ce6",
+    "reason": "",
+    "conditions": [
+      "차장 이용(유료) -식수대와 매점 별도로 없음 / 유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 1.1km의 제방길에 쑥부쟁이, 금계국, 왕원추리, 톱풀, 감국 등 계절별로 감상할 수 있는 꽃밭을 만들어서 야생화 향기와 함께 산책과 운동을 할 수 있도록 하였다. 불광천을 따라 걷다 보면 청둥오리나 두루미 같은 철새들이 날아"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c290",
+    "name": "서울 봉제산 둘레길 사색구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=94&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "756103d5b8b94dec3cfaa5d6312ec3b545f9eab4957307f8b74ee04237fd9a7d",
+    "reason": "",
+    "conditions": [
+      "분마다500원) -식수대와 매점 별도로 없음 / 유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 ‘사색의 공간’이라 명명된 잣나무 숲이 있다. 곧게 뻗은 잣나무들이 울창하다. 몸과 마음이 피톤치드로 정화되는 듯한 느낌이 든다.사색구간은 바쁜 일상에서 잠깐 혼자만의 시간을 갖고 싶을 때, 운동화로 갈아 신고 훌쩍 다녀올 수 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c291",
+    "name": "서울 벚꽃십리길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=93&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "477e31fb6ce751e4bffadf30b57134503afdb4e91db5539e99b56f53ec00be40",
+    "reason": "",
+    "conditions": [
+      "시설 별도로 없음 / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 오금교에서 신목동교까지 이어지는 ‘벚꽃길’은 봄이면 분홍 물감을 흩뿌려 놓은 듯 벚꽃 천지가 된다. 해가 거듭될수록 적지 않은 상춘객들이 찾아오고 있어 벚꽃 구경의 숨은 명소로 자리매김하고 있다. 벚꽃십리길 벚꽃십리길2 벚꽃십리"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c292",
+    "name": "서울 능골산 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=92&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "78d021c0fe3f1e9aba5ce00656cb724ee55ecf9042c4292cede3d31850839bbf",
+    "reason": "",
+    "conditions": [
+      "영주차장 이용 -식수대 있음 -매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 정수 시설의 낡은 골조를 그대로 드러낸 ‘몬드리안 정원’, 벽 위로 기하학적 영상이 흐르는 ‘미디어벽천’, 알록달록한 물방울 무늬를 그린 ‘100인의 식탁’ 등 아기자기한 구획이 돋보여 산책하는 재미가 쏠쏠하다. 이 외에도 수생"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c293",
+    "name": "서울 긴고랑길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=91&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "0873d3c766f13e183e94ec1340c7d805e792f0d545585a8925d6e95899564216",
+    "reason": "",
+    "conditions": [
+      " 별도로 없음 -식수대 있음 -매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 울창하게 자란 나무줄기 사이와 널따란 바위 옆으로 난 계단과 흙길을 번갈아 걷는 길은 지루할 새도 없이 산책의 즐거움을 더해준다. 아차산(295.7m)은 전망이 좋기로 유명한 산이다. 그 명성을 입증이라도 하듯이 능선 좌우로 펼"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c294",
+    "name": "서울 구로올레길 천왕산구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=90&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "9a067acc764de58bcd643d58641db10cd9c7751de94b52ca95d84db8ad217d53",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 푸른수목원은 서울시 최초로 조성된 시립수목원으로 서울광장의 8배 정도의 규모에 2100여 종의 다양한 식물을 심어 25가지의 테마로 조성해 놓았다. 계절별로 꽃들이 피어 언제 가도 좋지만 겨울엔 얼어붙어 있는 항동저수지가 또 다"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c295",
+    "name": "서울 공암나루길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=89&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "d63042a7a0efc3a48f77dbdc536004d49a930f16fc91c28e7a60bb72582add80",
+    "reason": "",
+    "conditions": [
+      "차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 겸재는 1742년 이라는 제목으로 ‘광주암’과 ‘공암’을 그렸다. 소요정은 탑산 위에 자리했던 풍광 좋은 정자로 조선시대엔 뱃사람과 뱃놀이 객들이 바위 앞에 잠시 길을 멈추고 넋이 빠지게 구경했던 명소였다고 한다. 공암나루길 공"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c296",
+    "name": "서울 고덕천 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=88&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "6a519abbd0f3a4dfbfb13293ca6dcdb81647ab65a8bbf7218625ba1df63f1c1f",
+    "reason": "",
+    "conditions": [
+      " / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능(고덕수변생태공원은 애완견 출입 금지) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 고덕천에는 여름철 어린이들을 위한 물놀이 시설이 마련되어 있어 도심 속 피서지로 유명세를 타고 있다. 고덕수변 한 숲 속 같은 생태공원 오솔길을 걷노라면, 도심 속이란 사실이 믿기지 않을 만큼 생생한 자연",
+      "도로 없음 -유모차와 휠체어 이용 불가능(고덕수변생태공원은 애완견 출입 금지) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 고덕천에는 여름철 어린이들을 위한 물놀이 시설이 마련되어 있어 도심 속 피서지로 유명세를 타고 있다. 고덕수변 한 숲 속 같은 생태공원 오솔길을 걷노라면, 도심 속이란 사실이 믿기지 않을 만큼 생생한 자연의 현장이 펼쳐진다 고덕"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c297",
+    "name": "서울 초안산 생태 탐방로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=86&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "d365c3b78c3ddb21502cb9cbc4de631911b78dc1b20e371b32b76e71aa624a5d",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 ‘초안산 생태공원’은 개장과 동시에 지역주민의 커뮤니티 공간으로 자리 잡으며 주민들의 사랑을 한 몸에 받고 있다. 도봉구는 초안산을 반딧불이가 서식할 최적지로 선정하고 방사를 하는 동시에 생태공간으로 잘 보존하고 있다. 특히 ‘"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c298",
+    "name": "서울 중랑천 탐방로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=40&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "c8557b0e920b173edd0a4a6cb7f0198a6997c6a320d477ac59b384d2ad5a824b",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 중랑천엔 서울시가 아름다운 꽃길이나 단풍길로 선정할 만큼 빼어난 경관이 많은데, 도봉구의 중랑천 탐방로 역시 벚꽃길과 다양한 꽃길들이 물길을 따라 사시사철 장관을 이룬다. 중랑천 탐방로 중랑천 탐방로2 중랑천 탐방로3 중랑천 탐"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c299",
+    "name": "서울 장안벚꽃길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=39&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "e7545b06f1d535ea7583596dc328f5b092f0cfee20fbfa966f4f4caa20044b4b",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 산책로에 수령이 오래된 왕벚나무와 느티나무가 심어져 있어 봄에는 하얀 벚꽃 눈이 휘날리고, 여름에는 시원한 그늘을 제공하고 있으며, 가을에는 총천연색 단풍으로 산책로 전체가 온통 물든다. 봄이 되면 ‘장안벚꽃길’은 해가 저무는 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c300",
+    "name": "서울 장미테마길 중랑천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=38&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "3364094c7dbbb429e49beab2c76c00f4f86e98455d419685d8739543fdb5611c",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 중랑구는 2005년부터 묵동교에서 장평교까지 길이가 5km에 이르는 중랑천 제방에 63,000주, 100만 송이 이상의 사계장미와 덩굴장미를 심어 장미터널을 조성했다. 이 5km가 넘는 길을 따라 수놓아진 1천만 송이의 장미꽃은"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c301",
+    "name": "서울 인왕산 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=37&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "7525f392e54f074dc07474be4b1a2dbc4ad466ed5d0bb69fed4e2613ab13d5e2",
+    "reason": "",
+    "conditions": [
+      "차시설 별도로 없음 -식수대·매점 별도로 없음 / 유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 경치의 절정은 수성동 계곡으로 이어지는 길에서 도달한다. 완만하게 오르내리는 숲길이 정겹게 굽이지고, 정자와 바위 사이로는 물길이 맑게 흐른다. 분주한 서울 도심에서 깊은 산골의 계곡으로 순간이동을 한 것 같은 기분이 들 정도이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c302",
+    "name": "서울 우이천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=36&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "88a396c6433577f337c697d3e01a67561f226c0cf7c9157e2a89eb2ce74b6557",
+    "reason": "",
+    "conditions": [
+      " 노상주차장(55면) / 식수대 설치되어 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 우이천 둔치를 따라 조성된 벚꽃 길은 지역주민의 사랑을 받고 있는 대표적 명소이다. 매년 봄이면 지역주민들은 벚꽃 터널로 화려하게 변신한 우이천변을 찾아 봄의 정취를 한껏 즐긴다. 뿐만 아니라 개나리도 흐드러지게 피어 우이천을 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c303",
+    "name": "서울 용마산 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=35&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "4f8a581c360c54908adefdc5f859745afa5a13b2cc03b486d73528934920e693",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 ‘용마산 자락길’은 봄이면 복사꽃, 벚꽃, 진달래 등 각종 꽃들이 흐드러지게 피어 찾는 이들이 그 향기에 취할 정도로 아름답다. 주변에는 ‘아토피 치유의 숲’, ‘잣나무 숲’, ‘인문학 길’, ‘북카페’ 등이 조성돼 자연을 만끽"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c304",
+    "name": "서울 오동공원 공원길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=34&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "c7e78060148bd6f753b209dd7c3c18f8f43dc0009a6fe36bb8f88d952daf2a46",
+    "reason": "",
+    "conditions": [
+      " 시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 오동공원의 정상인 ‘애기능터’는 서울시 우수조망명소로 선정될 만큼 멋진 경치를 내려다볼 수 있다. 팔각정 누각에 서면 북한산·도봉산·수락산·불암산이 병풍처럼 둘러쳐져 있는 서울 북부권의 성북구와 노원구를 한눈에 바라볼 수 있다."
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c305",
+    "name": "서울 오금공원 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=33&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "f0ead58b83accc2a4e5431d3aea0fb23643d8293195e56957e64510bbb59159b",
+    "reason": "",
+    "conditions": [
+      "용(단, 협소함) / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 오금공원 초입에 폭 70m, 높이 4~7m에 이르는 벽천폭포와 안개분수 등을 조성하여 시각적 청량감을 제공하는 색다른 휴식 공간이 탄생했다산책로를 따라 은방울꽃, 초롱꽃, 매발톱꽃, 옥잠화, 동자꽃 등 다양한 꽃과 식물들이 곳곳"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c306",
+    "name": "서울 영등포 수변둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=32&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "87bdc2c3871c2f7ca1b32822bbfbb9e04b54be06e65d7ff1211298e69db2c69c",
+    "reason": "",
+    "conditions": [
+      "주차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 천변을 따라 조성된 산책로와 자전거도로에는 느릅나무, 양버들나무, 이팝나무 등이 줄지어 서있어 깨끗한 공기와 볼거리를 제공하고, 오목교와 목동교 사이에는 억새와 갈대가 어우러진 철새도래지의 풍경이 도림천까지 이어진다. 염창교를 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c307",
+    "name": "서울 염창산 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=31&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "207a0a182864716d7cf27a34d9c05c484f2afd7f30df7d39c4a079330020c22d",
+    "reason": "",
+    "conditions": [
+      "차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 염창산 전망대에서는 강의 동쪽이 탁 트여 보인다. 맨눈으로 봐도 여의도 63빌딩 등 고층 빌딩과 강북의 도시 전경, 멀리 남산의 N서울타워까지 시야가 미친다. 한강변을 따라 굽이치는 올림픽대로도 한눈에 보인다. 염창산 페이지 $"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c308",
+    "name": "서울 양화나루길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=29&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "c74a741c7b99705c6b77b38f5dcdcdf7bbfe0c3bc5cf5226a29d263f6a54326a",
+    "reason": "",
+    "conditions": [
+      "차시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 많은 풍류객과 문인들이 조선시대 3대 나루중 하나였던 양화나루를 찾아 뱃놀이를 즐기거나 시를 지었으며, 중국 사신들이 조선에 오면 이곳을 꼭 들릴 만큼 그 명성이 자자했다. 조선후기 진경산수화의 대가 겸재 정선은 ‘양화환도’에서"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c309",
+    "name": "서울 안양천 벚나무길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=28&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "3ad06a4365f7ab30f83034defe598fbcdeae32af380037e3eebe8f555495a24b",
+    "reason": "",
+    "conditions": [
+      "시설 별도로 없음 / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 금천구의 안양천은 봄에는 벚꽃 터널로, 여름에는 물놀이장으로, 가을에는 화려한 단풍길로 변신한다. 그중에서도 금천구청역에서 광명교까지 이어지는 ‘안양천 벚나무길’은 서울시가 봄꽃길 명소로 선정할 만큼 대형 벚나무와 아름다운 안양"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c310",
+    "name": "서울 수락산 동막골길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=27&sc_trailSeCd=SE005",
+    "positive": true,
+    "pathSha256": "93a2f8d4dadacdde8f7602f9a036b4d345eafd929753ab6c60a2ea02971661af",
+    "reason": "",
+    "conditions": [
+      "시설 별도로 없음 -식수대와 매점 별도로 없음 / 유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 동막골에서 수암사까지 가는 길은 완만해서 남녀노소 누구나 편하게 다닐 수 있고, 가을과 겨울에도 가벼운 등산을 하며 단풍과 설경을 감상할 수 있다. 신갈나무와 서어나무 등 낙엽활엽수림이 울창하고, 연못과 습지 등이 있어 아이들이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c311",
+    "name": "서울 홍제천",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=26&sc_trailSeCd=SE004",
+    "positive": true,
+    "pathSha256": "ade879a9e5056d665fb41649408a15371d49c8e3383fba877515691f91b046ae",
+    "reason": "",
+    "conditions": [
+      " -주차장 별도로 없음 -식수대와 매점 따로 없음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 폭포마당에는 옛 정취를 느낄 수 있는 물레방앗간과 황포돛배가 조성되어 있어 가장 인기있는 명소가 되었으며 내부순환도로 교각 밑에는 모네, 르느와르 등의 작품을 전시하여 ‘명화의 거리’를 만들어서 그림과 음악이 있는 휴식공간으로 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c312",
+    "name": "서울 현충원 외곽 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=25&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "cd62f43e39ff74e2e95b604c343f6cc334313111192fa210004554caba433153",
+    "reason": "",
+    "conditions": [
+      "-이용시간 제한 없음 / 주차 시설 별도로 없음 -식수대와 매점 별도로 없음 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 전통양식으로 축조된 전망대에 서면 서울의 서쪽을 한눈에 볼 수 있다. 대림, 구로, 구일, 개봉 일대의 풍경도 즐길만하고 한강변을 향해 탁 트인 전망도 일품이다. 현충원외곽산책길 현충원외곽산책길2 현충원외곽산책길3 페이지 $(f"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c313",
+    "name": "서울 한양도성 순성길 남산구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=23&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "399683470a9154be7d9427bc7cbf9d3cf0ec86e8aceff02946fdb218b3eb42e8",
+    "reason": "",
+    "conditions": [
+      "국립극장 주차장 이용 -식수대와 매점 따로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 팔각정에 오르면 남산 정상이 한눈에 들어오고, 남산의 소나무들이 초록색의 융단을 깔아 놓은 듯 사방으로 펼쳐져 있다. 병풍처럼 둘러쳐진 한남동 일대가 새롭게 보이고, 무성한 나무 뒤편으로 펼쳐진 한남대로와 한강의 경치가 아름답다"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c314",
+    "name": "서울 하늘공원 하늘길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=22&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "497f45841625cb4425d26d40b28d99febd3283f2982afa4e6db4b82920ee3ce5",
+    "reason": "",
+    "conditions": [
+      "드컵공원 난지주차장 이용 -식수대와 매점 있음 / 유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 하늘과 가장 가까운 곳이라 하여 ‘하늘공원’으로 이름 지어졌는데, 이러한 지형적 특성을 살려 시원하게 펼쳐지는 전망을 즐길 수 있는 곳이다. 하늘공원에 가면 멀리 북한산, 인왕산, 안산, 남산 줄기가 도시의 빌딩 숲에 허리를 끊"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c315",
+    "name": "서울 경춘선 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=83&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "f4dd92a730b27f172555c241a0c5f18df2ef466543d2169d584f0dcd9f54ede5",
+    "reason": "",
+    "conditions": [
+      " / 주차시설 별도로 없음 -아리수 식수대 있음 / 유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 경춘선 숲길은 옛 경춘선의 정취를 그대로 살려냈다는 것이 가장 큰 특징이다. 녹슨 철길과 낡은 건널목의 차단기, 그리고 낡은 침목 사이로 깔려 있는 자갈들까지 옛 경춘선을 타고 지나갈 때 보았던 풍경들이다. 산책로를 따라 심어놓"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c322",
+    "name": "서울 개운산공원길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=72&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "29356bafa4ceb920b40102568dd660c1dc02832638e82e18f12db7439e9cf1e9",
+    "reason": "",
+    "conditions": [
+      "츠센터 주차장 이용 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 개운산 입구에서 정상에 있는 마로니에 마당까지 가볍게 오르락내리락 할 수도 있다. 정상 조망대에서는 그리 높지 않은 곳임에도 시원한 도심 전망을 만끽할 수 있다. 마로니에 마당은 우수조망명소로 선정된 바 있다 개운산 공원길 개운"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c316",
+    "name": "서울 관악산 도란도란 걷는 길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=79&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "bcf156d643430fde8a94db9df9099b7b10a013f2aa4a59098c6e84598d0b805c",
+    "reason": "",
+    "conditions": [
+      "실, 식수대, 매점은 관악산 입구와 호압사에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -관악산 주차장, 호압사 주차장 이용 가능 테마산책길 풍경 관악산은 크지 않지만 산세가 험하고 경관이 아름답기로 이름난 명산이며, 바위와 봉우리가 많아 산세가 웅장하다 힘겹게 오르면 바위 위에 조망명소가 있다. 서울대 캠퍼스와 서울 시내가 한눈"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c317",
+    "name": "서울 계남근린공원 자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=78&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "fda3502de5ebc328828a99bf64bf9ee4eaac0224e887c30131273828c5883967",
+    "reason": "",
+    "conditions": [
+      "수대는 덕의근린공원에 있음 / 화장실 별도로 없음 -유모차·휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) / 별도 주차장 시설 없음 테마산책길 풍경 능골산의 능선을 따라 걷는 ‘계남근린공원 올레길’은 최고점이 해발 78.4m임에도 불구하고 아담하면서도 개성 있는 숲길을 품고 있어 살아있는 자연의 생기를 그대로 접할 수 있다. 계남근린공원 자락길 계"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c318",
+    "name": "서울 갈산 생태순환길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=77&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "fc2534b3234ead0cca892659dd18f7d83bff8129e78cc989ce2baab838faf001",
+    "reason": "",
+    "conditions": [
+      " 갈산분수광장에 있음 -식수대와 매점 별도로 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -양천구어린이교통공원 주차장 이용 테마산책길 풍경 이제는 집 앞에서 즐기는 휴양림으로 자리 잡은 갈산 생태순환길! 이 길에 서면 지척에 안양천이 보이고, 새가 지저귀는 소리를 실컷 들을 수 있다 갈산 생태순환길 갈산 생태순환길2 갈산 생태순환길"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c319",
+    "name": "서울 망우리 사잇길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=75&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "1c31657e45b3a9e92b2090e16717edd46302ebece3d5c02a747de026b949cbb8",
+    "reason": "",
+    "conditions": [
+      "실, 식수대, 매점 별도로 없음 -식수대와 매점 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -관리사무소 주차장 이용 가능 테마산책길 풍경 망우리공원의 능선을 따라 걸어가면 풍경과 한강이 내려다 보이는 최고의 전망을 즐길 수 있다 ‘망우리 사잇길’로 들어서면 유명인의 비석은 물론이요 무명의 서민이 남긴 비석에도 절절한 근·현대사가 새겨"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c320",
+    "name": "서울 궁산 역사문화 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=74&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "543e34fe14ce69a258f53d61d2cfaf4457c13724c720bf3055977666ffd45d18",
+    "reason": "",
+    "conditions": [
+      "매점 없음 -겸재정선미술관 옆에 화장실 1개 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 궁산 정상의 전망대에 서면 정선이 바라봤던 것과 똑같은 절경을 찾아볼 수는 없지만 한강과 주변의 풍광은 여전히 그림 속 모습처럼 아름답고 시원하다. 궁산_소악루 궁산 궁산2 궁산3 궁산4 페이지 $(function() { /**"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c321",
+    "name": "서울 경의선숲길공원",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=73&sc_trailSeCd=SE002",
+    "positive": true,
+    "pathSha256": "40a7e6052bf97e6b8e6471391e2b0c3997f0c4fe026caa9be1edc711b2eeb2a8",
+    "reason": "",
+    "conditions": [
+      "변 지하철역 이용 / 식수대와 매점 주변에 있음 -유모차와 휠체어 이용 가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 기다란 공원을 따라 다양한 나무가 심어져 있고 곳곳에 지하철역과 편의시설이 위치해 접근이 쉽고 편리하다. 최근 공원 주변으로 예술가들이 꾸민 개성 넘치는 공간과 카페, 공예품 가게 등이 자리를 잡으면서 요즘 서울에서 가장 뜨는 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c323",
+    "name": "서울 강동고덕산길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=71&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "ba846ccbce28ec9dd4972ba1b9b34243d1cb46e3b0ffeb36350ff9432b709c47",
+    "reason": "",
+    "conditions": [
+      " 시설 별도로 없음 -식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 고덕산 끝 암사봉에 오르면 눈앞에 한강이 펼쳐진다. 한강 상류의 수려한 풍치가 한눈에 들어오고 강 너머 남양주시의 풍경이 운치를 더한다. 이곳은 2006년 서울시 우수조망명소 10곳 중 한 곳 으로 선정된 적이 있다. 고덕산길 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c324",
+    "name": "서울 한양도성 순성길 낙산구간",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=69&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "3999b2b77286ad647593aa7f4b1258b62ffd031bd0ed3dfaaff7d1cc8b1f4f16",
+    "reason": "",
+    "conditions": [
+      "화장실은 낙산공원에 있음 -식수대와 매점 없음 / 유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) / 주차장 별도로 없음 테마산책길 풍경 팔각정에 오르니 남산 정상이 한눈에 들어오고, 남산의 소나무들이 초록색의 융단을 깔아 놓은 듯 사방으로 펼쳐져 있다. 병풍처럼 둘러쳐진 한남동 일대가 새롭게 보이고, 무성한 나무 뒤편으로 펼쳐진 한남대로와"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c325",
+    "name": "서울 천장산 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=68&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "7b4e963d04ada4d333b083810398e66fd77afac46862d9a32ec717f2ebbe2c1a",
+    "reason": "",
+    "conditions": [
+      "어르신건강마당 근처에 있음 -식수대와 매점 없음 -유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 정상에 거의 다다르면 2층 규모의 전망대가 나온다. 산꼭대기에 오르면 전망이 더 좋다. 높이가 142m에 불과한 야트막한 산이지만 주변에 더 높은 것들이 없어 거칠 게 없다. 고개를 숙이면 아파트와 밀집된 주택이 빼곡하지만 정면"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c326",
+    "name": "서울 인왕산 전망길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=67&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "b7f38d430683130790e9ac6f869f69f355bb30a25fe70f98d5400197cf5f2ebd",
+    "reason": "",
+    "conditions": [
+      "가능 -식수대나 매점 따로 없음 / 화장실 없음 -유모차·휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 인왕산의 묘미는 최고의 전망이다. 서울에서 내로라하는 여섯 개의 산 중 가장 역동적인 서울의 모습을 보여주는 곳이 인왕산이다. 옛 사람들은 인왕산에 오르면 ‘나라 살림이 어떻게 돌아가는지’ 손금 보듯 훤하다고 여겼다. 특히 기차"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c327",
+    "name": "서울 안산 초록숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=65&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "113401d187691d1becfea14544ca35c0231b9b9c076dd4abd0379b330fd0001b",
+    "reason": "",
+    "conditions": [
+      "구청 지나서 제1만남의광장과 무악정에 화장실 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 입구에 들어서자마자 금세 메타세쿼이아, 잣나무, 가문비나무 등 초록 잎이 무성한 나무들이 하늘을 덮은 숲길이 이어진다. 안산의 가장 큰 매력은 정상에서의 도심 전망이다. 360도 전망을 자랑하는 안산 봉수대는 서울시 최고의 조망"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c328",
+    "name": "서울 북악 하늘 나들길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=49&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "fc836da45f6581c5235ec8bca805a57823de5595cbbccdb7ed40bfa7e7389645",
+    "reason": "",
+    "conditions": [
+      "식수대와 매점 있음 -말바위 안내소에 화장실 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 능선을 걸으며 한 폭의 산수화 속으로 점점 더 깊숙이 들어간다. 좀 전에 봤던 시원하게 펼쳐진 서울의 잔상이 채 가시기도 전 팔각정에 닿는다. 팔각정에 오르면 한창 물오른 서울의 또 다른 미모에 저절로 눈길이 머문다. 서울이 이"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c329",
+    "name": "서울 북악산 하늘길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=48&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "2162c5decd73075424a01466f265dcd0bb0ba25594c846b18765d2f6fb4c08f7",
+    "reason": "",
+    "conditions": [
+      "점 따로 없음 / 숙정문과 호경암에 화장실 있음 -유모차·휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 북악산 하늘길의 압권은 여러 전망대에서 바라보는 환상적인 조망이다. 2산책로의 서마루 - 계곡마루 - 남마루 - 하늘전망대나 3산책로의 동마루 - 숲속다리 전망대에 서면 갑자기 숲이 열리고 서울의 너른 하늘이 펼쳐진다. 어느 전"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c235",
+    "name": "봉산 능선 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=119&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "d04cd53924750c42ae27e5bf6b76e15ff88e5f69eaa0973265fd162683498c59",
+    "reason": "",
+    "conditions": [
+      "간 제한 없음 -식수대나 매점 없음 -화장실 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 능선에 올라서면 기가 막힌 전경이 펼쳐진다. 울창한 숲 속 사이로 흙길이 길게 뻗어있고, 서울의 도심 풍경이 한눈에 들어온다. 백련산, 안산, 인왕산이 겹쳐진 풍경이 마치 한 폭의 산수화 같다. 봉산 능선 산책길1 숭실고 위 증"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c330",
+    "name": "서울 백련산 초록숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=47&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "5c80f9932dddcb572c0d7c587cba92274039e9f7f643963352e3ec703ab4677a",
+    "reason": "",
+    "conditions": [
+      "간 제한 없음 / 화장실, 식수대와 매점 없음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 능선에 오른 지 10여분 만에 북한산의 연봉들이 아름답고 당당한 자태를 드러낸다. 북한산, 안산, 인왕산, 상암동, 불광동, 연은평정신내 등 360도 방향으로 입이 떡 벌어질 만큼의 경치를 바라볼 수 있는 곳으로 서울시 우수 조"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c331",
+    "name": "서울 개화산 둘레길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=45&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "465f87b5f298fc6a5db62d70676cde5a1e5cd5bc31c1d6628c0e110eafe02490",
+    "reason": "",
+    "conditions": [
+      " 포함 화장실 모두 3곳 있음 -유모차·휠체어 이용 가능(개화산자락길 구간만) -반려견 출입 가능(목줄 사용) 테마산책길 풍경 방화대교, 행주산성이 보이고, 겸재 정선의 진경산수화에 등장하는 난지도, 목면산(남산) 그리고 멀리 북한산까지 한눈에 들어온다. 개화산전망대 바로 아래에 ‘약사사’가 있으니 하산하는 길에 둘러보길 추천한다 개화산 개화산2 개화산"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c332",
+    "name": "서울 수락벽운계곡길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=43&sc_trailSeCd=SE005",
+    "positive": true,
+    "pathSha256": "95c94232ec200599fd9a0882647ece26784e9fc85cebafff46eb9d465f930223",
+    "reason": "",
+    "conditions": [
+      "음 -식수대와 매점 별도로 없음 -유모차·휠체어는 시립수락양로원까지 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 푸른 바위와 안개가 자욱한 계곡’이란 뜻의 벽운동계곡은 ‘수락팔경(水洛八景)’이라는 시에 “백운동에 은류 폭이 그림 같이 내려 쏟고, 칠성대 기암괴석 금강산이 무색하다”라고 표현될 만큼 아름다운 물길을 이룬다. 수락벽운계곡_새광"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c333",
+    "name": "서울 관악산 시흥계곡 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=41&sc_trailSeCd=SE005",
+    "positive": true,
+    "pathSha256": "07c50edc8d5e86cddd2a59bf8a1c1455e39452370dd718b95ec7b583d402a42b",
+    "reason": "",
+    "conditions": [
+      " 매점 없음 - 배드민턴장 근처에 화장실 있음 - 유모차·휠체어 이용 불가능 - 반려견 출입 가능(목줄 사용) 테마산책길 풍경 우아한 적송 숲의 환대를 맞으며 입구에 들어서면 운동장 같은 평평한 대지 위에 나무들이 빽빽하게 들어차있고, 그 숲 사이로 계곡이 세로로 길게 뻗어있다. 계곡을 따라 쭉 올라가는 숲길은 짧지만 야산의 풍모가 느껴진다. 시흥계곡_"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c237",
+    "name": "용마산 팔각정길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=174&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "b86791b4e3c6110958c6d4eeb1ba93c74e8437bc92a092521d3158b59461abfa",
+    "reason": "",
+    "conditions": [
+      "에 화장실 있음 / 매점과 식수대 별도로 없음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 용마산 정산에서 내려다보이는 한강과 어우러진 도심의 경치는 탄성을 자아내기에 충분하다. 아래로 펼쳐지는 용마산의 푸름과 도심의 화려함이 그 위용과 기상을 뽐내고 있다. 역시 ‘팔각정길’의 모든 구간은 눈길 닿는 곳마다 서울시 우"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c223",
+    "name": "둘리쌍문근린공원 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=164&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "85e93abd6c2b5b0aa5f40f4405b14f2a320f013f6334babe85a778ef2e21d58b",
+    "reason": "",
+    "conditions": [
+      " 없음 / 화장실과 휴게시설 둘리뮤지엄에 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 숲 속 산책로를 거닐다 보면 약수터도 나오고, 숲 속 놀이터도 만나고, 뮤지엄이나 도서관도 들러볼 수가 있다. 한 걸음에 어린이부터 어른까지 즐길 수 있는 꺼리들이 모여있다 보니 ‘세대 공감 휴식처’로 그 역할을 톡톡히 하고 있"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c224",
+    "name": "대모산 숲이 좋은 길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=163&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "148799b025fab8ce518b1ae49e0d3144408d684db07166fa06dd53fc05da1598",
+    "reason": "",
+    "conditions": [
+      "간 제한 없음 -식수대나 매점 없음 -화장실 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 봄에는 참나무와 소나무 등 다양한 나무가 그늘을 드리운 울창한 숲 아래 눈높이에 맞춰 무성하게 핀 진달래와 키 작은 조팝나무, 야생화들이 눈에 즐거움을 주고 여름에는 햇빛을 피해 시원한 그늘 밑을 걸을 수 있다. 대모산 숲이 좋"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c228",
+    "name": "청와대 앞길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=158&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "f1093b9fa6e2675cffb19fcfd980f2c0641b9db24e0bf6b5b16959874f4079c4",
+    "reason": "",
+    "conditions": [
+      " / 주차장 별도로 없음 / 화장실 주민센터에 있음 유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 앞을 가로막는 벽처럼 느껴졌던 검문소와 바리게이트는 사라지고 그 자리에 친절히 길을 알려주는 교통안내초소가 생겼다. 청와대 앞길이 활짝 열리면서 가장 좋은 점은 북악산이 가장 아름답게 보이는 청와대 정문 앞에서 마음껏 사진을 찍"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c232",
+    "name": "인재개발원 잣나무숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=155&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "87fe17c761316fca9abb07904ecabfd9d86b237735d910a8859c8bda13480430",
+    "reason": "",
+    "conditions": [
+      " 유료 주차장 이용 -인재개발원에 화장실 있음 / 유모차와 휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 인재개발원의 뒷산에 올라가면 우거진 잣나무 숲에서 나오는 솔 향이 코를 찌른다. 우면산의 다른 등산로에 비해 사람들이 많이 드나들지 않는 곳이라 더 한적하고 평온하다. 잣나무 숲길 사이로 난 흙길을 따라 올라가다 보면 쉼터와 육"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c225",
+    "name": "우장산 숲속 탐방로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=136&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "7ebadb1156071ea59da800f26e107a4550d9a5c707797926e5106ccff419419d",
+    "reason": "",
+    "conditions": [
+      "강서구민회관과 다목적운동장 근처에 있음 -유모차·휠체어 순환로 구간 이용 가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 ‘우장산 숲속 탐방로’의 자랑은 늠름하게 쭉쭉 뻗은 나무들이다. 봄에는 ‘신록을 감상하며 걷기 좋은 길’로, 가을에는 ‘단풍이 아름다운 길’로 서울시에서 선정한 바 있다. 특히 가을에 멀리 단풍놀이 가기"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c236",
+    "name": "오패산 나들길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=134&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "35c4a9493c6a875037cb275ba40c8d91af71bd790c47b521f8c0cbbe368cad04",
+    "reason": "",
+    "conditions": [
+      " 있음 -유모차·휠체어는 유아숲체험장과 강북구민운동장 일부 구간에서 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 공원을 뒤덮은 계수나무, 자작나무, 잣나무 등의 울창한 숲은 푸르름을 더욱 드러내고, 뺨과 코를 자극하는 바람과 향기에 어느덧 자연의 품에 안긴 느낌이 든다. 꽃이 피는 계절에는 아기자기한 야생화들이 눈길을 사로잡고, 곳곳에 조"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c133",
+    "name": "서울 안산자락길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=132&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "544029d969374d6634fb228937b974e3ec5e504472c6607a82170047023b6c0e",
+    "reason": "",
+    "conditions": [
+      "시간 제한 없음 -식수대나 매점 없음 -화장실 없음 -유모차·휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 안산은 들어서는 순간 깊은 산속에 온 느낌이 든다. 숲길 초입부터 빽빽이 들어찬 소나무, 참나무, 잣나무, 자작나무, 메타세쿼이아 숲이 하늘을 가릴 만큼 울창하다. 나무로 에워싸인 초록빛 터널을 통과하다 보면 유럽의 어느 숲에 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c234",
+    "name": "일자산 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=115&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "0dced7500ac60f8ef3bb6dd1036e9d63d7611e9aa39df9bc7109605bdbe552d9",
+    "reason": "",
+    "conditions": [
+      ", 매점은 캠핑장 / 식수대는 허브천문공원에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -별도 주차장 시설 없음 테마산책길 풍경 울창하게 뻗은 숲 사이로 내비치는 파란 하늘과 쏟아지는 햇빛이 눈부시고, 굴참나무, 누리장나무, 신나무 등이 울창한 숲에서 불어오는 바람이 머릿속을 맑게 정화시켜주는 느낌이 상쾌하다 일자산숲길 허브천문공"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c233",
+    "name": "청룡산 생태숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=85&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "5bbd9f9ddf3311913d0666134ff8c5e6e5e1d4dff81d340bf54c7fc40b039151",
+    "reason": "",
+    "conditions": [
+      "설 별도로 없음 / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용 테마산책길 풍경 청룡산의 생태연못은 600m2 면적으로 산에서 내려오는 시냇물이 자연스럽게 흘러갈 수 있도록 조성되어 있는데 올챙이, 물방개, 소금쟁이 등이 살고 있어 동네 아이들의 자연생태 체험학습의 장이자 놀이터로 인기를 끌고 있다. 연못 주"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c226",
+    "name": "한우물길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=24&sc_trailSeCd=SE003",
+    "positive": true,
+    "pathSha256": "5d8ec749cf0f43e902cadec15c575e82d50b30461c6aa3279b859929af5892b2",
+    "reason": "",
+    "conditions": [
+      "설 별도로 없음 / 식수대와 매점 별도로 없음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 칼바위 전망대에서 경치를 즐기고 조금만 더 올라가면 한우물이 나온다. 산 정상부에 화강암으로 쌓은 우물이 있다는 것 자체가 놀라울 따름이다. 호암산은 서울의 서남부를 조망할 수 있는 산으로 유명한데 한우물 전망대에 서면 더 멀리"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c227",
+    "name": "청계산 원터골 산책길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200011&sc_trailSn=44&sc_trailSeCd=SE005",
+    "positive": true,
+    "pathSha256": "74614b9a6064b2ff99ebb7406a7ac257e1fdad93346a75ac20e3ba9437c0355e",
+    "reason": "",
+    "conditions": [
+      "실은 원터쉼터에 있음 -식수대와 매점 별도로 없음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 오솔길 같은 산길을 타박타박 걷다 보면 하늘이 열리듯 진달래능선 전망대가 나온다. 그렇게 많이 올라오지 않았는데도 아담하면서도 멋진 풍경을 내려다볼 수 있다. 바로 옆에는 벤치와 평상이 있다. 산바람 맞으며 쉬고 있으면 예쁜 새"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c31",
+    "name": "서울 서울숲 공원길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=152",
+    "positive": true,
+    "pathSha256": "38075b5707850c4b45847e9ef24a1e54c25915789f78055522afbedb3dd7a712",
+    "reason": "",
+    "conditions": [
+      "유료주차장 이용 -화장실, 휴게시설 별도로 있음 / 유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 서울숲에는 벚나무길, 메타세쿼이아길, 노란 은행나무길, 붉게 물든 대왕참나무 단풍길, 갈대가 춤을 추는 바람의 언덕 등 크고 작은 숲들이 한데 모여있어서 계절별로 가장 예쁜 길을 찾아다니는 별미가 있다. 그리고 넓은 잔디밭과 어"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c159",
+    "name": "서울 서리풀공원 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=125",
+    "positive": true,
+    "pathSha256": "b82724966341920a1b5582f1be8fc762f8d454ebcdc257a7798ab84b0aa8d6d8",
+    "reason": "",
+    "conditions": [
+      "대나 매점 없음 -몽마르뜨공원에 화장실 1개 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 서리풀공원은 사람 손길이 오랫동안 닿지 않은 숲처럼 자연 생태가 비교적 잘 보존되어 있다. 원래 서리풀공원 사이로 반포로(路)가 지나가면서 산책로가 단절되어 있었으나 2009년에 누에다리가 생기면서 하나의 선으로 이어지게 되었다"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c172",
+    "name": "서울 선유도길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200008&sc_trailSn=99",
+    "positive": true,
+    "pathSha256": "fe531cc02ef3ac7f0b93774b8cda76ba9e0c64b267c84747457152799089567c",
+    "reason": "",
+    "conditions": [
+      "없음(장애인 주차장만 있음) -식수대와 매점 있음 -유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 2002년 정수장 구조물을 재활용한 공원으로 변신하면서 예전의 명성을 되찾고 있다. 시간의 정원은 118종의 수목과 풀·꽃을 여러 개의 작은 정원에 나눠 심어 사계절을 느낄 수 있도록 꾸며놓았으며, 콘크리트 상판을 걷어내고 기둥"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c33",
+    "name": "서울 남산공원 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=140",
+    "positive": true,
+    "pathSha256": "59d7d07d1a7f837e0e919767a85fe1ce7e2fa94a08de26b2c06307924b0ac595",
+    "reason": "",
+    "conditions": [
+      "원 주차장, 한남자락 주차장, 국립극장 주차장 이용 -유모차·휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 북측순환로는 사계절 많은 사람들이 찾는 서울 최고의 전망 산책길이기도 하다. 오른쪽으로는 성곽과 깊은 숲이, 왼쪽으로는 점점 높아만 가는 서울의 마천루와 중심가가 한눈에 잡힌다. 낮에도 걷기에 좋지만 조명 시설이 잘 되어있어서 "
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c81",
+    "name": "서울 북서울꿈의숲 나들길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=122",
+    "positive": true,
+    "pathSha256": "a2c092192060b016b2feec4be33a8dacb9992dea3dc43e004a8ebe4cd42a9443",
+    "reason": "",
+    "conditions": [
+      "전망대에 있음 -식수대와 매점은 방문자센터에 있음 -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) -북서울꿈의숲 주차장 이용 테마산책길 풍경 산책로를 따라 걷다 보면 공원의 상징인 꿈의숲아트센터와 전망대가 나온다. 특히 전망대(139m)에 올라서면 북한산, 도봉산, 수락산의 절경이 파노라마처럼 펼쳐지고 남쪽으로는 한강을 볼 수 있다.사람들은"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c51",
+    "name": "서울 여의도 한강 공원길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200010&sc_trailSn=30",
+    "positive": true,
+    "pathSha256": "6107f59223d0d0c9ab05fe1f0aa5fee00fc121a8af404dea3d1caa2b4a346a04",
+    "reason": "",
+    "conditions": [
+      " 주차장 별도로 없음 -식수대와 매점 따로 있음 / 유모차와 휠체어 이용 가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 여의도길 탐방로는 밤섬, 여의도 샛강 등 주변 경치가 비교적 자연그대로 보존되어 있고, 물놀이장이나 괴물 조형물 등 아이들을 위한 볼거리와 즐길 거리가 풍부해서 특히 가족 나들이를 하기에 더할 나위 없는 곳이다. 여의도 한강 공"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c83",
+    "name": "서울 응봉산 산책로",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200009&sc_trailSn=66",
+    "positive": true,
+    "pathSha256": "1893360bf233a0a8395360ac03075aed5161de266bcb73c66dd44da736abe641",
+    "reason": "",
+    "conditions": [
+      " 따로 없음 -인공암벽등반공원 주차장 이용(8대) -유모차·휠체어 이용 불가능 -반려견 출입 가능(목줄 사용) 테마산책길 풍경 정상에서 바라보는 밤풍경은 서울에서 가장 아름답기로 유명하다. 유유히 흐르는 한강과 한강을 끼고 시원하게 뻗은 동부간선도로가 마치 용이 지나간 자취처럼 번쩍거린다. 강 너머 즐비한 강남의 고층 빌딩과 손에 닿을 듯 마주하고 있는"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c256",
+    "name": "서울 일자산 치유의 숲길",
+    "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=156&sc_trailSeCd=SE001",
+    "positive": true,
+    "pathSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "reason": "",
+    "conditions": [
+      "주차장 별도로 없음 / 화장실 잔디광장에 있음 -유모차와 휠체어 이용 불가능 / 반려견 출입 가능(목줄 사용) 테마산책길 풍경 산 속을 걷다 보면 체조나 스트레칭을 하면서 몸의 활력을 되찾고, 햇살과 자연 그대로의 바람을 느끼며 지친 몸과 마음을 치유 할수 있는 최적의 숲길이다 일자산 치유의숲길2 일자산 치유의숲길1 페이지 $(function() { /"
+    ],
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c388",
+    "name": "서호공원 보행로 산책 코스",
+    "source": "https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp",
+    "positive": false,
+    "pathSha256": "f52b89c38b9b2bc4f85d778b3a59de0a191a9af4a16254b577145294b751d4b1",
+    "reason": "'NoneType' object is not subscriptable",
+    "conditions": null,
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c401",
+    "name": "은파호수공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=50bdc414-202a-4fcc-b57e-ed5b864e1224",
+    "positive": true,
+    "pathSha256": "122670870ea4becc1a02ab9802bb9a62ab7657f40ec12bbbec251942e8cd802e",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c404",
+    "name": "동탄호수공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9601cbf8-f259-4ad4-aea1-337c3c634fad",
+    "positive": true,
+    "pathSha256": "eb998005ffa21e62c0339fbd16e1cc89bca85d1424d961294c3b60a3a66b82dc",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c405",
+    "name": "경천섬 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=45ebdb4d-14a0-4056-9cc7-8efd4c7d8ffb",
+    "positive": true,
+    "pathSha256": "af01afea6c25a158c9c7837dff274d49fd1c59002712d00363271bbc983e934a",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c406",
+    "name": "완산공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=abb00f1c-8e40-48f0-ad34-14aa83b6f595",
+    "positive": true,
+    "pathSha256": "c9e3285de282af39ea2679d196c882123be6ea1e5da756c9f46b81ca98a5d1e2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c407",
+    "name": "울산대공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=728b063a-0992-4ac2-9d14-3d8ce54ac0ee",
+    "positive": false,
+    "pathSha256": "8aa7ecab584d438a2848ddcef8ae2fe693d08d54875129e857ae962cca498630",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 산책만가능, 시설이용은 동반불가 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Current permission explicitly allows walking and excludes facilities; retained OSM outdoor path excludes restricted facility polygons (20261003 completion-review).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c408",
+    "name": "올림픽공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=7ba5e7f2-5b78-43a1-8806-d8a6c0e7af2c",
+    "positive": false,
+    "pathSha256": "859dd0ec47d9b78db717392050950bd66430feb2164924f8e744441eaef11ca6",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 실내 시설은 동반이 제한될 수 있음 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Current permission excludes indoor facilities; retained OSM outdoor path excludes facility polygons (20261003 completion-review).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c409",
+    "name": "중외공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=cc6d4920-f55a-4e9c-a361-26d4c6634db9",
+    "positive": false,
+    "pathSha256": "2c47e7867d0255c0a35a75dd007bff8b6a766efd4c45970206c12e3a75eccc3b",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 실내 시설은 동반 불가 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Current permission excludes indoor facilities; retained OSM outdoor path excludes facility polygons (20261003 completion-review).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c411",
+    "name": "제주 광치기해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0fca6358-2b14-41d3-9fb0-f5d79a94f528",
+    "positive": true,
+    "pathSha256": "c32809732bd2530e8a36fb5b7f5e3dac17187c1b5f939d5418e9018dafe9fc2d",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c412",
+    "name": "삼척 이사부길 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=52561673-e059-499d-930d-a5698f31a7d0",
+    "positive": true,
+    "pathSha256": "b4aba53c86c8d1290628d331cb088bff6c9ae2c29539229e3d1bc7daee75f389",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c413",
+    "name": "동해 대진해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=e007ba65-45f9-499a-abe4-f338f2fe6205",
+    "positive": false,
+    "pathSha256": "976ec074d045ed07065f859a78447a252984291c4fd2bafaf1db23bd5822e862",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반시 필요사항": "목줄 착용,기타",
+      "동반 관련 상세정보": "- 해수용장 개장시에는 입장불가 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수",
+      "구비시설": "주차장(50대)"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c414",
+    "name": "제주 사계해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=a7c33d48-a351-4ffe-aa68-1d020c523b55",
+    "positive": false,
+    "pathSha256": "9a538082ed4974ea75793c89a5d8458ae2d9fea439d802a93b21f46cdc7c2201",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 해수욕장 산책은 가능하지만, 바다 입수는 불가 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Current permission explicitly allows beach walking and prohibits entering the sea; original selected GPX follows beach walking section (20261003 batch route-evidence).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c415",
+    "name": "동해 한섬해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=c3f3c06d-3357-4b3e-92b0-37f9c7de1e80",
+    "positive": true,
+    "pathSha256": "a2de8bdfaf1a9d6c8c1ad483c280aef38b6d579ffa52288d185264aa918ee2fe",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c416",
+    "name": "강릉 사근진해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=18d4f95f-90b5-414c-a531-dce16453c5dc",
+    "positive": false,
+    "pathSha256": "80ee5c261f689b533b929f084d60c269f302f012bcbe7c481435c1015ec38f2d",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "입마개 착용,목줄 착용,기타",
+      "동반 관련 상세정보": "- 해수욕장 개장 기간에는 동반이 제한될 수 있음 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c417",
+    "name": "강릉 순포해변 GPX 선택 구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=a872b243-d11e-42d2-a51e-81b21abf68c5",
+    "positive": false,
+    "pathSha256": "04efb8a6c6f3e14ac2265647f2e767dd3b407392eff412a10096c25b103f35de",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "입마개 착용,목줄 착용,기타",
+      "동반 관련 상세정보": "- 해수욕장 개장 기간에는 동반이 제한될 수 있음 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": false
+  },
+  {
+    "id": "c418",
+    "name": "경주시 파도소리길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2d992649-f194-47e5-933d-331c616dde45",
+    "positive": true,
+    "pathSha256": "b9f43aa9c96b7851903ab18e6d952791639b8f39b21afacca7df4f6a76af0b70",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c419",
+    "name": "종로구 서울한양도성 6코스 인왕산구간",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=024b7312-2446-4f35-aed2-23021fd0972f",
+    "positive": true,
+    "pathSha256": "1bc24d83fc62bbf42da9d52ed60ef6900c6d483768c0c0e4777ff1b0104c7ce2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c420",
+    "name": "김포시 문수산 등산로 1코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=7f06d98a-ac5c-41bd-b45a-03df7e872c43",
+    "positive": true,
+    "pathSha256": "a8d013eb960b125af9911713431bb77a7f8f469dfbef67aaf975aba88c7fbff1",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c421",
+    "name": "김포시 문수산 등산로 2코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=7f06d98a-ac5c-41bd-b45a-03df7e872c43",
+    "positive": true,
+    "pathSha256": "d03223416aec119c0823a57b56a5a2331e26c03f9e19365033180771e4995ae1",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c422",
+    "name": "김포시 문수산 등산로 3코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=7f06d98a-ac5c-41bd-b45a-03df7e872c43",
+    "positive": true,
+    "pathSha256": "462cf801bb181a3b365eeaaa6a2915e1f86ec4973cc28d47aca073fd89997b1c",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c423",
+    "name": "밀양시 밀양아리랑길 추화산성길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=02e09f17-5b3b-4715-96bf-905f521fede6",
+    "positive": true,
+    "pathSha256": "379d1fb44b9695502fbf1ace3d200c1ab76d1c6590bba2019f6f791f65038596",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c424",
+    "name": "삼척시 이사부길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=52561673-e059-499d-930d-a5698f31a7d0",
+    "positive": true,
+    "pathSha256": "3c09156cdc140d417a82dc813383b599d8280aa04adcc3b7b9567732b7ab6672",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c425",
+    "name": "강릉시 바우길 17코스 안반데기 운유길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=525bc8d9-b835-47a6-9c77-d5a50c51fa40",
+    "positive": true,
+    "pathSha256": "67d83dfdd54c64f3f0bdcb23a014e9bbfa95e8ee11fff341b438c4133e64fd3c",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c426",
+    "name": "여주시 여강길 7코스 부처울습지길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c427",
+    "name": "여주시 여강길 8코스 파사성길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "aaaa38e8258ffc008f29c3b74bf8ad33444c9d5f194629420ecb73615e1e2a1d",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c428",
+    "name": "여주시 여강길 10코스 천년도자길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c429",
+    "name": "종로구 골목길탐방코스 인왕산자락예술가길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=024b7312-2446-4f35-aed2-23021fd0972f",
+    "positive": true,
+    "pathSha256": "3361739b75af8630619861bdb16bb7676affc04378f2614d3cef2619300d02b8",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c431",
+    "name": "여주시 여강길 4코스 5일장터길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=ee0c4df9-52cf-4bce-9ba5-e305a1cedf71",
+    "positive": true,
+    "pathSha256": "fc1286ad59b806a9b78b03a871a9f405590c6372eb8bd8658c62443c893e7568",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 길이 협소한 구간도 있으므로 다른 보행자에 피해가 되지 않도록 보호자의 주의 필요 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c432",
+    "name": "중구 인천둘레길 13코스 월미산",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d1a77b06-3849-416b-bb5d-864f3d064717",
+    "positive": true,
+    "pathSha256": "0c77d6b2cd0e8c660610c5f986584a86ee93f11bacc8f6c828c3ae87115ea30d",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c430",
+    "name": "제주시 해안누리길 닭머르해안길 (공식 GPX 제공 구간)",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=b8c86251-cc42-48e1-83e7-e7bf8a4b4bcd",
+    "positive": true,
+    "pathSha256": "a6729dd57661e8b7fe2077617ec92f9ab1cba3bcbedcd00219f52937a8eaefb2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c433",
+    "name": "경주시 보문호반길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=64129126-fd44-41a8-8dae-bdadae1f1cb4",
+    "positive": false,
+    "pathSha256": "2d688f595abebbc19d73a861730d256956a562c5bc5714703471e5cce3b8c321",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "입마개 착용,목줄 착용",
+      "동반 관련 상세정보": "- 대형견, 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Named pet walking route expressly covered by KTO article 9f723f27-d2ff-4e1e-8fc6-3b19d480aaa7; retained original GPX matches lake path (20261004 route-evidence).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "c434",
+    "name": "포천시 한탄강 주상절리길 1코스 구라이길",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=fbbb24e9-5d4b-497e-88cf-9fd5efb4f20a",
+    "positive": false,
+    "pathSha256": "246ef28182ebca12c83789b0b38c6a4849c02a007e54d07958f2c3aecce87bec",
+    "reason": "Full-route permission requires scope review",
+    "conditions": {
+      "동반구분": "일부구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 일부 시설(출렁다리 등)의 경우 안전상의 이유로 동반 불가 - 대형견의 경우, 도로가 좁아 특히 주의해 목줄 착용 요망 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": "Named pet walking route covered by KTO article 6129af9e-2559-4870-a1cc-4f4bb28fc995; original course 1 GPX avoids restricted suspension bridges (20261004 route-evidence).",
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "osm_665502044",
+    "name": "동구 대구 불로동 고분군 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=4cdebd66-c483-4b95-898b-0bef67220bfc",
+    "positive": true,
+    "pathSha256": "d1d03a431f37fc7a988b0c0cfeb8156a9b408be19ad9e54643459a4e3673f0ea",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "osm_1196816794",
+    "name": "경주시 빛누리정원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=78ff9cee-9bfc-4c23-96bb-b4f4c1f537a9",
+    "positive": true,
+    "pathSha256": "eba5c031e8f086c49606aa4ab557aab39f5b19a93a332caad250b857371a74f2",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "osm_1116526039",
+    "name": "순천시 순천 오천그린광장 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=54658163-ada4-4a2a-af02-deeb28149525",
+    "positive": true,
+    "pathSha256": "8112a4fb9ff710e2a6a633b86a10088c368df939a5cc2dcac0bd6b785a5290b5",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 맨발걷기길 및 반려동물 통제구간은 반려견을 안고 가거나 포장도로 이용 - 물통 휴대해 반려견 소변 위치에 물 뿌리기 필수 - 배변봉투 지참 및 배변처리 필수",
+      "사고 대비사항": "동반 반려견에 의해 발생하는 모든 사고ㆍ피해에 대해서는 보호자의 책임임"
+    },
+    "scopeReview": null,
+    "hasPhoto": false,
+    "publish": false
+  },
+  {
+    "id": "osm_1217000590",
+    "name": "산청군 산청 동의보감촌 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=8b2b5bff-3810-4d69-9a3a-0815b4271d64",
+    "positive": true,
+    "pathSha256": "6d432edb4a3a7e9f82833d9f638b2a92b713eca711c640023485955d6f7f7f8d",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 실내 시설 동반 불가 - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "osm_832185825",
+    "name": "양평군 양평 두물머리 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=925ba0a6-1d1b-42cf-a592-daaa01826e3d",
+    "positive": true,
+    "pathSha256": "5d8ad8ba8c8e1b67a0a0680926bb438239df949ef86c043e4ada86bfd7ff6a56",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  },
+  {
+    "id": "osm_1036807544",
+    "name": "합천군 신소양체육공원 보행로 산책 코스",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=2ef9aacc-2520-4bad-97c3-1ee9a5a7e198",
+    "positive": true,
+    "pathSha256": "582becd8cf8e52f499fd5b41d116ec5282fe3ee3595f12ebee73264360dccc80",
+    "reason": "",
+    "conditions": {
+      "동반구분": "전구역 동반가능",
+      "동반가능동물": "전 견종 동반 가능",
+      "동반시 필요사항": "목줄 착용",
+      "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+    },
+    "scopeReview": null,
+    "hasPhoto": true,
+    "publish": true
+  }
+]

@@ -7,10 +7,12 @@ on:
     paths:
       - 'scripts/generate-seo.mjs'
       - 'course-info.js'
+      - 'course-pet-access.js'
       - 'course-addresses.js'
       - 'facility-info.js'
       - 'bin-info.js'
       - 'database_sql/seed_expansion_*.sql'
+      - 'database_sql/seed_expansion_*.sql.gz'
       - 'course-routes.js'
       - 'course-photos.js'
       - 'scripts/import-course-photos.mjs'

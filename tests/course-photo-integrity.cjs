@@ -22,7 +22,7 @@ for(const record of records){
  for(const [id,name] of Object.entries(record.courses)){
   const markup=photos.figure({id,name});assert(markup.includes(`width="${record.width}" height="${record.height}"`));
   assert(markup.includes(record.licenseUrl));assert(markup.includes(record.changes));assert.equal(photos.get({id,name:'다른 코스'}),null);assert.equal(photos.figure({id:'unknown',name}), '');
-  const published=fs.readFileSync(path.join(root,'courses',id,'index.html'),'utf8');assert(published.includes(markup));count++;
+  const page=path.join(root,'courses',id,'index.html');if(fs.existsSync(page)){const published=fs.readFileSync(page,'utf8');assert(published.includes(markup));}count++;
  }
 }
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
