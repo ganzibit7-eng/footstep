@@ -5603,5 +5603,197 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "c345": "여주 여강길 9코스 너른들길"
+    },
+    "place": "너른들길 출발 구간 · 당남리섬 보행로",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2743841&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/55/3540455_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c345.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "2c73f2fc92f6ceb1e3cf91809f310966888434e8e119211ba2d1b0cc0cd834e2",
+    "assetSha256": "feaa37b1e157e86e07aa337048461168c260a51035054eafb970be6ca2c6864a",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001205": "인천 서구 인천둘레길 3코스 원적산"
+    },
+    "place": "원적산 둘레길 주변 · 원적산체육공원 전경 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=2767556&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/16/3523816_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001205.webp",
+    "width": 940,
+    "height": 703,
+    "sourceSha256": "05d97f68427472d9b4e15768214933b4c0be0d99eda561a16df59ecce1b20ff9",
+    "assetSha256": "0ce1da4e3e19b0b72f69eca2291deb56a00830ccce7dc0741b962bb225f6b904",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001396": "전남 완도군 청산도 슬로길 10코스 노을길"
+    },
+    "place": "노을길 경유 구간 · 지리해수욕장 해변과 소나무 숲",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=129544&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/01/3591601_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001396.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "7e227dad84d1d588238142193644f7c0a89f1c2abaae5c492c479b0b9846911b",
+    "assetSha256": "bbc04a3d4d95612d8344922dd6ab3f3f774d40dae0aa674f55e415030449c43d",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001094": "경기 오산시 오산 도보여행코스 오산천길"
+    },
+    "place": "오산천길 주변 · 오산천 생태하천 보행로 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1835774&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/64/3498364_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001094.webp",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "898d0723ba95970ba775735ff31d3f9f37bec1fc2498bc563b50f6637874c94b",
+    "assetSha256": "b93f6175100c5da814fb3e700991fd32ec4179f6215827f1675dfc38aa531ddc",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001456": "대구 동구 팔공산 왕건길 5코스 고진감래길"
+    },
+    "place": "고진감래길 경유지 · 평광지 저수지 경관",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1008588&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/69/3581969_image2_1.JPG",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001456.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "fa636bb54af8347aaf99bfacd58a0e77febfde82187412af2225f93eb3f7340b",
+    "assetSha256": "9404056d56372ebf606946dff4a545353ccef76021632c5ff2bb09b52272be83",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001364": "전북 전주시 천년전주 마실길 노송천 가는길"
+    },
+    "place": "노송천 가는길 출발 구간 · 다가공원 숲길",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1592428&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/43/3520343_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001364.webp",
+    "width": 940,
+    "height": 626,
+    "sourceSha256": "8a9ec7349a246400a0088b1cc2f9dc5b3a01d990a3f6c34dc9b5e8550ab20ddf",
+    "assetSha256": "7943a4e2c61a602e5a3b18e90239ad1de56e3ab16e7e4ecd87261be345936504",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000001231": "경기 양주시 장흥 숲길 2코스"
+    },
+    "place": "장흥 숲길 2코스 경유지 · 장흥자생수목원 주변 보행로",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=631568&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/51/1592051_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000001231.webp",
+    "width": 699,
+    "height": 465,
+    "sourceSha256": "ae159c470a0d47377bb753b91e380b1b6563d198dcf22b3f5e91cac5a4403c83",
+    "assetSha256": "455d07121ca04291a8f65b94951d9e1fe44fab29ddb926ae25f9c41cbb95f546",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000003848": "충남 예산군 느린꼬부랑길 3코스 사랑길"
+    },
+    "place": "사랑길 경유지 · 대흥향교 진입 구간",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1626788&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/09/3504009_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000003848.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "e1b831744bc4bf4db628d6e49eff89fccc8904f45d32556895c7548de9e644dc",
+    "assetSha256": "df53143f42692968c286a016b8fb60bf390ddc6cd1280cc6f4ec0f62ad2f389c",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c333": "서울 관악산 시흥계곡 숲길"
+    },
+    "place": "시흥계곡 숲길 주변 · 호암산성에서 바라본 산 경관 참고사진",
+    "source": "https://www.nculture.org/cul/localCultureDetail.do?targetId=1116022&contentType=G",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/13/3463513_image2_1.jpg",
+    "author": "한국관광공사",
+    "date": "촬영일 미표기",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c333.webp",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "2a053a1ea46505b1c7825023a1d3cc127a456f246572018ee77f7a2df3ca39c1",
+    "assetSha256": "a3cc193c4f77496747d2de312947e58b30127225723c98b63cda4d9753fa06d4",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
+  },
+  {
+    "courses": {
+      "c428": "여주시 여강길 10코스 천년도자길"
+    },
+    "place": "천년도자길 종점 주변 · 신륵사 입구 참고사진",
+    "author": "경기도",
+    "date": "촬영 시기 미상",
+    "dateNote": "공공누리 제공 사진 · 촬영일 미상",
+    "source": "https://www.kogl.or.kr/recommend/recommendDivView.do?division=img&recommendIdx=37113",
+    "original": "https://www.kogl.or.kr/upload_recommend/thumb_V/%ED%82%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%91%EB%AC%BC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91/%ED%8F%AC%ED%86%A0%EA%B0%A4%EB%9F%AC%EB%A6%AC/%EA%B2%BD%EA%B8%B0%EA%B4%80%EA%B4%91%ED%8F%AC%ED%84%B8_2292_%5B%EC%97%AC%EC%A3%BC%5D%20%EC%8B%A0%EB%A5%B5%EC%82%AC.JPG",
+    "title": "경기관광포털_2292_[여주] 신륵사.JPG",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "src": "/assets/course-photos/c428.webp",
+    "width": 760,
+    "height": 507,
+    "sourceSha256": "4487698ab74e1c94c669379078941ad33d8f2302f878cb72cbe7e78e2233c955",
+    "assetSha256": "c2cc03f9933f7b9101dbf24284fef0355f013bedc7ba7b994ad219696b2fa653",
+    "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+    "checked": "2026-10-10"
   }
 ]
