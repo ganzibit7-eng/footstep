@@ -1,0 +1,124 @@
+{
+  "pageid": 7426425,
+  "ns": 6,
+  "title": "File:Korea-Samcheok-Rural scenery in spring-01.jpg",
+  "index": 4,
+  "imagerepository": "local",
+  "imageinfo": [
+    {
+      "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Korea-Samcheok-Rural_scenery_in_spring-01.jpg/1280px-Korea-Samcheok-Rural_scenery_in_spring-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumbwidth": 1000,
+      "thumbheight": 750,
+      "responsiveUrls": {
+        "2": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Korea-Samcheok-Rural_scenery_in_spring-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+      },
+      "thumbattribs": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Korea-Samcheok-Rural_scenery_in_spring-01.jpg/1280px-Korea-Samcheok-Rural_scenery_in_spring-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "decoding": "async",
+        "loading": "lazy",
+        "width": 1000,
+        "height": 750,
+        "srcset": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Korea-Samcheok-Rural_scenery_in_spring-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+      },
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Korea-Samcheok-Rural_scenery_in_spring-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "descriptionurl": "https://commons.wikimedia.org/wiki/File:Korea-Samcheok-Rural_scenery_in_spring-01.jpg",
+      "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=7426425",
+      "extmetadata": {
+        "DateTime": {
+          "value": "2009-07-30 18:10:09",
+          "source": "mediawiki-metadata",
+          "hidden": ""
+        },
+        "ObjectName": {
+          "value": "Korea-Samcheok-Rural scenery in spring-01",
+          "source": "mediawiki-metadata"
+        },
+        "CommonsMetadataExtension": {
+          "value": 1.2,
+          "source": "extension",
+          "hidden": ""
+        },
+        "Categories": {
+          "value": "Trees in South Korea|Taken with Sanyo Xacti VPC-CA8|Samcheok|Paddy fields in South Korea|Flickr images reviewed by File Upload Bot (Magnus Manske)|Spring in South Korea|March 2009 in South Korea|Flickr images missing SDC creator|Flickr images missing SDC source of file|Photographs taken on 2009-03-14|Files with coordinates missing SDC location of creation",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "Assessments": {
+          "value": "",
+          "source": "commons-categories",
+          "hidden": ""
+        },
+        "GPSLatitude": {
+          "value": "37.438820",
+          "source": "commons-desc-page"
+        },
+        "GPSLongitude": {
+          "value": "129.174660",
+          "source": "commons-desc-page"
+        },
+        "GPSMapDatum": {
+          "value": "WGS-84",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "ImageDescription": {
+          "value": "Samcheok",
+          "source": "commons-desc-page"
+        },
+        "DateTimeOriginal": {
+          "value": "2009-03-14 11:52",
+          "source": "commons-desc-page"
+        },
+        "Credit": {
+          "value": "<p><a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/71711641@N00/3363855639/\">SANY0032</a>\n</p>\n<ul><li>Uploaded by <a href=\"//commons.wikimedia.org/wiki/User:Caspian_blue\" title=\"User:Caspian blue\">Caspian blue</a></li></ul>",
+          "source": "commons-desc-page"
+        },
+        "Artist": {
+          "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/71711641@N00\">pcamp</a>",
+          "source": "commons-desc-page"
+        },
+        "LicenseShortName": {
+          "value": "CC BY 2.0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Attribution 2.0",
+          "source": "commons-desc-page"
+        },
+        "AttributionRequired": {
+          "value": "true",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "https://creativecommons.org/licenses/by/2.0",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "Restrictions": {
+          "value": "",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "License": {
+          "value": "cc-by-2.0",
+          "source": "commons-templates",
+          "hidden": ""
+        }
+      }
+    }
+  ],
+  "coordinates": [
+    {
+      "lat": 37.43882,
+      "lon": 129.17466,
+      "primary": "",
+      "globe": "earth"
+    }
+  ]
+}
