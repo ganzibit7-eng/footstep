@@ -20,6 +20,19 @@ def check(url):
             snippets = [body[max(0,m.start()-45):m.end()+150] for m in re.finditer('반려견|반려동물|애완',body)]
             permitted = bool(re.search(r'반려견\s*출입\s*가능', body))
             return {'url':url,'provider':'서울시','positive':permitted,'conditions':snippets,'sourceSha256':hashlib.sha256(data).hexdigest()}
+        if url == 'https://www.suwon.go.kr/sw-www/sw-suwonpark/sw-suwonpark-05/sw-suwonpark-05-03/sw-suwonpark-05-03-01.jsp':
+            data = fetch(url)
+            body = clean(data.decode())
+            names = ['광교호수공원', '서호공원', '만석공원']
+            permitted = '반려견과 산책하기 좋은' in body and all(name in body for name in names)
+            return {'url':url,'provider':'수원시 공원관리과','positive':permitted,'verifiedIds':['c387','c388','c402'],'conditions':['야외 산책로', '목줄 착용', '배설물 수거', '실내 시설·현장 통제 구역 제외'],'sourceSha256':hashlib.sha256(data).hexdigest()}
+        if url == 'https://sjfmc.or.kr/sjpark/sub01_03_02.do':
+            data = fetch(url)
+            body = clean(data.decode())
+            permitted = all(text in body for text in ['반려동물 목줄', '2m 이내 유지', '반려동물 배변처리'])
+            return {'url':url,'provider':'세종시설관리공단','positive':permitted,'verifiedIds':['c365'],'conditions':['야외 호수공원 C코스 보행로', '목줄 2m 이내', '배변 처리', '맹견 입마개', '인식표', '입수·실내·어린이 시설 제외'],'sourceSha256':hashlib.sha256(data).hexdigest()}
+        if 'korean.visitkorea.or.kr/' not in url:
+            return {'url':url,'positive':False,'error':'Operator-specific permission review required'}
         cotid = re.search(r'cotid=([a-f0-9-]+)',url,re.I)[1]
         endpoint = 'https://korean.visitkorea.or.kr/call'
         pet = json.loads(fetch(endpoint,{'cmd':'FETCH_CONTENT_DETAIL_INFO','cotId':cotid,'fieldType':'10'}))
@@ -39,6 +52,6 @@ byurl={e['url']:e for e in evidence}
 review=[]
 for c in courses:
     e=byurl[source(c)]
-    review.append({'id':c['id'],'name':c['name'],'source':source(c),'positive':e['positive'],'pathSha256':hashlib.sha256(json.dumps(c['path'],separators=(',',':')).encode()).hexdigest(),'reason':e.get('error') or ('' if e['positive'] else 'Full-route permission requires scope review'),'conditions':e.get('conditions')})
+    review.append({'id':c['id'],'name':c['name'],'source':source(c),'positive':e['positive'] and ('verifiedIds' not in e or c['id'] in e['verifiedIds']),'pathSha256':hashlib.sha256(json.dumps(c['path'],separators=(',',':')).encode()).hexdigest(),'reason':e.get('error') or ('' if e['positive'] else 'Full-route permission requires scope review'),'conditions':e.get('conditions')})
 (OUT/'review.json').write_text(json.dumps(review,ensure_ascii=False,indent=2)+'\n')
 print('positive',sum(x['positive'] for x in review),'needs scope review',[(x['id'],x['name']) for x in review if not x['positive']],flush=True)

@@ -685,13 +685,22 @@
     "id": "c365",
     "name": "세종호수공원 C코스",
     "source": "https://sjfmc.or.kr/sjpark/sub01_03_02.do",
-    "positive": false,
+    "positive": true,
     "pathSha256": "30e4b124063cfbf36381a9c74ca781a5917b220361129ab4a5f1b562ce0506b2",
-    "reason": "'NoneType' object is not subscriptable",
-    "conditions": null,
+    "reason": "Sejong Facilities Management Corporation park rules explicitly permit controlled pets on park walking paths. Original lakeside C-course GPX retained; water, indoor and playground facilities excluded.",
+    "conditions": {
+      "scope": "호수공원 야외 보행로 C코스",
+      "requirements": [
+        "목줄 2m 이내 유지",
+        "배변 처리",
+        "맹견 입마개",
+        "인식표 부착",
+        "입수·실내·어린이 시설 제외"
+      ]
+    },
     "scopeReview": null,
     "hasPhoto": true,
-    "publish": false
+    "publish": true
   },
   {
     "id": "c366",
@@ -1321,13 +1330,20 @@
     "id": "c252",
     "name": "서울 배봉두메십리길",
     "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=165&sc_trailSeCd=SE001",
-    "positive": false,
+    "positive": true,
     "pathSha256": "4a4c7f313f4d8ea6997e1080114e1c183254038ca4bcd11b3795413039065bd3",
-    "reason": "HTTP Error 502: Bad Gateway",
-    "conditions": null,
+    "reason": "Seoul route operator explicitly states dogs may enter with leash; direct official page checked 2026-10-10.",
+    "conditions": {
+      "scope": "배봉두메십리길 야외 보행 경로",
+      "requirements": [
+        "목줄 사용",
+        "배설물 수거",
+        "실내 전시관·현장 통제 구역 제외"
+      ]
+    },
     "scopeReview": null,
     "hasPhoto": true,
-    "publish": false
+    "publish": true
   },
   {
     "id": "c253",

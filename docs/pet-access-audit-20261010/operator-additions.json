@@ -1,0 +1,19 @@
+{
+  "checkedDate": "2026-10-10",
+  "courses": [
+    {
+      "id": "c252",
+      "source": "https://gil.seoul.go.kr/trail/view.do?key=2405200007&sc_trailSn=165&sc_trailSeCd=SE001",
+      "permission": "Named official trail explicitly allows dogs with leash",
+      "photo": "/assets/course-photos/c252.webp",
+      "geometry": "Original Seoul public walking route retained"
+    },
+    {
+      "id": "c365",
+      "source": "https://sjfmc.or.kr/sjpark/sub01_03_02.do",
+      "permission": "Operator park policy specifies pets: 2m leash, waste removal, muzzle for dangerous dogs, identification tag. Outdoor lakeside walking route only.",
+      "photo": "/assets/course-photos/c365.webp",
+      "geometry": "Original Durunubi C-course GPX retained; 3.58km measured,4.4km official stated. No constructed replacement geometry."
+    }
+  ]
+}
