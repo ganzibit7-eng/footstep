@@ -9,15 +9,25 @@ class Element {
   addEventListener(type,handler){(this.handlers??={})[type]=handler;}
 }
 const container=new Element('div'),disclosure=new Element('p');
-const context={URL,document:{readyState:'complete',createElement:tag=>new Element(tag),getElementById:id=>id==='walk-shopping-items'?container:id==='walk-shopping-disclosure'?disclosure:null}};
+class TestDate extends Date{static now(){return Date.parse('2026-10-11T12:00:00+09:00');}}
+const context={URL,Date:TestDate,document:{readyState:'complete',createElement:tag=>new Element(tag),getElementById:id=>id==='walk-shopping-items'?container:id==='walk-shopping-disclosure'?disclosure:null}};
 vm.createContext(context);
 for(const file of ['shopping-config.js','shopping.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context);
 const config=context.PawShoppingConfig;
-assert.equal(container.children.length,3);
+assert.equal(container.children.length,6);
 assert.equal(disclosure.hidden,false);
 assert.match(disclosure.textContent,/쿠팡 파트너스.*수수료를 제공받습니다/);
-const expected=['https://link.coupang.com/a/hHjJ8nlsJg','https://link.coupang.com/a/hHjPJ6DMUS','https://link.coupang.com/a/hHjVHyyABU'];
+const expected=['https://link.coupang.com/a/hLomp2aSSO','https://link.coupang.com/a/hLon6IPp9M','https://link.coupang.com/a/hLoo2HG96W','https://link.coupang.com/a/hLoo5AmPls','https://link.coupang.com/a/hLote0yBW0','https://link.coupang.com/a/hLosen1eOy'];
 const descendants=node=>node.children.flatMap(child=>[child,...descendants(child)]);
+assert.equal(config.items[0].id,'sweet-potato-snack');
+assert.equal(config.items[0].featured,true);
+assert.equal(container.children.filter(c=>c.className.includes('walk-shopping-featured')).length,1);
+const issuedCatalog=fs.readFileSync(path.join(base,'supabase/seeds/affiliate-popular-products.sql'),'utf8');
+config.items.forEach(item=>{assert.ok(issuedCatalog.includes("'"+item.id+"'"));assert.ok(issuedCatalog.includes("'"+item.url+"'"));});
+const proof={popularity:{source:'coupang-sales-search',checkedAt:'2026-10-11',reviews:13391}};
+assert.match(context.PawShopping.popularityText(proof),/13,391.*2026.10.11/);
+for(const checkedAt of ['2026-02-30','2025-10-11','2099-10-11','invalid'])assert.equal(context.PawShopping.popularityText({popularity:{...proof.popularity,checkedAt}}),'');
+assert.equal(context.PawShopping.popularityText({popularity:{...proof.popularity,source:'unverified'}}),'');
 container.children.forEach((card,i)=>{
  const nodes=descendants(card),links=nodes.filter(n=>n.tag==='a');assert.equal(links.length,1);
  assert.equal(links[0].href,expected[i],'preserve the issued affiliate URL');
@@ -35,4 +45,4 @@ const html=fs.readFileSync(path.join(base,'index.html'),'utf8'),section=html.sli
 assert.ok(section.indexOf('id="walk-shopping-disclosure"')<section.indexOf('<h2 id="walk-shopping-title">'),'disclosure precedes commercial recommendations');
 assert.match(section,/현재 가격과 배송 조건은 쿠팡/);
 assert.doesNotMatch(fs.readFileSync(path.join(base,'shopping.js'),'utf8'),/fetch\(|\.click\(|window\.open|location\.(href|assign)|setInterval/,'rendering must not generate clicks, navigation or background affiliate requests');
-console.log('PASS: 3 official photos and exact links, no prices, disclosure order, safe link attributes, image fallback, malicious URL rejection and no automatic affiliate navigation');
+console.log('PASS: 6 exact issued links and matching server catalog, first featured snack, dated evidence with stale/future/invalid rejection, no prices, disclosure, safe images and no automatic affiliate navigation');
