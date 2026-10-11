@@ -55,7 +55,8 @@ const saved=()=>Array.from(vm.runInContext('[...favoriteIds]',context));
   const historyElements=new Map();let historyReply,historyMood;
   const history={Date,Number,console:{error(){}},myNickname:'A',myDeviceId:'A',
     formatDuration:n=>String(n),updateTodayMood:data=>{historyMood=data;},
-    document:{getElementById:id=>{if(!historyElements.has(id))historyElements.set(id,{innerHTML:'',style:{},children:[],addEventListener(){},append(x){this.children.push(x);}});return historyElements.get(id);},createElement:()=>({})},
+    WalkCalendar:{mount:()=>({refresh(){}})},
+    document:{body:{append(){}},getElementById:id=>{if(!historyElements.has(id))historyElements.set(id,{innerHTML:'',style:{},children:[],addEventListener(){},append(x){this.children.push(x);}});return historyElements.get(id);},createElement:()=>({setAttribute(){},addEventListener(){},close(){},replaceChildren(){}})},
     sb:{from(){const q={select(){return q;},eq(){return q;},order(){return q;},limit(){return q;},gte(){return q;},then(fn){return Promise.resolve(historyReply).then(fn);}};return q;}}};
   vm.createContext(history);vm.runInContext(slice('  let walksRenderVersion','  // ===== 오늘의 산책'),history);
   historyReply={data:Array.from({length:11},(_,i)=>({created_at:'2026-10-03',distance_km:1,duration_sec:60,estimated_steps:100,stride_cm:70})),error:null};
