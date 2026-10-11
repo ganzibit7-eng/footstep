@@ -13,7 +13,9 @@
     if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return '';
     const stamp=Date.parse(date+'T00:00:00+09:00'),age=Date.now()-stamp;
     if(!Number.isFinite(stamp)||new Date(stamp+9*60*60*1000).toISOString().slice(0,10)!==date||age<0||age>30*86400000)return '';
-    return '상품평 '+evidence.reviews.toLocaleString('ko-KR')+'개 · '+date.replaceAll('-','.')+' 쿠팡 확인';
+    const buyers=evidence.buyersSource==='coupang-product-page'&&Number.isInteger(evidence.monthlyBuyersMin)&&evidence.monthlyBuyersMin>0?
+      '최근 한 달 '+(evidence.monthlyBuyersMin%10000===0?evidence.monthlyBuyersMin/10000+'만':evidence.monthlyBuyersMin.toLocaleString('ko-KR'))+' 명 이상 구매 표시 · ':'';
+    return buyers+'상품평 '+evidence.reviews.toLocaleString('ko-KR')+'개 · '+date.replaceAll('-','.')+' 쿠팡 확인';
   }
   function render(){
     const container=root.document?.getElementById('walk-shopping-items');if(!container)return;

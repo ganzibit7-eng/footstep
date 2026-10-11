@@ -76,7 +76,7 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 .walk-shopping-guide{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:var(--pine-deep);font-size:13px;font-weight:700}
 .walk-shopping-featured{position:relative;border:2px solid var(--clay)}
 .walk-shopping-badge{position:absolute;top:10px;left:10px;padding:5px 9px;border-radius:8px;background:var(--pine-deep);color:var(--paper);font-size:11px;font-weight:700}
-.walk-shopping-card .walk-shopping-popularity{font-size:11px;line-height:1.7;color:var(--muted-text);margin-bottom:12px}
+.walk-shopping-card .walk-shopping-popularity{font-size:12px;font-weight:700;line-height:1.8;color:var(--pine-deep);padding:9px 10px;background:var(--sand);border-radius:9px;margin-bottom:12px}
 .walk-shopping-selection{font-size:12px;line-height:1.8;color:var(--muted-text);margin:0 0 16px}
 .walk-shopping-swipe-hint{display:none;font-size:12px;color:var(--muted-text);margin:8px 0}
 @media(max-width:600px){.walk-shopping-swipe-hint{display:block}}

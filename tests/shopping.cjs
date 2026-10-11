@@ -26,6 +26,9 @@ const issuedCatalog=fs.readFileSync(path.join(base,'supabase/seeds/affiliate-pop
 config.items.forEach(item=>{assert.ok(issuedCatalog.includes("'"+item.id+"'"));assert.ok(issuedCatalog.includes("'"+item.url+"'"));});
 const proof={popularity:{source:'coupang-sales-search',checkedAt:'2026-10-11',reviews:13391}};
 assert.match(context.PawShopping.popularityText(proof),/13,391.*2026.10.11/);
+assert.match(context.PawShopping.popularityText(config.items[0]),/최근 한 달 1만 명 이상 구매 표시/);
+assert.doesNotMatch(context.PawShopping.popularityText(config.items[1]),/구매 표시/);
+assert.doesNotMatch(context.PawShopping.popularityText({popularity:{...proof.popularity,monthlyBuyersMin:10000,buyersSource:'unknown'}}),/구매 표시/);
 for(const checkedAt of ['2026-02-30','2025-10-11','2099-10-11','invalid'])assert.equal(context.PawShopping.popularityText({popularity:{...proof.popularity,checkedAt}}),'');
 assert.equal(context.PawShopping.popularityText({popularity:{...proof.popularity,source:'unverified'}}),'');
 container.children.forEach((card,i)=>{

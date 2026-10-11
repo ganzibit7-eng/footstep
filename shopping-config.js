@@ -20,7 +20,9 @@
       "popularity": {
         "source": "coupang-sales-search",
         "checkedAt": "2026-10-11",
-        "reviews": 13391
+        "reviews": 13391,
+        "monthlyBuyersMin": 10000,
+        "buyersSource": "coupang-product-page"
       }
     },
     {
