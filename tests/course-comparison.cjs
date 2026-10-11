@@ -12,6 +12,7 @@ assert.match(ctx.courseComparisonValue(rest,'stairs'),/미확인/);
 assert.match(ctx.courseComparisonValue({...rest,description:rest.description+' edited'},'rest'),/미확인/);
 assert.match(ctx.courseComparisonValue({...rest,path:[]},'pet'),/미확인/);
 assert.match(ctx.courseComparisonValue(rest,'checked'),/2026-10-10/);
+assert.match(ctx.courseComparisonValue(rest,'petConditions'),/허용 구역:/);assert.match(ctx.courseComparisonValue(rest,'petConditions'),/필수 조건:/);assert.ok(!ctx.courseComparisonValue(rest,'petConditions').includes('requirements:'));
 ctx.toggleCourseComparison(stair.id);ctx.toggleCourseComparison(rest.id);assert.equal(element('course-compare-dock').hidden,false);assert.equal(element('compare-selection-count').textContent,'2/3개 선택');
 assert.match(element('course-compare').innerHTML,/벤치·쉼터/);assert.match(element('course-compare').innerHTML,/同伴|동반 조건/);assert.match(element('course-compare').innerHTML,/미확인/);
 element('compare-view').onclick();assert.equal(element('course-compare').scrolled,true);assert.equal(element('course-compare').focused,true);

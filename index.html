@@ -4448,7 +4448,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     if(key==='pet')return pet?'공식 동반 안내 확인 · 구역·조건 확인 필요':'동반 안내 미확인';
     if(key==='petConditions'){
       if(!pet)return '미확인 · 방문 전 문의';
-      if(pet.conditions&&!Array.isArray(pet.conditions)&&typeof pet.conditions==='object')return Object.entries(pet.conditions).map(([label,text])=>label+': '+String(text)).join(' · ');
+      if(pet.conditions&&!Array.isArray(pet.conditions)&&typeof pet.conditions==='object')return Object.entries(pet.conditions).map(([label,text])=>({scope:'허용 구역',requirements:'필수 조건',operatorPageUpdated:'기관 안내 갱신일'}[label]||label)+': '+(Array.isArray(text)?text.join(' · '):String(text))).join(' · ');
       return '공식 안내의 허용 구역·준비물·제한을 상세에서 확인해 주세요.';
     }
     if(key==='checked')return '동반: '+(pet?.checkedDate||'미확인')+' · 편의: '+(comfort?.checked||'미확인');
