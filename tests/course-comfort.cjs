@@ -15,7 +15,7 @@ assert(!comfort.get({...by('c388'),name:'fake'}));
 for(const value of ['不明','2-4km','0km','-1km','1500m terrain'])assert(!comfort.matches({distance:value},{short:true}));
 assert(comfort.matches({distance:'2000m'},{short:true}));assert(!comfort.matches({distance:'2001m'},{short:true}));
 const html=fs.readFileSync('index.html','utf8');
-const listFunction=html.slice(html.indexOf('  function getFilteredCourses(){'),html.indexOf('  function hasActiveListFilter(){'));
+const listFunction=html.slice(html.indexOf('  function getFilteredCourses('),html.indexOf('  function hasActiveListFilter(){'));
 const aiFunction=html.slice(html.indexOf('  function aiRecommendCourses(){'),html.indexOf('  function mongDistanceKm(value){'));
 const state={query:'',diff:'all',tags:new Set(),maxMinutes:0,collection:'',favOnly:false,comfort:{}};
 const ai={time:null,region:null,env:null,comfort:{}};
@@ -32,3 +32,12 @@ state.comfort={};assert.equal(sandbox.getFilteredCourses().length,205);
 assert(html.includes("listFilterState.comfort={};"));assert(html.includes('CourseComfort.read(body.querySelector'));
 assert(comfort.panel(unknown).includes('未確認')===false);assert(comfort.panel(unknown).includes('미확인'));
 console.log('PASS: strict unknown exclusion, source/geometry binding, distance boundaries, senior preset, list/Mong parity, legacy stair filter and empty-result fallback.');
+
+vm.runInContext(html.slice(html.indexOf('  function exploreRelaxOptions(){'),html.indexOf('  function renderExploreEmpty(){')),sandbox);
+state.comfort={stairs:true,short:true};
+const suggestions=sandbox.exploreRelaxOptions();
+assert(suggestions.some(x=>x.label.includes('2km')&&x.count===1&&x.next.comfort.stairs));
+assert(suggestions.every(x=>x.count>0));assert(state.comfort.stairs&&state.comfort.short); // preview must not mutate selected safety conditions
+for(const option of suggestions)assert.equal(option.count,sandbox.getFilteredCourses(option.next).length);
+state.comfort={};
+console.log('PASS: relaxed previews use actual results, preserve original conditions, and keep other conditions selected.');
