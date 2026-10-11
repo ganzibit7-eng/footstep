@@ -24,9 +24,10 @@
     const subtitle=root.document.getElementById('walk-shopping-subtitle');if(subtitle&&config.subtitle)subtitle.textContent=config.subtitle;
     container.replaceChildren();let linked=0;
     items.forEach(item=>{
+      const evidence=popularityText(item);
       const card=root.document.createElement('article');card.className='walk-shopping-card';
       const body=root.document.createElement('div');body.className='walk-shopping-body';
-      if(item.featured){card.className+=' walk-shopping-featured';const badge=root.document.createElement('span');badge.className='walk-shopping-badge';badge.textContent='먼저 살펴볼 상품';body.append(badge);}
+      if(item.featured)card.className+=' walk-shopping-featured';
       const icon=root.document.createElement('span');icon.className='walk-shopping-icon';icon.setAttribute('aria-hidden','true');icon.textContent=item.icon;
       const context=root.document.createElement('small');context.textContent=item.context;
       const title=root.document.createElement('h3');title.textContent=item.product||item.name;
@@ -35,13 +36,21 @@
       const imageURL=productImageURL(item.image);
       if(imageURL){
         const media=root.document.createElement('div');media.className='walk-shopping-photo';
+        if(evidence){
+          const badges=root.document.createElement('div');badges.className='walk-shopping-photo-badges';
+          const compact=n=>n>=10000?Math.floor(n/1000)/10+'만+':n.toLocaleString('ko-KR');
+          if(evidence.startsWith('최근 한 달 ')){
+            const buyers=root.document.createElement('span');buyers.className='walk-shopping-badge walk-shopping-buyers-badge';buyers.textContent='한 달 '+compact(item.popularity.monthlyBuyersMin).replace('+','')+' 명+ 구매';buyers.setAttribute('aria-label',evidence.split(' · ')[0]);badges.append(buyers);
+          }
+          const reviews=root.document.createElement('span');reviews.className='walk-shopping-badge walk-shopping-review-badge';reviews.textContent='상품평 '+compact(item.popularity.reviews);reviews.setAttribute('aria-label','상품평 '+item.popularity.reviews.toLocaleString('ko-KR')+'개');badges.append(reviews);
+          media.append(badges);
+        }
         const image=root.document.createElement('img');image.src=imageURL;image.alt=(item.product||item.name)+' · '+(item.option||'');image.width=212;image.height=212;image.loading='lazy';image.decoding='async';image.referrerPolicy='no-referrer';
         image.addEventListener('error',()=>{image.hidden=true;media.replaceChildren(icon);},{once:true});
         media.append(image);card.append(media);
       }else body.append(icon);
       body.append(context,title);card.append(body);
-      const evidence=popularityText(item);
-      if(evidence){const proof=root.document.createElement('p');proof.className='walk-shopping-popularity';proof.textContent=evidence;body.append(proof);}
+      if(evidence){const proof=root.document.createElement('p');proof.className='walk-shopping-proof-date';proof.textContent=item.popularity.checkedAt.replaceAll('-','.')+' 쿠팡 확인';body.append(proof);}
       const url=affiliateURL(item.url);
       if(url){
         linked++;

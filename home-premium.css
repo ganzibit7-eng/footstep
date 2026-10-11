@@ -75,8 +75,13 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 .walk-shopping-disclosure[hidden]{display:none!important}
 .walk-shopping-guide{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:var(--pine-deep);font-size:13px;font-weight:700}
 .walk-shopping-featured{position:relative;border:2px solid var(--clay)}
-.walk-shopping-badge{position:absolute;top:10px;left:10px;padding:5px 9px;border-radius:8px;background:var(--pine-deep);color:var(--paper);font-size:11px;font-weight:700}
-.walk-shopping-card .walk-shopping-popularity{font-size:12px;font-weight:700;line-height:1.8;color:var(--pine-deep);padding:9px 10px;background:var(--sand);border-radius:9px;margin-bottom:12px}
+.walk-shopping-photo{position:relative;aspect-ratio:auto;height:285px;padding:56px 14px 14px}
+.walk-shopping-photo-badges{position:absolute;top:12px;left:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.walk-shopping-badge{padding:7px 8px;border-radius:8px;font-size:11px;font-weight:800;line-height:1.4;letter-spacing:-.4px;white-space:nowrap}
+.walk-shopping-buyers-badge{background:#2459a6;color:#fff}
+.walk-shopping-review-badge{background:#f0eafa;color:#654397;border:1px solid #d5c6ed}
+.walk-shopping-card .walk-shopping-proof-date{font-size:11px;line-height:1.7;color:var(--muted-text);margin-bottom:12px}
+@media(max-width:360px){.walk-shopping-photo{height:313px;padding-top:84px}}
 .walk-shopping-selection{font-size:12px;line-height:1.8;color:var(--muted-text);margin:0 0 16px}
 .walk-shopping-swipe-hint{display:none;font-size:12px;color:var(--muted-text);margin:8px 0}
 @media(max-width:600px){.walk-shopping-swipe-hint{display:block}}
