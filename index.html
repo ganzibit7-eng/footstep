@@ -4449,7 +4449,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     if(key==='petConditions'){
       if(!pet)return '미확인 · 방문 전 문의';
       const conditionText=value=>(Array.isArray(value)?value.map(conditionText).filter(Boolean).join(' · '):typeof value==='string'?value.trim():'');
-      if(Array.isArray(pet.conditions))return conditionText(pet.conditions)||'동반 세부 조건 미확인 · 방문 전 문의';
+      if(Array.isArray(pet.conditions)){
+        const excerpts=pet.conditions.map(conditionText).filter(Boolean).map(text=>{const start=text.indexOf('반려견');return (start>=0?text.slice(start):text).split('테마산책길 풍경')[0].trim();}).filter(Boolean);
+        return excerpts.length?'공식 자료 발췌: '+excerpts.join(' · '):'동반 세부 조건 미확인 · 방문 전 문의';
+      }
       if(pet.conditions&&typeof pet.conditions==='object')return Object.entries(pet.conditions).map(([label,text])=>({scope:'허용 구역',requirements:'필수 조건',operatorPageUpdated:'기관 안내 갱신일'}[label]||label)+': '+(conditionText(text)||'미확인')).join(' · ')||'동반 세부 조건 미확인 · 방문 전 문의';
       return '동반 세부 조건 미확인 · 방문 전 문의';
     }

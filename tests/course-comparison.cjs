@@ -14,8 +14,11 @@ assert.match(ctx.courseComparisonValue({...rest,path:[]},'pet'),/미확인/);
 assert.match(ctx.courseComparisonValue(rest,'checked'),/2026-10-10/);
 assert.match(ctx.courseComparisonValue(rest,'petConditions'),/허용 구역:/);assert.match(ctx.courseComparisonValue(rest,'petConditions'),/필수 조건:/);assert.ok(!ctx.courseComparisonValue(rest,'petConditions').includes('requirements:'));
 const listCourse=courses.find(c=>Array.isArray(ctx.CoursePetAccess.get(c)?.conditions));assert.ok(listCourse);
-for(const condition of ctx.CoursePetAccess.get(listCourse).conditions)assert.ok(ctx.courseComparisonValue(listCourse,'petConditions').includes(condition.trim()),'Verified list conditions must remain visible');
+assert.match(ctx.courseComparisonValue(listCourse,'petConditions'),/공식 자료 발췌:.*반려견/);
+assert.ok(!ctx.courseComparisonValue(listCourse,'petConditions').includes('테마산책길 풍경'));
 const realPetAccess=ctx.CoursePetAccess;
+ctx.CoursePetAccess={get:()=>({conditions:['반려견 동반 가능 - 실내 동반 불가 - 목줄 사용','맹견 입마개 필수']})};
+assert.match(ctx.courseComparisonValue(rest,'petConditions'),/실내 동반 불가.*목줄 사용.*맹견 입마개 필수/);
 for(const conditions of [null,[],{},['',null],{requirements:[],scope:null}]){
  ctx.CoursePetAccess={get:()=>({conditions})};assert.match(ctx.courseComparisonValue(rest,'petConditions'),/미확인/);
  assert.ok(!/null|undefined/.test(ctx.courseComparisonValue(rest,'petConditions')));
