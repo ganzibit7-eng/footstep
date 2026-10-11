@@ -261,3 +261,28 @@ footer .footer-description{margin:8px 0 20px;font-size:13px;color:var(--reading-
  #support-dialog{padding:20px;width:calc(100vw - 32px)}
 }
 @media(prefers-reduced-motion:reduce){#nearby-section .course-card,#support-dialog a{transition:none;transform:none}}
+.reading-page #place-search{grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr))}
+.reading-page #place-search label[for="place-query"]{grid-column:1;grid-row:1}
+.reading-page #place-search label[for="place-kind"]{grid-column:2;grid-row:1}
+.reading-page #place-search label[for="place-region"]{grid-column:3;grid-row:1}
+.reading-page #place-search label[for="place-category"]{grid-column:4;grid-row:1}
+.reading-page #place-search #place-query{grid-column:1;grid-row:2}
+.reading-page #place-search #place-kind{grid-column:2;grid-row:2}
+.reading-page #place-search #place-region{grid-column:3;grid-row:2}
+.reading-page #place-search #place-category{grid-column:4;grid-row:2}
+.reading-page #place-search select{min-width:0;width:100%;font:inherit;color:var(--rp-ink);background:var(--rp-paper);border:1px solid var(--rp-line);border-radius:12px;padding:12px;min-height:48px;box-sizing:border-box}
+.reading-page #place-search button[type="submit"]{grid-column:3;grid-row:3}
+.reading-page #place-search #place-clear{grid-column:4;grid-row:3}
+@media(max-width:700px){
+ .reading-page #place-search{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .reading-page #place-search label[for="place-query"]{grid-column:1/-1;grid-row:1}
+ .reading-page #place-search #place-query{grid-column:1/-1;grid-row:2}
+ .reading-page #place-search label[for="place-kind"]{grid-column:1;grid-row:3}
+ .reading-page #place-search label[for="place-region"]{grid-column:2;grid-row:3}
+ .reading-page #place-search #place-kind{grid-column:1;grid-row:4}
+ .reading-page #place-search #place-region{grid-column:2;grid-row:4}
+ .reading-page #place-search label[for="place-category"]{grid-column:1/-1;grid-row:5}
+ .reading-page #place-search #place-category{grid-column:1/-1;grid-row:6}
+ .reading-page #place-search button[type="submit"]{grid-column:1;grid-row:7}
+ .reading-page #place-search #place-clear{grid-column:2;grid-row:7}
+}
