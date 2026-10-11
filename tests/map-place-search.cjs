@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const html=fs.readFileSync('index.html','utf8');
 let removed=0,markers=0;const count={textContent:''};
 const ctx={map:{},facilityLayer:{clearLayers(){removed++;}},facilityDataState:'loading',facilityDataAvailable:false,facilities:[],myDeviceId:null,
- document:{getElementById:id=>id==='facility-filter-count'?count:{value:''}},isHidden:(_,id)=>id==='hidden',
+ document:{getElementById:id=>id==='facility-filter-count'?count:id==='facility-search-results'?null:{value:'',addEventListener(){}}},isHidden:(_,id)=>id==='hidden',
  CourseInfo:{cleanDescription:s=>s||'',sourceURL:()=>null},FacilityInfo:{get:()=>({emoji:'🐾',poi:'cafe'})},PlaceConditions:{panel:()=>''},poiIcon:()=>null,
  registeredPlaceLabel:()=>'',escapeHtml:String,kakaoLinkTo:()=>'',L:{marker(){markers++;return {bindPopup(){return this;},addTo(){return this;}}}}};
 vm.createContext(ctx);vm.runInContext(html.slice(html.indexOf('  function validPlaceCoordinates('),html.indexOf('  window.__deleteFacility')),ctx);

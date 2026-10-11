@@ -9,3 +9,9 @@ const unknown=Conditions.get({description:'좋은 카페'});assert.ok(unknown.ev
 assert.ok(!Conditions.panel({description:'동반가능 <script>alert(1)</script> · 문의: <img onerror=x>'}).includes('<script>'));
 assert.match(Conditions.get({description:'동반가능동물: 대형견 불가'})[1].value,/불가/);
 console.log('Place conditions: restrictions preserved, unknowns explicit, HTML escaped');
+
+const now=Date.parse('2026-10-11T00:00:00Z');
+assert.match(Conditions.freshness({description:'공식안내: https://korean.visitkorea.or.kr/a · 확인일: 2026-01-01'},now),/180일 경과/);
+assert.match(Conditions.freshness({description:'공식안내: https://korean.visitkorea.or.kr/a · 확인일: 2026-10-10'},now),/당일 운영/);
+for(const description of ['확인일: 2026-10-10','공식안내: https://example.invalid/a · 확인일: 2026-10-10','공식안내: https://korean.visitkorea.or.kr/a · 확인일: 2026-02-31','공식안내: https://korean.visitkorea.or.kr/a · 확인일: 2027-01-01'])assert.match(Conditions.freshness({description},now),/미확인/);
+assert.match(Conditions.panel({name:'장소',id:'test'}),/정보 수정 제보/);

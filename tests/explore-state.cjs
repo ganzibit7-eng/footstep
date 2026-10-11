@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const html=fs.readFileSync('index.html','utf8');let stored;
+const ctx={Date,EXPLORE_STATE_KEY:'state',sessionStorage:{getItem(){return stored;}}};vm.createContext(ctx);
+vm.runInContext(html.slice(html.indexOf('  function readExploreState(){'),html.indexOf('  function persistExploreState(){')),ctx);
+stored='{';assert.equal(ctx.readExploreState(),null);
+stored=JSON.stringify({at:Date.now()-86400001});assert.equal(ctx.readExploreState(),null);
+stored=JSON.stringify({at:Date.now()+100000});assert.equal(ctx.readExploreState(),null);
+stored=JSON.stringify({at:Date.now(),list:{query:'남산',diff:'쉬움',sort:'distance',tags:['숲길',null,55],favOnly:true,maxMinutes:40,shown:24},map:{query:'서울 성동구',category:'식당카페',view:'facility'}});
+const restored=ctx.readExploreState();assert.equal(restored.list.query,'남산');assert.equal(restored.list.diff,'쉬움');assert.equal(restored.list.shown,24);assert.equal(restored.map.query,'서울 성동구');assert.equal(restored.map.view,'facility');assert.equal(restored.list.tags.length,1);
+stored=JSON.stringify({at:Date.now(),list:{diff:'invalid',sort:'invalid',maxMinutes:999,shown:100000,query:'x'.repeat(200)},map:{view:'invalid'}});
+const safe=ctx.readExploreState();assert.equal(safe.list.diff,'all');assert.equal(safe.list.sort,'default');assert.equal(safe.list.maxMinutes,0);assert.equal(safe.list.shown,600);assert.equal(safe.list.query.length,100);assert.equal(safe.map.view,'course');
+ctx.sessionStorage.getItem=()=>{throw Error('blocked')};assert.equal(ctx.readExploreState(),null);
+console.log('PASS: tab search choices, paging, expired/future state, malformed/blocked storage and invalid filter values.');

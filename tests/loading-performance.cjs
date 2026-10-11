@@ -19,6 +19,14 @@ async function home(){
  reads.bins.resolve([]);reads.reviews.resolve([]);await loading;
  const failed=ctx.loadData();reads.courses.reject(Error('network'));reads.facilities.resolve([]);reads.bins.resolve([]);reads.reviews.resolve([]);await failed;
  assert.equal(el('hero-stat-courses').textContent,'1개');assert.equal(el('hero-stat-facilities').textContent,'0곳');assert.match(el('home-count-status').textContent,/갱신하지 못/);
+
+ const previousFacilityRead=reads.facilities;
+ const deferredHome=ctx.loadData({deferFacilities:true});assert.equal(reads.facilities,previousFacilityRead,'Home must not start a full facility request');
+ reads.courses.resolve(counts);reads.bins.resolve([]);reads.reviews.resolve([{course_id:'open',id:'review',text:'preserved'}]);await deferredHome;
+ assert.equal(ctx.reviews.open[0].text,'preserved','Deferred facility slot must not overwrite review data');
+ const first=ctx.ensureFacilityData(true);assert.notEqual(reads.facilities,previousFacilityRead);assert.equal(ctx.ensureFacilityData(),first,'Concurrent consumers share the full request');
+ reads.facilities.resolve([{status:'approved'}]);await first;assert.equal(ctx.facilities.length,1);assert.equal(vm.runInContext('facilityDataAvailable',ctx),true);
+ await ctx.ensureFacilityData();assert.equal(ctx.facilities.length,1);
  assert(!html.includes('seedIfNeeded().then(loadData)'));
 }
 async function members(){
