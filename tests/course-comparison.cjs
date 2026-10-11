@@ -13,6 +13,14 @@ assert.match(ctx.courseComparisonValue({...rest,description:rest.description+' e
 assert.match(ctx.courseComparisonValue({...rest,path:[]},'pet'),/미확인/);
 assert.match(ctx.courseComparisonValue(rest,'checked'),/2026-10-10/);
 assert.match(ctx.courseComparisonValue(rest,'petConditions'),/허용 구역:/);assert.match(ctx.courseComparisonValue(rest,'petConditions'),/필수 조건:/);assert.ok(!ctx.courseComparisonValue(rest,'petConditions').includes('requirements:'));
+const listCourse=courses.find(c=>Array.isArray(ctx.CoursePetAccess.get(c)?.conditions));assert.ok(listCourse);
+for(const condition of ctx.CoursePetAccess.get(listCourse).conditions)assert.ok(ctx.courseComparisonValue(listCourse,'petConditions').includes(condition.trim()),'Verified list conditions must remain visible');
+const realPetAccess=ctx.CoursePetAccess;
+for(const conditions of [null,[],{},['',null],{requirements:[],scope:null}]){
+ ctx.CoursePetAccess={get:()=>({conditions})};assert.match(ctx.courseComparisonValue(rest,'petConditions'),/미확인/);
+ assert.ok(!/null|undefined/.test(ctx.courseComparisonValue(rest,'petConditions')));
+}
+ctx.CoursePetAccess=realPetAccess;
 ctx.toggleCourseComparison(stair.id);ctx.toggleCourseComparison(rest.id);assert.equal(element('course-compare-dock').hidden,false);assert.equal(element('compare-selection-count').textContent,'2/3개 선택');
 assert.match(element('course-compare').innerHTML,/벤치·쉼터/);assert.match(element('course-compare').innerHTML,/同伴|동반 조건/);assert.match(element('course-compare').innerHTML,/미확인/);
 element('compare-view').onclick();assert.equal(element('course-compare').scrolled,true);assert.equal(element('course-compare').focused,true);
