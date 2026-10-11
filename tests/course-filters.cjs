@@ -4,7 +4,7 @@ const controls=new Map();
 function element(id){if(!controls.has(id))controls.set(id,{id,dataset:{},active:false,handlers:{},classList:{add(){},remove(){},toggle(){}},addEventListener(type,fn){this.handlers[type]=fn;},setAttribute(){}});return controls.get(id);}
 const state={diff:'all',tags:new Set(),favOnly:false,maxMinutes:0,query:'성동구'};
 let renders=0;
-const context={document:{getElementById:element,querySelectorAll:()=>[]},listFilterState:state,listShownCount:24,LIST_PAGE_SIZE:12,renderGrid(){renders++;}};
+const context={CourseComfort:require('../course-comfort.js'),document:{getElementById:element,querySelectorAll:()=>[]},listFilterState:state,listShownCount:24,LIST_PAGE_SIZE:12,renderGrid(){renders++;}};
 vm.createContext(context);
 vm.runInContext(html.slice(html.indexOf("  document.getElementById('list-diff-filter').addEventListener"),html.indexOf('  function updateWalkPrep(){')),context);
 element('fav-only-chip').handlers.click();
@@ -17,6 +17,9 @@ element('fav-only-chip').handlers.click();
 assert.equal(state.tags.has('숲길'),true);assert.equal(state.favOnly,true);assert.equal(state.maxMinutes,0);
 element('list-tag-filter').handlers.click({target:{closest:()=>target}});assert.equal(state.tags.size,0);assert.equal(state.favOnly,true);
 assert.equal(renders,5);
+const shade={dataset:{tagFilter:'그늘많음'},classList:{toggle(){}}};
+element('list-env-filter').handlers.click({target:{closest:()=>shade}});assert(state.tags.has('그늘많음'));assert(state.favOnly);
+assert.equal((html.match(/data-tag-filter="계단없음"/g)||[]).length,0);
 const common=html.slice(html.indexOf('<div class="map-toolbar course-common-filters"'),html.indexOf('<details id="course-advanced-filters">',html.indexOf('<section id="list-section"')));
 assert.match(common,/id="fav-only-chip"/);
 assert.equal((html.match(/id="fav-only-chip"/g)||[]).length,1);

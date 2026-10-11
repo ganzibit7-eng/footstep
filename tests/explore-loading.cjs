@@ -1,0 +1,12 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const html=fs.readFileSync('index.html','utf8');
+const start=html.indexOf('  function renderGrid(){'),end=html.indexOf('  function trackRecentlyViewed(',start);
+let retryHandler,clicked=0;
+const elements=new Map();const element=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',style:{},setAttribute(k,v){this[k]=v},querySelector(){return this.innerHTML.includes('data-course-retry')?{addEventListener(t,fn){retryHandler=fn}}:null},click(){clicked++}});return elements.get(id)};
+const context={courseDataAvailable:false,courseDataState:'loading',document:{getElementById:element},renderCourseComparison(){throw Error('Must not render empty results before successful data load')}};
+vm.createContext(context);vm.runInContext(html.slice(start,end),context);
+context.renderGrid();assert.match(element('course-count-label').textContent,/불러오고/);assert.equal(element('course-grid')['aria-busy'],'true');assert(!element('course-grid').innerHTML.includes('조건에 맞는'));
+context.courseDataState='error';context.renderGrid();assert.match(element('course-grid').innerHTML,/코스가 없는 것이 아니라/);assert.equal(element('course-grid')['aria-busy'],'false');retryHandler();assert.equal(clicked,1);
+assert(!html.includes('refreshSignupMembersAutomatically'));assert(!html.includes('memberAutoRefreshBusy'));assert(html.includes("if(key==='allmembers'&&!isOpen)renderAllMemberList()"));
+assert.equal((html.match(/id="modal-directions-link"/g)||[]).length,1);assert.equal((html.match(/id="course-prepare-walk"/g)||[]).length,1);
+console.log('PASS: initial loading/error do not appear as empty search results; retry works; member polling removed and re-entry refresh retained.');
