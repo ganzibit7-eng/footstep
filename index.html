@@ -5037,11 +5037,11 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const host=document.getElementById('facility-search-results'),list=document.getElementById('facility-search-list');if(!host||!list)return;
     const category=document.getElementById('facility-filter-category').value;
     const view=document.querySelector('#view-filter-group .chip.active')?.dataset.filter;
-    host.hidden=!(view==='facility'||view==='all')||category.startsWith('poi:');
-    document.getElementById('facility-data-retry').hidden=facilityDataState!=='error';
+    host.hidden=!(view==='facility'||view==='all')||category.startsWith('poi:');host.style.setProperty('display',host.hidden?'none':'block','important');
+    const retry=document.getElementById('facility-data-retry');retry.hidden=facilityDataState!=='error';retry.style.setProperty('display',retry.hidden?'none':'inline-flex','important');
     list.replaceChildren();
     host.querySelector('summary').textContent='찾은 동반장소 목록'+(facilityDataAvailable?' · '+rows.length+'곳':'');
-    if(!facilityDataAvailable){const li=document.createElement('li');li.textContent=registeredFacilityStatus(facilityDataState,false,0,false);list.append(li);document.getElementById('facility-search-more').hidden=true;return;}
+    if(!facilityDataAvailable){const li=document.createElement('li');li.textContent=registeredFacilityStatus(facilityDataState,false,0,false);list.append(li);document.getElementById('facility-search-more').hidden=true;document.getElementById('facility-search-more').style.setProperty('display','none','important');return;}
     const sorted=rows.slice().sort((a,b)=>String(a.name).localeCompare(String(b.name),'ko'));
     sorted.slice(0,facilityResultLimit).forEach(place=>{
       const li=document.createElement('li'),link=document.createElement('a'),note=document.createElement('p'),position=document.createElement('button');
@@ -5051,7 +5051,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       li.append(link,note,position);list.append(li);
     });
     if(!rows.length){const li=document.createElement('li');li.textContent='검색 조건에 맞는 지도 표시 장소가 없어요.';list.append(li);}
-    document.getElementById('facility-search-more').hidden=facilityResultLimit>=rows.length;
+    const more=document.getElementById('facility-search-more');more.hidden=facilityResultLimit>=rows.length;more.style.setProperty('display',more.hidden?'none':'inline-flex','important');
   }
   document.getElementById('facility-search-more').addEventListener('click',()=>{facilityResultLimit+=20;renderFacilityResults(filterRegisteredFacilities(facilities,document.getElementById('facility-filter-category').value,document.getElementById('facility-filter-query').value));});
   document.getElementById('facility-filter-clear').addEventListener('click',()=>{clearTimeout(facilityFilterTimer);facilityResultLimit=20;document.getElementById('facility-filter-query').value='';document.getElementById('facility-filter-category').value='';document.querySelector('#view-filter-group [data-filter="facility"]').click();renderFacilityMap();persistExploreState();document.getElementById('facility-filter-query').focus();});
