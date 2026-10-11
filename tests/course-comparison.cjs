@@ -25,3 +25,6 @@ const detail=html.slice(html.indexOf('  function updateDetailFavorite(){'),html.
 Object.assign(ctx,{favoriteIds:new Set(['saved']),activeCourseId:'saved',myDeviceId:null});vm.runInContext(detail,ctx);ctx.updateDetailFavorite();assert.equal(element('detail-guest-save-note').hidden,false);
 ctx.myDeviceId='member';ctx.updateDetailFavorite();assert.equal(element('detail-guest-save-note').hidden,true);ctx.myDeviceId=null;ctx.favoriteIds.clear();ctx.updateDetailFavorite();assert.equal(element('detail-guest-save-note').hidden,true);
 console.log('Detail guest save notice: shown only for locally saved guest courses');
+const toggle=html.slice(html.indexOf('  async function toggleFavorite(courseId){'),html.indexOf('  async function syncFavoritesFromServer(){'));
+Object.assign(ctx,{favoritePending:new Set(),favoriteRevision:0,favoriteSyncOwner:null,favoriteJoinShown:false,persistFavorites(){},refreshFavoriteViews(){}});vm.runInContext(toggle,ctx);ctx.toggleFavorite('guest-course');assert.equal(element('favorite-join-note').hidden,false);ctx.toggleFavorite('guest-course');assert.equal(element('favorite-join-note').hidden,true);assert.equal(ctx.favoriteIds.has('guest-course'),false);
+console.log('Guest favorite cancellation also dismisses stale saved notice');

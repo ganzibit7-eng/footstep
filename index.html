@@ -2946,7 +2946,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const wasSaved=favoriteIds.has(courseId);favoriteRevision++;
     if(wasSaved)favoriteIds.delete(courseId);else favoriteIds.add(courseId);
     if(!owner){
-      persistFavorites();if(!wasSaved&&!favoriteJoinShown){favoriteJoinShown=true;document.getElementById('favorite-join-note').hidden=false;}
+      persistFavorites();if(wasSaved)document.getElementById('favorite-join-note').hidden=true;if(!wasSaved&&!favoriteJoinShown){favoriteJoinShown=true;document.getElementById('favorite-join-note').hidden=false;}
       refreshFavoriteViews();return;
     }
     favoritePending.add(key);refreshFavoriteViews();
