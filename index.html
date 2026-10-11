@@ -5574,7 +5574,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
   function renderExploreEmpty(){
     const saved=listFilterState.favOnly;
     const host=document.getElementById('course-grid');
-    host.innerHTML='<div class="explore-empty"><span aria-hidden="true">'+(saved?'♡':'⌕')+'</span><h3>'+(saved?'다음에 걷고 싶은 길을 모아보세요':'조금만 넓혀서 찾아볼까요?')+'</h3><p>'+(saved?'선택한 조건에 맞는 찜한 코스가 없어요. 마음에 드는 코스의 하트를 누르면 여기에서 다시 찾을 수 있어요.':'선택한 조건을 모두 충족하는 코스가 아직 없어요. 계단·경사·쉼터 정보가 미확인인 코스는 선택한 조건에서 제외됩니다. 위의 조건 해제 버튼으로 하나씩 바꿔보세요.')+'</p><div class="explore-empty-actions"><button type="button" class="explore-view-button" data-empty-reset>전체 코스 둘러보기</button><button type="button" class="explore-view-button" data-empty-map>지도에서 동네 찾기</button></div></div>';
+    host.innerHTML='<div class="explore-empty"><span aria-hidden="true">'+(saved?'♡':'⌕')+'</span><h3>'+(saved?'다음에 걷고 싶은 길을 모아보세요':'조금만 넓혀서 찾아볼까요?')+'</h3><p>'+(saved?'선택한 조건에 맞는 찜한 코스가 없어요. 마음에 드는 코스의 하트를 누르면 여기에서 다시 찾을 수 있어요.':'선택한 조건을 모두 충족하는 코스가 아직 없어요. '+(CourseComfort.active(listFilterState.comfort)?'계단·경사·쉼터 정보가 미확인인 코스는 선택한 조건에서 제외됩니다. ':'')+'위의 조건 해제 버튼으로 하나씩 바꿔보세요.')+'</p><div class="explore-empty-actions"><button type="button" class="explore-view-button" data-empty-reset>전체 코스 둘러보기</button><button type="button" class="explore-view-button" data-empty-map>지도에서 동네 찾기</button></div></div>';
     host.querySelector('[data-empty-reset]').onclick=()=>document.getElementById('course-filter-reset').click();
     host.querySelector('[data-empty-map]').onclick=()=>{document.getElementById('course-filter-reset').click();showPage('map');};
   }
