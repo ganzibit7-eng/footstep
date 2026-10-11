@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const {filter,category}=require('../place-search.js');
+const html=fs.readFileSync('discover.html','utf8');
+const data=JSON.parse(html.match(/id="place-data">([\s\S]*?)<\/script>/)[1]);
+assert.ok(data.length>3000);
+const cafes=filter(data,{kind:'facilities',region:'서울',category:'식당카페'});
+assert.ok(cafes.length>0);assert.ok(cafes.every(item=>item.kind==='facilities'&&item.region==='서울'&&category(item)==='식당카페'));
+assert.equal(filter(data,{q:'존재하지않는장소검증987654'}).length,0);
+const place=cafes[0];assert.ok(filter(data,{q:place.name,region:'서울'}).some(item=>item.path===place.path));
+assert.equal(filter([{name:'카페 서울',kind:'courses',region:'경기',info:'식당카페'}],{category:'식당카페'}).length,0,'Course text cannot imply a companion business category');
+assert.equal(filter([{name:'강릉 정원',kind:'facilities',region:'강원',info:'주소 · 숙소'}],{q:'정원 강원',category:'숙소'}).length,1);
+assert.equal(filter([{name:'강릉 정원',kind:'facilities',region:'강원',info:'주소 · 숙소'}],{region:'서울'}).length,0);
+console.log('PASS: real directory region/category filters, multiword search, empty results and category isolation.');
