@@ -12,6 +12,7 @@ on:
       - 'course-comfort.css'
       - 'course-addresses.js'
       - 'facility-info.js'
+      - 'place-conditions.js'
       - 'bin-info.js'
       - 'database_sql/seed_expansion_*.sql'
       - 'database_sql/seed_expansion_*.sql.gz'
