@@ -8,6 +8,7 @@ import CoursePetAccess from '../course-pet-access.js';
 import CourseComfort from '../course-comfort.js';
 import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import {generateRSS} from './generate-rss.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = 'https://balzaguk.com';
@@ -844,3 +845,4 @@ const homePath=path.join(ROOT,'index.html');
 const homeHtml=await readFile(homePath,'utf8');
 if(homeHtml.includes('window.PawCoursePages=Object.freeze('))await writeFile(homePath,homeHtml.replace(/window\.PawCoursePages=Object\.freeze\(\[[^\n]*?\]\);/,'window.PawCoursePages=Object.freeze('+JSON.stringify(publishedCourseIds)+');'),'utf8');
 console.log(`SEO 페이지 ${Math.max(0, uniqueSitemap.length - 2)}개와 사이트맵을 생성했습니다. (중복 URL ${sitemap.length - uniqueSitemap.length}개 제거)`);
+console.log('Public guide RSS:',await generateRSS(ROOT));
