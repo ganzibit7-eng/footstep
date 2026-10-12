@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://balzaguk.com/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://balzaguk.com/about/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://balzaguk.com/bins/</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://balzaguk.com/bins/b1/</loc><lastmod>2026-08-30</lastmod></url>
   <url><loc>https://balzaguk.com/bins/b2/</loc><lastmod>2026-08-30</lastmod></url>
@@ -4103,5 +4104,4 @@
   <url><loc>https://balzaguk.com/with-dog/jeonbuk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://balzaguk.com/with-dog/seoul/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://balzaguk.com/with-dog/ulsan/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://balzaguk.com/about/</loc><lastmod>2026-10-12</lastmod></url>
 </urlset>
