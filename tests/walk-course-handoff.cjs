@@ -4,13 +4,16 @@ const courses=JSON.parse(zlib.gunzipSync(fs.readFileSync('docs/pet-access-audit-
 const elements=new Map();
 function element(id){if(!elements.has(id))elements.set(id,{hidden:true,textContent:'',innerHTML:'',listeners:{},setAttribute(k,v){this[k]=v;},removeAttribute(k){delete this[k];},replaceChildren(){this.innerHTML='';},focus(){this.focused=true;},scrollIntoView(){this.scrolled=true;},querySelector(){return element('compare-clear-control');},querySelectorAll(){return [];},addEventListener(k,fn){this.listeners[k]=fn;}});return elements.get(id);}
 let running=false,hidden=new Set(),opened=[],pages=[],messages=[],gpsStarts=0;
-const ctx={courseDataAvailable:true,courseDataState:"ready",walkReferenceCourseId:null,CoursePetAccess:require('../course-pet-access.js'),CourseComfort:require('../course-comfort.js'),CourseAddresses:{get:()=>null},
+const ctx={courseDataAvailable:true,courseDataState:"ready",walkReferenceCourseId:null,CoursePetAccess:require('../course-pet-access.js'),CourseComfort:require('../course-comfort.js'),CourseAddresses:{get:()=>null},CourseRoutes:require('../course-routes.js'),
  courseWalkTime:()=>({minutes:54,official:false}),avgRating:()=>0,reviewsFor:()=>[],tagLabel:x=>x,
  escapeHtml:s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),
  allCourses:()=>courses,isHidden:(_,id)=>hidden.has(id),walkInProgress:()=>running,walkStarting:false,
  closeModal(){ctx.activeCourseId=null;},showPage(page){pages.push(page);ctx.renderWalkReference();},openCourseDetail:id=>opened.push(id),toast:s=>messages.push(s),
  startWalk:()=>gpsStarts++,document:{getElementById:element,querySelectorAll:()=>[]}};
 vm.createContext(ctx);
+ctx.CourseInfo=require('../course-info.js');
+vm.runInContext(fs.readFileSync('course-routes.js','utf8'),ctx);
+vm.runInContext(html.slice(html.indexOf('  function courseArrivalPoint(c){'),html.indexOf('  function courseArrivalHTML(c){')),ctx);
 vm.runInContext(html.slice(html.indexOf('  const compareCourseIds=new Set();'),html.indexOf('  function updateCollectionHints()')),ctx);
 vm.runInContext(html.slice(html.indexOf('  let walkReferenceCourseId=restoredCourseSelection.reference;'),html.indexOf("  document.getElementById('walk-start-btn').addEventListener")),ctx);
 const first=courses.find(c=>c.id==='c388'),second=courses.find(c=>c.id==='c133');assert.ok(first&&second);
