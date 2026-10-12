@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/generate-seo.mjs'
       - 'scripts/generate-rss.mjs'
+      - 'scripts/guide-discovery.mjs'
       - 'course-info.js'
       - 'course-pet-access.js'
       - 'course-comfort.js'

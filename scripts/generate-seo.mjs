@@ -8,6 +8,7 @@ import CoursePetAccess from '../course-pet-access.js';
 import CourseComfort from '../course-comfort.js';
 import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {generateRSS} from './generate-rss.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -332,8 +333,8 @@ function hubHtml(hub,page){
   ? [
       ['/courses/themes/easy/','쉬운 산책길'],
       ['/courses/themes/short-under-2km/','2km 이하'],
-      ['/courses/themes/shade/','그늘 많은 길'],
-      ['/courses/themes/step-free/','계단 없는 길']
+      ['/courses/themes/forest/','숲길 코스'],
+      ['/guides/compare-dog-walk-courses/','편의 정보 비교 방법']
     ]
   : isBin
     ? []
@@ -560,6 +561,7 @@ function detailHtml(item, type, url) {
 
 
 const GUIDES = [
+  comparisonGuide,
   {
     slug:'dog-walk-checklist',
     title:'강아지 산책 준비물 체크리스트',
@@ -574,7 +576,7 @@ const GUIDES = [
     description:'더운 계절 강아지 산책 전 시간대, 그늘, 물, 노면 상태를 확인하는 방법을 정리했습니다.',
     intro:'여름에는 같은 코스라도 시간대와 노면 상태에 따라 부담이 크게 달라질 수 있습니다. 한낮을 피하고 현장 상태를 먼저 확인하세요.',
     tips:['비교적 선선한 시간대 선택','그늘 있는 동선 확인','물과 휴식 지점 준비','아스팔트와 바닥 온도 확인'],
-    links:[['그늘 많은 산책 코스','/courses/themes/shade/'],['그늘 많고 계단 없는 코스','/courses/themes/shade-step-free/']]
+    links:[['숲길 산책 코스 살펴보기','/courses/themes/forest/'],['코스 편의 정보 비교 방법','/guides/compare-dog-walk-courses/']]
   },
   {
     slug:'rainy-day-dog-walk',
@@ -582,7 +584,7 @@ const GUIDES = [
     description:'비 오는 날 강아지 산책 시 코스 길이, 미끄러운 노면, 귀가 후 관리까지 확인할 항목을 정리했습니다.',
     intro:'비 오는 날에는 평소보다 짧고 단순한 동선이 관리하기 쉽습니다. 미끄러운 바닥과 배수 상태를 확인하고 귀가 후 발과 털을 점검하세요.',
     tips:['강수와 바람 확인','경사·계단이 적은 코스 선택','수건과 여분 배변봉투 준비','귀가 후 발가락 사이와 털 말리기'],
-    links:[['계단 없는 산책 코스','/courses/themes/step-free/'],['2km 이하 계단 없는 코스','/courses/themes/short-step-free/']]
+    links:[['계단·경사 정보 직접 확인','/#list'],['2km 이하 짧은 산책 코스','/courses/themes/short-under-2km/']]
   },
   {
     slug:'winter-dog-walk',
@@ -606,7 +608,7 @@ const GUIDES = [
     description:'강아지 산책 거리를 고를 때 체력, 난이도, 노면과 계단 여부를 함께 비교하는 방법을 정리했습니다.',
     intro:'거리 숫자만 보고 코스를 고르면 실제 부담과 다를 수 있습니다. 같은 2km라도 경사, 계단, 노면과 날씨에 따라 체감 난이도가 달라집니다.',
     tips:['거리와 난이도를 함께 확인','계단과 경사 여부 확인','짧은 코스부터 늘려가기','왕복 거리와 귀가 동선까지 고려'],
-    links:[['2km 이하 짧은 산책 코스','/courses/themes/short-under-2km/'],['계단 없는 산책 코스','/courses/themes/step-free/']]
+    links:[['2km 이하 짧은 산책 코스','/courses/themes/short-under-2km/'],['계단·경사 정보 직접 확인','/#list']]
   },
   {
     slug:'dog-friendly-cafe-checklist',
@@ -637,7 +639,7 @@ function guideHtml(guide){
     ]},
     {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
       {'@type':'ListItem','position':1,'name':'발자국','item':SITE+'/'},
-      {'@type':'ListItem','position':2,'name':'산책 가이드','item':SITE+'/discover.html#guides'},
+      {'@type':'ListItem','position':2,'name':'산책 가이드','item':SITE+'/guides/'},
       {'@type':'ListItem','position':3,'name':guide.title,'item':url}
     ]}
   ];
@@ -648,7 +650,7 @@ function guideHtml(guide){
   <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
   <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.75}.wrap{max-width:820px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.card{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:28px;margin:24px 0}h1,h2{color:#152922}li{margin:10px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}.guide-cta{display:inline-block;margin-top:20px;padding:12px 18px;border-radius:999px;background:#b5502e;color:#fff;text-decoration:none;font-weight:800}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap"><link rel="stylesheet" href="/readability.css?v=20261011-search"><link rel="stylesheet" href="/course-comfort.css?v=20261010-env"></head>
   <body class="reading-page"><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
-  <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p><h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
+  <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p>${guide.updatedAt?`<p>내용 갱신 · ${escapeHtml(guide.updatedAt)}</p>`:''}${(guide.sections||[]).map(([title,body])=>`<section><h2>${escapeHtml(title)}</h2><p>${escapeHtml(body)}</p></section>`).join('')}<h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
   <h2>자주 묻는 질문</h2><p><strong>${escapeHtml(guide.title)}에서 가장 먼저 확인할 것은?</strong><br>${escapeHtml(guide.tips.slice(0,2).join(' · '))} 등을 먼저 확인해 보세요.</p><p><strong>산책 코스는 어떻게 고르면 되나요?</strong><br>반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.</p>
   <h2>관련 산책 코스 찾기</h2><div class="links">${guide.links.map(([label,href])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</div>
   <h2>다른 산책 가이드</h2><div class="links">${GUIDES.filter(g=>g.slug!==guide.slug).map(g=>`<a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a>`).join('')}</div>
@@ -824,8 +826,10 @@ for (const guide of GUIDES) {
   const dir=path.join(ROOT,'guides',guide.slug);
   await mkdir(dir,{recursive:true});
   await writeFile(path.join(dir,'index.html'),withTraffic(guideHtml(guide)),'utf8');
-  sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:contentLastmod});
+  sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:guide.updatedAt||contentLastmod});
 }
+await writeFile(path.join(ROOT,'guides/index.html'),withTraffic(guideDirectoryHTML(GUIDES)),'utf8');
+sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(directoryHtml(groups)), 'utf8');
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {

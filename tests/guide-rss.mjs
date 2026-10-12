@@ -14,7 +14,7 @@ assert.throws(()=>feedItem(fixture,'https://other.example/'));
 assert.throws(()=>feedItem('<meta name="robots" content="noindex,follow">'+fixture,'https://balzaguk.com/hidden/'));
 const before=await readFile(path.join(root,'rss.xml'),'utf8');
 assert.ok(Buffer.byteLength(before)<10*1024*1024);
-assert.equal((before.match(/<item>/g)||[]).length,20);
+assert.equal((before.match(/<item>/g)||[]).length,21);
 assert.ok(!before.includes('<pubDate>'));
 assert.equal((await generateRSS(root)).changed,false);
 assert.equal(await readFile(path.join(root,'rss.xml'),'utf8'),before);
