@@ -692,6 +692,7 @@ function localOutingHtml(page){
   <section class="section"><h2>🐕 ${escapeHtml(region)} 강아지 산책 코스</h2><p>거리·난이도·태그를 비교해서 반려견 체력과 당일 날씨에 맞는 코스를 골라보세요.</p><ul>${courseItems.map(item=>`<li><a href="/courses/${safeSegment(item.id)}/"><strong>${escapeHtml(item.name)}</strong></a><br><small>${escapeHtml([item.distance,item.diff].filter(Boolean).join(' · ') || '등록 정보 확인')}</small></li>`).join('')}</ul></section>
   <section class="section"><h2>🏡 ${escapeHtml(region)} 애견동반 장소</h2><p>산책 전후 함께 들를 장소를 비교해 보세요. 동반 조건과 영업시간은 방문 전에 확인하세요.</p><ul>${placeItems.map(item=>`<li><a href="/places/${safeSegment(item.id)}/"><strong>${escapeHtml(item.name)}</strong></a><br><small>${escapeHtml([areaFor(item),item.category].filter(Boolean).join(' · ') || '장소 정보 확인')}</small></li>`).join('')}</ul></section>
   <section class="section"><h2>방문 전에 확인하세요</h2><p>산책 코스의 노면·공사 상태와 애견동반 장소의 실내·테라스 이용 조건은 실제 현장 운영과 달라질 수 있습니다. 반려견의 나이·체력과 날씨도 함께 확인하세요.</p><a class="cta" href="/#map">발자국 지도에서 주변 장소 보기 →</a></section>
+<section class="section" aria-labelledby="regional-next"><h2 id="regional-next">다른 지역도 둘러보세요</h2><nav class="links" aria-label="다른 지역 안내"><a href="/with-dog/seoul/">서울 산책·동반장소</a><a href="/with-dog/gyeonggi/">경기 산책·동반장소</a><a href="/with-dog/incheon/">인천 산책·동반장소</a><a href="/with-dog/busan/">부산 산책·동반장소</a><a href="/with-dog/jeju/">제주 산책·동반장소</a><a href="/with-dog/gangwon/">강원 산책·동반장소</a><a href="/with-dog/daegu/">대구 산책·동반장소</a><a href="/with-dog/ulsan/">울산 산책·동반장소</a><a href="/with-dog/gyeongnam/">경남 산책·동반장소</a><a href="/with-dog/gyeongbuk/">경북 산책·동반장소</a><a href="/with-dog/jeonbuk/">전북 산책·동반장소</a></nav><h3>산책 준비에 도움이 되는 안내</h3><div class="links"><a href="/guides/dog-walk-checklist/">산책 준비물 체크리스트</a><a href="/walk-etiquette/">반려견 산책 펫티켓</a><a href="/about/">발자국 서비스와 자료 안내</a></div></section>
   </main></body></html>`;
 }
 
@@ -778,7 +779,7 @@ for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: t
 await rm(path.join(ROOT,'with-dog'),{recursive:true,force:true});
 const allItems = groups.flatMap(group=>group.items);
 const contentLastmod = newestDate(allItems) || new Date().toISOString().slice(0, 10);
-const sitemap = [{ url: `${SITE}/dog-walks/`, lastmod: "2026-10-06" }, { url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
+const sitemap = [{url:`${SITE}/about/`,lastmod:"2026-10-12"},{ url: `${SITE}/dog-walks/`, lastmod: "2026-10-06" }, { url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
 for (const {type,items} of groups) {
   for (const item of items) {
     const segment = safeSegment(item.id);
