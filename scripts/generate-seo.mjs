@@ -96,7 +96,7 @@ const addressFor = item => {
  const candidate=compact(CourseInfo.cleanDescription(item.description)).split(' · ')[0];
  return REGIONS.some(r=>r[2].includes(candidate.split(' ')[0])) && candidate.includes(' ') ? candidate : '';
 };
-const regionFor = item => REGIONS.find(r => r[2].includes(addressFor(item).split(' ')[0]));
+const regionFor = item => REGIONS.find(r => r[2].includes(addressFor(item).split(' ')[0])) || (Array.isArray(item.tags) ? REGIONS.find(r => item.tags.some(tag=>r[2].includes(tag))) : undefined);
 const coordinateMetroRegion = item => {
  const lat=Number(item.lat), lng=Number(item.lng);
  if(!Number.isFinite(lat)||!Number.isFinite(lng)) return null;
