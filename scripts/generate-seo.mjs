@@ -6,7 +6,7 @@ import CourseAddresses from '../course-addresses.js';
 import CoursePhotos from '../course-photos.js';
 import CoursePetAccess from '../course-pet-access.js';
 import CourseComfort from '../course-comfort.js';
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -519,7 +519,7 @@ function detailHtml(item, type, url) {
     isPartOf:{'@type':'WebSite','name':'발자국','url':SITE}
   };
   const appLink = type.table === 'courses'
-    ? `${SITE}/?course=${encodeURIComponent(item.id)}`
+    ? `${SITE}/#map&course=${encodeURIComponent(item.id)}`
     : type.table === 'facilities'
       ? `${SITE}/?facility=${encodeURIComponent(item.id)}`
       : `${SITE}/#map`;
@@ -831,6 +831,15 @@ for (const entry of sitemap) {
   if (!prev || String(entry.lastmod || '') > String(prev.lastmod || '')) sitemapByUrl.set(entry.url, entry);
 }
 const uniqueSitemap = [...sitemapByUrl.values()].sort((a,b)=>a.url.localeCompare(b.url,'en'));
+// Regeneration must not move an already published modification date backwards.
+const previousSitemap=await readFile(path.join(ROOT,'sitemap.xml'),'utf8').catch(()=> '');
+const previousDates=new Map([...previousSitemap.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod><\/url>/g)].map(match=>[match[1],match[2]]));
+for(const entry of uniqueSitemap){const previous=previousDates.get(entry.url);if(previous&&previous>String(entry.lastmod||''))entry.lastmod=previous;}
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${uniqueSitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 await writeFile(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
+// Keep share/legacy entry routes aligned with currently published detail pages.
+const publishedCourseIds=uniqueSitemap.map(entry=>entry.url.match(/^https:\/\/balzaguk\.com\/courses\/([A-Za-z0-9_-]+)\/$/)?.[1]).filter(Boolean);
+const homePath=path.join(ROOT,'index.html');
+const homeHtml=await readFile(homePath,'utf8');
+if(homeHtml.includes('window.PawCoursePages=Object.freeze('))await writeFile(homePath,homeHtml.replace(/window\.PawCoursePages=Object\.freeze\(\[[^\n]*?\]\);/,'window.PawCoursePages=Object.freeze('+JSON.stringify(publishedCourseIds)+');'),'utf8');
 console.log(`SEO 페이지 ${Math.max(0, uniqueSitemap.length - 2)}개와 사이트맵을 생성했습니다. (중복 URL ${sitemap.length - uniqueSitemap.length}개 제거)`);
