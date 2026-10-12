@@ -1767,6 +1767,159 @@
       "photoKey": "pet_20261012c_bf0b824a7c15",
       "reviewStatus": "자료·사진 장소 대조 완료; 일괄 공개와 배포 검증 대기",
       "reviewScope": "장소 동반 조건만 자료로 확인, 전체 산책 경로와 현장 답사 미확인"
+    },
+    {
+      "id": "pet_20261012c_73b53cdd5182",
+      "name": "논산 강경미내다리 동반 산책 안내",
+      "description": "한국관광공사의 공식 반려동물 동반 자료를 확인한 강경미내다리의 산책 위치 정보입니다. 동반구분: 전구역 동반가능 / 동반가능동물: 전 견종 동반 가능 / 동반시 필요사항: 목줄 착용 / 동반 관련 상세정보: - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수. 전체 동선을 확인한 지정 코스나 현장 답사 결과가 아닙니다. 거리·난이도·전체 경로·계단·경사·쉼터는 미확인입니다. 지도와 주소는 대표 위치이며 확인된 출발점이나 주차장이 아닙니다. 실내·사유 시설 및 당일 통제는 원문과 현장 안내를 확인하세요. 사진은 촬영 당시의 경관이며 현재 개화나 날씨를 나타내지 않습니다. · 공식안내: https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0608dcd7-2b37-4a63-95ea-40d1f0596440 확인일: 2026-10-12",
+      "lat": 36.152810573995,
+      "lng": 127.031933059807,
+      "path": null,
+      "tags": [
+        "충남",
+        "공식안내",
+        "목줄필수",
+        "산책위치안내"
+      ],
+      "diff": "미확인",
+      "distance": "미확인",
+      "author": "한국관광공사 자료 확인",
+      "status": "pending",
+      "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0608dcd7-2b37-4a63-95ea-40d1f0596440",
+      "conditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "sourceConditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "address": "충청남도 논산시 채운면 삼거리",
+      "addressPoint": "대표 위치 (출발점 미확인)",
+      "locationSource": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=0608dcd7-2b37-4a63-95ea-40d1f0596440",
+      "photoKey": "pet_20261012c_73b53cdd5182",
+      "reviewStatus": "자료·사진 장소 대조 완료; 일괄 공개와 배포 검증 대기",
+      "reviewScope": "장소 동반 조건만 자료로 확인, 전체 산책 경로와 현장 답사 미확인"
+    },
+    {
+      "id": "pet_20261012c_85d81b1267cd",
+      "name": "경주 핑크뮬리 군락지 동반 산책 안내",
+      "description": "한국관광공사의 공식 반려동물 동반 자료를 확인한 경주 핑크뮬리(경주 핑크뮬리 군락지)의 산책 위치 정보입니다. 동반구분: 전구역 동반가능 / 동반가능동물: 전 견종 동반 가능 / 동반시 필요사항: 목줄 착용 / 동반 관련 상세정보: - 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수. 전체 동선을 확인한 지정 코스나 현장 답사 결과가 아닙니다. 거리·난이도·전체 경로·계단·경사·쉼터는 미확인입니다. 지도와 주소는 대표 위치이며 확인된 출발점이나 주차장이 아닙니다. 실내·사유 시설 및 당일 통제는 원문과 현장 안내를 확인하세요. 사진은 촬영 당시의 경관이며 현재 개화나 날씨를 나타내지 않습니다. · 공식안내: https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=6f8cbe99-dc88-4563-8508-912bf2eeb7bd 확인일: 2026-10-12",
+      "lat": 35.8355,
+      "lng": 129.2198,
+      "path": null,
+      "tags": [
+        "경북",
+        "공식안내",
+        "목줄필수",
+        "산책위치안내"
+      ],
+      "diff": "미확인",
+      "distance": "미확인",
+      "author": "한국관광공사 자료 확인",
+      "status": "pending",
+      "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=6f8cbe99-dc88-4563-8508-912bf2eeb7bd",
+      "conditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "sourceConditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우, 입마개 착용 필수 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "address": "경상북도 경주시 인왕동 839-1 첨성대 일원",
+      "addressPoint": "대표 위치 (출발점 미확인)",
+      "locationSource": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=6f8cbe99-dc88-4563-8508-912bf2eeb7bd",
+      "photoKey": "pet_20261012c_85d81b1267cd",
+      "reviewStatus": "자료·사진 장소 대조 완료; 일괄 공개와 배포 검증 대기",
+      "reviewScope": "장소 동반 조건만 자료로 확인, 전체 산책 경로와 현장 답사 미확인"
+    },
+    {
+      "id": "pet_20261012c_7881db9fc274",
+      "name": "오산 죽미령 평화공원 야외 동반 산책 안내",
+      "description": "한국관광공사의 공식 반려동물 동반 자료를 확인한 오산 죽미령 평화공원의 산책 위치 정보입니다. 동반구분: 전구역 동반가능 / 동반가능동물: 전 견종 동반 가능 / 동반시 필요사항: 목줄 착용 / 동반 관련 상세정보: - 맹견의 경우 입마개 착용 필수 - 어린이 모레놀이터 등 일부시설 출입불가 - 배변봉투 지참 및 배변처리 필수. 전체 동선을 확인한 지정 코스나 현장 답사 결과가 아닙니다. 거리·난이도·전체 경로·계단·경사·쉼터는 미확인입니다. 지도와 주소는 대표 위치이며 확인된 출발점이나 주차장이 아닙니다. 실내·사유 시설 및 당일 통제는 원문과 현장 안내를 확인하세요. 사진은 촬영 당시의 경관이며 현재 개화나 날씨를 나타내지 않습니다. · 공식안내: https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d6849a22-a3ca-460a-a3b1-af029c6be503 확인일: 2026-10-12",
+      "lat": 37.1846085526952,
+      "lng": 127.049011507818,
+      "path": null,
+      "tags": [
+        "경기",
+        "공식안내",
+        "목줄필수",
+        "산책위치안내",
+        "야외산책"
+      ],
+      "diff": "미확인",
+      "distance": "미확인",
+      "author": "한국관광공사 자료 확인",
+      "status": "pending",
+      "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d6849a22-a3ca-460a-a3b1-af029c6be503",
+      "conditions": {
+        "동반구분": "야외 산책 공간 동반 가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우 입마개 착용 필수 - 어린이 모레놀이터 등 일부시설 출입불가 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "sourceConditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "- 맹견의 경우 입마개 착용 필수 - 어린이 모레놀이터 등 일부시설 출입불가 - 배변봉투 지참 및 배변처리 필수"
+      },
+      "address": "경기도 오산시 경기대로 742",
+      "addressPoint": "대표 위치 (출발점 미확인)",
+      "locationSource": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=d6849a22-a3ca-460a-a3b1-af029c6be503",
+      "photoKey": "pet_20261012c_7881db9fc274",
+      "reviewStatus": "자료·사진 장소 대조 완료; 일괄 공개와 배포 검증 대기",
+      "reviewScope": "장소 동반 조건만 자료로 확인, 전체 산책 경로와 현장 답사 미확인"
+    },
+    {
+      "id": "pet_20261012c_e09a20af4ab2",
+      "name": "인천 송도 도그파크 산책 안내(맹견 제외)",
+      "description": "한국관광공사의 공식 반려동물 동반 자료를 확인한 송도 도그파크의 산책 위치 정보입니다. 동반구분: 전구역 동반가능 / 동반가능동물: 맹견 제외 전 견종 동반 가능 / 동반시 필요사항: 목줄 착용 / 동반 관련 상세정보: 배변봉투 지참 및 배변처리 필수 / 사고 대비사항: 훈련사 또는 직원 상시대기, 이용방법 및 규칙 비치. 전체 동선을 확인한 지정 코스나 현장 답사 결과가 아닙니다. 거리·난이도·전체 경로·계단·경사·쉼터는 미확인입니다. 지도와 주소는 대표 위치이며 확인된 출발점이나 주차장이 아닙니다. 실내·사유 시설 및 당일 통제는 원문과 현장 안내를 확인하세요. 사진은 촬영 당시의 경관이며 현재 개화나 날씨를 나타내지 않습니다. · 공식안내: https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9ecbd828-7cb7-4e91-b2e1-ba5338858525 확인일: 2026-10-12",
+      "lat": 37.408118,
+      "lng": 126.634506,
+      "path": null,
+      "tags": [
+        "인천",
+        "공식안내",
+        "목줄필수",
+        "산책위치안내"
+      ],
+      "diff": "미확인",
+      "distance": "미확인",
+      "author": "한국관광공사 자료 확인",
+      "status": "pending",
+      "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9ecbd828-7cb7-4e91-b2e1-ba5338858525",
+      "conditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "맹견 제외 전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "배변봉투 지참 및 배변처리 필수",
+        "구비시설": "펜스, 안전문, 운동장, 산책로, 놀이기구",
+        "사고 대비사항": "훈련사 또는 직원 상시대기, 이용방법 및 규칙 비치"
+      },
+      "sourceConditions": {
+        "동반구분": "전구역 동반가능",
+        "동반가능동물": "맹견 제외 전 견종 동반 가능",
+        "동반시 필요사항": "목줄 착용",
+        "동반 관련 상세정보": "배변봉투 지참 및 배변처리 필수",
+        "구비시설": "펜스, 안전문, 운동장, 산책로, 놀이기구",
+        "사고 대비사항": "훈련사 또는 직원 상시대기, 이용방법 및 규칙 비치"
+      },
+      "address": "인천광역시 연수구 센트럴로 350 (송도동)",
+      "addressPoint": "대표 위치 (출발점 미확인)",
+      "locationSource": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=9ecbd828-7cb7-4e91-b2e1-ba5338858525",
+      "photoKey": "pet_20261012c_e09a20af4ab2",
+      "reviewStatus": "자료·사진 장소 대조 완료; 일괄 공개와 배포 검증 대기",
+      "reviewScope": "장소 동반 조건만 자료로 확인, 전체 산책 경로와 현장 답사 미확인"
     }
   ],
   "photos": [
@@ -3058,6 +3211,118 @@
       "width": 760,
       "height": 507,
       "assetSha256": "147236e7a0d249ce071f08404cae30de1721196261a3dd2a013a8e07a43ea8b3"
+    },
+    {
+      "id": "pet_20261012c_73b53cdd5182",
+      "key": "pet_20261012c_73b53cdd5182",
+      "title": "File:강경미내다리 260828 09.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:%EA%B0%95%EA%B2%BD%EB%AF%B8%EB%82%B4%EB%8B%A4%EB%A6%AC_260828_09.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a8/%EA%B0%95%EA%B2%BD%EB%AF%B8%EB%82%B4%EB%8B%A4%EB%A6%AC_260828_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/%EA%B0%95%EA%B2%BD%EB%AF%B8%EB%82%B4%EB%8B%A4%EB%A6%AC_260828_09.jpg/1280px-%EA%B0%95%EA%B2%BD%EB%AF%B8%EB%82%B4%EB%8B%A4%EB%A6%AC_260828_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Aspere",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "date": "2026-08-28",
+      "dateNote": "2026-08-28 13:32:43",
+      "src": "/assets/course-photos/pet_20261012c_73b53cdd5182.webp",
+      "courses": {
+        "pet_20261012c_73b53cdd5182": "논산 강경미내다리 동반 산책 안내"
+      },
+      "place": "강경미내다리 야외 경관 참고사진",
+      "checked": "2026-10-12",
+      "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+      "noCrop": false,
+      "sourceSha256": "6c051db40270022c8a9ba401b19f69ae85fb5c492105bf4c13f199cfb1ee1361",
+      "sourceFile": "images/commons_198341117.jpg",
+      "reviewRecord": "normalized-commons/198341117.json",
+      "visualReview": "실제 장소 사진 및 좌표·설명 일치 확인. 야외 경관 참고자료이며 실내 동반이나 현재 개화는 미확인.",
+      "width": 1200,
+      "height": 676,
+      "assetSha256": "713653d5e5f10fdfc025ec5d40a08a6c3c4c30aaa9086a624a657704ba2de89a"
+    },
+    {
+      "id": "pet_20261012c_85d81b1267cd",
+      "key": "pet_20261012c_85d81b1267cd",
+      "title": "File:慶州, 徐羅伐, 韓國, 南韓, 大韓民國, Gyeongju, South Korea, Republic of Korea, ROK, Daehan Minguk, 경주시, 대한민국 (45749210631).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:%E6%85%B6%E5%B7%9E,_%E5%BE%90%E7%BE%85%E4%BC%90,_%E9%9F%93%E5%9C%8B,_%E5%8D%97%E9%9F%93,_%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9C%8B,_Gyeongju,_South_Korea,_Republic_of_Korea,_ROK,_Daehan_Minguk,_%EA%B2%BD%EC%A3%BC%EC%8B%9C,_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_(45749210631).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/fa/%E6%85%B6%E5%B7%9E%2C_%E5%BE%90%E7%BE%85%E4%BC%90%2C_%E9%9F%93%E5%9C%8B%2C_%E5%8D%97%E9%9F%93%2C_%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9C%8B%2C_Gyeongju%2C_South_Korea%2C_Republic_of_Korea%2C_ROK%2C_Daehan_Minguk%2C_%EA%B2%BD%EC%A3%BC%EC%8B%9C%2C_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%2845749210631%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/%E6%85%B6%E5%B7%9E%2C_%E5%BE%90%E7%BE%85%E4%BC%90%2C_%E9%9F%93%E5%9C%8B%2C_%E5%8D%97%E9%9F%93%2C_%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9C%8B%2C_Gyeongju%2C_South_Korea%2C_Republic_of_Korea%2C_ROK%2C_Daehan_Minguk%2C_%EA%B2%BD%EC%A3%BC%EC%8B%9C%2C_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%2845749210631%29.jpg/1280px-%E6%85%B6%E5%B7%9E%2C_%E5%BE%90%E7%BE%85%E4%BC%90%2C_%E9%9F%93%E5%9C%8B%2C_%E5%8D%97%E9%9F%93%2C_%E5%A4%A7%E9%9F%93%E6%B0%91%E5%9C%8B%2C_Gyeongju%2C_South_Korea%2C_Republic_of_Korea%2C_ROK%2C_Daehan_Minguk%2C_%EA%B2%BD%EC%A3%BC%EC%8B%9C%2C_%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%2845749210631%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "bryan...",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "date": "2018-10-15",
+      "dateNote": "2018-10-15 15:16",
+      "src": "/assets/course-photos/pet_20261012c_85d81b1267cd.webp",
+      "courses": {
+        "pet_20261012c_85d81b1267cd": "경주 핑크뮬리 군락지 동반 산책 안내"
+      },
+      "place": "경주 핑크뮬리(경주 핑크뮬리 군락지) 야외 경관 참고사진",
+      "checked": "2026-10-12",
+      "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+      "noCrop": false,
+      "sourceSha256": "59be77ee80094546500489f6c0f99646e3b7855348bc796a6f3e948e999b19b7",
+      "sourceFile": "images/commons_104708023.jpg",
+      "reviewRecord": "normalized-commons/104708023.json",
+      "visualReview": "실제 장소 사진 및 좌표·설명 일치 확인. 야외 경관 참고자료이며 실내 동반이나 현재 개화는 미확인.",
+      "width": 1200,
+      "height": 800,
+      "assetSha256": "616d331ed933eaa8a04410e79e7471da4f432ca46869a50c524a1646a2bec6d5"
+    },
+    {
+      "id": "pet_20261012c_7881db9fc274",
+      "key": "pet_20261012c_7881db9fc274",
+      "title": "File:2025-11-01 오산 Kyumin 02.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:2025-11-01_%EC%98%A4%EC%82%B0_Kyumin_02.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/99/2025-11-01_%EC%98%A4%EC%82%B0_Kyumin_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadSource": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/2025-11-01_%EC%98%A4%EC%82%B0_Kyumin_02.jpg/1280px-2025-11-01_%EC%98%A4%EC%82%B0_Kyumin_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "author": "Kyuminkim0705",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "date": "2025-11-01",
+      "dateNote": "2025-11-01 14:27:06",
+      "src": "/assets/course-photos/pet_20261012c_7881db9fc274.webp",
+      "courses": {
+        "pet_20261012c_7881db9fc274": "오산 죽미령 평화공원 야외 동반 산책 안내"
+      },
+      "place": "오산 죽미령 평화공원 야외 경관 참고사진",
+      "checked": "2026-10-12",
+      "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+      "noCrop": false,
+      "sourceSha256": "046279507c7ed7c14974c5b81cd9115df429dd9d5b14a957fab0246f4eb11667",
+      "sourceFile": "images/commons_177664451.jpg",
+      "reviewRecord": "normalized-commons/177664451.json",
+      "visualReview": "실제 장소 사진 및 좌표·설명 일치 확인. 야외 경관 참고자료이며 실내 동반이나 현재 개화는 미확인.",
+      "width": 900,
+      "height": 1200,
+      "assetSha256": "431215edfc03d9c411ff901814e5fbed575cdc2a99c3fd677d6883ae96a6a602"
+    },
+    {
+      "id": "pet_20261012c_e09a20af4ab2",
+      "key": "pet_20261012c_e09a20af4ab2",
+      "title": "송도 도그파크 야외 운동장 경관",
+      "source": "https://www.insiseol.or.kr/main/main/bbs/bbsMsgDetail.do?bcd=pub_report&msg_seq=605&pgno=7",
+      "original": "https://www.insiseol.or.kr/images/bbs/pub_report/2025/250310_bodosajin2.png",
+      "downloadSource": "https://www.insiseol.or.kr/images/bbs/pub_report/2025/250310_bodosajin2.png",
+      "author": "인천시설공단",
+      "license": "공공누리 제1유형",
+      "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+      "date": "",
+      "dateNote": "촬영일 미상, 기관 게시일 2025-03-13",
+      "src": "/assets/course-photos/pet_20261012c_e09a20af4ab2.webp",
+      "courses": {
+        "pet_20261012c_e09a20af4ab2": "인천 송도 도그파크 산책 안내(맹견 제외)"
+      },
+      "place": "송도 도그파크 야외 경관 참고사진",
+      "checked": "2026-10-12",
+      "changes": "웹용 축소·WebP 변환, 화면 비율에 따라 가장자리 잘림",
+      "noCrop": false,
+      "sourceSha256": "1f579adb1b95fa053945f20aa431ddd7fb48d9b4aa00151293f3f8c88e8c53de",
+      "sourceFile": "images/operator_songdo.png",
+      "reviewRecord": "operators/songdo-normalized.json",
+      "visualReview": "인천시설공단 실제 반려견 운동장 전체 경관 확인; 조성시설 사진이며 모든 산책 경로 확인은 아님.",
+      "width": 1200,
+      "height": 665,
+      "assetSha256": "44234c93ccfe99489c9204c5b194b3433e5e33d7bd10c8b1ef6e24ff293e62d5"
     }
   ],
   "held": [
