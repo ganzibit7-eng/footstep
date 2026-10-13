@@ -159,3 +159,43 @@ header .profile-btn{white-space:nowrap}
 #ai-assistant-btn{padding:4px;background:var(--paper);border:1px solid var(--line);box-shadow:0 5px 18px rgba(36,60,50,.18)}
 #ai-assistant-btn .mong-portrait-button{width:50px;height:50px}
 .ai-assistant-header .mong-portrait-header{width:56px;height:56px}
+.ai-assistant-modal{width:min(520px,calc(100vw - 24px));max-width:520px;border-radius:24px;background:var(--paper)}
+.mong-conversation{padding:4px 0 8px;color:var(--pine-deep)}
+.mong-progress{display:flex;justify-content:space-between;font-size:12px;color:var(--muted-text);margin-bottom:8px}
+.mong-progress-track{height:3px;border-radius:4px;background:var(--line);overflow:hidden}
+.mong-progress-track i{display:block;height:100%;background:var(--pine-deep)}
+.mong-question{margin:26px 0 20px}
+.mong-speaker{font-size:12px;color:var(--muted-text)}
+.mong-question h3{font-size:23px;letter-spacing:-.035em;line-height:1.5;margin:5px 0 8px;font-weight:700;word-break:keep-all}
+.mong-question p,.mong-chat-footnote,.mong-review-note{font-size:13px;line-height:1.8;color:var(--muted-text);margin:0}
+.mong-choice-grid{display:grid;grid-template-columns:1fr;gap:9px}
+.mong-choice-grid.mong-regions{grid-template-columns:repeat(4,minmax(0,1fr))}
+.mong-choice,.mong-other-help button{min-height:48px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--pine-deep);font:600 14px/1.6 inherit;cursor:pointer;text-align:left}
+.mong-regions .mong-choice{text-align:center;padding:10px 6px}
+.mong-choice[aria-pressed="true"]{border-color:var(--pine-deep);background:var(--sand);box-shadow:inset 0 0 0 1px var(--pine-deep)}
+.mong-answer-trail{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.mong-answer-trail button{display:flex;align-items:center;gap:7px;min-height:40px;padding:7px 10px;background:var(--sand);border:1px solid var(--line);border-radius:9px;color:var(--pine-deep);font-size:12px;cursor:pointer}
+.mong-answer-trail small{color:var(--muted-text);font-size:11px}
+.mong-chat-comfort{min-width:0;border:0;border-top:1px solid var(--line);padding:16px 0 0;margin:22px 0 18px}
+.mong-chat-comfort legend{float:left;width:100%;padding:0;margin-bottom:12px;font-size:13px;font-weight:600}
+.mong-chat-comfort legend span{font-size:11px;font-weight:400;color:var(--muted-text);margin-left:8px}
+.mong-chat-comfort .comfort-options{clear:both;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mong-chat-comfort .comfort-options label{display:flex;align-items:flex-start;gap:8px;min-height:44px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:12px;line-height:1.65;cursor:pointer}
+.mong-chat-comfort input{width:17px;height:17px;flex:none;accent-color:var(--pine-deep)}
+.mong-chat-comfort p{font-size:12px;color:var(--muted-text);line-height:1.8;margin:10px 0 0}
+.mong-secondary{margin-top:10px;padding:9px 0;min-height:44px;border:0;background:none;color:var(--pine-deep);font-size:12px;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.mong-next{width:100%;min-height:50px;padding:12px 16px;border:0;border-radius:12px;background:var(--pine-deep);color:var(--paper);font-size:14px;font-weight:600;cursor:pointer;margin-top:12px}
+.mong-chat-footnote{margin-top:12px;font-size:12px}
+.mong-chat-tools{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:20px}
+.mong-chat-tools button{min-height:44px;padding:8px 0;border:0;background:none;color:var(--muted-text);font-size:12px;cursor:pointer}
+.mong-other-help{margin-top:8px;border-top:1px solid var(--line);padding-top:8px;color:var(--muted-text);font-size:12px}
+.mong-other-help summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.mong-other-help .mong-choice-grid{grid-template-columns:1fr 1fr}
+.mong-conversation :is(button,input,summary):focus-visible{outline:2px solid var(--pine-deep);outline-offset:3px}
+@media(hover:hover){.mong-choice:hover{border-color:var(--pine-deep);background:var(--sand)}}
+@media(max-width:400px){.mong-question h3{font-size:21px}.mong-choice-grid.mong-regions{grid-template-columns:repeat(3,minmax(0,1fr))}}
+#ai-assistant-body .mong-conversation{padding:4px 0 8px;margin:0}
+.mong-choice,.mong-other-help button{font-family:inherit;font-size:14px;font-weight:600;line-height:1.6}
+.mong-recommendation-basis{font-size:12px;line-height:1.8;margin-top:8px}
+.mong-recommendation-basis summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--muted-text)}
+.mong-recommendation-basis p{margin:0;color:var(--muted-text)}
