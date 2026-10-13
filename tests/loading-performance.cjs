@@ -13,6 +13,11 @@ async function home(){
  sb:{rpc:async()=>({data:[]}),from:table=>table==='facilities'?{select:(columns,options)=>{assert.deepEqual({...options},{count:'exact',head:true});return {or:()=>countOnly.promise};}}:{select:()=>({gt:async()=>({data:[]})})}}};
  vm.createContext(ctx);vm.runInContext(html.slice(html.indexOf('  function renderStats(){'),html.indexOf('  // ===== 홈 화면 히어로 스타일')),ctx);
  vm.runInContext(html.slice(html.indexOf('  let courseDataState='),html.indexOf("  document.getElementById('data-load-retry').addEventListener")),ctx);
+ const firstVisit={...ctx,localStorage:{getItem:()=>null,setItem(){}}};vm.createContext(firstVisit);
+ vm.runInContext(html.slice(html.indexOf('  function renderStats(){'),html.indexOf('  // ===== 홈 화면 히어로 스타일')),firstVisit);
+ vm.runInContext(html.slice(html.indexOf('  let courseDataState='),html.indexOf("  document.getElementById('data-load-retry').addEventListener")),firstVisit);
+ firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,'400개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/2026\.10\.13 확인/);
+ assert.match(html,/<div class="hero-stat-num" id="hero-stat-courses">400개<\/div>/,'first paint must contain a verified number without JavaScript');
  const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,'205개');assert.match(el('home-count-status').textContent,/최근 확인/);
  reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,'1개');assert.ok(grid>=2,'Course list must render without waiting for reviews');
  countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,'1곳');assert.equal(el('home-count-status').textContent,'');assert.equal(saved.at(-1).courses,1);
