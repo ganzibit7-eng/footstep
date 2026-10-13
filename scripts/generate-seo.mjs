@@ -503,7 +503,7 @@ function detailHtml(item, type, url) {
     ...(item.lat != null && item.lng != null && item.lat !== '' && item.lng !== '' && Number.isFinite(Number(item.lat)) && Number.isFinite(Number(item.lng)) ? {
       geo: { '@type': 'GeoCoordinates', latitude: Number(item.lat), longitude: Number(item.lng) },
     } : {}),
-    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,creator:{'@type':'Person',name:photo.author},license:photo.licenseUrl,url:photo.source,width:photo.width,height:photo.height}} : {}),
+    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,...(photo.datasetContentId?{}:{creator:{'@type':'Person',name:photo.author}}),license:photo.licenseUrl,url:photo.source,width:photo.width,height:photo.height}} : {}),
     '@id': url+'#place',
   };
   const relatedLinks=[
