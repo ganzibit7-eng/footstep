@@ -145,3 +145,13 @@ header .profile-btn{white-space:nowrap}
 }
 @media(max-width:420px){#list-section .walk-time-options{grid-template-columns:repeat(2,minmax(0,1fr))}#list-section .walk-time-options button{font-size:13px;white-space:nowrap}}
 @media(max-width:360px){header .nav{padding-left:12px;padding-right:12px;gap:6px}header .profile-btn{padding:8px;max-width:92px}header #points-badge{padding:6px!important;font-size:11px!important}.home-update-toast time{display:none}}
+#walk-location-consent{min-width:0;margin:0 0 18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--pine-deep)}
+#walk-location-consent legend{float:left;width:100%;padding:0;margin:0 0 14px;font-size:16px;font-weight:700;line-height:1.6}
+#walk-location-consent .walk-consent-option{clear:both}
+#walk-location-consent .walk-consent-option+.walk-consent-option{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+#walk-location-consent label{display:flex;align-items:flex-start;gap:10px;min-height:44px;margin:0;font-size:14px;font-weight:600;line-height:1.75;cursor:pointer}
+#walk-location-consent input[type="checkbox"]{flex:0 0 19px;width:19px;height:19px;margin:3px 0 0;accent-color:var(--pine-deep)}
+#walk-location-consent p{margin:6px 0 0 29px;font-size:13px;line-height:1.8;color:var(--muted-text);overflow-wrap:anywhere}
+#walk-location-consent a{text-underline-offset:3px}
+#walk-location-consent :is(input,a):focus-visible{outline:2px solid var(--pine-deep);outline-offset:4px}
+@media(max-width:600px){#walk-location-consent{padding:16px}#walk-location-consent legend{font-size:15px}#walk-location-consent label{font-size:14px}}
