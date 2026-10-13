@@ -43,7 +43,7 @@ html[data-theme="dark"]{--reading-text:#f0f3e9;--reading-muted:#c0cdbf;--reading
 footer{font-size:14px;line-height:1.9}footer a{display:inline-flex;min-height:44px;align-items:center}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #8ba881;outline-offset:3px}
 /* Server-rendered discovery and detail pages share the same reading rhythm. */
-body.reading-page{background:#f4f5ed;color:#293d32;font-family:'Sunflower',system-ui,sans-serif;font-size:16px;line-height:1.9}
+body.reading-page{background:#f4f5ed;color:#293d32;font-family:"Noto Sans KR",system-ui,sans-serif;font-size:16px;line-height:1.9}
 .reading-page h1,.reading-page h2,.reading-page h3{font-family:'Jua',system-ui,sans-serif;word-break:keep-all;overflow-wrap:anywhere;line-height:1.45;color:#213f2e}
 .reading-page p,.reading-page li{word-break:keep-all;overflow-wrap:anywhere}
 .reading-page main,.reading-page .wrap{padding:32px 24px}
