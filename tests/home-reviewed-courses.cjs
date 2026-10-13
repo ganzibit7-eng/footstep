@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+const source=html.slice(html.indexOf('  function renderPopularCourses(){'),html.indexOf("  document.getElementById('home-walk-time')"));
+const courses=[{id:'a'},{id:'b'},{id:'c'},{id:'hidden'},{id:'unchecked'}];
+let reviews={},rendered=[];const section={hidden:false},grid={};
+const ctx=vm.createContext({document:{getElementById:id=>id==='popular-grid'?grid:id==='home-reviewed-courses'?section:null},allCourses:()=>courses,isHidden:(type,id)=>id==='hidden',needsPetCheck:c=>c.id==='unchecked',reviewsFor:id=>Array(reviews[id]?.count||0),avgRating:id=>reviews[id]?.avg||0,renderCourseCards:(el,list)=>{assert.equal(el,grid);rendered=list.map(c=>c.id);}});
+vm.runInContext(source,ctx);
+ctx.renderPopularCourses();assert.equal(section.hidden,true);assert.deepEqual(rendered,[]);
+reviews={a:{count:1,avg:3},hidden:{count:10,avg:5},unchecked:{count:20,avg:5}};
+ctx.renderPopularCourses();assert.equal(section.hidden,false);assert.deepEqual(rendered,['a'],'one reviewed course must not be padded with unreviewed courses');
+reviews={a:{count:2,avg:3},b:{count:2,avg:5},c:{count:3,avg:1}};
+ctx.renderPopularCourses();assert.deepEqual(rendered,['c','b','a']);
+reviews={};ctx.renderPopularCourses();assert.equal(section.hidden,true);assert.deepEqual(rendered,[],'old cards must be cleared when reviews disappear');
+console.log('PASS: real reviews only, empty-state hiding and clearing, count/rating ordering, hidden and unchecked exclusion');
