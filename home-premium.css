@@ -170,3 +170,10 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
  #nearby-section .home-region-note{padding-top:16px}
 }
 @media(prefers-reduced-motion:reduce){.home-region-card{transition:none}.home-region-card:hover{transform:none}}
+#home-explore{scroll-margin-top:90px}
+#home-explore[data-view="results"] .home-course-results{margin-top:0;padding-top:0;border-top:0}
+#nearby-section .home-result-actions #home-region-reselect{min-height:48px;padding:12px 18px;border:1px solid var(--experience-text);border-radius:12px;background:var(--experience-text);color:var(--experience-paper,#fffaf3);font-size:14px;font-weight:700;line-height:1.5;white-space:nowrap;margin-top:0}
+#home-region-reselect:focus-visible{outline:3px solid var(--experience-accent);outline-offset:4px}
+footer.site-footer .footer-links{gap:6px 18px}
+footer.site-footer .footer-links :is(a,button){min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;font-size:14px;font-weight:600}
+@media(max-width:400px){footer.site-footer .footer-links{gap:6px 14px}footer.site-footer .footer-links :is(a,button){font-size:13px}}

@@ -1,6 +1,6 @@
 const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
 const html=fs.readFileSync('index.html','utf8'),privacy=fs.readFileSync('privacy/index.html','utf8'),terms=fs.readFileSync('terms/index.html','utf8');
-for(const s of ['김도윤','010-213-5797','footstepbiz@gmail.com','만 14세','90일','30일','5분','Supabase Free','원본 위도·경도는 전송하지'])assert(privacy.includes(s),s);
+for(const s of ['김도윤','010-2130-5797','footstepbiz@gmail.com','만 14세','90일','30일','5분','Supabase Free','원본 위도·경도는 전송하지'])assert(privacy.includes(s),s);
 assert(!privacy.includes('항목별 보관 기한과 자동 파기 주기는 아직 확정되지'));assert(!privacy.includes('법적 운영 주체·보호책임자 정보, 아동 정보 처리 절차는 추가 확정'));
 assert(html.includes('만 14세 이상'));assert.equal((terms.match(/id="terms-operator"/g)||[]).length,0);assert(terms.includes('/privacy/'));
 assert(/window.location.assign\('\/'\+page\+'\/'\)/.test(html));
