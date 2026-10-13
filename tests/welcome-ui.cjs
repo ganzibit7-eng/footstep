@@ -1,0 +1,12 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const html=fs.readFileSync('index.html','utf8'),storage=new Map(),elements=new Map();let timer,signupOpened=0;
+const context={Date,myDeviceId:null,myNickname:null,currentPage:'home',localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},setTimeout:(fn,ms)=>{assert.equal(ms,120000);timer=fn;},openNickModal:()=>signupOpened++};
+const node=id=>{if(!elements.has(id))elements.set(id,{id,disabled:false,isConnected:true,handlers:{},classList:{shown:false,add(){this.shown=true;},remove(){this.shown=false;}},focus(){context.document.activeElement=this;},addEventListener(event,fn){this.handlers[event]=fn;}});return elements.get(id);};
+const origin=node('origin');context.document={hidden:false,activeElement:origin,getElementById:node,querySelector:()=>node('welcome-popup-overlay').classList.shown?node('welcome-popup-overlay'):null,querySelectorAll:()=>[node('welcome-popup-close'),node('welcome-popup-cta'),node('welcome-popup-later')]};
+vm.createContext(context);vm.runInContext(html.slice(html.indexOf('  const WELCOME_POPUP_COOLDOWN_MS'),html.indexOf('  // ===== 방문자 통계 =====')),context);
+timer();assert.equal(node('welcome-popup-overlay').classList.shown,true);assert.equal(context.document.activeElement,node('welcome-popup-cta'));
+let prevented=false;context.document.activeElement=node('welcome-popup-later');node('welcome-popup-overlay').handlers.keydown({key:'Tab',shiftKey:false,preventDefault(){prevented=true;}});assert(prevented);assert.equal(context.document.activeElement,node('welcome-popup-close'));
+node('welcome-popup-overlay').handlers.keydown({key:'Escape',preventDefault(){}});assert.equal(node('welcome-popup-overlay').classList.shown,false);assert.equal(context.document.activeElement,origin);timer();assert.equal(node('welcome-popup-overlay').classList.shown,false,'cooldown must prevent repeat display');
+storage.clear();context.myDeviceId='signed-in';timer();assert.equal(node('welcome-popup-overlay').classList.shown,false);context.myDeviceId=null;context.document.activeElement={tagName:'INPUT'};timer();assert.equal(node('welcome-popup-overlay').classList.shown,false);
+context.document.activeElement=origin;timer();node('welcome-popup-cta').handlers.click();assert.equal(signupOpened,1);assert.equal(node('welcome-popup-overlay').classList.shown,false);
+console.log('PASS: welcome cooldown, signed-in/typing protection, focus entry/restore, Tab loop, Escape and signup handoff without submitting consent.');

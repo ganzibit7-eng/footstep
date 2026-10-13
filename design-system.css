@@ -89,3 +89,22 @@ footer.site-footer .footer-description{font-size:13px;color:var(--finish-muted);
  .journey-shortcuts a{padding:16px}
 }
 @media(prefers-reduced-motion:reduce){.course-card,#nearby-section .home-region-card{transition:none!important;transform:none!important}}
+#nearby-section .course-title-link{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;width:100%;padding:0;border:0;border-radius:4px;background:transparent;color:inherit;font:inherit;letter-spacing:inherit;line-height:inherit;text-align:left;cursor:pointer}
+#nearby-section .course-title-link>span{min-width:0;flex:1;word-break:keep-all;overflow-wrap:anywhere}
+#nearby-section .course-title-link>svg{width:18px;height:18px;flex:none;margin-top:6px;fill:none;stroke:var(--finish-muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#nearby-section .course-title-link:focus-visible{outline:2px solid var(--finish-ink);outline-offset:5px}
+#welcome-popup-overlay .welcome-card{width:min(440px,calc(100vw - 32px));max-width:440px;max-height:calc(100dvh - 40px);overflow:auto;border-radius:22px;border:1px solid var(--finish-line);background:var(--finish-surface);box-shadow:0 22px 70px rgba(26,42,32,.18);color:var(--finish-ink)}
+#welcome-popup-overlay .modal-body{padding:30px;text-align:left}
+#welcome-popup-overlay .modal-close{width:40px;height:40px;min-height:40px;padding:0;border:0;border-radius:10px;background:transparent;color:var(--finish-muted);font-size:25px;line-height:1;right:12px;top:12px;cursor:pointer}
+.welcome-brand{display:flex;align-items:center;gap:10px;padding-right:28px;margin:0 0 22px;font-size:12px;font-weight:600;color:var(--finish-muted)}
+.welcome-brand img{width:42px;height:42px;object-fit:contain}
+.welcome-brand small{margin-left:auto;font-size:11px;font-weight:500;padding:4px 8px;border:1px solid var(--finish-line);border-radius:6px}
+#welcome-popup-title{font-size:27px;font-weight:650;line-height:1.45;letter-spacing:-.04em;margin:0 0 12px;color:var(--finish-ink);word-break:keep-all}
+#welcome-popup-description{font-size:14px;line-height:1.85;margin:0;color:var(--finish-muted)}
+.welcome-benefits{list-style:none;margin:24px 0;padding:18px 0;border-top:1px solid var(--finish-line);border-bottom:1px solid var(--finish-line);display:grid;gap:14px}
+.welcome-benefits li{display:flex;align-items:flex-start;gap:11px;font-size:13px;line-height:1.7}
+.welcome-benefits .ui-icon{width:18px;height:18px;flex:none;margin-top:2px;color:var(--finish-muted)}
+#welcome-popup-cta{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:50px;margin:0;padding:13px 17px;border:0;border-radius:11px;background:var(--finish-ink);color:var(--finish-surface);font-size:14px;font-weight:600;box-shadow:none}
+#welcome-popup-later{display:block;width:100%;min-height:44px;margin:9px 0 0;padding:10px 8px;border:0;background:transparent;color:var(--finish-muted);font-size:12px;font-weight:400;text-align:center}
+#welcome-popup-overlay :is(button,a):focus-visible{outline:2px solid var(--finish-ink);outline-offset:4px}
+@media(max-width:400px){#welcome-popup-overlay .modal-body{padding:26px 22px}#welcome-popup-title{font-size:25px}.welcome-brand{margin-bottom:18px}}
