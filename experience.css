@@ -155,3 +155,7 @@ header .profile-btn{white-space:nowrap}
 #walk-location-consent a{text-underline-offset:3px}
 #walk-location-consent :is(input,a):focus-visible{outline:2px solid var(--pine-deep);outline-offset:4px}
 @media(max-width:600px){#walk-location-consent{padding:16px}#walk-location-consent legend{font-size:15px}#walk-location-consent label{font-size:14px}}
+.mong-portrait{display:block;object-fit:contain;flex:none;pointer-events:none}
+#ai-assistant-btn{padding:4px;background:var(--paper);border:1px solid var(--line);box-shadow:0 5px 18px rgba(36,60,50,.18)}
+#ai-assistant-btn .mong-portrait-button{width:50px;height:50px}
+.ai-assistant-header .mong-portrait-header{width:56px;height:56px}
