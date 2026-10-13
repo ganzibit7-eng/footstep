@@ -22,9 +22,10 @@ assert.deepEqual(Home.filter(courses,{...state,region:'gyeonggi',comfort:{stairs
 assert.deepEqual(Home.filter(courses,{...state,region:'all',diff:'쉬움',maxMinutes:25},tools).map(c=>c.id),['seoul']);
 assert.deepEqual(Home.filter(courses,{...state,region:'bad'},tools),[]);
 assert.equal(Home.filter(courses,{...state,region:'all'},tools).length,4);
-let value=null;const storage={getItem:()=>value,setItem:(key,next)=>{value=next;}};
+let value=null;const storage={getItem:()=>value,setItem:(key,next)=>{value=next;},removeItem:()=>{value=null;}};
 assert.equal(Home.readSelection(storage),'');assert.equal(Home.writeSelection('seoul',storage),true);assert.equal(Home.readSelection(storage),'seoul');
 assert.equal(Home.writeSelection('bad',storage),false);assert.equal(Home.readSelection(storage),'seoul');value='<script>';assert.equal(Home.readSelection(storage),'');
 const blocked={getItem(){throw Error('blocked');},setItem(){throw Error('blocked');}};assert.equal(Home.readSelection(blocked),'');assert.equal(Home.writeSelection('busan',blocked),false);
 assert.equal(Home.regions.length,17);assert.equal(Home.valid('all'),true);
+Home.writeSelection('gwangju',storage);assert.equal(Home.readSelection(storage),'gwangju');assert.equal(Home.clearSelection(storage),true);assert.equal(Home.readSelection(storage),'','reselect must survive reload without restoring previous region');Home.writeSelection('busan',storage);assert.equal(Home.readSelection(storage),'busan');assert.equal(Home.clearSelection({removeItem(){throw Error('blocked');}}),false);
 console.log('PASS: strict address region, province/query intersection, unknown time/comfort exclusion, combined-region ambiguity, all 17 selections, invalid/blocked storage fallback');

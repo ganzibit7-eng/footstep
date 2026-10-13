@@ -44,6 +44,7 @@
   }
   function readSelection(storage){try{const value=(storage||root.localStorage).getItem(storageKey);return valid(value)?value:'';}catch{return '';}}
   function writeSelection(key,storage){if(!valid(key))return false;try{(storage||root.localStorage).setItem(storageKey,key);return true;}catch{return false;}}
-  const api=Object.freeze({regions,valid,label,regionKey,filter,readSelection,writeSelection});
+  function clearSelection(storage){try{(storage||root.localStorage).removeItem(storageKey);return true;}catch{return false;}}
+  const api=Object.freeze({regions,valid,label,regionKey,filter,readSelection,writeSelection,clearSelection});
   if(typeof module==='object'&&module.exports)module.exports=api;else root.HomeExplore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
