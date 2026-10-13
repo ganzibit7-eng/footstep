@@ -74,7 +74,7 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70f6582eb185c9353f39a366aa0c793f&libraries=services&autoload=false"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
 <style>
   @font-face{font-family:"Footstep Map CTA";font-style:normal;font-weight:700;font-display:swap;src:url("/assets/fonts/map-cta-noto-sans-kr-700.ttf") format("truetype");}
   :root{
@@ -511,17 +511,6 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
   .member-link{ cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
   .member-link:hover{ color:var(--clay); }
   .review-item .rh-actions{ display:flex; gap:8px; align-items:center; }
-  .admin-panel{ max-width:640px; }
-  .admin-row{
-    display:flex; justify-content:space-between; align-items:center; padding:15px 16px; gap:12px;
-    background:var(--paper); border:1px solid var(--line); border-radius:14px; margin-bottom:8px;
-    transition:box-shadow .15s ease;
-  }
-  .admin-row:hover{ box-shadow:0 4px 14px rgba(21,41,34,.06); }
-  .admin-row:last-child{ margin-bottom:0; }
-  .admin-row .info{ font-size:13.5px; line-height:1.5; }
-  .admin-row .info b{ display:block; font-size:14.5px; color:var(--pine-deep); }
-  .admin-badge{ background:#F2D6CE; color:var(--clay-dark); font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; }
   .stat-card{
     background:var(--sand); border-radius:14px; padding:16px 10px; text-align:center;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -533,24 +522,8 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
   .stat-card.clickable:active{ transform:scale(0.96); }
   .stat-card.clickable:hover{ box-shadow:0 6px 16px rgba(21,41,34,.08); }
   .stat-card.clickable .label::after{ content:' ›'; color:var(--clay); font-weight:700; }
-  .admin-accordion{ background:var(--paper); border-radius:16px !important; border:1px solid var(--line) !important; padding:16px !important; margin-top:12px !important; }
-  .admin-accordion-head{
-    display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:2px; user-select:none;
-    border-radius:10px; transition:background .12s ease;
-  }
-  .admin-accordion-head:active{ background:var(--sand); }
-  .admin-accordion-head h4{ font-family:'Jua',sans-serif; font-size:15.5px; color:var(--pine-deep); margin:0; }
-  .admin-accordion-head .accordion-arrow{ color:var(--muted-text); font-size:14px; transition:transform .15s ease; }
   .hourly-bar{ cursor:pointer; }
   .hourly-bar:active{ opacity:0.7; }
-  .admin-actions{ display:flex; gap:8px; flex-shrink:0; }
-  .admin-actions button{
-    font-size:12px; font-weight:700; padding:8px 13px; border-radius:999px; cursor:pointer; border:1.5px solid var(--line); background:var(--paper);
-    transition:transform .1s ease;
-  }
-  .admin-actions button:active{ transform:scale(0.95); }
-  .admin-actions .keep{ color:var(--moss); border-color:var(--moss); }
-  .admin-actions .remove{ color:var(--clay); border-color:var(--clay); }
   .empty-admin{ font-size:13.5px; color:#6B6550; padding:14px 0; text-align:center; }
   .hidden-flag{ opacity:0.5; }
   .home-ai-banner{
@@ -1022,28 +995,6 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
     *, *::before, *::after{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
   }
 
-.admin-traffic-panel{padding:16px;border:1px solid #b8c5b5;border-radius:16px;margin:16px 0}.admin-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.admin-tools input{flex:1;min-width:140px}.admin-tools input,.admin-tools select,.admin-tools button{font:inherit;padding:10px;border-radius:10px;border:1px solid #b8c5b5;max-width:100%}.admin-traffic-panel p{font-size:13px;line-height:1.6}.admin-table-scroll{overflow:auto;max-height:320px}.admin-traffic-panel table{width:100%;border-collapse:collapse;font-size:14px}.admin-traffic-panel th,.admin-traffic-panel td{padding:9px;text-align:left;border-bottom:1px solid #d8dfd3;white-space:nowrap}.admin-row .info{min-width:0;overflow-wrap:anywhere}.admin-actions{flex-wrap:wrap}
-
-#admin-overlay .admin-panel{width:min(960px,96vw);border-radius:26px;background:var(--cream,#faf8f2)}
-#admin-overlay .modal-body{padding:28px}
-#admin-overlay .modal-body>h3{padding:28px 20px!important;border-radius:18px;background:linear-gradient(125deg,#193e32,#32654e);color:white;font-size:24px!important}
-#admin-overlay .admin-accordion{border:1px solid var(--line)!important;border-radius:18px;padding:0!important;margin:12px 0!important;background:var(--paper,#fffdf8);overflow:hidden}
-#admin-overlay .admin-accordion-head{padding:18px;min-height:60px;gap:12px;scroll-margin-top:16px}
-#admin-overlay .admin-accordion-head h4{font-size:16px;margin:0}
-#admin-overlay .admin-accordion-head[aria-expanded="true"]{background:var(--sand)}
-#admin-overlay .admin-accordion-head:focus-visible{outline:3px solid #b57443;outline-offset:-3px}
-#admin-overlay .admin-accordion-body{padding:0 18px 18px}
-#admin-overlay .admin-section-details{border:1px solid var(--line);border-radius:18px;margin:12px 0}
-#admin-overlay .admin-section-details>summary{padding:18px;cursor:pointer;font-weight:700}
-#admin-overlay .admin-section-details .admin-traffic-panel{margin:0;border:0}
-#admin-overlay .admin-row{padding:16px 0;gap:12px;align-items:flex-start}
-#admin-overlay .admin-row .info{font-size:12px;line-height:1.9}
-#admin-overlay .admin-row .info b{display:block;font-size:16px}
-#admin-overlay button{min-height:40px}
-#admin-overlay input{min-width:0}
-#admin-overlay #member-filter-status{font-size:12px;line-height:1.6}
-@media(max-width:600px){#admin-overlay .modal-body{padding:18px 12px 28px}#admin-overlay .admin-row{flex-direction:column}#admin-overlay .admin-actions{width:100%;justify-content:flex-start}#admin-overlay .admin-tools>*{flex:1 1 110px}#admin-overlay .admin-accordion-body{padding:0 12px 14px}#admin-overlay .admin-accordion-head{padding:16px 12px}}
-
 #weather-location{display:block;font-size:11px;color:var(--muted-text);margin:4px 0}
 #weather-meta{flex-wrap:wrap;gap:6px 10px}
 .search-feedback{display:flex;justify-content:flex-end;margin:8px 0 14px}
@@ -1396,18 +1347,11 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var
 .course-visit-notes p{font-size:12px;line-height:1.8;margin:0 0 14px;color:var(--muted-text)}
 @media(max-width:380px){.course-detail-summary{padding:12px 6px;gap:4px}.course-detail-summary strong{font-size:12px}}
 </style><style id="member-legal-finish">
-#all-member-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.admin-member-card{padding:18px;background:var(--paper);border:1px solid var(--ui-border);border-radius:18px;min-width:0}
-.admin-member-card header{display:flex;gap:12px;align-items:center;margin-bottom:16px;position:static;background:none;box-shadow:none;padding:0;border:0}
-.member-avatar{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:15px;background:var(--sand);font-size:21px}
-.admin-member-card h5{font-size:17px;margin:0;overflow-wrap:anywhere}.admin-member-card small{font-size:11px;color:var(--muted-text)}
-.admin-member-card dl{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px;margin:0}.admin-member-card dt{font-size:10px;color:var(--muted-text);margin-bottom:5px}.admin-member-card dd{margin:0;font-size:12px;font-weight:700;line-height:1.6}
-.admin-member-card details{margin:14px 0;font-size:12px;border-top:1px solid var(--ui-border);padding-top:12px}.admin-member-card summary{cursor:pointer}.admin-member-card code{display:block;overflow-wrap:anywhere;font-size:11px;margin:10px 0}.admin-member-card p{font-size:11px;line-height:1.7;color:var(--muted-text)}
-.admin-member-card .admin-actions{display:flex;flex-wrap:wrap;gap:6px}.admin-member-card button{font:inherit;font-size:11px;padding:8px 10px;border:1px solid var(--ui-border);border-radius:10px;background:var(--sand);color:var(--pine-deep);cursor:pointer}.admin-member-card button{min-height:44px}.admin-member-card button:disabled{opacity:.55;cursor:wait}#withdraw-btn{min-height:44px!important;font-size:14px!important}#withdraw-btn:disabled{opacity:.55;cursor:wait}.admin-member-card button.member-danger{background:transparent;color:#b44b3d;border-color:#d6a49b}
+.member-avatar{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:15px;background:var(--sand);font-size:21px}#withdraw-btn{min-height:44px!important;font-size:14px!important}#withdraw-btn:disabled{opacity:.55;cursor:wait}
 .legal-reading,.legal-reading h2,.legal-reading h3,.legal-reading p{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans KR","Malgun Gothic",sans-serif!important}
 .legal-reading .wrap{max-width:820px!important}.legal-reading h2{font-weight:800;font-size:30px;letter-spacing:-.04em}.legal-reading article{padding:24px 0!important;scroll-margin-top:100px}.legal-reading h3{font-size:18px!important;font-weight:750;line-height:1.6;margin-bottom:12px!important}.legal-reading article p{font-size:15px!important;line-height:1.95;letter-spacing:-.015em;word-break:keep-all;overflow-wrap:anywhere}
 .legal-toc{padding:18px;border:1px solid var(--ui-border);border-radius:16px;background:var(--sand);margin:22px 0}.legal-toc summary{font-weight:700;cursor:pointer;font-size:14px}.legal-toc nav{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}.legal-toc button{font:inherit;text-align:left;background:transparent;border:0;padding:8px;color:var(--pine-deep);font-size:13px;cursor:pointer;line-height:1.6}
-@media(max-width:600px){#all-member-list{grid-template-columns:1fr}.legal-toc nav{grid-template-columns:1fr}.legal-reading article p{font-size:14px!important;line-height:1.9}}
+@media(max-width:600px){.legal-toc nav{grid-template-columns:1fr}.legal-reading article p{font-size:14px!important;line-height:1.9}}
 </style><style id="walk-planning-features">
 .walk-plan-box,.walk-prep{border:1px solid var(--ui-border);border-radius:18px;background:var(--sand);padding:18px;margin:18px 0}
 .walk-plan-box h3{font-size:18px;margin:0 0 7px}
@@ -1769,7 +1713,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
  html.galaxy-phone .home-update-anchor:has(.home-update-toast[hidden]){margin-bottom:0}
 }
 </style>
-<style>#admin-overlay .member-provider-tag{display:inline-block;margin-top:5px;padding:3px 8px;border:1px solid var(--ui-border);border-radius:7px;font:600 11px/1.6 system-ui,sans-serif;background:var(--sand);color:var(--pine-deep)}#admin-overlay .member-extra-filters label{font:12px/1.7 system-ui,sans-serif;display:flex;gap:7px;align-items:center;flex-wrap:wrap}#admin-overlay .member-extra-filters input[type="date"]{min-width:135px;flex:none}#member-summary button{font-weight:650}#acc-today #admin-summary{margin-top:12px!important}</style>
+<style>#member-summary button{font-weight:650}</style>
 <link rel="stylesheet" href="/experience.css?v=20261009-refined-2">
 <link rel="stylesheet" href="/mong-calendar.css?v=20261009-results">
 <script src="/walk-calendar.js?v=20261009-detail"></script>
@@ -1784,6 +1728,9 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 #list-section:has(.compare-dock:not([hidden])){padding-bottom:100px}.compare-panel:focus{outline:2px solid var(--pine)}.compare-scroll{max-width:100%}.compare-panel th:first-child{position:sticky;left:0;background:var(--paper);z-index:1}.compare-panel thead th:first-child{background:var(--sand)}
 @media(max-width:700px){.compare-dock{bottom:calc(76px + env(safe-area-inset-bottom,0px));left:12px;right:84px;transform:none;width:auto;padding:7px;gap:5px}.compare-dock span{font-size:11px}.compare-dock button{font-size:12px;padding:8px 6px}.compare-panel{scroll-margin-top:80px}.compare-panel table{min-width:0}.compare-panel th:first-child{width:82px}}
 </style>
+<style>.member-profile-panel{ max-width:640px; }
+.member-profile-panel{width:min(960px,96vw);border-radius:26px;background:var(--cream,#faf8f2)}</style>
+<style>.auth-consent-detail{font:12px/1.7 system-ui,sans-serif;color:var(--muted-text);margin:10px 0}.auth-consent-detail a{color:var(--pine-deep)}.auth-consent input{flex-shrink:0}</style>
 </head>
 <body>
 
@@ -1908,7 +1855,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       <div class="home-update-anchor">
       <span class="eyebrow" id="hero-eyebrow">오늘도 같이 걷자 🐾</span>
       <aside class="home-update-toast" id="home-update-toast" aria-label="최신 업데이트">
-        <p><strong>발자국 업데이트</strong><time datetime="2026-10-13">2026.10.13</time><span>전국 산책 정보 400곳 · 실제 사진 확대</span></p>
+        <p><strong>발자국 업데이트</strong><time datetime="2026-10-13">2026.10.13</time><span>개인정보 안내 · 가입과 GPS 이용 선택 보완</span></p>
         <button type="button" id="home-update-open" aria-haspopup="dialog">내역 보기</button>
         <button type="button" class="update-close" id="home-update-close" aria-label="홈을 다시 방문할 때까지 업데이트 안내 닫기">×</button>
       </aside>
@@ -2262,7 +2209,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 
     <div class="register-panel">
       <div class="form-card">
-        <div role="region" id="walk-reference" class="walk-plan-box" aria-labelledby="walk-reference-title" hidden><h3 id="walk-reference-title" tabindex="-1">이번 산책 참고 코스</h3><strong id="walk-reference-name"></strong><p id="walk-reference-summary"></p><details id="walk-reference-details"><summary>계단·경사·동반 조건 확인</summary><div id="walk-reference-info"></div></details><div class="walk-reference-actions"><button type="button" class="pin-btn" id="walk-reference-open">코스 다시 보기</button><a class="pin-btn" id="walk-reference-directions" target="_blank" rel="noopener" hidden>출발점 길찾기 ↗</a><button type="button" class="pin-btn" id="walk-reference-clear">선택 해제</button></div><p>선택한 코스는 참고 정보예요. GPS 기록은 시작 버튼을 누른 뒤 실제 이동 경로로 남아요.</p></div><aside class="walk-record-notice" id="walk-record-notice" aria-label="산책 기록 이용 안내"><strong>산책 기록 중에는 발자국 화면을 켜두세요.</strong><p>화면을 끄거나 다른 앱으로 전환하면 GPS 수신이 중단되어 거리·속도·예상 걸음 수가 누락될 수 있어요. 시간만 계속 표시될 수 있으며, 수신하지 못한 구간은 복원되지 않아요.</p><p>인터넷만 끊긴 경우에는 이 화면이 켜져 있고 GPS가 수신되면 기기에 기록할 수 있어요. 연결 후 직접 내 기록에 저장해 주세요.</p></aside><div id="walk-idle-panel">
+        <div role="region" id="walk-reference" class="walk-plan-box" aria-labelledby="walk-reference-title" hidden><h3 id="walk-reference-title" tabindex="-1">이번 산책 참고 코스</h3><strong id="walk-reference-name"></strong><p id="walk-reference-summary"></p><details id="walk-reference-details"><summary>계단·경사·동반 조건 확인</summary><div id="walk-reference-info"></div></details><div class="walk-reference-actions"><button type="button" class="pin-btn" id="walk-reference-open">코스 다시 보기</button><a class="pin-btn" id="walk-reference-directions" target="_blank" rel="noopener" hidden>출발점 길찾기 ↗</a><button type="button" class="pin-btn" id="walk-reference-clear">선택 해제</button></div><p>선택한 코스는 참고 정보예요. GPS 기록은 시작 버튼을 누른 뒤 실제 이동 경로로 남아요.</p></div><aside class="walk-record-notice" id="walk-record-notice" aria-label="산책 기록 이용 안내"><strong>산책 기록 중에는 발자국 화면을 켜두세요.</strong><p>화면을 끄거나 다른 앱으로 전환하면 GPS 수신이 중단되어 거리·속도·예상 걸음 수가 누락될 수 있어요. 시간만 계속 표시될 수 있으며, 수신하지 못한 구간은 복원되지 않아요.</p><p>인터넷만 끊긴 경우에는 이 화면이 켜져 있고 GPS가 수신되면 기기에 기록할 수 있어요. 연결 후 직접 내 기록에 저장해 주세요.</p></aside><fieldset id="walk-location-consent" class="walk-record-notice"><legend>위치정보 이용 선택</legend><label><input type="checkbox" id="walk-location-agree"> GPS 위치·경로를 이 기기에서 산책 기록에 이용하는 데 동의합니다.</label><p>좌표·시간을 거리와 경로 계산에 이용하며, 저장 전 초안은 이 기기에 남아요. 동의하지 않아도 코스 열람은 가능해요. <a href="/location/" target="_blank" rel="noopener">위치정보 이용 안내</a></p><label><input type="checkbox" id="walk-presence-agree"> 주변 코스 산책 인원 집계에 참여합니다. (선택)</label><p>선택하면 계정 ID·인근 코스 ID·갱신 시각만 서버로 보내요. 원본 좌표는 보내지 않으며, 갱신이 끊긴 정보는 5분 후 삭제 대상이 됩니다.</p></fieldset><div id="walk-idle-panel">
           <p id="walk-local-status" role="status" aria-live="polite">위치 확인 후 시작해요. 인터넷이 끊겨도 화면이 켜져 있고 GPS가 수신되면 기기에 기록돼요.</p>
           <button type="button" class="submit-btn" id="walk-start-btn" aria-describedby="walk-record-notice">📍 위치 권한 확인하고 시작</button>
           <button type="button" class="submit-btn" id="walk-recover-btn" hidden>↻ 기기에 남은 기록 복구</button>
@@ -2295,7 +2242,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
           <div class="walk-metrics walk-result">
             <div><strong id="walk-done-time">00:00</strong><span>기록 시간</span></div><div><strong id="walk-done-dist">0.00</strong><span>거리 · km</span></div><div><strong id="walk-done-steps">0</strong><span>예상 걸음 수 · 보</span></div><div><strong id="walk-done-pace">–</strong><span>평균 페이스 · /km</span></div>
           </div><p id="walk-done-note" class="walk-metric-note"></p>
-          <button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
+          <label class="walk-start-note"><input type="checkbox" id="walk-cloud-agree"> 내 GPS 경로·거리·시간을 계정에 연결하여 서버에 저장하는 데 동의합니다.</label><p class="walk-start-note">삭제·탈퇴 전까지 내 기록 제공에 보관하며 운영 관리자는 문의·장애 처리 시 접근할 수 있어요. 동의하지 않으면 기기 기록만 이용해요. <a href="/privacy/#privacy-item-4" target="_blank" rel="noopener">저장·삭제 안내</a></p><button type="button" class="submit-btn" id="walk-save-btn">💾 내 기록에 저장</button>
           <button type="button" class="walk-share-button" id="walk-share-card-btn">🖼️ 산책 결과 카드 만들기</button><p class="walk-share-note">강아지 정보와 경로 좌표는 이미지에 넣지 않아요.</p>
           <button type="button" class="pin-btn" id="walk-to-course-btn" style="margin-top:10px;">🐾 이 경로를 산책 코스로 제안하기</button>
           <button type="button" class="pin-btn" id="walk-discard-btn" style="margin-top:10px; color:#A79E7E;">기록 버리고 다시 시작</button>
@@ -2413,10 +2360,9 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   </div>
 </section>
 
-<section id="privacy-section" data-page-section="privacy" class="app-page legal-reading" style="padding:40px 0;"><div class="wrap" style="max-width:800px;"><h2 style="margin-bottom:12px;">개인정보처리방침</h2><p style="font-size:13px;color:var(--muted-text);">발자국 · 내용 갱신 2026.10.09 · <a href="/docs/legal-history-20261003.html" target="_blank" rel="noopener noreferrer">이전 안내 보기</a></p><aside class="legal-summary"><strong>내 정보와 광고 선택을 한눈에</strong><ul><li>회원·게시물·산책 기록은 각 기능 제공에 사용합니다.</li><li>공개 코스·장소는 위치 권한 없이도 볼 수 있습니다.</li><li>광고 쿠키와 맞춤 광고 선택 방법을 별도 안내합니다.</li></ul><a href="mailto:footstepbiz@gmail.com">개인정보 문의 · footstepbiz@gmail.com</a></aside><div class="legal-content"><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>1. 운영 및 문의</h3><p>발자국은 반려견 산책 코스·장소 공유, 산책 기록 및 관련 회원 기능을 제공합니다. 개인정보 관련 열람·정정·삭제·처리정지·동의 철회 및 문의는 발자국 운영 담당자에게 이메일로 요청할 수 있습니다: <a href="mailto:footstepbiz@gmail.com">footstepbiz@gmail.com</a>.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>2. 회원·프로필 정보</h3><p>로그인 방식에 따라 인증 계정 식별자, 이메일, 카카오·Google이 이용자의 동의 범위에서 전달하는 프로필 정보를 처리합니다. 회원 식별과 계정 관리에 이용하며, 사용자가 입력한 닉네임·등록 지역과 선택 입력한 반려견 이름·견종·나이·사진은 프로필 표시와 지역 추천에 사용합니다.</p><p>선택 프로필 정보는 입력하지 않을 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>3. 게시물과 활동 정보</h3><p>코스·시설·배변봉투함의 제목·설명·위치·경로, 리뷰·평점·사진, 작성자 식별자·표시명·작성 시각을 등록·표시·수정·신고 처리에 이용합니다. 찜, 포인트 적립·사용, 알림 및 신고 기록은 해당 기능 운영에 사용합니다.</p><p>공개 장소 정보와 작성자 표시명 등은 검색용 상세 페이지에도 표시될 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>4. GPS와 산책 위치</h3><p>현재 위치 찾기와 산책 추적은 브라우저 위치 권한을 사용합니다. 산책 기록 저장 시 경로·거리·기록 시간·일시정지 시간·보폭과 예상 걸음 수를 계정에 연결합니다.</p><p>예상 걸음 수는 보호자 보폭과 GPS 거리로 계산하며 실제 측정한 걸음 수가 아닙니다. 산책 중 주변 활동 집계에는 현재 좌표, 계정 식별자, 인근 코스 및 갱신 시각이 서버로 전송됩니다.</p><p>종료 시 활동 정보 삭제를 요청하지만 비정상 종료나 통신 실패 시 즉시 삭제가 완료되지 않을 수 있습니다. 기기 설정에서 위치 권한을 철회할 수 있으며 이미 저장한 기록의 삭제는 별도로 요청해야 합니다.</p><p>위치 권한을 허용하지 않아도 공개 정보 열람은 가능합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>5. 접속 통계와 브라우저 저장소</h3><p>서비스 안전을 위해 인증 요청 실패·권한 거절·승인 우회 방지·계정 삭제 처리 등의 보안 기록을 수집합니다. 사건 종류·서버 시각·쿼리 없는 경로·확인 가능한 계정 식별자와 비밀키로 변환한 요청 상관 식별자를 관리자만 확인할 수 있습니다. 원본 IP·이메일·비밀번호·접속 토큰은 이 보안 기록에 저장하지 않습니다. 브라우저 보고와 서버 처리 결과를 구분하며, 30일 보관 기준으로 매일 오래된 기록을 정리합니다. 계정 탈퇴 후에도 해당 기간 동안 안전 확인 목적의 보안 기록이 남을 수 있습니다.</p><p>브라우저 방문자 ID, 조회 시각, 페이지 경로(검색어·쿼리 제외), 유입 출처·홍보 캠페인, 로그인과 연결된 식별자, 최근 활동 화면·시각, 화면이 보인 시간·클릭 횟수·스크롤 비율을 운영 통계에 사용합니다. 자동 접속 여부는 브라우저 신호와 요청 헤더로 추정하며 원본 IP·User-Agent는 발자국의 방문 통계 테이블에 저장하지 않습니다. 다만 GitHub Pages·Supabase 등 인프라 제공자의 운영·보안 로그에는 IP, 브라우저 식별 정보, 요청 시각 등이 기록될 수 있습니다.</p><p>관리자·작업 접속과 식별된 Google 광고·Meta·네이버 등 크롤러는 일반 방문 통계에서 제외하고 별도 분류합니다. 유입 출처에는 ref·utm_source 등의 URL 값과 브라우저가 전달하는 이전 사이트 정보가 사용될 수 있습니다.</p><p>로그인 세션·방문자 ID·설정·등록 초안은 브라우저 저장소에 보관될 수 있습니다. 사이트 데이터를 삭제하면 로그아웃되거나 초안이 사라질 수 있으며, 서버 기록까지 삭제되는 것은 아닙니다.</p><p>쿠팡 제휴 링크를 직접 누르면 상품·링크, 클릭 시각, 페이지·화면, 유입 경로, 브라우저·기기 종류, 브라우저 식별자 및 로그인 중인 경우 계정 식별자를 서비스 이용 분석에 저장합니다. 관리자만 조회하며 클릭 원본은 90일 기준으로 매일 정리합니다. 로그인 상태에서 계정에 연결된 클릭 기록은 계정 삭제 시 함께 삭제합니다. 비로그인 기록으로 실제 신원을 확인하지 않으며 원본 IP·이메일·URL 검색 매개변수는 클릭 기록에 저장하지 않습니다. 이 기록은 쿠팡의 구매·수익 정보가 아닙니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>6. 공개 사진과 이용자 선택</h3><p>등록한 사진은 공개 URL로 표시되는 저장소에 업로드됩니다. 링크를 가진 사람이 사진에 접근할 수 있으므로 타인의 얼굴·연락처·집 주소 등 불필요한 개인정보가 포함되지 않도록 확인해 주세요.</p><p>게시물 삭제와 사진 원본·검색용 페이지·외부 캐시의 삭제는 별도 처리가 필요할 수 있습니다. 삭제가 필요한 URL을 문의처로 알려주실 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>7. 저장 및 외부 서비스</h3><p>Supabase를 인증·데이터베이스·파일 저장에 사용하며, 확인된 주 데이터베이스 리전은 대한민국 서울(ap-northeast-2)입니다. 이 정보가 모든 외부 사업자의 처리가 국내에서만 이루어진다는 뜻은 아닙니다.</p><p>카카오·Google 로그인, OpenStreetMap 기반 지도 타일, 카카오 장소 검색, Open-Meteo 날씨·대기질 기능을 이용할 때 각 제공자와 통신합니다. 기능에 따라 조회 영역, 검색어, 조회 좌표 및 접속 정보가 전달될 수 있습니다.</p><p>위탁과 제3자 제공, 국외 이전의 해당 여부 및 계약별 상세 처리는 별도 확인이 필요합니다.</p></article><article><h3>8. Google 애드센스와 광고 쿠키</h3><p>발자국에는 Google 애드센스 광고 코드가 연결되어 있습니다. 광고가 제공되는 경우 Google 및 제3자 광고 공급업체는 쿠키 또는 유사한 기술을 사용하여 이용자의 이전 발자국 방문 및 다른 웹사이트 방문 기록을 바탕으로 광고를 제공할 수 있습니다.</p><p>Google의 광고 쿠키는 Google과 광고 파트너가 이 사이트와 다른 사이트의 방문 기록을 이용해 광고를 선택하는 데 사용될 수 있습니다. 광고 요청 과정에서는 페이지 URL, IP 주소, 브라우저·기기 정보 등이 Google에 전달될 수 있으며, 광고 제공·측정과 부정 이용 방지에도 사용됩니다.</p><p>처리 방식과 보관 정보는 <a href="https://policies.google.com/privacy?hl=ko" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침 ↗</a>, <a href="https://policies.google.com/technologies/partner-sites?hl=ko" target="_blank" rel="noopener noreferrer">Google 파트너 사이트 정보 사용 안내 ↗</a>, <a href="https://policies.google.com/technologies/ads?hl=ko" target="_blank" rel="noopener noreferrer">Google 광고 기술 안내 ↗</a>에서 확인할 수 있습니다.</p><p>애드센스 설정에 따라 Google 이외의 광고 네트워크·공급업체가 광고를 제공하고 자체 쿠키를 사용할 수도 있습니다. 광고 제공업체별 선택 항목은 동의 메시지가 제공되는 경우 해당 메시지의 공급업체 목록에서 확인할 수 있으며, 참여 업체의 맞춤 광고 거부는 아래 WebChoices에서도 관리할 수 있습니다.</p></article>
- <article><h3>9. 광고 설정과 쿠키 관리</h3><ul><li><a href="https://adssettings.google.com/partnerads" target="_blank" rel="noopener noreferrer">Google 파트너 광고 설정 ↗</a>에서 개인 맞춤 광고 사용 여부를 관리할 수 있습니다.</li><li><a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer">WebChoices · 제3자 맞춤 광고 거부 ↗</a>에서 참여 광고업체의 맞춤 광고 쿠키 사용을 거부할 수 있습니다.</li><li>브라우저 설정에서 쿠키를 삭제하거나 제3자 쿠키를 차단할 수 있습니다. 로그인이나 일부 설정 유지에 영향을 줄 수 있으며, 서버에 저장된 계정·게시물은 별도 삭제 절차가 필요합니다.</li></ul><p>맞춤 광고를 거부하더라도 광고 자체가 사라지는 것은 아닙니다. 광고 측정·보안·부정 이용 방지 등 다른 목적의 처리가 이루어질 수 있습니다. 선택은 이용 중인 브라우저·기기와 광고 제공업체에 따라 적용 범위가 다를 수 있습니다.</p><p>지역에 따른 광고 동의 메시지가 표시되는 경우 해당 메시지에서 동의 여부와 선택 항목을 확인해 주세요. 회원가입 약관 동의와 위치 권한은 광고 맞춤 설정 동의를 대신하지 않습니다.</p></article><article><h3>10. 보관 기간과 삭제의 현재 범위</h3><p>회원·게시물·산책 기록은 서비스 제공을 위해 저장됩니다. 최근 로그인 후 회원 탈퇴를 확인하면 본인 소유로 확인되는 업로드 사진 원본, 등록 게시물·리뷰·산책 기록·프로필·포인트·찜·알림·본인 신고 및 계정에 연결된 방문 기록을 정리하고 발자국 인증 계정을 삭제합니다.</p><p>삭제된 코스의 리뷰·찜 등 연결 데이터도 정리됩니다. 처리 중 새 데이터 작성을 제한하며, 중간 실패 시 일부 삭제 상태가 남을 수 있어 재시도 또는 문의가 필요합니다.</p><p>관리자 계정은 권한 이전이 선행되어야 합니다. 외부 로그인 제공자의 계정, 다른 이용자 소유 사진, 로그인과 연결되지 않은 방문 기록, 이메일 문의, 백업·외부 캐시는 이 자동 삭제 범위에 포함되지 않습니다.</p><p>항목별 보관 기한과 자동 파기 주기는 아직 확정되지 않았으며, 관련 삭제 요청은 문의처에서 별도로 확인합니다. 본 안내는 무기한 보관 동의를 의미하지 않습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>11. 권리 행사와 처리 문의</h3><p>프로필 수정, 내 정보 다운로드 및 탈퇴 기능을 이용하거나 이메일로 열람·정정·삭제·처리정지·동의 철회를 요청할 수 있습니다. 대리인 요청에는 권한 확인이 필요할 수 있습니다.</p><p>요청 시 비밀번호나 인증번호를 보내지 마세요. 처리 결과나 일부 실패가 확인되지 않으면 문의처로 알려주세요.</p><p>법령상 제한이 있는 요청은 해당 근거와 처리 범위를 확인해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>12. 변경과 안내 범위</h3><p>본 설명은 확인된 서비스 동작을 구체적으로 알리기 위해 2026년 10월 4일 갱신했습니다. 이번 변경에는 광고·쿠키 설명과 광고 선택 링크, 접속 로그 안내를 추가했습니다. 항목별 처리 근거·보관 기간, 외부 사업자별 이전·위탁 사항, 법적 운영 주체·보호책임자 정보, 아동 정보 처리 절차는 추가 확정이 필요합니다.</p><p>필요한 별도 동의를 이 문서 열람이나 포괄 동의로 갈음하지 않습니다. 중요한 처리 방식의 변경은 해당 내용과 적용 시점을 별도로 안내합니다.</p></article></div></div></section>
 
-<section id="terms-section" data-page-section="terms" class="app-page legal-reading" style="padding:40px 0;"><div class="wrap" style="max-width:800px;"><h2 style="margin-bottom:12px;">이용약관</h2><p style="font-size:13px;color:var(--muted-text);">발자국 · 내용 갱신 2026.10.09</p><aside class="legal-summary"><strong>발자국을 이용하기 전에</strong><ul><li>장소의 동반 조건과 현장 통제 여부를 방문 전에 확인해 주세요.</li><li>직접 작성하거나 사용 권한이 있는 자료를 등록해 주세요.</li><li>광고 클릭은 이용 조건이나 포인트 적립 조건이 아닙니다.</li></ul><a href="mailto:footstepbiz@gmail.com">서비스 문의 · footstepbiz@gmail.com</a></aside><div class="legal-content"><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>1. 목적 및 운영</h3><p>이 약관은 발자국의 코스·장소 공유 및 산책 관련 서비스 이용 조건을 설명합니다. 문의와 이의 제기는 <a href="mailto:footstepbiz@gmail.com">footstepbiz@gmail.com</a>으로 접수할 수 있습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>2. 제공 기능</h3><p>산책 코스·배변봉투함·동반 장소 조회와 등록, 검색, GPS 산책 기록, 리뷰·사진·찜, 프로필, 포인트 및 알림을 제공합니다. 기능에 따라 로그인이나 위치 권한이 필요할 수 있습니다.</p><p>몽은 등록 정보와 선택 조건을 바탕으로 장소를 찾는 산책 도우미이며 현장 적합성이나 안전을 보증하는 수단이 아닙니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>3. 계정 관리</h3><p>이용자는 본인이 사용할 권한이 있는 계정과 정확한 정보를 사용해야 하며 타인 사칭이나 계정 도용을 해서는 안 됩니다. 계정 도용이나 정보 오류가 의심되면 운영자에게 알려주세요.</p><p>가입·인증 및 개인정보 처리는 해당 화면과 개인정보처리방침의 안내를 함께 확인해 주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>4. 등록 및 공개</h3><p>이용자는 직접 작성하거나 적법한 사용 권한이 있는 설명·사진·경로를 등록해야 합니다. 승인 대상 정보는 검토 후 공개될 수 있으며 허위·중복·권리 침해 정보는 반려되거나 제한될 수 있습니다.</p><p>공개된 장소 정보는 지도·목록·검색용 상세 페이지와 검색엔진을 통해 노출될 수 있습니다. 연락처나 사적 주거지 등 불필요한 개인정보를 공개하지 마세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>5. 이용자가 지켜야 할 사항</h3><p>권리 침해, 명예훼손, 불법·유해 게시물, 스팸, 사칭, 악성 코드, 서비스 방해, 권한 없는 정보 접근·수집, 보상 부정 적립을 금지합니다. 장소를 이용할 때는 현장 출입 제한과 반려견 동반 규정 및 관계 법령을 준수해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>6. 신고 및 제한</h3><p>운영자는 신고와 위반 내용을 검토하여 수정 요청, 비공개, 삭제 또는 이용 제한을 할 수 있습니다. 조치는 피해와 위반 정도를 고려하여 필요한 범위에서 이루어져야 하며, 이의가 있는 이용자는 대상과 사유를 문의처로 제출할 수 있습니다.</p><p>긴급한 피해 방지를 위한 조치와 일반적인 오류 제보를 구분하여 처리합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>7. 산책 기록과 현장 정보</h3><p>GPS·지도·거리·예상 시간·날씨는 기기 상태, 위치 오차, 화면 잠금, 통신 및 외부 제공자의 상황에 따라 실제와 다를 수 있습니다. 저장 결과를 확인해 주세요.</p><p>코스와 시설의 운영 시간, 동반 조건, 공사·통제 등은 방문 전에 확인해야 합니다. 산책 기록과 몽은 긴급 구조·안전 감시 또는 수의학적 진단을 대체하지 않습니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>8. 저작권</h3><p>이용자가 등록한 콘텐츠의 권리는 이용자 또는 원 권리자에게 있습니다. 서비스는 기존 약관에서 정한 서비스 표시·운영 목적 범위에서 콘텐츠를 이용합니다.</p><p>별도 광고 등 운영 범위를 벗어나는 사용에는 필요한 권한을 확보해야 합니다. 침해 신고 시 해당 게시물 URL과 권리 관계를 알려주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>9. 포인트와 외부 거래</h3><p>포인트는 기능 화면에 안내된 조건에 따라 적립·사용됩니다. 부정 적립이나 오류가 발생하면 관련 내역을 확인하여 정정할 수 있습니다.</p><p>이 약관만으로 현금 환급·양도·새로운 유효 기간을 부여하거나 기존 포인트를 소멸시키지 않습니다. 외부 시설의 예약·구매·입장 조건은 해당 거래 당사자의 안내를 확인해야 합니다.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>10. 변경·중단과 탈퇴</h3><p>점검, 장애 또는 외부 제공자 변경으로 기능이 일시 중단되거나 변경될 수 있습니다. 중요한 변경·종료에는 내용과 이용자 자료 처리 방법을 안내해야 합니다.</p><p>이용자는 제공된 탈퇴 기능 또는 문의처로 종료를 요청할 수 있으며 구체적인 삭제 범위는 개인정보처리방침과 탈퇴 안내를 확인해 주세요.</p></article><article style="padding:18px 0;border-bottom:1px solid var(--line);"><h3>11. 책임 및 분쟁</h3><p>이용자와 운영자는 자신의 귀책사유에 대해 관계 법령에 따른 책임을 부담합니다. 외부 정보의 한계를 안내하는 것이 운영자의 고의·과실 등 법적 책임을 일괄 면제한다는 뜻은 아닙니다.</p><p>분쟁은 문의처를 통한 해결을 요청할 수 있으며 해결되지 않은 분쟁의 관할과 절차는 관계 법령에 따릅니다.</p></article><article><h3>12. 광고와 외부 링크</h3><p>서비스 운영을 위해 Google 애드센스 등 광고가 표시될 수 있습니다. 광고는 광고 표시 또는 제공 화면을 통해 서비스 콘텐츠와 구분되며, 광고 노출 자체가 발자국의 추천이나 품질 보증을 의미하지 않습니다.</p><p>이용자는 광고를 클릭할 의무가 없습니다. 광고 클릭을 부탁하거나 보상하는 행위, 반복·자동 클릭 등 광고 성과를 인위적으로 만드는 행위를 금지합니다. 발자국은 광고 클릭을 회원 가입이나 포인트 적립의 조건으로 사용하지 않습니다.</p><p>외부 광고·시설 사이트의 상품·예약·결제·개인정보 처리는 해당 제공자의 안내를 확인해 주세요. 광고 쿠키와 맞춤 광고 선택 방법은 개인정보처리방침의 광고 관련 항목에서 확인할 수 있습니다. 본 조항은 운영자의 법적 책임을 일괄 면제하지 않습니다.</p></article><article><h3>13. 변경 안내</h3><p>내용 갱신일은 2026년 10월 4일입니다. 이번 변경은 광고 이용 안내를 추가하고 문서 구조를 정리한 것입니다. 본 개정으로 이용자의 권리를 소급하여 제한하거나 추가 개인정보 처리에 동의한 것으로 간주하지 않습니다.</p><p>별도 고지·동의가 필요한 변경은 해당 절차를 거쳐 적용합니다.</p></article></div></div></section>
+
+
 
 <footer class="site-footer">
   <div class="wrap">
@@ -2494,7 +2440,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       <p id="login-modal-description">산책 기록을 이어가세요.</p></div>
       <div class="auth-benefits" aria-label="무료 가입 혜택"><span>♡ 코스 찜</span><span>↗ 산책 기록</span><span>🐕 강아지 프로필</span></div>
       <div class="auth-bonus"><span aria-hidden="true">✦</span> 첫 가입 축하 포인트 <strong>100P</strong></div>
-      <label class="auth-consent" id="auth-consent-label"><input type="checkbox" id="terms-agree-checkbox" aria-describedby="auth-feedback"><span><a href="#terms" data-page-nav="terms">이용약관</a> 및 <a href="#privacy" data-page-nav="privacy">개인정보처리방침</a> 동의 <em>(필수)</em></span></label>
+      <label class="auth-consent" id="auth-consent-label"><input type="checkbox" id="terms-agree-checkbox" aria-describedby="auth-feedback"><span><a href="/terms/" target="_blank" rel="noopener noreferrer">이용약관</a> 동의 <em>(필수)</em></span></label>
+      <label class="auth-consent"><input type="checkbox" id="age-agree-checkbox" aria-describedby="auth-feedback"><span>만 14세 이상입니다 <em>(필수)</em></span></label>
+      <label class="auth-consent"><input type="checkbox" id="privacy-agree-checkbox" aria-describedby="auth-feedback"><span>회원가입을 위한 개인정보 수집·이용에 동의합니다 <em>(필수)</em></span></label>
+      <p class="auth-consent-detail">계정 ID·이메일·선택한 로그인 서비스의 이름·프로필 사진을 회원 식별과 계정 관리에 사용하며 탈퇴 처리 완료 시 삭제합니다. 동의를 거부하면 회원가입을 진행할 수 없습니다. 생년월일·주민등록번호는 받지 않습니다. <a href="/privacy/" target="_blank" rel="noopener noreferrer">개인정보처리방침 보기 ↗</a></p>
       <p id="auth-feedback" class="auth-feedback" role="status" aria-live="polite" hidden></p>
       <details class="auth-email" id="auth-email-details" open><summary>이메일로 시작하기 <span aria-hidden="true">⌄</span></summary><div class="auth-email-content">
         <label for="email-login-input">이메일 주소</label>
@@ -2622,193 +2571,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 </div>
 
 
-<div class="modal-overlay" id="admin-overlay" data-nosnippet>
-  <div class="modal admin-panel">
-    <div class="modal-inner-wrap">
-      <button class="modal-close" id="admin-close" aria-label="닫기">✕</button>
-      <div class="modal-body">
-        <h3 style="font-size:22px;">🛡️ 관리자 대시보드</h3><p style="font-size:12px;line-height:1.6;color:var(--muted-text);">한국 시간(KST) 기준 · 방문자는 브라우저 ID 기준이며 기기 변경·저장소 삭제 시 중복될 수 있습니다. 실시간은 최근 5분 활동이며, 페이지뷰는 기록된 화면 조회 수입니다. 조회 실패는 0으로 집계하지 않습니다.</p>
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:4px;">
-          <p style="font-size:13px; color:#6B6550; margin:0;">항목을 눌러서 자세히 볼 수 있어요.</p>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span id="admin-last-refreshed" style="font-size:11px; color:var(--muted-text);"></span>
-            <button type="button" id="admin-refresh-btn" class="pin-btn" style="width:auto; padding:8px 14px; font-size:12.5px;">🔄 지금 새로고침</button>
-          </div>
-        </div>
 
-        <!-- 항상 보이는 핵심 요약 -->
-        <section class="admin-traffic-panel"><h4>기간별 방문 통계</h4><div class="admin-tools"><select id="admin-traffic-period" aria-label="통계 기간"><option value="1">오늘</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select><button id="admin-traffic-export" type="button" disabled>일별 통계 CSV</button></div><p>한국 시간 기준 · 방문자는 브라우저 식별자 기준으로 실제 인원과 다를 수 있어요.</p><div id="admin-traffic-result" aria-live="polite"></div><div id="admin-bot-result" aria-live="polite"></div></section><details class="admin-section-details" id="admin-affiliate-details"><summary>🛍️ 쿠팡 링크 클릭 · 상품별 · 방문자별 · CSV</summary><section class="admin-traffic-panel" id="admin-affiliate-panel"><h4>쿠팡 파트너스 링크 클릭</h4><div class="admin-tools"><button type="button" id="admin-affiliate-today">오늘(KST)</button><label>시작일 <input type="date" id="admin-affiliate-from"></label><label>종료일 <input type="date" id="admin-affiliate-to"></label><select id="admin-affiliate-link" aria-label="제휴 상품 필터"><option value="">전체 상품</option></select><select id="admin-affiliate-audience" aria-label="클릭 회원 여부"><option value="all">전체 방문자</option><option value="member">로그인 회원</option><option value="anonymous">비로그인</option></select><label><input type="checkbox" id="admin-affiliate-excluded">제외된 기록 포함</label><button type="button" id="admin-affiliate-refresh">클릭 통계 새로고침</button><button type="button" id="admin-affiliate-export" disabled>클릭 내역 CSV</button></div><p id="admin-affiliate-export-status" role="status"></p><div id="admin-affiliate-result" aria-live="polite"></div><div class="admin-tools"><span>회원·익명 목록</span><button type="button" id="admin-affiliate-people-prev" disabled>이전 방문자</button><span id="admin-affiliate-people-label">1 / 1</span><button type="button" id="admin-affiliate-people-next" disabled>다음 방문자</button><span>클릭 내역</span><button type="button" id="admin-affiliate-events-prev" disabled>이전 클릭</button><span id="admin-affiliate-events-label">1 / 1</span><button type="button" id="admin-affiliate-events-next" disabled>다음 클릭</button></div></section></details><details class="admin-section-details" id="admin-security-details"><summary>🛡️ 보안 기록 · 이상 감지 · 관리자 알림</summary><section class="admin-traffic-panel"><h4>보안 기록</h4><p>서버 권한 거절·승인 우회·계정 삭제 실패는 즉시, 로그인 실패는 10분 내 5건, 기타 서버 오류는 3건, 브라우저 보고는 5건부터 관리자 알림으로 전달해요. 같은 종류는 30분 간격으로 알리며, 홈페이지를 열면 알림함에서 확인할 수 있어요.</p><div class="admin-tools"><select id="admin-security-period" aria-label="보안 기록 기간"><option value="1">최근 24시간</option><option value="7" selected>최근 7일</option><option value="30">최근 30일</option></select><button id="admin-security-refresh" type="button">보안 기록 새로고침</button></div><div id="admin-security-result" aria-live="polite"></div></section></details><div id="admin-summary" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:16px 0;"></div>
-
-        <div id="admin-live-activity" style="margin-top:8px; background:var(--sand); border-radius:12px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span id="live-visitor-dot" style="width:10px; height:10px; border-radius:50%; background:#3E9142; display:inline-block; box-shadow:0 0 0 4px rgba(62,145,66,.18);"></span>
-            <div>
-              <div style="font-family:'Jua',sans-serif; font-size:20px; color:var(--pine-deep);" id="live-visitor-count">–</div>
-              <div style="font-size:11.5px; color:var(--muted-text);">🟢 지금 접속 중 (최근 5분 기준) · 5초마다 자동 갱신</div>
-            </div>
-          </div>
-          <span style="font-size:11px; color:var(--muted-text);" id="live-visitor-updated"></span>
-        </div>
-
-        <!-- 전체 통계 (방문자 클릭 시 추세 상세) --><div class="admin-accordion" style="margin-top:20px; padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="stats">
-            <h4>📊 전체 누적 통계</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-stats" style="display:none;">
-            <div id="admin-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin:12px 0;"></div>
-            <div id="visitor-trend-detail" style="display:none; background:var(--sand); border-radius:10px; padding:14px; margin-top:8px;"></div>
-          </div>
-        </div>
-
-        <!-- 오늘의 활동 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="today">
-            <h4>📅 오늘의 활동</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-today" style="display:none;">
-            <div id="admin-today-stats" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(100px,1fr)); gap:10px; margin-top:12px;"></div>
-          </div>
-        </div>
-
-        <!-- 시간대별 접속 현황 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="hourly">
-            <h4>⏰ 시간대별 접속 현황 (오늘)</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-hourly" style="display:none;">
-            <p style="font-size:12px; color:var(--muted-text); margin:10px 0 6px;">막대를 눌러보면 그 시간대 상세 인원이 나와요.</p>
-            <div id="admin-hourly-stats" style="display:flex; align-items:flex-end; gap:3px; height:90px; padding:6px 2px; border-bottom:1px solid var(--line);"></div>
-            <div id="admin-hourly-labels" style="display:flex; gap:3px; font-size:9px; color:var(--muted-text); margin-top:4px;"></div>
-            <div id="hourly-detail" style="margin-top:10px; font-size:13.5px; font-weight:700; color:var(--pine-deep); min-height:20px;"></div>
-          </div>
-        </div>
-
-        <!-- 인기 코스 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="top">
-            <h4>🏆 인기 코스 TOP 5</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-top" style="display:none;">
-            <div id="admin-top-courses" style="margin-top:12px;"></div>
-          </div>
-        </div>
-
-        <!-- 승인 대기 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="pending">
-            <h4>⏳ 승인 대기 중 (<span id="pending-count">0</span>)</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-pending" style="display:none;">
-            <p style="font-size:12.5px; color:var(--muted-text); margin:8px 0;">회원이 새로 등록한 코스·배변봉투함·동반시설이에요. 승인해야 지도에 공개돼요.</p>
-            <div class="admin-tools"><input id="admin-pending-search" type="search" aria-label="승인 대기 검색" placeholder="장소명·등록자 검색"></div><div id="pending-list" style="margin-top:8px;"></div>
-          </div>
-        </div>
-
-        <!-- 신고 검수 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="reports">
-            <h4>🚩 신고된 항목 검수</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-reports" style="display:none;">
-            <div id="admin-list" style="margin-top:12px;"></div>
-          </div>
-        </div>
-
-        <!-- 전체 가입 회원 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <p id="member-auto-status" style="padding:0 18px;font-size:12px;color:var(--muted)" aria-live="polite">회원관리를 열거나 회원 새로고침을 누를 때만 갱신합니다.</p>
-<div class="admin-accordion-head" data-accordion="allmembers">
-            <h4>👥 회원 관리 (<span id="all-member-count">0</span>명)</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-allmembers" style="display:none;">
-            <p style="font-size:13px; color:#6B6550; margin-top:8px;">실제 가입 계정 전체 목록입니다. 프로필 등록 여부와 관계없이 표시하며, 가입일은 계정 생성일 기준입니다.</p>
-            <div style="display:flex; gap:8px; margin:10px 0;">
-              <input type="text" id="all-member-search" placeholder="닉네임·회원 ID 검색" aria-label="회원 검색" style="flex:1; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
-              <button type="button" id="members-refresh-btn" class="pin-btn" style="width:auto;padding:0 12px;font-size:12px;">↻ 회원 새로고침</button>
-              <button type="button" id="export-members-csv-btn" class="pin-btn" style="width:auto; padding:0 16px; font-size:12.5px;">📥 CSV</button>
-            </div>
-            <div class="admin-tools"><select id="member-role-filter" aria-label="회원 분류"><option value="all">모든 회원</option><option value="new">최근 7일 가입</option><option value="admin">관리자·매니저</option><option value="member">일반 회원</option></select><select id="member-sort" aria-label="회원 정렬"><option value="new">최신 가입순</option><option value="points">포인트순</option><option value="views">조회순</option><option value="lastseen">최근 접속순</option><option value="name">이름순</option></select></div><div class="admin-tools member-extra-filters"><select id="member-provider-filter" aria-label="가입 방식"><option value="all">모든 가입 방식</option><option value="google">구글 가입</option><option value="kakao">카카오 가입</option><option value="other">기타 가입 방식</option></select><select id="member-activity-filter" aria-label="회원 활동 상태"><option value="all">모든 활동 상태</option><option value="recent">최근 7일 접속</option><option value="inactive">30일 이상 미접속</option><option value="never">로그인 기록 없음</option></select><label>가입일부터 <input type="date" id="member-date-from" aria-label="가입일 시작"></label><label>가입일까지 <input type="date" id="member-date-to" aria-label="가입일 종료"></label><button id="member-filters-reset" type="button">필터 초기화</button><button id="export-members-filtered-btn" type="button" disabled>검색 결과 CSV</button></div><p id="member-filter-status" aria-live="polite"></p><div id="member-summary" class="admin-tools" aria-label="회원 가입 방식 요약"></div><div id="all-member-list"></div><div class="admin-tools"><button id="member-page-prev" type="button">이전</button><span id="member-page-label"></span><button id="member-page-next" type="button">다음</button></div>
-          </div>
-        </div>
-
-        <!-- 회원 활동 관리 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="activemembers">
-            <h4>📌 회원 활동 관리</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-activemembers" style="display:none;">
-            <p style="font-size:13px; color:#6B6550; margin-top:8px;">코스·배변함·리뷰를 등록한 회원만 모았어요. 문제 있는 게시물을 한 번에 정리할 때 써요.</p>
-            <div id="member-list" style="margin-top:16px;"></div>
-          </div>
-        </div>
-
-        <!-- 공공데이터 일괄 등록 -->
-        <div class="admin-accordion" style="padding-top:16px; border-top:1px solid var(--line);">
-          <div class="admin-accordion-head" data-accordion="bulkimport">
-            <h4>📂 공공데이터 일괄 등록</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-bulkimport" style="display:none;">
-            <p style="font-size:12.5px; color:var(--muted-text); margin-top:8px; line-height:1.6;">
-              공공데이터포털(data.go.kr) 등에서 받은 CSV 파일(예: "반려동물 동반가능 공원 현황")을 업로드하면,<br>
-              컬럼을 지정해서 코스·배변봉투함·동반시설로 한 번에 등록할 수 있어요.
-            </p>
-
-            <div style="margin-top:14px; padding:12px 14px; background:var(--sand); border-radius:10px;">
-              <p style="font-size:12px; color:var(--muted-text); margin:0 0 8px;">중복 등록됐거나 처음부터 다시 올리고 싶으면, 지금까지 이 도구로 등록한 데이터를 한 번에 지울 수 있어요.</p>
-              <button type="button" class="pin-btn" id="bulk-cleanup-btn" style="color:var(--clay); border-color:var(--clay); width:auto;">🗑️ 지자체 공공데이터로 등록한 것 전부 삭제</button>
-              <div id="bulk-cleanup-status" style="margin-top:8px; font-size:12.5px; color:var(--pine-deep); font-weight:700;"></div>
-            </div>
-
-            <input type="file" id="bulk-csv-input" accept=".csv" style="margin-top:16px; font-size:13px;">
-            <div id="bulk-import-mapping" style="display:none; margin-top:16px;">
-              <label style="margin-top:0;">어떤 데이터로 등록할까요?</label>
-              <div class="tag-check-group" id="bulk-type-group">
-                <div class="tag-check on" data-bulk-type="course">🐾 산책 코스</div>
-                <div class="tag-check" data-bulk-type="bin">🚮 배변봉투함</div>
-                <div class="tag-check" data-bulk-type="facility">🏨 동반시설</div>
-              </div>
-              <div id="bulk-facility-category-wrap" style="display:none;">
-                <label>동반시설 종류</label>
-                <div class="tag-check-group" id="bulk-facility-category-group">
-                  <div class="tag-check on" data-bulk-facility-category="식당카페">🍽️ 식당·카페</div>
-                  <div class="tag-check" data-bulk-facility-category="숙소">🏨 숙소</div>
-              <div class="tag-check" data-bulk-facility-category="공원관광">🌳 공원·관광지</div>
-              <div class="tag-check" data-bulk-facility-category="캠핑">⛺ 캠핑장</div>
-              <div class="tag-check" data-bulk-facility-category="쇼핑">🛍️ 쇼핑·체험</div>
-                </div>
-              </div>
-              <label>이름 컬럼 <span style="color:var(--clay);">*필수</span></label>
-              <select id="bulk-col-name"></select>
-              <label>위도(lat) 컬럼 <span style="color:var(--clay);">*필수</span></label>
-              <select id="bulk-col-lat"></select>
-              <label>경도(lng) 컬럼 <span style="color:var(--clay);">*필수</span></label>
-              <select id="bulk-col-lng"></select>
-              <label>설명 컬럼 (선택)</label>
-              <select id="bulk-col-desc"><option value="">— 사용 안 함 —</option></select>
-              <div style="margin-top:14px; font-size:12.5px; color:var(--muted-text);">미리보기 (최대 3행)</div>
-              <div id="bulk-preview" style="margin-top:8px; overflow-x:auto; font-size:11.5px; background:var(--sand); border-radius:10px; padding:10px;"></div>
-              <button type="button" class="submit-btn" id="bulk-import-submit-btn" style="margin-top:16px;">전체 등록하기</button>
-              <div id="bulk-import-progress" style="margin-top:10px; font-size:13px; color:var(--pine-deep); font-weight:700;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 매니저 관리 (최고 관리자 전용) -->
-        <div class="admin-accordion" id="manager-section-wrap" style="display:none; padding-top:16px; border-top:1px solid var(--line); padding-bottom:8px;">
-          <div class="admin-accordion-head" data-accordion="managers">
-            <h4>🔑 매니저 관리</h4><span class="accordion-arrow">▸</span>
-          </div>
-          <div class="admin-accordion-body" id="acc-managers" style="display:none;">
-            <p style="font-size:13px; color:#6B6550; margin-top:8px;">매니저로 지정된 회원은 관리자 화면 전체를 나와 동일하게 쓸 수 있어요 (단, 매니저 지정/해제는 못 해요).</p>
-            <div id="manager-list" style="margin-top:12px;"></div>
-            <input type="text" id="new-manager-search" placeholder="닉네임으로 회원 찾아 매니저 지정" style="width:100%; margin-top:14px; padding:9px 12px; border:1.5px solid var(--line); border-radius:8px; font-family:inherit; font-size:13px;">
-            <div id="new-manager-results" style="margin-top:8px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <aside class="favorite-join-note" id="favorite-join-note" hidden aria-label="찜한 코스 계정 보관 안내"><button type="button" id="favorite-join-close" class="favorite-join-close" aria-label="가입 안내 닫기">×</button><strong>찜 목록에 추가했어요</strong><p>비로그인 찜은 이 기기에 보관돼요. 로그인 후 MY에서 이 기기의 찜을 내 계정으로 가져올 수 있어요.</p><button type="button" data-open-join>로그인하고 보관하기 →</button></aside>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -2823,7 +2586,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 </div>
 
 <div class="modal-overlay" id="member-profile-overlay">
-  <div class="modal admin-panel">
+  <div class="modal member-profile-panel">
     <div class="modal-inner-wrap">
       <button class="modal-close" id="member-profile-close" aria-label="닫기">✕</button>
       <div class="modal-body">
@@ -2857,6 +2620,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   </div>
 </div>
 
+<script src="admin-loader.js?v=20261013-isolated"></script>
 <script src="traffic.js?v=20261009-affiliate" data-manual></script>
 <script src="course-photos.js?v=20261013c-400-final"></script>
 <script src="course-info.js?v=20261012-pet-photos"></script>
@@ -2864,7 +2628,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script src="auth-presentation.js?v=20261009-my"></script>
 <script src="shopping-config.js?v=20261011-photo-badges"></script>
 <script src="shopping.js?v=20261011-photo-badges"></script>
-<script src="admin-affiliate.js?v=20261009"></script>
+
 <script src="/place-saves.js?v=20261008"></script>
 <script src="bin-info.js?v=20261008-disposal-sites"></script>
 <script src="facility-info.js?v=20261003"></script>
@@ -2877,7 +2641,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script src="course-comfort.js?v=20261010-senior"></script>
 <script src="course-addresses.js?v=20261013c-400-final"></script>
 <script src="walk-tracker.js?v=20261005-offline"></script>
-<script src="admin-bot-panel.js?v=20261004"></script>
+
 <script src="security-monitor.js?v=20261009-alerts"></script>
 <script>
 (function(){
@@ -3245,7 +3009,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     sb.auth.onAuthStateChange((event, session)=>{
       const previousUser=myDeviceId;
       applySession(session);
-      if(previousUser!==myDeviceId || event==='SIGNED_OUT'){clearPrivateReportState();clearMemberInventory();affiliateAdmin?.clear();}
+      if(previousUser!==myDeviceId || event==='SIGNED_OUT'){clearPrivateReportState();resetAdminPanel();}
       if(event === 'SIGNED_IN'){
         closeNickModal();
         toast(!myDogName
@@ -3606,10 +3370,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     document.getElementById('points-shop-overlay').classList.remove('show');
   }
   function isTermsAgreed(){
-    const checked = document.getElementById('terms-agree-checkbox').checked;
-    if(!checked){AuthPresentation.feedback('이용약관과 개인정보처리방침에 먼저 동의해 주세요.',true);document.getElementById('terms-agree-checkbox').focus();}
-    else AuthPresentation.feedback('');
-    return checked;
+    for(const [id,message] of [['terms-agree-checkbox','이용약관에 먼저 동의해 주세요.'],['age-agree-checkbox','회원가입은 만 14세 이상만 가능합니다.'],['privacy-agree-checkbox','회원가입에 필요한 개인정보 수집·이용에 동의해 주세요.']]){if(!document.getElementById(id).checked){AuthPresentation.feedback(message,true);document.getElementById(id).focus();return false;}}
+    AuthPresentation.feedback('');return true;
   }
   async function signInWithKakao(){
     if(AuthPresentation.isBusy()||!isTermsAgreed()) return;
@@ -6323,7 +6085,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       }
     }catch(e){ console.error(e); if(viewer===myDeviceId)listEl.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>'; }
   }
-  document.getElementById('notif-list').addEventListener('click',event=>{
+  document.getElementById('notif-list').addEventListener('click',async event=>{
     if(!event.target.closest('[data-open-security]')||!isAdminUser(myDeviceId))return;
     document.getElementById('notif-overlay').classList.remove('show');
     openAdminDashboard();
@@ -6722,7 +6484,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   }
   let lastHeartbeatAt = 0;
   async function upsertActiveWalker(lat, lng){
-    if(!myDeviceId || navigator.onLine===false) return;
+    if(!myDeviceId || navigator.onLine===false || !document.getElementById('walk-location-agree').checked || !document.getElementById('walk-presence-agree').checked) return;
     const now = Date.now();
     if(now - lastHeartbeatAt < 20000) return; // 20초에 한 번만 업데이트 (DB 부하 방지)
     lastHeartbeatAt = now;
@@ -6783,8 +6545,16 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       }else document.getElementById('walk-gps-status').textContent='GPS 신호가 약해요. 수신되지 않은 구간은 거리에서 제외해요.';
     },{enableHighAccuracy:true,maximumAge:0,timeout:20000});
   }
+  function requireWalkLocationConsent(){
+    const field=document.getElementById('walk-location-agree');
+    if(field.checked)return true;
+    toast('GPS 기록에 사용할 위치정보 이용 동의를 확인해 주세요.');field.focus();return false;
+  }
+  document.getElementById('walk-presence-agree').addEventListener('change',event=>{if(!event.target.checked)clearActiveWalker();});
+  document.getElementById('walk-location-agree').addEventListener('change',event=>{if(!event.target.checked&&walkSession?.state==='running')pauseWalk();});
   function startWalk(){
     if(walkInProgress()||walkStarting)return;
+    if(!requireWalkLocationConsent())return;
     if(readWalkDraft()){recoverWalkDraft();return;}
     if(!navigator.geolocation){toast('이 브라우저에서는 위치 기능을 쓸 수 없어요');return;}
     const stride=document.getElementById('walk-stride');
@@ -6793,6 +6563,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     document.getElementById('walk-local-status').textContent='위치를 요청하고 있어요. 브라우저의 위치 권한 창에서 허용을 선택해 주세요.';
     navigator.geolocation.getCurrentPosition(pos=>{
     walkStarting=false;startButton.disabled=false;
+    if(!document.getElementById('walk-location-agree').checked){document.getElementById('walk-local-status').textContent='위치정보 이용 선택이 해제되어 기록을 시작하지 않았어요.';return;}
     walkDraftOwner=myDeviceId||null;
     lastSavedWalk=null;walkPath=[];walkSession=new WalkTracker.Tracker(Number(stride.value));walkSession.start(Math.min(Date.now(),Number(pos.timestamp)||Date.now()));
     walkSession.add(pos,Date.now());persistWalkDraft();
@@ -6817,6 +6588,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       document.getElementById('walk-gps-status').textContent='일시정지 중 · 기록 시간·거리·예상 걸음 수가 멈춰 있어요.';
       document.getElementById('walk-screen-status').textContent='일시정지 중 화면 유지 꺼짐';
     }else{
+      if(!requireWalkLocationConsent())return;
       walkSession.resume(Date.now());button.textContent='Ⅱ 일시정지';button.setAttribute('aria-pressed','false');
       beginWalkWatch();keepWalkScreen();
     }
@@ -6881,6 +6653,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   const savedWalkRecords = new WeakSet();
   async function saveWalkToDB(){
     if(walkSaving) return;
+    const cloudConsent=document.getElementById('walk-cloud-agree');
+    if(!cloudConsent.checked){toast('서버 저장에 동의한 뒤 내 기록에 저장해 주세요. 기기 기록은 유지돼요.');cloudConsent.focus();return;}
     if(navigator.onLine===false){persistWalkDraft();toast('산책을 이 기기에 보관했어요. 인터넷 연결 후 이 버튼을 눌러 내 기록에 저장해 주세요.');return;}
     if(walkDraftOwner&&walkDraftOwner!==myDeviceId){toast('이 기록을 시작한 계정으로 로그인해 주세요.');return;}
     if(!myNickname){ openNickModal(); toast('먼저 로그인을 해주세요. 기록은 이 기기에 남아 있어요.'); return; }
@@ -7131,6 +6905,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   const VALID_PAGES = ['home','map','list','walk','register','etiquette','privacy','terms'];
   function showPage(page, opts){
     opts = opts || {};
+    if(page==='privacy'||page==='terms'){window.location.assign('/'+page+'/');return;}
     if(page==='home'&&currentPage!=='home'){const notice=document.getElementById('home-update-toast');if(notice)notice.hidden=false;}
     const availablePages = new Set(Array.from(document.querySelectorAll('.app-page[data-page-section]'),el=>el.dataset.pageSection));
     if(!availablePages.has(page)) page = 'home';
@@ -7583,1112 +7358,12 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     if(e.key === 'Enter'){ e.preventDefault(); sendMagicLink(); }
   });
 
-  // ===== Admin (moderation) panel =====
-  // ===== 승인 대기 중인 등록물 관리 =====
-  function renderPendingApprovals(){
-    const listEl = document.getElementById('pending-list');
-    const countEl = document.getElementById('pending-count');
-    if(!listEl) return;
-    const pendingCourses = allCourses().filter(c => c.status === 'pending').map(c => ({ type:'course', table:'courses', id:c.id, name:c.name, author:c.author, emoji:'🐾' }));
-    const pendingBins = allBins().filter(b => b.status === 'pending').map(b => ({ type:'bin', table:'bins', id:b.id, name:b.name, author:b.author, emoji:'🚮' }));
-    const pendingFacilities = facilities.filter(f => f.status === 'pending').map(f => ({ type:'facility', table:'facilities', id:f.id, name:f.name, author:f.author, emoji: FacilityInfo.get(f.category).emoji }));
-    const all = [...pendingCourses, ...pendingBins, ...pendingFacilities];
-    if(countEl) countEl.textContent = all.length;
-    if(!all.length){ listEl.innerHTML = '<p class="empty-admin">승인 대기 중인 항목이 없어요.</p>'; return; }
-    const query=document.getElementById('admin-pending-search').value.trim().toLowerCase();
-    const visible=all.filter(item=>`${item.name||''} ${item.author||''}`.toLowerCase().includes(query));
-    if(!visible.length){listEl.textContent='검색 결과가 없어요.';return;}
-    listEl.innerHTML = visible.map(item => `
-      <div class="admin-row">
-        <div class="info"><b>${item.emoji} ${escapeHtml(item.name)}</b>${item.author ? '등록: '+escapeHtml(item.author) : ''}</div>
-        <div class="admin-actions">
-          <button class="remove" data-approve="${escapeHtml(item.table)}:${escapeHtml(item.id)}" style="background:#DCEBD6; color:#33612F;">✅ 승인</button>
-          <button class="remove" data-reject="${escapeHtml(item.table)}:${escapeHtml(item.id)}">거절</button>
-        </div>
-      </div>`).join('');
-    listEl.querySelectorAll('[data-approve]').forEach(btn=>{
-      btn.addEventListener('click', ()=> approvePending(btn.dataset.approve));
-    });
-    listEl.querySelectorAll('[data-reject]').forEach(btn=>{
-      btn.addEventListener('click', ()=> rejectPending(btn.dataset.reject));
-    });
-  }
-  async function approvePending(key){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    const [table, id] = key.split(':');
-    try{
-      if(!['courses','bins','facilities'].includes(table)||!id)return;
-      const { data, error } = await sb.from(table).update({ status: 'approved' }).eq('id', id).eq('status','pending').select('id');
-      if(!error&&!data?.length){toast('이미 처리되었거나 권한이 없는 항목이에요. 새로고침해 주세요.');return;}
-      if(error){ console.error(error); toast('승인 처리에 실패했어요'); return; }
-      toast('승인했어요! 이제 지도에 공개돼요 🐾');
-      await loadData();
-      renderPendingApprovals();
-      renderAdminStats();
-    }catch(e){ console.error(e); toast('승인 처리에 실패했어요'); }
-  }
-  async function rejectPending(key){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(!confirm('이 등록 요청을 거절하고 삭제할까요? 되돌릴 수 없어요.')) return;
-    const [table, id] = key.split(':');
-    try{
-      if(!['courses','bins','facilities'].includes(table)||!id)return;
-      const { data, error } = await sb.from(table).delete().eq('id', id).eq('status','pending').select('id');
-      if(!error&&!data?.length){toast('이미 처리되었거나 권한이 없는 항목이에요. 새로고침해 주세요.');return;}
-      if(error){ console.error(error); toast('거절 처리에 실패했어요'); return; }
-      toast('거절 처리했어요');
-      await loadData();
-      renderPendingApprovals();
-      renderAdminStats();
-    }catch(e){ console.error(e); toast('거절 처리에 실패했어요'); }
-  }
-
-  function renderAdminList(){
-    const el = document.getElementById('admin-list');
-    if(!el) return;
-    const entries = Object.keys(reports).filter(k => reports[k].count > 0);
-    if(!entries.length){
-      el.innerHTML = '<p class="empty-admin">현재 신고된 항목이 없어요.</p>';
-      return;
-    }
-    el.innerHTML = entries.map(key=>{
-      const [type, ...rest] = key.split('_');
-      const id = rest.join('_');
-      const count = reports[key].count;
-      let title = id, sub = '';
-      if(type === 'course'){
-        const c = allCourses().find(x=>x.id===id);
-        title = c ? c.name : '(삭제된 코스)'; sub = '산책 코스';
-      } else if(type === 'bin'){
-        const b = allBins().find(x=>x.id===id);
-        title = b ? b.name : '(삭제된 배변봉투함)'; sub = '배변봉투함';
-      } else if(type === 'facility'){
-        const f = facilities.find(x=>String(x.id)===String(id));
-        title = f ? f.name : '(삭제된 장소)'; sub = '동반 장소';
-      } else if(type === 'review'){
-        let found = null;
-        Object.values(reviews).forEach(list=>{
-          const m = list.find(r=>String(r.dbId)===id);
-          if(m) found = m;
-        });
-        title = found ? found.text.slice(0,30) : '(삭제된 리뷰)'; sub = '리뷰';
-      }
-      return `
-        <div class="admin-row">
-          <div class="info"><b>${escapeHtml(title)}</b>${escapeHtml(sub)} · 신고 ${count}건${reports[key].reasons && reports[key].reasons.length ? '<br><span style="color:var(--clay-dark);font-weight:700;">사유: '+reports[key].reasons.map(escapeHtml).join(', ')+'</span>' : ''}</div>
-          <div class="admin-actions">
-            <span class="admin-badge">🚩 ${count}</span>
-            <button class="keep" data-resolve="${type}|${id}|keep">문제없음</button>
-            <button class="remove" data-resolve="${type}|${id}|remove">삭제</button>
-          </div>
-        </div>`;
-    }).join('');
-    el.querySelectorAll('[data-resolve]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const [type, id, action] = btn.dataset.resolve.split('|');
-        resolveReport(type, id, action === 'remove' ? 'remove' : 'keep');
-      });
-    });
-  }
-
-  // ===== 회원 활동 관리 (관리자 전용) =====
-  async function buildMemberStats(){
-    const stats = {}; // owner_id -> { author, courses, bins, facilities, reviews, points }
-    function bump(ownerId, field, author){
-      if(!ownerId) return;
-      if(!stats[ownerId]) stats[ownerId] = { author: author || '(닉네임 없음)', courses:0, bins:0, facilities:0, reviews:0, points:0 };
-      if(author) stats[ownerId].author = author;
-      stats[ownerId][field]++;
-    }
-    courses.forEach(c => bump(c.ownerId, 'courses', c.author));
-    bins.forEach(b => bump(b.ownerId, 'bins', b.author));
-    facilities.forEach(f => bump(f.owner_id, 'facilities', f.author));
-    Object.values(reviews).forEach(list => list.forEach(r => bump(r.ownerId, 'reviews', r.name)));
-    try{
-      const { data } = await sb.from('points_log').select('owner_id, amount');
-      (data||[]).forEach(r=>{
-        if(!stats[r.owner_id]) stats[r.owner_id] = { author:'(닉네임 없음)', courses:0, bins:0, facilities:0, reviews:0, points:0 };
-        stats[r.owner_id].points += r.amount;
-      });
-    }catch(e){ console.error(e); }
-    return stats;
-  }
-  async function renderMemberList(){
-    const el = document.getElementById('member-list');
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    const stats = await buildMemberStats();
-    const ids = Object.keys(stats);
-    if(!ids.length){ el.innerHTML = '<p class="empty-admin">활동 내역이 있는 회원이 없어요.</p>'; return; }
-    ids.sort((a,b)=> (stats[b].courses+stats[b].bins+stats[b].reviews) - (stats[a].courses+stats[a].bins+stats[a].reviews));
-    el.innerHTML = ids.map(id=>{
-      const s = stats[id];
-      const isAdmin = id === ADMIN_UID;
-      return `
-        <div class="admin-row">
-          <div class="info"><b>${s.author}</b>${isAdmin ? ' (관리자)' : ''} · 코스 ${s.courses} · 배변함 ${s.bins} · 시설 ${s.facilities} · 리뷰 ${s.reviews} · 🪙${s.points}P</div>
-          <div class="admin-actions">
-            ${isAdmin ? '' : `<button class="remove" data-wipe-member="${id}">게시물 전체 삭제</button>`}
-          </div>
-        </div>`;
-    }).join('');
-    el.querySelectorAll('[data-wipe-member]').forEach(btn=>{
-      btn.addEventListener('click', ()=> wipeMemberContent(btn.dataset.wipeMember));
-    });
-  }
-  async function wipeMemberContent(ownerId){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(!confirm('이 회원이 등록한 코스·배변봉투함·동반시설·리뷰를 전부 삭제할까요? 되돌릴 수 없어요.')) return;
-    try{
-      await sb.from('courses').delete().eq('owner_id', ownerId);
-      await sb.from('bins').delete().eq('owner_id', ownerId);
-      await sb.from('facilities').delete().eq('owner_id', ownerId);
-      await sb.from('reviews').delete().eq('owner_id', ownerId);
-      toast('해당 회원의 게시물을 모두 삭제했어요');
-      await loadData();
-      renderMemberList();
-    }catch(e){ console.error(e); toast('삭제 중 오류가 발생했어요'); }
-  }
-  async function renderAdminStats(){
-    const el = document.getElementById('admin-stats');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    try{
-      const [membersRes, pointsRes, pageViewsRes] = await Promise.all([
-        readSignupMembers().then(data=>({count:data.length,error:null})),
-        adminReadRows('points_log','amount'),
-        adminReadRows('page_views','visitor_id')
-      ]);
-      const userCourseCount = courses.filter(c=>c.ownerId).length;
-      const seedCourseCount = allCourses().length - userCourseCount;
-      const totalReviews = Object.values(reviews).reduce((s,list)=>s+list.length, 0);
-      if(membersRes.error) throw membersRes.error;
-      const totalMembers = membersRes.count || 0;
-      const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+Math.max(0,Number(r.amount)||0), 0);
-      const pvRows = pageViewsRes.data || [];
-      const totalPageViews = pvRows.length;
-      const totalUniqueVisitors = new Set(pvRows.map(r=>r.visitor_id).filter(Boolean)).size;
-      const stats = [
-        { num: allCourses().length, label:'전체 코스' },
-        { num: userCourseCount, label:'사용자 등록 코스' },
-        { num: allBins().length, label:'배변봉투함' },
-        { num: facilities.length, label:'동반시설' },
-        { num: totalReviews, label:'리뷰 수' },
-        { num: totalMembers, label:'가입 회원' },
-        { num: totalPointsIssued.toLocaleString(), label:'누적 지급 포인트' },
-        { num: totalUniqueVisitors.toLocaleString(), label:'누적 방문 브라우저', detail:'visitors' },
-        { num: totalPageViews.toLocaleString(), label:'누적 페이지뷰', detail:'pageviews' },
-      ];
-      el.innerHTML = stats.map(s=>{
-        const clickable = s.detail ? ' clickable' : '';
-        return `<div class="stat-card${clickable}" ${s.detail ? `data-stat-detail="${s.detail}"` : ''}><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`;
-      }).join('');
-      el.querySelectorAll('[data-stat-detail]').forEach(card=>{
-        card.addEventListener('click', ()=> toggleVisitorTrend(card.dataset.statDetail));
-      });
-    }catch(e){
-      console.error(e);
-      el.innerHTML = '<p class="empty-admin">통계를 불러오지 못했어요.</p>';
-    }
-    renderAdminTodayStats();
-    renderAdminTopCourses();
-    renderHourlyStats();
-  }
-
-  // ===== 실시간 접속자 =====
-  let liveVisitorInterval = null;
-  async function renderLiveVisitorCount(){
-    const countEl = document.getElementById('live-visitor-count');
-    const updatedEl = document.getElementById('live-visitor-updated');
-    if(!countEl) return;
-    try{
-      const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
-      const { data: count, error } = await sb.rpc('admin_live_traffic_count');
-      if(error){ countEl.textContent = '확인 불가'; if(updatedEl) updatedEl.textContent = '권한 또는 집계 연결을 확인해 주세요'; return; }
-      countEl.textContent = (count ?? 0) + '개 브라우저';
-      if(updatedEl){
-        const now = new Date();
-        updatedEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} 기준`;
-      }
-    }catch(e){ console.error(e); countEl.textContent = '–'; }
-  }
-
-  // ===== 시간대별(오늘) 접속 통계 =====
-  async function renderHourlyStats(){
-    const barsEl = document.getElementById('admin-hourly-stats');
-    const labelsEl = document.getElementById('admin-hourly-labels');
-    if(!barsEl || !labelsEl) return;
-    try{
-      const todayStart = adminDayStart();
-      const { data, error } = await adminReadRows('page_views','created_at',todayStart.toISOString());
-      if(error) throw error;
-      const hourCounts = new Array(24).fill(0);
-      (data||[]).forEach(row=>{
-        const h = new Date(new Date(row.created_at).getTime()+9*3600000).getUTCHours();
-        hourCounts[h]++;
-      });
-      const maxCount = Math.max(1, ...hourCounts);
-      const nowHour = new Date(Date.now()+9*3600000).getUTCHours();
-      barsEl.innerHTML = hourCounts.map((count, h)=>{
-        const heightPct = Math.max(3, Math.round((count / maxCount) * 100));
-        const isNow = h === nowHour;
-        return `<div class="hourly-bar" data-hour="${h}" data-count="${count}" title="${h}시: ${count}건" style="flex:1; height:${heightPct}%; background:${isNow ? 'var(--clay)' : 'var(--gold)'}; border-radius:3px 3px 0 0; min-width:3px;"></div>`;
-      }).join('');
-      labelsEl.innerHTML = hourCounts.map((_, h)=> h % 3 === 0 ? `<span style="flex:3; text-align:center;">${h}</span>` : `<span style="flex:1;"></span>`).join('');
-      const detailEl = document.getElementById('hourly-detail');
-      barsEl.querySelectorAll('.hourly-bar').forEach(bar=>{
-        bar.addEventListener('click', ()=>{
-          const h = Number(bar.dataset.hour);
-          const count = Number(bar.dataset.count);
-          const nextH = (h+1) % 24;
-          if(detailEl) detailEl.textContent = `🕐 ${h}시 ~ ${nextH}시 : 페이지뷰 ${count}건`;
-        });
-      });
-      if(detailEl && !detailEl.textContent) detailEl.textContent = '막대를 눌러서 시간대별 상세를 확인해보세요';
-    }catch(e){
-      console.error(e);
-      barsEl.innerHTML = '<p class="empty-admin" style="font-size:12px;">시간대별 통계를 불러오지 못했어요.</p>';
-    }
-  }
-
-  // ===== 전체 가입 회원 목록 =====
-  let allMembersCache = [];
-  let memberPointsMap = {};
-  let memberVisitMap = {};
-  let memberLastSeenMap={};
-  let memberListRequest=0;
-  function memberProviderLabel(provider){return ({google:'구글',kakao:'카카오',email:'이메일',phone:'전화번호'})[provider]||'기타';}
-  function memberActivityAt(member){return Math.max(memberLastSeenMap[member.owner_id]||0,Date.parse(member.last_sign_in_at)||0);}
-  function getFilteredMembers(){
-    const value=id=>document.getElementById(id).value;
-    const q=value('all-member-search').trim().toLowerCase(),role=value('member-role-filter'),provider=value('member-provider-filter'),activity=value('member-activity-filter'),from=value('member-date-from'),to=value('member-date-to'),sort=value('member-sort');
-    const now=Date.now();
-    if(from&&to&&from>to)return [];
-    return allMembersCache.filter(m=>{
-      const age=now-Date.parse(m.created_at),admin=isAdminUser(m.owner_id),day=Number.isFinite(Date.parse(m.created_at))?adminDayKey(m.created_at):'',active=memberActivityAt(m),inactiveAge=active?now-active:Infinity;
-      return `${m.nickname||''} ${m.owner_id||''} ${memberProviderLabel(m.signup_provider)}`.toLowerCase().includes(q)
-        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000)
-        &&(provider==='all'||provider==='other'&&!['google','kakao'].includes(m.signup_provider)||provider===m.signup_provider)
-        &&(activity==='all'||activity==='recent'&&active>0&&inactiveAge<=604800000||activity==='inactive'&&active>0&&inactiveAge>=2592000000||activity==='never'&&!m.last_sign_in_at)
-        &&(!(from||to)||!!day)&&(!from||day>=from)&&(!to||day<=to);
-    }).sort((a,b)=>sort==='lastseen'?memberActivityAt(b)-memberActivityAt(a):sort==='name'?(a.nickname||'').localeCompare(b.nickname||'','ko'):sort==='points'?(memberPointsMap[b.owner_id]||0)-(memberPointsMap[a.owner_id]||0):sort==='views'?(memberVisitMap[b.owner_id]||0)-(memberVisitMap[a.owner_id]||0):(Date.parse(b.created_at)||0)-(Date.parse(a.created_at)||0));
-  }
-  function renderMemberSummary(){
-    const el=document.getElementById('member-summary');
-    const counts=[['all','전체',allMembersCache.length],['google','구글',allMembersCache.filter(m=>m.signup_provider==='google').length],['kakao','카카오',allMembersCache.filter(m=>m.signup_provider==='kakao').length]];
-    el.innerHTML=counts.map(([provider,label,count])=>`<button type="button" data-member-provider="${provider}">${label} ${count.toLocaleString()}명</button>`).join('');
-    el.querySelectorAll('[data-member-provider]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('member-provider-filter').value=button.dataset.memberProvider;memberPage=1;applyMemberFilters();}));
-  }
-  async function readSignupMembers(){
-    const rows=[];let after=null;
-    while(true){
-      const {data,error}=await sb.rpc('admin_signup_members_v2',{p_after:after,p_limit:500});
-      if(error)throw error;
-      const page=data||[];rows.push(...page);
-      if(page.length<500)return rows;
-      const next=page[page.length-1].owner_id;
-      if(next===after)throw new Error('회원 조회 커서가 진행되지 않았습니다.');
-      after=next;
-    }
-  }
-  document.getElementById('members-refresh-btn').addEventListener('click',async()=>{
-    const button=document.getElementById('members-refresh-btn');if(button.disabled)return;
-    button.disabled=true;try{await renderAllMemberList(true);}finally{button.disabled=false;}
-  });
-
-  let memberActivityState='loading',memberListPending=null,memberListOwner=null,memberListCheckedAt=0;
-  function updateMemberActivityControls(){
-    const ready=memberActivityState==='ready';
-    document.getElementById('member-activity-filter').disabled=!ready;
-    for(const sort of ['points','views','lastseen'])document.querySelector('#member-sort option[value="'+sort+'"]').disabled=!ready;
-    document.getElementById('export-members-csv-btn').disabled=!ready;
-    document.getElementById('export-members-filtered-btn').disabled=!ready;
-  }
-  function clearMemberInventory(){
-    memberListRequest++;memberListOwner=null;memberListCheckedAt=0;memberActivityState='loading';
-    allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};
-    for(const id of ['all-member-list','member-summary','member-filter-status','member-auto-status'])document.getElementById(id).textContent='';
-    document.getElementById('all-member-count').textContent='–';updateMemberActivityControls();
-  }
-  function renderAllMemberList(force=false){
-    if(!isAdminUser(myDeviceId)){clearMemberInventory();return Promise.resolve();}
-    if(memberListPending?.viewer===myDeviceId)return memberListPending.promise;
-    if(!force&&memberListOwner===myDeviceId&&Date.now()-memberListCheckedAt<30000){renderMemberSummary();applyMemberFilters();return Promise.resolve();}
-    const pending={viewer:myDeviceId};memberListPending=pending;
-    pending.promise=loadAllMemberList().finally(()=>{if(memberListPending===pending)memberListPending=null;});
-    return pending.promise;
-  }
-  async function loadAllMemberList(){
-    const request=++memberListRequest,viewer=myDeviceId;
-    const current=()=>request===memberListRequest&&viewer===myDeviceId&&isAdminUser(myDeviceId);
-    const el=document.getElementById('all-member-list'),countEl=document.getElementById('all-member-count');
-    if(!el)return;
-    if(memberListOwner!==viewer){allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};}
-    memberListOwner=viewer;memberActivityState='loading';updateMemberActivityControls();
-    if(!allMembersCache.length)el.innerHTML='<p class="empty-admin">회원 기본 정보를 불러오는 중…</p>';
-    else applyMemberFilters();
-    document.getElementById('member-auto-status').textContent='회원 목록 갱신 중 · 기존 목록은 계속 볼 수 있어요.';
-    // Observe errors immediately while displaying the roster independently.
-    const activity=Promise.resolve(sb.rpc('admin_member_activity_summary')).then(result=>result,error=>({error}));
-    try{
-      const members=await readSignupMembers();if(!current())return;
-      allMembersCache=members;if(countEl)countEl.textContent=members.length;
-      renderMemberSummary();applyMemberFilters();
-      document.getElementById('member-auto-status').textContent='회원 목록 확인 완료 · 포인트·접속 집계 확인 중';
-      const result=await activity;if(!current())return;
-      if(result.error)throw result.error;
-      const points={},visits={},lastSeen={};
-      for(const row of result.data||[]){points[row.owner_id]=Number(row.points)||0;visits[row.owner_id]=Number(row.visits)||0;const at=Date.parse(row.last_seen);if(Number.isFinite(at))lastSeen[row.owner_id]=at;}
-      memberPointsMap=points;memberVisitMap=visits;memberLastSeenMap=lastSeen;memberActivityState='ready';memberListCheckedAt=Date.now();
-      updateMemberActivityControls();applyMemberFilters();
-      document.getElementById('member-auto-status').textContent='수동 갱신 · 마지막 확인 '+new Date().toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul'});
-    }catch(e){
-      if(!current())return;
-      memberActivityState='error';memberListCheckedAt=0;updateMemberActivityControls();
-      document.getElementById('member-auto-status').textContent=allMembersCache.length?'기본 목록은 표시 중 · 부가 정보 조회 실패 · 새로고침해 주세요.':'회원 조회 실패 · 새로고침해 주세요.';
-      if(allMembersCache.length){renderMemberSummary();applyMemberFilters();}
-      else{if(countEl)countEl.textContent='–';document.getElementById('member-summary').textContent='';el.innerHTML='<p class="empty-admin">회원 목록을 불러오지 못했어요. 위 새로고침 버튼으로 다시 시도해 주세요.</p>';}
-      console.error(e);
-    }
-  }
-  function daysAgoLabel(dateStr){
-    if(!dateStr) return '-';
-    const diffMs = Date.now() - new Date(dateStr).getTime();
-    const days = Math.floor(diffMs / 86400000);
-    if(days <= 0) return '오늘';
-    if(days === 1) return '어제';
-    if(days < 30) return `${days}일 전`;
-    return new Date(dateStr).toLocaleDateString('ko-KR');
-  }
-  function paintAllMemberList(list){
-    const el = document.getElementById('all-member-list');
-    if(!el) return;
-    if(!list.length){ el.innerHTML = '<p class="empty-admin">조건에 맞는 회원이 없어요. 검색어나 필터를 바꿔보세요.</p>'; return; }
-    el.innerHTML = list.map(m=>{
-      const joined = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '-';
-      const isNew = m.created_at && (Date.now() - new Date(m.created_at).getTime()) < 7*86400000;
-      const isAdmin = isAdminUser(m.owner_id);
-      const points = memberPointsMap[m.owner_id] || 0;
-      const activityAt=memberActivityAt(m),activitySource=activityAt&&(Date.parse(m.last_sign_in_at)||0)>=(memberLastSeenMap[m.owner_id]||0)?'로그인':'화면 조회';
-      const metricPending=memberActivityState!=='ready',metricLabel=memberActivityState==='error'?'조회 실패':'확인 중';
-      const lastActive=metricPending?metricLabel:activityAt?new Date(activityAt).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+' ('+activitySource+')':'기록 없음';
-      const visitCount = memberVisitMap[m.owner_id] || 0;
-      return `
-        <article class="admin-member-card">
-          <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
-          <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
-          <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 마지막 로그인과 통계에 포함된 화면 조회 중 더 최근 시각입니다. 관리자·봇 등 통계 제외 조회는 포함되지 않으며, 현재 온라인 상태와 다를 수 있어요.</p></details>
-          <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
-          ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}" ${metricPending?'disabled':''}>포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
-        </article>`;
-    }).join('');
-    el.querySelectorAll('[data-member-courses]').forEach(btn=>btn.addEventListener('click',()=>openMemberProfile(btn.dataset.memberCourses)));
-    el.querySelectorAll('[data-member-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.memberCopy);toast('회원 ID를 복사했어요.');}catch(e){toast('회원 식별 정보에서 ID를 확인해 주세요.');}}));
-    el.querySelectorAll('[data-force-withdraw2]').forEach(btn=>{
-      btn.addEventListener('click', ()=> adminForceWithdraw(btn.dataset.forceWithdraw2));
-    });
-    el.querySelectorAll('[data-adjust-points]').forEach(btn=>{
-      btn.addEventListener('click', ()=> adjustMemberPoints(btn.dataset.adjustPoints));
-    });
-  }
-  const memberPointActions=new Set();
-  async function adjustMemberPoints(ownerId){
-    if(!isAdminUser(myDeviceId)){toast('관리자만 처리할 수 있어요');return;}
-    const member=allMembersCache.find(m=>m.owner_id===ownerId);
-    if(!member){toast('회원 목록을 새로고침한 뒤 다시 선택해 주세요.');return;}
-    if(memberPointActions.has(ownerId)){toast('이 회원의 포인트를 처리하고 있어요.');return;}
-    const viewer=myDeviceId;
-    memberPointActions.add(ownerId);
-    try{
-      const current=memberPointsMap[ownerId]||0;
-      const input=prompt(`회원: ${member.nickname||'(닉네임 없음)'}\n조회된 포인트: ${current}P\n\n지급은 양수, 차감은 음수로 정수를 입력해 주세요.`,'0');
-      if(input===null)return;
-      const value=input.trim(),amount=Number(value);
-      if(!/^[+-]?\d+$/.test(value)||!Number.isSafeInteger(amount)||amount===0||amount < -2147483648||amount > 2147483647){toast('0이 아닌 정수를 정확히 입력해 주세요.');return;}
-      const reasonInput=prompt('조정 사유를 입력해 주세요. (1~200자)',amount>0?'관리자 지급':'관리자 차감');
-      if(reasonInput===null)return;
-      const reason=reasonInput.trim();
-      if(!reason||reason.length>200){toast('조정 사유는 1~200자로 입력해 주세요.');return;}
-      if(!confirm(`${member.nickname||'(닉네임 없음)'} 님에게 ${amount>0?'+':''}${amount.toLocaleString()}P를 반영할까요?\n사유: ${reason}\n\n다른 관리자의 작업에 따라 현재 잔액은 달라질 수 있어요.`))return;
-      if(viewer!==myDeviceId||!isAdminUser(myDeviceId))return;
-      const {error}=await sb.rpc('admin_adjust_points',{p_owner_id:ownerId,p_amount:amount,p_reason:reason});
-      if(error){console.error(error);toast('포인트 처리에 실패했어요. 최신 내역을 확인해 주세요.');return;}
-      toast(`${amount>0?'+':''}${amount}P 반영 완료`);
-      await renderAllMemberList(true);
-    }catch(e){console.error(e);toast('응답을 확인하지 못했어요. 중복 반영을 피하려면 최신 포인트를 확인해 주세요.');}
-    finally{memberPointActions.delete(ownerId);}
-  }
-  const memberDeletionActions=new Set();
-  async function adminForceWithdraw(ownerId){
-    if(!isAdminUser(myDeviceId)){toast('관리자만 처리할 수 있어요');return;}
-    if(isAdminUser(ownerId)){toast('관리자·매니저는 먼저 권한 이전이 필요해요.');return;}
-    if(memberDeletionActions.has(ownerId))return;
-    const deletingViewer=myDeviceId;
-    const member=allMembersCache.find(m=>m.owner_id===ownerId);
-    if(!member){toast('회원 목록을 새로고침하고 다시 선택해주세요.');return;}
-    if(!confirm(`${member.nickname||'(닉네임 없음)'} 님을 탈퇴시킬까요?\n회원 ID: ${ownerId}\n\n발자국 로그인 계정, 본인 업로드 사진, 게시물·리뷰·산책 기록과 활동 데이터를 삭제합니다. 삭제된 코스의 연결 리뷰·찜도 정리됩니다.\n외부 카카오·Google 계정과 백업·검색 캐시는 삭제하지 않습니다. 복구할 수 없으며 중간 실패 시 재시도가 필요할 수 있어요.`))return;
-    if(prompt('최종 확인: "회원탈퇴"를 입력해주세요.')!=='회원탈퇴')return;
-    if(myDeviceId!==deletingViewer||!isAdminUser(myDeviceId))return;
-    memberDeletionActions.add(ownerId);
-    const buttons=Array.from(document.querySelectorAll('[data-force-withdraw2]')).filter(b=>b.dataset.forceWithdraw2===ownerId);
-    buttons.forEach(b=>{b.disabled=true;b.textContent='탈퇴 처리 중…';b.setAttribute('aria-busy','true');});
-    try{
-      const result=await requestAccountDeletion({confirm:'DELETE_MEMBER_ACCOUNT',user_id:ownerId});
-      if(!result?.deleted){
-        toast(AccountDeletionClient.message(result?.error));
-        if(['recent_sign_in_required','sign_in_required'].includes(result?.error)){await signOutUser();openNickModal();}
-        return;
-      }
-      if(myDeviceId!==deletingViewer||!isAdminUser(myDeviceId))return;
-      toast('회원 계정과 데이터 삭제를 완료했어요.');
-      allMembersCache=allMembersCache.filter(m=>m.owner_id!==ownerId);
-      delete memberPointsMap[ownerId];delete memberVisitMap[ownerId];delete memberLastSeenMap[ownerId];
-      renderMemberSummary();applyMemberFilters();
-      document.getElementById('all-member-count').textContent=allMembersCache.length;
-      const refreshes=await Promise.allSettled([loadData(),renderAllMemberList(true),renderMemberList(),renderAdminStats()]);
-      if(refreshes.some(r=>r.status==='rejected'))toast('탈퇴는 완료됐어요. 최신 목록은 새로고침해 주세요.');
-    }catch(e){console.error(e);toast('연결이 끊겨 결과를 확인하지 못했어요. 목록을 확인한 뒤 재시도해주세요.');}
-    finally{memberDeletionActions.delete(ownerId);buttons.forEach(b=>{b.disabled=false;b.textContent='회원 탈퇴시키기';b.removeAttribute('aria-busy');});}
-  }
-  function csvSafeCell(value){
-    const text=String(value??'');
-    return /^[\s]*[=+@-]/.test(text)||/^[\t\r\n]/.test(text) ? "'"+text : text;
-  }
-  function exportMembersCSV(filtered=false){
-    if(!isAdminUser(myDeviceId)||document.getElementById('export-members-csv-btn').disabled)return;
-    const list=filtered?getFilteredMembers():allMembersCache;
-    if(!list.length){toast('내보낼 회원이 없어요');return;}
-    const rows = [['닉네임','회원 ID','가입 방식','가입일','최근 로그인(KST)','화면 조회','포인트','배지']];
-    list.forEach(m=>{
-      rows.push([m.nickname||'',m.owner_id,memberProviderLabel(m.signup_provider),m.created_at?new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}):'',m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'',memberVisitMap[m.owner_id]||0,memberPointsMap[m.owner_id]||0,m.badge||'']);
-    });
-    const csv = '\uFEFF' + rows.map(r => r.map(v => `"${csvSafeCell(v).replace(/"/g,'""')}"`).join(',')).join('\n');
-    const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `발자국_회원목록_${new Date().toISOString().slice(0,10)}.csv`;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-  }
-  document.getElementById('export-members-csv-btn').addEventListener('click',()=>exportMembersCSV(false));
-  document.getElementById('export-members-filtered-btn').addEventListener('click',()=>exportMembersCSV(true));
-  document.getElementById('all-member-search').addEventListener('input',()=>{memberPage=1;applyMemberFilters();});
-
- let memberPage=1;
- function applyMemberFilters(){
-  const list=getFilteredMembers();
-  const pages=Math.max(1,Math.ceil(list.length/20));memberPage=Math.min(memberPage,pages);
-  paintAllMemberList(list.slice((memberPage-1)*20,memberPage*20));
-  document.getElementById('member-filter-status').textContent=`전체 ${allMembersCache.length}명 · 검색 결과 ${list.length}명 (전체 CSV / 검색 결과 CSV 선택 가능)`;
-  document.getElementById('member-page-label').textContent=`${memberPage} / ${pages}`;
-  document.getElementById('member-page-prev').disabled=memberPage<=1;document.getElementById('member-page-next').disabled=memberPage>=pages;
- }
- for(const id of ['member-role-filter','member-sort','member-provider-filter','member-activity-filter','member-date-from','member-date-to'])document.getElementById(id).addEventListener('change',()=>{memberPage=1;applyMemberFilters();});
- document.getElementById('member-filters-reset').addEventListener('click',()=>{for(const id of ['all-member-search','member-date-from','member-date-to'])document.getElementById(id).value='';for(const id of ['member-role-filter','member-provider-filter','member-activity-filter'])document.getElementById(id).value='all';document.getElementById('member-sort').value='new';memberPage=1;applyMemberFilters();});
- document.getElementById('member-page-prev').addEventListener('click',()=>{memberPage=Math.max(1,memberPage-1);applyMemberFilters();});
- document.getElementById('member-page-next').addEventListener('click',()=>{memberPage++;applyMemberFilters();});
- (function(){
-  const root=document.querySelector('#admin-overlay .modal-body');
-  const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
-  const traffic=root.querySelector('.admin-traffic-panel');
-  traffic.before(today);
-  const todayBody=document.getElementById('acc-today');
-  todayBody.prepend(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'));
-  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';traffic.before(details);details.append(summary,traffic);
-  const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
-  for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
-  root.querySelectorAll('.admin-accordion-head').forEach(head=>{
-   const body=document.getElementById('acc-'+head.dataset.accordion),open=head.dataset.accordion==='today';
-   head.setAttribute('role','button');head.tabIndex=0;head.setAttribute('aria-controls',body.id);head.setAttribute('aria-expanded',String(open));
-   body.style.display=open?'':'none';head.querySelector('.accordion-arrow').textContent=open?'▾':'▸';
-   head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
-
-  });
-  const nav=document.createElement('nav');nav.className='admin-tools';nav.setAttribute('aria-label','관리 바로가기');
-  for(const [key,label]of [['today','오늘'],['pending','승인 대기'],['reports','신고'],['allmembers','회원 관리']]){
-   const btn=document.createElement('button');btn.type='button';btn.textContent=label;btn.addEventListener('click',()=>{const head=root.querySelector(`[data-accordion="${key}"]`);if(document.getElementById('acc-'+key).style.display==='none')head.click();head.scrollIntoView({block:'start',behavior:'smooth'});head.focus({preventScroll:true});});nav.append(btn);
-  }
-  const affiliateJump=document.createElement('button');affiliateJump.type='button';affiliateJump.textContent='쿠팡 클릭';affiliateJump.addEventListener('click',()=>{const details=document.getElementById('admin-affiliate-details');details.open=true;details.scrollIntoView({behavior:'smooth',block:'start'});});nav.append(affiliateJump);today.before(nav);
- })();
-
-  // ===== 방문자/페이지뷰 카드 클릭 시 최근 7일 추세 =====
-  let visitorTrendOpenFor = null;
-  async function toggleVisitorTrend(kind){
-    const box = document.getElementById('visitor-trend-detail');
-    if(!box) return;
-    if(visitorTrendOpenFor === kind && box.style.display !== 'none'){
-      box.style.display = 'none';
-      visitorTrendOpenFor = null;
-      return;
-    }
-    visitorTrendOpenFor = kind;
-    box.style.display = '';
-    box.innerHTML = '<p class="empty-admin" style="margin:0;">불러오는 중...</p>';
-    try{
-      const start = adminDayStart(6);
-      const { data, error } = await adminReadRows('page_views','visitor_id, created_at',start.toISOString());
-      if(error) throw error;
-      const rows = data || [];
-      const dayMap = {}; // 'YYYY-MM-DD' -> {views, visitors:Set}
-      rows.forEach(r=>{
-        const d = new Date(r.created_at);
-        const key = adminDayKey(d);
-        if(!dayMap[key]) dayMap[key] = { views:0, visitors:new Set() };
-        dayMap[key].views++;
-        dayMap[key].visitors.add(r.visitor_id);
-      });
-      const days = [];
-      for(let i=6; i>=0; i--){
-        const d = adminDayStart(i);
-        const key = adminDayKey(d);
-        const entry = dayMap[key] || { views:0, visitors:new Set() };
-        days.push({ label: key.slice(5).replace('-','/'), views: entry.views, visitors: entry.visitors.size });
-      }
-      const title = kind === 'visitors' ? '최근 7일 방문자(순) 추세' : '최근 7일 페이지뷰 추세';
-      const maxVal = Math.max(1, ...days.map(d => kind === 'visitors' ? d.visitors : d.views));
-      box.innerHTML = `
-        <div style="font-size:12.5px; font-weight:700; color:var(--pine-deep); margin-bottom:10px;">📈 ${title}</div>
-        <div style="display:flex; align-items:flex-end; gap:6px; height:70px;">
-          ${days.map(d=>{
-            const val = kind === 'visitors' ? d.visitors : d.views;
-            const h = Math.max(4, Math.round((val/maxVal)*100));
-            return `<div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;">
-              <div style="font-size:10px; color:var(--pine-deep); font-weight:700; margin-bottom:2px;">${val}</div>
-              <div style="width:100%; height:${h}%; background:var(--moss); border-radius:3px 3px 0 0;"></div>
-            </div>`;
-          }).join('')}
-        </div>
-        <div style="display:flex; gap:6px; margin-top:4px;">
-          ${days.map(d=>`<div style="flex:1; text-align:center; font-size:10px; color:var(--muted-text);">${d.label}</div>`).join('')}
-        </div>`;
-    }catch(e){
-      console.error(e);
-      box.innerHTML = '<p class="empty-admin" style="margin:0;">추세를 불러오지 못했어요.</p>';
-    }
-  }
-
-  // ===== 관리자 대시보드 상단 요약 카드 =====
-  // ===== 유입 경로 =====
-  // ===== 매니저(부관리자) 관리 — 최고 관리자 전용 =====
-  let managersCache = [];
-  async function renderManagerList(){
-    const el = document.getElementById('manager-list');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    try{
-      const { data, error } = await sb.from('admins').select('*').order('created_at', { ascending:false });
-      if(error) throw error;
-      managersCache = data || [];
-      if(!managersCache.length){
-        el.innerHTML = '<p class="empty-admin">아직 지정된 매니저가 없어요.</p>';
-        return;
-      }
-      const nicknameMap = {};
-      allMembersCache.forEach(m => { nicknameMap[m.owner_id] = m.nickname; });
-      el.innerHTML = managersCache.map(m=>{
-        const nickname = nicknameMap[m.owner_id] || m.owner_id.slice(0,8)+'...';
-        const since = m.created_at ? new Date(m.created_at).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}) : '-';
-        return `
-          <div class="admin-row">
-            <div class="info"><b>🔑 ${nickname}</b> · ${since}부터 매니저</div>
-            <div class="admin-actions">
-              <button class="remove" data-remove-manager="${m.owner_id}">매니저 해제</button>
-            </div>
-          </div>`;
-      }).join('');
-      el.querySelectorAll('[data-remove-manager]').forEach(btn=>{
-        btn.addEventListener('click', ()=> removeManager(btn.dataset.removeManager));
-      });
-    }catch(e){
-      console.error(e);
-      el.innerHTML = '<p class="empty-admin">매니저 목록을 불러오지 못했어요. (SQL 마이그레이션이 적용됐는지 확인해주세요)</p>';
-    }
-  }
-  async function addManager(ownerId, nickname){
-    if(!isSuperAdmin(myDeviceId)){ toast('최고 관리자만 매니저를 지정할 수 있어요'); return; }
-    if(ownerId === ADMIN_UID){ toast('이미 최고 관리자예요'); return; }
-    if(!confirm(`"${nickname}" 님을 매니저로 지정할까요?\n관리자 화면의 모든 기능을 쓸 수 있게 돼요.`)) return;
-    try{
-      const { error } = await sb.from('admins').insert([{ owner_id: ownerId, added_by: myDeviceId }]);
-      if(error){ console.error(error); toast('지정에 실패했어요'); return; }
-      toast(`"${nickname}" 님을 매니저로 지정했어요 🔑`);
-      document.getElementById('new-manager-search').value = '';
-      document.getElementById('new-manager-results').innerHTML = '';
-      renderManagerList();
-    }catch(e){ console.error(e); toast('지정에 실패했어요'); }
-  }
-  async function removeManager(ownerId){
-    if(!isSuperAdmin(myDeviceId)){ toast('최고 관리자만 매니저를 해제할 수 있어요'); return; }
-    if(!confirm('이 매니저를 해제할까요?')) return;
-    try{
-      const { error } = await sb.from('admins').delete().eq('owner_id', ownerId);
-      if(error){ console.error(error); toast('해제에 실패했어요'); return; }
-      toast('매니저를 해제했어요');
-      renderManagerList();
-    }catch(e){ console.error(e); toast('해제에 실패했어요'); }
-  }
-  document.getElementById('new-manager-search').addEventListener('input', (e)=>{
-    const q = e.target.value.trim().toLowerCase();
-    const resultsEl = document.getElementById('new-manager-results');
-    if(!q){ resultsEl.innerHTML = ''; return; }
-    const managerIds = new Set(managersCache.map(m=>m.owner_id));
-    const matches = allMembersCache
-      .filter(m => (m.nickname||'').toLowerCase().includes(q) && m.owner_id !== ADMIN_UID && !managerIds.has(m.owner_id))
-      .slice(0, 6);
-    if(!matches.length){ resultsEl.innerHTML = '<p class="empty-admin" style="margin-top:8px;">일치하는 회원이 없어요.</p>'; return; }
-    resultsEl.innerHTML = matches.map(m=>`
-      <div class="admin-row">
-        <div class="info"><b>${m.nickname || '(닉네임 없음)'}</b></div>
-        <div class="admin-actions"><button class="remove" data-add-manager="${m.owner_id}" data-nickname="${m.nickname||''}" style="background:var(--sand); color:var(--pine-deep);">매니저로 지정</button></div>
-      </div>`).join('');
-    resultsEl.querySelectorAll('[data-add-manager]').forEach(btn=>{
-      btn.addEventListener('click', ()=> addManager(btn.dataset.addManager, btn.dataset.nickname));
-    });
-  });
-
-  // ===== 공공데이터 CSV 일괄 등록 =====
-  let bulkParsedRows = [];
-  let bulkHeaders = [];
-  let bulkSelectedType = 'course';
-  document.getElementById('bulk-csv-input').addEventListener('change', (e)=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    if(typeof Papa === 'undefined'){ toast('CSV 처리 도구를 불러오지 못했어요. 새로고침 후 다시 시도해주세요'); return; }
-    Papa.parse(file, {
-      header: true,
-      skipEmptyLines: true,
-      encoding: 'UTF-8',
-      complete: (results)=>{
-        bulkParsedRows = results.data;
-        bulkHeaders = results.meta.fields || [];
-        if(!bulkParsedRows.length){ toast('CSV에서 데이터를 찾지 못했어요'); return; }
-        populateBulkColumnSelects();
-        renderBulkPreview();
-        document.getElementById('bulk-import-mapping').style.display = '';
-        toast(`${bulkParsedRows.length}개 행을 불러왔어요. 컬럼을 지정해주세요`);
-      },
-      error: (err)=>{ console.error(err); toast('CSV를 읽는 데 실패했어요. 인코딩이 UTF-8인지 확인해주세요'); }
-    });
-  });
-  function populateBulkColumnSelects(){
-    const selects = ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'];
-    selects.forEach(id=>{
-      const sel = document.getElementById(id);
-      const keepEmpty = id === 'bulk-col-desc';
-      sel.innerHTML = (keepEmpty ? '<option value="">— 사용 안 함 —</option>' : '') +
-        bulkHeaders.map(h=>`<option value="${h}">${h}</option>`).join('');
-    });
-    // 흔한 공공데이터 컬럼명 자동 추정
-    const guess = (cands)=> bulkHeaders.find(h => cands.some(c => h.includes(c)));
-    const nameGuess = guess(['시설명','명칭','산책로명','공원명','이름']);
-    const latGuess = guess(['위도','lat','LAT','Y좌표']);
-    const lngGuess = guess(['경도','lng','LNG','X좌표']);
-    const descGuess = guess(['소재지','주소','설명','개요']);
-    if(nameGuess) document.getElementById('bulk-col-name').value = nameGuess;
-    if(latGuess) document.getElementById('bulk-col-lat').value = latGuess;
-    if(lngGuess) document.getElementById('bulk-col-lng').value = lngGuess;
-    if(descGuess) document.getElementById('bulk-col-desc').value = descGuess;
-  }
-  function renderBulkPreview(){
-    const nameCol = document.getElementById('bulk-col-name').value;
-    const latCol = document.getElementById('bulk-col-lat').value;
-    const lngCol = document.getElementById('bulk-col-lng').value;
-    const descCol = document.getElementById('bulk-col-desc').value;
-    const rows = bulkParsedRows.slice(0, 3);
-    const el = document.getElementById('bulk-preview');
-    el.innerHTML = `
-      <table style="width:100%; border-collapse:collapse;">
-        <tr style="font-weight:800; color:var(--pine-deep);"><td>이름</td><td>위도</td><td>경도</td><td>설명</td></tr>
-        ${rows.map(r=>`<tr><td>${escapeHtml(r[nameCol]||'-')}</td><td>${escapeHtml(r[latCol]||'-')}</td><td>${escapeHtml(r[lngCol]||'-')}</td><td>${escapeHtml(descCol ? (r[descCol]||'-') : '-')}</td></tr>`).join('')}
-      </table>`;
-  }
-  ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'].forEach(id=>{
-    document.getElementById(id).addEventListener('change', renderBulkPreview);
-  });
-  document.getElementById('bulk-type-group').addEventListener('click', (e)=>{
-    const el = e.target.closest('.tag-check');
-    if(!el) return;
-    document.querySelectorAll('#bulk-type-group .tag-check').forEach(x=>x.classList.remove('on'));
-    el.classList.add('on');
-    bulkSelectedType = el.dataset.bulkType;
-    document.getElementById('bulk-facility-category-wrap').style.display = (bulkSelectedType === 'facility') ? '' : 'none';
-  });
-  let bulkSelectedFacilityCategory = '식당카페';
-  document.getElementById('bulk-facility-category-group').addEventListener('click', (e)=>{
-    const el = e.target.closest('.tag-check');
-    if(!el) return;
-    document.querySelectorAll('#bulk-facility-category-group .tag-check').forEach(x=>x.classList.remove('on'));
-    el.classList.add('on');
-    bulkSelectedFacilityCategory = el.dataset.bulkFacilityCategory;
-  });
-  document.getElementById('bulk-import-submit-btn').addEventListener('click', async ()=>{
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    const nameCol = document.getElementById('bulk-col-name').value;
-    const latCol = document.getElementById('bulk-col-lat').value;
-    const lngCol = document.getElementById('bulk-col-lng').value;
-    const descCol = document.getElementById('bulk-col-desc').value;
-    if(!nameCol || !latCol || !lngCol){ toast('이름·위도·경도 컬럼을 모두 지정해주세요'); return; }
-    if(!confirm(`${bulkParsedRows.length}개 행을 "${bulkSelectedType === 'course' ? '산책 코스' : bulkSelectedType === 'bin' ? '배변봉투함' : '동반시설'}"(으)로 일괄 등록할까요?`)) return;
-
-    const progressEl = document.getElementById('bulk-import-progress');
-    const validRows = [];
-    const bulkSeen=new Set();
-    const existingBulk=bulkSelectedType==='course'?allCourses():bulkSelectedType==='bin'?allBins():facilities;
-    const bulkKey=(name,lat,lng)=>name.replace(/\s+/g,'').toLowerCase()+'|'+Number(lat).toFixed(4)+'|'+Number(lng).toFixed(4);
-    existingBulk.forEach(row=>bulkSeen.add(bulkKey(row.name||'',row.lat,row.lng)));
-    let skipped = 0;
-    bulkParsedRows.forEach((r, i)=>{
-      const name = (r[nameCol]||'').trim();
-      const lat = Number(String(r[latCol]||'').trim());
-      const lng = Number(String(r[lngCol]||'').trim());
-      if(!name || name.length>120 || !Number.isFinite(lat) || !Number.isFinite(lng) || lat<33 || lat>39.5 || lng<124 || lng>132){ skipped++; return; }
-      const key=bulkKey(name,lat,lng);
-      if(bulkSeen.has(key)){skipped++;return;}
-      bulkSeen.add(key);
-      // 충돌 걱정 없는 고유 ID (시간 + 인덱스 + 랜덤값 조합)
-      const uniqueId = `pub${Date.now()}_${i}_${Math.random().toString(36).slice(2,8)}`;
-      validRows.push({
-        id: uniqueId,
-        name,
-        desc: descCol ? (r[descCol]||'') : '',
-        lat, lng,
-        ownerId: null,
-        author: '지자체 공공데이터'
-      });
-    });
-    if(!validRows.length){ toast('등록 가능한 행이 없어요. 컬럼 지정을 확인해주세요'); return; }
-
-    function toPayload(row){
-      if(bulkSelectedType === 'course') return { id:row.id, name:row.name, description:row.desc, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
-      if(bulkSelectedType === 'bin') return { id:row.id, name:row.name, description:row.desc, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
-      return { id:row.id, name:row.name, description:row.desc, category:bulkSelectedFacilityCategory, lat:row.lat, lng:row.lng, owner_id:null, author:row.author };
-    }
-    const table = bulkSelectedType === 'course' ? 'courses' : bulkSelectedType === 'bin' ? 'bins' : 'facilities';
-
-    progressEl.textContent = `등록 중... 0 / ${validRows.length}`;
-    const CHUNK = 200;
-    let done = 0, failed = 0;
-    for(let i = 0; i < validRows.length; i += CHUNK){
-      const chunk = validRows.slice(i, i + CHUNK);
-      try{
-        const payload = chunk.map(toPayload);
-        const { error } = await sb.from(table).insert(payload);
-        if(error){
-          // 묶음 전체가 실패하면, 문제 있는 행 하나 때문에 나머지 좋은 데이터까지 날아가지 않도록
-          // 한 줄씩 다시 시도해서 살릴 수 있는 건 최대한 살림
-          console.error('묶음 등록 실패, 한 줄씩 재시도:', error);
-          for(const row of chunk){
-            try{
-              const { error: rowError } = await sb.from(table).insert([toPayload(row)]);
-              if(rowError){ failed++; console.error('행 등록 실패:', row.name, rowError); }
-              else done++;
-            }catch(e){ failed++; console.error(e); }
-          }
-        } else {
-          done += chunk.length;
-        }
-      }catch(e){ console.error(e); failed += chunk.length; }
-      progressEl.textContent = `등록 중... ${Math.min(i+CHUNK, validRows.length)} / ${validRows.length}`;
-    }
-    progressEl.textContent = `✅ 완료! 성공 ${done}개 · 실패 ${failed}개 · 제외(중복·잘못된 값) ${skipped}개`;
-    toast('공공데이터 일괄 등록이 끝났어요');
-    await loadData();
-    renderAdminStats();
-  });
-  document.getElementById('bulk-cleanup-btn').addEventListener('click', async ()=>{
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 처리할 수 있어요'); return; }
-    if(!confirm('지금까지 "지자체 공공데이터"로 등록된 코스·배변봉투함·동반시설을 전부 삭제할까요?\n직접 등록한 것들은 영향 없어요. 되돌릴 수 없어요.')) return;
-    const statusEl = document.getElementById('bulk-cleanup-status');
-    statusEl.textContent = '삭제 중...';
-    try{
-      const results = await Promise.allSettled([
-        sb.from('courses').delete().eq('author', '지자체 공공데이터'),
-        sb.from('bins').delete().eq('author', '지자체 공공데이터'),
-        sb.from('facilities').delete().eq('author', '지자체 공공데이터'),
-      ]);
-      const failedOps = results.filter(r => r.status === 'rejected' || (r.value && r.value.error));
-      statusEl.textContent = failedOps.length ? '일부 삭제에 실패했어요. 콘솔을 확인해주세요' : '✅ 공공데이터로 등록한 항목을 모두 삭제했어요';
-      toast('삭제 완료');
-      await loadData();
-      renderAdminStats();
-    }catch(e){ console.error(e); statusEl.textContent = '삭제 중 오류가 발생했어요'; }
-  });
-
-  async function renderReferrerBreakdown(){
-    const el = document.getElementById('admin-referrer-list');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    try{
-      const start = adminDayStart(6);
-      const { data, error } = await adminReadRows('page_views','visitor_id, referrer',start.toISOString());
-      if(error) throw error;
-      const buckets = Object.create(null);
-      (data||[]).forEach(r=>{
-        const raw = r.referrer || '직접 방문';
-        let key = raw==='직접 방문'?'직접 방문 / 출처 미상':raw;
-        if(raw.startsWith('utm:')){
-          const source = raw.split(' · ')[0].replace(/^utm:/,'').toLowerCase();
-          if(source.includes('threads')) key = 'Threads';
-          else if(source.includes('naver')) key = '네이버';
-          else if(source.includes('instagram')) key = 'Instagram';
-          else if(source.includes('kakao')) key = '카카오';
-          else if(source.includes('google')) key = 'Google';
-          else key = raw;
-        }else{
-          const low = raw.toLowerCase();
-          if(low.includes('search.naver') || low.includes('naver.com')) key = '네이버 검색/외부';
-          else if(low.includes('google.')) key = 'Google 검색/외부';
-          else if(low.includes('threads.net')) key = 'Threads';
-          else if(low.includes('instagram.com')) key = 'Instagram';
-        }
-        if(!buckets[key]) buckets[key] = {views:0,visitors:new Set()};
-        buckets[key].views++;
-        if(r.visitor_id) buckets[key].visitors.add(r.visitor_id);
-      });
-      const sorted = Object.entries(buckets)
-        .map(([source,v])=>[source,v.views,v.visitors.size])
-        .sort((a,b)=>b[2]-a[2] || b[1]-a[1])
-        .slice(0,10);
-      if(!sorted.length){ el.innerHTML = '<p class="empty-admin">아직 데이터가 없어요.</p>'; return; }
-      const allVisitors = new Set((data||[]).map(r=>r.visitor_id).filter(Boolean)).size || 1;
-      el.innerHTML = '<p style="font-size:12px;color:var(--muted-text);margin:0 0 12px;">순방문자 기준으로 정렬했어요. 홍보 링크에는 <code>?utm_source=threads</code>처럼 UTM을 붙이면 채널별 성과를 더 정확히 볼 수 있어요.</p>' +
-      sorted.map(([source, views, visitors])=>{
-        const pct = Math.round((visitors/allVisitors)*100);
-        return `
-          <div style="margin-bottom:12px;">
-            <div style="display:flex; justify-content:space-between; gap:12px; font-size:13px; margin-bottom:4px;">
-              <span style="font-weight:700; color:var(--pine-deep);">${escapeHtml(source)}</span>
-              <span style="color:var(--muted-text);">${visitors}명 · ${views}뷰 (${pct}%)</span>
-            </div>
-            <div style="background:var(--line); border-radius:999px; height:6px; overflow:hidden;">
-              <div style="width:${Math.max(2,pct)}%; height:100%; background:var(--moss);"></div>
-            </div>
-          </div>`;
-      }).join('');
-    }catch(e){
-      console.error(e);
-      el.innerHTML = '<p class="empty-admin">불러오지 못했어요. (SQL 마이그레이션이 아직 적용 안 됐을 수 있어요)</p>';
-    }
-  }
-
-  async function renderAdminSummary(){
-    const el=document.getElementById('admin-summary');if(!el)return;
-    el.textContent='요약을 불러오고 있어요…';
-    try{
-      const [traffic,signups]=await Promise.all([
-        sb.rpc('admin_traffic_summary_v2',{p_days:1}),
-        sb.from('points_log').select('owner_id').eq('reason','회원가입 축하 포인트').gte('created_at',adminDayStart().toISOString())
-      ]);
-      if(traffic.error||signups.error)throw traffic.error||signups.error;
-      const d=traffic.data;
-      const cards=[
-        {num:d.engaged_visitors,label:'오늘 활동 확인 브라우저',jump:'traffic'},
-        {num:d.visitors,label:'오늘 방문 브라우저 · 사람 수 아님',jump:'traffic'},
-        {num:d.views,label:'오늘 집계 포함 조회',jump:'hourly'},
-        {num:(signups.data||[]).length,label:'오늘 가입축하 지급 건',jump:'today'}
-      ];
-      el.innerHTML=cards.map(c=>'<div class="stat-card clickable" data-jump="'+c.jump+'"><div class="num">'+Number(c.num||0).toLocaleString('ko-KR')+'</div><div class="label">'+escapeHtml(c.label)+'</div></div>').join('')
-       +'<p style="grid-column:1/-1;font-size:12px;line-height:1.7;color:var(--muted-text)">활동 확인은 클릭 또는 화면 노출 10초 이상 기준이며 사람 인증은 아닙니다. 2026-10-04 15:23경 이전에는 일부 광고 크롤러가 일반 브라우저로 기록되어 오늘 방문 수가 부풀려져 있을 수 있습니다. 일일 200명 목표 달성 여부는 이 숫자만으로 판단하지 않습니다.</p>';
-      el.querySelectorAll('[data-jump]').forEach(c=>c.addEventListener('click',()=>expandAccordion(c.dataset.jump)));
-    }catch(e){el.textContent='요약을 불러오지 못했어요. 새로고침해 주세요.';}
-  }
-  function expandAccordion(key){
-    if(key==='traffic'){const panel=document.querySelector('.admin-traffic-panel'),details=panel.closest('details');if(details)details.open=true;panel.scrollIntoView({behavior:'smooth',block:'start'});return;}
-    const body = document.getElementById('acc-' + key);
-    const head = document.querySelector(`.admin-accordion-head[data-accordion="${key}"]`);
-    if(!body || !head) return;
-    body.style.display = '';
-    head.querySelector('.accordion-arrow').textContent = '▾';
-    head.scrollIntoView({ behavior:'smooth', block:'start' });
-  }
-
-  // ===== 관리자 대시보드 아코디언(섹션 펼치기/접기) =====
-  document.querySelectorAll('.admin-accordion-head').forEach(head=>{
-    head.addEventListener('click', ()=>{
-      const key = head.dataset.accordion;
-      const body = document.getElementById('acc-' + key);
-      const arrow = head.querySelector('.accordion-arrow');
-      const isOpen = body.style.display !== 'none';
-      body.style.display = isOpen ? 'none' : '';
-      head.setAttribute('aria-expanded',String(!isOpen));
-      arrow.textContent = isOpen ? '▸' : '▾';
-      if(key==='allmembers'&&!isOpen)renderAllMemberList();
-    });
-  });
-
-  async function renderAdminTodayStats(){
-    const el = document.getElementById('admin-today-stats');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
-    try{
-      const todayStart = adminDayStart();
-      const iso = todayStart.toISOString();
-      const [newCourses, newBins, newFacilities, newReviews, newWalks, newSignups, todayViews] = await Promise.all([
-        sb.from('courses').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('bins').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('facilities').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', iso),
-        adminReadRows('page_views','visitor_id',iso),
-      ]);
-      for(const result of [newCourses,newBins,newFacilities,newReviews,newWalks,newSignups,todayViews]){if(result.error) throw result.error;}
-      const todayVisitorRows = todayViews.data || [];
-      const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
-      const stats = [
-                                { num: newCourses.count||0, label:'오늘 새 코스' },
-        { num: newBins.count||0, label:'오늘 새 배변함' },
-        { num: newFacilities.count||0, label:'오늘 새 시설' },
-        { num: newReviews.count||0, label:'오늘 새 리뷰' },
-        { num: newWalks.count||0, label:'오늘 산책기록' },
-      ];
-      el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
-    }catch(e){
-      console.error(e);
-      el.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>';
-    }
-  }
-  function renderAdminTopCourses(){
-    const el = document.getElementById('admin-top-courses');
-    if(!el) return;
-    const ranked = allCourses()
-      .map(c => ({ c, reviewCount: reviewsFor(c.id).length, avg: Number(avgRating(c.id))||0 }))
-      .filter(x => x.reviewCount > 0)
-      .sort((a,b) => b.reviewCount - a.reviewCount || b.avg - a.avg)
-      .slice(0, 5);
-    if(!ranked.length){ el.innerHTML = '<p class="empty-admin">아직 리뷰가 달린 코스가 없어요.</p>'; return; }
-    el.innerHTML = ranked.map((x,i)=>`
-      <div class="admin-row" data-top-course="${escapeHtml(x.c.id)}" style="cursor:pointer;">
-        <div class="info"><b>${i+1}. ${escapeHtml(x.c.name)}</b>리뷰 ${x.reviewCount}개 · ★ ${x.avg.toFixed(1)}</div>
-      </div>`).join('');
-    el.querySelectorAll('[data-top-course]').forEach(row=>{
-      row.addEventListener('click', ()=>{
-        document.getElementById('admin-overlay').classList.remove('show');
-        if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
-        showPage('map');
-        setTimeout(()=> openCourseDetail(row.dataset.topCourse), 350);
-      });
-    });
-  }
-
-
- function adminTrafficPageLink(path){
-  const p=String(path||'');
-  if(!/^\/[A-Za-z0-9/_-]*(\.html)?$/.test(p))return escapeHtml(p);
-  const match=p.match(/^\/(courses|places)\/([A-Za-z0-9_-]+)\/?$/);
-  const entry=match?(match[1]==='courses'?allCourses():facilities).find(c=>String(c.id)===match[2]):null;
-  const labels={'/':'발자국 홈','/index.html':'발자국 홈','/discover.html':'산책 코스 탐색'};
-  const title=entry?.name||labels[p]||p;
-  return '<a href="'+escapeHtml(p)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(title)+' ↗</a>'+(title!==p?'<br><small>'+escapeHtml(p)+'</small>':'');
- }
- let adminBotRequest=0;
- async function renderAdminBots(){
-  const el=document.getElementById('admin-bot-result'),request=++adminBotRequest;
-  if(!el||!isAdminUser(myDeviceId))return;
-  el.textContent='자동 접속 기록을 불러오고 있어요…';
-  try{
-   const {data,error}=await sb.rpc('admin_bot_traffic',{p_days:Number(document.getElementById('admin-traffic-period').value)});
-   if(request!==adminBotRequest)return;
-   if(error||!data)throw error||new Error('invalid_bot_stats');
-   el.innerHTML=AdminBotPanel.render(data,adminTrafficPageLink);
-  }catch(e){if(request===adminBotRequest)el.textContent='자동 접속 기록을 불러오지 못했어요. 새로고침해 주세요.';}
- }
-
- let adminSecurityRequest=0;
- async function renderAdminSecurity(){
-  const el=document.getElementById('admin-security-result'),request=++adminSecurityRequest,viewer=myDeviceId;
-  if(!el||!isAdminUser(viewer))return;el.textContent='보안 기록을 불러오고 있어요…';
-  try{const {data,error}=await sb.rpc('admin_security_summary',{p_days:Number(document.getElementById('admin-security-period').value)});if(request!==adminSecurityRequest||viewer!==myDeviceId||!isAdminUser(myDeviceId))return;if(error||!data)throw error||new Error('missing_data');el.innerHTML=SecurityMonitor.render(data);}
-  catch{if(request===adminSecurityRequest)el.textContent='보안 기록을 불러오지 못했어요. 관리자 권한과 연결을 확인해 주세요.';}
- }
- document.getElementById('admin-security-period').addEventListener('change',renderAdminSecurity);
- document.getElementById('admin-security-refresh').addEventListener('click',renderAdminSecurity);
- const affiliateAdmin=AdminAffiliate.mount({client:sb,isAdmin:()=>isAdminUser(myDeviceId),viewer:()=>myDeviceId});
- let adminTrafficData=null,adminTrafficRequest=0;
- async function renderAdminTraffic(){
-  affiliateAdmin?.load();
-  const request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export');
-  adminTrafficData=null;button.disabled=true;el.textContent='통계를 불러오고 있어요…';
-  try{
-   const {data,error}=await sb.rpc('admin_traffic_summary_v2',{p_days:Number(document.getElementById('admin-traffic-period').value)});
-   if(request!==adminTrafficRequest)return;
-   if(error||!Array.isArray(data?.daily))throw error||new Error('invalid_stats');
-   adminTrafficData=data;
-   const num=x=>Number(x||0).toLocaleString('ko-KR'),delta=Number(data.views)-Number(data.previous_views);
-   el.innerHTML=`<p><strong>조회 ${num(data.views)}회 · 방문 브라우저 ${num(data.visitors)}개 · 활동 확인 ${num(data.engaged_visitors)}개</strong><br>관리자·작업 접속 및 자동 접속 신호 ${num(data.excluded_views)}회 제외 · 원본 ${num(data.raw_views)}회<br><small>활동 확인: 화면 노출 10초 이상 또는 클릭 기록. 실제 사람 인증은 아닙니다. 2026-10-04 15:23경 이전 미분류 크롤러로 방문 브라우저 수가 부풀려질 수 있습니다. 이전 기록 ${num(data.unmeasured_views)}회는 활동·페이지 정보 미수집입니다.</small><br>이전 동일 길이 기간 대비 조회 ${delta>0?'+':''}${num(delta)}회</p><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${adminTrafficPageLink(r.path)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
-   button.disabled=false;
-   renderAdminBots();
-   renderAdminSecurity();
-  }catch(e){if(request===adminTrafficRequest)el.textContent='통계를 불러오지 못했어요. 관리자 로그인 상태를 확인하고 새로고침해 주세요.';}
- }
- document.getElementById('admin-traffic-period').addEventListener('change',renderAdminTraffic);
- document.getElementById('admin-pending-search').addEventListener('input',renderPendingApprovals);
- document.getElementById('admin-traffic-export').addEventListener('click',()=>{
-  if(!adminTrafficData||!isAdminUser(myDeviceId))return;
-  const rows=[['날짜(KST)','조회수(내부·자동접속 신호 제외)','방문 브라우저 수','활동 확인 브라우저 수'],...adminTrafficData.daily.map(r=>[r.date,Number(r.views),Number(r.visitors),Number(r.engaged)])];
-  const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
-  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
-  a.href=url;a.download=`balzaguk-traffic-${adminTrafficData.days}days.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
- });
-
-  async function refreshAdminDashboard(){
-    if(!isAdminUser(myDeviceId))return;
-    const button=document.getElementById('admin-refresh-btn');
-    if(button.disabled)return;
-    button.disabled=true;
-    try{
-      await Promise.all([loadData(),renderAllMemberList(true)]);
-      await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderLiveVisitorCount()]);
-      if(isSuperAdmin(myDeviceId))await renderManagerList();
-      document.getElementById('admin-last-refreshed').textContent=`조회 종료: ${new Date().toLocaleTimeString('ko-KR')}`;
-    }catch(e){toast('새로고침에 실패했어요. 다시 시도해 주세요.');}
-    finally{button.disabled=false;}
-  }
-  document.getElementById('admin-refresh-btn').addEventListener('click', refreshAdminDashboard);
-
-  async function openAdminDashboard(){
-    if(!isAdminUser(myDeviceId)){ toast('관리자만 접근할 수 있어요'); return; }
-    renderAllMemberList();
-    const todayHead=document.querySelector('#admin-overlay [data-accordion="today"]');
-    document.getElementById('acc-today').style.display='';
-    todayHead.setAttribute('aria-expanded','true');
-    todayHead.querySelector('.accordion-arrow').textContent='▾';
-    renderAdminSummary();
-    renderAdminStats();
-    renderAdminList();
-    renderPendingApprovals();
-    renderMemberList();
-    renderAdminTraffic();
-    renderLiveVisitorCount();
-    const managerWrap = document.getElementById('manager-section-wrap');
-    if(managerWrap){
-      managerWrap.style.display = isSuperAdmin(myDeviceId) ? '' : 'none';
-      if(isSuperAdmin(myDeviceId)) renderManagerList();
-    }
-    const ts = document.getElementById('admin-last-refreshed');
-    if(ts) ts.textContent = `마지막 새로고침: ${new Date().toLocaleTimeString('ko-KR')}`;
-    if(liveVisitorInterval) clearInterval(liveVisitorInterval);
-    // 실시간 접속자만 5초마다 자동 갱신 (다른 통계는 "지금 새로고침" 버튼으로 필요할 때만 갱신 — 불필요한 서버 요청 방지)
-    liveVisitorInterval = setInterval(renderLiveVisitorCount, 5000);
-    document.getElementById('admin-overlay').classList.add('show');
-    document.querySelector('#admin-overlay .modal-inner-wrap').scrollTop=0;
-    document.querySelector('#admin-overlay .modal').scrollTop=0;
-  }
-  document.getElementById('my-admin-btn').addEventListener('click', ()=>{
-    closeProfileModal();
-    openAdminDashboard();
-  });
-  document.getElementById('admin-close').addEventListener('click', ()=>{
-    document.getElementById('admin-overlay').classList.remove('show');
-    if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
-  });
-  document.getElementById('admin-overlay').addEventListener('click', (e)=>{
-    if(e.target.id === 'admin-overlay'){
-      document.getElementById('admin-overlay').classList.remove('show');
-      if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
-    }
-  });
-
+  // Administrator resources are loaded only after a fresh server identity/role check.
+  const adminPanelController=AdminLoader.create({client:sb,viewer:()=>myDeviceId,mount:()=>PawAdminPanel.create({sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast,get myDeviceId(){return myDeviceId;},get courses(){return courses;},get bins(){return bins;},get facilities(){return facilities;},get reports(){return reports;},get reviews(){return reviews;}})});
+  function renderAdminList(){return adminPanelController.peek()?.renderReports();}
+  function resetAdminPanel(){adminPanelController.reset();}
+  async function openAdminDashboard(){try{const panel=await adminPanelController.load();await panel.open();return true;}catch(e){toast('관리자 권한과 연결 상태를 확인해 주세요.');return false;}}
+  document.getElementById('my-admin-btn').addEventListener('click',async()=>{const button=document.getElementById('my-admin-btn');if(button.disabled)return;button.disabled=true;try{closeProfileModal();await openAdminDashboard();}finally{button.disabled=false;}});
 
   // ===== 스크롤하면 섹션이 부드럽게 나타나는 효과 =====
   (function initScrollReveal(){
@@ -8713,20 +7388,6 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     }, 3000);
   })();
 
-  (function initLegalContents(){
-    for(const page of ['privacy','terms']){
-      const section=document.querySelector('[data-page-section="'+page+'"]'),wrap=section?.querySelector('.wrap');
-      if(!wrap)continue;section.classList.add('legal-reading');
-      const toc=document.createElement('details');toc.className='legal-toc';toc.open=true;
-      const summary=document.createElement('summary');summary.textContent='목차 · 필요한 내용 바로 찾기';toc.append(summary);
-      const nav=document.createElement('nav');nav.setAttribute('aria-label',page==='privacy'?'개인정보처리방침 목차':'이용약관 목차');
-      wrap.querySelectorAll('article').forEach((article,index)=>{
-        const heading=article.querySelector('h3');if(!heading)return;
-        const button=document.createElement('button');button.type='button';button.textContent=heading.textContent;
-        button.addEventListener('click',()=>{heading.tabIndex=-1;article.scrollIntoView({behavior:'smooth',block:'start'});heading.focus({preventScroll:true});});nav.append(button);
-      });toc.append(nav);wrap.querySelector('article')?.parentElement.before(toc);
-    }
-  })();
   ensureIdentity().then(()=>{
     const joinUrl=new URL(location.href);
     if(joinUrl.searchParams.get('join')==='1'){
@@ -8767,7 +7428,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
  dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();}});
 })();
 </script>
-<dialog class="update-dialog" id="home-update-dialog" aria-labelledby="home-update-dialog-title"><div class="update-dialog-head"><h2 id="home-update-dialog-title">발자국 업데이트 내역</h2><button type="button" id="home-update-dialog-close" aria-label="업데이트 내역 닫기">×</button></div><div class="update-history"><article><h2><time datetime="2026-10-13">2026.10.13</time> · 전국 동반 산책 정보 174곳 추가</h2><ul><li>공식 동반 안내를 확인한 전국 산책 위치 174곳을 실제 장소 사진과 함께 추가해 공개 산책 정보가 400곳이 되었어요.</li><li>체중·등록·예방접종·입마개·허용 구역 제한과 사진 출처를 함께 안내해요. 사진은 경관·시설 참고이며 전체 경로·출발점·거리·계단·경사·쉼터는 미확인으로 구분해요.</li><li>사진 촬영 연도와 촬영 시기 미상 표시를 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 전국 동반 산책 정보 13곳 추가</h2><ul><li>위양지·궁남지·관방제림·새별오름 등 8개 지역의 산책 위치 13곳에 실제 장소 사진을 연결했어요.</li><li>공식 동반 조건과 사진 출처를 표시하고, 대형견 입마개 제한과 미확인 거리·경로·편의 정보를 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 동반 산책 코스 8곳과 실제 사진 추가</h2><ul><li>부산·서울·대전·강원·제주의 동반 안내를 확인한 코스 8곳을 실제 사진과 함께 추가했어요. 한림공원은 7kg 이하 조건이며 전체 경로와 시설 미확인 정보는 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 산책 준비 위치 안내</h2><ul><li>경로 출발점이 확인되지 않은 코스는 대표 위치 주소와 길찾기로 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 산책 가이드 모음과 코스 비교 안내</h2><ul><li>산책 준비·날씨·동반장소 안내를 한곳에서 찾아볼 수 있어요.</li><li>코스 비교 방법과 예상 시간·미확인 조건·자료 확인일을 읽는 방법을 안내해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 지역별로 산책과 동반장소 찾기</h2><ul><li>홈에서 주요 지역의 산책 코스·동반장소 안내로 바로 이동해요.</li><li>지역 안내에서 다른 지역과 산책 준비 가이드를 함께 살펴볼 수 있어요. 발자국 소개도 추가했어요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 코스 공유 링크 개선</h2><ul><li>공개된 코스는 고유한 제목과 설명이 있는 상세 페이지로 공유해요.</li><li>상세 페이지에서 지도를 열고 기존처럼 찜·비교·산책 준비를 이어갈 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 상품 사진 위 인기도 배지</h2><ul><li>확인된 구매자 수는 파란색, 상품평 수는 연보라색 배지로 사진 위에 보여줘요.</li><li>아래 정보란의 중복 숫자는 정리하고 확인일·옵션·사용 전 확인사항은 유지했어요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 상품 인기도 확인</h2><ul><li>확인한 상품평 수를 강조하고, 첫 간식에는 쿠팡의 최근 한 달 구매자 수 표시를 함께 보여줘요.</li><li>판매 개수와 구매자 수는 구분해요. 확인되지 않은 구매자 수는 표시하지 않으며, 오래된 인기도 수치는 숨겨요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 반려생활 상품 둘러보기</h2><ul><li>쿠팡 판매량순을 참고해 간식·배변패드·목욕·청소·산책·양치 상품 6개를 골랐어요.</li><li>첫 카드에 추천 상품을 강조하고 상품평 확인일과 옵션을 함께 보여줘요. 배열 순서는 판매 순위와 달라요.</li><li>모바일에서는 좌우로 넘겨 보고, 현재 가격과 배송 조건은 쿠팡에서 확인해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 로딩과 검색 이어보기</h2><ul><li>홈에서는 장소 숫자를 먼저 조회하고, 상세 장소 정보는 필요한 화면에서 준비해요.</li><li>지도 장소 검색에 결과 목록·위치 보기·초기화·조회 실패 재시도를 추가했어요.</li><li>코스와 지도 검색 조건은 같은 탭에서 새로고침해도 이어 볼 수 있어요. 조건은 하루 동안 기억하며 위치 좌표는 저장하지 않아요.</li><li>장소 조건에 자료 확인일·오래된 자료의 재확인 안내·정보 수정 제보 링크를 추가했어요. 미확인은 허용을 뜻하지 않아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 지도 장소 검색 보완</h2><ul><li>지도에서 동반장소를 검색할 때 필요한 장소 마커만 갱신해요.</li><li>장소를 불러오는 중·갱신 실패·검색 결과 없음을 구분해서 안내해요.</li><li>좌표가 비어 있거나 범위를 벗어난 장소는 지도에 잘못 표시하지 않아요. 여러 검색어를 띄어 쓰면 모두 포함하는 장소를 찾아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 첫 화면과 동반장소 검색 개선</h2><ul><li>지도는 해당 화면을 열 때 준비해 첫 화면의 불필요한 로딩을 줄였어요.</li><li>인터넷 연결이 끊겼을 때 불러오는 화면 파일도 최신 기능에 맞게 보완했어요. 지도 배경과 서버 조회는 연결이 필요해요.</li><li>장소 찾기에서 지역·동반장소 업종을 고르고 검색을 초기화할 수 있어요. 모바일에서는 항목명과 선택칸을 함께 보기 쉽게 배치했어요.</li><li>상세를 보고 돌아오면 검색 조건과 더 본 결과가 주소에 남아 있어요. 동반 세부 조건은 상세 자료를 확인하고, 자료가 없으면 미확인으로 안내해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 홈 숫자와 코스 조회 개선</h2><ul><li>코스·동반장소 숫자는 각각 조회가 끝나는 대로 보여줘요. 코스 목록도 리뷰 등 다른 정보보다 먼저 이용할 수 있어요.</li><li>재방문 시 최근 확인한 숫자를 먼저 보여주고 최신 정보로 갱신해요. 이전 숫자·조회 중·갱신 실패를 구분해서 안내해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 선택한 코스 다시 이어보기</h2><ul><li>같은 탭에서 새로고침해도 비교한 코스와 산책 준비 코스를 다시 보여줘요. 선택은 현재 탭에서만 기억해요.</li><li>최신 코스 정보를 불러온 뒤 복원하고, 현재 공개되지 않는 코스는 선택에서 제외해요. GPS 기록은 자동으로 시작하지 않아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 코스 비교에서 산책 준비까지</h2><ul><li>비교표에서 고른 코스로 바로 산책 준비 화면을 열 수 있어요.</li><li>준비 화면에서 거리·시간과 계단·경사·동반 조건, 자료 확인일과 공식 원문을 확인해요. 코스 상세와 출발점 길찾기도 다시 열 수 있어요.</li><li>기록 중이거나 위치를 확인하는 동안에는 참고 코스를 바꾸지 않아요. GPS 기록은 시작 버튼을 눌러야 시작합니다.</li><li>모바일에서는 지도보다 산책 준비 정보와 기록 버튼을 먼저 보여줘요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 비교표 동반 조건 표시 수정</h2><ul><li>목록 형태의 공식 동반 조건도 비교표에서 확인할 수 있어요.</li><li>비어 있는 세부 조건은 미확인으로 표시해요. 방문 전 허용 구역과 당일 통제를 확인해 주세요.</li></ul></article><article><h2>2026.10.11 · 코스 비교 개선</h2><ul><li>최대 3개 코스의 거리·시간·계단·경사·쉼터·동반 조건을 나란히 비교해요.</li><li>선택한 코스는 아래 비교 보기 버튼으로 다시 살펴볼 수 있어요. 미확인 정보와 자료 확인일도 구분합니다.</li><li>상세 창에서 찜하면 기기 저장 안내를 창 안에서 확인할 수 있어요.</li></ul></article>
+<dialog class="update-dialog" id="home-update-dialog" aria-labelledby="home-update-dialog-title"><div class="update-dialog-head"><h2 id="home-update-dialog-title">발자국 업데이트 내역</h2><button type="button" id="home-update-dialog-close" aria-label="업데이트 내역 닫기">×</button></div><div class="update-history"><article><h2><time datetime="2026-10-13">2026.10.13</time> · 개인정보 안내와 이용 선택</h2><ul><li>운영자·문의처와 정보별 보관·삭제 기준을 별도 안내 페이지에서 확인해요.</li><li>로그인 전 만 14세 이상 확인과 개인정보 수집·이용 동의를 각각 확인해요.</li><li>GPS 기기 기록, 주변 산책 인원 집계, 계정에 경로 저장을 구분해 선택해요.</li></ul></article><article><h2><time datetime="2026-10-13">2026.10.13</time> · 전국 동반 산책 정보 174곳 추가</h2><ul><li>공식 동반 안내를 확인한 전국 산책 위치 174곳을 실제 장소 사진과 함께 추가해 공개 산책 정보가 400곳이 되었어요.</li><li>체중·등록·예방접종·입마개·허용 구역 제한과 사진 출처를 함께 안내해요. 사진은 경관·시설 참고이며 전체 경로·출발점·거리·계단·경사·쉼터는 미확인으로 구분해요.</li><li>사진 촬영 연도와 촬영 시기 미상 표시를 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 전국 동반 산책 정보 13곳 추가</h2><ul><li>위양지·궁남지·관방제림·새별오름 등 8개 지역의 산책 위치 13곳에 실제 장소 사진을 연결했어요.</li><li>공식 동반 조건과 사진 출처를 표시하고, 대형견 입마개 제한과 미확인 거리·경로·편의 정보를 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 동반 산책 코스 8곳과 실제 사진 추가</h2><ul><li>부산·서울·대전·강원·제주의 동반 안내를 확인한 코스 8곳을 실제 사진과 함께 추가했어요. 한림공원은 7kg 이하 조건이며 전체 경로와 시설 미확인 정보는 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 산책 준비 위치 안내</h2><ul><li>경로 출발점이 확인되지 않은 코스는 대표 위치 주소와 길찾기로 구분해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 산책 가이드 모음과 코스 비교 안내</h2><ul><li>산책 준비·날씨·동반장소 안내를 한곳에서 찾아볼 수 있어요.</li><li>코스 비교 방법과 예상 시간·미확인 조건·자료 확인일을 읽는 방법을 안내해요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 지역별로 산책과 동반장소 찾기</h2><ul><li>홈에서 주요 지역의 산책 코스·동반장소 안내로 바로 이동해요.</li><li>지역 안내에서 다른 지역과 산책 준비 가이드를 함께 살펴볼 수 있어요. 발자국 소개도 추가했어요.</li></ul></article><article><h2><time datetime="2026-10-12">2026.10.12</time> · 코스 공유 링크 개선</h2><ul><li>공개된 코스는 고유한 제목과 설명이 있는 상세 페이지로 공유해요.</li><li>상세 페이지에서 지도를 열고 기존처럼 찜·비교·산책 준비를 이어갈 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 상품 사진 위 인기도 배지</h2><ul><li>확인된 구매자 수는 파란색, 상품평 수는 연보라색 배지로 사진 위에 보여줘요.</li><li>아래 정보란의 중복 숫자는 정리하고 확인일·옵션·사용 전 확인사항은 유지했어요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 상품 인기도 확인</h2><ul><li>확인한 상품평 수를 강조하고, 첫 간식에는 쿠팡의 최근 한 달 구매자 수 표시를 함께 보여줘요.</li><li>판매 개수와 구매자 수는 구분해요. 확인되지 않은 구매자 수는 표시하지 않으며, 오래된 인기도 수치는 숨겨요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 반려생활 상품 둘러보기</h2><ul><li>쿠팡 판매량순을 참고해 간식·배변패드·목욕·청소·산책·양치 상품 6개를 골랐어요.</li><li>첫 카드에 추천 상품을 강조하고 상품평 확인일과 옵션을 함께 보여줘요. 배열 순서는 판매 순위와 달라요.</li><li>모바일에서는 좌우로 넘겨 보고, 현재 가격과 배송 조건은 쿠팡에서 확인해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 로딩과 검색 이어보기</h2><ul><li>홈에서는 장소 숫자를 먼저 조회하고, 상세 장소 정보는 필요한 화면에서 준비해요.</li><li>지도 장소 검색에 결과 목록·위치 보기·초기화·조회 실패 재시도를 추가했어요.</li><li>코스와 지도 검색 조건은 같은 탭에서 새로고침해도 이어 볼 수 있어요. 조건은 하루 동안 기억하며 위치 좌표는 저장하지 않아요.</li><li>장소 조건에 자료 확인일·오래된 자료의 재확인 안내·정보 수정 제보 링크를 추가했어요. 미확인은 허용을 뜻하지 않아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 지도 장소 검색 보완</h2><ul><li>지도에서 동반장소를 검색할 때 필요한 장소 마커만 갱신해요.</li><li>장소를 불러오는 중·갱신 실패·검색 결과 없음을 구분해서 안내해요.</li><li>좌표가 비어 있거나 범위를 벗어난 장소는 지도에 잘못 표시하지 않아요. 여러 검색어를 띄어 쓰면 모두 포함하는 장소를 찾아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 첫 화면과 동반장소 검색 개선</h2><ul><li>지도는 해당 화면을 열 때 준비해 첫 화면의 불필요한 로딩을 줄였어요.</li><li>인터넷 연결이 끊겼을 때 불러오는 화면 파일도 최신 기능에 맞게 보완했어요. 지도 배경과 서버 조회는 연결이 필요해요.</li><li>장소 찾기에서 지역·동반장소 업종을 고르고 검색을 초기화할 수 있어요. 모바일에서는 항목명과 선택칸을 함께 보기 쉽게 배치했어요.</li><li>상세를 보고 돌아오면 검색 조건과 더 본 결과가 주소에 남아 있어요. 동반 세부 조건은 상세 자료를 확인하고, 자료가 없으면 미확인으로 안내해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 홈 숫자와 코스 조회 개선</h2><ul><li>코스·동반장소 숫자는 각각 조회가 끝나는 대로 보여줘요. 코스 목록도 리뷰 등 다른 정보보다 먼저 이용할 수 있어요.</li><li>재방문 시 최근 확인한 숫자를 먼저 보여주고 최신 정보로 갱신해요. 이전 숫자·조회 중·갱신 실패를 구분해서 안내해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 선택한 코스 다시 이어보기</h2><ul><li>같은 탭에서 새로고침해도 비교한 코스와 산책 준비 코스를 다시 보여줘요. 선택은 현재 탭에서만 기억해요.</li><li>최신 코스 정보를 불러온 뒤 복원하고, 현재 공개되지 않는 코스는 선택에서 제외해요. GPS 기록은 자동으로 시작하지 않아요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 코스 비교에서 산책 준비까지</h2><ul><li>비교표에서 고른 코스로 바로 산책 준비 화면을 열 수 있어요.</li><li>준비 화면에서 거리·시간과 계단·경사·동반 조건, 자료 확인일과 공식 원문을 확인해요. 코스 상세와 출발점 길찾기도 다시 열 수 있어요.</li><li>기록 중이거나 위치를 확인하는 동안에는 참고 코스를 바꾸지 않아요. GPS 기록은 시작 버튼을 눌러야 시작합니다.</li><li>모바일에서는 지도보다 산책 준비 정보와 기록 버튼을 먼저 보여줘요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 비교표 동반 조건 표시 수정</h2><ul><li>목록 형태의 공식 동반 조건도 비교표에서 확인할 수 있어요.</li><li>비어 있는 세부 조건은 미확인으로 표시해요. 방문 전 허용 구역과 당일 통제를 확인해 주세요.</li></ul></article><article><h2>2026.10.11 · 코스 비교 개선</h2><ul><li>최대 3개 코스의 거리·시간·계단·경사·쉼터·동반 조건을 나란히 비교해요.</li><li>선택한 코스는 아래 비교 보기 버튼으로 다시 살펴볼 수 있어요. 미확인 정보와 자료 확인일도 구분합니다.</li><li>상세 창에서 찜하면 기기 저장 안내를 창 안에서 확인할 수 있어요.</li></ul></article>
 <article><h2>2026.10.11 · 동반장소 조건 안내 개선</h2><ul><li>장소 상세와 지도에서 허용 구역·제한, 견종·크기 조건, 준비물과 문의 정보를 나누어 보여줘요.</li><li>기록에 없는 조건은 미확인으로 표시해요. 공식 안내와 자료 확인일도 함께 확인해 주세요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 코스 선택과 추천 이유 개선</h2><ul><li>검색 결과가 없으면 조건 하나를 해제했을 때 볼 수 있는 코스 수를 안내해요. 조건은 직접 선택할 때만 바뀝니다.</li><li>몽 추천에서 확인된 선택 조건·선호 순서·추가 확인 정보를 구분해요.</li></ul></article><article><h2><time datetime="2026-10-11">2026.10.11</time> · 산책길 찾기와 출발 준비 개선</h2><ul><li>불러오는 중·조회 실패·검색 결과 없음을 구분해요. 선호 환경에서 그늘·잔디·계단·경사·쉼터를 함께 선택해요.</li><li>코스 상세의 길찾기와 산책 준비 버튼을 위로 옮기고, GPS 기록의 화면 유지 조건을 명확히 안내해요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 선호 환경 선택 통합</h2><ul><li>계단 없는 경로·완만한 길·벤치와 쉼터·2km 이내 조건을 선호 환경에서 함께 선택해요.</li><li>몽 맞춤 추천과 코스 목록 모두 같은 기준으로 필터링해요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 노령견 산책 조건 추가</h2><ul><li>코스 목록과 몽 추천에서 계단 없는 경로·완만한 길·벤치와 쉼터 안내·2km 이내를 따로 골라요.</li><li>선택한 편의 정보가 미확인이면 추천에서 제외하며, 카드와 상세에서 자료 근거와 미확인 항목을 구분해요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 반려견 산책 코스 5곳 추가</h2><ul><li>운영기관 안내로 반려견 산책을 확인한 광교호수공원·서호공원·만석공원·서울 배봉두메십리길·세종호수공원 C코스를 추가 공개해요. 총 205개 코스입니다.</li><li>실제 보행 경로와 사용 가능한 장소 사진·출처를 함께 표시해요. 목줄을 착용하고 실내 시설·현장 통제 구역의 안내를 따라 주세요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 동반 안내와 코스 사진 점검</h2><ul><li>공식 동반 안내와 실제 경로·사진을 함께 확인한 200개 코스를 공개해요.</li><li>동반 범위가 불명확하거나 사용 가능한 사진이 없는 코스는 확인이 끝날 때까지 공개 목록·지도·추천에서 제외해요.</li><li>각 코스에서 목줄·입마개 등 동반 조건, 사진의 출처와 촬영 시기를 확인할 수 있어요.</li><li>개별 동반 조건을 확인한 장소 29곳을 추가했어요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 코스 사진 추가</h2><ul><li>산수유마을·갈산공원·평창 바위공원 등 사진이 없던 8개 코스에 사진을 더해 총 319개 코스에서 사진을 볼 수 있어요.</li><li>출처와 촬영 시기를 표시하고, 주변 산 전경·계절 풍경은 참고사진으로 안내해요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 경유지 사진 추가</h2><ul><li>사진이 없던 10개 코스에 실제 경유지·주변 사진을 더해 총 311개 코스에서 사진을 볼 수 있어요.</li><li>촬영 장소와 출처를 표시하고, 주변 경관은 참고사진으로 안내해요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 코스 사진 추가</h2><ul><li>사진이 없던 32개 코스에 실제 장소·경유지·주변 사진을 더해 총 301개 코스의 사진을 볼 수 있어요.</li><li>계절·옛 사진과 주변 참고사진은 캡션과 출처에서 확인해 주세요.</li></ul></article><article><h2><time datetime="2026-10-10">2026.10.10</time> · 코스 사진과 글꼴 보완</h2><ul><li>사진이 없던 31개 코스에 실제 장소·경유지 사진을 추가해 총 269개 코스의 사진을 볼 수 있어요.</li><li>사진의 출처·이용 조건·촬영 시기와 참고 구간을 함께 표시해요.</li><li>우리 동네 지도 열기 버튼의 한글 글꼴을 통일했어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 코스와 사진 확대</h2><ul><li>공식 GPX를 검증한 걷기 코스 52곳을 추가해 총 362개 코스를 볼 수 있어요.</li><li>사진이 없던 코스에 실제 장소 사진을 추가하고 촬영 시기·장소·출처를 함께 표시해요.</li><li>반려견 동반 확인이 필요한 새 코스는 방문 전에 운영기관에 문의해 주세요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 추천 결과와 경로 안내 개선</h2><ul><li>몽 결과에서 시간을 바로 바꾸고 선호 환경 일치 여부·공식 안내 시간을 확인해요.</li><li>저장한 산책 경로에 시작·종료 지점을 표시해요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 추천과 기록 보기 보완</h2><ul><li>몽에서 선택한 조건을 유지하고 실제 코스 사진과 출처를 함께 보여줘요.</li><li>산책 달력에서 그날의 개별 기록과 저장된 GPS 경로를 확인할 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 몽 맞춤 추천과 산책 달력</h2><ul><li><strong>추천</strong> 몽에서 지역·산책 시간·선호 환경을 한 번에 골라 코스를 찾아요.</li><li><strong>기록</strong> 산책 기록 화면에서 월별 달력과 날짜별 거리·횟수·시간을 볼 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 홈 화면 디자인 정리</h2><ul><li><strong>개선</strong> 추천 코스와 지역 검색을 중심으로 문구·카드·여백을 정리하고 모바일 버튼을 더 누르기 편하게 다듬었어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 고객센터 문의 방법 추가</h2><ul><li><strong>추가</strong> 하단 고객센터에서 이메일과 카카오톡 채널 중 편한 방법을 선택해 문의할 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 코스 10곳 추가</h2><ul><li><strong>추가</strong> 양평 물소리길 8개 구간·동래읍성 장대길·연천 차탄천 에움길의 공식 경로를 추가했어요. 총 310개 코스입니다.</li><li><strong>사진</strong> 위치와 이용 조건을 확인한 실제 사진을 함께 넣었어요.</li><li><strong>안내</strong> 새 코스의 반려견 동반 범위는 방문 전에 운영기관에 확인해 주세요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 선유동천 나들길 사진 추가</h2><ul><li><strong>추가</strong> 문경 선유동천 나들길 1코스 입구의 실제 사진을 추가했어요. 총 218개 코스에서 사진을 볼 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 코스 사진 추가</h2><ul><li><strong>추가</strong> 사진이 없던 코스 15곳에 실제 장소 사진을 더해 총 217개 코스의 사진을 볼 수 있어요.</li><li><strong>안내</strong> 촬영 장소·시기·출처를 표시해요. 옛 사진과 계절 참고사진은 현재 모습과 다를 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 코스 사진 확대</h2><ul><li><strong>추가</strong> 사진이 없던 코스 11곳에 실제 장소 사진을 더해 총 202개 코스의 사진을 볼 수 있어요.</li><li><strong>안내</strong> 코스 경유지·주변 사진은 촬영 장소와 출처를 함께 표시해요.</li></ul></article>
 <article><h2>2026.10.09 · 서비스 안전성 개선</h2><ul><li>등록·수정된 장소의 승인 확인과 화면 입력 처리를 강화했어요.</li><li>계정 삭제 시 로그인 세션과 본인 확인을 강화했어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 탐색과 화면 구성 개선</h2><ul><li><strong>개선</strong> 홈에서 산책코스·동반장소·산책기록으로 바로 이동할 수 있어요.</li><li><strong>개선</strong> 코스 검색·난이도·산책 시간을 한곳에 모으고 찜한 코스를 쉽게 찾도록 정리했어요.</li><li><strong>개선</strong> 메뉴·사진 카드·상세 안내의 글꼴과 버튼을 통일해 PC와 모바일에서 더 또렷하게 보여요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 준비물 상품 안내</h2><ul><li><strong>추가</strong> 코스를 둘러본 뒤 배변봉투·휴대용 물병·하네스와 리드줄을 사진 카드로 볼 수 있어요. 가격 대신 상품명과 선택 기준을 표시하고, 쿠팡 파트너스 제휴 안내를 함께 보여줘요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 코스 사진 추가</h2><ul><li><strong>추가</strong> 사진이 없던 산책 코스 17곳에 실제 장소 사진을 연결했어요.</li><li><strong>안내</strong> 코스 목록과 상세에서 사진 출처·이용 조건·촬영 시기 정보를 확인할 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 산책 기록 이용 안내</h2><ul><li><strong>안내</strong> 화면 잠금·다른 앱 사용 시 거리 기록이 중단될 수 있음을 시작 전과 기록 중에 표시해요. 인터넷 연결이 끊긴 경우의 기기 저장 조건도 구분해 안내해요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 로그인창 길이 개선</h2><ul><li><strong>개선</strong> 반복 안내와 여백을 줄여 로그인창을 더 짧게 정리했어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 마이 화면 개선</h2><ul><li><strong>개선</strong> 산책 요약과 포인트 상점을 간결하게 정리하고, 닉네임·강아지·동네·계정 설정은 필요할 때 펼쳐서 이용하도록 바꿨어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 로그인창 디자인 개선</h2><ul><li><strong>개선</strong> 발자국 배경 위에 반투명 유리 패널로 로그인창을 다듬고, 이메일·간편 로그인 안내를 한글로 정리했어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 로그인 · 내 프로필 화면 개선</h2><ul><li><strong>개선</strong> 간편 로그인과 가입 혜택을 한눈에 보고, 이메일 로그인을 펼쳐서 이용할 수 있어요.</li><li><strong>개선</strong> 프로필을 항목별로 정리하고 모바일·키보드 사용과 로그인 상태 안내를 다듬었어요.</li></ul></article><article><h2><time datetime="2026-10-09">2026.10.09</time> · 회원탈퇴 처리 개선</h2><ul><li><strong>수정</strong> 탈퇴할 때 배지와 연결된 활동 데이터를 함께 정리하고, 처리 상태에 맞는 재로그인·재시도 안내를 보여줘요.</li></ul></article><article><h2><time datetime="2026-10-08">2026.10.08</time> · 산책 준비물 안내</h2><ul><li><strong>추가</strong> 산책 코스를 고른 뒤 배변봉투·휴대용 급수병·목줄과 하네스의 선택 기준을 확인할 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-08">2026.10.08</time> · 동반장소 탐색 개선</h2><ul><li><strong>개선</strong> 상세 페이지에서 지도와 함께 갈 장소를 바로 찾을 수 있어요.</li><li><strong>추가</strong> 장소를 이 브라우저에 찜하고 홈에서 다시 볼 수 있어요. 산책 기록·코스 찜을 위한 가입 안내도 연결했어요.</li></ul></article><article><h2><time datetime="2026-10-08">2026.10.08</time> · 배변봉투 수거 장소 확대</h2><ul><li><strong>추가</strong> 서초구·인천과 여러 지역의 배변 수거 장소 34곳을 추가했어요.</li><li><strong>안내</strong> 수거 기능, 앱·QR 인증 및 입장 조건, 설치 자료와 위치의 확인 범위를 상세 안내에서 볼 수 있어요.</li></ul></article><article><h2><time datetime="2026-10-06">2026.10.06</time> · 산책로 찾기 안내 추가</h2><ul><li><strong>추가</strong> 지역과 거리·난이도로 코스를 찾는 강아지 산책로 안내 페이지를 추가했어요.</li><li><strong>안내</strong> 출발 위치, 경로, 반려견 동반 조건을 비교하는 방법을 정리했어요.</li></ul></article><article><h2><time datetime="2026-10-06">2026.10.06</time> · 상세 안내 디자인 개선</h2><ul><li><strong>개선</strong> 코스·장소 상세와 산책 가이드의 제목, 안내 항목, 지도·공유 버튼을 읽기 편하게 정리했어요.</li><li><strong>개선</strong> 이용약관·개인정보 안내의 카드와 목차를 통일하고 작은 화면과 어두운 화면에서도 읽기 쉽게 다듬었어요.</li></ul></article><article><h2><time datetime="2026-10-06">2026.10.06</time> · 탐색 페이지 디자인 개선</h2><ul><li><strong>개선</strong> 지역별 목록을 코스·장소 수가 한눈에 보이는 카드로 바꿨어요.</li><li><strong>개선</strong> 지역·테마 탐색, 장소 상세와 산책 가이드의 글꼴·여백·카드를 통일하고 모바일 가독성을 높였어요.</li></ul></article><article><h2><time datetime="2026-10-05">2026.10.05</time> · 홈 화면 가독성 개선</h2><ul><li><strong>수정</strong> 갤럭시에서 업데이트 공지가 메인 제목을 가리지 않도록 크기와 배치를 조정했어요.</li><li><strong>개선</strong> 서비스 소개의 글씨체·배경·안내 카드를 더 읽기 편하게 다듬었어요.</li></ul></article>
         <article><h2><time datetime="2026-10-05">2026.10.05</time> · 산책 기록 개선</h2><ul>

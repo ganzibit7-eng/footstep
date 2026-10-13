@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const html=fs.readFileSync('index.html','utf8');
+const html=fs.readFileSync('index.html','utf8')+'\n'+fs.readFileSync('admin-panel.js','utf8');
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b});return {promise,resolve,reject};};
 const flush=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
 const elements=new Map();function el(id){if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,hidden:false,style:{},closest:()=>null,querySelector:()=>el('notice-span')});return elements.get(id);}
@@ -33,7 +33,7 @@ async function members(){
  let profiles=deferred(),activity=deferred(),queries=0,paints=[];
  const ctx={document,Date,myDeviceId:'admin',memberListRequest:0,allMembersCache:[],memberPointsMap:{},memberVisitMap:{},memberLastSeenMap:{},
  isAdminUser:id=>id==='admin',readSignupMembers:()=>{queries++;return profiles.promise;},sb:{rpc:name=>{assert.equal(name,'admin_member_activity_summary');queries++;return activity.promise;}},console:{error(){}},renderMemberSummary(){},applyMemberFilters(){paints.push(ctx.allMembersCache.map(x=>x.owner_id));}};
- vm.createContext(ctx);vm.runInContext(html.slice(html.indexOf("  let memberActivityState='loading'"),html.indexOf('  function daysAgoLabel(')),ctx);
+ ctx.context=ctx;vm.createContext(ctx);vm.runInContext(html.slice(html.indexOf("  let memberActivityState='loading'"),html.indexOf('  function daysAgoLabel(')),ctx);
  const loading=ctx.renderAllMemberList();assert.equal(ctx.renderAllMemberList(),loading);assert.equal(queries,2);
  profiles.resolve([{owner_id:'member'}]);await flush();assert.deepEqual(paints.at(-1),['member']);assert.equal(el('export-members-csv-btn').disabled,true);
  activity.resolve({data:[{owner_id:'member',points:'130',visits:'45',last_seen:'2026-10-11T01:00:00Z'}]});await loading;

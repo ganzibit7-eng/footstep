@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const html=fs.readFileSync(process.argv[2]||require.resolve('../index.html'),'utf8');
+const html=fs.readFileSync(process.argv[2]||require.resolve('../admin-panel.js'),'utf8');
 const now=Date.parse('2026-10-05T14:00:00Z'),fields={'all-member-search':'','member-role-filter':'all','member-provider-filter':'all','member-activity-filter':'all','member-date-from':'','member-date-to':'','member-sort':'new'};
 const members=[{owner_id:'1',nickname:'새회원',signup_provider:'google',created_at:'2026-10-04T16:00:00Z',last_sign_in_at:'2026-10-05T12:00:00Z'},{owner_id:'2',nickname:'기존회원',signup_provider:'kakao',created_at:'2026-08-01T00:00:00Z',last_sign_in_at:'2026-08-30T12:00:00Z'},{owner_id:'3',nickname:'로그인전',signup_provider:'google',created_at:'2026-10-05T11:00:00Z',last_sign_in_at:null}];
 const context={Date:class extends Date{static now(){return now;}},document:{getElementById:id=>({value:fields[id]})},allMembersCache:members,memberLastSeenMap:{},memberPointsMap:{},memberVisitMap:{},isAdminUser:()=>false,adminDayKey:d=>new Date(Date.parse(d)+9*3600000).toISOString().slice(0,10)};

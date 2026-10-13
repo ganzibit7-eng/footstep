@@ -1,0 +1,10 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm');
+const html=fs.readFileSync('index.html','utf8'),privacy=fs.readFileSync('privacy/index.html','utf8'),terms=fs.readFileSync('terms/index.html','utf8');
+for(const s of ['김도윤','010-213-5797','footstepbiz@gmail.com','만 14세','90일','30일','5분','Supabase Free','원본 위도·경도는 전송하지'])assert(privacy.includes(s),s);
+assert(!privacy.includes('항목별 보관 기한과 자동 파기 주기는 아직 확정되지'));assert(!privacy.includes('법적 운영 주체·보호책임자 정보, 아동 정보 처리 절차는 추가 확정'));
+assert(terms.includes('만 14세 이상'));assert.equal((terms.match(/id="terms-operator"/g)||[]).length,1);
+assert(/window.location.assign\('\/'\+page\+'\/'\)/.test(html));
+const active=html.slice(html.indexOf('  async function upsertActiveWalker('),html.indexOf('  async function clearActiveWalker('));
+const ctx={myDeviceId:'test-owner',navigator:{onLine:true},document:{getElementById:id=>({checked:ctx.selection[id]})},selection:{'walk-location-agree':true,'walk-presence-agree':false},Date,lastHeartbeatAt:0,nearestCourseWithin:()=> 'test-course',console:{error(){}},writes:[],sb:{from:()=>({upsert:async rows=>{ctx.writes.push(rows[0]);return {error:null};}})}};
+vm.createContext(ctx);vm.runInContext(active,ctx);
+(async()=>{await ctx.upsertActiveWalker(37.1,127.1);assert.equal(ctx.writes.length,0);ctx.selection['walk-presence-agree']=true;await ctx.upsertActiveWalker(37.1,127.1);assert.equal(ctx.writes.length,1);assert.equal(ctx.writes[0].lat,null);assert.equal(ctx.writes[0].lng,null);assert.equal(ctx.writes[0].course_id,'test-course');console.log('PASS policy content, canonical routes, age guidance, optional presence and coordinate minimization (mock DB).');})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const html=fs.readFileSync('index.html','utf8');
+const html=fs.readFileSync('index.html','utf8')+'\n'+fs.readFileSync('admin-panel.js','utf8');
 const start=html.indexOf('  function renderGrid(){'),end=html.indexOf('  function trackRecentlyViewed(',start);
 let retryHandler,clicked=0;
 const elements=new Map();const element=id=>{if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',style:{},setAttribute(k,v){this[k]=v},querySelector(){return this.innerHTML.includes('data-course-retry')?{addEventListener(t,fn){retryHandler=fn}}:null},click(){clicked++}});return elements.get(id)};

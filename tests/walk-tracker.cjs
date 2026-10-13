@@ -33,7 +33,7 @@ const section=html.slice(html.indexOf('  // ===== GPS 산책 기록 ====='),html
 let now=100000,callback,errback,permissionError=null,inserted,failed=true;
 const storage=new Map();
 const elements=new Map();
-function element(id){if(!elements.has(id))elements.set(id,{textContent:'',style:{},checked:id==='walk-screen-on',value:'70',disabled:false,checkValidity:()=>true,reportValidity(){},setAttribute(){},removeAttribute(){},addEventListener(){}});return elements.get(id);}
+function element(id){if(!elements.has(id))elements.set(id,{textContent:'',style:{},checked:['walk-screen-on','walk-location-agree','walk-cloud-agree'].includes(id),value:'70',disabled:false,checkValidity:()=>true,reportValidity(){},setAttribute(){},removeAttribute(){},addEventListener(){},focus(){}});return elements.get(id);}
 const layer=()=>({addTo(){return this;},setLatLngs(){},setLatLng(){},getBounds(){return [];}});
 const context={WalkTracker:{Tracker},console,Date:class extends Date{static now(){return now;}},
   document:{getElementById:element,addEventListener(){},visibilityState:'visible'},window:{addEventListener(){}},
@@ -45,12 +45,12 @@ const context={WalkTracker:{Tracker},console,Date:class extends Date{static now(
   walkLiveLine:null,walkMarker:null,walkWatchId:null,walkPath:[],walkSession:null,walkWakeLock:null,walkWakePending:false,walkTimerInterval:null,lastSavedWalk:null,
   myDeviceId:null,myNickname:'테스트',pathPointIcon(){},toast(){},loadMyWalks(){},awardPoints:async()=>{},openNickModal(){},allCourses:()=>[]};
 vm.createContext(context);vm.runInContext(section,context);
-context.startWalk();callback(fix(now));now+=10000;callback(fix(now,37.0001));
+element('walk-location-agree').checked=false;context.startWalk();assert.equal(callback,undefined,'no GPS request before location consent');element('walk-location-agree').checked=true;context.startWalk();callback(fix(now));now+=10000;callback(fix(now,37.0001));
 context.pauseWalk();now+=60000;assert.equal(context.walkSession.stats(now).durationSec,10);
 context.pauseWalk();now+=1000;callback(fix(now,37.001));now+=10000;callback(fix(now,37.0011));
 context.stopWalk();assert.equal(context.lastSavedWalk.parts.length,2);
 (async()=>{
-  await context.saveWalkToDB();assert.ok(context.lastSavedWalk,'failed save keeps unsaved record');
+  element('walk-cloud-agree').checked=false;await context.saveWalkToDB();assert.equal(inserted,undefined,'no server upload without cloud consent');element('walk-cloud-agree').checked=true;await context.saveWalkToDB();assert.ok(context.lastSavedWalk,'failed save keeps unsaved record');
   assert.equal(inserted.estimated_steps,context.lastSavedWalk.steps);assert.equal(inserted.path_segments.length,2);
   assert.equal(inserted.paused_sec,60);failed=false;await context.saveWalkToDB();
   assert.equal(context.lastSavedWalk,null);assert.equal(element('walk-idle-panel').style.display,'');
