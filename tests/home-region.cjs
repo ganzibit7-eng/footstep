@@ -1,18 +1,30 @@
-const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const html=fs.readFileSync(require('node:path').join(__dirname,'../index.html'),'utf8');
-const elements=Object.fromEntries(['home-region-form','home-region-input','home-region-apply','home-region-clear','home-region-status'].map(id=>[id,{value:'',hidden:true,disabled:false,textContent:'',focus(){},addEventListener(type,fn){this[type]=fn;}}]));
-let saved=null,blocked=false,renders=0,resolver;
-const ctx=vm.createContext({document:{getElementById:id=>elements[id]},localStorage:{getItem(){if(blocked)throw Error('blocked');return saved;},setItem(k,v){if(blocked)throw Error('blocked');saved=v;},removeItem(){if(blocked)throw Error('blocked');saved=null;}},geocodeRegion:async()=>await new Promise(r=>resolver=r),loadNearbyRecommendations(){renders++;}});
-vm.runInContext(html.slice(html.indexOf('  const HOME_REGION_KEY='),html.indexOf('  let myRegionName =')),ctx);
-vm.runInContext(html.slice(html.indexOf("  document.getElementById('home-region-form').addEventListener"),html.indexOf('  async function saveRegion(){')),ctx);
-async function submit(name){elements['home-region-input'].value=name;return elements['home-region-form'].submit({preventDefault(){}});}
-(async()=>{
- const valid={name:'서울 마포구',lat:37.56,lng:126.9};ctx.regionTest=valid;assert.equal(vm.runInContext('validHomeRegion(regionTest)',ctx),true);
- ctx.regionTest={...valid,lat:null};assert.equal(vm.runInContext('validHomeRegion(regionTest)',ctx),false);
- saved='{broken';assert.equal(ctx.readHomeRegion(),null);
- let p=submit('서울 마포구');resolver({lat:37.56,lng:126.9});await p;assert.equal(JSON.parse(saved).name,'서울 마포구');assert.equal(renders,1);
- p=submit('찾을 수 없는 지역');resolver(null);await p;assert.equal(JSON.parse(saved).name,'서울 마포구');assert.equal(renders,1);assert.match(elements['home-region-status'].textContent,/찾지 못/);
- p=submit('부산 해운대구');elements['home-region-clear'].click();resolver({lat:35.16,lng:129.16});await p;assert.equal(saved,null);assert.equal(vm.runInContext('homeRegion',ctx),null);assert.equal(elements['home-region-apply'].disabled,false);
- blocked=true;p=submit('서울 마포구');resolver({lat:37.56,lng:126.9});await p;assert.match(elements['home-region-status'].textContent,/저장이 차단/);assert.equal(vm.runInContext('homeRegion.name',ctx),'서울 마포구');assert.equal(ctx.readHomeRegion(),null);
- console.log('PASS: guest region validation, corrupt storage, failed lookup preservation, stale lookup after clear and blocked storage fallback');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+const assert=require('node:assert/strict'),Home=require('../home-explore.js');
+const courses=[
+ {id:'seoul',name:'서울 공원',diff:'쉬움',address:'서울특별시 성동구',minutes:20,comfort:true},
+ {id:'busan',name:'부산 공원',diff:'쉬움',address:'부산광역시 해운대구',minutes:30,comfort:true},
+ {id:'unknown',name:'서울이라는 설명만 있는 코스',diff:null,address:'',minutes:null,comfort:false},
+ {id:'gyeonggi',name:'서울 인근 경기 코스',diff:'보통',address:'경기도 수원시',minutes:null,comfort:false}
+];
+const tools={address:c=>({address:c.address}),query:(c,q)=>[c.name,c.address].join(' ').includes(q),minutes:c=>c.minutes,comfort:(c,state)=>!state.stairs||c.comfort};
+assert.equal(Home.regionKey(courses[2],tools.address(courses[2])),'','never infer a region from description or proximity');
+assert.equal(Home.regionKey(courses[3],tools.address(courses[3])),'gyeonggi');
+assert.equal(Home.regionKey({name:'전남 정원'},{address:'전남광주통합특별시 순천시'}),'jeonnam');
+assert.equal(Home.regionKey({name:'지역 미상'},{address:'전남광주통합특별시'}),'');
+assert.equal(Home.regionKey({name:'해변'},{address:'엘시티, 중동, 해운대구, 부산광역시, 대한민국'}),'busan');
+assert.equal(Home.regionKey({name:'공원'},{address:'전남광주통합특별시 북구 운암동'}),'gwangju');
+assert.equal(Home.regionKey({name:'공원'},{address:'전남광주통합특별시 목포시 죽교동'}),'jeonnam');
+assert.equal(Home.regionKey({name:'부산 언급'},{address:'주소 미확인'}),'');
+const state={region:'seoul',query:'',diff:'all',maxMinutes:0,comfort:{}};
+assert.deepEqual(Home.filter(courses,state,tools).map(c=>c.id),['seoul']);
+assert.deepEqual(Home.filter(courses,{...state,query:'부산'},tools),[],'a query must not escape the selected province');
+assert.deepEqual(Home.filter(courses,{...state,region:'gyeonggi',maxMinutes:40},tools),[],'unknown duration must not match a time ceiling');
+assert.deepEqual(Home.filter(courses,{...state,region:'gyeonggi',comfort:{stairs:true}},tools),[],'unknown comfort must not count as confirmed');
+assert.deepEqual(Home.filter(courses,{...state,region:'all',diff:'쉬움',maxMinutes:25},tools).map(c=>c.id),['seoul']);
+assert.deepEqual(Home.filter(courses,{...state,region:'bad'},tools),[]);
+assert.equal(Home.filter(courses,{...state,region:'all'},tools).length,4);
+let value=null;const storage={getItem:()=>value,setItem:(key,next)=>{value=next;}};
+assert.equal(Home.readSelection(storage),'');assert.equal(Home.writeSelection('seoul',storage),true);assert.equal(Home.readSelection(storage),'seoul');
+assert.equal(Home.writeSelection('bad',storage),false);assert.equal(Home.readSelection(storage),'seoul');value='<script>';assert.equal(Home.readSelection(storage),'');
+const blocked={getItem(){throw Error('blocked');},setItem(){throw Error('blocked');}};assert.equal(Home.readSelection(blocked),'');assert.equal(Home.writeSelection('busan',blocked),false);
+assert.equal(Home.regions.length,17);assert.equal(Home.valid('all'),true);
+console.log('PASS: strict address region, province/query intersection, unknown time/comfort exclusion, combined-region ambiguity, all 17 selections, invalid/blocked storage fallback');

@@ -9,9 +9,10 @@
     pending=state;buttons.forEach(button=>{button.disabled=state;button.removeAttribute('aria-busy');button.querySelector('[data-auth-label]').textContent=labels.get(button);});
     if(state){active.setAttribute('aria-busy','true');active.querySelector('[data-auth-label]').textContent=label;}
   }
-  function feedback(text,consentError=false){const note=document.getElementById('auth-feedback');note.textContent=text;note.hidden=!text;document.getElementById('terms-agree-checkbox').setAttribute('aria-invalid',consentError?'true':'false');}
+  const consentInputs=['terms-agree-checkbox','privacy-agree-checkbox'].map(id=>document.getElementById(id));
+  function feedback(text,consentError=false,consentId='terms-agree-checkbox'){const note=document.getElementById('auth-feedback');note.textContent=text;note.hidden=!text;consentInputs.forEach(input=>input.setAttribute('aria-invalid',consentError&&input.id===consentId?'true':'false'));}
   window.AuthPresentation={busy,feedback,isBusy:()=>pending};
-  document.getElementById('terms-agree-checkbox').addEventListener('change',()=>feedback(''));
+  consentInputs.forEach(input=>input.addEventListener('change',()=>feedback('')));
   document.getElementById('email-login-input').addEventListener('input',event=>{event.target.removeAttribute('aria-invalid');});
   document.getElementById('auth-browse-btn').addEventListener('click',()=>document.getElementById('nick-close').click());
   document.getElementById('profile-close').addEventListener('click',()=>profile.classList.remove('show'));

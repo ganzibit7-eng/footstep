@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
-const source=html.slice(html.indexOf('  function renderPopularCourses(){'),html.indexOf("  document.getElementById('home-walk-time')"));
+const source=html.slice(html.indexOf('  function renderPopularCourses(){'),html.indexOf('  function homeExploreTools(){'));
 const courses=[{id:'a'},{id:'b'},{id:'c'},{id:'hidden'},{id:'unchecked'}];
 let reviews={},rendered=[];const section={hidden:false},grid={};
 const ctx=vm.createContext({document:{getElementById:id=>id==='popular-grid'?grid:id==='home-reviewed-courses'?section:null},allCourses:()=>courses,isHidden:(type,id)=>id==='hidden',needsPetCheck:c=>c.id==='unchecked',reviewsFor:id=>Array(reviews[id]?.count||0),avgRating:id=>reviews[id]?.avg||0,renderCourseCards:(el,list)=>{assert.equal(el,grid);rendered=list.map(c=>c.id);}});
