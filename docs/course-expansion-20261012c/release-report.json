@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-13",
+  "publicCount": 400,
+  "added": 174,
+  "previousPublicRecordsUnchanged": 226,
+  "publicDataAllNewFieldsMatch": true,
+  "livePhotosVerifiedBeforePublication": 174,
+  "sourceBoundPhotoMatchesInRegistry": 514,
+  "regressionSuitesPassed": 13,
+  "mobileBrowser": {
+    "searchAndDetail": "남이섬 검색·실제 사진·20kg 미만 및 맹견 제외 조건 확인",
+    "compare": "남이섬·인천대공원 비교, 검색 변경 후 선택 유지, 조건·확인일·미확인 편의 표시 확인",
+    "horizontalTable": "스크롤 영역 321px, 표 510px, 항목명 sticky 확인",
+    "unchangedOriginalPhoto": "인천대공원 JPEG 정상 로드·object-fit contain 확인",
+    "favorite": "로그인 계정으로 찜 저장·해제 확인, 테스트 후 원래 해제 상태로 복원",
+    "walkPreparation": "비교표에서 인천대공원 산책 준비 연결, 대표 위치와 GPS 시작 전 대기 상태 확인"
+  },
+  "limits": [
+    "공식 자료 확인은 현장 답사나 모든 반려견의 적합성 확인이 아님",
+    "신규 정보는 산책 위치 안내이며 전체 경로·출발점·거리·난이도·계단·경사·쉼터는 미확인",
+    "사진은 촬영 당시의 장소 경관·시설 참고이며 허용되는 전체 산책 동선을 보증하지 않음",
+    "실기기 GPS·화면 잠금·다른 앱 전환 검사는 사용자 실기기 이용 불가로 미실시"
+  ],
+  "finalDeployment": "최종 업데이트 안내·운영기관 원문 링크 배포 후 확인 예정"
+}

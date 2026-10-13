@@ -27,7 +27,10 @@ for(const c of m.courses){
   const data=p.publicDataRecord;assert(data.visible);assert.equal(data.useInfo.showFlag,'1');assert.equal(String(data.tourDb.contentId),p.datasetContentId);assert.equal(data.tourDb.title,p.title);assert.equal(data.tourDb.firstImage.replace(/^http:/,'https:'),p.original);
   assert.equal(new URL(p.original).hostname,'tong.visitkorea.or.kr');assert(new URL(p.original).pathname.startsWith('/cms/resource/'));assert(photos.credit(p).includes(p.licenseScope));assert(photos.cardCredit(p).includes(p.licenseScope));
  }else assert(/^(CC BY(?:-SA)? [234]\.0|CC0|Public domain|공공누리 제[13]유형)$/.test(p.license));
- if(c.status==='approved'){const html=fs.readFileSync(path.join(root,'courses',c.id,'index.html'),'utf8');assert(html.includes(photos.figure(c)));assert(html.includes(c.source));assert(html.includes('대표 위치 주소'));}
+ if(c.operatorSource){assert.equal(pet.operatorURL(c),c.operatorSource);assert.equal(pet.operatorURL({...c,name:'다른 장소'}),'');}
+ if(c.status==='approved'){const html=fs.readFileSync(path.join(root,'courses',c.id,'index.html'),'utf8');assert(html.includes(photos.figure(c)));assert(html.includes(c.source));assert(html.includes('대표 위치 주소'));if(c.operatorSource)assert(html.includes('운영기관 이용수칙'));
+  if(p.datasetContentId){const schema=JSON.parse(html.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)[1]);const place=Array.isArray(schema)?schema.find(x=>x['@type']==='Place'):schema;assert(!place.image.creator,'unknown photographer invented');}
+ }
 }
 for(const fragment of ['8kg 이하','동물등록·맹견 제외','소형견','댐 정상','야외','낮 야외'])assert(m.courses.some(c=>c.name.includes(fragment)),fragment+' restriction missing from titles');
 for(const c of m.courses)assert(!c.name.includes('장암정'),'wrong-region Jangamjeong photo slipped into batch');
