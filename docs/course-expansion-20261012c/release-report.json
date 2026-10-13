@@ -6,6 +6,14 @@
   "publicDataAllNewFieldsMatch": true,
   "livePhotosVerifiedBeforePublication": 174,
   "sourceBoundPhotoMatchesInRegistry": 514,
+  "publicCoursesWithPhoto": 400,
+  "publicCoursesWithBoundPetEvidence": 400,
+  "liveNewDetailPagesVerified": 174,
+  "liveSitemapIncludesAllNewCourses": true,
+  "operatorRulesLinkedAndVerified": 5,
+  "homeNoticeHeightPx": 70,
+  "homeNoticeOverlapsTitle": false,
+  "completionScreenshot": "balzaguk-400-mobile-20261013.jpg",
   "regressionSuitesPassed": 13,
   "mobileBrowser": {
     "searchAndDetail": "남이섬 검색·실제 사진·20kg 미만 및 맹견 제외 조건 확인",
@@ -21,5 +29,13 @@
     "사진은 촬영 당시의 장소 경관·시설 참고이며 허용되는 전체 산책 동선을 보증하지 않음",
     "실기기 GPS·화면 잠금·다른 앱 전환 검사는 사용자 실기기 이용 불가로 미실시"
   ],
-  "finalDeployment": "최종 업데이트 안내·운영기관 원문 링크 배포 후 확인 예정"
+  "finalDeployment": {
+    "status": "success",
+    "courseReleaseCommit": "659825b16ec1bd446493130b3be7abd6fcfc713b",
+    "courseReleaseWorkflow": "38363430981",
+    "photoYearCorrectionCommit": "ec486a7dd961c0cc2efbc530f02616dd9df3b524",
+    "photoYearCorrectionWorkflow": "38364148634",
+    "livePhotoYearCorrection": "남이섬 2024년 표시·사진 정상 로드 및 운영기관 원문 링크 확인",
+    "verifiedAtKST": "2026-10-13 16:45"
+  }
 }
