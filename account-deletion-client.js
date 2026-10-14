@@ -1,6 +1,7 @@
 (function(root){
   'use strict';
   const messages={
+    deletion_target_mismatch:'삭제 대상 확인이 일치하지 않아요. 회원 목록을 새로고침해 확인해 주세요.',
     account_changed:'로그인 계정이 바뀌었어요. 현재 계정을 확인한 뒤 다시 진행해 주세요.',sign_in_required:'다시 로그인한 뒤 탈퇴를 진행해 주세요.',recent_sign_in_required:'본인 확인을 위해 다시 로그인한 뒤 15분 이내에 처리해 주세요.',
     admin_only:'관리자 권한을 확인할 수 없어요.',admin_transfer_required:'관리자·매니저는 권한 이전 후 탈퇴할 수 있어요.',
     deletion_in_progress:'이미 탈퇴 처리 중이에요. 잠시 후 목록을 새로고침해 주세요.',account_missing:'이미 삭제된 계정입니다. 회원 목록을 새로고침해 주세요.',
@@ -21,7 +22,13 @@
     const actorId=session.user?.id;
     for(let attempt=0;attempt<2;attempt++){
       let response;try{response=await sb.functions.invoke('delete-account',{body,headers:{Authorization:'Bearer '+session.access_token}});}catch{return {error:'network_error'};}
-      if(!response.error)return response.data?.deleted===true?response.data:{error:response.data?.error||'deletion_incomplete'};
+      if(!response.error){
+        if(response.data?.deleted===true){
+          const expected=body.confirm==='DELETE_MEMBER_ACCOUNT'?body.user_id:actorId;
+          return response.data.user_id===expected?response.data:{error:'deletion_target_mismatch'};
+        }
+        return {error:response.data?.error||'deletion_incomplete'};
+      }
       let detail;try{if(response.error.context)detail=await response.error.context.clone().json();}catch{}
       const unauthorized=response.error.context?.status===401;
       if(attempt===0&&unauthorized){
@@ -34,3 +41,4 @@
   }
   const api={request,message};if(typeof module==='object'&&module.exports)module.exports=api;else root.AccountDeletionClient=api;
 })(globalThis);
+

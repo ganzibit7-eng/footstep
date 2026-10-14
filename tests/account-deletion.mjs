@@ -63,3 +63,7 @@ const entrypointResponse=await served(new Request('https://test',{method:'POST',
 assert.equal(entrypointResponse.status,401);
 assert.equal((await entrypointResponse.json()).error,'sign_in_required');
 console.log('Deno entrypoint: connection metadata does not overwrite createClient passed.');
+
+
+r=await clientRun([{data:{deleted:true,user_id:target}}]);assert.equal(r.data.error,'deletion_target_mismatch');assert.equal(r.calls.length,1);
+console.log('Client: incorrect deletion target never treated as success.');

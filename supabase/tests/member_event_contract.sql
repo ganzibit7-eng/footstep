@@ -5,6 +5,7 @@ end $$;
 insert into auth.users(id,aud,role,email,email_confirmed_at,created_at,updated_at,raw_app_meta_data,raw_user_meta_data)
 select ('7e141026-0000-4000-8000-00000000000'||n)::uuid,'authenticated','authenticated','event-fixture-'||n||'@example.invalid',now(),
  case when n=2 then now()-interval '2 hours' else now()-interval '20 minutes' end,now(),'{"provider":"email","providers":["email"]}'::jsonb,'{}'::jsonb from generate_series(1,4)n;
+update auth.users set last_sign_in_at=now() where id::text like '7e141026-0000-4000-8000-%';
 insert into auth.identities(provider_id,user_id,identity_data,provider,created_at,updated_at)
 select 'contract-kakao-fixture-'||n,('7e141026-0000-4000-8000-00000000000'||n)::uuid,jsonb_build_object('sub','contract-kakao-fixture-'||n,'email_verified',true),'kakao',now(),now() from unnest(array[1,3])n;
 insert into public.admins(owner_id,role) values('7e141026-0000-4000-8000-000000000004','admin');
@@ -65,3 +66,4 @@ do $$declare cmd text;begin
  select command into cmd from cron.job where jobname='member-event-retention';execute cmd;
  if exists(select 1 from event_private.entries where campaign_id='2026-10') then raise exception 'retention_failed';end if;
 end $$;
+

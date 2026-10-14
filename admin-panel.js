@@ -1,6 +1,6 @@
 (function(root){'use strict';
 function create(context){
- const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast}=context;
+ const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,toast}=context;
   const memberEventAdmin=MemberEventAdmin.create({client:sb,viewer:()=>context.myDeviceId});
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
@@ -454,9 +454,12 @@ function create(context){
       const result=await requestAccountDeletion({confirm:'DELETE_MEMBER_ACCOUNT',user_id:ownerId});
       if(!result?.deleted){
         toast(AccountDeletionClient.message(result?.error));
-        if(['recent_sign_in_required','sign_in_required'].includes(result?.error)){await signOutUser();openNickModal();}
+        if(['recent_sign_in_required','sign_in_required'].includes(result?.error)){
+          if(context.reauthenticateAdmin)context.reauthenticateAdmin();else openNickModal();
+        }
         return;
       }
+      if(result.user_id!==ownerId){toast('삭제 대상 확인이 일치하지 않아요. 회원 목록을 새로고침해 확인해 주세요.');return;}
       if(context.myDeviceId!==deletingViewer||!isAdminUser(context.myDeviceId))return;
       toast('회원 계정과 데이터 삭제를 완료했어요.');
       allMembersCache=allMembersCache.filter(m=>m.owner_id!==ownerId);

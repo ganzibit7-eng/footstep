@@ -2588,12 +2588,12 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   </div>
 </div>
 
-<script src="admin-loader.js?v=20261014-event-kakao"></script>
+<script src="admin-loader.js?v=20261014-member-auth-fix"></script>
 <script src="member-event.js?v=20261014-event-kakao"></script>
 <script src="traffic.js?v=20261009-affiliate" data-manual></script>
 <script src="course-photos.js?v=20261013c-400-final"></script>
 <script src="course-info.js?v=20261012-pet-photos"></script>
-<script src="account-deletion-client.js?v=20261009"></script>
+<script src="account-deletion-client.js?v=20261014-member-auth-fix"></script>
 <script src="auth-presentation.js?v=20261013-consent"></script>
 <script src="shopping-config.js?v=20261011-photo-badges"></script>
 <script src="shopping.js?v=20261011-photo-badges"></script>
@@ -7417,7 +7417,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   // Administrator resources are loaded only after a fresh server identity/role check.
   const initializeMemberEvent=()=>MemberEvent.create({client:sb,login:()=>{openNickModal();AuthPresentation.feedback('이벤트 참여는 카카오 인증 신규 회원만 가능해요. 동의 항목을 확인한 뒤 카카오로 계속하기를 선택해 주세요.');document.getElementById('kakao-login-btn').focus();}});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeMemberEvent,{once:true});else initializeMemberEvent();
-  const adminPanelController=AdminLoader.create({client:sb,viewer:()=>myDeviceId,mount:()=>PawAdminPanel.create({sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast,get myDeviceId(){return myDeviceId;},get courses(){return courses;},get bins(){return bins;},get facilities(){return facilities;},get reports(){return reports;},get reviews(){return reviews;}})});
+  const adminPanelController=AdminLoader.create({client:sb,viewer:()=>myDeviceId,mount:()=>PawAdminPanel.create({sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,reauthenticateAdmin:()=>{openNickModal();AuthPresentation.feedback('회원은 삭제되지 않았어요. 관리자 본인 확인을 위해 같은 계정으로 다시 로그인한 뒤 탈퇴 버튼을 다시 눌러 주세요.');},requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast,get myDeviceId(){return myDeviceId;},get courses(){return courses;},get bins(){return bins;},get facilities(){return facilities;},get reports(){return reports;},get reviews(){return reviews;}})});
   function renderAdminList(){return adminPanelController.peek()?.renderReports();}
   function resetAdminPanel(){adminPanelController.reset();}
   async function openAdminDashboard(){try{const panel=await adminPanelController.load();await panel.open();return true;}catch(e){toast('관리자 권한과 연결 상태를 확인해 주세요.');return false;}}
