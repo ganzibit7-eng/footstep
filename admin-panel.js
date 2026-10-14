@@ -1,6 +1,7 @@
 (function(root){'use strict';
 function create(context){
  const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast}=context;
+  const memberEventAdmin=MemberEventAdmin.create({client:sb,viewer:()=>context.myDeviceId});
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
   function renderPendingApprovals(){
@@ -1105,7 +1106,7 @@ function create(context){
 
 
 
- function dispose(){clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
+ function dispose(){memberEventAdmin.clear();clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});
