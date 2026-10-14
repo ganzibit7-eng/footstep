@@ -285,7 +285,7 @@ function create(context){
     return allMembersCache.filter(m=>{
       const age=now-Date.parse(m.created_at),admin=isAdminUser(m.owner_id),day=Number.isFinite(Date.parse(m.created_at))?adminDayKey(m.created_at):'',active=memberActivityAt(m),inactiveAge=active?now-active:Infinity;
       return `${m.nickname||''} ${m.owner_id||''} ${memberProviderLabel(m.signup_provider)}`.toLowerCase().includes(q)
-        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000)
+        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000||role==='event'&&(m.event_entries||[]).length>0)
         &&(provider==='all'||provider==='other'&&!['google','kakao'].includes(m.signup_provider)||provider===m.signup_provider)
         &&(activity==='all'||activity==='recent'&&active>0&&inactiveAge<=604800000||activity==='inactive'&&active>0&&inactiveAge>=2592000000||activity==='never'&&!m.last_sign_in_at)
         &&(!(from||to)||!!day)&&(!from||day>=from)&&(!to||day<=to);
@@ -300,7 +300,7 @@ function create(context){
   async function readSignupMembers(){
     const rows=[];let after=null;
     while(true){
-      const {data,error}=await sb.rpc('admin_signup_members_v2',{p_after:after,p_limit:500});
+      const {data,error}=await sb.rpc('admin_signup_members_v3',{p_after:after,p_limit:500});
       if(error)throw error;
       const page=data||[];rows.push(...page);
       if(page.length<500)return rows;
@@ -394,7 +394,7 @@ function create(context){
       return `
         <article class="admin-member-card">
           <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
-          <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
+          <dl><div><dt>이벤트 응모</dt><dd>${(m.event_entries||[]).length?(m.event_entries||[]).map(e=>escapeHtml(e.campaign_id)+' 응모 완료 · '+escapeHtml(e.ticket)).join('<br>'):'응모 내역 없음'}</dd></div><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
           <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 마지막 로그인과 통계에 포함된 화면 조회 중 더 최근 시각입니다. 관리자·봇 등 통계 제외 조회는 포함되지 않으며, 현재 온라인 상태와 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}" ${metricPending?'disabled':''}>포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>

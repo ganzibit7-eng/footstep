@@ -26,6 +26,7 @@ do $$declare s jsonb;t text;begin
  s:=public.enter_member_event('2026-10',true,'2026-10-14-v1');t:=s->'campaigns'->0->'my_entry'->>'ticket';if t is null then raise exception 'entry_missing';end if;
  s:=public.enter_member_event('2026-10',true,'2026-10-14-v1');if t is distinct from s->'campaigns'->0->'my_entry'->>'ticket' then raise exception 'duplicate_entry';end if;
  begin perform public.admin_member_event_status();raise exception 'non_admin_access';exception when insufficient_privilege then null;end;
+ begin perform public.admin_signup_members_v3(null,500);raise exception 'non_admin_roster_access';exception when insufficient_privilege then null;end;
  s:=public.withdraw_member_event('2026-10');if s->'campaigns'->0->'my_entry'<>'null'::jsonb then raise exception 'withdraw_failed';end if;
  perform public.enter_member_event('2026-10',true,'2026-10-14-v1');
  perform set_config('request.jwt.claims','{"sub":"7e141026-0000-4000-8000-000000000002","role":"authenticated"}',true);
@@ -34,6 +35,7 @@ do $$declare s jsonb;t text;begin
  perform set_config('request.jwt.claims','{"sub":"7e141026-0000-4000-8000-000000000003","role":"authenticated"}',true);
  perform public.enter_member_event('2026-10',true,'2026-10-14-v1');
  perform set_config('request.jwt.claims','{"sub":"7e141026-0000-4000-8000-000000000004","role":"authenticated"}',true);
+ if not exists(select 1 from public.admin_signup_members_v3(null,500) m where m.owner_id='7e141026-0000-4000-8000-000000000001' and jsonb_array_length(m.event_entries)=1) then raise exception 'member_event_badge_missing';end if;
  begin perform public.admin_draw_member_event('2026-10');raise exception 'early_draw_accepted';exception when others then if sqlerrm<>'event_draw_too_early' then raise;end if;end;
 end $$;
 reset role;
