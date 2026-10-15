@@ -51,14 +51,14 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 @media(prefers-reduced-motion:reduce){#nearby-section .service-intro-item{transition:none}}
 
 /* Useful preparation advice; affiliate buttons appear only for configured links. */
-#nearby-section .walk-shopping{padding:26px;margin:28px 0;border:1px solid var(--line);border-radius:22px;background:var(--paper);}
+#nearby-section .walk-shopping{padding:28px 0 0;margin:36px 0;border:0;border-top:1px solid var(--finish-line);border-radius:0;background:transparent;}
 #walk-shopping{scroll-margin-top:100px}
-.walk-shopping-heading>span{color:var(--clay);font-size:12px;font-weight:700}
+.walk-shopping-heading>span{color:var(--finish-muted);font-size:11px;font-weight:500;letter-spacing:.04em}
 .walk-shopping-heading h2{font-size:24px;line-height:1.45;margin:8px 0}
 .walk-shopping-heading p{font-size:13px;color:var(--muted-text);line-height:1.8;margin:0 0 18px}
 .walk-shopping-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.walk-shopping-card{display:flex;flex-direction:column;min-width:0;background:var(--paper);overflow:hidden;padding:0;border-radius:18px;border:1px solid var(--line)}
-.walk-shopping-body{display:flex;flex:1;flex-direction:column;padding:20px}
+.walk-shopping-card{display:flex;flex-direction:column;min-width:0;background:var(--finish-surface);overflow:hidden;padding:0;border-radius:16px;border:1px solid var(--finish-line)}
+.walk-shopping-body{display:flex;flex:1;flex-direction:column;padding:18px}
 .walk-shopping-photo{display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;background:#fff;border-bottom:1px solid var(--line);padding:14px;box-sizing:border-box}
 .walk-shopping-photo img{display:block;width:100%;height:100%;max-width:212px;max-height:212px;object-fit:contain}
 .walk-shopping-photo .walk-shopping-icon{margin:0;font-size:40px}
@@ -74,19 +74,19 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 .walk-shopping-disclosure{font-size:14px;font-weight:600;line-height:1.8;color:var(--pine-deep);background:var(--sand);padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin:0 0 18px}
 .walk-shopping-disclosure[hidden]{display:none!important}
 .walk-shopping-guide{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:var(--pine-deep);font-size:13px;font-weight:700}
-.walk-shopping-featured{position:relative;border:2px solid var(--clay)}
-.walk-shopping-photo{position:relative;aspect-ratio:auto;height:285px;padding:56px 14px 14px}
+.walk-shopping-featured{position:relative;border:1px solid var(--finish-line)}
+.walk-shopping-photo{position:relative;aspect-ratio:auto;height:220px;padding:52px 20px 18px}
 .walk-shopping-photo-badges{position:absolute;top:12px;left:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.walk-shopping-badge{padding:7px 8px;border-radius:8px;font-size:11px;font-weight:800;line-height:1.4;letter-spacing:-.4px;white-space:nowrap}
-.walk-shopping-buyers-badge{background:#2459a6;color:#fff}
-.walk-shopping-review-badge{background:#f0eafa;color:#654397;border:1px solid #d5c6ed}
+.walk-shopping-badge{padding:5px 7px;border-radius:6px;font-size:10px;font-weight:600;line-height:1.5;letter-spacing:0;white-space:nowrap}
+.walk-shopping-buyers-badge{background:#edf2ec;color:#365340;border:1px solid #dce5d9}
+.walk-shopping-review-badge{background:#f5f5f1;color:#596358;border:1px solid #e4e5dc}
 .walk-shopping-card .walk-shopping-proof-date{font-size:11px;line-height:1.7;color:var(--muted-text);margin-bottom:12px}
-@media(max-width:360px){.walk-shopping-photo{height:313px;padding-top:84px}}
+@media(max-width:360px){.walk-shopping-photo{height:220px;padding-top:66px}}
 .walk-shopping-selection{font-size:12px;line-height:1.8;color:var(--muted-text);margin:0 0 16px}
 .walk-shopping-swipe-hint{display:none;font-size:12px;color:var(--muted-text);margin:8px 0}
 @media(max-width:600px){.walk-shopping-swipe-hint{display:block}}
 .walk-shopping :is(a,button):focus-visible{outline:3px solid var(--clay);outline-offset:4px}
-@media(max-width:600px){#nearby-section .walk-shopping{padding:20px 16px}.walk-shopping-heading h2{font-size:21px}.walk-shopping-items{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;scroll-snap-type:x mandatory}.walk-shopping-card{flex:0 0 82%;box-sizing:border-box;scroll-snap-align:center}.walk-shopping-link{min-height:48px}}
+@media(max-width:600px){#nearby-section .walk-shopping{padding:24px 0 0}.walk-shopping-heading h2{font-size:21px}.walk-shopping-items{display:flex;overflow-x:auto;gap:12px;padding-bottom:8px;scroll-snap-type:x mandatory}.walk-shopping-card{flex:0 0 min(82%,300px);box-sizing:border-box;scroll-snap-align:center}.walk-shopping-link{min-height:48px}}
 
 /* Photo-led region navigation, scoped to the homepage. */
 #nearby-section .home-region-guides{margin:28px 0;padding:30px;border:1px solid var(--experience-line);border-radius:28px;background:var(--paper)}

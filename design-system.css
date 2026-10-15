@@ -1,5 +1,5 @@
 /* Shared visitor-facing finish: restrained surfaces, readable type, purposeful emphasis. */
-:root{--finish-ink:#243c32;--finish-muted:#657066;--finish-line:#dedfd6;--finish-surface:#fffef9;--finish-soft:#f0f2eb;--finish-radius:16px;--finish-shadow:0 6px 22px rgba(35,52,40,.035)}
+:root{--finish-ink:#243c32;--finish-muted:#626d65;--finish-line:#dedfd6;--finish-surface:#fffef9;--finish-soft:#f0f2eb;--finish-radius:16px;--finish-shadow:0 6px 22px rgba(35,52,40,.035)}
 html[data-theme="dark"]{--finish-ink:#e9efe6;--finish-muted:#b6c2b5;--finish-line:#445247;--finish-surface:#27332b;--finish-soft:#303e34;--finish-shadow:none}
 .ui-icon{display:inline-block;width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;pointer-events:none}
 body{letter-spacing:-.015em;text-rendering:optimizeLegibility}
@@ -122,3 +122,54 @@ footer.site-footer .footer-description{font-size:13px;color:var(--finish-muted);
 #home-update-dialog .update-history-archive{border-top:1px solid var(--finish-line);padding-top:14px;margin:8px 0 0}
 #home-update-dialog .update-history-archive a{font-size:12px;color:var(--finish-ink);text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
 @media(max-width:400px){#home-update-dialog{padding:20px}#home-update-dialog .update-dialog-head{top:-20px}#home-update-dialog .update-topic p{font-size:12px}}
+
+/* Consistent public surfaces, without changing map controls or provider branding. */
+.app-page :is(h2,h3),.update-dialog h2{word-break:keep-all;overflow-wrap:anywhere}
+.app-page :is(input,select,textarea,button){font-family:inherit}
+.app-page :is(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--finish-ink);outline-offset:4px}
+#nearby-section .join-benefits{margin:32px 0;padding:26px 28px;border:1px solid var(--finish-line);border-radius:var(--finish-radius);background:var(--finish-soft);box-shadow:none;gap:24px}
+#nearby-section .join-benefits h2{font-size:24px;line-height:1.5;letter-spacing:-.035em;font-weight:650;margin:6px 0 10px}
+#nearby-section .join-benefits p{font-size:13px;line-height:1.85;margin:0;color:var(--finish-muted)}
+#nearby-section .join-benefits .join-eyebrow{font-size:11px;font-weight:600;color:var(--finish-muted)}
+#nearby-section .join-benefits .submit-btn{background:var(--finish-ink);color:var(--finish-surface);border:1px solid var(--finish-ink);border-radius:10px;box-shadow:none;min-height:48px;font-size:13px;font-weight:600;padding:12px 18px}
+#nearby-section .join-benefits-action{gap:8px;min-width:0}
+#nearby-section .join-benefits-action>span{font-size:11px;color:var(--finish-muted);line-height:1.7}
+#nearby-section .home-region-card .home-region-link{border-top:0;padding-top:0;min-height:32px;display:flex;align-items:center}
+#nearby-section .home-region-credits{margin-top:8px}
+#nearby-section .home-region-note{font-size:11px}
+#nearby-section .walk-shopping-heading h2{font-size:26px;font-weight:650;letter-spacing:-.035em}
+#nearby-section .walk-shopping-heading p{margin-bottom:10px}
+#nearby-section .walk-shopping-disclosure{border:1px solid var(--finish-line);border-radius:10px;background:var(--finish-soft);color:var(--finish-ink);font-size:12px;font-weight:500;line-height:1.85;padding:12px 16px;margin-bottom:24px}
+#nearby-section .walk-shopping-card h3{font-size:16px;font-weight:600;line-height:1.65;margin:7px 0 10px}
+#nearby-section .walk-shopping-card .walk-shopping-link{background:var(--finish-soft);color:var(--finish-ink);border:1px solid var(--finish-line);border-radius:9px;font-size:12px;font-weight:600;box-shadow:none;box-sizing:border-box}
+#nearby-section .walk-shopping-card .walk-shopping-check{font-size:12px;line-height:1.8}
+#nearby-section .walk-shopping-card .walk-shopping-proof-date{margin-bottom:7px}
+#nearby-section .walk-shopping-guide{font-weight:500;text-underline-offset:4px}
+#nearby-section .walk-shopping :is(a,button):focus-visible{outline-color:var(--finish-ink)}
+:is(#list-section,#map-section) :is(.course-search-panel,.map-panel){border:1px solid var(--finish-line);background:var(--finish-surface);box-shadow:none}
+:is(#list-section,#map-section) :is(input:not([type=checkbox]):not([type=radio]),select){border-color:var(--finish-line);border-radius:10px;color:var(--finish-ink);background:var(--finish-surface)}
+#list-section .walk-plan-box{border:1px solid var(--finish-line);background:var(--finish-soft);border-radius:12px;box-shadow:none}
+#list-section .walk-time-options{gap:8px}
+#list-section .chip{background:var(--finish-surface);color:var(--finish-muted);box-shadow:none}
+#list-section .chip.active{background:var(--finish-ink);color:var(--finish-surface)}
+:is(#walk-section,#register-section) .form-card{padding:28px}
+:is(#walk-section,#register-section) .form-card :is(input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea){border-color:var(--finish-line);background:var(--finish-surface);color:var(--finish-ink);border-radius:10px;box-shadow:none}
+:is(#walk-section,#register-section) .form-card label{font-weight:500;color:var(--finish-ink)}
+:is(#walk-section,#register-section) .form-card .submit-btn{border-radius:10px;box-shadow:none;font-weight:600}
+#etiquette-section .card{padding:24px}
+#etiquette-section .card .desc{color:var(--finish-muted)}
+footer.site-footer .footer-links :is(a,button){font-size:13px;font-weight:500;text-underline-offset:4px}
+html[data-theme="dark"] .walk-shopping-badge{background:var(--finish-soft);color:var(--finish-ink);border-color:var(--finish-line)}
+html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:var(--finish-ink);color:var(--finish-surface)}
+@media(max-width:700px){
+ #nearby-section .join-benefits{padding:22px 20px;display:flex;flex-direction:column;align-items:stretch;gap:20px;margin:28px 0}
+ #nearby-section .join-benefits h2{font-size:22px}
+ #nearby-section .join-benefits-action{width:100%;align-items:stretch;text-align:center}
+ #nearby-section .join-benefits .submit-btn{width:100%;white-space:normal;line-height:1.7}
+ #nearby-section .walk-shopping-heading h2{font-size:23px}
+ #nearby-section .home-region-body{padding:14px}
+ #nearby-section .home-region-card .home-region-link{font-size:11px;line-height:1.7;min-height:32px}
+ :is(#walk-section,#register-section) .form-card{padding:22px 18px}
+}
+@media(hover:hover){#nearby-section .walk-shopping-link:hover{background:var(--finish-line)}#nearby-section .home-region-card:hover .home-region-arrow{border-color:var(--finish-ink);color:var(--finish-ink)}}
+@media(prefers-reduced-motion:reduce){.app-page :is(button,a){transition:none!important}}
