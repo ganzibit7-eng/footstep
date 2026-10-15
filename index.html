@@ -1731,7 +1731,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <style>.auth-consent-detail{font:12px/1.7 system-ui,sans-serif;color:var(--muted-text);margin:10px 0}.auth-consent-detail a{color:var(--pine-deep)}.auth-consent input{flex-shrink:0}</style>
 <link rel="stylesheet" href="/readability.css?v=20261013-readable">
 <link rel="stylesheet" href="/account-ui.css?v=20261013-consent">
-<link rel="stylesheet" href="/design-system.css?v=20261016-premium-finish">
+<link rel="stylesheet" href="/design-system.css?v=20261016-ux-detail">
 <link rel="stylesheet" href="/member-event.css?v=20261016-event-flow">
 <script src="home-explore.js?v=20261013-reselect"></script>
 <script id="home-first-paint">if(HomeExplore.valid(HomeExplore.readSelection()))document.documentElement.dataset.homeInitialRegion="selected";</script>
@@ -1865,8 +1865,12 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       </aside>
       </div>
       <h1 id="hero-title"><span class="hero-title-line">반려견과 함께 걷는</span><em class="hero-title-line">오늘의 산책길</em></h1>
-      <p class="lead" style="font-weight:700; color:var(--paper); opacity:0.95;">지역과 산책 조건으로 코스를 고르고,<br>오늘의 걸음을 기록하세요.</p>
-
+      <p class="lead">지역과 산책 조건으로 코스를 고르고,<br>오늘의 걸음을 기록하세요.</p>
+      <nav class="home-start-actions" aria-label="산책 시작하기">
+        <a class="home-start-primary" href="#list" data-page-nav="list">산책코스 찾기 <span aria-hidden="true">→</span></a>
+        <a class="home-start-secondary" href="#map" data-page-nav="map">지도로 둘러보기</a>
+      </nav>
+      <p class="home-start-note">가입 없이 둘러보고, 마음에 드는 길을 찾아보세요.</p>
     </div>
 
     <div class="hero-side" id="hero-side-wrap">
