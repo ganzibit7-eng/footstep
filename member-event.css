@@ -35,3 +35,8 @@ html[data-theme="dark"] .home-event-toast :is(small,span,button),html[data-theme
 
 #member-event-content .event-kakao-notice{padding:13px 15px;border-radius:11px;background:var(--finish-soft);border:1px solid var(--finish-line);word-break:keep-all;margin:0 0 18px}
 .event-kakao-notice strong{color:var(--finish-ink);font-weight:650}
+
+.event-steps{font-size:12px!important;line-height:1.9;word-break:keep-all;margin:12px 0}
+#member-event-content .event-kakao-notice{margin-top:20px}
+.event-kakao-button{background:#fee500;color:#191919}
+.event-join-link{background:none;border:0;min-height:44px;padding:8px 0;font:inherit;font-size:12px;line-height:1.7;text-decoration:underline;text-underline-offset:4px;cursor:pointer;color:inherit}
