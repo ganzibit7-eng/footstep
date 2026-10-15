@@ -7,6 +7,21 @@ function create({client,login}){
  const dialog=document.getElementById('member-event-dialog'),host=document.getElementById('member-event-content'),status=document.getElementById('member-event-status');
  let data=null,selected=null,generation=0,busy=false;
  function note(text){status.textContent=text;}
+ function request(name,args){
+  let timer;
+  const timeout=new Promise((_,reject)=>{timer=root.setTimeout(()=>reject(new Error('event_request_timeout')),12000);});
+  return Promise.race([Promise.resolve().then(()=>client.rpc(name,args)),timeout]).finally(()=>root.clearTimeout(timer));
+ }
+ function checkedSnapshot(value){
+  if(!value||!Number.isFinite(Date.parse(value.server_now))||!Array.isArray(value.campaigns)||!value.campaigns.length)throw new Error('event_result_unconfirmed');
+  return value;
+ }
+ function checkedMutation(name,args,value){
+  const snapshot=checkedSnapshot(value),campaign=snapshot.campaigns.find(c=>c.id===args.p_campaign),entry=campaign?.my_entry;
+  if(!campaign||name==='enter_member_event'&&!(typeof entry?.ticket==='string'&&entry.ticket.length)||name==='withdraw_member_event'&&entry!==null||name==='claim_member_event'&&entry?.claim_requested!==true)throw new Error('event_result_unconfirmed');
+  return snapshot;
+ }
+
  function render(){
   if(!data?.campaigns?.length){host.innerHTML='<p>이벤트 정보를 불러오지 못했어요. 아래 새로고침으로 다시 확인해 주세요.</p>';return;}
   const c=data.campaigns.find(x=>x.id===selected)||data.campaigns[0],state=phase(c,data.server_now),entry=c.my_entry;
@@ -30,8 +45,8 @@ function create({client,login}){
   host.querySelector('#member-event-withdraw')?.addEventListener('click',()=>{if(root.confirm('이 달의 응모를 취소할까요? 응모 기록을 삭제하며, 기간 내에는 다시 동의해 응모할 수 있어요.'))mutate('withdraw_member_event',{p_campaign:c.id},'응모를 취소했어요.');});
   host.querySelector('#member-event-claim')?.addEventListener('click',()=>mutate('claim_member_event',{p_campaign:c.id},'수령 신청을 접수했어요. 운영자 안내를 확인해 주세요.'));
  }
- async function load(){const seq=++generation;data=null;host.innerHTML='<p>이벤트 정보를 확인하고 있어요…</p>';note('');host.setAttribute('aria-busy','true');try{const r=await client.rpc('member_event_status');if(seq!==generation)return;if(r.error)throw r.error;data=r.data;if(!selected)selected=data.campaigns.find(c=>phase(c,data.server_now)==='open')?.id||data.campaigns[0]?.id;render();note('');}catch{if(seq===generation){host.innerHTML='<p>이벤트 정보를 확인하지 못했어요. 응모 성공으로 처리하지 않았습니다.</p>';note('연결을 확인하고 새로고침해 주세요.');}}finally{if(seq===generation)host.removeAttribute('aria-busy');}}
- async function mutate(name,args,success){if(busy)return;busy=true;const seq=++generation;note('처리 중이에요…');host.querySelectorAll('button').forEach(b=>b.disabled=true);try{const r=await client.rpc(name,args);if(seq!==generation)return;if(r.error)throw r.error;data=r.data;render();note(success);}catch(error){if(seq!==generation)return;const msg=String(error?.message||'');note(msg.includes('kakao_required')?'이벤트 중복 참여를 줄이기 위해 카카오 인증 회원만 응모할 수 있어요.':msg.includes('already_participated')?'이 카카오 계정은 이미 해당 월 이벤트에 참여했어요.':msg.includes('consent')?'동의를 확인해 주세요.':msg.includes('signup_outside')?'이벤트 기간에 새로 가입한 회원만 응모할 수 있어요.':msg.includes('not_open')||msg.includes('closed')?'응모·수령 기간이 종료됐거나 아직 시작되지 않았어요.':msg.includes('sign_in')?'로그인 상태를 확인하고 다시 시도해 주세요.':'처리 결과를 확인하지 못했어요. 새로고침해 내 응모 상태를 확인해 주세요.');}finally{busy=false;host.querySelectorAll('button').forEach(b=>b.disabled=false);}}
+ async function load(){const seq=++generation;data=null;host.innerHTML='<p>이벤트 정보를 확인하고 있어요…</p>';note('');host.setAttribute('aria-busy','true');try{const r=await request('member_event_status');if(seq!==generation)return;if(r.error)throw r.error;data=checkedSnapshot(r.data);if(!selected)selected=data.campaigns.find(c=>phase(c,data.server_now)==='open')?.id||data.campaigns[0]?.id;render();note('');}catch{if(seq===generation){host.innerHTML='<p>이벤트 정보를 확인하지 못했어요. 응모 성공으로 처리하지 않았습니다.</p>';note('연결을 확인하고 새로고침해 주세요.');}}finally{if(seq===generation)host.removeAttribute('aria-busy');}}
+ async function mutate(name,args,success){if(busy)return;busy=true;const seq=++generation;note('처리 중이에요…');host.querySelectorAll('button').forEach(b=>b.disabled=true);try{const r=await request(name,args);if(seq!==generation)return;if(r.error)throw r.error;data=checkedMutation(name,args,r.data);render();note(success);}catch(error){if(seq!==generation)return;const msg=String(error?.message||'');if(!['kakao_required','already_participated','consent','signup_outside','not_open','closed','sign_in'].some(code=>msg.includes(code))){data=null;host.innerHTML='<p>처리 결과를 아직 확인하지 못했어요. 아래 새로고침으로 내 응모 상태를 확인한 뒤 다시 진행해 주세요.</p>';}note(msg.includes('kakao_required')?'이벤트 중복 참여를 줄이기 위해 카카오 인증 회원만 응모할 수 있어요.':msg.includes('already_participated')?'이 카카오 계정은 이미 해당 월 이벤트에 참여했어요.':msg.includes('consent')?'동의를 확인해 주세요.':msg.includes('signup_outside')?'이벤트 기간에 새로 가입한 회원만 응모할 수 있어요.':msg.includes('not_open')||msg.includes('closed')?'응모·수령 기간이 종료됐거나 아직 시작되지 않았어요.':msg.includes('sign_in')?'로그인 상태를 확인하고 다시 시도해 주세요.':'처리 결과를 확인하지 못했어요. 새로고침해 내 응모 상태를 확인해 주세요.');}finally{if(seq===generation){busy=false;host.querySelectorAll('button').forEach(b=>b.disabled=false);}}}
  document.getElementById('home-update-open').addEventListener('click',()=>{dialog.showModal();load();});
  document.getElementById('member-event-close').addEventListener('click',()=>dialog.close());
  document.getElementById('member-event-refresh').addEventListener('click',()=>{if(!busy)load();});
