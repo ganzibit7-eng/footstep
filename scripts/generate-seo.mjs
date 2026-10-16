@@ -12,6 +12,7 @@ import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {snippetDetails,shortSnippet} from './search-snippet.mjs';
 import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
+import {enrichImageSitemap} from './image-sitemap.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = 'https://balzaguk.com';
@@ -851,10 +852,11 @@ for (const entry of sitemap) {
 const uniqueSitemap = [...sitemapByUrl.values()].sort((a,b)=>a.url.localeCompare(b.url,'en'));
 // Regeneration must not move an already published modification date backwards.
 const previousSitemap=await readFile(path.join(ROOT,'sitemap.xml'),'utf8').catch(()=> '');
-const previousDates=new Map([...previousSitemap.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod><\/url>/g)].map(match=>[match[1],match[2]]));
+const previousDates=new Map([...previousSitemap.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>[\s\S]*?<\/url>/g)].map(match=>[match[1],match[2]]));
 for(const entry of uniqueSitemap){const previous=previousDates.get(entry.url);if(previous&&previous>String(entry.lastmod||''))entry.lastmod=previous;}
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${uniqueSitemap.map(({ url, lastmod }) => `  <url><loc>${escapeHtml(url)}</loc>${lastmod ? `<lastmod>${escapeHtml(lastmod)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 await writeFile(path.join(ROOT, 'sitemap.xml'), xml, 'utf8');
+console.log('Public course image sitemap:',await enrichImageSitemap(ROOT));
 // Keep share/legacy entry routes aligned with currently published detail pages.
 const publishedCourseIds=uniqueSitemap.map(entry=>entry.url.match(/^https:\/\/balzaguk\.com\/courses\/([A-Za-z0-9_-]+)\/$/)?.[1]).filter(Boolean);
 const homePath=path.join(ROOT,'index.html');
