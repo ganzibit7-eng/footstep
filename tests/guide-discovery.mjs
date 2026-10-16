@@ -14,5 +14,5 @@ assert.deepEqual(missing,[]);
 assert.equal(titles.size,9);
 const guide=await readFile(path.join(root,'guides/compare-dog-walk-courses/index.html'),'utf8');
 for(const phrase of ['미확인은','시속 4km','GPS 기록은','자료 확인일','비교 보기'])assert.ok(guide.includes(phrase),phrase);
-const hub=await readFile(path.join(root,'guides/index.html'),'utf8');assert.equal((hub.match(/<article>/g)||[]).length,9);
+const hub=await readFile(path.join(root,'guides/index.html'),'utf8');assert.equal((hub.match(/<article>/g)||[]).length,titles.size+1);assert.ok(hub.includes('href="/weekend/"'));
 console.log('PASS: 9 unique guide titles, full local destinations, one H1, valid structured data, comparison safeguards and complete directory.');
