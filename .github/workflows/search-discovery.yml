@@ -1,0 +1,38 @@
+name: Notify search engines after deployment
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['pages build and deployment']
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: indexnow-main
+  cancel-in-progress: false
+jobs:
+  notify:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/cache/restore@v4
+        with:
+          path: .search-state
+          key: indexnow-main-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: indexnow-main-
+      - name: Validate sitemap pages and notify only changed public URLs
+        run: |
+          node --test tests/search-discovery.mjs
+          node scripts/search-discovery.mjs --submit
+      - uses: actions/cache/save@v4
+        with:
+          path: .search-state
+          key: indexnow-main-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Record result
+        run: echo 'IndexNow receipt is not proof of indexing, ranking or visitor growth. Only changed public canonical pages are submitted.' >> "$GITHUB_STEP_SUMMARY"

@@ -214,3 +214,5 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
 #home-explore,.app-page :is(h1,h2){scroll-margin-top:100px}
 @media(max-width:700px){#register-section .type-toggle{gap:8px}#register-section .type-btn{padding:12px 8px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}}
+
+.search-region-links{display:flex!important;flex-wrap:wrap;gap:8px;grid-column:1/-1;padding:12px 0;border-bottom:1px solid var(--finish-line)}.search-region-links a{font-size:12px;padding:8px 10px;min-height:36px;border:1px solid var(--finish-line);border-radius:8px;background:var(--finish-surface);color:var(--finish-ink);text-decoration:none}.search-region-links a:focus-visible{outline:2px solid var(--finish-ink);outline-offset:3px}
