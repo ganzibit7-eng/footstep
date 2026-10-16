@@ -5,12 +5,13 @@ on:
     branches: [main]
     paths: ['index.html', 'courses/**', 'places/**', 'bins/**', 'guides/**', 'with-dog/**', 'sitemap.xml', 'walk-sitemap.xml', 'scripts/search-discovery.mjs', '.github/workflows/search-discovery.yml']
   workflow_run:
-    workflows: ['pages build and deployment']
+    workflows: ['pages build and deployment', 'Generate SEO pages']
     types: [completed]
     branches: [main]
 permissions:
   contents: read
   actions: read
+  pages: write
 concurrency:
   group: indexnow-main
   cancel-in-progress: false
@@ -21,14 +22,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
-      - name: Wait for this commit to finish Pages deployment
-        if: github.event_name != 'workflow_run'
+          ref: ${{ github.event.workflow_run.name == 'Generate SEO pages' && 'main' || github.event.workflow_run.head_sha || github.sha }}
+      - name: Publish generated pages only when missing from the live deployment
+        if: github.event.workflow_run.name == 'Generate SEO pages'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          expected=$(git rev-parse HEAD)
+          published=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '.commit + " " + .status')
+          if [ "$published" != "$expected built" ]; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
+          fi
+      - name: Wait for this commit to finish Pages deployment
+        if: github.event_name != 'workflow_run' || github.event.workflow_run.name == 'Generate SEO pages'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          expected=$(git rev-parse HEAD)
           for attempt in $(seq 1 60); do
-            result=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$GITHUB_SHA&per_page=30" --jq '.workflow_runs[] | select(.name == "pages build and deployment") | .conclusion // "pending"' | head -n 1)
+            result=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$expected&per_page=30" --jq '.workflow_runs[] | select(.name == "pages build and deployment") | .conclusion // "pending"' | head -n 1)
             if [ "$result" = "success" ]; then exit 0; fi
             if [ "$result" = "failure" ] || [ "$result" = "cancelled" ]; then echo "Pages deployment did not succeed"; exit 1; fi
             sleep 10

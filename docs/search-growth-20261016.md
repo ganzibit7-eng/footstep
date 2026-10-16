@@ -30,3 +30,10 @@
 - 변경 알림: GitHub Actions → Notify search engines after deployment
 - 재검사: node --test tests/search-discovery.mjs
 - 제출 없이 확인: node scripts/search-discovery.mjs
+
+## 접수와 운영 연결 결과
+- Google 보조 사이트맵: 2026-10-16 성공, 발견 2개.
+- IndexNow: 4,338건 HTTP 200 접수, Actions 실행 38905917380 성공. 색인·순위·방문자 수 보장은 아님.
+- Bing: 메타와 공식 XML 파일은 배포. 사용자 승인 후 두 방식으로 소유 확인을 제출했으나 Bing 서비스가 Unexpected error를 반환해 최종 확인은 미완료.
+- 사용자 승인으로 같은 저장소 워크플로에만 pages: write를 추가. 자동 SEO 생성 작업 완료 후 최신 main이 미배포인 경우 Pages 빌드를 요청하고, 해당 커밋의 성공을 확인한 후에만 검색엔진에 알림. 다음 정기 생성 작업의 실제 실행 결과는 아직 관찰하지 않음.
+- 공식 근거: https://docs.github.com/en/actions/concepts/security/github_token
