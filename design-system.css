@@ -205,3 +205,12 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
 }
 @media(max-width:360px){#hero-style-3 .home-start-actions{flex-direction:column;align-items:stretch}}
 @media(prefers-reduced-motion:reduce){#nearby-section .home-region-photo img{transition:none;transform:none!important}}
+
+/* Native controls and clear keyboard navigation. */
+#register-section .type-btn{font-family:inherit;line-height:1.6;min-width:0;box-shadow:none;background:var(--finish-surface);color:var(--finish-muted);border-color:var(--finish-line);font-weight:500}
+#register-section .type-btn[aria-pressed="true"]{background:var(--finish-ink);color:var(--finish-surface);border-color:var(--finish-ink);font-weight:600}
+.app-page :is(button,input,select,textarea):disabled{cursor:not-allowed}
+.app-page :is(input,select,textarea){scroll-margin-block:100px}
+#home-explore,.app-page :is(h1,h2){scroll-margin-top:100px}
+@media(max-width:700px){#register-section .type-toggle{gap:8px}#register-section .type-btn{padding:12px 8px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}}

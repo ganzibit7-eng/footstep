@@ -1731,7 +1731,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <style>.auth-consent-detail{font:12px/1.7 system-ui,sans-serif;color:var(--muted-text);margin:10px 0}.auth-consent-detail a{color:var(--pine-deep)}.auth-consent input{flex-shrink:0}</style>
 <link rel="stylesheet" href="/readability.css?v=20261013-readable">
 <link rel="stylesheet" href="/account-ui.css?v=20261013-consent">
-<link rel="stylesheet" href="/design-system.css?v=20261016-ux-detail">
+<link rel="stylesheet" href="/design-system.css?v=20261016-controls">
 <link rel="stylesheet" href="/member-event.css?v=20261016-event-flow">
 <script src="home-explore.js?v=20261013-reselect"></script>
 <script id="home-first-paint">if(HomeExplore.valid(HomeExplore.readSelection()))document.documentElement.dataset.homeInitialRegion="selected";</script>
@@ -2241,10 +2241,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     </div>
     <div class="register-panel">
       <div class="form-card">
-        <div class="type-toggle">
-          <div class="type-btn active" data-type="course">🐾 산책 코스</div>
-          <div class="type-btn" data-type="bin">🚮 배변봉투함</div>
-          <div class="type-btn" data-type="facility">🏨 동반시설</div>
+        <div class="type-toggle" role="group" aria-label="제안할 정보 종류">
+          <button type="button" class="type-btn active" data-type="course" aria-pressed="true">🐾 산책 코스</button>
+          <button type="button" class="type-btn" data-type="bin" aria-pressed="false">🚮 배변봉투함</button>
+          <button type="button" class="type-btn" data-type="facility" aria-pressed="false">🏨 동반시설</button>
         </div>
         <form id="reg-form">
           <label for="f-name">이름</label>
@@ -5650,8 +5650,9 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   document.querySelectorAll('.type-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const changingType = currentType !== btn.dataset.type;
-      document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.type-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed','true');
       currentType = btn.dataset.type;
       const courseFields = document.getElementById('course-only-fields');
       const descLabel = document.getElementById('label-desc');
@@ -6958,6 +6959,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     document.querySelectorAll('.app-page').forEach(el => el.classList.remove('active'));
     document.querySelectorAll(`.app-page[data-page-section="${page}"]`).forEach(el => el.classList.add('active'));
     currentPage = page;
+    const pageTitles={home:'발자국 | 강아지 산책로·애견동반 장소 찾기',map:'지도에서 찾기 | 발자국',list:'산책 코스 | 발자국',walk:'산책 기록 | 발자국',register:'코스·장소 제안 | 발자국',etiquette:'펫티켓 | 발자국'};
+    document.title=pageTitles[page]||pageTitles.home;
     if(['map','list','walk','register'].includes(page))ensureFacilityData().catch(()=>{});
     if(page==='map'){initMap();renderMap();document.querySelector('#view-filter-group [data-filter="'+mapViewChoice+'"]')?.click();}
     if(page==='register')initMiniMap();
@@ -6985,6 +6988,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       document.getElementById('register-mode-note').textContent=operator?'경로·동반 조건 확인 후 추가':'운영자 검토 후 공개';
       if(submitBtn) submitBtn.textContent=operator?'지도에 추가하기':'정보 제안 보내기';
     }
+    if(opts.focusHeading){
+      const heading=document.querySelector('.app-page.active h1, .app-page.active > .wrap > .section-head h2');
+      if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+    }
     // 지도가 숨겨져 있다가 보이면 Leaflet이 크기를 다시 계산해야 정상적으로 그려짐
     setTimeout(()=>{
       if(page === 'map' && map) map.invalidateSize();
@@ -6997,7 +7004,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     el.addEventListener('click', (e)=>{
       if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
       e.preventDefault();
-      showPage(el.dataset.pageNav);
+      showPage(el.dataset.pageNav,{focusHeading:e.detail===0});
       if(el.dataset.pageNav === 'register' && !draftCheckedOnce){
         draftCheckedOnce = true;
         setTimeout(restoreRegisterDraftIfAny, 350);
