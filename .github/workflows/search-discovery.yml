@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['index.html', 'courses/**', 'places/**', 'bins/**', 'guides/**', 'with-dog/**', 'sitemap.xml', 'walk-sitemap.xml', 'scripts/search-discovery.mjs', '.github/workflows/search-discovery.yml']
+    paths: ['index.html', 'weekend/**', 'share-link.js', 'courses/**', 'places/**', 'bins/**', 'guides/**', 'with-dog/**', 'sitemap.xml', 'walk-sitemap.xml', 'scripts/search-discovery.mjs', '.github/workflows/search-discovery.yml']
   workflow_run:
     workflows: ['pages build and deployment', 'Generate SEO pages']
     types: [completed]

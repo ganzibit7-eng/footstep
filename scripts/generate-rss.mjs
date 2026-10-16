@@ -19,7 +19,7 @@ export function feedItem(html,url){
 }
 export async function generateRSS(root){
   const sitemap=await readFile(path.join(root,'sitemap.xml'),'utf8');
-  const urls=[...new Set([...sitemap.matchAll(/<loc>(https:\/\/balzaguk\.com\/(?:about\/|guides\/[^/]+\/|with-dog\/[^/]+\/))<\/loc>/g)].map(m=>m[1]))].sort();
+  const urls=[...new Set([...sitemap.matchAll(/<loc>(https:\/\/balzaguk\.com\/(?:about\/|weekend\/|guides\/[^/]+\/|with-dog\/[^/]+\/))<\/loc>/g)].map(m=>m[1]))].sort();
   if(!urls.length)throw Error('No public guide pages for RSS');
   const items=await Promise.all(urls.map(async url=>feedItem(await readFile(path.join(root,new URL(url).pathname.slice(1),'index.html'),'utf8'),url)));
   // No invented publication dates: only the actual feed generation time is dated.

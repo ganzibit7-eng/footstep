@@ -9,6 +9,8 @@ import CourseComfort from '../course-comfort.js';
 import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
+import {snippetDetails} from './search-snippet.mjs';
+import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -31,7 +33,7 @@ const safeSegment = (value) => String(value).replace(/[^a-zA-Z0-9_-]/g, '-');
 const compact = (value = '') => String(value ?? '').replace(/\s+/g, ' ').trim();
 const shortDescription = (item, type) => {
   if(type.table==='courses' && (item.tags||[]).includes('동반 확인 필요')) return `${item.name}. 반려견 동반 조건 미확인. 공식 GPX 걷기 경로 ${item.distance||''}. 방문 전 운영기관에 동반 가능 여부와 현장 통제를 확인하세요.`.slice(0,155);
-  const detail = compact([item.address,CourseInfo.cleanDescription(item.description),item.distance].filter(Boolean).join(' · '));
+  const detail = snippetDetails([item.address,CourseInfo.cleanDescription(item.description),item.distance]);
   const needsPetCheck = type.table==='courses' && (item.tags||[]).includes('동반 확인 필요');
   const label = needsPetCheck ? '걷기 코스 · 반려견 동반 확인 필요' : item.category === '숙소' ? '애견동반 숙소' : item.category ? '애견동반 '+FacilityInfo.get(item.category).label : type.label;
   const base = `${item.name} ${label} 정보`;
@@ -778,19 +780,28 @@ searchHubs = buildHubs(groups);
     return {slug,region,courses:regionalCourses,places:regionalPlaces};
   }).filter(page=>page.courses.length>=3 && page.places.length>=3);
 }
+// Snapshot before rebuilding public directories: only changed descriptions get a new lastmod.
+const previousDescriptions=new Map();
+for(const {type,items} of groups)for(const item of items){
+ const relative='/'+type.folder+'/'+safeSegment(item.id)+'/';
+ try{const old=await readFile(path.join(ROOT,relative.slice(1),'index.html'),'utf8');previousDescriptions.set(SITE+relative,old.match(/<meta name="description" content="([^"]*)"/)?.[1]||'');}catch(error){if(error.code!=='ENOENT')throw error;}
+}
+const editedDay=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
 for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: true, force: true });
 await rm(path.join(ROOT,'with-dog'),{recursive:true,force:true});
 const allItems = groups.flatMap(group=>group.items);
 const contentLastmod = newestDate(allItems) || new Date().toISOString().slice(0, 10);
-const sitemap = [{url:`${SITE}/about/`,lastmod:"2026-10-12"},{ url: `${SITE}/dog-walks/`, lastmod: "2026-10-06" }, { url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
+const sitemap = [{url:`${SITE}/weekend/`,lastmod:"2026-10-16"},{url:`${SITE}/about/`,lastmod:"2026-10-12"},{ url: `${SITE}/dog-walks/`, lastmod: "2026-10-06" }, { url: `${SITE}/`, lastmod: contentLastmod }, { url: `${SITE}/discover.html`, lastmod: contentLastmod }];
 for (const {type,items} of groups) {
   for (const item of items) {
     const segment = safeSegment(item.id);
     const dir = path.join(ROOT, type.folder, segment);
     const url = `${SITE}/${type.folder}/${segment}/`;
     await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, 'index.html'), withTraffic(detailHtml(item, type, url)), 'utf8');
-    sitemap.push({ url, lastmod: dateOnly(item.created_at) });
+    const generatedHtml=withTraffic(detailHtml(item,type,url));
+    const oldDescription=previousDescriptions.get(url),newDescription=generatedHtml.match(/<meta name="description" content="([^"]*)"/)?.[1]||'';
+    await writeFile(path.join(dir,'index.html'),generatedHtml,'utf8');
+    sitemap.push({url,lastmod:oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});
   }
 }
 
@@ -828,6 +839,7 @@ for (const guide of GUIDES) {
   await writeFile(path.join(dir,'index.html'),withTraffic(guideHtml(guide)),'utf8');
   sitemap.push({url:`${SITE}/guides/${guide.slug}/`,lastmod:guide.updatedAt||contentLastmod});
 }
+await generateWeekend(ROOT);
 await writeFile(path.join(ROOT,'guides/index.html'),withTraffic(guideDirectoryHTML(GUIDES)),'utf8');
 sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(directoryHtml(groups)), 'utf8');

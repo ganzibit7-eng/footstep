@@ -1,0 +1,1 @@
+export function snippetDetails(parts){const seen=[];for(const part of parts){let value=String(part||'').replace(/\s+/g,' ').trim();if(!value)continue;for(const previous of seen){if(value===previous){value='';break;}if(value.startsWith(previous+' · '))value=value.slice(previous.length+3).trim();}if(value&&!seen.includes(value))seen.push(value);}return seen.join(' · ');}
