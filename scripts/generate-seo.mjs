@@ -9,7 +9,7 @@ import CourseComfort from '../course-comfort.js';
 import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
-import {snippetDetails} from './search-snippet.mjs';
+import {snippetDetails,shortSnippet} from './search-snippet.mjs';
 import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
 
@@ -37,7 +37,7 @@ const shortDescription = (item, type) => {
   const needsPetCheck = type.table==='courses' && (item.tags||[]).includes('동반 확인 필요');
   const label = needsPetCheck ? '걷기 코스 · 반려견 동반 확인 필요' : item.category === '숙소' ? '애견동반 숙소' : item.category ? '애견동반 '+FacilityInfo.get(item.category).label : type.label;
   const base = `${item.name} ${label} 정보`;
-  return (detail ? `${base}. ${detail}` : base).slice(0, 155);
+  return shortSnippet(detail ? `${base}. ${detail}` : base);
 };
 const officialSourceUrl = (item) => CourseInfo.sourceURL(item?.description);
 const checkedDate = (item) => CourseInfo.checkedDate(item?.description);

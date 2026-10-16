@@ -30,7 +30,7 @@ jobs:
         run: |
           expected=$(git rev-parse HEAD)
           published=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '.commit + " " + .status')
-          if [ "$published" != "$expected built" ]; then
+          if [[ "$published" != "$expected "* ]] || [ "$published" = "$expected errored" ]; then
             gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
           fi
       - name: Wait for this commit to finish Pages deployment
