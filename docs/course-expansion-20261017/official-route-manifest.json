@@ -576,7 +576,7 @@
       "목줄필수",
       "공식GPX"
     ],
-    "status": "pending",
+    "status": "approved",
     "source": "https://www.durunubi.kr/course-detail-view.do?crs_idx=T_CRS_MNG0000004071",
     "petSource": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2043017&langDiv=KOR",
     "conditions": {
