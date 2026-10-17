@@ -5,9 +5,9 @@
   if(data?.version!==1||!Array.isArray(data.regions)||!Number.isFinite(Date.parse(data.generatedAt))||Date.parse(data.generatedAt)>now+300000||now-Date.parse(data.generatedAt)>36*HOUR)return null;
   const positioned=validCoords(lat,lng)&&Number(lat)>=32&&Number(lat)<=39&&Number(lng)>=124&&Number(lng)<=132;
   const target=positioned?{lat:Number(lat),lng:Number(lng)}:{lat:37.5665,lng:126.978};
-  const ranked=data.regions.filter(r=>validCoords(r.lat,r.lng)&&typeof r.name==='string'&&/^[가-힣 ]{1,20}$/.test(r.name)).map(r=>({r,d:Math.pow(Number(r.lat)-target.lat,2)+Math.pow((Number(r.lng)-target.lng)*Math.cos(target.lat*Math.PI/180),2)})).sort((a,b)=>a.d-b.d);
+  const ranked=data.regions.filter(r=>r&&typeof r==='object'&&validCoords(r.lat,r.lng)&&typeof r.name==='string'&&/^[가-힣 ]{1,20}$/.test(r.name)).map(r=>({r,d:Math.pow(Number(r.lat)-target.lat,2)+Math.pow((Number(r.lng)-target.lng)*Math.cos(target.lat*Math.PI/180),2)})).sort((a,b)=>a.d-b.d);
   const r=ranked[0]?.r;if(!r||!Array.isArray(r.hours)||!Number.isFinite(Date.parse(r.updatedAt))||now-Date.parse(r.updatedAt)>36*HOUR||Date.parse(r.updatedAt)>now+300000)return null;
-  const hour=r.hours.filter(x=>Number.isFinite(x.temp)&&x.temp>=-60&&x.temp<=60&&typeof x.symbol==='string'&&/^[a-z_]+$/.test(x.symbol)&&Math.abs(Date.parse(x.time)-now)<=90*60000).sort((a,b)=>Math.abs(Date.parse(a.time)-now)-Math.abs(Date.parse(b.time)-now))[0];
+  const hour=r.hours.filter(x=>x&&typeof x==='object'&&Number.isFinite(x.temp)&&x.temp>=-60&&x.temp<=60&&typeof x.symbol==='string'&&/^[a-z_]+$/.test(x.symbol)&&Math.abs(Date.parse(x.time)-now)<=90*60000).sort((a,b)=>Math.abs(Date.parse(a.time)-now)-Math.abs(Date.parse(b.time)-now))[0];
   return hour?{...hour,name:r.name,updatedAt:r.updatedAt,old:now-Date.parse(r.updatedAt)>6*HOUR}:null;
  }
  function symbolInfo(symbol){if(/thunder/.test(symbol))return {icon:'⛈️',advice:'뇌우 예보가 있어요. 야외 산책 전 기상 상황을 확인해 주세요.'};if(/snow|sleet/.test(symbol))return {icon:'🌨️',advice:'눈·진눈깨비 예보가 있어요. 젖거나 미끄러운 길을 주의해 주세요.'};if(/rain/.test(symbol))return {icon:'🌧️',advice:'비 예보가 있어요. 젖거나 미끄러운 길을 주의해 주세요.'};if(/fog/.test(symbol))return {icon:'🌫️',advice:'안개 예보가 있어요. 주변 시야와 노면 상태를 확인하세요.'};return {icon:/^clear/.test(symbol)?symbol.endsWith('_night')?'🌙':'☀️':'⛅',advice:'하늘과 노면 상태를 확인하고 산책을 준비하세요.'};}

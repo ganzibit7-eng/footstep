@@ -35,4 +35,9 @@ jobs:
           git fetch origin main
           git rebase origin/main
           git push origin main
-          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
+          expected=$(git rev-parse HEAD)
+          # Reuse an automatic Pages build instead of starting a duplicate deployment.
+          published=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '.commit + " " + .status')
+          if [[ "$published" != "$expected "* ]] || [ "$published" = "$expected errored" ]; then
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
+          fi
