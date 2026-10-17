@@ -19,7 +19,7 @@ const SITE = 'https://balzaguk.com';
 const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
-const withTraffic = html => html.replace(/[ \t]+$/gm, '').replace('</body>', '<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
+const withTraffic = html => html.replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '').replace('</body>', '<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
 
 const types = [
   { table: 'courses', folder: 'courses', label: '강아지 산책 코스', icon: '🐕' },
