@@ -5,7 +5,7 @@
   function filter(data,state){
     var words=(state.q||'').trim().toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
     return data.filter(function(item){
-      var text=[item.name,item.region,item.info].join(' ').toLocaleLowerCase('ko');
+      var text=[item.name,item.region,item.info,item.conditions].join(' ').toLocaleLowerCase('ko');
       return (!state.kind||item.kind===state.kind)&&(!state.region||item.region===state.region)&&(!state.category||category(item)===state.category)&&words.every(function(word){return text.includes(word);});
     });
   }
@@ -24,7 +24,10 @@
     matches.slice(0,limit).forEach(function(item){
       var li=document.createElement('li'),a=document.createElement('a'),p=document.createElement('p');
       a.href=item.path;a.textContent=item.name;p.textContent=[item.region,item.info].filter(Boolean).join(' · ');li.append(a,p);
-      if(item.kind==='facilities'){var note=document.createElement('p');note.textContent='동반 구역·크기 제한·준비물은 상세에서 확인하세요. 자료에 없는 조건은 미확인입니다.';li.append(note);}
+      if(item.kind==='facilities'){
+        if(item.photo){var figure=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption'),credit=document.createElement('a');img.src=item.photo.src;img.alt=item.name+' 공식 관광자료 제공 사진';img.width=item.photo.width;img.height=item.photo.height;img.loading='lazy';img.decoding='async';img.style.cssText='display:block;width:100%;height:160px;object-fit:contain;background:#eef1e9;border-radius:10px';credit.href=item.photo.source;credit.target='_blank';credit.rel='noopener noreferrer';credit.textContent='사진: '+item.photo.author;caption.style.cssText='font-size:11px;line-height:1.6;overflow-wrap:anywhere';caption.append(credit,document.createElement('br'));var license=document.createElement('a');license.href=item.photo.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent='이용 조건 · 원본 비율 유지';caption.append(license,document.createElement('br'),document.createTextNode('촬영 시기 미상 · 현재 모습과 다를 수 있어요.'));figure.style.margin='12px 0';figure.append(img,caption);li.prepend(figure);}
+        var note=document.createElement('p');note.textContent=item.conditions||'동반 구역·크기 제한·준비물은 상세에서 확인하세요. 자료에 없는 조건은 미확인입니다.';li.append(note);
+      }
       list.append(li);
     });
     count.textContent=matches.length?'등록 정보 '+matches.length+'곳 중 '+Math.min(limit,matches.length)+'곳 표시':'일치하는 등록 정보가 없습니다. 지역·업종 선택을 바꾸거나 검색어를 짧게 입력하세요.';
