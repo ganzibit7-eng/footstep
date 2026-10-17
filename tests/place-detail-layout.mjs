@@ -7,8 +7,8 @@ import {refinePlaceDetail} from '../scripts/refine-place-details.mjs';
 test('refinement preserves source facts, photographs, links and structured data',async()=>{
  for(const id of ['pub1788410835188_11_p7rain','kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4']){
   const file=`places/${id}/index.html`;
-  const before=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8',maxBuffer:400000});
-  const after=await readFile(new URL('../'+file,import.meta.url),'utf8');
+  const before=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8',maxBuffer:400000}).replaceAll('\r\n','\n');
+  const after=(await readFile(new URL('../'+file,import.meta.url),'utf8')).replaceAll('\r\n','\n');
   assert.equal(refinePlaceDetail(before),after);
   assert.equal(refinePlaceDetail(after),after,'idempotent on the next generation');
   assert.deepEqual([...after.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]),[...before.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]));
