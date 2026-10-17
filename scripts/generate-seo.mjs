@@ -12,6 +12,7 @@ import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {snippetDetails,shortSnippet} from './search-snippet.mjs';
 import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
+import {normalizePublicSearchHeads} from './search-head.mjs';
 import {enrichImageSitemap} from './image-sitemap.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -865,3 +866,4 @@ const homeHtml=await readFile(homePath,'utf8');
 if(homeHtml.includes('window.PawCoursePages=Object.freeze('))await writeFile(homePath,homeHtml.replace(/window\.PawCoursePages=Object\.freeze\(\[[^\n]*?\]\);/,'window.PawCoursePages=Object.freeze('+JSON.stringify(publishedCourseIds)+');'),'utf8');
 console.log(`SEO 페이지 ${Math.max(0, uniqueSitemap.length - 2)}개와 사이트맵을 생성했습니다. (중복 URL ${sitemap.length - uniqueSitemap.length}개 제거)`);
 console.log('Public guide RSS:',await generateRSS(ROOT));
+console.log('Public search favicon:',await normalizePublicSearchHeads(ROOT));
