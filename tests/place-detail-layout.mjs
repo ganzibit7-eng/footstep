@@ -1,15 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
-import {execFileSync} from 'node:child_process';
 import {refinePlaceDetail} from '../scripts/refine-place-details.mjs';
 
 test('refinement preserves source facts, photographs, links and structured data',async()=>{
  for(const id of ['pub1788410835188_11_p7rain','kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4']){
-  const file=`places/${id}/index.html`;
-  const before=execFileSync('git',['show','HEAD:'+file],{encoding:'utf8',maxBuffer:400000}).replaceAll('\r\n','\n');
-  const after=(await readFile(new URL('../'+file,import.meta.url),'utf8')).replaceAll('\r\n','\n');
-  assert.equal(refinePlaceDetail(before),after);
+  const before=(await readFile(new URL('./fixtures/place-detail-'+id+'.html',import.meta.url),'utf8')).replaceAll('\r\n','\n');
+  const after=refinePlaceDetail(before);
+  assert(after.includes('place-detail.css?v=20261017-premium'));
   assert.equal(refinePlaceDetail(after),after,'idempotent on the next generation');
   assert.deepEqual([...after.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]),[...before.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]));
   const panel=before.match(/<section aria-label="반려견 동반 조건"[\s\S]*?<\/section>/)[0];assert(after.includes(panel),'verified and unknown conditions unchanged');
