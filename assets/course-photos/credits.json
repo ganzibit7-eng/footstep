@@ -11293,5 +11293,27 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "duru_T_CRS_MNG0000004071": "충북 충주시 충주풍경길 종댕이길"
+    },
+    "src": "/assets/course-photos/duru_T_CRS_MNG0000004071.jpg",
+    "place": "충주 종댕이길 실제 경관 참고사진 · 전체 GPX 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2043017&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/53/3560653_image2_1.JPG",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "2043017",
+    "sourceSha256": "dfea1f67fdbefc6d92af56b821839729df0d9c8fa79ae38019f8d72223cf8949",
+    "assetSha256": "dfea1f67fdbefc6d92af56b821839729df0d9c8fa79ae38019f8d72223cf8949",
+    "width": 940,
+    "height": 626
   }
 ]
