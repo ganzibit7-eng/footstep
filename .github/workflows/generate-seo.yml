@@ -7,6 +7,9 @@ on:
     paths:
       - 'scripts/generate-seo.mjs'
       - 'scripts/refine-place-details.mjs'
+      - 'place-detail.css'
+      - 'tests/place-detail-layout.mjs'
+      - 'tests/fixtures/place-detail-*.html'
       - 'scripts/weekend-guide.mjs'
       - 'scripts/search-snippet.mjs'
       - 'scripts/search-head.mjs'
