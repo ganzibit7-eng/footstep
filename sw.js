@@ -8,7 +8,6 @@ SHELL_FILES.push("/assets/mong-front-v2.webp");
 SHELL_FILES.push("/design-system.css?v=20261016-discovery");
 SHELL_FILES.push("/member-event.js?v=20261016-event-flow", "/member-event.css?v=20261016-event-flow");
 SHELL_FILES.push("/share-link.js?v=20261016-growth");
-const allowed=new Set(SHELL_FILES.map(path=>new URL(path,self.location.href).href));
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>Promise.allSettled(SHELL_FILES.map(path=>cache.add(path)))).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('balzaguk-shell-')&&k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{
@@ -28,3 +27,6 @@ SHELL_FILES.push('/home-scenes.css?v=20261017-compact','/home-scenes.js?v=202610
 SHELL_FILES.push('/home-places.css?v=20261017-10','/home-places.js?v=20261017-shopping');
 
 SHELL_FILES.push('/weather-widget.js?v=20261017-resilient');
+
+// Include every late-added public module; weather responses stay outside the shell cache.
+const allowed=new Set(SHELL_FILES.map(path=>new URL(path,self.location.href).href));
