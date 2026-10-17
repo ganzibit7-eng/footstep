@@ -19,7 +19,10 @@
     section.classList.add('home-scene-enter');observer.unobserve(section);
    }
   },{rootMargin:'0px 0px -32px 0px',threshold:0});
-  doc.querySelectorAll('.home-scene').forEach(section=>observer.observe(section));
+  doc.querySelectorAll('.home-scene').forEach(section=>{
+   observer.observe(section);
+   section.addEventListener('focusin',()=>{section.classList.remove('home-scene-enter');observer.unobserve(section);});
+  });
   reduced?.addEventListener?.('change',event=>{if(event.matches){observer.disconnect();doc.querySelectorAll('.home-scene-enter').forEach(section=>section.classList.remove('home-scene-enter'));}});
  }
  if(root.document?.readyState==='loading')root.document.addEventListener('DOMContentLoaded',init,{once:true});else init();
