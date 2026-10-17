@@ -1,9 +1,9 @@
 {
   "checked": "2026-10-17",
   "targetNew": 300,
-  "newApproved": 5,
-  "totalApproved": 405,
-  "withPath": 207,
+  "newApproved": 7,
+  "totalApproved": 407,
+  "withPath": 209,
   "unchangedBaseline": 400,
   "tests": [
     "original OSM consecutive nodes and park scope",
@@ -13,7 +13,7 @@
     "first-paint counters",
     "walk handoff and auth mocks"
   ],
-  "deployment": "five-course release verification pending",
+  "deployment": "seven-course release verification pending",
   "officialGPX": 1,
-  "mapBasedProposed": 4
+  "mapBasedProposed": 6
 }
