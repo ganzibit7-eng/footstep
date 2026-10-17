@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/generate-seo.mjs'
+      - 'scripts/refine-place-details.mjs'
       - 'scripts/weekend-guide.mjs'
       - 'scripts/search-snippet.mjs'
       - 'scripts/search-head.mjs'
@@ -56,7 +57,7 @@ jobs:
       - name: Generate static search pages
         run: node scripts/generate-seo.mjs
       - name: Validate public page and image discovery
-        run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs
+        run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs
       - name: Validate home place sections
         run: node tests/home-places.cjs && node tests/home-more.cjs
       - name: Validate weather and affiliate cards
