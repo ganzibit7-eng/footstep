@@ -1,0 +1,44 @@
+/* Mobile-first home chapters. Content stays readable before/without JavaScript. */
+#nearby-section{padding-top:28px}
+#nearby-section .home-scene{position:relative;min-width:0;margin:0;padding:46px 0 52px;scroll-margin-top:100px}
+#nearby-section #home-explore{border-top:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
+#nearby-section :is(.home-region-eyebrow,#nearby-kicker,.walk-shopping-heading>span){font:600 11px/1.7 system-ui,"Noto Sans KR",sans-serif;letter-spacing:.09em;color:var(--moss)}
+#nearby-section :is(.home-region-heading h2,#nearby-title,#walk-shopping-title){font-size:clamp(26px,3.3vw,38px);line-height:1.35;letter-spacing:-.045em;font-weight:700;word-break:keep-all;text-wrap:balance;max-width:600px;margin:12px 0}
+#nearby-section .home-region-heading{margin:0 0 28px}
+#nearby-section .home-region-heading p,#walk-shopping-subtitle{font-size:15px;line-height:1.8;word-break:keep-all}
+#nearby-section .home-region-card{min-width:0;border-radius:16px}
+#nearby-section .home-region-link{display:none}
+#nearby-section .home-region-body p{min-height:0;margin:4px 0 0}
+#nearby-section #walk-shopping{margin:0 0 40px;padding:36px;border-radius:24px;border:1px solid var(--line);background:var(--sand);box-shadow:none}
+#walk-shopping .walk-shopping-heading{margin-bottom:20px}
+#walk-shopping .walk-shopping-disclosure{margin:0 0 20px;font-size:12px;line-height:1.7}
+#walk-shopping .walk-shopping-selection,#walk-shopping .walk-shopping-terms{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+#nearby-section .home-more-discovery{margin-top:12px;border-top:1px solid var(--line)}
+#nearby-section .home-more-discovery>summary{min-height:64px;gap:8px;flex-wrap:wrap;line-height:1.6}
+#nearby-section .home-more-content>.home-all-area-link{display:flex;justify-content:space-between;gap:16px;align-items:center;min-height:56px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:600;text-decoration:none;color:var(--pine-deep)}
+.home-scene-enter [data-home-motion]{animation:home-scene-arrive 540ms cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--home-motion-delay,0ms)}
+.home-scene:focus-within [data-home-motion]{animation:none}
+@keyframes home-scene-arrive{from{opacity:.35;transform:translate3d(0,18px,0)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ #nearby-section{padding-top:14px}
+ #nearby-section .home-scene{padding:30px 0 36px}
+ #nearby-section :is(.home-region-heading h2,#nearby-title,#walk-shopping-title){font-size:28px;max-width:100%;line-height:1.4}
+ #nearby-section .home-region-heading{margin-bottom:22px}
+ #nearby-section .home-region-heading p,#walk-shopping-subtitle{font-size:14px}
+ #nearby-section .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}
+ #nearby-section .home-region-photo{height:116px}
+ #nearby-section .home-region-body{padding:12px}
+ #nearby-section .home-region-body p{font-size:12px;line-height:1.65;min-height:40px}
+ #nearby-section .home-region-select-row{margin-top:20px}
+ #nearby-section .home-result-actions{display:grid;grid-template-columns:1fr;gap:12px;width:100%}
+ #nearby-section .home-result-actions #home-region-reselect{width:100%;min-height:48px;margin:0;text-align:center}
+ #nearby-section #walk-shopping{padding:24px 16px;margin-bottom:28px;border-radius:20px}
+ #walk-shopping .walk-shopping-items{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:0;padding:4px 2px 20px;max-width:100%}
+ #walk-shopping .walk-shopping-card{flex:0 0 86%;min-width:0;width:auto;max-width:none;scroll-snap-align:start}
+ #walk-shopping .walk-shopping-body :is(h3,p,small){overflow-wrap:anywhere}
+ #walk-shopping .walk-shopping-link{display:flex;align-items:center;justify-content:center;min-height:48px;white-space:normal;line-height:1.6;text-align:center}
+ #nearby-section .home-more-discovery>summary small{flex-basis:100%;font-size:12px}
+ .home-scene-enter [data-home-motion]{animation-duration:440ms}
+}
+@media(max-width:360px){#nearby-section :is(.home-region-heading h2,#nearby-title,#walk-shopping-title){font-size:25px}#nearby-section .home-region-photo{height:100px}#walk-shopping .walk-shopping-card{flex-basis:92%}}
+@media(prefers-reduced-motion:reduce){.home-scene-enter [data-home-motion]{animation:none!important;opacity:1!important;transform:none!important}}
