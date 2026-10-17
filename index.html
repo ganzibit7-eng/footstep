@@ -4113,7 +4113,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const unknown=CourseComfort.labels(c).filter(x=>x.includes('미확인'));
     const decision='<div class="mong-match-info">'+(matched.length?'<p><strong>선택 조건 확인</strong> '+escapeHtml(matched.join(' · '))+'</p>':'')+(aiAnswers.env&&aiAnswers.env!=='계단없음'?'<p><strong>선호 순서</strong> '+escapeHtml((c.tags||[]).includes(aiAnswers.env)?tagLabel(aiAnswers.env)+' 안내 있음':tagLabel(aiAnswers.env)+' 정보 미확인 · 필수 조건이 아닙니다')+'</p>':'')+(unknown.length?'<p><strong>추가 확인</strong> '+escapeHtml(unknown.join(' · '))+'</p>':'')+'</div>';
     const photo=CoursePhotos.get(c);
-    return `<div class="mong-result">${decision}${photo?`<img class="mong-result-photo" style="object-fit:${photo.noCrop?'contain':'cover'}" src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.place)} 실제 장소 사진" loading="lazy">`:''}<a href="#" class="ai-rec-card" data-open-course="${escapeHtml(String(c.id))}">
+    return `<div class="mong-result">${decision}${photo?`<img class="mong-result-photo" style="object-fit:${photo.noCrop?'contain':'cover'}" src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.place)} 장소 사진" loading="lazy">`:''}<a href="#" class="ai-rec-card" data-open-course="${escapeHtml(String(c.id))}">
       <span style="font-size:26px;">🐾</span>
       <span style="flex:1;">
         <b style="display:block; font-size:14px; color:var(--pine-deep);">${escapeHtml(String(c.name||'이름 없는 코스'))}</b>
@@ -4386,7 +4386,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         img.alt=isCurated?curatedPhoto.place+' 실제 사진 · '+CoursePhotos.dateLabel(curatedPhoto):c.name+' 이용자 사진';img.loading='lazy';img.decoding='async';
         img.addEventListener('error',()=>{img.remove();card.querySelector('.card-visual-caption').textContent='산책길 일러스트';card.querySelector('.course-photo-credit')?.remove();},{once:true});
         const photoYear=isCurated?(curatedPhoto.date?.match(/\b(?:19|20)\d{2}\b/)?.[0]||curatedPhoto.dateNote?.match(/촬영월\s*((?:19|20)\d{2})/)?.[1]||'촬영 시기 미상'):'';
-        card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?'실제 장소 사진 · '+photoYear:'이용자 산책 사진';
+        card.querySelector('.card-visual').prepend(img);card.querySelector('.card-visual-caption').textContent=isCurated?(/참고|전체 사진이 아님|확인된 산책 동선 아님/.test(photo.place)?'장소 참고사진 · ':'실제 장소 사진 · ')+photoYear:'이용자 산책 사진';
         if(isCurated){const credit=document.createElement('div');credit.className='course-photo-credit';credit.innerHTML=CoursePhotos.cardCredit(curatedPhoto);card.querySelector('.card-body').append(credit);}
       }
       containerEl.appendChild(card);
