@@ -10341,6 +10341,50 @@
   },
   {
     "courses": {
+      "walk_20261017_kto128829": "부산 암남공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto128829.jpg",
+    "place": "암남공원 입구 경관 참고사진 · 제안 경로 출발점 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128829&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/73/3498473_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "128829",
+    "sourceSha256": "616e393ae462f03355ee075a37381c48d7163d3ad5fed1d1730b01fe564b14c2",
+    "assetSha256": "616e393ae462f03355ee075a37381c48d7163d3ad5fed1d1730b01fe564b14c2",
+    "width": 940,
+    "height": 626
+  },
+  {
+    "courses": {
+      "walk_20261017_kto2736822": "유구색동수국정원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto2736822.jpg",
+    "place": "유구색동수국정원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2736822&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/41/4079141_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "2736822",
+    "sourceSha256": "be858490c29c1533291b8c7a344294986b993c5580a06fed16d572a2d07238d9",
+    "assetSha256": "be858490c29c1533291b8c7a344294986b993c5580a06fed16d572a2d07238d9",
+    "width": 940,
+    "height": 627
+  },
+  {
+    "courses": {
       "osm_665502044": "동구 대구 불로동 고분군 보행로 산책 코스"
     },
     "src": "/assets/course-photos/osm_665502044.webp",
@@ -11315,49 +11359,5 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
-  },
-  {
-    "courses": {
-      "walk_20261017_kto128829": "부산 암남공원 보행로 제안 산책 코스"
-    },
-    "src": "/assets/course-photos/walk_20261017_kto128829.jpg",
-    "place": "암남공원 입구 경관 참고사진 · 제안 경로 출발점 사진 아님",
-    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128829&langDiv=KOR",
-    "original": "https://tong.visitkorea.or.kr/cms/resource/73/3498473_image2_1.jpg",
-    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
-    "date": "",
-    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
-    "license": "한국관광공사 국문 관광정보 개방자료",
-    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
-    "noCrop": true,
-    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
-    "checked": "2026-10-17",
-    "datasetContentId": "128829",
-    "sourceSha256": "616e393ae462f03355ee075a37381c48d7163d3ad5fed1d1730b01fe564b14c2",
-    "assetSha256": "616e393ae462f03355ee075a37381c48d7163d3ad5fed1d1730b01fe564b14c2",
-    "width": 940,
-    "height": 626
-  },
-  {
-    "courses": {
-      "walk_20261017_kto2736822": "유구색동수국정원 보행로 제안 산책 코스"
-    },
-    "src": "/assets/course-photos/walk_20261017_kto2736822.jpg",
-    "place": "유구색동수국정원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
-    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2736822&langDiv=KOR",
-    "original": "https://tong.visitkorea.or.kr/cms/resource/41/4079141_image2_1.jpg",
-    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
-    "date": "",
-    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
-    "license": "한국관광공사 국문 관광정보 개방자료",
-    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
-    "noCrop": true,
-    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
-    "checked": "2026-10-17",
-    "datasetContentId": "2736822",
-    "sourceSha256": "be858490c29c1533291b8c7a344294986b993c5580a06fed16d572a2d07238d9",
-    "assetSha256": "be858490c29c1533291b8c7a344294986b993c5580a06fed16d572a2d07238d9",
-    "width": 940,
-    "height": 627
   }
 ]
