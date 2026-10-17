@@ -70,3 +70,10 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
 
 .place-detail-page .place-actions .place-naver-link{font-size:13px;color:#56665c;text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center;margin-left:auto;padding:8px 0}
 @media(max-width:600px){.place-detail-page .place-actions .place-naver-link{grid-column:1/-1;margin:0;justify-content:center}}
+
+/* Bright related places, independent of the shared list theme. */
+.place-detail-page section.card ul{gap:12px}
+.place-detail-page section.card ul>li{background:#fffef9;color:#243c32;border:1px solid #dce1d8;border-radius:12px;padding:18px 20px;box-shadow:none}
+.place-detail-page section.card ul>li>a{background:transparent;color:#243c32;text-decoration:none;line-height:1.7}
+.place-detail-page section.card ul>li:hover{background:#fffef9;border-color:#9cab9b}
+.place-detail-page section.card ul>li>a::after{color:#65765f}

@@ -63,7 +63,7 @@ jobs:
       - name: Validate public page and image discovery
         run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs
       - name: Validate home place sections
-        run: node tests/home-places.cjs && node tests/home-more.cjs
+        run: node tests/home-places.cjs && node tests/home-more.cjs && node tests/home-scenes.cjs
       - name: Validate weather and affiliate cards
         run: node tests/weather-widget.cjs && node tests/shopping.cjs && node --test tests/weather-snapshot.mjs
       - name: Commit changed pages

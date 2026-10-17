@@ -18,8 +18,8 @@ function addExternalLink(html){
 export function refinePlaceDetail(html){
  if(!/class="reading-page place-detail-page"/.test(html))return html;
  html=addExternalLink(html);
- if(html.includes('/place-detail.css?'))return html.replaceAll('place-detail.css?v=20261017-premium','place-detail.css?v=20261017-native');
- html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261017-native"></head>');
+ if(html.includes('/place-detail.css?'))return html.replace(/place-detail\.css\?v=20261017-(?:premium|native|readable)/g,'place-detail.css?v=20261017-readable');
+ html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261017-readable"></head>');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="place-site-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="28" height="28" alt="">발자국</a><a class="place-back" href="/discover.html?kind=facilities#find-place">장소 둘러보기 ↗</a></header>');
  html=html.replace(/<nav aria-label="현재 위치">([\s\S]*?)<\/nav>/,(_,content)=>{
   const links=[...content.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].map(x=>x[0]);
