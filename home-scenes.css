@@ -9,7 +9,7 @@
 #nearby-section .home-region-card{min-width:0;border-radius:16px}
 #nearby-section .home-region-link{display:none}
 #nearby-section .home-region-body p{min-height:0;margin:4px 0 0}
-#nearby-section #walk-shopping{margin:0 0 40px;padding:36px;border-radius:24px;border:1px solid var(--line);background:var(--sand);box-shadow:none}
+#nearby-section #walk-shopping{margin:0;padding:46px 0 52px;border-radius:0;border:0;border-top:1px solid var(--line);background:transparent;box-shadow:none}
 #walk-shopping .walk-shopping-heading{margin-bottom:20px}
 #walk-shopping .walk-shopping-disclosure{margin:0 0 20px;font-size:12px;line-height:1.7}
 #walk-shopping .walk-shopping-selection,#walk-shopping .walk-shopping-terms{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
@@ -32,7 +32,7 @@
  #nearby-section .home-region-select-row{margin-top:20px}
  #nearby-section .home-result-actions{display:grid;grid-template-columns:1fr;gap:12px;width:100%}
  #nearby-section .home-result-actions #home-region-reselect{width:100%;min-height:48px;margin:0;text-align:center}
- #nearby-section #walk-shopping{padding:24px 16px;margin-bottom:28px;border-radius:20px}
+ #nearby-section #walk-shopping{padding:32px 0 36px;margin-bottom:0;border-radius:0}
  #walk-shopping .walk-shopping-items{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:0;padding:4px 2px 20px;max-width:100%}
  #walk-shopping .walk-shopping-card{flex:0 0 86%;min-width:0;width:auto;max-width:none;scroll-snap-align:start}
  #walk-shopping .walk-shopping-body :is(h3,p,small){overflow-wrap:anywhere}
@@ -61,10 +61,6 @@
 @media(max-width:700px){#walk-shopping .walk-shopping-card{flex:0 0 min(84%,300px)}#walk-shopping .walk-shopping-photo{height:164px}#walk-shopping .walk-shopping-body{padding:14px}#walk-shopping .walk-shopping-link{min-height:46px}}
 @media(max-width:360px){#walk-shopping .walk-shopping-card{flex-basis:min(88%,280px)}#walk-shopping .walk-shopping-photo{height:156px}}
 
-.home-weather-links{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;font-size:12px;line-height:1.6;margin-top:8px}
-.home-weather-links a{color:var(--pine-deep);text-underline-offset:3px}
-.home-weather-links button{min-height:36px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);font:inherit;color:var(--pine-deep);cursor:pointer}
-.home-weather-links button:disabled{opacity:.6;cursor:default}
 #weather-location{display:block;font-size:12px;line-height:1.7;color:var(--muted-text)}
 #weather-meta{font-size:10px;line-height:1.7;margin-top:8px;color:var(--muted-text)}
 #weather-meta a{color:inherit;text-underline-offset:3px}
