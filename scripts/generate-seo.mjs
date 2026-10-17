@@ -36,6 +36,7 @@ const escapeHtml = (value = '') => String(value)
 const safeSegment = (value) => String(value).replace(/[^a-zA-Z0-9_-]/g, '-');
 const compact = (value = '') => String(value ?? '').replace(/\s+/g, ' ').trim();
 const shortDescription = (item, type) => {
+  if(type.table==='facilities'&&PlaceEvidence.caution(item))return shortSnippet(`${item.name}. ${PlaceEvidence.caution(item).summary}. ${item.address||''}. 동반 가능 여부와 세부 조건은 방문 전 운영기관에 확인하세요.`);
   if(type.table==='courses' && (item.tags||[]).includes('동반 확인 필요')) return `${item.name}. 반려견 동반 조건 미확인. 공식 GPX 걷기 경로 ${item.distance||''}. 방문 전 운영기관에 동반 가능 여부와 현장 통제를 확인하세요.`.slice(0,155);
   const detail = snippetDetails([item.address,CourseInfo.cleanDescription(item.description),item.distance]);
   const needsPetCheck = type.table==='courses' && (item.tags||[]).includes('동반 확인 필요');
@@ -807,7 +808,7 @@ for (const {type,items} of groups) {
     const generatedHtml=withTraffic(detailHtml(item,type,url));
     const oldDescription=previousDescriptions.get(url),newDescription=generatedHtml.match(/<meta name="description" content="([^"]*)"/)?.[1]||'';
     await writeFile(path.join(dir,'index.html'),generatedHtml,'utf8');
-    sitemap.push({url,lastmod:type.table==='facilities'&&(PlacePhotos.get(item)||PlaceEvidence.conditions(item))?'2026-10-17':oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});
+    sitemap.push({url,lastmod:type.table==='facilities'&&(PlacePhotos.get(item)||PlaceEvidence.conditions(item)||PlaceEvidence.camping(item))?'2026-10-17':oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});
   }
 }
 

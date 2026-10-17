@@ -14,7 +14,7 @@
   const observer=new root.IntersectionObserver(entries=>{
    for(const entry of entries){if(!entry.isIntersecting)continue;
     const section=entry.target;
-    const selectors=section.id==='home-explore'?'#home-region-intro,.home-region-card,.home-region-select-row,.home-section-head':'.walk-shopping-heading,.walk-shopping-card';
+    const selectors=section.id==='home-explore'?'#home-region-intro,.home-region-card,.home-region-select-row,.home-section-head':'.walk-shopping-heading,.walk-shopping-card,.home-place-heading,.home-place-card';
     section.querySelectorAll(selectors).forEach((item,i)=>{item.setAttribute('data-home-motion','');item.style.setProperty('--home-motion-delay',Math.min(i*45,180)+'ms');});
     section.classList.add('home-scene-enter');observer.unobserve(section);
    }

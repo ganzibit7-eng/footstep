@@ -57,6 +57,8 @@ jobs:
         run: node scripts/generate-seo.mjs
       - name: Validate public page and image discovery
         run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs
+      - name: Validate home place sections
+        run: node tests/home-places.cjs
       - name: Commit changed pages
         run: |
           git config user.name "github-actions[bot]"
