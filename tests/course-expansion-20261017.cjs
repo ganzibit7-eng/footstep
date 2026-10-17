@@ -3,7 +3,8 @@ const root=path.resolve(__dirname,'..'),dir=path.join(root,'docs/course-expansio
 const info=require('../course-info.js'),pet=require('../course-pet-access.js'),photos=require('../course-photos.js'),addresses=require('../course-addresses.js');
 const ctx={CourseInfo:info};vm.createContext(ctx);for(const f of ['course-routes.js','course-expansion-300.js','course-expansion-20261009.js','course-expansion-20261009-night.js','course-expansion-20261017.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),ctx);
 function meters(a,b){const r=Math.PI/180;return 12742000*Math.asin(Math.sqrt(Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2));}
-function inside(p,poly){let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if((a[0]>p[0])!==(b[0]>p[0])&&p[1]<(b[1]-a[1])*(p[0]-a[0])/(b[0]-a[0])+a[1])yes=!yes;}return yes;}
+function inside(p,poly){for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],dx=b[0]-a[0],dy=b[1]-a[1],l=dx*dx+dy*dy,t=l?((p[0]-a[0])*dx+(p[1]-a[1])*dy)/l:0;if(t>=0&&t<=1&&Math.hypot(p[0]-a[0]-t*dx,p[1]-a[1]-t*dy)<1e-10)return true;}let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if((a[0]>p[0])!==(b[0]>p[0])&&p[1]<(b[1]-a[1])*(p[0]-a[0])/(b[0]-a[0])+a[1])yes=!yes;}return yes;}
+assert(inside([0,0],[[0,0],[0,1],[1,1],[1,0]]));assert(inside([0,.5],[[0,0],[0,1],[1,1],[1,0]]));assert(!inside([-.000001,.5],[[0,0],[0,1],[1,1],[1,0]]));
 const wayMap=new Map(proof.ways.map(w=>[w.id,w]));assert.equal(new Set(m.courses.map(c=>c.id)).size,m.courses.length);
 for(const c of m.courses){
  assert(!baseline.some(b=>b.id===c.id||b.name===c.name));assert(c.path.length>=10);assert.deepEqual([c.lat,c.lng],c.path[0]);assert(c.description.includes('제안 코스'));assert(c.description.includes('난이도')&&c.diff==='미확인');

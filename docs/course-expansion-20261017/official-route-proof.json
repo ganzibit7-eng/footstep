@@ -5,5 +5,8 @@
   "points": 140,
   "meters": 6835.709013978277,
   "maxGap": 104.07148449190682,
-  "overlaps": []
+  "overlaps": [],
+  "officialLengthKm": 7.5,
+  "officialMinutes": 180,
+  "publicHeader": "충주풍경길 종댕이길 길이 7.5km 소요시간 3시간 난이도 보통"
 }

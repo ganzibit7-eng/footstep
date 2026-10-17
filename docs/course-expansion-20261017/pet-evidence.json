@@ -102,5 +102,57 @@
       }
     ],
     "supplement": "https://joyonghanftp.mycafe24.com/bpa/images/bpa_w61.pdf"
+  },
+  {
+    "id": "walk_20261017_kto128829",
+    "contentId": "128829",
+    "source": "https://api.visitkorea.or.kr/hub/getPetInfo.do",
+    "query": {
+      "contentId": "128829",
+      "langDiv": "KOR"
+    },
+    "checked": "2026-10-17",
+    "response": [
+      {
+        "contId": "128829",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      }
+    ],
+    "supplement": null
+  },
+  {
+    "id": "walk_20261017_kto2736822",
+    "contentId": "2736822",
+    "source": "https://api.visitkorea.or.kr/hub/getPetInfo.do",
+    "query": {
+      "contentId": "2736822",
+      "langDiv": "KOR"
+    },
+    "checked": "2026-10-17",
+    "response": [
+      {
+        "contId": "2736822",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      }
+    ],
+    "supplement": null
   }
 ]
