@@ -2,7 +2,7 @@
   "checked": "2026-10-17",
   "targetNew": 300,
   "baseline": 400,
-  "scope": "Only source-coordinate-bound original connected walking routes with official pet scope, unique park identity and actual place photos. Pending visual and deployment review.",
+  "scope": "Four original connected walking routes published after official pet scope, duplicate, original-node and actual-place photo checks. Target 300 remains in progress.",
   "courses": [
     {
       "id": "walk_20261017_kto2764307",
@@ -141,7 +141,7 @@
       "diff": "미확인",
       "distance": "약 0.78km",
       "author": "공식 자료·공개 보행로 확인",
-      "status": "pending",
+      "status": "approved",
       "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2764307&langDiv=KOR",
       "conditions": {
         "동반구분": "전구역 동반가능",
@@ -399,7 +399,7 @@
       "diff": "미확인",
       "distance": "약 0.96km",
       "author": "공식 자료·공개 보행로 확인",
-      "status": "pending",
+      "status": "approved",
       "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=228874&langDiv=KOR",
       "conditions": {
         "동반구분": "전구역 동반가능",
@@ -581,7 +581,7 @@
       "diff": "미확인",
       "distance": "약 0.38km",
       "author": "공식 자료·공개 보행로 확인",
-      "status": "pending",
+      "status": "approved",
       "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2784124&langDiv=KOR",
       "conditions": {
         "동반구분": "전구역 동반가능",
@@ -1123,7 +1123,7 @@
       "diff": "미확인",
       "distance": "약 2.11km",
       "author": "공식 자료·공개 보행로 확인",
-      "status": "pending",
+      "status": "approved",
       "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3426656&langDiv=KOR",
       "conditions": {
         "동반구분": "전구역 동반가능",

@@ -23,3 +23,6 @@ OSM 원본의 연속 노드·보행로를 연결한 **지도 기반 제안 경�
 - © OpenStreetMap contributors, ODbL 1.0: https://www.openstreetmap.org/copyright
 
 `node tests/course-expansion-20261017.cjs`로 원본 노드·연속성·거리·공원 경계·기존 경로 겹침·사진 해시·편집된 경로의 인증 해제를 검사한다. 비공개 보류 코스 및 대량 조사 캐시는 공개 저장소에 포함하지 않는다.
+
+## 공개 진행
+2026-10-17 초도 4개를 approved로 전환했다. 공개 합계 404곳, 경로 보유 206곳이며 목표 300개 중 신규 4개다. 나머지는 조사 중이며 위치 안내만으로 목표 수량에 포함하지 않는다.

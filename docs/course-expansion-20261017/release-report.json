@@ -1,0 +1,17 @@
+{
+  "checked": "2026-10-17",
+  "targetNew": 300,
+  "newApproved": 4,
+  "totalApproved": 404,
+  "withPath": 206,
+  "unchangedBaseline": 400,
+  "tests": [
+    "original OSM consecutive nodes and park scope",
+    "no baseline overlap",
+    "photo original hashes and license attribution",
+    "all public photo pages in image sitemap",
+    "first-paint counters",
+    "walk handoff and auth mocks"
+  ],
+  "deployment": "pending"
+}
