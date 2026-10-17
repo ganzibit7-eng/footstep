@@ -1,11 +1,25 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {readFileSync} from 'node:fs';
+const externalLinks=JSON.parse(readFileSync(new URL('../data/place-external-links.json',import.meta.url),'utf8'));
+function addExternalLink(html){
+ if(html.includes('class="place-naver-link"'))return html;
+ const id=html.match(/rel="canonical" href="https:\/\/balzaguk.com\/places\/([^/]+)\//)?.[1];
+ const name=html.match(/<h1>([^<]+)<\/h1>/)?.[1]?.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#39;',"'");
+ if(!id||!name)return html;
+ const address=html.match(/<strong>위치·분류<\/strong><br>([^<]+)/)?.[1]?.split(' · ')[0]||'';
+ const exact=externalLinks[id],url=exact||'https://map.naver.com/p/search/'+encodeURIComponent(name+' '+address);
+ const safe=url.replaceAll('&','&amp;').replaceAll('"','&quot;');
+ return html.replace(/(<div class="place-actions"[^>]*>[\s\S]*?)(<\/div>)/,'$1<a class="place-naver-link" href="'+safe+'" target="_blank" rel="noopener noreferrer">'+(exact?'네이버에서 확인':'네이버 지도에서 검색')+' ↗</a>$2');
+}
 
 // Applied to generated HTML as well as existing pages; factual data and JSON-LD stay intact.
 export function refinePlaceDetail(html){
- if(!/class="reading-page place-detail-page"/.test(html)||html.includes('place-detail.css?v=20261017-premium'))return html;
- html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261017-premium"></head>');
+ if(!/class="reading-page place-detail-page"/.test(html))return html;
+ html=addExternalLink(html);
+ if(html.includes('/place-detail.css?'))return html.replaceAll('place-detail.css?v=20261017-premium','place-detail.css?v=20261017-native');
+ html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261017-native"></head>');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="place-site-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="28" height="28" alt="">발자국</a><a class="place-back" href="/discover.html?kind=facilities#find-place">장소 둘러보기 ↗</a></header>');
  html=html.replace(/<nav aria-label="현재 위치">([\s\S]*?)<\/nav>/,(_,content)=>{
   const links=[...content.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].map(x=>x[0]);

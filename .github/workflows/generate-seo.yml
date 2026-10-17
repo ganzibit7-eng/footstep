@@ -8,6 +8,7 @@ on:
       - 'scripts/generate-seo.mjs'
       - 'scripts/refine-place-details.mjs'
       - 'place-detail.css'
+      - 'data/place-external-links.json'
       - 'tests/place-detail-layout.mjs'
       - 'tests/fixtures/place-detail-*.html'
       - 'scripts/weekend-guide.mjs'

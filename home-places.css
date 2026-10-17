@@ -36,3 +36,17 @@
 @media(max-width:900px){.home-place-card{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:700px){.home-place-heading h2{font-size:28px}.home-place-heading>p{font-size:14px}.home-place-rail{gap:14px}.home-place-card{flex-basis:86%}.home-place-body{padding:18px}.home-place-heading{max-width:100%}.home-place-body h3{font-size:21px;min-height:0}.home-place-toolbar{margin-top:18px}.home-place-condition{min-height:48px}}
 @media(max-width:360px){.home-place-card{flex-basis:92%}.home-place-heading h2{font-size:25px}}
+
+/* Native place cards: one primary link, with source controls above the stretched link. */
+.home-place-card:not(.home-place-end){position:relative;transition:border-color .18s,box-shadow .18s}
+.home-place-body h3{font-family:inherit;font-weight:700;color:var(--pine-deep);font-size:20px;line-height:1.5;letter-spacing:-.035em;margin:0 0 4px;min-height:60px}
+.home-place-condition{margin:12px 0 20px;color:var(--muted);font-size:13px;line-height:1.85;min-height:48px}
+.home-place-detail{margin-top:auto;min-height:48px;font-weight:650;letter-spacing:-.015em}
+.home-place-detail::after{content:"";position:absolute;inset:0;z-index:1;border-radius:18px}
+.home-place-detail:focus-visible{outline:none}
+.home-place-detail:focus-visible::after{outline:3px solid var(--pine-deep);outline-offset:3px}
+.home-place-source{position:relative;z-index:2;margin-top:4px}
+.home-place-source summary{width:fit-content;font-size:10px;min-height:36px}
+@media(hover:hover){.home-place-card:not(.home-place-end):hover{border-color:#aab9a8;box-shadow:0 8px 24px #243c320c}.home-place-card:hover .home-place-detail{color:#47704c}}
+@media(max-width:700px){.home-place-body{padding:18px}.home-place-body h3{font-size:19px;min-height:57px}.home-place-condition{margin:10px 0 16px}}
+@media(prefers-reduced-motion:reduce){.home-place-card:not(.home-place-end){transition:none}}

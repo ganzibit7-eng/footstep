@@ -67,3 +67,6 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
  .place-detail-page .place-join h2{font-size:22px}
  .place-detail-page .place-home{margin-top:12px;font-size:13px}
 }
+
+.place-detail-page .place-actions .place-naver-link{font-size:13px;color:#56665c;text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center;margin-left:auto;padding:8px 0}
+@media(max-width:600px){.place-detail-page .place-actions .place-naver-link{grid-column:1/-1;margin:0;justify-content:center}}

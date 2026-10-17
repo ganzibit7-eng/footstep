@@ -7,7 +7,7 @@ test('refinement preserves source facts, photographs, links and structured data'
  for(const id of ['pub1788410835188_11_p7rain','kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4']){
   const before=(await readFile(new URL('./fixtures/place-detail-'+id+'.html',import.meta.url),'utf8')).replaceAll('\r\n','\n');
   const after=refinePlaceDetail(before);
-  assert(after.includes('place-detail.css?v=20261017-premium'));
+  assert(after.includes('place-detail.css?v=20261017-native'));
   assert.equal(refinePlaceDetail(after),after,'idempotent on the next generation');
   assert.deepEqual([...after.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]),[...before.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]));
   const panel=before.match(/<section aria-label="반려견 동반 조건"[\s\S]*?<\/section>/)[0];assert(after.includes(panel),'verified and unknown conditions unchanged');
@@ -21,8 +21,22 @@ test('refinement preserves source facts, photographs, links and structured data'
 test('all published place pages use the new stylesheet without duplicate dock or heading',async()=>{
  let count=0;for(const dir of await readdir(new URL('../places/',import.meta.url),{withFileTypes:true})){
   if(!dir.isDirectory())continue;let html;try{html=await readFile(new URL('../places/'+dir.name+'/index.html',import.meta.url),'utf8');}catch(e){if(e.code==='ENOENT')continue;throw e;}
-  if(!html.includes('reading-page place-detail-page'))continue;assert(html.includes('place-detail.css?v=20261017-premium'),dir.name);
+  if(!html.includes('reading-page place-detail-page'))continue;assert(html.includes('place-detail.css?v=20261017-native'),dir.name);
   assert.equal((html.match(/<h1>/g)||[]).length,1,dir.name);
   assert(!html.includes('class="place-dock"'),dir.name);count++;
  }assert(count>=3133);console.log('Place detail pages:',count);
+});
+
+test('home cards open native detail, with original Naver destinations available inside',async()=>{
+ const home=await readFile(new URL('../index.html',import.meta.url),'utf8');
+ const destinations=JSON.parse(await readFile(new URL('../data/place-external-links.json',import.meta.url),'utf8'));
+ const cards=[...home.matchAll(/<article class="home-place-card"[^>]*>([\s\S]*?)<\/article>/g)];assert.equal(cards.length,20);
+ for(const [,card] of cards){
+  assert(!card.includes('map.naver.com'));
+  const detail=card.match(/class="home-place-detail" href="([^\"]+)"/)[1];assert.match(detail,/^\/places\/[^/]+\/$/);
+  assert.equal((card.match(/href="\/places\//g)||[]).length,1,'one keyboard destination per card');
+  const page=await readFile(new URL('..'+detail+'index.html',import.meta.url),'utf8');
+  const id=detail.split('/')[2];assert(page.includes(destinations[id].replaceAll('&','&amp;')));
+  assert.equal((page.match(/class="place-naver-link"/g)||[]).length,1);
+ }
 });
