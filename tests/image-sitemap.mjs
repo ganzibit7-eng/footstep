@@ -2,9 +2,10 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {mkdtemp,mkdir,readFile,writeFile,copyFile,rm} from 'node:fs/promises';import os from 'node:os';import path from 'node:path';
 import {enrichImageSitemap} from '../scripts/image-sitemap.mjs';
 const root=path.resolve(import.meta.dirname,'..');
-test('image sitemap has 400 published courses, no private URLs or deprecated tags',async()=>{
+test('image sitemap covers every public photo course, without private URLs or deprecated tags',async()=>{
  const xml=await readFile(path.join(root,'sitemap.xml'),'utf8');
- const images=[...xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)];assert.equal(images.length,400);
+ const images=[...xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)];
+ const publicCourses=[...xml.matchAll(/<url><loc>https:\/\/balzaguk\.com\/courses\/[A-Za-z0-9_-]+\/<\/loc>/g)];assert.equal(images.length,publicCourses.length);assert(publicCourses.length>0);
  assert(xml.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"'));
  assert(!/<image:(?:title|caption|license|geo_location)>/.test(xml));
  for(const [entry,image] of [...xml.matchAll(/<url>[\s\S]*?<\/url>/g)].filter(([s])=>s.includes('<image:image>')).map(([s])=>[s,s.match(/<image:loc>([^<]+)/)[1]])){

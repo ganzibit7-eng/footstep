@@ -1,0 +1,19 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),vm=require('node:vm'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..'),dir=path.join(root,'docs/course-expansion-20261017'),m=JSON.parse(fs.readFileSync(path.join(dir,'manifest.json'))),proof=JSON.parse(fs.readFileSync(path.join(dir,'route-proof.json'))),baseline=JSON.parse(fs.readFileSync(path.join(dir,'baseline.json')));
+const info=require('../course-info.js'),pet=require('../course-pet-access.js'),photos=require('../course-photos.js'),addresses=require('../course-addresses.js');
+const ctx={CourseInfo:info};vm.createContext(ctx);for(const f of ['course-routes.js','course-expansion-300.js','course-expansion-20261009.js','course-expansion-20261009-night.js','course-expansion-20261017.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),ctx);
+function meters(a,b){const r=Math.PI/180;return 12742000*Math.asin(Math.sqrt(Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2));}
+function inside(p,poly){let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if((a[0]>p[0])!==(b[0]>p[0])&&p[1]<(b[1]-a[1])*(p[0]-a[0])/(b[0]-a[0])+a[1])yes=!yes;}return yes;}
+const wayMap=new Map(proof.ways.map(w=>[w.id,w]));assert.equal(new Set(m.courses.map(c=>c.id)).size,m.courses.length);
+for(const c of m.courses){
+ assert(!baseline.some(b=>b.id===c.id||b.name===c.name));assert(c.path.length>=10);assert.deepEqual([c.lat,c.lng],c.path[0]);assert(c.description.includes('제안 코스'));assert(c.description.includes('난이도')&&c.diff==='미확인');
+ const e=c.evidence;assert.equal(e.nodeIds.length,c.path.length);assert.equal(e.wayIds.length,c.path.length-1);
+ const polygon=proof.polygons.find(p=>p.id===e.boundaryId).nodes.map(id=>proof.nodes[id]);let length=0;
+ for(let i=0;i<c.path.length;i++){assert.deepEqual(c.path[i],proof.nodes[e.nodeIds[i]]);assert(inside(c.path[i],polygon));if(i){const w=wayMap.get(e.wayIds[i-1]);assert(w);assert(['footway','path','pedestrian','steps'].includes(w.tags.highway));assert(!['private','no'].includes(w.tags.access));assert.notEqual(w.tags.dog,'no');assert(w.nodes.some((n,j)=>j&&((w.nodes[j-1]===e.nodeIds[i-1]&&n===e.nodeIds[i])||(w.nodes[j-1]===e.nodeIds[i]&&n===e.nodeIds[i-1]))));const d=meters(c.path[i-1],c.path[i]);assert(d<=120);length+=d;}}
+ assert(Math.abs(length-e.meters)<.01);assert.equal(info.sourceURL(c.description),c.source);assert(pet.get(c));assert(addresses.get(c));assert(ctx.CourseRoutes.get(c)?.proposed);
+ const edited={...c,path:c.path.map(p=>[...p])};edited.path[1][0]+=.0001;assert.equal(pet.get(edited),null);assert.equal(ctx.CourseRoutes.get(edited),null);assert.equal(pet.get({...c,name:'changed'}),null);
+ for(const b of baseline){const old=b.path?.length?b.path:[[b.lat,b.lng]];let close=0;for(const p of c.path)if(old.some(q=>meters(p,q)<30))close++;assert(close/c.path.length<.2,'Overlapping existing route: '+b.name);}
+ const photo=photos.get(c);assert(photo&&photo.noCrop&&photo.datasetContentId);const bytes=fs.readFileSync(path.join(root,photo.src));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),photo.sourceSha256);assert.equal(photo.sourceSha256,photo.assetSha256);assert.equal(bytes.readUInt16BE(0),0xffd8);assert(photo.width>0&&photo.height>0);
+}
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');assert(html.includes('course-expansion-20261017.js?v=20261017-routes'));
+console.log('PASS: '+m.courses.length+' new source-bound routes, original consecutive OSM nodes, park scope, distance, existing-route overlap, photos, geometry-edit rejection.');

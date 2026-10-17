@@ -1,0 +1,8 @@
+*
+!.gitignore
+!README.md
+!manifest.json
+!route-proof.json
+!baseline.json
+!pet-evidence.json
+!release-report.json

@@ -11205,5 +11205,93 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "walk_20261017_kto2764307": "이천온천공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto2764307.jpg",
+    "place": "이천온천공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2764307&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/57/3541457_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "2764307",
+    "sourceSha256": "5ad3734e40acc44e286c63c447019b21fa16ccabfeca3f63b4cce90e57ba6692",
+    "assetSha256": "5ad3734e40acc44e286c63c447019b21fa16ccabfeca3f63b4cce90e57ba6692",
+    "width": 940,
+    "height": 626
+  },
+  {
+    "courses": {
+      "walk_20261017_kto228874": "구리한강시민공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto228874.jpg",
+    "place": "구리한강시민공원(코스모스공원) 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=228874&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/23/4066023_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "228874",
+    "sourceSha256": "942acd3a58441a3e824990c6a4442f4b7b97ef9ee303cc9d61ecd201e5453669",
+    "assetSha256": "942acd3a58441a3e824990c6a4442f4b7b97ef9ee303cc9d61ecd201e5453669",
+    "width": 940,
+    "height": 627
+  },
+  {
+    "courses": {
+      "walk_20261017_kto2784124": "울산 공룡발자국공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto2784124.jpg",
+    "place": "공룡발자국공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2784124&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/81/4123281_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "2784124",
+    "sourceSha256": "c109dfed79e82b3578a4f29c9d501e583b3a353d52beefb42c9dbd6dcfaa6548",
+    "assetSha256": "c109dfed79e82b3578a4f29c9d501e583b3a353d52beefb42c9dbd6dcfaa6548",
+    "width": 940,
+    "height": 627
+  },
+  {
+    "courses": {
+      "walk_20261017_kto3426656": "부산북항 친수공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261017_kto3426656.jpg",
+    "place": "부산북항 친수공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3426656&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/25/3454125_image2_1.JPG",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상 · 2026-10-17 자료 확인일과 다름",
+    "license": "한국관광공사 국문 관광정보 개방자료",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "제공 원본 JPEG 바이트와 전체 비율 유지",
+    "checked": "2026-10-17",
+    "datasetContentId": "3426656",
+    "sourceSha256": "6add2a48609c216df19ace37f101dad18de6edecdac1595bad73279d68a31c95",
+    "assetSha256": "6add2a48609c216df19ace37f101dad18de6edecdac1595bad73279d68a31c95",
+    "width": 940,
+    "height": 705
   }
 ]
