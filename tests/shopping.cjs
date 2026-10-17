@@ -35,9 +35,13 @@ container.children.forEach((card,i)=>{
  const nodes=descendants(card),links=nodes.filter(n=>n.tag==='a');assert.equal(links.length,1);
  assert.equal(links[0].href,expected[i],'preserve the issued affiliate URL');
  assert.equal(links[0].target,'_blank');assert.match(links[0].rel,/sponsored/);assert.match(links[0].rel,/noopener/);
- assert.match(links[0].textContent,/쿠팡.*상품 정보/);assert.ok(config.items[i].product);
+ assert.match(links[0].textContent,/쿠팡에서 보기/);assert.ok(config.items[i].product);
  const image=nodes.find(n=>n.tag==='img');assert.ok(image);assert.equal(image.src,config.items[i].image);assert.equal(image.loading,'lazy');assert.ok(image.alt.includes(config.items[i].product));
  assert.equal(nodes.find(n=>n.tag==='h3').textContent,config.items[i].product);
+ assert.equal(nodes.some(n=>n.tag==='small'||n.className==='walk-shopping-proof-date'),false,'repeated context and proof dates removed');
+ assert.equal(nodes.find(n=>n.className==='walk-shopping-option').textContent,config.items[i].option);
+ assert.equal(nodes.filter(n=>n.className==='walk-shopping-check').length,config.items[i].id==='pet-cleaner'?1:0);
+ if(config.items[i].id==='pet-cleaner')assert.match(nodes.find(n=>n.className==='walk-shopping-check').textContent,/몸에 사용하지/);
  assert.equal(Object.hasOwn(config.items[i],'price'),false);
 });
 for(const invalid of ['javascript:alert(1)','http://link.coupang.com/a/x','https://link.coupang.com.evil.test/a/x','https://evil.test/a/x','https://secret@link.coupang.com/a/x','https://www.coupang.com/vp/products/1','https://link.coupang.com/other'])assert.equal(context.PawShopping.affiliateURL(invalid),null);
@@ -47,5 +51,6 @@ config.items=[{id:'bad',name:'<img src=x onerror=alert(1)>',url:'javascript:aler
 const html=fs.readFileSync(path.join(base,'index.html'),'utf8'),shoppingStart=html.indexOf('<section id="walk-shopping"'),section=html.slice(shoppingStart,html.indexOf('</section>',shoppingStart));
 assert.ok(section.indexOf('id="walk-shopping-disclosure"')<section.indexOf('<h2 id="walk-shopping-title">'),'disclosure precedes commercial recommendations');
 assert.match(section,/현재 가격과 배송 조건은 쿠팡/);
+assert(!section.includes('walk-shopping-selection'),'repeated selection paragraph removed');
 assert.doesNotMatch(fs.readFileSync(path.join(base,'shopping.js'),'utf8'),/fetch\(|\.click\(|window\.open|location\.(href|assign)|setInterval/,'rendering must not generate clicks, navigation or background affiliate requests');
 console.log('PASS: 6 exact issued links and matching server catalog, first featured snack, dated evidence with stale/future/invalid rejection, no prices, disclosure, safe images and no automatic affiliate navigation');

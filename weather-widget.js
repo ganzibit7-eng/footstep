@@ -1,0 +1,27 @@
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(root);else root.PawWeather=factory(root);})(typeof globalThis!=='undefined'?globalThis:this,function(root){'use strict';
+ const HOUR=3600000,KEY='balzaguk.weather.regions.v1';let snapshot=null,inflight=null,sequence=0,lastOptions={},retryBound=false;
+ function validCoords(lat,lng){return lat!==null&&lat!==undefined&&lat!==''&&lng!==null&&lng!==undefined&&lng!==''&&Number.isFinite(Number(lat))&&Number.isFinite(Number(lng))&&Number(lat)>=-90&&Number(lat)<=90&&Number(lng)>=-180&&Number(lng)<=180;}
+ function select(data,{lat,lng}={},now=Date.now()){
+  if(data?.version!==1||!Array.isArray(data.regions)||!Number.isFinite(Date.parse(data.generatedAt))||Date.parse(data.generatedAt)>now+300000||now-Date.parse(data.generatedAt)>36*HOUR)return null;
+  const positioned=validCoords(lat,lng)&&Number(lat)>=32&&Number(lat)<=39&&Number(lng)>=124&&Number(lng)<=132;
+  const target=positioned?{lat:Number(lat),lng:Number(lng)}:{lat:37.5665,lng:126.978};
+  const ranked=data.regions.filter(r=>validCoords(r.lat,r.lng)&&typeof r.name==='string'&&/^[가-힣 ]{1,20}$/.test(r.name)).map(r=>({r,d:Math.pow(Number(r.lat)-target.lat,2)+Math.pow((Number(r.lng)-target.lng)*Math.cos(target.lat*Math.PI/180),2)})).sort((a,b)=>a.d-b.d);
+  const r=ranked[0]?.r;if(!r||!Array.isArray(r.hours)||!Number.isFinite(Date.parse(r.updatedAt))||now-Date.parse(r.updatedAt)>36*HOUR||Date.parse(r.updatedAt)>now+300000)return null;
+  const hour=r.hours.filter(x=>Number.isFinite(x.temp)&&x.temp>=-60&&x.temp<=60&&typeof x.symbol==='string'&&/^[a-z_]+$/.test(x.symbol)&&Math.abs(Date.parse(x.time)-now)<=90*60000).sort((a,b)=>Math.abs(Date.parse(a.time)-now)-Math.abs(Date.parse(b.time)-now))[0];
+  return hour?{...hour,name:r.name,updatedAt:r.updatedAt,old:now-Date.parse(r.updatedAt)>6*HOUR}:null;
+ }
+ function symbolInfo(symbol){if(/thunder/.test(symbol))return {icon:'⛈️',advice:'뇌우 예보가 있어요. 야외 산책 전 기상 상황을 확인해 주세요.'};if(/snow|sleet/.test(symbol))return {icon:'🌨️',advice:'눈·진눈깨비 예보가 있어요. 젖거나 미끄러운 길을 주의해 주세요.'};if(/rain/.test(symbol))return {icon:'🌧️',advice:'비 예보가 있어요. 젖거나 미끄러운 길을 주의해 주세요.'};if(/fog/.test(symbol))return {icon:'🌫️',advice:'안개 예보가 있어요. 주변 시야와 노면 상태를 확인하세요.'};return {icon:/^clear/.test(symbol)?symbol.endsWith('_night')?'🌙':'☀️':'⛅',advice:'하늘과 노면 상태를 확인하고 산책을 준비하세요.'};}
+ function cached(){try{return JSON.parse(root.localStorage.getItem(KEY)||'null');}catch{return null;}}
+ function json(){if(inflight)return inflight;inflight=new Promise((resolve,reject)=>{let settled=false;const controller=typeof root.AbortController==='function'?new root.AbortController():null;const timer=root.setTimeout(()=>{settled=true;controller?.abort();reject(Error('weather_timeout'));},6000);Promise.resolve().then(()=>root.fetch('/data/weather.json',{cache:'no-cache',...(controller?{signal:controller.signal}:{})})).then(res=>{if(!res.ok)throw Error('weather_http');return res.json();}).then(data=>{if(settled)return;settled=true;root.clearTimeout(timer);resolve(data);},error=>{if(settled)return;settled=true;root.clearTimeout(timer);reject(error);});}).finally(()=>{inflight=null;});return inflight;}
+ function paint(value,{error=false,loading=false}={}){const doc=root.document;if(!doc)return;const title=doc.getElementById('weather-title'),desc=doc.getElementById('weather-desc'),location=doc.getElementById('weather-location'),retry=doc.getElementById('weather-retry');if(!title||!desc)return;
+  if(value){const info=symbolInfo(value.symbol);title.textContent=info.icon+' '+Math.round(value.temp)+'°C';desc.textContent=error?'새 예보 연결이 지연돼 저장된 예보를 보여드려요.':/rain|snow|sleet|thunder|fog/.test(value.symbol)?info.advice:value.temp>=28?'더운 날씨예요. 그늘과 노면 온도를 확인하세요.':value.temp<=0?'추운 날씨예요. 결빙된 길을 주의해 주세요.':info.advice;if(location)location.textContent=value.name+' 기준 · '+new Date(Date.parse(value.time)+9*HOUR).toISOString().slice(11,16)+' 예보'+(value.old?' · 이전 갱신 자료':'');}
+  else{title.textContent=loading?'예보 확인 중…':'날씨 연결 지연';desc.textContent=loading?'지역 예보를 불러오고 있어요.':'연결 상태를 확인한 뒤 다시 불러오거나 기상청 예보를 확인해 주세요.';if(location)location.textContent='지역 대표 지점 예보 · 현재 위치 실측이 아니에요.';}
+  if(retry){retry.hidden=loading&&!value;retry.disabled=loading;retry.textContent=loading?'확인 중…':'새로 확인';}
+ }
+ async function load(options={}){lastOptions=options;const request=++sequence;const initial=select(snapshot,options)||select(cached(),options);paint(initial,{loading:true});try{const data=await json();if(request!==sequence)return;const value=select(data,options);if(!value)throw Error('weather_stale');snapshot=data;try{root.localStorage.setItem(KEY,JSON.stringify(data));}catch{}paint(value);return value;}catch{if(request!==sequence)return;const value=select(snapshot,options)||select(cached(),options);paint(value,{error:true});return value;}}
+ function init(options={}){if(!retryBound&&root.document){const retry=root.document.getElementById('weather-retry');retry?.addEventListener('click',()=>load(lastOptions));root.addEventListener?.('online',()=>{if(root.document.visibilityState!=='hidden')load(lastOptions);});retryBound=true;}return load(options);}
+ // Weather remains usable if the map/auth bootstrap fails or takes longer.
+ if(root.document?.readyState==='loading')root.document.addEventListener('DOMContentLoaded',()=>{if(!retryBound)init();},{once:true});
+ else if(['interactive','complete'].includes(root.document?.readyState))Promise.resolve().then(()=>{if(!retryBound)init();});
+ return {init,load,select,validCoords,symbolInfo};
+});

@@ -29,7 +29,6 @@
       const body=root.document.createElement('div');body.className='walk-shopping-body';
       if(item.featured)card.className+=' walk-shopping-featured';
       const icon=root.document.createElement('span');icon.className='walk-shopping-icon';icon.setAttribute('aria-hidden','true');icon.textContent=item.icon;
-      const context=root.document.createElement('small');context.textContent=item.context;
       const title=root.document.createElement('h3');title.textContent=item.product||item.name;
       const reason=root.document.createElement('p');reason.textContent=item.reason;
       const check=root.document.createElement('p');check.className='walk-shopping-check';check.textContent=item.check;
@@ -49,14 +48,14 @@
         image.addEventListener('error',()=>{image.hidden=true;media.replaceChildren(icon);},{once:true});
         media.append(image);card.append(media);
       }else body.append(icon);
-      body.append(context,title);card.append(body);
-      if(evidence){const proof=root.document.createElement('p');proof.className='walk-shopping-proof-date';proof.textContent=item.popularity.checkedAt.replaceAll('-','.')+' 쿠팡 확인';body.append(proof);}
+      body.append(title);card.append(body);
       const url=affiliateURL(item.url);
       if(url){
         linked++;
-        const option=root.document.createElement('p');option.className='walk-shopping-option';option.textContent='제휴 상품 · '+(item.option||item.name);
-        body.append(option,check);
-        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 상품 정보 보기 ↗';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;a.dataset.shoppingPlacement='home-walk-shopping';body.append(a);
+        const option=root.document.createElement('p');option.className='walk-shopping-option';option.textContent=item.option||item.name;
+        body.append(option);
+        if(item.id==='pet-cleaner'){check.textContent='반려동물 몸에 사용하지 마세요.';body.append(check);}
+        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 보기 ↗';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;a.dataset.shoppingPlacement='home-walk-shopping';body.append(a);
       }else body.append(reason,check);
       container.append(card);
     });
