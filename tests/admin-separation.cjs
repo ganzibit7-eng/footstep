@@ -18,6 +18,6 @@ async function ready(h){for(let i=0;i<50&&h.resources.length<6;i++)await new Pro
  h=harness({markup:'<script>alert(1)</script>'});await assert.rejects(h.controller.load());assert.equal(h.resources.length,0);
  h=harness({waitResources:true});const revoked=h.controller.load();await ready(h);h.client.rpc=async()=>({data:false});h.release();await assert.rejects(revoked);assert.equal(h.stats.mounts,0);
  assert(!html.includes('id="admin-overlay"'));assert(!html.includes('id="privacy-section"'));assert(!html.includes('id="terms-section"'));assert(!html.includes('src="admin-affiliate.js'));assert(!html.includes('PapaParse/'));
- const precache=sw.slice(0,sw.indexOf('const allowed='));assert(!precache.includes('admin-panel.html'));assert(!precache.includes('admin-affiliate'));assert(!precache.includes('admin-bot-panel'));assert(!precache.includes('PapaParse/'));
+ const precache=sw.slice(0,sw.indexOf("self.addEventListener('install'"));assert(!precache.includes('admin-panel.html'));assert(!precache.includes('admin-affiliate'));assert(!precache.includes('admin-bot-panel'));assert(!precache.includes('PapaParse/'));
  console.log('PASS admin separation: unauthorized zero loads, authoritative identity/role, concurrent deduplication, logout disposal, stale session and revoked-role rejection, markup validation, public HTML and offline shell isolation.');
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>clearTimeout(timeout));

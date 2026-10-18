@@ -46,7 +46,7 @@ const saved=()=>Array.from(vm.runInContext('[...favoriteIds]',context));
   context.compressImage=async()=>new Uint8Array();let submitted=0;
   context.insertReviewDB=async()=>{submitted++;return true;};
   context.sb.storage={from:()=>({upload:async()=>({error:{message:'upload failed'}})})};
-  vm.runInContext(slice('  let reviewSubmitting','  // ===== 날씨 &'),context);
+  vm.runInContext(slice('  let reviewSubmitting','  // Regional forecast arrives'),context);
   const form=element('review-form'),button=element('submit');form.querySelector=()=>button;
   element('review-photo-input').files=[{size:1000}];
   await form.listeners.submit({preventDefault(){},target:form});

@@ -2309,7 +2309,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       <div class="card"><h3 style="font-size:16px;"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg>다른 강아지·사람 배려</h3><p class="desc">다른 반려견이나 아이들이 무서워할 수 있으니, 마주칠 땐 거리를 두고 인사해요.</p></div>
     </div>
     <p style="font-size:12.5px; color:#6B6550; margin-top:28px; line-height:1.7;">
-      ⚠️ 공식 자료와 이용자 제안을 운영자가 검토해 공개합니다. 자료 확인은 현장 방문 확인과 다르며, 확인되지 않은 정보는 미확인으로 표시합니다. 안내 정보는 실제 현장 상황(공사, 통제, 위험 요소 등)과 다를 수 있어요. 산책 전 현장 상황을 직접 확인해주시고, 맹견 지정견·입마개 의무견 등은 관련 법령을 반드시 준수해주세요. 이 정보를 이용해 발생한 문제에 대해 발자국은 책임을 지지 않습니다.
+      ⚠️ 공식 자료와 이용자 제안을 운영자가 검토해 공개합니다. 자료 확인은 현장 방문 확인과 다르며, 확인되지 않은 정보는 미확인으로 표시합니다. 안내 정보는 실제 현장 상황(공사, 통제, 위험 요소 등)과 다를 수 있어요. 산책 전 현장 상황을 직접 확인해주시고, 맹견 지정견·입마개 의무견 등은 관련 법령을 반드시 준수해주세요. 현장 정보의 한계를 안내하는 것이 운영자의 법적 책임을 면제한다는 뜻은 아닙니다. 이용자와 운영자는 자신의 귀책사유에 대해 관계 법령에 따른 책임을 부담합니다.
     </p>
   </div>
 </section>
@@ -2475,11 +2475,6 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         <label style="margin-top:0;">🎁 친구 추천하고 포인트 받기</label>
         <p style="font-size:12.5px; color:#6B6550; margin:4px 0 8px;">내 링크로 친구가 가입하면 나도, 친구도 50P씩 받아요.</p>
         <button class="pin-btn" id="copy-referral-btn" style="border-style:solid; color:var(--clay); border-color:var(--clay); background:#FBF1EC;">🔗 내 추천 링크 복사하기</button>
-        <button class="pin-btn" id="show-qr-btn" style="margin-top:8px;">📱 QR코드로 보여주기</button>
-        <div id="referral-qr-wrap" style="display:none; text-align:center; margin-top:12px;">
-          <img id="referral-qr-img" src="" alt="추천 링크 QR코드" style="width:180px; height:180px; border-radius:10px; border:1px solid var(--line); background:#fff; padding:8px;">
-          <p style="font-size:11.5px; color:var(--muted-text); margin-top:6px;">오프라인에서 친구에게 스캔하게 해보세요</p>
-        </div>
       </div>
 
       <div style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--line);">
@@ -2579,13 +2574,14 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script src="share-link.js?v=20261016-growth"></script>
 <script src="admin-loader.js?v=20261014-member-auth-fix"></script>
 <script src="member-event.js?v=20261016-event-flow"></script>
-<script src="traffic.js?v=20261009-affiliate" data-manual></script>
+<script src="traffic.js?v=20261018-compliance" data-manual></script>
 <script src="course-photos.js?v=20261017-routes3"></script>
 <script src="course-info.js?v=20261017-routes3"></script>
 <script src="account-deletion-client.js?v=20261014-member-auth-fix"></script>
+<script src="/signup-consent.js?v=20261018-consent"></script>
 <script src="auth-presentation.js?v=20261013-consent"></script>
 <script src="shopping-config.js?v=20261011-photo-badges"></script>
-<script src="shopping.js?v=20261017-compact"></script>
+<script src="shopping.js?v=20261018-compliance"></script>
 
 <script src="/place-saves.js?v=20261008"></script>
 <script src="bin-info.js?v=20261008-disposal-sites"></script>
@@ -2883,7 +2879,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const results=await Promise.allSettled([
       fetchAllRows('courses','created_at').then(data=>{
         courses=data.map(rowToCourse);courseDataState='ready';courseDataAvailable=true;homeCountReady.courses=true;homeCountPending.courses=false;
-        renderStats();renderGrid();renderWalkReference();return data;
+        renderStats();renderGrid();renderWalkReference();if(document.getElementById('ai-assistant-overlay').classList.contains('show')&&document.getElementById('ai-assistant-body').dataset.mongStep==='c-result')aiRenderStep('c-result');return data;
       },error=>{homeCountPending.courses=false;homeCountFailed=true;renderStats();throw error;}),fetchAllRows('bins','created_at'),
       options.deferFacilities?Promise.resolve(facilities):ensureFacilityData(true),fetchAllRows('reviews','created_at')
     ]);
@@ -3017,6 +3013,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   function applySession(session){
     if(session && session.user){
       myDeviceId = session.user.id;
+      if(typeof SignupConsent!=='undefined')void SignupConsent.flush(sb);
       const meta = session.user.user_metadata || {};
       const emailPrefix = session.user.email ? session.user.email.split('@')[0] : null;
       myNickname = meta.display_name || meta.name || meta.nickname || meta.full_name || meta.preferred_username || emailPrefix || '이용자';
@@ -3321,6 +3318,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   }
   function isTermsAgreed(){
     for(const [id,message] of [['terms-agree-checkbox','만 14세 이상 확인과 이용약관 동의가 필요해요.'],['privacy-agree-checkbox','회원가입에 필요한 개인정보 수집·이용에 동의해 주세요.']]){if(!document.getElementById(id).checked){AuthPresentation.feedback(message,true,id);document.getElementById(id).focus();return false;}}
+    if(typeof SignupConsent!=='undefined')SignupConsent.capture();
     AuthPresentation.feedback('');return true;
   }
   async function signInWithKakao(){
@@ -3432,16 +3430,6 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     }catch(e){
       prompt('아래 링크를 복사해서 공유해주세요:', link);
     }
-  }
-  function showReferralQr(){
-    const link = getMyReferralLink();
-    if(!link){ toast('로그인 후 이용해주세요'); return; }
-    const wrap = document.getElementById('referral-qr-wrap');
-    const isShown = wrap.style.display !== 'none';
-    if(isShown){ wrap.style.display = 'none'; return; }
-    document.getElementById('referral-qr-img').src =
-      `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(link)}`;
-    wrap.style.display = '';
   }
 
   function updateProfileLabel(){
@@ -3753,30 +3741,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 
   // ===== AI 비서 "몽" — 규칙 기반 코스 추천 (외부 API 비용 없음) =====
   const aiAnswers = { size:null, time:null, env:null, region:null, facilityCategory:null, facilityRegion:null, comfort:{} };
-  // 대략적인 시도 경계 (정밀하지 않아도 추천 참고용으로는 충분해요)
-  const REGION_BOUNDS = {
-    '부산': {latMin:35.0,latMax:35.4,lngMin:128.8,lngMax:129.3},
-    '대구': {latMin:35.6,latMax:36.3,lngMin:128.3,lngMax:128.9},
-    '인천': {latMin:37.2,latMax:37.9,lngMin:124.5,lngMax:126.8},
-    '광주': {latMin:35.0,latMax:35.3,lngMin:126.6,lngMax:127.0},
-    '대전': {latMin:36.1,latMax:36.5,lngMin:127.2,lngMax:127.6},
-    '울산': {latMin:35.3,latMax:35.8,lngMin:128.9,lngMax:129.5},
-    '세종': {latMin:36.4,latMax:36.8,lngMin:127.1,lngMax:127.4},
-    '강원': {latMin:37.0,latMax:38.7,lngMin:127.0,lngMax:129.4},
-    '서울': { latMin:37.42, latMax:37.71, lngMin:126.76, lngMax:127.19 },
-    '경기': { latMin:36.9,  latMax:38.3,  lngMin:126.4,  lngMax:127.9 },
-    '충남': { latMin:35.9,  latMax:37.0,  lngMin:126.0,  lngMax:127.3 },
-    '충북': { latMin:36.0,  latMax:37.3,  lngMin:127.3,  lngMax:128.3 },
-    '경남': { latMin:34.7,  latMax:35.9,  lngMin:127.5,  lngMax:129.3 },
-    '경북': { latMin:35.7,  latMax:37.0,  lngMin:128.0,  lngMax:129.6 },
-    '전남': { latMin:34.0,  latMax:35.5,  lngMin:126.0,  lngMax:127.7 },
-    '전북': { latMin:35.4,  latMax:36.2,  lngMin:126.4,  lngMax:127.6 },
-    '제주': { latMin:33.1,  latMax:33.6,  lngMin:126.1,  lngMax:126.9 },
-  };
   function courseInRegion(course, region){
-    const b = REGION_BOUNDS[region];
-    if(!b) return false;
-    return course.lat >= b.latMin && course.lat <= b.latMax && course.lng >= b.lngMin && course.lng <= b.lngMax;
+    const target=HomeExplore.regions.find(r=>r.label===region);
+    const address=CourseAddresses.get(course)||{address:course.address||''};
+    return !!target && HomeExplore.regionKey(course,address)===target.key;
   }
   function parseDistanceKm(distStr){
     if(!distStr) return 2;
@@ -3788,15 +3756,16 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const body=document.getElementById('ai-assistant-body');
     const steps=['region','time','env','review'],index=steps.indexOf(stage);
     const timeLabel=value=>({'짧게':'30분 이내','보통':'30분~1시간','길게':'1시간 이상'}[value]||'시간 선택');
-    const envLabel=value=>({'그늘많음':'그늘 많은 길','잔디바닥':'잔디가 있는 길','계단없음':'계단 없는 경로'}[value]||'환경은 상관없어요');
+    const envLabel=value=>({'그늘많음':'그늘 많은 길','잔디바닥':'잔디가 있는 길','계단없음':'계단 없는 경로','숲길':'숲길','하천길':'하천길'}[value]||'환경은 상관없어요');
     const answers=[['지역',aiAnswers.region,'region'],['시간',aiAnswers.time&&timeLabel(aiAnswers.time),'time'],['환경',envLabel(aiAnswers.env),'env']].slice(0,index);
     const question={region:'어디에서 함께 걸을까요?',time:'오늘은 얼마나 걷고 싶으세요?',env:'어떤 길이면 더 좋을까요?',review:'이 조건으로 찾아볼까요?'}[stage];
-    const note={region:'산책하고 싶은 지역을 골라주세요.',time:'잠깐의 산책도, 여유로운 한 바퀴도 좋아요.',env:'원하는 환경을 하나 고르고, 필요한 편의 조건을 더해 주세요.',review:'등록된 코스 정보에서 조건에 맞는 곳을 찾아드릴게요.'}[stage];
-    const choice=(value,label,selected)=>'<button type="button" class="mong-choice" data-answer="'+escapeHtml(value)+'" aria-pressed="'+String(selected)+'">'+escapeHtml(label)+'</button>';
+    const note={region:'산책하고 싶은 지역을 골라주세요.',time:'잠깐의 산책도, 여유로운 한 바퀴도 좋아요.',env:'원하는 환경을 하나 고르세요. 선택 지역·시간에 확인 자료가 없는 환경은 선택할 수 없어요.',review:'등록된 코스 정보에서 조건에 맞는 곳을 찾아드릴게요.'}[stage];
+    const choice=(value,label,selected,disabled=false)=>'<button type="button" class="mong-choice" data-answer="'+escapeHtml(value)+'" aria-pressed="'+String(selected)+'"'+(disabled?' disabled':'')+'>'+escapeHtml(label)+'</button>';
+    const environmentChoice=(value,label)=>{const selected=aiAnswers.env;aiAnswers.env=value;const count=aiRecommendCourses().length;aiAnswers.env=selected;return choice(value,label+(value&&!count?' · 확인 자료 없음':''),(selected||'')===value,!!value&&!count);};
     let content='';
     if(stage==='region')content='<div class="mong-choice-grid mong-regions">'+AI_REGIONS.map(r=>choice(r,r,aiAnswers.region===r)).join('')+'</div>';
     if(stage==='time')content='<div class="mong-choice-grid">'+['짧게','보통','길게'].map(v=>choice(v,timeLabel(v),aiAnswers.time===v)).join('')+'</div>';
-    if(stage==='env')content='<div class="mong-choice-grid">'+[['','상관없어요'],['그늘많음','그늘 많은 길'],['잔디바닥','잔디가 있는 길']].map(([v,label])=>choice(v,label,(aiAnswers.env||'')===v)).join('')+'</div><fieldset id="mong-chat-comfort" class="mong-chat-comfort"><legend>필요한 편의 조건 <span>여러 개 선택 가능</span></legend>'+CourseComfort.optionsHTML('mong-chat')+'<button type="button" id="mong-chat-preset" class="mong-secondary">완만한 길 · 쉴 곳 · 2km 이내</button><p>계단·경사·쉼터 정보가 미확인이면 조건에 맞는 것으로 보지 않아요.</p></fieldset><button type="button" class="mong-next" id="mong-chat-next">선택한 조건 확인하기 →</button>';
+    if(stage==='env')content='<div class="mong-choice-grid">'+[['','상관없어요'],['숲길','숲길'],['하천길','하천길'],['그늘많음','그늘 많은 길'],['잔디바닥','잔디가 있는 길']].map(([v,label])=>environmentChoice(v,label)).join('')+'</div><fieldset id="mong-chat-comfort" class="mong-chat-comfort"><legend>필요한 편의 조건 <span>여러 개 선택 가능</span></legend>'+CourseComfort.optionsHTML('mong-chat')+'<button type="button" id="mong-chat-preset" class="mong-secondary">완만한 길 · 쉴 곳 · 2km 이내</button><p>계단·경사·쉼터 정보가 미확인이면 조건에 맞는 것으로 보지 않아요.</p></fieldset><button type="button" class="mong-next" id="mong-chat-next">선택한 조건 확인하기 →</button>';
     if(stage==='review')content='<p class="mong-review-note">'+escapeHtml(Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]).map(k=>CourseComfort.fields[k]).join(' · ')||'추가 편의 조건 없이 찾아요.')+'</p><button type="button" class="mong-next" id="mong-chat-find">산책 코스 찾아보기 →</button><p class="mong-chat-footnote">추천은 등록 자료를 기준으로 해요. 실제 동반 조건과 당일 통제는 코스 상세에서 확인해 주세요.</p>';
     body.innerHTML='<section class="mong-conversation" aria-label="몽과 산책 코스 고르기"><div class="mong-progress"><span>산책 함께 고르기</span><span>'+String(index+1)+' / 4</span></div><div class="mong-progress-track" aria-hidden="true"><i style="width:'+String((index+1)*25)+'%"></i></div>'+(answers.length?'<div class="mong-answer-trail">'+answers.map(([label,value,key])=>'<button type="button" data-edit="'+key+'"><small>'+label+'</small><span>'+escapeHtml(value)+'</span><span aria-hidden="true">↗</span></button>').join('')+'</div>':'')+'<div class="mong-question"><span class="mong-speaker">몽</span><h3 tabindex="-1" id="mong-question-title">'+question+'</h3><p>'+note+'</p></div>'+content+'<div class="mong-chat-tools">'+(index?'<button type="button" data-edit="'+steps[index-1]+'">← 이전 질문</button>':'')+'<button type="button" data-mong-advanced>조건 한 번에 설정</button></div>'+(stage==='region'?'<details class="mong-other-help"><summary>다른 도움이 필요해요</summary><div class="mong-choice-grid"><button type="button" data-go="near-me">내 주변 코스</button><button type="button" data-go="f-category">함께 갈 장소</button><button type="button" data-go="guide-0">사용법</button><button type="button" data-go="faq">자주 묻는 질문</button></div></details>':'')+'</section>';
     body.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>aiRenderStep('chat-'+b.dataset.edit));
@@ -3820,6 +3789,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   function aiRenderStep(step){
     const version = ++mongRenderVersion;
     const body = document.getElementById('ai-assistant-body');
+    body.dataset.mongStep=step;
     const backBtn = `<button class="ai-option-btn" data-ai-menu="1" style="text-align:center; background:none; border:none; color:var(--muted-text); font-weight:500; padding:8px;">← 메인으로</button>`;
 
     if(step==='menu'||step.startsWith('chat-')){renderMongConversation(step==='menu'?'region':step.slice(5));return;}
@@ -3829,7 +3799,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
           <p style="font-family:'Noto Sans KR',system-ui,sans-serif; font-size:14px; color:var(--clay); margin:0;">🐾 발자국 산책 도우미</p>
           <h4 style="font-family:'Noto Sans KR',system-ui,sans-serif; font-size:19px; color:var(--pine-deep); margin:4px 0 0;">오늘 어디로 산책 갈까요?</h4>
         </div>
-        <form id="mong-custom-form" class="mong-custom"><h4>나에게 맞는 산책 찾기</h4><label for="mong-region">산책 지역</label><select id="mong-region" required><option value="">지역을 선택해 주세요</option>${AI_REGIONS.map(r=>`<option>${r}</option>`).join('')}</select><label for="mong-time">걷고 싶은 시간</label><select id="mong-time"><option value="짧게">30분 이내</option><option value="보통">30분~1시간</option><option value="길게">1시간 이상</option></select><fieldset class="comfort-filter" id="mong-comfort-filter"><legend>선호 환경</legend><label for="mong-env">그늘·바닥 환경</label><select id="mong-env"><option value="">상관없어요</option><option value="그늘많음">그늘 많은 길</option><option value="잔디바닥">잔디가 있는 길</option></select><p>선택한 정보가 확인된 코스만 찾아요.</p><button type="button" class="comfort-preset" id="mong-senior-preset">완만한 길 + 쉴 곳 + 2km 이내</button>${CourseComfort.optionsHTML("mong-comfort")}<p>계단 없음은 별도 선택 · 미확인 코스 제외</p></fieldset><button type="submit" class="submit-btn">맞춤 코스 3곳 찾기 →</button><p>등록된 시간·환경으로 추천해요. 반려견 동반 조건은 상세에서 확인해 주세요.</p></form>
+        <form id="mong-custom-form" class="mong-custom"><h4>나에게 맞는 산책 찾기</h4><label for="mong-region">산책 지역</label><select id="mong-region" required><option value="">지역을 선택해 주세요</option>${AI_REGIONS.map(r=>`<option>${r}</option>`).join('')}</select><label for="mong-time">걷고 싶은 시간</label><select id="mong-time"><option value="짧게">30분 이내</option><option value="보통">30분~1시간</option><option value="길게">1시간 이상</option></select><fieldset class="comfort-filter" id="mong-comfort-filter"><legend>원하는 환경</legend><label for="mong-env">그늘·바닥 환경</label><select id="mong-env"><option value="">상관없어요</option><option value="그늘많음">그늘 많은 길</option><option value="잔디바닥">잔디가 있는 길</option><option value="숲길">숲길</option><option value="하천길">하천길</option></select><p>선택한 정보가 확인된 코스만 찾아요.</p><button type="button" class="comfort-preset" id="mong-senior-preset">완만한 길 + 쉴 곳 + 2km 이내</button>${CourseComfort.optionsHTML("mong-comfort")}<p>계단 없음은 별도 선택 · 미확인 코스 제외</p></fieldset><button type="submit" class="submit-btn">맞춤 코스 3곳 찾기 →</button><p>등록된 시간·환경으로 추천해요. 반려견 동반 조건은 상세에서 확인해 주세요.</p></form>
         <details class="mong-text-request"><summary>문장으로 직접 찾기</summary><form id="mong-request-form" style="margin-top:16px;">
           <label for="mong-request">어떤 산책을 찾으세요?</label>
           <input id="mong-request" type="text" maxlength="160" placeholder="예: 서울 소형견 짧게 그늘많음" autocomplete="off">
@@ -3849,6 +3819,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
       });
       if(aiAnswers.env==='계단없음'){aiAnswers.comfort={...aiAnswers.comfort,stairs:true};aiAnswers.env=null;}body.querySelector('#mong-region').value=aiAnswers.region||'';body.querySelector('#mong-time').value=aiAnswers.time||'짧게';body.querySelector('#mong-env').value=aiAnswers.env||'';
+      const updateEnvironmentOptions=()=>{const saved={region:aiAnswers.region,time:aiAnswers.time,env:aiAnswers.env};aiAnswers.region=body.querySelector('#mong-region').value;aiAnswers.time=body.querySelector('#mong-time').value;for(const option of body.querySelector('#mong-env').options){aiAnswers.env=option.value;option.disabled=!!option.value&&!aiRecommendCourses().length;option.textContent=option.textContent.replace(' · 확인 자료 없음','')+(option.disabled?' · 확인 자료 없음':'');}Object.assign(aiAnswers,saved);};
+      body.querySelector('#mong-region').onchange=updateEnvironmentOptions;body.querySelector('#mong-time').onchange=updateEnvironmentOptions;updateEnvironmentOptions();
       CourseComfort.sync(body.querySelector('#mong-comfort-filter'),aiAnswers.comfort);body.querySelector('#mong-senior-preset').onclick=()=>{aiAnswers.comfort=CourseComfort.preset();CourseComfort.sync(body.querySelector('#mong-comfort-filter'),aiAnswers.comfort);};
       body.querySelector('#mong-custom-form').addEventListener('submit',e=>{e.preventDefault();aiAnswers.region=body.querySelector('#mong-region').value;aiAnswers.time=body.querySelector('#mong-time').value;aiAnswers.env=body.querySelector('#mong-env').value||null;aiAnswers.size=null;aiAnswers.comfort=CourseComfort.read(body.querySelector('#mong-comfort-filter'));aiRenderStep('c-result');});
       const smallDogBtn = body.querySelector('[data-small-dog]');
@@ -3968,17 +3940,29 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       const results = aiRecommendCourses();
       if(!results.length){
         body.innerHTML = `
-          <div class="ai-bubble">선택한 지역·시간·선호 환경을 모두 충족하는 코스가 아직 없어요. 미확인 정보를 제외했어요. 조건을 하나씩 풀거나 다른 지역을 골라 주세요.</div>
+          <div class="ai-bubble">선택한 지역·시간·환경을 모두 충족하는 코스가 아직 없어요. 미확인 정보를 제외했어요. 조건을 하나씩 풀거나 다른 지역을 골라 주세요.</div>
           <button class="ai-option-btn" data-go="menu" style="margin-top:6px; text-align:center;">조건 바꿔 다시 찾기</button>
           ${backBtn}
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${escapeHtml([aiAnswers.region,aiAnswers.size,aiAnswers.time,aiAnswers.env,...Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]).map(k=>CourseComfort.fields[k])].filter(Boolean).join(' · '))}<br>함께 살펴볼 산책길을 찾았어요. 동반 조건은 상세에서 확인해 주세요.<details class="mong-recommendation-basis"><summary>추천 기준과 확인할 점</summary><p>등록 정보 기준으로 거리·환경 조건이 맞는 코스를 우선 보여드려요. 계단·경사·쉴 곳은 확인된 정보로만 필터링해요. 다른 환경은 선호 순서이며, 나이·체격만으로 적합성을 판단하지 않아요. 지역은 좌표 범위로 추정하므로 경계 인근은 확인해 주세요. 소요 시간은 등록 안내 또는 거리 기반 예상이며, 반려견 상태·휴식에 따라 달라져요.</p></details></div>
+          <div class="ai-bubble">${escapeHtml([aiAnswers.region,aiAnswers.size,aiAnswers.time,aiAnswers.env,...Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]).map(k=>CourseComfort.fields[k])].filter(Boolean).join(' · '))}<br>함께 살펴볼 산책길을 찾았어요. 동반 조건은 상세에서 확인해 주세요.<details class="mong-recommendation-basis"><summary>추천 기준과 확인할 점</summary><p>선택한 지역·시간·환경 조건이 일치하는 코스만 보여드려요. 계단·경사·쉴 곳은 확인된 정보로만 필터링해요. 그늘·잔디는 등록 태그를 기준으로 확인하며, 나이·체격만으로 적합성을 판단하지 않아요. 지역은 확인된 주소를 기준으로 구분해요. 소요 시간은 등록 안내 또는 거리 기반 예상이며, 반려견 상태·휴식에 따라 달라져요.</p></details></div>
           ${results.map(aiRenderRecCard).join('')}
           <button class="ai-option-btn" data-go="menu" style="margin-top:6px; text-align:center;">조건 바꿔 다시 찾기</button>
           ${backBtn}
         `;
+      }
+      if(!results.length){
+        const alternatives=document.createElement('div');alternatives.className='explore-relax';
+        const selected={...aiAnswers,comfort:{...aiAnswers.comfort}};
+        for(const [key,value,label] of [['env',null,'환경 조건 해제'],['time',null,'시간 제한 해제']]){
+          if(!selected[key])continue;
+          aiAnswers[key]=value;const count=aiRecommendCourses().length;aiAnswers[key]=selected[key];
+          if(!count)continue;
+          const button=document.createElement('button');button.type='button';button.className='ai-option-btn';button.textContent=label+' · '+(count===3?'3곳 이상':count+'곳');
+          button.onclick=()=>{aiAnswers[key]=value;aiRenderStep('c-result');};alternatives.append(button);
+        }
+        body.append(alternatives);
       }
       const quick=document.createElement('div');quick.className='mong-time-switch';quick.setAttribute('aria-label','산책 시간 바로 변경');for(const [value,label] of [['짧게','30분 이내'],['보통','30분~1시간'],['길게','1시간 이상']]){const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed',String(aiAnswers.time===value));button.onclick=()=>{aiAnswers.time=value;aiRenderStep('c-result');};quick.append(button);}body.prepend(quick);
       body.querySelectorAll('[data-open-course]').forEach(card=>{
@@ -4030,7 +4014,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${aiAnswers.facilityRegion} 주변 등록 ${label}를 이름순으로 보여드려요. 지역은 좌표 범위로 추정하므로 상세 위치를 확인해 주세요.</div>
+          <div class="ai-bubble">${aiAnswers.facilityRegion} 주변 등록 ${label}를 이름순으로 보여드려요. 확인된 주소를 기준으로 지역을 구분하며, 허용 구역과 영업 여부는 상세에서 확인해 주세요.</div>
           ${results.map(aiRenderFacilityCard).join('')}
           <button class="ai-option-btn" data-go="f-region" style="margin-top:6px; text-align:center;">🔄 지역 다시 선택</button>
           ${backBtn}
@@ -4117,7 +4101,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const matched=Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]&&CourseComfort.matches(c,{[k]:true})).map(k=>CourseComfort.fields[k]);
     if(aiAnswers.env==='계단없음'&&CourseComfort.matches(c,{stairs:true})&&!matched.includes(CourseComfort.fields.stairs))matched.push(CourseComfort.fields.stairs);
     const unknown=CourseComfort.labels(c).filter(x=>x.includes('미확인'));
-    const decision='<div class="mong-match-info">'+(matched.length?'<p><strong>선택 조건 확인</strong> '+escapeHtml(matched.join(' · '))+'</p>':'')+(aiAnswers.env&&aiAnswers.env!=='계단없음'?'<p><strong>선호 순서</strong> '+escapeHtml((c.tags||[]).includes(aiAnswers.env)?tagLabel(aiAnswers.env)+' 안내 있음':tagLabel(aiAnswers.env)+' 정보 미확인 · 필수 조건이 아닙니다')+'</p>':'')+(unknown.length?'<p><strong>추가 확인</strong> '+escapeHtml(unknown.join(' · '))+'</p>':'')+'</div>';
+    const decision='<div class="mong-match-info">'+(matched.length?'<p><strong>선택 조건 확인</strong> '+escapeHtml(matched.join(' · '))+'</p>':'')+(aiAnswers.env&&aiAnswers.env!=='계단없음'?'<p><strong>선택 환경</strong> '+escapeHtml((c.tags||[]).includes(aiAnswers.env)?tagLabel(aiAnswers.env)+' 안내 있음':tagLabel(aiAnswers.env)+' 정보 미확인')+'</p>':'')+(unknown.length?'<p><strong>추가 확인</strong> '+escapeHtml(unknown.join(' · '))+'</p>':'')+'</div>';
     const photo=CoursePhotos.get(c);
     return `<div class="mong-result">${decision}${photo?`<img class="mong-result-photo" style="object-fit:${photo.noCrop?'contain':'cover'}" src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.place)} 장소 사진" loading="lazy">`:''}<a href="#" class="ai-rec-card" data-open-course="${escapeHtml(String(c.id))}">
       <span style="font-size:26px;">🐾</span>
@@ -4136,7 +4120,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const scored = allCourses()
       .filter(c => !isHidden('course', c.id) && !needsPetCheck(c))
       .filter(c => !aiAnswers.region || courseInRegion(c, aiAnswers.region))
-      .filter(c=>CourseComfort.matches(c,aiAnswers.comfort)&& (aiAnswers.env!=='계단없음'||CourseComfort.matches(c,{stairs:true})))
+      .filter(c=>CourseComfort.matches(c,aiAnswers.comfort)&& (aiAnswers.env==='계단없음'?CourseComfort.matches(c,{stairs:true}):!aiAnswers.env||(c.tags||[]).includes(aiAnswers.env)))
       .filter(c=>{const minutes=courseWalkTime(c).minutes;return !aiAnswers.time || (Number.isFinite(minutes)&&minutes>0&&minutes>=timeRange[0]&&minutes<=timeRange[1]);})
       .map(c=>{
         let score = 0;
@@ -4173,7 +4157,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   function aiRecommendFacilities(){
     const inRegion = facilities.filter(f =>
       f.category === aiAnswers.facilityCategory &&
-      courseInRegion({ lat:f.lat, lng:f.lng }, aiAnswers.facilityRegion) &&
+      courseInRegion(f, aiAnswers.facilityRegion) &&
       !isHidden('facility', f.id)
     );
     // 같은 조건에서 안정적인 이름순 결과를 제공합니다.
@@ -7248,7 +7232,6 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   document.getElementById('dog-info-save-btn').addEventListener('click', saveDogInfo);
   document.getElementById('region-save-btn').addEventListener('click', saveRegion);
   document.getElementById('copy-referral-btn').addEventListener('click', copyReferralLink);
-  document.getElementById('show-qr-btn').addEventListener('click', showReferralQr);
   document.getElementById('logout-btn').addEventListener('click', ()=>{
     if(confirm('로그아웃 하시겠어요?')){
       closeProfileModal();
@@ -7447,7 +7430,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 })();
 </script>
 <dialog class="update-dialog member-event-dialog" id="member-event-dialog" aria-labelledby="member-event-title"><div class="update-dialog-head"><h2 id="member-event-title">내 산책길 저장하고,<br>커피 추첨에도 참여해요.</h2><button type="button" id="member-event-close" aria-label="이벤트 안내 닫기">×</button></div><p class="member-event-lead">마음에 드는 코스 찜과 산책 기록은 무료로. 카카오 신규 회원은 별도 응모 후 메가MGC커피 1만원권 추첨에도 참여할 수 있어요.</p><div id="member-event-content"></div><p id="member-event-status" role="status" aria-live="polite"></p><div class="member-event-footer"><button type="button" id="member-event-refresh">이벤트 새로고침</button><button type="button" id="event-update-history">서비스 업데이트 보기</button></div></dialog>
-<dialog class="update-dialog" id="home-update-dialog" aria-labelledby="home-update-dialog-title"><div class="update-dialog-head"><h2 id="home-update-dialog-title">발자국 업데이트 내역</h2><button type="button" id="home-update-dialog-close" aria-label="업데이트 내역 닫기">×</button></div><div class="update-history"><p class="update-history-intro">날짜별 주요 변경을 모았어요. 최신 공지부터 확인할 수 있으며, 지난 내용은 이후 업데이트에 따라 달라질 수 있어요.</p><article class="update-day" data-update-date="2026-10-18"><h2><time datetime="2026-10-18">2026.10.18</time></h2><p>주요 변경: 동반장소 추가 사진과 공식 이용 안내</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>사진과 동반 조건 보완</h3><p>기존 장소에 공식 제공 사진 1,006장을 추가했어요. 912곳의 사진과 652곳의 추가 사진 묶음을 확인할 수 있어요. 공식 소개의 동반 안내 290곳을 보강하고 서로 다른 제한 안내는 재확인하도록 표시해요.</p></section><section class="update-topic"><h3>동반장소 사진 추가 보완</h3><p>공식 분류 자료를 다시 대조해 기존 장소 사진 444장을 더 연결했어요. 사진이 있는 장소는 1,032곳으로 늘었고, 공식 소개의 동반 안내도 330곳에서 확인할 수 있어요. 상충하는 동반 제한은 재확인 경고로 표시해요.</p></section><section class="update-topic"><h3>동반장소 사진 추가</h3><p>공식 제공 원본 사진 103장을 더해 장소 모습을 더 자세히 살펴볼 수 있어요. 사진 출처와 촬영 시기 안내를 유지하며, 동반 조건은 확인된 자료만 표시해요.</p></section><section class="update-topic"><h3>장소 사진 보기 개선</h3><p>사진 보관 방식을 개선해 더 많은 장소 모습을 준비할 수 있게 했어요. 사진을 일시적으로 불러오지 못하더라도 장소 설명·동반 조건·지도는 계속 확인할 수 있어요.</p></section><section class="update-topic"><h3>장소 사진·방문 정보 보강</h3><p>422곳에 사진 1,185장을 더하고, 786곳의 문의처·운영시간·주차 등 공식 방문 정보를 보완했어요. 별도의 반려견 이용 안내와 요금은 출처·조회일과 함께 확인할 수 있으며, 미확인 조건은 계속 구분해 표시해요.</p></section></details><section class="update-topic"><h3>홈 사진과 시작 버튼</h3><p>식당·카페와 숙소의 홈 사진을 다시 골랐어요. 사진 전체를 원본 비율로 보여주고, 산책코스·지도 시작 버튼을 더 또렷하게 다듬었어요.</p></section><section class="update-topic"><h3>장소 카드 크기 통일</h3><p>카페·숙소 카드 크기를 맞추고, 사진 비율이 맞지 않는 카페는 다른 동반 카페로 교체했어요. 숙소도 카드 비율에 맞는 실제 외관 사진으로 골랐어요. 사진 원본 전체와 동반 조건을 함께 확인할 수 있어요. 더 둘러보기 아래의 불필요한 배경 띠도 없앴어요.</p></section><section class="update-topic"><h3>상단 메뉴와 장소 글씨</h3><p>로그인 버튼을 정돈하고 알림은 로그인 후에만 보여드려요. 홈 1~4번 섹션 제목의 크기·굵기·줄간격을 통일했어요. 카페·숙소의 장소명과 동반 조건을 또렷하게 다듬고 마지막 더보기 카드도 정돈했어요.</p></section><section class="update-topic"><h3>카페·숙소를 더 가볍게</h3><p>두 섹션과 카드를 약 80% 크기로 줄여 더 많은 장소를 편하게 넘겨볼 수 있게 다듬었어요. 제목과 동반 조건은 읽기 쉬운 크기를 유지했어요.</p></section></article><article class="update-day" data-update-date="2026-10-17"><h2><time datetime="2026-10-17">2026.10.17</time></h2><section class="update-topic"><h3>더 명확한 안내와 공유</h3><p>자료 확인 기준과 주변 경관 참고사진 표시를 명확히 했어요.<br>공유 이미지를 크게 정리하고, 지난 업데이트는 요약부터 읽을 수 있어요.</p></section><section class="update-topic"><h3>실제 경로로 이어지는 새 코스 7곳</h3><p>종댕이길은 두루누비 공식 GPX로, 이천온천공원·구리한강시민공원·울산 공룡발자국공원·부산북항 친수공원·암남공원·유구색동수국정원은 공개 보행로를 연결한 제안 코스로 추가했어요. 공식 동반 안내와 실제 장소 사진을 함께 확인할 수 있어요. 현장 답사 기록은 아니며 당일 통제·편의 조건은 방문 전에 확인해 주세요.</p></section><section class="update-topic"><h3>가입 축하 포인트 누락 수정</h3><p>인증을 마친 신규 회원에게 가입 축하 100P를 서버에서 한 번 지급해요. 기존 누락분을 보정했고, 로그인 상태 복원·새로고침 때도 잔액을 다시 확인해요. 반복 로그인으로 중복 지급되지는 않아요.</p></section><section class="update-topic"><h3>검색 화면의 사이트 아이콘</h3><p>산책 코스·동반장소·지역 안내 페이지에서도 같은 발자국 아이콘을 표시하도록 맞췄어요.</p></section><section class="update-topic"><h3>동반장소 사진과 이용 조건</h3><p>기존 동반장소 841곳에 출처가 있는 제공 사진을 연결하고 441곳의 공식 동반 자료를 대조했어요. 견종·크기와 실내 출입, 준비물·시설 등 확인된 조건을 상세에서 함께 볼 수 있어요. 자료가 없는 조건은 미확인으로 안내해요.</p></section><section class="update-topic"><h3>모바일 홈의 섹션과 탐색</h3><p>지역 탐색과 반려생활 인기템을 독립된 섹션으로 정리하고, 제목·카드가 스크롤할 때 한 번만 부드럽게 나타나요. 반복 지역 링크·지도 배너·준비물 링크를 줄였고 지역을 고르면 같은 자리에서 추천 코스를 볼 수 있어요. 동작 줄이기 설정에서는 바로 표시해요.</p></section><section class="update-topic"><h3>식당·카페와 숙소를 홈에서</h3><p>산책코스 다음에 식당·카페와 숙소를 사진 카드로 살펴볼 수 있어요. 사진과 동반 조건·출처를 함께 안내하며, 인기템은 네 번째로, 무료 가입 안내는 그 뒤로 옮겼어요. 리뷰 숫자 대신 네이버 방문 후기 바로가기를 제공해요.</p></section><section class="update-topic"><h3>동반장소 사진·공식 조건 추가</h3><p>사진이 없던 35곳에 제공 사진을 추가하고 캠핑장 969곳의 공식 동반 안내와 운영·예약·시설 정보를 대조했어요. 자료가 서로 다르거나 출입 불가 안내가 있는 16곳에는 재확인 경고를 표시해요.</p></section><section class="update-topic"><h3>사진 카드 10곳과 다음 탐색</h3><p>홈 식당·카페와 숙소를 각각 10곳으로 늘렸어요. 카드 끝의 더 보기에서 같은 분류의 장소를 이어서 찾아요. 산책코스도 10개씩 살펴본 뒤 선택한 조건 그대로 다음 코스를 볼 수 있어요.</p></section><section class="update-topic"><h3>날씨 연결과 간결한 상품 카드</h3><p>외부 날씨 요청이 막혀도 지역 예보를 확인할 수 있도록 제공 방식을 바꿨어요. 연결 지연 시 저장된 유효 예보와 다시 확인을 제공하고, 오래된 자료는 구분해요. 인기템 카드는 반복 설명을 줄이고 사진·상품명·옵션·버튼 위주로 정리했어요.</p></section></article><article class="update-day" data-update-date="2026-10-16"><h2><time datetime="2026-10-16">2026.10.16</time></h2><p>주요 변경: 지역별 산책길 안내 연결 · 주말 나들이와 코스 공유</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>지역별 산책길 안내 연결</h3><p>더 둘러보기에서 전국 15개 지역의 산책길 안내로 바로 이동할 수 있어요. 각 지역의 코스 정보와 동반 조건을 확인해 보세요.</p></section><section class="update-topic"><h3>주말 나들이와 코스 공유</h3><p>사진·동반 조건을 함께 보는 주말 나들이 안내를 추가했어요. 함께 갈 사람에게 링크를 보낼 수 있고, 공유창이 열리지 않으면 링크 복사로 이어집니다.</p></section><section class="update-topic"><h3>홈 화면의 간결한 안내</h3><p>날씨의 새로 확인 버튼과 복구 안내를 줄이고, 반려생활 인기템 배경과 여백을 앞의 홈 섹션과 통일했어요.</p></section><section class="update-topic"><h3>동반장소 상세 안내</h3><p>카페·숙소 등 장소 상세의 반복 링크와 큰 장식을 정리했어요. 장소 사진과 동반 조건을 읽기 편하게 다듬고 지도·찜·공유 기능을 유지했어요.</p></section><section class="update-topic"><h3>장소 카드를 발자국 상세로 연결</h3><p>카페·숙소 카드를 누르면 발자국에서 사진과 동반 조건을 먼저 확인해요. 네이버 후기·지도는 상세 화면에서 원할 때 열 수 있어요.</p></section><section class="update-topic"><h3>장소 가독성과 홈 등장 효과</h3><p>주변 장소 목록을 밝은 배경으로 정리하고, 홈 제목과 카드가 화면에 들어올 때 같은 등장 효과를 적용해요. 기기의 동작 줄이기 설정은 유지해요.</p></section></details></article><article class="update-day" data-update-date="2026-10-14"><h2><time datetime="2026-10-14">2026.10.14</time></h2><p>주요 변경: 신규 회원 커피 이벤트 · 새로고침 화면 안정화</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>신규 회원 커피 이벤트</h3><p>이벤트 중복 참여를 줄이기 위해 카카오 인증 신규 회원만 응모할 수 있어요. 동일 카카오 계정당 해당 월 1회로 제한하며, 변경 전에 접수된 응모는 유지합니다. 구글·이메일 가입과 일반 서비스 이용은 기존대로 가능합니다.</p><p>10월은 14~31일 신규 가입자 중 1명, 11월은 1~30일 신규 가입자 중 2명에게 각각 메가MGC커피 1만원권을 드려요. 가입 후 별도 선택 응모가 필요하며, 11월 5일·12월 5일 응모번호로 당첨 결과를 확인해요. 자세히 보기에서 개인정보 안내와 내 응모 상태를 확인할 수 있어요.</p></section><section class="update-topic"><h3>새로고침 화면 안정화</h3><p>현재 홈 디자인을 첫 화면부터 적용하고 저장한 지역의 선택 화면이 잠깐 나타나는 현상을 줄였어요. 등록 코스·동반장소 숫자는 확인된 값을 즉시 표시한 뒤 갱신해요.</p></section></details></article><article class="update-day" data-update-date="2026-10-13"><h2><time datetime="2026-10-13">2026.10.13</time></h2><p>주요 변경: 화면과 홈 구성 · 지역별 코스 검색 · 지도와 로딩 등</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>화면과 홈 구성</h3><p>메뉴 아이콘, 글자·카드·버튼·여백을 통일하고 펫티켓 문구 잘림을 수정했어요. 홈의 중복 버튼과 안내를 정리하고 동반장소·산책 준비 가이드를 더 둘러보기에 모았어요. 코스 제목의 작은 화살표로 상세를 열 수 있어요.</p></section><section class="update-topic"><h3>지역별 코스 검색</h3><p>사진 카드로 지역을 고른 뒤 코스·동네 이름, 시간·난이도·계단·경사·쉼터로 찾아요. 선택 후에는 추천·검색 화면만 표시하며, 지역 다시 고르기 뒤 새로고침해도 선택 화면에 머물러요.</p></section><section class="update-topic"><h3>지도와 로딩</h3><p>PC는 검색 패널과 지도를 나란히, 모바일은 간결한 검색 아래 넓은 지도를 보여줘요. 등록 검색 결과를 먼저 표시하고 검색어 지우기·닫기를 보완했어요. 코스 요약에 사진·출처·공식 또는 예상 시간과 동반 안내를 더했어요. 홈 숫자도 확인된 값을 먼저 표시하고 최신 조회로 갱신해요.</p></section><section class="update-topic"><h3>몽과 추천</h3><p>몽을 정면 강아지 모습으로 바꾸고 지역 → 시간 → 환경 → 조건 확인 순서의 질문으로 코스를 골라요. 답 수정, 한 번에 조건 설정, 문장 검색과 동반장소 찾기도 유지했어요. 실제 리뷰가 있는 코스만 리뷰 코너에 표시해요.</p></section><section class="update-topic"><h3>산책 기록과 회원 안내</h3><p>위치정보 이용 선택을 읽기 쉬운 카드로 정리했어요. GPS 기기 기록·주변 인원 집계·서버 저장은 구분해 선택해요. 무료 회원 안내를 간결하게 다듬고, 가입 없이 둘러보기와 키보드 조작을 보완했어요.</p></section><section class="update-topic"><h3>개인정보·로그인·문의</h3><p>필수 가입 체크를 만 14세 이상·약관 동의와 개인정보 수집·이용 동의 두 개로 정리했어요. 자세한 설명은 펼쳐 읽고 별도 처리방침에서 운영자·문의처·보관·삭제 기준을 확인해요. 중복 약관 문구와 하단 메뉴를 정리하고 문의 전화번호를 정정했어요.</p></section><section class="update-topic"><h3>전국 동반 산책 정보</h3><p>공식 동반 안내를 확인한 산책 위치 174곳에 실제 장소 사진을 연결해 공개 정보가 400곳이 되었어요. 체중·견종·등록·예방접종·입마개·허용 구역 조건과 사진 출처·촬영 시기를 안내해요. 전체 경로·출발점·거리·편의 정보의 미확인은 별도로 표시해요.</p></section><section class="update-topic"><h3>공지사항 정리</h3><p>같은 날의 업데이트를 한 공지로 묶고, 주제별 소제목과 본문으로 요약했어요. 이전 세부 기록은 별도 보관해 확인할 수 있어요.</p></section></details></article>
+<dialog class="update-dialog" id="home-update-dialog" aria-labelledby="home-update-dialog-title"><div class="update-dialog-head"><h2 id="home-update-dialog-title">발자국 업데이트 내역</h2><button type="button" id="home-update-dialog-close" aria-label="업데이트 내역 닫기">×</button></div><div class="update-history"><p class="update-history-intro">날짜별 주요 변경을 모았어요. 최신 공지부터 확인할 수 있으며, 지난 내용은 이후 업데이트에 따라 달라질 수 있어요.</p><article class="update-day" data-update-date="2026-10-18"><h2><time datetime="2026-10-18">2026.10.18</time></h2><p>주요 변경: 동반장소 추가 사진과 공식 이용 안내</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>몽 맞춤 추천과 개인정보 보호</h3><p>선택한 지역·시간·그늘·잔디 조건에 맞는 코스만 추천하도록 수정했어요. 결과가 없을 때는 다른 조건을 직접 선택할 수 있고, 친구 추천은 외부 QR 전송 없이 링크 복사로 공유해요.</p></section><section class="update-topic"><h3>사진과 동반 조건 보완</h3><p>기존 장소에 공식 제공 사진 1,006장을 추가했어요. 912곳의 사진과 652곳의 추가 사진 묶음을 확인할 수 있어요. 공식 소개의 동반 안내 290곳을 보강하고 서로 다른 제한 안내는 재확인하도록 표시해요.</p></section><section class="update-topic"><h3>동반장소 사진 추가 보완</h3><p>공식 분류 자료를 다시 대조해 기존 장소 사진 444장을 더 연결했어요. 사진이 있는 장소는 1,032곳으로 늘었고, 공식 소개의 동반 안내도 330곳에서 확인할 수 있어요. 상충하는 동반 제한은 재확인 경고로 표시해요.</p></section><section class="update-topic"><h3>동반장소 사진 추가</h3><p>공식 제공 원본 사진 103장을 더해 장소 모습을 더 자세히 살펴볼 수 있어요. 사진 출처와 촬영 시기 안내를 유지하며, 동반 조건은 확인된 자료만 표시해요.</p></section><section class="update-topic"><h3>장소 사진 보기 개선</h3><p>사진 보관 방식을 개선해 더 많은 장소 모습을 준비할 수 있게 했어요. 사진을 일시적으로 불러오지 못하더라도 장소 설명·동반 조건·지도는 계속 확인할 수 있어요.</p></section><section class="update-topic"><h3>장소 사진·방문 정보 보강</h3><p>422곳에 사진 1,185장을 더하고, 786곳의 문의처·운영시간·주차 등 공식 방문 정보를 보완했어요. 별도의 반려견 이용 안내와 요금은 출처·조회일과 함께 확인할 수 있으며, 미확인 조건은 계속 구분해 표시해요.</p></section></details><section class="update-topic"><h3>홈 사진과 시작 버튼</h3><p>식당·카페와 숙소의 홈 사진을 다시 골랐어요. 사진 전체를 원본 비율로 보여주고, 산책코스·지도 시작 버튼을 더 또렷하게 다듬었어요.</p></section><section class="update-topic"><h3>장소 카드 크기 통일</h3><p>카페·숙소 카드 크기를 맞추고, 사진 비율이 맞지 않는 카페는 다른 동반 카페로 교체했어요. 숙소도 카드 비율에 맞는 실제 외관 사진으로 골랐어요. 사진 원본 전체와 동반 조건을 함께 확인할 수 있어요. 더 둘러보기 아래의 불필요한 배경 띠도 없앴어요.</p></section><section class="update-topic"><h3>상단 메뉴와 장소 글씨</h3><p>로그인 버튼을 정돈하고 알림은 로그인 후에만 보여드려요. 홈 1~4번 섹션 제목의 크기·굵기·줄간격을 통일했어요. 카페·숙소의 장소명과 동반 조건을 또렷하게 다듬고 마지막 더보기 카드도 정돈했어요.</p></section><section class="update-topic"><h3>카페·숙소를 더 가볍게</h3><p>두 섹션과 카드를 약 80% 크기로 줄여 더 많은 장소를 편하게 넘겨볼 수 있게 다듬었어요. 제목과 동반 조건은 읽기 쉬운 크기를 유지했어요.</p></section></article><article class="update-day" data-update-date="2026-10-17"><h2><time datetime="2026-10-17">2026.10.17</time></h2><section class="update-topic"><h3>더 명확한 안내와 공유</h3><p>자료 확인 기준과 주변 경관 참고사진 표시를 명확히 했어요.<br>공유 이미지를 크게 정리하고, 지난 업데이트는 요약부터 읽을 수 있어요.</p></section><section class="update-topic"><h3>실제 경로로 이어지는 새 코스 7곳</h3><p>종댕이길은 두루누비 공식 GPX로, 이천온천공원·구리한강시민공원·울산 공룡발자국공원·부산북항 친수공원·암남공원·유구색동수국정원은 공개 보행로를 연결한 제안 코스로 추가했어요. 공식 동반 안내와 실제 장소 사진을 함께 확인할 수 있어요. 현장 답사 기록은 아니며 당일 통제·편의 조건은 방문 전에 확인해 주세요.</p></section><section class="update-topic"><h3>가입 축하 포인트 누락 수정</h3><p>인증을 마친 신규 회원에게 가입 축하 100P를 서버에서 한 번 지급해요. 기존 누락분을 보정했고, 로그인 상태 복원·새로고침 때도 잔액을 다시 확인해요. 반복 로그인으로 중복 지급되지는 않아요.</p></section><section class="update-topic"><h3>검색 화면의 사이트 아이콘</h3><p>산책 코스·동반장소·지역 안내 페이지에서도 같은 발자국 아이콘을 표시하도록 맞췄어요.</p></section><section class="update-topic"><h3>동반장소 사진과 이용 조건</h3><p>기존 동반장소 841곳에 출처가 있는 제공 사진을 연결하고 441곳의 공식 동반 자료를 대조했어요. 견종·크기와 실내 출입, 준비물·시설 등 확인된 조건을 상세에서 함께 볼 수 있어요. 자료가 없는 조건은 미확인으로 안내해요.</p></section><section class="update-topic"><h3>모바일 홈의 섹션과 탐색</h3><p>지역 탐색과 반려생활 인기템을 독립된 섹션으로 정리하고, 제목·카드가 스크롤할 때 한 번만 부드럽게 나타나요. 반복 지역 링크·지도 배너·준비물 링크를 줄였고 지역을 고르면 같은 자리에서 추천 코스를 볼 수 있어요. 동작 줄이기 설정에서는 바로 표시해요.</p></section><section class="update-topic"><h3>식당·카페와 숙소를 홈에서</h3><p>산책코스 다음에 식당·카페와 숙소를 사진 카드로 살펴볼 수 있어요. 사진과 동반 조건·출처를 함께 안내하며, 인기템은 네 번째로, 무료 가입 안내는 그 뒤로 옮겼어요. 리뷰 숫자 대신 네이버 방문 후기 바로가기를 제공해요.</p></section><section class="update-topic"><h3>동반장소 사진·공식 조건 추가</h3><p>사진이 없던 35곳에 제공 사진을 추가하고 캠핑장 969곳의 공식 동반 안내와 운영·예약·시설 정보를 대조했어요. 자료가 서로 다르거나 출입 불가 안내가 있는 16곳에는 재확인 경고를 표시해요.</p></section><section class="update-topic"><h3>사진 카드 10곳과 다음 탐색</h3><p>홈 식당·카페와 숙소를 각각 10곳으로 늘렸어요. 카드 끝의 더 보기에서 같은 분류의 장소를 이어서 찾아요. 산책코스도 10개씩 살펴본 뒤 선택한 조건 그대로 다음 코스를 볼 수 있어요.</p></section><section class="update-topic"><h3>날씨 연결과 간결한 상품 카드</h3><p>외부 날씨 요청이 막혀도 지역 예보를 확인할 수 있도록 제공 방식을 바꿨어요. 연결 지연 시 저장된 유효 예보와 다시 확인을 제공하고, 오래된 자료는 구분해요. 인기템 카드는 반복 설명을 줄이고 사진·상품명·옵션·버튼 위주로 정리했어요.</p></section></article><article class="update-day" data-update-date="2026-10-16"><h2><time datetime="2026-10-16">2026.10.16</time></h2><p>주요 변경: 지역별 산책길 안내 연결 · 주말 나들이와 코스 공유</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>지역별 산책길 안내 연결</h3><p>더 둘러보기에서 전국 15개 지역의 산책길 안내로 바로 이동할 수 있어요. 각 지역의 코스 정보와 동반 조건을 확인해 보세요.</p></section><section class="update-topic"><h3>주말 나들이와 코스 공유</h3><p>사진·동반 조건을 함께 보는 주말 나들이 안내를 추가했어요. 함께 갈 사람에게 링크를 보낼 수 있고, 공유창이 열리지 않으면 링크 복사로 이어집니다.</p></section><section class="update-topic"><h3>홈 화면의 간결한 안내</h3><p>날씨의 새로 확인 버튼과 복구 안내를 줄이고, 반려생활 인기템 배경과 여백을 앞의 홈 섹션과 통일했어요.</p></section><section class="update-topic"><h3>동반장소 상세 안내</h3><p>카페·숙소 등 장소 상세의 반복 링크와 큰 장식을 정리했어요. 장소 사진과 동반 조건을 읽기 편하게 다듬고 지도·찜·공유 기능을 유지했어요.</p></section><section class="update-topic"><h3>장소 카드를 발자국 상세로 연결</h3><p>카페·숙소 카드를 누르면 발자국에서 사진과 동반 조건을 먼저 확인해요. 네이버 후기·지도는 상세 화면에서 원할 때 열 수 있어요.</p></section><section class="update-topic"><h3>장소 가독성과 홈 등장 효과</h3><p>주변 장소 목록을 밝은 배경으로 정리하고, 홈 제목과 카드가 화면에 들어올 때 같은 등장 효과를 적용해요. 기기의 동작 줄이기 설정은 유지해요.</p></section></details></article><article class="update-day" data-update-date="2026-10-14"><h2><time datetime="2026-10-14">2026.10.14</time></h2><p>주요 변경: 신규 회원 커피 이벤트 · 새로고침 화면 안정화</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>신규 회원 커피 이벤트</h3><p>이벤트 중복 참여를 줄이기 위해 카카오 인증 신규 회원만 응모할 수 있어요. 동일 카카오 계정당 해당 월 1회로 제한하며, 변경 전에 접수된 응모는 유지합니다. 구글·이메일 가입과 일반 서비스 이용은 기존대로 가능합니다.</p><p>10월은 14~31일 신규 가입자 중 1명, 11월은 1~30일 신규 가입자 중 2명에게 각각 메가MGC커피 1만원권을 드려요. 가입 후 별도 선택 응모가 필요하며, 11월 5일·12월 5일 응모번호로 당첨 결과를 확인해요. 자세히 보기에서 개인정보 안내와 내 응모 상태를 확인할 수 있어요.</p></section><section class="update-topic"><h3>새로고침 화면 안정화</h3><p>현재 홈 디자인을 첫 화면부터 적용하고 저장한 지역의 선택 화면이 잠깐 나타나는 현상을 줄였어요. 등록 코스·동반장소 숫자는 확인된 값을 즉시 표시한 뒤 갱신해요.</p></section></details></article><article class="update-day" data-update-date="2026-10-13"><h2><time datetime="2026-10-13">2026.10.13</time></h2><p>주요 변경: 화면과 홈 구성 · 지역별 코스 검색 · 지도와 로딩 등</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>화면과 홈 구성</h3><p>메뉴 아이콘, 글자·카드·버튼·여백을 통일하고 펫티켓 문구 잘림을 수정했어요. 홈의 중복 버튼과 안내를 정리하고 동반장소·산책 준비 가이드를 더 둘러보기에 모았어요. 코스 제목의 작은 화살표로 상세를 열 수 있어요.</p></section><section class="update-topic"><h3>지역별 코스 검색</h3><p>사진 카드로 지역을 고른 뒤 코스·동네 이름, 시간·난이도·계단·경사·쉼터로 찾아요. 선택 후에는 추천·검색 화면만 표시하며, 지역 다시 고르기 뒤 새로고침해도 선택 화면에 머물러요.</p></section><section class="update-topic"><h3>지도와 로딩</h3><p>PC는 검색 패널과 지도를 나란히, 모바일은 간결한 검색 아래 넓은 지도를 보여줘요. 등록 검색 결과를 먼저 표시하고 검색어 지우기·닫기를 보완했어요. 코스 요약에 사진·출처·공식 또는 예상 시간과 동반 안내를 더했어요. 홈 숫자도 확인된 값을 먼저 표시하고 최신 조회로 갱신해요.</p></section><section class="update-topic"><h3>몽과 추천</h3><p>몽을 정면 강아지 모습으로 바꾸고 지역 → 시간 → 환경 → 조건 확인 순서의 질문으로 코스를 골라요. 답 수정, 한 번에 조건 설정, 문장 검색과 동반장소 찾기도 유지했어요. 실제 리뷰가 있는 코스만 리뷰 코너에 표시해요.</p></section><section class="update-topic"><h3>산책 기록과 회원 안내</h3><p>위치정보 이용 선택을 읽기 쉬운 카드로 정리했어요. GPS 기기 기록·주변 인원 집계·서버 저장은 구분해 선택해요. 무료 회원 안내를 간결하게 다듬고, 가입 없이 둘러보기와 키보드 조작을 보완했어요.</p></section><section class="update-topic"><h3>개인정보·로그인·문의</h3><p>필수 가입 체크를 만 14세 이상·약관 동의와 개인정보 수집·이용 동의 두 개로 정리했어요. 자세한 설명은 펼쳐 읽고 별도 처리방침에서 운영자·문의처·보관·삭제 기준을 확인해요. 중복 약관 문구와 하단 메뉴를 정리하고 문의 전화번호를 정정했어요.</p></section><section class="update-topic"><h3>전국 동반 산책 정보</h3><p>공식 동반 안내를 확인한 산책 위치 174곳에 실제 장소 사진을 연결해 공개 정보가 400곳이 되었어요. 체중·견종·등록·예방접종·입마개·허용 구역 조건과 사진 출처·촬영 시기를 안내해요. 전체 경로·출발점·거리·편의 정보의 미확인은 별도로 표시해요.</p></section><section class="update-topic"><h3>공지사항 정리</h3><p>같은 날의 업데이트를 한 공지로 묶고, 주제별 소제목과 본문으로 요약했어요. 이전 세부 기록은 별도 보관해 확인할 수 있어요.</p></section></details></article>
 <article class="update-day" data-update-date="2026-10-12"><h2><time datetime="2026-10-12">2026.10.12</time></h2><p>주요 변경: 코스와 실제 사진 추가 · 지역 안내와 산책 가이드 · 공유와 출발 위치</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>코스와 실제 사진 추가</h3><p>부산·서울·대전·강원·제주의 8곳과 위양지·궁남지·관방제림·새별오름 등 8개 지역의 13곳을 순차 추가했어요. 공식 동반 조건·사진 출처와 미확인 정보를 구분하며, 한림공원의 7kg 이하 등 제한도 안내해요.</p></section><section class="update-topic"><h3>지역 안내와 산책 가이드</h3><p>지역별 산책·동반장소 안내, 발자국 소개와 산책 준비·날씨·동반장소 가이드를 연결했어요. 코스 비교에서 예상 시간·미확인 조건·자료 확인일을 읽는 방법도 안내해요.</p></section><section class="update-topic"><h3>공유와 출발 위치</h3><p>공개 코스의 제목·설명이 있는 상세 페이지로 공유하고 지도·찜·비교·산책 준비를 이어갈 수 있어요. 출발점이 확인되지 않은 곳은 대표 위치 주소와 길찾기로 구분해요.</p></section></details></article>
 <article class="update-day" data-update-date="2026-10-11"><h2><time datetime="2026-10-11">2026.10.11</time></h2><p>주요 변경: 조회 속도와 검색 이어보기 · 지도·장소 검색 · 비교에서 산책 준비까지 등</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>조회 속도와 검색 이어보기</h3><p>홈 숫자와 코스 목록을 각각 준비되는 대로 표시하고, 지도·상세 장소 정보는 필요한 화면에서 불러와요. 코스·지도 검색 조건과 더 본 결과를 이어 보고, 비교·산책 준비 선택도 같은 탭의 새로고침 뒤 복원해요. 위치 좌표는 검색 조건으로 저장하지 않아요.</p></section><section class="update-topic"><h3>지도·장소 검색</h3><p>지역·업종·여러 검색어로 장소를 찾고 결과 목록·위치 보기·초기화·실패 재시도를 이용해요. 필요한 장소 마커만 갱신하고 잘못된 좌표는 제외해요. 로딩·갱신 실패·검색 결과 없음과 오프라인 화면의 이용 범위를 구분해 안내해요.</p></section><section class="update-topic"><h3>비교에서 산책 준비까지</h3><p>최대 3개 코스의 거리·시간·계단·경사·쉼터·동반 조건과 자료 확인일을 나란히 비교해요. 선택 코스로 바로 준비 화면을 열고 상세·공식 원문·길찾기를 확인해요. 기록 중에는 참고 코스를 바꾸지 않으며 GPS는 시작 버튼을 눌러야 작동해요.</p></section><section class="update-topic"><h3>동반 조건과 추천 근거</h3><p>허용 구역·견종·크기·준비물·문의처를 나누고, 자료에 없는 조건은 미확인으로 표시해요. 오래된 자료 재확인과 수정 제보를 안내하며, 빈 검색 결과에서는 조건을 직접 완화할 수 있어요. 몽은 확인된 조건·선호 순서·추가 확인 정보를 구분해요. 상세 찜 안내는 상세 창 안에서 보여줘요.</p></section><section class="update-topic"><h3>반려생활 상품 안내</h3><p>간식·배변패드·목욕·청소·산책·양치 상품 6개를 사진 카드로 소개해요. 확인된 구매자 수는 파란색, 상품평 수는 연보라색 배지로 표시하고 중복 숫자를 정리했어요. 확인일·옵션을 함께 안내하며, 구매자 수와 판매 개수를 구분하고 오래된 수치는 숨겨요. 현재 가격·배송은 쿠팡에서 확인해요.</p></section></details></article>
 <article class="update-day" data-update-date="2026-10-10"><h2><time datetime="2026-10-10">2026.10.10</time></h2><p>주요 변경: 편의 조건 선택 · 동반 자료 재점검과 추가 · 사진과 가독성</p><details><summary>이날의 상세 내역 보기</summary><section class="update-topic"><h3>편의 조건 선택</h3><p>계단 없는 경로·완만한 길·벤치와 쉼터·2km 이내 조건을 코스 목록과 몽에서 같은 기준으로 골라요. 자료가 미확인이면 선택 조건을 충족하는 것으로 처리하지 않아요.</p></section><section class="update-topic"><h3>동반 자료 재점검과 추가</h3><p>동반 범위나 사용 가능한 사진이 불명확한 코스는 확인 전 공개·지도·추천에서 제외했어요. 광교호수공원·서호공원·만석공원·배봉두메십리길·세종호수공원 C코스 5곳과 개별 동반 조건을 확인한 장소 29곳을 추가했어요.</p></section><section class="update-topic"><h3>사진과 가독성</h3><p>사진이 없던 코스와 경유지에 실제 장소 사진을 순차 연결했어요. 출처·이용 조건·촬영 시기와 계절·주변 경관 참고사진을 구분해 표시하고 지도 열기 버튼의 한글 글꼴을 맞췄어요.</p></section></details></article>

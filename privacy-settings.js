@@ -1,0 +1,3 @@
+(function(){'use strict';const button=document.getElementById('privacy-analytics-toggle'),status=document.getElementById('privacy-analytics-status');if(!button)return;
+function render(){try{const excluded=localStorage.getItem('paw_analytics_exclude')==='1';button.textContent=excluded?'방문 통계 참여하기':'방문 통계 참여 중단';button.setAttribute('aria-pressed',String(excluded));status.textContent=excluded?'이 브라우저의 선택적 통계 참여를 중단했어요.':'현재 이 브라우저는 방문 통계에 참여합니다.';}catch{button.disabled=true;status.textContent='브라우저 저장소를 사용할 수 없어요. 문의처로 처리정지를 요청할 수 있습니다.';}}
+button.addEventListener('click',()=>{try{if(localStorage.getItem('paw_analytics_exclude')==='1')localStorage.removeItem('paw_analytics_exclude');else localStorage.setItem('paw_analytics_exclude','1');}catch{}render();});render();})();
