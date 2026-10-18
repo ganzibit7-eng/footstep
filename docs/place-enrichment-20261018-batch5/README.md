@@ -8,6 +8,6 @@
 
 권리 안내: https://www.data.go.kr/data/15101578/openapi.do
 
-새 사진은 기존 Pages 용량 여유 안에서 assets/place-photos-supplement/에 저장한다. 기존 R2 사진과 경로는 유지하고 새 R2 키나 계정 권한은 생성하지 않았다. 재사용 가능한 사진이 없는 2,074곳은 임의 이미지로 채우지 않았다. 공식 자료 조회는 실시간 현장 허용을 보증하지 않으므로 방문 전 확인 안내를 유지했다.
+새 사진은 기존 Pages 용량 여유 안에서 assets/place-supplement/에 저장한다. 기존 R2 사진과 경로는 유지하고 새 R2 키나 계정 권한은 생성하지 않았다. 재사용 가능한 사진이 없는 2,074곳은 임의 이미지로 채우지 않았다. 공식 자료 조회는 실시간 현장 허용을 보증하지 않으므로 방문 전 확인 안내를 유지했다.
 
 summary.json은 전후 수치, reviewed.json.gz는 상세 재대조, matches.json.gz는 후보 매칭 근거, new-files.json은 새 파일 무결성 목록이다.

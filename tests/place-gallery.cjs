@@ -6,7 +6,7 @@ const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-
 test('all additional images preserve original file hash, source, rights, dimensions and identity',()=>{
  let count=0,places=0;for(const r of records){const photos=Photos.gallery(r);if(photos.length)places++;
   assert.equal(Photos.gallery({...r,address:r.address+' 다른 장소'}).length,0);
-  const seen=new Set([r.photo?.sha256]);for(const p of photos){count++;assert(!seen.has(p.sha256),r.name+' duplicate picture');seen.add(p.sha256);assert(p.width>=150&&p.height>=150);assert(p.noCrop);assert(p.source.startsWith('https://api.visitkorea.or.kr/'));assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.src,/^\/assets\/place-photos(?:-supplement)?\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/);verifyOriginal(p);}
+  const seen=new Set([r.photo?.sha256]);for(const p of photos){count++;assert(!seen.has(p.sha256),r.name+' duplicate picture');seen.add(p.sha256);assert(p.width>=150&&p.height>=150);assert(p.noCrop);assert(p.source.startsWith('https://api.visitkorea.or.kr/'));assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.src,/^\/assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/);verifyOriginal(p);}
   if(photos.length){assert(Photos.figure(r).includes('place-photo-gallery'));assert(!Photos.figure(r,{compact:true}).includes('place-photo-gallery'),'map/list renders only one photo');assert(Photos.figure(r).includes('loading="lazy"'));}
  }assert.equal(count,coverage.galleryPhotos);assert.equal(places,coverage.galleryPlaces);
 });
