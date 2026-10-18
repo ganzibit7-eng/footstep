@@ -1,0 +1,18 @@
+{
+  "records": 1649,
+  "photoPlaces": 1032,
+  "galleryPlaces": 699,
+  "galleryPhotos": 1397,
+  "petRecords": 445,
+  "tourNotes": 330,
+  "cautions": 23,
+  "addedPhotos": 103,
+  "addedBytes": 13912178,
+  "unselectedCandidates": 609,
+  "baseline": {
+    "photoPlaces": 1032,
+    "totalPhotos": 2326
+  },
+  "totalPhotos": 2429,
+  "addedPhotoPlaces": 0
+}

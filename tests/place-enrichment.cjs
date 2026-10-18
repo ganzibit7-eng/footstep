@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261018-batch2/summary.json'),'utf8'));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261018-batch3/summary.json'),'utf8'));
 const script=fs.readFileSync(path.join(root,'place-evidence.js'),'utf8'),records=JSON.parse(script.match(/const records=(\[[\s\S]*?\]);\n/)[1]);
 test('all enriched identities are public records; photographs are intact with rights, origin and dimensions',()=>{
  let photos=0,pets=0;const ids=new Set();

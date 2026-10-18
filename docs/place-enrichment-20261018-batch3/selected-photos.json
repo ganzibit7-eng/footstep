@@ -1,0 +1,620 @@
+[
+  {
+    "id": "mfds_2fb7b28f5ea8bbf33236",
+    "name": "구례역 대합실(아지티 구례점)",
+    "src": "/assets/place-photos/kto-2906086-8f8a5e9de2d0.jpg",
+    "sha256": "242e243e16d24a117730c88863265134e6c1f372147fb10d46dfab29cc20db8e"
+  },
+  {
+    "id": "mfds_547b698476fd4d511e97",
+    "name": "꽁트드페(conte de fees)",
+    "src": "/assets/place-photos/kto-3563168-6e7a96ec6868.jpg",
+    "sha256": "0ceaee600c4e565f10a0991c2dae72381a2ec25a8c9bf274b90486d7a4750d5b"
+  },
+  {
+    "id": "gocamping_7581",
+    "name": "오페라 비앙 글램핑",
+    "src": "/assets/place-photos/kto-2731135-4d9cbdbf054d.jpg",
+    "sha256": "1cd723451feed1cb77cd4bb6c0a48293feafe56c667117afd7a9e9bb26bd1559"
+  },
+  {
+    "id": "gocamping_100045",
+    "name": "읍내리 75-1 캠핑장",
+    "src": "/assets/place-photos/kto-2909801-ff243e8dc8a8.jpg",
+    "sha256": "64c41d3c5f2734c54e23e5d065d43d0d448fe945d2f99ce9a62382ad482ece25"
+  },
+  {
+    "id": "gocamping_7580",
+    "name": "해오름 글램핑",
+    "src": "/assets/place-photos/kto-2726680-3f74b2a2d152.jpg",
+    "sha256": "75cf55d5e976ae955af2337149678011c60c7b850883aec99ccdf8a400406112"
+  },
+  {
+    "id": "mfds_2fb7b28f5ea8bbf33236",
+    "name": "구례역 대합실(아지티 구례점)",
+    "src": "/assets/place-photos/kto-2906086-217705b95ea5.jpg",
+    "sha256": "e5c9d37ef06ed782f20b09f0e2dbd58ae615bb5c836c54f4a76005b0269a29d6"
+  },
+  {
+    "id": "gocamping_7864",
+    "name": "가로림글램핑 & 풀빌라펜션",
+    "src": "/assets/place-photos/kto-2792073-75c18f2a6cc9.jpg",
+    "sha256": "61558357f4ea76464b2a6aa5353b17efb7f6945ccdea950894d6b12f9a2b58b9"
+  },
+  {
+    "id": "gocamping_7769",
+    "name": "얼음골 캠핑장",
+    "src": "/assets/place-photos/kto-2740983-a9f418c9c8e4.jpg",
+    "sha256": "28d7456b0269d9da81b3afa772fbcd5a0ab5a0d67b108f004a73c2ea8e26fcdd"
+  },
+  {
+    "id": "gocamping_100130",
+    "name": "개랭이 오토 캠핑장",
+    "src": "/assets/place-photos/kto-2909189-f91a136c3815.jpg",
+    "sha256": "83b1121bc731dfb99fae515c047485f44f33f766563f83df2336994201e4d102"
+  },
+  {
+    "id": "mfds_547b698476fd4d511e97",
+    "name": "꽁트드페(conte de fees)",
+    "src": "/assets/place-photos/kto-3563168-200aa687e2b0.jpg",
+    "sha256": "74b5ba15593e969285bc857cce12258b0ffe7df0ca6b14600c339b7c9d8bae4f"
+  },
+  {
+    "id": "gocamping_7812",
+    "name": "산소파크 글램핑 청송오토캠핑장",
+    "src": "/assets/place-photos/kto-2740101-5ac3d3df9435.jpg",
+    "sha256": "ac095a15457ce90e168e1bb63d6c6eae5f0accecf08ec9d013ca1396731e200c"
+  },
+  {
+    "id": "gocamping_7581",
+    "name": "오페라 비앙 글램핑",
+    "src": "/assets/place-photos/kto-2731135-99dbfd3e82f2.jpg",
+    "sha256": "1ac5e5472bc128a939601433627454c1cc57e9a9b4a07486ee30b2759c7c387b"
+  },
+  {
+    "id": "gocamping_7581",
+    "name": "오페라 비앙 글램핑",
+    "src": "/assets/place-photos/kto-2731135-6e006249ea31.jpg",
+    "sha256": "7c6d719cdaec05eb7fb816b476f854925d5dd2346ecebcde10e48db14b4c0176"
+  },
+  {
+    "id": "gocamping_100057",
+    "name": "솔내음 캠핑장",
+    "src": "/assets/place-photos/kto-2909927-ff292037368e.jpg",
+    "sha256": "dc0600a85ad33a27083da0b2fcf38a9825d952b399922be139bda69071415302"
+  },
+  {
+    "id": "gocamping_7775",
+    "name": "에어그라운드(AIR GROUND)",
+    "src": "/assets/place-photos/kto-2744499-2e6616e9a32a.jpg",
+    "sha256": "816c341b1b625be9d0d9f290c6e5b5f1070127479b0b84112c305610e23920ba"
+  },
+  {
+    "id": "gocamping_7775",
+    "name": "에어그라운드(AIR GROUND)",
+    "src": "/assets/place-photos/kto-2744499-93dbc596f40f.jpg",
+    "sha256": "2d0d65b72e4e8505f33e5e991b321ce21ec6d23f3e6ee93047685c396b1ee3aa"
+  },
+  {
+    "id": "gocamping_2179",
+    "name": "여주참숯마을 캠핑장",
+    "src": "/assets/place-photos/kto-2762576-58e59020bd92.jpg",
+    "sha256": "97434bc38346645e33bba71e26f617632f1804a8444c91789415bd3b6ce9b487"
+  },
+  {
+    "id": "gocamping_7799",
+    "name": "대부도 아라뜰 캠핑장",
+    "src": "/assets/place-photos/kto-2729231-609e4ca1a2a0.jpg",
+    "sha256": "973cbeb27b14db31ef9636654ebb5edfb323b2046e97ca187a5e70a4ed83c5ae"
+  },
+  {
+    "id": "gocamping_8107",
+    "name": "네이스트 프라이빗 음성",
+    "src": "/assets/place-photos/kto-2907706-ca9e58f25e60.jpg",
+    "sha256": "32640bcdaffafcb7cb4ed62dc4ecf7b1796857f148c083ff4965a6e77dc77243"
+  },
+  {
+    "id": "gocamping_7769",
+    "name": "얼음골 캠핑장",
+    "src": "/assets/place-photos/kto-2740983-1ce4ff58ff05.jpg",
+    "sha256": "100f214482a85fb2cbda409c19f717df862853d715dcb0282f7b4b0b5b4a0b82"
+  },
+  {
+    "id": "gocamping_100058",
+    "name": "월악파머스캠핑장",
+    "src": "/assets/place-photos/kto-2907893-3613358184fe.jpg",
+    "sha256": "cdb4ba9574d9444a78288ce68ae34b182fe5e08162487e692cc0eea3111014d9"
+  },
+  {
+    "id": "gocamping_7878",
+    "name": "빨간집 야영장",
+    "src": "/assets/place-photos/kto-2792596-9d65420f7c20.jpg",
+    "sha256": "28dc03ad31a11ca9694c5fd0734d856c3bfbce39497e5177bba78f016ed050f5"
+  },
+  {
+    "id": "gocamping_100128",
+    "name": "숲속의아침",
+    "src": "/assets/place-photos/kto-2908434-f969325f4234.jpg",
+    "sha256": "692a864aab8bbfd54ee230335b3b68c956aaf9333c6a4b1d68af7b0edbfd0f5f"
+  },
+  {
+    "id": "gocamping_2179",
+    "name": "여주참숯마을 캠핑장",
+    "src": "/assets/place-photos/kto-2762576-1d958516ac8e.jpg",
+    "sha256": "dd09d252ad7405b7ca447e24b4e2859356ea8f4e6b49c74d4247a05889a0a022"
+  },
+  {
+    "id": "gocamping_100128",
+    "name": "숲속의아침",
+    "src": "/assets/place-photos/kto-2908434-ff6fa8d27a0d.jpg",
+    "sha256": "8b15bff1ff9f338cd90156ffc96c01f080ec12e4f4a1dc2551d84e5eac49aeb6"
+  },
+  {
+    "id": "gocamping_7864",
+    "name": "가로림글램핑 & 풀빌라펜션",
+    "src": "/assets/place-photos/kto-2792073-e3726911ec8c.jpg",
+    "sha256": "d6826f647576325550ae2e86b6cad3099cf3256948b503551e1778a49ae4f2f4"
+  },
+  {
+    "id": "gocamping_8098",
+    "name": "블루문 오토캠핑",
+    "src": "/assets/place-photos/kto-2908260-7c5c9f4f6138.jpg",
+    "sha256": "5daefd010c33bbecf55049daa3a763fe48391ce56380e46fc418dc8a698c1db2"
+  },
+  {
+    "id": "gocamping_7580",
+    "name": "해오름 글램핑",
+    "src": "/assets/place-photos/kto-2726680-5170544ecc21.jpg",
+    "sha256": "f5934daf68df4a4faa3faecb906267a984c22ce49be2d71deefcbcac0f344f5b"
+  },
+  {
+    "id": "gocamping_100130",
+    "name": "개랭이 오토 캠핑장",
+    "src": "/assets/place-photos/kto-2909189-8d769cb6ae6d.jpg",
+    "sha256": "94d8fadab8578bd4ccfcb8814173ec3248dbd96bbe1ee2e6cc559a7cbc1f7cf2"
+  },
+  {
+    "id": "gocamping_3170",
+    "name": "티피 캠핑장",
+    "src": "/assets/place-photos/kto-2734062-d3fd828b9fce.jpg",
+    "sha256": "dc628ae618faf8760202cacb5acdab0d739bde53dce57ba7cf68b20ec1cc6634"
+  },
+  {
+    "id": "gocamping_7954",
+    "name": "황매산미리내파크 오토캠핑장",
+    "src": "/assets/place-photos/kto-2734325-75a31fee25ad.jpg",
+    "sha256": "a47be8e58da40cd48b9a09bd40cb64955fdaf8648f403352d13d94eec5ef16fb"
+  },
+  {
+    "id": "gocamping_100058",
+    "name": "월악파머스캠핑장",
+    "src": "/assets/place-photos/kto-2907893-8d2edabbf021.jpg",
+    "sha256": "441f96d5bd4e46cb9d19b4b315a4271aa82deb87406ecc792237b6ebfd7f52ca"
+  },
+  {
+    "id": "gocamping_8187",
+    "name": "젤코바 캠핑장",
+    "src": "/assets/place-photos/kto-2908181-fd982954ef5b.jpg",
+    "sha256": "a914635d827b712dc0bc9739fc763ffa13984e31f1be26f1946646db1ac6398b"
+  },
+  {
+    "id": "gocamping_7077",
+    "name": "파라독스캠핑돔글램핑애견팬션",
+    "src": "/assets/place-photos/kto-2738779-7f4acf0fc784.jpg",
+    "sha256": "6976e8e21ed6c928c467e029d756519e5046d9ba558967f07863625f4b13befd"
+  },
+  {
+    "id": "gocamping_100045",
+    "name": "읍내리 75-1 캠핑장",
+    "src": "/assets/place-photos/kto-2909801-c4f670ae75ce.jpg",
+    "sha256": "ea3b337ace4ff4c771b4299e548010fc274c2c4b654b84f532d22b5143c38b96"
+  },
+  {
+    "id": "gocamping_3597",
+    "name": "휴가를 부탁해 캠핑장",
+    "src": "/assets/place-photos/kto-2762901-392d3e7a9265.jpg",
+    "sha256": "aae167556ad7f36059a4fca7ed55e89bcda1b8161d5937d431f7d063c0a6022f"
+  },
+  {
+    "id": "gocamping_2179",
+    "name": "여주참숯마을 캠핑장",
+    "src": "/assets/place-photos/kto-2762576-5c748eb19360.jpg",
+    "sha256": "3c5f15486756d38aaec654384d16409f27decbed2a8dd99d3fc06b941b5bbe41"
+  },
+  {
+    "id": "gocamping_8187",
+    "name": "젤코바 캠핑장",
+    "src": "/assets/place-photos/kto-2908181-d171b8342e2a.jpg",
+    "sha256": "d73da7952cfac8ce5294fcd878ab72a36704138ab6420c6aefb282d1c2fe08ef"
+  },
+  {
+    "id": "gocamping_7775",
+    "name": "에어그라운드(AIR GROUND)",
+    "src": "/assets/place-photos/kto-2744499-a24e17f12e48.jpg",
+    "sha256": "c6bdf48aa347c17c7b4ad508c89865a16a3a0bfa96d6d6a5aad8979895b3726a"
+  },
+  {
+    "id": "gocamping_7580",
+    "name": "해오름 글램핑",
+    "src": "/assets/place-photos/kto-2726680-daa731a54412.jpg",
+    "sha256": "dd16c487e1c0f1fcde399f1350337bdf1f1552861faf70d5d5ec548f90f6059f"
+  },
+  {
+    "id": "mfds_547b698476fd4d511e97",
+    "name": "꽁트드페(conte de fees)",
+    "src": "/assets/place-photos/kto-3563168-9c3fa3ecd44e.jpg",
+    "sha256": "dc5421b8baba8249db7c30e2cf2c5b09889f31893c01cce7b932a6f341f8b469"
+  },
+  {
+    "id": "gocamping_8098",
+    "name": "블루문 오토캠핑",
+    "src": "/assets/place-photos/kto-2908260-b2114349b754.jpg",
+    "sha256": "ebc16e918a35039b366a6ee13872656938077ca614d3d814839f233f559a9c36"
+  },
+  {
+    "id": "gocamping_3170",
+    "name": "티피 캠핑장",
+    "src": "/assets/place-photos/kto-2734062-1b4dc4444d73.jpg",
+    "sha256": "854ac8b97c28dcb27047b7873ba18a4fedb120374af3f47c81138109f6951769"
+  },
+  {
+    "id": "gocamping_8098",
+    "name": "블루문 오토캠핑",
+    "src": "/assets/place-photos/kto-2908260-046c6b4d9cf6.jpg",
+    "sha256": "585ed07c680d8b2b9b84d75b87f800a4fa640c362f5d96763d36367299635dba"
+  },
+  {
+    "id": "gocamping_2823",
+    "name": "진경원 민박캠핑장",
+    "src": "/assets/place-photos/kto-2731146-517a2867e10c.jpg",
+    "sha256": "6071cd480c36adb09786fc8de1d60b465fe4590f2788e3a554e6f8f514627fdf"
+  },
+  {
+    "id": "gocamping_100057",
+    "name": "솔내음 캠핑장",
+    "src": "/assets/place-photos/kto-2909927-8b09525a3f83.jpg",
+    "sha256": "2541ae57f55949c3e356efc499ee538c04e1795662d45d991677a3a5fe6e5a1d"
+  },
+  {
+    "id": "gocamping_160",
+    "name": "큐브 빌리지 글램핑",
+    "src": "/assets/place-photos/kto-2791874-44e5c1c24d46.jpg",
+    "sha256": "0ebb75ce343c424bafe29da167e916c96bd3729cb8626bd1327447a56c8d0545"
+  },
+  {
+    "id": "gocamping_100006",
+    "name": "솔비치캠핑장",
+    "src": "/assets/place-photos/kto-2908187-de73d5c994e6.jpg",
+    "sha256": "fb542356c09c318ced9c8090d6ee773ff292d0b28f78cac74e6c10d0bea80552"
+  },
+  {
+    "id": "gocamping_2072",
+    "name": "양주감악산캠핑장",
+    "src": "/assets/place-photos/kto-2755812-f392b9e84019.jpg",
+    "sha256": "0424648d1c20294f42e77e78ec26d9d24bcdb3ec2df2690fb9289809ae0a960c"
+  },
+  {
+    "id": "gocamping_100057",
+    "name": "솔내음 캠핑장",
+    "src": "/assets/place-photos/kto-2909927-9eb235db76cc.jpg",
+    "sha256": "09742ac194ab236e1f536527de8e6ceaaf9568d4ab85cd436e14f7caa264c232"
+  },
+  {
+    "id": "gocamping_7769",
+    "name": "얼음골 캠핑장",
+    "src": "/assets/place-photos/kto-2740983-040ddc688338.jpg",
+    "sha256": "a41a74a15f29f3dce597a03d7ceef06f19b1ddf32881811cf1400044231b3ca5"
+  },
+  {
+    "id": "gocamping_1303",
+    "name": "법흥 캠핑장",
+    "src": "/assets/place-photos/kto-2381761-d958864aad1e.jpg",
+    "sha256": "c05076fecd042f71b5efc671019578acef57885ee8dab8aa96a5e18cb847bb2f"
+  },
+  {
+    "id": "gocamping_160",
+    "name": "큐브 빌리지 글램핑",
+    "src": "/assets/place-photos/kto-2791874-5012f8d1952c.jpg",
+    "sha256": "cb5fa99971fae5a0966b48d82f838fb0c1b5415e74614c285f77086bf1dc7d8b"
+  },
+  {
+    "id": "gocamping_7812",
+    "name": "산소파크 글램핑 청송오토캠핑장",
+    "src": "/assets/place-photos/kto-2740101-cae7fd747ccf.jpg",
+    "sha256": "e1c89e0254524084332cbd9de75ed24e3c314f78d6194dc9099d3e8d776ff913"
+  },
+  {
+    "id": "gocamping_8107",
+    "name": "네이스트 프라이빗 음성",
+    "src": "/assets/place-photos/kto-2907706-07ed372a27b5.jpg",
+    "sha256": "57b7ed2ff417978c4ce1c8600863b5a2b455e96517f2aca1d2b96ea632a338ef"
+  },
+  {
+    "id": "gocamping_7132",
+    "name": "담양금성산성 오토캠핑장",
+    "src": "/assets/place-photos/kto-2729195-643e3318c82e.jpg",
+    "sha256": "c6f8e0e51bf1300d7a11ca7236d973bf52c4358efdff0bd0658834ccfc3b564f"
+  },
+  {
+    "id": "gocamping_7077",
+    "name": "파라독스캠핑돔글램핑애견팬션",
+    "src": "/assets/place-photos/kto-2738779-95c7a489eba0.jpg",
+    "sha256": "184a9a34d5eec223b75d8a93a4db981bb46979b57245c34b4c43ee48251de55a"
+  },
+  {
+    "id": "gocamping_7878",
+    "name": "빨간집 야영장",
+    "src": "/assets/place-photos/kto-2792596-fd521197bb6f.jpg",
+    "sha256": "7a08ee801ffb715aeb398d413eaafb62a29ba162688aafaf7314e808b4e2c3ce"
+  },
+  {
+    "id": "gocamping_7878",
+    "name": "빨간집 야영장",
+    "src": "/assets/place-photos/kto-2792596-5f28a87d5aaa.jpg",
+    "sha256": "79cf18dd48cd774430fac055608a0f293d348eda44339f7f670267d54fb3e43a"
+  },
+  {
+    "id": "gocamping_100128",
+    "name": "숲속의아침",
+    "src": "/assets/place-photos/kto-2908434-3a74ad766977.jpg",
+    "sha256": "96c903371a27cc96d7ed9da62b2c1359dca0caef7740d40da393bfe4d1d337bf"
+  },
+  {
+    "id": "gocamping_100006",
+    "name": "솔비치캠핑장",
+    "src": "/assets/place-photos/kto-2908187-94b56ec384e0.jpg",
+    "sha256": "ca045aafc908a0c264dd240e302c458090eb21083e6787db804b29578b13dcd0"
+  },
+  {
+    "id": "gocamping_7812",
+    "name": "산소파크 글램핑 청송오토캠핑장",
+    "src": "/assets/place-photos/kto-2740101-188eb2f04a98.jpg",
+    "sha256": "c075d35ed602dc1b18a5747e8e8ec079da76940f0ab94db99237f19ca17c6be8"
+  },
+  {
+    "id": "gocamping_7954",
+    "name": "황매산미리내파크 오토캠핑장",
+    "src": "/assets/place-photos/kto-2734325-f75b0e960267.jpg",
+    "sha256": "428cb6cd5e021c48f8fc44a22c996c2e4f252ee2d4bf873a47a9c0983b2bb740"
+  },
+  {
+    "id": "gocamping_100178",
+    "name": "정선 도원펜션&캠핑장",
+    "src": "/assets/place-photos/kto-625851-61d108cf4d5b.jpg",
+    "sha256": "b6e8bc70bceeb8d125312781396f081f8ec06b86d379554614d645c550dde73c"
+  },
+  {
+    "id": "gocamping_8069",
+    "name": "명봉산솔밭관광농원오토캠핑장",
+    "src": "/assets/place-photos/kto-2791441-877c261e7128.jpg",
+    "sha256": "28f0077f12b304ec04a16d779b849c1af42fd3d231978b4ffa9c6b20c22cb243"
+  },
+  {
+    "id": "gocamping_7799",
+    "name": "대부도 아라뜰 캠핑장",
+    "src": "/assets/place-photos/kto-2729231-b8e1c820d01f.jpg",
+    "sha256": "e71c328c8b48799d1cc117d039010e758072c916cfc78c19529db042cdc954f2"
+  },
+  {
+    "id": "gocamping_100006",
+    "name": "솔비치캠핑장",
+    "src": "/assets/place-photos/kto-2908187-9187a8152a4d.jpg",
+    "sha256": "d56c0acdd7894e87e03e02b262d1d7a19bfba705c4af0162b4afa5ec86fabc93"
+  },
+  {
+    "id": "gocamping_100045",
+    "name": "읍내리 75-1 캠핑장",
+    "src": "/assets/place-photos/kto-2909801-33372551beff.jpg",
+    "sha256": "4d8c7775e5dbbfff5e158c67a24220efec1e86337cf4d5d19e32da1d256a6fab"
+  },
+  {
+    "id": "gocamping_7077",
+    "name": "파라독스캠핑돔글램핑애견팬션",
+    "src": "/assets/place-photos/kto-2738779-b6516f48696f.jpg",
+    "sha256": "4e9cc9c9bf898ffc391639612d5dbce92811cc7f35d94814514824a28101d687"
+  },
+  {
+    "id": "gocamping_100178",
+    "name": "정선 도원펜션&캠핑장",
+    "src": "/assets/place-photos/kto-625851-4b8b231682c0.jpg",
+    "sha256": "981ef5d8eb6ed917ff4f9a28c7ed55fffce29561083caf6c0ba9071b2cca03cc"
+  },
+  {
+    "id": "gocamping_8069",
+    "name": "명봉산솔밭관광농원오토캠핑장",
+    "src": "/assets/place-photos/kto-2791441-4104b10a0b48.jpg",
+    "sha256": "e3dd9daa1ea5d456c45eaf6f5cdabdbb7d5250790adc6eeea0f61d4bff1d4085"
+  },
+  {
+    "id": "gocamping_8187",
+    "name": "젤코바 캠핑장",
+    "src": "/assets/place-photos/kto-2908181-70a3145b5e1e.jpg",
+    "sha256": "33f4b926ea546e565d0217d4514387b0c8f71766d2bd0d5e7f73fee61a99a9f6"
+  },
+  {
+    "id": "gocamping_2573",
+    "name": "인제연가리오토캠핑장펜션",
+    "src": "/assets/place-photos/kto-2761983-cace0cdb0810.jpg",
+    "sha256": "c6a2bb6b9691515473c148150d54b03711357c1c57d15ccf361e45d7d61b3938"
+  },
+  {
+    "id": "gocamping_7799",
+    "name": "대부도 아라뜰 캠핑장",
+    "src": "/assets/place-photos/kto-2729231-52ca8161be6f.jpg",
+    "sha256": "1d89020565a6861ec3033af7acb51ce48c6a8df10c9a75eba3f5ef28687c301f"
+  },
+  {
+    "id": "gocamping_7132",
+    "name": "담양금성산성 오토캠핑장",
+    "src": "/assets/place-photos/kto-2729195-bd9812d509e4.jpg",
+    "sha256": "0a521d216ae3c8b5d207dc020fd6beaa33f9f8ec102e1b9d554b294b3a1edf4d"
+  },
+  {
+    "id": "gocamping_8069",
+    "name": "명봉산솔밭관광농원오토캠핑장",
+    "src": "/assets/place-photos/kto-2791441-2d94e67a513a.jpg",
+    "sha256": "a2bf0a5ed6be6bbd88bfb831f3d7d8d700050eeeb99597504c3b65f20ebdedb7"
+  },
+  {
+    "id": "gocamping_8182",
+    "name": "버팔로캠팜",
+    "src": "/assets/place-photos/kto-2791838-ac71ac682d9c.jpg",
+    "sha256": "54b13fe479a53317ece0e9ebbeb5f3a91e8c103e067f530a37ea467f867416cf"
+  },
+  {
+    "id": "gocamping_8042",
+    "name": "연인산 다목적 캠핑장",
+    "src": "/assets/place-photos/kto-2734125-b1a6a7a8a8d9.jpg",
+    "sha256": "a77e18442d4f5f822789dbde477ead966f091acb0d23d863dbf382412ddd5afa"
+  },
+  {
+    "id": "gocamping_8107",
+    "name": "네이스트 프라이빗 음성",
+    "src": "/assets/place-photos/kto-2907706-f1dc8576966c.jpg",
+    "sha256": "df680e03c67e903bb1b54fa39ae85ecb7317017820a7fe4b707ee6df392a0b25"
+  },
+  {
+    "id": "gocamping_7132",
+    "name": "담양금성산성 오토캠핑장",
+    "src": "/assets/place-photos/kto-2729195-529429c2902b.jpg",
+    "sha256": "ffe05e14de12911ad24136b14d9caf97e06d513b860e6fd4aeba301725b7bcac"
+  },
+  {
+    "id": "gocamping_2072",
+    "name": "양주감악산캠핑장",
+    "src": "/assets/place-photos/kto-2755812-b4f8b42b9197.jpg",
+    "sha256": "de2c228daad333e5596f1de034a40ae797dd1937b3c7b2298460b69bfc3c498c"
+  },
+  {
+    "id": "gocamping_2573",
+    "name": "인제연가리오토캠핑장펜션",
+    "src": "/assets/place-photos/kto-2761983-e9b291bd8514.jpg",
+    "sha256": "ee50519afcf3e03d543f96f8bc6533ae389b0ebc499ab5910b293a89a4ebbc2a"
+  },
+  {
+    "id": "gocamping_1151",
+    "name": "물꽃 캠핑장",
+    "src": "/assets/place-photos/kto-2734803-019fc4705966.jpg",
+    "sha256": "a6eee58cedf136eaf4b0fa0e76e2b5d86ef43bc79d580bf28163e6c246907a26"
+  },
+  {
+    "id": "gocamping_2072",
+    "name": "양주감악산캠핑장",
+    "src": "/assets/place-photos/kto-2755812-c0646296b843.jpg",
+    "sha256": "ef428557a7b4a7a3f2cf83f30d7e628b3d50b2f5f662307e5d765064603a6205"
+  },
+  {
+    "id": "gocamping_100058",
+    "name": "월악파머스캠핑장",
+    "src": "/assets/place-photos/kto-2907893-b651dac6fb05.jpg",
+    "sha256": "a2561f435595cf862caf0bff7025351a14f17924f10ff92a954854dc1b4b598e"
+  },
+  {
+    "id": "gocamping_100178",
+    "name": "정선 도원펜션&캠핑장",
+    "src": "/assets/place-photos/kto-625851-a8e112d6b7c4.jpg",
+    "sha256": "e4722affd6ea8d267f60a0d14b77a66f2cfef005ffe5267ba2bb219063b34d2c"
+  },
+  {
+    "id": "gocamping_7954",
+    "name": "황매산미리내파크 오토캠핑장",
+    "src": "/assets/place-photos/kto-2734325-1ae08c3c47cb.jpg",
+    "sha256": "57a077a3ea61d4317e677a5e1efbf0124e60027bcda69f5d8e9ef33de113be90"
+  },
+  {
+    "id": "gocamping_1151",
+    "name": "물꽃 캠핑장",
+    "src": "/assets/place-photos/kto-2734803-d1731cd02f3c.jpg",
+    "sha256": "b238d613983b9ac216a821b01b9a0d61b7c7fbfeca868b49beb9f781b87c9db8"
+  },
+  {
+    "id": "pub1788410826323_305_xwxsr1",
+    "name": "작은 통나무집",
+    "src": "/assets/place-photos/kto-2759926-fea58b917e68.jpg",
+    "sha256": "e0524d6be9662dd60c28cc9450094084241560c43a3e214a233b3cefdc287e58"
+  },
+  {
+    "id": "gocamping_1151",
+    "name": "물꽃 캠핑장",
+    "src": "/assets/place-photos/kto-2734803-8300cf798e7e.jpg",
+    "sha256": "e937fb5085c10dae2a6d9cf1a2b0a108a4f00771fbeb2ffcc07c52bcaf227316"
+  },
+  {
+    "id": "gocamping_1303",
+    "name": "법흥 캠핑장",
+    "src": "/assets/place-photos/kto-2381761-8dc93e64535a.jpg",
+    "sha256": "8a441eeebc2903e19115cdf17a50e99222eb2d0c530618296170f570a3d9f58a"
+  },
+  {
+    "id": "gocamping_8182",
+    "name": "버팔로캠팜",
+    "src": "/assets/place-photos/kto-2791838-f645830a0065.jpg",
+    "sha256": "7252a1174a428f8f4afeb2b24adf62700a2cad6ebcbb2a6f973d2c5693a53934"
+  },
+  {
+    "id": "gocamping_6968",
+    "name": "단양 남천 야영장",
+    "src": "/assets/place-photos/kto-2734847-1cb3a80bbabd.jpg",
+    "sha256": "5625be684720e927b5fbcd36ab8a9f09119811fd7740f4c5a610ee5d3bfe9976"
+  },
+  {
+    "id": "gocamping_2823",
+    "name": "진경원 민박캠핑장",
+    "src": "/assets/place-photos/kto-2731146-cb74db0a2f7a.jpg",
+    "sha256": "503d5e46fc276d67022014c29a7cd8c46a9b9d5a2997390237f032854cb305d2"
+  },
+  {
+    "id": "gocamping_484",
+    "name": "금은모래 캠핑장",
+    "src": "/assets/place-photos/kto-2734822-6580cbb0b1ff.jpg",
+    "sha256": "5e0735aedc623da6be751e1528643574d68490a47203f22a42d8015630ed9f72"
+  },
+  {
+    "id": "gocamping_6968",
+    "name": "단양 남천 야영장",
+    "src": "/assets/place-photos/kto-2734847-84b551554a7c.jpg",
+    "sha256": "8fa6d8f24aeda6cc3f78e1f8d83049ba1361c74b1d21e2823cd2a30ac6c7dba6"
+  },
+  {
+    "id": "gocamping_7940",
+    "name": "수림 휴원",
+    "src": "/assets/place-photos/kto-2792154-45550379e3b4.jpg",
+    "sha256": "f96f612bebbb7e548c2039109a37b65bd004f5de014f596348d3264afa659900"
+  },
+  {
+    "id": "gocamping_100220",
+    "name": "호미곶 고래마을 카라반 펜션",
+    "src": "/assets/place-photos/kto-2908527-35108e3857fc.jpg",
+    "sha256": "9c855eba75da46c173b5665ab8a3ea6f05f2a048b925463169d4ae7f280bb334"
+  },
+  {
+    "id": "pub1788410826323_305_xwxsr1",
+    "name": "작은 통나무집",
+    "src": "/assets/place-photos/kto-2759926-328523f72c44.jpg",
+    "sha256": "5aba3736375c06c7a9f7c74af618f4b713dd0af6e5f6137f33bcdc4a9b3e3eb7"
+  },
+  {
+    "id": "pub1788410826323_226_d9muml",
+    "name": "아라누리 펜션",
+    "src": "/assets/place-photos/kto-2017499-a8a0239a1353.jpg",
+    "sha256": "d1c149377a004e9bccf23103123428f29942b57af31a984fe2005a6817611e31"
+  },
+  {
+    "id": "gocamping_6976",
+    "name": "동물카라반펜션",
+    "src": "/assets/place-photos/kto-2747024-a8b07d58fa96.jpg",
+    "sha256": "93d110e0c14f501651595b231b01d5974577cbd3a7f028e156f7ae26278f7d7a"
+  },
+  {
+    "id": "gocamping_7995",
+    "name": "욕지도 관광농원",
+    "src": "/assets/place-photos/kto-2792857-40c123e922c6.jpg",
+    "sha256": "e9a2fd6a3bc107a57eeb6a276a1ed73c803dfa645cf60d0c0ea470d97839f76c"
+  },
+  {
+    "id": "gocamping_17",
+    "name": "드림랜드오토캠핑장",
+    "src": "/assets/place-photos/kto-2729600-6c9d8488565d.jpg",
+    "sha256": "aadbaa0a2d63d192287e8b0a2a92a70c8ab4718f7881bfb309d52ae95e679efd"
+  }
+]
