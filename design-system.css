@@ -229,3 +229,6 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
 @media(max-width:700px){#hero-style-3 .home-start-actions a{min-height:58px;padding:14px 12px;gap:8px;font-size:13px}#hero-style-3 .home-start-arrow{margin-left:auto;font-size:15px}.home-start-icon{width:18px;height:18px}}
 @media(max-width:360px){#hero-style-3 .home-start-actions{flex-direction:row}#hero-style-3 .home-start-actions a{font-size:12px;padding:13px 10px;gap:6px}#hero-style-3 .home-start-arrow{display:none}}
 @media(prefers-reduced-motion:reduce){#hero-style-3 .home-start-actions a{transition:none;transform:none!important}}
+
+/* Keep the final page surface connected to the footer. */
+footer.site-footer{margin-top:0}
