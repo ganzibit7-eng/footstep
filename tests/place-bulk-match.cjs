@@ -16,3 +16,9 @@ test('legacy hotel breed ban and official muzzle rule remain explicitly unresolv
  const r=byId.get('pub1788410826323_400_nefwex');assert(r.caution);assert.match(r.caution.excerpt,/기존 등록 안내:[\s\S]*맹견[\s\S]*입실 불가/);assert.match(r.caution.excerpt,/공식 관광 상세 자료:[\s\S]*입마개/);
  const Conditions=require('../place-conditions.js');assert.match(Conditions.summary(r),/재확인/);assert.match(Conditions.get(r)[1].value,/미확정/);
 });
+test('condition review dates follow evidence, not the date of adding a photo',()=>{
+ const Conditions=require('../place-conditions.js'),now=Date.parse('2026-10-18T15:00:00+09:00');
+ const fresh=records.find(r=>r.petChecked==='2026-10-18'),prior=records.find(r=>r.pet&&!r.petChecked&&r.checked==='2026-10-17');assert(fresh&&prior);
+ assert.match(Conditions.freshness(fresh,now),/^2026-10-18/);assert.match(Conditions.freshness(prior,now),/^2026-10-17/);
+ const stored=require('../place-evidence.js').get(fresh),before=stored.petChecked;try{stored.petChecked='2099-01-01';assert(!Conditions.freshness(fresh,now).includes('2099'));}finally{stored.petChecked=before;}
+});

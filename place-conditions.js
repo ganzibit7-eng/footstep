@@ -39,7 +39,8 @@
     return '<a href="mailto:footstepbiz@gmail.com?subject='+subject+'&amp;body='+body+'" style="font-size:13px">정보 수정 제보 ↗</a>';
   }
   function freshness(place,now=Date.now()){
-    const data=evidence||root.PlaceEvidence,current=data?.conditions(place)||data?.camping?.(place);if(current&&Date.parse('2026-10-17T00:00:00+09:00')<=now)return '2026-10-17 공식 동반 자료 확인 · 당일 운영은 방문 전 확인';
+    const data=evidence||root.PlaceEvidence,pet=data?.conditions(place),camp=data?.camping?.(place),record=data?.get?.(place),checked=pet?(record?.petChecked||record?.checked):camp?.checked;
+    if((pet||camp)&&/^\d{4}-\d{2}-\d{2}$/.test(checked||'')){const time=Date.parse(checked+'T00:00:00+09:00');if(Number.isFinite(time)&&new Date(time+9*3600000).toISOString().slice(0,10)===checked&&time<=now)return checked+' 공식 동반 자료 확인 · 당일 운영은 방문 전 확인';}
     const description=String(place?.description||'');
     const source=description.match(/공식안내:\s*(https?:\/\/[^\s·]+)/)?.[1];
     const value=description.match(/확인일:\s*(\d{4}-\d{2}-\d{2})/)?.[1];
