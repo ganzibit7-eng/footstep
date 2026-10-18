@@ -106,3 +106,24 @@ html[data-theme="dark"] #nearby-section .home-place-end-link{background:var(--fi
 #nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:32px;font-weight:700;line-height:1.45;letter-spacing:-.04em;color:var(--finish-ink);margin:12px 0;max-width:none;word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
 @media(max-width:700px){#nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-size:26px}}
 @media(max-width:360px){#nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-size:24px}}
+
+/* Compact dining and stay chapters: approximately 80%, with readable text and touch targets. */
+#nearby-section :is(#home-dining,#home-stays){padding-block:36px 42px}
+#nearby-section .home-place-rail{gap:16px;padding-bottom:16px}
+#nearby-section .home-place-card{flex-basis:calc((100% - 40px)/3.75);border-radius:15px}
+#nearby-section .home-place-body{padding:14px;grid-template-rows:18px 44px minmax(72px,1fr) 44px auto}
+#nearby-section .home-place-body h3{font-size:17px;line-height:22px;margin:3px 0 0}
+#nearby-section .home-place-caption{font-size:11px;line-height:18px;white-space:normal}
+#nearby-section .home-place-condition{font-size:12px;line-height:20px;margin:6px 0 8px}
+#nearby-section .home-place-detail{min-height:44px;font-size:12px}
+#nearby-section .home-place-source summary{min-height:32px;font-size:10px}
+#nearby-section .home-place-end{padding:20px 18px}
+#nearby-section .home-place-end .home-place-end-eyebrow{font-size:10px;margin-bottom:16px}
+#nearby-section .home-place-end-mark{width:42px;height:42px;border-radius:11px;margin-bottom:18px}
+#nearby-section .home-place-end-mark svg{width:22px;height:22px}
+#nearby-section .home-place-end h3{font-size:20px;line-height:1.45;margin-bottom:12px}
+#nearby-section .home-place-end>p:not(.home-place-end-eyebrow){font-size:12px;line-height:1.8;margin-bottom:18px}
+#nearby-section .home-place-end-link{min-height:44px;padding:10px 12px;font-size:12px}
+@media(max-width:900px){#nearby-section .home-place-card{flex-basis:calc((100% - 20px)/2.5)}}
+@media(max-width:700px){#nearby-section :is(#home-dining,#home-stays){padding-block:24px 28px}#nearby-section .home-place-card{flex-basis:68.8%}#nearby-section .home-place-rail{gap:13px}#nearby-section .home-place-heading>p{font-size:13px}#nearby-section .home-place-toolbar{margin:14px 0 10px}#nearby-section .home-place-toolbar>p{font-size:11px}}
+@media(max-width:360px){#nearby-section .home-place-card{flex-basis:73.6%}}
