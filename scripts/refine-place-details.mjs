@@ -18,8 +18,8 @@ function addExternalLink(html){
 export function refinePlaceDetail(html){
  if(!/class="reading-page place-detail-page"/.test(html))return html;
  html=addExternalLink(html);
- if(html.includes('/place-detail.css?'))return html.replace(/place-detail\.css\?v=20261017-(?:premium|native|readable)/g,'place-detail.css?v=20261017-readable');
- html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261017-readable"></head>');
+ if(html.includes('/place-detail.css?'))return html.replace(/place-detail\.css\?v=20261017-(?:premium|native|readable|gallery)/g,'place-detail.css?v=20261018-gallery');
+ html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261018-gallery"></head>');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="place-site-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="28" height="28" alt="">발자국</a><a class="place-back" href="/discover.html?kind=facilities#find-place">장소 둘러보기 ↗</a></header>');
  html=html.replace(/<nav aria-label="현재 위치">([\s\S]*?)<\/nav>/,(_,content)=>{
   const links=[...content.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].map(x=>x[0]);
@@ -31,7 +31,7 @@ export function refinePlaceDetail(html){
  html=html.replace(/<div class="icon">[\s\S]*?<\/div>/,'').replace(/(<p class="meta">[^<]*)식당카페/,'$1식당·카페');
  // Keep original image ratio, full credits and license links. Lead image should load promptly.
  let photo='';
- html=html.replace(/<figure class="place-photo"[\s\S]*?<\/figure>/,figure=>{photo=figure.replace('loading="lazy"','loading="eager" fetchpriority="high"').replace(/(<figcaption\b[^>]*>)([\s\S]*?)(<\/figcaption>)/,'$1<details><summary>사진 출처·이용 안내</summary><div>$2</div></details>$3');return '';});
+ html=html.replace(/<figure class="place-photo"[\s\S]*?<\/figure>(?:<details class="place-photo-gallery">[\s\S]*?<\/details>)?/,figure=>{photo=figure.replace('loading="lazy"','loading="eager" fetchpriority="high"').replace(/(<figcaption\b[^>]*>)([\s\S]*?)(<\/figcaption>)/,'$1<details><summary>사진 출처·이용 안내</summary><div>$2</div></details>$3');return '';});
  if(photo)html=html.replace('</h1>','</h1>'+photo);
  html=html.replace(/<nav class="place-dock"[\s\S]*?<\/nav>/,'');
  html=html.replace('</article>','</article>'+directory);

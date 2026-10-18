@@ -77,3 +77,12 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
 .place-detail-page section.card ul>li>a{background:transparent;color:#243c32;text-decoration:none;line-height:1.7}
 .place-detail-page section.card ul>li:hover{background:#fffef9;border-color:#9cab9b}
 .place-detail-page section.card ul>li>a::after{color:#65765f}
+
+.place-detail-page .place-photo-gallery{margin:12px 0 24px;border:1px solid #dce1d8;border-radius:12px;background:#fffef9;padding:0 18px}
+.place-detail-page .place-photo-gallery>summary,.place-official-notes>summary{min-height:48px;padding:12px 0;cursor:pointer;font-size:13px;font-weight:600}
+.place-photo-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:8px 0 20px}
+.place-photo-gallery-grid img{display:block;width:100%;height:240px;object-fit:contain;background:#f1eee5;border-radius:10px}
+.place-photo-gallery-grid p{font-size:11px;line-height:1.75;color:#647166}
+.place-official-notes{margin:18px 0;border-top:1px solid #dce1d8;font-size:13px;line-height:1.9}
+.place-official-notes p{font-size:13px;line-height:1.9}
+@media(max-width:600px){.place-photo-gallery-grid{grid-template-columns:1fr}.place-photo-gallery-grid img{height:auto;max-height:420px}}

@@ -809,7 +809,7 @@ for (const {type,items} of groups) {
     const generatedHtml=withTraffic(detailHtml(item,type,url));
     const oldDescription=previousDescriptions.get(url),newDescription=generatedHtml.match(/<meta name="description" content="([^"]*)"/)?.[1]||'';
     await writeFile(path.join(dir,'index.html'),generatedHtml,'utf8');
-    sitemap.push({url,lastmod:type.table==='facilities'&&(PlacePhotos.get(item)||PlaceEvidence.conditions(item)||PlaceEvidence.camping(item))?'2026-10-17':oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});
+    sitemap.push({url,lastmod:type.table==='facilities'&&(PlacePhotos.get(item)||PlaceEvidence.conditions(item)||PlaceEvidence.camping(item))?(PlaceEvidence.get(item)?.enrichedOn||'2026-10-17'):oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});
   }
 }
 

@@ -1,0 +1,1026 @@
+{
+  "before": {
+    "records": 1617,
+    "photos": 876,
+    "pet": 441,
+    "cautions": 16
+  },
+  "decisions": [
+    {
+      "id": "gocamping_100017",
+      "name": "태그하우스",
+      "contentId": "2908110",
+      "status": "matched",
+      "identity": {
+        "sourceName": "태그하우스풀빌라",
+        "sourceAddress": "인천광역시 강화군 길상면 동검길154번길 24-19",
+        "meters": 22,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100021",
+      "name": "밤벌캠핑장",
+      "contentId": "2909773",
+      "status": "matched",
+      "identity": {
+        "sourceName": "밤벌캠핑장",
+        "sourceAddress": "경기도 가평군 설악면 어비산길 15-23",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100035",
+      "name": "오렌지캠프",
+      "contentId": "2907933",
+      "status": "matched",
+      "identity": {
+        "sourceName": "오렌지캠프",
+        "sourceAddress": "충청북도 보은군 속리산로 995-35 야영장시설",
+        "meters": 24,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100064",
+      "name": "노랑카라반",
+      "contentId": "2819540",
+      "status": "matched",
+      "identity": {
+        "sourceName": "노랑카라반&고카트",
+        "sourceAddress": "경상남도 남해군 이동면 남해대로 1607",
+        "meters": 55,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100084",
+      "name": "숲이야기",
+      "contentId": "2908991",
+      "status": "matched",
+      "identity": {
+        "sourceName": "숲이야기 캠핑장",
+        "sourceAddress": "강원특별자치도 춘천시 서백길 691-77",
+        "meters": 19,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100086",
+      "name": "노마드글램핑",
+      "contentId": "2909643",
+      "status": "matched",
+      "identity": {
+        "sourceName": "노마드글램핑",
+        "sourceAddress": "경기도 가평군 원흥길 46-12",
+        "meters": 10,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100091",
+      "name": "에이미캠핑장",
+      "contentId": "2749347",
+      "status": "matched",
+      "identity": {
+        "sourceName": "에이미캠핑장",
+        "sourceAddress": "강원특별자치도 영월군 김삿갓면 영월동로 1107-1",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100117",
+      "name": "별밤캠핑장",
+      "contentId": "2827528",
+      "status": "matched",
+      "identity": {
+        "sourceName": "별밤캠핑장",
+        "sourceAddress": "전남광주통합특별시 나주시 고막원길 20 별밤캠핑장",
+        "meters": 88,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100148",
+      "name": "레끄레오",
+      "contentId": "2909128",
+      "status": "matched",
+      "identity": {
+        "sourceName": "레끄레오캠핑장",
+        "sourceAddress": "경상북도 청도군 선암로 387-116",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100170",
+      "name": "사발소캠핑장",
+      "contentId": "2909535",
+      "status": "matched",
+      "identity": {
+        "sourceName": "사발소캠핑장",
+        "sourceAddress": "강원특별자치도 횡성군 어답산로 60-15",
+        "meters": 71,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100192",
+      "name": "라라캠핑장",
+      "contentId": "2909640",
+      "status": "matched",
+      "identity": {
+        "sourceName": "라라캠핑장(양산)",
+        "sourceAddress": "경상남도 양산시 원동로 1899-30",
+        "meters": 56,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100224",
+      "name": "우니메이카 밀양점",
+      "contentId": "2909498",
+      "status": "matched",
+      "identity": {
+        "sourceName": "우니메이카 밀양점",
+        "sourceAddress": "경상남도 밀양시 국전로 78-5",
+        "meters": 12,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_100394",
+      "name": "홀리데이캠핑파크",
+      "contentId": "2909958",
+      "status": "matched",
+      "identity": {
+        "sourceName": "홀리데이캠핑파크 대부도점",
+        "sourceAddress": "경기도 안산시 단원구 서위매봉길 14 (대부북동)",
+        "meters": 2,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1035",
+      "name": "맑은누리",
+      "contentId": "2748273",
+      "status": "matched",
+      "identity": {
+        "sourceName": "맑은누리캠핑장",
+        "sourceAddress": "충청북도 영동군 상촌면 물한계곡로 1212",
+        "meters": 7,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1039",
+      "name": "맘빌리지",
+      "contentId": "2727374",
+      "status": "matched",
+      "identity": {
+        "sourceName": "맘빌리지카라반캠핑장",
+        "sourceAddress": "충청남도 태안군 소원면 법산길 350-60",
+        "meters": 34,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1085",
+      "name": "몬테비얀코",
+      "contentId": "2728203",
+      "status": "matched",
+      "identity": {
+        "sourceName": "몬테비얀코캠핑장",
+        "sourceAddress": "경기도 포천시 이동면 늠바위길 181",
+        "meters": 31,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1114",
+      "name": "솔밭야영장",
+      "contentId": "2747450",
+      "status": "matched",
+      "identity": {
+        "sourceName": "무주 솔밭야영장",
+        "sourceAddress": "전북특별자치도 무주군 안성면 원통사로 294",
+        "meters": 16,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1554",
+      "name": "삼원레져타운",
+      "contentId": "2727455",
+      "status": "matched",
+      "identity": {
+        "sourceName": "삼원레져타운캠핑장",
+        "sourceAddress": "충청남도 서산시 팔봉면 진장서낭골길 204",
+        "meters": 11,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_17",
+      "name": "드림랜드오토캠핑장",
+      "contentId": "2729600",
+      "status": "matched",
+      "identity": {
+        "sourceName": "영천드림랜드오토캠핑장",
+        "sourceAddress": "경상북도 영천시 고경면 고도길 38",
+        "meters": 92,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1707",
+      "name": "소나무숲아래",
+      "contentId": "2728206",
+      "status": "matched",
+      "identity": {
+        "sourceName": "소나무숲아래캠핑장",
+        "sourceAddress": "충청북도 충주시 수안보면 미륵리사지길 29",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_1990",
+      "name": "아빠캠핑가",
+      "contentId": "2743257",
+      "status": "matched",
+      "identity": {
+        "sourceName": "아빠캠핑가 오토캠핑장",
+        "sourceAddress": "충청북도 진천군 백곡면 안구수길 34-28",
+        "meters": 46,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_2543",
+      "name": "은행마을",
+      "contentId": "2615570",
+      "status": "matched",
+      "identity": {
+        "sourceName": "청라 은행마을 (보령)",
+        "sourceAddress": "충청남도 보령시 청라면 오서산길 150-65",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_2944",
+      "name": "청평다감",
+      "contentId": "2738818",
+      "status": "matched",
+      "identity": {
+        "sourceName": "청평다감캠핑장",
+        "sourceAddress": "경기도 가평군 청평면 호반로 886",
+        "meters": 9,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_3098",
+      "name": "코끼리관광농원",
+      "contentId": "2729984",
+      "status": "matched",
+      "identity": {
+        "sourceName": "코끼리관광농원캠핑장",
+        "sourceAddress": "경상북도 고령군 덕곡면 지사동길 20-4",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_3186",
+      "name": "파인트리",
+      "contentId": "2730049",
+      "status": "matched",
+      "identity": {
+        "sourceName": "파인트리글램핑",
+        "sourceAddress": "경기도 포천시 이동면 화동로 1925-63",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_3407",
+      "name": "한다리골캠핑장",
+      "contentId": "2734029",
+      "status": "matched",
+      "identity": {
+        "sourceName": "치악산한다리골캠핑장",
+        "sourceAddress": "강원특별자치도 원주시 소초면 백교길 84-15",
+        "meters": 97,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_533",
+      "name": "나그네캠핑장",
+      "contentId": "2729562",
+      "status": "matched",
+      "identity": {
+        "sourceName": "연산나그네캠핑장",
+        "sourceAddress": "충청남도 논산시 연산면 선비로866번길 166-4",
+        "meters": 12,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7099",
+      "name": "휴일엔캠핑",
+      "contentId": "2720702",
+      "status": "matched",
+      "identity": {
+        "sourceName": "휴일엔캠핑장",
+        "sourceAddress": "경상남도 거창군 북상면 병곡길 187",
+        "meters": 25,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7128",
+      "name": "늘푸른쉼터",
+      "contentId": "2726797",
+      "status": "matched",
+      "identity": {
+        "sourceName": "늘푸른쉼터오토캠핑장",
+        "sourceAddress": "경기도 가평군 설악면 어비산길 76",
+        "meters": 9,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7561",
+      "name": "와우파크",
+      "contentId": "2752057",
+      "status": "matched",
+      "identity": {
+        "sourceName": "강릉 와우파크 카라반펜션",
+        "sourceAddress": "강원특별자치도 강릉시 사천면 공회당길 7-13",
+        "meters": 14,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7635",
+      "name": "산중호걸 글램핑",
+      "contentId": "2727443",
+      "status": "matched",
+      "identity": {
+        "sourceName": "산중호걸 글램핑카라반",
+        "sourceAddress": "경기도 포천시 이동면 금강로6263번길 182-73",
+        "meters": 1,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7802",
+      "name": "봄날처럼",
+      "contentId": "2730792",
+      "status": "matched",
+      "identity": {
+        "sourceName": "봄날처럼",
+        "sourceAddress": "경상북도 경주시 안강읍 호국로 2522-12",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7823",
+      "name": "양주그린캠프",
+      "contentId": "2792135",
+      "status": "matched",
+      "identity": {
+        "sourceName": "양주캠핑(구 양주그린캠프)",
+        "sourceAddress": "경기도 양주시 칠봉산로168번길 290 (회암동)",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7910",
+      "name": "양양오색 휴랜드 야영장",
+      "contentId": "2792050",
+      "status": "matched",
+      "identity": {
+        "sourceName": "양양오색 휴랜드 야영장",
+        "sourceAddress": "강원특별자치도 양양군 서면 관대문길 99",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7915",
+      "name": "강릉 금진리321카라반",
+      "contentId": "2792194",
+      "status": "matched",
+      "identity": {
+        "sourceName": "강릉 금진리321카라반",
+        "sourceAddress": "강원특별자치도 강릉시 옥계면 헌화로 247-11",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7920",
+      "name": "가고파캠핑장",
+      "contentId": "2792802",
+      "status": "matched",
+      "identity": {
+        "sourceName": "가고파캠핑장",
+        "sourceAddress": "경상남도 산청군 시천면 지리산대로1478번길 31-10",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7955",
+      "name": "돈내미농장",
+      "contentId": "2792564",
+      "status": "matched",
+      "identity": {
+        "sourceName": "돈내미농장",
+        "sourceAddress": "경기도 동두천시 천보산로456번길 49-1 (탑동동)",
+        "meters": 22,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7965",
+      "name": "몽골캠핑장",
+      "contentId": "2792252",
+      "status": "matched",
+      "identity": {
+        "sourceName": "몽골캠핑장",
+        "sourceAddress": "강원특별자치도 홍천군 내면 밤바치길 737",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_7976",
+      "name": "거창서핑파크",
+      "contentId": "2721484",
+      "status": "matched",
+      "identity": {
+        "sourceName": "거창서핑파크",
+        "sourceAddress": "경상남도 거창군 위천면 거차1길 23-18",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8011",
+      "name": "아우노펠리스",
+      "contentId": "2734155",
+      "status": "matched",
+      "identity": {
+        "sourceName": "영천아우노펠리스",
+        "sourceAddress": "경상북도 영천시 상신기길 150 (언하동)",
+        "meters": 31,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8035",
+      "name": "시골학교캠핑장",
+      "contentId": "2792253",
+      "status": "matched",
+      "identity": {
+        "sourceName": "시골학교캠핑장",
+        "sourceAddress": "충청북도 제천시 봉양읍 제원로 653",
+        "meters": 48,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8102",
+      "name": "안림딸기마을 캠핑장",
+      "contentId": "2909831",
+      "status": "matched",
+      "identity": {
+        "sourceName": "안림딸기마을 캠핑장",
+        "sourceAddress": "경상북도 고령군 안림천길 19-6 안림초등학교",
+        "meters": 97,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8132",
+      "name": "아띠캠핑장",
+      "contentId": "2908116",
+      "status": "matched",
+      "identity": {
+        "sourceName": "아띠캠핑장",
+        "sourceAddress": "경기도 연천군 군남면 군남로 373",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8138",
+      "name": "휴먼캠핑장",
+      "contentId": "2908018",
+      "status": "matched",
+      "identity": {
+        "sourceName": "휴먼캠핑장",
+        "sourceAddress": "경기도 양평군 월은길 145",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8180",
+      "name": "오색허브농원 캠핑장",
+      "contentId": "2791432",
+      "status": "matched",
+      "identity": {
+        "sourceName": "오색허브농원 캠핑장",
+        "sourceAddress": "강원특별자치도 양양군 서면 송어길 38",
+        "meters": 43,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8181",
+      "name": "황매산 문워크 카라반 펜션 캠핑",
+      "contentId": "2910206",
+      "status": "matched",
+      "identity": {
+        "sourceName": "황매산 문워크 카라반 펜션 캠핑",
+        "sourceAddress": "경상남도 합천군 신성동1길 19",
+        "meters": 12,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8192",
+      "name": "어썸비치",
+      "contentId": "2908011",
+      "status": "matched",
+      "identity": {
+        "sourceName": "어썸비치 글램핑",
+        "sourceAddress": "강원특별자치도 삼척시 초곡길 380",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8194",
+      "name": "보성 지중해 야영장",
+      "contentId": "2909213",
+      "status": "matched",
+      "identity": {
+        "sourceName": "보성 지중해 야영장",
+        "sourceAddress": "전남광주통합특별시 보성군 회천면 공룡로 206-42",
+        "meters": 3,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8196",
+      "name": "평암189캠핑장",
+      "contentId": "2909694",
+      "status": "matched",
+      "identity": {
+        "sourceName": "평암189캠핑장",
+        "sourceAddress": "경상남도 창원시 마산합포구 평암로 372-8",
+        "meters": 7,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_8204",
+      "name": "을전56오토캠핑장",
+      "contentId": "2908010",
+      "status": "matched",
+      "identity": {
+        "sourceName": "을전56오토캠핑장",
+        "sourceAddress": "충청북도 단양군 가곡면 을전길 56-1",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_965",
+      "name": "러브팜캠핑장",
+      "contentId": "2755668",
+      "status": "matched",
+      "identity": {
+        "sourceName": "러브팜캠핑장",
+        "sourceAddress": "강원특별자치도 화천군 사내면 화악산로 938-14",
+        "meters": 10,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "gocamping_991",
+      "name": "리앤파크",
+      "contentId": "2748254",
+      "status": "matched",
+      "identity": {
+        "sourceName": "리앤파크캠핑장",
+        "sourceAddress": "충청북도 영동군 황간면 구룡로 321",
+        "meters": 94,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_357c30d4-b73f-4856-818b-4878423f54c3",
+      "name": "폭풍속으로 드라마세트장",
+      "contentId": "2613465",
+      "status": "matched",
+      "identity": {
+        "sourceName": "폭풍속으로 드라마세트장",
+        "sourceAddress": "경상북도 울진군 죽변면 등대길 74-14",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_41211b90-1572-4fdf-9766-da12341150e6",
+      "name": "동피랑마을",
+      "contentId": "753306",
+      "status": "matched",
+      "identity": {
+        "sourceName": "동피랑마을",
+        "sourceAddress": "경상남도 통영시 동피랑1길 6-18",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_5010fdee-adcc-416c-a154-2f650321a173",
+      "name": "보물섬식당",
+      "contentId": "2905809",
+      "status": "matched",
+      "identity": {
+        "sourceName": "보물섬식당",
+        "sourceAddress": "경상남도 거제시 다포4길 14",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_51182943-d327-4983-b8f5-c88eaa1fda2e",
+      "name": "소나무리조트",
+      "contentId": "610224",
+      "status": "matched",
+      "identity": {
+        "sourceName": "소나무리조트",
+        "sourceAddress": "충청남도 태안군 남면 몽산포길 179",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_66dba60b-a623-4753-a3b4-76a62fcbbe05",
+      "name": "전북 전주 한옥마을 [슬로시티]",
+      "contentId": "264284",
+      "status": "matched",
+      "identity": {
+        "sourceName": "전북 전주 한옥마을 [슬로시티]",
+        "sourceAddress": "전북특별자치도 전주시 완산구 기린대로 99 (남노송동)",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_7107d817-febe-435e-852f-31a9ca7aca52",
+      "name": "피크닉댕댕",
+      "contentId": "2705419",
+      "status": "matched",
+      "identity": {
+        "sourceName": "피크닉댕댕",
+        "sourceAddress": "경기도 동두천시 천보산로 344 (탑동동)",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_73baeda9-c37a-4c7d-b70b-8a5a101a5700",
+      "name": "니지모리 스튜디오",
+      "contentId": "2774723",
+      "status": "matched",
+      "identity": {
+        "sourceName": "니지모리 스튜디오",
+        "sourceAddress": "경기도 동두천시 천보산로 567-12 (탑동동)",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_7d38327f-ea39-4678-b305-676affd1ada1",
+      "name": "후연지한옥펜션",
+      "contentId": "2603913",
+      "status": "matched",
+      "identity": {
+        "sourceName": "후연지한옥펜션",
+        "sourceAddress": "경상북도 경주시 내남면 포석로 435-9",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_7d5a9ef7-bd66-4cc4-bd45-e16a59b93eb1",
+      "name": "도깨비셀프바베큐",
+      "contentId": "2938671",
+      "status": "matched",
+      "identity": {
+        "sourceName": "도깨비셀프바베큐",
+        "sourceAddress": "경기도 이천시 증신로 336 (송정동)",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_7de0df59-e7df-4702-a9f3-706bcc5bafbc",
+      "name": "오아시스글램핑",
+      "contentId": "2738810",
+      "status": "matched",
+      "identity": {
+        "sourceName": "오아시스글램핑",
+        "sourceAddress": "경상북도 경주시 새골길 85-17 (구정동)",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_8d60c5e0-6fc4-4863-a0bb-5c880ea68721",
+      "name": "양지파인리조트",
+      "contentId": "136632",
+      "status": "matched",
+      "identity": {
+        "sourceName": "양지파인리조트",
+        "sourceAddress": "경기도 용인시 처인구 양지면 남평로 112",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_951e2646-e50a-4772-8892-40852e3419dd",
+      "name": "경상남도 수산자원연구소 민물고기전시관",
+      "contentId": "2656739",
+      "status": "matched",
+      "identity": {
+        "sourceName": "경상남도 수산자원연구소 민물고기전시관",
+        "sourceAddress": "경상남도 밀양시 산외면 산외남로 28-27",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_a28d1bc0-6c8c-4bfe-ab6f-f0858721a920",
+      "name": "카페1953위드오드리",
+      "contentId": "2852088",
+      "status": "matched",
+      "identity": {
+        "sourceName": "카페1953위드오드리",
+        "sourceAddress": "서울특별시 영등포구 경인로77가길 12",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_a41c8585-f087-41b1-89ba-644dee4b079c",
+      "name": "골드마운틴하우스 (유한회사진도휴식)",
+      "contentId": "3511367",
+      "status": "matched",
+      "identity": {
+        "sourceName": "골드마운틴하우스 (유한회사진도휴식)",
+        "sourceAddress": "전남광주통합특별시 진도군 고군면 원포길 226",
+        "meters": 4,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_b92336de-0b5a-4b72-898f-4953273f0de4",
+      "name": "휘닉스 스노우파크",
+      "contentId": "131300",
+      "status": "matched",
+      "identity": {
+        "sourceName": "휘닉스 스노우파크",
+        "sourceAddress": "강원특별자치도 평창군 봉평면 태기로 174",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "kto_e8f0e3d8-bde7-42b1-8a3b-ebea97f54e62",
+      "name": "임꺽정한우마을",
+      "contentId": "856258",
+      "status": "matched",
+      "identity": {
+        "sourceName": "임꺽정한우마을",
+        "sourceAddress": "경기도 파주시 파평면 화석정로 98",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "mfds_070b330dcc336a4e0722",
+      "name": "13월의강릉",
+      "contentId": "3536409",
+      "status": "matched",
+      "identity": {
+        "sourceName": "13월의강릉",
+        "sourceAddress": "강원특별자치도 강릉시 해안로 292 (강문동)",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "mfds_ac2461ba40fd8b5a3444",
+      "name": "강릉79막회",
+      "contentId": "3533722",
+      "status": "matched",
+      "identity": {
+        "sourceName": "강릉79막회",
+        "sourceAddress": "강원특별자치도 강릉시 해안로 292 (강문동)",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "mfds_d96ca4ac22068acf2493",
+      "name": "대한횟집",
+      "contentId": "2851362",
+      "status": "matched",
+      "identity": {
+        "sourceName": "대한횟집 만세튀김",
+        "sourceAddress": "충청남도 태안군 백사장1길 119",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826322_163_pa7lbx",
+      "name": "벤치하우스",
+      "contentId": "2498993",
+      "status": "matched",
+      "identity": {
+        "sourceName": "벤치하우스 펜션",
+        "sourceAddress": "강원특별자치도 평창군 봉평면 흥정계곡1길 35-6",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826322_180_gcac9h",
+      "name": "산음자연휴양림",
+      "contentId": "127171",
+      "status": "matched",
+      "identity": {
+        "sourceName": "국립 산음자연휴양림",
+        "sourceAddress": "경기도 양평군 단월면 고북길 347",
+        "meters": 2,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826322_69_wmahky",
+      "name": "노비오스",
+      "contentId": "912647",
+      "status": "matched",
+      "identity": {
+        "sourceName": "경주애견펜션 노비오스",
+        "sourceAddress": "경상북도 경주시 진티길 37-4",
+        "meters": 6,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826323_272_m430ag",
+      "name": "예원캠핑장",
+      "contentId": "2744428",
+      "status": "matched",
+      "identity": {
+        "sourceName": "예원캠핑장",
+        "sourceAddress": "전북특별자치도 완주군 동상면 송광수만로 1079-126",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826323_281_lhbtyu",
+      "name": "올레하우스",
+      "contentId": "1821483",
+      "status": "matched",
+      "identity": {
+        "sourceName": "제주올레하우스",
+        "sourceAddress": "제주특별자치도 제주시 구좌읍 덕행로 450-23",
+        "meters": 4,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410826323_398_i33uw6",
+      "name": "해성파크텔",
+      "contentId": "2626708",
+      "status": "matched",
+      "identity": {
+        "sourceName": "해성파크텔",
+        "sourceAddress": "제주특별자치도 서귀포시 천제연로 158-4",
+        "meters": 4,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_281_9u34ll",
+      "name": "모스가든",
+      "contentId": "2755477",
+      "status": "matched",
+      "identity": {
+        "sourceName": "모스가든",
+        "sourceAddress": "서울특별시 강남구 논현로139길 12",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_300_ni66t7",
+      "name": "밀크레페",
+      "contentId": "2783323",
+      "status": "matched",
+      "identity": {
+        "sourceName": "카페밀크레페",
+        "sourceAddress": "전남광주통합특별시 담양군 월산면 담장로 67",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_327_59n846",
+      "name": "보사노바 커피로스터스",
+      "contentId": "2922605",
+      "status": "matched",
+      "identity": {
+        "sourceName": "보사노바 커피로스터스 강릉점",
+        "sourceAddress": "강원특별자치도 강릉시 창해로14번길 28",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_343_yi7dk5",
+      "name": "블리스커피",
+      "contentId": "2838742",
+      "status": "matched",
+      "identity": {
+        "sourceName": "경주 블리스커피",
+        "sourceAddress": "경상북도 경주시 보불로 158",
+        "meters": 5,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_449_n7tyfo",
+      "name": "앤드로이",
+      "contentId": "2931075",
+      "status": "matched",
+      "identity": {
+        "sourceName": "앤드로이",
+        "sourceAddress": "전남광주통합특별시 여수시 강남10길 45  ",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_593_czyy71",
+      "name": "카페 타지",
+      "contentId": "2902086",
+      "status": "matched",
+      "identity": {
+        "sourceName": "카페 타지",
+        "sourceAddress": "경기도 평택시 방혜동길 30-20 (가재동)",
+        "meters": 0,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    },
+    {
+      "id": "pub1788410835188_754_qwsu9s",
+      "name": "포러데이",
+      "contentId": "2867817",
+      "status": "matched",
+      "identity": {
+        "sourceName": "포러데이 팔당",
+        "sourceAddress": "경기도 남양주시 와부읍 경강로926번길 8-7",
+        "meters": 46,
+        "rule": "도로명·건물번호 일치, 100m 이내, 고유 상호 포함 일치"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "id": "gocamping_100117",
+      "original": "https://tong.visitkorea.or.kr/cms/resource/25/2827525_image2_1.jpg",
+      "error": "Invalid image"
+    }
+  ],
+  "downloaded": 1804
+}
