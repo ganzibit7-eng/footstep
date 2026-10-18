@@ -75,3 +75,13 @@
 .home-place-source summary{box-sizing:border-box;min-height:36px}
 .home-place-end{min-height:0}
 @media(max-width:700px){.home-place-body{padding:18px;grid-template-rows:20px 60px minmax(72px,1fr) 48px auto}.home-place-body h3{font-size:20px;line-height:28px;min-height:0}.home-place-condition{margin:8px 0 12px;min-height:0}}
+
+/* Consistent Korean type, with distinct title and condition hierarchy. */
+#nearby-section :is(#home-dining,#home-stays){font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+#nearby-section :is(#home-dining,#home-stays) :is(h2,h3,p,a,summary,button,span){font-family:inherit}
+#nearby-section .home-place-heading h2{font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:-.045em;line-height:1.5}
+#nearby-section .home-place-body h3{font-size:19px;font-weight:600;letter-spacing:-.025em;line-height:28px;color:var(--finish-ink)}
+#nearby-section .home-place-caption{font-size:12px;font-weight:500;color:var(--finish-muted);letter-spacing:-.015em;line-height:20px}
+#nearby-section .home-place-condition{font-size:13px;font-weight:400;letter-spacing:-.015em;line-height:24px;color:var(--finish-muted)}
+#nearby-section .home-place-detail{font-size:13px;font-weight:600;letter-spacing:-.02em}
+@media(max-width:700px){#nearby-section .home-place-heading h2{font-size:26px}#nearby-section .home-place-heading>p{font-size:14px;line-height:1.9}#nearby-section .home-place-body h3{font-size:19px}}

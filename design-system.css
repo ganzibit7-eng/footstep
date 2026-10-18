@@ -232,3 +232,15 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
 
 /* Keep the final page surface connected to the footer. */
 footer.site-footer{margin-top:0}
+
+/* A restrained account entry; notifications appear after session restoration only. */
+header #profile-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid #cbd3c8;border-radius:999px;background:#fffdf8;color:#294336;font-family:"Noto Sans KR",sans-serif;font-size:13px;font-weight:600;line-height:1.5;letter-spacing:-.02em;box-shadow:0 2px 4px #203a2d05;transition:background .18s,border-color .18s}
+header #profile-btn .profile-login-icon{width:17px;height:17px;flex:none}
+header #profile-btn[data-signed-in="false"] .dot{display:none!important}
+header #profile-btn[data-signed-in="true"] .profile-login-icon{display:none}
+header #profile-avatar{margin-right:0!important}
+header #notif-btn[hidden]{display:none!important}
+header #profile-btn:focus-visible{outline:3px solid #84987b;outline-offset:3px}
+@media(hover:hover){header #profile-btn:hover{background:#eef2e9;border-color:#a6b6a2}}
+@media(max-width:700px){header #profile-btn{min-height:42px;padding:9px 15px;font-size:12px}}
+html[data-theme="dark"] header #profile-btn{background:var(--finish-surface);border-color:var(--finish-line);color:var(--finish-ink)}
