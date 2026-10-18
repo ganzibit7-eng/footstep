@@ -7,6 +7,7 @@ exclude:
   - tests
   - supabase
   - infrastructure
+  - assets/place-photos
   - AGENTS.md
   - README.md
   - "index .html"
