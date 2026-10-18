@@ -12,3 +12,7 @@ test('published place counts match coverage while unrelated facilities remain un
  for(const folder of fs.readdirSync(path.join(root,'places'),{withFileTypes:true})){if(!folder.isDirectory())continue;const file=path.join(root,'places',folder.name,'index.html');if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');if(!html.includes('reading-page place-detail-page'))continue;total++;if(html.includes('class="place-photo"'))photos++;if(html.includes('class="place-photo-gallery"'))galleries++;if(html.includes('class="place-official-notes"'))notes++;}
  assert.equal(total,3133);assert.equal(photos,summary.photoPlaces);assert.equal(galleries,summary.galleryPlaces);assert.equal(notes,summary.tourNotes);assert.equal(summary.addedPhotos,444);assert.equal(summary.addedPhotoPlaces,120);
 });
+test('legacy hotel breed ban and official muzzle rule remain explicitly unresolved',()=>{
+ const r=byId.get('pub1788410826323_400_nefwex');assert(r.caution);assert.match(r.caution.excerpt,/기존 등록 안내:[\s\S]*맹견[\s\S]*입실 불가/);assert.match(r.caution.excerpt,/공식 관광 상세 자료:[\s\S]*입마개/);
+ const Conditions=require('../place-conditions.js');assert.match(Conditions.summary(r),/재확인/);assert.match(Conditions.get(r)[1].value,/미확정/);
+});
