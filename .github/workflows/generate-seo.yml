@@ -26,6 +26,8 @@ on:
       - 'place-conditions.js'
       - 'place-photos.js'
       - 'place-evidence.js'
+      - 'infrastructure/photo-delivery/**'
+      - 'tests/photo-storage-guard.mjs'
       - 'bin-info.js'
       - 'database_sql/seed_expansion_*.sql'
       - 'database_sql/seed_expansion_*.sql.gz'
@@ -61,7 +63,7 @@ jobs:
       - name: Generate static search pages
         run: node scripts/generate-seo.mjs
       - name: Check deployment size and public file boundaries
-        run: node --test tests/pages-storage.mjs && node scripts/audit-pages-storage.mjs
+        run: node --test tests/pages-storage.mjs tests/photo-storage-guard.mjs && node scripts/audit-pages-storage.mjs
       - name: Validate public page and image discovery
         run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs tests/place-bulk-match.cjs
       - name: Validate home place sections

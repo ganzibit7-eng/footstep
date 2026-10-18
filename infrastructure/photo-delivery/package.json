@@ -1,0 +1,7 @@
+{
+  "name": "balzaguk-photo-delivery",
+  "private": true,
+  "type": "module",
+  "dependencies": {"@aws-sdk/client-s3": "3.1152.0"},
+  "devDependencies": {"wrangler": "4.151.1"}
+}

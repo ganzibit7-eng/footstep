@@ -2,3 +2,7 @@
 .photo-work-124/
 
 .search-state/
+.photo-storage-work/
+infrastructure/photo-delivery/node_modules/
+infrastructure/photo-delivery/.wrangler/
+infrastructure/photo-delivery/allowlist.mjs

@@ -1,0 +1,40 @@
+{
+  "objects": 2417,
+  "bytes": 783399692,
+  "verifiedAt": "2026-10-18T06:42:16.883Z",
+  "workerOrigin": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev",
+  "workerFreePlanVerified": "2026-10-18",
+  "directBucketPublicAccess": false,
+  "workerReadsPerRequest": 1,
+  "workerRequestsPerDay": 100000,
+  "uploadStorageLimit": 8000000000,
+  "uploadClassALimitPerUTCMonth": 10000,
+  "transferClassBLimitPerUTCMonth": 100000,
+  "checks": [
+    {
+      "name": "photo",
+      "status": 200
+    },
+    {
+      "name": "metadata",
+      "status": 200
+    },
+    {
+      "name": "unknown",
+      "status": 404
+    },
+    {
+      "name": "write",
+      "status": 405
+    },
+    {
+      "name": "query",
+      "status": 404
+    },
+    {
+      "name": "range",
+      "status": 416
+    }
+  ],
+  "notes": "Account-wide zero-cost guarantee is not provided. Other credentials, manual uploads or plan changes bypass these tool-specific safeguards."
+}

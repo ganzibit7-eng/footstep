@@ -1,0 +1,10 @@
+{
+  "name": "balzaguk-place-photos",
+  "main": "entry.mjs",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {"ENABLED": "false"},
+  "r2_buckets": [{"binding": "IMAGES", "bucket_name": "balzaguk-place-photos"}],
+  "observability": {"enabled": false}
+}
