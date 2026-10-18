@@ -8,9 +8,9 @@ test('bulk catalogue matches retain nearby coordinates, exact street and a disti
  for(const {place,tour,meters} of matches){assert(meters<=100);assert(road(place.address));assert.equal(road(place.address),road(tour.addr1));const a=norm(place.name),b=norm(tour.title);assert(a===b||Math.min(a.length,b.length)>=4&&(a.includes(b)||b.includes(a)));const r=byId.get(place.id);assert(r);assert.equal(r.name,place.name);assert.equal(r.address,place.address);assert.equal(r.contentId,String(tour.contentId));}
 });
 test('published place counts match coverage while unrelated facilities remain unchanged',()=>{
- const summary=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261018-batch3/summary.json')));let photos=0,galleries=0,notes=0,total=0;
+ const summary=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261018-batch4/summary.json')));let photos=0,galleries=0,notes=0,total=0;
  for(const folder of fs.readdirSync(path.join(root,'places'),{withFileTypes:true})){if(!folder.isDirectory())continue;const file=path.join(root,'places',folder.name,'index.html');if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');if(!html.includes('reading-page place-detail-page'))continue;total++;if(html.includes('class="place-photo"'))photos++;if(html.includes('class="place-photo-gallery"'))galleries++;if(html.includes('class="place-official-notes"'))notes++;}
- assert.equal(total,3133);assert.equal(photos,summary.photoPlaces);assert.equal(galleries,summary.galleryPlaces);assert.equal(notes,summary.tourNotes);assert.equal(summary.addedPhotos,103);assert.equal(summary.addedPhotoPlaces,0);
+ assert.equal(total,3133);assert.equal(photos,summary.photoPlaces);assert.equal(galleries,summary.galleryPlaces);assert.equal(notes,summary.tourNotes);assert.equal(summary.addedPhotos,1185);assert.equal(summary.addedPhotoPlaces,8);
 });
 test('legacy hotel breed ban and official muzzle rule remain explicitly unresolved',()=>{
  const r=byId.get('pub1788410826323_400_nefwex');assert(r.caution);assert.match(r.caution.excerpt,/기존 등록 안내:[\s\S]*맹견[\s\S]*입실 불가/);assert.match(r.caution.excerpt,/공식 관광 상세 자료:[\s\S]*입마개/);
