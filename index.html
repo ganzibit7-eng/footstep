@@ -2599,7 +2599,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 
 <script src="walk-tracker.js?v=20261005-offline"></script>
 
-<script src="security-monitor.js?v=20261009-alerts"></script>
+<script src="security-monitor.js?v=20261018-signal-filter"></script>
 <script>
 (function(){
   // ===== Supabase 연결 =====
@@ -2621,7 +2621,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 
   // DB·외부 API의 문자열을 HTML에 넣을 때 사용하는 공통 방어 함수
   const reportSecurity=SecurityMonitor.createReporter(sb,()=>location.pathname);
-  document.addEventListener('securitypolicyviolation',e=>{if(e.violatedDirective?.startsWith('script-src'))reportSecurity('script_policy_block');});
+  document.addEventListener('securitypolicyviolation',e=>{const signal=SecurityMonitor.policySignal(e,location.origin);if(signal)reportSecurity('external_script_block',signal);});
   function escapeHtml(value){
     return String(value ?? '').replace(/[&<>'"]/g, ch => ({
       '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
