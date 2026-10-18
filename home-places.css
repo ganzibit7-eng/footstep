@@ -85,3 +85,19 @@
 #nearby-section .home-place-condition{font-size:13px;font-weight:400;letter-spacing:-.015em;line-height:24px;color:var(--finish-muted)}
 #nearby-section .home-place-detail{font-size:13px;font-weight:600;letter-spacing:-.02em}
 @media(max-width:700px){#nearby-section .home-place-heading h2{font-size:26px}#nearby-section .home-place-heading>p{font-size:14px;line-height:1.9}#nearby-section .home-place-body h3{font-size:19px}}
+
+/* A quiet editorial finish to each discovery rail, without a stock photograph. */
+#nearby-section .home-place-end{position:relative;padding:26px 22px;background:#f1f3ec;border-color:#d7ded1;justify-content:flex-start;color:var(--finish-ink)}
+#nearby-section .home-place-end .home-place-end-eyebrow{flex:0 0 auto;margin:0 0 24px;font-size:11px;line-height:1.7;font-weight:500;color:var(--finish-muted);letter-spacing:-.01em}
+.home-place-end .home-place-end-mark{display:grid;place-items:center;width:52px;height:52px;margin:0 0 26px;border:1px solid #ccd5c5;border-radius:14px;color:#526950;background:#ffffff60}
+.home-place-end-mark svg{width:25px;height:25px}
+#nearby-section .home-place-end h3{margin:0 0 16px;font-size:23px;font-weight:600;line-height:1.5;letter-spacing:-.04em;min-height:0}
+#nearby-section .home-place-end>p:not(.home-place-end-eyebrow){flex:1;margin:0 0 26px;font-size:12px;line-height:1.9;color:var(--finish-muted);word-break:keep-all}
+#nearby-section .home-place-end-link{min-height:50px;box-sizing:border-box;padding:12px 15px;border:1px solid #c6d0bf;border-radius:10px;background:#fffdf8;color:#2b4637;font-size:13px;font-weight:600;line-height:1.6}
+.home-place-end-link span{font-size:20px;font-weight:400}
+.home-place-end-link::after{content:"";position:absolute;inset:0;border-radius:18px}
+.home-place-end-link:focus-visible{outline:0}
+.home-place-end-link:focus-visible::after{outline:3px solid var(--finish-ink);outline-offset:3px}
+@media(hover:hover){#nearby-section .home-place-end:hover{border-color:#a8b69f}#nearby-section .home-place-end:hover .home-place-end-link{background:#e6ecdf}}
+html[data-theme="dark"] #nearby-section .home-place-end{background:var(--finish-soft);border-color:var(--finish-line)}
+html[data-theme="dark"] #nearby-section .home-place-end-link{background:var(--finish-surface);color:var(--finish-ink);border-color:var(--finish-line)}
