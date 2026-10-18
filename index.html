@@ -3833,7 +3833,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         aiAnswers.comfort=/노령견|노견|시니어/.test(query)?CourseComfort.preset():{};if(/계단\s*없/.test(query))aiAnswers.comfort.stairs=true;if(/평지|완만/.test(query))aiAnswers.comfort.gentle=true;if(/쉼터|벤치|쉴\s*곳/.test(query))aiAnswers.comfort.rest=true;
         aiAnswers.size = ['소형견','중형견','대형견'].find(v=>query.includes(v)) || null;
         aiAnswers.time = ['짧게','보통','길게'].find(v=>query.includes(v)) || null;
-        aiAnswers.env = /그늘/.test(query) ? '그늘많음' : /계단\s*없/.test(query) ? '계단없음' : /잔디/.test(query) ? '잔디바닥' : null;
+        aiAnswers.env = /그늘/.test(query) ? '그늘많음' : /계단\s*없/.test(query) ? '계단없음' : /잔디/.test(query) ? '잔디바닥' : /숲길/.test(query) ? '숲길' : /하천/.test(query) ? '하천길' : null;
         if(/카페|식당|숙소|펜션/.test(query)){
           aiAnswers.facilityRegion=region;
           aiAnswers.facilityCategory=/숙소|펜션/.test(query)?'숙소':'식당카페';
@@ -3915,13 +3915,11 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     } else if(step === 'c-env'){
       body.innerHTML = `
         <div class="ai-bubble">어떤 환경을 더 좋아하세요?</div>
-        <button class="ai-option-btn" data-v="그늘많음">🌳 그늘 많은 곳</button>
-        <button class="ai-option-btn" data-v="잔디바닥">🌱 잔디밭</button>
-        <button class="ai-option-btn" data-v="계단없음">🚶 계단 없는 경로 (확인됨)</button>
+        ${[['','환경은 상관없어요'],['숲길','숲길'],['하천길','하천길'],['그늘많음','그늘 많은 곳'],['잔디바닥','잔디밭'],['계단없음','계단 없는 경로']].map(([value,label])=>{const saved=aiAnswers.env;aiAnswers.env=value;const available=aiRecommendCourses().length>0;aiAnswers.env=saved;return '<button class="ai-option-btn" data-v="'+value+'"'+(value&&!available?' disabled':'')+'>'+label+(value&&!available?' · 확인 자료 없음':'')+'</button>';}).join('')}
         ${backBtn}
       `;
       body.querySelectorAll('[data-v]').forEach(btn=>{
-        btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v; aiRenderStep('c-region'); });
+        btn.addEventListener('click', ()=>{ aiAnswers.env = btn.dataset.v||null; aiRenderStep('c-region'); });
       });
       aiWireBack(body);
     } else if(step === 'c-region'){
@@ -3946,7 +3944,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         `;
       } else {
         body.innerHTML = `
-          <div class="ai-bubble">${escapeHtml([aiAnswers.region,aiAnswers.size,aiAnswers.time,aiAnswers.env,...Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]).map(k=>CourseComfort.fields[k])].filter(Boolean).join(' · '))}<br>함께 살펴볼 산책길을 찾았어요. 동반 조건은 상세에서 확인해 주세요.<details class="mong-recommendation-basis"><summary>추천 기준과 확인할 점</summary><p>선택한 지역·시간·환경 조건이 일치하는 코스만 보여드려요. 계단·경사·쉴 곳은 확인된 정보로만 필터링해요. 그늘·잔디는 등록 태그를 기준으로 확인하며, 나이·체격만으로 적합성을 판단하지 않아요. 지역은 확인된 주소를 기준으로 구분해요. 소요 시간은 등록 안내 또는 거리 기반 예상이며, 반려견 상태·휴식에 따라 달라져요.</p></details></div>
+          <div class="ai-bubble">${escapeHtml([aiAnswers.region,aiAnswers.size,aiAnswers.time,aiAnswers.env,...Object.keys(CourseComfort.fields).filter(k=>aiAnswers.comfort[k]).map(k=>CourseComfort.fields[k])].filter(Boolean).join(' · '))}<br>함께 살펴볼 산책길을 찾았어요. 동반 조건은 상세에서 확인해 주세요.${aiAnswers.size?'<p>'+escapeHtml(aiAnswers.size)+' 동반 허용 여부는 자동 판별하지 않아요. 코스별 체중·견종 제한을 확인해 주세요.</p>':''}<details class="mong-recommendation-basis"><summary>추천 기준과 확인할 점</summary><p>선택한 지역·시간·환경 조건이 일치하는 코스만 보여드려요. 계단·경사·쉴 곳은 확인된 정보로만 필터링해요. 그늘·잔디는 등록 태그를 기준으로 확인하며, 나이·체격만으로 적합성을 판단하지 않아요. 지역은 확인된 주소를 기준으로 구분해요. 소요 시간은 등록 안내 또는 거리 기반 예상이며, 반려견 상태·휴식에 따라 달라져요.</p></details></div>
           ${results.map(aiRenderRecCard).join('')}
           <button class="ai-option-btn" data-go="menu" style="margin-top:6px; text-align:center;">조건 바꿔 다시 찾기</button>
           ${backBtn}
