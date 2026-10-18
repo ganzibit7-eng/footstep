@@ -2879,7 +2879,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const results=await Promise.allSettled([
       fetchAllRows('courses','created_at').then(data=>{
         courses=data.map(rowToCourse);courseDataState='ready';courseDataAvailable=true;homeCountReady.courses=true;homeCountPending.courses=false;
-        renderStats();renderGrid();renderWalkReference();if(document.getElementById('ai-assistant-overlay').classList.contains('show')&&document.getElementById('ai-assistant-body').dataset.mongStep==='c-result')aiRenderStep('c-result');return data;
+        renderStats();renderGrid();renderWalkReference();if(document.getElementById('ai-assistant-overlay').classList.contains('show')){const step=document.getElementById('ai-assistant-body').dataset.mongStep;if(['c-result','chat-env','c-env'].includes(step))aiRenderStep(step);}return data;
       },error=>{homeCountPending.courses=false;homeCountFailed=true;renderStats();throw error;}),fetchAllRows('bins','created_at'),
       options.deferFacilities?Promise.resolve(facilities):ensureFacilityData(true),fetchAllRows('reviews','created_at')
     ]);
@@ -3761,7 +3761,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const question={region:'어디에서 함께 걸을까요?',time:'오늘은 얼마나 걷고 싶으세요?',env:'어떤 길이면 더 좋을까요?',review:'이 조건으로 찾아볼까요?'}[stage];
     const note={region:'산책하고 싶은 지역을 골라주세요.',time:'잠깐의 산책도, 여유로운 한 바퀴도 좋아요.',env:'원하는 환경을 하나 고르세요. 선택 지역·시간에 확인 자료가 없는 환경은 선택할 수 없어요.',review:'등록된 코스 정보에서 조건에 맞는 곳을 찾아드릴게요.'}[stage];
     const choice=(value,label,selected,disabled=false)=>'<button type="button" class="mong-choice" data-answer="'+escapeHtml(value)+'" aria-pressed="'+String(selected)+'"'+(disabled?' disabled':'')+'>'+escapeHtml(label)+'</button>';
-    const environmentChoice=(value,label)=>{const selected=aiAnswers.env;aiAnswers.env=value;const count=aiRecommendCourses().length;aiAnswers.env=selected;return choice(value,label+(value&&!count?' · 확인 자료 없음':''),(selected||'')===value,!!value&&!count);};
+    const environmentChoice=(value,label)=>{const selected=aiAnswers.env,comfort=aiAnswers.comfort;aiAnswers.env=value;aiAnswers.comfort={};const count=aiRecommendCourses().length;aiAnswers.env=selected;aiAnswers.comfort=comfort;return choice(value,label+(value&&!count?' · 확인 자료 없음':''),(selected||'')===value,!!value&&!count);};
     let content='';
     if(stage==='region')content='<div class="mong-choice-grid mong-regions">'+AI_REGIONS.map(r=>choice(r,r,aiAnswers.region===r)).join('')+'</div>';
     if(stage==='time')content='<div class="mong-choice-grid">'+['짧게','보통','길게'].map(v=>choice(v,timeLabel(v),aiAnswers.time===v)).join('')+'</div>';
@@ -3819,7 +3819,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         btn.addEventListener('click', ()=> aiRenderStep(btn.dataset.go));
       });
       if(aiAnswers.env==='계단없음'){aiAnswers.comfort={...aiAnswers.comfort,stairs:true};aiAnswers.env=null;}body.querySelector('#mong-region').value=aiAnswers.region||'';body.querySelector('#mong-time').value=aiAnswers.time||'짧게';body.querySelector('#mong-env').value=aiAnswers.env||'';
-      const updateEnvironmentOptions=()=>{const saved={region:aiAnswers.region,time:aiAnswers.time,env:aiAnswers.env};aiAnswers.region=body.querySelector('#mong-region').value;aiAnswers.time=body.querySelector('#mong-time').value;for(const option of body.querySelector('#mong-env').options){aiAnswers.env=option.value;option.disabled=!!option.value&&!aiRecommendCourses().length;option.textContent=option.textContent.replace(' · 확인 자료 없음','')+(option.disabled?' · 확인 자료 없음':'');}Object.assign(aiAnswers,saved);};
+      const updateEnvironmentOptions=()=>{const saved={region:aiAnswers.region,time:aiAnswers.time,env:aiAnswers.env,comfort:aiAnswers.comfort};aiAnswers.comfort={};aiAnswers.region=body.querySelector('#mong-region').value;aiAnswers.time=body.querySelector('#mong-time').value;for(const option of body.querySelector('#mong-env').options){aiAnswers.env=option.value;option.disabled=!!option.value&&!aiRecommendCourses().length;option.textContent=option.textContent.replace(' · 확인 자료 없음','')+(option.disabled?' · 확인 자료 없음':'');}Object.assign(aiAnswers,saved);};
       body.querySelector('#mong-region').onchange=updateEnvironmentOptions;body.querySelector('#mong-time').onchange=updateEnvironmentOptions;updateEnvironmentOptions();
       CourseComfort.sync(body.querySelector('#mong-comfort-filter'),aiAnswers.comfort);body.querySelector('#mong-senior-preset').onclick=()=>{aiAnswers.comfort=CourseComfort.preset();CourseComfort.sync(body.querySelector('#mong-comfort-filter'),aiAnswers.comfort);};
       body.querySelector('#mong-custom-form').addEventListener('submit',e=>{e.preventDefault();aiAnswers.region=body.querySelector('#mong-region').value;aiAnswers.time=body.querySelector('#mong-time').value;aiAnswers.env=body.querySelector('#mong-env').value||null;aiAnswers.size=null;aiAnswers.comfort=CourseComfort.read(body.querySelector('#mong-comfort-filter'));aiRenderStep('c-result');});
