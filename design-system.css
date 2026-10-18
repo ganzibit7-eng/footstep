@@ -216,3 +216,16 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}}
 
 .search-region-links{display:flex!important;flex-wrap:wrap;gap:8px;grid-column:1/-1;padding:12px 0;border-bottom:1px solid var(--finish-line)}.search-region-links a{font-size:12px;padding:8px 10px;min-height:36px;border:1px solid var(--finish-line);border-radius:8px;background:var(--finish-surface);color:var(--finish-ink);text-decoration:none}.search-region-links a:focus-visible{outline:2px solid var(--finish-ink);outline-offset:3px}
+
+/* Quiet, tactile home entry controls. */
+#hero-style-3 .home-start-actions{gap:12px;align-items:stretch}
+#hero-style-3 .home-start-actions a{justify-content:flex-start;gap:12px;min-height:62px;padding:16px 20px;border-radius:14px;font-weight:650;letter-spacing:-.025em;transition:background .2s,box-shadow .2s,transform .2s;filter:none}
+#hero-style-3 .home-start-primary{background:#263e33;border-color:#263e33;box-shadow:0 3px 0 #15251e12,inset 0 1px 0 #ffffff12}
+#hero-style-3 .home-start-secondary{background:#fffdf8;border-color:#cbd0c5!important;box-shadow:0 2px 5px #233c3005}
+.home-start-icon{width:21px;height:21px;flex:none}
+#hero-style-3 .home-start-arrow{font-size:17px;margin-left:20px;font-weight:400;opacity:.7}
+#hero-style-3 .home-start-actions a:focus-visible{outline:3px solid #84987b;outline-offset:4px}
+@media(hover:hover){#hero-style-3 .home-start-actions a:hover{filter:none;transform:translateY(-2px);box-shadow:0 6px 16px #243c3214}#hero-style-3 .home-start-primary:hover{background:#34503f}}
+@media(max-width:700px){#hero-style-3 .home-start-actions a{min-height:58px;padding:14px 12px;gap:8px;font-size:13px}#hero-style-3 .home-start-arrow{margin-left:auto;font-size:15px}.home-start-icon{width:18px;height:18px}}
+@media(max-width:360px){#hero-style-3 .home-start-actions{flex-direction:row}#hero-style-3 .home-start-actions a{font-size:12px;padding:13px 10px;gap:6px}#hero-style-3 .home-start-arrow{display:none}}
+@media(prefers-reduced-motion:reduce){#hero-style-3 .home-start-actions a{transition:none;transform:none!important}}
