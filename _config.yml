@@ -1,0 +1,12 @@
+# Research, database sources and development tools stay in GitHub, not the site.
+# Keep all public pages, original photographs and historical notices published.
+exclude:
+  - docs
+  - database_sql
+  - scripts
+  - tests
+  - supabase
+  - AGENTS.md
+  - README.md
+  - "index .html"
+  - 개선_적용_안내.txt
