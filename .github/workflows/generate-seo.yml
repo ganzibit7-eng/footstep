@@ -61,7 +61,7 @@ jobs:
       - name: Generate static search pages
         run: node scripts/generate-seo.mjs
       - name: Validate public page and image discovery
-        run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs
+        run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs tests/place-bulk-match.cjs
       - name: Validate home place sections
         run: node tests/home-places.cjs && node tests/home-more.cjs && node tests/home-scenes.cjs
       - name: Validate weather and affiliate cards
