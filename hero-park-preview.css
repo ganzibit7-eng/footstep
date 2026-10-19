@@ -109,3 +109,23 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 .hero[data-page-section="home"] .hero-card :is(p,#weather-location,.meta){color:#354d3d}
 .hero-park-stage{bottom:34px}
 @media(max-width:880px){.hero[data-page-section="home"] .hero-card{background:rgba(255,253,245,.70)}.hero-park-stage{bottom:30px}}
+
+/* Airier reading space without covering the meadow. */
+.hero[data-page-section="home"]{padding-top:54px!important}
+.hero[data-page-section="home"] #hero-title{line-height:1.16}
+.hero[data-page-section="home"] .lead{margin-top:18px;line-height:1.72}
+.hero[data-page-section="home"] .home-start-actions{margin-top:22px}
+.hero[data-page-section="home"] .hero-card{padding:22px 24px}
+.hero-park-stage{bottom:44px}
+@media(max-width:880px){
+ .hero[data-page-section="home"]{padding-top:32px!important}
+ .hero[data-page-section="home"] #hero-title{line-height:1.26}
+ .hero[data-page-section="home"] .lead{margin-top:14px;line-height:1.75}
+ .hero[data-page-section="home"] .home-start-actions{margin-top:20px}
+ .hero[data-page-section="home"] .hero-inner{gap:22px}
+ .hero[data-page-section="home"] .hero-card{padding:16px 18px;gap:9px 12px}
+ .hero[data-page-section="home"] .hero-card p{line-height:1.65}
+ .hero-park-stage{bottom:40px}
+}
+
+@media(min-width:881px){.hero[data-page-section="home"]{padding-bottom:max(196px,calc(15.3vw + 16px))!important}}
