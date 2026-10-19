@@ -1,14 +1,15 @@
+const verifySource=require('./helpers/place-photo-source.cjs');
 const verifyOriginal=require('./helpers/photo-original.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019b/summary.json'),'utf8'));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019c/summary.json'),'utf8'));
 const script=fs.readFileSync(path.join(root,'place-evidence.js'),'utf8'),records=JSON.parse(script.match(/const records=(\[[\s\S]*?\]);\n/)[1]);
 test('all enriched identities are public records; photographs are intact with rights, origin and dimensions',()=>{
  let photos=0,pets=0;const ids=new Set();
  for(const r of records){assert(!ids.has(r.id));ids.add(r.id);assert.equal(Evidence.get(r).id,r.id);assert.match(r.source,/^https:\/\/(api\.visitkorea\.or\.kr|gocamping\.or\.kr)\//);
   for(const change of [{name:r.name+' 다른 지점'},{address:r.address+' 다른 주소'},{lat:r.lat+0.01},{lng:r.lng+0.01},{lat:null}])assert.equal(Evidence.get({...r,...change}),null);
   if(r.pet){pets++;assert.equal(Evidence.conditions({...r,description:r.description+' 변경'}),null);const rows=Conditions.get(r).map(x=>x.value).join('\n');for(const key of ['acmpyTypeCd','acmpyPsblCpam','acmpyNeedMtr','etcAcmpyInfo','relaPosesFclty','relaAcdntRiskMtr','relaFrnshPrdlst','relaPurcPrdlst','relaRntlPrdlst']){const value=r.pet[key];if(value&&value.trim()&&!/<|&/.test(value))assert(rows.includes(value.trim()),r.name+' missing '+key);}}
-  if(r.photo){photos++;const p=Photos.get(r);assert(p.noCrop);assert(p.width>=150&&p.height>=150);assert.match(p.src,/^\/assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/);assert.match(p.original,/^https:\/\/tong\.visitkorea\.or\.kr\/cms\/resource\//);assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.dateNote,/미상/);assert(p.source&&p.author);verifyOriginal(p);const html=Photos.figure(r);assert.match(html,/object-fit:contain/);assert.match(html,/이용 조건/);assert(!html.includes('undefined'));}
+  if(r.photo){photos++;const p=Photos.get(r);assert(p.noCrop);assert(p.width>=150&&p.height>=150);verifySource(p);assert(p.source&&p.author);verifyOriginal(p);const html=Photos.figure(r);assert.match(html,/object-fit:contain/);assert.match(html,/이용 조건/);assert(!html.includes('undefined'));}
  }
  assert.equal(records.length,coverage.records);assert.equal(photos,coverage.photoPlaces);assert.equal(pets,coverage.petRecords);console.log({reviewed:3133,matched:records.length,photos,petRecords:pets,photoUnresolved:3133-photos});
 });

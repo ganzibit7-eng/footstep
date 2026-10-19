@@ -1,3 +1,5 @@
+import {blockedPhotoKeys} from './blocked-photos.mjs';
+const blocked=new Set(blockedPhotoKeys);
 // Deploy only on Workers Free, with all direct R2 public endpoints disabled.
 // One invocation performs at most one R2 read and never writes or lists objects.
 export function createHandler(photos){
@@ -8,7 +10,7 @@ export function createHandler(photos){
   if(env.ENABLED!=='true')return new Response('Photo delivery is paused',{status:503,headers});
   if(!['GET','HEAD'].includes(request.method))return new Response('Read only',{status:405,headers:{...headers,Allow:'GET, HEAD'}});
   const url=new URL(request.url),key=url.pathname.slice(1);
-  if(url.search||!Object.hasOwn(photos,key))return new Response('Not found',{status:404,headers});
+  if(url.search||blocked.has(key)||!Object.hasOwn(photos,key))return new Response('Not found',{status:404,headers});
   if(request.headers.has('Range'))return new Response('Ranges are not supported',{status:416,headers});
   const expected=photos[key];
   try{

@@ -36,7 +36,9 @@ test('home cards open native detail, with original Naver destinations available 
   const detail=card.match(/class="home-place-detail" href="([^\"]+)"/)[1];assert.match(detail,/^\/places\/[^/]+\/$/);
   assert.equal((card.match(/href="\/places\//g)||[]).length,1,'one keyboard destination per card');
   const page=await readFile(new URL('..'+detail+'index.html',import.meta.url),'utf8');
-  const id=detail.split('/')[2];assert(page.includes(destinations[id].replaceAll('&','&amp;')));
+  const id=detail.split('/')[2];
+  if(destinations[id])assert(page.includes(destinations[id].replaceAll('&','&amp;')));
+  else {const link=page.match(/class="place-naver-link" href="([^"]+)"/);assert(link,'place without a saved Naver entry keeps its search link');const url=new URL(link[1]);assert.equal(url.origin,'https://map.naver.com');assert(url.pathname.startsWith('/p/search/'));const title=page.match(/<h1>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]*>/g,'');assert(decodeURIComponent(url.pathname).includes(title));}
   assert.equal((page.match(/class="place-naver-link"/g)||[]).length,1);
  }
 });

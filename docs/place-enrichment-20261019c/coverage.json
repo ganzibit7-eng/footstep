@@ -1,0 +1,42 @@
+{
+  "total": 3133,
+  "withPhoto": 1216,
+  "withAnyPetCondition": 2026,
+  "completePetConditions": 13,
+  "categories": {
+    "캠핑": {
+      "total": 995,
+      "withPhoto": 566,
+      "withAnyPetCondition": 971
+    },
+    "식당카페": {
+      "total": 1283,
+      "withPhoto": 198,
+      "withAnyPetCondition": 563
+    },
+    "공원관광": {
+      "total": 378,
+      "withPhoto": 361,
+      "withAnyPetCondition": 378
+    },
+    "쇼핑": {
+      "total": 35,
+      "withPhoto": 32,
+      "withAnyPetCondition": 35
+    },
+    "숙소": {
+      "total": 442,
+      "withPhoto": 59,
+      "withAnyPetCondition": 79
+    }
+  },
+  "unknownFields": {
+    "허용 구역·제한": 1110,
+    "견종·크기 조건": 2687,
+    "필수 준비물": 2691,
+    "체중 기준": 3053,
+    "실내·객실 출입": 3020
+  },
+  "photoMissing": 1917,
+  "conditionNeedsCheck": 3120
+}

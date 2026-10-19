@@ -33,3 +33,8 @@ test('unavailable photos do not retry requests or hide place information',()=>{
  handler({target:image});handler({target:image});assert.equal(notes.length,1);assert(image.hidden);assert.equal(image.style.display,'none');assert.match(notes[0].textContent,/장소 안내는 계속/);
  const course={...image,dataset:{},hidden:false,src:'https://balzaguk.com/assets/course-photos/c33.webp'};handler({target:course});assert.equal(course.hidden,false);assert.equal(notes.length,1);
 });
+
+test('individually restricted image URLs are denied before any R2 operation',async()=>{
+ const {blockedPhotoKeys}=await import('../infrastructure/photo-delivery/blocked-photos.mjs');assert.equal(blockedPhotoKeys.length,91);
+ for(const denied of blockedPhotoKeys){const s=setup();const manifest={[denied]:photo};const handler=createHandler(manifest);const r=await handler.fetch(new Request('https://photos.test/'+denied,{method:'HEAD'}),s.env);assert.equal(r.status,404,denied);assert.equal(s.calls(),0);}
+});

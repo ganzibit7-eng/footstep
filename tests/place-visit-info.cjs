@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Conditions=require('../place-conditions.js'),Photos=require('../place-photos.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'place-evidence.js'),'utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019b/summary.json')));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019c/summary.json')));
 test('official visit facts remain identity and description bound, with their own date and source',()=>{
  let visits=0,notes=0;for(const r of records){if(!r.visitInfo)continue;visits++;if(r.visitInfo.petNotes.length)notes++;
   assert.equal(Evidence.visit({...r,address:r.address+' 다른 주소'}),null);assert.equal(Evidence.visit({...r,description:r.description+' 변경'}),null);
@@ -16,7 +16,7 @@ test('general visit notes never become confirmed breed, weight or indoor permiss
  const museum=records.find(r=>r.name==='하슬라아트월드');assert(museum);assert.equal(museum.petChecked,'2026-10-18');assert.match(Conditions.panel(museum),/레스토랑, 카페 이용 불가능/);assert.match(Conditions.panel(museum),/이동장/);
 });
 test('same official photograph at different supplied sizes is not duplicated within a place',()=>{
- for(const r of records){const seen=new Set();for(const p of [r.photo,...r.gallery||[]].filter(Boolean)){const id=p.original?.match(/\/(\d+)_image[23]_1\./)?.[1];assert(id);assert(!seen.has(id),r.name+' repeats photo resource '+id);seen.add(id);assert(p.src.startsWith('/assets/place-supplement/') ? /^\/assets\/place-supplement\/kto-\d+-[a-f0-9]{12}\.(jpg|png)$/.test(Photos.url(p)) : Photos.url(p).startsWith('https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/'));}}
+ for(const r of records){const seen=new Set();for(const p of [r.photo,...r.gallery||[]].filter(Boolean)){const id=p.photoKind==='shared-course-photo'?p.original:p.original?.match(/\/(\d+)_image[23]_1\./)?.[1];assert(id);assert(!seen.has(id),r.name+' repeats photo resource '+id);seen.add(id);assert(p.photoKind==='shared-course-photo' ? Photos.url(p)===p.src : p.src.startsWith('/assets/place-supplement/') ? /^\/assets\/place-supplement\/kto-\d+-[a-f0-9]{12}\.(jpg|png)$/.test(Photos.url(p)) : Photos.url(p).startsWith('https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/'));}}
 });
 test('published pages expose the checked visit facts without leaking local cache paths',()=>{
  let count=0;for(const r of records){if(!r.visitInfo)continue;const html=fs.readFileSync(path.join(root,'places',r.id,'index.html'),'utf8');assert(html.includes('class="place-visit-info"'));assert(!html.includes('sourceFile'));assert(!html.includes('C:\\Users'));count++;}assert.equal(count,coverage.officialVisitPlaces);
