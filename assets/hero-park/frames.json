@@ -1,0 +1,48 @@
+[
+  {
+    "name": "pom",
+    "frames": [
+      "/assets/hero-park/pom-00.webp",
+      "/assets/hero-park/pom-01.webp",
+      "/assets/hero-park/pom-02.webp",
+      "/assets/hero-park/pom-03.webp",
+      "/assets/hero-park/pom-04.webp",
+      "/assets/hero-park/pom-05.webp",
+      "/assets/hero-park/pom-06.webp",
+      "/assets/hero-park/pom-07.webp",
+      "/assets/hero-park/pom-08.webp",
+      "/assets/hero-park/pom-09.webp",
+      "/assets/hero-park/pom-10.webp",
+      "/assets/hero-park/pom-11.webp",
+      "/assets/hero-park/pom-12.webp",
+      "/assets/hero-park/pom-13.webp",
+      "/assets/hero-park/pom-14.webp",
+      "/assets/hero-park/pom-15.webp"
+    ],
+    "width": 192,
+    "height": 192
+  },
+  {
+    "name": "maltese",
+    "frames": [
+      "/assets/hero-park/maltese-00.webp",
+      "/assets/hero-park/maltese-01.webp",
+      "/assets/hero-park/maltese-02.webp",
+      "/assets/hero-park/maltese-03.webp",
+      "/assets/hero-park/maltese-04.webp",
+      "/assets/hero-park/maltese-05.webp",
+      "/assets/hero-park/maltese-06.webp",
+      "/assets/hero-park/maltese-07.webp",
+      "/assets/hero-park/maltese-08.webp",
+      "/assets/hero-park/maltese-09.webp",
+      "/assets/hero-park/maltese-10.webp",
+      "/assets/hero-park/maltese-11.webp",
+      "/assets/hero-park/maltese-12.webp",
+      "/assets/hero-park/maltese-13.webp",
+      "/assets/hero-park/maltese-14.webp",
+      "/assets/hero-park/maltese-15.webp"
+    ],
+    "width": 192,
+    "height": 192
+  }
+]

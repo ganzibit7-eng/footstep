@@ -6,9 +6,9 @@
   if(m?.status!=='ready')throw Error('animation_assets_not_ready');
   if(typeof m.poster!=='string')throw Error('static_poster_required');
   if(m.loopReviewed!==true)throw Error('loop_review_required');
-  if(!Number.isInteger(m.frameCount)||m.frameCount<48||m.frameCount>360||!Number.isFinite(m.fps)||m.fps<12||m.fps>30)throw Error('invalid_timing');
-  if(!Array.isArray(m.actors)||m.actors.length!==3)throw Error('three_separate_actors_required');
-  if(new Set(m.actors.map(a=>a.id)).size!==3||!['pomeranian','maltese','butterfly'].every(id=>m.actors.some(a=>a.id===id)))throw Error('invalid_actors');
+  if(!Number.isInteger(m.frameCount)||m.frameCount<16||m.frameCount>360||!Number.isFinite(m.fps)||m.fps<12||m.fps>30)throw Error('invalid_timing');
+  if(!Array.isArray(m.actors)||(m.actors.length<2||m.actors.length>3))throw Error('separate_dog_actors_required');
+  if(new Set(m.actors.map(a=>a.id)).size!==m.actors.length||!['pomeranian','maltese'].every(id=>m.actors.some(a=>a.id===id))||m.actors.some(a=>!['pomeranian','maltese','butterfly'].includes(a.id)))throw Error('invalid_actors');
   let decoded=0;
   for(const a of m.actors){
    if(!Number.isInteger(a.width)||!Number.isInteger(a.height)||a.width<1||a.height<1||a.width>512||a.height>512)throw Error('invalid_frame_size');
@@ -46,8 +46,9 @@
    return loading;
   }
   function paint(index){
+   stage.dataset.frame=String(index);stage.dataset.rendered='true';
    const rect=stage.getBoundingClientRect(),ratio=Math.min(env.devicePixelRatio||1,2);
-   for(const {actor,canvas,ctx}of canvases){if(!ctx)continue;canvas.width=Math.max(1,Math.round(rect.width*ratio));canvas.height=Math.max(1,Math.round(rect.height*ratio));ctx.setTransform(ratio,0,0,ratio,0,0);
+   for(const {actor,canvas,ctx}of canvases){if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,rect.width,rect.height);
     const [x,y,width,lift,shadow]=actor.poses[index],w=width*rect.width,h=w*actor.height/actor.width,cx=x*rect.width,ground=y*rect.height;
     if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.filter='blur(3px)';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
     const image=decoded.get(new URL(actor.frames[index],doc.baseURI).href);if(image)ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);
@@ -56,8 +57,8 @@
   }
   function tick(now){request=0;if(disposed||failed||!active||doc.hidden||media.matches)return; if(started===null)started=now;elapsed+=Math.min(now-started,80);started=now;const index=frameAt(elapsed,manifest.fps,manifest.frameCount);if(index!==previous){paint(index);previous=index;}request=env.requestAnimationFrame(tick);}
   function stop(){if(request)env.cancelAnimationFrame(request);request=0;started=null;}
-  async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden)return;await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
-  const visible=()=>void sync(),resize=()=>{previous=null;if(decoded.size&&!media.matches)paint(frameAt(elapsed,manifest.fps,manifest.frameCount));};
+  async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden){stage.dataset.animation='paused';return;}await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
+  const visible=()=>void sync(),resize=()=>{previous=null;if(decoded.size&&!media.matches&&active&&!doc.hidden)paint(frameAt(elapsed,manifest.fps,manifest.frameCount));};
   media.addEventListener('change',visible);doc.addEventListener('visibilitychange',visible);env.addEventListener('resize',resize,{passive:true});
   const observer=new env.IntersectionObserver(entries=>{active=entries[0]?.isIntersecting===true;void sync();},{threshold:.05});observer.observe(stage);
   return {dispose(){disposed=true;++generation;stop();observer.disconnect();media.removeEventListener('change',visible);doc.removeEventListener('visibilitychange',visible);env.removeEventListener('resize',resize);release();for(const {canvas}of canvases)canvas.remove();poster.remove();},get state(){return disposed?'disposed':stage.dataset.animation||'waiting';}};
