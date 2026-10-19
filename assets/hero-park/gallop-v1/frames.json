@@ -1,0 +1,28 @@
+[
+  {
+    "name": "pom",
+    "width": 192,
+    "height": 192,
+    "frames": [
+      "/assets/hero-park/gallop-v1/pom-00.webp",
+      "/assets/hero-park/gallop-v1/pom-01.webp",
+      "/assets/hero-park/gallop-v1/pom-02.webp",
+      "/assets/hero-park/gallop-v1/pom-03.webp",
+      "/assets/hero-park/gallop-v1/pom-04.webp",
+      "/assets/hero-park/gallop-v1/pom-05.webp"
+    ]
+  },
+  {
+    "name": "maltese",
+    "width": 192,
+    "height": 192,
+    "frames": [
+      "/assets/hero-park/gallop-v1/maltese-00.webp",
+      "/assets/hero-park/gallop-v1/maltese-01.webp",
+      "/assets/hero-park/gallop-v1/maltese-02.webp",
+      "/assets/hero-park/gallop-v1/maltese-03.webp",
+      "/assets/hero-park/gallop-v1/maltese-04.webp",
+      "/assets/hero-park/gallop-v1/maltese-05.webp"
+    ]
+  }
+]

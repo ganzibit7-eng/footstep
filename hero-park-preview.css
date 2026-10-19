@@ -64,6 +64,48 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 @media(max-width:880px){.hero-park-stage .hero-park-poster{width:300px;height:150px;bottom:50px}.hero-park-fly{left:calc(50% + 85px);top:22px;width:25px;height:24px}}
 @media(prefers-reduced-motion:reduce){.hero-park-fly{display:none}}
 
-.hero-park-stage:is([data-motion="orbit"],[data-motion="chase"]) .hero-park-fly{left:var(--fly-x,50%);top:var(--fly-y,25px);animation:none;transform:translate(-50%,-50%)}
+.hero-park-stage:is([data-motion="orbit"],[data-motion="chase"]) .hero-park-fly{left:var(--fly-x,50%);top:var(--fly-y,25px);animation:none;transform:translate(-50%,-50%) rotate(var(--fly-roll,0deg))}
 
 .hero-park-stage[data-motion="chase"]{overflow:hidden}
+
+/* Compact sky layout; leave the lower meadow free of interface panels. */
+.hero[data-page-section="home"]{padding:48px 24px 196px!important;min-height:585px}
+.hero[data-page-section="home"] .hero-inner{max-width:1120px;gap:56px;align-items:start}
+.hero[data-page-section="home"] #hero-title{font-size:clamp(44px,4.1vw,58px);line-height:1.12;letter-spacing:-.045em}
+.hero[data-page-section="home"] .lead{font-size:15px;line-height:1.65;margin-top:16px}
+.hero[data-page-section="home"] .home-start-actions{margin-top:20px}
+.hero[data-page-section="home"] .home-start-actions a{min-height:50px;padding:12px 16px;border-radius:13px}
+.hero[data-page-section="home"] .hero-card{padding:18px 20px;border-radius:18px}
+.hero[data-page-section="home"] .hero-stat-box{padding:10px;border-radius:13px}
+.hero-park-stage{left:0;right:0;bottom:12px;height:150px}
+@media(max-width:880px){
+ .hero[data-page-section="home"]{padding:24px 18px 190px!important;min-height:0}
+ .hero[data-page-section="home"] .hero-inner{gap:16px;max-width:520px}
+ .hero[data-page-section="home"] #hero-title{font-size:clamp(28px,7.8vw,36px);line-height:1.2}
+ .hero[data-page-section="home"] .lead{font-size:13px;line-height:1.6;margin-top:12px}
+ .hero[data-page-section="home"] .home-start-actions{display:grid;grid-template-columns:1fr 1fr;margin-top:16px;gap:8px}
+ .hero[data-page-section="home"] .home-start-actions a{min-width:0;min-height:48px;padding:10px 9px!important;font-size:12px!important;gap:6px;border-radius:12px!important}
+ .hero[data-page-section="home"] .home-start-icon{width:17px;height:17px}
+ .hero[data-page-section="home"] .home-start-arrow{display:none}
+ .hero[data-page-section="home"] .hero-card{display:grid;grid-template-columns:1fr auto;align-items:center;gap:7px 12px;padding:13px 15px;border-radius:15px}
+ .hero[data-page-section="home"] .hero-card .tag{justify-self:start;margin:0}
+ .hero[data-page-section="home"] .hero-card h3{margin:0;font-size:21px;text-align:right;line-height:1.3}
+ .hero[data-page-section="home"] .hero-card p{grid-column:1/-1;margin:0!important;font-size:12px;line-height:1.5}
+ .hero[data-page-section="home"] .hero-card .meta{grid-column:1/-1;padding-top:7px;font-size:10px;line-height:1.5;flex-wrap:wrap}
+ .hero[data-page-section="home"] .hero-stat-row{gap:8px;margin-top:8px}
+ .hero[data-page-section="home"] .hero-stat-box{min-height:48px;padding:8px 10px;border-radius:12px}
+ .hero[data-page-section="home"] .hero-stat-num{font-size:16px}
+ .hero[data-page-section="home"] .hero-stat-label{font-size:10px}
+ .hero-park-stage{left:0;right:0;bottom:12px;height:146px}
+ .hero-park-stage .hero-park-poster{width:240px;height:120px;bottom:8px}
+}
+
+@media(max-width:880px){.hero[data-page-section="home"]{padding-top:24px!important;padding-bottom:214px!important;min-height:752px}}
+
+/* Quiet translucent panels, with a stable dark reading color. */
+.hero[data-page-section="home"] .hero-card{background:rgba(255,253,245,.64);border-color:rgba(255,255,255,.68);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 26px rgba(48,64,40,.05)}
+.hero[data-page-section="home"] .hero-stat-box{background:rgba(255,253,245,.60);border-color:rgba(255,255,255,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero[data-page-section="home"] .home-start-secondary{background:rgba(255,253,245,.68);border-color:rgba(255,255,255,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero[data-page-section="home"] .hero-card :is(p,#weather-location,.meta){color:#354d3d}
+.hero-park-stage{bottom:34px}
+@media(max-width:880px){.hero[data-page-section="home"] .hero-card{background:rgba(255,253,245,.70)}.hero-park-stage{bottom:30px}}
