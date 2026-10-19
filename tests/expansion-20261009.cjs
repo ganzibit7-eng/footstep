@@ -8,7 +8,7 @@ function meters(a,b){const r=Math.PI/180;return Math.hypot((b[0]-a[0])*r,(b[1]-a
 assert.equal(courses.length,10);assert.equal(new Set(courses.map(c=>c.id)).size,10);
 for(const c of courses){
  const e=evidence.find(x=>x.id===c.id);assert(e);assert.deepEqual(c.path,e.path);
- assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,e.facts.crs_idx+'.gpx'))).digest('hex'),e.sha256);
+ assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,e.facts.crs_idx+'.gpx'),'utf8').replaceAll('\r\n','\n')).digest('hex'),e.sha256);
  const total=c.path.slice(1).reduce((s,p,i)=>s+meters(c.path[i],p),0);assert(Math.abs(total-e.meters)<.01);
  assert(c.path.slice(1).every((p,i)=>meters(c.path[i],p)<=220));
  assert(total/(e.facts.crs_Dstnc*1000)>=.7&&total/(e.facts.crs_Dstnc*1000)<=1.3);

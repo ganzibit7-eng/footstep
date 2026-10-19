@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 // Mock Auth/Storage: these tests never delete a real account.
-const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('Deno.serve(req => handleRequest(req));','');
+const source=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\r?\n/gm,'').replace('Deno.serve(req => handleRequest(req));','');
 const shared=fs.readFileSync(new URL('../supabase/functions/_shared/security.js',import.meta.url),'utf8').replaceAll('export ','');
 const {handleRequest}=await import('data:text/javascript,'+encodeURIComponent(shared+'\n'+source));
 const token='e30.'+Buffer.from(JSON.stringify({session_id:'33333333-3333-4333-8333-333333333333'})).toString('base64url')+'.signature';
@@ -57,7 +57,7 @@ for(const [opts,code] of [[{authThrows:true},'auth_unavailable'],[{signOutFail:t
 r=await run({confirm:'DELETE_MY_ACCOUNT'},{finishThrows:true});assert.equal(r.data.deleted,true);assert.equal(r.data.cleanup_pending,true);assert(!r.calls.some(c=>c[0]==='finish_account_deletion'&&c[1].p_success===false));
 console.log('Server: Auth outage, sign-out/delete failures, post-deletion completion failure passed.');
 let served;
-const deployedSource=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\n/gm,'').replace('export async function','async function');
+const deployedSource=fs.readFileSync(new URL('../supabase/functions/delete-account/index.js',import.meta.url),'utf8').replace(/^import .*\r?\n/gm,'').replace('export async function','async function');
 new Function('createClient','Deno',shared+'\n'+deployedSource)(()=>({auth:{getUser:async()=>({error:{status:401}})}}),{env:{get:()=> 'test'},serve:handler=>{served=handler;}});
 const entrypointResponse=await served(new Request('https://test',{method:'POST',headers:{authorization:'Bearer invalid','content-type':'application/json'},body:JSON.stringify({confirm:'DELETE_MY_ACCOUNT'})}),{remoteAddr:{hostname:'127.0.0.1'}});
 assert.equal(entrypointResponse.status,401);
