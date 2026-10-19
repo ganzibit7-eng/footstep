@@ -155,3 +155,21 @@ html[data-theme="dark"] #map-section{--map-surface:#24362d;--map-ink:#edf3eb;--m
 }
 #map-section #facility-filter-query{flex:2 1 240px!important;width:auto}
 @media(max-width:760px){#map-section #registered-place-filters label{flex:1 0 100%}#map-section #facility-filter-query{flex:1 1 180px!important;width:100%;min-height:46px}}
+/* Keep the selected-course typography vertical despite generic map flex rules. */
+#map-section .map-course-peek .map-peek-info{display:block;min-width:0;padding-right:12px}
+#map-section .map-course-peek .map-peek-info>p{display:block;margin:8px 0;overflow-wrap:anywhere}
+#map-section .map-course-peek .course-address :is(small,span){display:block}
+#map-section .map-course-peek .map-peek-credit{display:block;grid-column:1/-1;border-top:1px solid var(--map-line);padding-top:10px;font-size:11px;line-height:1.7}
+#map-section .map-course-peek .map-peek-actions{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+#map-section .map-course-peek .map-peek-actions button{width:100%;white-space:normal}
+#map-section .map-course-peek .peek-close{width:40px;height:40px;z-index:1}
+#map-section .map-course-peek{display:block;max-height:85%}
+#map-section .map-course-peek .map-peek-photo{display:block;float:left;width:88px;margin:0 16px 10px 0}
+#map-section .map-course-peek .map-peek-photo>img{height:80px;object-fit:cover}
+#map-section .map-course-peek .map-peek-info>strong{padding-right:16px;font-size:19px}
+#map-section .map-course-peek .map-peek-info>p{clear:both}
+#map-section .map-course-peek .map-peek-actions{flex-direction:row}
+#map-section .map-course-peek .map-peek-actions button{flex:1;min-width:0;padding:10px 8px;font-size:13px}
+#map-section .map-course-peek .map-peek-credit{clear:both;margin-top:12px}
+@media(max-width:760px){#map-section .map-course-peek{max-height:85%}#map-section .map-course-peek .map-peek-photo{width:68px;margin-right:12px}#map-section .map-course-peek .map-peek-photo>img{height:68px}#map-section .map-course-peek .map-peek-info>strong{font-size:17px}}
+#map-section .map-course-peek{z-index:1001;border-radius:16px;scrollbar-width:thin;scrollbar-color:#a8b8ab transparent}
