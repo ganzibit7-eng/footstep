@@ -1,0 +1,13 @@
+{
+  "records": 1214,
+  "writtenDates": {
+    "2022-11-30": 1204,
+    "2025-03-24": 10
+  },
+  "source": "https://www.data.go.kr/data/15111389/fileData.do",
+  "license": "이용허락범위 제한 없음",
+  "sourceSha256": "2f88bedff41a8b9f032abd16ce2fb0bc31d91ec28ee559e6e79c2559a2f45928",
+  "sourceRows": 70650,
+  "matching": "이름 정규화 일치 + 도로명주소 정규화 일치 + 좌표 거리 150m 미만",
+  "currentPermissionVerified": false
+}
