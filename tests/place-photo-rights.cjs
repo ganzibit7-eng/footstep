@@ -12,3 +12,7 @@ test('renderer refuses a restricted photo even if later imported accidentally',(
 test('same-place course photographs preserve their existing open licence and credited source',()=>{
  const verify=require('./helpers/place-photo-source.cjs');let n=0;for(const r of records)for(const p of [r.photo,...r.gallery||[]].filter(Boolean))if(p.photoKind==='shared-course-photo'){verify(p);assert(P.credit(p).includes(p.author));assert(P.credit(p).includes(p.licenseUrl));n++;}assert.equal(n,13);
 });
+
+test('new Commons pictures retain per-file authors, titles, licence links and source snapshots',()=>{
+ const verify=require('./helpers/place-photo-source.cjs');let count=0;for(const r of records)for(const p of [r.photo,...r.gallery||[]].filter(Boolean))if(p.photoKind==='commons-photo'){verify(p);const credit=P.credit(p),escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#39;");assert(credit.includes(escape(p.title)));assert(credit.includes(escape(p.author)));assert(credit.includes(p.licenseUrl));count++;}assert.equal(count,9);
+});
