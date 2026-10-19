@@ -7,7 +7,7 @@
  function get(place){return (evidence||root.PlaceEvidence)?.get(place)?.photo||null;}
  function load(){
   if(evidence||root.PlaceEvidence)return Promise.resolve();if(pending)return pending;
-  pending=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/place-evidence.js?v=20261019-place-photos';script.async=true;script.onload=()=>root.PlaceEvidence?resolve():reject(Error('사진 자료를 읽을 수 없습니다.'));script.onerror=()=>{script.remove();pending=null;reject(Error('사진 자료 연결 실패'));};document.head.append(script);});return pending;
+  pending=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='/place-evidence.js?v=20261019-place-photos-b';script.async=true;script.onload=()=>root.PlaceEvidence?resolve():reject(Error('사진 자료를 읽을 수 없습니다.'));script.onerror=()=>{script.remove();pending=null;reject(Error('사진 자료 연결 실패'));};document.head.append(script);});return pending;
  }
  function credit(p){return '<a href="'+esc(p.source)+'" target="_blank" rel="noopener noreferrer">사진: '+esc(p.author)+' · 공식 자료</a> · <a href="'+esc(p.licenseUrl)+'" target="_blank" rel="noopener noreferrer">이용 조건</a><br>'+esc(p.dateNote)+' · '+esc(p.changes)+'<br>촬영 당시 제공 사진으로 현재 모습·동반 허용 구역을 보장하지 않습니다.';}
  function gallery(place){return (evidence||root.PlaceEvidence)?.get(place)?.gallery||[];}

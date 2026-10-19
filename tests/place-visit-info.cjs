@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Conditions=require('../place-conditions.js'),Photos=require('../place-photos.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'place-evidence.js'),'utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019/summary.json')));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019b/summary.json')));
 test('official visit facts remain identity and description bound, with their own date and source',()=>{
  let visits=0,notes=0;for(const r of records){if(!r.visitInfo)continue;visits++;if(r.visitInfo.petNotes.length)notes++;
   assert.equal(Evidence.visit({...r,address:r.address+' 다른 주소'}),null);assert.equal(Evidence.visit({...r,description:r.description+' 변경'}),null);

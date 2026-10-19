@@ -1,0 +1,28 @@
+{
+  "records": 1685,
+  "photoPlaces": 1205,
+  "galleryPlaces": 941,
+  "galleryPhotos": 2797,
+  "petRecords": 453,
+  "tourNotes": 391,
+  "cautions": 27,
+  "officialVisitPlaces": 917,
+  "officialPetNotesPlaces": 9,
+  "addedPhotos": 128,
+  "addedPhotoPlaces": 55,
+  "newFiles": 125,
+  "newBytes": 67921580,
+  "baseline": {
+    "records": 1681,
+    "photoPlaces": 1150,
+    "petRecords": 451,
+    "tourNotes": 373,
+    "officialVisitPlaces": 874
+  },
+  "reviewedDetails": 145,
+  "petReviewed": 32,
+  "excludedPhotos": 9,
+  "totalPhotos": 4002,
+  "newPetRecords": 2,
+  "newVisitPlaces": 43
+}
