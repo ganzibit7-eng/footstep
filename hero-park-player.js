@@ -9,6 +9,13 @@
   const vx=-Math.sin(theta),vy=Math.cos(theta);const direction=Math.abs(vx)>.55?(vx>0?0:2):(vy<0?1:3);
   return {x:cx,y:ground,size,direction,frame:direction*4+Math.floor(elapsed*8/1000+actorIndex*2)%4};
  }
+ function chaseAt(elapsed,actorIndex,width,height){
+  const half=6000,phase=((elapsed%12000)+12000)%12000,direction=phase<half?1:-1,progress=(phase%half)/half;
+  const base=Math.min(126,height*.62,width*.30),padding=base*2+50;
+  const center=direction===1?-padding+progress*(width+padding*2):width+padding-progress*(width+padding*2);
+  const size=base*(actorIndex?.94:1),x=center-direction*actorIndex*base*.98,y=height*(width<600?.70:.82)-actorIndex*5;
+  return {x,y,size,direction,frame:(direction===1?0:8)+Math.floor(elapsed*8/1000+actorIndex*2)%4,flyX:center+direction*(base*.55+28),flyY:height*(width<600?.70:.82)-base*.82+Math.sin(elapsed/450)*4};
+ }
  function validate(m){
   if(m?.status!=='ready')throw Error('animation_assets_not_ready');
   if(typeof m.poster!=='string')throw Error('static_poster_required');
@@ -56,14 +63,14 @@
    stage.dataset.frame=String(index);stage.dataset.rendered='true';
    const rect=stage.getBoundingClientRect(),ratio=Math.min(env.devicePixelRatio||1,2);
    for(const [actorIndex,{actor,canvas,ctx}]of canvases.entries()){if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,rect.width,rect.height);
-    const pose=poseAt(actor.poses,position),orbit=manifest.motion==='orbit'?orbitAt(elapsed,actorIndex,rect.width,rect.height):null;
+    const pose=poseAt(actor.poses,position),orbit=manifest.motion==='chase'?chaseAt(elapsed,actorIndex,rect.width,rect.height):manifest.motion==='orbit'?orbitAt(elapsed,actorIndex,rect.width,rect.height):null;
     const [x,y,width,lift,shadow]=pose,w=orbit?orbit.size:width*rect.width,h=w*actor.height/actor.width,cx=orbit?orbit.x:x*rect.width,ground=orbit?orbit.y:y*rect.height,frame=orbit?orbit.frame:index;
     if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.filter='blur(3px)';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
     const image=decoded.get(new URL(actor.frames[frame],doc.baseURI).href);if(image)ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);
     canvas.style.zIndex=String(Math.round(ground*10)+(actor.id==='butterfly'?1000:0));
    }
   }
-  function moveButterfly(){if(manifest.motion!=='orbit')return;const r=stage.getBoundingClientRect(),lead=orbitAt(elapsed+1200,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.x+'px');stage.style.setProperty('--fly-y',(lead.y-60-Math.sin(elapsed/500)*5)+'px');}
+  function moveButterfly(){if(manifest.motion==='chase'){const r=stage.getBoundingClientRect(),lead=chaseAt(elapsed,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.flyX+'px');stage.style.setProperty('--fly-y',lead.flyY+'px');stage.dataset.direction=lead.direction===1?'right':'left';return;}if(manifest.motion!=='orbit')return;const r=stage.getBoundingClientRect(),lead=orbitAt(elapsed+1200,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.x+'px');stage.style.setProperty('--fly-y',(lead.y-60-Math.sin(elapsed/500)*5)+'px');}
   function tick(now){request=0;if(disposed||failed||!active||doc.hidden||media.matches)return; if(started===null)started=now;elapsed+=Math.min(now-started,80);started=now;const position=elapsed*manifest.fps/1000%manifest.frameCount,index=Math.floor(position),renderStep=Math.floor(elapsed*30/1000);if(renderStep!==previous){paint(index,position);moveButterfly();previous=renderStep;}request=env.requestAnimationFrame(tick);}
   function stop(){if(request)env.cancelAnimationFrame(request);request=0;started=null;}
   async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden){stage.dataset.animation='paused';return;}await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
@@ -72,5 +79,5 @@
   const observer=new env.IntersectionObserver(entries=>{active=entries[0]?.isIntersecting===true;void sync();},{threshold:.05});observer.observe(stage);
   return {dispose(){disposed=true;++generation;stop();observer.disconnect();media.removeEventListener('change',visible);doc.removeEventListener('visibilitychange',visible);env.removeEventListener('resize',resize);release();for(const {canvas}of canvases)canvas.remove();poster.remove();},get state(){return disposed?'disposed':stage.dataset.animation||'waiting';}};
  }
- const api=Object.freeze({frameAt,poseAt,orbitAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
+ const api=Object.freeze({frameAt,poseAt,orbitAt,chaseAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
 })(typeof globalThis==='undefined'?this:globalThis);
