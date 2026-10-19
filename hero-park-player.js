@@ -2,6 +2,7 @@
 (function(root){'use strict';
  const LIMIT=64*1024*1024;
  function frameAt(elapsed,fps,count){return Math.floor(Math.max(0,elapsed)*fps/1000)%count;}
+ function poseAt(poses,position){const index=Math.floor(position)%poses.length,next=(index+1)%poses.length,t=position-Math.floor(position);return poses[index].map((v,i)=>v+(poses[next][i]-v)*t);}
  function validate(m){
   if(m?.status!=='ready')throw Error('animation_assets_not_ready');
   if(typeof m.poster!=='string')throw Error('static_poster_required');
@@ -45,17 +46,17 @@
    })().catch(error=>{failed=true;release();poster.hidden=false;stage.dataset.animation='poster';return false;});
    return loading;
   }
-  function paint(index){
+  function paint(index,position=index){
    stage.dataset.frame=String(index);stage.dataset.rendered='true';
    const rect=stage.getBoundingClientRect(),ratio=Math.min(env.devicePixelRatio||1,2);
    for(const {actor,canvas,ctx}of canvases){if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,rect.width,rect.height);
-    const [x,y,width,lift,shadow]=actor.poses[index],w=width*rect.width,h=w*actor.height/actor.width,cx=x*rect.width,ground=y*rect.height;
+    const [x,y,width,lift,shadow]=poseAt(actor.poses,position),w=width*rect.width,h=w*actor.height/actor.width,cx=x*rect.width,ground=y*rect.height;
     if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.filter='blur(3px)';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
     const image=decoded.get(new URL(actor.frames[index],doc.baseURI).href);if(image)ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);
     canvas.style.zIndex=String(Math.round(y*1000)+(actor.id==='butterfly'?1000:0));
    }
   }
-  function tick(now){request=0;if(disposed||failed||!active||doc.hidden||media.matches)return; if(started===null)started=now;elapsed+=Math.min(now-started,80);started=now;const index=frameAt(elapsed,manifest.fps,manifest.frameCount);if(index!==previous){paint(index);previous=index;}request=env.requestAnimationFrame(tick);}
+  function tick(now){request=0;if(disposed||failed||!active||doc.hidden||media.matches)return; if(started===null)started=now;elapsed+=Math.min(now-started,80);started=now;const position=elapsed*manifest.fps/1000%manifest.frameCount,index=Math.floor(position),renderStep=Math.floor(elapsed*30/1000);if(renderStep!==previous){paint(index,position);previous=renderStep;}request=env.requestAnimationFrame(tick);}
   function stop(){if(request)env.cancelAnimationFrame(request);request=0;started=null;}
   async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden){stage.dataset.animation='paused';return;}await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
   const visible=()=>void sync(),resize=()=>{previous=null;if(decoded.size&&!media.matches&&active&&!doc.hidden)paint(frameAt(elapsed,manifest.fps,manifest.frameCount));};
@@ -63,5 +64,5 @@
   const observer=new env.IntersectionObserver(entries=>{active=entries[0]?.isIntersecting===true;void sync();},{threshold:.05});observer.observe(stage);
   return {dispose(){disposed=true;++generation;stop();observer.disconnect();media.removeEventListener('change',visible);doc.removeEventListener('visibilitychange',visible);env.removeEventListener('resize',resize);release();for(const {canvas}of canvases)canvas.remove();poster.remove();},get state(){return disposed?'disposed':stage.dataset.animation||'waiting';}};
  }
- const api=Object.freeze({frameAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
+ const api=Object.freeze({frameAt,poseAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
 })(typeof globalThis==='undefined'?this:globalThis);

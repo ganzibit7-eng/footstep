@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict'),Player=require('../hero-park-player.js');
 function manifest(){return {status:'ready',loopReviewed:true,poster:'/assets/hero-park/poster.webp',frameCount:48,fps:24,actors:['pomeranian','maltese','butterfly'].map(id=>({id,width:4,height:4,alphaReviewed:true,frames:Array.from({length:48},(_,i)=>'/assets/hero-park/'+id+'/'+i+'.webp'),poses:Array.from({length:48},()=>[.5,.8,.1,0,.5])}))};}
+assert.deepEqual(Player.poseAt([[0,.8,.1,0,.5],[1,.8,.1,0,.5]],.5),[.5,.8,.1,0,.5]);assert.deepEqual(Player.poseAt([[0,.8,.1,0,.5],[1,.8,.1,0,.5]],1.5),[.5,.8,.1,0,.5]);
 let sixteen=manifest();sixteen.frameCount=16;sixteen.actors.forEach(a=>{a.frames=a.frames.slice(0,16);a.poses=a.poses.slice(0,16)});assert(Player.validate(sixteen)>0);
 assert.equal(Player.frameAt(0,24,48),0);assert.equal(Player.frameAt(2000,24,48),0);assert.equal(Player.frameAt(1999,24,48),47);
 assert.throws(()=>Player.validate({status:'awaiting-assets'}),/not_ready/);let m=manifest();assert(Player.validate(m)<64000000);m.loopReviewed=false;assert.throws(()=>Player.validate(m),/loop_review/);m=manifest();m.actors[0].alphaReviewed=false;assert.throws(()=>Player.validate(m),/alpha_frames/);m=manifest();m.actors.forEach(a=>{a.width=512;a.height=512});assert.throws(()=>Player.validate(m),/memory_budget/);
