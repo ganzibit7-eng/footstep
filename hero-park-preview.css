@@ -41,3 +41,7 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 }
 @media(max-width:360px){.hero[data-page-section="home"]{padding-left:18px!important;padding-right:18px!important}.hero[data-page-section="home"] .home-start-actions{flex-direction:column}.hero[data-page-section="home"] .home-start-actions a{flex:auto}}
 @media(prefers-reduced-motion:reduce){.hero-park-stage *{animation:none!important;transition:none!important}}
+.hero-park-stage .hero-park-actor{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-park-stage .hero-park-actor[hidden]{display:none}
+.hero-park-stage .hero-park-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.hero-park-stage .hero-park-poster[hidden]{display:none}
