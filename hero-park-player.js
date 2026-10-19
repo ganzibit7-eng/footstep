@@ -10,6 +10,7 @@
   return {x:cx,y:ground,size,direction,frame:direction*4+Math.floor(elapsed*8/1000+actorIndex*2)%4};
  }
  function chaseAt(elapsed,actorIndex,width,height){
+  elapsed*=.7;
   const half=6000,phase=((elapsed%12000)+12000)%12000,direction=phase<half?1:-1,progress=(phase%half)/half;
   const base=Math.min(126,height*.62,width*.30),padding=base*2+50;
   const center=direction===1?-padding+progress*(width+padding*2):width+padding-progress*(width+padding*2);
