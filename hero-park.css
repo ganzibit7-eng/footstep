@@ -129,3 +129,6 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 }
 
 @media(min-width:881px){.hero[data-page-section="home"]{padding-bottom:max(196px,calc(15.3vw + 16px))!important}}
+
+/* Small poster only for reduced motion or a failed animation load. */
+.hero-park-stage .hero-park-poster{width:200px;height:100px;max-width:70%;bottom:18px}
