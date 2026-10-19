@@ -1715,7 +1715,7 @@ html[data-theme="dark"] #nearby-section .collection-grid button,html[data-theme=
 </style>
 <style>#member-summary button{font-weight:650}</style>
 <link rel="stylesheet" href="/experience.css?v=20261013-map-flow">
-<link rel="stylesheet" href="/map-premium.css?v=20261019-map-refinement">
+<link rel="stylesheet" href="/map-premium.css?v=20261019-map-refinement2">
 <link rel="stylesheet" href="/mong-calendar.css?v=20261009-results">
 <script src="/walk-calendar.js?v=20261009-detail"></script>
 <link rel="stylesheet" href="course-comfort.css?v=20261010-env">
@@ -4826,7 +4826,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         ? `<a href="#" onclick="window.__deleteFacility(${escapeHtml(JSON.stringify(String(f.id)))});return false;" style="color:#B5502E;font-weight:700;">삭제</a>`
         : `<a href="#" onclick="window.__reportFacility(${escapeHtml(JSON.stringify(String(f.id)))});return false;" style="color:#A79E7E;font-weight:600;">🚩 신고</a>`;
       L.marker([f.lat, f.lng], {icon: poiIcon(FacilityInfo.get(f.category).poi),title:String(f.name||"동반 장소"),alt:String(f.name||"동반 장소")})
-        .bindPopup(`<strong>${emoji} ${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br><small>${escapeHtml(registeredPlaceLabel(f))}</small><br>${typeof PlacePhotos!=='undefined'?PlacePhotos.figure(f,{compact:true,missing:false}):''}${PlaceConditions.panel(f)}<details><summary>전체 이용 안내</summary>${escapeHtml(CourseInfo.cleanDescription(f.description))}</details><br><a href="/places/${encodeURIComponent(f.id)}/" style="font-weight:700">동반 조건·상세 안내 ↗</a>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>'+ (CourseInfo.checkedDate(f.description)?'<br><small>'+escapeHtml(CourseInfo.checkedDate(f.description))+' 자료 확인 · 현장 운영은 방문 전 확인</small>':''):''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
+        .bindPopup(`<strong>${escapeHtml(f.name)}</strong><br>${escapeHtml(f.address||'')}<br><small>${escapeHtml(registeredPlaceLabel(f))}</small><p class="map-place-conditions">${escapeHtml(PlaceConditions.summary(f))}</p><a class="map-place-primary" href="/places/${encodeURIComponent(f.id)}/">동반 조건·상세 안내 ↗</a>${typeof PlacePhotos!=='undefined'?PlacePhotos.figure(f,{compact:true,missing:false}):''}<details class="map-popup-details"><summary>동반 조건 자세히</summary>${PlaceConditions.panel(f)}</details><details><summary>전체 이용 안내</summary>${escapeHtml(CourseInfo.cleanDescription(f.description))}</details>${CourseInfo.sourceURL(f.description)?'<br><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(CourseInfo.sourceURL(f.description))+'">공식 동반 안내 ↗</a>'+ (CourseInfo.checkedDate(f.description)?'<br><small>'+escapeHtml(CourseInfo.checkedDate(f.description))+' 자료 확인 · 현장 운영은 방문 전 확인</small>':''):''}${f.author ? '<br><em>등록: '+escapeHtml(f.author)+'</em>' : ''}<br>${actionHtml} · <a href="${escapeHtml(kakaoLinkTo(f.name, f.lat, f.lng))}" target="_blank" rel="noopener noreferrer" style="color:var(--moss);font-weight:700;">🧭 길찾기</a>`)
         .addTo(facilityLayer);
     });
   }

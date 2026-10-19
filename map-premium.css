@@ -83,3 +83,10 @@ html[data-theme="dark"] #map-section{--map-surface:#24362d;--map-ink:#edf3eb;--m
 #map-section #registered-place-filters select{flex:1;min-width:0}
 #map-section #facility-filter-query{min-width:0!important}
 #map-section #registered-place-filters .chip{min-height:44px;margin:0;padding:9px 12px;border:1px solid var(--map-line);border-radius:8px;background:var(--map-surface);color:var(--map-ink);font-size:12px}
+
+#map-section #facility-filter-count{flex:0 0 100%;width:100%}
+#map-section .leaflet-popup-content .map-place-conditions{margin:10px 0;font-size:13px;line-height:1.75;color:var(--map-ink)}
+#map-section .leaflet-popup-content .map-place-primary{display:block;padding:10px 12px;border:1px solid var(--map-line);border-radius:8px;background:var(--map-soft);text-align:center;text-decoration:none}
+#map-section .leaflet-popup-content .place-photo>img{height:120px!important;max-height:120px!important;object-fit:contain!important}
+#map-section .map-popup-details{border-top:1px solid var(--map-line);padding-top:8px;margin-top:12px}
+#map-section .map-popup-details>summary{font-size:13px;min-height:44px;cursor:pointer}
