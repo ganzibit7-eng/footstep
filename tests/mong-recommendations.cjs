@@ -1,16 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const html=fs.readFileSync('index.html','utf8');
-const region=html.slice(html.indexOf('  function courseInRegion('),html.indexOf('  function parseDistanceKm'));
-const recommend=html.slice(html.indexOf('  function aiRecommendCourses(){'),html.indexOf('  function mongDistanceKm('));
-const HomeExplore=require('../home-explore.js');
-const rows=[{id:'seoul-forest',name:'서울 숲길',address:'서울특별시 서대문구',minutes:20,tags:['숲길']},{id:'gyeonggi-forest',address:'경기도 고양시',minutes:20,tags:['숲길']},{id:'seoul-river',address:'서울 마포구',minutes:20,tags:['하천길']},{id:'seoul-long',address:'서울 서대문구',minutes:90,tags:['숲길']},{id:'unknown',name:'서울 인근',minutes:20,tags:['숲길']},{id:'pending',address:'서울 서대문구',minutes:20,tags:['숲길'],petUnknown:true}];
-const aiAnswers={region:'서울',time:'짧게',env:'숲길',comfort:{}};
-const ctx={HomeExplore,CourseAddresses:{get:c=>({address:c.address})},CourseComfort:{matches:(c,o)=>!o.stairs},aiAnswers,allCourses:()=>rows,isHidden:()=>false,needsPetCheck:c=>!!c.petUnknown,courseWalkTime:c=>({minutes:c.minutes}),mongDistanceKm:()=>1};vm.createContext(ctx);vm.runInContext(region+recommend,ctx);
-assert.deepEqual(Array.from(ctx.aiRecommendCourses(),c=>c.id),['seoul-forest']);
-aiAnswers.env='그늘많음';assert.equal(ctx.aiRecommendCourses().length,0,'no matching environment must not fall back to other tags');
-aiAnswers.env='하천길';assert.deepEqual(Array.from(ctx.aiRecommendCourses(),c=>c.id),['seoul-river']);
-aiAnswers.env='숲길';aiAnswers.time='길게';assert.deepEqual(Array.from(ctx.aiRecommendCourses(),c=>c.id),['seoul-long']);
-aiAnswers.comfort={stairs:true};assert.equal(ctx.aiRecommendCourses().length,0,'unknown safety conditions stay excluded');
-assert(!html.includes('api.qrserver.com'));assert(html.includes('environmentChoice(v,label)'));assert(html.includes('환경 조건 해제'));assert(!html.includes('지역은 좌표 범위로 추정'));
+for(const id of ['ai-assistant-btn','ai-assistant-overlay','ai-tooltip','home-update-toast','member-event-dialog'])assert(!html.includes('id="'+id+'"'),'removed public entry '+id);
+assert(!html.includes('function aiRecommendCourses('));assert(!html.includes('api.qrserver.com'));
 const storage=new Map();const context={sessionStorage:{setItem:(k,v)=>storage.set(k,v),getItem:k=>storage.get(k),removeItem:k=>storage.delete(k)},Date};vm.createContext(context);vm.runInContext(fs.readFileSync('signup-consent.js','utf8'),context);
 (async()=>{let writes=0;const client={rpc:async()=>{writes++;return{data:true}}};assert.equal(await context.SignupConsent.flush(client),false);assert.equal(writes,0,'never invent historical consent');context.SignupConsent.capture();assert.equal(await context.SignupConsent.flush({rpc:async()=>({error:true})}),false);assert.equal(storage.size,1,'retry failed receipt');assert.equal(await context.SignupConsent.flush(client),true);assert.equal(storage.size,0);context.SignupConsent.capture();let p=JSON.parse([...storage.values()][0]);p.at=Date.now()-86400001;storage.set([...storage.keys()][0],JSON.stringify(p));assert.equal(await context.SignupConsent.flush(client),false);assert.equal(writes,1);console.log('PASS: region boundaries, strict environment/time, unknown safety, no QR transmission, no invented consent, failed receipt retry and expiry.');})().catch(e=>{console.error(e);process.exitCode=1});

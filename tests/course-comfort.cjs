@@ -16,22 +16,17 @@ for(const value of ['不明','2-4km','0km','-1km','1500m terrain'])assert(!comfo
 assert(comfort.matches({distance:'2000m'},{short:true}));assert(!comfort.matches({distance:'2001m'},{short:true}));
 const html=fs.readFileSync('index.html','utf8');
 const listFunction=html.slice(html.indexOf('  function getFilteredCourses('),html.indexOf('  function hasActiveListFilter(){'));
-const aiFunction=html.slice(html.indexOf('  function aiRecommendCourses(){'),html.indexOf('  function mongDistanceKm(value){'));
 const state={query:'',diff:'all',tags:new Set(),maxMinutes:0,collection:'',favOnly:false,comfort:{}};
-const ai={time:null,region:null,env:null,comfort:{}};
-const sandbox={CourseComfort:comfort,listFilterState:state,aiAnswers:ai,allCourses:()=>courses,isHidden:()=>false,needsPetCheck:()=>false,courseInRegion:()=>true,courseMinutes:c=>info.walkTime(c.desc,c.distance).minutes,courseWalkTime:c=>info.walkTime(c.desc,c.distance),mongDistanceKm:c=>comfort.distance({distance:c}),CourseAddresses:{matches:()=>true}};
-vm.createContext(sandbox);vm.runInContext(listFunction+aiFunction,sandbox);
+const sandbox={CourseComfort:comfort,listFilterState:state,allCourses:()=>courses,isHidden:()=>false,needsPetCheck:()=>false,courseInRegion:()=>true,courseMinutes:c=>info.walkTime(c.desc,c.distance).minutes,courseWalkTime:c=>info.walkTime(c.desc,c.distance),mongDistanceKm:c=>comfort.distance({distance:c}),CourseAddresses:{matches:()=>true}};
+vm.createContext(sandbox);vm.runInContext(listFunction,sandbox);
 assert.equal(sandbox.getFilteredCourses().length,205);
 state.comfort=comfort.preset();assert.deepEqual(Array.from(sandbox.getFilteredCourses(),c=>c.id),['c388']);
-ai.comfort=comfort.preset();assert.deepEqual(Array.from(sandbox.aiRecommendCourses(),c=>c.id),['c388']);
 state.comfort={};state.tags.add('계단없음');assert.deepEqual(Array.from(sandbox.getFilteredCourses(),c=>c.id),['c133']);
-ai.comfort={};ai.env='계단없음';assert.deepEqual(Array.from(sandbox.aiRecommendCourses(),c=>c.id),['c133']);
-ai.comfort={stairs:true,short:true};assert.equal(sandbox.aiRecommendCourses().length,0); // no relaxed fallback
 state.tags.clear();state.comfort={stairs:true,short:true};assert.equal(sandbox.getFilteredCourses().length,0);
 state.comfort={};assert.equal(sandbox.getFilteredCourses().length,205);
-assert(html.includes("listFilterState.comfort={};"));assert(html.includes('CourseComfort.read(body.querySelector'));
+assert(html.includes("listFilterState.comfort={};"));
 assert(comfort.panel(unknown).includes('未確認')===false);assert(comfort.panel(unknown).includes('미확인'));
-console.log('PASS: strict unknown exclusion, source/geometry binding, distance boundaries, senior preset, list/Mong parity, legacy stair filter and empty-result fallback.');
+console.log('PASS: strict unknown exclusion, source/geometry binding, distance boundaries, senior preset, list filtering, legacy stair filter and empty-result fallback.');
 
 vm.runInContext(html.slice(html.indexOf('  function exploreRelaxOptions(){'),html.indexOf('  function renderExploreEmpty(){')),sandbox);
 state.comfort={stairs:true,short:true};
