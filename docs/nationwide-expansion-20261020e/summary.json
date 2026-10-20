@@ -1,0 +1,43 @@
+{
+  "baseline": {
+    "photoPlaces": 2279,
+    "totalPhotos": 5221,
+    "courses": 412,
+    "facilities": 4164
+  },
+  "addedPhotos": 6,
+  "places": 6,
+  "newPhotoPlaces": 6,
+  "newBytes": 2938090,
+  "photoPlaces": 2285,
+  "totalPhotos": 5227,
+  "newPetConditions": 5,
+  "records": 2726,
+  "galleryPlaces": 969,
+  "galleryPhotos": 2942,
+  "petRecords": 915,
+  "tourNotes": 463,
+  "cautions": 34,
+  "officialVisitPlaces": 1913,
+  "officialPetNotesPlaces": 9,
+  "addedOfficialNotes": 1,
+  "addedCautions": 0,
+  "reviewedCamping": 0,
+  "officialListings": 367,
+  "listingNotMatched": 2,
+  "sourceListingRows": 2836,
+  "reviewedTourismRows": 49607,
+  "reviewedNoPetRecords": 852,
+  "newIntroAllowances": 1,
+  "addedCourses": 0,
+  "publicFacilities": 4170,
+  "publicCourses": 412,
+  "categories": {
+    "캠핑": 2,
+    "숙소": 1,
+    "공원관광": 3
+  },
+  "existingEnriched": 0,
+  "coordinateCorrections": 0,
+  "existingConditionsCorrected": 0
+}

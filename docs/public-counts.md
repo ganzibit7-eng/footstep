@@ -4,6 +4,6 @@
 
 새 코스·장소 승인, 삭제·숨김 작업을 완료한 뒤 실제 공개 대상 수를 대조하고 아래 도구로 갱신한다. 사진·안내만 보강한 경우 장소 수를 늘리지 않는다.
 
-`node scripts/update-public-counts.mjs --courses 412 --facilities 4164 --checked 2026-10-20`
+`node scripts/update-public-counts.mjs --courses 412 --facilities 4170 --checked 2026-10-20`
 
 이 도구는 index.html의 첫 표시 숫자·표시용 선언과 data/public-counts.json을 함께 갱신하며, DB나 회원 데이터에 접근하지 않는다. 승인·숨김 조건을 확인하지 않은 단순 원본 행 수를 입력하지 않는다. 변경된 원본을 함께 배포해야 방문자에게 반영된다.
