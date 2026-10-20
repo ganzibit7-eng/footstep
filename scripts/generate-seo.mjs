@@ -1,3 +1,4 @@
+import {generatePetLife} from './generate-pet-life.mjs';
 import {generatePetCare} from './generate-pet-care.mjs';
 import {refinePlaceDetail} from './refine-place-details.mjs';
 import FacilityInfo from '../facility-info.js';
@@ -852,7 +853,7 @@ await generateWeekend(ROOT);
 await writeFile(path.join(ROOT,'guides/index.html'),withTraffic(guideDirectoryHTML(GUIDES)),'utf8');
 sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(directoryHtml(groups)), 'utf8');
-sitemap.push(...await generatePetCare(ROOT));
+sitemap.push(...await generatePetCare(ROOT),...await generatePetLife(ROOT));
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {
   const prev = sitemapByUrl.get(entry.url);
@@ -874,3 +875,4 @@ if(homeHtml.includes('window.PawCoursePages=Object.freeze('))await writeFile(hom
 console.log(`SEO 페이지 ${Math.max(0, uniqueSitemap.length - 2)}개와 사이트맵을 생성했습니다. (중복 URL ${sitemap.length - uniqueSitemap.length}개 제거)`);
 console.log('Public guide RSS:',await generateRSS(ROOT));
 console.log('Public search favicon:',await normalizePublicSearchHeads(ROOT));
+

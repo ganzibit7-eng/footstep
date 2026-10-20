@@ -144,3 +144,5 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 @media(max-width:600px){.hero-park-stage{--park-ground:.70}}
 
 .hero-park-stage:not([data-rendered="true"]) .hero-park-fly{visibility:hidden}
+
+#hero-stat-facilities{text-decoration:none;color:inherit;display:inline-block;border-radius:4px}#hero-stat-facilities:focus-visible{outline:2px solid var(--moss);outline-offset:4px}#hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}

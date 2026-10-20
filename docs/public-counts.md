@@ -7,3 +7,5 @@
 `node scripts/update-public-counts.mjs --courses 412 --facilities 4170 --checked 2026-10-20`
 
 이 도구는 index.html의 첫 표시 숫자·표시용 선언과 data/public-counts.json을 함께 갱신하며, DB나 회원 데이터에 접근하지 않는다. 승인·숨김 조건을 확인하지 않은 단순 원본 행 수를 입력하지 않는다. 변경된 원본을 함께 배포해야 방문자에게 반영된다.
+
+홈의 반려생활 장소 합계는 `data/place-count-summary.json`의 기존 동반장소와 전문업소를 합치고 중복 가능 업소를 제외한 값이다. `facilities`는 기존 검색·지도의 동반장소 수로 유지한다. 전문업소 또는 동반장소가 바뀌면 상호·시군구 대조를 다시 수행하고 합계 파일을 갱신한다.

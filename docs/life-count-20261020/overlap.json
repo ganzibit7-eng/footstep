@@ -1,0 +1,938 @@
+{
+  "checked": "2026-10-20",
+  "facilities": 4170,
+  "professionalPlaces": 33277,
+  "overlap": 103,
+  "places": 37344,
+  "method": "상호와 공개 주소·전화번호 일치 대조. 마스킹 주소로 확정하기 어려운 경우 동일 상호·동일 시군구 전문업소도 홈 합계에서 보수적으로 제외. 원본 주소는 복원하지 않음.",
+  "matches": [],
+  "possible": [
+    {
+      "travelId": "gocamping_964",
+      "professionalId": "pc-gyeonggi-c9b66d7c9d4cbdf9",
+      "name": "반려견호텔 랩도그빌",
+      "travelAddress": "경기도 연천군 청산면 청창로200번길 33",
+      "professionalAddress": "경기도 연천군 청산면 청창로***번길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "kto_a2e3327f-6319-4870-a09b-1aea44691ba4",
+      "professionalId": "pc-incheon-b2014fc906c7453a",
+      "name": "독독",
+      "travelAddress": "인천광역시 영종구 공항서로 517 (남북동)",
+      "professionalAddress": "인천광역시 영종구 공항서로 *** (남북동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "kto_new_20261020_2732329",
+      "professionalId": "pc-gyeonggi-27e02eb046baf4ed",
+      "name": "코코앤몽 펫카페",
+      "travelAddress": "경기도 고양시 덕양구 고양대로 1760 (삼송동)",
+      "professionalAddress": "경기도 고양시 덕양구 신원로 **-*, *층 ***호 (신원동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "kto_new_20261020c_2863230",
+      "professionalId": "pc-gyeonggi-220bb9c4810da72d",
+      "name": "어스독",
+      "travelAddress": "경기도 김포시 양촌읍 김포한강8로 18-1",
+      "professionalAddress": "경기도 김포시 양촌읍 김포한강*로 **-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_1756e01c1b23611bf377",
+      "professionalId": "pc-daegu-5dc9671fe3e82196",
+      "name": "강새이",
+      "travelAddress": "대구광역시 남구 현충로25길 5(3층 대명동)",
+      "professionalAddress": "대구광역시 남구 현충로**길 *, *층 (대명동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_256f97d9587abf9e1b3b",
+      "professionalId": "pc-gyeongbuk-a546cfd7eacf7fd2",
+      "name": "몽슈랜드",
+      "travelAddress": "경상북도 경산시 하양읍 하양유원지길 69(1,2층)",
+      "professionalAddress": "경상북도 경산시 하양읍 하양유원지길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_2ee8d60cf53b15b6ef5f",
+      "professionalId": "pc-daejeon-39f2e3aa72e1d0fa",
+      "name": "견우재",
+      "travelAddress": "대전광역시 동구 대동천좌안5길 19(소제동)",
+      "professionalAddress": "대전광역시 동구 대동천좌안*길 ** (소제동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_321240c279e0a16832b6",
+      "professionalId": "pc-jeonbuk-478f2f13b984b550",
+      "name": "댕댕플래닛",
+      "travelAddress": "전북특별자치도 정읍시 정읍남로 1446-44(시기동)",
+      "professionalAddress": "전북특별자치도 정읍시 정읍남로 ****-** (시기동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_3da5c74340fc409da7e2",
+      "professionalId": "pc-jeonbuk-23dd51742c1ff86c",
+      "name": "그르르",
+      "travelAddress": "전북특별자치도 익산시 무왕로 1543(그르르 석왕동)",
+      "professionalAddress": "전북특별자치도 익산시 무왕로 ****, 그르르 지하*층 (석왕동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_5f130a722f2a488c9662",
+      "professionalId": "pc-chungbuk-7003c29704b7e48a",
+      "name": "달려라해피",
+      "travelAddress": "충청북도 충주시 고든골길 62-1(직동)",
+      "professionalAddress": "충청북도 충주시 고든골길 **-* (직동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_a21a071507b3fd071eb6",
+      "professionalId": "pc-gyeongnam-0121c6dd01dac0f2",
+      "name": "누꼬누꼬",
+      "travelAddress": "경상남도 양산시 유산마을길 15(1층 일부 어곡동)",
+      "professionalAddress": "경상남도 양산시 유산마을길 ** (어곡동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_afba1b0b716dd80f8ee6",
+      "professionalId": "pc-gyeongbuk-cd01b41d3d33c12f",
+      "name": "또독하우스",
+      "travelAddress": "경상북도 구미시 산동읍 옥계2공단로 635(1동 1층)",
+      "professionalAddress": "경상북도 구미시 산동읍 옥계*공단로 ***",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "mfds_b855aa478c914792580d",
+      "professionalId": "pc-chungbuk-6add7e45c1628d30",
+      "name": "동반",
+      "travelAddress": "충청북도 영동군 영동읍 성안길 25",
+      "professionalAddress": "충청북도 영동군 영동읍 성안길 **, 레이밴형",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410826323_347_ks2o3g",
+      "professionalId": "pc-gyeonggi-876e30731609cc2c",
+      "name": "클럽더독스",
+      "travelAddress": "경기도 양평군 옥천면 당곡길 42-18",
+      "professionalAddress": "경기도 양평군 옥천면 당곡길 **-**",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_104_tmt2ui",
+      "professionalId": "pc-gyeonggi-1cff274827e717af",
+      "name": "너와함개냥",
+      "travelAddress": "경기도 포천시 군내면 포천로 1070-2",
+      "professionalAddress": "경기도 포천시 군내면 포천로 ****-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_105_rwzxhl",
+      "professionalId": "pc-gyeonggi-0f0cee6268ae8f87",
+      "name": "넌나의가족",
+      "travelAddress": "경기도 안산시 상록구 석호로 306",
+      "professionalAddress": "경기도 안산시 상록구 석호로 ***, *층 ***호 (본오동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_111_l0zni7",
+      "professionalId": "pc-gyeongnam-3af7dd065167e264",
+      "name": "노아의방주",
+      "travelAddress": "경상남도 사천시 정동면 화암길 180",
+      "professionalAddress": "경상남도 사천시 정동면 화암길 ***",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_113_pgxv2v",
+      "professionalId": "pc-jeju-60ecd229d42d68c4",
+      "name": "놀멍쉬멍고르멍",
+      "travelAddress": "제주특별자치도 서귀포시 현청로 51",
+      "professionalAddress": "제주특별자치도 서귀포시 현청로 **(서홍동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_113_pgxv2v",
+      "professionalId": "pc-jeju-da2cf0e8208ce9bc",
+      "name": "놀멍쉬멍고르멍",
+      "travelAddress": "제주특별자치도 서귀포시 현청로 51",
+      "professionalAddress": "제주특별자치도 서귀포시 현청로 ** (서홍동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_122_w6v2pn",
+      "professionalId": "pc-seoul-362b0a177f472546",
+      "name": "다시사랑받개",
+      "travelAddress": "서울특별시 중랑구 용마산로139나길 83",
+      "professionalAddress": "서울특별시 중랑구 용마산로 ***, 언신회관 *층 (망우동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_13_laopwc",
+      "professionalId": "pc-seoul-bfb3fcab8fd3f4d1",
+      "name": "강아지대학로",
+      "travelAddress": "서울특별시 종로구 대학로12길 92",
+      "professionalAddress": "서울특별시 종로구 대학로**길 **, 한양빌딩 지하동 *층 (동숭동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_145_8oivxu",
+      "professionalId": "pc-gyeonggi-b3bc1f9faf8d1588",
+      "name": "도그런",
+      "travelAddress": "경기도 광주시 새말길 214-5",
+      "professionalAddress": "경기도 광주시 신현동 새말길 ***-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_145_8oivxu",
+      "professionalId": "pc-gyeonggi-f334359045c11766",
+      "name": "도그런",
+      "travelAddress": "경기도 광주시 새말길 214-5",
+      "professionalAddress": "경기도 광주시 신현동 새말길 ***-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_149_ukua4w",
+      "professionalId": "pc-incheon-e62d546d47458982",
+      "name": "도그아지트",
+      "travelAddress": "인천광역시 남동구 만수로111번길 29",
+      "professionalAddress": "인천광역시 남동구 만수로***번길 **, *층 (만수동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_150_je071z",
+      "professionalId": "pc-busan-485586dc532cd588",
+      "name": "도그어바웃",
+      "travelAddress": "부산광역시 사하구 다대로 680",
+      "professionalAddress": "부산광역시 사하구 다대로 ***, *층 (다대동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_152_47je5n",
+      "professionalId": "pc-seoul-762eba59b5f45b84",
+      "name": "도그존",
+      "travelAddress": "서울특별시 송파구 올림픽로12길 28",
+      "professionalAddress": "서울특별시 송파구 올림픽로**길 **, *층 (잠실동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_153_xruepg",
+      "professionalId": "pc-gyeonggi-29b40b48478cb71b",
+      "name": "도그캠프",
+      "travelAddress": "경기도 김포시 하성면 금포로1915번길 65",
+      "professionalAddress": "경기도 김포시 하성면 금포로****번길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_155_qyol1s",
+      "professionalId": "pc-daegu-27176f0cb868a670",
+      "name": "도그플레이스",
+      "travelAddress": "대구광역시 달서구 한실로6길 155",
+      "professionalAddress": "대구광역시 달서구 한실로*길 *** (대곡동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_156_wneot7",
+      "professionalId": "pc-chungnam-69820525e81bf020",
+      "name": "도그홀릭",
+      "travelAddress": "충청남도 아산시 배방읍 북수로 98-1",
+      "professionalAddress": "충청남도 아산시 배방읍 북수로 **-*, 거명빌딩 *층",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_158_soo3r2",
+      "professionalId": "pc-gyeongbuk-2f6be9660cb7507c",
+      "name": "도기온",
+      "travelAddress": "경상북도 경산시 하양읍 대경로 117",
+      "professionalAddress": "경상북도 경산시 하양읍 대경로 ***",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_159_rqm04v",
+      "professionalId": "pc-gyeonggi-bd84f5426cb03454",
+      "name": "도기헤븐",
+      "travelAddress": "경기도 안성시 삼죽면 서동대로 6392",
+      "professionalAddress": "경기도 안성시 삼죽면 서동대로 ****",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_16_g4vhm0",
+      "professionalId": "pc-seoul-28ea91887313294a",
+      "name": "강아지정류장",
+      "travelAddress": "서울특별시 강서구 양천로 709",
+      "professionalAddress": "서울특별시 강서구 양천로 *** (염창동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_17_wseckl",
+      "professionalId": "pc-gangwon-413261bf3793c5c2",
+      "name": "강아지집",
+      "travelAddress": "강원도 원주시 천사로 148",
+      "professionalAddress": "강원특별자치도 원주시 천사로 *** (일산동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_170_glkgli",
+      "professionalId": "pc-gyeonggi-9c7e06a1bdc4789b",
+      "name": "독스테이션",
+      "travelAddress": "경기도 파주시 탄현면 새오리로 126",
+      "professionalAddress": "경기도 파주시 탄현면 새오리로 ***",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_180_xd54b3",
+      "professionalId": "pc-gangwon-1c7bdeb7ee39dcf3",
+      "name": "둥개둥개",
+      "travelAddress": "강원도 속초시 선사로2길 14",
+      "professionalAddress": "강원특별자치도 속초시 선사로*길 ** (조양동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_19_ghor7j",
+      "professionalId": "pc-gyeonggi-675c2264a25f82a8",
+      "name": "개가사는그집",
+      "travelAddress": "경기도 파주시 책향기로 573",
+      "professionalAddress": "경기도 파주시 책향기로 ***, 월드타워*차 *층 ***호 (목동동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_192_138g75",
+      "professionalId": "pc-gyeonggi-ae6f19d9e6918336",
+      "name": "딩가댕가",
+      "travelAddress": "경기도 포천시 소흘읍 광릉수목원로 1104",
+      "professionalAddress": "경기도 포천시 소흘읍 광릉수목원로 ****, 나동",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_196_xng6y6",
+      "professionalId": "pc-seoul-7670e918a60501ef",
+      "name": "똑똑독",
+      "travelAddress": "서울특별시 노원구 한글비석로 424",
+      "professionalAddress": "서울특별시 노원구 한글비석로 ***, ***호 (상계동, 솔매빌라트)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_207_j9mu0f",
+      "professionalId": "pc-gyeongnam-6a086d84eb189281",
+      "name": "라라퍼피",
+      "travelAddress": "경상남도 김해시 김해대로 2433",
+      "professionalAddress": "경상남도 김해시 김해대로 ****, *층 (부원동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_218_ne2vqm",
+      "professionalId": "pc-gyeonggi-93eb1f9a8f6b127f",
+      "name": "레이지독",
+      "travelAddress": "경기도 이천시 마장면 마도로248번길 73",
+      "professionalAddress": "경기도 이천시 마장면 마도로***번길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_220_h1bkbb",
+      "professionalId": "pc-sejong-0c773c05dddcaa90",
+      "name": "레인바우",
+      "travelAddress": "세종특별자치시 나성북로 9",
+      "professionalAddress": "세종특별자치시 나성북로 *, 메가타워* *층 ***호 (나성동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_230_vf1g1g",
+      "professionalId": "pc-gyeonggi-916e7d495a64c482",
+      "name": "루프앤독",
+      "travelAddress": "경기도 안산시 상록구 중보로 23",
+      "professionalAddress": "경기도 안산시 상록구 중보로 **, *층 ***호 (이동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_232_sfxgql",
+      "professionalId": "pc-seoul-b619091329462fc6",
+      "name": "리리앤펫",
+      "travelAddress": "서울특별시 강북구 한천로131길 33",
+      "professionalAddress": "서울특별시 강북구 한천로***길 **, *층 (번동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_236_bpsbo1",
+      "professionalId": "pc-jeonbuk-53efad812764e3d5",
+      "name": "리틀포레스트",
+      "travelAddress": "전라북도 군산시 옥구읍 옥구남로 31-8",
+      "professionalAddress": "전북특별자치도 군산시 옥구읍 옥구남로 **-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_242_pwpvpt",
+      "professionalId": "pc-seoul-34693e18b3c66cbc",
+      "name": "마이티그루밍",
+      "travelAddress": "서울특별시 강남구 논현로 613",
+      "professionalAddress": "서울특별시 강남구 논현로 ***, *층 ***호 (논현동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_253_f6f628",
+      "professionalId": "pc-seoul-db9048f81776fc74",
+      "name": "멍멍이 다방",
+      "travelAddress": "서울특별시 강서구 화곡로 117-1",
+      "professionalAddress": "서울특별시 강서구 화곡로 ***-*, *층 (화곡동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_254_soa5gn",
+      "professionalId": "pc-daegu-18fc1db72d85dab1",
+      "name": "멍뭉몽",
+      "travelAddress": "대구광역시 북구 태암남로 43",
+      "professionalAddress": "대구광역시 북구 태암남로 **, *층 (구암동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_264_2s756h",
+      "professionalId": "pc-gyeongnam-5b9c56669072ce3e",
+      "name": "멍아일랜드",
+      "travelAddress": "경상남도 거제시 사등면 사등2길 3",
+      "professionalAddress": "경상남도 거제시 사등면 사등*길 *",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_27_7s23ui",
+      "professionalId": "pc-seoul-d0f76bf2649e9d36",
+      "name": "개라다이스",
+      "travelAddress": "서울특별시 관악구 봉천로 283",
+      "professionalAddress": "서울특별시 관악구 봉천로 ***, 지층 (봉천동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_288_t7d28e",
+      "professionalId": "pc-gyeongbuk-0033294abb123724",
+      "name": "몽블리 애견카페",
+      "travelAddress": "경상북도 칠곡군 석적읍 서중리7길 97-3",
+      "professionalAddress": "경상북도 칠곡군 석적읍 서중리*길 **-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_29_joa37u",
+      "professionalId": "pc-ulsan-715ebb34d79ff3df",
+      "name": "개린이세상",
+      "travelAddress": "울산광역시 남구 정동로80번길 4",
+      "professionalAddress": "울산광역시 남구 삼산중로***번길 **, *층 (삼산동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_296_xhd8qo",
+      "professionalId": "pc-gyeongbuk-62117516aacdb1b2",
+      "name": "미스터멍",
+      "travelAddress": "경상북도 안동시 강남로 492",
+      "professionalAddress": "경상북도 안동시 강남로 *** (정상동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_312_icq4e3",
+      "professionalId": "pc-seoul-4c6e8a451a41d4f9",
+      "name": "반려문화",
+      "travelAddress": "서울특별시 강남구 언주로133길 23",
+      "professionalAddress": "서울특별시 강남구 언주로***길 **, *-*층 (논현동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_314_10f8aw",
+      "professionalId": "pc-gangwon-e5963c8a8b5ae9f8",
+      "name": "발바닥 애견카페",
+      "travelAddress": "강원도 춘천시 동내면 거두길 26",
+      "professionalAddress": "강원특별자치도 춘천시 동내면 거두길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_332_evg4c2",
+      "professionalId": "pc-gyeonggi-4fb2568c4b69c338",
+      "name": "봉주르봉구",
+      "travelAddress": "경기도 광주시 초월읍 대쌍령길 5",
+      "professionalAddress": "경기도 광주시 초월읍 대쌍령길 *, *층",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_346_78bkj0",
+      "professionalId": "pc-gyeonggi-07151fc90aeb38c1",
+      "name": "비숲",
+      "travelAddress": "경기도 군포시 둔대로 28",
+      "professionalAddress": "경기도 군포시 둔대로 ** (둔대동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_358_vfslb3",
+      "professionalId": "pc-gyeongnam-4c5e9c7708699fe4",
+      "name": "사랑할개",
+      "travelAddress": "경상남도 양산시 양주3길 11",
+      "professionalAddress": "경상남도 양산시 양주*길 **, 사랑할개 (중부동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_364_1m0foh",
+      "professionalId": "pc-gangwon-0f17df3dcced41d3",
+      "name": "서당개",
+      "travelAddress": "강원도 강릉시 산양길 52",
+      "professionalAddress": "강원특별자치도 강릉시 산양길 ** (포남동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_368_ys7xvq",
+      "professionalId": "pc-gyeongnam-67f082429b950ab5",
+      "name": "세븐카페",
+      "travelAddress": "경상남도 김해시 금관대로 187",
+      "professionalAddress": "경상남도 김해시 금관대로 ***, *층 (대청동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_374_5i6bk7",
+      "professionalId": "pc-seoul-050df0f41611f76c",
+      "name": "소월집",
+      "travelAddress": "서울특별시 용산구 소월로44길 41",
+      "professionalAddress": "서울특별시 용산구 소월로**길 **, 지상*층 (이태원동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_378_s2ybry",
+      "professionalId": "pc-gyeonggi-44978ae9a54864d8",
+      "name": "숲속애견랜드",
+      "travelAddress": "경기도 용인시 기흥구 동백죽전대로175번길 13",
+      "professionalAddress": "경기도 용인시 기흥구 동백죽전대로 ***, B***호 (중동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_381_tjijf2",
+      "professionalId": "pc-busan-85218d39eb389d21",
+      "name": "슈슈퍼피",
+      "travelAddress": "부산광역시 해운대구 대천로 88",
+      "professionalAddress": "부산광역시 해운대구 대천로 **, *층 (좌동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_402_4kuxe0",
+      "professionalId": "pc-seoul-9592f0063e8eddbb",
+      "name": "아망도그플레이스",
+      "travelAddress": "서울특별시 송파구 오금로 479",
+      "professionalAddress": "서울특별시 송파구 오금로 ***, *층 (거여동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_413_kyotay",
+      "professionalId": "pc-gyeonggi-880b1f3ade080db3",
+      "name": "아이앤독",
+      "travelAddress": "경기도 고양시 덕양구 원당로393번길 64",
+      "professionalAddress": "경기도 고양시 덕양구 원당로***번길 ** (원당동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_419_zwvyew",
+      "professionalId": "pc-gyeonggi-a343872f7ce82ab6",
+      "name": "안녕강아지",
+      "travelAddress": "경기도 하남시 미사강변중앙로 221",
+      "professionalAddress": "경기도 하남시 미사강변중앙로 ***, 미사 리버에비뉴 *층 ***호 (망월동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_420_jczlcc",
+      "professionalId": "pc-gyeonggi-09c392f13f5ad63b",
+      "name": "안녕아가",
+      "travelAddress": "경기도 고양시 일산동구 호수로 336",
+      "professionalAddress": "경기도 고양시 일산동구 호수로 ***, 브라운스톤 ***호 (백석동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_439_hp1c5m",
+      "professionalId": "pc-gyeonggi-4a11c54ec3cf2c18",
+      "name": "애견카페왕",
+      "travelAddress": "경기도 남양주시 경춘로773번길 12-16",
+      "professionalAddress": "경기도 남양주시 경춘로***번길 **-** (일패동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_46_q441fo",
+      "professionalId": "pc-gyeonggi-495d614b00241340",
+      "name": "개털깎는남자",
+      "travelAddress": "경기도 안양시 동안구 경수대로 805",
+      "professionalAddress": "경기도 안양시 동안구 경수대로 ***, *층 (호계동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_486_emi6gz",
+      "professionalId": "pc-jeju-32047a3ba1add52a",
+      "name": "오멍가멍 애견카페 호텔",
+      "travelAddress": "제주특별자치도 제주시 어영길 64-14",
+      "professionalAddress": "제주특별자치도 제주시 어영길 **-** (용담삼동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_503_ls1r5m",
+      "professionalId": "pc-gangwon-8eb65f91a1f1cc10",
+      "name": "왈왈이 무실점",
+      "travelAddress": "강원도 원주시 무실본동길 44",
+      "professionalAddress": "강원특별자치도 원주시 무실본동길 ** (무실동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_505_yr3oeh",
+      "professionalId": "pc-gyeonggi-536a29c145f75255",
+      "name": "왓썹독",
+      "travelAddress": "경기도 평택시 오리곡길 63",
+      "professionalAddress": "경기도 평택시 오리곡길 **, *층 (독곡동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_508_sg41by",
+      "professionalId": "pc-gyeonggi-29260eb0fb1d5c59",
+      "name": "우리똥강아지",
+      "travelAddress": "경기도 고양시 일산동구 장백로 13",
+      "professionalAddress": "경기도 고양시 일산동구 장백로 **, 성우아뜨리움오피스텔 *층 ***호 (백석동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_516_jysw3c",
+      "professionalId": "pc-incheon-4b75747214f77bf5",
+      "name": "위드티쳐",
+      "travelAddress": "인천광역시 계양구 성안길 2",
+      "professionalAddress": "인천광역시 계양구 성안길 * (갈현동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_52_kwox4n",
+      "professionalId": "pc-gyeonggi-c821706c23c3bfde",
+      "name": "견복궁",
+      "travelAddress": "경기도 김포시 운양로97번길 83-13",
+      "professionalAddress": "경기도 김포시 김포한강**로***번길 ***-**, 가동 (운양동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_528_5evlly",
+      "professionalId": "pc-daegu-6de13fb6c0204ddf",
+      "name": "이리와",
+      "travelAddress": "대구광역시 달성군 현풍읍 테크노대로 61",
+      "professionalAddress": "대구광역시 달성군 현풍읍 테크노대로 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_600_wvuggu",
+      "professionalId": "pc-gyeonggi-10e3ab5e4ac8b79e",
+      "name": "카페 험프리즈",
+      "travelAddress": "경기도 평택시 팽성읍 팽성남로 301",
+      "professionalAddress": "경기도 평택시 팽성읍 팽성남로 ***",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_62_5zjsib",
+      "professionalId": "pc-gyeonggi-674bac93213379b3",
+      "name": "고양이카페38.5",
+      "travelAddress": "경기도 남양주시 별내3로 324",
+      "professionalAddress": "경기도 남양주시 별내*로 ***, ***호 (별내동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_659_57j3ns",
+      "professionalId": "pc-daegu-3c03164732327d01",
+      "name": "캄그루밍",
+      "travelAddress": "대구광역시 동구 파계로 559",
+      "professionalAddress": "대구광역시 동구 파계로 ***, *,*층 (중대동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_660_hnjyya",
+      "professionalId": "pc-seoul-2359711f0158d42d",
+      "name": "커멍커멍",
+      "travelAddress": "서울특별시 강서구 강서로 385",
+      "professionalAddress": "서울특별시 강서구 강서로 ***, 우성에스비타워 ****호 (마곡동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_67_asomuh",
+      "professionalId": "pc-seoul-0466e687d2164f85",
+      "name": "구름뜬하늘",
+      "travelAddress": "서울특별시 마포구 와우산로27길 21",
+      "professionalAddress": "서울특별시 마포구 와우산로**길 **, *층 (서교동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_682_o0vraq",
+      "professionalId": "pc-jeonbuk-6c684b9425c1fa1a",
+      "name": "쿠치로",
+      "travelAddress": "전라북도 전주시 완산구 홍산1길 8",
+      "professionalAddress": "전북특별자치도 전주시 완산구 홍산*길 *, 쿠치로 *층 (효자동*가)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_685_wz6h45",
+      "professionalId": "pc-gyeonggi-b4fc460f4118d64c",
+      "name": "큐티멍",
+      "travelAddress": "경기도 용인시 수지구 신봉2로 94-19",
+      "professionalAddress": "경기도 용인시 수지구 신봉*로 **-**, 지하*층 (신봉동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_694_7h0ki9",
+      "professionalId": "pc-seoul-891d36cc5d721ac2",
+      "name": "킨더독",
+      "travelAddress": "서울특별시 송파구 삼전로 53",
+      "professionalAddress": "서울특별시 송파구 삼전로 **, 지하*층 (잠실동, 뜨레피움*차)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_697_qw4ioo",
+      "professionalId": "pc-gyeonggi-cef68ecabc5d9ea6",
+      "name": "타카독스커피",
+      "travelAddress": "경기도 용인시 기흥구 죽전로 33",
+      "professionalAddress": "경기도 용인시 기흥구 죽전로 **, 이데아프라자 *층 ***호 (보정동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_718_uqlc7p",
+      "professionalId": "pc-jeju-59e9ecfa7921e681",
+      "name": "퍼펫 애견카페",
+      "travelAddress": "제주특별자치도 제주시 중앙로 204",
+      "professionalAddress": "제주특별자치도 제주시 중앙로 ***, *층 (이도일동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_718_uqlc7p",
+      "professionalId": "pc-jeju-b016705b3dede9c5",
+      "name": "퍼펫 애견카페",
+      "travelAddress": "제주특별자치도 제주시 중앙로 204",
+      "professionalAddress": "제주특별자치도 제주시 중앙로 ***, *층 (이도일동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_735_pvp0vq",
+      "professionalId": "pc-jeju-d64e829ba779cef4",
+      "name": "펫다방",
+      "travelAddress": "제주특별자치도 제주시 1100로 3328",
+      "professionalAddress": "제주특별자치도 제주시 ****로 ****, 정원빌딩 *층 (노형동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_752_if9xdi",
+      "professionalId": "pc-gyeonggi-0d1f9b8a1ddc4ff5",
+      "name": "펫피랜드",
+      "travelAddress": "경기도 안성시 원곡면 산직길 30-61",
+      "professionalAddress": "경기도 안성시 원곡면 산직길 **-**",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_756_9lqdp1",
+      "professionalId": "pc-gyeonggi-4f228391b4b516bd",
+      "name": "포시즌",
+      "travelAddress": "경기도 고양시 덕양구 흥도로 293",
+      "professionalAddress": "경기도 고양시 덕양구 흥도로 ***, *층 (도내동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_758_kcxiaw",
+      "professionalId": "pc-seoul-52e884145d833ff4",
+      "name": "포포앤미루 강동점",
+      "travelAddress": "서울특별시 강동구 양재대로89가길 30",
+      "professionalAddress": "서울특별시 강동구 양재대로**가길 **, 키키빌딩 *층 (성내동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_76_29ka2x",
+      "professionalId": "pc-gyeongbuk-6182f9a7ad7e8702",
+      "name": "금산이네",
+      "travelAddress": "경상북도 구미시 역전로 27",
+      "professionalAddress": "경상북도 구미시 역전로 ** (원평동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_761_qk5rdb",
+      "professionalId": "pc-gyeonggi-90036dca0b672f79",
+      "name": "푼타하우스",
+      "travelAddress": "경기도 하남시 서하남로451번길 13-66",
+      "professionalAddress": "경기도 하남시 서하남로***번길 **-** (춘궁동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_762_sdev3r",
+      "professionalId": "pc-gyeonggi-4562d8a0b80cc6ee",
+      "name": "풀독",
+      "travelAddress": "경기도 안성시 원곡면 방삼길 16-18",
+      "professionalAddress": "경기도 안성시 원곡면 방삼길 **-**",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_765_q7a0ok",
+      "professionalId": "pc-chungnam-cb6bb4c0762fe100",
+      "name": "프찌",
+      "travelAddress": "충청남도 천안시 서북구 1공단1길 13",
+      "professionalAddress": "충청남도 천안시 서북구 *공단*길 **, 드림타워 *동 *층 ***호 (두정동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_770_lppaw2",
+      "professionalId": "pc-gyeonggi-6beaa53811993177",
+      "name": "플루프",
+      "travelAddress": "경기도 파주시 조리읍 탑삭골1길 31-7",
+      "professionalAddress": "경기도 파주시 조리읍 탑삭골*길 **-*",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_771_nebic7",
+      "professionalId": "pc-gyeonggi-f3a2f5dc03ab03bc",
+      "name": "피스테일",
+      "travelAddress": "경기도 고양시 일산동구 성석로 90-1",
+      "professionalAddress": "경기도 고양시 일산동구 성석로 **-* (성석동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_774_vn2kye",
+      "professionalId": "pc-daejeon-1dcc48e54814d547",
+      "name": "피터펫",
+      "travelAddress": "대전광역시 서구 유등로 659",
+      "professionalAddress": "대전광역시 서구 유등로 ***, *층 (탄방동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_788_17eozg",
+      "professionalId": "pc-gyeonggi-b5358d8fa2757865",
+      "name": "할리우독",
+      "travelAddress": "경기도 의정부시 호국로 932",
+      "professionalAddress": "경기도 의정부시 호국로 *** (가능동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_806_kbo1ah",
+      "professionalId": "pc-seoul-8bf6bb4a58805b00",
+      "name": "혼자두면장판뜯어서차린개카페",
+      "travelAddress": "서울특별시 관악구 남부순환로 1665",
+      "professionalAddress": "서울특별시 관악구 남부순환로 ****, *층 (봉천동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_84_mt6g6f",
+      "professionalId": "pc-daejeon-6603a5ba4c1753d7",
+      "name": "꿈",
+      "travelAddress": "대전광역시 유성구 관들1길 14",
+      "professionalAddress": "대전광역시 유성구 관들*길 ** (관평동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835188_91_p5vc50",
+      "professionalId": "pc-chungnam-dca42af7224bcf58",
+      "name": "날아라멍멍",
+      "travelAddress": "충청남도 아산시 탕정면 매곡리 111-17",
+      "professionalAddress": "충청남도 아산시 탕정면 선문로***번길 **",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835189_814_unpwuk",
+      "professionalId": "pc-gyeonggi-9f5d88a65c70c710",
+      "name": "휴독",
+      "travelAddress": "경기도 성남시 분당구 서현로439번길 19",
+      "professionalAddress": "경기도 성남시 분당구 서현로***번길 **, *층 (분당동)",
+      "sameAddress": false,
+      "samePhone": false
+    },
+    {
+      "travelId": "pub1788410835189_818_wr8zy1",
+      "professionalId": "pc-daegu-48f208bcd9315686",
+      "name": "힐링독",
+      "travelAddress": "대구광역시 중구 동성로3길 8",
+      "professionalAddress": "대구광역시 중구 동성로*길 * (삼덕동*가)",
+      "sameAddress": false,
+      "samePhone": false
+    }
+  ]
+}

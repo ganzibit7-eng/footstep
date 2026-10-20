@@ -10,7 +10,7 @@ function policySignal(e,origin){
  try{
   const blocked=new URL(e.blockedURI),source=new URL(e.sourceFile),document=new URL(e.documentURI);
   if(!['http:','https:'].includes(blocked.protocol)||blocked.username||blocked.password||source.origin!==origin||document.origin!==origin||blocked.origin===origin)return null;
-  const h=blocked.hostname,exact=['cdn.jsdelivr.net','cdnjs.cloudflare.com','t1.daumcdn.net','www.googletagmanager.com'];
+  const h=blocked.hostname,exact=['cdn.jsdelivr.net','cdnjs.cloudflare.com','t1.daumcdn.net','t1.kakaocdn.net','www.googletagmanager.com'];
   if(exact.includes(h)||['kakao.com','daum.net','google-analytics.com','google.com','gstatic.com'].some(domain=>h===domain||h.endsWith('.'+domain)))return null;
   return {disposition:'enforce',directive:e.effectiveDirective||e.violatedDirective,blockedOrigin:blocked.origin,sourceOrigin:source.origin,documentOrigin:document.origin};
  }catch{return null;}

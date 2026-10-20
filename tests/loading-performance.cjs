@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const html=fs.readFileSync('index.html','utf8')+'\n'+fs.readFileSync('admin-panel.js','utf8');
-const published=JSON.parse(fs.readFileSync('data/public-counts.json','utf8')),publishedCourses=published.courses.toLocaleString('en-US')+'개',publishedFacilities=published.facilities.toLocaleString('en-US')+'곳';
+const published=JSON.parse(fs.readFileSync('data/public-counts.json','utf8')),publishedCourses=published.courses.toLocaleString('en-US')+'개',publishedFacilities=(published.places??published.facilities).toLocaleString('en-US')+'곳';
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b});return {promise,resolve,reject};};
 const flush=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
 const elements=new Map();function el(id){if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,hidden:false,style:{},classList:{contains:()=>false},closest:()=>null,querySelector:()=>el('notice-span')});return elements.get(id);}
