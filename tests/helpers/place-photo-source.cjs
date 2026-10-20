@@ -12,7 +12,8 @@ module.exports=function verifySource(p){
   for(const key of ['src','source','original','author','license','licenseUrl'])assert.equal(p[key],original[key],key+' must preserve the prior source');if(original.title)assert.equal(p.title,original.title);
   assert(['CC BY-SA 3.0','CC BY-SA 4.0','공공누리 제1유형'].includes(p.license));assert(p.changes.includes(original.changes));assert(p.dateNote.includes(original.date||'미상'));assert.match(p.src,/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(webp|jpg)$/);
  }else{
-  assert.match(p.src,/^\/assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/);
-  assert.match(p.original,/^https:\/\/tong\.visitkorea\.or\.kr\/cms\/resource\//);assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.dateNote,/미상/);
+  assert.match(p.src,/^\/assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png|bmp)$/);
+  assert.match(p.original,/^https:\/\/tong\.visitkorea\.or\.kr\/cms\/resource(?:_photo)?\//);assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.dateNote,/미상/);
+  if(/\.bmp$/i.test(p.src)||p.original.includes('/resource_photo/')){const z=require('node:zlib'),proof=JSON.parse(z.gunzipSync(fs.readFileSync(path.join(root,'docs/place-enrichment-20261020e/selected-photos.json.gz')))).find(x=>x.photo.src===p.src);assert(proof,'per-image source required for additional official formats');assert.equal(proof.officialImage.cpyrhtDivCd,p.rightsType);assert(['Type1','Type3'].includes(p.rightsType));assert.equal(proof.officialImage.originimgurl.replace(/^http:/,'https:'),p.original);assert.equal(proof.photo.sha256,p.sha256);}
  }
 };
