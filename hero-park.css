@@ -132,3 +132,15 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 
 /* Small poster only for reduced motion or a failed animation load. */
 .hero-park-stage .hero-park-poster{width:200px;height:100px;max-width:70%;bottom:18px}
+
+/* A correctly sized first pose is visible before scripts or animation frames finish. */
+.hero-park-stage{--park-height:150px;--park-ground:.82;--park-base:min(126px,calc(var(--park-height)*.62),30vw)}
+.hero-park-initial{position:absolute;inset:0;pointer-events:none}
+.hero-park-initial img{position:absolute;display:block;max-width:none;object-fit:contain}
+.hero-park-initial .hero-park-first-pom{left:52%;top:calc(var(--park-height)*var(--park-ground) - var(--park-base) - var(--park-height)*.024);width:var(--park-base);height:var(--park-base)}
+.hero-park-initial .hero-park-first-maltese{left:calc(52% - var(--park-base)*.95);top:calc(var(--park-height)*var(--park-ground) - 5px - var(--park-base)*.94 - var(--park-height)*.034);width:calc(var(--park-base)*.94);height:calc(var(--park-base)*.94)}
+.hero-park-stage[data-rendered="true"]:not([data-animation="poster"]) .hero-park-initial{display:none}
+@media(max-width:880px){.hero-park-stage{--park-height:146px}}
+@media(max-width:600px){.hero-park-stage{--park-ground:.70}}
+
+.hero-park-stage:not([data-rendered="true"]) .hero-park-fly{visibility:hidden}

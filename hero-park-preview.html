@@ -1748,8 +1748,10 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script defer src="/home-scenes.js?v=20261017-motion"></script>
 <link rel="icon" href="https://balzaguk.com/icon-192.png" type="image/png" sizes="192x192">
 <link rel="stylesheet" href="/hero-park-preview.css?v=11">
-<script defer src="/hero-park-player.js?v=27"></script>
-<script defer src="/hero-park-16-preview.js?v=8"></script>
+<link rel="preload" as="image" href="/assets/hero-park/gallop-v1/pom-00.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/hero-park/gallop-v1/maltese-03.webp" fetchpriority="high">
+<script defer src="/hero-park-player.js?v=28"></script>
+<script defer src="/hero-park-16-preview.js?v=9"></script>
 </head>
 <body>
 
@@ -1800,7 +1802,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     <img src="/assets/hero-park-preview/desktop-1280.webp" srcset="/assets/hero-park-preview/desktop-1280.webp 1280w, /assets/hero-park-preview/desktop-1920.webp 1672w" sizes="100vw" width="1672" height="941" alt="" fetchpriority="high" decoding="async">
   </picture>
   <!-- Reserved for independently rendered dogs, butterfly and ground-shadow alpha layers. -->
-  <div class="hero-park-stage" aria-hidden="true"></div>
+  <div class="hero-park-stage" aria-hidden="true"><div class="hero-park-initial"><img class="hero-park-first-pom" src="/assets/hero-park/gallop-v1/pom-00.webp" width="93" height="93" alt="" decoding="async" fetchpriority="high"><img class="hero-park-first-maltese" src="/assets/hero-park/gallop-v1/maltese-03.webp" width="88" height="88" alt="" decoding="async" fetchpriority="high"></div></div>
 
   <div class="wrap hero-inner">
     <div class="hero-copy" id="hero-style-0" style="display:none;">

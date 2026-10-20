@@ -1,0 +1,17 @@
+{
+  "sourceRows": 2836,
+  "existingPlaces": 369,
+  "matched": 367,
+  "unmatched": [
+    {
+      "id": "mfds_38c146f12e5df20bef2c",
+      "name": "게더그라운즈(Gather grounds)",
+      "candidates": 0
+    },
+    {
+      "id": "mfds_e6ed2769d133003c2f22",
+      "name": "매드포갈릭 스타필드마켓경산점",
+      "candidates": 0
+    }
+  ]
+}

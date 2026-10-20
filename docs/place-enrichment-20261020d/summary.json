@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "photoPlaces": 1222,
+    "totalPhotos": 4092
+  },
+  "addedPhotos": 23,
+  "places": 372,
+  "newPhotoPlaces": 5,
+  "newBytes": 9376002,
+  "photoPlaces": 1227,
+  "totalPhotos": 4115,
+  "newPetConditions": 0,
+  "records": 1687,
+  "galleryPlaces": 953,
+  "galleryPhotos": 2888,
+  "petRecords": 453,
+  "tourNotes": 459,
+  "cautions": 34,
+  "officialVisitPlaces": 917,
+  "officialPetNotesPlaces": 9,
+  "addedOfficialNotes": 0,
+  "addedCautions": 0,
+  "reviewedCamping": 0,
+  "officialListings": 367,
+  "listingNotMatched": 2,
+  "sourceListingRows": 2836,
+  "reviewedTourismRows": 49607
+}
