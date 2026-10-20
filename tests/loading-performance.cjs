@@ -16,14 +16,14 @@ async function home(){
  const firstVisit={...ctx,localStorage:{getItem:()=>null,setItem(){}}};vm.createContext(firstVisit);
  vm.runInContext(html.slice(html.indexOf('  function renderStats(){'),html.indexOf('  // ===== 홈 화면 히어로 스타일')),firstVisit);
  vm.runInContext(html.slice(html.indexOf('  let courseDataState='),html.indexOf("  document.getElementById('data-load-retry').addEventListener")),firstVisit);
- firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,'407개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/2026\.10\.17 확인/);
+ firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,'407개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
  assert.match(html,/<div class="hero-stat-num" id="hero-stat-courses">407개<\/div>/,'first paint must contain a verified number without JavaScript');
- const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,'205개');assert.match(el('home-count-status').textContent,/최근 확인/);
- reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,'1개');assert.ok(grid>=2,'Course list must render without waiting for reviews');
- countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,'1곳');assert.equal(el('home-count-status').textContent,'');assert.equal(saved.at(-1).courses,1);
+ const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,'407개');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
+ reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,'407개');assert.ok(grid>=2,'Course list must render without waiting for reviews');
+ countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/자료 추가 시 갱신/);assert.equal(saved.length,0);
  reads.bins.resolve([]);reads.reviews.resolve([]);await loading;
  const failed=ctx.loadData();reads.courses.reject(Error('network'));reads.facilities.resolve([]);reads.bins.resolve([]);reads.reviews.resolve([]);await failed;
- assert.equal(el('hero-stat-courses').textContent,'1개');assert.equal(el('hero-stat-facilities').textContent,'0곳');assert.match(el('home-count-status').textContent,/갱신하지 못/);
+ assert.equal(el('hero-stat-courses').textContent,'407개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
 
  const previousFacilityRead=reads.facilities;
  const deferredHome=ctx.loadData({deferFacilities:true});assert.equal(reads.facilities,previousFacilityRead,'Home must not start a full facility request');
@@ -49,4 +49,4 @@ async function members(){
  profiles=deferred();activity=deferred();const stale=ctx.renderAllMemberList(true);ctx.myDeviceId=null;ctx.clearMemberInventory();profiles.resolve([{owner_id:'private'}]);activity.resolve({data:[]});await stale;assert.equal(ctx.allMembersCache.length,0);assert.equal(el('all-member-list').textContent,'');
  assert.match(html,/metricPending\?metricLabel:visitCount/);assert.match(html,/metricPending\?'disabled'/);
 }
-(async()=>{await home();await members();console.log('PASS: cached/independent home counts, zero/failure states, early course list, roster before metrics, aggregate RPC, deduplication, recent reuse, metric failure and logout stale-response protection.');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{await home();await members();console.log('PASS: published home counts remain stable across data loads and failures, early course list, roster before metrics, aggregate RPC, deduplication, recent reuse, metric failure and logout stale-response protection.');})().catch(e=>{console.error(e);process.exitCode=1;});
