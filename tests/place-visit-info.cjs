@@ -1,11 +1,11 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Conditions=require('../place-conditions.js'),Photos=require('../place-photos.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'place-evidence.js'),'utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261019e/summary.json')));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020/summary.json')));
 test('official visit facts remain identity and description bound, with their own date and source',()=>{
  let visits=0,notes=0;for(const r of records){if(!r.visitInfo)continue;visits++;if(r.visitInfo.petNotes.length)notes++;
   assert.equal(Evidence.visit({...r,address:r.address+' 다른 주소'}),null);assert.equal(Evidence.visit({...r,description:r.description+' 변경'}),null);
-  const info=Evidence.visit(r);assert.match(info.checked,/^2026-10-(18|19)$/);assert(info.source.startsWith('https://api.visitkorea.or.kr/'));assert(info.rows.length||info.petNotes.length);
+  const info=Evidence.visit(r);assert.match(info.checked,/^2026-10-(18|19|20)$/);assert(info.source.startsWith('https://api.visitkorea.or.kr/'));assert(info.rows.length||info.petNotes.length);
   for(const row of info.rows){assert(['문의처','운영시간','쉬는 날','입실 시간','퇴실 시간','주차'].includes(row.label));assert(row.value.trim());}
   const html=Conditions.visitPanel(r);assert(html.includes('방문 전 운영시간·요금·동반 조건'));assert(html.includes('자료 조회 '+info.checked));assert.equal(Conditions.visitPanel({...r,description:'다른 설명'}),'');
  }assert.equal(visits,coverage.officialVisitPlaces);assert.equal(notes,coverage.officialPetNotesPlaces);

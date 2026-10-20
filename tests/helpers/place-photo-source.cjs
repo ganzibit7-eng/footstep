@@ -14,6 +14,6 @@ module.exports=function verifySource(p){
  }else{
   assert.match(p.src,/^\/assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png|bmp)$/);
   assert.match(p.original,/^https:\/\/tong\.visitkorea\.or\.kr\/cms\/resource(?:_photo)?\//);assert.equal(p.licenseUrl,'https://www.data.go.kr/data/15101578/openapi.do');assert.match(p.dateNote,/미상/);
-  if(/\.bmp$/i.test(p.src)||p.original.includes('/resource_photo/')){const z=require('node:zlib'),proof=JSON.parse(z.gunzipSync(fs.readFileSync(path.join(root,'docs/place-enrichment-20261020e/selected-photos.json.gz')))).find(x=>x.photo.src===p.src);assert(proof,'per-image source required for additional official formats');assert.equal(proof.officialImage.cpyrhtDivCd,p.rightsType);assert(['Type1','Type3'].includes(p.rightsType));assert.equal(proof.officialImage.originimgurl.replace(/^http:/,'https:'),p.original);assert.equal(proof.photo.sha256,p.sha256);}
+  if(/\.bmp$/i.test(p.src)||p.original.includes('/resource_photo/')){const z=require('node:zlib'),proof=['docs/place-enrichment-20261020e/selected-photos.json.gz','docs/nationwide-expansion-20261020/selected-photos.json.gz'].flatMap(f=>JSON.parse(z.gunzipSync(fs.readFileSync(path.join(root,f))))).find(x=>x.photo.src===p.src);assert(proof,'per-image source required for additional official formats');assert.equal(proof.officialImage.cpyrhtDivCd,p.rightsType);assert(['Type1','Type3'].includes(p.rightsType));assert.equal(proof.officialImage.originimgurl.replace(/^http:/,'https:'),p.original);assert.equal(proof.photo.sha256,p.sha256);}
  }
 };

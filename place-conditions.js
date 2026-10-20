@@ -50,7 +50,7 @@
   }
   function visitPanel(place){const info=(evidence||root.PlaceEvidence)?.visit?.(place);if(!info)return '';return '<details class="place-visit-info" style="margin:16px 0;padding:16px;border:1px solid #ddd3c4;border-radius:12px;background:#fffef9"><summary style="font-weight:700;cursor:pointer">운영시간·주차·공식 이용 안내</summary><dl style="margin:14px 0">'+info.rows.map(row=>'<div style="margin:10px 0"><dt style="font-weight:700;font-size:13px">'+escape(row.label)+'</dt><dd style="margin:4px 0 0;white-space:pre-line;font-size:14px;line-height:1.7">'+escape(row.value)+'</dd></div>').join('')+'</dl>'+(info.petNotes.length?'<h3 style="font-size:15px">반려견 관련 추가 안내</h3>'+info.petNotes.map(note=>'<p style="white-space:pre-line;font-size:14px;line-height:1.7">'+escape(note)+'</p>').join(''):'')+'<p style="font-size:12px;line-height:1.7"><a href="'+escape(info.source)+'" target="_blank" rel="noopener noreferrer">공식 관광 상세 자료 ↗</a> · 자료 조회 '+escape(info.checked)+'<br>방문 전 운영시간·요금·동반 조건을 운영기관에 확인해 주세요.</p></details>';}
   function summary(place){const rows=get(place),caution=(evidence||root.PlaceEvidence)?.caution?.(place);return (caution?caution.summary+' · ':'')+rows[1].value+' · 준비물: '+rows[2].value;}
-  function source(place){const data=evidence||root.PlaceEvidence;return data?.camping?.(place)?.source||(data?.conditions(place)?data.get(place).source:'');}
+  function source(place){const data=evidence||root.PlaceEvidence;return data?.camping?.(place)?.source||data?.intro?.(place)?.source||(data?.conditions(place)?data.get(place).source:'');}
   function reportLink(place){
     const subject=encodeURIComponent('발자국 장소 정보 수정 제보: '+String(place?.name||'장소'));
     const body=encodeURIComponent('장소: '+String(place?.name||'')+'\n장소 ID: '+String(place?.id||'')+'\n변경된 내용:\n확인 가능한 공식 안내 주소 또는 확인 경위:\n');
@@ -60,6 +60,8 @@
     const data=evidence||root.PlaceEvidence,pet=data?.conditions(place),camp=data?.camping?.(place),record=data?.get?.(place),checked=pet?(record?.petChecked||record?.checked):camp?.checked;
     if((pet||camp)&&/^\d{4}-\d{2}-\d{2}$/.test(checked||'')){const time=Date.parse(checked+'T00:00:00+09:00');if(Number.isFinite(time)&&new Date(time+9*3600000).toISOString().slice(0,10)===checked&&time<=now)return checked+' 공식 동반 자료 확인 · 당일 운영은 방문 전 확인';}
     const description=String(place?.description||'');
+    const intro=data?.intro?.(place),introTime=Date.parse(String(intro?.checked)+'T00:00:00+09:00');
+    if(intro&&/^\d{4}-\d{2}-\d{2}$/.test(intro.checked)&&Number.isFinite(introTime)&&new Date(introTime+9*3600000).toISOString().slice(0,10)===intro.checked&&introTime<=now)return intro.checked+' 공식 소개 대조 · 세부 허용 구역은 안내문·운영기관 확인';
     const source=description.match(/공식안내:\s*(https?:\/\/[^\s·]+)/)?.[1];
     const value=description.match(/확인일:\s*(\d{4}-\d{2}-\d{2})/)?.[1];
     let trusted=false;try{const url=new URL(source);trusted=url.protocol==='https:'&&!url.username&&!url.password&&['gocamping.or.kr','www.gocamping.or.kr','gil.seoul.go.kr','www.foodsafetykorea.go.kr','korean.visitseoul.net','www.durunubi.kr','durunubi.kr','korean.visitkorea.or.kr','sjfmc.or.kr','www.suwon.go.kr','www.visitbusan.net','visitbusan.net'].includes(url.hostname);}catch{}

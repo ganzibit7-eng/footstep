@@ -11362,6 +11362,50 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "walk_20261020_kto2871570": "구영공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261020_kto2871570.jpg",
+    "place": "구영공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2871570&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/53/2871553_image2_1.JPG",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상",
+    "license": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "관광공사 제공 파일과 전체 비율 유지 · 추가 편집 없음",
+    "checked": "2026-10-20",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "8fcb0c5371613e638720435e086f620fefe7b3e958e84a4e067b1fb47e4b0c85",
+    "assetSha256": "8fcb0c5371613e638720435e086f620fefe7b3e958e84a4e067b1fb47e4b0c85",
+    "rightsType": "Type3"
+  },
+  {
+    "courses": {
+      "walk_20261020_kto2900511": "미사한강공원2호 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261020_kto2900511.jpg",
+    "place": "미사한강공원2호 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2900511&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/95/2900495_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상",
+    "license": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "관광공사 제공 파일과 전체 비율 유지 · 추가 편집 없음",
+    "checked": "2026-10-20",
+    "width": 940,
+    "height": 703,
+    "sourceSha256": "f728a76135368bc2457ae49bb191251138ed26de06089c826c592618d5162030",
+    "assetSha256": "f728a76135368bc2457ae49bb191251138ed26de06089c826c592618d5162030",
+    "rightsType": "Type3"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

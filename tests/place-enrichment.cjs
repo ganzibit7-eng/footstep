@@ -2,7 +2,7 @@ const verifySource=require('./helpers/place-photo-source.cjs');
 const verifyOriginal=require('./helpers/photo-original.cjs');
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
-const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/place-enrichment-20261020e/summary.json'),'utf8'));
+const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020/summary.json'),'utf8'));
 const script=fs.readFileSync(path.join(root,'place-evidence.js'),'utf8'),records=JSON.parse(script.match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
 test('all enriched identities are public records; photographs are intact with rights, origin and dimensions',()=>{
  let photos=0,pets=0;const ids=new Set();
@@ -11,7 +11,7 @@ test('all enriched identities are public records; photographs are intact with ri
   if(r.pet){pets++;assert.equal(Evidence.conditions({...r,description:r.description+' 변경'}),null);const rows=Conditions.get(r).map(x=>x.value).join('\n');for(const key of ['acmpyTypeCd','acmpyPsblCpam','acmpyNeedMtr','etcAcmpyInfo','relaPosesFclty','relaAcdntRiskMtr','relaFrnshPrdlst','relaPurcPrdlst','relaRntlPrdlst']){const value=r.pet[key];if(value&&value.trim()&&!/<|&/.test(value))assert(rows.includes(value.trim()),r.name+' missing '+key);}}
   if(r.photo){photos++;const p=Photos.get(r);assert(p.noCrop);assert(p.width>=150&&p.height>=150);verifySource(p);assert(p.source&&p.author);verifyOriginal(p);const html=Photos.figure(r);assert.match(html,/object-fit:contain/);assert.match(html,/이용 조건/);assert(!html.includes('undefined'));}
  }
- assert.equal(records.length,coverage.records);assert.equal(photos,coverage.photoPlaces);assert.equal(pets,coverage.petRecords);console.log({reviewed:3133,matched:records.length,photos,petRecords:pets,photoUnresolved:3133-photos});
+ assert.equal(records.length,coverage.records);assert.equal(photos,coverage.photoPlaces);assert.equal(pets,coverage.petRecords);console.log({reviewed:coverage.publicFacilities,matched:records.length,photos,petRecords:pets,photoUnresolved:coverage.publicFacilities-photos});
 });
 test('current camping conditions remain bound to identity; conflicting guidance cannot become confirmed permission',()=>{
  const camps=records.filter(r=>r.camping);assert.equal(camps.length,969);assert.equal(records.filter(r=>r.caution).length,coverage.cautions);

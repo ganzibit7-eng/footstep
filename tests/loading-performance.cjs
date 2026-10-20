@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const html=fs.readFileSync('index.html','utf8')+'\n'+fs.readFileSync('admin-panel.js','utf8');
+const published=JSON.parse(fs.readFileSync('data/public-counts.json','utf8')),publishedCourses=published.courses.toLocaleString('en-US')+'개',publishedFacilities=published.facilities.toLocaleString('en-US')+'곳';
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b});return {promise,resolve,reject};};
 const flush=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
 const elements=new Map();function el(id){if(!elements.has(id))elements.set(id,{textContent:'',innerHTML:'',disabled:false,hidden:false,style:{},classList:{contains:()=>false},closest:()=>null,querySelector:()=>el('notice-span')});return elements.get(id);}
@@ -16,14 +17,14 @@ async function home(){
  const firstVisit={...ctx,localStorage:{getItem:()=>null,setItem(){}}};vm.createContext(firstVisit);
  vm.runInContext(html.slice(html.indexOf('  function renderStats(){'),html.indexOf('  // ===== 홈 화면 히어로 스타일')),firstVisit);
  vm.runInContext(html.slice(html.indexOf('  let courseDataState='),html.indexOf("  document.getElementById('data-load-retry').addEventListener")),firstVisit);
- firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,'407개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
- assert.match(html,/<div class="hero-stat-num" id="hero-stat-courses">407개<\/div>/,'first paint must contain a verified number without JavaScript');
- const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,'407개');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
- reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,'407개');assert.ok(grid>=2,'Course list must render without waiting for reviews');
- countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/자료 추가 시 갱신/);assert.equal(saved.length,0);
+ firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.equal(el('hero-stat-facilities').textContent,publishedFacilities);assert.match(el('home-count-status').textContent,/등록 정보 기준/);
+ assert(html.includes('<div class="hero-stat-num" id="hero-stat-courses">'+publishedCourses+'</div>'),'first paint must contain the published number without JavaScript');
+ const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.match(el('home-count-status').textContent,/등록 정보 기준/);
+ reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.ok(grid>=2,'Course list must render without waiting for reviews');
+ countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,publishedFacilities);assert.match(el('home-count-status').textContent,/자료 추가 시 갱신/);assert.equal(saved.length,0);
  reads.bins.resolve([]);reads.reviews.resolve([]);await loading;
  const failed=ctx.loadData();reads.courses.reject(Error('network'));reads.facilities.resolve([]);reads.bins.resolve([]);reads.reviews.resolve([]);await failed;
- assert.equal(el('hero-stat-courses').textContent,'407개');assert.equal(el('hero-stat-facilities').textContent,'3,133곳');assert.match(el('home-count-status').textContent,/등록 정보 기준/);
+ assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.equal(el('hero-stat-facilities').textContent,publishedFacilities);assert.match(el('home-count-status').textContent,/등록 정보 기준/);
 
  const previousFacilityRead=reads.facilities;
  const deferredHome=ctx.loadData({deferFacilities:true});assert.equal(reads.facilities,previousFacilityRead,'Home must not start a full facility request');

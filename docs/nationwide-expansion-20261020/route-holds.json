@@ -1,0 +1,240 @@
+[
+  {
+    "id": "128755",
+    "name": "돌산공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c379"
+    ]
+  },
+  {
+    "id": "1532338",
+    "name": "꾸지나무골해수욕장",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_706d83689795"
+    ]
+  },
+  {
+    "id": "2663631",
+    "name": "방아머리해변",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012b_bangameori"
+    ]
+  },
+  {
+    "id": "753981",
+    "name": "몽마르뜨공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012_montmartre"
+    ]
+  },
+  {
+    "id": "126455",
+    "name": "한림공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012_hallim"
+    ]
+  },
+  {
+    "id": "3006915",
+    "name": "등나무근린공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c373"
+    ]
+  },
+  {
+    "id": "127372",
+    "name": "성남 중앙공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c377"
+    ]
+  },
+  {
+    "id": "127515",
+    "name": "대왕암공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c376"
+    ]
+  },
+  {
+    "id": "125842",
+    "name": "만리포해수욕장",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_b12673a88d10"
+    ]
+  },
+  {
+    "id": "3056221",
+    "name": "중앙체육공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_fe96c457763a"
+    ]
+  },
+  {
+    "id": "2407328",
+    "name": "정안천생태공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c375"
+    ]
+  },
+  {
+    "id": "2752414",
+    "name": "유천생태습지공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_92e02f9e1e50"
+    ]
+  },
+  {
+    "id": "126577",
+    "name": "명사해수욕장",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_b33f6829d3fe"
+    ]
+  },
+  {
+    "id": "2564158",
+    "name": "광치기해변",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c411"
+    ]
+  },
+  {
+    "id": "126143",
+    "name": "삼사해상공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c378"
+    ]
+  },
+  {
+    "id": "1621189",
+    "name": "성주 경산리 성밖숲",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_970d6c78b85e"
+    ]
+  },
+  {
+    "id": "3018216",
+    "name": "강천섬유원지",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_2242f980581e"
+    ]
+  },
+  {
+    "id": "2609813",
+    "name": "파주 율곡습지공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_d5d7a8a5390d"
+    ]
+  },
+  {
+    "id": "2602619",
+    "name": "물의 정원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c372"
+    ]
+  },
+  {
+    "id": "2613436",
+    "name": "원주 반계리 은행나무",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012b_bangye"
+    ]
+  },
+  {
+    "id": "3336122",
+    "name": "순천 오천그린광장",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_207db53b7c87"
+    ]
+  },
+  {
+    "id": "1590210",
+    "name": "오수의견공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_2ade0d725e32"
+    ]
+  },
+  {
+    "id": "2744494",
+    "name": "하남체육공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "pet_20261012c_18b387cd2b7e"
+    ]
+  },
+  {
+    "id": "3029628",
+    "name": "빛누리정원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "osm_1196816794"
+    ]
+  },
+  {
+    "id": "127710",
+    "name": "영덕해맞이공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "c386"
+    ]
+  },
+  {
+    "id": "3426656",
+    "name": "부산북항 친수공원",
+    "reason": "Existing course/location in the same park",
+    "existing": [
+      "walk_20261017_kto3426656"
+    ]
+  },
+  {
+    "id": "2914491",
+    "name": "상희공원",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  },
+  {
+    "id": "2871985",
+    "name": "금곡공원",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  },
+  {
+    "id": "2863978",
+    "name": "각골공원",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  },
+  {
+    "id": "2907381",
+    "name": "태현공원",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  },
+  {
+    "id": "126695",
+    "name": "꽃지해수욕장",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  },
+  {
+    "id": "2779449",
+    "name": "비밀의 숲",
+    "reason": "No connected permitted walking path >=300m in matching park boundary"
+  }
+]

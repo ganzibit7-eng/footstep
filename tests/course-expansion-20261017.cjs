@@ -16,5 +16,5 @@ for(const c of m.courses){
  for(const b of baseline){const old=b.path?.length?b.path:[[b.lat,b.lng]];let close=0;for(const p of c.path)if(old.some(q=>meters(p,q)<30))close++;assert(close/c.path.length<.2,'Overlapping existing route: '+b.name);}
  const photo=photos.get(c);assert(photo&&photo.noCrop&&photo.datasetContentId);const bytes=fs.readFileSync(path.join(root,photo.src));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),photo.sourceSha256);assert.equal(photo.sourceSha256,photo.assetSha256);assert.equal(bytes.readUInt16BE(0),0xffd8);assert(photo.width>0&&photo.height>0);
 }
-const html=fs.readFileSync(path.join(root,'index.html'),'utf8');assert(html.includes('course-expansion-20261017.js?v=20261017-routes'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');assert(html.includes('course-expansion-20261017.js?v=20261020-nationwide'));
 console.log('PASS: '+m.courses.length+' new source-bound routes, original consecutive OSM nodes, park scope, distance, existing-route overlap, photos, geometry-edit rejection.');
