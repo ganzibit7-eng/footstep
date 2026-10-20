@@ -177,3 +177,17 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 footer.site-footer .footer-links{gap:6px 18px}
 footer.site-footer .footer-links :is(a,button){min-height:44px;display:inline-flex;align-items:center;white-space:nowrap;font-size:14px;font-weight:600}
 @media(max-width:400px){footer.site-footer .footer-links{gap:6px 14px}footer.site-footer .footer-links :is(a,button){font-size:13px}}
+
+/* Compact only the regional recommendations; keep readable text and touch targets. */
+#nearby-section #nearby-grid{grid-auto-columns:calc(26.6667% - 9.6px);gap:14px;align-items:stretch}
+#nearby-section #nearby-grid>.course-card{min-width:0;border-radius:16px}
+#nearby-section #nearby-grid .card-visual{height:152px;flex-shrink:0}
+#nearby-section #nearby-grid .card-body{padding:16px;gap:10px}
+#nearby-section #nearby-grid h3{font-size:18px;line-height:1.45}
+#nearby-section #nearby-grid .course-metrics strong{font-size:14px}
+#nearby-section #nearby-grid .course-address{font-size:12px;line-height:1.65}
+#nearby-section #nearby-grid .course-photo-credit{font-size:11px;line-height:1.6}
+#nearby-section #nearby-grid .fav-btn{min-width:44px;min-height:44px}
+@media(max-width:1000px) and (min-width:701px){#nearby-section #nearby-grid{grid-auto-columns:calc(40% - 8px)}}
+@media(max-width:700px){#nearby-section #nearby-grid{grid-auto-columns:68%;gap:12px}#nearby-section #nearby-grid .card-visual{height:144px}#nearby-section #nearby-grid .card-body{padding:14px;gap:10px}}
+@media(max-width:360px){#nearby-section #nearby-grid{grid-auto-columns:74%}}
