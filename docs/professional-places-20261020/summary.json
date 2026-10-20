@@ -1,0 +1,53 @@
+{
+  "checked": "2026-10-20",
+  "sourceRows": 62819,
+  "normalLicenses": 39054,
+  "eligibleLicenses": 39050,
+  "mergedLicenses": 5773,
+  "uniqueBusinesses": 33277,
+  "linkedTravel": 0,
+  "newBusinesses": 33277,
+  "photoPlaces": 0,
+  "kindCounts": [
+    {
+      "kind": "vet",
+      "label": "동물병원",
+      "licenses": 5489,
+      "businesses": 5488
+    },
+    {
+      "kind": "grooming",
+      "label": "동물미용",
+      "licenses": 11333,
+      "businesses": 11315
+    },
+    {
+      "kind": "boarding",
+      "label": "호텔·돌봄",
+      "licenses": 6056,
+      "businesses": 6046
+    },
+    {
+      "kind": "pharmacy",
+      "label": "동물약국",
+      "licenses": 13739,
+      "businesses": 13233
+    },
+    {
+      "kind": "transport",
+      "label": "반려동물 이동",
+      "licenses": 2433,
+      "businesses": 2418
+    }
+  ],
+  "rejected": {
+    "vet:not-normal": 5164,
+    "vet:current-suspension": 1,
+    "grooming:not-normal": 4928,
+    "boarding:not-normal": 4060,
+    "pharmacy:not-normal": 7300,
+    "pharmacy:current-suspension": 3,
+    "transport:not-normal": 2313
+  },
+  "dataBytes": 6349967
+}
