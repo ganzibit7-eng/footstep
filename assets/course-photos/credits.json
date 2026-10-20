@@ -11403,5 +11403,71 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "courses": {
+      "walk_20261020b_kto2661446": "아미르공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261020b_kto2661446-2ea4dfdfea62.jpg",
+    "place": "아미르공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2661446&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/51/3498651_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상",
+    "license": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "관광공사 제공 파일과 전체 비율 유지 · 추가 편집 없음",
+    "checked": "2026-10-20",
+    "width": 940,
+    "height": 627,
+    "sourceSha256": "2ea4dfdfea62400e790375af6b25a407117efd6d777785a20ba48d4f35ece209",
+    "assetSha256": "2ea4dfdfea62400e790375af6b25a407117efd6d777785a20ba48d4f35ece209",
+    "rightsType": "Type1"
+  },
+  {
+    "courses": {
+      "walk_20261020b_kto2902497": "덕풍공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261020b_kto2902497-f7bda7bb16ee.jpg",
+    "place": "덕풍공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2902497&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/74/2902474_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상",
+    "license": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "관광공사 제공 파일과 전체 비율 유지 · 추가 편집 없음",
+    "checked": "2026-10-20",
+    "width": 703,
+    "height": 940,
+    "sourceSha256": "f7bda7bb16eee8e9e56e98d49bf07ef527b48f2976cfa95caeca21c0be2bffae",
+    "assetSha256": "f7bda7bb16eee8e9e56e98d49bf07ef527b48f2976cfa95caeca21c0be2bffae",
+    "rightsType": "Type3"
+  },
+  {
+    "courses": {
+      "walk_20261020b_kto3428384": "대유평공원 보행로 제안 산책 코스"
+    },
+    "src": "/assets/course-photos/walk_20261020b_kto3428384-4e9112504878.jpg",
+    "place": "대유평공원 실제 장소 경관 참고사진 · 전체 제안 경로 사진 아님",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3428384&langDiv=KOR",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/28/3432328_image2_1.jpg",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "date": "",
+    "dateNote": "촬영 시기 미상",
+    "license": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+    "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+    "noCrop": true,
+    "changes": "관광공사 제공 파일과 전체 비율 유지 · 추가 편집 없음",
+    "checked": "2026-10-20",
+    "width": 940,
+    "height": 705,
+    "sourceSha256": "4e91125048782a7f0c212b22c71e9b5a44d2b1cf3252fc393ff4cff0734752d5",
+    "assetSha256": "4e91125048782a7f0c212b22c71e9b5a44d2b1cf3252fc393ff4cff0734752d5",
+    "rightsType": "Type1"
   }
 ]
