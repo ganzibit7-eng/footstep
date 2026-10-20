@@ -41,8 +41,9 @@
   let disposed=false,active=true,request=0,started=null,elapsed=0,previous=null,loading=null,failed=false,generation=0;
   const posterURL=new URL(manifest.poster,doc.baseURI);if(posterURL.origin!==env.location.origin||!posterURL.pathname.startsWith('/assets/hero-park/'))throw Error('invalid_poster_url');
   const poster=doc.createElement('img');poster.className='hero-park-poster';poster.alt='';poster.decoding='async';poster.width=200;poster.height=100;poster.hidden=true;poster.src=posterURL.href;stage.append(poster);
+  let bounds=stage.getBoundingClientRect();
   const canvases=[],decoded=new Map();
-  for(const actor of manifest.actors){const canvas=doc.createElement('canvas');canvas.className='hero-park-actor';canvas.setAttribute('aria-hidden','true');stage.append(canvas);canvases.push({actor,canvas,ctx:canvas.getContext('2d')});}
+  for(const actor of manifest.actors){const canvas=doc.createElement('canvas');canvas.className='hero-park-actor';canvas.setAttribute('aria-hidden','true');stage.append(canvas);canvases.push({actor,canvas,ctx:canvas.getContext('2d'),urls:actor.frames.map(src=>new URL(src,doc.baseURI).href),dirty:null});}
   const release=()=>{for(const bitmap of decoded.values())bitmap.close?.();decoded.clear();};
   async function load(){
    if(loading)return loading;
@@ -62,20 +63,21 @@
   }
   function paint(index,position=index){
    stage.dataset.frame=String(index);stage.dataset.rendered='true';
-   const rect=stage.getBoundingClientRect(),ratio=Math.min(env.devicePixelRatio||1,2);
-   for(const [actorIndex,{actor,canvas,ctx}]of canvases.entries()){if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,rect.width,rect.height);
+   const rect=bounds,ratio=Math.min(env.devicePixelRatio||1,1.5);
+   for(const [actorIndex,entry]of canvases.entries()){const {actor,canvas,ctx,urls}=entry;if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);if(entry.dirty){const d=entry.dirty;ctx.clearRect(d.x,d.y,d.w,d.h);}
     const cyclePosition=actor.fullBodyCycle?(elapsed*.7*12/1000+actorIndex*3)%manifest.frameCount:position,pose=poseAt(actor.poses,cyclePosition),orbit=manifest.motion==='chase'?chaseAt(elapsed,actorIndex,rect.width,rect.height):manifest.motion==='orbit'?orbitAt(elapsed,actorIndex,rect.width,rect.height):null;
     const [x,y,width,lift,shadow]=pose,w=orbit?orbit.size:width*rect.width,h=w*actor.height/actor.width,cx=orbit?orbit.x:x*rect.width,ground=orbit?orbit.y:y*rect.height,frame=orbit?(actor.fullBodyCycle?Math.floor(cyclePosition):orbit.frame):index;
-    if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.filter='blur(3px)';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
-    const image=decoded.get(new URL(actor.frames[frame],doc.baseURI).href);if(image){if(actor.fullBodyCycle&&orbit?.direction===-1){ctx.save();ctx.translate(cx,0);ctx.scale(-1,1);ctx.drawImage(image,-w/2,ground-h-lift*rect.height,w,h);ctx.restore();}else ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);}
+    if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
+    entry.dirty={x:cx-w/2-8,y:ground-h-lift*rect.height-8,w:w+16,h:h+lift*rect.height+20};
+    const image=decoded.get(urls[frame]);if(image){if(actor.fullBodyCycle&&orbit?.direction===-1){ctx.save();ctx.translate(cx,0);ctx.scale(-1,1);ctx.drawImage(image,-w/2,ground-h-lift*rect.height,w,h);ctx.restore();}else ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);}
     canvas.style.zIndex=String(Math.round(ground*10)+(actor.id==='butterfly'?1000:0));
    }
   }
-  function moveButterfly(){if(manifest.motion==='chase'){const r=stage.getBoundingClientRect(),lead=chaseAt(elapsed,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.flyX+'px');stage.style.setProperty('--fly-y',lead.flyY+'px');stage.style.setProperty('--fly-roll',lead.flyRoll+'deg');stage.dataset.direction=lead.direction===1?'right':'left';return;}if(manifest.motion!=='orbit')return;const r=stage.getBoundingClientRect(),lead=orbitAt(elapsed+1200,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.x+'px');stage.style.setProperty('--fly-y',(lead.y-60-Math.sin(elapsed/500)*5)+'px');}
+  function moveButterfly(){if(manifest.motion==='chase'){const r=bounds,lead=chaseAt(elapsed,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.flyX+'px');stage.style.setProperty('--fly-y',lead.flyY+'px');stage.style.setProperty('--fly-roll',lead.flyRoll+'deg');stage.dataset.direction=lead.direction===1?'right':'left';return;}if(manifest.motion!=='orbit')return;const r=bounds,lead=orbitAt(elapsed+1200,0,r.width,r.height);stage.style.setProperty('--fly-x',lead.x+'px');stage.style.setProperty('--fly-y',(lead.y-60-Math.sin(elapsed/500)*5)+'px');}
   function tick(now){request=0;if(disposed||failed||!active||doc.hidden||media.matches)return; if(started===null)started=now;elapsed+=Math.min(now-started,80);started=now;const position=elapsed*manifest.fps/1000%manifest.frameCount,index=Math.floor(position),renderStep=Math.floor(elapsed*30/1000);if(renderStep!==previous){paint(index,position);moveButterfly();previous=renderStep;}request=env.requestAnimationFrame(tick);}
   function stop(){if(request)env.cancelAnimationFrame(request);request=0;started=null;}
-  async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden){stage.dataset.animation='paused';return;}poster.hidden=true;await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
-  const visible=()=>void sync(),resize=()=>{previous=null;if(decoded.size&&!media.matches&&active&&!doc.hidden)paint(frameAt(elapsed,manifest.fps,manifest.frameCount));};
+  async function sync(){const run=++generation;stop();if(disposed||failed)return;if(media.matches){for(const {canvas}of canvases)canvas.hidden=true;poster.hidden=false;stage.dataset.animation='poster';return;}if(!active||doc.hidden){stage.dataset.animation='paused';return;}bounds=stage.getBoundingClientRect();poster.hidden=true;await load();if(run!==generation||disposed||failed||media.matches||!active||doc.hidden)return;poster.hidden=true;for(const {canvas}of canvases)canvas.hidden=false;stage.dataset.animation='playing';request=env.requestAnimationFrame(tick);}
+  const visible=()=>void sync(),resize=()=>{bounds=stage.getBoundingClientRect();previous=null;if(decoded.size&&!media.matches&&active&&!doc.hidden)paint(frameAt(elapsed,manifest.fps,manifest.frameCount));};
   media.addEventListener('change',visible);doc.addEventListener('visibilitychange',visible);env.addEventListener('resize',resize,{passive:true});
   const observer=new env.IntersectionObserver(entries=>{active=entries[0]?.isIntersecting===true;void sync();},{threshold:.05});observer.observe(stage);
   return {dispose(){disposed=true;++generation;stop();observer.disconnect();media.removeEventListener('change',visible);doc.removeEventListener('visibilitychange',visible);env.removeEventListener('resize',resize);release();for(const {canvas}of canvases)canvas.remove();poster.remove();},get state(){return disposed?'disposed':stage.dataset.animation||'waiting';}};
