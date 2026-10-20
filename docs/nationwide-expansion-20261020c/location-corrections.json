@@ -1,0 +1,18 @@
+[
+  {
+    "id": "gocamping_7212",
+    "before": {
+      "lat": 38.1647214,
+      "lng": 127.6160072
+    },
+    "after": {
+      "lat": 37.7805905193,
+      "lng": 127.2884838499
+    },
+    "name": "캠플레이",
+    "address": "경기도 가평군 상면 비룡로 1610-15",
+    "descriptionHash": "db4296a88a369ba0c11429942d6172f6",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2739375&langDiv=KOR",
+    "reason": "고캠핑 대표 좌표는 주소의 시·군과 다르게 표시됨. 같은 가평군 상세 주소의 한국관광공사 대표 좌표를 사용하며 출입구 좌표는 미확인."
+  }
+]
