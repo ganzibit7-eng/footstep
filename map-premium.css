@@ -227,3 +227,7 @@ html[data-theme="dark"] #map-section{--map-surface:#24362d;--map-ink:#edf3eb;--m
  #map-section .map-results-bridge{padding:10px 16px!important}
 }
 @media(max-width:380px){#map-section #view-filter-group .chip{font-size:11.5px;gap:4px}#map-section .map-filter-icon{width:14px;height:14px;flex-basis:14px}}
+#professional-map-status{width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 0;border-top:1px solid var(--map-line);color:var(--map-muted);font-size:12px;line-height:1.8}
+#professional-map-status a,#professional-map-status button{padding:8px 12px;border:1px solid var(--map-line);border-radius:9px;background:var(--map-surface);color:var(--map-ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.professional-place-marker>span{display:grid;place-items:center;width:28px;height:28px;border:2px solid #fff;border-radius:50%;background:#315b4b;color:white;font:600 18px/1 system-ui;box-shadow:0 2px 6px #203c3226}
+.professional-region-marker>span{display:block;white-space:nowrap;border:1px dashed #6c7f70;border-radius:7px;padding:5px 8px;background:#fffefbf5;color:#3e5547;font:600 11px/18px system-ui;text-align:center;box-shadow:0 2px 5px #203c3212}

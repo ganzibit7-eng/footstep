@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "checked": "2026-10-20",
+  "built": "2026-10-21",
+  "total": 33277,
+  "mapped": 17588,
+  "unmapped": 15689,
+  "fields": [
+    "id",
+    "name",
+    "lat",
+    "lng",
+    "kinds",
+    "region",
+    "positionSourceKind"
+  ],
+  "positionNote": "공개 주소에 대응하는 공공 등록 좌표입니다. 출입구·실시간 영업·진료 대상은 확인되지 않았습니다.",
+  "sha256": "d941d1ca00641864af4231a21dcae0505aaeae3f514042859bbdef01e72ca7cf",
+  "bytes": 5275165,
+  "sourceInputSha256": "f258ff7bf65d8f2913a26d2ba4b80b0369ac1d80fdef984360df5e60d156838b",
+  "projection": "EPSG:5174 → EPSG:4326 (pyproj, always_xy)",
+  "rejected": {
+    "missing-or-masked-source-coordinate": 15689
+  },
+  "privacy": "Only coordinates attached to an explicitly unmasked official source address are used. Grooming, boarding and transport masked coordinates are never used or reconstructed. Unlocated records stay connected through clearly labelled regional directory links.",
+  "kindCounts": [
+    {
+      "kind": "vet",
+      "total": 5488,
+      "mapped": 5174
+    },
+    {
+      "kind": "grooming",
+      "total": 11315,
+      "mapped": 1160
+    },
+    {
+      "kind": "boarding",
+      "total": 6046,
+      "mapped": 339
+    },
+    {
+      "kind": "pharmacy",
+      "total": 13233,
+      "mapped": 12414
+    },
+    {
+      "kind": "transport",
+      "total": 2418,
+      "mapped": 2
+    }
+  ]
+}
