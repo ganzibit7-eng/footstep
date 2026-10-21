@@ -242,3 +242,12 @@ html[data-theme="dark"] #map-section{--map-surface:#24362d;--map-ink:#edf3eb;--m
 .professional-region-links{display:flex;flex-wrap:wrap;gap:8px}
 .professional-region-links>a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--map-line);border-radius:9px;color:var(--map-ink);background:var(--map-soft);text-decoration:none;font-size:12px}
 @media(max-width:760px){#professional-region-lists{padding:0 16px 16px}}
+
+/* One quiet, outlined icon family across every map category. */
+.refined-map-marker{background:transparent;border:0}
+.refined-map-marker>span{box-sizing:border-box;display:grid;place-items:center;width:34px;height:34px;background:#fffefa;border:1px solid #d1d9d1;border-radius:11px;color:var(--marker-ink);box-shadow:0 2px 5px #233e3224}
+.refined-map-marker svg{width:20px;height:20px}
+#map-section .map-count-cluster>span{display:flex;align-items:center;justify-content:center;gap:5px;background:#fffefb;color:#284c3c;border:1px solid #a8b9a9;border-radius:13px;box-shadow:0 2px 6px #203c3229;font-size:13px;letter-spacing:-.2px}
+#map-section .map-count-cluster svg{width:14px;height:14px;flex:0 0 14px;color:#67806d}
+#map-section .map-count-cluster:hover>span{background:#f0f5ee;border-color:#567361}
+#map-section .map-count-cluster:focus-visible{border-radius:13px}
