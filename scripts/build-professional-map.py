@@ -18,3 +18,8 @@ result['positionNote']='공개 주소에 대응하는 공공 등록 좌표입니
 dest=root/'data/pet-care/map-index.json';blob=json.dumps(result,ensure_ascii=False,separators=(',',':')).encode('utf-8');dest.write_bytes(blob)
 doc=root/'docs/professional-map-20261021';doc.mkdir(exist_ok=True);summary={k:v for k,v in result.items() if k not in ['rows','kinds']};summary.update({'sha256':hashlib.sha256(blob).hexdigest(),'bytes':len(blob),'sourceInputSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'projection':'EPSG:5174 → EPSG:4326 (pyproj, always_xy)','rejected':dict(reasons),'privacy':'Only coordinates attached to an explicitly unmasked official source address are used. Grooming, boarding and transport masked coordinates are never used or reconstructed. Unlocated records stay connected through clearly labelled regional directory links.','kindCounts':[{'kind':k['id'],'total':sum(i in r[4]for r in rows),'mapped':sum(i in r[4]and r[2]is not None for r in rows)}for i,k in enumerate(manifest['kinds'])]});(doc/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8');print(json.dumps({k:summary[k]for k in ['total','mapped','unmapped','bytes','kindCounts']},ensure_ascii=False))
 
+
+# Reapply separately verified public business/building positions after baseline regeneration.
+if (root/'data/pet-care/verified-locations.json').exists():
+ import subprocess
+ subprocess.run(['node',str(root/'scripts/apply-professional-locations.mjs')],cwd=root,check=True)

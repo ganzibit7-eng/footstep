@@ -12,3 +12,5 @@
 재생성은 기존 `scripts/build-pet-care-data.mjs --source-dir <공식 CSV·JSON·영수증 폴더>` 실행 후 `python scripts/build-professional-map.py --source-dir <같은 폴더>`를 실행한다. Python 환경에 pyproj가 필요하며, 필요시 `--library-dir`로 작업 전용 설치 경로를 지정한다. 생성된 JSON만 배포하며 Python 라이브러리는 배포하지 않는다. 자료 변경 시 홈 중복 집계도 다시 대조한다.
 
 기존 지역 목록 JSON과 지도 인덱스의 모든 ID·업종·공개 주소 일치 여부를 `tests/professional-map.cjs`에서 확인한다. 업종별 수는 복수 업종 때문에 서로 중복된다.
+
+2026-10-22 위치 보완: 독립된 공개 영업장·관광정보 및 같은 도로명 건물의 공공 좌표로 62곳을 추가 연결했다. 현재 지도 표시는 17,650곳, 미표시는 15,627곳이다. 근거와 불확실성 구분은 ../map-location-20261022/README.md 및 data/pet-care/verified-locations.json을 참고한다.

@@ -1,10 +1,10 @@
 {
   "version": 1,
   "checked": "2026-10-20",
-  "built": "2026-10-21",
+  "built": "2026-10-22",
   "total": 33277,
-  "mapped": 17588,
-  "unmapped": 15689,
+  "mapped": 17650,
+  "unmapped": 15627,
   "fields": [
     "id",
     "name",
@@ -15,40 +15,42 @@
     "positionSourceKind",
     "address"
   ],
-  "positionNote": "공개 주소에 대응하는 공공 등록 좌표입니다. 출입구·실시간 영업·진료 대상은 확인되지 않았습니다.",
-  "sha256": "edfff06f92dafc60bf0a757eca95f137820411f8631954c7fc18a6706e4ae39b",
-  "bytes": 5275175,
+  "positionNote": "공공 등록 좌표와 별도 근거가 확인된 공개 위치입니다. 건물 참고 위치·업체 공개 위치를 구분하며 실제 출입구·실시간 운영은 미확인입니다.",
+  "sha256": "10ac7e700fb9c90558df173e7e2ba0686dba2669b0e37cae57c75ac912385ad9",
+  "bytes": 5308969,
   "sourceInputSha256": "f258ff7bf65d8f2913a26d2ba4b80b0369ac1d80fdef984360df5e60d156838b",
   "projection": "EPSG:5174 → EPSG:4326 (pyproj, always_xy)",
   "rejected": {
     "missing-or-masked-source-coordinate": 15689
   },
-  "privacy": "Only coordinates attached to an explicitly unmasked official source address are used. Grooming, boarding and transport masked coordinates are never used or reconstructed. Unlocated records stay connected through clearly labelled regional directory links.",
+  "privacy": "Masked source addresses and coordinates are not reconstructed. Added positions use independent public business/tourism sources or the same fully public road-address building, with per-place provenance and uncertainty notes.",
   "kindCounts": [
     {
       "kind": "vet",
       "total": 5488,
-      "mapped": 5174
+      "mapped": 5183
     },
     {
       "kind": "grooming",
       "total": 11315,
-      "mapped": 1160
+      "mapped": 1167
     },
     {
       "kind": "boarding",
       "total": 6046,
-      "mapped": 339
+      "mapped": 347
     },
     {
       "kind": "pharmacy",
       "total": 13233,
-      "mapped": 12414
+      "mapped": 12455
     },
     {
       "kind": "transport",
       "total": 2418,
       "mapped": 2
     }
-  ]
+  ],
+  "baselineMapped": 17588,
+  "verifiedLocationAdditions": 62
 }
