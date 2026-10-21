@@ -496,7 +496,9 @@ function create(context){
   document.getElementById('all-member-search').addEventListener('input',()=>{memberPage=1;applyMemberFilters();});
 
  let memberPage=1;
+  function updateMemberAdvancedState(){const badge=document.getElementById('member-advanced-count');if(!badge)return;const count=Number(document.getElementById('member-activity-filter').value!=='all')+Number(!!document.getElementById('member-date-from').value)+Number(!!document.getElementById('member-date-to').value);badge.textContent=count?count+'개 적용':'접속 상태·가입일';badge.dataset.active=String(count>0);}
  function applyMemberFilters(){
+    updateMemberAdvancedState();
   const list=getFilteredMembers();
   const pages=Math.max(1,Math.ceil(list.length/20));memberPage=Math.min(memberPage,pages);
   paintAllMemberList(list.slice((memberPage-1)*20,memberPage*20));
