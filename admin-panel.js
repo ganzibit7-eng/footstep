@@ -1,7 +1,6 @@
 (function(root){'use strict';
 function create(context){
  const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,toast}=context;
-  const memberEventAdmin=MemberEventAdmin.create({client:sb,viewer:()=>context.myDeviceId});
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
   function renderPendingApprovals(){
@@ -285,7 +284,7 @@ function create(context){
     return allMembersCache.filter(m=>{
       const age=now-Date.parse(m.created_at),admin=isAdminUser(m.owner_id),day=Number.isFinite(Date.parse(m.created_at))?adminDayKey(m.created_at):'',active=memberActivityAt(m),inactiveAge=active?now-active:Infinity;
       return `${m.nickname||''} ${m.owner_id||''} ${memberProviderLabel(m.signup_provider)}`.toLowerCase().includes(q)
-        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000||role==='event'&&(m.event_entries||[]).length>0)
+        &&(role==='all'||role==='admin'&&admin||role==='member'&&!admin||role==='new'&&age>=0&&age<604800000)
         &&(provider==='all'||provider==='other'&&!['google','kakao'].includes(m.signup_provider)||provider===m.signup_provider)
         &&(activity==='all'||activity==='recent'&&active>0&&inactiveAge<=604800000||activity==='inactive'&&active>0&&inactiveAge>=2592000000||activity==='never'&&!m.last_sign_in_at)
         &&(!(from||to)||!!day)&&(!from||day>=from)&&(!to||day<=to);
@@ -394,7 +393,7 @@ function create(context){
       return `
         <article class="admin-member-card">
           <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
-          <dl><div><dt>이벤트 응모</dt><dd>${(m.event_entries||[]).length?(m.event_entries||[]).map(e=>escapeHtml(e.campaign_id)+' 응모 완료 · '+escapeHtml(e.ticket)).join('<br>'):'응모 내역 없음'}</dd></div><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
+          <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
           <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 마지막 로그인과 통계에 포함된 화면 조회 중 더 최근 시각입니다. 관리자·봇 등 통계 제외 조회는 포함되지 않으며, 현재 온라인 상태와 다를 수 있어요.</p></details>
           <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}" ${metricPending?'disabled':''}>포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
@@ -509,6 +508,7 @@ function create(context){
  document.getElementById('member-filters-reset').addEventListener('click',()=>{for(const id of ['all-member-search','member-date-from','member-date-to'])document.getElementById(id).value='';for(const id of ['member-role-filter','member-provider-filter','member-activity-filter'])document.getElementById(id).value='all';document.getElementById('member-sort').value='new';memberPage=1;applyMemberFilters();});
  document.getElementById('member-page-prev').addEventListener('click',()=>{memberPage=Math.max(1,memberPage-1);applyMemberFilters();});
  document.getElementById('member-page-next').addEventListener('click',()=>{memberPage++;applyMemberFilters();});
+ let selectAdminView=()=>{};
  (function(){
   const root=document.querySelector('#admin-overlay .modal-body');
   const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
@@ -526,11 +526,16 @@ function create(context){
    head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
 
   });
-  const nav=document.createElement('nav');nav.className='admin-tools';nav.setAttribute('aria-label','관리 바로가기');
-  for(const [key,label]of [['today','오늘'],['pending','승인 대기'],['reports','신고'],['allmembers','회원 관리']]){
-   const btn=document.createElement('button');btn.type='button';btn.textContent=label;btn.addEventListener('click',()=>{const head=root.querySelector(`[data-accordion="${key}"]`);if(document.getElementById('acc-'+key).style.display==='none')head.click();head.scrollIntoView({block:'start',behavior:'smooth'});head.focus({preventScroll:true});});nav.append(btn);
-  }
-  const affiliateJump=document.createElement('button');affiliateJump.type='button';affiliateJump.textContent='쿠팡 클릭';affiliateJump.addEventListener('click',()=>{const details=document.getElementById('admin-affiliate-details');details.open=true;details.scrollIntoView({behavior:'smooth',block:'start'});});nav.append(affiliateJump);today.before(nav);
+  details.dataset.adminView='overview';
+  const assignments={today:'overview',stats:'overview',hourly:'overview',top:'overview',allmembers:'members',activemembers:'members',managers:'members',pending:'review',reports:'review',bulk:'tools'};
+  root.querySelectorAll('.admin-accordion-head').forEach(head=>{head.closest('.admin-accordion').dataset.adminView=assignments[head.dataset.accordion]||'tools';});
+  document.getElementById('admin-affiliate-details').dataset.adminView='affiliate';document.getElementById('admin-security-details').dataset.adminView='security';
+  const workspace=document.createElement('div');workspace.className='admin-workspace';today.before(workspace);const nav=document.createElement('nav');nav.className='admin-navigation';nav.setAttribute('aria-label','관리 메뉴');const content=document.createElement('div');content.className='admin-workspace-content';workspace.append(nav,content);while(workspace.nextSibling)content.append(workspace.nextSibling);
+  const menus=[['overview','운영 개요','방문·활동 현황','M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'],['members','회원 관리','회원·권한·활동','M16 21v-3a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v3M18 8a3 3 0 0 1 0 6M22 21v-3a4 4 0 0 0-3-4M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0'],['review','콘텐츠 검수','승인 대기·신고','M5 3h14v18H5zM8 8h8M8 12h8M8 16h5'],['affiliate','제휴 성과','상품 클릭 분석','M4 20V10M10 20V4M16 20v-7M22 20H2'],['security','보안 기록','접근·이상 감지','M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4M8 12l3 3 5-6'],['tools','데이터 관리','공공데이터 등록','M4 5h16v14H4zM4 10h16M10 10v9']];
+  function selectView(view,focus=false){for(const section of content.querySelectorAll('[data-admin-view]'))section.hidden=section.dataset.adminView!==view;for(const button of nav.querySelectorAll('button')){button.setAttribute('aria-current',button.dataset.adminNav===view?'page':'false');}if(focus){const first=content.querySelector('[data-admin-view="'+view+'"]');const head=first?.querySelector('.admin-accordion-head');if(head&&head.getAttribute('aria-expanded')!=='true')head.click();if(first?.tagName==='DETAILS')first.open=true;content.focus({preventScroll:true});}}
+  selectAdminView=selectView;
+  for(const [view,label,description,path]of menus){const button=document.createElement('button');button.type='button';button.dataset.adminNav=view;button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+path+'"/></svg><span><strong>'+label+'</strong><small>'+description+'</small></span>';button.addEventListener('click',()=>selectView(view,true));nav.append(button);}content.tabIndex=-1;selectView('overview');
+
  })();
 
   // ===== 방문자/페이지뷰 카드 클릭 시 최근 7일 추세 =====
@@ -909,12 +914,13 @@ function create(context){
         {num:d.views,label:'오늘 집계 포함 조회',jump:'hourly'},
         {num:(signups.data||[]).length,label:'오늘 가입축하 지급 건',jump:'today'}
       ];
-      el.innerHTML=cards.map(c=>'<div class="stat-card clickable" data-jump="'+c.jump+'"><div class="num">'+Number(c.num||0).toLocaleString('ko-KR')+'</div><div class="label">'+escapeHtml(c.label)+'</div></div>').join('')
-       +'<p style="grid-column:1/-1;font-size:12px;line-height:1.7;color:var(--muted-text)">활동 확인은 클릭 또는 화면 노출 10초 이상 기준이며 사람 인증은 아닙니다. 2026-10-04 15:23경 이전에는 일부 광고 크롤러가 일반 브라우저로 기록되어 오늘 방문 수가 부풀려져 있을 수 있습니다. 일일 200명 목표 달성 여부는 이 숫자만으로 판단하지 않습니다.</p>';
+      el.innerHTML=cards.map(c=>'<button type="button" class="stat-card clickable" data-jump="'+c.jump+'"><span class="num">'+Number(c.num||0).toLocaleString('ko-KR')+'</span><span class="label">'+escapeHtml(c.label)+'</span></button>').join('')
+       +'<details class="admin-stat-note"><summary>지표 해석 및 이전 집계 참고</summary><p>활동 확인은 클릭 또는 화면 노출 10초 이상 기준이며 사람 인증은 아닙니다. 2026-10-04 15:23경 이전에는 일부 광고 크롤러가 일반 브라우저로 기록되어 오늘 방문 수가 부풀려져 있을 수 있습니다. 일일 200명 목표 달성 여부는 이 숫자만으로 판단하지 않습니다.</p></details>';
       el.querySelectorAll('[data-jump]').forEach(c=>c.addEventListener('click',()=>expandAccordion(c.dataset.jump)));
     }catch(e){el.textContent='요약을 불러오지 못했어요. 새로고침해 주세요.';}
   }
   function expandAccordion(key){
+    selectAdminView(['allmembers','activemembers','managers'].includes(key)?'members':['pending','reports'].includes(key)?'review':key==='bulk'?'tools':'overview');
     if(key==='traffic'){const panel=document.querySelector('.admin-traffic-panel'),details=panel.closest('details');if(details)details.open=true;panel.scrollIntoView({behavior:'smooth',block:'start'});return;}
     const body = document.getElementById('acc-' + key);
     const head = document.querySelector(`.admin-accordion-head[data-accordion="${key}"]`);
@@ -1070,6 +1076,7 @@ function create(context){
 
   async function openAdminDashboard(){
     if(!isAdminUser(context.myDeviceId)){ toast('관리자만 접근할 수 있어요'); return; }
+    selectAdminView('overview');
     renderAllMemberList();
     const todayHead=document.querySelector('#admin-overlay [data-accordion="today"]');
     document.getElementById('acc-today').style.display='';
@@ -1109,7 +1116,7 @@ function create(context){
 
 
 
- function dispose(){memberEventAdmin.clear();clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
+ function dispose(){clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});

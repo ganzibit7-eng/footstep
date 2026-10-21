@@ -9,11 +9,11 @@ function harness({user='admin',role=true,markup='<div id="admin-overlay"></div>'
  return {controller,resources,client,setViewer(v){viewer=v;},release(){resources.forEach(r=>r.onload());},get stats(){return{fetches,mounts,disposed,overlay:!!overlay};}};
 }
 const timeout=setTimeout(()=>{console.error('Admin separation test did not finish');process.exit(1);},5000);
-async function ready(h){for(let i=0;i<50&&h.resources.length<6;i++)await new Promise(setImmediate);assert.equal(h.resources.length,6);}
+async function ready(h){for(let i=0;i<50&&h.resources.length<5;i++)await new Promise(setImmediate);assert.equal(h.resources.length,5);}
 (async()=>{
  for(const setup of [{user:null},{user:'member',role:false}]){const h=harness(setup);await assert.rejects(h.controller.load());assert.equal(h.stats.fetches,0);assert.equal(h.resources.length,0);assert.equal(h.stats.overlay,false);}
  let h=harness();h.client.auth.getUser=async()=>({data:{user:{id:'different'}}});await assert.rejects(h.controller.load());assert.equal(h.stats.fetches,0);
- h=harness();const a=h.controller.load(),b=h.controller.load();assert.equal(a,b);await a;assert.equal(h.stats.mounts,1);assert.equal(h.resources.length,6);assert(h.stats.overlay);h.controller.reset();assert.equal(h.stats.disposed,1);assert.equal(h.stats.overlay,false);
+ h=harness();const a=h.controller.load(),b=h.controller.load();assert.equal(a,b);await a;assert.equal(h.stats.mounts,1);assert.equal(h.resources.length,5);assert(h.stats.overlay);h.controller.reset();assert.equal(h.stats.disposed,1);assert.equal(h.stats.overlay,false);
  h=harness({waitResources:true});const stale=h.controller.load();await ready(h);h.setViewer('member');h.release();await assert.rejects(stale);assert.equal(h.stats.mounts,0);assert.equal(h.stats.overlay,false);
  h=harness({markup:'<script>alert(1)</script>'});await assert.rejects(h.controller.load());assert.equal(h.resources.length,0);
  h=harness({waitResources:true});const revoked=h.controller.load();await ready(h);h.client.rpc=async()=>({data:false});h.release();await assert.rejects(revoked);assert.equal(h.stats.mounts,0);
