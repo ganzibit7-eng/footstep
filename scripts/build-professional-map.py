@@ -1,5 +1,5 @@
 """Build lazy map index; only explicitly unmasked official source positions are used."""
-import argparse,json,pathlib,sys,hashlib,collections
+import argparse,json,pathlib,sys,hashlib,collections,subprocess
 p=argparse.ArgumentParser();p.add_argument('--source-dir',required=True);p.add_argument('--library-dir');a=p.parse_args()
 if a.library_dir:sys.path.insert(0,a.library_dir)
 from pyproj import Transformer
@@ -23,3 +23,6 @@ doc=root/'docs/professional-map-20261021';doc.mkdir(exist_ok=True);summary={k:v 
 if (root/'data/pet-care/verified-locations.json').exists():
  import subprocess
  subprocess.run(['node',str(root/'scripts/apply-professional-locations.mjs')],cwd=root,check=True)
+
+# Do not republish unlocated records after rebuilding the official source snapshot.
+subprocess.run(['node',str(root/'scripts/publish-located-professionals.mjs')],cwd=root,check=True)

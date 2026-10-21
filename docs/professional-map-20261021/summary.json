@@ -2,9 +2,9 @@
   "version": 1,
   "checked": "2026-10-20",
   "built": "2026-10-22",
-  "total": 33277,
-  "mapped": 17650,
-  "unmapped": 15627,
+  "total": 17698,
+  "mapped": 17698,
+  "unmapped": 0,
   "fields": [
     "id",
     "name",
@@ -16,8 +16,8 @@
     "address"
   ],
   "positionNote": "공공 등록 좌표와 별도 근거가 확인된 공개 위치입니다. 건물 참고 위치·업체 공개 위치를 구분하며 실제 출입구·실시간 운영은 미확인입니다.",
-  "sha256": "10ac7e700fb9c90558df173e7e2ba0686dba2669b0e37cae57c75ac912385ad9",
-  "bytes": 5308969,
+  "sha256": "dace7c32d1fde15a8cdd1da48bced590cd778fa6bff54a164b589615811d7d1a",
+  "bytes": 2914715,
   "sourceInputSha256": "f258ff7bf65d8f2913a26d2ba4b80b0369ac1d80fdef984360df5e60d156838b",
   "projection": "EPSG:5174 → EPSG:4326 (pyproj, always_xy)",
   "rejected": {
@@ -27,30 +27,31 @@
   "kindCounts": [
     {
       "kind": "vet",
-      "total": 5488,
-      "mapped": 5183
+      "total": 5191,
+      "mapped": 5191
     },
     {
       "kind": "grooming",
-      "total": 11315,
+      "total": 1167,
       "mapped": 1167
     },
     {
       "kind": "boarding",
-      "total": 6046,
+      "total": 347,
       "mapped": 347
     },
     {
       "kind": "pharmacy",
-      "total": 13233,
-      "mapped": 12455
+      "total": 12495,
+      "mapped": 12495
     },
     {
       "kind": "transport",
-      "total": 2418,
+      "total": 2,
       "mapped": 2
     }
   ],
   "baselineMapped": 17588,
-  "verifiedLocationAdditions": 62
+  "verifiedLocationAdditions": 110,
+  "visibility": "located-only"
 }

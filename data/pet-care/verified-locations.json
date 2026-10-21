@@ -846,6 +846,870 @@
       "checked": "2026-10-22",
       "note": "업체가 직접 등록한 공개 주소·지도 좌표 대조 · 실시간 운영·출입구는 방문 전 확인",
       "sourceChecked": "2026-10-22"
+    },
+    {
+      "id": "pc-incheon-fe839f76f8c9ab86",
+      "name": "리라동물병원",
+      "lat": 37.4892212878869,
+      "lng": 126.561390650578,
+      "address": "인천광역시 영종구 하늘중앙로195번길 20, 1층 104호 (중산동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3306066",
+      "sourceId": "3306066",
+      "sourceAddress": "인천광역시 영종구 하늘중앙로195번길 20 (중산동)",
+      "sourcePoint": [
+        37.4892212878869,
+        126.561390650578
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-3e86e0a6e8b6ec4a",
+      "name": "영종H동물의료센터",
+      "lat": 37.4887341298546,
+      "lng": 126.558998073671,
+      "address": "인천광역시 영종구 자연대로 47, 스타타워2 101호 (중산동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2907379",
+      "sourceId": "2907379",
+      "sourceAddress": "인천광역시 영종구 자연대로 47 (중산동)",
+      "sourcePoint": [
+        37.4887341298546,
+        126.558998073671
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-9c0d0ac89d7df1c3",
+      "name": "J동물병원",
+      "lat": 37.5325339155,
+      "lng": 126.6449644734,
+      "address": "인천광역시 서해구 청라커낼로 270, 커낼힐스빌 107,204호 (청라동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2603720",
+      "sourceId": "2603720",
+      "sourceAddress": "인천광역시 서해구 청라커낼로 270 (청라동)",
+      "sourcePoint": [
+        37.5325339155,
+        126.6449644734
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-191231d9abc15c2c",
+      "name": "검단이담동물의료센터",
+      "lat": 37.5946798417,
+      "lng": 126.7167699803,
+      "address": "인천광역시 검단구 이음1로 383, 세중시그니쳐 2층 201~3호 (원당동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2809294",
+      "sourceId": "2809294",
+      "sourceAddress": "인천광역시 검단구 이음1로 383 (원당동)",
+      "sourcePoint": [
+        37.5946798417,
+        126.7167699803
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-2c1fd1d90e53f432",
+      "name": "파크동물의료센터",
+      "lat": 37.5848984626559,
+      "lng": 126.71286820468,
+      "address": "인천광역시 검단구 이음대로 479, 108호 (당하동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4009518",
+      "sourceId": "4009518",
+      "sourceAddress": "인천광역시 검단구 이음대로 479 (당하동)",
+      "sourcePoint": [
+        37.5848984626559,
+        126.71286820468
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-e3323fb98d436a23",
+      "name": "위즈펫동물병원",
+      "lat": 37.3983753163571,
+      "lng": 126.935345525588,
+      "address": "경기도 안양시 동안구 관악대로 104, 2층 (비산동, 리홈안양이마트)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4011657",
+      "sourceId": "4011657",
+      "sourceAddress": "경기도 안양시 동안구 관악대로 104 (비산동)",
+      "sourcePoint": [
+        37.3983753163571,
+        126.935345525588
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-3e8bef831b763d44",
+      "name": "다나동물의료센터",
+      "lat": 37.712691078582,
+      "lng": 126.720433135049,
+      "address": "경기도 파주시 청석로 115, 반석프라자 201호 (동패동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4008228",
+      "sourceId": "4008228",
+      "sourceAddress": "경기도 파주시 청석로 115 (동패동)",
+      "sourcePoint": [
+        37.712691078582,
+        126.720433135049
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-b52f7fc71938fe8f",
+      "name": "이퀴피스 말동물병원",
+      "lat": 33.4274821594,
+      "lng": 126.6721122039,
+      "address": "제주특별자치도 제주시 조천읍 남조로 1785-12",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2763746",
+      "sourceId": "2763746",
+      "sourceAddress": "제주특별자치도 제주시 조천읍 남조로 1785-12",
+      "sourcePoint": [
+        33.4274821594,
+        126.6721122039
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-seoul-c7d23b8df5d638b4",
+      "name": "태정온누리약국",
+      "lat": 37.6386515578411,
+      "lng": 126.919081540985,
+      "address": "서울특별시 은평구 진관2로 15-46, 메트로프라자 108,109호 (진관동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4012682",
+      "sourceId": "4012682",
+      "sourceAddress": "서울특별시 은평구 진관2로 15-46 (진관동)",
+      "sourcePoint": [
+        37.6386515578411,
+        126.919081540985
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-f8ae4a55c2ab6f59",
+      "name": "영종도 동물약국",
+      "lat": 37.4887341298546,
+      "lng": 126.558998073671,
+      "address": "인천광역시 영종구 자연대로 47, 대지스타타워2 111호 (중산동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2907379",
+      "sourceId": "2907379",
+      "sourceAddress": "인천광역시 영종구 자연대로 47 (중산동)",
+      "sourcePoint": [
+        37.4887341298546,
+        126.558998073671
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-119b317b5d8e21de",
+      "name": "참약사 운서365공항약국",
+      "lat": 37.4947572201185,
+      "lng": 126.493104006711,
+      "address": "인천광역시 영종구 영종대로 124, 한정빌딩 101호 (운서동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4026160",
+      "sourceId": "4026160",
+      "sourceAddress": "인천광역시 영종구 영종대로 124 (운서동)",
+      "sourcePoint": [
+        37.4947572201185,
+        126.493104006711
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-a04db2af473f8e13",
+      "name": "스카이약국",
+      "lat": 37.4926741879123,
+      "lng": 126.491214087233,
+      "address": "인천광역시 영종구 흰바위로 51, 롯데마트 1층 (운서동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4026164",
+      "sourceId": "4026164",
+      "sourceAddress": "인천광역시 영종구 흰바위로 51 (운서동)",
+      "sourcePoint": [
+        37.4926741879123,
+        126.491214087233
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-dc3431fa1412663d",
+      "name": "보듬동물약국",
+      "lat": 37.4948325257712,
+      "lng": 126.492239674505,
+      "address": "인천광역시 영종구 영종대로 118, 뉴에어포트오피스텔 1층 102호 (운서동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4012930",
+      "sourceId": "4012930",
+      "sourceAddress": "인천광역시 영종구 영종대로 118 (운서동)",
+      "sourcePoint": [
+        37.4948325257712,
+        126.492239674505
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-50116f619c5b1732",
+      "name": "청라바다약국",
+      "lat": 37.5334383841,
+      "lng": 126.6516378783,
+      "address": "인천광역시 서해구 중봉대로612번길 10-16, 마르씨엘 105,106호 (청라동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2843532",
+      "sourceId": "2843532",
+      "sourceAddress": "인천광역시 서해구 중봉대로612번길 10-16 (청라동)",
+      "sourcePoint": [
+        37.5334383841,
+        126.6516378783
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-4e08b8478d7e7c14",
+      "name": "늘건강온누리 약국",
+      "lat": 37.5654870332164,
+      "lng": 126.674033856661,
+      "address": "인천광역시 서해구 승학로 491 (검암동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4009514",
+      "sourceId": "4009514",
+      "sourceAddress": "인천광역시 서해구 승학로 491 (검암동)",
+      "sourcePoint": [
+        37.5654870332164,
+        126.674033856661
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-8c26cefc38f0c41f",
+      "name": "청라중앙동물약국",
+      "lat": 37.5320476910542,
+      "lng": 126.650256298043,
+      "address": "인천광역시 서해구 중봉대로 588, 청라센트럴프라자 104호 (청라동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2923249",
+      "sourceId": "2923249",
+      "sourceAddress": "인천광역시 서해구 중봉대로 588 (청라동)",
+      "sourcePoint": [
+        37.5320476910542,
+        126.650256298043
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-99d15e4028a2cae9",
+      "name": "가좌마트약국",
+      "lat": 37.4976472852329,
+      "lng": 126.670737253422,
+      "address": "인천광역시 서해구 가정로151번길 11, 홈플러스 가좌점 2층 (가좌동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2901929",
+      "sourceId": "2901929",
+      "sourceAddress": "인천광역시 서해구 가정로151번길 11 (가좌동)",
+      "sourcePoint": [
+        37.4976472852329,
+        126.670737253422
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-18b4e7d874f8cfb2",
+      "name": "봄날약국",
+      "lat": 37.5338281907037,
+      "lng": 126.630217094259,
+      "address": "인천광역시 서해구 청라한내로100번길 24, 109호 (청라동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4009522",
+      "sourceId": "4009522",
+      "sourceAddress": "인천광역시 서해구 청라한내로100번길 24 (청라동)",
+      "sourcePoint": [
+        37.5338281907037,
+        126.630217094259
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-a7ed20ac9ab6ff32",
+      "name": "메디피아약국",
+      "lat": 37.6026526559,
+      "lng": 126.6574409716,
+      "address": "인천광역시 검단구 완정로 172, 109호 (마전동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2833884",
+      "sourceId": "2833884",
+      "sourceAddress": "인천광역시 검단구 완정로 172 (마전동)",
+      "sourcePoint": [
+        37.6026526559,
+        126.6574409716
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-ee318caa7a1ffd91",
+      "name": "백제약국",
+      "lat": 37.6018003288816,
+      "lng": 126.657612083112,
+      "address": "인천광역시 검단구 검단로 480 (왕길동, 검단리치웰프라자)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4009512",
+      "sourceId": "4009512",
+      "sourceAddress": "인천광역시 검단구 검단로 480 (왕길동)",
+      "sourcePoint": [
+        37.6018003288816,
+        126.657612083112
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-1d9137c8b5eccb49",
+      "name": "검단종로약국",
+      "lat": 37.5943058722396,
+      "lng": 126.714464412559,
+      "address": "인천광역시 검단구 이음5로 60, JS프라자 117~118호 (원당동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4027340",
+      "sourceId": "4027340",
+      "sourceAddress": "인천광역시 검단구 이음5로 60 (원당동)",
+      "sourcePoint": [
+        37.5943058722396,
+        126.714464412559
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-afaff9128d0c3d65",
+      "name": "검단마트약국",
+      "lat": 37.5857715794014,
+      "lng": 126.67744490369,
+      "address": "인천광역시 검단구 서곶로 754, 당하 이마트 3층 (당하동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2930724",
+      "sourceId": "2930724",
+      "sourceAddress": "인천광역시 검단구 서곶로 754 (당하동)",
+      "sourcePoint": [
+        37.5857715794014,
+        126.67744490369
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-35b6fc987ff2cb22",
+      "name": "즐거운 약국",
+      "lat": 37.5945319694685,
+      "lng": 126.664575413242,
+      "address": "인천광역시 검단구 원당대로 581 (마전동, 롯데마트)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2894461",
+      "sourceId": "2894461",
+      "sourceAddress": "인천광역시 검단구 원당대로 581 (마전동)",
+      "sourcePoint": [
+        37.5945319694685,
+        126.664575413242
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-6a97a0bd12cfdb2e",
+      "name": "참약국",
+      "lat": 37.5946798417,
+      "lng": 126.7167699803,
+      "address": "인천광역시 검단구 이음1로 383, 세중시그니쳐 101호 (원당동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2809294",
+      "sourceId": "2809294",
+      "sourceAddress": "인천광역시 검단구 이음1로 383 (원당동)",
+      "sourcePoint": [
+        37.5946798417,
+        126.7167699803
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-incheon-71f0e43757143075",
+      "name": "검단참사랑약국",
+      "lat": 37.5931091949156,
+      "lng": 126.712688895957,
+      "address": "인천광역시 검단구 이음대로 388, ABM타워 112~113호 (원당동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4009517",
+      "sourceId": "4009517",
+      "sourceAddress": "인천광역시 검단구 이음대로 388 (원당동)",
+      "sourcePoint": [
+        37.5931091949156,
+        126.712688895957
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-daejeon-37e7f6d852fe7c11",
+      "name": "이화바로약국",
+      "lat": 36.4165344415447,
+      "lng": 127.39373838095,
+      "address": "대전광역시 유성구 배울1로 128, 용산써밋프라자 Ⅱ 1층 103호 (용산동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4007988",
+      "sourceId": "4007988",
+      "sourceAddress": "대전광역시 유성구 배울1로 128 (용산동)",
+      "sourcePoint": [
+        36.4165344415447,
+        127.39373838095
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-daejeon-c3793e9ed7ed508b",
+      "name": "이화바로동물약국",
+      "lat": 36.4165344415447,
+      "lng": 127.39373838095,
+      "address": "대전광역시 유성구 배울1로 128, 용산써밋프라자 Ⅱ 1층 103호 (용산동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4007988",
+      "sourceId": "4007988",
+      "sourceAddress": "대전광역시 유성구 배울1로 128 (용산동)",
+      "sourcePoint": [
+        36.4165344415447,
+        127.39373838095
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-772a589c12b1abaf",
+      "name": "삼세종합약국",
+      "lat": 37.3987966098124,
+      "lng": 126.920790701382,
+      "address": "경기도 안양시 만안구 안양로 303, 안양 메쎄 포스빌 107-1, 107-2, 108호 (안양동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3307035",
+      "sourceId": "3307035",
+      "sourceAddress": "경기도 안양시 만안구 안양로 303 (안양동)",
+      "sourcePoint": [
+        37.3987966098124,
+        126.920790701382
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-6bf9a3c4a80070e7",
+      "name": "365올바른약국",
+      "lat": 37.3956315655,
+      "lng": 126.9305135368,
+      "address": "경기도 안양시 만안구 태평로52번길 21, 마드리드상가 1층 103호 (안양동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2863379",
+      "sourceId": "2863379",
+      "sourceAddress": "경기도 안양시 만안구 태평로52번길 21 (안양동)",
+      "sourcePoint": [
+        37.3956315655,
+        126.9305135368
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-201d7ad844ceca65",
+      "name": "봄빛약국",
+      "lat": 36.9905310732,
+      "lng": 127.1269741852,
+      "address": "경기도 평택시 소사5길 24, 202호 (소사동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2901974",
+      "sourceId": "2901974",
+      "sourceAddress": "경기도 평택시 소사5길 24 (소사동)",
+      "sourcePoint": [
+        36.9905310732,
+        127.1269741852
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-6a8664510abe6388",
+      "name": "원당이화약국",
+      "lat": 37.6537831910422,
+      "lng": 126.841400997902,
+      "address": "경기도 고양시 덕양구 고양대로 1415, 5층 C503호 (성사동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4008026",
+      "sourceId": "4008026",
+      "sourceAddress": "경기도 고양시 덕양구 고양대로 1415 (성사동)",
+      "sourcePoint": [
+        37.6537831910422,
+        126.841400997902
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-f8d3711cd55fc921",
+      "name": "셀메드 오늘약국",
+      "lat": 37.712691078582,
+      "lng": 126.720433135049,
+      "address": "경기도 파주시 청석로 115, 1층 110호 (동패동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4008228",
+      "sourceId": "4008228",
+      "sourceAddress": "경기도 파주시 청석로 115 (동패동)",
+      "sourcePoint": [
+        37.712691078582,
+        126.720433135049
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-5e0c2dbf94146ad0",
+      "name": "조은온누리약국",
+      "lat": 37.6122316162753,
+      "lng": 126.73184899009,
+      "address": "경기도 김포시 김포대로 709, 퍼스트블루 108호 (풍무동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4008108",
+      "sourceId": "4008108",
+      "sourceAddress": "경기도 김포시 김포대로 709 (풍무동)",
+      "sourcePoint": [
+        37.6122316162753,
+        126.73184899009
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-gyeonggi-da1572931b01f6e2",
+      "name": "풍무열시약국",
+      "lat": 37.6125377744644,
+      "lng": 126.730900361826,
+      "address": "경기도 김포시 김포대로 715, 트레이더스 김포점 2층 (풍무동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2901767",
+      "sourceId": "2901767",
+      "sourceAddress": "경기도 김포시 김포대로 715 (풍무동)",
+      "sourcePoint": [
+        37.6125377744644,
+        126.730900361826
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeonnam-9486ad6f7e37c440",
+      "name": "신동아약국",
+      "lat": 35.0318928143,
+      "lng": 126.7170337822,
+      "address": "전남광주통합특별시 나주시 금성관길 2 (중앙동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=404077",
+      "sourceId": "404077",
+      "sourceAddress": "전남광주통합특별시 나주시 금성관길 2 (중앙동)",
+      "sourcePoint": [
+        35.0318928143,
+        126.7170337822
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeonnam-c320e5e531202c05",
+      "name": "옵티마사랑한약국",
+      "lat": 34.9402588619,
+      "lng": 127.7322541031,
+      "address": "전남광주통합특별시 광양시 폭포사랑길 99 (금호동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1373934",
+      "sourceId": "1373934",
+      "sourceAddress": "전남광주통합특별시 광양시 폭포사랑길 99",
+      "sourcePoint": [
+        34.9402588619,
+        127.7322541031
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-4554be92ddf38442",
+      "name": "숲속온누리약국",
+      "lat": 33.4698115556,
+      "lng": 126.4853321892,
+      "address": "제주특별자치도 제주시 1100로 3178, 와이제이빌딩 A동 102호 (노형동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2925794",
+      "sourceId": "2925794",
+      "sourceAddress": "제주특별자치도 제주시 1100로 3178 (노형동)",
+      "sourcePoint": [
+        33.4698115556,
+        126.4853321892
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-77cdffa27d3002b5",
+      "name": "스마트약국",
+      "lat": 33.4824421892687,
+      "lng": 126.481834000763,
+      "address": "제주특별자치도 제주시 연북로 1, 롯데마트 1층 (노형동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2910530",
+      "sourceId": "2910530",
+      "sourceAddress": "제주특별자치도 제주시 연북로 1 (노형동)",
+      "sourcePoint": [
+        33.4824421892687,
+        126.481834000763
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-8f7c753a01a143d4",
+      "name": "희망약국",
+      "lat": 33.4815487337564,
+      "lng": 126.489399163279,
+      "address": "제주특별자치도 제주시 연북로 76, 한성빌딩 1층 (연동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4013234",
+      "sourceId": "4013234",
+      "sourceAddress": "제주특별자치도 제주시 연북로 76 (연동)",
+      "sourcePoint": [
+        33.4815487337564,
+        126.489399163279
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-de025de1be11c98c",
+      "name": "건강일등약국",
+      "lat": 33.4687713436155,
+      "lng": 126.547021236972,
+      "address": "제주특별자치도 제주시 중앙로 616 (아라일동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2911418",
+      "sourceId": "2911418",
+      "sourceAddress": "제주특별자치도 제주시 중앙로 616 (아라일동)",
+      "sourcePoint": [
+        33.4687713436155,
+        126.547021236972
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-922aaea9e516d2f0",
+      "name": "번영약국",
+      "lat": 33.4900875186,
+      "lng": 126.5948623922,
+      "address": "제주특별자치도 제주시 번영로 500, 1층 (봉개동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1896585",
+      "sourceId": "1896585",
+      "sourceAddress": "제주특별자치도 제주시 번영로 500",
+      "sourcePoint": [
+        33.4900875186,
+        126.5948623922
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-5634c2d1117b5edd",
+      "name": "빅세이브동물약국",
+      "lat": 33.5014840558179,
+      "lng": 126.463279504351,
+      "address": "제주특별자치도 제주시 도리로 111, 1층 (이호일동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4026839",
+      "sourceId": "4026839",
+      "sourceAddress": "제주특별자치도 제주시 도리로 111 (이호일동)",
+      "sourcePoint": [
+        33.5014840558179,
+        126.463279504351
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-ca8f6f4cae2454a0",
+      "name": "아주약국",
+      "lat": 33.4856030074,
+      "lng": 126.4889029058,
+      "address": "제주특별자치도 제주시 노연로 80, 메종글래드 제주 지하중 1층 (연동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=142957",
+      "sourceId": "142957",
+      "sourceAddress": "제주특별자치도 제주시 노연로 80",
+      "sourcePoint": [
+        33.4856030074,
+        126.4889029058
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-dcc2806777b1d6c3",
+      "name": "청담약국",
+      "lat": 33.4835900233367,
+      "lng": 126.476304019779,
+      "address": "제주특별자치도 제주시 노형로 378, 1층 101호 (노형동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3305715",
+      "sourceId": "3305715",
+      "sourceAddress": "제주특별자치도 제주시 노형로 378 (노형동)",
+      "sourcePoint": [
+        33.4835900233367,
+        126.476304019779
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-750515c435fc73e0",
+      "name": "열린365약국",
+      "lat": 33.4838112549963,
+      "lng": 126.476619662438,
+      "address": "제주특별자치도 제주시 노형로 380, 1층 (노형동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4013213",
+      "sourceId": "4013213",
+      "sourceAddress": "제주특별자치도 제주시 노형로 380 (노형동)",
+      "sourcePoint": [
+        33.4838112549963,
+        126.476619662438
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-111bed25ecc8c569",
+      "name": "마음약국",
+      "lat": 33.4901161837273,
+      "lng": 126.485948322561,
+      "address": "제주특별자치도 제주시 도령로 73, 103호 (연동, 연동 펠리체)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4013215",
+      "sourceId": "4013215",
+      "sourceAddress": "제주특별자치도 제주시 도령로 73 (연동, 연동 펠리체)",
+      "sourcePoint": [
+        33.4901161837273,
+        126.485948322561
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-ead5df88b1783e46",
+      "name": "신세계온누리약국",
+      "lat": 33.2490216935,
+      "lng": 126.5073357581,
+      "address": "제주특별자치도 서귀포시 월드컵로 8, 104호 (강정동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2871971",
+      "sourceId": "2871971",
+      "sourceAddress": "제주특별자치도 서귀포시 월드컵로 8 (강정동)",
+      "sourcePoint": [
+        33.2490216935,
+        126.5073357581
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
+    },
+    {
+      "id": "pc-jeju-ba88f9c75822623c",
+      "name": "혁신온누리약국",
+      "lat": 33.2476886538111,
+      "lng": 126.514233082812,
+      "address": "제주특별자치도 서귀포시 일주동로 9159, B101호 (법환동)",
+      "method": "tourism-building",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=4026811",
+      "sourceId": "4026811",
+      "sourceAddress": "제주특별자치도 서귀포시 일주동로 9159 (법환동)",
+      "sourcePoint": [
+        33.2476886538111,
+        126.514233082812
+      ],
+      "checked": "2026-10-22",
+      "sourceChecked": "2026-10-20",
+      "note": "공개된 전체 도로명주소가 일치하는 한국관광공사 장소의 건물 참고 위치입니다. 업체 자체 좌표나 실제 출입구는 미확인입니다."
     }
   ]
 }
