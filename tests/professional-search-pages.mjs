@@ -1,0 +1,17 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';import {createRequire} from 'node:module';import {professionalPage} from '../scripts/generate-professional-pages.mjs';import {excluded,excludesFrom} from '../scripts/audit-pages-storage.mjs';
+const require=createRequire(import.meta.url),photos=require('../place-photos.js'),m=JSON.parse(fs.readFileSync('data/pet-care/manifest.json')),map=JSON.parse(fs.readFileSync('data/pet-care/map-index.json'));
+test('all public professional pages have crawlable stable URLs and regional link coverage; hidden records have no page',()=>{
+ const sitemap=fs.readFileSync('sitemap.xml','utf8'),urls=[...sitemap.matchAll(/<loc>https:\/\/balzaguk.com\/pet-care\/places\/(pc-[a-z-]+-[a-f0-9]{16})\/<\/loc>/g)].map(x=>x[1]);assert.equal(urls.length,m.total);assert.deepEqual(urls.sort(),map.rows.map(r=>r[0]).sort());
+ let links=0;for(const region of m.regions){const rows=JSON.parse(fs.readFileSync('.'+region.file)).rows,count=Math.ceil(rows.length/100),catalog=Array.from({length:count},(_,i)=>fs.readFileSync(`pet-care/${region.id}/all/${i+1}/index.html`,'utf8')).join('');for(const row of rows){assert(catalog.includes('/pet-care/places/'+row[0]+'/'));links++;}assert(fs.readFileSync(`pet-care/${region.id}/index.html`,'utf8').includes(`/pet-care/${region.id}/all/1/`));}assert.equal(links,m.total);
+ assert(!fs.existsSync('pet-care/places/pc-seoul-e0a43ddf82175c3e/index.html'));
+ const page=fs.readFileSync('pet-care/places/pc-seoul-214e66fe9c3606a6/index.html','utf8');assert(page.includes('진흥로 439'));assert(!page.includes('진흥로 ***'));assert(page.includes('공개 위치 근거'));assert(!page.includes('/data/pet-care/regions/'));
+});
+test('page generation refuses unlocated records, escapes business names and omits fabricated ratings and hours',()=>{
+ const region=m.regions[0],row=JSON.parse(fs.readFileSync('.'+region.file)).rows[0],point=map.rows.find(r=>r[0]===row[0]),hostile=[...row];hostile[1]='<script>bad()</script>';hostile[3]='javascript:alert(1)';const html=professionalPage(hostile,region,m,point);assert(html.includes('&lt;script&gt;bad()&lt;/script&gt;'));assert(!html.includes('tel:javascript'));assert(!html.includes('<script>bad()'));
+ const schema=JSON.parse(html.match(/application\/ld\+json">([\s\S]*?)<\/script>/)[1]);assert.equal(schema.name,hostile[1]);for(const key of ['aggregateRating','review','openingHoursSpecification'])assert(!Object.hasOwn(schema,key));assert.throws(()=>professionalPage(row,region,m,{...point,2:null}));
+});
+test('optimized delivery keeps source bytes and proof, and excluded originals always resolve to a published copy',()=>{
+ const proof=JSON.parse(fs.readFileSync('docs/photo-delivery-20261022/manifest.json')),excludes=excludesFrom(fs.readFileSync('_config.yml','utf8'));let saved=0;
+ for(const p of proof){const original=fs.readFileSync('.'+p.source),copy=fs.readFileSync('.'+p.delivery);assert.equal(createHash('sha256').update(original).digest('hex'),p.sourceSha256);assert.equal(createHash('sha256').update(copy).digest('hex'),p.sha256);assert(copy.length<original.length);assert(excluded(p.source.slice(1),excludes));assert(!excluded(p.delivery.slice(1),excludes));assert.equal(photos.url(p.source),p.delivery);assert(photos.deliveryNote(p.source).includes(p.mode==='lossless-format-only'?'전체 픽셀 유지':'전체 구도 유지'));if(p.rightsType==='Type3')assert.equal(p.mode,'lossless-format-only');saved+=original.length-copy.length;}
+ assert(saved>50_000_000);
+});

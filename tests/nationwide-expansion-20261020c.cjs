@@ -4,7 +4,7 @@ test('121 new places have exact source identities, individual licensed original 
  assert.equal(m.facilities.length,121);assert.equal(m.courses.length,0);assert.equal(photos.length,125);assert.equal(new Set(photos.map(p=>p.photo.sha256)).size,125);
  let structured=0,intro=0;for(const row of m.facilities){const e=proof.find(p=>p.row.id===row.id),p=photos.find(p=>p.id===row.id),r=E.get(row);assert(r);assert.equal(row.name,e.tour.title.trim());assert.equal(row.lat,Number(e.tour.yCoord));assert.equal(row.lng,Number(e.tour.xCoord));assert.equal(P.get(row).sha256,p.photo.sha256);assert.equal(E.conditions({...row,description:'changed'}),null);assert.equal(E.intro({...row,address:'different branch'}),null);
  if(e.pet){structured++;assert.deepEqual(E.conditions(row),e.pet);}else{intro++;assert(E.intro(row));assert.equal(r.introAllowance.wholeAreaConfirmed,false);assert.equal(crypto.createHash('sha256').update(e.tour.outl).digest('hex'),r.introAllowance.originalTextSha256);assert(C.get(row).find(x=>x.label==='견종·크기 조건').value.startsWith('미확인'));}
- const html=fs.readFileSync('places/'+row.id+'/index.html','utf8');assert(html.includes(p.photo.src));assert(html.includes('반려견 동반 조건'));assert(!html.includes('undefined'));
+ const html=fs.readFileSync('places/'+row.id+'/index.html','utf8');assert(html.includes(P.url(p.photo)));assert(html.includes('반려견 동반 조건'));assert(!html.includes('undefined'));
  }assert.equal(structured,21);assert.equal(intro,100);
  for(const p of photos){assert(['Type1','Type3'].includes(p.photo.rightsType));assert.equal(p.photo.rightsType,p.officialImage.cpyrhtDivCd);assert.equal(p.photo.original,p.officialImage.originimgurl.replace(/^http:/,'https:'));assert(p.photo.noCrop);require('./helpers/photo-original.cjs')(p.photo);}
 });

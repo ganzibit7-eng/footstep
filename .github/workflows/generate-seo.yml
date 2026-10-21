@@ -8,6 +8,7 @@ on:
       - 'scripts/generate-pet-life.mjs'
       - 'data/place-count-summary.json'
       - 'scripts/generate-pet-care.mjs'
+      - 'scripts/generate-professional-pages.mjs'
       - 'data/pet-care/**'
       - 'pet-care*.js'
       - 'pet-care.css'
@@ -20,6 +21,7 @@ on:
       - 'scripts/weekend-guide.mjs'
       - 'scripts/search-snippet.mjs'
       - 'scripts/search-head.mjs'
+      - 'scripts/search-style-cache.mjs'
       - 'scripts/image-sitemap.mjs'
       - 'scripts/generate-rss.mjs'
       - 'scripts/guide-discovery.mjs'
@@ -84,7 +86,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pet-life pet-care courses places bins guides weekend with-dog discover.html sitemap.xml rss.xml index.html assets/course-photos course-photos.js
+          git add pet-life pet-care courses places bins guides weekend with-dog discover.html sitemap.xml rss.xml index.html assets/course-photos assets/search-styles course-photos.js
           if git diff --cached --quiet; then
             echo "No SEO page changes"
           else
