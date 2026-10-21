@@ -12,11 +12,12 @@
     "lng",
     "kinds",
     "region",
-    "positionSourceKind"
+    "positionSourceKind",
+    "address"
   ],
   "positionNote": "공개 주소에 대응하는 공공 등록 좌표입니다. 출입구·실시간 영업·진료 대상은 확인되지 않았습니다.",
-  "sha256": "d941d1ca00641864af4231a21dcae0505aaeae3f514042859bbdef01e72ca7cf",
-  "bytes": 5275165,
+  "sha256": "edfff06f92dafc60bf0a757eca95f137820411f8631954c7fc18a6706e4ae39b",
+  "bytes": 5275175,
   "sourceInputSha256": "f258ff7bf65d8f2913a26d2ba4b80b0369ac1d80fdef984360df5e60d156838b",
   "projection": "EPSG:5174 → EPSG:4326 (pyproj, always_xy)",
   "rejected": {
