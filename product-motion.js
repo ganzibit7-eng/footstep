@@ -24,6 +24,20 @@
   function page(name){cancel();if(name==='home')return;enter(doc.querySelector('.app-page.active[data-page-section="'+name+'"]'));}
   function sync(button){button.setAttribute('aria-pressed',String(button.classList.contains('on')||button.classList.contains('active')));}
   function start(){
+    // The route hash also matches Leaflet's container id. Let the native anchor
+    // finish before restoring the search header, unless the visitor has interacted.
+    if(root.location?.hash==='#map'){
+      let touched=false;const mark=()=>{touched=true;};
+      const inputs=['pointerdown','keydown','wheel','touchstart'];
+      inputs.forEach(type=>doc.addEventListener(type,mark,{passive:true}));
+      const settle=()=>{
+        root.requestAnimationFrame(()=>{
+          inputs.forEach(type=>doc.removeEventListener(type,mark));
+          if(!touched&&root.location.hash==='#map'&&doc.querySelector('.app-page.active')?.dataset.pageSection==='map')root.scrollTo({top:0,behavior:'auto'});
+        });
+      };
+      if(doc.readyState==='complete')settle();else root.addEventListener('load',settle,{once:true});
+    }
     const proposal=doc.getElementById('register-section');
     if(proposal){proposal.querySelectorAll('button.tag-check,button.draw-mode-btn,button.type-btn').forEach(sync);
       new root.MutationObserver(records=>{for(const record of records)if(record.target.matches('button.tag-check,button.draw-mode-btn,button.type-btn'))sync(record.target);}).observe(proposal,{subtree:true,attributes:true,attributeFilter:['class']});}

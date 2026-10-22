@@ -3,19 +3,20 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const source=fs.readFileSync('product-motion.js','utf8');
-function setup({reduce=false,saveData=false,intersection=true,animate=true}={}){
- const events={},observers=[],animations=[],mutations=[];let mediaChange;
+function setup({reduce=false,saveData=false,intersection=true,animate=true,directMap=false}={}){
+ const events={},observers=[],animations=[],mutations=[];let mediaChange,raf,scroll;
  const node={nodeType:1,closest:()=>null,getClientRects:()=>[{}],matches:s=>s.includes('.course-card'),classList:{contains:()=>false}};
  if(animate)node.animate=(frames,options)=>{const a={frames,options,cancelled:false,cancel(){this.cancelled=true;},finished:new Promise(()=>{})};animations.push(a);return a;};
  const button={matches:()=>true,classList:{contains:c=>c==='on'},setAttribute(k,v){this[k]=v;}};
  const proposal={querySelectorAll:()=>[button]},list={};
  const scope={dataset:{pageSection:'map'},querySelectorAll:()=>[node]};
- const document={readyState:'complete',hidden:false,addEventListener:(k,f)=>events[k]=f,querySelector:()=>scope,getElementById:id=>id==='register-section'?proposal:id==='course-grid'?list:null};
+ const document={readyState:'complete',hidden:false,addEventListener:(k,f)=>{const previous=events[k];events[k]=previous?()=>{previous();f();}:f;},removeEventListener(){},querySelector:()=>scope,getElementById:id=>id==='register-section'?proposal:id==='course-grid'?list:null};
  const reduced={matches:reduce,addEventListener:(k,f)=>mediaChange=f};
  const window={document,navigator:{connection:{saveData}},matchMedia:()=>reduced,MutationObserver:class{constructor(cb){this.cb=cb;mutations.push(this);}observe(target,options){this.target=target;this.options=options;}}};
+ if(directMap){window.location={hash:'#map'};window.requestAnimationFrame=cb=>raf=cb;window.scrollTo=options=>scroll=options;}
  if(intersection)window.IntersectionObserver=class{constructor(cb){this.cb=cb;this.disconnected=false;observers.push(this);}observe(){}unobserve(){}disconnect(){this.disconnected=true;}};
  vm.runInNewContext(source,{window});
- return {window,node,scope,events,animations,observers,mutations,button,reduced,change:()=>mediaChange(),deliver:()=>observers.at(-1)?.cb([{isIntersecting:true,target:node}])};
+ return {window,node,scope,events,animations,observers,mutations,button,reduced,settle:()=>raf(),get scroll(){return scroll;},change:()=>mediaChange(),deliver:()=>observers.at(-1)?.cb([{isIntersecting:true,target:node}])};
 }
 test('entry is optional: reduced motion and data saver keep content static',()=>{
  for(const config of [{reduce:true},{saveData:true}]){const h=setup(config);h.window.PawUI.page('walk');assert.equal(h.observers.length,0);assert.equal(h.animations.length,0);}
@@ -35,4 +36,10 @@ test('selection semantics follow active state, including restored drafts',()=>{
 });
 test('card observation stays on result lists and is capped per update',()=>{
  const h=setup();const cards=h.mutations.find(o=>o.options.childList);cards.cb([{addedNodes:Array(50).fill(h.node)}]);assert.equal(h.animations.length,0);h.observers.at(-1).cb(Array(4).fill({isIntersecting:true,target:h.node}));assert.equal(h.animations.length,4);assert.equal(cards.options.subtree,undefined);assert.equal(cards.target,h.window.document.getElementById('course-grid'));
+});
+
+test('direct map entry restores the search header without overriding visitor interaction',()=>{
+ const h=setup({directMap:true});h.settle();assert.equal(h.scroll.top,0);assert.equal(h.scroll.behavior,'auto');
+ for(const event of ['pointerdown','keydown','wheel','touchstart']){const active=setup({directMap:true});active.events[event]();active.settle();assert.equal(active.scroll,undefined);}
+ const changed=setup({directMap:true});changed.window.location.hash='#walk';changed.settle();assert.equal(changed.scroll,undefined);
 });
