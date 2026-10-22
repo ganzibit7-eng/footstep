@@ -146,3 +146,15 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 .hero-park-stage:not([data-rendered="true"]) .hero-park-fly{visibility:hidden}
 
 #hero-stat-facilities{text-decoration:none;color:inherit;display:inline-block;border-radius:4px}#hero-stat-facilities:focus-visible{outline:2px solid var(--moss);outline-offset:4px}#hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}
+@font-face{font-family:'Balzaguk Hero Serif';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/hero-serif-subset.woff2') format('woff2')}
+/* Final editorial hierarchy: a quiet introduction and a generous serif headline. */
+.hero[data-page-section="home"] #hero-title{font-family:'Balzaguk Hero Serif','Noto Sans KR',serif;font-size:clamp(54px,5.4vw,72px);font-weight:600;line-height:1.18;letter-spacing:-.04em;text-shadow:none;word-break:keep-all}
+.hero[data-page-section="home"] #hero-title>span{font-family:'Noto Sans KR',system-ui,sans-serif;font-size:16px;font-weight:500;line-height:1.6;letter-spacing:.065em;color:#50664f;margin-bottom:16px}
+.hero[data-page-section="home"] #hero-title em{font-size:1em;font-weight:600;line-height:1.2;margin-top:0;letter-spacing:-.045em}
+.hero[data-page-section="home"] #hero-style-3 p.lead{font-size:16px;font-weight:400!important;line-height:1.85!important;letter-spacing:-.025em;color:#4a5e50!important;margin-top:25px}
+@media(max-width:880px){
+ .hero[data-page-section="home"] #hero-title{font-size:clamp(34px,10.3vw,45px);line-height:1.2}
+ .hero[data-page-section="home"] #hero-title>span{font-size:13px;line-height:1.6;letter-spacing:.065em;margin-bottom:13px}
+ .hero[data-page-section="home"] #hero-title em{line-height:1.24;letter-spacing:-.045em}
+ .hero[data-page-section="home"] #hero-style-3 p.lead{font-size:14px;line-height:1.85!important;margin-top:23px}
+}
