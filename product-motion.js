@@ -14,7 +14,7 @@
   }
   function enter(scope){
     if(!scope||!allowed())return;
-    const nodes=scope.querySelectorAll('.section-head,.ui-panel-heading,.ui-form-group,.admin-view-heading');
+    const nodes=scope.querySelectorAll('.section-head,.ui-panel-heading,.ui-form-group>legend,.admin-view-heading');
     if(typeof root.IntersectionObserver!=='function'){Array.from(nodes).slice(0,4).forEach(reveal);return;}
     observer?.disconnect();observer=new root.IntersectionObserver(entries=>{
       let index=0;for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);reveal(entry.target,index++);}
