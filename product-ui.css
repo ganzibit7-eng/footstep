@@ -1,0 +1,191 @@
+/* Product workspaces share one type scale, surface palette and interaction rhythm. */
+:root{--product-ink:#213d33;--product-muted:#66746b;--product-line:#dce3da;--product-surface:#fffefa;--product-soft:#f1f4ee;--product-accent:#294f3e;--product-radius:20px;--product-ease:cubic-bezier(.22,1,.36,1)}
+html[data-theme=dark]{--product-ink:#e5ede5;--product-muted:#afbeb2;--product-line:#435349;--product-surface:#23342b;--product-soft:#2c3e32;--product-accent:#aecab4}
+:is(#map-section,#list-section,#walk-section,#register-section,#etiquette-section){color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);scroll-margin-top:90px}
+:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head{align-items:end;gap:24px;margin:4px 0 30px;padding-bottom:22px;border-bottom:1px solid var(--product-line)}
+:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-family:inherit;font-size:clamp(28px,3vw,38px);font-weight:700;line-height:1.35;letter-spacing:-.055em;margin:8px 0 12px;color:var(--product-ink)}
+:is(#map-section,#list-section,#walk-section,#register-section) .section-head .kicker{font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.025em;color:var(--product-muted);background:none;border:0;padding:0}
+:is(#map-section,#list-section,#walk-section,#register-section) .section-head p{max-width:62ch;font-size:14px!important;line-height:1.85!important;color:var(--product-muted);margin:0}
+:is(.app-page,#profile-overlay,#nick-overlay) :is(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--product-accent);outline-offset:4px}
+header .nav-links a{transition:background 150ms,color 150ms}
+header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(--product-ink)}
+#bottom-tab-bar{border-radius:18px;box-shadow:0 6px 28px #1a352816}
+#bottom-tab-bar button{transition:background 160ms,color 160ms}
+#bottom-tab-bar button.active{background:var(--product-soft)}
+
+/* Map controls sit quietly around the cartography; map panes never animate. */
+#map-section{--map-surface:var(--product-surface);--map-ink:var(--product-ink);--map-muted:var(--product-muted);--map-line:var(--product-line);--map-soft:var(--product-soft);--map-active:var(--product-accent)}
+#map-section .map-panel{border-radius:22px;border-color:var(--product-line);box-shadow:0 8px 32px #213d3306}
+#map-section .map-search-toolbar{padding:24px!important}
+#map-section #place-search-input{background:var(--product-surface)!important;border:1px solid var(--product-line)!important;box-shadow:none!important;border-radius:12px!important}
+#map-section #place-search-input:focus{border-color:var(--product-accent)!important}
+#map-section #place-search-btn{border-radius:12px!important;font-weight:600}
+#map-section #view-filter-group{background:var(--product-soft);border-radius:12px;padding:4px}
+#map-section #view-filter-group .chip{border:0;min-height:46px;border-radius:9px;font-size:13px;transition:background 150ms,color 150ms;box-shadow:none}
+#map-section #view-filter-group .chip.active{background:var(--product-surface);color:var(--product-ink);box-shadow:0 1px 5px #213d3312}
+#map-section #professional-map-status{font-size:11px;line-height:1.85;gap:12px;padding:14px 0}
+#map-section #professional-map-status a{min-height:40px;font-weight:500;font-size:11px;background:var(--product-soft);border-color:transparent}
+#map-section .map-results-bridge{background:var(--product-surface);padding:12px 24px!important}
+#map-section .map-results-bridge p{font-size:12px;color:var(--product-muted)}
+#map-section .map-recommendations{padding-top:10px;margin-top:40px}
+#map-section .home-section-head{align-items:center}
+#map-section .home-section-head .section-more{color:var(--product-ink);font-size:12px;text-decoration:none;padding:10px 0;min-height:44px;box-sizing:border-box}
+
+/* Course discovery: one panel, clear filter groups, a readable result count. */
+#list-section .course-search-panel{border:1px solid var(--product-line);border-radius:20px;background:var(--product-surface);box-shadow:none;overflow:visible}
+#list-section .course-search-panel>.map-toolbar{padding:22px;gap:12px;border-color:var(--product-line)}
+#list-section :is(#course-search-input,#course-sort-select){box-sizing:border-box;min-height:48px;border:1px solid var(--product-line)!important;border-radius:11px!important;background:var(--product-surface)!important;color:var(--product-ink);font-size:14px!important;box-shadow:none}
+#list-section #course-search-input{padding:12px 15px!important}
+#list-section .course-filter-label{font-size:11px;color:var(--product-muted);font-weight:600}
+#list-section :is(.chip,.walk-time-options button){border:1px solid var(--product-line);border-radius:9px;min-height:42px;font-family:inherit;font-size:12px;font-weight:500;line-height:1.6;background:var(--product-surface);color:var(--product-ink);padding:9px 13px;box-shadow:none}
+#list-section :is(.chip.active,.walk-time-options button[aria-pressed=true]){background:var(--product-soft);border-color:#9fb5a3;color:var(--product-ink);font-weight:650;box-shadow:inset 0 0 0 1px #9fb5a3}
+#list-section .course-time-filter{border:0;border-top:1px solid var(--product-line);border-radius:0;background:transparent;margin:0;padding:20px 22px}
+#list-section .course-time-heading h3{font-family:inherit;font-size:13px;font-weight:600}
+#list-section .course-time-help summary{font-size:11px;min-height:32px;color:var(--product-muted)}
+#list-section :is(.comfort-filter,#course-advanced-filters){border:0;border-top:1px solid var(--product-line);border-radius:0;background:none;margin:0;padding:0 22px}
+#list-section :is(.comfort-filter,#course-advanced-filters)>summary{padding:17px 0;min-height:54px;box-sizing:border-box;font-size:13px;line-height:1.6;font-weight:550;color:var(--product-ink)}
+#list-section .explore-results-head{gap:16px;align-items:center;margin:28px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--product-line)}
+#list-section #course-count-label{font-size:13px;color:var(--product-muted)!important;font-variant-numeric:tabular-nums}
+#list-section .course-card{transition:border-color 160ms,box-shadow 160ms}
+#list-section .course-card h3{font-family:inherit;font-weight:650;letter-spacing:-.035em}
+#list-section .explore-view-button{border-radius:10px;min-height:44px;background:var(--product-surface);border-color:var(--product-line);color:var(--product-ink);font-size:12px}
+
+/* Recording and proposal forms use real grouped fields, not decorative cards. */
+:is(#walk-section,#register-section) .register-panel{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:28px}
+:is(#walk-section,#register-section) .form-card{padding:30px;border-radius:20px;border:1px solid var(--product-line);background:var(--product-surface);box-shadow:none;min-width:0}
+.ui-panel-heading{margin:0 0 24px;padding:0 0 20px;border-bottom:1px solid var(--product-line)}
+.ui-panel-heading h3{font-family:inherit;font-size:19px;font-weight:650;letter-spacing:-.03em;color:var(--product-ink);margin:0 0 6px}
+.ui-panel-heading p{font-size:12px;line-height:1.8;color:var(--product-muted);margin:0}
+.ui-map-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.ui-map-heading h3{font-family:inherit;font-size:14px;font-weight:600;margin:0;color:var(--product-ink)}
+.ui-map-heading span{font-size:11px;color:var(--product-muted)}
+:is(#walk-section,#register-section) .mini-map-wrap{padding:22px;background:var(--product-surface);border:1px solid var(--product-line);border-radius:20px;top:96px;min-width:0}
+:is(#walk-section,#register-section) :is(#mini-map,#walk-map){border-radius:12px!important;border:1px solid var(--product-line)!important;box-shadow:none!important;background:var(--product-soft)}
+:is(#walk-section,#register-section) .mini-map-note{border:0;background:transparent;padding:12px 0 0;margin:0;font-size:12px;color:var(--product-muted);line-height:1.8}
+#walk-section .walk-record-notice{border:0;border-radius:12px;background:var(--product-soft);padding:18px;margin-bottom:22px}
+#walk-section .walk-record-notice strong{font-family:inherit;font-size:13px;font-weight:650;color:var(--product-ink)}
+#walk-section .walk-record-notice p{font-size:12px;line-height:1.85;margin:7px 0;color:var(--product-muted)}
+#walk-section .walk-record-notice details summary{font-size:11px;min-height:32px;cursor:pointer;color:var(--product-ink);padding-top:6px}
+#walk-section .walk-consent-card{margin:0 0 20px;padding:18px;border:1px solid var(--product-line)!important;border-radius:12px;background:var(--product-surface)!important;min-width:0}
+#walk-section .walk-consent-card legend{font-size:12px;font-weight:600;padding:0 7px;margin-left:-7px;color:var(--product-muted)}
+#walk-section .walk-consent-option label{display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.8;font-weight:550;margin:0}
+#walk-section .walk-consent-option input{width:19px;height:19px;flex:none;margin:3px 0 0;accent-color:var(--product-accent)}
+#walk-section .walk-consent-option p{margin:7px 0 0 30px;font-size:11px;line-height:1.85;color:var(--product-muted)}
+#walk-section .walk-consent-option+.walk-consent-option{border-top:1px solid var(--product-line);padding-top:16px;margin-top:16px}
+#walk-section :is(#walk-start-btn,#walk-save-btn){background:var(--product-accent);border-radius:12px;min-height:52px;margin-top:14px;font-size:14px;font-weight:600;box-shadow:none}
+#walk-section #walk-local-status{font-size:12px;line-height:1.8;color:var(--product-muted)}
+#walk-section :is(.walk-prep,.walk-options){margin-top:18px;border:1px solid var(--product-line);border-radius:12px;background:var(--product-surface);padding:0 16px}
+#walk-section :is(.walk-prep,.walk-options)>summary{padding:16px 0;font-size:12px;line-height:1.8;cursor:pointer}
+#walk-section :is(.walk-prep,.walk-options)>summary span{font-size:11px;color:var(--product-muted)}
+#walk-section .walk-metrics{gap:0;border:1px solid var(--product-line);border-radius:14px;background:var(--product-surface);overflow:hidden;grid-template-columns:repeat(2,minmax(0,1fr))}
+#walk-section .walk-metrics>div{padding:22px 16px;border:0;border-bottom:1px solid var(--product-line);background:none;border-radius:0}
+#walk-section .walk-metrics>div:nth-child(odd){border-right:1px solid var(--product-line)}
+#walk-section .walk-metrics strong{font:600 clamp(26px,3vw,34px)/1.2 var(--experience-font,system-ui);font-variant-numeric:tabular-nums;letter-spacing:-.045em;color:var(--product-ink)}
+#walk-section .walk-metrics span{font-size:11px;color:var(--product-muted);line-height:1.6}
+#walk-section .walk-controls{gap:10px}
+#walk-section .walk-controls>*{min-height:48px;border-radius:11px;font-size:13px}
+#register-section .type-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border:1px solid var(--product-line);border-radius:12px;background:var(--product-soft);margin:0 0 28px}
+#register-section .type-btn{display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;min-height:48px;border:0;border-radius:9px;background:transparent;color:var(--product-muted);padding:9px 7px;font:550 12px/1.5 var(--experience-font,system-ui);box-shadow:none}
+#register-section .type-btn.active{background:var(--product-surface);color:var(--product-ink);box-shadow:0 1px 5px #213d3312}
+#register-section .type-btn .ui-icon{width:17px;height:17px;flex:none}
+.ui-form-group{min-width:0;margin:0;padding:0 0 24px;border:0}
+.ui-form-group+.ui-form-group{border-top:1px solid var(--product-line);padding-top:24px}
+.ui-form-group>legend{float:left;box-sizing:border-box;width:100%;padding:0;margin:0 0 4px;font-size:13px;font-weight:650;line-height:1.8;color:var(--product-ink)}
+.ui-form-group>legend+*{clear:both}
+.ui-form-group>legend span{font-size:10px;font-weight:500;margin-right:10px;color:var(--product-muted);font-variant-numeric:tabular-nums}
+#register-section .form-card label{font-size:12px;font-weight:550;color:var(--product-ink);margin:18px 0 8px}
+#register-section .form-card :is(input:not([type=checkbox]):not([type=file]),textarea,select){box-sizing:border-box;min-height:48px;padding:12px 14px;border:1px solid var(--product-line);border-radius:10px;background:var(--product-surface);font-size:14px;line-height:1.7;color:var(--product-ink)}
+#register-section .form-card textarea{min-height:110px}
+#register-section .form-card :is(input,textarea)::placeholder{color:#819084}
+#register-section .tag-check{font-family:inherit;min-height:42px;border-radius:9px;padding:9px 12px;background:var(--product-surface);border:1px solid var(--product-line);color:var(--product-muted);font-size:12px;line-height:1.6;font-weight:500}
+#register-section .tag-check.on{background:var(--product-soft);border-color:#9fb5a3;color:var(--product-ink);box-shadow:inset 0 0 0 1px #9fb5a3}
+#register-section .draw-mode-toggle{padding:4px;gap:4px;background:var(--product-soft);border:1px solid var(--product-line);border-radius:11px}
+#register-section .draw-mode-btn{font-family:inherit;min-height:44px;padding:10px;font-size:12px;font-weight:500;color:var(--product-muted);border:0;background:transparent;border-radius:8px}
+#register-section .draw-mode-btn.active{background:var(--product-surface);color:var(--product-ink);box-shadow:0 1px 5px #213d3312}
+#register-section #pin-btn{border:1px solid var(--product-line);background:var(--product-soft);color:var(--product-ink);padding:14px;font-size:12px;font-weight:550;line-height:1.85;border-radius:10px}
+#register-section #reg-submit-btn{min-height:52px;margin-top:0;background:var(--product-accent);color:var(--product-surface);font-size:14px;font-weight:600;border-radius:12px;box-shadow:none}
+.ui-review-note{margin-top:16px;font-size:11px;line-height:1.85;color:var(--product-muted)}
+.ui-review-note summary{cursor:pointer;min-height:36px;color:var(--product-ink)}
+
+/* Account pages keep identity and settings on light, readable surfaces. */
+#profile-overlay .account-modal{max-width:500px;border-radius:22px;background:var(--product-surface);box-shadow:0 24px 80px #122a2333}
+#profile-overlay .auth-dialog-header{background:var(--product-surface);font-size:12px;color:var(--product-muted);padding:10px 22px;border-color:var(--product-line)}
+#profile-overlay .modal-body{padding:24px}
+#profile-overlay #my-dog-profile-card{background:var(--product-soft)!important;color:var(--product-ink);border:1px solid var(--product-line);border-radius:16px!important;padding:22px!important;gap:16px}
+#profile-overlay #my-dog-avatar-big{width:62px!important;height:62px!important;border:1px solid #cbd8cb!important;background-color:#e5ede0!important;font-size:28px!important}
+#profile-overlay .my-profile-eyebrow{font-size:10px;color:var(--product-muted);margin-bottom:7px}
+#profile-overlay #my-dog-name-big{font-size:23px!important;line-height:1.45;color:var(--product-ink)!important;letter-spacing:-.04em}
+#profile-overlay #my-dog-sub-big{color:var(--product-muted)!important;font-size:12px!important}
+#profile-overlay .my-profile-stats{margin-top:8px!important;padding-top:20px!important;border-color:var(--product-line)!important}
+#profile-overlay .my-profile-stats>div+div{border-color:var(--product-line)}
+#profile-overlay .my-profile-stats [id^=my-stat-]{color:var(--product-ink)!important;font-size:23px!important}
+#profile-overlay .my-profile-stats>div>div:last-child{color:var(--product-muted)!important;font-size:10px!important;margin-top:6px}
+#profile-overlay #my-points-shop-btn{background:var(--product-surface)!important;border:1px solid var(--product-line);color:var(--product-ink)!important;border-radius:11px;min-height:50px}
+#profile-overlay #my-admin-btn{border:1px solid var(--product-accent);background:var(--product-accent)!important;border-radius:11px;min-height:50px}
+#profile-overlay .my-setting summary{min-height:64px;font-size:13px;font-weight:550;padding:10px 2px}
+#profile-overlay .my-setting-hint{font-size:11px;color:var(--product-muted)}
+#profile-overlay .my-setting-content{border:1px solid var(--product-line);background:var(--product-soft);padding:8px 16px 18px;margin-bottom:16px}
+#profile-overlay .my-setting-content :is(input:not([type=file]),select){box-sizing:border-box;min-height:46px;background:var(--product-surface);border:1px solid var(--product-line);border-radius:10px;color:var(--product-ink)}
+#profile-overlay .my-setting-content .submit-btn{min-height:46px;background:var(--product-accent);color:var(--product-surface);border-radius:10px;font-weight:600;font-size:13px;box-shadow:none}
+#profile-overlay #withdraw-btn{color:#a34e3d}
+#nick-overlay .auth-modal{background:var(--product-surface)!important;color:var(--product-ink)!important;border:1px solid var(--product-line);backdrop-filter:none;box-shadow:0 24px 80px #122a2333}
+#nick-overlay .auth-dialog-header{background:var(--product-surface);color:var(--product-ink)}
+#nick-overlay :is(#login-modal-title,.auth-welcome,.auth-consent,.auth-email summary,.auth-email label,.auth-divider,.auth-browse,.auth-existing,.auth-privacy-link){color:var(--product-ink)!important}
+#nick-overlay :is(#login-modal-description,#email-login-note,.auth-consent em,.auth-existing){color:var(--product-muted)!important}
+#nick-overlay :is(.auth-consent,.auth-privacy-details) a{color:var(--product-ink)!important}
+#nick-overlay .auth-brand-mark{border:1px solid var(--product-line);background:var(--product-soft);box-shadow:none}
+#nick-overlay .auth-email summary,#nick-overlay #email-login-input{background:var(--product-surface)!important;border-color:var(--product-line)!important;color:var(--product-ink)!important}
+#nick-overlay .auth-divider::before,#nick-overlay .auth-divider::after{background:var(--product-line)}
+#nick-overlay .auth-privacy-details dl{background:var(--product-soft);border-color:var(--product-line)}
+#nick-overlay .auth-privacy-details :is(dt,dd,p,summary){color:var(--product-ink)!important}
+#nick-overlay .auth-email-button{background:var(--product-accent);color:var(--product-surface);border:1px solid var(--product-accent)}
+
+@media(hover:hover){#list-section .course-card:hover{border-color:#b9c9ba;box-shadow:0 7px 24px #213d3309;transform:none}#register-section :is(.tag-check,.type-btn):hover{border-color:#a9bdad}#profile-overlay .my-setting summary:hover{color:var(--product-accent)}}
+@media(max-width:760px){
+ :is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head{margin:0 0 22px;padding-bottom:20px;gap:16px}
+ :is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-size:28px;margin:7px 0 10px;line-height:1.4}
+ :is(#map-section,#list-section,#walk-section,#register-section) .section-head p{font-size:13px!important;line-height:1.85!important}
+ #map-section .map-search-toolbar{padding:18px 16px 14px!important}
+ #map-section #place-search-input{font-size:16px!important}
+ #map-section #view-filter-group .chip{font-size:12px;min-height:46px}
+ #map-section .map-results-bridge{padding:11px 16px!important}
+ #list-section .course-search-panel>.map-toolbar{padding:16px;gap:10px}
+ #list-section :is(#course-search-input,#course-sort-select){font-size:16px!important;min-width:0!important}
+ #list-section #course-search-input{flex-basis:100%}
+ #list-section #course-sort-select{flex:1 1 auto}
+ #list-section :is(.comfort-filter,#course-advanced-filters){padding-left:16px;padding-right:16px}
+ #list-section .course-time-filter{padding:18px 16px}
+ #list-section .walk-time-options{gap:7px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ #list-section .walk-time-options button{min-height:44px;font-size:12px}
+ #list-section .explore-results-head{margin-top:24px;gap:10px}
+ :is(#walk-section,#register-section) .register-panel{grid-template-columns:minmax(0,1fr);gap:20px}
+ :is(#walk-section,#register-section) .form-card{padding:22px 18px;order:0}
+ :is(#walk-section,#register-section) .mini-map-wrap{position:static;order:1;padding:18px}
+ :is(#walk-section,#register-section) :is(#mini-map,#walk-map){height:340px!important;scroll-margin-top:110px}
+ .ui-panel-heading{padding-bottom:17px;margin-bottom:20px}.ui-panel-heading h3{font-size:18px}
+ #walk-section .walk-record-notice{padding:16px}
+ #walk-section .walk-consent-card{padding:16px}
+ #walk-section .walk-consent-option label{font-size:12px}
+ #walk-section .walk-consent-option p{font-size:11px;margin-left:0}
+ #register-section .form-card :is(input:not([type=checkbox]):not([type=file]),textarea,select){font-size:16px}
+ #register-section .type-btn{font-size:11px;gap:5px;padding-left:4px;padding-right:4px}
+ #register-section .type-btn .ui-icon{width:15px;height:15px}
+ #register-section .tag-check{min-height:44px;font-size:12px}
+ #profile-overlay .modal-body{padding:20px}#profile-overlay .my-setting-content input{font-size:16px}
+}
+@media(max-width:370px){:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-size:25px}#register-section .type-btn .ui-icon{display:none}#profile-overlay .modal-body{padding:16px}#profile-overlay #my-dog-profile-card{padding:18px!important;gap:12px}#profile-overlay .my-profile-stats [id^=my-stat-]{font-size:21px!important}}
+@media(prefers-reduced-motion:no-preference){
+ :is(#profile-overlay,#nick-overlay,#admin-overlay).show>.modal{animation:product-dialog-arrive 260ms var(--product-ease)}
+ @keyframes product-dialog-arrive{from{opacity:.55;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
+}
+@media(prefers-reduced-motion:reduce){:is(#profile-overlay,#nick-overlay,#admin-overlay)>.modal{animation:none!important}#list-section .course-card,#bottom-tab-bar button,header .nav-links a{transition:none!important}}
+
+#walk-section .walk-metrics>div:nth-last-child(-n+2){border-bottom:0}
+
+#register-section{background:var(--paper)}
+#walk-section .walk-consent-option label{font-size:14px}
+#walk-section .walk-consent-option p{font-size:12px}
+#nick-overlay #nick-close,#profile-overlay #profile-close{color:var(--product-ink)!important;background:var(--product-soft)!important;border:1px solid var(--product-line);border-radius:50%;font:400 24px/1 system-ui;width:44px;height:44px;flex:none}
+#nick-overlay #nick-close:hover,#profile-overlay #profile-close:hover{background:var(--product-line)!important}
+@media(max-width:980px){:is(#walk-section,#register-section) .register-panel{grid-template-columns:minmax(0,1fr)}:is(#walk-section,#register-section) .mini-map-wrap{position:static;order:1}:is(#walk-section,#register-section) .form-card{order:0}}
+#map-section #professional-map-status{font-size:12px}
