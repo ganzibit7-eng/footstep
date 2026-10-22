@@ -1,0 +1,3922 @@
+[
+  {
+    "id": "u1788314115961",
+    "name": "너나들이채",
+    "address": "가곡7길43-18",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_0_sp4rji",
+    "name": "369펜션",
+    "address": "제주특별자치도 제주시 조천읍 와흘로 369",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_1_eo98of",
+    "name": "가든블루",
+    "address": "경기도 포천시 이동면 화동로 2236-33",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_10_p6ty1d",
+    "name": "강화 어나더153 애견펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 1669-12",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 면 해안남로 1669-12, 23062",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_100_6kozmu",
+    "name": "돌꽃펜션",
+    "address": "충청남도 서산시 해미면 한티2길 36-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_101_so5o0a",
+    "name": "동백하우스",
+    "address": "경상남도 통영시 통영해안로 105-4",
+    "status": "connected",
+    "bookingAddress": "경상남도 통영시 해안로 105-4, 53066",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_102_cmta5b",
+    "name": "동산한옥펜션",
+    "address": "전라남도 담양군 창평면 동산한옥길 81-3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_103_xfhujo",
+    "name": "듀오펜션",
+    "address": "강원도 평창군 방림면 감동지길 116-4",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 평창군 감동지길 116-4, 25364",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_104_s4v8ps",
+    "name": "디어마이펫",
+    "address": "전라북도 완주군 상관면 월암길 30-42",
+    "status": "connected",
+    "bookingAddress": "전라북도 완주군 특별자치도 완주군 상관면 월암길 30-42",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_107_otj1q1",
+    "name": "디제이뭉",
+    "address": "경기도 가평군 설악면 한갑골길 47-43",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_108_w39u2e",
+    "name": "또오개애견펜션",
+    "address": "경기도 양평군 청운면 제비산길 74",
+    "status": "connected",
+    "bookingAddress": "경기도 양평군 제비산길 74, 12532",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_109_bibmso",
+    "name": "라떼하우스",
+    "address": "경기도 양평군 서종면 도장계곡길 54",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_11_qg2rui",
+    "name": "강화 제임스펜션",
+    "address": "인천광역시 강화군 내가면 강화서로227번길 51",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 면 강화서로227번길 51, 23018",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_110_h45c6u",
+    "name": "라라랜드 애견풀빌라",
+    "address": "경상북도 경주시 하동1길 45-6",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_111_dzq8nv",
+    "name": "라메르펜션",
+    "address": "경상북도 울진군 매화면 망양정로 309",
+    "status": "connected",
+    "bookingAddress": "경상북도 울진군 매화면 망양정로 309, 36340",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_112_nl6fbn",
+    "name": "라벤하임애견동반펜션",
+    "address": "강원도 평창군 대관령면 차항길 159-34",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_113_ibcpkh",
+    "name": "라비앙",
+    "address": "강원도 평창군 봉평면 봉평북로 250-60",
+    "status": "address-or-product-review",
+    "bookingAddress": "부산광역시 해운대구 부산광역시 해운대구 중동 1381-5, 48095",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_114_n2ei6x",
+    "name": "라스텔라 스파펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 333",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_115_0ff83r",
+    "name": "라온제나",
+    "address": "제주특별자치도 서귀포시 안덕면 사계로114번길 54-12",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 제주시 11 Panpo 4-gil, 한림, 63003",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_116_i22e76",
+    "name": "라임오렌지펜션",
+    "address": "강원도 홍천군 북방면 구룡밭길 40",
+    "status": "address-or-product-review",
+    "bookingAddress": "경기도 양평군 중미산로 1178-16, 12505",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_117_oq9h5i",
+    "name": "라포레캠핑장",
+    "address": "충청남도 아산시 음봉면 음봉면로 85",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_118_api0yw",
+    "name": "랑랑 랑개 민박",
+    "address": "전라북도 전주시 완산구 객원길 57-28",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_119_qm77j5",
+    "name": "러브스토리 애견펜션",
+    "address": "경기도 양평군 용문면 은행나무길 25-20",
+    "status": "connected",
+    "bookingAddress": "경기도 양평군 은행나무길 25-20 KR, 12509",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_12_ira2p0",
+    "name": "강화 터 애견펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2297-26",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_120_32dydv",
+    "name": "러블리펫108애견펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로 76-27",
+    "status": "connected",
+    "bookingAddress": "인천광역시 옹진군 영흥면 선재로 76-27, 23123",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_121_n3cq3c",
+    "name": "레이크 독채펜션",
+    "address": "전라북도 진안군 백운면 평노길 304",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_122_dqnmrx",
+    "name": "로마스파 애견동반 펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로306번길 27-87",
+    "status": "connected",
+    "bookingAddress": "인천광역시 옹진군 선재로306번길 27-87, 23122",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_123_brrfqi",
+    "name": "로맨틱큐브B",
+    "address": "인천광역시 강화군 길상면 해안남로 664-8",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 해안남로 664-8, 23051",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_124_stngvk",
+    "name": "로얄트리",
+    "address": "강원도 양양군 서면 설악로 1528-29",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_125_23kn58",
+    "name": "로하스펜션",
+    "address": "경상북도 경주시 하동1길 22-2",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_126_trbhph",
+    "name": "르네상스펜션",
+    "address": "충청남도 태안군 안면읍 해안관광로 276-34",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_127_dpb51b",
+    "name": "리멤버 애견동반펜션",
+    "address": "충청남도 태안군 고남면 누동로 19",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_128_73lwby",
+    "name": "리틀미코노스 펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로 76-10",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_129_k8isid",
+    "name": "마레몬테펜션",
+    "address": "경상남도 거제시 일운면 망치2길 28-1",
+    "status": "connected",
+    "bookingAddress": "경상남도 거제시 망치2길 28-1, 53329",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_13_ndqe0t",
+    "name": "강화 팽나무 펜션",
+    "address": "인천광역시 강화군 화도면 동녘말길 41-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_130_uqaou1",
+    "name": "마레카펜션",
+    "address": "제주특별자치도 제주시 한림읍 금능1길 26",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 제주시 금능1길 26, 63010",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_131_7lke45",
+    "name": "마법의성 애견펜션",
+    "address": "경상북도 경주시 새골길 85-11",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 새골길 85-11 마법의성펜션, 38128",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_132_mx004i",
+    "name": "마운틴밸리",
+    "address": "경기도 양평군 용문면 수득골길 96-10",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_133_cuqj3c",
+    "name": "마이웨이 애견펜션",
+    "address": "강원도 홍천군 서면 한서로 1477",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_134_psrdzg",
+    "name": "맘앤도그",
+    "address": "제주특별자치도 제주시 구좌읍 송당4길 5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_135_te2t27",
+    "name": "맘앤도그 단비",
+    "address": "제주특별자치도 제주시 구좌읍 송당2길 36",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_136_s2g37y",
+    "name": "맘앤도그 백호",
+    "address": "제주특별자치도 제주시 구좌읍 송당2길 34",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_137_w6hbv7",
+    "name": "멀베리펜션",
+    "address": "경상북도 청도군 각남면 녹명길 75-75",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_138_6xei88",
+    "name": "멍멍플레이스",
+    "address": "제주특별자치도 제주시 애월읍 소길남길 244-5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_139_tsnifi",
+    "name": "멍스테이",
+    "address": "강원도 고성군 토성면 천진해변길 58",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 고성군 별자치도 고성군 죽왕면 백도해변길 78, 24752",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_14_zekiu8",
+    "name": "강화 해마루 애견동반 펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2289",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_140_z6443q",
+    "name": "멍플스테이",
+    "address": "강원도 평창군 진부면 방아다리로 363-54",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_142_q007ji",
+    "name": "메모리독펜션",
+    "address": "충청남도 태안군 안면읍 안면대로 3343-10",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_8d60c5e0-6fc4-4863-a0bb-5c880ea68721",
+    "name": "양지파인리조트",
+    "address": "경기도 용인시 처인구 양지면 남평로 112",
+    "status": "connected",
+    "bookingAddress": "경기도 용인시 처인구 남평로 112, 17164",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_988c139c-df97-45c8-9229-13d45c6b4ae1",
+    "name": "인제스피디움",
+    "address": "강원특별자치도 인제군 기린면 상하답로 130",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a0d3f999-245e-461b-9aaf-b3d54338ed28",
+    "name": "더펫텔프리미엄스위트",
+    "address": "부산광역시 해운대구 해운대해변로197번길 12",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a7f4e124-29b8-4c4e-a67b-ddb1747d3bb6",
+    "name": "오션투유리조트 속초설악비치 호텔앤콘도",
+    "address": "강원특별자치도 고성군 죽왕면 삼포해변길 9",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 고성군 죽왕면 삼포해변길 9, 24750",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_082dfa14-8e57-49ab-9327-a5d0659dfe23",
+    "name": "프레이저 플레이스 센트럴 서울",
+    "address": "서울특별시 중구 통일로 78",
+    "status": "connected",
+    "bookingAddress": "서울특별시 중구 통일로 78, 04517",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_98aa8220-0b4e-41bc-961d-d3025a33cecf",
+    "name": "힐리언스 선마을",
+    "address": "강원특별자치도 홍천군 종자산길 122",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 종자산길 122, 25104",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_bd104b4e-ca33-4751-8d6f-6b9534a3e6b2",
+    "name": "오크우드 프리미어 인천",
+    "address": "인천광역시 연수구 컨벤시아대로 165",
+    "status": "connected",
+    "bookingAddress": "인천광역시 연수구 KR, 165 컨벤시아대로, 21998",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_da8f0343-bc35-4a8f-bfe7-9bbdaa43ee2f",
+    "name": "지리산호수리조트",
+    "address": "전남광주통합특별시 구례군 산동면 구만제로 610",
+    "status": "connected",
+    "bookingAddress": "전남광주 구례군 구만제로 610, Gurye, South Jeolla, 57603",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_ede75d90-91fe-4dc6-b2ec-a8572ae4d107",
+    "name": "레스케이프 호텔(L’Escape Hotel)",
+    "address": "서울특별시 중구 퇴계로 67",
+    "status": "connected",
+    "bookingAddress": "서울특별시 중구 퇴계로 67, 04529",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a9822b57-e85d-4386-b90a-faeb4b8b5c03",
+    "name": "가야산생태탐방원",
+    "address": "경상북도 성주군 수륜면 봉양로1길 313",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_138900",
+    "name": "보노펜션",
+    "address": "강원특별자치도 양양군 손양면 선사유적로 240-29",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 고성군 별자치도 고성군 죽왕면 자작도선사길 74, 24752",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_142957",
+    "name": "메종 글래드 제주",
+    "address": "제주특별자치도 제주시 노연로 80",
+    "status": "platform-policy-review",
+    "bookingAddress": "제주특별자치도 제주시 노연로 80, 63132",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_1954014",
+    "name": "벨루스로즈펜션",
+    "address": "경상북도 경주시 북군길 107-19 (북군동)",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상북도 경주시 515-15, 38116",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2544734",
+    "name": "한채당 한옥체험관",
+    "address": "충청남도 태안군 소원면 송의로 695-9",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2708334",
+    "name": "라마다 호텔앤스위트 서울남대문",
+    "address": "서울특별시 중구 칠패로 27 (순화동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2717384",
+    "name": "펫티움애견펜션",
+    "address": "강원특별자치도 홍천군 서면 한서로 2344-12",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 홍천군 서면 한서로 2344-14, 25103",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2804347",
+    "name": "스테이 앤드 스튜디오 여여재",
+    "address": "충청남도 태안군 몽대로 448",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2848429",
+    "name": "호텔더스타일",
+    "address": "경기도 수원시 팔달구 인계로124번길 41-5 (인계동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2903063",
+    "name": "파인아트라벨",
+    "address": "강원특별자치도 강릉시 해안로 32 (견소동)",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 강릉시 송정동 해안로 32, 25556",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2904774",
+    "name": "으지네민박",
+    "address": "강원특별자치도 평창군 진부면 탑동길 108-16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2907697",
+    "name": "오키드호텔",
+    "address": "강원특별자치도 원주시 봉화로 26 (단계동)",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 원주시 별자치도 원주시 봉화로 26, 26436",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_2910876",
+    "name": "리센 오션파크 호텔",
+    "address": "강원특별자치도 속초시 해오름로 167 (조양동)",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 속초시 해오름로 167, 24887",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_3072008",
+    "name": "향초목원",
+    "address": "강원특별자치도 삼척시 가곡면 탕곡길 473-174",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_397938",
+    "name": "정온펜션",
+    "address": "경기도 광주시 퇴촌면 갈올길11번길 38",
+    "status": "connected",
+    "bookingAddress": "경기도 광주 갈올길11번길 38, 12713",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020_599618",
+    "name": "레피다리조트",
+    "address": "충청남도 태안군 이원면 태포길 266",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_136642",
+    "name": "켄싱턴리조트 충주",
+    "address": "충청북도 충주시 앙성면 산전장수1길 103",
+    "status": "connected",
+    "bookingAddress": "충청북도 충주시 산전장수1길 103, 27302",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_138662",
+    "name": "한화리조트 평창",
+    "address": "강원특별자치도 평창군 봉평면 태기로 228-33",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 평창군 봉평면 태기로 228-33, 25309",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_1871362",
+    "name": "문화공간 양사재",
+    "address": "전북특별자치도 전주시 완산구 오목대길 40 양사재",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_1883135",
+    "name": "안동고택 이상루",
+    "address": "경상북도 안동시 서후면 풍산태사로 3193-6 (서후면)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_1990092",
+    "name": "고성 최필간고택",
+    "address": "경상남도 고성군 하일면 학동돌담길 55 (하일면)",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 고성군 돌담길 55, 52956",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2706485",
+    "name": "오류헌",
+    "address": "경상북도 안동시 임하면 기르마제길 18-15",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2707444",
+    "name": "가영당",
+    "address": "충청북도 청주시 청원구 오창읍 미래지로 71-54",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청북도 청주시 청원구 오창읍 미래지로 71-52, 28105",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2770515",
+    "name": "대천리조텔",
+    "address": "충청남도 보령시 고잠1길 38 (신흑동)",
+    "status": "platform-policy-review",
+    "bookingAddress": "충청남도 보령시 대천5동 고잠1길 38, 33488",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2775643",
+    "name": "오션힐리조트",
+    "address": "충청남도 태안군 남면 곰섬로 430-37",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청남도 태안군 880-7, 32158",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2903760",
+    "name": "38마린리조트",
+    "address": "강원특별자치도 양양군 현북면 동해대로 1280",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_2962354",
+    "name": "행복하개 애견 펜션",
+    "address": "경기도 연천군 미산면 노아로 670-84",
+    "status": "connected",
+    "bookingAddress": "경기도 연천군 노아로 670-84, 11046",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_3012037",
+    "name": "무아레 도그라운드",
+    "address": "경기도 가평군 청평면 북한강로1636번길 25",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_3044585",
+    "name": "바다내음펜션(평창)",
+    "address": "강원특별자치도 평창군 봉평면 흥정계곡길 410",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 평창군 흥정계곡길 410, 25300",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_4091446",
+    "name": "신라모노그램 강릉",
+    "address": "강원특별자치도 강릉시 해안로 210 (송정동)",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 강릉시 강원특별자치도 강릉시 해안로 186, 25556",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_4127721",
+    "name": "더 히로 플레이 그라운드",
+    "address": "경기도 포천시 화현면 봉화로 201-65",
+    "status": "address-or-product-review",
+    "bookingAddress": "경기도 포천시 163-6, 11125",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_678650",
+    "name": "세도나 애견 펜션",
+    "address": "강원특별자치도 홍천군 북방면 노일로238번길 33",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020b_819941",
+    "name": "히로텔",
+    "address": "대구광역시 중구 국채보상로 657-12 (동인동2가)",
+    "status": "address-or-product-review",
+    "bookingAddress": "대구광역시 중구 52-2, 41914",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_137486",
+    "name": "클럽이에스제천리조트",
+    "address": "충청북도 제천시 수산면 옥순봉로 1248",
+    "status": "connected",
+    "bookingAddress": "충청북도 제천시 충청북도 제천시 수산면 옥순봉로 1248, 27218",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_2020385",
+    "name": "애견민박 멍집",
+    "address": "충청남도 태안군 소원면 파도길 71-7",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_2804370",
+    "name": "화담재",
+    "address": "전남광주통합특별시 강진군 달빛한옥길 3",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 서귀포시 4-1 Taewi-ro 852beon-gil, Namwon-eup, Seogwipo-si, Jeju-do, Republic of Korea, 성산",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_2918548",
+    "name": "헤이, 서귀포",
+    "address": "제주특별자치도 서귀포시 태평로 363 (서귀동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3346822",
+    "name": "댕댕별숲",
+    "address": "경기도 양평군 용문면 중원산로 234",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3348137",
+    "name": "멍펜션",
+    "address": "경기도 가평군 조종면 현등사길 55-361",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 조종면 현등사길 55-361, 12432",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3348343",
+    "name": "위드제이",
+    "address": "강원특별자치도 횡성군 우천면 하궁로263번길 22-28",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3483793",
+    "name": "더휴식 아늑호텔 수원 인계점",
+    "address": "경기도 수원시 팔달구 인계로94번길 29 (인계동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3540778",
+    "name": "풀스테이 스테이온 가평",
+    "address": "경기도 가평군 가평읍 북한강변로 1027-57",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_3543710",
+    "name": "풀스테이 스테이펫 홍천",
+    "address": "강원특별자치도 홍천군 화촌면 답연밭길 5-2",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_397690",
+    "name": "하늘향기펜션",
+    "address": "경기도 포천시 일동면 사기막길 213",
+    "status": "connected",
+    "bookingAddress": "213, Sagimak-gil, Ildong-myeon, 11118 포천시, 경기도",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020c_735314",
+    "name": "까델아스",
+    "address": "제주특별자치도 제주시 애월읍 신엄9길 46",
+    "status": "platform-policy-review",
+    "bookingAddress": "제주특별자치도 제주시 신엄9길 46, 애월",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020d_3483847",
+    "name": "더휴식 아늑 워커스 안산점",
+    "address": "경기도 안산시 상록구 성호로1길 12-4 (일동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020d_3484267",
+    "name": "미타스야 료칸 호텔 인천서구청역점",
+    "address": "인천광역시 서해구 서곶로301번길 20 (심곡동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020d_3567842",
+    "name": "쏠비치 남해",
+    "address": "경상남도 남해군 미조면 미송로303번길 115",
+    "status": "connected",
+    "bookingAddress": "경상남도 남해군 경남 남해군 미조면 미송로303번길 115, 52441",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_new_20261020e_951444",
+    "name": "홀리데이인&스위트 알펜시아 평창",
+    "address": "강원특별자치도 평창군 대관령면 솔봉로 325",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_143_z0dp4p",
+    "name": "메이하우스",
+    "address": "충청남도 보령시 웅천읍 간드리큰길 104-7",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_144_jk2scj",
+    "name": "모두올레 애견펜션",
+    "address": "제주특별자치도 서귀포시 남원읍 남태해안로 279-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_145_l2wtqa",
+    "name": "모모토토펜션",
+    "address": "경상남도 남해군 남면 남면로 240-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_146_0bk3n2",
+    "name": "몬테비얀코 캠핑장",
+    "address": "경기도 포천시 이동면 늠바위길 181",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_147_ecqlo3",
+    "name": "몽앤몽펜션",
+    "address": "충청남도 태안군 남면 몽대로 426-104",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 몽대로 426-104, 32152",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_148_m2eddd",
+    "name": "무릉도원",
+    "address": "전라북도 완주군 동상면 대아수목로 534-39",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_149_17wh93",
+    "name": "무안 동이트는집",
+    "address": "전라남도 무안군 일로읍 일로로 753-111",
+    "status": "connected",
+    "bookingAddress": "전남광주 무안군 읍 일로로 753-111, 58576",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_15_59i7i3",
+    "name": "강화 향기정원 애견동반펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2166-39",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_150_jinf20",
+    "name": "무주 그랜드펜션",
+    "address": "전라북도 무주군 설천면 구천동1로 135-6",
+    "status": "connected",
+    "bookingAddress": "전라북도 무주군 구천동1로 135-6, 55557",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_151_5c315b",
+    "name": "무지개마을펜션",
+    "address": "경기도 양평군 서종면 황순원로 247-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_152_htz6dh",
+    "name": "문고리 한옥 독채 풀빌라펜션",
+    "address": "경상북도 경주시 외외길 172-32",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_153_hgwjk9",
+    "name": "물맑음펜션",
+    "address": "경기도 남양주시 수동면 비룡로수자1길 76-15",
+    "status": "connected",
+    "bookingAddress": "경기도 남양주시 비룡로수자1길 76-15, 12028",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_154_4o92lv",
+    "name": "바다빛무지개펜션",
+    "address": "강원도 양양군 현남면 매바위길 63",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_155_0tteaz",
+    "name": "바다와펜션",
+    "address": "강원도 강릉시 사천면 해안로 1081",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 강릉시 사천면 해안로 1081, 25435",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_156_hjonzh",
+    "name": "바릴로체",
+    "address": "강원도 홍천군 서면 굴업솔골길 91",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_157_tpyuok",
+    "name": "바산올레펜션",
+    "address": "제주특별자치도 서귀포시 안덕면 대평로 29",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_158_i7gfy0",
+    "name": "반디빌리지",
+    "address": "경기도 가평군 설악면 묵안로 287",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_159_a52aji",
+    "name": "발렌타인",
+    "address": "강원도 양양군 손양면 남대천로 251-117",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_16_uv2060",
+    "name": "강화도바다네스파펜션",
+    "address": "인천광역시 강화군 길상면 해안남로 789-17",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_160_zir6as",
+    "name": "밸런스독 애견펜션",
+    "address": "경기도 양평군 지평면 바깥섬부리1길 3-29",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_161_4ytxko",
+    "name": "버드힐펜션",
+    "address": "경기도 양평군 용문면 덕촌길 231-7",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_162_lwqbv9",
+    "name": "베라데로펜션",
+    "address": "충청남도 태안군 남면 용궁길 77",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 용궁길 77, 32157",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_163_pa7lbx",
+    "name": "벤치하우스",
+    "address": "강원도 평창군 봉평면 흥정계곡1길 35-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_164_u13u4x",
+    "name": "벨르앙쥬",
+    "address": "경기도 가평군 상면 임초밤안골로 269-14",
+    "status": "connected",
+    "bookingAddress": "269-14, Imchobamangol-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do, Korea, 12447 가평군, 경기도",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_165_vu0mxg",
+    "name": "벼리채",
+    "address": "전라북도 전주시 완산구 서학3길 67",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_166_sax8zu",
+    "name": "별빛정원펜션",
+    "address": "강원도 평창군 봉평면 버들개길 80-9",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_167_ilth5f",
+    "name": "복골온천",
+    "address": "강원도 양양군 강현면 복골길201번길 58",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_168_p5vs83",
+    "name": "부산 반딧불이펜션",
+    "address": "부산광역시 기장군 장안읍 기룡1길 43-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_169_ioi2gl",
+    "name": "부안 석란정펜션",
+    "address": "전라북도 부안군 진서면 원암길 39-3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_17_717cvu",
+    "name": "강화돌담캠핑 글램핑",
+    "address": "인천광역시 강화군 삼산면 삼산북로 397-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_170_gj2jaf",
+    "name": "부엉이 애견펜션",
+    "address": "경기도 포천시 일동면 윗갈기길 23-12",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_171_p7prkp",
+    "name": "뷰나인 펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2709-8",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_172_s77x9x",
+    "name": "브로콜리펜션",
+    "address": "충청남도 보령시 웅천읍 삼정골길 64",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_173_sizj2s",
+    "name": "블루베리",
+    "address": "충청남도 태안군 남면 우운길 56-17",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_174_idasgm",
+    "name": "비쥬펜션",
+    "address": "충청남도 태안군 안면읍 꽃지해안로 177-12",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 꽃지해안로 177-12, 32166",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_175_835bn1",
+    "name": "비치하우스",
+    "address": "경상남도 거제시 장목면 옥포대첩로 1358",
+    "status": "address-or-product-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_176_sdwxed",
+    "name": "빈티지라디오하우스 애견펜션",
+    "address": "충청남도 태안군 안면읍 대야로 304-33",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_177_r8gvt2",
+    "name": "사랑가펜션",
+    "address": "경상남도 남해군 상주면 남해대로 711",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_178_albud7",
+    "name": "산내들 펜션",
+    "address": "강원도 평창군 봉평면 버들개길 80-11",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_179_w9l5bv",
+    "name": "산울터 애견펜션",
+    "address": "경기도 포천시 이동면 늠바위길 148-169",
+    "status": "connected",
+    "bookingAddress": "경기도 포천시 늠바위길 148-169",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_18_o5oue2",
+    "name": "개가사는그집 펜션",
+    "address": "경기도 가평군 가평읍 복장포길 85",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_180_gcac9h",
+    "name": "산음자연휴양림",
+    "address": "경기도 양평군 단월면 고북길 347",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_181_h70fo6",
+    "name": "산타페펜션",
+    "address": "경상남도 거제시 장목면 율천두모로 126",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_182_9pth88",
+    "name": "새벽종 펜션",
+    "address": "경기도 포천시 화현면 화동로348번길 38-120",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_183_15x585",
+    "name": "샌디애견하우스",
+    "address": "제주특별자치도 제주시 애월읍 예원로 121",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_184_9bhe7q",
+    "name": "생각이나 펜션",
+    "address": "경기도 양평군 단월면 명성길 128-4",
+    "status": "connected",
+    "bookingAddress": "경기도 양평군 명성길 128-4, 12526",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_185_z9w5vs",
+    "name": "서귀포 제주앓이 펜션",
+    "address": "제주특별자치도 서귀포시 일주서로 166-56",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_186_l5t6ii",
+    "name": "서귀포 청 리조트",
+    "address": "제주특별자치도 서귀포시 중산간서로157번길 68",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_187_boimpw",
+    "name": "서귀포 캠파제주",
+    "address": "제주특별자치도 서귀포시 516로 574-23",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_188_nh9hvi",
+    "name": "석모도 박정아펜션",
+    "address": "인천광역시 강화군 삼산면 어류정길212번길 86-6",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 어류정길212번길 86-6, 23007",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_189_0ngw2h",
+    "name": "선재도 아리랑힐 호텔 리조트",
+    "address": "인천광역시 옹진군 영흥면 선재로 318-38",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_19_4qvafh",
+    "name": "개들의수다",
+    "address": "경기도 김포시 고촌읍 은행영사정로51번길 42",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_190_osie8z",
+    "name": "선재도 종이학펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로186번길 78",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_191_haqnyf",
+    "name": "섬마을펜션",
+    "address": "경상남도 거제시 일운면 거제대로 1988-10",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 거제시 53329",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_192_mk0wr2",
+    "name": "세인트존스 경포 호텔",
+    "address": "강원도 강릉시 창해로 307",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 강릉시 창해로 307, 25467",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_193_i0hx3j",
+    "name": "세인트펜션",
+    "address": "경기도 포천시 신북면 청신로 693",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_194_x25p93",
+    "name": "소노펫 클럽앤리조트 비발디파크",
+    "address": "강원도 홍천군 서면 한치골길 262",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 별자치도 홍천군 서면 한치골길 262, 25102",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_195_87kx7l",
+    "name": "소라잡는댕댕이펜션",
+    "address": "충청남도 태안군 안면읍 삼봉길 153",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_196_gvnfk1",
+    "name": "속초애견펜션 양양빈티지하우스",
+    "address": "강원도 양양군 손양면 수산2길 16-11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_197_heu6ww",
+    "name": "속초애견펜션 양양해피플레이스",
+    "address": "강원도 양양군 강현면 중복골길 11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_198_bztfav",
+    "name": "솔펜션",
+    "address": "제주특별자치도 제주시 구좌읍 해맞이해안로 2478",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_199_kl1up0",
+    "name": "솔푸른향기펜션",
+    "address": "충청남도 태안군 안면읍 수해길 85-71",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_2_oud0f2",
+    "name": "가원별장 펜션",
+    "address": "경기도 양평군 단월면 명성길 176-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_20_5t3ozd",
+    "name": "개리비안베이",
+    "address": "충청남도 태안군 소원면 법산길 584-40",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 법산길 584-40, 32119",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_21_f8bs91",
+    "name": "개인공간",
+    "address": "경상북도 경주시 천북면 산업로 4694-23",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 산업로 4694-23, 38041",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_24_lrt11v",
+    "name": "개팔자상팔자펜션",
+    "address": "강원도 홍천군 서면 한서로 2278-9",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_25_bydzog",
+    "name": "거제 도그펜션",
+    "address": "경상남도 거제시 일운면 북병산로 475-9",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_26_fjq71d",
+    "name": "거제 블루캐슬 애견펜션",
+    "address": "경상남도 거제시 일운면 거제대로 1477",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_27_i6289e",
+    "name": "거제봄날펜션",
+    "address": "경상남도 거제시 동부면 가배오송길 139",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_28_r9namk",
+    "name": "거제해돋이 애견펜션",
+    "address": "경상남도 거제시 장목면 신촌길 13-11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_29_96o1um",
+    "name": "게스트하우스 하하네",
+    "address": "서울특별시 마포구 토정로17길 31-8",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_3_ur1cla",
+    "name": "가평힐링타임펜션",
+    "address": "경기도 가평군 상면 수목원로 181-26",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_30_d010v1",
+    "name": "게스트하우스파티유쾌한환이네",
+    "address": "제주특별자치도 서귀포시 성산읍 일주동로 4675",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_31_naigsy",
+    "name": "경포딩가 애견펜션",
+    "address": "강원도 강릉시 하남길 345-7",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_32_w5q3uz",
+    "name": "경포코지펜션",
+    "address": "강원도 강릉시 난설헌로219번길 22",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_33_w5y7gu",
+    "name": "고운정",
+    "address": "광주광역시 광산구 임곡연동길 131-13",
+    "status": "connected",
+    "bookingAddress": "전남광주통합특별시 광산구 임곡연동길 131-13",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_34_uo46i0",
+    "name": "고흥 남열해돋이펜트하우스",
+    "address": "전라남도 고흥군 영남면 남열본동2길 48-58",
+    "status": "connected",
+    "bookingAddress": "전남광주 고흥군 남열본동2길 48-58, 59521",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_35_5uq7f3",
+    "name": "고흥 누림펜션",
+    "address": "전라남도 고흥군 동일면 봉영로 542-6",
+    "status": "connected",
+    "bookingAddress": "전남광주 고흥군 봉영로 542-6, 59567",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_36_h5a7ec",
+    "name": "고흥 힐링 펜션",
+    "address": "전라남도 고흥군 금산면 거금일주로 1467",
+    "status": "connected",
+    "bookingAddress": "전남광주 고흥군 거금일주로 1467, 59566",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_37_d8s9zl",
+    "name": "골드독펜션",
+    "address": "충청남도 태안군 안면읍 붓드기길 4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_38_738g5z",
+    "name": "곰나루펜션",
+    "address": "충청남도 공주시 사곡면 정안마곡사로 1355-50",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_39_18rdyv",
+    "name": "구례 섬진강햇살맞이펜션",
+    "address": "전라남도 구례군 토지면 섬진강대로 4142-51",
+    "status": "connected",
+    "bookingAddress": "전남광주 구례군 섬진강대로 4142-51, 57623",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_4_ownzuz",
+    "name": "강이네하우스",
+    "address": "강원도 양양군 서면 상평1길 17-2",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 양양군 상평1길 17-4, 25035",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_40_8j2ggv",
+    "name": "구례 시크릿가든",
+    "address": "전라남도 구례군 토지면 피아골로 215",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_41_j38ot8",
+    "name": "구례 지리산 봉쥬르펜션",
+    "address": "전라남도 구례군 토지면 섬진강대로 4310-20",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_42_541hsw",
+    "name": "구름이쉬어가는곳펜션",
+    "address": "강원도 평창군 봉평면 꿈동산길 39-30",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_43_2kfgx8",
+    "name": "군산 선유도리조트",
+    "address": "전라북도 군산시 옥도면 선유북길 129-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_44_vr8l2e",
+    "name": "굿모닝하우스 펜션",
+    "address": "경기도 가평군 가평읍 태봉두밀로406번길 282",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_45_zua8rd",
+    "name": "궁호텔",
+    "address": "전라북도 전주시 덕진구 용산1길 17-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_46_asfdng",
+    "name": "그디글라 게스트하우스",
+    "address": "제주특별자치도 제주시 애월읍 광령4길 10-6",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 제주시 광령4길 10-6, 63062",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_47_5340ag",
+    "name": "그랑샤리오펜션",
+    "address": "강원도 평창군 방림면 감동지길 104",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 평창군 감동지길 104",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_48_8njkhu",
+    "name": "그레이캐슬펜션",
+    "address": "경기도 양주시 장흥면 권율로309번길 67-16",
+    "status": "address-or-product-review",
+    "bookingAddress": "경기도 양주시 권율로309번길 67-22, 11519",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_49_i76eh0",
+    "name": "그리다숨",
+    "address": "충청남도 태안군 안면읍 안수터길 75-2",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_5_tn6yyc",
+    "name": "강화 고벵이 오션뷰 수영장 애견동반 펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2506-16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_50_r17ynu",
+    "name": "그린듯이 아름다운",
+    "address": "경기도 가평군 조종면 명지산로 337-251",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_51_ulf4wr",
+    "name": "글램독 애견펜션 거제점",
+    "address": "경상남도 거제시 동부면 함박금길 26-5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_52_yth4eh",
+    "name": "글램독 애견펜션 영흥도점",
+    "address": "인천광역시 옹진군 영흥면 영흥남로9번길 123",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_53_j0obt6",
+    "name": "글램독 애견펜션 통영점",
+    "address": "경상남도 통영시 광도면 용호로 285-16",
+    "status": "connected",
+    "bookingAddress": "경상남도 통영시 광도면 용호로 285-16",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_54_qv20el",
+    "name": "글램핑코리아 양주애견점",
+    "address": "경기도 양주시 백석읍 권율로 848",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_55_7yxdpt",
+    "name": "까사린다",
+    "address": "제주특별자치도 제주시 한림읍 명월로6길 28",
+    "status": "address-or-product-review",
+    "bookingAddress": "9.3\n훌륭함\n전체 11개 리뷰\n재방문100프로 숙소입니다 너무 잘 지내고 왔습니다👍",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_56_desacb",
+    "name": "꼬로몽 애견펜션",
+    "address": "강원도 양양군 서면 원당골길 111",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_57_m0hmsp",
+    "name": "꼰띠고 애견펜션",
+    "address": "충청남도 태안군 안면읍 붓드기길 76",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_58_kbytsj",
+    "name": "꼴 게스트하우스",
+    "address": "전라북도 전주시 완산구 은행로 21",
+    "status": "address-or-product-review",
+    "bookingAddress": "전라북도 전주시 완산구 은행로 21-1",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_59_zabghw",
+    "name": "꽃지해송펜션",
+    "address": "충청남도 태안군 안면읍 꽃지2길 35-9",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 꽃지2길 35-9, 32166",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_6_hjk7f0",
+    "name": "강화 로만티카애견리조트",
+    "address": "인천광역시 강화군 화도면 해안남로 1986",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_60_pa6o7o",
+    "name": "꿈꾸는다락방",
+    "address": "충청남도 태안군 안면읍 해안관광로 730-3",
+    "status": "connected",
+    "bookingAddress": "730-3 Haeangwangwang-ro, Anmyeon-eup, Taean-gun, Chungcheongnam-do, Republic of Korea, 태안군, 충청남도",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_61_wtc0mf",
+    "name": "나비스호텔",
+    "address": "제주특별자치도 제주시 애월읍 애월해안로 885",
+    "status": "address-or-product-review",
+    "bookingAddress": "5.3\n전체 141개 리뷰\n해변 바로 앞이라 좋았어요.\n나름 편하게 지낼수있었습니다 추천",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_62_1r4hkj",
+    "name": "남양펜션",
+    "address": "강원도 춘천시 사북면 화악지암길 126",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_63_zsjsxm",
+    "name": "남원 하늘정원 빌리지",
+    "address": "전라북도 남원시 산내면 산내달궁길 16-10",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_64_g2pf01",
+    "name": "남해 바다의숲펜션",
+    "address": "경상남도 남해군 미조면 동부대로 83",
+    "status": "connected",
+    "bookingAddress": "경상남도 남해군 동부대로 83 (바다의숲펜션), 52441",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_65_bbgozz",
+    "name": "남해 요기가펜션",
+    "address": "경상남도 사천시 서포면 제비길 164",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_66_ackigt",
+    "name": "낮은굴뚝펜션",
+    "address": "충청남도 태안군 이원면 사관로 245-63",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 사관로 245-63, 32102",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_67_yr814c",
+    "name": "노루목홍천강",
+    "address": "강원도 홍천군 북방면 노루목길 66",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_68_9b7nxu",
+    "name": "노블렛유스호스텔",
+    "address": "제주특별자치도 서귀포시 남원읍 남조로 861-83",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_69_wmahky",
+    "name": "노비오스",
+    "address": "경상북도 경주시 진티길 37-4",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 진티길 37-4, 38127",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_7_p2mq7s",
+    "name": "강화 로맨틱큐브펜션",
+    "address": "인천광역시 강화군 길상면 해안남로 664-11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_70_u3mnon",
+    "name": "노을앤바다 펜션",
+    "address": "인천광역시 옹진군 영흥면 영흥서로 465-22",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_71_g4btdi",
+    "name": "노이하우스",
+    "address": "경상남도 남해군 삼동면 독일로 64-11",
+    "status": "connected",
+    "bookingAddress": "경상남도 남해군 독일로 64-11, 52447",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_72_1wgmnv",
+    "name": "노팅힐 펜션",
+    "address": "경기도 가평군 북면 백둔로 379",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_73_0b6sr2",
+    "name": "놀개나개",
+    "address": "인천광역시 중구 운중로14번길 28",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_74_019ktl",
+    "name": "놀러와펜션",
+    "address": "충청남도 태안군 고남면 안면대로 4269-7",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청남도 태안군 616번지 놀러, 32172",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_76_463ph6",
+    "name": "놀러와펜션",
+    "address": "경상북도 울진군 죽변면 울진북로 1103-17",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_78_irubs0",
+    "name": "놀멍애견펜션",
+    "address": "경기도 포천시 화현면 봉화로 173-23",
+    "status": "connected",
+    "bookingAddress": "경기도 포천시 봉화로 173-23, 11125",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_79_0ny6dq",
+    "name": "농띠펜션",
+    "address": "제주특별자치도 제주시 구좌읍 김녕항3길 18-16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_8_vdplqi",
+    "name": "강화 마니산스토리",
+    "address": "인천광역시 강화군 화도면 해안남로2220번길 30",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_80_2929cy",
+    "name": "뉴호수장",
+    "address": "강원도 강릉시 창해로 491",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_81_x8jl2m",
+    "name": "뉴힐링 스파펜션",
+    "address": "경기도 가평군 청평면 북한강로 2173",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_82_f473i2",
+    "name": "느낌 스파펜션",
+    "address": "전라남도 여수시 돌산읍 계동로 536",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_83_8mhacd",
+    "name": "늘바다펜션",
+    "address": "제주특별자치도 서귀포시 안덕면 대평로 38",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_84_3pwh5s",
+    "name": "다온재 펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 산성효자로114번길 121-2",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 서귀포시 산성효자로114번길 121-3, 63639",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_85_9mnpnu",
+    "name": "다와풀빌라펜션",
+    "address": "제주특별자치도 서귀포시 안덕면 소기왓로 81-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_86_bpnxv2",
+    "name": "달빛길스테이",
+    "address": "전라북도 진안군 부귀면 오산길 74-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_87_msah2a",
+    "name": "대부도 미림펜션 신관",
+    "address": "인천광역시 옹진군 영흥면 영흥로 679",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_88_rzbsvu",
+    "name": "더담양하우스",
+    "address": "전라남도 담양군 가사문학면 지실길 63",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_89_heiadd",
+    "name": "더마루애견펜션",
+    "address": "충청남도 태안군 안면읍 삼봉길 72-30",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_9_ct9r4p",
+    "name": "강화 아우라 독채펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2166-32",
+    "status": "platform-policy-review",
+    "bookingAddress": "인천광역시 강화군 면 해안남로 2166-32, 23061",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_90_ih8b9g",
+    "name": "더마을펜션",
+    "address": "경기도 가평군 청평면 모꼬지로 124-25",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_91_38s4dp",
+    "name": "더큐브펜션",
+    "address": "경기도 양평군 단월면 양동로 225",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_92_7f70r1",
+    "name": "더퍼피즈블루오션 애견펜션",
+    "address": "강원도 양양군 강현면 동해대로 3411",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_93_i94lln",
+    "name": "덕적도 365 아일랜드 펜션",
+    "address": "인천광역시 옹진군 덕적면 덕적남로606번길 166-22",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_94_f4af6t",
+    "name": "덕적도 섬사랑 펜션",
+    "address": "인천광역시 옹진군 덕적면 덕적남로606번안길 3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_95_plz91y",
+    "name": "도그마실 흙집사랑 펜션",
+    "address": "강원도 홍천군 북방면 성동로 1480",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_96_7z1beg",
+    "name": "도그버디펜션",
+    "address": "경기도 가평군 북면 화악산로356번길 44-145",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 화악산로356번길 44-145, 12404",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_97_nk8m7s",
+    "name": "도그엔조이 애견펜션",
+    "address": "경기도 양평군 강하면 강하1로 466-39",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_98_3fewp4",
+    "name": "도치빌 펜션",
+    "address": "경기도 가평군 청평면 고재길 280",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 고재길 280, 12456",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_99_s0f9ka",
+    "name": "돌고개 휴펜션",
+    "address": "경기도 양주시 장흥면 권율로309번길 263",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_200_rijm5j",
+    "name": "순천 노을펜션",
+    "address": "전라남도 순천시 별량면 일출길 322-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_201_bukxtv",
+    "name": "순천 라온하우스애견펜션",
+    "address": "전라남도 순천시 왕지로 238-3",
+    "status": "connected",
+    "bookingAddress": "전남광주 순천시 왕지로 238-3, 57931",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_202_rrj9or",
+    "name": "순천만 로맨스펜션",
+    "address": "전라남도 순천시 순천만길 342",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_203_3wdfac",
+    "name": "숨은빛 펜션",
+    "address": "경기도 양평군 청운면 가현길 398",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_204_0lnkmb",
+    "name": "숲속의 집",
+    "address": "강원도 양양군 현북면 어성전길 402",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_205_e8v0tt",
+    "name": "숲속의정원 애견동반펜션",
+    "address": "강원도 고성군 죽왕면 곡실평길 332",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_206_qrz7cu",
+    "name": "숲속의핀란드 펜션",
+    "address": "충청남도 태안군 소원면 은골길 128",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_207_0xlb4c",
+    "name": "쉐르빌",
+    "address": "강원도 홍천군 서면 밤벌길19번길 111",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826322_208_t0b6wq",
+    "name": "슈가브리움 호텔 리조트",
+    "address": "전라남도 여수시 돌산읍 몰둠벙길 54",
+    "status": "platform-policy-review",
+    "bookingAddress": "전남광주 여수시 몰둠벙길 54, 59771",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_209_7amgsc",
+    "name": "슈에뜨펜션캠핑",
+    "address": "경기도 가평군 청평면 호명리길 134",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_210_fr9rfc",
+    "name": "스머프마을펜션",
+    "address": "경상남도 남해군 남면 남서대로 1357-12",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_211_ptitsi",
+    "name": "스위트몽",
+    "address": "경기도 가평군 상면 축령로 102",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_212_ospwxu",
+    "name": "스테이감동",
+    "address": "강원도 홍천군 북방면 노일로 206-12",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_213_k5jnxb",
+    "name": "스테이기북",
+    "address": "경상북도 포항시 북구 기북면 기북로 728-40",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_214_hkv0yp",
+    "name": "스테이독 애견펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로 264",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_215_1vryyy",
+    "name": "스테이멍 애견펜션",
+    "address": "전라남도 여수시 돌산읍 향일암로 717",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 향일암로 717, 59778",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_216_ym93az",
+    "name": "스테이원향",
+    "address": "대구광역시 남구 이천로28길 27-2",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_217_earze1",
+    "name": "시골똥개 애견펜션",
+    "address": "충청남도 태안군 안면읍 해안관광로 81-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_218_bm8ccu",
+    "name": "신나는 펜션",
+    "address": "강원도 강릉시 사천면 중앙서로 484-77",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 강릉시 별자치도 강릉시 사천면 중앙서로 484-77, 25438",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_219_jt0axf",
+    "name": "썬하우스",
+    "address": "충청남도 태안군 안면읍 해안관광로 276-36",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_220_6ipcdf",
+    "name": "쓰담쓰담펜션",
+    "address": "경기도 포천시 일동면 사기막길 67-4",
+    "status": "connected",
+    "bookingAddress": "경기도 포천시 사기막길 67-4, 11118",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_221_522eno",
+    "name": "씨사이드아덴",
+    "address": "제주특별자치도 서귀포시 중문관광로 124",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 서귀포시 중문관광로 124, 63535",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_222_gk02sx",
+    "name": "씨앤뷰 풀빌라펜션",
+    "address": "경상남도 남해군 남면 남면로 1523-19",
+    "status": "connected",
+    "bookingAddress": "경상남도 남해군 남면로 1523-19, 52434",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_223_pej96x",
+    "name": "아난티 남해 호텔",
+    "address": "경상남도 남해군 남면 남서대로1179번길 40-109",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_224_5p8cpq",
+    "name": "아델펜션",
+    "address": "강원도 홍천군 서면 굴업솔골길 60",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 굴업솔골길 60, 25103",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_225_dk794e",
+    "name": "아띠랑스 펜션",
+    "address": "강원도 강릉시 사천면 방동길 276",
+    "status": "address-or-product-review",
+    "bookingAddress": "경기도 포천시 산정호수로 450-13",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_226_d9muml",
+    "name": "아라누리 펜션",
+    "address": "경상북도 울진군 기성면 망양로 123",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_227_g7od7g",
+    "name": "아름드리 스파펜션",
+    "address": "경기도 포천시 군내면 청군로2985번길 98",
+    "status": "connected",
+    "bookingAddress": "경기도 포천시 군내면 청군로2985번길 98, 11155",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_228_v7cmmb",
+    "name": "아름펜션",
+    "address": "경기도 가평군 조종면 현등사길 33",
+    "status": "address-or-product-review",
+    "bookingAddress": "울산광역시 북구 구 아름1길36-3, 44235",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_229_j5jndu",
+    "name": "아쇼카펜션",
+    "address": "강원도 양양군 손양면 선사유적로 316-104",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_230_o3soaj",
+    "name": "아지트261",
+    "address": "경기도 남양주시 수동면 비룡로782번길 261",
+    "status": "connected",
+    "bookingAddress": "경기도 남양주시 비룡로782번길 261, 12030",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_231_hc7nlo",
+    "name": "아침에 새소리 펜션",
+    "address": "강원도 평창군 봉평면 백운동길 60-6",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 평창군 봉평면 별자치도 평창군 봉평면 무이리 288-1, 25305",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_232_q7wbo5",
+    "name": "안면도해마루펜션",
+    "address": "충청남도 태안군 안면읍 해안관광로 320-5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_233_cflvpw",
+    "name": "안면애견프리독펜션",
+    "address": "충청남도 태안군 안면읍 해안관광로 276-96",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_234_cxtwcr",
+    "name": "알록달록비치펜션",
+    "address": "경상북도 포항시 남구 구룡포읍 동해안로 4492",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_235_2mdh41",
+    "name": "알앤비타운",
+    "address": "제주특별자치도 서귀포시 분토왓로174번길 45",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_236_vzekdo",
+    "name": "알함브라 애견동반펜션",
+    "address": "경상남도 남해군 남면 빛담촌길 7-6",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_237_i7zadf",
+    "name": "애견펜션 돌봄",
+    "address": "충청남도 태안군 안면읍 통샘길 256-5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_238_xvfdmy",
+    "name": "애견펜션하젠",
+    "address": "제주특별자치도 서귀포시 표선면 토산중앙로 140",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 서귀포시 표선면 토산중앙로 140, 63626",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_239_w3d9b3",
+    "name": "애플롯지펜션",
+    "address": "경기도 가평군 설악면 유명로 2277-4",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 유명로 2277-4, 12459",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_240_0ydrxc",
+    "name": "앤드퍼피",
+    "address": "경기도 양평군 단월면 윗고북길 33-5",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_241_imtos8",
+    "name": "양양스테이",
+    "address": "강원도 양양군 강현면 강선중앙길 123",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_242_597zln",
+    "name": "어나더153",
+    "address": "인천광역시 강화군 화도면 해안남로 1669-12",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 면 해안남로 1669-12, 23062",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_243_jbs7aq",
+    "name": "어린왕자 애견펜션",
+    "address": "강원도 양양군 손양면 선사유적로 316-14",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_244_h2nkva",
+    "name": "어반컨트리",
+    "address": "제주특별자치도 제주시 애월읍 어림비로 280-14",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_245_m0muhv",
+    "name": "어서오시개냥",
+    "address": "경기도 포천시 이동면 화동로 2236-19",
+    "status": "connected",
+    "bookingAddress": "경기도 포천시 화동로 2236-19, 11111",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_246_2w0szf",
+    "name": "어우름 스파애견펜션",
+    "address": "경상남도 거제시 일운면 거제대로 1488-9",
+    "status": "connected",
+    "bookingAddress": "경상남도 거제시 거제대로 1488-9, 53329",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_247_tlo234",
+    "name": "에버그린과파인트리 애견동반펜션",
+    "address": "경상남도 거제시 일운면 거제대로 1494-12",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_248_u27t9e",
+    "name": "에코피아",
+    "address": "경기도 가평군 북면 가화로 3010",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 평창군 강로 490-14, 25379",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_249_8qj1jq",
+    "name": "엔젤하우스펜션",
+    "address": "제주특별자치도 제주시 애월읍 신엄안3길 95",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_250_4f6cej",
+    "name": "엘시아 애견풀빌라",
+    "address": "경상남도 남해군 남면 남면로56번길 6-7",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_251_wfaasm",
+    "name": "엘페로 애견리조트 펜션",
+    "address": "강원도 홍천군 서면 한서로 2019",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 서면 한서로 2019, 25103",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_252_fog1zd",
+    "name": "엘피라펜션",
+    "address": "경상남도 거제시 남부면 거제남서로 370",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 거제시 남부면 거제남서로 372, 53334",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_253_7yt25c",
+    "name": "여수 가즈아풀빌라",
+    "address": "전라남도 여수시 돌산읍 돌산로 3159-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_254_btebs4",
+    "name": "여수 그린하우스 펜션",
+    "address": "전라남도 여수시 화양면 옥천로 1063-10",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 옥천로 1063-10, 59651",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_255_np9u7n",
+    "name": "여수 꿈에그린 애견동반펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 408",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_256_5lg3i4",
+    "name": "여수 나폴리 하우스",
+    "address": "전라남도 여수시 돌산읍 두문포길 131-3",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 돌산읍 두문포길 131-3, 59775",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_257_9cfq98",
+    "name": "여수 느낌 애견풀빌라",
+    "address": "전라남도 여수시 돌산읍 계동로 426",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_258_dll8o0",
+    "name": "여수 다시봄 애견동반 펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 339",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_259_hnvikw",
+    "name": "여수 다옴",
+    "address": "전라남도 여수시 돌산읍 돌산로 3090",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 Kulchŏn, 돌산읍 돌산로 3090, 59771",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_260_31iico",
+    "name": "여수 물음표펜션",
+    "address": "전라남도 여수시 화양면 옥천로 722",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_261_3adhq1",
+    "name": "여수 복자 스파펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 331",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_262_efo08j",
+    "name": "여수 빌리지피어 펜션",
+    "address": "전라남도 여수시 돌산읍 계동로 393",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_263_nelp61",
+    "name": "여수 슈가몽 펜션",
+    "address": "전라남도 여수시 돌산읍 월전길 162",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 월전길 162, 59770",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_264_cqzxe3",
+    "name": "여수 안단테 스파 펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 335",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_265_vweg3t",
+    "name": "여수바다향기 키즈가족 독채펜션",
+    "address": "전라남도 여수시 돌산읍 평사로 479",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_266_u4z5pu",
+    "name": "영덕오션펜션",
+    "address": "경상북도 영덕군 병곡면 동해대로 7732",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_267_cz4hul",
+    "name": "영암연희한옥펜션",
+    "address": "전라남도 영암군 군서면 왕인로 690-17",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_268_e1u8fs",
+    "name": "영종도 해둥실펜션",
+    "address": "인천광역시 중구 큰무리로 36",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_269_ly910c",
+    "name": "영흥도 라르고 애견동반펜션",
+    "address": "인천광역시 옹진군 영흥면 영흥로757번길 178",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_270_flk70l",
+    "name": "영흥도 바다지기펜션",
+    "address": "인천광역시 옹진군 영흥면 영흥로 698",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_271_7jirr5",
+    "name": "영흥도 바닷가펜션",
+    "address": "인천광역시 옹진군 영흥면 영흥로757번길 45",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_272_m430ag",
+    "name": "예원캠핑장",
+    "address": "전라북도 완주군 동상면 송광수만로 1079-126",
+    "status": "connected",
+    "bookingAddress": "전라북도 완주군 송광수만로 1079-126, 55344",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_273_ui0kd9",
+    "name": "옛날에금잔디 펜션",
+    "address": "인천광역시 강화군 내가면 강화서로225번길 18-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_274_0spqth",
+    "name": "오뉴월펜션",
+    "address": "울산광역시 북구 구남2길 23",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_275_9cmed9",
+    "name": "오늘하루 스파펜션",
+    "address": "경기도 가평군 상면 수목원로386번길 17",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 수목원로386번길 17, 12448",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_276_iqxp9f",
+    "name": "오블리펜션",
+    "address": "경기도 가평군 상면 임초밤안골로 251",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_277_o3co39",
+    "name": "오해피펜션",
+    "address": "강원도 평창군 방림면 감동지길 116-17",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 평창군 방림면 별자치도 평창군 방림면 감동지길 116-19, 25364",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_278_ltwcat",
+    "name": "옥타곤펜션",
+    "address": "인천광역시 강화군 선원면 더리미길 33-27",
+    "status": "connected",
+    "bookingAddress": "인천광역시 강화군 면 더리미길 33-27, 강화도, 23042",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_279_v04rym",
+    "name": "올레낭",
+    "address": "제주특별자치도 제주시 애월읍 장소로 205",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_280_16r1hy",
+    "name": "올레펜션",
+    "address": "경상북도 포항시 북구 청하면 해안로2414번길 15-15",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청남도 보령시 고잠2길 16-11, 33488",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_281_lhbtyu",
+    "name": "올레하우스",
+    "address": "제주특별자치도 제주시 구좌읍 덕행로 450-23",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_282_rhbej4",
+    "name": "옹진 펜션바다풍경",
+    "address": "인천광역시 옹진군 북도면 장봉로238번길 37",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_283_rvqhe6",
+    "name": "완도 리베라펜션",
+    "address": "전라남도 완도군 신지면 신지로 415",
+    "status": "connected",
+    "bookingAddress": "전남광주 완도군 면 신지로 415, 59146",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_284_ukrrtu",
+    "name": "완도 용현이네 펜션",
+    "address": "전라남도 완도군 신지면 대곡길 79-152",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_285_a5wich",
+    "name": "완주 델루나펜션",
+    "address": "전라북도 완주군 소양면 송광수만로 169",
+    "status": "address-or-product-review",
+    "bookingAddress": "전라북도 완주군 별자치도 완주군 소양면 황운리 1-4번지, 55348",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_286_fl55so",
+    "name": "완주 들꽃펜션",
+    "address": "전라북도 완주군 운주면 대둔산로 2100-8",
+    "status": "connected",
+    "bookingAddress": "전라북도 완주군 면 대둔산로 2100-8, 55300",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_287_jbo2r8",
+    "name": "외도 펠리스 펜션",
+    "address": "경상남도 거제시 일운면 와현로 58",
+    "status": "connected",
+    "bookingAddress": "경상남도 거제시 와현로 58, 53329",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_288_cum6mc",
+    "name": "우도봉 펜션",
+    "address": "제주특별자치도 제주시 우도면 영일길 156-32",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_289_pgmmi7",
+    "name": "우두리 포펫 펜션",
+    "address": "전라남도 여수시 돌산읍 돌산로 3508",
+    "status": "address-or-product-review",
+    "bookingAddress": "전남광주 여수시 328-4, 59769",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_290_cvrurg",
+    "name": "우성펜션",
+    "address": "인천광역시 강화군 삼산면 삼산북로806번길 92-40",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_291_uciuw8",
+    "name": "우키하우스",
+    "address": "제주특별자치도 제주시 조천읍 신촌5길 56",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_292_qamulv",
+    "name": "울산 간절곶 등대펜션",
+    "address": "울산광역시 울주군 서생면 솔알길 22-12",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_293_ta403q",
+    "name": "원더랜드 애견동반 캠핑 카라반",
+    "address": "경상북도 청도군 매전면 청매로 825",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_294_j74wup",
+    "name": "월송솔머리펜션",
+    "address": "경상북도 울진군 평해읍 월송길 68-14",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_295_9btz06",
+    "name": "위드멍",
+    "address": "경기도 가평군 상면 수목원로 417-17",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 수목원로 417-17, 12448",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_296_qbid6o",
+    "name": "위클라드 애견 풀빌라",
+    "address": "경상북도 경주시 외동읍 죽동길 160-102",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상북도 경주시 죽동길 160-100, 38203",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_297_zda17o",
+    "name": "위플독 펜션",
+    "address": "인천광역시 강화군 길상면 해안남로 368-18",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_298_d8n55b",
+    "name": "유니애견풀빌라",
+    "address": "경상북도 포항시 북구 송라면 해안로 2841",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_299_ifs98r",
+    "name": "을왕리 스와니펜션",
+    "address": "인천광역시 중구 을왕로 14-13",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_300_0fzhmc",
+    "name": "을왕리 어울림펜션",
+    "address": "인천광역시 중구 용유서로348번길 11-8",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_301_og9fxn",
+    "name": "을왕리 에버뷰 펜션",
+    "address": "인천광역시 중구 용유서로348번길 16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_302_xzbvyj",
+    "name": "인천 라온제나힐 펜션",
+    "address": "인천광역시 옹진군 영흥면 영흥북로 374-16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_303_3rxjat",
+    "name": "임실 달빛이 머무는 펜션",
+    "address": "전라북도 임실군 운암면 운정길 110",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_304_0g2r9d",
+    "name": "자월도 섬이야기펜션",
+    "address": "인천광역시 옹진군 자월면 자월서로 496",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_305_xwxsr1",
+    "name": "작은 통나무집",
+    "address": "강원도 평창군 방림면 월암길 41-7",
+    "status": "address-or-product-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_306_8fzi8s",
+    "name": "작은행복 펜션",
+    "address": "경상북도 포항시 북구 흥해읍 해안로 1727",
+    "status": "connected",
+    "bookingAddress": "경상북도 포항시 북구 해안로 1727, 북구, 포, 37530",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_307_nrfkyc",
+    "name": "장발장 펜션",
+    "address": "경기도 포천시 일동면 사기막길 224",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_308_x9xmsg",
+    "name": "장사도펜션",
+    "address": "경상남도 통영시 산양읍 산양중앙로 320",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_309_jjczyj",
+    "name": "전주 메이드 호텔",
+    "address": "전라북도 전주시 덕진구 산정2길 12-8",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_310_tb7txe",
+    "name": "정읍 나의살던고향은",
+    "address": "전라북도 정읍시 입암면 정읍남로 625-3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_311_gcfst7",
+    "name": "제주 그림 그리는 펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 금백조로131번길 181",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_312_2yyt2u",
+    "name": "제주 꽃담펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 해맞이해안로 2630",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_313_06ix4e",
+    "name": "제주 마루호텔앤카페",
+    "address": "제주특별자치도 서귀포시 안덕면 평화로 486",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_314_aljdzc",
+    "name": "제주 메모리 펜션",
+    "address": "제주특별자치도 서귀포시 염돈로 95",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_315_wfp06v",
+    "name": "제주 블루앤씨 펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 서성일로 188-18",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 서귀포시 성산읍 서성일로 188-18",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_316_hjnxl3",
+    "name": "제주 앙크레펜션",
+    "address": "제주특별자치도 서귀포시 법환로58번길 39",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_317_w0lvcq",
+    "name": "제주 애월 장군의집",
+    "address": "제주특별자치도 제주시 애월읍 고내로7길 39-9",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_318_twu340",
+    "name": "제주 애월코스트34",
+    "address": "제주특별자치도 제주시 애월읍 신엄안2길 34",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_319_zsyc8l",
+    "name": "제주 에이치빌풀펜션",
+    "address": "제주특별자치도 제주시 구좌읍 덕행로 175-32",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_320_t8nfif",
+    "name": "제주 와싱톤 펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 신천서로50번길 22-56",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_321_i5fejh",
+    "name": "제주 펠리체펜션",
+    "address": "제주특별자치도 서귀포시 안덕면 사계북로 117",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_322_kv6n65",
+    "name": "제주 하도조은 펜션",
+    "address": "제주특별자치도 제주시 구좌읍 하도15길 107-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_323_x8ay6u",
+    "name": "제주디오빌펜션",
+    "address": "제주특별자치도 서귀포시 색달로72번길 20",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_324_2oaoty",
+    "name": "제주양떼목장펜션",
+    "address": "제주특별자치도 제주시 애월읍 도치돌길 289-13",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 제주시 도치돌길 289-13",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_325_st0peu",
+    "name": "제주에코스위츠",
+    "address": "제주특별자치도 서귀포시 중문상로 207-13",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 서귀포시 특별자치도, 중문동 944-5, 63550",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_326_58iivs",
+    "name": "제주오션블루호텔",
+    "address": "제주특별자치도 서귀포시 이어도로 67",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_327_ogcqux",
+    "name": "제주이서펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 신천서로 85-3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_328_50phjc",
+    "name": "제쥬엔",
+    "address": "제주특별자치도 서귀포시 안덕면 소기왓로 41-14",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_329_k6hexp",
+    "name": "젠틀펫파라다이스",
+    "address": "경상북도 문경시 문경읍 문경대로 2434",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상북도 문경시 문경대로 2430, 36919",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_330_ll8vke",
+    "name": "진도 브라운돔하우스",
+    "address": "전라남도 진도군 임회면 폐동길 81",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_331_3hq30t",
+    "name": "참맑은아침펜션",
+    "address": "경상북도 경주시 하동1길 32-1",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 하동1길 32-1",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_332_gy7fye",
+    "name": "천섬 리버뷰 커플 스파",
+    "address": "경기도 가평군 설악면 자잠로282번길 18-16",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_333_4ws48y",
+    "name": "청계계곡 빈센트하우스 애견 펜션",
+    "address": "경기도 포천시 일동면 운악청계로1480번길 99",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_334_o218j4",
+    "name": "청도 지성휴펜션",
+    "address": "경상북도 청도군 풍각면 봉수길 553-25",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_335_gr90ow",
+    "name": "측도펜션",
+    "address": "인천광역시 옹진군 영흥면 선재로95번길 273",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_336_o33fzb",
+    "name": "칠천도 애견민박",
+    "address": "경상남도 거제시 하청면 연구2길 3-8",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_337_oycpnz",
+    "name": "칠포그린로즈 캠핑펜션야영장",
+    "address": "경상북도 포항시 북구 흥해읍 암각화길 31",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_338_jliezg",
+    "name": "카르페디엠",
+    "address": "전라남도 여수시 돌산읍 돌산로 673",
+    "status": "address-or-product-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_339_fttwll",
+    "name": "캐스팅 애견동반펜션",
+    "address": "경상북도 경주시 감포읍 동해안로 1957-2",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 감포읍 동해안로 1957-2, 38123",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_340_jtik7r",
+    "name": "코나",
+    "address": "충청남도 보령시 해수욕장9길 2-43",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_341_smgcm0",
+    "name": "코지펜션",
+    "address": "충청남도 서산시 팔봉면 팔봉1로 698",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 제주시 애월해안로 724, 63049",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_342_htmbja",
+    "name": "콩알펜션",
+    "address": "경기도 포천시 소흘읍 죽엽산로 391-3",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_343_uo9qyh",
+    "name": "쿠키마당펜션",
+    "address": "강원도 평창군 방림면 감동지길 100",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_344_aongn1",
+    "name": "퀸스타운 애견펜션",
+    "address": "경기도 양평군 단월면 석산로 1539-10",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_345_8zoayq",
+    "name": "크리스마스펜션",
+    "address": "강원도 고성군 토성면 천진해변길 62",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 고성군 천진해변길 62, 24764",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_346_16m7mr",
+    "name": "클래식펜션",
+    "address": "강원도 평창군 봉평면 금당계곡로 1837-37",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_347_ks2o3g",
+    "name": "클럽더독스",
+    "address": "경기도 양평군 옥천면 당곡길 42-18",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_348_q9hzuz",
+    "name": "태양은가득히 펜션",
+    "address": "충청남도 태안군 안면읍 삼봉길 112",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청남도 태안군 1362-5, 32162",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_349_jkvsqg",
+    "name": "토마토 애견동반펜션",
+    "address": "인천광역시 강화군 화도면 해안남로 2506",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_350_sr8uce",
+    "name": "토실이네",
+    "address": "경기도 남양주시 진접읍 광릉수목원로186번길 49",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_351_74id97",
+    "name": "통영여행게스트펜션",
+    "address": "경상남도 통영시 산양읍 수륙길 6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_352_wk4j8y",
+    "name": "통인1939",
+    "address": "서울특별시 종로구 자하문로 33-7",
+    "status": "address-or-product-review",
+    "bookingAddress": "종로 통인1939 한옥스테이",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_353_3udtje",
+    "name": "통통게스트하우스",
+    "address": "경상남도 거제시 문동4길 51",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_354_vkt9rl",
+    "name": "투게독 펜션",
+    "address": "경상남도 남해군 설천면 설천로332번길 87-36",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_355_85nzsj",
+    "name": "트리하우스 펜션",
+    "address": "경기도 가평군 상면 수목원로 181-16",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_356_lch2zc",
+    "name": "파레사 애견풀빌라",
+    "address": "경상남도 남해군 창선면 동부대로 1974-37",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 남해군 91-1번, 52452",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_357_rwwn4r",
+    "name": "파인하우스",
+    "address": "충청남도 태안군 안면읍 방포항길 64",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_358_cbtb6k",
+    "name": "파인힐 애견펜션",
+    "address": "강원도 강릉시 연곡면 동해대로 4371-27",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_359_pz6guf",
+    "name": "파트라슈",
+    "address": "경기도 가평군 상면 축령로70번길 53",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_364_3lfrxz",
+    "name": "퍼니하우스",
+    "address": "전라남도 담양군 금성면 금성산성길 280",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_365_8nt82a",
+    "name": "퍼피21 애견펜션",
+    "address": "충청남도 태안군 안면읍 해안관광로 954-51",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 해안관광로 954-51, 32162",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_366_ywgvx0",
+    "name": "퍼피누",
+    "address": "경기도 양평군 청운면 가현길 372",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_367_2y8zm5",
+    "name": "펜션아이리스",
+    "address": "강원도 홍천군 서면 굴업솔골길 60-9",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 홍천군 서면 굴업솔골길 60-23, 25103",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_368_m6ae5j",
+    "name": "펜션앤호텔뷰",
+    "address": "충청남도 보령시 천북면 홍보로 1061-175",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_369_92sssr",
+    "name": "펜션정원",
+    "address": "제주특별자치도 서귀포시 남원읍 일주동로 6523",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_370_rphb67",
+    "name": "평생사랑해줄개 애견펜션",
+    "address": "충청남도 태안군 고남면 구매길 72",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 구매길 72, 32172",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_371_x9skkb",
+    "name": "평창힐링스테이",
+    "address": "강원도 평창군 평창읍 종부1길 242-44",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_372_jflbfs",
+    "name": "포시즌펜션",
+    "address": "제주특별자치도 서귀포시 칠십리로285번길 3",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_373_nrqc0p",
+    "name": "포포펜션",
+    "address": "경기도 포천시 화현면 봉화로 315-69",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_374_hsex0z",
+    "name": "포항 그랑모던풀빌라",
+    "address": "경상북도 포항시 남구 오천읍 오어로154번길 19-16",
+    "status": "connected",
+    "bookingAddress": "경상북도 포항시 남구 오어로154번길 19-16, 37895",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_375_zb8ofo",
+    "name": "포항 데이토나 풀빌라",
+    "address": "경상북도 포항시 남구 장기면 동해안로3936번길 25-6",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_376_2apxxy",
+    "name": "포항 발리오레 패밀리",
+    "address": "경상북도 포항시 남구 호미곶면 구만길 72-15",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_377_y3804m",
+    "name": "포항 클라우드 나인",
+    "address": "경상북도 포항시 북구 청하면 해안로1918번길 37-2",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_378_rvyhpo",
+    "name": "퐁당 애견펜션",
+    "address": "경기도 양평군 용문면 망능길 4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_379_4o38vf",
+    "name": "퐁당퐁당신산리",
+    "address": "제주특별자치도 서귀포시 성산읍 신산중앙로18번길 40",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_380_cf1az5",
+    "name": "풀빌라히든빌리지펜션",
+    "address": "충청남도 보령시 웅천읍 간드리3길 42-17",
+    "status": "address-or-product-review",
+    "bookingAddress": "충청남도 보령시 웅천읍 간드리3길 42, 33508",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_381_d3oxb6",
+    "name": "풀빛둥지 펜션",
+    "address": "강원도 양양군 현북면 남대천로 1225-1",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 양양군 현북면 남대천로 1225-1 (풀빛둥지), 25049",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_382_xbura0",
+    "name": "풀하우스",
+    "address": "충청남도 태안군 고남면 장곡길 111",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_383_sjaa2u",
+    "name": "프렌즈펜션",
+    "address": "강원도 강릉시 하남길 117-4",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_384_bvalxm",
+    "name": "플레이독 애견풀빌라",
+    "address": "경기도 가평군 상면 수목원로 391-25",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_385_3re7x0",
+    "name": "하늘숲 글램핑 파크",
+    "address": "경기도 가평군 북면 화악산로 254-38",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 화악산로 254-38, 북면, 가, 12404",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_386_3yi56o",
+    "name": "하늘자락물소리펜션",
+    "address": "강원도 평창군 봉평면 보래령로 587-46",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 평창군 봉평면 별자치도 평창군 봉평면 덕거리 659-1, 25301",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_387_z3cqpf",
+    "name": "하루강아지애견펜션",
+    "address": "경기도 가평군 상면 수목원로386번길 12-17",
+    "status": "connected",
+    "bookingAddress": "12-17 Sumogwon-ro 386beon-gil, Sang-myeon, Gapyeong-gun, Gyeonggi-do, Republic of Korea, 가평군, 경기도",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_388_gnacvt",
+    "name": "하얀등대펜션",
+    "address": "경상남도 거제시 마전9길 24",
+    "status": "connected",
+    "bookingAddress": "경상남도 거제시 마전9길 24, 53323",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_389_c6cbfr",
+    "name": "하얀멍이펜션",
+    "address": "강원도 양양군 서면 들돌길 207",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 양양군 별자치도 양양군 서면 장승리 174, 25034",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_390_60hwrs",
+    "name": "하하호호프렌드",
+    "address": "경상남도 거제시 일운면 거제대로 1745-9",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 통영시 풍화일주로 1401-25, 53081",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_391_c37sxr",
+    "name": "한계령오색펜션",
+    "address": "강원도 양양군 서면 설악로 1323-19",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_392_qgqhek",
+    "name": "핫도그 애견펜션",
+    "address": "충청남도 태안군 남면 달산포로 185-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_393_zoc9wo",
+    "name": "해뜨는창문 애견동반펜션",
+    "address": "강원도 양양군 강현면 동해대로 3359",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 양양군 별자치도 양양군 강현면 동해대로 3359, 25003",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_394_brcsgs",
+    "name": "해룡 펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 성산중앙로 70-2",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 서귀포시 285-1, 63643",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_395_m32xr1",
+    "name": "해마루펜션",
+    "address": "경상남도 거제시 남부면 다포1길 30",
+    "status": "connected",
+    "bookingAddress": "경상남도 거제시 남부면 다포1길 30, 53334",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_396_ctd3tv",
+    "name": "해바라기애견펜션",
+    "address": "충청남도 태안군 안면읍 꽃지1길 185-12",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_397_xs25w2",
+    "name": "해성 펜션",
+    "address": "제주특별자치도 서귀포시 천제연로 131-8",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 서귀포시 천제연로 131-8",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_398_i33uw6",
+    "name": "해성파크텔",
+    "address": "제주특별자치도 서귀포시 천제연로 158-4",
+    "status": "connected",
+    "bookingAddress": "제주특별자치도 서귀포시 천제연로 158-4, 63546",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_399_uw0skr",
+    "name": "해안성 펜션",
+    "address": "제주특별자치도 서귀포시 태평로92번길 29",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 서귀포시 1615-2, 63571",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_400_nefwex",
+    "name": "해운대영무파라드호텔 반려견전용층보유",
+    "address": "부산광역시 해운대구 해운대해변로298번길 25",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_401_8y7dmh",
+    "name": "해원의 작은집",
+    "address": "강원도 춘천시 동내면 거두길 284-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_402_4pbn4w",
+    "name": "해품달",
+    "address": "전라북도 전주시 완산구 은행로 93-3",
+    "status": "address-or-product-review",
+    "bookingAddress": "제주특별자치도 제주시 선흘남2길 67-6, 63340",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_403_vi9ruq",
+    "name": "해피월드종이학",
+    "address": "인천광역시 옹진군 영흥면 선재로186번길 78",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_404_u2tkf6",
+    "name": "햇살가득펜션",
+    "address": "경상북도 경주시 하동1길 39-5",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_405_69visi",
+    "name": "행복한정원 애견펜션",
+    "address": "경기도 가평군 가평읍 분자골로 234",
+    "status": "connected",
+    "bookingAddress": "경기도 가평군 분자골로 234 (귀곡산장), 12429",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_406_zq89bk",
+    "name": "허브빌 펜션",
+    "address": "경기도 포천시 영북면 산정호수로 868-24",
+    "status": "candidate-review",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_407_ooi7ke",
+    "name": "헤이미쉬풀빌라",
+    "address": "경상북도 경주시 새골1길 13-12",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상북도 경주시 불국동 1082-17, 38126",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_408_pniebp",
+    "name": "호명펜션",
+    "address": "경기도 가평군 청평면 상지로 279",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_409_u705ll",
+    "name": "홍천강이야기 펜션",
+    "address": "강원도 홍천군 서면 개야강변길 114",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 개야강변길 114, 25100",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_410_6rj8mw",
+    "name": "화진별장펜션",
+    "address": "경상북도 포항시 북구 송라면 해안로 2973-43",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상북도 포항시 북구 386-1, 37512",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_411_vhv1yq",
+    "name": "휘게펜션",
+    "address": "제주특별자치도 서귀포시 성산읍 삼달신풍로 35-5",
+    "status": "address-or-product-review",
+    "bookingAddress": "경상남도 거제시 가조로 1091, 53273",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_412_wtshrg",
+    "name": "휘겔빌리지",
+    "address": "강원도 평창군 대관령면 솔봉로 236-11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_413_vcwp4y",
+    "name": "휴원경펜션",
+    "address": "강원도 평창군 대화면 금당계곡로 1151-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_414_nv7sl9",
+    "name": "힐리언스 선마을 힐리펫룸",
+    "address": "강원도 홍천군 서면 종자산길 122",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 종자산길 122, 25104",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_415_trrrlp",
+    "name": "힐링하시개 애견펜션",
+    "address": "강원도 평창군 봉평면 안흥동길 132-7",
+    "status": "address-or-product-review",
+    "bookingAddress": "강원특별자치도 평창군 별자치도 평창군 봉평면 안흥동길 132-5, 25306",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_416_euzy0k",
+    "name": "GEO키즈글램핑",
+    "address": "경기도 포천시 이동면 금강로 6561",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_417_xm5pyg",
+    "name": "H moment 펜션",
+    "address": "부산광역시 해운대구 송정해변로 4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "pub1788410826323_418_fleybn",
+    "name": "S모텔",
+    "address": "경상남도 거제시 장평로10길 19",
+    "status": "platform-policy-review",
+    "bookingAddress": "경상남도 거제시 장평로10길 19, 53265",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_03599264-df11-49b4-b0c4-8fd93a2ce753",
+    "name": "마운틴밸리 펜션",
+    "address": "강원특별자치도 철원군 동송읍 담터길 174-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_04e0019e-b61f-4a42-8736-926e6ea16ed4",
+    "name": "대박이하우스",
+    "address": "강원특별자치도 평창군 봉평면 진조2길 281-4",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_3c55b5da-c3f5-4b86-a156-b016fd5f5185",
+    "name": "샬레리조트",
+    "address": "강원특별자치도 평창군 봉평면 석이바우길 71-20",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_51182943-d327-4983-b8f5-c88eaa1fda2e",
+    "name": "소나무리조트",
+    "address": "충청남도 태안군 남면 몽산포길 179",
+    "status": "connected",
+    "bookingAddress": "충청남도 태안군 몽산포길 179, 32152",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_58da45fb-6f12-48a3-a739-38b41ea9e4b5",
+    "name": "해운대 영무파라드호텔",
+    "address": "부산광역시 해운대구 해운대해변로298번길 25 (중동)",
+    "status": "platform-policy-review",
+    "bookingAddress": "부산광역시 해운대구 해운대해변로298번길 25, 48099",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_5f4b0a8c-4aeb-44f7-a3fc-9ab5d95094c3",
+    "name": "월인당",
+    "address": "전남광주통합특별시 영암군 모정1길 37-11",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_60e4e2c6-54c1-427e-9575-871ae8c8a740",
+    "name": "키녹",
+    "address": "경상북도 경주시 보문로 280-12 (북군동)",
+    "status": "connected",
+    "bookingAddress": "경상북도 경주시 보문로 280-12, 38117",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_7a288e33-0579-439e-acf4-2d41cbac545a",
+    "name": "호텔정관루별관(콘도별장)",
+    "address": "강원특별자치도 춘천시 남이섬길 1 남이섬",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_7d38327f-ea39-4678-b305-676affd1ada1",
+    "name": "후연지한옥펜션",
+    "address": "경상북도 경주시 내남면 포석로 435-9",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_8cfb3747-782f-4c67-8045-de5012648d6f",
+    "name": "도그밀리(DOGMILY)",
+    "address": "강원특별자치도 평창군 방림면 감동지길 100",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 평창군 방림면 별자치도 평창군 방림면 감동지길 100, 25364",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_979b7b20-e0cd-488f-85c7-83bcb1151fb5",
+    "name": "타샤의 정원",
+    "address": "강원특별자치도 홍천군 서면 팔봉강변길 229",
+    "status": "address-or-product-review",
+    "bookingAddress": "전라북도 전주시 완산구 황학2길 4, 55101",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_9fb848e6-a4ce-4df5-ad1e-763b6775066c",
+    "name": "복골온천펜션",
+    "address": "강원특별자치도 양양군 강현면 복골길201번길 58",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a3bb329e-bb7e-4b50-b0fb-5de718de2df6",
+    "name": "옛날에금잔디",
+    "address": "인천광역시 강화군 내가면 강화서로225번길 18-1",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a41c8585-f087-41b1-89ba-644dee4b079c",
+    "name": "골드마운틴하우스 (유한회사진도휴식)",
+    "address": "전남광주통합특별시 진도군 고군면 원포길 226",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_a74fd735-c7c5-446d-8989-2bf38afd4223",
+    "name": "스테이꼬리",
+    "address": "경상북도 경주시 포석로 816-40 (배동)",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_b37cec5c-d757-485d-add5-90b8343eef71",
+    "name": "라마다호텔&스위트평창",
+    "address": "강원특별자치도 평창군 대관령면 오목길 107",
+    "status": "matching-product-not-found",
+    "bookingAddress": "",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_c786fb69-3d57-4f58-8870-7f3869cad77b",
+    "name": "가을동화펜션",
+    "address": "강원특별자치도 평창군 봉평면 흥정계곡길 72",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 평창군 흥정계곡길 72, 25300",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_d870eab1-417f-47ca-90d7-d38e42453039",
+    "name": "여수 유탑 마리나 호텔&리조트",
+    "address": "전남광주통합특별시 여수시 오동도로 61-15",
+    "status": "connected",
+    "bookingAddress": "전남광주 여수시 시 오동도로 61-15, 59744",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_320ca5c6-3d39-4d1f-9866-64d6c82b6db3",
+    "name": "소노펫클럽앤리조트",
+    "address": "강원특별자치도 홍천군 서면 한치골길 262",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 홍천군 별자치도 홍천군 서면 한치골길 262, 25102",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4",
+    "name": "세인트존스 호텔",
+    "address": "강원특별자치도 강릉시 창해로 307",
+    "status": "connected",
+    "bookingAddress": "강원특별자치도 강릉시 창해로 307, 25467",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_6f1e6229-6f8e-43e4-9001-cc573338eb1c",
+    "name": "쏠비치 양양",
+    "address": "강원특별자치도 양양군 손양면 선사유적로 678",
+    "status": "platform-policy-review",
+    "bookingAddress": "강원특별자치도 양양군 선사유적로 678, 25042",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_7604c6c8-dec7-41ca-aea6-623eb77ed164",
+    "name": "더위크앤리조트 (THE WEEK & RESORT)",
+    "address": "인천광역시 영종구 용유서로 379",
+    "status": "connected",
+    "bookingAddress": "인천광역시 영종구 용유서로 379, 22383",
+    "checked": "2026-10-22"
+  },
+  {
+    "id": "kto_7d657724-2938-4ad9-a01f-13e068311823",
+    "name": "소노벨 단양",
+    "address": "충청북도 단양군 단양읍 삼봉로 187-17",
+    "status": "platform-policy-review",
+    "bookingAddress": "충청북도 단양군 삼봉로 187-17, 27012",
+    "checked": "2026-10-22"
+  }
+]

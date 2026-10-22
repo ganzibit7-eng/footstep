@@ -2,11 +2,1031 @@
   {
     "id": "kto_ede75d90-91fe-4dc6-b2ec-a8572ae4d107",
     "name": "레스케이프 호텔",
-    "url": "https://kr.trip.com/hotels/seoul-hotel-detail-19631550/lescape-a-luxury-collection-hotel-seoul-myeongdong/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_lescape&trip_sub3=D20426835"
+    "url": "https://kr.trip.com/hotels/seoul-hotel-detail-19631550/lescape-a-luxury-collection-hotel-seoul-myeongdong/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_lescape&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "서울특별시 중구 퇴계로 67",
+    "bookingAddress": "서울특별시 중구 퇴계로 67, 04529",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
   },
   {
     "id": "kto_d870eab1-417f-47ca-90d7-d38e42453039",
     "name": "여수 유탑 마리나 호텔&리조트",
-    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-42693130/yeosu-expo-utop-marina-hotel-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_utop&trip_sub3=D20426835"
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-42693130/yeosu-expo-utop-marina-hotel-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_utop&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전남광주통합특별시 여수시 오동도로 61-15",
+    "bookingAddress": "전남광주 여수시 시 오동도로 61-15, 59744",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_101_so5o0a",
+    "name": "동백하우스",
+    "url": "https://kr.trip.com/hotels/tongyeong-si-hotel-detail-10549694/tongyeong-camellia-house/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s000&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 통영시 통영해안로 105-4",
+    "bookingAddress": "경상남도 통영시 해안로 105-4, 53066",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_103_xfhujo",
+    "name": "듀오펜션",
+    "url": "https://kr.trip.com/hotels/pyeongchang-gun-hotel-detail-13783303/duo-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s001&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 평창군 방림면 감동지길 116-4",
+    "bookingAddress": "강원특별자치도 평창군 감동지길 116-4, 25364",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_104_s4v8ps",
+    "name": "디어마이펫",
+    "url": "https://kr.trip.com/hotels/wanju-gun-hotel-detail-134195064/wanju-dear-my-pet/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s002&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라북도 완주군 상관면 월암길 30-42",
+    "bookingAddress": "전라북도 완주군 특별자치도 완주군 상관면 월암길 30-42",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_108_w39u2e",
+    "name": "또오개애견펜션",
+    "url": "https://kr.trip.com/hotels/yangpyeong-gun-hotel-detail-71497758/yangpyeong-ttogae-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s003&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 양평군 청운면 제비산길 74",
+    "bookingAddress": "경기도 양평군 제비산길 74, 12532",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_11_qg2rui",
+    "name": "강화 제임스펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-23513242/gangwha-james-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s004&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 내가면 강화서로227번길 51",
+    "bookingAddress": "인천광역시 강화군 면 강화서로227번길 51, 23018",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_111_dzq8nv",
+    "name": "라메르펜션",
+    "url": "https://kr.trip.com/hotels/uljin-gun-hotel-detail-58777019/lamer-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s005&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 울진군 매화면 망양정로 309",
+    "bookingAddress": "경상북도 울진군 매화면 망양정로 309, 36340",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_122_dqnmrx",
+    "name": "로마스파 애견동반 펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-49314779/youngheungdo-roma-spa/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s009&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 옹진군 영흥면 선재로306번길 27-87",
+    "bookingAddress": "인천광역시 옹진군 선재로306번길 27-87, 23122",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_129_k8isid",
+    "name": "마레몬테펜션",
+    "url": "https://kr.trip.com/hotels/geoje-si-hotel-detail-76227527/maremonte-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s010&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 거제시 일운면 망치2길 28-1",
+    "bookingAddress": "경상남도 거제시 망치2길 28-1, 53329",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_130_uqaou1",
+    "name": "마레카펜션",
+    "url": "https://kr.trip.com/hotels/jeju-hotel-detail-8021649/jeju-mareca-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s011&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 제주시 한림읍 금능1길 26",
+    "bookingAddress": "제주특별자치도 제주시 금능1길 26, 63010",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_131_7lke45",
+    "name": "마법의성 애견펜션",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-55222989/gyeongju-magical-casle-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s012&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 새골길 85-11",
+    "bookingAddress": "경상북도 경주시 새골길 85-11 마법의성펜션, 38128",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_8d60c5e0-6fc4-4863-a0bb-5c880ea68721",
+    "name": "양지파인리조트",
+    "url": "https://kr.trip.com/hotels/yongin-si-hotel-detail-23926984/yangji-pine-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s014&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 용인시 처인구 양지면 남평로 112",
+    "bookingAddress": "경기도 용인시 처인구 남평로 112, 17164",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_a7f4e124-29b8-4c4e-a67b-ddb1747d3bb6",
+    "name": "오션투유리조트 속초설악비치 호텔앤콘도",
+    "url": "https://kr.trip.com/hotels/goseong-gun-hotel-detail-10954266/ocean-2-you-resort-seorak-beach-hotel-and-condo/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s015&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 고성군 죽왕면 삼포해변길 9",
+    "bookingAddress": "강원특별자치도 고성군 죽왕면 삼포해변길 9, 24750",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_082dfa14-8e57-49ab-9327-a5d0659dfe23",
+    "name": "프레이저 플레이스 센트럴 서울",
+    "url": "https://kr.trip.com/hotels/seoul-hotel-detail-988494/fraser-place-central-seoul/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s016&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "서울특별시 중구 통일로 78",
+    "bookingAddress": "서울특별시 중구 통일로 78, 04517",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_bd104b4e-ca33-4751-8d6f-6b9534a3e6b2",
+    "name": "오크우드 프리미어 인천",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-2199222/oakwood-premier-incheon/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s017&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 연수구 컨벤시아대로 165",
+    "bookingAddress": "인천광역시 연수구 KR, 165 컨벤시아대로, 21998",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_da8f0343-bc35-4a8f-bfe7-9bbdaa43ee2f",
+    "name": "지리산호수리조트",
+    "url": "https://kr.trip.com/hotels/gurye-hotel-detail-60162941/gurye-jiri-lake-resort-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s018&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전남광주통합특별시 구례군 산동면 구만제로 610",
+    "bookingAddress": "전남광주 구례군 구만제로 610, Gurye, South Jeolla, 57603",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020_2910876",
+    "name": "리센 오션파크 호텔",
+    "url": "https://kr.trip.com/hotels/sokcho-si-hotel-detail-72577859/risen-oceanpark-sokcho/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s024&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 속초시 해오름로 167 (조양동)",
+    "bookingAddress": "강원특별자치도 속초시 해오름로 167, 24887",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020_397938",
+    "name": "정온펜션",
+    "url": "https://kr.trip.com/hotels/gwangju-1-hotel-detail-45583319/jeongon-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s025&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 광주시 퇴촌면 갈올길11번길 38",
+    "bookingAddress": "경기도 광주 갈올길11번길 38, 12713",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020b_136642",
+    "name": "켄싱턴리조트 충주",
+    "url": "https://kr.trip.com/hotels/chungju-hotel-detail-3909083/kensington-resort-chungju/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s026&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청북도 충주시 앙성면 산전장수1길 103",
+    "bookingAddress": "충청북도 충주시 산전장수1길 103, 27302",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020b_2962354",
+    "name": "행복하개 애견 펜션",
+    "url": "https://kr.trip.com/hotels/yeoncheon-gun-hotel-detail-124224282/yeoncheon-happy-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s032&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 연천군 미산면 노아로 670-84",
+    "bookingAddress": "경기도 연천군 노아로 670-84, 11046",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020c_137486",
+    "name": "클럽이에스제천리조트",
+    "url": "https://kr.trip.com/hotels/jecheon-si-hotel-detail-14220750/club-es-resort-jecheon/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s034&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청북도 제천시 수산면 옥순봉로 1248",
+    "bookingAddress": "충청북도 제천시 충청북도 제천시 수산면 옥순봉로 1248, 27218",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020c_3348137",
+    "name": "멍펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-133592825/gapyeong-mung-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s036&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 조종면 현등사길 55-361",
+    "bookingAddress": "경기도 가평군 조종면 현등사길 55-361, 12432",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020d_3567842",
+    "name": "쏠비치 남해",
+    "url": "https://kr.trip.com/hotels/namhae-hotel-detail-128575165/sol-beach-namhae/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s038&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 남해군 미조면 미송로303번길 115",
+    "bookingAddress": "경상남도 남해군 경남 남해군 미조면 미송로303번길 115, 52441",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_147_ecqlo3",
+    "name": "몽앤몽펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-22086967/taean-mongnmong-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s039&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 남면 몽대로 426-104",
+    "bookingAddress": "충청남도 태안군 몽대로 426-104, 32152",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_149_17wh93",
+    "name": "무안 동이트는집",
+    "url": "https://kr.trip.com/hotels/muan-hotel-detail-104463491/muan-dongit-is-house-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s040&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 무안군 일로읍 일로로 753-111",
+    "bookingAddress": "전남광주 무안군 읍 일로로 753-111, 58576",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_150_jinf20",
+    "name": "무주 그랜드펜션",
+    "url": "https://kr.trip.com/hotels/muju-gun-hotel-detail-133603379/muju-grand-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s041&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라북도 무주군 설천면 구천동1로 135-6",
+    "bookingAddress": "전라북도 무주군 구천동1로 135-6, 55557",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_153_hgwjk9",
+    "name": "물맑음펜션",
+    "url": "https://kr.trip.com/hotels/namyangju-si-hotel-detail-103825187/namyangju-mulmalgeum-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s042&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 남양주시 수동면 비룡로수자1길 76-15",
+    "bookingAddress": "경기도 남양주시 비룡로수자1길 76-15, 12028",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_162_lwqbv9",
+    "name": "베라데로펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-132713059/varadero-pension-taean/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s044&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 남면 용궁길 77",
+    "bookingAddress": "충청남도 태안군 용궁길 77, 32157",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_164_u13u4x",
+    "name": "벨르앙쥬",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-132483911/belleange-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s045&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 상면 임초밤안골로 269-14",
+    "bookingAddress": "269-14, Imchobamangol-ro, Sang-myeon, Gapyeong-gun, Gyeonggi-do, Korea, 12447 가평군, 경기도",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_174_idasgm",
+    "name": "비쥬펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-133606245/taean-bijou-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s046&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 안면읍 꽃지해안로 177-12",
+    "bookingAddress": "충청남도 태안군 꽃지해안로 177-12, 32166",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_188_nh9hvi",
+    "name": "석모도 박정아펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-29995348/seokmodo-park-jung-ah-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s047&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 삼산면 어류정길212번길 86-6",
+    "bookingAddress": "인천광역시 강화군 어류정길212번길 86-6, 23007",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_20_5t3ozd",
+    "name": "개리비안베이",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-120829817/taean-dog-pension-garibian-bay/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s048&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 소원면 법산길 584-40",
+    "bookingAddress": "충청남도 태안군 법산길 584-40, 32119",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_21_f8bs91",
+    "name": "개인공간",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-133893689/gyeongju-private-space-pet-friendly-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s049&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 천북면 산업로 4694-23",
+    "bookingAddress": "경상북도 경주시 산업로 4694-23, 38041",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_33_w5y7gu",
+    "name": "고운정",
+    "url": "https://kr.trip.com/hotels/gwangju-hotel-detail-135908200/gwangju-gounjeong-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s050&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "광주광역시 광산구 임곡연동길 131-13",
+    "bookingAddress": "전남광주통합특별시 광산구 임곡연동길 131-13",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_34_uo46i0",
+    "name": "고흥 남열해돋이펜트하우스",
+    "url": "https://kr.trip.com/hotels/goheung-gun-hotel-detail-120828225/goheung-namyeol-sunrise-penthouse-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s051&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 고흥군 영남면 남열본동2길 48-58",
+    "bookingAddress": "전남광주 고흥군 남열본동2길 48-58, 59521",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_35_5uq7f3",
+    "name": "고흥 누림펜션",
+    "url": "https://kr.trip.com/hotels/goheung-gun-hotel-detail-76227734/goheung-nurim-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s052&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 고흥군 동일면 봉영로 542-6",
+    "bookingAddress": "전남광주 고흥군 봉영로 542-6, 59567",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_39_18rdyv",
+    "name": "구례 섬진강햇살맞이펜션",
+    "url": "https://kr.trip.com/hotels/gurye-hotel-detail-133589328/gurye-seomjingang-sunshine-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s053&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 구례군 토지면 섬진강대로 4142-51",
+    "bookingAddress": "전남광주 구례군 섬진강대로 4142-51, 57623",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_46_asfdng",
+    "name": "그디글라 게스트하우스",
+    "url": "https://kr.trip.com/hotels/jeju-hotel-detail-2192623/gdygla-guesthouse/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s055&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 제주시 애월읍 광령4길 10-6",
+    "bookingAddress": "제주특별자치도 제주시 광령4길 10-6, 63062",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_47_5340ag",
+    "name": "그랑샤리오펜션",
+    "url": "https://kr.trip.com/hotels/pyeongchang-gun-hotel-detail-9266624/grandchariot-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s056&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 평창군 방림면 감동지길 104",
+    "bookingAddress": "강원특별자치도 평창군 감동지길 104",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_53_j0obt6",
+    "name": "글램독 애견펜션 통영점",
+    "url": "https://kr.trip.com/hotels/tongyeong-si-hotel-detail-82677212/tongyeong-glam-dog/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s057&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 통영시 광도면 용호로 285-16",
+    "bookingAddress": "경상남도 통영시 광도면 용호로 285-16",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_59_zabghw",
+    "name": "꽃지해송펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-133586518/taean-kkotji-haesong-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s060&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 안면읍 꽃지2길 35-9",
+    "bookingAddress": "충청남도 태안군 꽃지2길 35-9, 32166",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_60_pa6o7o",
+    "name": "꿈꾸는다락방",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-134195610/taean-dream-attic-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s061&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 안면읍 해안관광로 730-3",
+    "bookingAddress": "730-3 Haeangwangwang-ro, Anmyeon-eup, Taean-gun, Chungcheongnam-do, Republic of Korea, 태안군, 충청남도",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_64_g2pf01",
+    "name": "남해 바다의숲펜션",
+    "url": "https://kr.trip.com/hotels/namhae-hotel-detail-120254931/namhae-sea-forest-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s063&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 남해군 미조면 동부대로 83",
+    "bookingAddress": "경상남도 남해군 동부대로 83 (바다의숲펜션), 52441",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_69_wmahky",
+    "name": "노비오스",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-55237831/gyeongju-dog-pension-nobios/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s064&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 진티길 37-4",
+    "bookingAddress": "경상북도 경주시 진티길 37-4, 38127",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_71_g4btdi",
+    "name": "노이하우스",
+    "url": "https://kr.trip.com/hotels/namhae-hotel-detail-3724971/namhae-neuhaus/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s065&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 남해군 삼동면 독일로 64-11",
+    "bookingAddress": "경상남도 남해군 독일로 64-11, 52447",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_78_irubs0",
+    "name": "놀멍애견펜션",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-133588935/pocheon-nolmong-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s067&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 화현면 봉화로 173-23",
+    "bookingAddress": "경기도 포천시 봉화로 173-23, 11125",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_96_7z1beg",
+    "name": "도그버디펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-120828668/gapyeong-dog-buddy-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s069&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 북면 화악산로356번길 44-145",
+    "bookingAddress": "경기도 가평군 화악산로356번길 44-145, 12404",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_98_3fewp4",
+    "name": "도치빌 펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-11442821/gapyeong-dochi-vill-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s070&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 청평면 고재길 280",
+    "bookingAddress": "경기도 가평군 고재길 280, 12456",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_201_bukxtv",
+    "name": "순천 라온하우스애견펜션",
+    "url": "https://kr.trip.com/hotels/suncheon-si-hotel-detail-69426794/suncheon-raon-house-egyeon-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s071&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 순천시 왕지로 238-3",
+    "bookingAddress": "전남광주 순천시 왕지로 238-3, 57931",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_220_6ipcdf",
+    "name": "쓰담쓰담펜션",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-117571019/pocheon-sseudam-ssdam-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s072&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 일동면 사기막길 67-4",
+    "bookingAddress": "경기도 포천시 사기막길 67-4, 11118",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_224_5p8cpq",
+    "name": "아델펜션",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-133588295/hongcheon-adel-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s073&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 홍천군 서면 굴업솔골길 60",
+    "bookingAddress": "강원특별자치도 홍천군 굴업솔골길 60, 25103",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_230_o3soaj",
+    "name": "아지트261",
+    "url": "https://kr.trip.com/hotels/namyangju-si-hotel-detail-118705805/namyangju-agit-261-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s076&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 남양주시 수동면 비룡로782번길 261",
+    "bookingAddress": "경기도 남양주시 비룡로782번길 261, 12030",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_238_xvfdmy",
+    "name": "애견펜션하젠",
+    "url": "https://kr.trip.com/hotels/seogwipo-hotel-detail-104463599/seogwipo-hazen-town-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s077&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 서귀포시 표선면 토산중앙로 140",
+    "bookingAddress": "제주특별자치도 서귀포시 표선면 토산중앙로 140, 63626",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_242_597zln",
+    "name": "어나더153",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-54628513/ganghwado-another-153-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s078&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 화도면 해안남로 1669-12",
+    "bookingAddress": "인천광역시 강화군 면 해안남로 1669-12, 23062",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_245_m0muhv",
+    "name": "어서오시개냥",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-126195482/pocheo-welcome-paw-and-meow-pet-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s079&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 이동면 화동로 2236-19",
+    "bookingAddress": "경기도 포천시 화동로 2236-19, 11111",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_259_hnvikw",
+    "name": "여수 다옴",
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-10824817/yeosu-pension-daom-pet-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s081&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 여수시 돌산읍 돌산로 3090",
+    "bookingAddress": "전남광주 여수시 Kulchŏn, 돌산읍 돌산로 3090, 59771",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_263_nelp61",
+    "name": "여수 슈가몽 펜션",
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-105262839/yeosu-sugarmong-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s082&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 여수시 돌산읍 월전길 162",
+    "bookingAddress": "전남광주 여수시 월전길 162, 59770",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_272_m430ag",
+    "name": "예원캠핑장",
+    "url": "https://kr.trip.com/hotels/wanju-gun-hotel-detail-121045997/wanju-yewon-camping-site/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s083&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라북도 완주군 동상면 송광수만로 1079-126",
+    "bookingAddress": "전라북도 완주군 송광수만로 1079-126, 55344",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_278_ltwcat",
+    "name": "옥타곤펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-114231166/ganghwado-octagon-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s085&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 선원면 더리미길 33-27",
+    "bookingAddress": "인천광역시 강화군 면 더리미길 33-27, 강화도, 23042",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_283_rvqhe6",
+    "name": "완도 리베라펜션",
+    "url": "https://kr.trip.com/hotels/wando-hotel-detail-71497012/wando-rivera-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s087&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 완도군 신지면 신지로 415",
+    "bookingAddress": "전남광주 완도군 면 신지로 415, 59146",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_286_fl55so",
+    "name": "완주 들꽃펜션",
+    "url": "https://kr.trip.com/hotels/wanju-gun-hotel-detail-120832229/wanju-wild-flower-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s089&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라북도 완주군 운주면 대둔산로 2100-8",
+    "bookingAddress": "전라북도 완주군 면 대둔산로 2100-8, 55300",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_295_9btz06",
+    "name": "위드멍",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-8507650/gapyeong-with-meong-pet-companion-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s090&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 상면 수목원로 417-17",
+    "bookingAddress": "경기도 가평군 수목원로 417-17, 12448",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_315_wfp06v",
+    "name": "제주 블루앤씨 펜션",
+    "url": "https://kr.trip.com/hotels/seogwipo-hotel-detail-9197124/bluensea-pension-jeju/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s092&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 서귀포시 성산읍 서성일로 188-18",
+    "bookingAddress": "제주특별자치도 서귀포시 성산읍 서성일로 188-18",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_345_8zoayq",
+    "name": "크리스마스펜션",
+    "url": "https://kr.trip.com/hotels/goseong-gun-hotel-detail-133349274/gosung-christmas-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s096&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 고성군 토성면 천진해변길 62",
+    "bookingAddress": "강원특별자치도 고성군 천진해변길 62, 24764",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_374_hsex0z",
+    "name": "포항 그랑모던풀빌라",
+    "url": "https://kr.trip.com/hotels/pohang-hotel-detail-97995706/pohang-grancmodern/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s099&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 포항시 남구 오천읍 오어로154번길 19-16",
+    "bookingAddress": "경상북도 포항시 남구 오어로154번길 19-16, 37895",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_388_gnacvt",
+    "name": "하얀등대펜션",
+    "url": "https://kr.trip.com/hotels/geoje-si-hotel-detail-133603548/geoje-white-lighthouse-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s101&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 거제시 마전9길 24",
+    "bookingAddress": "경상남도 거제시 마전9길 24, 53323",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_397_xs25w2",
+    "name": "해성 펜션",
+    "url": "https://kr.trip.com/hotels/seogwipo-hotel-detail-8073314/haesung-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s105&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 서귀포시 천제연로 131-8",
+    "bookingAddress": "제주특별자치도 서귀포시 천제연로 131-8",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_398_i33uw6",
+    "name": "해성파크텔",
+    "url": "https://kr.trip.com/hotels/seogwipo-hotel-detail-5620366/haesung-parktel-jeju/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s106&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 서귀포시 천제연로 158-4",
+    "bookingAddress": "제주특별자치도 서귀포시 천제연로 158-4, 63546",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_405_69visi",
+    "name": "행복한정원 애견펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-133615563/gapyeong-happy-garden-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s108&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 가평읍 분자골로 234",
+    "bookingAddress": "경기도 가평군 분자골로 234 (귀곡산장), 12429",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_51182943-d327-4983-b8f5-c88eaa1fda2e",
+    "name": "소나무리조트",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-117569425/taean-pine-tree-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s113&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 남면 몽산포길 179",
+    "bookingAddress": "충청남도 태안군 몽산포길 179, 32152",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_60e4e2c6-54c1-427e-9575-871ae8c8a740",
+    "name": "키녹",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-688906/kinock/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s114&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 보문로 280-12 (북군동)",
+    "bookingAddress": "경상북도 경주시 보문로 280-12, 38117",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4",
+    "name": "세인트존스 호텔",
+    "url": "https://kr.trip.com/hotels/gangneung-si-hotel-detail-13751126/st-john-s-hotel/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s117&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 강릉시 창해로 307",
+    "bookingAddress": "강원특별자치도 강릉시 창해로 307, 25467",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_119_qm77j5",
+    "name": "러브스토리 애견펜션",
+    "url": "https://kr.trip.com/hotels/yangpyeong-gun-hotel-detail-11097831/love-story-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e000&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 양평군 용문면 은행나무길 25-20",
+    "bookingAddress": "경기도 양평군 은행나무길 25-20 KR, 12509",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_120_32dydv",
+    "name": "러블리펫108애견펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-120828750/daebudo-lovely-pet-108-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e001&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 옹진군 영흥면 선재로 76-27",
+    "bookingAddress": "인천광역시 옹진군 영흥면 선재로 76-27, 23123",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_123_brrfqi",
+    "name": "로맨틱큐브B",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-22087846/ganghwa-seaside-deranae-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e002&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 길상면 해안남로 664-8",
+    "bookingAddress": "인천광역시 강화군 해안남로 664-8, 23051",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020b_3044585",
+    "name": "바다내음펜션(평창)",
+    "url": "https://kr.trip.com/hotels/pyeongchang-gun-hotel-detail-133588179/pyeongchang-scent-of-the-sea-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e004&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 평창군 봉평면 흥정계곡길 410",
+    "bookingAddress": "강원특별자치도 평창군 흥정계곡길 410, 25300",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_new_20261020c_397690",
+    "name": "하늘향기펜션",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-110441559/pocheon-haneulhyang-gikijeupulbilla/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e006&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 일동면 사기막길 213",
+    "bookingAddress": "213, Sagimak-gil, Ildong-myeon, 11118 포천시, 경기도",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_179_w9l5bv",
+    "name": "산울터 애견펜션",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-12377506/pocheon-sanulteo-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e007&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 이동면 늠바위길 148-169",
+    "bookingAddress": "경기도 포천시 늠바위길 148-169",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_184_9bhe7q",
+    "name": "생각이나 펜션",
+    "url": "https://kr.trip.com/hotels/yangpyeong-gun-hotel-detail-8393667/i-remember-pension-yangpyeong/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e008&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 양평군 단월면 명성길 128-4",
+    "bookingAddress": "경기도 양평군 명성길 128-4, 12526",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_36_h5a7ec",
+    "name": "고흥 힐링 펜션",
+    "url": "https://kr.trip.com/hotels/goheung-gun-hotel-detail-82674441/goheung-healing-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e009&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 고흥군 금산면 거금일주로 1467",
+    "bookingAddress": "전남광주 고흥군 거금일주로 1467, 59566",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_66_ackigt",
+    "name": "낮은굴뚝펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-132346408/taean-low-stack-pet-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e011&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 이원면 사관로 245-63",
+    "bookingAddress": "충청남도 태안군 사관로 245-63, 32102",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_215_1vryyy",
+    "name": "스테이멍 애견펜션",
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-103946013/yeosu-seuteimeong/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e014&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 여수시 돌산읍 향일암로 717",
+    "bookingAddress": "전남광주 여수시 향일암로 717, 59778",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_218_bm8ccu",
+    "name": "신나는 펜션",
+    "url": "https://kr.trip.com/hotels/gangneung-si-hotel-detail-71589045/gangneung-sinnaneun-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e015&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 강릉시 사천면 중앙서로 484-77",
+    "bookingAddress": "강원특별자치도 강릉시 별자치도 강릉시 사천면 중앙서로 484-77, 25438",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_221_522eno",
+    "name": "씨사이드아덴",
+    "url": "https://kr.trip.com/hotels/seogwipo-hotel-detail-43665166/seaside-arden/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e016&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 서귀포시 중문관광로 124",
+    "bookingAddress": "제주특별자치도 서귀포시 중문관광로 124, 63535",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_222_gk02sx",
+    "name": "씨앤뷰 풀빌라펜션",
+    "url": "https://kr.trip.com/hotels/namhae-hotel-detail-55221866/namhae-sea-and-view-pool-villa-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e017&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 남해군 남면 남면로 1523-19",
+    "bookingAddress": "경상남도 남해군 남면로 1523-19, 52434",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_227_g7od7g",
+    "name": "아름드리 스파펜션",
+    "url": "https://kr.trip.com/hotels/pocheon-si-hotel-detail-58055368/pocheon-arumdri-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e018&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 포천시 군내면 청군로2985번길 98",
+    "bookingAddress": "경기도 포천시 군내면 청군로2985번길 98, 11155",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_239_w3d9b3",
+    "name": "애플롯지펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-22088003/gapyeong-apple-lodge-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e020&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 설악면 유명로 2277-4",
+    "bookingAddress": "경기도 가평군 유명로 2277-4, 12459",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_246_2w0szf",
+    "name": "어우름 스파애견펜션",
+    "url": "https://kr.trip.com/hotels/geoje-si-hotel-detail-60185851/geoje-island-eoreum-spa-dog-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e021&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 거제시 일운면 거제대로 1488-9",
+    "bookingAddress": "경상남도 거제시 거제대로 1488-9, 53329",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_251_wfaasm",
+    "name": "엘페로 애견리조트 펜션",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-133602606/hongcheon-elfero-pet-pension-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e022&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 홍천군 서면 한서로 2019",
+    "bookingAddress": "강원특별자치도 홍천군 서면 한서로 2019, 25103",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_256_5lg3i4",
+    "name": "여수 나폴리 하우스",
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-103826218/yeosu-naples-house-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e023&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 여수시 돌산읍 두문포길 131-3",
+    "bookingAddress": "전남광주 여수시 돌산읍 두문포길 131-3, 59775",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_275_9cmed9",
+    "name": "오늘하루 스파펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-85240147/apyeong-hneulharu-pa-ension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e024&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 상면 수목원로386번길 17",
+    "bookingAddress": "경기도 가평군 수목원로386번길 17, 12448",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_287_jbo2r8",
+    "name": "외도 펠리스 펜션",
+    "url": "https://kr.trip.com/hotels/geoje-si-hotel-detail-7982068/oedo-palace/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e025&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 거제시 일운면 와현로 58",
+    "bookingAddress": "경상남도 거제시 와현로 58, 53329",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_306_8fzi8s",
+    "name": "작은행복 펜션",
+    "url": "https://kr.trip.com/hotels/pohang-hotel-detail-22087975/pohang-small-happiness-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e028&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 포항시 북구 흥해읍 해안로 1727",
+    "bookingAddress": "경상북도 포항시 북구 해안로 1727, 북구, 포, 37530",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_324_2oaoty",
+    "name": "제주양떼목장펜션",
+    "url": "https://kr.trip.com/hotels/jeju-hotel-detail-6147304/jeju-yangtte-farm-and-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e029&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "제주특별자치도 제주시 애월읍 도치돌길 289-13",
+    "bookingAddress": "제주특별자치도 제주시 도치돌길 289-13",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_331_3hq30t",
+    "name": "참맑은아침펜션",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-128821794/clear-morning-pet-friendly-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e030&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 하동1길 32-1",
+    "bookingAddress": "경상북도 경주시 하동1길 32-1",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_339_fttwll",
+    "name": "캐스팅 애견동반펜션",
+    "url": "https://kr.trip.com/hotels/gyeongju-hotel-detail-45577502/gyeongju-g-casting/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e031&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상북도 경주시 감포읍 동해안로 1957-2",
+    "bookingAddress": "경상북도 경주시 감포읍 동해안로 1957-2, 38123",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_365_8nt82a",
+    "name": "퍼피21 애견펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-76226487/taean-puppy-21-pet-friendly-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e034&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 안면읍 해안관광로 954-51",
+    "bookingAddress": "충청남도 태안군 해안관광로 954-51, 32162",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_370_rphb67",
+    "name": "평생사랑해줄개 애견펜션",
+    "url": "https://kr.trip.com/hotels/taean-gun-hotel-detail-133587791/taeah-lifelong-love-dog-sea-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e035&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "충청남도 태안군 고남면 구매길 72",
+    "bookingAddress": "충청남도 태안군 구매길 72, 32172",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_381_d3oxb6",
+    "name": "풀빛둥지 펜션",
+    "url": "https://kr.trip.com/hotels/yangyang-hotel-detail-55232334/yangyang-grass-nest-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e037&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 양양군 현북면 남대천로 1225-1",
+    "bookingAddress": "강원특별자치도 양양군 현북면 남대천로 1225-1 (풀빛둥지), 25049",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_385_3re7x0",
+    "name": "하늘숲 글램핑 파크",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-117569319/gapyeong-sky-forest-glamping-park-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e038&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 북면 화악산로 254-38",
+    "bookingAddress": "경기도 가평군 화악산로 254-38, 북면, 가, 12404",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_387_z3cqpf",
+    "name": "하루강아지애견펜션",
+    "url": "https://kr.trip.com/hotels/gapyeong-gun-hotel-detail-133580998/haru-puppy-dog-pension-pool-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e039&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경기도 가평군 상면 수목원로386번길 12-17",
+    "bookingAddress": "12-17 Sumogwon-ro 386beon-gil, Sang-myeon, Gapyeong-gun, Gyeonggi-do, Republic of Korea, 가평군, 경기도",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_393_zoc9wo",
+    "name": "해뜨는창문 애견동반펜션",
+    "url": "https://kr.trip.com/hotels/yangyang-hotel-detail-76192662/yangyang-haetteuneun-changmun-pet-friend/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e040&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 양양군 강현면 동해대로 3359",
+    "bookingAddress": "강원특별자치도 양양군 별자치도 양양군 강현면 동해대로 3359, 25003",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_409_u705ll",
+    "name": "홍천강이야기 펜션",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-133620099/hongcheon-river-story-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e042&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 홍천군 서면 개야강변길 114",
+    "bookingAddress": "강원특별자치도 홍천군 개야강변길 114, 25100",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_8cfb3747-782f-4c67-8045-de5012648d6f",
+    "name": "도그밀리(DOGMILY)",
+    "url": "https://kr.trip.com/hotels/pyeongchang-gun-hotel-detail-81150687/pyeongchang-dog-millie-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e044&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 평창군 방림면 감동지길 100",
+    "bookingAddress": "강원특별자치도 평창군 방림면 별자치도 평창군 방림면 감동지길 100, 25364",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "kto_320ca5c6-3d39-4d1f-9866-64d6c82b6db3",
+    "name": "소노펫클럽앤리조트",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-72207420/sono-pet-clubs-resorts-vivaldipark/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e045&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 홍천군 서면 한치골길 262",
+    "bookingAddress": "강원특별자치도 홍천군 별자치도 홍천군 서면 한치골길 262, 25102",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_98aa8220-0b4e-41bc-961d-d3025a33cecf",
+    "name": "힐리언스 선마을",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-114730727/hillions-sun-village/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e046&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원특별자치도 홍천군 종자산길 122",
+    "bookingAddress": "강원특별자치도 홍천군 종자산길 122, 25104",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_254_btebs4",
+    "name": "여수 그린하우스 펜션",
+    "url": "https://kr.trip.com/hotels/yeosu-hotel-detail-11075105/yeosu-grace-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e050&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "전라남도 여수시 화양면 옥천로 1063-10",
+    "bookingAddress": "전남광주 여수시 옥천로 1063-10, 59651",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요"
+  },
+  {
+    "id": "pub1788410826323_395_m32xr1",
+    "name": "해마루펜션",
+    "url": "https://kr.trip.com/hotels/geoje-si-hotel-detail-60051867/haemaru-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e052&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "경상남도 거제시 남부면 다포1길 30",
+    "bookingAddress": "경상남도 거제시 남부면 다포1길 30, 53334",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "kto_7604c6c8-dec7-41ca-aea6-623eb77ed164",
+    "name": "더위크앤리조트 (THE WEEK & RESORT)",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-66784612/the-week-resort/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_h1&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 영종구 용유서로 379",
+    "bookingAddress": "인천광역시 영종구 용유서로 379, 22383",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요"
+  },
+  {
+    "id": "pub1788410826322_10_p6ty1d",
+    "name": "강화 어나더153 애견펜션",
+    "url": "https://kr.trip.com/hotels/incheon-hotel-detail-54628513/ganghwado-another-153-pension/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s078&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "인천광역시 강화군 화도면 해안남로 1669-12",
+    "bookingAddress": "인천광역시 강화군 면 해안남로 1669-12, 23062",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요",
+    "aliasOf": "pub1788410826323_242_597zln"
+  },
+  {
+    "id": "pub1788410826322_192_mk0wr2",
+    "name": "세인트존스 경포 호텔",
+    "url": "https://kr.trip.com/hotels/gangneung-si-hotel-detail-13751126/st-john-s-hotel/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_s117&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 강릉시 창해로 307",
+    "bookingAddress": "강원특별자치도 강릉시 창해로 307, 25467",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요",
+    "aliasOf": "kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4"
+  },
+  {
+    "id": "pub1788410826322_194_x25p93",
+    "name": "소노펫 클럽앤리조트 비발디파크",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-72207420/sono-pet-clubs-resorts-vivaldipark/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e045&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 홍천군 서면 한치골길 262",
+    "bookingAddress": "강원특별자치도 홍천군 별자치도 홍천군 서면 한치골길 262, 25102",
+    "bookingPetPolicy": "동반 가능 안내 있음 · 객실별 조건 확인 필요",
+    "aliasOf": "kto_320ca5c6-3d39-4d1f-9866-64d6c82b6db3"
+  },
+  {
+    "id": "pub1788410826323_414_nv7sl9",
+    "name": "힐리언스 선마을 힐리펫룸",
+    "url": "https://kr.trip.com/hotels/hongcheon-gun-hotel-detail-114730727/hillions-sun-village/?Allianceid=11098760&SID=334183347&trip_sub1=balzaguk_e046&trip_sub3=D20426835",
+    "checked": "2026-10-22",
+    "sourceAddress": "강원도 홍천군 서면 종자산길 122",
+    "bookingAddress": "강원특별자치도 홍천군 종자산길 122, 25104",
+    "bookingPetPolicy": "예약 플랫폼 동반 규정 미확인 · 숙소 사전 확인 필요",
+    "aliasOf": "kto_98aa8220-0b4e-41bc-961d-d3025a33cecf"
   }
 ]
