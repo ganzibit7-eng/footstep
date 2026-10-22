@@ -24,3 +24,8 @@ test('full stay audit distinguishes unlinked products and conflicting platform p
  for(const stay of tripStays){assert.equal(audit.find(x=>x.id===stay.id)?.status,'connected');assert(stay.checked&&stay.sourceAddress&&stay.bookingAddress);if(stay.bookingPetPolicy.startsWith('예약 플랫폼 동반 규정 미확인'))assert(tripBooking(stay.id).includes('동반 규정은 미확인입니다'));}
  for(const item of audit.filter(x=>x.status==='platform-policy-review'))assert.equal(tripBooking(item.id),'');
 });
+test('all ten home stays have a verified affiliate destination and their own source photo',()=>{
+ const html=readFileSync('index.html','utf8');const section=html.slice(html.indexOf('<section id="home-stays"'),html.indexOf('<section id="walk-shopping"'));
+ const cards=[...section.matchAll(/<article class="home-place-card" data-place-id="([^"]+)">([\s\S]*?)<\/article>/g)];assert.equal(cards.length,10);
+ const urls=new Set();for(const[,id,card]of cards){const stay=tripStays.find(x=>x.id===id);assert(stay);assert(stay.bookingPetPolicy.startsWith('동반 가능'));assert(card.includes(stay.url.replaceAll('&','&amp;')));assert(card.includes('<img '));assert(card.includes('사진·자료 출처'));urls.add(stay.url);}assert.equal(urls.size,10);
+});
