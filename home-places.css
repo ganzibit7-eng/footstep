@@ -127,3 +127,4 @@ html[data-theme="dark"] #nearby-section .home-place-end-link{background:var(--fi
 @media(max-width:900px){#nearby-section .home-place-card{flex-basis:calc((100% - 20px)/2.5)}}
 @media(max-width:700px){#nearby-section :is(#home-dining,#home-stays){padding-block:24px 28px}#nearby-section .home-place-card{flex-basis:68.8%}#nearby-section .home-place-rail{gap:13px}#nearby-section .home-place-heading>p{font-size:13px}#nearby-section .home-place-toolbar{margin:14px 0 10px}#nearby-section .home-place-toolbar>p{font-size:11px}}
 @media(max-width:360px){#nearby-section .home-place-card{flex-basis:73.6%}}
+.home-place-card .trip-booking{position:relative;z-index:2}
