@@ -13,6 +13,8 @@ on:
       - 'pet-care*.js'
       - 'pet-care.css'
       - 'scripts/generate-seo.mjs'
+      - 'scripts/trip-stays.mjs'
+      - 'trip-stays.json'
       - 'scripts/refine-place-details.mjs'
       - 'place-detail.css'
       - 'data/place-external-links.json'
