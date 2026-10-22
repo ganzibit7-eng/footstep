@@ -224,3 +224,4 @@ body:has(#admin-overlay.show){overflow:hidden}
 
 #admin-overlay .admin-view-heading{position:static;top:auto;z-index:auto;background:none;box-shadow:none;width:auto;min-height:0}
 @media(max-width:650px){#admin-overlay .admin-navigation button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px}#admin-overlay .admin-navigation button strong{white-space:nowrap;display:block;text-align:center}#admin-overlay .admin-navigation button svg{width:18px;height:18px;flex:none}}
+#admin-overlay #admin-close{width:44px!important;height:44px!important;min-width:44px;min-height:44px;color:#52695b}
