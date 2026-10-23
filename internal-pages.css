@@ -46,7 +46,7 @@ body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
 .discovery-page .discovery-header{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:66px;border-bottom:1px solid var(--rp-line)}
 .discovery-header>a:last-child{font-size:12px;color:var(--rp-muted)}
 .discovery-page .discovery-intro{font-size:14px;max-width:56ch;margin:0 0 8px}.discovery-page .discovery-care{font-size:12px;margin:8px 0 24px}
-.discovery-page #find-place{border:0;padding:0;margin:28px 0 44px;scroll-margin-top:24px}
+.discovery-page #find-place{border:0;padding:0;margin:28px 0 44px;scroll-margin-top:320px}
 .discovery-page .search-heading{font-size:17px;margin:0 0 14px;font-weight:600}
 .discovery-page #place-search{display:grid;grid-template-columns:minmax(160px,2fr) repeat(3,minmax(100px,1fr)) auto;gap:12px;align-items:end;padding:20px;background:var(--rp-paper);border:1px solid var(--rp-line);border-radius:12px}
 .discovery-page .search-field{min-width:0}.discovery-page .search-field label{display:block;margin-bottom:7px;font-size:12px;color:var(--rp-muted);font-weight:500}
