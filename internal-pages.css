@@ -2,6 +2,7 @@
 /* Public reading surfaces only. Home cards, app routes and admin are out of scope. */
 body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted:#59695e;--rp-line:#dce1d8;--rp-soft:#eef1e9;--rp-accent:#476650;margin:0;background:var(--rp-bg);color:var(--rp-ink);font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.85;letter-spacing:-.02em}
 .reading-page *{box-sizing:border-box}
+.reading-page :is(input,select,textarea,button){font-family:inherit;letter-spacing:-.02em}
 .reading-page main.wrap,.reading-page main{max-width:1120px;margin:auto;padding:28px 32px 72px}
 .reading-page :is(h1,h2,h3){font-family:inherit;color:var(--rp-ink);word-break:keep-all;overflow-wrap:anywhere;letter-spacing:-.04em;font-weight:650;line-height:1.4}
 .reading-page h1{font-size:clamp(28px,3.1vw,38px);max-width:30ch;margin:32px 0 14px}
