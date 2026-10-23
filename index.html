@@ -4294,13 +4294,13 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const address=course?CourseAddresses.get(item)?.address: item.address||item.road_address_name||item.address_name||'';
     mapExplorer.add(group,{id:item.id,name:item.name||item.place_name||'장소',lat:Number(item.lat??item.y),lng:Number(item.lng??item.x),marker,item,address,
       label:course?'산책 코스':facility?FacilityInfo.get(item.category).label:bin?'배변봉투함·수거 장소':'일반 장소',
-      conditions:course?((CoursePetAccess.get(item)?'공식 동반 안내 있음':'동반 조건 미확인')+' · '+(CourseRoutes.get(item)?'공식 경로 확인':'경로 미확인 · 대표 위치')):facility?PlaceConditions.summary(item):bin?BinInfo.label(item):'반려견 동반 여부 미확인',...extra});
+      conditions:course?((CoursePetAccess.get(item)?'공식 동반 안내 있음':'동반 조건 미확인')+' · '+(CourseRoutes.get(item)&&!CourseRoutes.get(item).proposed?'공식 경로 확인':'경로 미확인 · 대표 위치')):facility?PlaceConditions.summary(item):bin?BinInfo.label(item):'반려견 동반 여부 미확인',...extra});
   }
   function showSelectedMapRoute(course,pan){
-    selectedMapCourse=course;coursePathLayer.clearLayers();const route=CourseRoutes.get(course);
+    selectedMapCourse=course;coursePathLayer.clearLayers();const candidate=CourseRoutes.get(course),route=candidate&&!candidate.proposed?candidate:null;
     showMapCoursePeek(course);
     const info=document.querySelector('#map-course-peek .map-peek-info');
-    const note=document.createElement('p');note.className='map-route-certainty';note.textContent=route?'공식 경로 표시 · 당일 통제·이용 조건은 현장에서 확인하세요.':'경로 미확인 · 대표 위치만 표시합니다.';info?.append(note);
+    const note=document.createElement('p');note.className='map-route-certainty';note.textContent=route?'공식 경로 자료 표시 · 당일 통제·이용 조건은 현장에서 확인하세요.':'경로 미확인 · 대표 위치만 표시합니다.';info?.append(note);
     if(!route){if(pan)map.setView([course.lat,course.lng],16,{animate:false});return;}
     const line=L.polyline(route.parts||route.path,{color:'#285840',weight:5,opacity:.95,smoothFactor:0,lineCap:'round',lineJoin:'round'}).addTo(coursePathLayer);
     const parts=route.parts||[route.path],first=parts[0][0],last=parts[parts.length-1].at(-1),loop=CourseRoutes.isLoop(route);
