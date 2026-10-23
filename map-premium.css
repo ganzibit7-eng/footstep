@@ -1,3 +1,5 @@
+/* Compatibility: cached app HTML can still contain the retired category row. Keep it hidden. */
+#map-section :is(.map-quick-filters,[data-map-category]){display:none!important}
 /* Canonical main-map workspace. Home and GPS recording surfaces are out of scope. */
 #map-section{--map-surface:#fffefa;--map-ink:#243c32;--map-muted:#5b6b61;--map-line:#dce1d8;--map-soft:#eef2eb;--map-active:#294f3e;padding:16px 0 32px;color:var(--map-ink)}
 #map-section>.wrap{max-width:1500px;padding:0 24px}

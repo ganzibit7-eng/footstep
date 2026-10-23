@@ -3,6 +3,8 @@
  const valid=e=>Number.isFinite(Number(e.lat))&&Number.isFinite(Number(e.lng))&&e.lat!==null&&e.lng!==null&&String(e.lat).trim()!==''&&String(e.lng).trim()!==''&&Math.abs(Number(e.lat))<=90&&Math.abs(Number(e.lng))<=180;
  function inBounds(entries,bounds){return entries.filter(e=>valid(e)&&bounds.contains([Number(e.lat),Number(e.lng)]));}
  function create({map,host,isVisible,onCourse,reveal,getStatus,onSearchArea}){
+  // Also remove retired controls when an older cached document loads this module.
+  host.querySelectorAll('.map-quick-filters').forEach(node=>node.remove());
   const groups=new Map(),frame=host.querySelector('.map-wrap-relative');
   const panel=host.querySelector('#map-explorer-panel'),list=host.querySelector('#map-explorer-list'),count=host.querySelector('#map-explorer-count'),selection=host.querySelector('#map-explorer-selection'),body=host.querySelector('#map-selection-body'),peek=host.querySelector('#map-course-peek'),area=host.querySelector('#map-search-area'),toggle=host.querySelector('#map-results-toggle');
   let selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,insetScheduled=false,lastInset=-1,lastSize='',disposed=false,mobile=innerWidth<=700;
