@@ -202,7 +202,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 }
 @media(max-width:370px){:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-size:25px}#register-section .type-btn .ui-icon{display:none}#profile-overlay .modal-body{padding:16px}#profile-overlay #my-dog-profile-card{padding:18px!important;gap:12px}#profile-overlay .my-profile-stats [id^=my-stat-]{font-size:21px!important}}
 @media(prefers-reduced-motion:no-preference){
- :is(#profile-overlay,#nick-overlay,#admin-overlay).show>.modal{animation:product-dialog-arrive 260ms var(--product-ease)}
+ :is(#profile-overlay,#admin-overlay).show>.modal{animation:product-dialog-arrive 260ms var(--product-ease)}
  @keyframes product-dialog-arrive{from{opacity:.55;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
 }
 @media(prefers-reduced-motion:reduce){:is(#profile-overlay,#nick-overlay,#admin-overlay)>.modal{animation:none!important}#list-section .course-card,#bottom-tab-bar button,header .nav-links a{transition:none!important}}
@@ -259,3 +259,12 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 @media(max-width:600px){#support-dialog{width:calc(100vw - 24px);max-height:calc(100dvh - 24px - env(safe-area-inset-bottom))}#support-dialog .support-header{padding:22px 20px 0}#support-dialog .support-body{padding:0 20px max(22px,env(safe-area-inset-bottom))}#support-dialog h2{font-size:23px}#support-dialog .support-channel{gap:12px}}
 @keyframes support-arrive{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){#support-dialog[open]{animation:none}#support-dialog .support-channel{transition:none}}
+
+/* Login opens as one calm composition; no delayed or separately animated controls. */
+@media(prefers-reduced-motion:no-preference){
+ #nick-overlay.show{animation:auth-scrim-reveal 220ms ease-out both}
+ #nick-overlay.show>.auth-modal{animation:auth-panel-reveal 300ms cubic-bezier(.16,1,.3,1) both;transform-origin:50% 45%}
+ @keyframes auth-scrim-reveal{from{opacity:0}to{opacity:1}}
+ @keyframes auth-panel-reveal{from{opacity:0;transform:translate3d(0,14px,0) scale(.985)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+}
+@media(prefers-reduced-motion:reduce){#nick-overlay.show{animation:none}#nick-overlay.show>.auth-modal{animation:none!important}}
