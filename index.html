@@ -4301,13 +4301,13 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     showMapCoursePeek(course);
     const info=document.querySelector('#map-course-peek .map-peek-info');
     const note=document.createElement('p');note.className='map-route-certainty';note.textContent=route?'공식 경로 자료 표시 · 당일 통제·이용 조건은 현장에서 확인하세요.':'경로 미확인 · 대표 위치만 표시합니다.';info?.append(note);
-    if(!route){if(pan)map.setView([course.lat,course.lng],16,{animate:false});return;}
+    if(!route){if(pan||innerWidth<=700){map.setView([course.lat,course.lng],16,{animate:false});if(innerWidth<=700)map.panBy([0,Math.round(map.getSize().y*.22)],{animate:false});}return;}
     const line=L.polyline(route.parts||route.path,{color:'#285840',weight:5,opacity:.95,smoothFactor:0,lineCap:'round',lineJoin:'round'}).addTo(coursePathLayer);
     const parts=route.parts||[route.path],first=parts[0][0],last=parts[parts.length-1].at(-1),loop=CourseRoutes.isLoop(route);
     const endpoint=(point,label)=>L.marker(point,{icon:L.divIcon({className:'map-route-endpoint',html:'<span>'+label+'</span>',iconSize:[28,28],iconAnchor:[14,14]}),zIndexOffset:1200}).bindTooltip(label==='A'?'출발점':label==='B'?'도착점':'출발·도착점').addTo(coursePathLayer);
     endpoint(first,loop?'↻':'A');if(!loop)endpoint(last,'B');
     line.on('click',()=>openCourseDetail(course.id));
-    const wide=innerWidth>1100;map.fitBounds(line.getBounds(),{paddingTopLeft:wide?[345,40]:[30,40],paddingBottomRight:wide?[330,40]:innerWidth>700?[40,180]:[30,180],maxZoom:16,animate:false});
+    const wide=innerWidth>1100;map.fitBounds(line.getBounds(),{paddingTopLeft:wide?[345,40]:[30,40],paddingBottomRight:wide?[330,40]:innerWidth>700?[40,180]:[30,Math.round(map.getSize().y*.58)+12],maxZoom:16,animate:false});
   }
 
   function pawIcon(color){return ProfessionalMap.markerIcon(L,'course');}

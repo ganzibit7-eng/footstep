@@ -41,7 +41,7 @@
     const html=entry.marker?.getPopup?.()?.getContent();
     if(typeof html==='string'){body.innerHTML=html;const title=body.firstElementChild;if(title?.tagName==='STRONG'){if(title.nextSibling?.nodeName==='BR')title.nextSibling.remove();title.remove();}}
     else {const p=document.createElement('p');p.textContent=entry.conditions||'동반 조건 미확인';body.append(p);}
-    if(pan){map.setView([entry.lat,entry.lng],Math.max(map.getZoom(),16),{animate:false});reveal?.(entry.marker,highlight);}
+    if(pan||innerWidth<=700){map.setView([entry.lat,entry.lng],Math.max(map.getZoom(),16),{animate:false});if(innerWidth<=700)map.panBy([0,Math.round(map.getSize().y*.22)],{animate:false});reveal?.(entry.marker,highlight);}
    }
    highlight();schedule();
   }
