@@ -3,7 +3,7 @@
 html[data-theme=dark]{--product-ink:#e5ede5;--product-muted:#afbeb2;--product-line:#435349;--product-surface:#23342b;--product-soft:#2c3e32;--product-accent:#aecab4}
 :is(#map-section,#list-section,#walk-section,#register-section,#etiquette-section){color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);scroll-margin-top:90px}
 :is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head{align-items:end;gap:24px;margin:4px 0 30px;padding-bottom:22px;border-bottom:1px solid var(--product-line)}
-:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-family:inherit;font-size:clamp(28px,3vw,38px);font-weight:700;line-height:1.35;letter-spacing:-.055em;margin:8px 0 12px;color:var(--product-ink)}
+:is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-family:inherit;font-size:clamp(27px,2.8vw,34px);font-weight:650;line-height:1.45;letter-spacing:-.035em;margin:8px 0 12px;color:var(--product-ink)}
 :is(#map-section,#list-section,#walk-section,#register-section) .section-head .kicker{font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.025em;color:var(--product-muted);background:none;border:0;padding:0}
 :is(#map-section,#list-section,#walk-section,#register-section) .section-head p{max-width:62ch;font-size:14px!important;line-height:1.85!important;color:var(--product-muted);margin:0}
 :is(.app-page,#profile-overlay,#nick-overlay) :is(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--product-accent);outline-offset:4px}
@@ -15,7 +15,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 
 /* Map controls sit quietly around the cartography; map panes never animate. */
 #map-section{--map-surface:var(--product-surface);--map-ink:var(--product-ink);--map-muted:var(--product-muted);--map-line:var(--product-line);--map-soft:var(--product-soft);--map-active:var(--product-accent)}
-#map-section .map-panel{border-radius:22px;border-color:var(--product-line);box-shadow:0 8px 32px #213d3306}
+#map-section .map-panel{border-radius:14px;border-color:var(--product-line);box-shadow:none}
 #map-section .map-search-toolbar{padding:24px!important}
 #map-section #place-search-input{background:var(--product-surface)!important;border:1px solid var(--product-line)!important;box-shadow:none!important;border-radius:12px!important}
 #map-section #place-search-input:focus{border-color:var(--product-accent)!important}
@@ -32,7 +32,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #map-section .home-section-head .section-more{color:var(--product-ink);font-size:12px;text-decoration:none;padding:10px 0;min-height:44px;box-sizing:border-box}
 
 /* Course discovery: one panel, clear filter groups, a readable result count. */
-#list-section .course-search-panel{border:1px solid var(--product-line);border-radius:20px;background:var(--product-surface);box-shadow:none;overflow:visible}
+#list-section .course-search-panel{border:1px solid var(--product-line);border-radius:14px;background:var(--product-surface);box-shadow:none;overflow:visible}
 #list-section .course-search-panel>.map-toolbar{padding:22px;gap:12px;border-color:var(--product-line)}
 #list-section :is(#course-search-input,#course-sort-select){box-sizing:border-box;min-height:48px;border:1px solid var(--product-line)!important;border-radius:11px!important;background:var(--product-surface)!important;color:var(--product-ink);font-size:14px!important;box-shadow:none}
 #list-section #course-search-input{padding:12px 15px!important}
@@ -49,17 +49,23 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #list-section .course-card{transition:border-color 160ms,box-shadow 160ms}
 #list-section .course-card h3{font-family:inherit;font-weight:650;letter-spacing:-.035em}
 #list-section .explore-view-button{border-radius:10px;min-height:44px;background:var(--product-surface);border-color:var(--product-line);color:var(--product-ink);font-size:12px}
+#list-section .compare-panel{border-radius:12px;background:var(--product-surface);border-color:var(--product-line);padding:20px;box-shadow:none}
+#list-section .compare-panel h3{font:650 20px/1.5 var(--experience-font,system-ui);letter-spacing:-.03em}
+#list-section .compare-panel p{font-size:12px;line-height:1.85;color:var(--product-muted)}
+#list-section .compare-panel :is(th,td){border-color:var(--product-line);font-family:inherit;font-size:12px;line-height:1.85;padding:14px 12px}
+#list-section .compare-panel th{background:var(--product-soft);color:var(--product-ink)}
+#list-section .compare-panel button{font-size:12px;border-radius:8px}
 
 /* Recording and proposal forms use real grouped fields, not decorative cards. */
 :is(#walk-section,#register-section) .register-panel{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:28px}
-:is(#walk-section,#register-section) .form-card{padding:30px;border-radius:20px;border:1px solid var(--product-line);background:var(--product-surface);box-shadow:none;min-width:0}
+:is(#walk-section,#register-section) .form-card{padding:30px;border-radius:14px;border:1px solid var(--product-line);background:var(--product-surface);box-shadow:none;min-width:0}
 .ui-panel-heading{margin:0 0 24px;padding:0 0 20px;border-bottom:1px solid var(--product-line)}
 .ui-panel-heading h3{font-family:inherit;font-size:19px;font-weight:650;letter-spacing:-.03em;color:var(--product-ink);margin:0 0 6px}
 .ui-panel-heading p{font-size:12px;line-height:1.8;color:var(--product-muted);margin:0}
 .ui-map-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
 .ui-map-heading h3{font-family:inherit;font-size:14px;font-weight:600;margin:0;color:var(--product-ink)}
 .ui-map-heading span{font-size:11px;color:var(--product-muted)}
-:is(#walk-section,#register-section) .mini-map-wrap{padding:22px;background:var(--product-surface);border:1px solid var(--product-line);border-radius:20px;top:96px;min-width:0}
+:is(#walk-section,#register-section) .mini-map-wrap{padding:22px;background:var(--product-surface);border:1px solid var(--product-line);border-radius:14px;top:96px;min-width:0}
 :is(#walk-section,#register-section) :is(#mini-map,#walk-map){border-radius:12px!important;border:1px solid var(--product-line)!important;box-shadow:none!important;background:var(--product-soft)}
 :is(#walk-section,#register-section) .mini-map-note{border:0;background:transparent;padding:12px 0 0;margin:0;font-size:12px;color:var(--product-muted);line-height:1.8}
 #walk-section .walk-record-notice{border:0;border-radius:12px;background:var(--product-soft);padding:18px;margin-bottom:22px}
@@ -106,6 +112,27 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #register-section #reg-submit-btn{min-height:52px;margin-top:0;background:var(--product-accent);color:var(--product-surface);font-size:14px;font-weight:600;border-radius:12px;box-shadow:none}
 .ui-review-note{margin-top:16px;font-size:11px;line-height:1.85;color:var(--product-muted)}
 .ui-review-note summary{cursor:pointer;min-height:36px;color:var(--product-ink)}
+
+/* General-user dialogs and records; never the home sections or admin workspace. */
+:is(#modal-overlay,#profile-overlay,#nick-overlay,#points-shop-overlay,#support-dialog,#notif-overlay){font-family:var(--experience-font,"Noto Sans KR",system-ui,sans-serif);letter-spacing:-.02em}
+#modal-overlay .modal{background:var(--product-surface);border:1px solid var(--product-line);border-radius:16px}
+#modal-overlay .modal-body{padding:28px}
+#modal-overlay #modal-title{font-family:inherit;font-size:clamp(25px,3vw,32px);font-weight:650;line-height:1.45;letter-spacing:-.035em}
+#modal-overlay #modal-address{font-size:13px;line-height:1.8;color:var(--product-muted)}
+#modal-overlay :is(.course-detail-summary,.course-evidence,.course-visit-notes,.course-route-guide){border-radius:10px;box-shadow:none}
+#modal-overlay :is(h4,.detail-map-heading){font-family:inherit;font-weight:600;line-height:1.65}
+#modal-overlay .course-detail-actions{gap:8px;flex-wrap:wrap}
+#modal-overlay .course-detail-actions a{min-height:44px;font-size:13px;line-height:1.7}
+#nick-overlay #login-modal-title{font-size:27px;font-weight:650;line-height:1.45;letter-spacing:-.035em}
+#nick-overlay #login-modal-description{font-size:13px;line-height:1.9}
+#profile-overlay :is(.my-setting,.review-item){box-shadow:none}
+#profile-overlay .walk-calendar{border:1px solid var(--product-line);border-radius:12px;padding:18px;background:var(--product-surface)}
+#profile-overlay .walk-calendar :is(button,select){font-family:inherit;min-height:44px;font-size:13px}
+#profile-overlay .review-item{border-radius:10px;border-color:var(--product-line);padding:16px;background:var(--product-surface)}
+#support-dialog{border:1px solid var(--product-line);border-radius:16px;background:var(--product-surface);color:var(--product-ink);max-width:480px}
+#support-dialog :is(h2,h3){font-family:inherit;font-size:23px;letter-spacing:-.035em;line-height:1.5}
+#support-dialog p{font-size:13px;line-height:1.9;color:var(--product-muted)}
+@media(max-width:600px){#modal-overlay .modal-body{padding:22px 18px}#modal-overlay .modal{border-radius:14px}#modal-overlay #modal-title{font-size:25px}}
 
 /* Account pages keep identity and settings on light, readable surfaces. */
 #profile-overlay .account-modal{max-width:500px;border-radius:22px;background:var(--product-surface);box-shadow:0 24px 80px #122a2333}

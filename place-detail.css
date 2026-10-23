@@ -10,8 +10,8 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
 .place-detail-page nav[aria-label="현재 위치"] a{min-height:32px;text-decoration:none;color:inherit}
 .place-detail-page nav[aria-label="현재 위치"] [aria-current]{color:#243c32}
 .place-detail-page article.card{margin:12px 0 48px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;border-top:0}
-.place-detail-page h1,.place-detail-page h2,.place-detail-page h3{font-family:inherit;color:#243c32;letter-spacing:-.04em;font-weight:700}
-.place-detail-page article.card>h1{font-size:clamp(32px,5vw,48px);line-height:1.3;margin:10px 0 28px}
+.place-detail-page h1,.place-detail-page h2,.place-detail-page h3{font-family:inherit;color:#243c32;letter-spacing:-.04em;font-weight:650}
+.place-detail-page article.card>h1{font-size:clamp(30px,3.5vw,40px);line-height:1.3;margin:10px 0 28px}
 .place-detail-page article.card>p.meta{display:block;background:none;border:0;padding:0;margin:0;color:#617460;font-size:12px;font-weight:600;letter-spacing:.025em}
 .place-detail-page .place-photo{margin:0 0 24px!important}
 .place-detail-page .place-photo img{border-radius:16px!important;max-height:520px!important;background:#eeeae0!important}
@@ -26,15 +26,15 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
 .place-detail-page .place-save-note,.place-detail-page .place-save-status{font-size:12px;margin:6px 0;color:#637065}
 .place-detail-page .place-save-status:empty{display:none}
 .place-detail-page article.card>p{font-size:15px;line-height:1.95;max-width:72ch;margin:24px 0;overflow-wrap:anywhere}
-.place-detail-page article.card>h2{font-size:22px;margin:38px 0 16px;padding:0;border:0}
-.place-detail-page section[aria-label="반려견 동반 조건"]{margin:32px 0!important;padding:28px!important;border:1px solid #dce1d8!important;border-radius:14px!important;background:#fffef9!important;box-shadow:none}
-.place-detail-page section[aria-label="반려견 동반 조건"] h3{font-size:20px!important;margin:0 0 18px!important}
+.place-detail-page article.card>h2{font-size:21px;margin:38px 0 16px;padding:0;border:0}
+.place-detail-page section[aria-label="반려견 동반 조건"]{margin:32px 0!important;padding:28px!important;border:1px solid #dce1d8!important;border-radius:10px!important;background:#fffef9!important;box-shadow:none}
+.place-detail-page section[aria-label="반려견 동반 조건"] h3{font-size:18px!important;margin:0 0 18px!important}
 .place-detail-page section[aria-label="반려견 동반 조건"] dl>div{display:grid;grid-template-columns:145px minmax(0,1fr);gap:20px;margin:0!important;padding:14px 0;border-bottom:1px solid #e8ebe4}
 .place-detail-page section[aria-label="반려견 동반 조건"] dt{font-size:13px!important;font-weight:600!important;color:#5b6b5f}
 .place-detail-page section[aria-label="반려견 동반 조건"] dd{font-size:14px!important;line-height:1.85!important;margin:0!important;min-width:0;word-break:keep-all}
 .place-detail-page section[aria-label="반려견 동반 조건"]>p{font-size:12px!important;line-height:1.85;margin-top:18px!important;color:#58665c}
 .place-detail-page section.card{background:transparent;border:0;border-top:1px solid #dce1d8;border-radius:0;box-shadow:none;padding:28px 0;margin:32px 0}
-.place-detail-page section.card h2{font-size:22px;margin:0 0 12px}
+.place-detail-page section.card h2{font-size:21px;margin:0 0 12px}
 .place-detail-page section.card p{font-size:13px;color:#637065}
 .place-detail-page section.card ul{padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
 .place-detail-page section.card li{padding:14px 0;border-bottom:1px solid #e1e5dc;font-size:13px;line-height:1.8}
@@ -55,7 +55,7 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
  .place-detail-page .place-site-header{min-height:72px}
  .place-detail-page .place-site-header .brand{font-size:21px}
  .place-detail-page .place-back{font-size:12px}
- .place-detail-page article.card>h1{font-size:32px;margin-bottom:22px}
+ .place-detail-page article.card>h1{font-size:30px;margin-bottom:22px}
  .place-detail-page .place-photo img{border-radius:12px!important}
  .place-detail-page .place-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
  .place-detail-page .place-actions .place-nearby{grid-column:1/-1;min-height:40px;padding:6px}
@@ -73,7 +73,7 @@ body.reading-page.place-detail-page{background:#faf8f1;color:#243c32;font-family
 
 /* Bright related places, independent of the shared list theme. */
 .place-detail-page section.card ul{gap:12px}
-.place-detail-page section.card ul>li{background:#fffef9;color:#243c32;border:1px solid #dce1d8;border-radius:12px;padding:18px 20px;box-shadow:none}
+.place-detail-page section.card ul>li{background:#fffef9;color:#243c32;border:1px solid #dce1d8;border-radius:9px;padding:18px 20px;box-shadow:none}
 .place-detail-page section.card ul>li>a{background:transparent;color:#243c32;text-decoration:none;line-height:1.7}
 .place-detail-page section.card ul>li:hover{background:#fffef9;border-color:#9cab9b}
 .place-detail-page section.card ul>li>a::after{color:#65765f}

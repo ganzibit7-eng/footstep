@@ -1,11 +1,13 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {refinePublicReading} from './public-reading-layout.mjs';
 
 export const SITE='https://balzaguk.com';
 // Stable existing brand asset; 192px exceeds Naver's 32px recommendation.
 export const ICON='<link rel="icon" href="https://balzaguk.com/icon-192.png" type="image/png" sizes="192x192">';
 export function searchHead(html){
+  html=refinePublicReading(html);
   return html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/i,head=>{
     head=head.replace(/<link\b[^>]*>/gi,tag=>{
       const rel=tag.match(/\brel\s*=\s*["']([^"']+)["']/i)?.[1].toLowerCase();

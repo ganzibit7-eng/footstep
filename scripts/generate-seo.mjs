@@ -1,3 +1,4 @@
+import {refineDiscovery} from './discovery-layout.mjs';
 import {tripBooking} from './trip-stays.mjs';
 import {cacheRepeatedSearchStyles} from './search-style-cache.mjs';
 import {generatePetLife} from './generate-pet-life.mjs';
@@ -27,7 +28,7 @@ const SITE = 'https://balzaguk.com';
 const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
-const withTraffic = html => refinePlaceDetail(html).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '').replace('</body>', '<script defer src="/photo-display.js?v=20261018-r2"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
+const withTraffic = html => refineDiscovery(refinePlaceDetail(html)).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '').replace('</body>', '<script defer src="/photo-display.js?v=20261018-r2"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
 
 const types = [
   { table: 'courses', folder: 'courses', label: '강아지 산책 코스', icon: '🐕' },
@@ -720,7 +721,7 @@ function directoryHtml(groups) {
     ...(type.table==='facilities'?{conditions:PlaceConditions.summary(item),photo:PlacePhotos.get(item)?{...PlacePhotos.get(item),src:PlacePhotos.url(PlacePhotos.get(item))}:null}:{})
   })));
   const searchWidget=`<p><a href="/pet-care/">동물병원·미용·돌봄 등 전문업소 찾기 ↗</a></p><section id="find-place"><h2>동네·장소 이름으로 바로 찾기</h2><form id="place-search"><label for="place-query">지역 또는 장소 이름</label><input id="place-query" type="search" maxlength="100" placeholder="예: 남산, 수원, 제주" autocomplete="off"><label for="place-kind">찾을 종류</label><select id="place-kind"><option value="">전체</option><option value="courses">산책 코스</option><option value="facilities">애견동반 장소</option><option value="bins">배변봉투함</option></select><label for="place-region">지역 선택</label><select id="place-region"><option value="">전체 지역</option></select><label for="place-category">동반장소 업종</label><select id="place-category"><option value="">전체 업종</option><option value="공원관광">공원·관광</option><option value="쇼핑">쇼핑</option><option value="숙소">숙소</option><option value="식당카페">식당·카페</option><option value="캠핑">캠핑</option></select><button type="submit">찾기</button><button id="place-clear" type="button">검색 초기화</button></form><p id="place-count" role="status" aria-live="polite">지역이나 장소 이름을 입력하세요.</p><ul id="place-results"></ul><button id="place-more" type="button" hidden>결과 더 보기</button><noscript>아래 지역·테마별 링크에서도 장소를 찾을 수 있습니다.</noscript></section>`;
-  const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(searchData).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261017-places"></script>`;
+  const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(searchData).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261023-directory"></script>`;
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;
     const featured=[...items]

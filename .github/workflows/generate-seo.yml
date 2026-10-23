@@ -13,6 +13,8 @@ on:
       - 'pet-care*.js'
       - 'pet-care.css'
       - 'scripts/generate-seo.mjs'
+      - 'scripts/discovery-layout.mjs'
+      - 'scripts/public-reading-layout.mjs'
       - 'scripts/trip-stays.mjs'
       - 'trip-stays.json'
       - 'scripts/refine-place-details.mjs'
@@ -82,6 +84,8 @@ jobs:
         run: node --test tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs tests/place-bulk-match.cjs tests/place-visit-info.cjs tests/place-photo-rights.cjs tests/place-cultural-data.cjs
       - name: Validate home place sections
         run: node tests/home-places.cjs && node tests/home-more.cjs && node tests/home-scenes.cjs
+      - name: Validate public directory layout and sorting
+        run: node --test tests/public-design.mjs tests/place-search.cjs
       - name: Validate weather and affiliate cards
         run: node tests/weather-widget.cjs && node tests/shopping.cjs && node --test tests/weather-snapshot.mjs
       - name: Commit changed pages

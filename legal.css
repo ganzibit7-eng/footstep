@@ -21,16 +21,16 @@
 
 /* Match the public reading pages while retaining policy contents. */
 .legal-reading{--lp-ink:#243c32;--lp-muted:#58665e;--lp-paper:#fffefa;--lp-line:#dddfe0;--lp-soft:#edf2ec;--lp-accent:#ad7650;color:var(--lp-ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;letter-spacing:-.025em}
-.legal-doc{background:#f6f4ef}
-.legal-reading article{background:var(--lp-paper);border-color:var(--lp-line)!important;border-radius:20px;padding:28px!important;box-shadow:0 8px 30px #21382b05}
+.legal-doc{background:#faf8f1}
+.legal-reading article{background:var(--lp-paper);border-color:var(--lp-line)!important;border-radius:10px;padding:28px!important;box-shadow:none}
 .legal-reading article h3{color:var(--lp-ink);font-size:19px!important;letter-spacing:-.035em}
 .legal-reading article p,.legal-reading li{color:var(--lp-muted)}
 .legal-reading a{color:var(--lp-ink)}
-.legal-summary{background:var(--lp-soft);border:1px solid var(--lp-line);border-top:3px solid var(--lp-accent);border-radius:20px;padding:28px;color:var(--lp-ink)}
+.legal-summary{background:var(--lp-soft);border:1px solid var(--lp-line);border-top:1px solid var(--lp-line);border-radius:10px;padding:28px;color:var(--lp-ink)}
 .legal-summary strong{font-size:21px;line-height:1.5}
 .legal-doc header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #dddfe0}
 .legal-doc header a,.legal-doc footer a{display:inline-flex;align-items:center;min-height:44px;color:#243c32}
-.legal-doc .legal-toc{background:var(--lp-paper);border-color:var(--lp-line);padding:24px;border-radius:20px}
+.legal-doc .legal-toc{background:var(--lp-paper);border-color:var(--lp-line);padding:24px;border-radius:10px}
 .legal-toc summary{cursor:pointer;min-height:44px;line-height:1.7;font-weight:650}
 .legal-doc .legal-toc a{padding:12px 14px;background:var(--lp-soft);border-radius:10px;min-height:44px;box-sizing:border-box;text-decoration:none}
 @media(max-width:600px){.legal-reading .wrap{box-sizing:border-box;width:100%;padding-left:16px;padding-right:16px}.legal-reading article{padding:22px 18px!important;border-radius:16px}.legal-summary{padding:24px 18px}.legal-doc .legal-toc{padding:20px 16px}}
