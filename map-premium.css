@@ -21,9 +21,6 @@
 #map-section #view-filter-group .chip{flex:1;justify-content:center;min-height:40px;border:0;border-radius:6px;background:transparent;font:500 12px/1.5 var(--experience-font,system-ui);color:var(--map-muted);padding:8px 12px;gap:6px;box-shadow:none}
 #map-section #view-filter-group .chip.active{background:var(--map-surface);color:var(--map-ink);font-weight:650;box-shadow:0 1px 4px #243c3210}
 #map-section .map-filter-icon{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-#map-section .map-quick-filters{display:flex;gap:6px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
-#map-section .map-quick-filters button{white-space:nowrap;min-height:36px;border:1px solid var(--map-line);border-radius:7px;background:var(--map-surface);color:var(--map-muted);font:500 12px/1.5 var(--experience-font,system-ui);padding:7px 12px;cursor:pointer}
-#map-section .map-quick-filters button[aria-pressed=true]{background:var(--map-soft);border-color:#91a58f;color:var(--map-ink)}
 #map-section #registered-place-filters{padding:0 16px!important;background:var(--map-surface);border-top:1px solid var(--map-line)}
 #map-section #registered-place-filters[hidden]{display:none!important}
 #map-section .map-place-refine{width:100%;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;padding:0}
@@ -85,6 +82,8 @@
 #map-selection-body .map-peek-actions button{min-height:44px;font:500 12px/1.5 var(--experience-font,system-ui);border-radius:7px;border:1px solid var(--map-line);background:var(--map-soft);color:var(--map-ink);padding:10px}
 #map-selection-body .map-route-certainty{font-size:11px;padding-top:10px;border-top:1px solid var(--map-line)}
 #map-section .map-results-bridge{padding:10px 16px!important;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--map-line);background:var(--map-surface)}
+#map-section .map-results-bridge[hidden]{display:none!important}
+#map-section:not(:has(#view-filter-group [data-filter=course].active)):not(:has(#view-filter-group [data-filter=all].active)) .map-results-bridge{display:none!important}
 #map-section .map-results-bridge p{margin:0;font-size:11px;line-height:1.7;color:var(--map-muted)}
 #map-section .map-results-bridge>div{display:flex;gap:8px;margin:0}
 #map-section .explore-view-button{font-size:11px;min-height:36px;border:1px solid var(--map-line);border-radius:6px;background:var(--map-surface);padding:7px 10px;color:var(--map-ink)}
@@ -102,7 +101,6 @@
  #map-section .map-search-clear{top:12px;right:76px}
  #map-section .map-category-toolbar{padding:6px 10px 9px!important}#map-section #view-filter-group{max-width:none}
  #map-section #view-filter-group .chip{font-size:11px;padding:8px 4px;gap:5px;min-height:40px}
- #map-section .map-quick-filters{padding:0 10px 9px;gap:5px}#map-section .map-quick-filters button{font-size:11px;min-height:44px;padding:6px 10px}
  #map-section #registered-place-filters{padding:0 10px!important}#map-section .map-refine-inputs{gap:10px}#map-section .map-refine-inputs label{min-width:120px}#map-section .map-refine-inputs :is(input,select){font-size:16px}
  #map-section #professional-map-status{font-size:10px;max-height:70px;overflow:auto}
  #map-section .map-explore-tools{top:9px;right:9px;gap:5px}#map-section .map-explore-tools button{font-size:11px;padding:9px 11px;min-height:44px}
@@ -132,7 +130,8 @@
 /* Entry feedback belongs to the information panel, never to map tiles or pans. */
 #map-explorer-selection:not([hidden]){animation:map-info-arrive 180ms ease-out both}
 #map-explorer-list button{transition:background-color 160ms ease}
-#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn){transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}
-#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn):active:not(:disabled){transform:translateY(1px)}
 @keyframes map-info-arrive{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){#map-explorer-selection:not([hidden]){animation:none}#map-explorer-list button,#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn){transition:none}}
+
+#map-section :is(.map-explore-tools button,.locate-btn){transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}
+#map-section :is(.map-explore-tools button,.locate-btn):active:not(:disabled){transform:translateY(1px)}
+@media(prefers-reduced-motion:reduce){#map-explorer-selection:not([hidden]){animation:none}#map-explorer-list button,#map-section :is(.map-explore-tools button,.locate-btn){transition:none}}

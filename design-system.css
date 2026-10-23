@@ -25,7 +25,6 @@ header #notif-btn .ui-icon{width:20px;height:20px}
 .app-page:not(.hero)>.wrap>.section-head h2{font-weight:650;letter-spacing:-.035em;font-size:32px;line-height:1.45}
 .app-page:not(.hero)>.wrap>.section-head p{font-size:14px!important;color:var(--finish-muted);line-height:1.85!important;max-width:56ch}
 #nearby-section .home-region-guides{border-radius:20px;background:transparent;border:0;padding:0;margin-top:14px;box-shadow:none}
-#nearby-section .home-region-heading h2{font-size:30px;font-weight:650;letter-spacing:-.035em}
 #nearby-section .home-region-heading p{font-size:14px;line-height:1.85;color:var(--finish-muted)}
 #nearby-section .home-region-grid{gap:16px}
 #nearby-section .home-region-card{border-radius:var(--finish-radius);border:1px solid var(--finish-line);box-shadow:none;background:var(--finish-surface)}
@@ -79,7 +78,6 @@ footer.site-footer .footer-description{font-size:13px;color:var(--finish-muted);
  .app-page:not(.hero)>.wrap>.section-head h2{font-size:27px}
  .app-page:not(.hero)>.wrap>.section-head p{font-size:13px!important}
  #nearby-section .home-region-guides{padding:0;border-radius:0;margin-top:6px}
- #nearby-section .home-region-heading h2,#nearby-section #nearby-title{font-size:26px;max-width:none;line-height:1.45}
  #nearby-section .home-region-grid{gap:12px}
  #nearby-section .home-region-body{padding:13px}
  #nearby-section .home-region-title h3{font-size:18px}
