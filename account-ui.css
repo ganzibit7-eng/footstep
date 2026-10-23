@@ -22,7 +22,7 @@
 .auth-providers{display:grid;gap:10px;}
 #nick-overlay .auth-provider{display:flex;align-items:center;justify-content:center;position:relative;gap:12px;min-height:52px;width:100%;padding:12px 36px;border-radius:12px;border:1px solid var(--account-line);font:650 14px/1.5 system-ui,-apple-system,"Noto Sans KR",sans-serif;cursor:pointer;transition:background .15s,box-shadow .15s;box-sizing:border-box;}
 #nick-overlay .auth-kakao{background:#fee500;color:#191919;border-color:#fee500;}
-#nick-overlay .auth-google{background:#fff;color:#303b34;}
+#nick-overlay .auth-google{background:#e6eefb;color:#244265;border-color:#b7c9e4;}
 .auth-provider svg,.auth-google-icon{position:absolute;left:18px;width:20px;height:20px;}
 .auth-google-icon{font:750 21px/20px Arial,sans-serif;color:#4285f4;}
 #nick-overlay .auth-provider:disabled{cursor:wait;opacity:.65;}
@@ -55,7 +55,7 @@
 #profile-overlay .account-settings .pin-btn{display:block;width:100%;margin:6px 0!important;border:1px solid var(--account-line)!important;background:transparent!important;color:var(--account-ink)!important;text-align:left;padding:12px 14px;font-size:12px!important;font-weight:500;}
 #profile-overlay .account-settings #withdraw-btn{color:#ad4434!important;}
 #profile-overlay .account-sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
-@media(hover:hover){.auth-email summary:hover,.auth-browse:hover{background:var(--account-soft);}#nick-overlay .auth-google:hover{background:#f4f6f2;}#nick-overlay .auth-kakao:hover{background:#f5dc00;}#profile-overlay .account-settings .pin-btn:hover{background:var(--account-soft)!important;}}
+@media(hover:hover){.auth-email summary:hover,.auth-browse:hover{background:var(--account-soft);}#nick-overlay .auth-google:hover{background:#d8e5f7;border-color:#9fb8dc;}#nick-overlay .auth-kakao:hover{background:#f5dc00;}#profile-overlay .account-settings .pin-btn:hover{background:var(--account-soft)!important;}}
 @media(max-width:600px){:is(#nick-overlay,#profile-overlay){padding:12px 10px max(12px,env(safe-area-inset-bottom));align-items:center;} :is(#nick-overlay,#profile-overlay) .modal{max-height:calc(100dvh - 24px - env(safe-area-inset-bottom));border-radius:24px;max-width:440px;} :is(#nick-overlay,#profile-overlay) .modal-body{padding:20px;} .auth-dialog-header{padding-left:20px;min-height:56px;}#nick-overlay #login-modal-title{font-size:27px;}#profile-overlay .account-section{padding:17px;} }
 @media(max-height:730px){#nick-overlay .auth-brand-mark{width:40px;height:40px;margin-bottom:6px;}#nick-overlay .modal-body{padding-top:16px;}#nick-overlay #login-modal-title{font-size:25px;margin:6px 0;}#nick-overlay .auth-benefits{margin-top:12px;}#nick-overlay .auth-consent{margin-top:14px;} }
 html[data-theme="dark"] :is(#nick-overlay,#profile-overlay){--account-bg:#19241e;--account-card:#202e25;--account-ink:#eef3eb;--account-muted:#bbc8ba;--account-line:#3c4c3e;--account-soft:#2d4030;--account-accent:#b8d2ad;}
@@ -91,7 +91,7 @@ html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="d
 #nick-overlay .auth-divider{margin:22px 0;color:#e1e6ec;}
 #nick-overlay .auth-providers{padding:0 18px;gap:12px;}
 #nick-overlay .auth-provider{font-weight:550;font-size:13px;}
-#nick-overlay .auth-google{border-radius:999px;color:#171e28;background:#fff;border-color:#fff;}
+#nick-overlay .auth-google{border-radius:999px;}
 #nick-overlay .auth-kakao{border-radius:999px;color:#191919;}
 #nick-overlay .auth-existing{color:#f1f4f6;line-height:1.8;margin-top:24px;font-size:11px;}
 #nick-overlay .auth-browse{color:#fff;font-size:11px;margin-top:4px;}

@@ -230,3 +230,32 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 :is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) [aria-busy=true]{cursor:progress}
 @media(hover:none){#list-section .course-card:active{border-color:#9fb5a3}}
 @media(prefers-reduced-motion:reduce){:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(button,.submit-btn){transition:none}}
+
+/* Support is a small contact surface, separate from update history dialogs. */
+#support-dialog{width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--product-line);border-radius:18px;background:var(--product-surface);color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);box-shadow:0 16px 56px #17332926;overscroll-behavior:contain}
+#support-dialog::backdrop{background:#182f294d;backdrop-filter:blur(4px)}
+#support-dialog[open]{animation:support-arrive 180ms ease-out both}
+#support-dialog .support-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:24px 24px 0}
+#support-dialog .support-eyebrow{display:block;font-size:11px;font-weight:500;line-height:1.7;color:var(--product-muted);margin-bottom:8px}
+#support-dialog h2{font-family:inherit;font-size:25px;font-weight:600;line-height:1.45;letter-spacing:-.04em;margin:0}
+#support-dialog #support-close{display:grid;place-items:center;flex:none;width:44px;height:44px;margin:-7px -8px 0 0;border:0;border-radius:8px;background:transparent;color:var(--product-muted);font:400 26px/1 system-ui;cursor:pointer}
+#support-dialog .support-body{padding:0 24px 24px}
+#support-dialog #support-description{margin:12px 0 24px;font-size:13px;line-height:1.8;color:var(--product-muted);word-break:keep-all}
+#support-dialog .support-channels{display:grid;border-top:1px solid var(--product-line)}
+#support-dialog .support-channel{display:flex;align-items:center;gap:14px;min-height:96px;padding:18px 4px;border-bottom:1px solid var(--product-line);color:var(--product-ink);text-decoration:none;transition:background-color 160ms ease,transform 160ms ease;box-sizing:border-box}
+#support-dialog .support-channel-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:10px;background:var(--product-soft);color:var(--product-accent)}
+#support-dialog .support-channel-icon svg{width:23px;height:23px}
+#support-dialog .support-chat-icon{background:#faeab1;color:#51441e}
+#support-dialog .support-channel-copy{display:grid;gap:5px;min-width:0}
+#support-dialog .support-channel-copy strong{font-size:15px;font-weight:600;line-height:1.6}
+#support-dialog .support-channel-copy>span{font-size:12px;line-height:1.7;color:var(--product-muted);overflow-wrap:anywhere}
+#support-dialog .support-arrow{margin-left:auto;flex:none;font-size:19px;color:var(--product-muted)}
+#support-dialog .support-note{margin-top:22px}
+#support-dialog .support-note strong{font-size:12px;font-weight:600;line-height:1.7}
+#support-dialog .support-note p{font-size:12px;line-height:1.85;color:var(--product-muted);margin:7px 0 0;word-break:keep-all}
+#support-dialog :is(a,button):focus-visible{outline:2px solid var(--product-accent);outline-offset:3px}
+#support-dialog .support-channel:active{transform:translateY(1px)}
+@media(hover:hover){#support-dialog :is(.support-channel,#support-close):hover{background:var(--product-soft)}}
+@media(max-width:600px){#support-dialog{width:calc(100vw - 24px);max-height:calc(100dvh - 24px - env(safe-area-inset-bottom))}#support-dialog .support-header{padding:22px 20px 0}#support-dialog .support-body{padding:0 20px max(22px,env(safe-area-inset-bottom))}#support-dialog h2{font-size:23px}#support-dialog .support-channel{gap:12px}}
+@keyframes support-arrive{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#support-dialog[open]{animation:none}#support-dialog .support-channel{transition:none}}
