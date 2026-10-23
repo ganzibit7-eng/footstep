@@ -37,3 +37,16 @@ test('directory empty state resets existing controls without changing source con
  assert.equal(nodes['place-results'].children[0].className,'directory-empty');assert.equal(nodes['place-more'].hidden,true);
  nodes['place-results'].children[0].children.at(-1).click();assert.equal(nodes['place-query'].value,'');assert.equal(nodes['place-kind'].value,'');assert.equal(nodes['place-results'].children.length,0);assert.equal(nodes['place-count'].parentElement.sibling.hidden,true);assert(data.every(row=>row.conditions==='미확인'));
 });
+const {directoryReturn}=require('../place-saves.js');
+test('detail return keeps only same-origin directory filters and rejects external destinations',()=>{
+ assert.equal(directoryReturn('https://balzaguk.com/discover.html?category=숙소&shown=40#find-place','https://balzaguk.com'),'/discover.html?category=%EC%88%99%EC%86%8C&shown=40#find-place');
+ for(const ref of ['https://evil.example/discover.html?q=test','javascript:alert(1)','https://balzaguk.com/places/example/',''])assert.equal(directoryReturn(ref,'https://balzaguk.com'),null);
+});
+test('detail return uses native back for ordinary clicks and preserves modified-link navigation',()=>{
+ const link=new Node('a');let backs=0,prevented=0;
+ const ctx={URL,document:{referrer:'https://balzaguk.com/discover.html?kind=facilities&shown=40',readyState:'complete',querySelectorAll:s=>s==='.place-back'?[link]:[]},location:{origin:'https://balzaguk.com'},history:{length:3,back(){backs++;}},localStorage:{getItem:()=>null},addEventListener(){}};
+ vm.runInNewContext(fs.readFileSync('place-saves.js','utf8'),ctx);
+ assert.equal(link.href,'/discover.html?kind=facilities&shown=40');assert.equal(link.textContent,'목록으로 돌아가기');
+ link.listeners.click({button:0,preventDefault(){prevented++;}});assert.equal(backs,1);assert.equal(prevented,1);
+ link.listeners.click({button:0,ctrlKey:true,preventDefault(){prevented++;}});assert.equal(backs,1);assert.equal(prevented,1);
+});

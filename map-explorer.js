@@ -5,7 +5,7 @@
  function create({map,host,isVisible,onCourse,reveal,getStatus,onSearchArea}){
   const groups=new Map(),frame=host.querySelector('.map-wrap-relative');
   const panel=host.querySelector('#map-explorer-panel'),list=host.querySelector('#map-explorer-list'),count=host.querySelector('#map-explorer-count'),selection=host.querySelector('#map-explorer-selection'),body=host.querySelector('#map-selection-body'),peek=host.querySelector('#map-course-peek'),area=host.querySelector('#map-search-area'),toggle=host.querySelector('#map-results-toggle');
-  let selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,lastSize='',disposed=false,mobile=innerWidth<=700;
+  let selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,insetScheduled=false,lastInset=-1,lastSize='',disposed=false,mobile=innerWidth<=700;
   host.classList.add('map-explorer-ready');panel.hidden=innerWidth<=700;toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';
   const bridge=host.querySelector('.map-results-bridge');if(bridge)frame.after(bridge);
   function entries(){return [...groups].flatMap(([group,rows])=>isVisible(group)?[...rows.values()]:[]);}
@@ -43,7 +43,7 @@
     else {const p=document.createElement('p');p.textContent=entry.conditions||'동반 조건 미확인';body.append(p);}
     if(pan||innerWidth<=700){map.setView([entry.lat,entry.lng],Math.max(map.getZoom(),16),{animate:false});if(innerWidth<=700)map.panBy([0,Math.round(map.getSize().y*.22)],{animate:false});reveal?.(entry.marker,highlight);}
    }
-   highlight();schedule();
+   highlight();schedule();scheduleInset();
   }
   function add(group,entry){
    if(!valid(entry))return;entry={...entry,group,key:group+':'+String(entry.id)};
@@ -61,13 +61,22 @@
    const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;toggle.textContent=mobile?'목록 열기':'목록 접기';toggle.setAttribute('aria-expanded',String(!mobile));}
    const top=Math.max(64,frame.getBoundingClientRect().top),viewport=window.visualViewport?.height||innerHeight;
    const height=Math.round(Math.max(330,Math.min(740,viewport-top-(mobile?88:24)))),size=innerWidth+':'+height;
-   if(force!==true&&size===lastSize)return;lastSize=size;
+   scheduleInset();if(force!==true&&size===lastSize)return;lastSize=size;
    frame.style.setProperty('--map-workspace-height',height+'px');map.invalidateSize({pan:false});
   }
+  function syncInset(){
+   if(disposed||innerWidth>700)return;
+   const rect=frame.getBoundingClientRect(),nav=document.getElementById?.('bottom-tab-bar');
+   if(!Number.isFinite(rect.bottom)||!rect.height)return;
+   const viewport=window.visualViewport,edge=Math.min(innerHeight,viewport?viewport.height+viewport.offsetTop:innerHeight,nav?.getBoundingClientRect().top??innerHeight);
+   const inset=Math.round(Math.min(Math.max(8,rect.bottom-edge+8),Math.max(8,rect.height-140)));
+   if(inset!==lastInset){lastInset=inset;frame.style.setProperty('--map-overlay-inset',inset+'px');}
+  }
+  function scheduleInset(){if(disposed||insetScheduled)return;insetScheduled=true;requestAnimationFrame(()=>{insetScheduled=false;syncInset();});}
   function scheduleResize(){if(disposed||resizeScheduled)return;resizeScheduled=true;requestAnimationFrame(()=>{resizeScheduled=false;resize();});}
   const moved=()=>{area.hidden=false;count.textContent='지도를 옮겼어요 · 이 지역에서 찾기';highlight();};map.on('moveend',moved);
   area.onclick=()=>{shown=30;render();area.hidden=true;onSearchArea?.();};
-  toggle.onclick=()=>{panel.hidden=!panel.hidden;if(!panel.hidden&&innerWidth<=700)close();toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';};
+  toggle.onclick=()=>{panel.hidden=!panel.hidden;if(!panel.hidden&&innerWidth<=700)close();toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';scheduleInset();};
   host.querySelector('#map-explorer-close').onclick=()=>toggle.click();
   host.querySelector('#map-explorer-more').onclick=()=>{shown+=30;render();};
   host.querySelector('#map-selection-close').onclick=close;
@@ -80,11 +89,12 @@
   handle.addEventListener('pointercancel',()=>{down=undefined;});
   selection.addEventListener('keydown',e=>{if(e.key==='Escape'){close();toggle.focus();}});
   window.addEventListener('resize',scheduleResize,{passive:true});
+  window.addEventListener('scroll',scheduleInset,{passive:true});
   window.visualViewport?.addEventListener('resize',scheduleResize,{passive:true});
   const observer=typeof ResizeObserver==='function'?new ResizeObserver(scheduleResize):null;
   for(const el of host.querySelectorAll('.map-search-toolbar,.map-category-toolbar,#registered-place-filters'))observer?.observe(el);
   requestAnimationFrame(()=>{render();resize(true);});
-  return {add,clear,refresh,selectKey(key,pan=true){for(const rows of groups.values())if(rows.has(key)){select(rows.get(key),pan);return true;}return false;},close,resize,destroy(){disposed=true;observer?.disconnect();map.off('moveend',moved);window.removeEventListener('resize',scheduleResize);window.visualViewport?.removeEventListener('resize',scheduleResize);}};
+  return {add,clear,refresh,selectKey(key,pan=true){for(const rows of groups.values())if(rows.has(key)){select(rows.get(key),pan);return true;}return false;},close,resize,destroy(){disposed=true;observer?.disconnect();map.off('moveend',moved);window.removeEventListener('resize',scheduleResize);window.removeEventListener('scroll',scheduleInset);window.visualViewport?.removeEventListener('resize',scheduleResize);}};
  }
  return {valid,inBounds,create};
 });

@@ -18,7 +18,15 @@
     root.document.querySelectorAll('[data-place-saved-list]').forEach(container=>{container.replaceChildren();rows.forEach(item=>{const li=root.document.createElement('li'),link=root.document.createElement('a'),remove=root.document.createElement('button');link.href='/places/'+item.id+'/';link.textContent=item.name;remove.type='button';remove.textContent='찜 해제';remove.setAttribute('aria-label',item.name+' 찜 해제');remove.addEventListener('click',()=>act(item.id,item.name));li.append(link,remove);container.append(li);});});
   }
   function act(id,name){const result=toggle(id,name);render();root.document.querySelectorAll('[data-place-save-status]').forEach(status=>status.textContent=result.message);return result;}
-  function boot(){render();root.document.querySelectorAll('[data-place-save]').forEach(button=>button.addEventListener('click',()=>act(button.dataset.placeSave,button.dataset.placeName)));root.addEventListener('storage',event=>{if(event.key===KEY||event.key===null)render();});}
+  function directoryReturn(referrer,origin){try{const url=new URL(referrer);return url.origin===origin&&url.pathname==='/discover.html'?url.pathname+url.search+url.hash:null;}catch{return null;}}
+  function directoryBack(){
+    const path=directoryReturn(root.document.referrer,root.location?.origin);if(!path)return;
+    root.document.querySelectorAll('.place-back').forEach(link=>{
+      link.href=path;link.textContent='목록으로 돌아가기';
+      link.addEventListener('click',event=>{if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||link.target==='_blank'||root.history.length<2)return;event.preventDefault();root.history.back();});
+    });
+  }
+  function boot(){directoryBack();render();root.document.querySelectorAll('[data-place-save]').forEach(button=>button.addEventListener('click',()=>act(button.dataset.placeSave,button.dataset.placeName)));root.addEventListener('storage',event=>{if(event.key===KEY||event.key===null)render();});}
   if(root.document){if(root.document.readyState==='loading')root.document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();}
-  return {list,toggle,render};
+  return {list,toggle,render,directoryReturn};
 });
