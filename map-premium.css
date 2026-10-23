@@ -45,14 +45,14 @@
 #map-section .map-explore-tools button[hidden]{display:none}
 #map-section .leaflet-top.leaflet-right{top:60px;right:2px}
 #map-section .leaflet-control-zoom{border:1px solid var(--map-line)!important;border-radius:8px;box-shadow:0 2px 6px #243c3212;overflow:hidden}
-#map-section .leaflet-control-zoom a{width:40px;height:40px;line-height:40px;font-size:22px;font-weight:400;background:var(--map-surface);color:var(--map-ink);border-color:var(--map-line)}
-#map-section .locate-btn{position:absolute;right:12px;top:164px;bottom:auto;width:44px;height:44px;border:1px solid var(--map-line);border-radius:8px;background:var(--map-surface);color:var(--map-ink);box-shadow:0 2px 6px #243c3212;z-index:800}
+#map-section .leaflet-control-zoom a{width:44px;height:44px;line-height:44px;font-size:22px;font-weight:400;background:var(--map-surface);color:var(--map-ink);border-color:var(--map-line)}
+#map-section .locate-btn{position:absolute;right:12px;top:172px;bottom:auto;width:44px;height:44px;border:1px solid var(--map-line);border-radius:8px;background:var(--map-surface);color:var(--map-ink);box-shadow:0 2px 6px #243c3212;z-index:800}
 #map-section .locate-btn.loading{opacity:.6}#map-section .locate-btn.located{color:#315c9e}
 #map-explorer-panel{position:absolute;left:12px;top:12px;bottom:12px;width:310px;z-index:1100;background:var(--map-surface);border:1px solid var(--map-line);border-radius:10px;box-shadow:0 3px 14px #243c3214;display:flex;flex-direction:column;overflow:hidden}
 #map-explorer-panel[hidden],#map-explorer-selection[hidden]{display:none!important}
 #map-section .map-explorer-head{display:flex;align-items:center;justify-content:space-between;min-height:50px;padding:8px 12px 0 18px;gap:12px}
 #map-explorer-count{font-size:14px;font-weight:600}
-#map-section :is(#map-explorer-close,#map-selection-close){width:40px;height:40px;min-height:40px;flex:none;border:0;border-radius:7px;background:transparent;color:var(--map-muted);font:400 24px/1 system-ui;cursor:pointer}
+#map-section :is(#map-explorer-close,#map-selection-close){width:44px;height:44px;min-height:44px;flex:none;border:0;border-radius:7px;background:transparent;color:var(--map-muted);font:400 24px/1 system-ui;cursor:pointer}
 #map-section .map-explorer-help{font-size:10px;line-height:1.7;color:var(--map-muted);padding:0 18px 12px;margin:0;border-bottom:1px solid var(--map-line)}
 #map-explorer-list{list-style:none;padding:0;margin:0;overflow-y:auto;overscroll-behavior:contain;flex:1;min-height:0;scrollbar-width:thin}
 #map-explorer-list li{border-bottom:1px solid var(--map-line);margin:0;padding:0;background:transparent}
@@ -102,15 +102,15 @@
  #map-section .map-search-clear{top:12px;right:76px}
  #map-section .map-category-toolbar{padding:6px 10px 9px!important}#map-section #view-filter-group{max-width:none}
  #map-section #view-filter-group .chip{font-size:11px;padding:8px 4px;gap:5px;min-height:40px}
- #map-section .map-quick-filters{padding:0 10px 9px;gap:5px}#map-section .map-quick-filters button{font-size:11px;min-height:34px;padding:6px 10px}
+ #map-section .map-quick-filters{padding:0 10px 9px;gap:5px}#map-section .map-quick-filters button{font-size:11px;min-height:44px;padding:6px 10px}
  #map-section #registered-place-filters{padding:0 10px!important}#map-section .map-refine-inputs{gap:10px}#map-section .map-refine-inputs label{min-width:120px}#map-section .map-refine-inputs :is(input,select){font-size:16px}
  #map-section #professional-map-status{font-size:10px;max-height:70px;overflow:auto}
- #map-section .map-explore-tools{top:9px;right:9px;gap:5px}#map-section .map-explore-tools button{font-size:11px;padding:9px 11px;min-height:40px}
+ #map-section .map-explore-tools{top:9px;right:9px;gap:5px}#map-section .map-explore-tools button{font-size:11px;padding:9px 11px;min-height:44px}
  #map-explorer-panel{left:8px;right:8px;bottom:8px;top:auto;width:auto;max-height:62%;border-radius:12px}
  #map-explorer-list{max-height:calc(34svh)}
  #map-explorer-selection{left:8px;right:8px;bottom:8px;width:auto;max-height:58%;border-radius:12px;transition:max-height 160ms ease}
  #map-explorer-selection[data-expanded=true]{max-height:calc(100% - 58px)}
- #map-selection-expand{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:34px;width:100%;border:0;background:var(--map-surface);color:var(--map-muted);touch-action:none;cursor:ns-resize}
+ #map-selection-expand{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:44px;width:100%;border:0;background:var(--map-surface);color:var(--map-muted);touch-action:none;cursor:ns-resize}
  #map-selection-expand span{width:32px;height:3px;border-radius:3px;background:#b9c4b7}#map-selection-expand small{font-size:9px;line-height:1.4}
  #map-section .map-selection-head{padding:0 8px 5px 14px;min-height:40px}#map-selection-title{font-size:14px}
  #map-selection-body{padding:10px 14px 14px}
@@ -128,3 +128,11 @@
 #map-section .map-count-cluster svg{width:14px;height:14px;flex:0 0 14px;color:#67806d}
 #map-section .map-count-cluster:hover>span{background:#f0f5ee;border-color:#567361}
 #map-section .map-count-cluster:focus-visible{border-radius:13px}
+
+/* Entry feedback belongs to the information panel, never to map tiles or pans. */
+#map-explorer-selection:not([hidden]){animation:map-info-arrive 180ms ease-out both}
+#map-explorer-list button{transition:background-color 160ms ease}
+#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn){transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}
+#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn):active:not(:disabled){transform:translateY(1px)}
+@keyframes map-info-arrive{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#map-explorer-selection:not([hidden]){animation:none}#map-explorer-list button,#map-section :is(.map-explore-tools button,.map-quick-filters button,.locate-btn){transition:none}}

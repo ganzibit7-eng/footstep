@@ -5,7 +5,7 @@
  function create({map,host,isVisible,onCourse,reveal,getStatus,onSearchArea}){
   const groups=new Map(),frame=host.querySelector('.map-wrap-relative');
   const panel=host.querySelector('#map-explorer-panel'),list=host.querySelector('#map-explorer-list'),count=host.querySelector('#map-explorer-count'),selection=host.querySelector('#map-explorer-selection'),body=host.querySelector('#map-selection-body'),peek=host.querySelector('#map-course-peek'),area=host.querySelector('#map-search-area'),toggle=host.querySelector('#map-results-toggle');
-  let selected=null,previousMarker=null,shown=30,scheduled=false,disposed=false,mobile=innerWidth<=700;
+  let selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,lastSize='',disposed=false,mobile=innerWidth<=700;
   host.classList.add('map-explorer-ready');panel.hidden=innerWidth<=700;toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';
   const bridge=host.querySelector('.map-results-bridge');if(bridge)frame.after(bridge);
   function entries(){return [...groups].flatMap(([group,rows])=>isVisible(group)?[...rows.values()]:[]);}
@@ -55,8 +55,16 @@
    schedule();return entry;
   }
   function clear(group){groups.set(group,new Map());if(selected?.group===group)close();schedule();}
-  function refresh(){if(selected&&!isVisible(selected.group))close();shown=30;area.hidden=true;render();resize();}
-  function resize(){if(!host.classList.contains('active'))return;const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;toggle.textContent=mobile?'목록 열기':'목록 접기';toggle.setAttribute('aria-expanded',String(!mobile));}const top=Math.max(64,frame.getBoundingClientRect().top);const height=Math.max(330,Math.min(740,innerHeight-top-(innerWidth<=700?88:24)));frame.style.setProperty('--map-workspace-height',height+'px');map.invalidateSize({pan:false});}
+  function refresh(){if(selected&&!isVisible(selected.group))close();shown=30;area.hidden=true;render();resize(true);}
+  function resize(force){
+   if(disposed||!host.classList.contains('active'))return;
+   const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;toggle.textContent=mobile?'목록 열기':'목록 접기';toggle.setAttribute('aria-expanded',String(!mobile));}
+   const top=Math.max(64,frame.getBoundingClientRect().top),viewport=window.visualViewport?.height||innerHeight;
+   const height=Math.round(Math.max(330,Math.min(740,viewport-top-(mobile?88:24)))),size=innerWidth+':'+height;
+   if(force!==true&&size===lastSize)return;lastSize=size;
+   frame.style.setProperty('--map-workspace-height',height+'px');map.invalidateSize({pan:false});
+  }
+  function scheduleResize(){if(disposed||resizeScheduled)return;resizeScheduled=true;requestAnimationFrame(()=>{resizeScheduled=false;resize();});}
   const moved=()=>{area.hidden=false;count.textContent='지도를 옮겼어요 · 이 지역에서 찾기';highlight();};map.on('moveend',moved);
   area.onclick=()=>{shown=30;render();area.hidden=true;onSearchArea?.();};
   toggle.onclick=()=>{panel.hidden=!panel.hidden;if(!panel.hidden&&innerWidth<=700)close();toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';};
@@ -71,11 +79,12 @@
   handle.addEventListener('pointerup',e=>{if(down===undefined)return;const delta=e.clientY-down;down=undefined;if(Math.abs(delta)>30){dragged=true;selection.dataset.expanded=String(delta<0);handle.setAttribute('aria-expanded',String(delta<0));}});
   handle.addEventListener('pointercancel',()=>{down=undefined;});
   selection.addEventListener('keydown',e=>{if(e.key==='Escape'){close();toggle.focus();}});
-  window.addEventListener('resize',resize,{passive:true});
-  const observer=typeof ResizeObserver==='function'?new ResizeObserver(()=>requestAnimationFrame(resize)):null;
+  window.addEventListener('resize',scheduleResize,{passive:true});
+  window.visualViewport?.addEventListener('resize',scheduleResize,{passive:true});
+  const observer=typeof ResizeObserver==='function'?new ResizeObserver(scheduleResize):null;
   for(const el of host.querySelectorAll('.map-search-toolbar,.map-category-toolbar,#registered-place-filters'))observer?.observe(el);
-  requestAnimationFrame(()=>{render();resize();});
-  return {add,clear,refresh,selectKey(key,pan=true){for(const rows of groups.values())if(rows.has(key)){select(rows.get(key),pan);return true;}return false;},close,resize,destroy(){disposed=true;observer?.disconnect();map.off('moveend',moved);window.removeEventListener('resize',resize);}};
+  requestAnimationFrame(()=>{render();resize(true);});
+  return {add,clear,refresh,selectKey(key,pan=true){for(const rows of groups.values())if(rows.has(key)){select(rows.get(key),pan);return true;}return false;},close,resize,destroy(){disposed=true;observer?.disconnect();map.off('moveend',moved);window.removeEventListener('resize',scheduleResize);window.visualViewport?.removeEventListener('resize',scheduleResize);}};
  }
  return {valid,inBounds,create};
 });

@@ -87,4 +87,19 @@ body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
  .discovery-page #place-results .directory-name{font-size:15px}.discovery-page #place-results .directory-address{font-size:11px}.discovery-page #place-results .directory-conditions{font-size:11px}
 }
 @media(max-width:370px){.discovery-page #place-results{grid-template-columns:1fr}.discovery-page :is(.directory-photo img,.directory-no-photo){height:180px}}
+/* Feedback stays on interactive surfaces; source photographs retain their full ratio. */
+.discovery-page .directory-active-filters{margin:-10px 0 20px;font-size:12px;line-height:1.7;color:var(--rp-muted);overflow-wrap:anywhere}
+.discovery-page .directory-active-filters[hidden]{display:none}
+.discovery-page #place-results>.directory-empty{grid-column:1/-1;display:block;padding:32px 0 40px;border-block:1px solid var(--rp-line)}
+.discovery-page .directory-empty strong{font-size:16px;font-weight:600}.discovery-page .directory-empty p{font-size:13px;color:var(--rp-muted);margin:8px 0 18px}
+.discovery-page .directory-empty button{min-height:44px;padding:10px 16px;border:1px solid var(--rp-line);border-radius:7px;background:var(--rp-paper);color:var(--rp-ink);font-family:inherit;font-size:13px;font-weight:500;line-height:1.5;cursor:pointer}
+.discovery-page #place-results>.directory-card{transition:transform 180ms ease,border-color 180ms ease;scroll-margin-block:24px}
+.discovery-page .directory-enter{animation:directory-arrive 180ms ease-out both}
+.reading-page :is(.share-button,.guide-cta,.cta,.place-action,#place-search button,#place-more,.directory-empty button){transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}
+.reading-page :is(.share-button,.guide-cta,.cta,.place-action,#place-search button,#place-more,.directory-empty button):active:not(:disabled){transform:translateY(1px)}
+.reading-page :is(button,a)[aria-busy=true]{cursor:progress;opacity:.65}
+.reading-page button:disabled{cursor:default;opacity:.55}
+@media(hover:hover) and (pointer:fine){.discovery-page #place-results>.directory-card:hover{transform:translateY(-2px);border-color:#a5b4a5}.discovery-page :is(#place-more,.directory-empty button):hover{background:var(--rp-soft);border-color:#a5b4a5}}
+@media(hover:none){.discovery-page :is(.directory-name,.directory-photo>a,.directory-no-photo):active{opacity:.72}}
+@keyframes directory-arrive{from{opacity:.35}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.reading-page *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

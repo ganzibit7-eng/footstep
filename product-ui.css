@@ -46,7 +46,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #list-section :is(.comfort-filter,#course-advanced-filters)>summary{padding:17px 0;min-height:54px;box-sizing:border-box;font-size:13px;line-height:1.6;font-weight:550;color:var(--product-ink)}
 #list-section .explore-results-head{gap:16px;align-items:center;margin:28px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--product-line)}
 #list-section #course-count-label{font-size:13px;color:var(--product-muted)!important;font-variant-numeric:tabular-nums}
-#list-section .course-card{transition:border-color 160ms,box-shadow 160ms}
+#list-section .course-card{transition:border-color 180ms,box-shadow 180ms,transform 180ms}
 #list-section .course-card h3{font-family:inherit;font-weight:650;letter-spacing:-.035em}
 #list-section .explore-view-button{border-radius:10px;min-height:44px;background:var(--product-surface);border-color:var(--product-line);color:var(--product-ink);font-size:12px}
 #list-section .compare-panel{border-radius:12px;background:var(--product-surface);border-color:var(--product-line);padding:20px;box-shadow:none}
@@ -167,7 +167,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #nick-overlay .auth-privacy-details :is(dt,dd,p,summary){color:var(--product-ink)!important}
 #nick-overlay .auth-email-button{background:var(--product-accent);color:var(--product-surface);border:1px solid var(--product-accent)}
 
-@media(hover:hover){#list-section .course-card:hover{border-color:#b9c9ba;box-shadow:0 7px 24px #213d3309;transform:none}#register-section :is(.tag-check,.type-btn):hover{border-color:#a9bdad}#profile-overlay .my-setting summary:hover{color:var(--product-accent)}}
+@media(hover:hover) and (pointer:fine){#list-section .course-card:hover{border-color:#b9c9ba;box-shadow:0 7px 24px #213d3309;transform:translateY(-2px)}#register-section :is(.tag-check,.type-btn):hover{border-color:#a9bdad}#profile-overlay .my-setting summary:hover{color:var(--product-accent)}}
 @media(max-width:760px){
  :is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head{margin:0 0 22px;padding-bottom:20px;gap:16px}
  :is(#map-section,#list-section,#walk-section,#register-section)>.wrap>.section-head h2{font-size:28px;margin:7px 0 10px;line-height:1.4}
@@ -222,3 +222,11 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #points-shop-title{font:650 15px/1.6 var(--experience-font,system-ui);margin:0}
 #points-shop-overlay #points-shop-close{position:static;color:var(--product-ink);background:var(--product-soft);border:1px solid var(--product-line);border-radius:50%;font:400 24px/1 system-ui;width:44px;height:44px;flex:none}
 #points-shop-overlay :is(button,select,a):focus-visible{outline:2px solid var(--product-accent);outline-offset:3px}
+
+/* Functional controls: quiet press feedback, independent of the home and admin. */
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(button,.submit-btn){transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button:active:not(:disabled):not([aria-busy=true]){transform:translateY(1px)}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button:disabled{cursor:default}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) [aria-busy=true]{cursor:progress}
+@media(hover:none){#list-section .course-card:active{border-color:#9fb5a3}}
+@media(prefers-reduced-motion:reduce){:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(button,.submit-btn){transition:none}}

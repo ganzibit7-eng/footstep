@@ -21,7 +21,7 @@ export function refineDiscovery(html){
  html=html.replace(/<p id="place-count"[^>]*>[\s\S]*?<\/p>/,count=>'<div class="directory-results-bar">'+count+'<label class="directory-sort" for="place-sort">정렬<select id="place-sort"><option value="photos">사진 있는 곳 먼저</option><option value="registered">등록 순</option><option value="name">이름 순</option></select></label></div>');
  html=html.replace('<section id="with-dog-regions">',directory+'<section id="with-dog-regions">');
  if(directory)html=html.replace('</main>','</details></main>');
- return html.replaceAll('/place-search.js?v=20261017-places','/place-search.js?v=20261023-directory');
+ return html.replaceAll('/place-search.js?v=20261017-places','/place-search.js?v=20261023-polish');
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  const file=new URL('../discover.html',import.meta.url);const html=await readFile(file,'utf8');await writeFile(file,refineDiscovery(html));console.log('Directory layout updated');

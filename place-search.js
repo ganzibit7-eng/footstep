@@ -26,10 +26,12 @@
     if(limit>20)url.searchParams.set('shown',String(limit));else url.searchParams.delete('shown');
     root.history.replaceState(root.history.state,'',url.pathname+url.search+url.hash);
   }
-  function render(){
-    list.replaceChildren();
-    matches.slice(0,limit).forEach(function(item){
+  function render(append){
+    var start=append?list.children.length:0;
+    if(!append)list.replaceChildren();
+    matches.slice(start,limit).forEach(function(item,index){
       var li=document.createElement('li'),a=document.createElement('a'),p=document.createElement('p'),location=document.createElement('div');
+      li.className='directory-card';if(index<6)li.classList.add('directory-enter');
       var label=category(item).replace('식당카페','식당·카페').replace('공원관광','공원·관광');
       location.className='directory-region';location.textContent=[item.region,label||(item.kind==='courses'?'산책 코스':'배변봉투함')].filter(Boolean).join(' · ');
       a.href=item.path;a.textContent=item.name;a.className='directory-name';p.className='directory-address';p.textContent=item.kind==='facilities'?(item.info||'').split(' · ').slice(0,-1).join(' · '):item.info||'';
@@ -43,11 +45,17 @@
     });
     count.textContent=matches.length?'등록 정보 '+matches.length+'곳 중 '+Math.min(limit,matches.length)+'곳 표시':'일치하는 등록 정보가 없습니다. 지역·업종 선택을 바꾸거나 검색어를 짧게 입력하세요.';
     more.hidden=limit>=matches.length;
+    if(!matches.length){var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),reset=document.createElement('button');empty.className='directory-empty';heading.textContent='조건에 맞는 곳을 찾지 못했어요';help.textContent='지역이나 업종을 바꾸거나, 장소 이름을 짧게 입력해 보세요.';reset.type='button';reset.textContent='검색 조건 초기화';reset.onclick=function(){document.getElementById('place-clear').click();};empty.append(heading,help,reset);list.append(empty);}
+    if(append){var next=list.children[start]?.querySelector('.directory-name');if(next){next.focus({preventScroll:true});next.scrollIntoView({block:'nearest',behavior:'instant'});}}
+
   }
+  var summary=document.createElement('p');summary.id='place-active-filters';summary.className='directory-active-filters';count.parentElement.after(summary);
   function search(preserve){
     type.disabled=kind.value!==''&&kind.value!=='facilities';
     if(type.disabled)type.value='';
     var value=state();if(!preserve)limit=20;
+    var selected=[value.q?'“'+value.q+'”':'',value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean);
+    summary.textContent=selected.join(' · ');summary.hidden=!selected.length;
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
     if(!value.q&&!value.kind&&!value.region&&!value.category){matches=[];list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
     matches=ordered(filter(data,value),sort?.value);render();remember();
@@ -57,7 +65,7 @@
   type.addEventListener('change',function(){if(type.value)kind.value='facilities';search(false);});
   sort?.addEventListener('change',function(){search(false);});
   document.getElementById('place-clear').addEventListener('click',function(){query.value='';kind.value='';region.value='';type.value='';if(sort)sort.value='photos';search(false);query.focus();});
-  more.addEventListener('click',function(){limit+=20;render();remember();});
+  more.addEventListener('click',function(){limit+=20;render(true);remember();});
   var params=new URLSearchParams(root.location.search);query.value=(params.get('q')||'').slice(0,100);
   if(['courses','facilities','bins'].includes(params.get('kind')))kind.value=params.get('kind');
   if(Array.from(region.options).some(function(option){return option.value===params.get('region');}))region.value=params.get('region');
