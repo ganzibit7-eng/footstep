@@ -146,17 +146,15 @@ html[data-hero-safe-area="true"] .hero-park-stage{border:1px dashed #2f5b41;back
 .hero-park-stage:not([data-rendered="true"]) .hero-park-fly{visibility:hidden}
 
 #hero-stat-facilities{text-decoration:none;color:inherit;display:inline-block;border-radius:4px}#hero-stat-facilities:focus-visible{outline:2px solid var(--moss);outline-offset:4px}#hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}
-@font-face{font-family:'Balzaguk Hero Serif';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/hero-serif-subset.woff2') format('woff2')}
-/* Home typography only. Keep all hero geometry, cards and motion unchanged. */
-.hero[data-page-section="home"] #hero-title{font-family:'Balzaguk Hero Serif','Noto Sans KR',serif;font-size:clamp(48px,4.65vw,62px);font-weight:600;line-height:1.28;letter-spacing:-.025em;text-shadow:none;word-break:keep-all}
-.hero[data-page-section="home"] #hero-title>span{font-family:'Noto Sans KR',system-ui,sans-serif;font-size:15px;font-weight:500;line-height:1.65;letter-spacing:.015em;color:#50664f;margin-bottom:16px}
-.hero[data-page-section="home"] #hero-title em{font-size:1em;font-weight:600;line-height:1.28;margin-top:0;letter-spacing:-.025em}
-.hero[data-page-section="home"] #hero-style-3 p.lead{font-size:16px;font-weight:400!important;line-height:1.85!important;letter-spacing:-.025em;color:#4a5e50!important;margin-top:25px}
+@font-face{font-family:'Balzaguk Home Sans';font-style:normal;font-weight:400 650;font-display:swap;src:url('/assets/fonts/home-sans-subset.woff2') format('woff2')}
+/* Hero copy only: two equal lines, quiet contrast and predictable line breaks. */
+.hero[data-page-section="home"] #hero-title{font-family:'Balzaguk Home Sans','Noto Sans KR',sans-serif;font-size:clamp(44px,4.2vw,56px);font-weight:600;line-height:1.27;letter-spacing:-.045em;text-shadow:none;word-break:keep-all;margin:0}
+.hero[data-page-section="home"] #hero-title>.hero-title-line{display:block;font:inherit;line-height:inherit;letter-spacing:inherit;margin:0;color:#243c32;white-space:nowrap}
+.hero[data-page-section="home"] #hero-title>.hero-title-line:last-child{color:#47634e}
+.hero[data-page-section="home"] #hero-style-3 p.lead{font-family:'Balzaguk Home Sans','Noto Sans KR',sans-serif;font-size:16px;font-weight:400!important;line-height:1.85!important;letter-spacing:-.02em;color:#4a5e50!important;margin-top:22px}
 @media(max-width:880px){
- .hero[data-page-section="home"] #hero-title{font-size:clamp(33px,9.2vw,41px);line-height:1.2}
- .hero[data-page-section="home"] #hero-title>span{font-size:13px;line-height:1.65;letter-spacing:.015em;margin-bottom:13px}
- .hero[data-page-section="home"] #hero-title em{line-height:1.3;letter-spacing:-.025em}
- .hero[data-page-section="home"] #hero-style-3 p.lead{font-size:14px;line-height:1.85!important;margin-top:23px}
+ .hero[data-page-section="home"] #hero-title{font-size:clamp(29px,8.5vw,36px);line-height:1.32;letter-spacing:-.04em}
+ .hero[data-page-section="home"] #hero-style-3 p.lead{font-size:14px;line-height:1.8!important;margin-top:18px}
 }
 
 /* Header text only; button and navigation geometry stays in the existing components. */
