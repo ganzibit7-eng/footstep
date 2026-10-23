@@ -77,10 +77,10 @@
 #map-selection-body #map-course-peek{position:static!important;display:block;max-width:none;width:100%;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
 #map-selection-body .peek-close{display:none}
 #map-selection-body .map-peek-photo img{width:100%;height:auto;max-height:190px;object-fit:contain;background:var(--map-soft)}
-#map-selection-body .map-peek-info{padding:0;background:none}
+#map-selection-body .map-peek-info{display:block;padding:0;background:none}
 #map-selection-body .map-peek-info>strong{display:none}
 #map-selection-body .map-peek-info>small{font-size:10px}
-#map-selection-body .map-peek-credit{font-size:10px;line-height:1.7}
+#map-selection-body .map-peek-credit{display:block;font-size:10px;line-height:1.7}
 #map-selection-body .map-peek-actions{display:flex;gap:7px;flex-wrap:wrap}
 #map-selection-body .map-peek-actions button{min-height:44px;font:500 12px/1.5 var(--experience-font,system-ui);border-radius:7px;border:1px solid var(--map-line);background:var(--map-soft);color:var(--map-ink);padding:10px}
 #map-selection-body .map-route-certainty{font-size:11px;padding-top:10px;border-top:1px solid var(--map-line)}
