@@ -4539,7 +4539,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         const {kind,item:p}=entries[Number(button.dataset.idx)];
         cancelMapPlaceSearch();
         if(kind==='course'){document.querySelector('#view-filter-group [data-filter=course]').click();if(!mapExplorer?.selectKey('course:'+p.id)){map.setView([p.lat,p.lng],15);openCourseDetail(p.id);}}
-        else if(kind==='facility'){document.getElementById('facility-filter-category').value='';document.getElementById('facility-filter-query').value='';document.querySelector('#view-filter-group [data-filter=facility]').click();if(!mapExplorer?.selectKey('facility:'+p.id))goToPlace(p.name,Number(p.lat),Number(p.lng),p);}
+        else if(kind==='facility'){document.getElementById('facility-filter-category').value=p.category||'';document.getElementById('facility-filter-query').value='';renderFacilityMap();document.querySelector('#view-filter-group [data-filter=facility]').click();if(!mapExplorer?.selectKey('facility:'+p.id))goToPlace(p.name,Number(p.lat),Number(p.lng),p);}
         else goToPlace(p.place_name,Number(p.y),Number(p.x));
       }));
     };
