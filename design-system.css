@@ -137,7 +137,7 @@ footer.site-footer .footer-description{font-size:13px;color:var(--finish-muted);
 #nearby-section .home-region-card .home-region-link{border-top:0;padding-top:0;min-height:32px;display:flex;align-items:center}
 #nearby-section .home-region-credits{margin-top:8px}
 #nearby-section .home-region-note{font-size:11px}
-#nearby-section .walk-shopping-heading h2{font-size:26px;font-weight:650;letter-spacing:-.035em}
+
 #nearby-section .walk-shopping-heading p{margin-bottom:10px}
 #nearby-section .walk-shopping-disclosure{border:1px solid var(--finish-line);border-radius:10px;background:var(--finish-soft);color:var(--finish-ink);font-size:12px;font-weight:500;line-height:1.85;padding:12px 16px;margin-bottom:24px}
 #nearby-section .walk-shopping-card h3{font-size:16px;font-weight:600;line-height:1.65;margin:7px 0 10px}
@@ -166,7 +166,7 @@ html[data-theme="dark"] #nearby-section .join-benefits .submit-btn{background:va
  #nearby-section .join-benefits h2{font-size:22px}
  #nearby-section .join-benefits-action{width:100%;align-items:stretch;text-align:center}
  #nearby-section .join-benefits .submit-btn{width:100%;white-space:normal;line-height:1.7}
- #nearby-section .walk-shopping-heading h2{font-size:23px}
+
  #nearby-section .home-region-body{padding:14px}
  #nearby-section .home-region-card .home-region-link{font-size:11px;line-height:1.7;min-height:32px}
  :is(#walk-section,#register-section) .form-card{padding:22px 18px}

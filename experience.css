@@ -80,7 +80,7 @@ header #notif-btn{min-width:44px;min-height:44px;background:transparent!importan
 #modal-overlay .modal-meta-row .tag-pill{background:var(--experience-soft);color:var(--experience-text)}
 #modal-overlay .review-section{border-color:var(--experience-line)}
 #modal-overlay :is(.modal-close,.mobile-detail-close){font-family:var(--experience-font)}
-.walk-shopping :is(h2,h3,p,small,a){font-family:var(--experience-font)!important}
+.walk-shopping :is(h3,p,small,a):not(#walk-shopping-subtitle){font-family:var(--experience-font)!important}
 .walk-shopping :is(h2,h3){color:var(--experience-text)}
 .walk-shopping-link{background:var(--experience-text);border-radius:11px;font-weight:600}
 .walk-shopping-disclosure{color:var(--experience-text);line-height:1.8}

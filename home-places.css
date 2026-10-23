@@ -1,7 +1,7 @@
 /* Existing place photography, full original ratio; independent of live data. */
 #nearby-section .home-place-scene{border-top:1px solid var(--line);padding-bottom:42px}
 .home-place-kicker{font:600 11px/1.7 system-ui,"Noto Sans KR",sans-serif;letter-spacing:.09em;color:var(--moss)}
-.home-place-heading h2{font-size:clamp(27px,3.3vw,38px);line-height:1.35;letter-spacing:-.045em;margin:12px 0;font-weight:700;word-break:keep-all}
+
 .home-place-heading>p{font-size:15px;line-height:1.8;color:var(--muted);max-width:600px;word-break:keep-all}
 .home-place-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 14px}
 .home-place-toolbar>p{font-size:12px;margin:0;color:var(--muted)}
@@ -34,8 +34,8 @@
 #nearby-section #home-results-more[hidden]{display:none}
 .home-place-rail:focus-visible,.home-place-scene a:focus-visible,.home-place-scene button:focus-visible{outline:2px solid var(--pine-deep);outline-offset:3px}
 @media(max-width:900px){.home-place-card{flex-basis:calc((100% - 20px)/2)}}
-@media(max-width:700px){.home-place-heading h2{font-size:28px}.home-place-heading>p{font-size:14px}.home-place-rail{gap:14px}.home-place-card{flex-basis:86%}.home-place-body{padding:18px}.home-place-heading{max-width:100%}.home-place-body h3{font-size:21px;min-height:0}.home-place-toolbar{margin-top:18px}.home-place-condition{min-height:48px}}
-@media(max-width:360px){.home-place-card{flex-basis:92%}.home-place-heading h2{font-size:25px}}
+@media(max-width:700px){.home-place-heading>p{font-size:14px}.home-place-rail{gap:14px}.home-place-card{flex-basis:86%}.home-place-body{padding:18px}.home-place-heading{max-width:100%}.home-place-body h3{font-size:21px;min-height:0}.home-place-toolbar{margin-top:18px}.home-place-condition{min-height:48px}}
+@media(max-width:360px){.home-place-card{flex-basis:92%}}
 
 /* Native place cards: one primary link, with source controls above the stretched link. */
 .home-place-card:not(.home-place-end){position:relative;transition:border-color .18s,box-shadow .18s}
@@ -78,13 +78,13 @@
 
 /* Consistent Korean type, with distinct title and condition hierarchy. */
 #nearby-section :is(#home-dining,#home-stays){font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-#nearby-section :is(#home-dining,#home-stays) :is(h2,h3,p,a,summary,button,span){font-family:inherit}
-#nearby-section .home-place-heading h2{font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:-.045em;line-height:1.5}
+#nearby-section :is(#home-dining,#home-stays) :is(h3,p,a,summary,button,span){font-family:inherit}
+
 #nearby-section .home-place-body h3{font-size:19px;font-weight:600;letter-spacing:-.025em;line-height:28px;color:var(--finish-ink)}
 #nearby-section .home-place-caption{font-size:12px;font-weight:500;color:var(--finish-muted);letter-spacing:-.015em;line-height:20px}
 #nearby-section .home-place-condition{font-size:13px;font-weight:400;letter-spacing:-.015em;line-height:24px;color:var(--finish-muted)}
 #nearby-section .home-place-detail{font-size:13px;font-weight:600;letter-spacing:-.02em}
-@media(max-width:700px){#nearby-section .home-place-heading h2{font-size:26px}#nearby-section .home-place-heading>p{font-size:14px;line-height:1.9}#nearby-section .home-place-body h3{font-size:19px}}
+@media(max-width:700px){#nearby-section .home-place-heading>p{font-size:14px;line-height:1.9}#nearby-section .home-place-body h3{font-size:19px}}
 
 /* A quiet editorial finish to each discovery rail, without a stock photograph. */
 #nearby-section .home-place-end{position:relative;padding:26px 22px;background:#f1f3ec;border-color:#d7ded1;justify-content:flex-start;color:var(--finish-ink)}
@@ -102,10 +102,6 @@
 html[data-theme="dark"] #nearby-section .home-place-end{background:var(--finish-soft);border-color:var(--finish-line)}
 html[data-theme="dark"] #nearby-section .home-place-end-link{background:var(--finish-surface);color:var(--finish-ink);border-color:var(--finish-line)}
 
-/* All four home chapters share one heading scale, including selected-region results. */
-#nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:32px;font-weight:700;line-height:1.45;letter-spacing:-.04em;color:var(--finish-ink);margin:12px 0;max-width:none;word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
-@media(max-width:700px){#nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-size:26px}}
-@media(max-width:360px){#nearby-section :is(#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-size:24px}}
 
 /* Compact dining and stay chapters: approximately 80%, with readable text and touch targets. */
 #nearby-section :is(#home-dining,#home-stays){padding-block:36px 42px}
