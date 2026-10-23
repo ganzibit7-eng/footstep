@@ -2,7 +2,7 @@
  'use strict';
  const valid=e=>Number.isFinite(Number(e.lat))&&Number.isFinite(Number(e.lng))&&e.lat!==null&&e.lng!==null&&String(e.lat).trim()!==''&&String(e.lng).trim()!==''&&Math.abs(Number(e.lat))<=90&&Math.abs(Number(e.lng))<=180;
  function inBounds(entries,bounds){return entries.filter(e=>valid(e)&&bounds.contains([Number(e.lat),Number(e.lng)]));}
- function create({map,host,isVisible,onCourse,reveal,getStatus}){
+ function create({map,host,isVisible,onCourse,reveal,getStatus,onSearchArea}){
   const groups=new Map(),frame=host.querySelector('.map-wrap-relative');
   const panel=host.querySelector('#map-explorer-panel'),list=host.querySelector('#map-explorer-list'),count=host.querySelector('#map-explorer-count'),selection=host.querySelector('#map-explorer-selection'),body=host.querySelector('#map-selection-body'),peek=host.querySelector('#map-course-peek'),area=host.querySelector('#map-search-area'),toggle=host.querySelector('#map-results-toggle');
   let selected=null,previousMarker=null,shown=30,scheduled=false,disposed=false,mobile=innerWidth<=700;
@@ -58,7 +58,7 @@
   function refresh(){if(selected&&!isVisible(selected.group))close();shown=30;area.hidden=true;render();resize();}
   function resize(){if(!host.classList.contains('active'))return;const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;toggle.textContent=mobile?'목록 열기':'목록 접기';toggle.setAttribute('aria-expanded',String(!mobile));}const top=Math.max(64,frame.getBoundingClientRect().top);const height=Math.max(330,Math.min(740,innerHeight-top-(innerWidth<=700?88:24)));frame.style.setProperty('--map-workspace-height',height+'px');map.invalidateSize({pan:false});}
   const moved=()=>{area.hidden=false;count.textContent='지도를 옮겼어요 · 이 지역에서 찾기';highlight();};map.on('moveend',moved);
-  area.onclick=()=>{shown=30;render();area.hidden=true;};
+  area.onclick=()=>{shown=30;render();area.hidden=true;onSearchArea?.();};
   toggle.onclick=()=>{panel.hidden=!panel.hidden;if(!panel.hidden&&innerWidth<=700)close();toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';};
   host.querySelector('#map-explorer-close').onclick=()=>toggle.click();
   host.querySelector('#map-explorer-more').onclick=()=>{shown+=30;render();};

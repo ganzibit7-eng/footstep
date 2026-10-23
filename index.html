@@ -4461,7 +4461,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     binLayer = mapClusterSources.createLayer().addTo(map);
     facilityLayer = mapClusterSources.createLayer().addTo(map);
     poiLayer = L.layerGroup().addTo(map);
-    mapExplorer=MapExplorer.create({map,host:document.getElementById('map-section'),getStatus:()=>document.querySelector('#view-filter-group .active')?.dataset.filter==='course'?(!courseDataAvailable?courseDataState:'ready'):(!facilityDataAvailable?facilityDataState:'ready'),isVisible:group=>group==='course'?map.hasLayer(courseLayer):group==='facility'?map.hasLayer(facilityLayer):group==='bin'?map.hasLayer(binLayer):true,onCourse:showSelectedMapRoute,reveal:(marker,done)=>mapClusterSources.reveal(marker,done)});
+    mapExplorer=MapExplorer.create({map,host:document.getElementById('map-section'),onSearchArea:()=>{if(activePoiCategories.size)searchNearbyPoi();},getStatus:()=>document.querySelector('#view-filter-group .active')?.dataset.filter==='course'?(!courseDataAvailable?courseDataState:'ready'):(!facilityDataAvailable?facilityDataState:'ready'),isVisible:group=>group==='course'?map.hasLayer(courseLayer):group==='facility'?map.hasLayer(facilityLayer):group==='bin'?map.hasLayer(binLayer):true,onCourse:showSelectedMapRoute,reveal:(marker,done)=>mapClusterSources.reveal(marker,done)});
     document.getElementById('map-section').addEventListener('mapselectionclear',()=>{coursePathLayer.clearLayers();selectedMapCourse=null;});
     for(const button of document.querySelectorAll('[data-map-category]'))button.onclick=()=>{const select=document.getElementById('facility-filter-category');select.value=button.dataset.mapCategory;select.dispatchEvent(new Event('change',{bubbles:true}));};
 
