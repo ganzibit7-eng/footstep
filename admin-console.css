@@ -1,0 +1,49 @@
+/* Stage 1 administration shell. Explicit scope keeps public pages untouched. */
+#admin-overlay.admin-console{--admin-bg:#f7f8f5;--admin-surface:#fff;--admin-ink:#23372f;--admin-muted:#627168;--admin-accent:#205842;--admin-line:#e0e6df}
+#admin-overlay.admin-console .modal-inner-wrap{border-radius:20px;background:var(--admin-bg);box-shadow:none}
+#admin-overlay.admin-console .admin-masthead{padding-bottom:18px}
+#admin-overlay.admin-console .admin-masthead h3{font-size:25px;font-weight:650;letter-spacing:-.045em}
+#admin-overlay.admin-console .admin-top-toolbar{margin:14px 0 22px;padding-bottom:18px}
+#admin-overlay.admin-console .admin-top-toolbar .admin-method-note{margin:0}
+#admin-overlay.admin-console .admin-workspace{grid-template-columns:184px minmax(0,1fr);gap:24px}
+#admin-overlay.admin-console .admin-nav-shell{position:sticky;top:12px;min-width:0}
+#admin-overlay.admin-console .admin-navigation{position:static;border:0;padding:8px 0 0;gap:4px}
+#admin-overlay.admin-console .admin-navigation button{min-height:54px;padding:10px 12px;border:0;box-shadow:none;gap:10px}
+#admin-overlay.admin-console .admin-navigation button[aria-current=page]{background:#e8f2ec;color:var(--admin-accent);box-shadow:none}
+#admin-overlay.admin-console .admin-navigation button:hover{background:#edf2ed}
+#admin-overlay.admin-console .admin-navigation-toggle{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:10px 12px;background:transparent;border:1px solid var(--admin-line);border-radius:10px;color:var(--admin-ink);font-family:inherit;font-weight:550;font-size:12px;line-height:1.5;cursor:pointer}
+#admin-overlay.admin-console .admin-navigation-toggle svg{width:18px;height:18px;flex:none}
+#admin-overlay.admin-console .admin-workspace.admin-nav-collapsed{grid-template-columns:56px minmax(0,1fr)}
+#admin-overlay.admin-console .admin-nav-collapsed .admin-navigation button{justify-content:center;padding:12px;min-height:48px}
+#admin-overlay.admin-console .admin-nav-collapsed .admin-navigation button>span,#admin-overlay.admin-console .admin-nav-collapsed .admin-navigation-toggle>span{display:none}
+#admin-overlay.admin-console .admin-nav-collapsed .admin-navigation-toggle{justify-content:center}
+#admin-overlay.admin-console #admin-summary{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important}
+#admin-overlay.admin-console .admin-overview-kpis{margin:0 0 22px;padding:0;border:0;min-width:0;background:none}
+#admin-overlay.admin-console #admin-summary .stat-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:8px;padding:18px 14px;min-height:118px;border-radius:16px;transition:border-color 160ms,background-color 160ms}
+#admin-overlay.admin-console #admin-summary .stat-card:hover{border-color:#9eb5a6;background:#fcfefc}
+#admin-overlay.admin-console #admin-summary .num{font-family:inherit;font-size:clamp(24px,2.5vw,32px);font-weight:650;line-height:1.2;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console #admin-summary .label{font-size:11px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere;margin:0;color:var(--admin-muted)}
+#admin-overlay.admin-console .admin-stat-note{grid-column:1/-1;font-size:11px;line-height:1.8;color:var(--admin-muted)}
+#admin-overlay.admin-console .admin-stat-note>summary{display:flex;align-items:center;min-height:44px;cursor:pointer}
+#admin-overlay.admin-console #admin-live-activity{margin:10px 0 0!important;background:#edf4ef!important;border-radius:14px!important}
+#admin-overlay.admin-console #live-visitor-count{font-size:22px!important;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-workspace-content{scroll-margin-top:18px}
+#admin-overlay.admin-console :is(.admin-navigation-toggle,.admin-navigation button){transition:background-color 160ms,border-color 160ms}
+#admin-overlay.admin-console :is(.admin-navigation-toggle,.admin-navigation button):active{background:#dfeae2}
+@media(max-width:1000px){#admin-overlay.admin-console #admin-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}#admin-overlay.admin-console .admin-workspace{grid-template-columns:160px minmax(0,1fr);gap:18px}}
+@media(max-width:650px){
+ #admin-overlay.admin-console .modal-inner-wrap{padding:0;border-radius:16px;max-height:94dvh}
+ #admin-overlay.admin-console .modal-body{padding:22px 16px}
+ #admin-overlay.admin-console .admin-masthead h3{font-size:22px}
+ #admin-overlay.admin-console .admin-workspace{display:block}
+ #admin-overlay.admin-console .admin-nav-shell{position:static;margin:0 0 18px}
+ #admin-overlay.admin-console .admin-navigation-toggle{justify-content:flex-start;background:#fff;font-size:13px;min-height:46px}
+ #admin-overlay.admin-console .admin-navigation-toggle::after{content:'⌄';margin-left:auto}
+ #admin-overlay.admin-console .admin-navigation{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px 0 0;margin:0;border:0;gap:6px}
+ #admin-overlay.admin-console .admin-navigation button{flex-direction:row;justify-content:flex-start;gap:10px;min-height:46px;padding:10px;border:1px solid var(--admin-line);background:#fff}
+ #admin-overlay.admin-console .admin-navigation button strong{font-size:12px}
+ #admin-overlay.admin-console #admin-summary .stat-card{padding:16px 12px;min-height:112px}
+ #admin-overlay.admin-console #admin-summary .num{font-size:28px}
+ #admin-overlay.admin-console .admin-view-heading{margin-bottom:18px}
+}
+@media(prefers-reduced-motion:reduce){#admin-overlay.admin-console *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

@@ -7,6 +7,6 @@ vm.createContext(context);vm.runInContext(html.slice(html.indexOf('  function me
 assert.equal(context.getFilteredMembers().length,3);fields['member-provider-filter']='google';assert.equal(context.getFilteredMembers().length,2);
 fields['member-provider-filter']='all';fields['member-activity-filter']='recent';assert.equal(context.getFilteredMembers()[0].owner_id,'1');fields['member-activity-filter']='inactive';assert.equal(context.getFilteredMembers()[0].owner_id,'2');fields['member-activity-filter']='never';assert.equal(context.getFilteredMembers()[0].owner_id,'3');
 fields['member-activity-filter']='all';fields['member-date-from']='2026-10-05';fields['member-date-to']='2026-10-05';assert.equal(context.getFilteredMembers().length,2,'signup date uses Korea midnight');fields['member-date-from']='2026-10-06';assert.equal(context.getFilteredMembers().length,0);
-assert.ok(html.includes("todayBody.prepend(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'))"));
+assert.ok(html.includes("overviewKpis.append(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'))"));
 fields['member-date-from']='';fields['member-date-to']='';assert(!fs.readFileSync('admin-panel.html','utf8').includes('<option value="event">'));
 console.log('Member filters: provider, recent/inactive/no-login, KST date boundaries and invalid ranges passed.');

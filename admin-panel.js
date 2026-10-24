@@ -1,6 +1,7 @@
 (function(root){'use strict';
 function create(context){
  const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,toast}=context;
+  let adminShell=null;
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
   function renderPendingApprovals(){
@@ -516,8 +517,7 @@ function create(context){
   const today=root.querySelector('[data-accordion="today"]').closest('.admin-accordion');
   const traffic=root.querySelector('.admin-traffic-panel');
   traffic.before(today);
-  const todayBody=document.getElementById('acc-today');
-  todayBody.prepend(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'));
+  // KPI and realtime blocks live outside the collapsible activity section.
   const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';traffic.before(details);details.append(summary,traffic);
   const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
   for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
@@ -535,9 +535,10 @@ function create(context){
   const workspace=document.createElement('div');workspace.className='admin-workspace';today.before(workspace);const nav=document.createElement('nav');nav.className='admin-navigation';nav.setAttribute('aria-label','관리 메뉴');const content=document.createElement('div');content.className='admin-workspace-content';workspace.append(nav,content);while(workspace.nextSibling)content.append(workspace.nextSibling);
   const menus=[['overview','운영 개요','방문·활동 현황','M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'],['members','회원 관리','회원·권한·활동','M16 21v-3a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v3M18 8a3 3 0 0 1 0 6M22 21v-3a4 4 0 0 0-3-4M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0'],['review','콘텐츠 검수','승인 대기·신고','M5 3h14v18H5zM8 8h8M8 12h8M8 16h5'],['affiliate','제휴 성과','상품 클릭 분석','M4 20V10M10 20V4M16 20v-7M22 20H2'],['security','보안 기록','접근·이상 감지','M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4M8 12l3 3 5-6'],['tools','데이터 관리','공공데이터 등록','M4 5h16v14H4zM4 10h16M10 10v9']];
   const viewHeading=document.createElement("header");viewHeading.className="admin-view-heading";const viewTitle=document.createElement("h4");const viewSummary=document.createElement("p");viewHeading.append(viewTitle,viewSummary);content.prepend(viewHeading);
-  function selectView(view,focus=false){const menu=menus.find(item=>item[0]===view);if(menu){viewTitle.textContent=menu[1];viewSummary.textContent=menu[2];}for(const section of content.querySelectorAll('[data-admin-view]'))section.hidden=section.dataset.adminView!==view;for(const button of nav.querySelectorAll('button')){button.setAttribute('aria-current',button.dataset.adminNav===view?'page':'false');}if(focus){const first=content.querySelector('[data-admin-view="'+view+'"]');const head=first?.querySelector('.admin-accordion-head');if(head&&head.getAttribute('aria-expanded')!=='true')head.click();if(first?.tagName==='DETAILS')first.open=true;content.focus({preventScroll:true});globalThis.PawUI?.enter(content);}}
+  const overviewKpis=document.createElement('section');overviewKpis.className='admin-overview-kpis';overviewKpis.dataset.adminView='overview';overviewKpis.setAttribute('aria-label','오늘의 핵심 운영 지표');overviewKpis.append(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'));viewHeading.after(overviewKpis);
+  function selectView(view,focus=false){const menu=menus.find(item=>item[0]===view);if(menu){viewTitle.textContent=menu[1];viewSummary.textContent=menu[2];adminShell?.select(menu[1],focus);}for(const section of content.querySelectorAll('[data-admin-view]'))section.hidden=section.dataset.adminView!==view;for(const button of nav.querySelectorAll('button')){button.setAttribute('aria-current',button.dataset.adminNav===view?'page':'false');}if(focus){const first=content.querySelector('[data-admin-view="'+view+'"]');const head=first?.querySelector('.admin-accordion-head');if(head&&head.getAttribute('aria-expanded')!=='true')head.click();if(first?.tagName==='DETAILS')first.open=true;content.focus({preventScroll:true});globalThis.PawUI?.enter(content);}}
   selectAdminView=selectView;
-  for(const [view,label,description,path]of menus){const button=document.createElement('button');button.type='button';button.dataset.adminNav=view;button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+path+'"/></svg><span><strong>'+label+'</strong><small>'+description+'</small></span>';button.addEventListener('click',()=>selectView(view,true));nav.append(button);}content.tabIndex=-1;selectView('overview');
+  for(const [view,label,description,path]of menus){const button=document.createElement('button');button.type='button';button.dataset.adminNav=view;button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+path+'"/></svg><span><strong>'+label+'</strong><small>'+description+'</small></span>';button.addEventListener('click',()=>selectView(view,true));nav.append(button);}content.tabIndex=-1;adminShell=globalThis.AdminConsole.create({overlay:document.getElementById('admin-overlay'),workspace,nav});selectView('overview');
 
  })();
 
@@ -917,7 +918,7 @@ function create(context){
         {num:d.views,label:'오늘 집계 포함 조회',jump:'hourly'},
         {num:(signups.data||[]).length,label:'오늘 가입축하 지급 건',jump:'today'}
       ];
-      el.innerHTML=cards.map(c=>'<button type="button" class="stat-card clickable" data-jump="'+c.jump+'"><span class="num">'+Number(c.num||0).toLocaleString('ko-KR')+'</span><span class="label">'+escapeHtml(c.label)+'</span></button>').join('')
+      el.innerHTML=cards.map(c=>'<button type="button" class="stat-card clickable" data-jump="'+c.jump+'"><span class="num">'+globalThis.AdminConsole.formatCount(c.num)+'</span><span class="label">'+escapeHtml(c.label)+'</span></button>').join('')
        +'<details class="admin-stat-note"><summary>지표 해석 및 이전 집계 참고</summary><p>활동 확인은 클릭 또는 화면 노출 10초 이상 기준이며 사람 인증은 아닙니다. 2026-10-04 15:23경 이전에는 일부 광고 크롤러가 일반 브라우저로 기록되어 오늘 방문 수가 부풀려져 있을 수 있습니다. 일일 200명 목표 달성 여부는 이 숫자만으로 판단하지 않습니다.</p></details>';
       el.querySelectorAll('[data-jump]').forEach(c=>c.addEventListener('click',()=>expandAccordion(c.dataset.jump)));
     }catch(e){el.textContent='요약을 불러오지 못했어요. 새로고침해 주세요.';}
@@ -930,6 +931,7 @@ function create(context){
     if(!body || !head) return;
     body.style.display = '';
     head.querySelector('.accordion-arrow').textContent = '▾';
+    head.setAttribute('aria-expanded','true');
     head.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -1119,7 +1121,7 @@ function create(context){
 
 
 
- function dispose(){clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
+ function dispose(){adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});
