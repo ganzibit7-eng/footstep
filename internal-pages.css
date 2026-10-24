@@ -114,3 +114,14 @@ body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
 .reading-page #hub-results .hub-guide{font-size:12px;line-height:1.85;margin:12px 0 0;border-top:1px solid var(--rp-line);padding-top:12px;overflow-wrap:anywhere}
 .reading-page #hub-results .hub-guide>b{display:block;font-size:10px;font-weight:500;color:var(--rp-muted);margin-bottom:4px}
 @media(max-width:600px){.discovery-page #place-results dl.directory-conditions{grid-template-columns:1fr;gap:2px}.discovery-page .directory-conditions dd+dt{margin-top:6px}.discovery-page .directory-conditions dt{font-size:10px}.reading-page #hub-results h2+p+p{font-size:12px}}
+
+/* Compact directory controls, after shared responsive rules. */
+.discovery-page #place-search:has(.directory-filter-options){grid-template-columns:minmax(0,1fr) auto auto}
+.discovery-page .directory-filter-options{grid-column:1/-1;grid-row:2;border-top:1px solid var(--rp-line);padding-top:8px;min-width:0}
+.discovery-page .directory-filter-options>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;font-size:13px;cursor:pointer;list-style:none}
+.discovery-page .directory-filter-options>summary::after{content:'＋';font-size:18px}.discovery-page .directory-filter-options[open]>summary::after{content:'−'}
+.discovery-page #place-filter-selection{margin-left:auto;max-width:65%;font-size:12px;color:var(--rp-muted);overflow-wrap:anywhere}
+.discovery-page .directory-filter-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:8px 0}
+.discovery-page #place-search:has(.directory-filter-options)>button{grid-column:auto;grid-row:1}
+.discovery-page #place-search:has(.directory-filter-options)>.search-field{grid-column:1;grid-row:1}
+@media(max-width:600px){.discovery-page #place-search:has(.directory-filter-options){grid-template-columns:minmax(0,1fr) auto}.discovery-page #place-search:has(.directory-filter-options)>.search-field{grid-column:1/-1}.discovery-page #place-search:has(.directory-filter-options)>button{grid-row:2}.discovery-page .directory-filter-options{grid-row:3}.discovery-page .directory-filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.discovery-page .directory-filter-fields>.search-field:first-child{grid-column:auto}.discovery-page .directory-filter-fields>.search-field:last-child{grid-column:1/-1}}

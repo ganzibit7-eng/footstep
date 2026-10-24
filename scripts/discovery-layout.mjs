@@ -2,10 +2,20 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 
+function compactFilters(html){
+ let care='';
+ html=html.replace(/<p class="discovery-care">[\s\S]*?<\/p>/,p=>{care=p;return '';});
+ if(care)html=html.replace('<summary>지역별 안내와 산책 가이드</summary>','<summary>지역별 안내와 산책 가이드</summary>'+care);
+ if(html.includes('id="find-place"')&&!html.includes('id="place-filter-options"')){
+  html=html.replace(/(<div class="search-field"><label for="place-kind">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-region">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-category">[\s\S]*?<\/select><\/div>)/,'<details id="place-filter-options" class="directory-filter-options" open><summary>지역·장소 종류 <span id="place-filter-selection">전체</span></summary><div class="directory-filter-fields">$1$2$3</div></details>');
+ }
+ return html.replaceAll('/place-search.js?v=20261024-polish','/place-search.js?v=20261024-third').replaceAll('/readability.css?v=20261024-polish','/readability.css?v=20261024-third');
+}
+
 // Shared by the published directory and the generator. No source data or SEO changes.
 export function refineDiscovery(html){
  if(html.includes('id="find-place"'))html=html.replace(/\/place-search\.js\?v=[\w-]+/g,'/place-search.js?v=20261024-polish').replace(/\/readability\.css\?v=[\w-]+/g,'/readability.css?v=20261024-polish');
- if(!html.includes('id="find-place"')||html.includes('class="reading-page discovery-page"'))return html;
+ if(!html.includes('id="find-place"')||html.includes('class="reading-page discovery-page"'))return compactFilters(html);
  html=html.replace('class="reading-page"','class="reading-page discovery-page"');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="discovery-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="26" height="26" alt="">발자국</a><a href="/#map">지도로 둘러보기 ↗</a></header>');
  html=html.replace('<h1>전국 반려견 장소·산책 코스</h1>','<h1 id="discovery-title">반려견과 함께 갈 곳</h1>');
@@ -22,7 +32,7 @@ export function refineDiscovery(html){
  html=html.replace(/<p id="place-count"[^>]*>[\s\S]*?<\/p>/,count=>'<div class="directory-results-bar">'+count+'<label class="directory-sort" for="place-sort">정렬<select id="place-sort"><option value="photos">사진 있는 곳 먼저</option><option value="registered">등록 순</option><option value="name">이름 순</option></select></label></div>');
  html=html.replace('<section id="with-dog-regions">',directory+'<section id="with-dog-regions">');
  if(directory)html=html.replace('</main>','</details></main>');
- return html.replaceAll('/place-search.js?v=20261017-places','/place-search.js?v=20261024-polish');
+ return compactFilters(html.replaceAll('/place-search.js?v=20261017-places','/place-search.js?v=20261024-polish'));
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  const file=new URL('../discover.html',import.meta.url);const html=await readFile(file,'utf8');await writeFile(file,refineDiscovery(html));console.log('Directory layout updated');

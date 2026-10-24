@@ -23,6 +23,9 @@
   var data=JSON.parse(document.getElementById('place-data').textContent),form=document.getElementById('place-search'),query=document.getElementById('place-query'),kind=document.getElementById('place-kind'),region=document.getElementById('place-region'),type=document.getElementById('place-category'),list=document.getElementById('place-results'),count=document.getElementById('place-count'),more=document.getElementById('place-more'),limit=20,matches=[];
   Array.from(new Set(data.map(function(item){return item.region;}).filter(Boolean))).sort(function(a,b){return a.localeCompare(b,'ko');}).forEach(function(name){var option=document.createElement('option');option.value=name;option.textContent=name;region.append(option);});
   var sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title');
+  var options=document.getElementById('place-filter-options'),selection=document.getElementById('place-filter-selection');
+  // Collapse only on first mobile entry. Later searches never close a user's open controls.
+  if(options&&root.matchMedia?.('(max-width:600px)').matches)options.open=false;
   function state(){return {q:query.value.trim().slice(0,100),kind:kind.value,region:region.value,category:type.value};}
   function remember(){
     var url=new URL(root.location.href),value=state();
@@ -60,6 +63,7 @@
     if(type.disabled)type.value='';
     var value=state();if(!preserve)limit=20;
     var selected=[value.q?'“'+value.q+'”':'',value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean);
+    if(selection)selection.textContent=[value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean).join(' · ')||'전체';
     summary.textContent=selected.join(' · ');summary.hidden=!selected.length;
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
     if(!value.q&&!value.kind&&!value.region&&!value.category){matches=[];list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}

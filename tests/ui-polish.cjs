@@ -14,8 +14,9 @@ class Node{
  get selectedIndex(){return Math.max(0,this.children.findIndex(n=>n.value===this.value));}
  querySelector(selector){const name=selector.slice(1);for(const n of this.children){if(n.className?.split(' ').includes(name))return n;const nested=n.querySelector?.(selector);if(nested)return nested;}return null;}
 }
-function directory(){
+function directory(mobile=false){
  const nodes={};for(const id of ['place-data','place-search','place-query','place-kind','place-region','place-category','place-results','place-count','place-more','place-sort','discovery-title','place-clear'])nodes[id]=new Node();
+ nodes['place-filter-options']=new Node('details');nodes['place-filter-options'].open=true;nodes['place-filter-selection']=new Node();
  const data=Array.from({length:45},(_,i)=>({name:'카페 '+i,path:'/places/'+i+'/',kind:'facilities',region:'서울',info:'서울 주소 · 식당카페',conditions:'미확인'}));
  data[0].photo={src:'/photo.jpg',width:940,height:625,source:'https://example.com/source',author:'제공기관',licenseUrl:'https://example.com/license'};
  nodes['place-data'].textContent=JSON.stringify(data);nodes['place-count'].parentElement=new Node();
@@ -23,6 +24,7 @@ function directory(){
  nodes['place-sort'].value='photos';
  const history={state:{preserve:'yes'},replaceState(state,_,url){this.state=state;this.url=url;}};
  const window={location:{href:'https://balzaguk.com/discover.html?kind=facilities&category='+encodeURIComponent('식당카페'),search:'?kind=facilities&category='+encodeURIComponent('식당카페')},history};
+ window.matchMedia=()=>({matches:mobile});
  vm.runInNewContext(fs.readFileSync('place-search.js','utf8'),{window,document:{getElementById:id=>nodes[id],createElement:tag=>new Node(tag),createTextNode:text=>({textContent:text})},URL,URLSearchParams});
  return {nodes,history,data};
 }
@@ -31,6 +33,14 @@ test('directory more preserves existing cards and photos, focuses next result, a
  assert.equal(list.children.length,20);nodes['place-more'].click();assert.equal(list.children.length,40);assert.equal(list.children[0],first);assert.equal(first.children[0],photo);
  const next=list.children[20].querySelector('.directory-name');assert.equal(next.focused.preventScroll,true);assert.equal(next.scrolled.block,'nearest');assert.match(history.url,/shown=40/);assert.equal(history.state.preserve,'yes');
  nodes['place-more'].click();assert.equal(list.children.length,45);assert.equal(nodes['place-more'].hidden,true);assert.match(nodes['place-count'].textContent,/45곳 중 45곳/);
+});
+test('mobile filters collapse once, expose restored selections and remain open during refinement',()=>{
+ const {nodes}=directory(true),options=nodes['place-filter-options'];
+ assert.equal(options.open,false);assert.equal(nodes['place-filter-selection'].textContent,'식당카페');
+ options.open=true;nodes['place-region'].value='서울';nodes['place-region'].listeners.change();
+ assert.equal(options.open,true);assert.equal(nodes['place-filter-selection'].textContent,'서울 · 식당카페');
+ nodes['place-clear'].click();assert.equal(nodes['place-filter-selection'].textContent,'전체');assert.equal(options.open,true);
+ assert.equal(directory(false).nodes['place-filter-options'].open,true);
 });
 test('directory empty state resets existing controls without changing source conditions',()=>{
  const {nodes,data}=directory();nodes['place-query'].value='없는장소';nodes['place-search'].listeners.submit({preventDefault(){}});
