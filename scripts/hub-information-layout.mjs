@@ -1,6 +1,7 @@
 // Improve generated listing hierarchy without changing facts, URLs or source data.
 export function refineHubInformation(html){
  if(!html.includes('id="hub-results"'))return html;
+ html=html.replaceAll('/readability.css?v=20261023-public','/readability.css?v=20261024-polish');
  html=html.replace(/(<ul id="hub-results">)([\s\S]*?)(<\/ul>)/,(_,open,content,close)=>open+content.replace(/<li\b([^>]*)>([\s\S]*?)<\/li>/g,(row,attrs,body)=>{
   if(body.includes('class="hub-guide"'))return row;
   // Exactly three generated fields follow the heading: category, address, guide.

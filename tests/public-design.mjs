@@ -42,3 +42,8 @@ test('public hub hierarchy removes only an exact repeated address, preserves unk
  for(const text of ['운영: 미확인','주의: 대형견 불가','https://source.example','href="/places/example/"','rel="canonical"'])assert(after.includes(text));
  const other=fixture.replace('서울 주소 · 운영:','다른 주소 · 운영:');assert(refineHubInformation(other).includes('다른 주소 · 운영:'));
 });
+
+test('already refined pages upgrade presentation assets before idempotent layout guard',()=>{
+ const fixture='<body class="reading-page discovery-page"><section id="find-place"></section><link href="/readability.css?v=20261023-public"><script src="/place-search.js?v=20261023-polish"></script>';
+ const after=refineDiscovery(fixture);assert(after.includes('/readability.css?v=20261024-polish'));assert(after.includes('/place-search.js?v=20261024-polish'));assert.equal(refineDiscovery(after),after);
+});

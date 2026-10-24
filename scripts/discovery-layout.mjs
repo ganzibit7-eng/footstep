@@ -4,6 +4,7 @@ import path from 'node:path';
 
 // Shared by the published directory and the generator. No source data or SEO changes.
 export function refineDiscovery(html){
+ if(html.includes('id="find-place"'))html=html.replaceAll('/place-search.js?v=20261023-polish','/place-search.js?v=20261024-polish').replaceAll('/readability.css?v=20261023-public','/readability.css?v=20261024-polish');
  if(!html.includes('id="find-place"')||html.includes('class="reading-page discovery-page"'))return html;
  html=html.replace('class="reading-page"','class="reading-page discovery-page"');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="discovery-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="26" height="26" alt="">발자국</a><a href="/#map">지도로 둘러보기 ↗</a></header>');
