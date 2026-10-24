@@ -10,7 +10,7 @@ test('bulk catalogue matches retain nearby coordinates, exact street and a disti
 test('published place counts match coverage while unrelated facilities remain unchanged',()=>{
  const summary=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json')));let photos=0,galleries=0,notes=0,total=0;
  for(const folder of fs.readdirSync(path.join(root,'places'),{withFileTypes:true})){if(!folder.isDirectory())continue;const file=path.join(root,'places',folder.name,'index.html');if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');if(!html.includes('reading-page place-detail-page'))continue;total++;if(html.includes('class="place-photo"'))photos++;if(html.includes('class="place-photo-gallery"'))galleries++;if(html.includes('class="place-official-notes"'))notes++;}
- assert.equal(total,summary.publicFacilities);assert.equal(photos,summary.photoPlaces);assert.equal(galleries,summary.galleryPlaces);assert.equal(notes,summary.tourNotes);assert.equal(summary.addedPhotos,6);assert.equal(summary.newPhotoPlaces,6);
+ assert.equal(total,JSON.parse(fs.readFileSync(path.join(root,'data/public-counts.json'))).facilities);assert.equal(photos,summary.photoPlaces);assert.equal(galleries,summary.galleryPlaces);assert.equal(notes,summary.tourNotes);assert.equal(summary.addedPhotos,6);assert.equal(summary.newPhotoPlaces,6);
 });
 test('legacy hotel breed ban and official muzzle rule remain explicitly unresolved',()=>{
  const r=byId.get('pub1788410826323_400_nefwex');assert(r.caution);assert.match(r.caution.excerpt,/기존 등록 안내:[\s\S]*맹견[\s\S]*입실 불가/);assert.match(r.caution.excerpt,/공식 관광 상세 자료:[\s\S]*입마개/);

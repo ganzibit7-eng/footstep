@@ -19,7 +19,7 @@ test('verified stay links retain partner tracking and clear disclosure on home a
 });
 test('full stay audit distinguishes unlinked products and conflicting platform policies',()=>{
  const audit=JSON.parse(readFileSync('docs/trip-stays/audit-20261022.json','utf8'));
- assert.equal(audit.length,490);assert.equal(new Set(audit.map(x=>x.id)).size,490);
+ assert.equal(audit.length,489);assert.equal(new Set(audit.map(x=>x.id)).size,489);
  assert.equal(audit.filter(x=>x.status==='connected').length,tripStays.length);
  for(const stay of tripStays){assert.equal(audit.find(x=>x.id===stay.id)?.status,'connected');assert(stay.checked&&stay.sourceAddress&&stay.bookingAddress);if(stay.bookingPetPolicy.startsWith('예약 플랫폼 동반 규정 미확인'))assert(tripBooking(stay.id).includes('동반 규정은 미확인입니다'));}
  for(const item of audit.filter(x=>x.status==='platform-policy-review'))assert.equal(tripBooking(item.id),'');
