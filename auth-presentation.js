@@ -2,6 +2,7 @@
 (function(){
   'use strict';
   const login=document.getElementById('nick-overlay'),profile=document.getElementById('profile-overlay');
+  const shop=document.getElementById('points-shop-overlay'),overlays=[login,profile,shop].filter(Boolean);
   const buttons=['kakao-login-btn','google-login-btn','email-login-btn'].map(id=>document.getElementById(id));
   const labels=new Map(buttons.map(button=>[button,button.querySelector('[data-auth-label]').textContent]));
   let pending=false;
@@ -18,7 +19,7 @@
   document.getElementById('profile-close').addEventListener('click',()=>profile.classList.remove('show'));
   window.addEventListener('pageshow',()=>busy(null,false));
   const state=new Map();let locked=false,oldOverflow='',background=[];
-  function active(){return [profile,login].find(overlay=>overlay.classList.contains('show'));}
+  function active(){return overlays.find(overlay=>overlay.classList.contains('show'));}
   function update(){
     const current=active();
     for(const overlay of [login,profile]){
@@ -26,11 +27,11 @@
       if(open&&!previous?.open){state.set(overlay,{open:true,returnTo:document.activeElement});requestAnimationFrame(()=>{if(overlay.classList.contains('show'))overlay.querySelector('.modal').focus({preventScroll:true});});}
       if(!open&&previous?.open){state.set(overlay,{open:false});if(!current&&previous.returnTo?.isConnected&&!previous.skipReturn)requestAnimationFrame(()=>previous.returnTo.focus({preventScroll:true}));}
     }
-    if(current&&!locked){locked=true;oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';background=Array.from(document.body.children).filter(el=>![login,profile].includes(el)&&!['SCRIPT','STYLE','LINK'].includes(el.tagName)).map(el=>[el,el.inert]);background.forEach(([el])=>{el.inert=true;});}
+    if(current&&!locked){locked=true;oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';background=Array.from(document.body.children).filter(el=>!overlays.includes(el)&&!['SCRIPT','STYLE','LINK'].includes(el.tagName)).map(el=>[el,el.inert]);background.forEach(([el])=>{el.inert=true;});}
     if(!current&&locked){locked=false;document.body.style.overflow=oldOverflow;background.forEach(([el,value])=>{el.inert=value;});background=[];}
   }
+  for(const overlay of overlays)new MutationObserver(update).observe(overlay,{attributes:true,attributeFilter:['class']});
   for(const overlay of [login,profile]){
-    new MutationObserver(update).observe(overlay,{attributes:true,attributeFilter:['class']});
     overlay.addEventListener('keydown',event=>{
       if(event.key==='Escape'){event.preventDefault();event.stopPropagation();overlay.querySelector('.modal-close').click();return;}
       if(event.key!=='Tab')return;
