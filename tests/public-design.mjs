@@ -29,7 +29,7 @@ test('shared reading theme cannot style home cards or administrator screens',asy
  const css=await readFile(new URL('../internal-pages.css',import.meta.url),'utf8');
  assert(!/\.home-|#nearby-|#admin-|:root\s*\{|^body\s*\{/m.test(css));
  assert(css.includes('body.reading-page'));assert(css.includes('object-fit:contain'));
- const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v=20261024-third")'));
+ const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v=20261024-third-layout")'));
  const generator=await readFile(new URL('../scripts/generate-seo.mjs',import.meta.url),'utf8');assert(generator.includes('refineDiscovery(refinePlaceDetail(html))'));
 });
 
@@ -45,5 +45,5 @@ test('public hub hierarchy removes only an exact repeated address, preserves unk
 
 test('already refined pages upgrade presentation assets before idempotent layout guard',()=>{
  const fixture='<body class="reading-page discovery-page"><section id="find-place"></section><link href="/readability.css?v=20261011-search"><script src="/place-search.js?v=20261023-polish"></script>';
- const after=refineDiscovery(fixture);assert(after.includes('/readability.css?v=20261024-third'));assert(after.includes('/place-search.js?v=20261024-third'));assert.equal(refineDiscovery(after),after);
+ const after=refineDiscovery(fixture);assert(after.includes('/readability.css?v=20261024-third-layout'));assert(after.includes('/place-search.js?v=20261024-third'));assert.equal(refineDiscovery(after),after);
 });

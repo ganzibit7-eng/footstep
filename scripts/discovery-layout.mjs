@@ -9,7 +9,7 @@ function compactFilters(html){
  if(html.includes('id="find-place"')&&!html.includes('id="place-filter-options"')){
   html=html.replace(/(<div class="search-field"><label for="place-kind">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-region">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-category">[\s\S]*?<\/select><\/div>)/,'<details id="place-filter-options" class="directory-filter-options" open><summary>지역·장소 종류 <span id="place-filter-selection">전체</span></summary><div class="directory-filter-fields">$1$2$3</div></details>');
  }
- return html.replaceAll('/place-search.js?v=20261024-polish','/place-search.js?v=20261024-third').replaceAll('/readability.css?v=20261024-polish','/readability.css?v=20261024-third');
+ return html.replaceAll('/place-search.js?v=20261024-polish','/place-search.js?v=20261024-third').replaceAll('/readability.css?v=20261024-polish','/readability.css?v=20261024-third-layout');
 }
 
 // Shared by the published directory and the generator. No source data or SEO changes.
