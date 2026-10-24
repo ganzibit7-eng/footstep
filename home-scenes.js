@@ -22,7 +22,7 @@
    }
   },{rootMargin:'0px 0px -24px 0px',threshold:0.08});
   function register(){if(stopped)return;area.querySelectorAll(selector).forEach(item=>{
-   if(known.has(item))return;known.add(item);observer.observe(item);
+   if(known.has(item)||item.parentElement?.closest(selector))return;known.add(item);observer.observe(item);
    item.addEventListener('focusin',()=>{item.classList.remove('home-motion-enter');observer.unobserve(item);});
   });}
   register();

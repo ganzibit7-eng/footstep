@@ -3,13 +3,14 @@
   'use strict';
   const doc=root.document;if(!doc)return;
   const reduced=root.matchMedia?.('(prefers-reduced-motion: reduce)');
-  const running=new Set();let observer;
+  const running=new Set(),seen=new WeakSet();let observer;
   const allowed=()=>!reduced?.matches&&!root.navigator?.connection?.saveData;
   function stop(){for(const animation of running)animation.cancel();running.clear();}
   function cancel(){stop();observer?.disconnect();}
   function reveal(element,index=0){
-    if(!allowed()||!element?.animate||element.closest('[hidden]')||!element.getClientRects().length||element.contains?.(doc.activeElement))return;
-    const animation=element.animate([{opacity:.35,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,delay:Math.min(index,4)*40,easing:'cubic-bezier(.22,1,.36,1)'});
+    if(seen.has(element)||!allowed()||!element?.animate||element.closest('[hidden]')||!element.getClientRects().length||element.contains?.(doc.activeElement))return;
+    seen.add(element);
+    const animation=element.animate([{opacity:.35,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:480,delay:Math.min(index,4)*40,easing:'cubic-bezier(.22,1,.36,1)'});
     running.add(animation);animation.finished?.then(()=>running.delete(animation),()=>running.delete(animation));
   }
   function enter(scope){
@@ -19,7 +20,7 @@
     observer?.disconnect();observer=new root.IntersectionObserver(entries=>{
       let index=0;for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);reveal(entry.target,index++);}
     },{threshold:.08});
-    nodes.forEach(node=>observer.observe(node));
+    nodes.forEach(node=>{if(!seen.has(node))observer.observe(node);});
   }
   function page(name){cancel();if(name==='home')return;enter(doc.querySelector('.app-page.active[data-page-section="'+name+'"]'));}
   function sync(button){button.setAttribute('aria-pressed',String(button.classList.contains('on')||button.classList.contains('active')));}

@@ -14,7 +14,12 @@
     if(sort==='photos')return data.slice().sort(function(a,b){return Number(!!b.photo)-Number(!!a.photo);});
     return data;
   }
-  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered};return;}
+  function conditionRows(text){
+    var raw=String(text||'동반 구역·크기 제한·준비물은 상세에서 확인하세요. 자료에 없는 조건은 미확인입니다.');
+    var split=raw.indexOf(' · 준비물:');
+    return split<0?[['동반 조건',raw]]:[['동반 조건',raw.slice(0,split)],['준비물',raw.slice(split+' · 준비물:'.length).trim()]];
+  }
+  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows};return;}
   var data=JSON.parse(document.getElementById('place-data').textContent),form=document.getElementById('place-search'),query=document.getElementById('place-query'),kind=document.getElementById('place-kind'),region=document.getElementById('place-region'),type=document.getElementById('place-category'),list=document.getElementById('place-results'),count=document.getElementById('place-count'),more=document.getElementById('place-more'),limit=20,matches=[];
   Array.from(new Set(data.map(function(item){return item.region;}).filter(Boolean))).sort(function(a,b){return a.localeCompare(b,'ko');}).forEach(function(name){var option=document.createElement('option');option.value=name;option.textContent=name;region.append(option);});
   var sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title');
@@ -39,11 +44,11 @@
       if(item.kind==='facilities'){
         if(item.photo){var figure=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption'),credit=document.createElement('a'),photoLink=document.createElement('a'),details=document.createElement('details'),summary=document.createElement('summary');figure.className='directory-photo';photoLink.href=item.path;photoLink.setAttribute('aria-label',item.name+' 상세 정보');img.referrerPolicy='no-referrer';img.src=item.photo.src;img.alt=item.name+' 공식 관광자료 제공 사진';img.width=item.photo.width;img.height=item.photo.height;img.loading='lazy';img.decoding='async';credit.href=item.photo.source;credit.target='_blank';credit.rel='noopener noreferrer';credit.textContent='사진: '+item.photo.author;summary.textContent='사진 출처·이용 안내';details.append(summary,credit,document.createElement('br'));var license=document.createElement('a');license.href=item.photo.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent='이용 조건 · 원본 비율 유지';details.append(license,document.createElement('br'),document.createTextNode('촬영 시기 미상 · 현재 모습과 다를 수 있어요.'));caption.append(details);photoLink.append(img);figure.append(photoLink,caption);li.prepend(figure);}
         else{var placeholder=document.createElement('a'),placeholderTitle=document.createElement('span'),placeholderNote=document.createElement('span');placeholder.href=item.path;placeholder.className='directory-no-photo';placeholder.setAttribute('aria-label',item.name+' 상세 정보');placeholderTitle.textContent=label||'반려생활 장소';placeholderNote.textContent='사진 준비 중';placeholder.append(placeholderTitle,placeholderNote);li.prepend(placeholder);}
-        var note=document.createElement('p'),noteTitle=document.createElement('b');note.className='directory-conditions';noteTitle.textContent='반려견 동반 안내';note.append(noteTitle,document.createTextNode(item.conditions||'동반 구역·크기 제한·준비물은 상세에서 확인하세요. 자료에 없는 조건은 미확인입니다.'));li.append(note);
+        var note=document.createElement('dl');note.className='directory-conditions';conditionRows(item.conditions).forEach(function(row){var term=document.createElement('dt'),value=document.createElement('dd');term.textContent=row[0];value.textContent=row[1];note.append(term,value);});li.append(note);
       }
       list.append(li);
     });
-    count.textContent=matches.length?'등록 정보 '+matches.length+'곳 중 '+Math.min(limit,matches.length)+'곳 표시':'일치하는 등록 정보가 없습니다. 지역·업종 선택을 바꾸거나 검색어를 짧게 입력하세요.';
+    count.textContent=matches.length?'등록 정보 '+matches.length.toLocaleString('ko-KR')+'곳 중 '+Math.min(limit,matches.length).toLocaleString('ko-KR')+'곳 표시':'일치하는 등록 정보가 없습니다. 지역·업종 선택을 바꾸거나 검색어를 짧게 입력하세요.';
     more.hidden=limit>=matches.length;
     if(!matches.length){var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),reset=document.createElement('button');empty.className='directory-empty';heading.textContent='조건에 맞는 곳을 찾지 못했어요';help.textContent='지역이나 업종을 바꾸거나, 장소 이름을 짧게 입력해 보세요.';reset.type='button';reset.textContent='검색 조건 초기화';reset.onclick=function(){document.getElementById('place-clear').click();};empty.append(heading,help,reset);list.append(empty);}
     if(append){var next=list.children[start]?.querySelector('.directory-name');if(next){next.focus({preventScroll:true});next.scrollIntoView({block:'nearest',behavior:'instant'});}}

@@ -50,3 +50,10 @@ test('detail return uses native back for ordinary clicks and preserves modified-
  link.listeners.click({button:0,preventDefault(){prevented++;}});assert.equal(backs,1);assert.equal(prevented,1);
  link.listeners.click({button:0,ctrlKey:true,preventDefault(){prevented++;}});assert.equal(backs,1);assert.equal(prevented,1);
 });
+
+const {conditionRows}=require('../place-search.js');
+test('condition labels split only the explicit source delimiter and preserve unknown facts',()=>{
+ assert.deepEqual(conditionRows('미확인 · 방문 전 문의 · 준비물: 목줄 착용'),[['동반 조건','미확인 · 방문 전 문의'],['준비물','목줄 착용']]);
+ for(const raw of ['대형견 불가, 이동장 필요','실내 여부 미확인','운영기관 문의'])assert.deepEqual(conditionRows(raw),[['동반 조건',raw]]);
+ assert.match(conditionRows(null)[0][1],/미확인/);
+});

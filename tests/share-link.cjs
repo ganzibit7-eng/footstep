@@ -4,3 +4,14 @@ test('cancel is not posted or copied; native failure falls back to clipboard',as
 test('successful native share never repeats with clipboard',async()=>{assert.equal((await Share.send({url:'url'},{share:async()=>{},clipboard:{writeText:async()=>{throw Error('must not copy');}}})).state,'shared');});
 
 test('app does not share hidden or pending courses',async()=>{const fs=require('node:fs'),vm=require('node:vm'),s=fs.readFileSync('index.html','utf8');const fn=s.slice(s.indexOf('  async function shareCourse(courseId){'),s.indexOf("  document.getElementById('share-course-btn')",s.indexOf('  async function shareCourse(courseId){')));let calls=0;const ctx={allCourses:()=>[{id:'public',name:'공개 코스'},{id:'pending',name:'미승인',status:'pending'},{id:'hidden',name:'숨김'}],isHidden:(_,id)=>id==='hidden',window:{PawCoursePages:['public'],location:{origin:'https://balzaguk.com'}},PawShare:{prepare:Share.prepare,send:async data=>{calls++;assert(new URL(data.url).searchParams.has('utm_source'));return{state:'cancelled'};}},toast(){},prompt(){},encodeURIComponent};vm.createContext(ctx);vm.runInContext(fn,ctx);await ctx.shareCourse('pending');await ctx.shareCourse('hidden');await ctx.shareCourse('missing');assert.equal(calls,0);await ctx.shareCourse('public');assert.equal(calls,1);});
+
+test('pending share blocks repeated clicks and clears busy state after cancellation or failure',async()=>{
+ const fs=require('node:fs'),vm=require('node:vm');let finish,calls=0,handler;
+ const button={disabled:false,dataset:{shareLink:'/places/example/',shareStatus:'status'},attrs:{},setAttribute(k,v){this.attrs[k]=v;},removeAttribute(k){delete this.attrs[k];},addEventListener(_,fn){handler=fn;}};
+ const status={textContent:''};
+ const ctx={URL,document:{readyState:'complete',title:'장소',querySelectorAll:()=>[button],getElementById:()=>status},location:{origin:'https://balzaguk.com'},navigator:{share:()=>{calls++;return new Promise(resolve=>finish=resolve);}}};
+ vm.runInNewContext(fs.readFileSync('share-link.js','utf8'),ctx);
+ const first=handler();await handler();assert.equal(calls,1);assert.equal(button.attrs['aria-busy'],'true');assert.equal(button.disabled,true);
+ finish();await first;assert.equal(button.disabled,false);assert.equal(button.attrs['aria-busy'],undefined);
+ ctx.navigator.share=async()=>{throw{name:'AbortError'};};await handler();assert.equal(button.disabled,false);assert.equal(status.textContent,'');
+});

@@ -1,4 +1,4 @@
-@import url("/internal-pages.css?v=20261023-public");
+@import url("/internal-pages.css?v=20261024-polish");
 /* Balzaguk reading system. Hero artwork and its layout stay untouched. */
 :root{--reading-text:#293d32;--reading-muted:#526157;--reading-surface:#fffefb;--reading-line:#dce4d9;--reading-soft:#f2f5ed}
 html[data-theme="dark"]{--reading-text:#f0f3e9;--reading-muted:#c0cdbf;--reading-surface:#242e27;--reading-line:#455247;--reading-soft:#303b31}

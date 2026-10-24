@@ -22,7 +22,7 @@ test('entry is optional: reduced motion and data saver keep content static',()=>
  for(const config of [{reduce:true},{saveData:true}]){const h=setup(config);h.window.PawUI.page('walk');assert.equal(h.observers.length,0);assert.equal(h.animations.length,0);}
 });
 test('visible headings enter briefly; route changes cancel unfinished motion',()=>{
- const h=setup();h.deliver();assert.equal(h.animations.length,1);assert(h.animations[0].options.duration<=400);h.window.PawUI.page('register');assert(h.animations[0].cancelled);assert(h.observers[0].disconnected);
+ const h=setup();h.deliver();assert.equal(h.animations.length,1);assert(h.animations[0].options.duration<=600);h.window.PawUI.page('register');assert(h.animations[0].cancelled);assert(h.observers[0].disconnected);
 });
 test('interaction, backgrounding and preference changes stop motion',()=>{
  for(const event of ['pointerdown','focusin','visibilitychange','media']){const h=setup();h.deliver();if(event==='visibilitychange')h.window.document.hidden=true;if(event==='media'){h.reduced.matches=true;h.change();}else h.events[event]();assert(h.animations[0].cancelled);assert.equal(h.observers[0].disconnected,event==='visibilitychange'||event==='media');}
@@ -35,7 +35,7 @@ test('selection semantics follow active state, including restored drafts',()=>{
  const h=setup();assert.equal(h.button['aria-pressed'],'true');h.button.classList.contains=()=>false;h.mutations[0].cb([{target:h.button}]);assert.equal(h.button['aria-pressed'],'false');assert.deepEqual(Array.from(h.mutations[0].options.attributeFilter),['class']);
 });
 test('card observation stays on result lists and is capped per update',()=>{
- const h=setup();const cards=h.mutations.find(o=>o.options.childList);cards.cb([{addedNodes:Array(50).fill(h.node)}]);assert.equal(h.animations.length,0);h.observers.at(-1).cb(Array(4).fill({isIntersecting:true,target:h.node}));assert.equal(h.animations.length,4);assert.equal(cards.options.subtree,undefined);assert.equal(cards.target,h.window.document.getElementById('course-grid'));
+ const h=setup();const cards=h.mutations.find(o=>o.options.childList);cards.cb([{addedNodes:Array(50).fill(h.node)}]);assert.equal(h.animations.length,0);h.observers.at(-1).cb(Array(4).fill({isIntersecting:true,target:h.node}));assert.equal(h.animations.length,1);assert.equal(cards.options.subtree,undefined);assert.equal(cards.target,h.window.document.getElementById('course-grid'));
 });
 
 test('direct map entry restores the search header without overriding visitor interaction',()=>{
@@ -43,3 +43,5 @@ test('direct map entry restores the search header without overriding visitor int
  for(const event of ['pointerdown','keydown','wheel','touchstart']){const active=setup({directMap:true});active.events[event]();active.settle();assert.equal(active.scroll,undefined);}
  const changed=setup({directMap:true});changed.window.location.hash='#walk';changed.settle();assert.equal(changed.scroll,undefined);
 });
+
+test('returning to an already revealed heading never replays its entrance',()=>{const h=setup();h.deliver();h.window.PawUI.page('walk');h.deliver();assert.equal(h.animations.length,1);});

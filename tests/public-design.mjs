@@ -29,6 +29,16 @@ test('shared reading theme cannot style home cards or administrator screens',asy
  const css=await readFile(new URL('../internal-pages.css',import.meta.url),'utf8');
  assert(!/\.home-|#nearby-|#admin-|:root\s*\{|^body\s*\{/m.test(css));
  assert(css.includes('body.reading-page'));assert(css.includes('object-fit:contain'));
- const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v=20261023-public")'));
+ const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v=20261024-polish")'));
  const generator=await readFile(new URL('../scripts/generate-seo.mjs',import.meta.url),'utf8');assert(generator.includes('refineDiscovery(refinePlaceDetail(html))'));
+});
+
+const {refineHubInformation}=await import('../scripts/hub-information-layout.mjs');
+test('public hub hierarchy removes only an exact repeated address, preserves unknown guidance and sources',()=>{
+ const fixture='<link rel="canonical" href="/places/cafes/"><ul id="hub-results"><li><figure><a href="https://source.example">사진 출처</a></figure><h2><a href="/places/example/">장소</a></h2><p>숙소</p><p>서울 주소</p><p>서울 주소 · 운영: 미확인 · 주의: 대형견 불가</p></li></ul>';
+ const after=refineHubInformation(fixture);
+ assert.equal(refineHubInformation(after),after);
+ assert.equal((after.match(/서울 주소/g)||[]).length,1);
+ for(const text of ['운영: 미확인','주의: 대형견 불가','https://source.example','href="/places/example/"','rel="canonical"'])assert(after.includes(text));
+ const other=fixture.replace('서울 주소 · 운영:','다른 주소 · 운영:');assert(refineHubInformation(other).includes('다른 주소 · 운영:'));
 });
