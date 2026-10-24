@@ -179,7 +179,37 @@ function create(context){
       renderMemberList();
     }catch(e){ console.error(e); toast('삭제 중 오류가 발생했어요'); }
   }
+  const adminReadFlights=new Map();
+  function shareAdminRead(key,read){
+    const viewer=context.myDeviceId,active=adminReadFlights.get(key);
+    if(active?.viewer===viewer)return active.promise;
+    const entry={viewer};adminReadFlights.set(key,entry);
+    entry.promise=Promise.resolve().then(read).finally(()=>{if(adminReadFlights.get(key)===entry)adminReadFlights.delete(key);});
+    return entry.promise;
+  }
+  function loadAdminDetail(key){
+    if(!isAdminUser(context.myDeviceId))return Promise.resolve(false);
+    if(key==='stats')return shareAdminRead(key,renderAdminTotals);
+    if(key==='hourly')return shareAdminRead(key,renderHourlyStats);
+    return Promise.resolve(true);
+  }
   async function renderAdminStats(){
+    if(!isAdminUser(context.myDeviceId))return false;
+    const jobs=[shareAdminRead('today',renderAdminTodayStats)];
+    for(const key of ['stats','hourly']){
+      const body=document.getElementById('acc-'+key);
+      if(body&&body.style.display!=='none')jobs.push(loadAdminDetail(key));
+      else{
+        const id=key==='stats'?'admin-stats':'admin-hourly-stats',el=document.getElementById(id);
+        if(el&&!sectionChecks.has(id))el.innerHTML='<p class="empty-admin">영역을 펼치면 최신 자료를 조회합니다.</p>';
+        const note=document.getElementById(id+'-load-status');
+        if(note)note.textContent='접힌 영역은 갱신하지 않았어요.'+(sectionChecks.has(id)?' · 이전 확인 '+globalThis.AdminAnalytics.kstTime(sectionChecks.get(id)):'');
+      }
+    }
+    renderAdminTopCourses();
+    return (await Promise.all(jobs)).every(value=>value===true);
+  }
+  async function renderAdminTotals(){
     const el = document.getElementById('admin-stats');
     if(!el)return false;const current=beginAdminSection('admin-stats');let ok=false;
     if(!sectionChecks.has('admin-stats'))el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
@@ -226,8 +256,7 @@ function create(context){
     }
     if(!current())return false;
     renderAdminTopCourses();
-    const children=await Promise.all([renderAdminTodayStats(),renderHourlyStats()]);
-    return ok&&children.every(value=>value===true);
+    return ok;
   }
 
   // ===== 실시간 접속자 =====
@@ -967,6 +996,7 @@ function create(context){
     body.style.display = '';
     head.querySelector('.accordion-arrow').textContent = '▾';
     head.setAttribute('aria-expanded','true');
+    loadAdminDetail(key);
     head.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -981,6 +1011,7 @@ function create(context){
       head.setAttribute('aria-expanded',String(!isOpen));
       arrow.textContent = isOpen ? '▸' : '▾';
       if(key==='allmembers'&&!isOpen)renderAllMemberList();
+      if(!isOpen)loadAdminDetail(key);
     });
   });
 
@@ -1114,13 +1145,13 @@ function create(context){
       renderAdminList();renderPendingApprovals();
       const manager=isSuperAdmin(viewer)?await renderManagerList():true;
       if(!current())return;
-      const labels=['방문 통계','운영 요약','누적·활동 통계','실시간'];
+      const labels=['방문 통계','운영 요약','표시 중 활동 통계','실시간'];
       const failed=labels.filter((_,i)=>results[i]!==true);
       if(members!==true)failed.push('회원 집계');
       if(manager!==true)failed.push('매니저');
       const publicNotice=document.getElementById('data-load-notice');
       if(publicNotice&&!publicNotice.hidden)failed.push('서비스 자료');
-      status.textContent=(failed.length?'일부 확인 실패: '+failed.join(', '):'회원·통계 확인 완료')+' · '+globalThis.AdminAnalytics.kstTime(new Date());
+      status.textContent=(failed.length?'일부 확인 실패: '+failed.join(', '):'회원·표시 통계 확인 완료')+' · '+globalThis.AdminAnalytics.kstTime(new Date());
     }catch(e){if(current()){status.textContent='새로고침 실패 · 각 영역의 이전 확인 시각을 확인해 주세요.';toast('새로고침에 실패했어요. 다시 시도해 주세요.');}}
     finally{button.disabled=false;}
   }
@@ -1171,7 +1202,7 @@ function create(context){
 
 
 
- function dispose(){sectionRequests.clear();sectionChecks.clear();memberDetails?.dispose();adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
+ function dispose(){adminReadFlights.clear();sectionRequests.clear();sectionChecks.clear();memberDetails?.dispose();adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});

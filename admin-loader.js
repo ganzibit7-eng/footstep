@@ -1,5 +1,5 @@
 (function(root){'use strict';
-const VERSION='20261025-member-stage3';
+const VERSION='20261025-history-stage4';
 const scripts=new Map();
 let stylesheet=null;
 function style(){if(stylesheet)return stylesheet;stylesheet=new Promise((resolve,reject)=>{const el=document.createElement('link');el.rel='stylesheet';el.href='/admin-panel.css?v='+VERSION;el.dataset.adminStyle='';el.onload=resolve;el.onerror=()=>{el.remove();stylesheet=null;reject(new Error('admin_style_failed'));};document.head.append(el);});return stylesheet;}

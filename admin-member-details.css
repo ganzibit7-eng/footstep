@@ -41,3 +41,10 @@
 #admin-overlay .admin-member-detail-layer[hidden]{display:none}
 #admin-overlay .admin-section-load-status{margin:8px 0;font-size:11px;line-height:1.8;color:#6a7c6e;font-variant-numeric:tabular-nums}
 #admin-overlay .admin-section-load-status[data-state=error]{color:#85572a}
+
+#admin-overlay .admin-detail-more{display:block;width:100%;min-height:44px;margin-top:14px;padding:10px 14px;border:1px solid #d5dfd5;border-radius:9px;background:#f4f7f2;color:#28533d;font-family:inherit;font-size:12px;font-weight:550;cursor:pointer;transition:background-color 160ms,border-color 160ms}
+#admin-overlay .admin-detail-more:hover{background:#eaf1e9;border-color:#a7bfae}
+#admin-overlay .admin-detail-more:disabled{cursor:wait;opacity:.6}
+#admin-overlay .admin-detail-more:focus-visible{outline:2px solid #28533d;outline-offset:3px}
+#admin-overlay :is(.admin-detail-page-count,.admin-detail-end,.admin-detail-page-status){font-size:11px;line-height:1.8;color:#6a7e6d;margin:10px 0;font-variant-numeric:tabular-nums}
+#admin-overlay .admin-detail-page-status:empty{display:none}
