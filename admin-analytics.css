@@ -1,0 +1,45 @@
+/* Administrator analytics only; no public layout or chart dependency. */
+#admin-overlay.admin-console .admin-analytics-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 8px}
+#admin-overlay.admin-console .admin-analytics-summary>div{min-width:0;padding:14px;background:#f1f5f1;border:1px solid #e0e7df;border-radius:12px}
+#admin-overlay.admin-console .admin-analytics-summary>div>span{display:block;font-size:11px;line-height:1.7;color:#5d6e63;word-break:keep-all}
+#admin-overlay.admin-console .admin-analytics-summary strong{display:block;margin-top:10px;font-size:25px;line-height:1.25;font-weight:650;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-analytics-summary small{margin-left:4px;font-size:11px;font-weight:400}
+#admin-overlay.admin-console .admin-analytics-comparison{font-size:12px;line-height:1.8;color:#3c604a;margin:10px 0 18px}
+#admin-overlay.admin-console .admin-traffic-chart{margin:16px 0 20px;padding:18px 0;border-block:1px solid #e0e7df;min-width:0}
+#admin-overlay.admin-console .admin-chart-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#admin-overlay.admin-console .admin-chart-heading h4{margin:0;font-size:14px}
+#admin-overlay.admin-console .admin-chart-metrics{display:flex;flex-wrap:wrap;gap:4px;background:#f0f3ef;padding:3px;border-radius:9px}
+#admin-overlay.admin-console .admin-chart-metrics button{border:1px solid transparent;background:transparent;border-radius:7px;padding:8px 9px;min-height:36px;color:#5d6e63;font:inherit;font-size:11px;cursor:pointer}
+#admin-overlay.admin-console .admin-chart-metrics button[aria-pressed=true]{background:#fff;color:#205842;border-color:#d8e3d9;font-weight:600}
+#admin-overlay.admin-console .admin-traffic-chart svg{display:block;width:100%;height:auto;max-height:280px;overflow:visible;margin-top:16px}
+#admin-overlay.admin-console .admin-chart-grid{stroke:#e2e8e1;stroke-width:1}
+#admin-overlay.admin-console .admin-chart-line{fill:none;stroke:#205842;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#admin-overlay.admin-console .admin-traffic-chart svg text{font-family:inherit;font-size:11px;fill:#718176;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-traffic-chart circle{fill:#205842;stroke:#fff;stroke-width:1}
+#admin-overlay.admin-console .admin-chart-date{margin-top:8px;display:grid;gap:8px}
+#admin-overlay.admin-console .admin-chart-date label{display:flex;align-items:center;gap:12px;font-size:11px;color:#63746a}
+#admin-overlay.admin-console .admin-chart-date input{flex:1;min-width:0;min-height:44px;accent-color:#205842;cursor:pointer}
+#admin-overlay.admin-console .admin-chart-value{font-size:12px;line-height:1.8;margin:0;font-weight:550;font-variant-numeric:tabular-nums;min-height:22px}
+#admin-overlay.admin-console .admin-chart-note{font-size:11px;line-height:1.8;color:#6c7b71;margin:10px 0 0}
+#admin-overlay.admin-console :is(.admin-analytics-method,.admin-chart-table)>summary{display:flex;align-items:center;min-height:44px;font-size:12px;cursor:pointer;color:#405e49}
+#admin-overlay.admin-console :is(.admin-analytics-method,.admin-chart-table)>summary::before{content:'＋';margin-right:8px}
+#admin-overlay.admin-console :is(.admin-analytics-method,.admin-chart-table)[open]>summary::before{content:'−'}
+#admin-overlay.admin-console .admin-analytics-method p{font-size:11px;line-height:1.9;color:#63746a}
+#admin-overlay.admin-console #admin-traffic-status{font-size:11px;color:#607568;line-height:1.8;margin:8px 0;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-chart-loading{display:flex;align-items:center;justify-content:center;min-height:330px;background:#f5f7f3;border-radius:12px;color:#63746a;font-size:13px}
+#admin-overlay.admin-console #admin-live-activity[data-connection=error]{background:#faf3e9!important;border-color:#e4d3bc}
+#admin-overlay.admin-console #admin-live-activity[data-connection=error] #live-visitor-dot{background:#a47642!important;box-shadow:none!important}
+#admin-overlay.admin-console #admin-live-activity[data-connection=loading] #live-visitor-dot{background:#7e8c83!important;box-shadow:none!important}
+@media(max-width:650px){
+ #admin-overlay.admin-console .admin-analytics-summary{gap:6px}
+ #admin-overlay.admin-console .admin-analytics-summary>div{padding:12px 8px}
+ #admin-overlay.admin-console .admin-analytics-summary strong{font-size:21px}
+ #admin-overlay.admin-console .admin-analytics-summary>div>span{font-size:10px}
+ #admin-overlay.admin-console .admin-chart-heading{display:block}
+ #admin-overlay.admin-console .admin-chart-metrics{margin-top:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+ #admin-overlay.admin-console .admin-chart-metrics button{font-size:10px;min-height:44px;padding:8px 5px;word-break:keep-all}
+ #admin-overlay.admin-console .admin-traffic-chart svg{min-height:150px}
+ #admin-overlay.admin-console .admin-traffic-chart svg text{font-size:22px}
+ #admin-overlay.admin-console .admin-chart-value{min-height:44px}
+ #admin-overlay.admin-console .admin-traffic-chart{margin-top:10px}
+}

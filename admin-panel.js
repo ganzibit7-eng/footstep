@@ -215,21 +215,21 @@ function create(context){
 
   // ===== 실시간 접속자 =====
   let liveVisitorInterval = null;
-  async function renderLiveVisitorCount(){
-    const countEl = document.getElementById('live-visitor-count');
-    const updatedEl = document.getElementById('live-visitor-updated');
-    if(!countEl) return;
-    try{
-      const fiveMinAgo = new Date(Date.now() - 5*60*1000).toISOString();
-      const { data: count, error } = await sb.rpc('admin_live_traffic_count');
-      if(error){ countEl.textContent = '확인 불가'; if(updatedEl) updatedEl.textContent = '권한 또는 집계 연결을 확인해 주세요'; return; }
-      countEl.textContent = (count ?? 0) + '개 브라우저';
-      if(updatedEl){
-        const now = new Date();
-        updatedEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')} 기준`;
-      }
-    }catch(e){ console.error(e); countEl.textContent = '–'; }
-  }
+  const liveViewer=context.myDeviceId;
+  const liveController=globalThis.AdminAnalytics.createLive({
+    fetchCount:()=>sb.rpc('admin_live_traffic_count'),
+    isCurrent:()=>context.myDeviceId===liveViewer&&isAdminUser(liveViewer)&&document.getElementById('admin-overlay')!==null,
+    render(state){
+      const panel=document.getElementById('admin-live-activity'),countEl=document.getElementById('live-visitor-count'),updated=document.getElementById('live-visitor-updated');if(!panel||!countEl)return;
+      panel.setAttribute('aria-busy',String(state.status==='loading'));
+      if(state.status==='loading'&&state.value!==null)return;
+      panel.dataset.connection=state.status;
+      countEl.textContent=state.status==='ready'?globalThis.AdminAnalytics.format(state.value)+'개 브라우저':state.status==='loading'?'연결 중':'확인 불가';
+      if(updated)updated.textContent=state.status==='ready'?'연결됨 · '+globalThis.AdminAnalytics.kstTime(state.updated):state.status==='loading'?'최근 5분 활동을 확인하고 있어요':'연결 실패 · '+(state.updated?'마지막 확인 '+globalThis.AdminAnalytics.kstTime(state.updated):'다음 주기에 다시 확인합니다');
+    }
+  });
+  function renderLiveVisitorCount(){return liveController.update();}
+  function stopLiveVisitors(){liveController.stop();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}}
 
   // ===== 시간대별(오늘) 접속 통계 =====
   async function renderHourlyStats(){
@@ -518,7 +518,7 @@ function create(context){
   const traffic=root.querySelector('.admin-traffic-panel');
   traffic.before(today);
   // KPI and realtime blocks live outside the collapsible activity section.
-  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';traffic.before(details);details.append(summary,traffic);
+  const details=document.createElement('details'),summary=document.createElement('summary');details.className='admin-section-details';summary.textContent='📈 방문 통계 · 유입 · 봇 분석 · CSV';today.before(details);details.open=true;details.append(summary,traffic);
   const anchor=root.querySelector('[data-accordion="stats"]').closest('.admin-accordion');
   for(const key of ['pending','reports','allmembers','activemembers'])anchor.before(root.querySelector(`[data-accordion="${key}"]`).closest('.admin-accordion'));
   root.querySelectorAll('.admin-accordion-head').forEach(head=>{
@@ -532,7 +532,7 @@ function create(context){
   const assignments={today:'overview',stats:'overview',hourly:'overview',top:'overview',allmembers:'members',activemembers:'members',managers:'members',pending:'review',reports:'review',bulk:'tools'};
   root.querySelectorAll('.admin-accordion-head').forEach(head=>{head.closest('.admin-accordion').dataset.adminView=assignments[head.dataset.accordion]||'tools';});
   document.getElementById('admin-affiliate-details').dataset.adminView='affiliate';document.getElementById('admin-security-details').dataset.adminView='security';
-  const workspace=document.createElement('div');workspace.className='admin-workspace';today.before(workspace);const nav=document.createElement('nav');nav.className='admin-navigation';nav.setAttribute('aria-label','관리 메뉴');const content=document.createElement('div');content.className='admin-workspace-content';workspace.append(nav,content);while(workspace.nextSibling)content.append(workspace.nextSibling);
+  const workspace=document.createElement('div');workspace.className='admin-workspace';details.before(workspace);const nav=document.createElement('nav');nav.className='admin-navigation';nav.setAttribute('aria-label','관리 메뉴');const content=document.createElement('div');content.className='admin-workspace-content';workspace.append(nav,content);while(workspace.nextSibling)content.append(workspace.nextSibling);
   const menus=[['overview','운영 개요','방문·활동 현황','M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'],['members','회원 관리','회원·권한·활동','M16 21v-3a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v3M18 8a3 3 0 0 1 0 6M22 21v-3a4 4 0 0 0-3-4M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0'],['review','콘텐츠 검수','승인 대기·신고','M5 3h14v18H5zM8 8h8M8 12h8M8 16h5'],['affiliate','제휴 성과','상품 클릭 분석','M4 20V10M10 20V4M16 20v-7M22 20H2'],['security','보안 기록','접근·이상 감지','M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4M8 12l3 3 5-6'],['tools','데이터 관리','공공데이터 등록','M4 5h16v14H4zM4 10h16M10 10v9']];
   const viewHeading=document.createElement("header");viewHeading.className="admin-view-heading";const viewTitle=document.createElement("h4");const viewSummary=document.createElement("p");viewHeading.append(viewTitle,viewSummary);content.prepend(viewHeading);
   const overviewKpis=document.createElement('section');overviewKpis.className='admin-overview-kpis';overviewKpis.dataset.adminView='overview';overviewKpis.setAttribute('aria-label','오늘의 핵심 운영 지표');overviewKpis.append(document.getElementById('admin-summary'),document.getElementById('admin-live-activity'));viewHeading.after(overviewKpis);
@@ -997,7 +997,7 @@ function create(context){
     el.querySelectorAll('[data-top-course]').forEach(row=>{
       row.addEventListener('click', ()=>{
         document.getElementById('admin-overlay').classList.remove('show');
-        if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
+        stopLiveVisitors();
         showPage('map');
         setTimeout(()=> openCourseDetail(row.dataset.topCourse), 350);
       });
@@ -1040,26 +1040,28 @@ function create(context){
  let adminTrafficData=null,adminTrafficRequest=0;
  async function renderAdminTraffic(){
   affiliateAdmin?.load();
-  const request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export');
-  adminTrafficData=null;button.disabled=true;el.textContent='통계를 불러오고 있어요…';
+  if(!isAdminUser(context.myDeviceId))return false;
+  const viewer=context.myDeviceId,request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export'),status=document.getElementById('admin-traffic-status'),retry=document.getElementById('admin-traffic-retry');
+  adminTrafficData=null;button.disabled=true;retry.hidden=true;status.textContent='선택 기간 통계를 불러오고 있어요…';el.setAttribute('aria-busy','true');el.innerHTML='<div class="admin-chart-loading">방문 추이를 준비하고 있어요.</div>';
   try{
    const {data,error}=await sb.rpc('admin_traffic_summary_v2',{p_days:Number(document.getElementById('admin-traffic-period').value)});
-   if(request!==adminTrafficRequest)return;
+   if(request!==adminTrafficRequest||viewer!==context.myDeviceId||!isAdminUser(viewer))return false;
    if(error||!Array.isArray(data?.daily))throw error||new Error('invalid_stats');
-   adminTrafficData=data;
-   const num=x=>Number(x||0).toLocaleString('ko-KR'),delta=Number(data.views)-Number(data.previous_views);
-   el.innerHTML=`<p><strong>조회 ${num(data.views)}회 · 방문 브라우저 ${num(data.visitors)}개 · 활동 확인 ${num(data.engaged_visitors)}개</strong><br>관리자·작업 접속 및 자동 접속 신호 ${num(data.excluded_views)}회 제외 · 원본 ${num(data.raw_views)}회<br><small>활동 확인: 화면 노출 10초 이상 또는 클릭 기록. 실제 사람 인증은 아닙니다. 2026-10-04 15:23경 이전 미분류 크롤러로 방문 브라우저 수가 부풀려질 수 있습니다. 이전 기록 ${num(data.unmeasured_views)}회는 활동·페이지 정보 미수집입니다.</small><br>이전 동일 길이 기간 대비 조회 ${delta>0?'+':''}${num(delta)}회</p><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${adminTrafficPageLink(r.path)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
-   button.disabled=false;
+   globalThis.AdminAnalytics.dailyRows(data);
+   const num=globalThis.AdminAnalytics.format;
+   el.innerHTML=`${globalThis.AdminAnalytics.summary(data)}<details class="admin-chart-table"><summary>일별 수치 표</summary><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div></details><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${adminTrafficPageLink(r.path)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
+   globalThis.AdminAnalytics.mountChart(el,data);adminTrafficData=data;button.disabled=false;status.textContent='확인 시각: '+globalThis.AdminAnalytics.kstTime(data.to);
    renderAdminBots();
-   renderAdminSecurity();
-  }catch(e){if(request===adminTrafficRequest)el.textContent='통계를 불러오지 못했어요. 관리자 로그인 상태를 확인하고 새로고침해 주세요.';}
+   renderAdminSecurity();return true;
+  }catch(e){if(request===adminTrafficRequest&&viewer===context.myDeviceId&&isAdminUser(viewer)){status.textContent='통계 조회 실패 · 현재 수치는 확인할 수 없어요.';retry.hidden=false;el.textContent='관리자 로그인과 연결 상태를 확인한 뒤 다시 불러와 주세요.';}return false;}
+  finally{if(request===adminTrafficRequest)el.setAttribute('aria-busy','false');}
  }
  document.getElementById('admin-traffic-period').addEventListener('change',renderAdminTraffic);
+ document.getElementById('admin-traffic-retry').addEventListener('click',renderAdminTraffic);
  document.getElementById('admin-pending-search').addEventListener('input',renderPendingApprovals);
  document.getElementById('admin-traffic-export').addEventListener('click',()=>{
   if(!adminTrafficData||!isAdminUser(context.myDeviceId))return;
-  const rows=[['날짜(KST)','조회수(내부·자동접속 신호 제외)','방문 브라우저 수','활동 확인 브라우저 수'],...adminTrafficData.daily.map(r=>[r.date,Number(r.views),Number(r.visitors),Number(r.engaged)])];
-  const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
+  const csv=globalThis.AdminAnalytics.csv(adminTrafficData);
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
   a.href=url;a.download=`balzaguk-traffic-${adminTrafficData.days}days.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
  });
@@ -1071,9 +1073,9 @@ function create(context){
     button.disabled=true;
     try{
       await Promise.all([loadData(),renderAllMemberList(true)]);
-      await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderLiveVisitorCount()]);
+      const results=await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderLiveVisitorCount()]);
       if(isSuperAdmin(context.myDeviceId))await renderManagerList();
-      document.getElementById('admin-last-refreshed').textContent=`조회 종료: ${new Date().toLocaleTimeString('ko-KR')}`;
+      document.getElementById('admin-last-refreshed').textContent=(results.includes(false)?'일부 조회 실패 · ':'조회 종료 · ')+globalThis.AdminAnalytics.kstTime(new Date())+' · 각 영역 결과 확인';
     }catch(e){toast('새로고침에 실패했어요. 다시 시도해 주세요.');}
     finally{button.disabled=false;}
   }
@@ -1081,6 +1083,7 @@ function create(context){
 
   async function openAdminDashboard(){
     if(!isAdminUser(context.myDeviceId)){ toast('관리자만 접근할 수 있어요'); return; }
+    liveController.start();
     selectAdminView('overview');
     renderAllMemberList();
     const todayHead=document.querySelector('#admin-overlay [data-accordion="today"]');
@@ -1100,7 +1103,7 @@ function create(context){
       if(isSuperAdmin(context.myDeviceId)) renderManagerList();
     }
     const ts = document.getElementById('admin-last-refreshed');
-    if(ts) ts.textContent = `마지막 새로고침: ${new Date().toLocaleTimeString('ko-KR')}`;
+    if(ts) ts.textContent = '조회 요청 시각: '+globalThis.AdminAnalytics.kstTime(new Date());
     if(liveVisitorInterval) clearInterval(liveVisitorInterval);
     // 실시간 접속자만 5초마다 자동 갱신 (다른 통계는 "지금 새로고침" 버튼으로 필요할 때만 갱신 — 불필요한 서버 요청 방지)
     liveVisitorInterval = setInterval(renderLiveVisitorCount, 5000);
@@ -1110,18 +1113,18 @@ function create(context){
   }
   document.getElementById('admin-close').addEventListener('click', ()=>{
     document.getElementById('admin-overlay').classList.remove('show');
-    if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
+    stopLiveVisitors();
   });
   document.getElementById('admin-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'admin-overlay'){
       document.getElementById('admin-overlay').classList.remove('show');
-      if(liveVisitorInterval){ clearInterval(liveVisitorInterval); liveVisitorInterval = null; }
+      stopLiveVisitors();
     }
   });
 
 
 
- function dispose(){adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();if(liveVisitorInterval){clearInterval(liveVisitorInterval);liveVisitorInterval=null;}document.getElementById('admin-overlay')?.remove();}
+ function dispose(){adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});
