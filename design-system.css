@@ -34,7 +34,7 @@ header #notif-btn .ui-icon{width:20px;height:20px}
 #nearby-section .home-region-link{font-size:12px}
 #nearby-section .home-region-photo:after{background:linear-gradient(transparent,#182e2855)}
 #nearby-section .home-course-filter-form{background:var(--finish-soft);border-color:var(--finish-line);border-radius:var(--finish-radius);box-shadow:none}
-#nearby-section #nearby-title{font-size:30px;font-weight:650;letter-spacing:-.035em;line-height:1.45}
+/* Home chapter typography is owned by home-scenes.css. */
 #nearby-section .home-result-actions{gap:10px}
 #nearby-section .home-more-discovery{margin-top:40px;border-color:var(--finish-line)}
 #nearby-section .home-more-discovery>summary{font-size:15px;padding:20px 0}
