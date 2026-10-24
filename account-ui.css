@@ -1,6 +1,6 @@
 /* Account surfaces: scoped to login/profile, using Balzaguk's forest and cream palette. */
 :is(#nick-overlay,#profile-overlay){--account-bg:#fffcf7;--account-card:#fff;--account-ink:#263e30;--account-muted:#657066;--account-line:#e4e8df;--account-soft:#f1f5ed;--account-accent:#36583f;background:rgba(18,35,26,.5);backdrop-filter:blur(6px);padding:24px;align-items:center;}
-:is(#nick-overlay,#profile-overlay) .modal{position:relative;max-width:440px;max-height:calc(100dvh - 48px);margin:0;border:1px solid var(--account-line);border-radius:26px;background:var(--account-bg);color:var(--account-ink);overflow:auto;overscroll-behavior:contain;box-shadow:0 28px 100px #132a2440;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;}
+:is(#nick-overlay,#profile-overlay) .modal{position:relative;max-width:440px;max-height:calc(100dvh - 48px);margin:0;border:1px solid var(--account-line);border-radius:26px;background:var(--account-bg);color:var(--account-ink);overflow:auto;overscroll-behavior:contain;scroll-padding-block:60px 20px;box-shadow:0 28px 100px #132a2440;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;}
 :is(#nick-overlay,#profile-overlay) .modal-body{padding:24px 28px 22px;}
 .auth-dialog-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;min-height:60px;padding:8px 18px 8px 28px;background:var(--account-bg);border-bottom:1px solid var(--account-line);font-size:13px;font-weight:650;box-sizing:border-box;}
 :is(#nick-overlay,#profile-overlay) .modal-close{position:static;display:grid;place-items:center;flex:none;width:44px;height:44px;background:transparent;color:var(--account-ink);font-size:26px;border-radius:50%;}
@@ -129,11 +129,11 @@ html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="d
 
 /* Keep the full login form compact; scrolling remains available on short viewports. */
 #nick-overlay .auth-consent-group{margin:14px 0 12px}
-#nick-overlay .auth-consent-group .auth-consent{align-items:center;min-height:36px;margin:0;padding:5px 0;font-size:12px;line-height:1.65;color:#f4f6f8}
+#nick-overlay .auth-consent-group .auth-consent{align-items:center;min-height:44px;margin:0;padding:5px 0;font-size:12px;line-height:1.65;color:#f4f6f8}
 #nick-overlay .auth-consent-group input{margin:0;accent-color:#d9e8d1}
 #nick-overlay .auth-consent-group em{white-space:nowrap;color:#d8e0e5}
 #nick-overlay .auth-privacy-details{margin:4px 0 0;font-size:12px;line-height:1.75;color:#f4f6f8}
-#nick-overlay .auth-privacy-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px;padding:4px 0;list-style:none;cursor:pointer;color:#e0e7e9}
+#nick-overlay .auth-privacy-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:4px 0;list-style:none;cursor:pointer;color:#e0e7e9}
 #nick-overlay .auth-privacy-details summary::-webkit-details-marker{display:none}
 #nick-overlay .auth-privacy-details summary span{font-size:17px}
 #nick-overlay .auth-privacy-details[open] summary span{transform:rotate(180deg)}
@@ -143,7 +143,7 @@ html[data-theme="dark"] #email-login-note[data-state="error"],html[data-theme="d
 #nick-overlay .auth-privacy-details dt{font-weight:700;color:#fff}
 #nick-overlay .auth-privacy-details dd{margin:0;overflow-wrap:anywhere}
 #nick-overlay .auth-privacy-details p{font-size:12px;line-height:1.75;margin:0 0 10px;color:#e0e7e9}
-#nick-overlay .auth-privacy-link{display:inline-flex;align-items:center;min-height:32px;font-size:12px;line-height:1.6;color:#fff;text-decoration:underline;text-underline-offset:3px}
+#nick-overlay .auth-privacy-link{display:inline-flex;align-items:center;min-height:44px;font-size:12px;line-height:1.6;color:#fff;text-decoration:underline;text-underline-offset:3px}
 #nick-overlay .auth-dialog-header{min-height:42px;padding-top:0;padding-bottom:0;}
 #nick-overlay .modal-body{padding:0 26px 14px;}
 #nick-overlay #login-modal-title{font-size:28px;margin:0 0 6px;line-height:1.25;}
