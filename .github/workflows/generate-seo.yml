@@ -14,6 +14,7 @@ on:
       - 'pet-care.css'
       - 'scripts/generate-seo.mjs'
       - 'scripts/discovery-layout.mjs'
+      - 'scripts/hub-information-layout.mjs'
       - 'scripts/public-reading-layout.mjs'
       - 'scripts/trip-stays.mjs'
       - 'trip-stays.json'

@@ -44,6 +44,6 @@ test('public hub hierarchy removes only an exact repeated address, preserves unk
 });
 
 test('already refined pages upgrade presentation assets before idempotent layout guard',()=>{
- const fixture='<body class="reading-page discovery-page"><section id="find-place"></section><link href="/readability.css?v=20261023-public"><script src="/place-search.js?v=20261023-polish"></script>';
+ const fixture='<body class="reading-page discovery-page"><section id="find-place"></section><link href="/readability.css?v=20261011-search"><script src="/place-search.js?v=20261023-polish"></script>';
  const after=refineDiscovery(fixture);assert(after.includes('/readability.css?v=20261024-polish'));assert(after.includes('/place-search.js?v=20261024-polish'));assert.equal(refineDiscovery(after),after);
 });

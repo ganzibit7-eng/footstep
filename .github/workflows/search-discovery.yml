@@ -29,6 +29,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           expected=$(git rev-parse HEAD)
+          pending=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$expected&per_page=30" --jq '[.workflow_runs[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+          if [ "$pending" -gt 0 ]; then
+            echo "Pages is already building this commit; waiting without restarting it"
+            exit 0
+          fi
           published=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '.commit + " " + .status')
           if [[ "$published" != "$expected "* ]] || [ "$published" = "$expected errored" ]; then
             gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
