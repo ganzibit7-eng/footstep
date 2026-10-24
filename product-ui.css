@@ -31,6 +31,32 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #map-section .home-section-head{align-items:center}
 #map-section .home-section-head .section-more{color:var(--product-ink);font-size:12px;text-decoration:none;padding:10px 0;min-height:44px;box-sizing:border-box}
 
+/* Saved walk journal: factual totals and one responsive seven-day chart. */
+#walk-section .walk-journal{padding:24px;margin:0 0 22px;border:1px solid var(--product-line);border-radius:14px;background:var(--product-surface);color:var(--product-ink);box-shadow:none}
+#walk-section .walk-journal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#walk-section #walk-journal-title{margin:0;font:600 18px/1.6 var(--experience-font,system-ui);letter-spacing:-.025em}
+#walk-section .walk-journal-streak{font-size:11px;font-weight:500;color:var(--product-accent);padding:4px 8px;border:1px solid var(--product-line);border-radius:5px;background:var(--product-soft)}
+#walk-section .walk-journal-message{margin:14px 0 4px;font-size:15px;line-height:1.7;font-weight:550;word-break:keep-all}
+#walk-section .walk-journal-detail{margin:0;max-width:70ch;font-size:12px;line-height:1.85;color:var(--product-muted);word-break:keep-all}
+#walk-section .walk-journal-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0 0;padding:18px 0;border-block:1px solid var(--product-line)}
+#walk-section .walk-journal-metrics[hidden]{display:none}
+#walk-section .walk-journal-metrics>div+div{border-left:1px solid var(--product-line);padding-left:16px}
+#walk-section .walk-journal-metrics dt{font-size:11px;line-height:1.8;color:var(--product-muted)}
+#walk-section .walk-journal-metrics dd{display:flex;align-items:baseline;gap:5px;margin:6px 0 0;font-variant-numeric:tabular-nums;min-width:0}
+#walk-section .walk-journal-metrics strong{font-size:clamp(22px,2.5vw,30px);font-weight:600;letter-spacing:-.035em;overflow-wrap:anywhere}
+#walk-section .walk-journal-metrics dd span{font-size:11px;color:var(--product-muted)}
+#walk-section .walk-journal-week{margin-top:22px;padding-top:18px;border-top:1px solid var(--product-line)}
+#walk-section .walk-journal-metrics:not([hidden])+.walk-journal-week{border-top:0;padding-top:0}
+#walk-section .walk-journal-week-label{font-size:11px;line-height:1.8;color:var(--product-muted)}
+#walk-section .walk-week-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;max-width:600px;margin-top:14px}
+#walk-section .walk-week-day{display:grid;grid-template-rows:52px auto;gap:8px;min-width:0;text-align:center}
+#walk-section .walk-week-track{display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--product-line)}
+#walk-section .walk-week-bar{display:block;width:100%;max-width:30px;border-radius:3px 3px 0 0;background:var(--product-accent)}
+#walk-section .walk-week-label{font-size:11px;line-height:1.7;color:var(--product-muted)}
+#walk-section .walk-week-day.is-today .walk-week-label{font-weight:650;color:var(--product-ink);text-decoration:underline;text-underline-offset:4px}
+#walk-section .walk-journal-week-summary{margin:14px 0 0;font-size:12px;line-height:1.8;color:var(--product-muted);font-variant-numeric:tabular-nums}
+@media(max-width:600px){#walk-section .walk-journal{padding:20px 18px}#walk-section .walk-journal-metrics{gap:10px}#walk-section .walk-journal-metrics>div+div{padding-left:10px}#walk-section .walk-week-strip{gap:10px}}
+
 /* Course discovery: one panel, clear filter groups, a readable result count. */
 #list-section .course-search-panel{border:1px solid var(--product-line);border-radius:14px;background:var(--product-surface);box-shadow:none;overflow:visible}
 #list-section .course-search-panel>.map-toolbar{padding:22px;gap:12px;border-color:var(--product-line)}
