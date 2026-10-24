@@ -1756,7 +1756,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script defer src="/hero-park-player.js?v=20261020-immediate"></script>
 <script defer src="/hero-park.js?v=20261020-immediate"></script>
 
-<link rel="stylesheet" href="/product-ui.css?v=20261024-third">
+<link rel="stylesheet" href="/product-ui.css?v=20261024-third-consent">
 <link rel="stylesheet" href="/map-premium.css?v=20261024-tools">
 <script src="/map-explorer.js?v=20261024-tools"></script>
 <script defer src="/product-motion.js?v=20261024-polish"></script>
@@ -2166,8 +2166,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
           <button type="button" id="walk-draft-discard-btn" hidden>기기 기록 삭제</button>
           <p class="walk-start-note">시작 시 브라우저에서 위치 권한을 요청해요. 허용하면 기록을 시작합니다.</p>
           <details class="walk-prep"><summary>출발 전, 산책 준비 <span id="walk-prep-count">0 / 5</span></summary><p>이번 산책을 위한 확인 목록이에요. 체크하지 않아도 기록을 시작할 수 있어요.</p><div id="walk-prep-items"><label for="walk-prep-0"><input type="checkbox" id="walk-prep-0"><span>목줄·하네스와 인식표</span></label><label for="walk-prep-1"><input type="checkbox" id="walk-prep-1"><span>배변봉투</span></label><label for="walk-prep-2"><input type="checkbox" id="walk-prep-2"><span>마실 물과 휴대용 그릇</span></label><label for="walk-prep-3"><input type="checkbox" id="walk-prep-3"><span>날씨·기온·노면 확인</span></label><label for="walk-prep-4"><input type="checkbox" id="walk-prep-4"><span>휴대폰 배터리와 위치 설정</span></label></div><button type="button" class="pin-btn" id="walk-prep-reset">다음 산책을 위해 초기화</button></details>
-          <details class="walk-options" id="walk-options"><summary>선택 설정 <span>인원 집계 · 배터리 · 보폭 · 화면</span></summary>
-          <div class="walk-consent-option"><label><input type="checkbox" id="walk-presence-agree"><span>주변 코스 산책 인원 집계에 참여합니다. (선택)</span></label><p>선택하면 계정 ID·인근 코스 ID·갱신 시각만 서버로 보내요. 원본 좌표는 보내지 않으며, 갱신이 끊긴 정보는 5분 후 삭제 대상이 됩니다.</p></div>
+          <details class="walk-options" id="walk-options"><summary>기록 설정 <span>배터리 · 보폭 · 화면</span></summary>
+
           <label style="display:flex; align-items:center; gap:8px; margin:0 0 16px; font-size:13.5px; font-weight:600; color:var(--pine-deep); cursor:pointer;">
             <input type="checkbox" id="battery-saver-toggle" style="width:16px; height:16px;">
             🔋 배터리 절약 모드 (위치 정확도는 낮아져요)
@@ -2175,6 +2175,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
           <div class="walk-settings"><label for="walk-stride">보호자의 한 걸음 보폭 <input type="number" id="walk-stride" value="70" min="30" max="120" step="1" inputmode="numeric"> cm</label><p>예상 걸음 수 = GPS 이동 거리 ÷ 보폭. 기본값 70cm는 계산용이며 실제 걸음 수나 강아지 걸음 수가 아니에요.</p><label><input type="checkbox" id="walk-screen-on" checked> 기록 중 화면 켜두기</label><p>화면 잠금·다른 앱 전환 시 GPS 기록이 끊길 수 있어요. 이 화면을 켜두면 더 안정적이에요.</p></div>
           </details>
         </div>
+        <details class="walk-options" id="walk-presence-options"><summary>산책 인원 집계 <span>선택 · 기록 중에도 변경 가능</span></summary><div class="walk-consent-option"><label><input type="checkbox" id="walk-presence-agree"><span>주변 코스 산책 인원 집계에 참여합니다. (선택)</span></label><p>선택하면 계정 ID·인근 코스 ID·갱신 시각만 서버로 보내요. 원본 좌표는 보내지 않으며, 갱신이 끊긴 정보는 5분 후 삭제 대상이 됩니다.</p></div></details>
         <div id="walk-active-panel" style="display:none;"><p id="walk-gps-status" role="status" aria-live="polite" class="walk-gps-status">GPS 수신을 기다리고 있어요.</p>
           <div class="walk-metrics">
             <div><strong id="walk-time">00:00</strong><span>기록 시간</span></div>

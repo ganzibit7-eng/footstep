@@ -103,7 +103,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #walk-section .walk-consent-option label{display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.8;font-weight:550;margin:0}
 #walk-section .walk-consent-option label{min-height:44px;cursor:pointer}
 @media(max-width:600px){#walk-section{padding-top:28px}}
-#walk-section .walk-options .walk-consent-option{border-bottom:1px solid var(--product-line);padding-bottom:16px;margin:0 0 16px}
+#walk-section #walk-presence-options .walk-consent-option{padding-bottom:16px}
 #walk-section #mood-card{margin-top:28px}
 #walk-section .walk-consent-option input{width:19px;height:19px;flex:none;margin:3px 0 0;accent-color:var(--product-accent)}
 #walk-section .walk-consent-option p{margin:7px 0 0 30px;font-size:11px;line-height:1.85;color:var(--product-muted)}
