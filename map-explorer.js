@@ -7,8 +7,16 @@
   host.querySelectorAll('.map-quick-filters').forEach(node=>node.remove());
   const groups=new Map(),frame=host.querySelector('.map-wrap-relative');
   const panel=host.querySelector('#map-explorer-panel'),list=host.querySelector('#map-explorer-list'),count=host.querySelector('#map-explorer-count'),selection=host.querySelector('#map-explorer-selection'),body=host.querySelector('#map-selection-body'),peek=host.querySelector('#map-course-peek'),area=host.querySelector('#map-search-area'),toggle=host.querySelector('#map-results-toggle');
-  let selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,insetScheduled=false,lastInset=-1,lastSize='',disposed=false,mobile=innerWidth<=700;
-  host.classList.add('map-explorer-ready');panel.hidden=innerWidth<=700;toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';
+  let resultTotal=null,selected=null,previousMarker=null,shown=30,scheduled=false,resizeScheduled=false,insetScheduled=false,lastInset=-1,lastSize='',disposed=false,mobile=innerWidth<=700;
+  const listIcon='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>';
+  function syncToggle(){
+   const open=!panel.hidden,label=open?'목록 닫기':'목록 보기';
+   toggle.setAttribute('aria-expanded',String(open));
+   toggle.setAttribute('aria-label',label+(resultTotal===null?'':', 현재 지도에 표시된 '+resultTotal.toLocaleString('ko-KR')+'곳'));
+   toggle.innerHTML=listIcon+'<span>'+label+'</span>'+(resultTotal===null?'':'<span class="map-tool-count" aria-hidden="true">'+resultTotal.toLocaleString('ko-KR')+'</span>');
+  }
+  area.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/></svg><span>이 지역 다시 찾기</span>';
+  host.classList.add('map-explorer-ready');panel.hidden=innerWidth<=700;syncToggle();
   const bridge=host.querySelector('.map-results-bridge');if(bridge)frame.after(bridge);
   function entries(){return [...groups].flatMap(([group,rows])=>isVisible(group)?[...rows.values()]:[]);}
   function highlight(){
@@ -21,7 +29,7 @@
    if(disposed)return;scheduled=false;const legacy=host.querySelector('#facility-search-results');if(legacy){legacy.hidden=true;legacy.style.setProperty('display','none','important');}
    const rows=inBounds(entries(),map.getBounds()),center=map.getCenter();
    rows.sort((a,b)=>map.distance([a.lat,a.lng],center)-map.distance([b.lat,b.lng],center));
-   const status=getStatus?.();count.textContent=!rows.length&&status==='loading'?'장소를 불러오는 중…':!rows.length&&status==='error'?'연결을 확인해 주세요':'이 지도 안 '+rows.length.toLocaleString('ko-KR')+'곳';list.replaceChildren();
+   const status=getStatus?.();resultTotal=rows.length>0||status==='ready'?rows.length:null;syncToggle();count.textContent=!rows.length&&status==='loading'?'장소를 불러오는 중…':!rows.length&&status==='error'?'연결을 확인해 주세요':'이 지도 안 '+rows.length.toLocaleString('ko-KR')+'곳';list.replaceChildren();
    host.querySelector('#map-explorer-more').hidden=shown>=rows.length;
    if(!rows.length){const empty=document.createElement('li');empty.className='map-explorer-empty';empty.textContent=status==='loading'?'등록된 장소와 코스 정보를 확인하고 있어요.':status==='error'?'정보를 불러오지 못했어요. 연결 상태를 확인하고 다시 불러와 주세요.':'표시할 장소가 없어요. 지도를 넓히거나 다른 종류를 선택해 보세요.';list.append(empty);}
    const visible=rows.slice(0,shown);if(selected&&rows.some(e=>e.key===selected.key)&&!visible.some(e=>e.key===selected.key))visible.unshift(selected);
@@ -33,7 +41,7 @@
   }
   function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(render);}}
   function select(entry,pan){
-   selected=entry;if(innerWidth<=700){panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.textContent='목록 열기';}selection.hidden=false;selection.dataset.expanded='false';body.replaceChildren();
+   selected=entry;if(innerWidth<=700){panel.hidden=true;syncToggle();}selection.hidden=false;selection.dataset.expanded='false';body.replaceChildren();
    host.querySelector('#map-selection-expand').setAttribute('aria-expanded','false');
    host.querySelector('#map-selection-title').textContent=entry.name;
    if(entry.group==='course'){
@@ -60,7 +68,7 @@
   function refresh(){if(selected&&!isVisible(selected.group))close();shown=30;area.hidden=true;render();resize(true);}
   function resize(force){
    if(disposed||!host.classList.contains('active'))return;
-   const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;toggle.textContent=mobile?'목록 열기':'목록 접기';toggle.setAttribute('aria-expanded',String(!mobile));}
+   const nextMobile=innerWidth<=700;if(nextMobile!==mobile){mobile=nextMobile;panel.hidden=mobile;syncToggle();}
    const top=Math.max(64,frame.getBoundingClientRect().top),viewport=window.visualViewport?.height||innerHeight;
    const height=Math.round(Math.max(330,Math.min(740,viewport-top-(mobile?88:24)))),size=innerWidth+':'+height;
    scheduleInset();if(force!==true&&size===lastSize)return;lastSize=size;
@@ -76,10 +84,12 @@
   }
   function scheduleInset(){if(disposed||insetScheduled)return;insetScheduled=true;requestAnimationFrame(()=>{insetScheduled=false;syncInset();});}
   function scheduleResize(){if(disposed||resizeScheduled)return;resizeScheduled=true;requestAnimationFrame(()=>{resizeScheduled=false;resize();});}
-  const moved=()=>{area.hidden=false;count.textContent='지도를 옮겼어요 · 이 지역에서 찾기';highlight();};map.on('moveend',moved);
+  const moved=()=>{area.hidden=false;resultTotal=null;syncToggle();if(!panel.hidden)render();else count.textContent='지도 범위를 바꿨어요 · 이 지역 다시 찾기';highlight();};map.on('moveend',moved);
   area.onclick=()=>{shown=30;render();area.hidden=true;onSearchArea?.();};
-  toggle.onclick=()=>{panel.hidden=!panel.hidden;if(!panel.hidden&&innerWidth<=700)close();toggle.setAttribute('aria-expanded',String(!panel.hidden));toggle.textContent=panel.hidden?'목록 열기':'목록 접기';scheduleInset();};
-  host.querySelector('#map-explorer-close').onclick=()=>toggle.click();
+  toggle.onclick=event=>{panel.hidden=!panel.hidden;if(!panel.hidden){if(innerWidth<=700)close();render();if(event?.detail===0){panel.setAttribute('tabindex','-1');panel.focus({preventScroll:true});}}syncToggle();scheduleInset();};
+  function closeList(){panel.hidden=true;syncToggle();scheduleInset();toggle.focus({preventScroll:true});}
+  host.querySelector('#map-explorer-close').onclick=closeList;
+  panel.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();closeList();}});
   host.querySelector('#map-explorer-more').onclick=()=>{shown+=30;render();};
   host.querySelector('#map-selection-close').onclick=close;
   selection.addEventListener('click',e=>{if(e.target.closest('.peek-close'))close();});
