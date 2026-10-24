@@ -1,7 +1,19 @@
 (function(root){'use strict';
 function create(context){
  const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,toast}=context;
-  let adminShell=null;
+  let adminShell=null,memberDetails=null;
+  const sectionChecks=new Map(),sectionRequests=new Map();
+  function markAdminSection(id,state){
+    const target=document.getElementById(id);if(!target)return;
+    let note=document.getElementById(id+'-load-status');if(!note){note=document.createElement('p');note.id=id+'-load-status';note.className='admin-section-load-status';note.setAttribute('role','status');target.before(note);}
+    if(state==='ready')sectionChecks.set(id,new Date());
+    const last=sectionChecks.get(id);note.dataset.state=state;target.setAttribute('aria-busy',String(state==='loading'));
+    note.textContent=(state==='ready'?'확인 완료':state==='loading'?'확인 중':'조회 실패')+(last?' · '+(state==='ready'?'':'이전 확인 ')+globalThis.AdminAnalytics.kstTime(last):'')+(state==='error'?' · 새로고침으로 다시 확인해 주세요.':'');
+  }
+  function beginAdminSection(id){
+    const request=(sectionRequests.get(id)||0)+1,viewer=context.myDeviceId;sectionRequests.set(id,request);markAdminSection(id,'loading');
+    return ()=>sectionRequests.get(id)===request&&viewer===context.myDeviceId&&isAdminUser(viewer);
+  }
   // ===== Admin (moderation) panel =====
   // ===== 승인 대기 중인 등록물 관리 =====
   function renderPendingApprovals(){
@@ -169,8 +181,8 @@ function create(context){
   }
   async function renderAdminStats(){
     const el = document.getElementById('admin-stats');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    if(!el)return false;const current=beginAdminSection('admin-stats');let ok=false;
+    if(!sectionChecks.has('admin-stats'))el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const [membersRes, pointsRes, pageViewsRes] = await Promise.all([
         readSignupMembers().then(data=>({count:data.length,error:null})),
@@ -180,7 +192,9 @@ function create(context){
       const userCourseCount = context.courses.filter(c=>c.ownerId).length;
       const seedCourseCount = allCourses().length - userCourseCount;
       const totalReviews = Object.values(context.reviews).reduce((s,list)=>s+list.length, 0);
-      if(membersRes.error) throw membersRes.error;
+      if(!current())return false;
+      for(const result of [membersRes,pointsRes,pageViewsRes])if(result.error)throw result.error;
+      if(!Array.isArray(pointsRes.data)||!Array.isArray(pageViewsRes.data))throw new Error('invalid_rows');
       const totalMembers = membersRes.count || 0;
       const totalPointsIssued = (pointsRes.data||[]).reduce((s,r)=>s+Math.max(0,Number(r.amount)||0), 0);
       const pvRows = pageViewsRes.data || [];
@@ -204,13 +218,16 @@ function create(context){
       el.querySelectorAll('[data-stat-detail]').forEach(card=>{
         card.addEventListener('click', ()=> toggleVisitorTrend(card.dataset.statDetail));
       });
+      markAdminSection('admin-stats','ready');ok=true;
     }catch(e){
+      if(!current())return false;
       console.error(e);
-      el.innerHTML = '<p class="empty-admin">통계를 불러오지 못했어요.</p>';
+      if(!sectionChecks.has('admin-stats'))el.innerHTML = '<p class="empty-admin">통계를 불러오지 못했어요.</p>';markAdminSection('admin-stats','error');
     }
-    renderAdminTodayStats();
+    if(!current())return false;
     renderAdminTopCourses();
-    renderHourlyStats();
+    const children=await Promise.all([renderAdminTodayStats(),renderHourlyStats()]);
+    return ok&&children.every(value=>value===true);
   }
 
   // ===== 실시간 접속자 =====
@@ -235,11 +252,12 @@ function create(context){
   async function renderHourlyStats(){
     const barsEl = document.getElementById('admin-hourly-stats');
     const labelsEl = document.getElementById('admin-hourly-labels');
-    if(!barsEl || !labelsEl) return;
+    if(!barsEl||!labelsEl)return false;const current=beginAdminSection('admin-hourly-stats');
     try{
       const todayStart = adminDayStart();
       const { data, error } = await adminReadRows('page_views','created_at',todayStart.toISOString());
-      if(error) throw error;
+      if(!current())return false;
+      if(error||!Array.isArray(data))throw error||new Error('invalid_rows');
       const hourCounts = new Array(24).fill(0);
       (data||[]).forEach(row=>{
         const h = new Date(new Date(row.created_at).getTime()+9*3600000).getUTCHours();
@@ -262,10 +280,12 @@ function create(context){
           if(detailEl) detailEl.textContent = `🕐 ${h}시 ~ ${nextH}시 : 페이지뷰 ${count}건`;
         });
       });
-      if(detailEl && !detailEl.textContent) detailEl.textContent = '막대를 눌러서 시간대별 상세를 확인해보세요';
+      if(detailEl)detailEl.textContent='막대를 눌러서 시간대별 상세를 확인해보세요';
+      markAdminSection('admin-hourly-stats','ready');return true;
     }catch(e){
+      if(!current())return false;
       console.error(e);
-      barsEl.innerHTML = '<p class="empty-admin" style="font-size:12px;">시간대별 통계를 불러오지 못했어요.</p>';
+      if(!sectionChecks.has('admin-hourly-stats'))barsEl.innerHTML = '<p class="empty-admin" style="font-size:12px;">시간대별 통계를 불러오지 못했어요.</p>';markAdminSection('admin-hourly-stats','error');return false;
     }
   }
 
@@ -323,15 +343,17 @@ function create(context){
     document.getElementById('export-members-filtered-btn').disabled=!ready;
   }
   function clearMemberInventory(){
+    memberDetails?.close(false);
     memberListRequest++;memberListOwner=null;memberListCheckedAt=0;memberActivityState='loading';
     allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};
     for(const id of ['all-member-list','member-summary','member-filter-status','member-auto-status'])document.getElementById(id).textContent='';
     document.getElementById('all-member-count').textContent='–';updateMemberActivityControls();
   }
   function renderAllMemberList(force=false){
-    if(!isAdminUser(context.myDeviceId)){clearMemberInventory();return Promise.resolve();}
+    if(!isAdminUser(context.myDeviceId)){clearMemberInventory();return Promise.resolve(false);}
     if(memberListPending?.viewer===context.myDeviceId)return memberListPending.promise;
-    if(!force&&memberListOwner===context.myDeviceId&&Date.now()-memberListCheckedAt<30000){renderMemberSummary();applyMemberFilters();return Promise.resolve();}
+    if(!force&&memberListOwner===context.myDeviceId&&Date.now()-memberListCheckedAt<30000){renderMemberSummary();applyMemberFilters();return Promise.resolve(true);}
+    if(force)memberDetails?.close(false);
     const pending={viewer:context.myDeviceId};memberListPending=pending;
     pending.promise=loadAllMemberList().finally(()=>{if(memberListPending===pending)memberListPending=null;});
     return pending.promise;
@@ -340,7 +362,7 @@ function create(context){
     const request=++memberListRequest,viewer=context.myDeviceId;
     const current=()=>request===memberListRequest&&viewer===context.myDeviceId&&isAdminUser(context.myDeviceId);
     const el=document.getElementById('all-member-list'),countEl=document.getElementById('all-member-count');
-    if(!el)return;
+    if(!el)return false;
     if(memberListOwner!==viewer){allMembersCache=[];memberPointsMap={};memberVisitMap={};memberLastSeenMap={};}
     memberListOwner=viewer;memberActivityState='loading';updateMemberActivityControls();
     if(!allMembersCache.length)el.innerHTML='<p class="empty-admin">회원 기본 정보를 불러오는 중…</p>';
@@ -349,24 +371,25 @@ function create(context){
     // Observe errors immediately while displaying the roster independently.
     const activity=Promise.resolve(sb.rpc('admin_member_activity_summary')).then(result=>result,error=>({error}));
     try{
-      const members=await readSignupMembers();if(!current())return;
+      const members=await readSignupMembers();if(!current())return false;
       allMembersCache=members;if(countEl)countEl.textContent=members.length;
       renderMemberSummary();applyMemberFilters();
       document.getElementById('member-auto-status').textContent='회원 목록 확인 완료 · 포인트·접속 집계 확인 중';
-      const result=await activity;if(!current())return;
+      const result=await activity;if(!current())return false;
       if(result.error)throw result.error;
       const points={},visits={},lastSeen={};
       for(const row of result.data||[]){points[row.owner_id]=Number(row.points)||0;visits[row.owner_id]=Number(row.visits)||0;const at=Date.parse(row.last_seen);if(Number.isFinite(at))lastSeen[row.owner_id]=at;}
       memberPointsMap=points;memberVisitMap=visits;memberLastSeenMap=lastSeen;memberActivityState='ready';memberListCheckedAt=Date.now();
       updateMemberActivityControls();applyMemberFilters();
-      document.getElementById('member-auto-status').textContent='수동 갱신 · 마지막 확인 '+new Date().toLocaleTimeString('ko-KR',{timeZone:'Asia/Seoul'});
+      document.getElementById('member-auto-status').textContent='수동 갱신 · 마지막 확인 '+globalThis.AdminAnalytics.kstTime(new Date());
+      return true;
     }catch(e){
-      if(!current())return;
+      if(!current())return false;
       memberActivityState='error';memberListCheckedAt=0;updateMemberActivityControls();
       document.getElementById('member-auto-status').textContent=allMembersCache.length?'기본 목록은 표시 중 · 부가 정보 조회 실패 · 새로고침해 주세요.':'회원 조회 실패 · 새로고침해 주세요.';
       if(allMembersCache.length){renderMemberSummary();applyMemberFilters();}
       else{if(countEl)countEl.textContent='–';document.getElementById('member-summary').textContent='';el.innerHTML='<p class="empty-admin">회원 목록을 불러오지 못했어요. 위 새로고침 버튼으로 다시 시도해 주세요.</p>';}
-      console.error(e);
+      console.error(e);return false;
     }
   }
   function daysAgoLabel(dateStr){
@@ -396,10 +419,11 @@ function create(context){
           <header><span class="member-avatar" aria-hidden="true">${escapeHtml(Array.from(m.nickname||'회원')[0])}</span><div><h5>${escapeHtml(m.nickname||'(닉네임 없음)')}</h5><small>${isAdmin?(m.owner_id===ADMIN_UID?'최고 관리자':'매니저'):'일반 회원'}${isNew?' · 신규':''} · <span class="member-provider-tag">${escapeHtml(memberProviderLabel(m.signup_provider))} 가입</span></small></div></header>
           <dl><div><dt>가입 방식</dt><dd>${escapeHtml(memberProviderLabel(m.signup_provider))}</dd></div><div><dt>마지막 로그인 · 한국 시간</dt><dd>${escapeHtml(m.last_sign_in_at?new Date(m.last_sign_in_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'기록 없음')}</dd></div><div><dt>가입일</dt><dd>${escapeHtml(joined)}</dd></div><div><dt>최근 접속 기록 · 한국 시간</dt><dd>${escapeHtml(lastActive)}</dd></div><div><dt>화면 조회</dt><dd>${metricPending?metricLabel:visitCount.toLocaleString()+'회'}</dd></div><div><dt>포인트</dt><dd>${metricPending?metricLabel:points.toLocaleString()+'P'}</dd></div></dl>
           <details><summary>회원 식별 정보</summary><code>${escapeHtml(m.owner_id)}</code><p>연결된 로그인 방식: ${escapeHtml((m.linked_providers||[]).map(memberProviderLabel).join(', ')||'확인되지 않음')}</p><p>최근 접속은 마지막 로그인과 통계에 포함된 화면 조회 중 더 최근 시각입니다. 관리자·봇 등 통계 제외 조회는 포함되지 않으며, 현재 온라인 상태와 다를 수 있어요.</p></details>
-          <div class="admin-actions"><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
+          <div class="admin-actions"><button type="button" class="admin-member-detail-open" data-member-detail="${escapeHtml(m.owner_id)}">회원 상세</button><button type="button" data-member-courses="${escapeHtml(m.owner_id)}">등록 코스 보기</button><button type="button" data-member-copy="${escapeHtml(m.owner_id)}">ID 복사</button>
           ${isAdmin?'':`<button type="button" data-adjust-points="${escapeHtml(m.owner_id)}" ${metricPending?'disabled':''}>포인트 조정</button><button type="button" class="member-danger" data-force-withdraw2="${escapeHtml(m.owner_id)}" ${memberDeletionActions.has(m.owner_id)?'disabled aria-busy="true"':''}>${memberDeletionActions.has(m.owner_id)?'탈퇴 처리 중…':'회원 탈퇴시키기'}</button>`}</div>
         </article>`;
     }).join('');
+    el.querySelectorAll('[data-member-detail]').forEach(btn=>btn.addEventListener('click',()=>memberDetails.open(btn.dataset.memberDetail,btn)));
     el.querySelectorAll('[data-member-courses]').forEach(btn=>btn.addEventListener('click',()=>openMemberProfile(btn.dataset.memberCourses)));
     el.querySelectorAll('[data-member-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.memberCopy);toast('회원 ID를 복사했어요.');}catch(e){toast('회원 식별 정보에서 ID를 확인해 주세요.');}}));
     el.querySelectorAll('[data-force-withdraw2]').forEach(btn=>{
@@ -409,6 +433,11 @@ function create(context){
       btn.addEventListener('click', ()=> adjustMemberPoints(btn.dataset.adjustPoints));
     });
   }
+  memberDetails=globalThis.AdminMemberDetails.create({overlay:document.getElementById('admin-overlay'),client:sb,viewer:()=>context.myDeviceId,isAdmin:()=>isAdminUser(context.myDeviceId),getSnapshot(id){
+    if(memberListOwner!==context.myDeviceId)return null;
+    const m=allMembersCache.find(row=>row.owner_id===id);if(!m)return null;
+    return {id:m.owner_id,nickname:m.nickname,role:isAdminUser(m.owner_id)?m.owner_id===ADMIN_UID?'최고 관리자':'매니저':'일반 회원',provider:memberProviderLabel(m.signup_provider),linkedProviders:(m.linked_providers||[]).map(memberProviderLabel).join(', '),createdAt:m.created_at,lastSignIn:m.last_sign_in_at,lastSeen:memberActivityAt(m)||null,points:memberPointsMap[id]??0,visits:memberVisitMap[id]??0,activityReady:memberActivityState==='ready',checkedAt:memberListCheckedAt||null};
+  }});
   const memberPointActions=new Set();
   async function adjustMemberPoints(ownerId){
     if(!isAdminUser(context.myDeviceId)){toast('관리자만 처리할 수 있어요');return;}
@@ -604,15 +633,16 @@ function create(context){
   let managersCache = [];
   async function renderManagerList(){
     const el = document.getElementById('manager-list');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    if(!el)return false;const current=beginAdminSection('manager-list');
+    if(!sectionChecks.has('manager-list'))el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const { data, error } = await sb.from('admins').select('*').order('created_at', { ascending:false });
-      if(error) throw error;
+      if(!current())return false;
+      if(error||!Array.isArray(data))throw error||new Error('invalid_rows');
       managersCache = data || [];
       if(!managersCache.length){
         el.innerHTML = '<p class="empty-admin">아직 지정된 매니저가 없어요.</p>';
-        return;
+        markAdminSection('manager-list','ready');return true;
       }
       const nicknameMap = {};
       allMembersCache.forEach(m => { nicknameMap[m.owner_id] = m.nickname; });
@@ -630,9 +660,11 @@ function create(context){
       el.querySelectorAll('[data-remove-manager]').forEach(btn=>{
         btn.addEventListener('click', ()=> removeManager(btn.dataset.removeManager));
       });
+      markAdminSection('manager-list','ready');return true;
     }catch(e){
+      if(!current())return false;
       console.error(e);
-      el.innerHTML = '<p class="empty-admin">매니저 목록을 불러오지 못했어요. (SQL 마이그레이션이 적용됐는지 확인해주세요)</p>';
+      if(!sectionChecks.has('manager-list'))el.innerHTML = '<p class="empty-admin">매니저 목록을 불러오지 못했어요.</p>';markAdminSection('manager-list','error');return false;
     }
   }
   async function addManager(ownerId, nickname){
@@ -903,15 +935,17 @@ function create(context){
   }
 
   async function renderAdminSummary(){
-    const el=document.getElementById('admin-summary');if(!el)return;
-    el.textContent='요약을 불러오고 있어요…';
+    const el=document.getElementById('admin-summary');if(!el)return false;const current=beginAdminSection('admin-summary');
+    if(!sectionChecks.has('admin-summary'))el.textContent='요약을 불러오고 있어요…';
     try{
       const [traffic,signups]=await Promise.all([
         sb.rpc('admin_traffic_summary_v2',{p_days:1}),
         sb.from('points_log').select('owner_id').eq('reason','회원가입 축하 포인트').gte('created_at',adminDayStart().toISOString())
       ]);
+      if(!current())return false;
       if(traffic.error||signups.error)throw traffic.error||signups.error;
       const d=traffic.data;
+      if(!d||!Array.isArray(signups.data))throw new Error('invalid_summary');
       const cards=[
         {num:d.engaged_visitors,label:'오늘 활동 확인 브라우저',jump:'traffic'},
         {num:d.visitors,label:'오늘 방문 브라우저 · 사람 수 아님',jump:'traffic'},
@@ -921,7 +955,8 @@ function create(context){
       el.innerHTML=cards.map(c=>'<button type="button" class="stat-card clickable" data-jump="'+c.jump+'"><span class="num">'+globalThis.AdminConsole.formatCount(c.num)+'</span><span class="label">'+escapeHtml(c.label)+'</span></button>').join('')
        +'<details class="admin-stat-note"><summary>지표 해석 및 이전 집계 참고</summary><p>활동 확인은 클릭 또는 화면 노출 10초 이상 기준이며 사람 인증은 아닙니다. 2026-10-04 15:23경 이전에는 일부 광고 크롤러가 일반 브라우저로 기록되어 오늘 방문 수가 부풀려져 있을 수 있습니다. 일일 200명 목표 달성 여부는 이 숫자만으로 판단하지 않습니다.</p></details>';
       el.querySelectorAll('[data-jump]').forEach(c=>c.addEventListener('click',()=>expandAccordion(c.dataset.jump)));
-    }catch(e){el.textContent='요약을 불러오지 못했어요. 새로고침해 주세요.';}
+      markAdminSection('admin-summary','ready');return true;
+    }catch(e){if(!current())return false;if(!sectionChecks.has('admin-summary'))el.textContent='요약을 불러오지 못했어요. 새로고침해 주세요.';markAdminSection('admin-summary','error');return false;}
   }
   function expandAccordion(key){
     selectAdminView(['allmembers','activemembers','managers'].includes(key)?'members':['pending','reports'].includes(key)?'review':key==='bulk'?'tools':'overview');
@@ -951,23 +986,20 @@ function create(context){
 
   async function renderAdminTodayStats(){
     const el = document.getElementById('admin-today-stats');
-    if(!el) return;
-    el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
+    if(!el)return false;const current=beginAdminSection('admin-today-stats');
+    if(!sectionChecks.has('admin-today-stats'))el.innerHTML = '<p class="empty-admin">불러오는 중...</p>';
     try{
       const todayStart = adminDayStart();
       const iso = todayStart.toISOString();
-      const [newCourses, newBins, newFacilities, newReviews, newWalks, newSignups, todayViews] = await Promise.all([
+      const [newCourses, newBins, newFacilities, newReviews, newWalks] = await Promise.all([
         sb.from('courses').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('bins').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('facilities').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('reviews').select('id', { count:'exact', head:true }).gte('created_at', iso),
         sb.from('walks').select('id', { count:'exact', head:true }).gte('created_at', iso),
-        sb.from('points_log').select('owner_id').eq('reason', '회원가입 축하 포인트').gte('created_at', iso),
-        adminReadRows('page_views','visitor_id',iso),
       ]);
-      for(const result of [newCourses,newBins,newFacilities,newReviews,newWalks,newSignups,todayViews]){if(result.error) throw result.error;}
-      const todayVisitorRows = todayViews.data || [];
-      const todayUniqueVisitors = new Set(todayVisitorRows.map(r=>r.visitor_id)).size;
+      if(!current())return false;
+      for(const result of [newCourses,newBins,newFacilities,newReviews,newWalks]){if(result.error||!Number.isSafeInteger(result.count)||result.count<0)throw result.error||new Error('invalid_count');}
       const stats = [
                                 { num: newCourses.count||0, label:'오늘 새 코스' },
         { num: newBins.count||0, label:'오늘 새 배변함' },
@@ -976,9 +1008,11 @@ function create(context){
         { num: newWalks.count||0, label:'오늘 산책기록' },
       ];
       el.innerHTML = stats.map(s=>`<div class="stat-card"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+      markAdminSection('admin-today-stats','ready');return true;
     }catch(e){
+      if(!current())return false;
       console.error(e);
-      el.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>';
+      if(!sectionChecks.has('admin-today-stats'))el.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>';markAdminSection('admin-today-stats','error');return false;
     }
   }
   function renderAdminTopCourses(){
@@ -1067,22 +1101,34 @@ function create(context){
  });
 
   async function refreshAdminDashboard(){
-    if(!isAdminUser(context.myDeviceId))return;
-    const button=document.getElementById('admin-refresh-btn');
+    const viewer=context.myDeviceId;
+    if(!isAdminUser(viewer))return;
+    const button=document.getElementById('admin-refresh-btn'),status=document.getElementById('admin-last-refreshed');
     if(button.disabled)return;
-    button.disabled=true;
+    button.disabled=true;status.textContent='자료를 확인하고 있어요…';
+    const current=()=>viewer===context.myDeviceId&&isAdminUser(viewer);
     try{
-      await Promise.all([loadData(),renderAllMemberList(true)]);
-      const results=await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderAdminList(),renderPendingApprovals(),renderLiveVisitorCount()]);
-      if(isSuperAdmin(context.myDeviceId))await renderManagerList();
-      document.getElementById('admin-last-refreshed').textContent=(results.includes(false)?'일부 조회 실패 · ':'조회 종료 · ')+globalThis.AdminAnalytics.kstTime(new Date())+' · 각 영역 결과 확인';
-    }catch(e){toast('새로고침에 실패했어요. 다시 시도해 주세요.');}
+      const [,members]=await Promise.all([loadData(),renderAllMemberList(true)]);
+      if(!current())return;
+      const results=await Promise.all([renderAdminTraffic(),renderAdminSummary(),renderAdminStats(),renderLiveVisitorCount()]);
+      renderAdminList();renderPendingApprovals();
+      const manager=isSuperAdmin(viewer)?await renderManagerList():true;
+      if(!current())return;
+      const labels=['방문 통계','운영 요약','누적·활동 통계','실시간'];
+      const failed=labels.filter((_,i)=>results[i]!==true);
+      if(members!==true)failed.push('회원 집계');
+      if(manager!==true)failed.push('매니저');
+      const publicNotice=document.getElementById('data-load-notice');
+      if(publicNotice&&!publicNotice.hidden)failed.push('서비스 자료');
+      status.textContent=(failed.length?'일부 확인 실패: '+failed.join(', '):'회원·통계 확인 완료')+' · '+globalThis.AdminAnalytics.kstTime(new Date());
+    }catch(e){if(current()){status.textContent='새로고침 실패 · 각 영역의 이전 확인 시각을 확인해 주세요.';toast('새로고침에 실패했어요. 다시 시도해 주세요.');}}
     finally{button.disabled=false;}
   }
   document.getElementById('admin-refresh-btn').addEventListener('click', refreshAdminDashboard);
 
   async function openAdminDashboard(){
     if(!isAdminUser(context.myDeviceId)){ toast('관리자만 접근할 수 있어요'); return; }
+    memberDetails?.close(false);
     liveController.start();
     selectAdminView('overview');
     renderAllMemberList();
@@ -1111,12 +1157,13 @@ function create(context){
     document.querySelector('#admin-overlay .modal-inner-wrap').scrollTop=0;
     document.querySelector('#admin-overlay .modal').scrollTop=0;
   }
-  document.getElementById('admin-close').addEventListener('click', ()=>{
+  document.getElementById('admin-close').addEventListener('click', ()=>{memberDetails?.close(false);
     document.getElementById('admin-overlay').classList.remove('show');
     stopLiveVisitors();
   });
   document.getElementById('admin-overlay').addEventListener('click', (e)=>{
     if(e.target.id === 'admin-overlay'){
+      memberDetails?.close(false);
       document.getElementById('admin-overlay').classList.remove('show');
       stopLiveVisitors();
     }
@@ -1124,7 +1171,7 @@ function create(context){
 
 
 
- function dispose(){adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
+ function dispose(){sectionRequests.clear();sectionChecks.clear();memberDetails?.dispose();adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});

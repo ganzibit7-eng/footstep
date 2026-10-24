@@ -37,7 +37,7 @@ async function home(){
 }
 async function members(){
  let profiles=deferred(),activity=deferred(),queries=0,paints=[];
- const ctx={document,Date,myDeviceId:'admin',memberListRequest:0,allMembersCache:[],memberPointsMap:{},memberVisitMap:{},memberLastSeenMap:{},
+ const ctx={memberDetails:null,AdminAnalytics:{kstTime:()=> '12:00 KST'},document,Date,myDeviceId:'admin',memberListRequest:0,allMembersCache:[],memberPointsMap:{},memberVisitMap:{},memberLastSeenMap:{},
  isAdminUser:id=>id==='admin',readSignupMembers:()=>{queries++;return profiles.promise;},sb:{rpc:name=>{assert.equal(name,'admin_member_activity_summary');queries++;return activity.promise;}},console:{error(){}},renderMemberSummary(){},applyMemberFilters(){paints.push(ctx.allMembersCache.map(x=>x.owner_id));}};
  ctx.context=ctx;vm.createContext(ctx);vm.runInContext(html.slice(html.indexOf("  let memberActivityState='loading'"),html.indexOf('  function daysAgoLabel(')),ctx);
  const loading=ctx.renderAllMemberList();assert.equal(ctx.renderAllMemberList(),loading);assert.equal(queries,2);
