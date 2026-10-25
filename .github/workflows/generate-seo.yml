@@ -21,6 +21,8 @@ on:
       - 'scripts/refine-place-details.mjs'
       - 'scripts/detail-editorial.mjs'
       - 'scripts/listing-editorial.mjs'
+      - 'scripts/publish-control-polish.mjs'
+      - 'ui-control-tokens.css'
       - 'scripts/place-recommendations.mjs'
       - 'place-presentation.js'
       - 'listing-editorial.css'

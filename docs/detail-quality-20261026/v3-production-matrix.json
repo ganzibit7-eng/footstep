@@ -1,0 +1,508 @@
+[
+  {
+    "case": "dining",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "카페라르고빌",
+    "width": 390
+  },
+  {
+    "case": "stay",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "프레이저 플레이스 센트럴 서울",
+    "width": 390
+  },
+  {
+    "case": "camping",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "미산분교 캠핑장",
+    "width": 390
+  },
+  {
+    "case": "park",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "광교호수공원 반려견 놀이터",
+    "width": 390
+  },
+  {
+    "case": "course",
+    "overflow": false,
+    "photo": 1000,
+    "primary": [
+      {
+        "height": 44,
+        "text": "발자국 지도에서 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "광교호수공원 보행로 산책 코스",
+    "width": 390
+  },
+  {
+    "case": "route",
+    "overflow": false,
+    "photo": 773,
+    "primary": [
+      {
+        "height": 44,
+        "text": "발자국 지도에서 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "가평 호명호수 호반 GPX 구간",
+    "width": 390
+  },
+  {
+    "case": "vet",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 97,
+        "text": "전화로 문의하기023933588"
+      },
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "네이버에서 확인 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "24시 산들산들 동물병원",
+    "width": 390
+  },
+  {
+    "case": "no-photo",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "파크킹",
+    "width": 390
+  },
+  {
+    "case": "retail",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "시몬스 테라스점",
+    "width": 390
+  },
+  {
+    "case": "bin",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "발자국 지도에서 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "월드컵공원 반려견 놀이터 입구",
+    "width": 390
+  },
+  {
+    "case": "cafes",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      }
+    ],
+    "template": "quality3",
+    "title": "애견동반 식당·카페",
+    "width": 390
+  },
+  {
+    "case": "stays",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      }
+    ],
+    "template": "quality3",
+    "title": "서울 애견동반 숙소",
+    "width": 390
+  },
+  {
+    "case": "discover",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      }
+    ],
+    "template": "quality3",
+    "title": "산책 후, 식당과 카페",
+    "width": 390
+  },
+  {
+    "case": "professional-list",
+    "overflow": false,
+    "photo": null,
+    "primary": [],
+    "template": "quality3",
+    "title": "서울에서 찾는반려동물 전문업소",
+    "width": 390
+  },
+  {
+    "case": "camping-list",
+    "overflow": false,
+    "photo": null,
+    "primary": [
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "자세히 보기 ↗"
+      }
+    ],
+    "template": "quality3",
+    "title": "애견동반 캠핑장",
+    "width": 390
+  },
+  {
+    "case": "pet-life",
+    "overflow": false,
+    "photo": null,
+    "primary": [],
+    "template": null,
+    "title": "반려생활에 필요한 곳,한곳에서 찾아보세요.",
+    "width": 390
+  },
+  {
+    "case": "dining",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "카페라르고빌",
+    "width": 1280
+  },
+  {
+    "case": "stay",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "프레이저 플레이스 센트럴 서울",
+    "width": 1280
+  },
+  {
+    "case": "camping",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "미산분교 캠핑장",
+    "width": 1280
+  },
+  {
+    "case": "park",
+    "overflow": false,
+    "photo": 940,
+    "primary": [
+      {
+        "height": 44,
+        "text": "지도에서 위치 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "♡ 장소 찜"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "광교호수공원 반려견 놀이터",
+    "width": 1280
+  },
+  {
+    "case": "course",
+    "overflow": false,
+    "photo": 1000,
+    "primary": [
+      {
+        "height": 44,
+        "text": "발자국 지도에서 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "광교호수공원 보행로 산책 코스",
+    "width": 1280
+  },
+  {
+    "case": "route",
+    "overflow": false,
+    "photo": 773,
+    "primary": [
+      {
+        "height": 44,
+        "text": "발자국 지도에서 보기 ↗"
+      },
+      {
+        "height": 44,
+        "text": "길찾기 ↗"
+      }
+    ],
+    "template": "editorial-v3",
+    "title": "가평 호명호수 호반 GPX 구간",
+    "width": 1280
+  }
+]

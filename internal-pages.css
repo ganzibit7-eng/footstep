@@ -1,3 +1,4 @@
+@import url('/ui-control-tokens.css?v=20261026-controls4-final');
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 /* Public reading surfaces only. Home cards, app routes and admin are out of scope. */
 body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted:#59695e;--rp-line:#dce1d8;--rp-soft:#eef1e9;--rp-accent:#476650;margin:0;background:var(--rp-bg);color:var(--rp-ink);font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.85;letter-spacing:-.02em}
@@ -126,3 +127,12 @@ body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
 .discovery-page #place-search:has(.directory-filter-options)>#place-clear{grid-column:3;grid-row:1}
 .discovery-page #place-search:has(.directory-filter-options)>.search-field{grid-column:1;grid-row:1}
 @media(max-width:600px){.discovery-page #place-search:has(.directory-filter-options){grid-template-columns:minmax(0,1fr) auto}.discovery-page #place-search:has(.directory-filter-options)>.search-field{grid-column:1/-1}.discovery-page #place-search:has(.directory-filter-options)>button{grid-row:2}.discovery-page #place-search:has(.directory-filter-options)>#place-clear{grid-column:2;grid-row:2}.discovery-page .directory-filter-options{grid-row:3}.discovery-page .directory-filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.discovery-page .directory-filter-fields>.search-field:first-child{grid-column:auto}.discovery-page .directory-filter-fields>.search-field:last-child{grid-column:1/-1}}
+
+/* Reading-page actions use the same visitor controls, without restyling links. */
+.reading-page :is(.guide-cta,.cta,.share-button,#place-search button,#place-more,.directory-empty button){box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height);font-size:var(--control-type);line-height:var(--control-leading);font-weight:var(--control-weight);border-radius:var(--control-radius)}
+.reading-page :is(.guide-cta,.cta,#place-more){min-height:var(--control-height-primary)}
+.reading-page .cards article{display:flex;flex-direction:column}
+.reading-page .cards article>:is(.guide-cta,.cta){margin-top:auto;align-self:flex-start}
+.reading-page #place-search [hidden],.reading-page #place-more[hidden]{display:none}
+
+.reading-page summary{box-sizing:border-box;min-height:var(--control-height)}

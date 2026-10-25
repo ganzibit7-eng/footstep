@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {refineDiscovery} from '../scripts/discovery-layout.mjs';
+import {CONTROL_VERSION} from '../scripts/publish-control-polish.mjs';
 const require=createRequire(import.meta.url),{filter,ordered}=require('../place-search.js');
 
 test('directory refinement preserves data, search controls, destinations and SEO',async()=>{
@@ -29,7 +30,7 @@ test('shared reading theme cannot style home cards or administrator screens',asy
  const css=await readFile(new URL('../internal-pages.css',import.meta.url),'utf8');
  assert(!/\.home-|#nearby-|#admin-|:root\s*\{|^body\s*\{/m.test(css));
  assert(css.includes('body.reading-page'));assert(css.includes('object-fit:contain'));
- const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v=20261024-third-layout")'));
+ const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v='+CONTROL_VERSION+'")'));
  const generator=await readFile(new URL('../scripts/generate-seo.mjs',import.meta.url),'utf8');assert(generator.includes('refineDiscovery(refinePlaceDetail(html))'));
 });
 

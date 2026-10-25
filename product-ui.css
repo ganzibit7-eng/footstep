@@ -1,3 +1,4 @@
+@import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Product workspaces share one type scale, surface palette and interaction rhythm. */
 :root{--product-ink:#213d33;--product-muted:#66746b;--product-line:#dce3da;--product-surface:#fffefa;--product-soft:#f1f4ee;--product-accent:#294f3e;--product-radius:20px;--product-ease:cubic-bezier(.22,1,.36,1)}
 html[data-theme=dark]{--product-ink:#e5ede5;--product-muted:#afbeb2;--product-line:#435349;--product-surface:#23342b;--product-soft:#2c3e32;--product-accent:#aecab4}
@@ -63,11 +64,11 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #list-section :is(#course-search-input,#course-sort-select){box-sizing:border-box;min-height:48px;border:1px solid var(--product-line)!important;border-radius:11px!important;background:var(--product-surface)!important;color:var(--product-ink);font-size:14px!important;box-shadow:none}
 #list-section #course-search-input{padding:12px 15px!important}
 #list-section .course-filter-label{font-size:11px;color:var(--product-muted);font-weight:600}
-#list-section :is(.chip,.walk-time-options button){border:1px solid var(--product-line);border-radius:9px;min-height:42px;font-family:inherit;font-size:12px;font-weight:500;line-height:1.6;background:var(--product-surface);color:var(--product-ink);padding:9px 13px;box-shadow:none}
+#list-section :is(.chip,.walk-time-options button){border:1px solid var(--product-line);border-radius:var(--control-radius);min-height:var(--control-height);font-family:inherit;font-size:12px;font-weight:500;line-height:1.6;background:var(--product-surface);color:var(--product-ink);padding:9px 13px;box-shadow:none}
 #list-section :is(.chip.active,.walk-time-options button[aria-pressed=true]){background:var(--product-soft);border-color:#9fb5a3;color:var(--product-ink);font-weight:650;box-shadow:inset 0 0 0 1px #9fb5a3}
 #list-section .course-time-filter{border:0;border-top:1px solid var(--product-line);border-radius:0;background:transparent;margin:0;padding:20px 22px}
 #list-section .course-time-heading h3{font-family:inherit;font-size:13px;font-weight:600}
-#list-section .course-time-help summary{font-size:11px;min-height:32px;color:var(--product-muted)}
+#list-section .course-time-help summary{font-size:11px;min-height:var(--control-height);color:var(--product-muted)}
 #list-section :is(.comfort-filter,#course-advanced-filters){border:0;border-top:1px solid var(--product-line);border-radius:0;background:none;margin:0;padding:0 22px}
 #list-section :is(.comfort-filter,#course-advanced-filters)>summary{padding:17px 0;min-height:54px;box-sizing:border-box;font-size:13px;line-height:1.6;font-weight:550;color:var(--product-ink)}
 #list-section .explore-results-head{gap:16px;align-items:center;margin:28px 0 18px;padding-bottom:16px;border-bottom:1px solid var(--product-line)}
@@ -97,7 +98,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #walk-section .walk-record-notice{border:0;border-radius:12px;background:var(--product-soft);padding:18px;margin-bottom:22px}
 #walk-section .walk-record-notice strong{font-family:inherit;font-size:13px;font-weight:650;color:var(--product-ink)}
 #walk-section .walk-record-notice p{font-size:12px;line-height:1.85;margin:7px 0;color:var(--product-muted)}
-#walk-section .walk-record-notice details summary{font-size:11px;min-height:32px;cursor:pointer;color:var(--product-ink);padding-top:6px}
+#walk-section .walk-record-notice details summary{font-size:11px;min-height:var(--control-height);cursor:pointer;color:var(--product-ink);padding-top:6px}
 #walk-section .walk-consent-card{margin:0 0 20px;padding:18px;border:1px solid var(--product-line)!important;border-radius:12px;background:var(--product-surface)!important;min-width:0}
 #walk-section .walk-consent-card legend{font-size:12px;font-weight:600;padding:0 7px;margin-left:-7px;color:var(--product-muted)}
 #walk-section .walk-consent-option label{display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.8;font-weight:550;margin:0}
@@ -133,7 +134,7 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 #register-section .form-card :is(input:not([type=checkbox]):not([type=file]),textarea,select){box-sizing:border-box;min-height:48px;padding:12px 14px;border:1px solid var(--product-line);border-radius:10px;background:var(--product-surface);font-size:14px;line-height:1.7;color:var(--product-ink)}
 #register-section .form-card textarea{min-height:110px}
 #register-section .form-card :is(input,textarea)::placeholder{color:#819084}
-#register-section .tag-check{font-family:inherit;min-height:42px;border-radius:9px;padding:9px 12px;background:var(--product-surface);border:1px solid var(--product-line);color:var(--product-muted);font-size:12px;line-height:1.6;font-weight:500}
+#register-section .tag-check{font-family:inherit;min-height:var(--control-height);border-radius:var(--control-radius);padding:9px 12px;background:var(--product-surface);border:1px solid var(--product-line);color:var(--product-muted);font-size:12px;line-height:1.6;font-weight:500}
 #register-section .tag-check.on{background:var(--product-soft);border-color:#9fb5a3;color:var(--product-ink);box-shadow:inset 0 0 0 1px #9fb5a3}
 #register-section .draw-mode-toggle{padding:4px;gap:4px;background:var(--product-soft);border:1px solid var(--product-line);border-radius:11px}
 #register-section .draw-mode-btn{font-family:inherit;min-height:44px;padding:10px;font-size:12px;font-weight:500;color:var(--product-muted);border:0;background:transparent;border-radius:8px}
@@ -263,6 +264,15 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 @media(prefers-reduced-motion:reduce){:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(button,.submit-btn){transition:none}}
 
 /* Support is a small contact surface, separate from update history dialogs. */
+/* Shared action dimensions are scoped to functional screens; hero stays intact. */
+.course-card-actions{display:flex;flex-direction:column;gap:var(--control-gap);margin-top:auto;padding-top:var(--space-field);width:100%;flex-shrink:0}
+.course-card-actions :is(.course-detail-cta,.course-compare-toggle){display:flex;align-items:center;justify-content:space-between;gap:var(--control-gap);box-sizing:border-box;margin:0;min-height:var(--control-height);padding:10px 14px;font-size:var(--control-type);font-weight:var(--control-weight);line-height:var(--control-leading);border-radius:var(--control-radius);white-space:normal;overflow-wrap:anywhere}
+.course-card-actions .course-detail-cta{min-height:var(--control-height-primary)}
+:is(#list-section,#map-recommend-grid) .course-card .fav-btn{min-width:var(--control-height);min-height:var(--control-height)}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(button,.submit-btn){box-sizing:border-box}
+:is(#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(.btn,.submit-btn){display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height);line-height:var(--control-leading)}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button:disabled{opacity:.55}
+:is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button[aria-busy=true]{cursor:progress}
 #support-dialog{width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--product-line);border-radius:18px;background:var(--product-surface);color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);box-shadow:0 16px 56px #17332926;overscroll-behavior:contain}
 #support-dialog::backdrop{background:#182f294d;backdrop-filter:blur(4px)}
 #support-dialog[open]{animation:support-arrive 180ms ease-out both}
@@ -299,3 +309,11 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
  @keyframes auth-panel-reveal{from{opacity:0;transform:translate3d(0,14px,0) scale(.985)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
 }
 @media(prefers-reduced-motion:reduce){#nick-overlay.show{animation:none}#nick-overlay.show>.auth-modal{animation:none!important}}
+
+:is(#map-section,#list-section,#walk-section,#register-section) summary{box-sizing:border-box;min-height:var(--control-height)}
+
+#map-section .map-panel>details.map-legend-details>summary{min-height:var(--control-height)}
+
+/* Course dialog actions align with the functional-screen control sizes. */
+#modal-overlay #modal-close{box-sizing:border-box;width:var(--control-height);height:var(--control-height);min-width:var(--control-height);min-height:var(--control-height);display:grid;place-items:center;padding:0;line-height:1}
+#modal-overlay :is(#detail-favorite,#course-prepare-walk,#share-course-btn){box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height-primary);line-height:var(--control-leading);white-space:normal}

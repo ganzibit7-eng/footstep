@@ -33,5 +33,15 @@
   ],
   "preservation": "22,317 detail meta and JSON-LD compared with v2; only corrected WebPage.relatedLink allowed; CRLF normalized in 3 image alt attributes; primary gallery retained",
   "sourceBytesEstimate": 892580412,
-  "deployment": "pending commit/push and production confirmation"
+  "deployment": {
+    "implementationCommit": "fd594ce284",
+    "mainCommit": "894b93f65cd798b0480c5dc18c7e10f1fb3d8253",
+    "pagesRun": 40229818850,
+    "applicationRun": 40229820387,
+    "generationRun": 40229820419,
+    "conclusion": "success",
+    "productionBrowserCombinations": 22,
+    "productionOverflow": 0,
+    "hubNote": "pet-life is a navigation hub, not a detail/result list; its existing design is preserved"
+  }
 }

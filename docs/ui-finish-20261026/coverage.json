@@ -1,0 +1,72 @@
+{
+  "phase": 4,
+  "baselineMain": "894b93f65cd798b0480c5dc18c7e10f1fb3d8253",
+  "scope": {
+    "details": 22317,
+    "collections": 1114,
+    "styleReferenceFiles": 23443,
+    "newMotionLibraries": 0,
+    "dbChanges": false
+  },
+  "actualProblems": [
+    "same-row course CTA baseline differed by 19px; 49.125px button height",
+    "42px course filters and mobile login target",
+    "42px course dialog close; primary actions 45/46/47px",
+    "25px privacy choice action and 27–36px disclosure controls",
+    "professional card footer alignment and repeated no-photo category",
+    "new style URL missing from offline shell; fixed without caching DB/GPS/map tiles"
+  ],
+  "implementation": [
+    "shared 44px control / 48px main action tokens",
+    "course action group moved after source metadata in DOM and visual order; home recommendations excluded",
+    "same-row actions now 48px and equal 73px bottom inset in the measured desktop group",
+    "detail/gallery/list/guide/legal controls use shared dimensions and existing brand palette",
+    "preserved photo galleries, rights, category structures, homepage background/characters/cards/motion",
+    "120ms press, 180ms hover tokens and reduced-motion; no entrance/count animation added",
+    "cache versions and offline CSS imports updated; compatibility import retained"
+  ],
+  "checks": {
+    "automaticPassed": 260,
+    "automaticFailed": 0,
+    "includesExistingUntrackedOfflineShellTest": true,
+    "staticGeneration": "success; SEO 23441, lists 1114, cards 39634",
+    "pageLayouts": {
+      "types": 27,
+      "widths": [
+        360,
+        375,
+        390,
+        430,
+        768,
+        1024,
+        1440
+      ],
+      "combinations": 189,
+      "horizontalOverflow": 0,
+      "smallPrimaryControls": 0
+    },
+    "modalLayouts": {
+      "types": [
+        "login",
+        "course detail"
+      ],
+      "combinations": 14,
+      "horizontalOverflow": 0
+    },
+    "interactions": [
+      "2-course comparison then clear restored",
+      "course detail open/close",
+      "login open/close without submitting consent or credentials",
+      "privacy choice changed then restored on local origin only"
+    ],
+    "sourcePreservation": "22317 detail meta/JSON-LD and primary photos preserved; same exception for corrected nearby links from phase 3",
+    "sourceBytesEstimate": 892765160
+  },
+  "limitations": [
+    "viewport testing in the connected browser, not physical iOS/Android or Safari engine tests",
+    "virtual mobile keyboard, OS text enlargement, actual GPS walk and on-site current pet policies not tested",
+    "secondary home photo-credit toggles remain their existing 32px layout to preserve card design; core actions are 44px or larger",
+    "administrator and database changes excluded"
+  ],
+  "deployment": "pending commit/push/CI/production"
+}

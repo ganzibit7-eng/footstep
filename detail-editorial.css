@@ -1,3 +1,4 @@
+@import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Detail-only design system. The home page never imports this stylesheet. */
 body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;font-size:15px;line-height:1.8;letter-spacing:-.02em}
 .editorial-detail *{box-sizing:border-box}
@@ -256,3 +257,12 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
 }
 
 .editorial-detail .detail-related-facts{margin:10px 0 0}.editorial-detail .detail-related-facts dt{font-size:11px;color:#657164}.editorial-detail .detail-related-facts dd{font-size:13px;line-height:1.8;margin:2px 0 10px}
+
+/* Consistent control geometry, retaining each category's editorial structure. */
+.editorial-detail :is(.detail-actions-primary,.detail-actions-secondary>div)>:is(a,button),.editorial-detail .detail-contact-actions>:is(a,button){display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height);padding:10px var(--control-padding-inline);border-radius:var(--control-radius);font-size:var(--control-type);font-weight:var(--control-weight);line-height:var(--control-leading);text-align:center;white-space:normal;overflow-wrap:anywhere}
+.editorial-detail .detail-contact-actions{display:flex;align-items:stretch;gap:var(--control-gap);flex-wrap:wrap}
+.editorial-detail .detail-contact-actions .care-primary{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.editorial-detail .detail-gallery-controls button{display:inline-grid;place-items:center;width:var(--control-height);height:var(--control-height);min-height:var(--control-height);padding:0;border-radius:var(--control-radius);line-height:1}
+.editorial-detail :is(.detail-actions-primary,.detail-actions-secondary>div,.detail-contact-actions)>:is(a,button){transition:background-color var(--control-hover-time) ease,border-color var(--control-hover-time) ease,transform var(--control-press-time) ease}
+.editorial-detail :is(.detail-actions-primary,.detail-actions-secondary>div,.detail-contact-actions)>:is(a,button):active:not(:disabled):not([aria-busy=true]){transform:translateY(1px)}
+.editorial-detail :is(.detail-sections a,.detail-credit-reference){min-height:var(--control-height);display:inline-flex;align-items:center}

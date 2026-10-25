@@ -1,3 +1,4 @@
+@import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Legal pages: readable on both the app and direct policy URLs. */
 .legal-reading .wrap{max-width:820px!important;padding-left:20px;padding-right:20px}
 .legal-reading h2{font-size:clamp(26px,5vw,34px)!important;letter-spacing:-.04em;margin-bottom:12px}
@@ -39,3 +40,9 @@ html[data-theme="dark"] .legal-reading{--lp-ink:#f0f3ec;--lp-muted:#b7c5b9;--lp-
 /* Tables remain readable on small screens without expanding the page. */
 .legal-reading article h2{font-size:19px!important;line-height:1.6!important}.legal-table-wrap th{background:var(--lp-soft,#edf3e9)!important;color:var(--lp-ink,#243c32)}
 .legal-doc .wrap{max-width:850px;margin:auto;padding:24px 18px}.legal-doc h1{font-size:28px}.legal-table-wrap{overflow-x:auto;margin:18px 0}.legal-table-wrap table{border-collapse:collapse;min-width:540px;width:100%;font-size:14px}.legal-table-wrap th,.legal-table-wrap td{border:1px solid #d9dfd7;padding:12px;vertical-align:top;text-align:left}.legal-table-wrap th{background:#edf3e9}.legal-doc .legal-toc{display:flex;flex-direction:column;gap:8px}.legal-doc article{scroll-margin-top:20px}
+
+/* The privacy choice is an action, not a default browser form control. */
+#privacy-analytics-toggle{display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);box-sizing:border-box;min-height:var(--control-height);max-width:100%;padding:10px var(--control-padding-inline);border:1px solid var(--lp-line,#dce1d8);border-radius:var(--control-radius);background:var(--lp-soft,#edf2ec);color:var(--lp-ink,#243c32);font:600 var(--control-type)/var(--control-leading) system-ui,sans-serif;white-space:normal;cursor:pointer;transition:background-color var(--control-hover-time) ease,transform var(--control-press-time) ease}
+#privacy-analytics-toggle:focus-visible{outline:3px solid #859e75;outline-offset:3px}
+#privacy-analytics-toggle:active:not(:disabled){transform:translateY(1px)}
+#privacy-analytics-toggle:disabled{opacity:.55;cursor:default}

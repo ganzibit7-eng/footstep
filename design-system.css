@@ -240,5 +240,5 @@ header #profile-avatar{margin-right:0!important}
 header #notif-btn[hidden]{display:none!important}
 header #profile-btn:focus-visible{outline:3px solid #84987b;outline-offset:3px}
 @media(hover:hover){header #profile-btn:hover{background:#eef2e9;border-color:#a6b6a2}}
-@media(max-width:700px){header #profile-btn{min-height:42px;padding:9px 15px;font-size:12px}}
+@media(max-width:700px){header #profile-btn{min-height:44px;padding:9px 15px;font-size:12px}}
 html[data-theme="dark"] header #profile-btn{background:var(--finish-surface);border-color:var(--finish-line);color:var(--finish-ink)}

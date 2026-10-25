@@ -44,7 +44,7 @@ test('all detail and all collection pages use the quality templates and keep can
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let details=0,lists=0;
  for(const file of files){const h=readFileSync(file,'utf8'),url=h.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]*)"/)?.[1];if(!url||url==='/')continue;
   if(h.includes('data-detail-template=')){assert(h.includes('data-detail-template="editorial-v3"'),file);assert(h.includes('detail-editorial.js?v=20261026-quality3'));details++;continue;}
-  if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v=20261026-quality3'));lists++;}
+  if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v=20261026-controls4-final'));lists++;}
  }
  assert.equal(details,22317);assert(lists>500);console.log('Quality coverage:',JSON.stringify({details,lists}));
  const home=readFileSync('index.html','utf8');assert(!home.includes('listing-editorial.css'));assert(!home.includes('place-presentation.js'));

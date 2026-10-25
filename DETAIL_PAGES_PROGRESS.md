@@ -100,3 +100,22 @@
 - 공개 소스 추정 892,580,412 bytes, 기존 975MB 안전 예산 통과. 증거 docs/detail-quality-20261026, 전후 캡처 outputs/detail-quality-20261026.
 - 최신 원격 a7506d9828은 data/weather.json만 변경. 커밋 후 병합/push 및 CI/Pages/운영 검증이 남음. 이를 완료로 보고하면 안 됨.
 - 4차 요청 전체를 읽었고 docs/ux-improvement-progress.md에 순서 기록. 기존 자동화 3의 일정/권한은 그대로, 3차 완료 후 4차를 연속 실행하도록 범위만 갱신.
+
+### 3차 배포 확인 완료 · 4차 시작
+
+2026-10-26 구현 fd594ce284, 최신 날씨 병합 main 894b93f65cd798b0480c5dc18c7e10f1fb3d8253 push 완료. Application checks 40229820387 / Generate SEO 40229820419 / Pages 40229818850 모두 success. 운영 16개 모바일 + 6개 PC = 22조합 가로 넘침 0, 주요 행동 44px 미만 0. 미산 4개 사이트 규정과 전체 유형 editorial-v3 및 목록 quality3 반영 확인. pet-life는 검색 목록이 아닌 두 탐색 경로를 연결하는 허브로 기존 디자인 유지.
+
+이제 4차를 새 명령 없이 진행한다. 버튼/같은 그룹 카드 CTA의 실제 치수와 기준선을 먼저 측정하고 기존 공통 CSS에 좁은 범위로 수정한다. 홈 hero 62px/카드 44px 버튼은 맥락이 달라 그대로 유지한다. 3차를 다시 생성·분석하지 않는다.
+
+### 4차 구현·로컬 검증 완료, GitHub/운영 확인 대기
+
+- 실제 문제: 코스 CTA 같은 행 19px 기준선 차이/49.125px 높이, 필터·모바일 로그인·상세 닫기 42px, 상세 주요 행동 45~47px, 개인정보 통계 선택 25px, 일부 펼치기 27~36px. 사진 없는 목록의 분류 반복과 전문업소 카드 하단도 정리.
+- ui-control-tokens.css: 공통 44px / 주요 48px, 14px·600·1.5 글씨, 8px 모서리·간격, 120ms press/180ms hover 및 reduced-motion. 새 라이브러리/과장된 등장 모션 없음.
+- index의 공통 코스 렌더러에서 출처 다음에 행동 그룹을 배치해 시각/키보드 순서를 일치. 홈 nearby 카드는 제외. 같은 행 CTA 48px, 하단 간격 73px로 통일 확인. 홈 배경·캐릭터·카드·섹션·글꼴 유지, 실제 작은 모바일 로그인 터치 영역만 42→44px.
+- product-ui, detail-editorial, listing-editorial, internal-pages, legal, design-system CSS의 해당 사용자 컨트롤만 수정. 사진 없는 목록의 중복 분류는 시각적으로 한 번만 표시. 카테고리별 상세 구조/사진/권리/원천 조건 유지.
+- scripts/publish-control-polish.mjs는 기존 스타일 참조만 20261026-controls4-final로 갱신. 생성기와 신규 템플릿에도 연결. sw.js의 새 CSS·토큰 의존성 및 기존 캐시 교체를 반영. 테스트로 발견한 오프라인 스타일 누락 해결, DB/GPS/지도 타일 제외 유지.
+- 4차 전체 생성 성공: SEO 23,441 / 목록 1,114 / 카드 39,634 / 스타일 연결 파일 23,443. 전수 상세 메타·JSON-LD·주요 사진 대조 이상 0. 공개 소스 추정 892,765,160 bytes(신규 소형 CSS는 staging 후 재확인).
+- 전체 검사 260/260(기존 미추적 offline-shell 1개 포함). 27개 화면 유형 × 7개 폭=189조합, 로그인/코스 상세 모달 각 7개=14조합, 가로 넘침 0/주요 컨트롤 44px 미만 0. 홈 보조 사진 출처는 기존 32px 유지(핵심 행동과 구분).
+- 실제 2개 코스 비교→비우기, 상세/로그인 열고 닫기, 로컬 개인정보 선택 변경→원복 확인. 계정/서버 정보 쓰기·실제 GPS 시작 없음. 실기기 iOS/Android, Safari 엔진, 가상 키보드/OS 글자 확대는 미검증.
+- 증거: docs/ui-finish-20261026 / outputs/ui-finish-20261026. 이전 3차의 완료/배포 결과는 위와 docs/detail-quality-20261026에 보존.
+- 다음: Git stage(미추적 supabase/.temp, tests/offline-shell.cjs 제외) → commit → 최신 main 확인/필요 시 병합 → push → CI/Application/Generate SEO/Pages 확인 → 운영 표본/로그인된 프로필 읽기 전용 점검 → 기록 마무리. 모두 확인 후 기존 자동화 3 중지/삭제.

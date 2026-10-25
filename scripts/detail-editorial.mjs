@@ -1,12 +1,13 @@
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
+import {CONTROL_VERSION} from './publish-control-polish.mjs';
 const placePhotos=createRequire(import.meta.url)('../place-photos.js');
 const Presentation=createRequire(import.meta.url)('../place-presentation.js');
 const Conditions=createRequire(import.meta.url)('../place-conditions.js');
 const Evidence=createRequire(import.meta.url)('../place-evidence.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
-export const DETAIL_VERSION='20261026-quality3';
+export const DETAIL_VERSION=CONTROL_VERSION;
 export const DETAIL_SCRIPT_VERSION='20261026-quality3';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const text=s=>String(s||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g,c=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '}[c])).trim();

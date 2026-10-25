@@ -1,0 +1,485 @@
+[
+  {
+    "case": "login",
+    "width": 360,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 287
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 287
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 287
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 263
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 263
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 287
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 375,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 302
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 302
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 302
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 278
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 278
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 302
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 390,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 317
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 317
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 317
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 293
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 293
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 317
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 430,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 337
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 337
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 337
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 313
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 313
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 337
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 768,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 351
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 351
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 387
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 1024,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 351
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 351
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 387
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "login",
+    "width": 1440,
+    "buttons": [
+      {
+        "height": 44,
+        "id": "nick-close",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "id": "auth-privacy-summary",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-input",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "email-login-btn",
+        "width": 387
+      },
+      {
+        "height": 46,
+        "id": "kakao-login-btn",
+        "width": 351
+      },
+      {
+        "height": 46,
+        "id": "google-login-btn",
+        "width": 351
+      },
+      {
+        "height": 44,
+        "id": "auth-browse-btn",
+        "width": 387
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 360,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 287.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 287.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 287.3333435058594
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 375,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 302.66668701171875
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 302.66668701171875
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 302.66668701171875
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 390,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 317.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 317.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 317.3333435058594
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 430,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 357.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 357.3333435058594
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 357.3333435058594
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 768,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 663.3333740234375
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 212.6666717529297
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 215.78125
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 1024,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 694.6666870117188
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 223.11459350585935
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 226.21875
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "case": "course-modal",
+    "width": 1440,
+    "actions": [
+      {
+        "h": 44,
+        "id": "modal-close",
+        "w": 44
+      },
+      {
+        "h": 48,
+        "id": "detail-favorite",
+        "w": 694.6666870117188
+      },
+      {
+        "h": 48,
+        "id": "course-prepare-walk",
+        "w": 223.11459350585935
+      },
+      {
+        "h": 48,
+        "id": "share-course-btn",
+        "w": 226.21875
+      }
+    ],
+    "overflow": false
+  }
+]

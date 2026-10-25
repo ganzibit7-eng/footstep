@@ -1,3 +1,4 @@
+@import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Place lists share the detail palette and typography; never loaded by home. */
 body.editorial-listing{background:#faf8f1;color:#243c32;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;font-size:15px;line-height:1.8;letter-spacing:-.02em}
 .editorial-listing *{box-sizing:border-box}
@@ -43,3 +44,15 @@ body.editorial-listing{background:#faf8f1;color:#243c32;font-family:system-ui,-a
 @media(max-width:850px){.editorial-listing #hub-results,.editorial-listing ul:has(>.place-result-card){grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}}
 @media(max-width:600px){.editorial-listing main{padding:20px 20px calc(40px + env(safe-area-inset-bottom))}.editorial-listing #hub-results,.editorial-listing ul:has(>.place-result-card){grid-template-columns:1fr;gap:24px}.editorial-listing .care-card h2,.editorial-listing .directory-name,.editorial-listing .place-result-card h2{font-size:19px!important}.editorial-listing .listing-photo summary{min-height:44px}}
 @media(prefers-reduced-motion:reduce){.editorial-listing *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Card CTAs share one baseline; long names and source conditions stay readable. */
+.editorial-listing .care-card{display:flex;flex-direction:column}
+.editorial-listing .care-card-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;min-height:var(--control-height);margin-top:auto;padding-top:var(--space-field)}
+.editorial-listing .listing-detail-link{display:inline-flex;align-items:center;justify-content:space-between;gap:var(--control-gap);min-height:var(--control-height);font-size:var(--control-type);line-height:var(--control-leading);font-weight:var(--control-weight);padding:8px 0}
+.editorial-listing :is(#hub-results,#place-results){align-items:stretch}
+.editorial-listing :is(button,.listing-detail-link){transition:background-color var(--control-hover-time) ease,border-color var(--control-hover-time) ease,color var(--control-hover-time) ease,transform var(--control-press-time) ease}
+.editorial-listing :is(button,.listing-detail-link):active:not(:disabled):not([aria-busy=true]){transform:translateY(1px)}
+.editorial-listing button:disabled{opacity:.55;cursor:default}
+.editorial-listing [aria-busy=true]{cursor:progress}
+
+.editorial-listing .place-result-card:has(>.listing-photo-absent)>.listing-category{display:none}

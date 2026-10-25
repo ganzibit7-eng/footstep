@@ -1,4 +1,5 @@
 import {refineListing,publishListingEditorial,setListingRecords,listingFacts} from './listing-editorial.mjs';
+import {publishControlPolish,refineControlAssets} from './publish-control-polish.mjs';
 import {nearbyEntries as spatialNearbyEntries,sameAreaEntries} from './place-recommendations.mjs';
 import {setRelatedIndex} from './detail-editorial.mjs';
 import {refineHubInformation} from './hub-information-layout.mjs';
@@ -33,7 +34,7 @@ const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
 const withTraffic = html => {
- const page=refineListing(refineHubInformation(refineDiscovery(refinePlaceDetail(html)))).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '');
+ const page=refineControlAssets(refineListing(refineHubInformation(refineDiscovery(refinePlaceDetail(html))))).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '');
  return page.replace('</body>',(page.includes('src="/photo-display.js?')?'':'<script defer src="/photo-display.js?v=20261018-r2"></script>')+'<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
 };
 
@@ -862,3 +863,4 @@ console.log('Public search favicon:',await normalizePublicSearchHeads(ROOT));
 
 const listingCoverage=await publishListingEditorial(ROOT);console.log('Quality listing coverage:',{pages:listingCoverage.pages,cards:listingCoverage.cards});
 console.log('Shared search CSS:',await cacheRepeatedSearchStyles(ROOT));
+console.log('Shared visitor controls:',await publishControlPolish(ROOT));

@@ -6,6 +6,7 @@ import PlaceEvidence from '../place-evidence.js';
 import CoursePhotos from '../course-photos.js';
 import CourseInfo from '../course-info.js';
 import Presentation from '../place-presentation.js';
+import {CONTROL_VERSION} from './publish-control-polish.mjs';
 export const LISTING_VERSION='20261026-quality3';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let records=new Map();
@@ -37,7 +38,7 @@ export function refineListing(html){
  });
  const listing=cards||/"@type"\s*:\s*"CollectionPage"/.test(html)||html.includes('id="find-place"');if(!listing)return html;
  html=html.replace(/<body([^>]*)>/,(_,attrs)=>'<body'+(attrs.includes('class="')?attrs.replace('class="','class="editorial-listing '):attrs+' class="editorial-listing"')+' data-listing-template="quality3">');
- html=html.replace('</head>','<link rel="stylesheet" href="/listing-editorial.css?v='+LISTING_VERSION+'"></head>');
+ html=html.replace('</head>','<link rel="stylesheet" href="/listing-editorial.css?v='+CONTROL_VERSION+'"></head>');
  if(html.includes('id="find-place"'))html=html.replace('</head>','<script src="/place-presentation.js?v='+LISTING_VERSION+'"></script></head>').replace(/place-search\.js\?v=[\w-]+/g,'place-search.js?v='+LISTING_VERSION);
  if(html.includes('id="care-form"'))html=html.replace(/pet-care\.js\?v=[\w-]+/g,'pet-care.js?v='+LISTING_VERSION);
  return html;

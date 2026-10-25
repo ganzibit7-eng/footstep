@@ -1,0 +1,9 @@
+/* Shared dimensions only: no home, data, map or admin layout selectors. */
+:root{
+ --control-height:44px;--control-height-primary:48px;--control-radius:8px;
+ --control-padding-inline:16px;--control-gap:8px;--control-border:1px;
+ --control-type:14px;--control-weight:600;--control-leading:1.5;
+ --control-press-time:120ms;--control-hover-time:180ms;
+ --space-control:8px;--space-field:12px;--space-group:24px;
+}
+@media(prefers-reduced-motion:reduce){:root{--control-press-time:0ms;--control-hover-time:0ms}}
