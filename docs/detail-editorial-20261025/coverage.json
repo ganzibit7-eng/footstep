@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-25T15:15:13.117Z",
+  "template": "editorial-v2",
+  "total": 22317,
+  "targeted": 22317,
+  "automatedVerified": 22317,
+  "unapplied": 0,
+  "categories": {
+    "dining": 1713,
+    "stay": 489,
+    "camping": 1064,
+    "park": 849,
+    "retail": 54,
+    "course": 412,
+    "professional": 17698,
+    "amenity": 38
+  },
+  "metadataPreserved": 22317,
+  "metadataLineEndingOnly": 3,
+  "localBrowser": {
+    "distinctPages": 12,
+    "viewportWidths": [
+      375,
+      390,
+      430,
+      1280
+    ],
+    "combinations": 48,
+    "overflowFailures": 0,
+    "smallPrimaryControls": 0
+  },
+  "tests": {
+    "local": 249,
+    "passed": 249,
+    "failed": 0
+  },
+  "publicSourceBytes": 857560021,
+  "production": {
+    "status": "pending"
+  }
+}

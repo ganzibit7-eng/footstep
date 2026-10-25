@@ -3,7 +3,7 @@ export function validateManifest(manifest){
  if(!Array.isArray(manifest.objects)||!manifest.objects.length||manifest.objects.length>LIMITS.objects)throw Error('Invalid photo count');
  const keys=new Set();let bytes=0;
  for(const p of manifest.objects){
-  if(!/^assets\/place-photos\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/.test(p.key)||keys.has(p.key))throw Error('Invalid or duplicate key');
+  if(!/^assets\/(?:place-photos|place-supplement)\/kto-\d+(?:-[a-f0-9]{12})?\.(jpg|png)$/.test(p.key)||keys.has(p.key))throw Error('Invalid or duplicate key');
   if(!/^[a-f0-9]{64}$/.test(p.sha256)||!Number.isSafeInteger(p.bytes)||p.bytes<1000||p.bytes>10_000_000)throw Error('Invalid photo metadata');
   if(p.contentType!==(p.key.endsWith('.png')?'image/png':'image/jpeg'))throw Error('Invalid photo MIME type');
   if(!p.evidence?.length||p.evidence.some(e=>!e.source||!e.original||!e.licenseUrl||!e.noCrop))throw Error('Missing source rights');

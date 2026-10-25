@@ -1,0 +1,20 @@
+/* Course dialog only. Home cards, layout and motion are deliberately outside scope. */
+#modal-overlay .modal{background:#faf8f1;color:#243c32;border-radius:12px;box-shadow:0 12px 40px #243c3226}
+#modal-overlay .modal-body{padding:28px 32px 36px}
+#modal-overlay #modal-title{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif!important;font-size:28px!important;font-weight:650!important;line-height:1.45!important;letter-spacing:-.04em!important;word-break:keep-all}
+#modal-overlay .course-detail-summary{background:transparent;border-inline:0;border-block:1px solid #dce1d8;border-radius:0;padding:18px 0;gap:16px}
+#modal-overlay .course-detail-summary strong{font-variant-numeric:tabular-nums;font-size:15px}
+#modal-overlay .course-detail-actions{gap:8px;margin:20px 0}
+#modal-overlay .course-detail-actions :is(a,button){font-family:inherit;font-size:13px;font-weight:600;border-radius:7px;box-shadow:none;padding:10px 14px;min-height:44px;transition:background-color .18s,transform .18s}
+#modal-overlay .comfort-detail,#modal-overlay .course-arrival-info{background:transparent;border-radius:0;border:0;border-top:1px solid #dce1d8;padding:20px 0}
+#modal-overlay #modal-desc{font-size:14px!important;line-height:1.95!important;margin:20px 0}
+#modal-overlay .modal-photo-credit{font-size:11px;line-height:1.8}
+#modal-overlay .detail-map-heading{margin:28px 0 12px;align-items:flex-start;gap:10px}
+#modal-overlay .detail-map-heading h4{font-family:inherit;font-size:17px;line-height:1.6}
+#modal-overlay #course-route-label{font-size:11px;line-height:1.8}
+#modal-overlay .course-visit-notes{border-radius:0;background:transparent;border:0;border-block:1px solid #dce1d8;padding:8px 0}
+#modal-overlay .course-visit-notes summary{min-height:44px;padding:10px 0;cursor:pointer;font-size:13px}
+#modal-overlay .course-detail-actions :is(a,button):active{transform:translateY(1px)}
+#modal-overlay :is(a,button,summary):focus-visible{outline:3px solid #859e75;outline-offset:3px}
+@media(max-width:600px){#modal-overlay .modal{border-radius:12px 12px 0 0}#modal-overlay .modal-body{padding:22px 20px calc(80px + env(safe-area-inset-bottom))}#modal-overlay #modal-title{font-size:24px!important}#modal-overlay .course-detail-actions>*{min-width:calc(50% - 8px);flex:1}#modal-overlay .course-detail-summary{gap:6px}#modal-overlay .course-detail-summary strong{font-size:13px}}
+@media(prefers-reduced-motion:reduce){#modal-overlay .course-detail-actions :is(a,button){transition:none}}

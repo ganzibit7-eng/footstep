@@ -17,7 +17,7 @@ for(const c of courses){
  assert.equal(access.get({...c,path:c.path?c.path.slice(1):[]}),null);
  assert.equal(access.get({...c,description:'No permission source'}),null);
  assert.equal(access.get({...c,tags:['동반 확인 필요']}),null);
- const page=fs.readFileSync('courses/'+c.id+'/index.html','utf8');assert(page.includes(photos.figure(c)));
+ const page=fs.readFileSync('courses/'+c.id+'/index.html','utf8');const photo=photos.get(c);assert(page.includes(photo.src));assert(page.replace(/\r\n/g,'\n').includes(photos.credit(photo).replace(/\r\n/g,'\n')));assert(page.includes(`width="${photo.width}" height="${photo.height}"`));
 }
 for(const r of review.filter(r=>!r.publish))assert(!fs.existsSync('courses/'+r.id+'/index.html'),'Held route still publicly emitted: '+r.id);
 assert(!fs.existsSync('courses/duru_T_CRS_MNG0000000243/index.html'));

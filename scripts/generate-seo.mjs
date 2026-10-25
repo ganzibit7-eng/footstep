@@ -1,3 +1,4 @@
+import {setRelatedIndex} from './detail-editorial.mjs';
 import {refineHubInformation} from './hub-information-layout.mjs';
 import {refineDiscovery} from './discovery-layout.mjs';
 import {tripBooking} from './trip-stays.mjs';
@@ -29,7 +30,10 @@ const SITE = 'https://balzaguk.com';
 const SUPABASE_URL = 'https://euwujrpjtwsrxhiytego.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
-const withTraffic = html => refineHubInformation(refineDiscovery(refinePlaceDetail(html))).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '').replace('</body>', '<script defer src="/photo-display.js?v=20261018-r2"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
+const withTraffic = html => {
+ const page=refineHubInformation(refineDiscovery(refinePlaceDetail(html))).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '');
+ return page.replace('</body>',(page.includes('src="/photo-display.js?')?'':'<script defer src="/photo-display.js?v=20261018-r2"></script>')+'<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
+};
 
 const types = [
   { table: 'courses', folder: 'courses', label: '강아지 산책 코스', icon: '🐕' },
@@ -795,11 +799,12 @@ searchHubs = buildHubs(groups);
   }).filter(page=>page.courses.length>=3 && page.places.length>=3);
 }
 // Snapshot before rebuilding public directories: only changed descriptions get a new lastmod.
-const previousDescriptions=new Map();
+const previousDescriptions=new Map(),previousDetailPages=[];
 for(const {type,items} of groups)for(const item of items){
  const relative='/'+type.folder+'/'+safeSegment(item.id)+'/';
- try{const old=await readFile(path.join(ROOT,relative.slice(1),'index.html'),'utf8');previousDescriptions.set(SITE+relative,old.match(/<meta name="description" content="([^"]*)"/)?.[1]||'');}catch(error){if(error.code!=='ENOENT')throw error;}
+ try{const old=await readFile(path.join(ROOT,relative.slice(1),'index.html'),'utf8');previousDetailPages.push([relative,old]);previousDescriptions.set(SITE+relative,old.match(/<meta name="description" content="([^"]*)"/)?.[1]||'');}catch(error){if(error.code!=='ENOENT')throw error;}
 }
+setRelatedIndex(previousDetailPages);
 const editedDay=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
 for (const { folder } of types) await rm(path.join(ROOT, folder), { recursive: true, force: true });
 await rm(path.join(ROOT,'with-dog'),{recursive:true,force:true});

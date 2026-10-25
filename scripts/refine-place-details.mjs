@@ -1,3 +1,4 @@
+import {editorialDetail} from './detail-editorial.mjs';
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -16,9 +17,9 @@ function addExternalLink(html){
 
 // Applied to generated HTML as well as existing pages; factual data and JSON-LD stay intact.
 export function refinePlaceDetail(html){
- if(!/class="reading-page place-detail-page"/.test(html))return html;
+ if(!/class="reading-page place-detail-page"/.test(html))return editorialDetail(html);
  html=addExternalLink(html);
- if(html.includes('/place-detail.css?'))return html.replace(/place-detail\.css\?v=20261017-(?:premium|native|readable|gallery)/g,'place-detail.css?v=20261018-gallery');
+ if(html.includes('/place-detail.css?'))return editorialDetail(html.replace(/place-detail\.css\?v=20261017-(?:premium|native|readable|gallery)/g,'place-detail.css?v=20261018-gallery'));
  html=html.replace('</head>','<link rel="stylesheet" href="/place-detail.css?v=20261018-gallery"></head>');
  html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,'<header class="place-site-header"><a class="brand" href="/" aria-label="발자국 홈"><img src="/icon-192.png" width="28" height="28" alt="">발자국</a><a class="place-back" href="/discover.html?kind=facilities#find-place">장소 둘러보기 ↗</a></header>');
  html=html.replace(/<nav aria-label="현재 위치">([\s\S]*?)<\/nav>/,(_,content)=>{
@@ -35,7 +36,7 @@ export function refinePlaceDetail(html){
  if(photo)html=html.replace('</h1>','</h1>'+photo);
  html=html.replace(/<nav class="place-dock"[\s\S]*?<\/nav>/,'');
  html=html.replace('</article>','</article>'+directory);
- return html;
+ return editorialDetail(html);
 }
 
 export async function refinePublishedPlaces(root){

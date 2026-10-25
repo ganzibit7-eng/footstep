@@ -14,15 +14,21 @@ export function createHandler(photos){
   if(request.headers.has('Range'))return new Response('Ranges are not supported',{status:416,headers});
   const expected=photos[key];
   try{
-   const object=request.method==='HEAD'?await env.IMAGES.head(key):await env.IMAGES.get(key);
+   // Dashboard uploads have no application SHA metadata. Verify their complete
+   // original bytes instead; this uses one read and is limited to 2 MB objects.
+   const digest=expected.digest===true;
+   if(digest&&expected.bytes>2_000_000)return new Response('Photo exceeds verification budget',{status:503,headers});
+   const object=request.method==='HEAD'&&!digest?await env.IMAGES.head(key):await env.IMAGES.get(key);
    if(!object)return new Response('Not found',{status:404,headers});
-   if(object.size!==expected.bytes||object.customMetadata?.sha256!==expected.sha256)return new Response('Photo verification failed',{status:503,headers});
+   if(object.size!==expected.bytes||!digest&&object.customMetadata?.sha256!==expected.sha256)return new Response('Photo verification failed',{status:503,headers});
+   let body=object.body;
+   if(digest){body=await object.arrayBuffer();const actual=[...new Uint8Array(await crypto.subtle.digest('SHA-256',body))].map(b=>b.toString(16).padStart(2,'0')).join('');if(actual!==expected.sha256)return new Response('Photo verification failed',{status:503,headers});}
    const responseHeaders=new Headers({'Content-Type':expected.type,'Content-Length':String(expected.bytes),'Cache-Control':'public, max-age=86400','ETag':'"'+expected.sha256+'"','X-Content-Type-Options':'nosniff','Cross-Origin-Resource-Policy':'cross-origin'});
    if(request.headers.get('If-None-Match')===responseHeaders.get('ETag')){
-    if(object.body)await object.body.cancel();
+    if(object.body&&!digest)await object.body.cancel();
     responseHeaders.delete('Content-Length');return new Response(null,{status:304,headers:responseHeaders});
    }
-   return new Response(request.method==='HEAD'?null:object.body,{headers:responseHeaders});
+   return new Response(request.method==='HEAD'?null:body,{headers:responseHeaders});
   }catch{return new Response('Photo delivery is temporarily unavailable',{status:503,headers});}
  }};
 }
