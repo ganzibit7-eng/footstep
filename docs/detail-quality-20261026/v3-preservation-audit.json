@@ -1,0 +1,15 @@
+{
+  "checkedDetails": 22317,
+  "byKind": {
+    "amenity": 38,
+    "course": 412,
+    "professional": 17698,
+    "camping": 1064,
+    "dining": 1713,
+    "park": 849,
+    "retail": 54,
+    "stay": 489
+  },
+  "issues": [],
+  "allowedStructuredChange": "WebPage.relatedLink follows corrected same-area/nearby recommendations"
+}

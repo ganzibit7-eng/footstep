@@ -1,0 +1,37 @@
+{
+  "phase": 3,
+  "details": 22317,
+  "listings": 1114,
+  "listingCards": 39634,
+  "unapplied": 0,
+  "automaticTests": {
+    "passed": 257,
+    "failed": 0,
+    "includesExistingUntrackedOfflineTest": true
+  },
+  "browser": {
+    "cases": 16,
+    "widths": [
+      375,
+      390,
+      430,
+      1280
+    ],
+    "combinations": 64,
+    "documentOverflow": 0,
+    "primaryBelow44": 0,
+    "realDevices": false
+  },
+  "functionChecks": [
+    "stay gallery 2/6",
+    "photo attribution disclosure and focus",
+    "filtered list return with search preserved",
+    "favorite save true then restored false",
+    "address copied success",
+    "official GPX map rendered; proposed route not drawn",
+    "keyboard gallery; last 3/3 and next disabled"
+  ],
+  "preservation": "22,317 detail meta and JSON-LD compared with v2; only corrected WebPage.relatedLink allowed; CRLF normalized in 3 image alt attributes; primary gallery retained",
+  "sourceBytesEstimate": 892580412,
+  "deployment": "pending commit/push and production confirmation"
+}

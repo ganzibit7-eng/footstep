@@ -15,7 +15,7 @@ test('old generator fixtures retain metadata, sources, images, credits and remai
  for(const id of ['pub1788410835188_11_p7rain','kto_6d6aceb6-cad7-4287-9252-a2ac5156b5f4']){
   const before=readFileSync('tests/fixtures/place-detail-'+id+'.html','utf8'),after=refinePlaceDetail(before);
   // Legacy refinement normalizes the home URL, so compare the editorial stage itself.
-  assert(after.includes('data-detail-template="editorial-v2"'));
+  assert(after.includes('data-detail-template="editorial-v3"'));
   assert.equal(editorialDetail(after),after);
   const metas=s=>[...s.matchAll(/<meta\b[^>]*>/g)].map(m=>m[0]);assert.deepEqual(metas(before),metas(after));
   for(const m of before.matchAll(/<dd[^>]*>([\s\S]*?)<\/dd>/g))if(!text(m[1]).startsWith('미확인'))for(const sentence of text(m[1]).split(/(?<=[.!?])\s+/))assert(text(after).includes(sentence));
@@ -37,10 +37,10 @@ test('every sitemap detail has one category template, valid assets, unique IDs a
  for(const folder of ['places','courses','bins','pet-care/places'])for(const dir of readdirSync(folder,{withFileTypes:true})){
   if(!dir.isDirectory())continue;const url='/'+folder+'/'+dir.name+'/',file='.'+url+'index.html';if(!existsSync(file))continue;
   const html=readFileSync(file,'utf8');if(!html.includes('rel="canonical" href="https://balzaguk.com'+url+'"')||!html.includes('<article '))continue;
-  assert(html.includes('data-detail-template="editorial-v2"'),url+' unapplied');assert(published.has(url),url+' absent from sitemap');seen.add(url);
+  assert(html.includes('data-detail-template="editorial-v3"'),url+' unapplied');assert(published.has(url),url+' absent from sitemap');seen.add(url);
   assert.equal((html.match(/<h1\b/g)||[]).length,1,url);assert.equal((html.match(/data-detail-template=/g)||[]).length,1,url);
   const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,url+' duplicate IDs');
-  for(const asset of ['detail-editorial.css?v=20261025-editorial2','detail-editorial.js?v=20261026-gallery-end'])assert(html.includes(asset),url);
+  for(const asset of ['detail-editorial.css?v=20261026-quality3','detail-editorial.js?v=20261026-quality3'])assert(html.includes(asset),url);
   const kind=html.match(/data-detail-kind="([^"]+)"/)[1];counts[kind]=(counts[kind]||0)+1;
   const article=html.slice(html.indexOf('<article'),html.indexOf('</article>'));
   if(article.includes('class="detail-gallery"'))assert(!article.includes('place-photo-missing'));

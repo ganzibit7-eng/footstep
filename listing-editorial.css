@@ -1,0 +1,45 @@
+/* Place lists share the detail palette and typography; never loaded by home. */
+body.editorial-listing{background:#faf8f1;color:#243c32;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;font-size:15px;line-height:1.8;letter-spacing:-.02em}
+.editorial-listing *{box-sizing:border-box}
+.editorial-listing [hidden]{display:none!important}
+.editorial-listing main{max-width:1120px;margin:auto;padding:28px 32px 64px}
+.editorial-listing h1{font-family:inherit!important;font-size:clamp(27px,3vw,34px)!important;font-weight:650!important;line-height:1.45!important;letter-spacing:-.04em!important;word-break:keep-all}
+.editorial-listing h2{font-family:inherit!important;letter-spacing:-.025em}
+.editorial-listing a{color:inherit;text-underline-offset:4px}
+.editorial-listing :is(button,input,select){font-family:inherit;min-height:44px;border-radius:7px;box-shadow:none}
+.editorial-listing :is(a,button,summary,input,select):focus-visible{outline:3px solid #859e75;outline-offset:4px}
+.editorial-listing #hub-results,.editorial-listing ul:has(>.place-result-card){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 24px;list-style:none;padding:0;columns:auto}
+.editorial-listing li.place-result-card{display:flex;flex-direction:column;min-width:0;padding:0 0 20px;margin:0;background:transparent;border:0;border-bottom:1px solid #d9e0d3;border-radius:0;box-shadow:none}
+.editorial-listing .place-result-card h2{font-family:inherit!important;font-size:20px!important;font-weight:600!important;line-height:1.6!important;margin:4px 0 8px!important}
+.editorial-listing .place-result-card h2 a{display:inline-block;min-height:44px;text-decoration:none}
+.editorial-listing .listing-category{font-size:12px!important;color:#61715f;margin:4px 0 0}
+.editorial-listing .listing-address{font-size:14px!important;line-height:1.8;color:#657164;margin:0 0 12px;overflow-wrap:anywhere}
+.editorial-listing .listing-photo{margin:0 0 10px!important;min-width:0}
+.editorial-listing .listing-photo img{display:block;width:100%!important;height:auto!important;aspect-ratio:4/3;object-fit:contain;border-radius:7px!important;background:#f0eee7}
+.editorial-listing .listing-photo figcaption{font-size:11px;line-height:1.75;color:#657164;overflow-wrap:anywhere}
+.editorial-listing .listing-photo summary{min-height:36px;padding:6px 0;font-size:11px;cursor:pointer}
+.editorial-listing .listing-photo details>div{padding-bottom:10px}
+.editorial-listing .listing-photo-absent{font-size:12px!important;padding:10px 0;margin:0 0 10px;border-bottom:1px solid #e1e6dc;color:#657164}
+.editorial-listing .listing-conditions,.editorial-listing .directory-conditions{margin:0;display:block;overflow-wrap:anywhere}
+.editorial-listing .listing-conditions>div{margin:0 0 12px}
+.editorial-listing .listing-conditions dt,.editorial-listing .directory-conditions dt{font-size:12px;color:#657164;font-weight:500}
+.editorial-listing .listing-conditions dd,.editorial-listing .directory-conditions dd{font-size:15px;line-height:1.8;margin:3px 0 10px;color:#243c32;display:block;-webkit-line-clamp:unset;max-height:none;overflow:visible}
+.editorial-listing .listing-detail-link{display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;margin-top:auto;font-size:13px;font-weight:600;text-decoration:none}
+.editorial-listing .care-list{gap:24px}
+.editorial-listing .care-card{background:transparent;border:0;border-bottom:1px solid #d9e0d3;border-radius:0;box-shadow:none;padding:20px 0;min-width:0;transition:color .18s}
+.editorial-listing .care-card h2{display:block!important;-webkit-line-clamp:unset;overflow:visible;font-size:20px!important;line-height:1.65;font-weight:600;margin:8px 0}
+.editorial-listing .care-card-contact{font-size:14px;color:#4e6655;margin:10px 0}
+.editorial-listing .care-card .care-address{font-size:14px;line-height:1.8;overflow-wrap:anywhere}
+.editorial-listing .care-card-bottom{font-size:12px;line-height:1.8;gap:12px}
+.editorial-listing .directory-card{background:transparent;border:0;border-bottom:1px solid #d9e0d3;border-radius:0;box-shadow:none;padding:0 0 20px}
+.editorial-listing .directory-name{display:block!important;-webkit-line-clamp:unset;overflow:visible;font-family:inherit!important;font-size:20px!important;font-weight:600!important;line-height:1.6;min-height:44px}
+.editorial-listing .directory-photo img{height:auto!important;aspect-ratio:4/3;object-fit:contain!important;border-radius:7px;background:#f0eee7}
+.editorial-listing .directory-no-photo{min-height:64px!important;height:auto!important;padding:12px 0!important;background:transparent!important;border-radius:0;border-bottom:1px solid #e1e6dc;align-items:flex-start!important}
+.editorial-listing .directory-address{font-size:14px!important;line-height:1.8;max-height:none;-webkit-line-clamp:unset;overflow:visible}
+.editorial-listing .care-note,.editorial-listing .note{font-size:13px;line-height:1.9;border-radius:7px;box-shadow:none}
+.editorial-listing .pagination a,.editorial-listing .pagination strong,.editorial-listing .care-pagination :is(a,button){display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:7px}
+.editorial-listing .pagination,.editorial-listing .care-pagination{gap:8px;flex-wrap:wrap}
+@media(hover:hover) and (pointer:fine){.editorial-listing .listing-detail-link:hover,.editorial-listing .place-result-card h2 a:hover,.editorial-listing .care-card:hover{color:#52734e}}
+@media(max-width:850px){.editorial-listing #hub-results,.editorial-listing ul:has(>.place-result-card){grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}}
+@media(max-width:600px){.editorial-listing main{padding:20px 20px calc(40px + env(safe-area-inset-bottom))}.editorial-listing #hub-results,.editorial-listing ul:has(>.place-result-card){grid-template-columns:1fr;gap:24px}.editorial-listing .care-card h2,.editorial-listing .directory-name,.editorial-listing .place-result-card h2{font-size:19px!important}.editorial-listing .listing-photo summary{min-height:44px}}
+@media(prefers-reduced-motion:reduce){.editorial-listing *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

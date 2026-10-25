@@ -1,10 +1,13 @@
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const placePhotos=createRequire(import.meta.url)('../place-photos.js');
+const Presentation=createRequire(import.meta.url)('../place-presentation.js');
+const Conditions=createRequire(import.meta.url)('../place-conditions.js');
+const Evidence=createRequire(import.meta.url)('../place-evidence.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
-export const DETAIL_VERSION='20261025-editorial2';
-export const DETAIL_SCRIPT_VERSION='20261026-gallery-end';
+export const DETAIL_VERSION='20261026-quality3';
+export const DETAIL_SCRIPT_VERSION='20261026-quality3';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const text=s=>String(s||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g,c=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '}[c])).trim();
 
@@ -27,8 +30,19 @@ const rows=h=>[...String(h).matchAll(/<dt\b[^>]*>([\s\S]*?)<\/dt>\s*<dd\b[^>]*>(
 const unknown=v=>!v||/^(?:미확인|정보\s*없음|공개 연락처 미등록|등록된 .*없|-)\s*(?:[·.]|$)/.test(v);
 const dl=(data,cls='detail-facts')=>'<dl class="'+cls+'">'+data.map(r=>'<div><dt>'+esc(r.label)+'</dt><dd>'+esc(r.value).replaceAll('\n','<br>')+'</dd></div>').join('')+'</dl>';
 const section=(id,title,content)=>'<section class="detail-section" id="'+id+'"><h2>'+title+'</h2>'+content+'</section>';
-const guidance=data=>'<ul class="detail-guidance">'+data.map(r=>'<li><span>'+esc(r.label)+'</span><p>'+esc(r.value).replaceAll('\n','<br>')+'</p></li>').join('')+'</ul>';
-const feature=(row,style='')=>row?'<div class="detail-feature '+style+'"><span>'+esc(row.label)+'</span><strong class="'+(row.value.length>70?'detail-feature-long':'')+'">'+esc(row.value).replaceAll('\n','<br>')+'</strong></div>':'';
+function structured(value){
+ const data=Presentation.structure(value);
+ if(data.kind==='text')return '<p>'+esc(value).replaceAll('\n','<br>')+'</p>';
+ if(data.kind==='sites')return '<div class="detail-site-rules">'+data.parts.map(p=>p.kind==='site'?'<div class="detail-site-row"><strong>'+esc(p.label)+'</strong><p>'+esc(p.body)+'</p></div>':'<p class="detail-rule-'+p.kind+'">'+esc(p.raw.trim())+'</p>').join('')+'</div>';
+ return '<ul class="detail-rule-list">'+data.parts.filter(p=>p.raw.trim()).map(p=>'<li>'+esc(p.raw.trim().replace(/^\/\s*/,''))+'</li>').join('')+'</ul>';
+}
+const guidance=data=>data.length?'<ul class="detail-guidance">'+data.map(r=>'<li><span>'+esc(r.label)+'</span>'+structured(r.value)+'</li>').join('')+'</ul>':'';
+const feature=(row,style='')=>row?'<div class="detail-feature '+style+'"><span>'+esc(row.label)+'</span>'+(Presentation.structure(row.value).kind==='text'?'<strong class="'+(row.value.length>70?'detail-feature-long':'')+'">'+esc(row.value).replaceAll('\n','<br>')+'</strong>':structured(row.value))+'</div>':'';
+function actionBar(toolbar,directions,call,address){
+ const actions=[...toolbar.matchAll(/<(a|button)\b[^>]*>[\s\S]*?<\/\1>/g)].map(m=>m[0]);
+ const primary=actions.filter(a=>/class="[^"]*place-map|data-place-save=/.test(a)),secondary=actions.filter(a=>!primary.includes(a));
+ return '<div class="detail-toolbar"><div class="detail-actions-primary">'+primary.join('')+directions+'</div><details class="detail-actions-secondary"><summary>공유·연락·기타</summary><div>'+secondary.join('')+call+'<button type="button" class="detail-button" data-detail-share>공유</button>'+(address?'<button type="button" class="detail-button" data-copy-address="'+esc(address)+'">주소 복사</button>':'')+'</div></details></div>';
+}
 function petPresentation(kind,pet,visit,facilities,caution,missing,booking){
  const scope=pet.find(r=>/허용 구역/.test(r.label)),size=pet.find(r=>/견종·크기/.test(r.label)),rest=pet.filter(r=>r!==scope&&r!==size);
  const hours=visit.find(r=>r.label==='운영시간'),checkin=visit.find(r=>r.label==='입실 시간'),checkout=visit.find(r=>r.label==='퇴실 시간');
@@ -37,7 +51,7 @@ function petPresentation(kind,pet,visit,facilities,caution,missing,booking){
  let primary='',secondary='';
  if(kind==='stay'){
   primary=feature(size,'detail-feature-size')+feature(scope,'detail-feature-scope')+guidance(rest);
-  secondary=(checkin||checkout?'<div class="detail-checkin">'+feature(checkin)+feature(checkout)+'</div>':'')+feature(hours,'detail-feature-hours')+booking+guidance(times)+guidance(facilities);
+  secondary=(checkin||checkout?'<div class="detail-checkin">'+feature(checkin)+feature(checkout)+'</div>':'')+feature(hours,'detail-feature-hours')+guidance(times)+guidance(facilities);
  }else if(kind==='camping'){
   primary=feature(size,'detail-feature-access')+feature(scope,'detail-feature-scope')+guidance(rest);
   const site=facilities.find(r=>r.label==='캠핑장 유형'),main=facilities.find(r=>r.label==='주요시설');
@@ -73,7 +87,7 @@ function professionalDetail(html,article){
  actions=actions.replace('</div>','<button type="button" class="detail-button" data-detail-share>공유</button>'+(address?'<button type="button" class="detail-button" data-copy-address="'+esc(address)+'">주소 복사</button>':'')+'</div>');
  const note=find(/class="care-note"/),sources=find(/class="care-sources"/),state=find(/class="care-state"/);
  const next=back+'<header class="detail-heading">'+kicker+heading+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
- html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v2" data-detail-kind="professional">'+next+'</article>');
+ html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="professional">'+next+'</article>');
  return html.replace('<body>','<body class="editorial-detail">').replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>').replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
 }
 const config={
@@ -97,15 +111,16 @@ export function separateProse(value){
  return {rules:rules.join(' '),intro:intro.join(' ')};
 }
 
+function photoCredit(credit){
+ credit=credit.replace(/^\s*<details[^>]*>\s*<summary[^>]*>[\s\S]*?<\/summary>\s*<div>([\s\S]*)<\/div>\s*<\/details>\s*$/,'$1');
+ const previousCredit=credit.match(/<details class="detail-photo-credit"><summary[^>]*>[\s\S]*?<\/summary><div>([\s\S]*)<\/div><\/details>/);return previousCredit?previousCredit[1]:credit;
+}
 function photoFigure(image,credit,index){
  image=image.replace(/src="([^"]+)"/,(_,src)=>'src="'+esc(detailPhotoURL(text(src)))+'"');
  image=image.replace(/\sstyle="[^"]*"/g,'').replace(/loading="(?:eager|lazy)"/,'loading="'+(index?'lazy':'eager')+'"');
  if(!index&&!image.includes('fetchpriority='))image=image.replace('<img ','<img fetchpriority="high" ');
- // Existing nested credits are unwrapped; every original license/date/change note remains.
- credit=credit.replace(/^\s*<details[^>]*>\s*<summary[^>]*>[\s\S]*?<\/summary>\s*<div>([\s\S]*)<\/div>\s*<\/details>\s*$/,'$1');
- const previousCredit=credit.match(/<details class="detail-photo-credit"><summary[^>]*>[\s\S]*?<\/summary><div>([\s\S]*)<\/div><\/details>/);if(previousCredit)credit=previousCredit[1];
  const links=[...credit.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map(m=>m[0]).join(' · ');
- return '<figure class="detail-slide" id="detail-photo-'+(index+1)+'">'+image+'<figcaption><div class="detail-credit-line">'+links+'</div><details class="detail-photo-credit"><summary>사진 '+(index+1)+' · 출처와 이용 조건</summary><div>'+credit+'</div></details></figcaption></figure>';
+ return '<figure class="detail-slide" id="detail-photo-'+(index+1)+'">'+image+'<figcaption><div class="detail-credit-line">'+links+'</div><a class="detail-credit-reference" href="#detail-gallery-sources">사진 '+(index+1)+' · 전체 이용 안내</a></figcaption></figure>';
 }
 function gallery(nodes){
  const photos=[];
@@ -114,7 +129,9 @@ function gallery(nodes){
   if(/class="place-photo-gallery"/.test(n))for(const m of n.matchAll(/<div>\s*(<img\b[^>]*>)\s*<p>([\s\S]*?)<\/p>\s*<\/div>/g))photos.push({img:m[1],credit:m[2]});
  }
  if(!photos.length)return '<p class="detail-photo-empty">확인된 재사용 가능 사진이 아직 없습니다. 아래의 장소 정보로 방문을 준비해 주세요.</p>';
- return '<section class="detail-gallery" aria-label="장소 사진"><div class="detail-gallery-track" tabindex="0" aria-label="사진을 좌우로 넘겨 보세요">'+photos.map((p,i)=>photoFigure(p.img,p.credit,i)).join('')+'</div>'+(photos.length>1?'<div class="detail-gallery-controls"><span data-gallery-position aria-live="polite">1 / '+photos.length+'</span><div><button type="button" data-gallery-step="-1" aria-label="이전 사진" disabled>←</button><button type="button" data-gallery-step="1" aria-label="다음 사진">→</button></div></div>':'')+'</section>';
+ const credits=new Map();photos.forEach((p,i)=>{p.credit=photoCredit(p.credit);const key=p.credit.replace(/\r\n/g,'\n');if(!credits.has(key))credits.set(key,{credit:p.credit,images:[]});credits.get(key).images.push(i+1);});
+ const attribution='<details class="detail-gallery-sources" id="detail-gallery-sources"><summary>사진 출처·촬영·이용 안내 · '+photos.length+'장</summary><div>'+[...credits.values()].map(c=>'<section><h3>사진 '+c.images.join(', ')+'</h3>'+c.credit+'</section>').join('')+'</div></details>';
+ return '<section class="detail-gallery" aria-label="장소 사진"><div class="detail-gallery-track" tabindex="0" aria-label="사진을 좌우로 넘겨 보세요">'+photos.map((p,i)=>photoFigure(p.img,p.credit,i)).join('')+'</div>'+(photos.length>1?'<div class="detail-gallery-controls"><span data-gallery-position aria-live="polite">1 / '+photos.length+'</span><div><button type="button" data-gallery-step="-1" aria-label="이전 사진" disabled>←</button><button type="button" data-gallery-step="1" aria-label="다음 사진">→</button></div></div>':'')+attribution+'</section>';
 }
 
 let routeRecords;
@@ -135,19 +152,19 @@ export function buildRelatedIndex(pages){
  const out=new Map();for(const [url,html] of pages){const title=html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1],photo=html.match(/<figure class="(?:place-photo|curated-course-photo|detail-slide)"[\s\S]*?<\/figure>/)?.[0],meta=text(html.match(/<p class="(?:meta|detail-kicker)">([\s\S]*?)<\/p>/)?.[1]);if(title)out.set(url,{name:text(title),meta,photo});}return out;
 }
 let sharedRelatedIndex;
-export function setRelatedIndex(pages){sharedRelatedIndex=buildRelatedIndex(pages);}
+export function setRelatedIndex(pages,groups=[]){sharedRelatedIndex=buildRelatedIndex(pages);for(const group of groups)for(const item of group.items){const entry=sharedRelatedIndex.get('/'+group.type.folder+'/'+item.id+'/');if(!entry)continue;entry.area=String(item.address||'').split(/\s+/).slice(0,2).join(' ');if(group.type.table==='facilities')entry.facts=Presentation.summary([...Conditions.get(item),...Presentation.visitRows(Evidence.visit(item)?.rows||[])],{caution:Boolean(Evidence.caution(item)),limit:2});}}
 function relatedCards(html,index){
  return html.replace(/(<section class="card"[^>]*>[\s\S]*?<ul>)([\s\S]*?)(<\/ul><\/section>)/g,(_,head,items,end)=>{
  if(/같은 지역에서 함께 보기|비슷한 장소 함께 보기/.test(head))return '<details class="detail-region-links"><summary>다른 장소도 둘러보기</summary><p>아래는 지역·분류별 탐색 링크이며 현재 장소와 가까운 추천 목록이 아닙니다.</p>'+head+items+end+'</details>';
  return head.replace('<section class="card"','<section class="card detail-related"')+items.replace(/<li>([\s\S]*?)<\/li>/g,(all,body)=>{
   const a=body.match(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/);if(!a)return all;const p=index?.get(a[1]);
   let photo='';if(p?.photo){const img=p.photo.match(/<img\b[^>]*>/)?.[0]?.replace(/\sstyle="[^"]*"/g,'').replace(/loading="[^"]*"/,'loading="lazy"').replace(/src="([^"]+)"/,(_,src)=>'src="'+esc(detailPhotoURL(text(src)))+'"'),links=[...p.photo.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map(m=>m[0]).join(' · ');if(img)photo='<figure class="detail-nearby-thumb"><a href="'+esc(a[1])+'" tabindex="-1">'+img+'</a><figcaption>'+links+' · <a href="'+esc(a[1])+'#detail-photo-1">사진 정보</a></figcaption></figure>';}
-  return '<li>'+photo+'<div class="detail-related-copy">'+a[0]+'<span>'+esc(p?.meta||'장소·산책 안내')+'</span><small>'+esc(text(body.replace(a[0],'')))+'</small></div></li>';
+  return '<li>'+photo+'<div class="detail-related-copy">'+a[0]+'<span>'+esc([p?.meta||'장소·산책 안내',p?.area].filter(Boolean).join(' · '))+'</span><small>'+esc(text(body.replace(a[0],'')))+'</small>'+(p?.facts?'<dl class="detail-related-facts">'+p.facts.map(r=>'<div><dt>'+esc(r.label)+'</dt><dd>'+esc(r.value)+'</dd></div>').join('')+'</dl>':'')+'</div></li>';
  })+end;});
 }
 
 export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
- if(html.includes('data-detail-template="editorial-v2"'))return html.replace('/detail-editorial.js?v=20261025-editorial2','/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION);
+ if(html.includes('data-detail-template="editorial-v3"')||html.includes('data-detail-template="editorial-v2"'))return html;
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?]+)"/)?.[1];
  const match=canonical?.match(/^\/(places|courses|bins|pet-care\/places)\/([^/]+)\/$/);if(!match)return html;
  const professional=match[1]==='pet-care/places';if(!professional&&!html.includes('<article class="card">'))return html;
@@ -175,19 +192,22 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  take(n=>/^<h2>전체 이용 안내/.test(n));
  const rawDescription=take((n)=>/^<p>/.test(n)&&!/<a |<strong>/.test(n));
  take(n=>/id="share-detail"|id="share-status"/.test(n));
- const intro=[],pet=[],facilities=[],unknownLabels=[];
- for(const row of rows(condition)){
+ const intro=[],pet=[],facilities=[],unknownLabels=[],extractedVisit=[];
+ for(const row of Presentation.fields(rows(condition))){
   if(unknown(row.value)){unknownLabels.push(row.label);continue;}
+  if(/^(?:운영시간|주소|문의처|주차)$/.test(row.label)){extractedVisit.push(row);continue;}
+  if(row.label==='등록 안내'){intro.push(row.value);continue;}
   if(/세부 출입|反려동물 이용|반려동물 이용/.test(row.label)){
    const parts=separateProse(row.value);if(parts.intro)intro.push(parts.intro);if(parts.rules)pet.push({...row,value:parts.rules});
   }else if(/시설|운영기간|운영일|예약방법|유형|대여|안전/.test(row.label))facilities.push(row);else pet.push(row);
  }
- const visiting=rows(visit).filter(r=>!unknown(r.value)),contact=pet.find(r=>/문의/.test(r.label));
+ const visiting=Presentation.visitRows([...rows(visit),...extractedVisit].filter(r=>!unknown(r.value))).filter((r,i,all)=>all.findIndex(x=>x.label===r.label&&x.value===r.value)===i),contact=pet.find(r=>/문의/.test(r.label));
  const petRows=pet.filter(r=>!/문의/.test(r.label));if(contact&&!visiting.some(r=>/문의|연락/.test(r.label)))visiting.unshift(contact);
  // Unavailable optional fields share one concise notice. No invented policies.
- const concepts={'체중·견종 기준':/견종|크기|체중/,'허용 구역':/허용 구역|허용구역/,'목줄·이동장 조건':/준비물|목줄|이동장/,'허용 객실·공용 공간':/객실|공용/,'허용 사이트·숙박 시설':/사이트|숙박/,'동반 마릿수':/마릿수|마리/,'추가요금':/요금|비용/,'출입 가능 구역':/구역/,'목줄·입마개 기준':/목줄|입마개/};
+ const concepts={'체중·견종 기준':/견종|크기|체중/,'허용 구역':/허용 구역|허용구역|입장 가능|출입 가능|동반가능/,'목줄·이동장 조건':/준비물|목줄|이동장|리드줄/,'허용 객실·공용 공간':/객실|공용/,'허용 사이트·숙박 시설':/사이트|숙박/,'동반 마릿수':/마릿수|마리/,'추가요금':/요금|비용/,'출입 가능 구역':/구역/,'목줄·입마개 기준':/목줄|입마개/};
  const sizeUnknown=unknownLabels.some(label=>/견종|크기/.test(label));
- const missing=[...new Set([...unknownLabels,...cfg.missing.filter(label=>!petRows.some(r=>(concepts[label]||/a^/).test(r.label+' '+r.value)))].map(label=>/견종|크기/.test(label)?'견종·체중 기준':/체중/.test(label)?(sizeUnknown?'견종·체중 기준':'세부 체중 기준'):/준비물|목줄·이동장/.test(label)?'목줄·이동장 조건':label==='실내·객실 출입'&&kind==='stay'?'허용 객실·공용 공간':label).filter(label=>kind!=='park'||label!=='실내·객실 출입'))];
+ const knownText=petRows.map(r=>r.value).join(' ');
+ const missing=[...new Set([...unknownLabels,...cfg.missing.filter(label=>!petRows.some(r=>(concepts[label]||/a^/).test(r.label+' '+r.value)))].map(label=>/견종|크기/.test(label)?'견종·체중 기준':/체중/.test(label)?(sizeUnknown?'견종·체중 기준':'세부 체중 기준'):/준비물|목줄·이동장/.test(label)?(/목줄|리드줄|이동장/.test(knownText)?'추가 준비물 기준':'목줄·이동장 조건'):label==='실내·객실 출입'?(/입장|출입|객실|민박/.test(knownText)?'세부 출입 기준':kind==='stay'?'허용 객실·공용 공간':label):label).filter(label=>kind!=='park'||label!=='실내·객실 출입'))];
  const conditionExtras=condition?fragments(inside(condition)).filter(n=>!/^<h3|^<dl/.test(n)):[];
  const cautions=conditionExtras.filter(n=>/role="note"/.test(n));
  const sources=conditionExtras.filter(n=>!cautions.includes(n));
@@ -213,18 +233,21 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
   content=petPresentation(kind,petRows,visiting,facilities,cautions.join(''),missing,booking.join(''));
  }
  const description=rawDescription.join('');
- const editorialIntro=kind==='course'&&description?section('detail-about','코스 소개',description):intro.length?section('detail-about',kind==='dining'?'이 공간의 이야기':'장소 소개',intro.map(s=>'<p>'+esc(s)+'</p>').join('')):'';
+ const distinctIntro=intro.filter(s=>s!==address.split(' · ')[0]);
+ const editorialIntro=kind==='course'&&description?section('detail-about','코스 소개',description):distinctIntro.length?section('detail-about',kind==='dining'?'이 공간의 이야기':'장소 소개',distinctIntro.map(s=>'<p>'+esc(s)+'</p>').join('')):'';
  const original=description&&kind!=='course'?'<details class="detail-original"><summary>등록 안내 원문</summary><div>'+description+'</div></details>':'';
  const remaining=nodes.filter((n,i)=>!used.has(i)&&!/^<p class="meta"/.test(n)).join('');
- const sourceNotes=sources.join('')+provenance.join('')+remaining;
+ const sourceNotes=sources.join('')+provenance.join('')+remaining+(condition||visit?'<details class="detail-raw-fields"><summary>동반·운영 항목 원문</summary><div>'+condition+visit+'</div></details>':'');
  const uniqueLinks=new Map();for(const m of sourceNotes.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/g))if(!uniqueLinks.has(m[1]))uniqueLinks.set(m[1],m[0]);
  const dates=[...new Set(text(sourceNotes).match(/\d{4}-\d{2}-\d{2}/g)||[])];
- const sourceSection=section('detail-sources','자료와 방문 전 확인','<p class="detail-caption">'+(dates.length?'자료에 표시된 날짜 '+dates.join(' · ')+'. ':'')+'자료 확인일은 현장 방문일이나 운영정책 갱신일과 다릅니다. 허용 구역·요금·운영은 방문 전에 다시 확인해 주세요.</p><div class="detail-source-links">'+[...uniqueLinks.values()].join(' ')+'</div>'+moreSources.join('')+original+'<details class="detail-source-notes"><summary>출처별 확인 기록과 주의사항</summary><div>'+sourceNotes+'</div></details>');
+ const dateRows=[['동반 자료',sources.join('')],['운영·방문 자료',provenance.join('')],['등록·공식 안내',remaining]].map(([label,raw])=>({label,value:[...new Set(text(raw).match(/\d{4}-\d{2}-\d{2}/g)||[])].join(' · ')})).filter(r=>r.value);
+ const sourceSection=section('detail-sources','자료와 방문 전 확인',dl(dateRows,'detail-proof-dates')+'<p class="detail-caption">자료에 표시된 검토·조회 날짜입니다. 현장 방문이나 운영정책 갱신 확인을 뜻하지 않습니다. 당일 출입·예약·요금은 방문 전에 확인해 주세요.</p><div class="detail-source-links">'+[...uniqueLinks.values()].join(' ')+'</div>'+moreSources.join('')+original+'<details class="detail-source-notes"><summary>출처별 확인 기록과 주의사항</summary><div>'+sourceNotes+'</div></details>');
  const links=professional?careBack:'<a class="detail-back" data-detail-back href="'+(kind==='course'?'/discover.html?kind=courses#find-place':'/discover.html?kind=facilities#find-place')+'">← 목록으로</a>';
  const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+'<a href="#detail-sources">출처·주의사항</a></nav>';
  const addressLabel=kind==='course'?text(location[0]?.match(/<strong>([\s\S]*?)<\/strong>/)?.[1]):'';
- let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?'<p class="detail-address">'+(addressLabel?'<span>'+esc(addressLabel)+'</span><br>':'')+esc(address)+'</p>':'')+'</header>'+routeHero+gallery(photoNodes)+'<div class="detail-toolbar">'+toolbar+directions+call+'<button type="button" class="detail-button" data-detail-share>공유</button>'+(address?'<button type="button" class="detail-button" data-copy-address="'+esc(address)+'">주소 복사</button>':'')+'</div><p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
- html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v2" data-detail-kind="'+kind+'">'+next+'</article>');
+ const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+Presentation.summary([...petRows,...visiting,...facilities],{kind,caution:cautions.length>0}).map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';
+ let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?'<p class="detail-address">'+(addressLabel?'<span>'+esc(addressLabel)+'</span><br>':'')+esc(address)+'</p>':'')+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
+ html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="'+kind+'">'+next+'</article>');
  html=html.replace(/<body([^>]*)>/,(all,attrs)=>attrs.includes('class="')?'<body'+attrs.replace('class="','class="editorial-detail ') +'>':'<body class="editorial-detail"'+attrs+'>');
  html=html.replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>');
  if(!professional&&!html.includes('class="place-site-header"'))html=html.replace(/<a class="brand"[^>]*>[\s\S]*?<\/a>/,brand=>'<header class="place-site-header">'+brand+'<a class="place-back" href="/discover.html">장소·산책 둘러보기 ↗</a></header>');

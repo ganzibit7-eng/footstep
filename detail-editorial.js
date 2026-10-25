@@ -12,6 +12,14 @@
   try{if(navigator.share){await navigator.share({title:document.title,url:url.href});message('');}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url.href);message('공유 링크를 복사했습니다.');}else message('공유할 링크: '+url.href);}catch(error){if(error.name!=='AbortError')message('공유를 완료하지 못했어요. 주소창의 링크를 복사해 주세요.',true);}
  }));
  const back=page.querySelector('[data-detail-back]');
+ // Section navigation replaces this detail's hash instead of adding history
+ // entries, so the list return action still restores the original list state.
+ page.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
+  if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button)return;
+  const target=document.getElementById(link.getAttribute('href').slice(1));if(!target)return;
+  event.preventDefault();if(target.tagName==='DETAILS')target.open=true;
+  history.replaceState(history.state,'',link.getAttribute('href'));target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',inline:'nearest',behavior:reduced()?'instant':'smooth'});
+ }));
  back?.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button)return;try{const from=new URL(document.referrer);if(from.origin===location.origin&&history.length>1&&/^(\/$|\/discover\.html$|\/places\/|\/courses\/|\/pet-care\/|\/pet-life\/)/.test(from.pathname)){event.preventDefault();history.back();}}catch{}});
  const gallery=page.querySelector('.detail-gallery-track');
  if(gallery){

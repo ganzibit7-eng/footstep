@@ -217,3 +217,42 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
  .editorial-detail .detail-contact-actions .care-primary strong{font-size:24px}
 }
 @media(prefers-reduced-motion:reduce){.editorial-detail *,.editorial-detail *::before,.editorial-detail *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Quality 3: source-bound essentials, structured rules and one attribution index. */
+.editorial-detail .detail-essentials{margin:18px 0 0;padding:16px 0 0;border-top:1px solid #dce1d8}
+.editorial-detail .detail-essentials p{display:grid;grid-template-columns:100px minmax(0,1fr);gap:14px;margin:0 0 10px;font-size:14px;line-height:1.8}
+.editorial-detail .detail-essentials span{color:#63715f;font-size:12px}
+.editorial-detail .detail-essentials strong{font-weight:500;word-break:keep-all;overflow-wrap:anywhere}
+.editorial-detail .detail-essentials>a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;text-decoration:none}
+.editorial-detail .detail-heading .trip-stay-booking{padding:16px 0 0;margin:12px 0 0;border-top:1px solid #dce1d8;background:transparent}
+.editorial-detail .detail-toolbar{display:block}
+.editorial-detail .detail-actions-primary,.editorial-detail .detail-actions-secondary>div{display:flex;flex-wrap:wrap;gap:8px}
+.editorial-detail .detail-actions-secondary{margin-top:4px}
+.editorial-detail .detail-actions-secondary summary{font-size:12px;min-height:44px;color:#5e6c60}
+.editorial-detail .detail-actions-secondary>div{padding-bottom:12px}
+.editorial-detail .detail-gallery-sources{border-top:1px solid #dce1d8;margin-top:10px;font-size:12px;line-height:1.85;color:#5e6b60}
+.editorial-detail .detail-gallery-sources summary{font-size:12px;min-height:44px}
+.editorial-detail .detail-gallery-sources section{padding:8px 0 14px}
+.editorial-detail .detail-gallery-sources h3{font-size:13px;margin:0 0 8px;font-weight:600}
+.editorial-detail .detail-credit-reference{display:inline-flex;align-items:center;min-height:32px;font-size:11px}
+.editorial-detail .detail-site-row{display:grid;grid-template-columns:minmax(115px,.7fr) minmax(0,1.3fr);gap:18px;padding:16px 0;border-bottom:1px solid #dce1d8}
+.editorial-detail .detail-site-row>strong{font-size:15px;font-weight:600;line-height:1.8}
+.editorial-detail .detail-site-row>p{font-size:16px;line-height:1.85;margin:0}
+.editorial-detail .detail-rule-intro{font-size:13px!important;color:#63715f}
+.editorial-detail .detail-rule-notice{padding:12px 0;border-bottom:1px solid #dce1d8;font-size:15px!important;font-weight:500}
+.editorial-detail .detail-rule-list{list-style:disc;padding-left:20px;columns:auto;display:block;margin:8px 0 0}
+.editorial-detail .detail-rule-list>li{font-size:16px;line-height:1.9;padding:0;margin:0 0 12px}
+.editorial-detail .detail-proof-dates{display:flex;flex-wrap:wrap;gap:16px 32px;margin:0 0 16px}
+.editorial-detail .detail-proof-dates dt{font-size:12px;color:#63715f}
+.editorial-detail .detail-proof-dates dd{font-size:14px;margin:4px 0 0;font-variant-numeric:tabular-nums}
+@media(max-width:760px){
+ .editorial-detail .detail-essentials p{grid-template-columns:1fr;gap:2px;margin-bottom:12px}
+ .editorial-detail .detail-essentials strong{font-size:15px}
+ .editorial-detail .detail-actions-primary .place-map{flex:1 0 auto}
+ .editorial-detail .detail-actions-primary>a,.editorial-detail .detail-actions-primary>button{flex:1 0 auto}
+ .editorial-detail .detail-site-row{grid-template-columns:1fr;gap:6px}
+ .editorial-detail .detail-site-row>strong{font-size:16px}
+ .editorial-detail .detail-credit-reference{min-height:44px}
+}
+
+.editorial-detail .detail-related-facts{margin:10px 0 0}.editorial-detail .detail-related-facts dt{font-size:11px;color:#657164}.editorial-detail .detail-related-facts dd{font-size:13px;line-height:1.8;margin:2px 0 10px}

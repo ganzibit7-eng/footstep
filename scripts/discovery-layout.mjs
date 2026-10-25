@@ -14,6 +14,7 @@ function compactFilters(html){
 
 // Shared by the published directory and the generator. No source data or SEO changes.
 export function refineDiscovery(html){
+ if(html.includes('data-listing-template="quality3"'))return html;
  if(html.includes('id="find-place"'))html=html.replace(/\/place-search\.js\?v=[\w-]+/g,'/place-search.js?v=20261024-polish').replace(/\/readability\.css\?v=[\w-]+/g,'/readability.css?v=20261024-polish');
  if(!html.includes('id="find-place"')||html.includes('class="reading-page discovery-page"'))return compactFilters(html);
  html=html.replace('class="reading-page"','class="reading-page discovery-page"');

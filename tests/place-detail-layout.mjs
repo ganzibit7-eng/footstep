@@ -15,7 +15,7 @@ test('refinement preserves source facts, photographs, links and structured data'
   const credits=before.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)[1];assert(after.includes(credits),'all credit and license text remains available');
   const destinations=new Set([...after.matchAll(/href="([^"]+)"/g)].map(x=>new URL(x[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href));for(const match of before.matchAll(/href="([^"]+)"/g))assert(destinations.has(new URL(match[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href),"destination retained: "+match[1]);
   assert.equal((after.match(/data-place-save=/g)||[]).length,1,'one visible bookmark action');
-  assert(after.indexOf('<figure class="detail-slide"')<after.indexOf('<div class="detail-toolbar"'));
+  assert(after.indexOf('<div class="detail-toolbar"')<after.indexOf('<figure class="detail-slide"'));
   assert(after.indexOf('<details class="place-directory"')>after.indexOf('</article>'));
  }
 });
