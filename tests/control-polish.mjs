@@ -17,6 +17,14 @@ test('the offline shell includes local stylesheet imports without caching privat
  }
  for(const url of ['https://balzaguk.com/private-location.json','https://euwujrpjtwsrxhiytego.supabase.co/rest/v1/walk_records','https://tile.openstreetmap.org/1/1/1.png']){let handled=false;handlers.fetch({request:{url,method:'GET',mode:'cors'},respondWith:()=>handled=true});assert(!handled);}
 });
+test('a delayed points response uses the current viewport after screen rotation',async()=>{
+ const html=readFileSync('index.html','utf8'),start=html.indexOf('  async function loadMyPoints(){'),end=html.indexOf('  function reportKey(',start);
+ assert(start>=0&&end>start);const badge={style:{},textContent:''},shop={textContent:''};let mobile=true,resolve;
+ const context={console,myDeviceId:'test-owner',window:{matchMedia:()=>({matches:mobile})},document:{getElementById:id=>id==='points-badge'?badge:shop},sb:{from:()=>({select:()=>({eq:()=>new Promise(r=>resolve=r)})})}};
+ vm.createContext(context);vm.runInContext(html.slice(start,end),context);
+ const pending=context.loadMyPoints();mobile=false;resolve({data:[{amount:100}],error:null});await pending;assert.equal(badge.style.display,'');
+ const pendingAgain=context.loadMyPoints();mobile=true;resolve({data:[{amount:100}],error:null});await pendingAgain;assert.equal(badge.style.display,'none');
+});
 test('all generated user pages use current shared styles; home has no detail/list stylesheet',()=>{
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let covered=0;
  for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const h=readFileSync(file,'utf8'),links=[...h.matchAll(/<link\b[^>]*href="\/(detail-editorial|listing-editorial|internal-pages|product-ui|design-system|legal)\.css\?v=([^"?]+)"/g)];if(links.length)covered++;for(const link of links)assert.equal(link[2],controlAssetVersion(link[1]),file);}

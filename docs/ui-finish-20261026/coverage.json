@@ -14,7 +14,8 @@
     "42px course dialog close; primary actions 45/46/47px",
     "25px privacy choice action and 27–36px disclosure controls",
     "professional card footer alignment and repeated no-photo category",
-    "new style URL missing from offline shell; fixed without caching DB/GPS/map tiles"
+    "new style URL missing from offline shell; fixed without caching DB/GPS/map tiles",
+    "screen resize during pending points read could apply a stale mobile visibility decision"
   ],
   "implementation": [
     "shared 44px control / 48px main action tokens",
@@ -77,7 +78,11 @@
     "productionPageCombinations": 54,
     "profileCombinations": 7,
     "overflow": 0,
-    "followup": "signed-in header points action measured 35px; 44px follow-up patch pending deployment"
+    "followup": "44px account styles deployed; existing stale viewport in delayed points response fixed and regression-tested, final deployment pending",
+    "accountCommit": "0076fd5a6dd229630e612925337fce32b87d8c79",
+    "accountPagesRun": 40233828339,
+    "accountGenerationRun": 40233828878,
+    "accountApplicationRun": 40233828811
   },
   "sourceBytesEstimateAfterStaging": 892765769,
   "observations": [

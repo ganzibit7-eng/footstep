@@ -3509,7 +3509,6 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   async function loadMyPoints(){
     const owner=myDeviceId;
     const badge = document.getElementById('points-badge');
-    const isMobile = window.matchMedia('(max-width:880px)').matches;
     const myShopBtn = document.getElementById('my-points-shop-btn');
     if(!myDeviceId){
       badge.style.display = 'none';
@@ -3522,7 +3521,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       if(error || !data){ badge.style.display = 'none'; return; }
       const total = data.reduce((sum, r) => sum + r.amount, 0);
       badge.textContent = `🪙 ${total.toLocaleString()}P`;
-      badge.style.display = isMobile ? 'none' : ''; // 모바일에선 MY 탭에서만 보여주고 헤더엔 안 띄움
+      // A pending response must use the current viewport after a resize.
+      badge.style.display = window.matchMedia('(max-width:880px)').matches ? 'none' : ''; // 모바일에선 MY 탭에서만 보여주고 헤더엔 안 띄움
       if(myShopBtn) myShopBtn.textContent = `🪙 ${total.toLocaleString()}P · 포인트샵 가기`;
     }catch(e){ console.error(e); if(myDeviceId===owner) badge.style.display = 'none'; }
   }
