@@ -68,5 +68,19 @@
     "secondary home photo-credit toggles remain their existing 32px layout to preserve card design; core actions are 44px or larger",
     "administrator and database changes excluded"
   ],
-  "deployment": "pending commit/push/CI/production"
+  "deployment": {
+    "commit": "fb924077ad59ce9db9d20e1e00b9987d2e004db5",
+    "pagesRun": 40232914849,
+    "applicationRun": 40232917086,
+    "generationRun": 40232917131,
+    "conclusion": "success",
+    "productionPageCombinations": 54,
+    "profileCombinations": 7,
+    "overflow": 0,
+    "followup": "signed-in header points action measured 35px; 44px follow-up patch pending deployment"
+  },
+  "sourceBytesEstimateAfterStaging": 892765769,
+  "observations": [
+    "One initial production course load exceeded the browser wait; subsequent UI showed all 412 courses and no captured console errors. Backend timing and physical devices are not certified by this UI pass."
+  ]
 }

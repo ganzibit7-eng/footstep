@@ -1,0 +1,514 @@
+[
+  {
+    "case": "home",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "오늘은 어디로 함께 걸을까요?",
+    "width": 390
+  },
+  {
+    "case": "home",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "오늘은 어디로 함께 걸을까요?",
+    "width": 1440
+  },
+  {
+    "case": "map",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "함께 갈 곳 찾기",
+    "width": 390
+  },
+  {
+    "case": "map",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "함께 갈 곳 찾기",
+    "width": 1440
+  },
+  {
+    "case": "course-list",
+    "course": [
+      {
+        "h": 48,
+        "height": 699,
+        "inset": 71,
+        "row": 969
+      },
+      {
+        "h": 48,
+        "height": 699,
+        "inset": 71,
+        "row": 1684
+      },
+      {
+        "h": 48,
+        "height": 718,
+        "inset": 71,
+        "row": 2399
+      },
+      {
+        "h": 48,
+        "height": 699,
+        "inset": 71,
+        "row": 3133
+      },
+      {
+        "h": 48,
+        "height": 718,
+        "inset": 71,
+        "row": 3848
+      },
+      {
+        "h": 48,
+        "height": 802,
+        "inset": 71,
+        "row": 4582
+      }
+    ],
+    "overflow": false,
+    "small": [],
+    "title": "산책 코스",
+    "width": 390
+  },
+  {
+    "case": "course-list",
+    "course": [
+      {
+        "h": 48,
+        "height": 815,
+        "inset": 73,
+        "row": 755
+      },
+      {
+        "h": 48,
+        "height": 815,
+        "inset": 73,
+        "row": 755
+      },
+      {
+        "h": 48,
+        "height": 815,
+        "inset": 73,
+        "row": 755
+      },
+      {
+        "h": 48,
+        "height": 899,
+        "inset": 73,
+        "row": 1590
+      },
+      {
+        "h": 48,
+        "height": 899,
+        "inset": 73,
+        "row": 1590
+      },
+      {
+        "h": 48,
+        "height": 899,
+        "inset": 73,
+        "row": 1590
+      }
+    ],
+    "overflow": false,
+    "small": [
+      {
+        "h": 35,
+        "selector": "points-badge",
+        "w": 77
+      }
+    ],
+    "title": "산책 코스",
+    "width": 1440
+  },
+  {
+    "case": "walk",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책 기록하기",
+    "width": 390
+  },
+  {
+    "case": "walk",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책 기록하기",
+    "width": 1440
+  },
+  {
+    "case": "suggest",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책길·장소 정보 제안하기",
+    "width": 390
+  },
+  {
+    "case": "suggest",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책길·장소 정보 제안하기",
+    "width": 1440
+  },
+  {
+    "case": "etiquette",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책할 때 지킬 약속",
+    "width": 390
+  },
+  {
+    "case": "etiquette",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책할 때 지킬 약속",
+    "width": 1440
+  },
+  {
+    "case": "dining",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "카페라르고빌",
+    "width": 390
+  },
+  {
+    "case": "dining",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "카페라르고빌",
+    "width": 1440
+  },
+  {
+    "case": "stay",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "프레이저 플레이스 센트럴 서울",
+    "width": 390
+  },
+  {
+    "case": "stay",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "프레이저 플레이스 센트럴 서울",
+    "width": 1440
+  },
+  {
+    "case": "camping",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "미산분교 캠핑장",
+    "width": 390
+  },
+  {
+    "case": "camping",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "미산분교 캠핑장",
+    "width": 1440
+  },
+  {
+    "case": "park",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "광교호수공원 반려견 놀이터",
+    "width": 390
+  },
+  {
+    "case": "park",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "광교호수공원 반려견 놀이터",
+    "width": 1440
+  },
+  {
+    "case": "course",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "광교호수공원 보행로 산책 코스",
+    "width": 390
+  },
+  {
+    "case": "course",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "광교호수공원 보행로 산책 코스",
+    "width": 1440
+  },
+  {
+    "case": "route",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "가평 호명호수 호반 GPX 구간",
+    "width": 390
+  },
+  {
+    "case": "route",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "가평 호명호수 호반 GPX 구간",
+    "width": 1440
+  },
+  {
+    "case": "vet",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "24시 산들산들 동물병원",
+    "width": 390
+  },
+  {
+    "case": "vet",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "24시 산들산들 동물병원",
+    "width": 1440
+  },
+  {
+    "case": "no-photo",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "파크킹",
+    "width": 390
+  },
+  {
+    "case": "no-photo",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "파크킹",
+    "width": 1440
+  },
+  {
+    "case": "retail",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "시몬스 테라스점",
+    "width": 390
+  },
+  {
+    "case": "retail",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "시몬스 테라스점",
+    "width": 1440
+  },
+  {
+    "case": "bin",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "월드컵공원 반려견 놀이터 입구",
+    "width": 390
+  },
+  {
+    "case": "bin",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "월드컵공원 반려견 놀이터 입구",
+    "width": 1440
+  },
+  {
+    "case": "cafes",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 식당·카페",
+    "width": 390
+  },
+  {
+    "case": "cafes",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 식당·카페",
+    "width": 1440
+  },
+  {
+    "case": "stays",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "서울 애견동반 숙소",
+    "width": 390
+  },
+  {
+    "case": "stays",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "서울 애견동반 숙소",
+    "width": 1440
+  },
+  {
+    "case": "discover",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책 후, 식당과 카페",
+    "width": 390
+  },
+  {
+    "case": "discover",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "산책 후, 식당과 카페",
+    "width": 1440
+  },
+  {
+    "case": "professional-list",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "서울에서 찾는반려동물 전문업소",
+    "width": 390
+  },
+  {
+    "case": "professional-list",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "서울에서 찾는반려동물 전문업소",
+    "width": 1440
+  },
+  {
+    "case": "camping-list",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 캠핑장",
+    "width": 390
+  },
+  {
+    "case": "camping-list",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 캠핑장",
+    "width": 1440
+  },
+  {
+    "case": "about",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "발자국, 우리 아이와 함께 걷는 길",
+    "width": 390
+  },
+  {
+    "case": "about",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "발자국, 우리 아이와 함께 걷는 길",
+    "width": 1440
+  },
+  {
+    "case": "guide",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 카페 가기 전 체크리스트",
+    "width": 390
+  },
+  {
+    "case": "guide",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "애견동반 카페 가기 전 체크리스트",
+    "width": 1440
+  },
+  {
+    "case": "weekend",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "주말, 강아지와어디로 갈까요?",
+    "width": 390
+  },
+  {
+    "case": "weekend",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "주말, 강아지와어디로 갈까요?",
+    "width": 1440
+  },
+  {
+    "case": "pet-life",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "반려생활에 필요한 곳,한곳에서 찾아보세요.",
+    "width": 390
+  },
+  {
+    "case": "pet-life",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "반려생활에 필요한 곳,한곳에서 찾아보세요.",
+    "width": 1440
+  },
+  {
+    "case": "privacy",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "개인정보처리방침",
+    "width": 390
+  },
+  {
+    "case": "privacy",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "개인정보처리방침",
+    "width": 1440
+  },
+  {
+    "case": "terms",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "이용약관",
+    "width": 390
+  },
+  {
+    "case": "terms",
+    "course": [],
+    "overflow": false,
+    "small": [],
+    "title": "이용약관",
+    "width": 1440
+  }
+]

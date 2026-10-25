@@ -1,0 +1,548 @@
+[
+  {
+    "case": "profile",
+    "width": 360,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 307
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 307
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 307
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 273
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 307
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 273
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 307
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 273
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 307
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 273
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 273
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 273
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 273
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 375,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 314
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 314
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 314
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 281
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 314
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 281
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 314
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 281
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 314
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 281
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 281
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 281
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 281
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 390,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 329
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 329
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 329
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 295
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 329
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 295
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 329
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 295
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 329
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 295
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 295
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 295
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 295
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 430,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 369
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 369
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 369
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 335
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 369
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 335
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 369
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 335
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 369
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 335
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 335
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 335
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 335
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 768,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 451
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 417
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 1024,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 451
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 417
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  },
+  {
+    "case": "profile",
+    "width": 1440,
+    "buttons": [
+      {
+        "h": 44,
+        "id": "profile-close",
+        "w": 44
+      },
+      {
+        "h": 50,
+        "id": "my-points-shop-btn",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "my-admin-btn",
+        "w": 451
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "display-name-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "dog-info-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 50,
+        "id": "region-save-btn",
+        "w": 417
+      },
+      {
+        "h": 64,
+        "id": "SUMMARY",
+        "w": 451
+      },
+      {
+        "h": 44,
+        "id": "favorite-import-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "logout-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "export-data-btn",
+        "w": 417
+      },
+      {
+        "h": 44,
+        "id": "withdraw-btn",
+        "w": 417
+      }
+    ],
+    "overflow": false,
+    "withinViewport": true
+  }
+]

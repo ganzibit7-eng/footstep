@@ -317,3 +317,6 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 /* Course dialog actions align with the functional-screen control sizes. */
 #modal-overlay #modal-close{box-sizing:border-box;width:var(--control-height);height:var(--control-height);min-width:var(--control-height);min-height:var(--control-height);display:grid;place-items:center;padding:0;line-height:1}
 #modal-overlay :is(#detail-favorite,#course-prepare-walk,#share-course-btn){box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height-primary);line-height:var(--control-leading);white-space:normal}
+
+/* Signed-in header action: retain its visibility rules and visual treatment. */
+header #points-badge{box-sizing:border-box;min-height:var(--control-height)}

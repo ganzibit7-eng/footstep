@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';
 import vm from 'node:vm';
-import {refineControlAssets,CONTROL_VERSION} from '../scripts/publish-control-polish.mjs';
+import {refineControlAssets,CONTROL_VERSION,controlAssetVersion} from '../scripts/publish-control-polish.mjs';
 test('control cache refresh is idempotent and preserves metadata, original links and source text',()=>{
  const source='<meta property="og:title" content="장소"><link rel="canonical" href="https://balzaguk.com/places/example/"><link rel="stylesheet" href="/detail-editorial.css?v=old"><script>const original="/detail-editorial.css?v=old";</script><a href="https://source.example/">사진 이용 조건</a>';
  const after=refineControlAssets(source);assert.equal(refineControlAssets(after),after);
@@ -19,6 +19,6 @@ test('the offline shell includes local stylesheet imports without caching privat
 });
 test('all generated user pages use current shared styles; home has no detail/list stylesheet',()=>{
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let covered=0;
- for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const h=readFileSync(file,'utf8'),links=[...h.matchAll(/<link\b[^>]*href="\/(detail-editorial|listing-editorial|internal-pages|product-ui|design-system|legal)\.css\?v=([^"?]+)"/g)];if(links.length)covered++;for(const link of links)assert.equal(link[2],CONTROL_VERSION,file);}
+ for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const h=readFileSync(file,'utf8'),links=[...h.matchAll(/<link\b[^>]*href="\/(detail-editorial|listing-editorial|internal-pages|product-ui|design-system|legal)\.css\?v=([^"?]+)"/g)];if(links.length)covered++;for(const link of links)assert.equal(link[2],controlAssetVersion(link[1]),file);}
  assert(covered>=23400);const home=readFileSync('index.html','utf8');assert(!home.includes('href="/detail-editorial.css'));assert(!home.includes('href="/listing-editorial.css'));console.log('Shared-control style coverage:',covered);
 });
