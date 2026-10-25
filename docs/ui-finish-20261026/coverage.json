@@ -27,7 +27,7 @@
     "cache versions and offline CSS imports updated; compatibility import retained"
   ],
   "checks": {
-    "automaticPassed": 260,
+    "automaticPassed": 261,
     "automaticFailed": 0,
     "includesExistingUntrackedOfflineShellTest": true,
     "staticGeneration": "success; SEO 23441, lists 1114, cards 39634",
@@ -78,11 +78,16 @@
     "productionPageCombinations": 54,
     "profileCombinations": 7,
     "overflow": 0,
-    "followup": "44px account styles deployed; existing stale viewport in delayed points response fixed and regression-tested, final deployment pending",
+    "followup": "complete: signed-in header is 44px and remains visible at 1440px after rapid mobile/desktop resize and pending responses",
     "accountCommit": "0076fd5a6dd229630e612925337fce32b87d8c79",
     "accountPagesRun": 40233828339,
     "accountGenerationRun": 40233828878,
-    "accountApplicationRun": 40233828811
+    "accountApplicationRun": 40233828811,
+    "finalUiCommit": "dac75a9f9f3896be6bcafb85edb905f2209cc440",
+    "finalPagesRun": 40234515335,
+    "finalApplicationRun": 40234515804,
+    "productionPrimaryControlIssues": 0,
+    "publicUiStatus": "deployed and verified"
   },
   "sourceBytesEstimateAfterStaging": 892765769,
   "observations": [

@@ -117,13 +117,7 @@
       }
     ],
     "overflow": false,
-    "small": [
-      {
-        "h": 35,
-        "selector": "points-badge",
-        "w": 77
-      }
-    ],
+    "small": [],
     "title": "산책 코스",
     "width": 1440
   },

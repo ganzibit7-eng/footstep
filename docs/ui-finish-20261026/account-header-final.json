@@ -1,0 +1,12 @@
+{
+  "commit": "dac75a9f9f3896be6bcafb85edb905f2209cc440",
+  "beforeResize": {
+    "width": 1440,
+    "pointHeight": 44
+  },
+  "afterMobileDesktopRoundTrip": {
+    "width": 1440,
+    "pointHeight": 44
+  },
+  "overflow": false
+}
