@@ -4,6 +4,7 @@ const placePhotos=createRequire(import.meta.url)('../place-photos.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION='20261025-editorial2';
+export const DETAIL_SCRIPT_VERSION='20261026-gallery-end';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const text=s=>String(s||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g,c=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '}[c])).trim();
 
@@ -73,7 +74,7 @@ function professionalDetail(html,article){
  const note=find(/class="care-note"/),sources=find(/class="care-sources"/),state=find(/class="care-state"/);
  const next=back+'<header class="detail-heading">'+kicker+heading+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v2" data-detail-kind="professional">'+next+'</article>');
- return html.replace('<body>','<body class="editorial-detail">').replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>').replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_VERSION+'"></script></body>');
+ return html.replace('<body>','<body class="editorial-detail">').replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>').replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
 }
 const config={
  dining:{label:'식당·카페',conditions:'함께 머무를 수 있는 곳',visit:'이용 시간과 방문 정보',missing:['체중·견종 기준','허용 구역','목줄·이동장 조건']},
@@ -146,7 +147,7 @@ function relatedCards(html,index){
 }
 
 export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
- if(html.includes('data-detail-template="editorial-v2"'))return html;
+ if(html.includes('data-detail-template="editorial-v2"'))return html.replace('/detail-editorial.js?v=20261025-editorial2','/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION);
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?]+)"/)?.[1];
  const match=canonical?.match(/^\/(places|courses|bins|pet-care\/places)\/([^/]+)\/$/);if(!match)return html;
  const professional=match[1]==='pet-care/places';if(!professional&&!html.includes('<article class="card">'))return html;
@@ -232,7 +233,7 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
   const directory=html.match(/<nav aria-label="관련 장소 목록"[^>]*>[\s\S]*?<\/nav>/)?.[0];
   if(directory&&!html.includes('class="place-directory"'))html=html.replace(directory,'').replace('</main>','<details class="place-directory"><summary>지역·분류별 장소 더 보기</summary>'+directory+'</details></main>');
  }
- html=html.replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_VERSION+'"></script></body>');
+ html=html.replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
  html=html.replace(/<script>\s*\(function\(\)\{\s*var button=document\.getElementById\('share-detail'\)[\s\S]*?<\/script>/,'');
  html=relatedCards(html,relatedIndex);
  return html;

@@ -16,7 +16,7 @@
  const gallery=page.querySelector('.detail-gallery-track');
  if(gallery){
   const slides=[...gallery.children],controls=page.querySelector('.detail-gallery-controls');let frame=0;
-  const position=()=>{const origin=gallery.getBoundingClientRect().left;let index=0,distance=Infinity;slides.forEach((slide,i)=>{const d=Math.abs(slide.getBoundingClientRect().left-origin);if(d<distance){distance=d;index=i;}});return index;};
+  const position=()=>{if(gallery.scrollLeft>0&&gallery.scrollWidth-gallery.clientWidth-gallery.scrollLeft<=2)return slides.length-1;const origin=gallery.getBoundingClientRect().left;let index=0,distance=Infinity;slides.forEach((slide,i)=>{const d=Math.abs(slide.getBoundingClientRect().left-origin);if(d<distance){distance=d;index=i;}});return index;};
   const sync=()=>{frame=0;if(!controls)return;const index=position();controls.querySelector('[data-gallery-position]').textContent=(index+1)+' / '+slides.length;controls.querySelector('[data-gallery-step="-1"]').disabled=index===0;controls.querySelector('[data-gallery-step="1"]').disabled=index===slides.length-1;};
   const move=step=>{const index=Math.max(0,Math.min(slides.length-1,position()+step));gallery.scrollTo({left:slides[index].offsetLeft-slides[0].offsetLeft,behavior:reduced()?'instant':'smooth'});};
   controls?.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>move(Number(b.dataset.galleryStep))));

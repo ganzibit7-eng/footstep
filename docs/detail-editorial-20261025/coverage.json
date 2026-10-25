@@ -30,8 +30,8 @@
     "smallPrimaryControls": 0
   },
   "tests": {
-    "local": 249,
-    "passed": 249,
+    "local": 250,
+    "passed": 250,
     "failed": 0
   },
   "publicSourceBytes": 857553464,
@@ -54,5 +54,11 @@
     "copyAddress": "success",
     "verifiedGPX": "rendered",
     "proposedGeometry": "not drawn"
+  },
+  "scriptVersion": "20261026-gallery-end",
+  "galleryBoundaryFix": {
+    "localBrowserPosition": "3 / 3",
+    "nextDisabledAtEnd": true,
+    "regressionTest": "tests/detail-gallery-runtime.mjs"
   }
 }
