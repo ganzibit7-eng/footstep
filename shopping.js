@@ -60,7 +60,7 @@
       container.append(card);
     });
     const disclosure=root.document.getElementById('walk-shopping-disclosure');
-    if(disclosure){disclosure.hidden=!linked;disclosure.textContent=config.disclosure||'이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';}
+    if(disclosure){disclosure.hidden=!linked;disclosure.textContent=config.disclosure||'발자국은 쿠팡 파트너스 활동으로 구매 실적에 따른 수수료를 지급받습니다.';}
   }
   root.PawShopping={affiliateURL,productImageURL,popularityText,render};
   if(root.document){if(root.document.readyState==='loading')root.document.addEventListener('DOMContentLoaded',render,{once:true});else render();}

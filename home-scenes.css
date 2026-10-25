@@ -11,7 +11,6 @@
 #nearby-section .home-region-body p{min-height:0;margin:4px 0 0}
 #nearby-section #walk-shopping{margin:0;padding:46px 0 52px;border-radius:0;border:0;border-top:1px solid var(--line);background:transparent;box-shadow:none}
 #walk-shopping .walk-shopping-heading{margin-bottom:20px}
-#walk-shopping .walk-shopping-disclosure{margin:0 0 20px;font-size:12px;line-height:1.7}
 #walk-shopping .walk-shopping-selection,#walk-shopping .walk-shopping-terms{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
 #nearby-section .home-more-discovery{margin-top:12px;border-top:1px solid var(--line)}
 #nearby-section .home-more-discovery>summary{min-height:64px;gap:8px;flex-wrap:wrap;line-height:1.6}
@@ -56,7 +55,7 @@
 #walk-shopping .walk-shopping-body .walk-shopping-check{font-size:11px;line-height:1.5;margin:0;color:#954326}
 #walk-shopping .walk-shopping-link{min-height:44px;padding:8px 10px;border-radius:9px;margin-top:auto;box-sizing:border-box;font-size:13px}
 #walk-shopping .walk-shopping-heading{margin-bottom:14px}
-#walk-shopping .walk-shopping-disclosure{font-size:11px;line-height:1.7;padding:10px 12px;margin-bottom:16px}
+#nearby-section #walk-shopping .walk-shopping-disclosure{font-family:var(--home-chapter-font);font-size:12px;font-weight:400;line-height:1.7;color:var(--experience-muted,#536159);background:none;border:0;border-radius:0;padding:0;margin:0 0 14px;word-break:keep-all;overflow-wrap:break-word}
 #walk-shopping .walk-shopping-terms{font-size:11px;line-height:1.8;margin:12px 0 0}
 @media(min-width:701px) and (max-width:1000px){#walk-shopping .walk-shopping-card{flex-basis:calc((100% - 16px)/2)}}
 @media(max-width:700px){#walk-shopping .walk-shopping-card{flex:0 0 min(84%,300px)}#walk-shopping .walk-shopping-photo{height:164px}#walk-shopping .walk-shopping-body{padding:14px}#walk-shopping .walk-shopping-link{min-height:46px}}
@@ -67,9 +66,9 @@
 #weather-meta a{color:inherit;text-underline-offset:3px}
 
 /* One readable type scale for the four home chapter headings, including region results. */
-#nearby-section{--home-chapter-size:30px;--home-chapter-font:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+#nearby-section{--home-chapter-size:30px;--home-chapter-kicker-size:11px;--home-chapter-font:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 #nearby-section :is(.home-chapter-title,#home-region-guides-title,#nearby-title,#home-dining-title,#home-stays-title,#walk-shopping-title){font-family:var(--home-chapter-font);font-size:var(--home-chapter-size);font-weight:600;line-height:1.45;letter-spacing:-.035em;color:var(--finish-ink);margin:12px 0;max-width:none;word-break:keep-all;overflow-wrap:break-word;text-wrap:balance;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-#nearby-section :is(.home-region-eyebrow,#nearby-kicker,.home-place-kicker,.walk-shopping-heading>span){font:600 11px/1.7 var(--home-chapter-font);letter-spacing:.045em;color:var(--moss)}
+#nearby-section :is(.home-region-eyebrow,#nearby-kicker,.home-place-kicker,.walk-shopping-heading>span){font:600 var(--home-chapter-kicker-size)/1.7 var(--home-chapter-font);letter-spacing:.045em;color:var(--moss);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 #nearby-section :is(.home-region-heading>div>p,#nearby-desc,.home-place-heading>p,#walk-shopping-subtitle){font:400 15px/1.8 var(--home-chapter-font);letter-spacing:-.015em;color:var(--finish-muted);word-break:keep-all}
 @media(max-width:700px){#nearby-section{--home-chapter-size:24px}#nearby-section :is(.home-region-heading>div>p,#nearby-desc,.home-place-heading>p,#walk-shopping-subtitle){font-size:14px}}
 @media(max-width:360px){#nearby-section{--home-chapter-size:22px}}

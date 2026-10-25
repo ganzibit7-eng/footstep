@@ -27,7 +27,7 @@ header #notif-btn{min-width:44px;min-height:44px;background:transparent!importan
 .journey-shortcuts i{font-style:normal;font-size:18px;color:var(--experience-muted)}
 .app-page:not(.hero) :is(.section-head,.home-section-head){margin-bottom:24px}
 .app-page:not(.hero) :is(.section-head h2,.home-section-head h2){font-weight:750;color:var(--experience-text);letter-spacing:-.045em}
-.app-page:not(.hero) .section-head .kicker{font:600 12px/1.7 var(--experience-font)!important;letter-spacing:0;color:var(--experience-accent)}
+.app-page:not(.hero):not(#nearby-section) .section-head .kicker{font:600 12px/1.7 var(--experience-font)!important;letter-spacing:0;color:var(--experience-accent)}
 .app-page:not(.hero) .section-head p{font-size:14px!important;line-height:1.8!important;color:var(--experience-muted);margin:12px 0 0}
 #nearby-section .course-card,#course-grid .course-card,#map-recommend-grid .course-card{border-color:var(--experience-line);border-radius:18px;box-shadow:none}
 #nearby-section .course-card h3,.course-card h3{font-family:var(--experience-font);font-weight:700;font-size:20px;line-height:1.5;letter-spacing:-.035em}
@@ -83,7 +83,7 @@ header #notif-btn{min-width:44px;min-height:44px;background:transparent!importan
 .walk-shopping :is(h3,p,small,a):not(#walk-shopping-subtitle){font-family:var(--experience-font)!important}
 .walk-shopping :is(h2,h3){color:var(--experience-text)}
 .walk-shopping-link{background:var(--experience-text);border-radius:11px;font-weight:600}
-.walk-shopping-disclosure{color:var(--experience-text);line-height:1.8}
+/* Home affiliate notice is styled in home-scenes.css. */
 @media(hover:hover){header .nav-links a:hover{background:var(--experience-soft)}.journey-shortcuts a:hover{background:var(--experience-soft);border-color:#bbc7b6}.course-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px #243c3210}}
 @media(min-width:881px){#list-section{padding-top:30px}.hero[data-page-section="home"] .hero-copy .hero-actions-refined{max-width:480px!important;flex-direction:row!important;align-items:stretch;gap:12px!important}.hero-actions-refined a{padding:14px 18px!important;font-size:14px!important;min-height:52px;border-radius:13px!important}.hero-actions-refined a:first-child{flex:1.2}.hero-actions-refined a:last-child{flex:1}}
 @media(max-width:1100px) and (min-width:881px){header .nav{gap:10px}header .nav-links a{padding:0 8px}header .nav-cta{display:none}}

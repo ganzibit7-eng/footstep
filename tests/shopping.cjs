@@ -16,7 +16,7 @@ for(const file of ['shopping-config.js','shopping.js'])vm.runInContext(fs.readFi
 const config=context.PawShoppingConfig;
 assert.equal(container.children.length,6);
 assert.equal(disclosure.hidden,false);
-assert.match(disclosure.textContent,/쿠팡 파트너스.*수수료를 제공받습니다/);
+assert.match(disclosure.textContent,/쿠팡 파트너스.*수수료를 지급받습니다/);
 const expected=['https://link.coupang.com/a/hLomp2aSSO','https://link.coupang.com/a/hLon6IPp9M','https://link.coupang.com/a/hLoo2HG96W','https://link.coupang.com/a/hLoo5AmPls','https://link.coupang.com/a/hLote0yBW0','https://link.coupang.com/a/hLosen1eOy'];
 const descendants=node=>node.children.flatMap(child=>[child,...descendants(child)]);
 assert.equal(config.items[0].id,'sweet-potato-snack');
@@ -50,6 +50,7 @@ const firstImage=descendants(container.children[0]).find(n=>n.tag==='img');first
 config.items=[{id:'bad',name:'<img src=x onerror=alert(1)>',url:'javascript:alert(1)',image:'https://evil.test/a.jpg'}];context.PawShopping.render();assert.equal(disclosure.hidden,true);assert.equal(descendants(container.children[0]).some(n=>n.tag==='a'||n.tag==='img'),false);assert.equal(descendants(container.children[0]).find(n=>n.tag==='h3').textContent,config.items[0].name);
 const html=fs.readFileSync(path.join(base,'index.html'),'utf8'),shoppingStart=html.indexOf('<section id="walk-shopping"'),section=html.slice(shoppingStart,html.indexOf('</section>',shoppingStart));
 const shoppingHeading=/<h2\b[^>]*\bid="walk-shopping-title"[^>]*>/.exec(section);assert.ok(shoppingHeading,'commercial heading exists');assert.ok(section.indexOf('id="walk-shopping-disclosure"')>=0&&section.indexOf('id="walk-shopping-disclosure"')<shoppingHeading.index,'disclosure precedes commercial recommendations');
+const initialDisclosure=/<p\b[^>]*id="walk-shopping-disclosure"[^>]*>([^<]+)<\/p>/.exec(section);assert.ok(initialDisclosure,'initial HTML contains the economic disclosure');assert.doesNotMatch(initialDisclosure[0],/\bhidden\b/,'disclosure is visible before JavaScript');assert.match(initialDisclosure[1],/쿠팡 파트너스.*구매 실적.*수수료를 지급받습니다/);
 assert.match(section,/현재 가격과 배송 조건은 쿠팡/);
 assert(!section.includes('walk-shopping-selection'),'repeated selection paragraph removed');
 assert.doesNotMatch(fs.readFileSync(path.join(base,'shopping.js'),'utf8'),/fetch\(|\.click\(|window\.open|location\.(href|assign)|setInterval/,'rendering must not generate clicks, navigation or background affiliate requests');

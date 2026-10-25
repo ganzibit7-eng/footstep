@@ -137,7 +137,7 @@ footer.site-footer .footer-description{font-size:13px;color:var(--finish-muted);
 #nearby-section .home-region-note{font-size:11px}
 
 #nearby-section .walk-shopping-heading p{margin-bottom:10px}
-#nearby-section .walk-shopping-disclosure{border:1px solid var(--finish-line);border-radius:10px;background:var(--finish-soft);color:var(--finish-ink);font-size:12px;font-weight:500;line-height:1.85;padding:12px 16px;margin-bottom:24px}
+/* Home affiliate notice is styled in home-scenes.css. */
 #nearby-section .walk-shopping-card h3{font-size:16px;font-weight:600;line-height:1.65;margin:7px 0 10px}
 #nearby-section .walk-shopping-card .walk-shopping-link{background:var(--finish-soft);color:var(--finish-ink);border:1px solid var(--finish-line);border-radius:9px;font-size:12px;font-weight:600;box-shadow:none;box-sizing:border-box}
 #nearby-section .walk-shopping-card .walk-shopping-check{font-size:12px;line-height:1.8}

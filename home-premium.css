@@ -71,7 +71,7 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 .walk-shopping-card .walk-shopping-option{padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px}
 .walk-shopping-terms{margin:14px 0 0}
 .walk-shopping-link{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:auto;padding:8px 10px;border-radius:12px;background:var(--pine-deep);color:var(--paper);font-size:13px;font-weight:700;text-decoration:none;text-align:center}
-.walk-shopping-disclosure{font-size:14px;font-weight:600;line-height:1.8;color:var(--pine-deep);background:var(--sand);padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin:0 0 18px}
+/* Home affiliate notice is styled in home-scenes.css. */
 .walk-shopping-disclosure[hidden]{display:none!important}
 .walk-shopping-guide{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;color:var(--pine-deep);font-size:13px;font-weight:700}
 .walk-shopping-featured{position:relative;border:1px solid var(--finish-line)}
@@ -90,7 +90,7 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 
 /* Photo-led region navigation, scoped to the homepage. */
 #nearby-section .home-region-guides{margin:28px 0;padding:30px;border:1px solid var(--experience-line);border-radius:28px;background:var(--paper)}
-#nearby-section .home-region-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--experience-muted)}
+#nearby-section .home-region-eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--experience-muted)}
 .home-region-eyebrow:before{content:'';width:6px;height:6px;border-radius:50%;background:#829778}
 #nearby-section .home-region-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin:12px 0 24px}
 
