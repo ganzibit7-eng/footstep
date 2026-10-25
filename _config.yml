@@ -8,6 +8,7 @@ exclude:
   - supabase
   - infrastructure
   - assets/place-photos
+  - DETAIL_PAGES_PROGRESS.md
   - AGENTS.md
   - README.md
   - "index .html"

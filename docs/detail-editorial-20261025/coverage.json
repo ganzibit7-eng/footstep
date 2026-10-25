@@ -34,8 +34,25 @@
     "passed": 249,
     "failed": 0
   },
-  "publicSourceBytes": 857560021,
+  "publicSourceBytes": 857553464,
   "production": {
-    "status": "pending"
+    "status": "verified",
+    "codeCommit": "a6d561a002",
+    "deployedCommit": "1d1cf17085",
+    "pagesWorkflow": 40206499055,
+    "applicationWorkflow": 40206500343,
+    "generationWorkflow": 40206500404,
+    "allThreeWorkflows": "success",
+    "distinctBrowserPages": 12,
+    "browserCombinations": 18,
+    "viewportWidths": [
+      390,
+      1280
+    ],
+    "failures": 0,
+    "gallery": "2 / 6",
+    "copyAddress": "success",
+    "verifiedGPX": "rendered",
+    "proposedGeometry": "not drawn"
   }
 }
