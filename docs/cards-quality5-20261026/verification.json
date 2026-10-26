@@ -18,7 +18,8 @@
     "passed": 267,
     "failed": 0,
     "includesPreExistingUntrackedOfflineShellTest": true,
-    "expectedTrackedCI": 266
+    "expectedTrackedCI": 266,
+    "lastTargetedCoveragePassed": 5
   },
   "browser": {
     "representativePages": 8,
@@ -48,14 +49,44 @@
     "home backgrounds, animations, sections and photo cards",
     "DB/schema/Auth/GPS/map geometry/points/admin/source data/URLs/SEO"
   ],
-  "pending": [
-    "GitHub push",
-    "CI and Pages",
-    "production representative validation"
-  ],
+  "pending": [],
   "limitations": [
     "No physical iPhone/Safari or Galaxy device test",
     "No live GPS or authentication/provider transaction test",
     "No new photographs or pet access policy claims"
-  ]
+  ],
+  "implementationCommit": "04043a95e06be8aba128ed7b4139a67681f0c720",
+  "github": {
+    "application": {
+      "id": 40260623632,
+      "conclusion": "success"
+    },
+    "generation": {
+      "id": 40260623540,
+      "conclusion": "success"
+    },
+    "pages": {
+      "id": 40260622104,
+      "conclusion": "success"
+    },
+    "searchNotification": {
+      "id": 40260952208,
+      "conclusion": "success"
+    }
+  },
+  "production": {
+    "pages": 8,
+    "widths": [
+      390,
+      1440
+    ],
+    "combinations": 16,
+    "overflow": 0,
+    "shortPrimaryCTA": 0,
+    "frameRatioErrors": 0,
+    "styleVersion": "20261026-cards5",
+    "loadState": "load",
+    "consoleErrors": 0,
+    "note": "An initial measurement before load completed reported one transient overflow; all 16 load-complete cases passed, including a repeat of that page."
+  }
 }
