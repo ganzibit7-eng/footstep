@@ -1,0 +1,26 @@
+{
+  "baseline": "c64b16ce13b1c06cc99fd1da1fd108cfc2e1e82d",
+  "details": 22317,
+  "listPages": 1114,
+  "relatedDetails": 4574,
+  "cardInstances": 58414,
+  "missingPhotoCardInstances": 32817,
+  "notices": 4136,
+  "visiblePhoneActions": 2401,
+  "unapplied": 0,
+  "localTests": 278,
+  "localPass": 278,
+  "expectedTrackedTests": 277,
+  "browserChecks": 84,
+  "browserWidths": [
+    360,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1440
+  ],
+  "physicalDevices": false,
+  "deployment": "pending"
+}

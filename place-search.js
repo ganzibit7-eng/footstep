@@ -1,11 +1,17 @@
 (function(root){
   'use strict';
   var categories=['공원관광','쇼핑','숙소','식당카페','캠핑'];
+  var textIndex=new WeakMap();
+  function searchable(item){
+    var prior=textIndex.get(item);
+    if(prior&&prior.name===item.name&&prior.region===item.region&&prior.info===item.info&&prior.conditions===item.conditions)return prior.text;
+    var value={name:item.name,region:item.region,info:item.info,conditions:item.conditions,text:[item.name,item.region,item.info,item.conditions].join(' ').toLocaleLowerCase('ko')};textIndex.set(item,value);return value.text;
+  }
   function category(item){return item.kind==='facilities'?(item.info||'').split(' · ').pop():'';}
   function filter(data,state){
     var words=(state.q||'').trim().toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
     return data.filter(function(item){
-      var text=[item.name,item.region,item.info,item.conditions].join(' ').toLocaleLowerCase('ko');
+      var text=searchable(item);
       return (!state.kind||item.kind===state.kind)&&(!state.region||item.region===state.region)&&(!state.category||category(item)===state.category)&&words.every(function(word){return text.includes(word);});
     });
   }
@@ -47,7 +53,7 @@
         var author=document.createElement('a'),license=document.createElement('a');author.href=item.photo.source;author.target='_blank';author.rel='noopener noreferrer';author.textContent='사진: '+(root.CardMedia?root.CardMedia.author(item.photo):item.photo.author);license.href=item.photo.licenseUrl;license.target='_blank';license.rel='noopener noreferrer';license.textContent='이용 조건 · '+(item.photo.license||'라이선스');
         var line=document.createElement('div'),details=document.createElement('details'),summary=document.createElement('summary'),full=document.createElement('div');line.className='premium-credit-line';line.append(author,document.createTextNode(' · '),license);summary.textContent='사진 정보';
         full.textContent=[root.CardMedia&&root.CardMedia.author(item.photo)!==item.photo.author?'제공·촬영: '+item.photo.author:'',item.photo.place?'사진 안내: '+item.photo.place:'',item.photo.licenseScope,item.photo.caption,item.photo.checked?'사진 자료 확인 '+item.photo.checked:'',item.photo.dateNote||(item.photo.date?'촬영일 '+item.photo.date:'촬영일 자료 미확인'),item.photo.changes,item.photo.deliveryNote,root.CardMedia?.fit(item.photo)==='cover'&&!/가장자리.{0,12}잘림/.test(item.photo.changes||'')?root.CardMedia.cropNote:'','현재 모습·출입 허용 구역을 보장하지 않습니다.'].filter(Boolean).join(' · ');details.append(summary,full);credits.append(line,details);
-      }else if(root.CardMedia)media.innerHTML=root.CardMedia.placeholder(label);
+      }else if(root.CardMedia){media.className+=' is-missing';media.innerHTML=root.CardMedia.placeholder(label);}
       else{var absent=document.createElement('p');absent.textContent=label+' · 사진 미등록';media.append(absent);}
       location.className='premium-card-meta';location.textContent=[item.region,label].filter(Boolean).join(' · ');
       a.href=item.path;a.textContent=item.name;a.className='directory-name';heading.className='premium-card-title';heading.append(a);
@@ -67,7 +73,7 @@
     if(append){var next=list.children[start]?.querySelector('.directory-name');if(next){next.focus({preventScroll:true});next.scrollIntoView({block:'nearest',behavior:'instant'});}}
 
   }
-  var summary=document.createElement('p');summary.id='place-active-filters';summary.className='directory-active-filters';count.parentElement.after(summary);
+  var summary=document.getElementById('place-active-filters');if(!summary){summary=document.createElement('p');summary.id='place-active-filters';summary.className='directory-active-filters';count.parentElement.after(summary);}
   function search(preserve){
     type.disabled=kind.value!==''&&kind.value!=='facilities';
     if(type.disabled)type.value='';
@@ -76,7 +82,7 @@
     if(selection)selection.textContent=[value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean).join(' · ')||'전체';
     summary.textContent=selected.join(' · ');summary.hidden=!selected.length;
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
-    if(!value.q&&!value.kind&&!value.region&&!value.category){matches=[];list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
+    if(!value.q&&!value.kind&&!value.region&&!value.category){document.documentElement?.removeAttribute('data-directory-requested');matches=[];list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
     matches=ordered(filter(data,value),sort?.value);render();remember();
   }
   form.addEventListener('submit',function(event){event.preventDefault();search(false);});

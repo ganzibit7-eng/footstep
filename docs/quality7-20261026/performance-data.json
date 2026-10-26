@@ -1,0 +1,22 @@
+{
+  "records": 4619,
+  "equivalentSearchStates": 48,
+  "removedBookkeepingFields": 8694,
+  "htmlBytes": {
+    "before": 5063354,
+    "after": 4681082
+  },
+  "gzipBytes": {
+    "before": 585168,
+    "after": 427717
+  },
+  "javascriptBytes": {
+    "before": 12102,
+    "after": 12778
+  },
+  "search48StatesMedianMs": {
+    "before": 196.17309999999998,
+    "after": 24.23129999999992
+  },
+  "note": "Node CPU benchmark; not a phone or live network measurement. Rights/source/facts and every result retained."
+}

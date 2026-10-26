@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {refineDiscovery} from '../scripts/discovery-layout.mjs';
-import {CONTROL_VERSION} from '../scripts/publish-control-polish.mjs';
+import {CONTROL_VERSION,controlAssetVersion} from '../scripts/publish-control-polish.mjs';
 const require=createRequire(import.meta.url),{filter,ordered}=require('../place-search.js');
 
 test('directory refinement preserves data, search controls, destinations and SEO',async()=>{
@@ -11,7 +11,8 @@ test('directory refinement preserves data, search controls, destinations and SEO
  assert.equal(refineDiscovery(html),html,'repeated generation is stable');
  const fixture='<!doctype html><head><link rel="canonical" href="https://balzaguk.com/discover.html"><script type="application/ld+json">{"@type":"CollectionPage"}</script></head><body class="reading-page"><a class="brand" href="/">발자국</a><nav aria-label="빠른 탐색"><a href="#places">장소</a></nav><section id="find-place"><form id="place-search"><label for="place-query">이름</label><input id="place-query" type="search"><label for="place-kind">종류</label><select id="place-kind"><option>전체</option></select><label for="place-region">지역</label><select id="place-region"></select><label for="place-category">업종</label><select id="place-category"></select></form><p id="place-count" role="status">안내</p></section><section id="with-dog-regions"></section><script id="place-data">[{"name":"미확인","conditions":"문의"}]</script></body>';
  const next=refineDiscovery(fixture);
- for(const pattern of [/<script[^>]*>[\s\S]*?<\/script>/g,/<link rel="canonical"[^>]*>/g])assert.deepEqual([...fixture.matchAll(pattern)].map(m=>m[0]),[...next.matchAll(pattern)].map(m=>m[0]));
+ for(const pattern of [/<script[^>]*>[\s\S]*?<\/script>/g,/<link rel="canonical"[^>]*>/g])assert.deepEqual([...fixture.matchAll(pattern)].map(m=>m[0]),[...next.matchAll(pattern)].map(m=>m[0]).filter(s=>!s.startsWith('<script data-directory-layout>')));
+ assert.equal((next.match(/<script data-directory-layout>/g)||[]).length,1,'one early layout initializer, original scripts unchanged');
  for(const id of ['query','kind','region','category'])assert.equal((next.match(new RegExp('id="place-'+id+'"','g'))||[]).length,1);
  assert.equal((next.match(/class="search-field"/g)||[]).length,4);assert(next.includes('href="#places"'));
  assert(next.includes('id="place-sort"'));assert.equal(refineDiscovery(next),next);
@@ -30,7 +31,7 @@ test('shared reading theme cannot style home cards or administrator screens',asy
  const css=await readFile(new URL('../internal-pages.css',import.meta.url),'utf8');
  assert(!/\.home-|#nearby-|#admin-|:root\s*\{|^body\s*\{/m.test(css));
  assert(css.includes('body.reading-page'));assert(css.includes('object-fit:contain'));
- const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v='+CONTROL_VERSION+'")'));
+ const reading=await readFile(new URL('../readability.css',import.meta.url),'utf8');assert(reading.startsWith('@import url("/internal-pages.css?v='+controlAssetVersion('internal-pages')+'")'));
  const generator=await readFile(new URL('../scripts/generate-seo.mjs',import.meta.url),'utf8');assert(generator.includes('refineDiscovery(refinePlaceDetail(html))'));
 });
 

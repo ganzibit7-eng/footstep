@@ -1,4 +1,4 @@
-@import url('/card-media.css?v=20261026-quality6');
+@import url('/card-media.css?v=20261026-quality7');
 @import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Detail-only design system. The home page never imports this stylesheet. */
 body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;font-size:15px;line-height:1.8;letter-spacing:-.02em}

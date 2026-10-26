@@ -1,0 +1,1843 @@
+[
+  {
+    "mode": "before",
+    "pass": 0,
+    "cls": 0.1299860012480815,
+    "events": [
+      {
+        "ms": 0,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 21.100000023841854,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 31.200000047683716,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 21.399999976158146,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0.10000002384185792,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 16,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 13.400000095367432,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 26.399999976158146,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0.10000002384185792,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 32.60000002384186,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.700000047683716,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.5,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.399999976158142,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 5063391,
+      "domContentLoaded": 314.5,
+      "load": 339.5,
+      "responseEnd": 77.09999990463257,
+      "transferBytes": 5063691
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 15080
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 300
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 300
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 300
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 19946
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 300
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-before-search.js?v=baseline",
+        "transfer": 300
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "directory-results-bar",
+            "id": "",
+            "tag": "DIV"
+          },
+          {
+            "cls": "discovery-directory",
+            "id": "",
+            "tag": "DETAILS"
+          },
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          },
+          {}
+        ],
+        "value": 0.1299860012480815
+      }
+    ]
+  },
+  {
+    "mode": "before",
+    "pass": 1,
+    "cls": 0.1299860012480815,
+    "events": [
+      {
+        "ms": 0.10000002384185792,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.899999976158142,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.700000047683716,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.5,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 17.299999952316284,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.799999952316284,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.099999904632568,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.200000047683716,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.399999976158142,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.299999952316284,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0.10000002384185792,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.399999976158142,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 5063391,
+      "domContentLoaded": 164.29999995231628,
+      "load": 171.69999992847443,
+      "responseEnd": 71.5,
+      "transferBytes": 300
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-before-search.js?v=baseline",
+        "transfer": 300
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 625774,
+        "name": "kto-2908228-0ce04ae60d6a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 425211,
+        "name": "kto-615850-b23028d9e843.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739407-301e0569ffa1.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-139689.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-912647-68a95277ba49.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 75644,
+        "name": "kto-232298-f6cc96d9014c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017499-0dba64ff5cc5.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2468936.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-1821483-3f8fb265417a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 682763,
+        "name": "kto-2745675-55868af86f2a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2759926-a15b8f4c26de.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2791523-9c1de1fe906c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2909627.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739391.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "directory-results-bar",
+            "id": "",
+            "tag": "DIV"
+          },
+          {
+            "cls": "discovery-directory",
+            "id": "",
+            "tag": "DETAILS"
+          },
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          },
+          {}
+        ],
+        "value": 0.1299860012480815
+      }
+    ]
+  },
+  {
+    "mode": "before",
+    "pass": 2,
+    "cls": 0.1299860012480815,
+    "events": [
+      {
+        "ms": 0,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 13.899999976158142,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.5,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.800000071525574,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0.10000002384185792,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 14.5,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.5,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.399999976158142,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.700000047683716,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.399999976158142,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.200000047683716,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 5063391,
+      "domContentLoaded": 161.5,
+      "load": 171.39999997615814,
+      "responseEnd": 75.10000002384186,
+      "transferBytes": 300
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-before-search.js?v=baseline",
+        "transfer": 300
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 625774,
+        "name": "kto-2908228-0ce04ae60d6a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 425211,
+        "name": "kto-615850-b23028d9e843.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739407-301e0569ffa1.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-139689.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-912647-68a95277ba49.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 75644,
+        "name": "kto-232298-f6cc96d9014c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017499-0dba64ff5cc5.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2468936.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-1821483-3f8fb265417a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 682763,
+        "name": "kto-2745675-55868af86f2a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2759926-a15b8f4c26de.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2791523-9c1de1fe906c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2909627.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739391.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "directory-results-bar",
+            "id": "",
+            "tag": "DIV"
+          },
+          {
+            "cls": "discovery-directory",
+            "id": "",
+            "tag": "DETAILS"
+          },
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          },
+          {}
+        ],
+        "value": 0.1299860012480815
+      }
+    ]
+  },
+  {
+    "mode": "after",
+    "pass": 0,
+    "cls": 0.0003027081226253259,
+    "events": [
+      {
+        "ms": 0,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.100000023841858,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.899999976158142,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0.09999990463256836,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.399999976158142,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.200000047683716,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.800000071525574,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.5,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.899999976158142,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.599999904632568,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 4681128,
+      "domContentLoaded": 177.30000007152557,
+      "load": 181.20000004768372,
+      "responseEnd": 73.60000002384186,
+      "transferBytes": 4681428
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-search.js?v=20261026-quality7",
+        "transfer": 300
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 625774,
+        "name": "kto-2908228-0ce04ae60d6a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 425211,
+        "name": "kto-615850-b23028d9e843.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739407-301e0569ffa1.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-139689.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-912647-68a95277ba49.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 75644,
+        "name": "kto-232298-f6cc96d9014c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017499-0dba64ff5cc5.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2468936.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-1821483-3f8fb265417a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 682763,
+        "name": "kto-2745675-55868af86f2a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2759926-a15b8f4c26de.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2791523-9c1de1fe906c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2909627.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739391.jpg",
+        "transfer": 0
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          }
+        ],
+        "value": 0.0003027081226253259
+      }
+    ]
+  },
+  {
+    "mode": "after",
+    "pass": 1,
+    "cls": 0.0003027081226253259,
+    "events": [
+      {
+        "ms": 0,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10.199999928474426,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.100000023841858,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 13.600000023841858,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.200000047683716,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.100000023841858,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.200000047683716,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.600000023841858,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 8.799999952316284,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.800000071525574,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.699999928474426,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 4681128,
+      "domContentLoaded": 194.30000007152557,
+      "load": 201.39999997615817,
+      "responseEnd": 106.20000004768372,
+      "transferBytes": 300
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-search.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 625774,
+        "name": "kto-2908228-0ce04ae60d6a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 425211,
+        "name": "kto-615850-b23028d9e843.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-139689.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739407-301e0569ffa1.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-912647-68a95277ba49.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 75644,
+        "name": "kto-232298-f6cc96d9014c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017499-0dba64ff5cc5.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2468936.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-1821483-3f8fb265417a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 682763,
+        "name": "kto-2745675-55868af86f2a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2759926-a15b8f4c26de.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2791523-9c1de1fe906c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2909627.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739391.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          }
+        ],
+        "value": 0.0003027081226253259
+      }
+    ]
+  },
+  {
+    "mode": "after",
+    "pass": 2,
+    "cls": 0.0003027081226253259,
+    "events": [
+      {
+        "ms": 0,
+        "results": "등록 정보 4,169곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.400000095367432,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 300곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.400000095367432,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 28곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12.700000047683716,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 878곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 11.099999904632568,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 1,075곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 12,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 195곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.699999928474426,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 51곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 10,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 778곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.299999952316284,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 489곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.899999976158142,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "submit"
+      },
+      {
+        "ms": 0,
+        "results": "등록 정보 574곳 중 20곳 표시",
+        "type": "click"
+      },
+      {
+        "ms": 9.700000047683716,
+        "results": "등록 정보 110곳 중 20곳 표시",
+        "type": "submit"
+      }
+    ],
+    "navigation": {
+      "decodedBytes": 4681128,
+      "domContentLoaded": 162,
+      "load": 171.20000004768372,
+      "responseEnd": 74.10000002384186,
+      "transferBytes": 0
+    },
+    "resources": [
+      {
+        "bytes": 213394,
+        "name": "css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 14780,
+        "name": "readability.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 2118,
+        "name": "course-comfort.css?v=20261010-env",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "listing-editorial.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-presentation.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 1187,
+        "name": "icon-192.png",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "card-media.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 508,
+        "name": "ui-control-tokens.css?v=20261026-controls4-final",
+        "transfer": 0
+      },
+      {
+        "bytes": 377620,
+        "name": "css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+        "transfer": 0
+      },
+      {
+        "bytes": 19646,
+        "name": "internal-pages.css?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 25880,
+        "name": "PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "place-search.js?v=20261026-quality7",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017735.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2727332.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2728203-14151e14ec24.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2740726.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2498993-7c3d1fd85ae2.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-979536.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 625774,
+        "name": "kto-2908228-0ce04ae60d6a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 425211,
+        "name": "kto-615850-b23028d9e843.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739407-301e0569ffa1.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-139689.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-912647-68a95277ba49.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 75644,
+        "name": "kto-232298-f6cc96d9014c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2017499-0dba64ff5cc5.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2468936.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-1821483-3f8fb265417a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 682763,
+        "name": "kto-2745675-55868af86f2a.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2759926-a15b8f4c26de.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2791523-9c1de1fe906c.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2909627.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "kto-2739391.jpg",
+        "transfer": 0
+      },
+      {
+        "bytes": 1115,
+        "name": "photo-display.js?v=20261018-r2",
+        "transfer": 0
+      },
+      {
+        "bytes": 217945,
+        "name": "supabase.js",
+        "transfer": 0
+      },
+      {
+        "bytes": 6887,
+        "name": "traffic.js?v=20261003",
+        "transfer": 0
+      },
+      {
+        "bytes": 0,
+        "name": "quality7-metrics.js",
+        "transfer": 300
+      }
+    ],
+    "shifts": [
+      {
+        "nodes": [
+          {
+            "cls": "",
+            "id": "place-filter-selection",
+            "tag": "SPAN"
+          }
+        ],
+        "value": 0.0003027081226253259
+      }
+    ]
+  }
+]

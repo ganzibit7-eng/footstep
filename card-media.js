@@ -14,16 +14,19 @@
   camping:'m3 19 9-14 9 14H3Zm9-14v14m-5 0 5-8 5 8',
   park:'M12 3 5 14h4l-3 4h12l-3-4h4L12 3Zm0 15v3',
   professional:'M8 4h8v4h4v8h-4v4H8v-4H4V8h4V4Z',
+  grooming:'M9 9 19 19M9 15 19 5M7 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
+  care:'M4 11 12 4l8 7v9H4v-9Zm5 9v-6h6v6',
+  retail:'M5 8h14l1 12H4L5 8Zm4 0V6a3 3 0 0 1 6 0v2',
   course:'M5 19c11 0 11-6 5-6S4 7 18 7m-3-3 3 3-3 3',
   place:'M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Zm-7-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'
  };
- function kind(label){return /카페|식당/.test(label)?'dining':/숙소|호텔/.test(label)?'stay':/캠핑/.test(label)?'camping':/공원|관광/.test(label)?'park':/병원|전문|미용|돌봄|약국/.test(label)?'professional':/코스|산책/.test(label)?'course':'place';}
+ function kind(label){return /카페|식당/.test(label)?'dining':/숙소|호텔/.test(label)?'stay':/캠핑/.test(label)?'camping':/공원|관광/.test(label)?'park':/미용/.test(label)?'grooming':/돌봄|위탁/.test(label)?'care':/쇼핑|용품|판매/.test(label)?'retail':/병원|약국/.test(label)?'professional':/코스|산책/.test(label)?'course':'place';}
  function placeholder(label='장소',note='사진 미등록'){
-  return '<div class="premium-placeholder" role="img" aria-label="'+esc(label)+' '+esc(note)+'"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="'+paths[kind(label)]+'"/></svg><span>'+esc(label)+'</span><small>'+esc(note)+'</small></div>';
+  return '<div class="premium-placeholder" data-placeholder-kind="'+kind(label)+'" role="img" aria-label="'+esc(label)+' '+esc(note)+'"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="'+paths[kind(label)]+'"/></svg><span>'+esc(label)+'</span><small>'+esc(note)+'</small></div>';
  }
  function image(photo,{src,name,href,category='장소'}={}){
   const media=photo?'<img src="'+esc(src||photo.src)+'" alt="'+esc(photo.place||name||category)+' 장소 사진" width="'+Number(photo.width||0)+'" height="'+Number(photo.height||0)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-card-fit="'+fit(photo)+'">':placeholder(category);
-  return '<div class="premium-card-media">'+(href?'<a href="'+esc(href)+'" tabindex="-1">'+media+'</a>':media)+'</div>';
+  return '<div class="premium-card-media'+(photo?'':' is-missing')+'">'+(href?'<a href="'+esc(href)+'" tabindex="-1">'+media+'</a>':media)+'</div>';
  }
  function author(photo){return String(photo.author||'사진 출처').replace(/\(\s*관광정보 제공기관\s*\)/g,'').replace(/\s*·\s*촬영자 미표기/g,'').trim();}
  function credits(photo,credit=''){
@@ -34,5 +37,6 @@
  function mark(image,photo){image.setAttribute('data-card-fit',fit(photo));}
  function address(value,area=''){const full=String(value||'').trim();return area&&full.startsWith(area+' ')?full.slice(area.length).trim():full===area?'':full;}
  const factNote=row=>row.label==='추가 동반 수칙'||row.value==='세부 기준 미확인';
- return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author});
+ function professionalNote(labels){const s=String(labels);return /병원/.test(s)?'진료 대상·예약은 병원에 확인':/약국/.test(s)?'취급 품목·운영시간은 약국에 확인':/미용/.test(s)?'미용 이용 조건·예약은 업소에 확인':/돌봄|위탁/.test(s)?'위탁 기준·예약은 업소에 확인':'서비스·이용 조건은 업소에 확인';}
+ return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author,professionalNote});
 });

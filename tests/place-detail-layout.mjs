@@ -13,7 +13,8 @@ test('refinement preserves source facts, photographs, links and structured data'
   assert.deepEqual([...after.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]),[...before.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(x=>x[1]));
   const panel=before.match(/<section aria-label="반려견 동반 조건"[\s\S]*?<\/section>/)[0];for(const [,value] of panel.matchAll(/<dd[^>]*>([\s\S]*?)<\/dd>/g)){if(text(value).startsWith('미확인'))continue;for(const sentence of text(value).split(/(?<=[.!?])\s+/))assert(text(after).includes(sentence),'source condition preserved: '+sentence);}assert(after.includes('id="detail-conditions"'));
   const credits=before.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)[1];assert(after.includes(credits),'all credit and license text remains available');
-  const destinations=new Set([...after.matchAll(/href="([^"]+)"/g)].map(x=>new URL(x[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href));for(const match of before.matchAll(/href="([^"]+)"/g))assert(destinations.has(new URL(match[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href),"destination retained: "+match[1]);
+  const destinations=new Set([...after.matchAll(/href="([^"]+)"/g)].map(x=>new URL(x[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href));
+  for(const match of before.matchAll(/href="([^"]+)"/g)){const url=new URL(match[1].replaceAll("&amp;","&"),"https://balzaguk.com/");assert(destinations.has(url.href)||(url.origin==='https://balzaguk.com'&&url.pathname==='/'&&url.searchParams.has('facility')&&!url.hash&&destinations.has(url.href+'#map')),"destination retained: "+match[1]);}
   assert.equal((after.match(/data-place-save=/g)||[]).length,1,'one visible bookmark action');
   assert(after.indexOf('<div class="detail-toolbar"')<after.indexOf('<figure class="detail-slide"'));
   assert(after.indexOf('<details class="place-directory"')>after.indexOf('</article>'));

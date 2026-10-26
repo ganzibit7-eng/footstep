@@ -1,0 +1,31 @@
+{
+  "map": {
+    "url": "https://balzaguk.com/?facility=gocamping_7757#map",
+    "markerConfirmedByRole": true
+  },
+  "detailAfterOneBack": {
+    "title": "가야산오토캠핑장",
+    "url": "http://127.0.0.1:8989/places/gocamping_7757/"
+  },
+  "listBack": {
+    "cards": 40,
+    "category": "캠핑",
+    "scroll": 6828,
+    "sort": "name",
+    "url": "http://127.0.0.1:8989/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40#find-place"
+  },
+  "keyboardReturn": {
+    "before": 6828,
+    "after": {
+      "cards": 40,
+      "scroll": 6828,
+      "sort": "name",
+      "url": "http://127.0.0.1:8989/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40#find-place"
+    }
+  },
+  "favorite": {
+    "pressed": "true",
+    "status": "이 브라우저에 찜했어요. 홈에서 다시 볼 수 있어요."
+  },
+  "favoriteCleanup": "Removed after testing"
+}

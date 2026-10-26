@@ -7,12 +7,17 @@
 .premium-placeholder{height:100%;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#607066;background:#eeefe9;font:500 13px/1.5 system-ui,sans-serif;letter-spacing:-.02em}
 .premium-placeholder svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px}
 .premium-placeholder small{font-size:11px;font-weight:400;color:#738075}
+/* No-photo rows need a concise category header, not an empty photo-sized box.
+   In mixed rows subgrid still aligns the following title and CTA tracks. */
+:is(.editorial-listing,.editorial-detail,.discovery-page) .premium-card-media.is-missing{aspect-ratio:auto;min-height:88px;background:#f0f1eb;border-bottom:1px solid #e1e5dc}
+:is(.editorial-listing,.editorial-detail,.discovery-page) .is-missing .premium-placeholder{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto;align-content:center;align-items:center;justify-items:start;column-gap:12px;row-gap:2px;padding:16px 20px;box-sizing:border-box;background:transparent;min-height:88px}
+:is(.editorial-listing,.editorial-detail,.discovery-page) .is-missing .premium-placeholder svg{grid-row:span 2;width:28px;height:28px;margin:0}
 :is(.editorial-listing,.editorial-detail,.discovery-page) .premium-place-card>:not(.premium-card-media){margin-left:20px!important;margin-right:20px!important;min-width:0}
 .premium-place-card .premium-card-meta{font:500 12px/1.7 system-ui,sans-serif!important;color:#667568;margin-top:18px!important;margin-bottom:6px!important;overflow-wrap:anywhere;align-self:start}
 .premium-place-card :is(h2,h3).premium-card-title{font-family:inherit!important;font-size:20px!important;font-weight:650!important;letter-spacing:-.035em!important;line-height:1.55!important;margin-top:0!important;margin-bottom:8px!important;word-break:keep-all;overflow-wrap:anywhere;align-self:start;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .premium-place-card .premium-card-title a{display:block;font:inherit!important;line-height:inherit!important;min-height:44px;padding:4px 0;text-decoration:none!important;color:inherit}
 .premium-place-card .premium-card-context{margin-top:0!important;margin-bottom:12px!important;align-self:start;color:#667366;font-size:14px;line-height:1.8;overflow-wrap:anywhere}
-.premium-place-card .premium-card-context p{font:inherit!important;margin:0!important;color:inherit!important;line-height:inherit!important;display:block!important;overflow:visible!important;max-height:none!important;-webkit-line-clamp:2!important;display:-webkit-box!important;-webkit-box-orient:vertical;overflow:hidden!important}
+.premium-place-card .premium-card-context p{font:inherit!important;margin:0!important;color:inherit!important;line-height:inherit!important;max-height:none!important;-webkit-line-clamp:2!important;display:-webkit-box!important;-webkit-box-orient:vertical;overflow:hidden!important}
 .premium-place-card .premium-card-context small{display:block;font-size:12px;margin-top:6px}
 .premium-place-card .premium-card-facts{display:block;margin-top:0!important;margin-bottom:12px!important;align-self:start;overflow-wrap:anywhere}
 .premium-place-card .premium-card-facts>div{margin:0 0 10px;padding:0;border:0;display:block}

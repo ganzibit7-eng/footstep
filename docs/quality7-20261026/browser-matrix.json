@@ -1,0 +1,968 @@
+[
+  {
+    "path": "/places/cafes/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      221,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      198,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/camping/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      223,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      221
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      198
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      223
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c387/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/discover.html?kind=facilities&category=캠핑#find-place",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/gocamping_100000/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 360,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 375,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 390,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 430,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      89,
+      89,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 768,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      140,
+      140,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 1024,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      197,
+      197,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 1440,
+    "brokenAboveFold": 0,
+    "joinedNotice": false,
+    "missingFrames": [
+      212,
+      212,
+      89
+    ],
+    "overflow": false,
+    "shortCTA": 0
+  }
+]

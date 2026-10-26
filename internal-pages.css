@@ -1,4 +1,4 @@
-@import url('/card-media.css?v=20261026-quality6');
+@import url('/card-media.css?v=20261026-quality7');
 @import url('/ui-control-tokens.css?v=20261026-controls4-final');
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 /* Public reading surfaces only. Home cards, app routes and admin are out of scope. */
@@ -92,6 +92,10 @@ body.reading-page{--rp-bg:#faf8f1;--rp-paper:#fffefa;--rp-ink:#243c32;--rp-muted
 /* Feedback stays on interactive surfaces; source photographs retain their full ratio. */
 .discovery-page .directory-active-filters{margin:-10px 0 20px;font-size:12px;line-height:1.7;color:var(--rp-muted);overflow-wrap:anywhere}
 .discovery-page .directory-active-filters[hidden]{display:none}
+.discovery-page .directory-active-filters:empty{display:none}
+html[data-directory-requested] .discovery-page #place-results:empty{min-height:60vh}
+html[data-directory-requested] .discovery-page .directory-active-filters{display:block;min-height:21px}
+@media(max-width:600px){.discovery-page #place-count{min-height:44px}}
 .discovery-page #place-results>.directory-empty{grid-column:1/-1;display:block;padding:32px 0 40px;border-block:1px solid var(--rp-line)}
 .discovery-page .directory-empty strong{font-size:16px;font-weight:600}.discovery-page .directory-empty p{font-size:13px;color:var(--rp-muted);margin:8px 0 18px}
 .discovery-page .directory-empty button{min-height:44px;padding:10px 16px;border:1px solid var(--rp-line);border-radius:7px;background:var(--rp-paper);color:var(--rp-ink);font-family:inherit;font-size:13px;font-weight:500;line-height:1.5;cursor:pointer}
