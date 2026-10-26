@@ -1,5 +1,5 @@
 {
-  "status": "local validation complete; GitHub and production validation pending",
+  "status": "complete; GitHub main push, CI, Pages and production verified",
   "baseline": "3353855770",
   "detailCommit": "7b13ebb89d",
   "tests": {
@@ -95,5 +95,39 @@
     "No physical iOS/Android GPS or native sharing/phone call completion test",
     "Heap API samples not isolated per document; no memory reduction claim",
     "First result latency increased by the additional request in the measured local environment"
-  ]
+  ],
+  "searchCommit": "22bc57d9b4ff41b06a69426be8938c64f72c993e",
+  "production": {
+    "checks": 24,
+    "widths": [
+      390,
+      1440
+    ],
+    "overflow": 0,
+    "shortCTA": 0,
+    "searchManifestVersion": 1,
+    "records": 4619,
+    "dataLoaded": true,
+    "backFlow": {
+      "before": {
+        "count": "등록 정보 1,064곳 중 40곳 표시",
+        "url": "https://balzaguk.com/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40&verify=22bc57d9b4#find-place",
+        "y": 11506.6669921875
+      },
+      "after": {
+        "count": "등록 정보 1,064곳 중 40곳 표시",
+        "url": "https://balzaguk.com/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40&verify=22bc57d9b4#find-place",
+        "y": 11506.6669921875
+      }
+    },
+    "consoleErrors": 0,
+    "note": "Normal previously visited URL initially used cached pre-B HTML; fresh verification query confirmed version 1 and quality8-data. No cache/global user settings changed."
+  },
+  "ci": {
+    "Application": 40319871382,
+    "SEO": 40319871430,
+    "Pages": 40319871089,
+    "SearchNotification": 40320372590,
+    "result": "all success"
+  }
 }

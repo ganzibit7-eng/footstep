@@ -1,4 +1,4 @@
-# 8차 품질 개선 — 전체 로컬 검증 완료, 운영 배포 대기
+# 8차 품질 개선 — 완료·배포 확인
 
 기준 main 3353855770. 2026-10-26.
 
@@ -37,8 +37,20 @@
 ![탐색 모바일](after-discover-mobile.jpg)
 ![탐색 PC](after-discover-pc.jpg)
 
-## 남은 확인
-GitHub main push 및 Application/SEO/Pages 확인 후 운영 대표 24화면을 점검한다. 임시 측정·장애 모사 파일은 배포에서 제외한다.
+## GitHub·운영 검증 완료
+- 상세 개선 main: `7b13ebb89d`; 검색 개선 main: `22bc57d9b4ff41b06a69426be8938c64f72c993e`.
+- Application 40319871382 / SEO 40319871430 / Pages 40319871089 / 검색 알림 40320372590 모두 success. 재생성에 따른 추가 소스 변경 없음.
+- 운영 대표 12화면×390/1440px=24 점검, 가로 넘침·짧은 CTA 0. 새 manifest 버전 1, 4,619건 JSON을 받아 캠핑 1,064곳을 정상 검색했다.
+- 운영에서도 캠핑/이름순/40개→상세→방문 준비→목록 뒤로가기 후 y=11506.6669921875 정확히 복원. `production-flow.json` 참조.
+- 기존 방문 URL은 이전 HTML 캐시가 잠시 보였으며, 새 검증 query로 실제 배포 버전과 자산을 확인했다. 사용자 브라우저/계정의 캐시·설정은 변경하지 않았다.
+- 임시 측정·장애 모사 파일 제거, 기존 미추적 supabase/.temp·tests/offline-shell.cjs 제외. 로컬 미리보기 종료.
+
+## 운영 화면
+![운영 모바일 시설](production-facilities-mobile.jpg)
+![운영 PC 시설](production-facilities-pc.jpg)
+
+## 남은 예외
+실기기 iOS/Android GPS·OS 공유/전화 발신·회원 서버 동기화는 이번 표시 변경에서 직접 실행하지 않았다. 신규 사실·사진·평점·가상 경로를 생성하지 않았다. 첫 검색 지연과 페이지별 정확한 메모리는 위 측정 한계를 그대로 남긴다. 요청한 8차 코드 구현·전체 자동 검사·대표 브라우저·운영 배포 검증은 완료했다.
 
 ![시설 모바일 이전](before-facilities-mobile.jpg)
 ![시설 모바일 이후](after-facilities-mobile.jpg)
