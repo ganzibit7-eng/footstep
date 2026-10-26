@@ -22,5 +22,16 @@
     1440
   ],
   "physicalDevices": false,
-  "deployment": "pending"
+  "deployment": {
+    "sha": "0dc725d8db94eedc2e53f3857cdc650415e0300c",
+    "application": 40293586414,
+    "generation": 40293586315,
+    "pages": 40293583867,
+    "notification": 40294110321,
+    "result": "success",
+    "productionCombinations": 24,
+    "productionProblems": 0,
+    "consoleErrors": 0,
+    "weatherMerge": "4164c5efd36108fc04c50fc976ac4f7645894599"
+  }
 }
