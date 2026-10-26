@@ -1,0 +1,9 @@
+{
+  "normalURL": true,
+  "heading": "서울 반려동물 전문업소",
+  "overflow": false,
+  "scripts": [
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+    "https://balzaguk.com/traffic.js?v=20261026-quality9"
+  ]
+}

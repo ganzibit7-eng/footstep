@@ -1,0 +1,35 @@
+{
+  "checked": "2026-10-27 Asia/Seoul",
+  "implementation": "f7968055ab",
+  "runs": [
+    {
+      "id": 40359743420,
+      "name": "Generate SEO pages",
+      "sha": "f7968055ab",
+      "status": "completed",
+      "result": "success"
+    },
+    {
+      "id": 40359743348,
+      "name": "Application checks",
+      "sha": "f7968055ab",
+      "status": "completed",
+      "result": "success"
+    },
+    {
+      "id": 40359743260,
+      "name": "Notify search engines after deployment",
+      "sha": "f7968055ab",
+      "status": "completed",
+      "result": "success"
+    },
+    {
+      "id": 40359742370,
+      "name": "pages build and deployment",
+      "sha": "f7968055ab",
+      "status": "completed",
+      "result": "success"
+    }
+  ],
+  "note": "Required implementation checks and deployment succeeded. An additional workflow_run-triggered search notification may complete separately."
+}
