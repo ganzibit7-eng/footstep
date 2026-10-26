@@ -57,5 +57,32 @@
     "appCourseViewportCombinations": 7,
     "physicalDevices": false
   },
-  "deployment": "pending"
+  "deployment": {
+    "sha": "6545ea6a2096005949f81345169841a620e80e32",
+    "application": {
+      "id": 40286258650,
+      "result": "success"
+    },
+    "generation": {
+      "id": 40286258622,
+      "result": "success"
+    },
+    "pages": {
+      "id": 40286258007,
+      "result": "success"
+    },
+    "notification": {
+      "id": 40286657947,
+      "result": "success"
+    },
+    "productionRepresentativeCombinations": 24,
+    "overflow": 0,
+    "smallCardCTA": 0,
+    "consoleErrors": 0,
+    "ruleAsset": "20261026-quality6-rules"
+  },
+  "implementationCommits": [
+    "7f3fa825e4191b0b93332e282abea053d69238c8",
+    "6545ea6a2096005949f81345169841a620e80e32"
+  ]
 }

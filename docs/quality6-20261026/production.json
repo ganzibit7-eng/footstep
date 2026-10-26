@@ -1,0 +1,233 @@
+{
+  "rule": {
+    "card": [
+      {
+        "facts": [
+          "모든 반려견 출입가능",
+          "목줄 착용,매너벨트 착용",
+          "상세 확인"
+        ],
+        "name": "누닝 펫푸드카페"
+      }
+    ],
+    "script": "https://balzaguk.com/place-presentation.js?v=20261026-quality6-rules"
+  },
+  "matrix": [
+    {
+      "path": "/places/camping/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 48,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "애견동반 캠핑장"
+    },
+    {
+      "path": "/places/camping/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 48,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "애견동반 캠핑장"
+    },
+    {
+      "path": "/places/cafes/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 48,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "애견동반 식당·카페"
+    },
+    {
+      "path": "/places/cafes/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 48,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "애견동반 식당·카페"
+    },
+    {
+      "path": "/places/regions/seoul/stays/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 5,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "서울 애견동반 숙소"
+    },
+    {
+      "path": "/places/regions/seoul/stays/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 5,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "서울 애견동반 숙소"
+    },
+    {
+      "path": "/places/kto_39a2b569-0f3a-47bc-97fb-7bdcad5fdf1a/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 6,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "금방아 민박캠핑장"
+    },
+    {
+      "path": "/places/kto_39a2b569-0f3a-47bc-97fb-7bdcad5fdf1a/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 6,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "금방아 민박캠핑장"
+    },
+    {
+      "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 12,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "프레이저 플레이스 센트럴 서울"
+    },
+    {
+      "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 12,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "프레이저 플레이스 센트럴 서울"
+    },
+    {
+      "path": "/places/kto_new_20261020_2875939/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 3,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "카페라르고빌"
+    },
+    {
+      "path": "/places/kto_new_20261020_2875939/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 3,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "카페라르고빌"
+    },
+    {
+      "path": "/places/kto_new_20261020_2930334/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 8,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "광교호수공원 반려견 놀이터"
+    },
+    {
+      "path": "/places/kto_new_20261020_2930334/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 8,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "광교호수공원 반려견 놀이터"
+    },
+    {
+      "path": "/places/gocamping_100000/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 4,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "파크킹"
+    },
+    {
+      "path": "/places/gocamping_100000/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 4,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "파크킹"
+    },
+    {
+      "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 0,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "24시 글로리 동물병원"
+    },
+    {
+      "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 0,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "24시 글로리 동물병원"
+    },
+    {
+      "path": "/pet-care/seoul/all/1/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 100,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "서울 반려동물 전문업소"
+    },
+    {
+      "path": "/pet-care/seoul/all/1/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 100,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "서울 반려동물 전문업소"
+    },
+    {
+      "path": "/courses/c387/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 9,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "광교호수공원 보행로 산책 코스"
+    },
+    {
+      "path": "/courses/c387/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 9,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "광교호수공원 보행로 산책 코스"
+    },
+    {
+      "path": "/courses/c397/",
+      "width": 390,
+      "overflow": false,
+      "quality6": 4,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "가평 호명호수 호반 GPX 구간"
+    },
+    {
+      "path": "/courses/c397/",
+      "width": 1440,
+      "overflow": false,
+      "quality6": 4,
+      "shortCTAs": 0,
+      "style": true,
+      "title": "가평 호명호수 호반 GPX 구간"
+    }
+  ]
+}
