@@ -1,0 +1,61 @@
+{
+  "baseline": "0546c6e86c8c199b80322ab3a77db912c8bbc1b2",
+  "coverage": {
+    "details": 22317,
+    "listPages": 1114,
+    "relatedDetailPages": 4574,
+    "cardInstances": 58414,
+    "unapplied": 0
+  },
+  "tests": {
+    "local": 272,
+    "passed": 272,
+    "trackedExpected": 271,
+    "note": "Existing untracked offline-shell.cjs is local only"
+  },
+  "sourcePreservation": {
+    "details": 22317,
+    "collections": 1095,
+    "descriptionUpdates": 893,
+    "errors": [],
+    "sourceRows": 107343,
+    "rawPhotos": 5639,
+    "sizes": {
+      "courses/c387/index.html": {
+        "before": 38561,
+        "after": 38226
+      },
+      "places/cafes/index.html": {
+        "before": 75857,
+        "after": 78447
+      },
+      "places/camping/index.html": {
+        "before": 115912,
+        "after": 113704
+      },
+      "places/regions/seoul/stays/index.html": {
+        "before": 18044,
+        "after": 18030
+      }
+    }
+  },
+  "browser": {
+    "representativePages": 12,
+    "viewportWidths": [
+      360,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "combinations": 84,
+    "overflow": 0,
+    "brokenLoadedImagesAboveFold": 0,
+    "appCourseCards": 12,
+    "appCourseViewportCombinations": 7,
+    "physicalDevices": false
+  },
+  "deployment": "pending"
+}

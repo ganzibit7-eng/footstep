@@ -12,9 +12,10 @@ export function listCard(item,type,attrs=''){return renderPlaceCard(cardRecord(i
 export function professionalCard(row,labels){
  const name=/^[-.\s]*$/.test(row[1])?'업소명 미확인':row[1],phone=String(row[3]||'').trim(),valid=/^\+?[0-9()\s-]{8,30}$/.test(phone)&&phone.replace(/\D/g,'').length>=8;
  const url='/pet-care/places/'+esc(row[0])+'/';
- return '<a class="care-card premium-place-card premium-professional-card" data-card-template="premium5" data-card-source="'+url+'" data-listing-card="quality3" href="'+url+'">'+Media.image(null,{category:labels[0]||'전문업소'})+'<p class="premium-card-meta">'+esc(labels.join(' · '))+'</p><h2 class="premium-card-title">'+esc(name)+'</h2><div class="premium-card-context"><p>'+esc(row[2])+'</p></div><div class="premium-card-facts"><p>'+(valid?'공개 연락처 '+esc(phone):'공개 연락처 미등록')+'</p><small>진료·이용 조건은 업소에 확인</small></div><div class="premium-card-credits" aria-hidden="true"></div><span class="premium-card-cta"><span>자세히 보기</span><span aria-hidden="true">↗</span></span></a>';
+ return '<a class="care-card premium-place-card premium-professional-card" data-card-template="premium5" data-card-revision="quality6" data-card-source="'+url+'" data-listing-card="quality3" href="'+url+'">'+Media.image(null,{category:labels[0]||'전문업소'})+'<p class="premium-card-meta">'+esc(labels.join(' · '))+'</p><h2 class="premium-card-title" title="'+esc(name)+'">'+esc(name)+'</h2><div class="premium-card-context"><p>'+esc(row[2])+'</p></div><div class="premium-card-facts"><p>'+(valid?'공개 연락처 '+esc(phone):'공개 연락처 미등록')+'</p><small>진료·이용 조건은 업소에 확인</small></div><div class="premium-card-credits" aria-hidden="true"></div><span class="premium-card-cta"><span>자세히 보기</span><span aria-hidden="true">↗</span></span></a>';
 }
 export function refineListing(html){
+ if(!html.includes('data-detail-template=')&&html.includes('id="hub-results"')&&!html.includes('class="collection-other"'))html=html.replace(/<nav aria-label="빠른 탐색" class="quick-links">[\s\S]*?<\/nav>/,nav=>'<details class="collection-other"><summary>다른 목록 둘러보기</summary>'+nav+'</details>');
  if(html.includes('data-detail-template=')||html.includes('data-listing-template="quality3"'))return html;
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]*)"/)?.[1];if(!canonical||canonical==='/')return html;
  let cards=0;

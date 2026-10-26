@@ -25,7 +25,7 @@ test('related cards bind title, photo, rules and CTA to the destination, not a c
  const before='<main><article><h1>기준 장소</h1></article><section class="card" id="place-related"><h2>같은 시·군·구에서 함께 보기</h2><ul><li><figure><a href="https://source.example/">사진작가</a></figure><a href="/places/b/">오래된 이름</a> · 직선 1.2km</li><li><a href="/places/missing/">누락</a></li></ul></section></main>';
  const result=relatedCards(before,new Map([[record.url,record]]));
  assert(result.includes('id="place-related"'));assert(result.includes('data-related-template="premium5"'));
- assert(result.includes('<h3 class="premium-card-title"><a href="/places/b/">올바른 카페</a></h3>'));
+ assert(result.includes('<h3 class="premium-card-title" title="올바른 카페"><a href="/places/b/">올바른 카페</a></h3>'));
  assert(result.includes('src="/correct.jpg"'));assert(result.includes('목줄 착용'));assert(result.includes('직선 1.2km'));
  assert(!result.includes('오래된 이름'));assert(!result.includes('/places/missing/'));assert.equal((result.match(/data-card-source=/g)||[]).length,1);
  const escaped=renderPlaceCard({...record,name:'<script>악성</script>'});assert(!escaped.includes('<script>악성'));
@@ -44,11 +44,13 @@ test('every generated related/list card has one matching destination, own name a
   const old=html.match(/<li\b[^>]*data-listing-card="quality3"[^>]*>/g)||[];
   assert(old.every(tag=>tag.includes('data-card-template="premium5"')),file+' old list card');
   for(const match of html.matchAll(/<(li|a)\b[^>]*data-card-template="premium5"[^>]*data-card-source="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g)){
-   const [,tag,url,body]=match,target=registry.get(url);assert(target,file+' unknown destination '+url);cards++;
-   const title=text(body.match(/<h[23] class="premium-card-title">([\s\S]*?)<\/h[23]>/)?.[1]);
+   const [,tag,url,body]=match,target=registry.get(url);assert(match[0].includes('data-card-revision="quality6"'),file+' older card revision');assert(target,file+' unknown destination '+url);cards++;
+   const title=text(body.match(/<h[23] class="premium-card-title"[^>]*>([\s\S]*?)<\/h[23]>/)?.[1]);
    assert.equal(title,target.name,file+' mismatched card title '+url);
    const photo=body.match(/<img\b[^>]*src="([^"]+)"/)?.[1];if(photo)assert(target.images.has(photo),file+' photograph not owned by '+url);else assert(body.includes('사진 미등록'),file+' missing honest placeholder');
    assert(body.includes('premium-card-cta'),file+' missing CTA');
+   if(url.startsWith('/places/'))for(const dd of body.matchAll(/<dd>([\s\S]*?)<\/dd>/g))assert(text(dd[1]).length<=54,file+' unprocessed long condition');
+   const context=body.match(/class="premium-card-context">([\s\S]*?)<\/div>/)?.[1]||'';assert(!context.includes('방문 전 확인할 정보를 살펴보세요'),file+' repetitive placeholder prose');
    const type=url.split('/')[1];counts[type]=(counts[type]||0)+1;
   }
  }

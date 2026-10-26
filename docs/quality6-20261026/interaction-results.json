@@ -1,0 +1,17 @@
+{
+  "staticListBack": {
+    "before": 3840.666748046875,
+    "after": 3840.666748046875,
+    "same": true
+  },
+  "gallery": "1/6 -> 2/6",
+  "localFavorite": "false -> true -> false, status feedback verified",
+  "copy": "주소를 복사했습니다.",
+  "share": "Button invoked; native share completion not asserted",
+  "directions": "Kakao public place latitude/longitude link preserved",
+  "viewport": {
+    "checks": 84,
+    "overflow": 0,
+    "brokenAboveFold": 0
+  }
+}

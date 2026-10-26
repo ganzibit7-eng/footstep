@@ -1,0 +1,15 @@
+{
+  "more": {
+    "count": 198,
+    "focus": "밀크북",
+    "scroll": 7054.66650390625,
+    "status": "등록 정보 1,713곳 중 40곳 표시"
+  },
+  "detail": "감자밭",
+  "back": {
+    "count": 198,
+    "scroll": 392,
+    "url": "http://127.0.0.1:8988/discover.html?kind=facilities&category=%EC%8B%9D%EB%8B%B9%EC%B9%B4%ED%8E%98&shown=40#find-place"
+  },
+  "note": "count records all page quality6 cards including static SEO fallback; visible results are the 40 stated in status and shown URL."
+}

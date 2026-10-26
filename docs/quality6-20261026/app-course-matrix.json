@@ -1,0 +1,44 @@
+[
+  {
+    "width": 360,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 375,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 390,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 430,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 768,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 1024,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  },
+  {
+    "width": 1440,
+    "cards": 12,
+    "overflow": false,
+    "visible": true
+  }
+]

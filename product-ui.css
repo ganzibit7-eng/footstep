@@ -1,4 +1,4 @@
-@import url('/card-media.css?v=20261026-cards5');
+@import url('/card-media.css?v=20261026-quality6');
 @import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Product workspaces share one type scale, surface palette and interaction rhythm. */
 :root{--product-ink:#213d33;--product-muted:#66746b;--product-line:#dce3da;--product-surface:#fffefa;--product-soft:#f1f4ee;--product-accent:#294f3e;--product-radius:20px;--product-ease:cubic-bezier(.22,1,.36,1)}

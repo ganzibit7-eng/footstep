@@ -25,11 +25,14 @@
   const media=photo?'<img src="'+esc(src||photo.src)+'" alt="'+esc(photo.place||name||category)+' 장소 사진" width="'+Number(photo.width||0)+'" height="'+Number(photo.height||0)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-card-fit="'+fit(photo)+'">':placeholder(category);
   return '<div class="premium-card-media">'+(href?'<a href="'+esc(href)+'" tabindex="-1">'+media+'</a>':media)+'</div>';
  }
+ function author(photo){return String(photo.author||'사진 출처').replace(/\(\s*관광정보 제공기관\s*\)/g,'').replace(/\s*·\s*촬영자 미표기/g,'').trim();}
  function credits(photo,credit=''){
   if(!photo)return '<div class="premium-card-credits" aria-hidden="true"></div>';
-  const links=[...credit.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map(m=>m[0]).join(' · ');
-  return '<div class="premium-card-credits"><div class="premium-credit-line">'+links+'</div><details><summary>사진 정보'+(fit(photo)==='contain'?' · 전체 비율 유지':' · 프레임 표시')+'</summary><div>'+credit+(fit(photo)==='cover'?'<p>'+cropNote+'</p>':'')+'</div></details></div>';
+  const links=[...credit.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map((m,i)=>i===0&&photo.author?m[0].replace(/>[\s\S]*<\/a>$/,'>'+esc('사진: '+author(photo))+'</a>'):m[0]).join(' · ');
+  return '<div class="premium-card-credits"><div class="premium-credit-line">'+links+'</div><details><summary>사진 정보</summary><div>'+credit+(fit(photo)==='cover'&&!/가장자리.{0,12}잘림/.test(photo.changes||'')?'<p>'+cropNote+'</p>':'')+'</div></details></div>';
  }
  function mark(image,photo){image.setAttribute('data-card-fit',fit(photo));}
- return Object.freeze({fit,placeholder,image,credits,mark,cropNote});
+ function address(value,area=''){const full=String(value||'').trim();return area&&full.startsWith(area+' ')?full.slice(area.length).trim():full===area?'':full;}
+ const factNote=row=>row.label==='추가 동반 수칙'||row.value==='세부 기준 미확인';
+ return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author});
 });
