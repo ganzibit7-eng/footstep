@@ -44,7 +44,7 @@ test('all detail and all collection pages use the quality templates and keep can
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let details=0,lists=0;
  for(const file of files){const h=readFileSync(file,'utf8'),url=h.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]*)"/)?.[1];if(!url||url==='/')continue;
   if(h.includes('data-detail-template=')){assert(h.includes('data-detail-template="editorial-v3"'),file);assert(h.includes('detail-editorial.js?v=20261026-quality3'));details++;continue;}
-  if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v=20261026-quality7'));lists++;}
+  if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v=20261026-quality8'));lists++;}
  }
  assert.equal(details,22317);assert(lists>500);console.log('Quality coverage:',JSON.stringify({details,lists}));
  const home=readFileSync('index.html','utf8');assert(!home.includes('listing-editorial.css'));assert(!home.includes('place-presentation.js'));
@@ -55,5 +55,5 @@ test('the camping detail, visit facts, source grouping and directory summary agr
  assert(h.includes('<span>입실 시간</span>'));assert(h.includes('<span>퇴실 시간</span>'));assert(h.includes('14:00'));assert(h.includes('12:00'));assert(h.includes(r.visitInfo.rows.find(x=>x.label==='운영시간').value));
  assert.equal((h.match(/id="detail-gallery-sources"/g)||[]).length,1);assert(!h.includes('class="detail-photo-credit"'));
  const data=JSON.parse(readFileSync('discover.html','utf8').match(/id="place-data">([\s\S]*?)<\/script>/)[1]),entry=data.find(x=>x.path==='/places/'+r.id+'/');
- assert(entry.facts.some(x=>x.label==='사이트별 조건'));for(const f of entry.facts){assert(f.value.length<=86);assert(!f.value.endsWith('...'));assert(h.includes(f.value));}
+ assert(entry.facts.some(x=>x.label==='사이트별 조건'));for(const f of entry.facts){assert(f.value.length<=86);assert(!f.value.endsWith('...'));if(f.label==='시설 일부')assert(f.value.split(' · ').every(value=>h.includes(value)));else assert(h.includes(f.value));}
 });

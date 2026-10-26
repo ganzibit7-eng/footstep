@@ -29,8 +29,16 @@
   return '<div class="premium-card-media'+(photo?'':' is-missing')+'">'+(href?'<a href="'+esc(href)+'" tabindex="-1">'+media+'</a>':media)+'</div>';
  }
  function author(photo){return String(photo.author||'사진 출처').replace(/\(\s*관광정보 제공기관\s*\)/g,'').replace(/\s*·\s*촬영자 미표기/g,'').trim();}
- function credits(photo,credit=''){
+ function photoContext(value,category=''){
+  // This exact editorial boilerplate is not an official quotation or license.
+  const common='장소 참고사진 · 메뉴·시설 사진은 반려견의 해당 시설 출입 허용을 뜻하지 않습니다.';
+  if(!category||category==='dining'||kind(category)==='dining'||!String(value).includes(common))return value;
+  const notes={park:'공원·관광지 참고사진 · 사진 속 구역의 반려견 출입 허용을 뜻하지 않습니다.',stay:'숙소 참고사진 · 사진 속 객실·시설의 반려견 이용 가능 여부는 확인이 필요합니다.',camping:'캠핑장 참고사진 · 사진 속 사이트·시설의 반려견 이용 가능 여부는 확인이 필요합니다.',course:'산책 장소 참고사진 · 사진은 실제 경로 전체나 출입 허용을 보장하지 않습니다.',place:'제공 자료의 사진이며 현재 모습·반려견 출입 가능 구역을 보장하지 않습니다.'};
+  const k=notes[category]?category:kind(category);return notes[k]?String(value).replaceAll(common,notes[k]):value;
+ }
+ function credits(photo,credit='',options={}){
   if(!photo)return '<div class="premium-card-credits" aria-hidden="true"></div>';
+  credit=photoContext(credit,options.category);
   const links=[...credit.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map((m,i)=>i===0&&photo.author?m[0].replace(/>[\s\S]*<\/a>$/,'>'+esc('사진: '+author(photo))+'</a>'):m[0]).join(' · ');
   return '<div class="premium-card-credits"><div class="premium-credit-line">'+links+'</div><details><summary>사진 정보</summary><div>'+credit+(fit(photo)==='cover'&&!/가장자리.{0,12}잘림/.test(photo.changes||'')?'<p>'+cropNote+'</p>':'')+'</div></details></div>';
  }
@@ -38,5 +46,5 @@
  function address(value,area=''){const full=String(value||'').trim();return area&&full.startsWith(area+' ')?full.slice(area.length).trim():full===area?'':full;}
  const factNote=row=>row.label==='추가 동반 수칙'||row.value==='세부 기준 미확인';
  function professionalNote(labels){const s=String(labels);return /병원/.test(s)?'진료 대상·예약은 병원에 확인':/약국/.test(s)?'취급 품목·운영시간은 약국에 확인':/미용/.test(s)?'미용 이용 조건·예약은 업소에 확인':/돌봄|위탁/.test(s)?'위탁 기준·예약은 업소에 확인':'서비스·이용 조건은 업소에 확인';}
- return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author,professionalNote});
+ return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author,professionalNote,photoContext});
 });

@@ -22,7 +22,7 @@ export function renderPlaceCard(record,{attrs='',related=false,context=''}={}){
   '<'+heading+' class="premium-card-title" title="'+esc(r.name)+'"><a href="'+esc(r.url)+'">'+esc(r.name)+'</a></'+heading+'>',
   '<div class="premium-card-context">'+(address?'<p title="'+esc(r.address)+'">'+esc(address)+'</p>':'')+(context?'<small>'+esc(context)+'</small>':'')+'</div>',
   '<dl class="premium-card-facts">'+facts.map(f=>'<div'+(Media.factNote(f)?' class="card-fact-note"':'')+'><dt>'+esc(f.label)+'</dt><dd>'+esc(f.value)+'</dd></div>').join('')+'</dl>',
-  Media.credits(r.photo,r.credit),
+  Media.credits(r.photo,r.credit,{category:r.category}),
   '<a class="premium-card-cta listing-detail-link" href="'+esc(r.url)+'"><span>자세히 보기</span><span aria-hidden="true">↗</span></a>'
  ];
  return '<li'+attrs.replace(/\sclass="[^"]*"/g,'')+' class="place-result-card premium-place-card" data-card-template="premium5" data-card-revision="quality6" data-card-source="'+esc(r.url)+'" data-listing-card="quality3">'+nodes.join('')+'</li>';

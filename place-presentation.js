@@ -24,6 +24,19 @@
   return m?{source,rows:[{label:'입실 시간',value:m[2]},{label:'퇴실 시간',value:m[4]}]}:null;
  }
  function visitRows(rows){return rows.flatMap(r=>r.label==='운영시간'&&times(r.value)?times(r.value).rows:[r]);}
+ // Facility-name lists only. Parenthetical commas, numeric thousands and prose
+ // are never interpreted as separate facilities. Preserve the full source.
+ function facilityItems(value){
+  const source=String(value||''),cuts=[];let depth=0,invalid=false;
+  for(let i=0;i<source.length;i++){const c=source[i];if(c==='(')depth++;else if(c===')'){if(!depth)invalid=true;depth=Math.max(0,depth-1);}if(depth)continue;
+   if((c===','||c==='，')&&!(/\d/.test(source[i-1]||'')&&/\d/.test(source[i+1]||'')))cuts.push(i);
+   else if((c==='-'||c==='•')&&/\s/.test(source[i+1]||''))cuts.push(i);
+  }
+  if(depth||invalid||!cuts.length)return null;
+  const parts=partition(source,cuts),items=parts.map(p=>p.raw.replace(/^[,，\s•-]+/,'').trim()).filter(Boolean);
+  if(items.length<2||items.length>20||items.some(v=>v.length>60||/[.!?\n]|합니다|됩니다|없습니다|문의|확인|경우|제외|금지/.test(v)))return null;
+  return {source,parts,items:[...new Set(items)]};
+ }
  // A bracketed facility label must have a complete, unambiguous time pair.
  // Any unparsed text keeps the entire original field in its original form.
  function groupedTimes(source){
@@ -81,6 +94,8 @@
     if(structured.kind==='sites'){add(row,'사이트별 허용 기준 확인','사이트별 조건', 'sites');petKnown=true;break;}
     if(structured.kind==='schedules'){add(row,'시설별 입실·퇴실 시간 확인','이용 시간','schedules');break;}
     if(/운영시간/.test(row.label)&&(/입실|퇴실/.test(value)||/\[[^\]]+\]/.test(value))){add(row,'시설별 이용 시간은 상세 확인','이용 시간','complex-hours');break;}
+    const facility=/구비시설|주요시설/.test(row.label)?facilityItems(value):null;
+    if(facility&&facility.items.length>2){const selected=facility.items.slice(0,2).join(' · ');if(selected.length<=48)add(row,selected,'시설 일부','facility-sample');break;}
     if(/구비시설|주요시설/.test(row.label)&&(value.length>48||value.split(/[,，]/).length>2)){
      // Comma-delimited facility names may be selected as examples. Do not
      // reinterpret slash-separated names or prose containing exceptions.
@@ -102,5 +117,5 @@
   }
   return out.slice(0,limit);
  }
- return Object.freeze({structure,times,groupedTimes,visitRows,explicitFields,fields,summary,cardSummary,unknown});
+ return Object.freeze({structure,times,groupedTimes,visitRows,facilityItems,explicitFields,fields,summary,cardSummary,unknown});
 });
