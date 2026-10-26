@@ -18,6 +18,8 @@ test('compact cards keep restrictions complete, never extract an isolated positi
  assert(!facts.some(f=>f.value==='일부구역 동반가능'));
  const ambiguous='동반 가능한 공간이 있지만 특정 견종과 객실마다 별도의 규정이 적용되며 사전 협의를 해야 하는 경우도 있고 운영기관 확인이 필요합니다.';
  assert(P.cardSummary([{label:'허용 구역·제한',value:ambiguous}]).some(f=>f.derived==='full-rule'));
+ const chained='일부구역 동반가능 · - 안거나 리드줄 칙용- 매너벨트 착용시 풀어놓아도 됨';
+ assert(P.cardSummary([{label:'허용 구역·제한',value:chained}]).some(f=>f.derived==='full-rule'&&f.source===chained));
  const samples=P.cardSummary([{label:'구비시설',value:'반려견 전용 개별 데크, 울타리, 반려견 운동장, 화장실, 개수대, 샤워실, 취사장(세탁실)'}]);
  assert(samples.some(f=>f.label==='시설 일부'&&f.value==='반려견 전용 개별 데크 · 울타리'));
  assert(P.cardSummary([]).every(f=>!f.source&&f.derived==='unconfirmed'));

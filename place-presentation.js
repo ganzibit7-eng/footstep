@@ -88,7 +88,8 @@
      if(names.length>1&&names.every(v=>v.length<=32&&!/[.!?\n]|불가|제외|단,|경우/.test(v))){const selected=names.slice(0,2).join(' · ');if(selected.length<=48)add(row,selected,'시설 일부','facility-sample');}
      break;
     }
-    if(value.length<=54&&!/\n/.test(value)&&!/\]\s*-|필수-/.test(value)){
+    const chainedRule=pet&&/(?:^|[\s·])[-•]\s|\S[-•]\s/.test(value);
+    if(value.length<=54&&!/\n/.test(value)&&!/\]\s*-|필수-/.test(value)&&!chainedRule){
      if(/허용 구역/.test(row.label)&&out.some(r=>/견종·크기|체중/.test(r.label)&&value.includes(r.value.split(' · ')[0])))continue;
      add(row,value,row.label,value!==String(row.value).trim()?'cleaned':undefined);if(pet)petKnown=true;break;
     }

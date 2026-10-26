@@ -1,0 +1,9 @@
+{
+  "visibleCardsForShown40": 40,
+  "empty": "일치하는 등록 정보가 없습니다.",
+  "reset": {
+    "query": "",
+    "focus": "place-query"
+  },
+  "moreAndBack": "40 results and selected category confirmed"
+}
