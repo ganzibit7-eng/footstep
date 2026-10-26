@@ -9,19 +9,19 @@
   "sizes": {
     "courses/c387/index.html": {
       "before": 38210,
-      "after": 38375
+      "after": 38384
     },
     "places/cafes/index.html": {
       "before": 80273,
-      "after": 80346
+      "after": 80355
     },
     "places/camping/index.html": {
       "before": 114134,
-      "after": 114207
+      "after": 114216
     },
     "places/regions/seoul/stays/index.html": {
       "before": 18018,
-      "after": 18091
+      "after": 18100
     }
   }
 }

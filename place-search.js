@@ -28,8 +28,9 @@
   // Keep the full public index out of first paint. One pending request is shared
   // across rapid filter changes; failed attempts can be explicitly retried.
   function createDataSource(initial,fetcher,options){
+    if(initial?.version===2)return partitionedSource(initial,fetcher,options);
     options=options||{};var loaded=Array.isArray(initial)?initial:null,pending=null,failed=false;
-    var valid=initial&&initial.version===1&&/^\/assets\/search-data\/discover(?:\.json\?v=[a-f0-9]{16}|-[a-f0-9]{16}\.json)$/.test(initial.src)&&Number.isSafeInteger(initial.count)&&initial.count>0;
+    var valid=initial&&initial.version===1&&/^\/assets\/search-data\/(?:discover(?:\.json\?v=[a-f0-9]{16}|-[a-f0-9]{16}\.json)|part-[a-f0-9]{16}\.json)$/.test(initial.src)&&Number.isSafeInteger(initial.count)&&initial.count>0;
     return {regions:loaded?Array.from(new Set(loaded.map(function(r){return r.region;}).filter(Boolean))):Array.isArray(initial?.regions)?initial.regions:[],count:loaded?loaded.length:valid?initial.count:0,peek:function(){return loaded;},load:function(){
       if(loaded)return Promise.resolve(loaded);if(pending)return pending;
       if(!valid||typeof fetcher!=='function')return Promise.reject(new Error('Search index unavailable'));
@@ -39,6 +40,23 @@
         if(!Array.isArray(rows)||rows.length!==initial.count||!rows.every(function(r){return r&&typeof r.name==='string'&&typeof r.path==='string'&&/^\/(?:places|courses|bins)\/[^?#]+\/$/.test(r.path)&&['facilities','courses','bins'].includes(r.kind);}))throw new Error('Search index format');return rows;
       });
       pending=Promise.race([request,timeout]).then(function(rows){loaded=rows;return rows;}).catch(function(error){failed=true;throw error;}).finally(function(){clearTimeout(timer);pending=null;});return pending;
+    }};
+  }
+  function partitionedSource(manifest,fetcher,options){
+    var parts=manifest.parts,indices=new Map(),loaders=new Map(),attempted=false,merged=null,fullPending=null;
+    var valid=Array.isArray(parts)&&parts.length>0&&parts.every(p=>['facilities','courses','bins'].includes(p.kind)&&Number.isSafeInteger(p.count)&&p.count>0&&/^\/assets\/search-data\/part-[a-f0-9]{16}\.json$/.test(p.src))&&parts.reduce((n,p)=>n+p.count,0)===manifest.count&&new Set(parts.map(p=>p.src)).size===parts.length;
+    if(!valid)return createDataSource({version:0},fetcher,options);
+    var full=createDataSource({...manifest,version:1},fetcher,options);
+    function selected(s){s=s||{};var a=parts.filter(p=>(!s.kind||p.kind===s.kind)&&(!s.category||p.kind==='facilities'&&p.category===s.category));return a.length===1?a[0]:null;}
+    function part(p){if(!loaders.has(p.src))loaders.set(p.src,createDataSource({...p,version:1},async(url,settings)=>{
+      var response=await fetcher(url,settings);return {ok:response.ok,json:async()=>{var body=await response.json();if(!body||!Array.isArray(body.indices)||!Array.isArray(body.rows)||body.indices.length!==p.count||body.rows.length!==p.count||new Set(body.indices).size!==p.count||body.indices.some(i=>!Number.isSafeInteger(i)||i<0||i>=manifest.count))throw Error('Search partition format');indices.set(p.src,body.indices);return body.rows;}};
+    },options));return loaders.get(p.src);}
+    function join(){var rows=new Array(manifest.count),seen=0;for(var p of parts){var data=part(p).peek();if(!data)return null;data.forEach((r,i)=>{var index=indices.get(p.src)[i];if(rows[index])throw Error('Duplicate search partition');rows[index]=r;seen++;});}if(seen!==manifest.count||rows.some(r=>!r))throw Error('Incomplete search partition');return rows;}
+    return {count:manifest.count,regions:manifest.regions,peek:function(s){return full.peek()||merged||(selected(s)?part(selected(s)).peek():null);},load:function(s){
+      if(full.peek()||merged)return Promise.resolve(full.peek()||merged);if(fullPending)return fullPending;
+      var p=selected(s);if(p){attempted=true;return part(p).load();}
+      if(!attempted){fullPending=full.load().finally(()=>{fullPending=null;});return fullPending;}
+      return Promise.all(parts.map(p=>part(p).load())).then(()=>merged=join());
     }};
   }
   if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource};return;}
@@ -109,9 +127,10 @@
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
     if(!value.q&&!value.kind&&!value.region&&!value.category){document.documentElement?.removeAttribute('data-directory-requested');matches=[];list.setAttribute('aria-busy','false');list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
     remember();
+    data=source.peek(value);
     if(!data){
       list.setAttribute('aria-busy','true');list.replaceChildren();more.hidden=true;count.textContent='등록된 장소·코스 정보를 불러오고 있어요.';
-      source.load().then(function(rows){data=rows;if(current===ticket){list.setAttribute('aria-busy','false');search(true);}}).catch(function(){
+      source.load(value).then(function(rows){data=rows;if(current===ticket){list.setAttribute('aria-busy','false');search(true);}}).catch(function(){
         if(current!==ticket)return;list.setAttribute('aria-busy','false');count.textContent='장소 정보를 불러오지 못했습니다. 연결을 확인하고 다시 시도해 주세요.';
         var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),retry=document.createElement('button');empty.className='directory-empty';heading.textContent='잠시 연결이 원활하지 않아요';help.textContent='검색 조건은 유지됩니다. 다시 불러오거나 아래 지역별 안내를 이용해 주세요.';retry.type='button';retry.textContent='다시 불러오기';retry.onclick=function(){search(true);};empty.append(heading,help,retry);list.replaceChildren(empty);
       });return;

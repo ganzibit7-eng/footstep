@@ -1,0 +1,308 @@
+[
+  {
+    "version": "before",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3201.899999976158,
+          "parse": 5.800000071525574,
+          "parsedAt": 3564.7000000476837
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3574.600000023842,
+      "render": 9.899999976158142
+    }
+  },
+  {
+    "version": "before",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3200.399999976158,
+          "parse": 5.100000023841858,
+          "parsedAt": 3303.2000000476837
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3311.100000023842,
+      "render": 7.899999976158142
+    }
+  },
+  {
+    "version": "before",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3200.2000000476837,
+          "parse": 7.199999928474426,
+          "parsedAt": 3285.0999999046326
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3293.0999999046326,
+      "render": 8
+    }
+  },
+  {
+    "version": "before",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3195,
+          "parse": 3.5,
+          "parsedAt": 3273.600000023842
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3284.2000000476837,
+      "render": 10.600000023841858
+    }
+  },
+  {
+    "version": "before",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3238.9000000953674,
+          "parse": 3.5999999046325684,
+          "parsedAt": 3315.6999999284744
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3326.100000023842,
+      "render": 10.400000095367432
+    }
+  },
+  {
+    "version": "before",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3201.1999999284744,
+          "parse": 4.200000047683716,
+          "parsedAt": 3281
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3293.2999999523163,
+      "render": 12.299999952316284
+    }
+  },
+  {
+    "version": "before",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3200.399999976158,
+          "parse": 4.600000023841858,
+          "parsedAt": 3294
+        }
+      ],
+      "cls": 0.00010008894021684658,
+      "firstResult": 3301.7999999523163,
+      "render": 7.799999952316284
+    }
+  },
+  {
+    "version": "before",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3214.399999976158,
+          "parse": 4.100000023841858,
+          "parsedAt": 3292.6999999284744
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3303.399999976158,
+      "render": 10.700000047683716
+    }
+  },
+  {
+    "version": "before",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "download": 3209.6999999284744,
+          "parse": 3.8000000715255737,
+          "parsedAt": 3291.100000023842
+        }
+      ],
+      "cls": 0,
+      "firstResult": 3300.399999976158,
+      "render": 9.299999952316284
+    }
+  },
+  {
+    "version": "after",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-7940ef77f9b03989.json",
+          "download": 752.1000000238419,
+          "parse": 0.8999999761581421,
+          "parsedAt": 875.2000000476837
+        }
+      ],
+      "cls": 0,
+      "firstResult": 882.5,
+      "render": 7.299999952316284
+    }
+  },
+  {
+    "version": "after",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-7940ef77f9b03989.json",
+          "download": 757.6999999284744,
+          "parse": 0.8999999761581421,
+          "parsedAt": 896.2999999523163
+        }
+      ],
+      "cls": 0,
+      "firstResult": 903.1000000238419,
+      "render": 6.800000071525574
+    }
+  },
+  {
+    "version": "after",
+    "category": "캠핑",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-7940ef77f9b03989.json",
+          "download": 767,
+          "parse": 1,
+          "parsedAt": 866.0999999046326
+        }
+      ],
+      "cls": 0,
+      "firstResult": 875.0999999046326,
+      "render": 9
+    }
+  },
+  {
+    "version": "after",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-d7f80dc95e41485e.json",
+          "download": 353.8000000715256,
+          "parse": 0.3999999761581421,
+          "parsedAt": 451
+        }
+      ],
+      "cls": 0,
+      "firstResult": 455,
+      "render": 4
+    }
+  },
+  {
+    "version": "after",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-d7f80dc95e41485e.json",
+          "download": 358.1999999284744,
+          "parse": 0.7000000476837158,
+          "parsedAt": 464.10000002384186
+        }
+      ],
+      "cls": 0,
+      "firstResult": 472.10000002384186,
+      "render": 8
+    }
+  },
+  {
+    "version": "after",
+    "category": "숙소",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-d7f80dc95e41485e.json",
+          "download": 358.5,
+          "parse": 1.7000000476837158,
+          "parsedAt": 457
+        }
+      ],
+      "cls": 0,
+      "firstResult": 467.1999999284744,
+      "render": 10.199999928474426
+    }
+  },
+  {
+    "version": "after",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+          "download": 1080.3999999761581,
+          "parse": 3.5,
+          "parsedAt": 1181.1999999284744
+        }
+      ],
+      "cls": 0.00010008894021684658,
+      "firstResult": 1191.7999999523163,
+      "render": 10.600000023841858
+    }
+  },
+  {
+    "version": "after",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+          "download": 1091.2000000476837,
+          "parse": 1.2999999523162842,
+          "parsedAt": 1169.2999999523163
+        }
+      ],
+      "cls": 0,
+      "firstResult": 1176.7999999523163,
+      "render": 7.5
+    }
+  },
+  {
+    "version": "after",
+    "category": "식당카페",
+    "metrics": {
+      "requests": [
+        {
+          "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+          "download": 1084.2000000476837,
+          "parse": 1,
+          "parsedAt": 1157.7000000476837
+        }
+      ],
+      "cls": 0,
+      "firstResult": 1165.9000000953674,
+      "render": 8.200000047683716
+    }
+  }
+]

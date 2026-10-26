@@ -1,0 +1,5 @@
+import {readFile,writeFile} from 'node:fs/promises';import path from 'node:path';import {createHash} from 'node:crypto';
+export async function searchParts(root,records){
+ const groups=new Map();records.forEach((row,i)=>{const category=row.kind==='facilities'?(row.info||'').split(' · ').pop():'';const key=row.kind+'|'+category;if(!groups.has(key))groups.set(key,{kind:row.kind,category,rows:[],indices:[]});const p=groups.get(key);p.rows.push(row);p.indices.push(i);});
+ const descriptors=[];for(const p of groups.values()){const text=JSON.stringify({indices:p.indices,rows:p.rows}),name='part-'+createHash('sha256').update(text).digest('hex').slice(0,16)+'.json',file=path.join(root,'assets/search-data',name);try{if(await readFile(file,'utf8')!==text)throw Error('Immutable search partition collision');}catch(e){if(e.code!=='ENOENT')throw e;await writeFile(file,text,'utf8');}descriptors.push({kind:p.kind,category:p.category,count:p.rows.length,src:'/assets/search-data/'+name});}return descriptors;
+}

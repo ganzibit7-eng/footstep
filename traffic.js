@@ -64,7 +64,7 @@
     view=root.crypto.randomUUID();entry=attribution();lastTick=Date.now();
     document.addEventListener('click',interaction,true);
     document.addEventListener('auxclick',affiliateClick,true);
-    document.addEventListener('submit',e=>{if(!excluded&&storage('localStorage','paw_analytics_exclude')!=='1'&&e.isTrusted&&e.target?.matches?.('[role="search"],form[data-search]')){actions.search=Math.min(1000,actions.search+1);send();}},true);
+    document.addEventListener('submit',e=>{if(!excluded&&storage('localStorage','paw_analytics_exclude')!=='1'&&e.isTrusted&&e.target?.matches?.('[role="search"],form[data-search],#place-search,#care-form,#map-search-form')){actions.search=Math.min(1000,actions.search+1);send();}},true);
     document.addEventListener('scroll',()=>{if(excluded||storage('localStorage','paw_analytics_exclude')==='1')return;const h=document.documentElement.scrollHeight-innerHeight;if(h>0)depth=Math.max(depth,Math.min(100,Math.round(scrollY/h*100)));},{passive:true});
     document.addEventListener('visibilitychange',()=>{tick();send();lastTick=Date.now();});
     root.addEventListener('pagehide',()=>{tick();send();});

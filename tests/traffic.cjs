@@ -22,6 +22,7 @@ function browser({search='',referrer='',shared=new Map(),test=false}={}){
  const next=browser({referrer:'https://balzaguk.com/courses/c416/',shared:b.shared});await next.start();assert.equal(next.calls[0].p_payload.source,'utm:threads');
  const privateVisit=browser({test:true});await privateVisit.start();assert.equal(privateVisit.calls.length,0);assert.equal(privateVisit.ctx.PawTraffic.excluded,true);
  const stripped=browser({search:'?utm_source=<script>&utm_campaign=x@y'});await stripped.start();assert.equal(stripped.calls[0].p_payload.source,'utm:script');assert.equal(stripped.calls[0].p_payload.campaign,'xy');
+ const form={matches:selector=>selector.includes('#place-search')};b.listeners.submit({isTrusted:true,target:form});await b.flush();assert.equal(b.calls.at(-1).p_payload.actions.search,1);b.listeners.submit({isTrusted:false,target:form});assert.equal(b.calls.at(-1).p_payload.actions.search,1);
  const beforeOptOut=b.calls.length;b.ctx.localStorage.setItem('paw_analytics_exclude','1');b.advance(16000);b.timers.find(t=>t.ms===1000).fn();b.timers.find(t=>t.ms===15000).fn();await b.flush();assert.equal(b.calls.length,beforeOptOut);assert.equal(b.ctx.PawTraffic.excluded,true);
  console.log('PASS: one token per load, visible-only duration, trusted clicks, internal attribution carry, query minimization, work-test exclusion.');
 })().catch(e=>{console.error(e);process.exit(1);});

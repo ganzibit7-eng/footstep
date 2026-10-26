@@ -1,0 +1,56 @@
+{
+  "environment": "Local Windows Chromium 390px. Search JSON only: gzip + 150ms delay + 128000 bytes/sec, cold no-store. Not physical iPhone/Galaxy or a midrange CPU emulator.",
+  "scenarios": [
+    {
+      "category": "캠핑",
+      "before": {
+        "firstResult": 3311.100000023842,
+        "render": 8,
+        "download": 3200.399999976158,
+        "parse": 5.800000071525574,
+        "maxCLS": 0
+      },
+      "after": {
+        "firstResult": 882.5,
+        "render": 7.299999952316284,
+        "download": 757.6999999284744,
+        "parse": 0.8999999761581421,
+        "maxCLS": 0
+      }
+    },
+    {
+      "category": "숙소",
+      "before": {
+        "firstResult": 3293.2999999523163,
+        "render": 10.600000023841858,
+        "download": 3201.1999999284744,
+        "parse": 3.5999999046325684,
+        "maxCLS": 0
+      },
+      "after": {
+        "firstResult": 467.1999999284744,
+        "render": 8,
+        "download": 358.1999999284744,
+        "parse": 0.7000000476837158,
+        "maxCLS": 0
+      }
+    },
+    {
+      "category": "식당카페",
+      "before": {
+        "firstResult": 3301.7999999523163,
+        "render": 9.299999952316284,
+        "download": 3209.6999999284744,
+        "parse": 4.100000023841858,
+        "maxCLS": 0.00010008894021684658
+      },
+      "after": {
+        "firstResult": 1176.7999999523163,
+        "render": 8.200000047683716,
+        "download": 1084.2000000476837,
+        "parse": 1.2999999523162842,
+        "maxCLS": 0.00010008894021684658
+      }
+    }
+  ]
+}
