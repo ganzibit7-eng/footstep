@@ -1,0 +1,55 @@
+/* Shared, non-home place cards. Restricted photographs always retain their full frame. */
+:is(.editorial-listing,.editorial-detail,.discovery-page) .premium-place-card{--card-ink:#243c32;display:flex;flex-direction:column;min-width:0;margin:0!important;padding:0!important;overflow:visible;border:1px solid #dde2d8!important;border-radius:10px!important;background:#fdfcf8!important;box-shadow:none!important;color:var(--card-ink);text-decoration:none;transition:transform .18s ease,border-color .18s ease}
+.premium-card-media{position:relative;display:block;aspect-ratio:3/2;width:100%;min-width:0;overflow:hidden;background:#eeefe9;border-radius:9px 9px 0 0;isolation:isolate}
+.premium-card-media>a{display:block!important;width:100%;height:100%;min-height:0!important;padding:0!important}
+.premium-card-media img{display:block;width:100%!important;height:100%!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:50% 50%;background:#eeefe9;transition:transform .22s ease}
+.premium-card-media img[data-card-fit=cover]{object-fit:cover!important}
+.premium-placeholder{height:100%;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#607066;background:#eeefe9;font:500 13px/1.5 system-ui,sans-serif;letter-spacing:-.02em}
+.premium-placeholder svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px}
+.premium-placeholder small{font-size:11px;font-weight:400;color:#738075}
+.premium-place-card>:not(.premium-card-media){margin-left:20px!important;margin-right:20px!important;min-width:0}
+.premium-place-card .premium-card-meta{font:500 12px/1.7 system-ui,sans-serif!important;color:#667568;margin-top:18px!important;margin-bottom:6px!important;overflow-wrap:anywhere;align-self:start}
+.premium-place-card :is(h2,h3).premium-card-title{font-family:inherit!important;font-size:20px!important;font-weight:650!important;letter-spacing:-.035em!important;line-height:1.55!important;margin-top:0!important;margin-bottom:8px!important;word-break:keep-all;overflow-wrap:anywhere;align-self:start}
+.premium-place-card .premium-card-title a{display:block;font:inherit!important;line-height:inherit!important;min-height:44px;padding:4px 0;text-decoration:none!important;color:inherit}
+.premium-place-card .premium-card-context{margin-top:0!important;margin-bottom:16px!important;align-self:start;color:#667366;font-size:14px;line-height:1.8;overflow-wrap:anywhere}
+.premium-place-card .premium-card-context p{font:inherit!important;margin:0!important;color:inherit!important;line-height:inherit!important;display:block!important;overflow:visible!important;max-height:none!important;-webkit-line-clamp:unset!important}
+.premium-place-card .premium-card-context small{display:block;font-size:12px;margin-top:6px}
+.premium-place-card .premium-card-facts{display:block;margin-top:0!important;margin-bottom:12px!important;align-self:start;overflow-wrap:anywhere}
+.premium-place-card .premium-card-facts>div{margin:0 0 10px;padding:0;border:0;display:block}
+.premium-place-card .premium-card-facts dt{font-size:11px;line-height:1.6;color:#6b796c;font-weight:500}
+.premium-place-card .premium-card-facts dd,.premium-place-card .premium-card-facts p{font-size:14px!important;line-height:1.8!important;font-weight:500;margin:3px 0 0!important;color:#2e4637;overflow:visible;display:block;max-height:none;-webkit-line-clamp:unset}
+.premium-place-card .premium-card-facts small{font-size:12px;line-height:1.8;color:#6b796c}
+.premium-place-card .premium-card-credits{font-size:11px;line-height:1.7;color:#6b766a;margin-top:auto!important;margin-bottom:10px!important;overflow-wrap:anywhere}
+.premium-place-card .premium-credit-line{font-size:11px;line-height:1.7}
+.premium-place-card .premium-card-credits a{font:inherit!important;color:inherit!important;min-height:0!important;display:inline!important;text-decoration:underline;text-underline-offset:3px;padding:0!important}
+.premium-place-card .premium-card-credits details{border:0!important;padding:0!important;background:transparent!important;margin:0!important}
+.premium-place-card .premium-card-credits summary{font-size:11px!important;min-height:44px;display:flex;align-items:center;cursor:pointer;color:#5b6d5b}
+.premium-place-card .premium-card-credits details>div{padding:0 0 12px}
+.premium-place-card .premium-card-credits[aria-hidden=true]{margin:0!important}
+.premium-place-card .premium-card-cta{display:flex!important;align-items:center;justify-content:space-between;gap:12px;min-height:48px!important;margin-top:0!important;margin-bottom:16px!important;padding:10px 14px!important;border:1px solid #c8d3c2;border-radius:6px;background:transparent;color:#2d4c36;font-size:14px!important;line-height:1.5!important;font-weight:600!important;text-decoration:none!important;transition:background-color .18s,border-color .18s,transform .15s}
+.premium-place-card .premium-card-cta:after{content:none!important}
+.premium-place-card:focus-within{border-color:#6d8a69!important}
+.premium-place-card :is(a,summary,button):focus-visible,.premium-professional-card:focus-visible{outline:3px solid #809c75;outline-offset:3px}
+.premium-place-card .premium-card-cta:active{transform:translateY(1px);background:#e8eee2}
+.premium-card-media .place-photo-unavailable{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0!important;font-size:13px;padding:20px!important;background:#eeefe9!important}
+/* The same row shares its seven content tracks, including its CTA baseline. */
+@supports(grid-template-rows:subgrid){
+ :is(.editorial-listing,.editorial-detail,.discovery-page) :is(ul,.care-list):has(>.premium-place-card){row-gap:0!important;column-gap:24px!important}
+ :is(.editorial-listing,.editorial-detail,.discovery-page) .premium-place-card{display:grid!important;grid-template-rows:subgrid;grid-row:span 7;margin-bottom:28px!important}
+ .premium-place-card .premium-card-credits{align-self:end}
+ .premium-place-card .premium-card-cta{align-self:end}
+}
+@media(hover:hover) and (pointer:fine){.premium-place-card:hover{transform:translateY(-2px);border-color:#b8c6af!important}.premium-place-card:hover img[data-card-fit=cover]{transform:scale(1.015)}.premium-place-card .premium-card-cta:hover{background:#eaf0e4;border-color:#90a486}}
+@media(max-width:600px){.premium-place-card>:not(.premium-card-media){margin-left:16px!important;margin-right:16px!important}.premium-place-card :is(h2,h3).premium-card-title{font-size:19px!important}.premium-place-card .premium-card-meta{margin-top:16px!important}.premium-card-grid{grid-template-columns:1fr!important}.premium-place-card .premium-card-cta{min-height:48px!important}}
+/* Course cards outside home retain their existing behavior and action group. */
+:is(#list-section,#profile-overlay) .course-card .card-visual.premium-card-media{aspect-ratio:3/2;height:auto;min-height:0;background:#eeefe9!important;border-radius:10px 10px 0 0}
+:is(#list-section,#profile-overlay) .course-card .card-visual.premium-card-media .course-landscape{display:none}
+:is(#list-section,#profile-overlay) .course-card .card-visual.premium-card-media .course-real-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;background:#eeefe9}
+:is(#list-section,#profile-overlay) .course-card .card-visual.premium-card-media .course-real-photo[data-card-fit=cover]{object-fit:cover}
+:is(#list-section,#profile-overlay) .course-card .card-visual.premium-card-media :is(.badge,.fav-btn,.card-visual-caption){z-index:2}
+:is(#list-section,#profile-overlay) .course-card .premium-placeholder{width:100%;position:absolute;inset:0}
+#saved-places [data-place-saved-list]{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;list-style:none;padding:0}
+#saved-places .saved-place-card{display:flex;flex-direction:column;min-width:0;background:#fdfcf8;border:1px solid #dce2d6;border-radius:10px;overflow:hidden}
+#saved-places .saved-place-card>a{padding:16px 18px;font-size:17px;line-height:1.7;font-weight:600;overflow-wrap:anywhere;color:#243c32}
+#saved-places .saved-place-card>button{min-height:44px;margin:0 18px 16px;align-self:start}
+@media(prefers-reduced-motion:reduce){.premium-place-card,.premium-place-card *{transition:none!important;animation:none!important}.premium-place-card:hover,.premium-place-card:hover img{transform:none!important}}

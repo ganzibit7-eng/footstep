@@ -21,6 +21,9 @@ on:
       - 'scripts/refine-place-details.mjs'
       - 'scripts/detail-editorial.mjs'
       - 'scripts/listing-editorial.mjs'
+      - 'scripts/place-card.mjs'
+      - 'card-media.js'
+      - 'card-media.css'
       - 'scripts/publish-control-polish.mjs'
       - 'ui-control-tokens.css'
       - 'scripts/place-recommendations.mjs'
@@ -91,7 +94,7 @@ jobs:
       - name: Check deployment size and public file boundaries
         run: node --test tests/pages-storage.mjs tests/photo-storage-guard.mjs && node scripts/audit-pages-storage.mjs
       - name: Validate public page and image discovery
-        run: node --test tests/detail-editorial.mjs tests/place-quality3.mjs tests/detail-gallery-runtime.mjs tests/detail-photo-delivery.mjs tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs tests/place-bulk-match.cjs tests/place-visit-info.cjs tests/place-photo-rights.cjs tests/place-cultural-data.cjs
+        run: node --test tests/cards-quality5.mjs tests/detail-editorial.mjs tests/place-quality3.mjs tests/detail-gallery-runtime.mjs tests/detail-photo-delivery.mjs tests/search-discovery.mjs tests/image-sitemap.mjs tests/search-markup.mjs tests/place-enrichment.cjs tests/place-detail-layout.mjs tests/place-gallery.cjs tests/place-bulk-match.cjs tests/place-visit-info.cjs tests/place-photo-rights.cjs tests/place-cultural-data.cjs
       - name: Validate home place sections
         run: node tests/home-places.cjs && node tests/home-more.cjs && node tests/home-scenes.cjs
       - name: Validate public directory layout and sorting

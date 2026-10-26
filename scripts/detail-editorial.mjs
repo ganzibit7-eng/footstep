@@ -1,10 +1,9 @@
+import {cardRecord,renderPlaceCard} from './place-card.mjs';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {CONTROL_VERSION} from './publish-control-polish.mjs';
 const placePhotos=createRequire(import.meta.url)('../place-photos.js');
 const Presentation=createRequire(import.meta.url)('../place-presentation.js');
-const Conditions=createRequire(import.meta.url)('../place-conditions.js');
-const Evidence=createRequire(import.meta.url)('../place-evidence.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION=CONTROL_VERSION;
@@ -150,18 +149,43 @@ function courseSection(id,html,link){
 }
 
 export function buildRelatedIndex(pages){
- const out=new Map();for(const [url,html] of pages){const title=html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1],photo=html.match(/<figure class="(?:place-photo|curated-course-photo|detail-slide)"[\s\S]*?<\/figure>/)?.[0],meta=text(html.match(/<p class="(?:meta|detail-kicker)">([\s\S]*?)<\/p>/)?.[1]);if(title)out.set(url,{name:text(title),meta,photo});}return out;
+ const out=new Map();
+ for(const [url,html] of pages){
+  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]+)"/)?.[1];
+  if(canonical!==url)continue;
+  // Only the owning article may supply a title. Never inherit a related photo.
+  const article=html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1]||'';
+  const name=text(article.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]);
+  if(name)out.set(url,{url,name,category:'장소·산책 안내',area:'',address:'',photo:null,credit:'',facts:[],intro:'위치와 이용 안내를 살펴보세요.'});
+ }
+ return out;
 }
 let sharedRelatedIndex;
-export function setRelatedIndex(pages,groups=[]){sharedRelatedIndex=buildRelatedIndex(pages);for(const group of groups)for(const item of group.items){const entry=sharedRelatedIndex.get('/'+group.type.folder+'/'+item.id+'/');if(!entry)continue;entry.area=String(item.address||'').split(/\s+/).slice(0,2).join(' ');if(group.type.table==='facilities')entry.facts=Presentation.summary([...Conditions.get(item),...Presentation.visitRows(Evidence.visit(item)?.rows||[])],{caution:Boolean(Evidence.caution(item)),limit:2});}}
-function relatedCards(html,index){
- return html.replace(/(<section class="card"[^>]*>[\s\S]*?<ul>)([\s\S]*?)(<\/ul><\/section>)/g,(_,head,items,end)=>{
- if(/같은 지역에서 함께 보기|비슷한 장소 함께 보기/.test(head))return '<details class="detail-region-links"><summary>다른 장소도 둘러보기</summary><p>아래는 지역·분류별 탐색 링크이며 현재 장소와 가까운 추천 목록이 아닙니다.</p>'+head+items+end+'</details>';
- return head.replace('<section class="card"','<section class="card detail-related"')+items.replace(/<li>([\s\S]*?)<\/li>/g,(all,body)=>{
-  const a=body.match(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/);if(!a)return all;const p=index?.get(a[1]);
-  let photo='';if(p?.photo){const img=p.photo.match(/<img\b[^>]*>/)?.[0]?.replace(/\sstyle="[^"]*"/g,'').replace(/loading="[^"]*"/,'loading="lazy"').replace(/src="([^"]+)"/,(_,src)=>'src="'+esc(detailPhotoURL(text(src)))+'"'),links=[...p.photo.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map(m=>m[0]).join(' · ');if(img)photo='<figure class="detail-nearby-thumb"><a href="'+esc(a[1])+'" tabindex="-1">'+img+'</a><figcaption>'+links+' · <a href="'+esc(a[1])+'#detail-photo-1">사진 정보</a></figcaption></figure>';}
-  return '<li>'+photo+'<div class="detail-related-copy">'+a[0]+'<span>'+esc([p?.meta||'장소·산책 안내',p?.area].filter(Boolean).join(' · '))+'</span><small>'+esc(text(body.replace(a[0],'')))+'</small>'+(p?.facts?'<dl class="detail-related-facts">'+p.facts.map(r=>'<div><dt>'+esc(r.label)+'</dt><dd>'+esc(r.value)+'</dd></div>').join('')+'</dl>':'')+'</div></li>';
- })+end;});
+export function setRelatedIndex(pages,groups=[]){
+ sharedRelatedIndex=buildRelatedIndex(pages);
+ for(const group of groups)for(const item of group.items){const record=cardRecord(item,group.type);sharedRelatedIndex.set(record.url,record);}
+}
+export function relatedCards(html,index){
+ if(!index)return html;
+ // Balance sections and lists before replacing nodes; source links inside a
+ // figure must never be treated as the recommended destination or its name.
+ const main=html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/);if(!main)return html;
+ const next=fragments(main[1]).map(node=>{
+  if(!/^<section class="card"/.test(node))return node;
+  const children=fragments(inside(node)),heading=children.find(n=>/^<h2/.test(n))||'';
+  if(/같은 지역에서 함께 보기|비슷한 장소 함께 보기/.test(heading))return '<details class="detail-region-links"><summary>다른 장소도 둘러보기</summary><p>지역·분류별 탐색 링크입니다. 가까운 추천 목록은 아닙니다.</p>'+node+'</details>';
+  if(!/함께 보기|주변|근처|3km 이내|다른 장소 탐색/.test(text(heading)))return node;
+  return node.slice(0,node.indexOf('>')+1).replace('class="card"','class="card detail-related" data-related-template="premium5"')+children.map(child=>{
+   if(!/^<ul\b/.test(child))return child;
+   return '<ul class="premium-card-grid">'+fragments(inside(child)).map(li=>{
+    const destination=[...li.matchAll(/<a\b[^>]*href="([^"#]+)"/g)].map(m=>m[1].replace(/^https:\/\/balzaguk.com/,'' )).find(url=>index?.has(url));
+    const record=index?.get(destination);if(!record)return '';
+    const distance=text(li).match(/직선(?:\s*거리)?\s*[\d.]+\s*(?:km|m)/i)?.[0]||'';
+    return renderPlaceCard(record,{related:true,context:distance});
+   }).join('')+'</ul>';
+  }).join('')+'</section>';
+ }).join('');
+ return html.replace(main[0],main[0].replace(main[1],next));
 }
 
 export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){

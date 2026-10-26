@@ -1,33 +1,18 @@
+import {cardRecord,cardFacts,renderPlaceCard} from './place-card.mjs';
+import Media from '../card-media.js';
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
-import PlacePhotos from '../place-photos.js';
-import PlaceConditions from '../place-conditions.js';
-import PlaceEvidence from '../place-evidence.js';
-import CoursePhotos from '../course-photos.js';
-import CourseInfo from '../course-info.js';
-import Presentation from '../place-presentation.js';
 import {CONTROL_VERSION} from './publish-control-polish.mjs';
 export const LISTING_VERSION='20261026-quality3';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let records=new Map();
 export function setListingRecords(groups){records=new Map(groups.flatMap(g=>g.items.map(item=>['/'+g.type.folder+'/'+item.id+'/',{item,type:g.type}])));}
-export function listingFacts(item,type){
- if(type.table==='facilities')return Presentation.summary([...PlaceConditions.get(item),...Presentation.visitRows(PlaceEvidence.visit(item)?.rows||[])],{kind:item.category,caution:Boolean(PlaceEvidence.caution(item))});
- if(type.table==='courses'){
-  const time=CourseInfo.walkTime(item.description,item.distance);
-  return [...((item.tags||[]).includes('동반 확인 필요')?[{label:'동반 확인 필요',value:'경로 자료만 확인했습니다. 동반 허용 범위는 운영기관에 확인해 주세요.'}]:[]),{label:'등록 거리',value:item.distance||'미확인'},{label:'등록 난이도',value:item.diff||'미확인'},...(time.minutes?[{label:time.official?'공식 안내 시간':'평지 예상 시간',value:time.minutes+'분'}]:[])];
- }
- return [{label:'현장 확인',value:'시설 위치·작동·수거 여부는 상세 안내를 확인해 주세요.'}];
-}
-export function listCard(item,type,attrs=''){
- const href='/'+type.folder+'/'+item.id+'/',photo=type.table==='facilities'?PlacePhotos.get(item):type.table==='courses'?CoursePhotos.get(item):null;
- const facts=listingFacts(item,type),category=item.category?.replace('식당카페','식당·카페').replace('공원관광','공원·관광')||(type.table==='courses'?'산책코스':'편의시설');
- const image=photo?'<figure class="listing-photo"><a href="'+href+'" tabindex="-1"><img src="'+esc(PlacePhotos.url(photo))+'" alt="'+esc(photo.place||item.name)+' 실제 사진" width="'+photo.width+'" height="'+photo.height+'" loading="lazy" decoding="async" referrerpolicy="no-referrer"'+(photo.noCrop?' style="object-fit:contain"':'')+'></a><figcaption><details><summary>사진 출처·이용 안내</summary><div>'+(type.table==='courses'?CoursePhotos.credit(photo):PlacePhotos.credit(photo))+esc(PlacePhotos.deliveryNote(photo))+'</div></details></figcaption></figure>':'<p class="listing-photo-absent">'+esc(category)+' · 사진 미등록</p>';
- return '<li'+attrs.replace(/\sclass="[^"]*"/g,'')+' class="place-result-card" data-listing-card="quality3">'+image+'<p class="listing-category">'+esc(category)+'</p><h2><a href="'+href+'">'+esc(item.name)+'</a></h2><p class="listing-address">'+esc(item.address||'주소는 상세 안내에서 확인해 주세요.')+'</p><dl class="listing-conditions">'+facts.map(r=>'<div><dt>'+esc(r.label)+'</dt><dd>'+esc(r.value)+'</dd></div>').join('')+'</dl><a class="listing-detail-link" href="'+href+'">자세히 보기 ↗</a></li>';
-}
+export const listingFacts=cardFacts;
+export function listCard(item,type,attrs=''){return renderPlaceCard(cardRecord(item,type),{attrs});}
 export function professionalCard(row,labels){
  const name=/^[-.\s]*$/.test(row[1])?'업소명 미확인':row[1],phone=String(row[3]||'').trim(),valid=/^\+?[0-9()\s-]{8,30}$/.test(phone)&&phone.replace(/\D/g,'').length>=8;
- return '<a class="care-card" data-listing-card="quality3" href="/pet-care/places/'+esc(row[0])+'/"><span class="care-kicker">'+esc(labels.join(' · '))+'</span><h2>'+esc(name)+'</h2><p class="care-address">'+esc(row[2])+'</p><p class="care-card-contact">'+(valid?'공개 연락처 '+esc(phone):'공개 연락처 미등록')+'</p><div class="care-card-bottom"><span>진료·이용 조건은 업소에 확인</span><span>자세히 보기 ↗</span></div></a>';
+ const url='/pet-care/places/'+esc(row[0])+'/';
+ return '<a class="care-card premium-place-card premium-professional-card" data-card-template="premium5" data-card-source="'+url+'" data-listing-card="quality3" href="'+url+'">'+Media.image(null,{category:labels[0]||'전문업소'})+'<p class="premium-card-meta">'+esc(labels.join(' · '))+'</p><h2 class="premium-card-title">'+esc(name)+'</h2><div class="premium-card-context"><p>'+esc(row[2])+'</p></div><div class="premium-card-facts"><p>'+(valid?'공개 연락처 '+esc(phone):'공개 연락처 미등록')+'</p><small>진료·이용 조건은 업소에 확인</small></div><div class="premium-card-credits" aria-hidden="true"></div><span class="premium-card-cta"><span>자세히 보기</span><span aria-hidden="true">↗</span></span></a>';
 }
 export function refineListing(html){
  if(html.includes('data-detail-template=')||html.includes('data-listing-template="quality3"'))return html;

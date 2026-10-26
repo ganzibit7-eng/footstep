@@ -1,3 +1,4 @@
+@import url('/card-media.css?v=20261026-cards5');
 @import url('/ui-control-tokens.css?v=20261026-controls4-final');
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 /* Public reading surfaces only. Home cards, app routes and admin are out of scope. */

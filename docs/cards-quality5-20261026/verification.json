@@ -1,0 +1,61 @@
+{
+  "baseline": "b7fa9462e87957ef3b04531adee2e3c547a49b43",
+  "detailsStyled": 22317,
+  "relatedDetailPages": 4574,
+  "listingPages": 1114,
+  "staticCardInstances": 58414,
+  "unapplied": 0,
+  "sourcePreservation": {
+    "pages": 22317,
+    "differences": 0,
+    "compared": [
+      "metadata",
+      "JSON-LD",
+      "own detail article (including source records and primary gallery)"
+    ]
+  },
+  "localTests": {
+    "passed": 267,
+    "failed": 0,
+    "includesPreExistingUntrackedOfflineShellTest": true,
+    "expectedTrackedCI": 266
+  },
+  "browser": {
+    "representativePages": 8,
+    "widths": [
+      360,
+      375,
+      390,
+      430,
+      768,
+      1024,
+      1440
+    ],
+    "combinations": 56,
+    "mainCourseListAdditionalCombinations": 7,
+    "overflow": 0,
+    "shortPrimaryCTA": 0,
+    "frameRatioErrors": 0,
+    "interactions": [
+      "directory 20→40 results and focus",
+      "detail→list retains 40 results and course filter",
+      "lodging gallery 1/6→2/6",
+      "local place save and removal",
+      "source disclosure and keyboard focus"
+    ]
+  },
+  "protected": [
+    "home backgrounds, animations, sections and photo cards",
+    "DB/schema/Auth/GPS/map geometry/points/admin/source data/URLs/SEO"
+  ],
+  "pending": [
+    "GitHub push",
+    "CI and Pages",
+    "production representative validation"
+  ],
+  "limitations": [
+    "No physical iPhone/Safari or Galaxy device test",
+    "No live GPS or authentication/provider transaction test",
+    "No new photographs or pet access policy claims"
+  ]
+}

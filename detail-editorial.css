@@ -1,3 +1,4 @@
+@import url('/card-media.css?v=20261026-cards5');
 @import url('/ui-control-tokens.css?v=20261026-controls4-final');
 /* Detail-only design system. The home page never imports this stylesheet. */
 body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;font-size:15px;line-height:1.8;letter-spacing:-.02em}
@@ -90,18 +91,12 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
 .editorial-detail .detail-related h2{font:inherit;line-height:1.5;font-family:inherit;font-size:20px;letter-spacing:-.03em;margin:0 0 10px}
 .editorial-detail .detail-related>p{font-size:12px;color:#637164}
 .editorial-detail .detail-related ul{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important;padding:0!important;list-style:none;columns:auto}
-.editorial-detail .detail-related li{min-width:0;padding:0 0 16px!important;margin:0;border-bottom:1px solid #dce1d8;transition:transform .18s}
-.editorial-detail .detail-related-copy>a{font-size:15px!important;line-height:1.65;font-weight:600;text-decoration:none;display:block;margin:8px 0;min-height:44px}
-.editorial-detail .detail-related-copy>span,.editorial-detail .detail-related-copy>small{font-size:11px;color:#667363;display:block;line-height:1.8}
 .editorial-detail .detail-nearby-photo{margin:0}
 .editorial-detail .detail-nearby-photo .detail-slide img{aspect-ratio:4/3;max-height:180px}
 .editorial-detail .detail-nearby-photo figcaption{font-size:10px!important}
 .editorial-detail .detail-nearby-photo .detail-credit-line{display:none}
 .editorial-detail .detail-nearby-photo summary{font-size:10px;min-height:32px;padding:4px 0}
 .editorial-detail .detail-nearby-photo .detail-gallery-track{display:block}
-.editorial-detail .detail-nearby-thumb{margin:0;min-width:0}
-.editorial-detail .detail-nearby-thumb img{display:block;width:100%;height:auto;aspect-ratio:4/3;max-height:180px;object-fit:contain;background:#f0eee7;border-radius:6px}
-.editorial-detail .detail-nearby-thumb figcaption{font-size:10px!important;line-height:1.7!important;margin-top:6px}
 .editorial-detail .place-join{background:transparent;border:0;border-top:1px solid #dce1d8;border-radius:0;padding:28px 0;margin:20px 0}
 .editorial-detail .place-join h2{font-size:20px}
 .editorial-detail .source-link{background:transparent;border:0;padding:6px 0;margin-right:12px;border-radius:0;font-size:12px;font-weight:500}
@@ -191,8 +186,7 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
  .editorial-detail .detail-toolbar a,.editorial-detail .detail-toolbar button{font-size:12px;padding:10px 12px;flex:1 0 auto}
  .editorial-detail .detail-toolbar .place-map{flex-basis:calc(60% - 8px)}
  .editorial-detail .detail-sections{gap:24px;margin-top:20px}
- .editorial-detail .detail-related ul{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
- .editorial-detail .detail-related-copy>a{font-size:14px!important}
+ .editorial-detail .detail-related ul{grid-template-columns:1fr!important;gap:18px!important}
  .editorial-detail .detail-nearby-photo .detail-slide img{max-height:150px}
  .editorial-detail .detail-route-map{min-height:300px}
  .editorial-detail .comfort-detail dl{gap:8px}
@@ -256,7 +250,6 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
  .editorial-detail .detail-credit-reference{min-height:44px}
 }
 
-.editorial-detail .detail-related-facts{margin:10px 0 0}.editorial-detail .detail-related-facts dt{font-size:11px;color:#657164}.editorial-detail .detail-related-facts dd{font-size:13px;line-height:1.8;margin:2px 0 10px}
 
 /* Consistent control geometry, retaining each category's editorial structure. */
 .editorial-detail :is(.detail-actions-primary,.detail-actions-secondary>div)>:is(a,button),.editorial-detail .detail-contact-actions>:is(a,button){display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height);padding:10px var(--control-padding-inline);border-radius:var(--control-radius);font-size:var(--control-type);font-weight:var(--control-weight);line-height:var(--control-leading);text-align:center;white-space:normal;overflow-wrap:anywhere}

@@ -1,0 +1,471 @@
+[
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 360
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 375
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 390
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 430
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 768
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1024
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "cards": 4,
+    "details": "camping",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+    "cards": 12,
+    "details": "stay",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/courses/c387/",
+    "cards": 9,
+    "details": "course",
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/places/cafes/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "cards": 5,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/places/camping/",
+    "cards": 48,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/pet-care/seoul/all/1/",
+    "cards": 100,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  },
+  {
+    "path": "/discover.html?kind=courses#find-place",
+    "cards": 178,
+    "frames": true,
+    "overflow": false,
+    "shortCTA": 0,
+    "width": 1440
+  }
+]

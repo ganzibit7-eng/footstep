@@ -5,7 +5,7 @@ import {refineControlAssets,CONTROL_VERSION,controlAssetVersion} from '../script
 test('control cache refresh is idempotent and preserves metadata, original links and source text',()=>{
  const source='<meta property="og:title" content="장소"><link rel="canonical" href="https://balzaguk.com/places/example/"><link rel="stylesheet" href="/detail-editorial.css?v=old"><script>const original="/detail-editorial.css?v=old";</script><a href="https://source.example/">사진 이용 조건</a>';
  const after=refineControlAssets(source);assert.equal(refineControlAssets(after),after);
- assert.equal(after.replace('detail-editorial.css?v='+CONTROL_VERSION,'detail-editorial.css?v=old'),source);
+ assert.equal(after.replace('detail-editorial.css?v='+controlAssetVersion('detail-editorial'),'detail-editorial.css?v=old'),source);
 });
 test('the offline shell includes local stylesheet imports without caching private data',async()=>{
  const html=readFileSync('index.html','utf8'),handlers={},cached=new Set();

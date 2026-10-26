@@ -1,0 +1,44 @@
+[
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 360
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 375
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 430
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 768
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 1024
+  },
+  {
+    "cta": true,
+    "frames": true,
+    "overflow": false,
+    "width": 1440
+  }
+]

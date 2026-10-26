@@ -18,13 +18,13 @@ function directory(mobile=false){
  const nodes={};for(const id of ['place-data','place-search','place-query','place-kind','place-region','place-category','place-results','place-count','place-more','place-sort','discovery-title','place-clear'])nodes[id]=new Node();
  nodes['place-filter-options']=new Node('details');nodes['place-filter-options'].open=true;nodes['place-filter-selection']=new Node();
  const data=Array.from({length:45},(_,i)=>({name:'카페 '+i,path:'/places/'+i+'/',kind:'facilities',region:'서울',info:'서울 주소 · 식당카페',conditions:'미확인'}));
- data[0].photo={src:'/photo.jpg',width:940,height:625,source:'https://example.com/source',author:'제공기관',licenseUrl:'https://example.com/license'};
+ data[0].photo={src:'/photo.jpg',width:940,height:625,source:'https://example.com/source',author:'제공기관',licenseScope:'사진만 해당 라이선스 적용',caption:'원본 표시 안내',checked:'2026-10-26',licenseUrl:'https://example.com/license'};
  nodes['place-data'].textContent=JSON.stringify(data);nodes['place-count'].parentElement=new Node();
  for(const [id,values]of Object.entries({'place-kind':['','facilities','courses','bins'],'place-region':[''],'place-category':['','식당카페','숙소'],'place-sort':['photos','name','registered']}))for(const value of values){const option=new Node('option');option.value=value;option.textContent=value;nodes[id].append(option);}
  nodes['place-sort'].value='photos';
  const history={state:{preserve:'yes'},replaceState(state,_,url){this.state=state;this.url=url;}};
  const window={location:{href:'https://balzaguk.com/discover.html?kind=facilities&category='+encodeURIComponent('식당카페'),search:'?kind=facilities&category='+encodeURIComponent('식당카페')},history};
- window.matchMedia=()=>({matches:mobile});
+ window.matchMedia=()=>({matches:mobile});window.CardMedia=require('../card-media.js');
  vm.runInNewContext(fs.readFileSync('place-search.js','utf8'),{window,document:{getElementById:id=>nodes[id],createElement:tag=>new Node(tag),createTextNode:text=>({textContent:text})},URL,URLSearchParams});
  return {nodes,history,data};
 }
@@ -66,4 +66,15 @@ test('condition labels split only the explicit source delimiter and preserve unk
  assert.deepEqual(conditionRows('미확인 · 방문 전 문의 · 준비물: 목줄 착용'),[['동반 조건','미확인 · 방문 전 문의'],['준비물','목줄 착용']]);
  for(const raw of ['대형견 불가, 이동장 필요','실내 여부 미확인','운영기관 문의'])assert.deepEqual(conditionRows(raw),[['동반 조건',raw]]);
  assert.match(conditionRows(null)[0][1],/미확인/);
+});
+
+
+test('live directory cards keep one record across photo, heading, credits and bottom CTA',()=>{
+ const {nodes,data}=directory(),first=nodes['place-results'].children[0];
+ assert.equal(first.children.length,7);assert.equal(first.attrs['data-card-source'],data[0].path);
+ assert.equal(first.querySelector('.premium-card-title').children[0].textContent,data[0].name);
+ assert.equal(first.querySelector('.premium-card-cta').href,data[0].path);
+ const media=first.children[0],img=media.children[0].children[0];assert.equal(img.src,data[0].photo.src);assert.equal(img.attrs['data-card-fit'],'contain');
+ assert(first.children[5].children[1].children[1].textContent.includes(data[0].photo.licenseScope));assert(first.children[5].children[1].children[1].textContent.includes(data[0].photo.caption));
+ assert.equal(nodes['place-results'].children[1].children[0].innerHTML.includes('사진 미등록'),true);
 });
