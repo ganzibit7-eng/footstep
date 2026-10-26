@@ -266,3 +266,6 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
 /* Explicit facility names, separated without reinterpreting prose or fees. */
 .editorial-detail .detail-facility-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px 18px;list-style:none;padding:0;margin:8px 0 0;columns:auto}
 .editorial-detail .detail-facility-list>li{min-width:0;margin:0;padding:7px 0;border:0;border-bottom:1px solid #e1e6dc;border-radius:0;background:transparent;box-shadow:none;font-size:14px;line-height:1.8;overflow-wrap:anywhere}
+
+/* Compact evidence labels; no claim of an on-site visit. */
+.editorial-detail .detail-trust{display:flex;flex-wrap:wrap;gap:6px 12px;margin:14px 0;color:#617065;font-size:12px;line-height:1.6}.editorial-detail .detail-trust span{padding:2px 0;border-bottom:1px solid #dce2d9;overflow-wrap:anywhere}

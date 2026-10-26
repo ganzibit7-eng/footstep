@@ -1,0 +1,27 @@
+{
+  "details": 22317,
+  "collections": 1095,
+  "descriptionUpdates": 0,
+  "errors": [],
+  "sourceRows": 107561,
+  "rawPhotos": 5639,
+  "mapRouteLinks": 0,
+  "sizes": {
+    "courses/c387/index.html": {
+      "before": 38210,
+      "after": 38375
+    },
+    "places/cafes/index.html": {
+      "before": 80273,
+      "after": 80346
+    },
+    "places/camping/index.html": {
+      "before": 114134,
+      "after": 114207
+    },
+    "places/regions/seoul/stays/index.html": {
+      "before": 18018,
+      "after": 18091
+    }
+  }
+}

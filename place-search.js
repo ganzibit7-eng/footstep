@@ -29,7 +29,7 @@
   // across rapid filter changes; failed attempts can be explicitly retried.
   function createDataSource(initial,fetcher,options){
     options=options||{};var loaded=Array.isArray(initial)?initial:null,pending=null,failed=false;
-    var valid=initial&&initial.version===1&&/^\/assets\/search-data\/discover\.json\?v=[a-f0-9]{16}$/.test(initial.src)&&Number.isSafeInteger(initial.count)&&initial.count>0;
+    var valid=initial&&initial.version===1&&/^\/assets\/search-data\/discover(?:\.json\?v=[a-f0-9]{16}|-[a-f0-9]{16}\.json)$/.test(initial.src)&&Number.isSafeInteger(initial.count)&&initial.count>0;
     return {regions:loaded?Array.from(new Set(loaded.map(function(r){return r.region;}).filter(Boolean))):Array.isArray(initial?.regions)?initial.regions:[],count:loaded?loaded.length:valid?initial.count:0,peek:function(){return loaded;},load:function(){
       if(loaded)return Promise.resolve(loaded);if(pending)return pending;
       if(!valid||typeof fetcher!=='function')return Promise.reject(new Error('Search index unavailable'));

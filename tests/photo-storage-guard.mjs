@@ -27,7 +27,7 @@ test('deployment stays paused until activation, with no direct public R2 configu
  const config=JSON.parse(fs.readFileSync(new URL('../infrastructure/photo-delivery/wrangler.json',import.meta.url)));assert.equal(config.vars.ENABLED,'false');assert.equal(config.r2_buckets.length,1);assert(!config.routes);assert(!config.durable_objects);assert(!config.kv_namespaces);assert.equal(config.observability.enabled,false);
 });
 test('unavailable photos do not retry requests or hide place information',()=>{
- let handler;const notes=[];const doc={baseURI:'https://balzaguk.com/',readyState:'complete',addEventListener(type,fn){if(type==='error')handler=fn;},querySelectorAll(){return [];},createElement(){return {style:{}};}};
+ let handler;const notes=[];const doc={baseURI:'https://balzaguk.com/',readyState:'complete',addEventListener(type,fn){if(type==='error')handler=fn;},querySelectorAll(){return [];},createElement(){return {style:{},setAttribute(){}};}};
  vm.runInNewContext(fs.readFileSync(new URL('../photo-display.js',import.meta.url),'utf8'),{document:doc,URL});
  const image={tagName:'IMG',dataset:{},style:{display:'block'},src:'https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-123.jpg',insertAdjacentElement(_,note){notes.push(note);}};
  handler({target:image});handler({target:image});assert.equal(notes.length,1);assert(image.hidden);assert.equal(image.style.display,'none');assert.match(notes[0].textContent,/장소 안내는 계속/);

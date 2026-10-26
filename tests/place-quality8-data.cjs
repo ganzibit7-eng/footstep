@@ -18,6 +18,6 @@ test('index loading has a deadline and can retry after a stalled request',async(
 });
 test('published directory manifest and full index agree, without precaching the payload on home',()=>{
  const html=fs.readFileSync('discover.html','utf8'),m=JSON.parse(html.match(/id="place-data">([\s\S]*?)<\/script>/)[1]);assert.equal(m.version,1);assert(m.count>4000);assert(html.length<700000);
- const raw=fs.readFileSync('.'+m.src.split('?')[0]),data=JSON.parse(raw);assert.equal(data.length,m.count);assert(m.src.endsWith(crypto.createHash('sha256').update(raw).digest('hex').slice(0,16)));
+ const raw=fs.readFileSync('.'+m.src.split('?')[0]),data=JSON.parse(raw);assert.equal(data.length,m.count);assert(m.src.includes(crypto.createHash('sha256').update(raw).digest('hex').slice(0,16)));
  assert.deepEqual([...new Set(data.map(r=>r.region).filter(Boolean))],m.regions);assert(!fs.readFileSync('sw.js','utf8').includes('assets/search-data'));assert(html.includes('검색')&&html.includes('/places/regions/'));
 });

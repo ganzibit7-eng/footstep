@@ -40,7 +40,7 @@ test('every sitemap detail has one category template, valid assets, unique IDs a
   assert(html.includes('data-detail-template="editorial-v3"'),url+' unapplied');assert(published.has(url),url+' absent from sitemap');seen.add(url);
   assert.equal((html.match(/<h1\b/g)||[]).length,1,url);assert.equal((html.match(/data-detail-template=/g)||[]).length,1,url);
   const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,url+' duplicate IDs');
-  for(const asset of ['detail-editorial.css?v=20261026-quality8','detail-editorial.js?v=20261026-quality3'])assert(html.includes(asset),url);
+  for(const asset of ['detail-editorial.css?v=20261026-quality9','detail-editorial.js?v=20261026-quality3'])assert(html.includes(asset),url);
   const kind=html.match(/data-detail-kind="([^"]+)"/)[1];counts[kind]=(counts[kind]||0)+1;
   const article=html.slice(html.indexOf('<article'),html.indexOf('</article>'));
   if(article.includes('class="detail-gallery"'))assert(!article.includes('place-photo-missing'));

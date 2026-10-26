@@ -703,8 +703,12 @@ async function directoryHtml(groups) {
   const payload=JSON.stringify(searchData),dataFile=path.join(ROOT,'assets/search-data/discover.json');
   await mkdir(path.dirname(dataFile),{recursive:true});
   let previous;try{previous=await readFile(dataFile,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
-  if(previous!==payload)await writeFile(dataFile,payload,'utf8');
-  const manifest={version:1,src:'/assets/search-data/discover.json?v='+createHash('sha256').update(payload).digest('hex').slice(0,16),count:searchData.length,regions:[...new Set(searchData.map(r=>r.region).filter(Boolean))]};
+  // Preserve the v1 fixed-path payload for already-open phase-eight HTML.
+  if(previous===undefined)await writeFile(dataFile,payload,'utf8');
+  const immutable='discover-'+createHash('sha256').update(payload).digest('hex').slice(0,16)+'.json';
+  const immutablePath=path.join(ROOT,'assets/search-data',immutable);
+  try{if(await readFile(immutablePath,'utf8')!==payload)throw new Error('Immutable search payload collision');}catch(error){if(error.code!=='ENOENT')throw error;await writeFile(immutablePath,payload,'utf8');}
+  const manifest={version:1,src:'/assets/search-data/'+immutable,count:searchData.length,regions:[...new Set(searchData.map(r=>r.region).filter(Boolean))]};
   const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(manifest).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261026-quality8-data"></script>`;
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;

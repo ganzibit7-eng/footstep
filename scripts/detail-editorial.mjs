@@ -2,6 +2,7 @@ import {cardRecord,renderPlaceCard} from './place-card.mjs';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {CONTROL_VERSION} from './publish-control-polish.mjs';
+import {trustLabels,trustHTML} from './detail-trust.mjs';
 const placePhotos=createRequire(import.meta.url)('../place-photos.js');
 const Presentation=createRequire(import.meta.url)('../place-presentation.js');
 const Media=createRequire(import.meta.url)('../card-media.js');
@@ -94,7 +95,8 @@ function professionalDetail(html,article){
  if(/^\+?[0-9()\s-]{8,30}$/.test(phone))actions=actions.replace(/(<a class="care-primary"[^>]*>)[\s\S]*?(<\/a>)/,'$1<span>전화로 문의하기</span><strong>'+esc(phone)+'<\/strong>$2');
  actions=actions.replace('</div>','<button type="button" class="detail-button" data-detail-share>공유</button>'+(address?'<button type="button" class="detail-button" data-copy-address="'+esc(address)+'">주소 복사</button>':'')+'</div>');
  const note=find(/class="care-note"/),sources=find(/class="care-sources"/),state=find(/class="care-state"/);
- const next=back+'<header class="detail-heading">'+kicker+heading+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
+ const trust=trustHTML(trustLabels('professional',[],{links:[...sources.matchAll(/href="([^"]+)"/g)].map(m=>text(m[1])),dates:text(sources).match(/\d{4}-\d{2}-\d{2}/g)||[]}));
+ const next=back+'<header class="detail-heading">'+kicker+heading+trust+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="professional">'+next+'</article>');
  return html.replace('<body>','<body class="editorial-detail">').replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>').replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
 }
@@ -292,12 +294,13 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  const uniqueLinks=new Map();for(const m of sourceNotes.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/g))if(!uniqueLinks.has(m[1]))uniqueLinks.set(m[1],m[0]);
  const dates=[...new Set(text(sourceNotes).match(/\d{4}-\d{2}-\d{2}/g)||[])];
  const dateRows=[['동반 자료',sources.join('')],['운영·방문 자료',provenance.join('')],['등록·공식 안내',remaining]].map(([label,raw])=>({label,value:[...new Set(text(raw).match(/\d{4}-\d{2}-\d{2}/g)||[])].join(' · ')})).filter(r=>r.value);
+ const trust=trustHTML(trustLabels(kind,petRows,{links:[...uniqueLinks.keys()],dates:dateRows.flatMap(r=>r.value.split(' · ')),historical:sourceNotes.includes('과거에 작성된 참고 자료'),conflict:cautions.length>0}));
  const sourceSection=section('detail-sources','자료와 방문 전 확인',dl(dateRows,'detail-proof-dates')+'<p class="detail-caption">자료에 표시된 검토·조회 날짜입니다. 현장 방문이나 운영정책 갱신 확인을 뜻하지 않습니다. 당일 출입·예약·요금은 방문 전에 확인해 주세요.</p><div class="detail-source-links">'+[...uniqueLinks.values()].join(' ')+'</div>'+moreSources.join('')+original+'<details class="detail-source-notes"><summary>출처별 확인 기록과 주의사항</summary><div>'+sourceNotes+'</div></details>');
  const links=professional?careBack:'<a class="detail-back" data-detail-back href="'+(kind==='course'?'/discover.html?kind=courses#find-place':'/discover.html?kind=facilities#find-place')+'">← 목록으로</a>';
  const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+'<a href="#detail-sources">출처·주의사항</a></nav>';
  const addressLabel=kind==='course'?text(location[0]?.match(/<strong>([\s\S]*?)<\/strong>/)?.[1]):'';
  const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+essentialFacts(kind,petRows,visiting,facilities,{caution:cautions.length>0}).map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';
- let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?'<p class="detail-address">'+(addressLabel?'<span>'+esc(addressLabel)+'</span><br>':'')+esc(address)+'</p>':'')+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes,kind)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
+ let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?'<p class="detail-address">'+(addressLabel?'<span>'+esc(addressLabel)+'</span><br>':'')+esc(address)+'</p>':'')+trust+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes,kind)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="'+kind+'">'+next+'</article>');
  html=html.replace(/<body([^>]*)>/,(all,attrs)=>attrs.includes('class="')?'<body'+attrs.replace('class="','class="editorial-detail ') +'>':'<body class="editorial-detail"'+attrs+'>');
  html=html.replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>');
