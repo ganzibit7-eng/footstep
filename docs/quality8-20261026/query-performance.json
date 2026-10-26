@@ -1,0 +1,1476 @@
+[
+  {
+    "version": "before",
+    "metrics": {
+      "cls": 0.0003027081226253259,
+      "events": [
+        10.5,
+        8.5,
+        8.600000023841858,
+        8.399999976158142,
+        9.099999904632568,
+        8.899999976158142,
+        7.200000047683716,
+        10,
+        2.600000023841858,
+        8.700000047683716,
+        9.100000023841858,
+        9.400000095367432,
+        8,
+        9,
+        8.399999976158142,
+        8,
+        11,
+        10.100000023841858,
+        2.5,
+        6.299999952316284,
+        9.100000023841858,
+        8.600000023841858,
+        8.600000023841858,
+        8.800000071525574,
+        9.700000047683716,
+        9.399999976158142,
+        8.100000023841858,
+        8.299999952316284,
+        2.5,
+        6.600000023841858
+      ],
+      "firstResultsMs": 141.69999992847443,
+      "resources": [
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2017735.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2740726.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2498993-7c3d1fd85ae2.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-979536.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2728203-14151e14ec24.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2727332.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3438160-500c20bb28ff.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2894735.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2733965.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126479.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2781318.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-704507.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2739407-301e0569ffa1.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1821483-3f8fb265417a.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2791523-9c1de1fe906c.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-978165.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2857350.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2904691.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-615850-b23028d9e843.jpg",
+          "bytes": 425211
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2705418.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2807380.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603720.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2930680.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2670558.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3056221.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2793017.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2787086.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2610230.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1627011.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2725123.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-228892.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126068.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2591824.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2908228-0ce04ae60d6a.jpg",
+          "bytes": 625774
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2745675-55868af86f2a.jpg",
+          "bytes": 682763
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2739391.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2754980.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3111794.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126450.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2751854.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2718743.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756678.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2663155.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2557807.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2844738.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759926-a15b8f4c26de.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-563186.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-128074.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2800851.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2491622.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-139689.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-912647-68a95277ba49.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-232298-f6cc96d9014c.jpg",
+          "bytes": 75644
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2017499-0dba64ff5cc5.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2468936.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2909627.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2988926.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2037020.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1100498.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3006915.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1037031.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3006983.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1021339.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2402981.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-delivery/kto-128611-72db988a7c15.webp",
+          "bytes": 159066
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2589349.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2470006.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2654601.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-300076.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3080165.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2892256.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2862045.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2564158.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2806043.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2724387.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2752778.png",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-572973.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3112168.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2779449.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-127492.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3336134.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2763846.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3034236.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2357431.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1180825.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2743322.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-560996.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757998.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2762882.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2745718.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729920.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757116.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734828.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2749989.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2744516.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757975.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603800.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761762.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757967.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2731170.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1945729.png",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3355750.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2569455.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2514838.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3046988.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1624311.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2736403.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/course-photos/pet_20261012c_5d50d6430135.webp",
+          "bytes": 62412
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-131774.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3072035.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/commons-70155891-ee5ed6dfe865.jpg",
+          "bytes": 333722
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757631.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2951541.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756910.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729918.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2726803-99e4219834e5.jpg",
+          "bytes": 669669
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2754601.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2734674-7e2cebe3b455.jpg",
+          "bytes": 232724
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2832717.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2504464.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759611.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2838418-7b0c4a58cbfd.jpg",
+          "bytes": 575412
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-delivery/kto-1607440-5b135c994512.webp",
+          "bytes": 129270
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2859073-dc2647587c76.jpg",
+          "bytes": 473291
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2847969-955ccaf0a762.jpg",
+          "bytes": 587032
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2860823-0be553f3388c.jpg",
+          "bytes": 438985
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2860833-cf97ba07672b.jpg",
+          "bytes": 690383
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2872583-9347f07fe07a.jpg",
+          "bytes": 599901
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2809044.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2922605-e72b2561dce6.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-135923-e2cf71261ee6.jpg",
+          "bytes": 171285
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2569453-5016ab855844.jpg",
+          "bytes": 172315
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2839784-fc2234bde543.jpg",
+          "bytes": 105098
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-1950195-8ac4ac6928f2.jpg",
+          "bytes": 135132
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2927438.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2801445.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-127965.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2702507.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2844738.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2663155.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756678.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2557807.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2498993-7c3d1fd85ae2.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-979536.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759926-a15b8f4c26de.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2800851.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2491622.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2807380.jpg",
+          "bytes": 0
+        }
+      ],
+      "heap": 18264358,
+      "navigation": {
+        "domReady": 173.19999992847443,
+        "load": 191.60000002384186,
+        "bytes": 4680864
+      }
+    }
+  },
+  {
+    "version": "after",
+    "metrics": {
+      "cls": 0.0003027081226253259,
+      "events": [
+        11.299999952316284,
+        10.100000023841858,
+        10,
+        12.100000023841858,
+        10.200000047683716,
+        9.899999976158142,
+        10.399999976158142,
+        10.700000047683716,
+        4,
+        9.5,
+        11.5,
+        11.100000023841858,
+        9.899999976158142,
+        10.5,
+        8.700000047683716,
+        8.799999952316284,
+        10.699999928474426,
+        9.199999928474426,
+        4.200000047683716,
+        7.899999976158142,
+        10.100000023841858,
+        9.5,
+        9.5,
+        10.399999976158142,
+        9.800000071525574,
+        8.400000095367432,
+        8.299999952316284,
+        9.100000023841858,
+        3.5,
+        8.5
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "bytes": 4231285
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2017735.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2727332.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2728203-14151e14ec24.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2740726.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2498993-7c3d1fd85ae2.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-979536.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-615850-b23028d9e843.jpg",
+          "bytes": 425211
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2908228-0ce04ae60d6a.jpg",
+          "bytes": 625774
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2739407-301e0569ffa1.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-139689.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-912647-68a95277ba49.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-232298-f6cc96d9014c.jpg",
+          "bytes": 75644
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2017499-0dba64ff5cc5.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2468936.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1821483-3f8fb265417a.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2745675-55868af86f2a.jpg",
+          "bytes": 682763
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759926-a15b8f4c26de.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2791523-9c1de1fe906c.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2909627.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2739391.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3438160-500c20bb28ff.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2733965.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2894735.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126479.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2781318.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-704507.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126450.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2751854.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-978165.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2857350.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2904691.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2705418.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2807380.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-563186.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3111794.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2725123.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603720.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2930680.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2670558.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3056221.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2793017.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2787086.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2610230.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1627011.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-228892.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126068.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2591824.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-128074.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2754980.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757998.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2762882.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2745718.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729920.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757116.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734828.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2749989.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2744516.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757975.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603800.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761762.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757967.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2731170.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2718743.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1945729.png",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3355750.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2569455.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3046988.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2514838.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1624311.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2736403.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/course-photos/pet_20261012c_5d50d6430135.webp",
+          "bytes": 62412
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3072035.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-131774.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757631.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/commons-70155891-ee5ed6dfe865.jpg",
+          "bytes": 333722
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2951541.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756910.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2844738.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756678.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2663155.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2557807.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729918.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2726803-99e4219834e5.jpg",
+          "bytes": 669669
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2734674-7e2cebe3b455.jpg",
+          "bytes": 232724
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2754601.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2832717.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759611.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2504464.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-delivery/kto-1607440-5b135c994512.webp",
+          "bytes": 129270
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2838418-7b0c4a58cbfd.jpg",
+          "bytes": 575412
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2847969-955ccaf0a762.jpg",
+          "bytes": 587032
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2859073-dc2647587c76.jpg",
+          "bytes": 473291
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2860823-0be553f3388c.jpg",
+          "bytes": 438985
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2860833-cf97ba07672b.jpg",
+          "bytes": 690383
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2872583-9347f07fe07a.jpg",
+          "bytes": 599901
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2800851.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2491622.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2809044.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2922605-e72b2561dce6.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-135923-e2cf71261ee6.jpg",
+          "bytes": 171285
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2569453-5016ab855844.jpg",
+          "bytes": 172315
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2839784-fc2234bde543.jpg",
+          "bytes": 105098
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-1950195-8ac4ac6928f2.jpg",
+          "bytes": 135132
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2927438.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2801445.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-127965.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2702507.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2988926.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2037020.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1100498.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3006915.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3006983.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1037031.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1021339.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2402981.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-delivery/kto-128611-72db988a7c15.webp",
+          "bytes": 159066
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2589349.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2470006.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2654601.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-300076.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2859187.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3080165.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2892256.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2862045.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2564158.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2806043.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2752778.png",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2724387.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-572973.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3112168.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2779449.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-127492.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3336134.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2763846.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3034236.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-1180825.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2357431.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2743322.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-560996.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2727332.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2908228-0ce04ae60d6a.jpg",
+          "bytes": 625774
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2745675-55868af86f2a.jpg",
+          "bytes": 682763
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2728203-14151e14ec24.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2739391.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2754980.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2705418.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3111794.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2718743.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-126450.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2663155.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2756678.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2844738.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2557807.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2498993-7c3d1fd85ae2.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-979536.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2759926-a15b8f4c26de.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2800851.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2491622.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2807380.jpg",
+          "bytes": 0
+        }
+      ],
+      "heap": 17185927,
+      "firstResultsMs": 156.09999990463257,
+      "navigation": {
+        "domReady": 109.79999995231628,
+        "load": 126,
+        "bytes": 449076
+      }
+    }
+  }
+]

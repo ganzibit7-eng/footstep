@@ -1,0 +1,1268 @@
+[
+  {
+    "version": "before",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "navigation": {
+        "domReady": 159.70000004768372,
+        "load": 162.80000007152557,
+        "bytes": 4680864
+      },
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 1363
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 26710715
+    }
+  },
+  {
+    "version": "before",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "navigation": {
+        "domReady": 136.39999997615814,
+        "load": 138.69999992847443,
+        "bytes": 4680864
+      },
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 1363
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 32850624
+    }
+  },
+  {
+    "version": "before",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "navigation": {
+        "domReady": 139.10000002384186,
+        "load": 143.80000007152557,
+        "bytes": 4680864
+      },
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 1363
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 34197914
+    }
+  },
+  {
+    "version": "before",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "firstResultsMs": 153,
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 1363
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757998.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2762882.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2745718.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729920.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757116.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734828.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2749989.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2744516.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757975.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603800.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761762.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757967.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2731170.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734012.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734174.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761869.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2734148-2d864c045375.jpg",
+          "bytes": 98299
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2748121.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2755693-738a7cca75b6.jpg",
+          "bytes": 764016
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 35669924,
+      "navigation": {
+        "domReady": 175.39999997615814,
+        "load": 983.2000000476837,
+        "bytes": 4680864
+      }
+    }
+  },
+  {
+    "version": "before",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "firstResultsMs": 130.29999995231628,
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757998.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2762882.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2745718.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729920.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757116.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734828.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2749989.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2744516.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757975.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603800.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761762.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757967.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2731170.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734012.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734174.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761869.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2734148-2d864c045375.jpg",
+          "bytes": 98299
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2748121.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2755693-738a7cca75b6.jpg",
+          "bytes": 764016
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 54962104,
+      "navigation": {
+        "domReady": 153.70000004768372,
+        "load": 161.29999995231628,
+        "bytes": 4680864
+      }
+    }
+  },
+  {
+    "version": "before",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "firstResultsMs": 149.69999992847443,
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-before-search.js",
+          "bytes": 12778
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761850.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757998.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2762882.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2745718.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2729920.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757116.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734828.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2749989.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2744516.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757975.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2603800.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761762.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2757967.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2731170.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734012.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2734174.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2761869.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2734148-2d864c045375.jpg",
+          "bytes": 98299
+        },
+        {
+          "name": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2748121.jpg",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/place-supplement/kto-2755693-738a7cca75b6.jpg",
+          "bytes": 764016
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 12269613,
+      "navigation": {
+        "domReady": 171.89999997615814,
+        "load": 179.60000002384186,
+        "bytes": 4680864
+      }
+    }
+  },
+  {
+    "version": "after",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 21007576,
+      "navigation": {
+        "domReady": 104,
+        "load": 107.10000002384186,
+        "bytes": 449076
+      }
+    }
+  },
+  {
+    "version": "after",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        }
+      ],
+      "heap": 32419881,
+      "navigation": {
+        "domReady": 101.69999992847443,
+        "load": 107.60000002384186,
+        "bytes": 449076
+      }
+    }
+  },
+  {
+    "version": "after",
+    "requested": false,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        }
+      ],
+      "heap": 43492803,
+      "navigation": {
+        "domReady": 107.79999995231628,
+        "load": 114.70000004768372,
+        "bytes": 449076
+      }
+    }
+  },
+  {
+    "version": "after",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "bytes": 4231285
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        }
+      ],
+      "heap": 64932419,
+      "navigation": {
+        "domReady": 103.70000004768372,
+        "load": 111.30000007152557,
+        "bytes": 449076
+      },
+      "firstResultsMs": 174.90000009536743
+    }
+  },
+  {
+    "version": "after",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "bytes": 4231285
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        }
+      ],
+      "heap": 50955676,
+      "navigation": {
+        "domReady": 97,
+        "load": 105,
+        "bytes": 449076
+      },
+      "firstResultsMs": 147.70000004768372
+    }
+  },
+  {
+    "version": "after",
+    "requested": true,
+    "metrics": {
+      "cls": 0,
+      "events": [],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap",
+          "bytes": 213394
+        },
+        {
+          "name": "http://127.0.0.1:8991/readability.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/course-comfort.css?v=20261010-env",
+          "bytes": 2118
+        },
+        {
+          "name": "http://127.0.0.1:8991/listing-editorial.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-presentation.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.js?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/icon-192.png",
+          "bytes": 1187
+        },
+        {
+          "name": "http://127.0.0.1:8991/quality8-metrics.js",
+          "bytes": 0
+        },
+        {
+          "name": "http://127.0.0.1:8991/place-search.js?v=20261026-quality8-data",
+          "bytes": 17096
+        },
+        {
+          "name": "http://127.0.0.1:8991/photo-display.js?v=20261018-r2",
+          "bytes": 1115
+        },
+        {
+          "name": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js",
+          "bytes": 217945
+        },
+        {
+          "name": "http://127.0.0.1:8991/traffic.js?v=20261003",
+          "bytes": 6887
+        },
+        {
+          "name": "http://127.0.0.1:8991/card-media.css?v=20261026-quality8",
+          "bytes": 10411
+        },
+        {
+          "name": "http://127.0.0.1:8991/ui-control-tokens.css?v=20261026-controls4-final",
+          "bytes": 508
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap",
+          "bytes": 377620
+        },
+        {
+          "name": "http://127.0.0.1:8991/internal-pages.css?v=20261026-quality8",
+          "bytes": 0
+        },
+        {
+          "name": "https://fonts.gstatic.com/s/notosanskr/v40/PbykFmXiEBPT4ITbgNA5CgmG0X7t.woff2",
+          "bytes": 25880
+        },
+        {
+          "name": "http://127.0.0.1:8991/assets/search-data/discover.json?v=cea1fed912419b8b",
+          "bytes": 4231285
+        }
+      ],
+      "heap": 57547027,
+      "navigation": {
+        "domReady": 144.70000004768372,
+        "load": 147.29999995231628,
+        "bytes": 449076
+      },
+      "firstResultsMs": 186.39999997615814
+    }
+  }
+]

@@ -1,3 +1,4 @@
+import searchRecords from './search-records.cjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';
 import Presentation from '../place-presentation.js';import Conditions from '../place-conditions.js';
@@ -54,6 +55,6 @@ test('the camping detail, visit facts, source grouping and directory summary agr
  assert.equal((h.match(/class="detail-site-row"/g)||[]).length,4);assert(h.includes('중·소형견 불가'));assert(h.includes('마사토 사이트와 블럭 사이트는 소형견만'));
  assert(h.includes('<span>입실 시간</span>'));assert(h.includes('<span>퇴실 시간</span>'));assert(h.includes('14:00'));assert(h.includes('12:00'));assert(h.includes(r.visitInfo.rows.find(x=>x.label==='운영시간').value));
  assert.equal((h.match(/id="detail-gallery-sources"/g)||[]).length,1);assert(!h.includes('class="detail-photo-credit"'));
- const data=JSON.parse(readFileSync('discover.html','utf8').match(/id="place-data">([\s\S]*?)<\/script>/)[1]),entry=data.find(x=>x.path==='/places/'+r.id+'/');
+ const data=searchRecords(),entry=data.find(x=>x.path==='/places/'+r.id+'/');
  assert(entry.facts.some(x=>x.label==='사이트별 조건'));for(const f of entry.facts){assert(f.value.length<=86);assert(!f.value.endsWith('...'));if(f.label==='시설 일부')assert(f.value.split(' · ').every(value=>h.includes(value)));else assert(h.includes(f.value));}
 });

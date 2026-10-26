@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {filter,category}=require('../place-search.js');
 const html=fs.readFileSync('discover.html','utf8');
-const data=JSON.parse(html.match(/id="place-data">([\s\S]*?)<\/script>/)[1]);
+const data=require('./search-records.cjs')();
 assert.ok(data.length>3000);
 const cafes=filter(data,{kind:'facilities',region:'서울',category:'식당카페'});
 assert.ok(cafes.length>0);assert.ok(cafes.every(item=>item.kind==='facilities'&&item.region==='서울'&&category(item)==='식당카페'));

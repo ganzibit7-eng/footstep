@@ -8,7 +8,7 @@ export function refineControlAssets(html){
  const interactive=/id="(?:find-place|care-form)"/.test(html);
  html=html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/,head=>head.replace(/<script(?: defer)? src="\/card-media\.js\?v=[\w-]+"><\/script>/g,''));
  if(interactive)html=html.replace('</head>','<script src="/card-media.js?v=20261026-quality8"></script></head>');
- html=html.replace(/(?:place-search|pet-care|place-saves|place-presentation)\.js\?v=[\w-]+/g,match=>match.split('?')[0]+'?v=20261026-quality8');
+ html=html.replace(/(?:place-search|pet-care|place-saves|place-presentation)\.js\?v=[\w-]+/g,match=>match.split('?')[0]+'?v=20261026-quality8'+(match.startsWith('place-search.')?'-data':''));
  return html.replace(/(<link\b[^>]*\bhref=["'])\/(detail-editorial|listing-editorial|internal-pages|product-ui|design-system|legal|readability)\.css\?v=[\w-]+/g,(_,prefix,name)=>prefix+'/'+name+'.css?v='+controlAssetVersion(name));
 }
 export async function publishControlPolish(root){

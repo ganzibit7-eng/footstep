@@ -1,3 +1,4 @@
+import searchRecords from './search-records.cjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
@@ -5,7 +6,7 @@ import {directoryPhoto} from '../scripts/directory-data.mjs';import Media from '
 import {mapEntryAction} from '../scripts/detail-editorial.mjs';
 const require=createRequire(import.meta.url),Search=require('../place-search.js');
 const discover=()=>readFileSync('discover.html','utf8');
-const records=()=>JSON.parse(discover().match(/id="place-data">([\s\S]*?)<\/script>/)[1]);
+const records=()=>searchRecords();
 
 test('public search omits bookkeeping without changing photo rights or originals',()=>{
  const p={src:'/photo.jpg',author:'촬영자 이름',source:'https://source.example/',original:'https://source.example/original',license:'CC BY-ND 4.0',licenseUrl:'https://license.example/',changes:'크롭 금지',noCrop:true,width:900,height:600,checked:'2026-10-01',sha256:'hash',bytes:123,courses:{a:'다른 코스'}};
@@ -40,7 +41,7 @@ test('all generated details separate notices, preserve useful actions and reject
 });
 
 test('mobile layout is established before parsing search JSON, with no new dependency',()=>{
- const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261026-quality8'));assert(!h.includes('quality7-metrics.js'));
+ const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261026-quality8-data'));assert(!h.includes('quality7-metrics.js'));
 });
 
 test('facility map links enter the existing map route without an intermediate home history entry',()=>{

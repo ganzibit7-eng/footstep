@@ -1,0 +1,99 @@
+{
+  "status": "local validation complete; GitHub and production validation pending",
+  "baseline": "3353855770",
+  "detailCommit": "7b13ebb89d",
+  "tests": {
+    "passed": 291,
+    "failed": 0,
+    "note": "includes existing untracked offline-shell test; tracked tests 290"
+  },
+  "coverage": {
+    "details": 22317,
+    "lists": 1114,
+    "facilityLists": 81,
+    "cards": 58414,
+    "relatedDetails": 4574,
+    "seoDirectoryUnchanged": true
+  },
+  "browser": {
+    "localChecks": 84,
+    "overflowIssues": 0,
+    "shortCTA": 0,
+    "gallery": "six photos, final next disabled, keyboard previous",
+    "favorite": "local add/remove; no member sync claimed",
+    "back": "camping/name/40 items and y=11506.6669921875 preserved",
+    "error": "controlled local first-fetch failure and real successful retry"
+  },
+  "performance": {
+    "records": 4619,
+    "exactDataEquivalent": true,
+    "equivalentSearchStates": 48,
+    "htmlBytes": {
+      "before": 4680828,
+      "after": 449030
+    },
+    "htmlGzip": {
+      "before": 427876,
+      "after": 36060
+    },
+    "indexBytes": 4231285,
+    "indexGzip": 392109,
+    "scriptBytes": 17096,
+    "measurements": [
+      {
+        "version": "before",
+        "requested": false,
+        "domReadyMedianMs": 139.10000002384186,
+        "firstResultsMedianMs": null,
+        "clsMax": 0,
+        "indexRequests": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "version": "before",
+        "requested": true,
+        "domReadyMedianMs": 171.89999997615814,
+        "firstResultsMedianMs": 149.69999992847443,
+        "clsMax": 0,
+        "indexRequests": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "version": "after",
+        "requested": false,
+        "domReadyMedianMs": 104,
+        "firstResultsMedianMs": null,
+        "clsMax": 0,
+        "indexRequests": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "version": "after",
+        "requested": true,
+        "domReadyMedianMs": 103.70000004768372,
+        "firstResultsMedianMs": 174.90000009536743,
+        "clsMax": 0,
+        "indexRequests": [
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "note": "Local Windows browser, 390px, three runs each. Separate payload is not fetched before search intent. Heap samples are cumulative browser process values, not isolated per-document memory; no memory reduction claim. Not physical phone or cold mobile network."
+  },
+  "exceptions": [
+    "No physical iOS/Android GPS or native sharing/phone call completion test",
+    "Heap API samples not isolated per document; no memory reduction claim",
+    "First result latency increased by the additional request in the measured local environment"
+  ]
+}

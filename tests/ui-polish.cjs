@@ -14,25 +14,51 @@ class Node{
  get selectedIndex(){return Math.max(0,this.children.findIndex(n=>n.value===this.value));}
  querySelector(selector){const name=selector.slice(1);for(const n of this.children){if(n.className?.split(' ').includes(name))return n;const nested=n.querySelector?.(selector);if(nested)return nested;}return null;}
 }
-function directory(mobile=false){
+function directory(mobile=false,setup={}){
  const nodes={};for(const id of ['place-data','place-search','place-query','place-kind','place-region','place-category','place-results','place-count','place-more','place-sort','discovery-title','place-clear'])nodes[id]=new Node();
  nodes['place-filter-options']=new Node('details');nodes['place-filter-options'].open=true;nodes['place-filter-selection']=new Node();
  const data=Array.from({length:45},(_,i)=>({name:'카페 '+i,path:'/places/'+i+'/',kind:'facilities',region:'서울',info:'서울 주소 · 식당카페',conditions:'미확인'}));
  data[0].photo={src:'/photo.jpg',width:940,height:625,source:'https://example.com/source',author:'제공기관',licenseScope:'사진만 해당 라이선스 적용',caption:'원본 표시 안내',checked:'2026-10-26',licenseUrl:'https://example.com/license'};
- nodes['place-data'].textContent=JSON.stringify(data);nodes['place-count'].parentElement=new Node();
+ nodes['place-data'].textContent=JSON.stringify(setup.remote?{version:1,src:'/assets/search-data/discover.json?v=0123456789abcdef',count:data.length,regions:['서울']}:data);nodes['place-count'].parentElement=new Node();
  for(const [id,values]of Object.entries({'place-kind':['','facilities','courses','bins'],'place-region':[''],'place-category':['','식당카페','숙소'],'place-sort':['photos','name','registered']}))for(const value of values){const option=new Node('option');option.value=value;option.textContent=value;nodes[id].append(option);}
  nodes['place-sort'].value='photos';
  const history={state:{preserve:'yes'},replaceState(state,_,url){this.state=state;this.url=url;}};
  const window={location:{href:'https://balzaguk.com/discover.html?kind=facilities&category='+encodeURIComponent('식당카페'),search:'?kind=facilities&category='+encodeURIComponent('식당카페')},history};
  window.matchMedia=()=>({matches:mobile});window.CardMedia=require('../card-media.js');
- vm.runInNewContext(fs.readFileSync('place-search.js','utf8'),{window,document:{getElementById:id=>nodes[id],createElement:tag=>new Node(tag),createTextNode:text=>({textContent:text})},URL,URLSearchParams});
- return {nodes,history,data};
+ window.events={};window.addEventListener=(name,fn)=>{window.events[name]=fn;};window.requestAnimationFrame=fn=>fn();window.scrollTo=value=>{window.restored=value.top;};
+ window.performance={getEntriesByType:()=>[{type:setup.back?'back_forward':'navigate'}]};window.sessionStorage={getItem:()=>JSON.stringify({url:window.location.href,y:1234}),setItem:(_,value)=>{window.saved=value;}};
+ if(setup.remote)window.fetch=(...args)=>setup.fetch(data,...args);
+ if(setup.empty){window.location.href='https://balzaguk.com/discover.html';window.location.search='';}
+ vm.runInNewContext(fs.readFileSync('place-search.js','utf8'),{window,document:{getElementById:id=>nodes[id],createElement:tag=>new Node(tag),createTextNode:text=>({textContent:text})},URL,URLSearchParams,setTimeout,clearTimeout,AbortController});
+ return {nodes,history,data,window};
 }
 test('directory more preserves existing cards and photos, focuses next result, and retains URL filters',()=>{
  const {nodes,history}=directory(),list=nodes['place-results'],first=list.children[0],photo=first.children[0];
  assert.equal(list.children.length,20);nodes['place-more'].click();assert.equal(list.children.length,40);assert.equal(list.children[0],first);assert.equal(first.children[0],photo);
  const next=list.children[20].querySelector('.directory-name');assert.equal(next.focused.preventScroll,true);assert.equal(next.scrolled.block,'nearest');assert.match(history.url,/shown=40/);assert.equal(history.state.preserve,'yes');
  nodes['place-more'].click();assert.equal(list.children.length,45);assert.equal(nodes['place-more'].hidden,true);assert.match(nodes['place-count'].textContent,/45곳 중 45곳/);
+});
+
+const settle=()=>new Promise(resolve=>setImmediate(resolve));
+test('deferred directory does not request data before intent and keeps the latest filter during one shared load',async()=>{
+ let calls=0,resolve;const {nodes,data}=directory(true,{remote:true,empty:true,fetch:rows=>{calls++;return new Promise(r=>{resolve=()=>r({ok:true,json:async()=>rows});});}});
+ assert.equal(calls,0);assert.equal(nodes['place-results'].children.length,0);
+ nodes['place-query'].value='카페';nodes['place-search'].listeners.submit({preventDefault(){}});await settle();assert.equal(calls,1);assert.equal(nodes['place-results'].attrs['aria-busy'],'true');
+ nodes['place-query'].value='카페 44';nodes['place-search'].listeners.submit({preventDefault(){}});resolve();await settle();
+ assert.equal(calls,1);assert.equal(nodes['place-results'].children.length,1);assert.equal(nodes['place-results'].children[0].attrs['data-card-source'],data[44].path);assert.equal(nodes['place-results'].attrs['aria-busy'],'false');
+ nodes['place-query'].value='카페';nodes['place-search'].listeners.submit({preventDefault(){}});assert.equal(calls,1);assert.equal(nodes['place-results'].children.length,20);
+});
+test('deferred directory keeps reset state after a stale response and exposes a safe retry after failure',async()=>{
+ let resolve,calls=0;const d=directory(false,{remote:true,fetch:rows=>{calls++;if(calls===1)return Promise.reject(new Error('offline'));return new Promise(r=>{resolve=()=>r({ok:true,json:async()=>rows});});}});await settle();
+ const {nodes}=d;assert.match(nodes['place-count'].textContent,/불러오지 못/);assert.equal(nodes['place-more'].hidden,true);
+ nodes['place-results'].children[0].children.at(-1).click();await settle();assert.equal(calls,2);nodes['place-clear'].click();resolve();await settle();assert.equal(nodes['place-results'].children.length,0);assert.match(nodes['place-count'].textContent,/지역·업종을 선택/);
+});
+test('deferred list restores exact-page back scroll after render and never overrides a new user gesture',async()=>{
+ let complete;const fetch=rows=>new Promise(resolve=>{complete=()=>resolve({ok:true,json:async()=>rows});});
+ let d=directory(false,{remote:true,back:true,fetch});await settle();assert.equal(d.window.restored,undefined);complete();await settle();assert.equal(d.window.restored,1234);
+ d.window.scrollY=456;d.window.events.pagehide();assert.equal(JSON.parse(d.window.saved).y,456);
+ d=directory(false,{remote:true,back:true,fetch});await settle();d.window.events.pointerdown();complete();await settle();assert.equal(d.window.restored,undefined);
+ assert.equal(directory().window.restored,undefined);
 });
 test('mobile filters collapse once, expose restored selections and remain open during refinement',()=>{
  const {nodes}=directory(true),options=nodes['place-filter-options'];

@@ -1,0 +1,14 @@
+{
+  "returnBefore": {
+    "count": "등록 정보 1,064곳 중 40곳 표시",
+    "url": "http://127.0.0.1:8991/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40#find-place",
+    "y": 11506.6669921875
+  },
+  "returnAfter": {
+    "currentPage": "/discover.html"
+  },
+  "verifiedReturnScroll": 11506.6669921875,
+  "localFavorite": "selected and removed",
+  "gallery": "6/6 next disabled; ArrowLeft to 5/6",
+  "retry": "local controlled first fetch failure then successful retry retaining camping filter"
+}

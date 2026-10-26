@@ -22,6 +22,7 @@ import CoursePhotos from '../course-photos.js';
 import CoursePetAccess from '../course-pet-access.js';
 import CourseComfort from '../course-comfort.js';
 import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {snippetDetails,shortSnippet} from './search-snippet.mjs';
@@ -690,7 +691,7 @@ function localOutingHtml(page){
   </main></body></html>`;
 }
 
-function directoryHtml(groups) {
+async function directoryHtml(groups) {
   const searchData=groups.flatMap(({type,items})=>items.map(item=>({
     name:item.name,path:detailPath(item,type),kind:type.table,
     region:(type.table==='bins'?binRegionFor(item):regionFor(item))?.[1]||'',
@@ -699,7 +700,12 @@ function directoryHtml(groups) {
     ...(type.table==='courses'?{facts:listingFacts(item,type).map(({label,value})=>({label,value})),photo:directoryPhoto(CoursePhotos.get(item))}:{})
   })));
   const searchWidget=`<p><a href="/pet-care/">동물병원·미용·돌봄 등 전문업소 찾기 ↗</a></p><section id="find-place"><h2>동네·장소 이름으로 바로 찾기</h2><form id="place-search"><label for="place-query">지역 또는 장소 이름</label><input id="place-query" type="search" maxlength="100" placeholder="예: 남산, 수원, 제주" autocomplete="off"><label for="place-kind">찾을 종류</label><select id="place-kind"><option value="">전체</option><option value="courses">산책 코스</option><option value="facilities">애견동반 장소</option><option value="bins">배변봉투함</option></select><label for="place-region">지역 선택</label><select id="place-region"><option value="">전체 지역</option></select><label for="place-category">동반장소 업종</label><select id="place-category"><option value="">전체 업종</option><option value="공원관광">공원·관광</option><option value="쇼핑">쇼핑</option><option value="숙소">숙소</option><option value="식당카페">식당·카페</option><option value="캠핑">캠핑</option></select><button type="submit">찾기</button><button id="place-clear" type="button">검색 초기화</button></form><p id="place-count" role="status" aria-live="polite">지역이나 장소 이름을 입력하세요.</p><ul id="place-results"></ul><button id="place-more" type="button" hidden>결과 더 보기</button><noscript>아래 지역·테마별 링크에서도 장소를 찾을 수 있습니다.</noscript></section>`;
-  const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(searchData).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261023-polish"></script>`;
+  const payload=JSON.stringify(searchData),dataFile=path.join(ROOT,'assets/search-data/discover.json');
+  await mkdir(path.dirname(dataFile),{recursive:true});
+  let previous;try{previous=await readFile(dataFile,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
+  if(previous!==payload)await writeFile(dataFile,payload,'utf8');
+  const manifest={version:1,src:'/assets/search-data/discover.json?v='+createHash('sha256').update(payload).digest('hex').slice(0,16),count:searchData.length,regions:[...new Set(searchData.map(r=>r.region).filter(Boolean))]};
+  const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(manifest).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261026-quality8-data"></script>`;
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;
     const featured=[...items]
@@ -835,7 +841,7 @@ for (const guide of GUIDES) {
 await generateWeekend(ROOT);
 await writeFile(path.join(ROOT,'guides/index.html'),withTraffic(guideDirectoryHTML(GUIDES)),'utf8');
 sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
-await writeFile(path.join(ROOT, 'discover.html'), withTraffic(directoryHtml(groups)), 'utf8');
+await writeFile(path.join(ROOT, 'discover.html'), withTraffic(await directoryHtml(groups)), 'utf8');
 sitemap.push(...await generatePetCare(ROOT),...await generatePetLife(ROOT));
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {
