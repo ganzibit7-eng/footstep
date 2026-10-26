@@ -6,6 +6,12 @@ export const CONTROL_VERSION='20261026-controls4-final';
 export const controlAssetVersion=name=>name==='detail-editorial'?'20261026-quality9':['product-ui','detail-editorial','listing-editorial','internal-pages','readability'].includes(name)?'20261026-quality8':CONTROL_VERSION;
 export function refineControlAssets(html){
  const interactive=/id="(?:find-place|care-form)"/.test(html);
+ // Static professional catalogues must use the same visitor exclusions as the
+ // searchable directory and detail pages. Defer both scripts, in dependency order.
+ if(html.includes('data-listing-template=')&&!/<script\b[^>]*\bsrc=["']\/?traffic\.js(?:[?"'])/.test(html)){
+  const sdk=/<script\b[^>]*\bsrc=["'][^"']*supabase-js[^"']*["']/.test(html)?'':'<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>';
+  html=html.replace('</body>',sdk+'<script defer src="/traffic.js?v=20261026-quality9"></script></body>');
+ }
  html=html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/,head=>head.replace(/<script(?: defer)? src="\/card-media\.js\?v=[\w-]+"><\/script>/g,''));
  if(interactive)html=html.replace('</head>','<script src="/card-media.js?v=20261026-quality8"></script></head>');
  html=html.replace(/(?:place-search|pet-care|place-saves|place-presentation)\.js\?v=[\w-]+/g,match=>match.split('?')[0]+'?v='+ (match.startsWith('place-search.')?'20261026-quality9-search':'20261026-quality8'));

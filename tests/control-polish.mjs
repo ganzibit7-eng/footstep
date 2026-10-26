@@ -7,6 +7,24 @@ test('control cache refresh is idempotent and preserves metadata, original links
  const after=refineControlAssets(source);assert.equal(refineControlAssets(after),after);
  assert.equal(after.replace('detail-editorial.css?v='+controlAssetVersion('detail-editorial'),'detail-editorial.css?v=old'),source);
 });
+
+test('static public catalogues share deferred visitor collection exactly once without altering content',()=>{
+ const original='<html><head><title>지역 업소</title></head><body data-listing-template="quality3"><main>원문·조건·출처</main></body></html>';
+ const after=refineControlAssets(original);
+ assert.equal((after.match(/src="\/traffic\.js\?/g)||[]).length,1);
+ assert.equal((after.match(/supabase-js@/g)||[]).length,1);
+ assert(after.indexOf('supabase-js@')<after.indexOf('src="/traffic.js'));
+ assert(after.includes('<main>원문·조건·출처</main>'));
+ assert.equal(refineControlAssets(after),after);
+ const withSdk=original.replace('</head>','<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script></head>');
+ assert.equal((refineControlAssets(withSdk).match(/supabase-js@/g)||[]).length,1);
+});
+
+test('every generated public listing includes one collector and its existing exclusions',()=>{
+ const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let lists=0;
+ for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const html=readFileSync(file,'utf8');if(!html.includes('data-listing-template='))continue;lists++;assert.equal((html.match(/<script\b[^>]*src="\/?traffic\.js\?/g)||[]).length,1,file);assert(html.includes('supabase-js@2.117.2'),file);}
+ assert(lists>=1100);
+});
 test('the offline shell includes local stylesheet imports without caching private data',async()=>{
  const html=readFileSync('index.html','utf8'),handlers={},cached=new Set();
  const context={URL,Response,self:{location:{href:'https://balzaguk.com/sw.js',origin:'https://balzaguk.com'},addEventListener:(t,f)=>handlers[t]=f,skipWaiting:async()=>{},clients:{claim:async()=>{}}},caches:{open:async()=>({add:async p=>cached.add(new URL(p,'https://balzaguk.com').href)})}};

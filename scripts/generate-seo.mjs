@@ -39,7 +39,9 @@ const SUPABASE_KEY = 'sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
 const PAGE_SIZE = 1000;
 const withTraffic = html => {
  const page=refineControlAssets(refineListing(refineHubInformation(refineDiscovery(refinePlaceDetail(html))))).replaceAll('content="https://balzaguk.com/icon-512.png"','content="https://balzaguk.com/assets/share-cover-20261017.jpg"').replace(/[ \t]+$/gm, '');
- return page.replace('</body>',(page.includes('src="/photo-display.js?')?'':'<script defer src="/photo-display.js?v=20261018-r2"></script>')+'<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script><script defer src="/traffic.js?v=20261003"></script></body>');
+ const sdk=page.includes('supabase-js@')?'':'<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>';
+ const traffic=page.includes('src="/traffic.js?')?'':'<script defer src="/traffic.js?v=20261026-quality9"></script>';
+ return page.replace('</body>',(page.includes('src="/photo-display.js?')?'':'<script defer src="/photo-display.js?v=20261018-r2"></script>')+sdk+traffic+'</body>');
 };
 
 const types = [

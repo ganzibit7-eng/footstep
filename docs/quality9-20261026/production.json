@@ -1,0 +1,267 @@
+{
+  "checked": "2026-10-27 Asia/Seoul",
+  "screens": [
+    {
+      "width": 390,
+      "path": "/places/cafes/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "애견동반 식당·카페",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/places/camping/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "애견동반 캠핑장",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/places/regions/seoul/stays/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "서울 애견동반 숙소",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/courses/c387/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "광교호수공원 보행로 산책 코스",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/places/kto_new_20261020_2930334/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "광교호수공원 반려견 놀이터",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "미산분교 캠핑장",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/discover.html?kind=facilities&category=캠핑&sort=name&shown=40#find-place",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "반려견과 함께 갈 곳"
+    },
+    {
+      "width": 390,
+      "path": "/places/gocamping_100000/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "파크킹",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "프레이저 플레이스 센트럴 서울",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "24시 글로리 동물병원",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 390,
+      "path": "/pet-care/seoul/all/1/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "서울 반려동물 전문업소"
+    },
+    {
+      "width": 390,
+      "path": "/courses/c397/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "가평 호명호수 호반 GPX 구간",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/cafes/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "애견동반 식당·카페",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/camping/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "애견동반 캠핑장",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/regions/seoul/stays/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "서울 애견동반 숙소",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/courses/c387/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "광교호수공원 보행로 산책 코스",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/kto_new_20261020_2930334/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "광교호수공원 반려견 놀이터",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "미산분교 캠핑장",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/discover.html?kind=facilities&category=캠핑&sort=name&shown=40#find-place",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "반려견과 함께 갈 곳",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/gocamping_100000/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "파크킹",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "프레이저 플레이스 센트럴 서울",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/pet-care/places/pc-seoul-31888dad3e7b570d/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "24시 글로리 동물병원",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    },
+    {
+      "width": 1440,
+      "path": "/pet-care/seoul/all/1/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "서울 반려동물 전문업소"
+    },
+    {
+      "width": 1440,
+      "path": "/courses/c397/",
+      "overflow": false,
+      "shortCTA": 0,
+      "title": "가평 호명호수 호반 GPX 구간",
+      "traffic": "https://balzaguk.com/traffic.js?v=20261026-quality9"
+    }
+  ],
+  "search": {
+    "manifest": {
+      "count": 4619,
+      "parts": [
+        {
+          "category": "",
+          "count": 412,
+          "kind": "courses",
+          "src": "/assets/search-data/part-5c5834ddd82e55ac.json"
+        },
+        {
+          "category": "숙소",
+          "count": 489,
+          "kind": "facilities",
+          "src": "/assets/search-data/part-d7f80dc95e41485e.json"
+        },
+        {
+          "category": "식당카페",
+          "count": 1713,
+          "kind": "facilities",
+          "src": "/assets/search-data/part-29e0c6da6347f59a.json"
+        },
+        {
+          "category": "공원관광",
+          "count": 849,
+          "kind": "facilities",
+          "src": "/assets/search-data/part-2e6e9e1c946cdb5a.json"
+        },
+        {
+          "category": "쇼핑",
+          "count": 54,
+          "kind": "facilities",
+          "src": "/assets/search-data/part-7bd431a3b85ad68a.json"
+        },
+        {
+          "category": "캠핑",
+          "count": 1064,
+          "kind": "facilities",
+          "src": "/assets/search-data/part-7940ef77f9b03989.json"
+        },
+        {
+          "category": "",
+          "count": 38,
+          "kind": "bins",
+          "src": "/assets/search-data/part-b5608116a7cf1ece.json"
+        }
+      ],
+      "regions": [
+        "서울",
+        "경기",
+        "경북",
+        "울산",
+        "전남",
+        "전북",
+        "인천",
+        "세종",
+        "대구",
+        "부산",
+        "충남",
+        "대전",
+        "경남",
+        "제주",
+        "충북",
+        "강원",
+        "광주"
+      ],
+      "src": "/assets/search-data/discover-cea1fed912419b8b.json",
+      "version": 2
+    },
+    "overflow": false,
+    "rows": 40,
+    "status": "등록 정보 1,064곳 중 40곳 표시"
+  }
+}

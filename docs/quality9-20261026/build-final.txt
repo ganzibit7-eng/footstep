@@ -1,0 +1,7 @@
+Public course image sitemap: { pages: 412 }
+SEO 페이지 23441개와 사이트맵을 생성했습니다. (중복 URL 0개 제거)
+Public guide RSS: { count: 26, changed: false }
+Public search favicon: { checked: 23444, updated: 23256 }
+Quality listing coverage: { pages: 1114, cards: 39634 }
+Shared search CSS: { shared: 3, pages: 5527, savedBytes: 5322310 }
+Shared visitor controls: { changed: 18820, covered: 11 }
