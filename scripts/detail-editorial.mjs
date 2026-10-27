@@ -1,3 +1,4 @@
+import {petHighlights} from './pet-highlights.mjs';
 import {cardRecord,renderPlaceCard} from './place-card.mjs';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
@@ -9,7 +10,7 @@ const Media=createRequire(import.meta.url)('../card-media.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION=CONTROL_VERSION;
-export const DETAIL_SCRIPT_VERSION='20261026-quality3';
+export const DETAIL_SCRIPT_VERSION='20261027-quality11';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const text=s=>String(s||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g,c=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '}[c])).trim();
 
@@ -106,7 +107,7 @@ function professionalDetail(html,article){
  actions=actions.replace('</div>','<button type="button" class="detail-button" data-detail-share>공유</button>'+(address?'<button type="button" class="detail-button" data-copy-address="'+esc(address)+'">주소 복사</button>':'')+'</div>');
  const note=find(/class="care-note"/),sources=find(/class="care-sources"/),state=find(/class="care-state"/);
  const trust=trustHTML(trustLabels('professional',[],{links:[...sources.matchAll(/href="([^"]+)"/g)].map(m=>text(m[1])),dates:text(sources).match(/\d{4}-\d{2}-\d{2}/g)||[]}));
- const next=back+'<header class="detail-heading">'+kicker+heading+trust+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
+ const next=back+'<header class="detail-heading" data-detail-experience="quality11">'+kicker+heading+trust+'</header>'+actions+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p><div class="detail-content">'+section('detail-conditions','위치와 공개 등록 정보',facts+state+note)+visit+section('detail-sources','자료 출처',sources)+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="professional">'+next+'</article>');
  return html.replace('<body>','<body class="editorial-detail">').replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>').replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
 }
@@ -124,8 +125,9 @@ const config={
 
 export function essentialFacts(kind,pet,visit,facilities,{caution=false}={}){
  const rules=Presentation.cardSummary(pet,{kind,caution});if(caution)return rules;
+ const precise=petHighlights(pet,{kind});
  const operations=Presentation.cardSummary([...visit,...facilities],{kind:'professional'});
- const preferred=rules.slice().sort((a,b)=>{
+ const preferred=[...precise,...rules.filter(r=>!precise.some(p=>p.value===r.value))].sort((a,b)=>{
   const rank=r=>kind==='stay'?(/견종|체중|크기/.test(r.label)?0:1):/허용 구역|사이트/.test(r.label)?0:1;
   return rank(a)-rank(b);
  });
@@ -309,8 +311,15 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  const links=professional?careBack:'<a class="detail-back" data-detail-back href="'+(kind==='course'?'/discover.html?kind=courses#find-place':'/discover.html?kind=facilities#find-place')+'">← 목록으로</a>';
  const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+'<a href="#detail-sources">출처·주의사항</a></nav>';
  const addressLabel=kind==='course'?text(location[0]?.match(/<strong>([\s\S]*?)<\/strong>/)?.[1]):'';
- const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+essentialFacts(kind,petRows,visiting,facilities,{caution:cautions.length>0}).map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';
- let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?addressHTML(address,name,addressLabel):'')+trust+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes,kind)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
+ const essentialData=essentialFacts(kind,petRows,visiting,facilities,{caution:cautions.length>0});
+ const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+essentialData.map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';
+ const photo=gallery(photoNodes,kind),hasPhoto=photoNodes.some(n=>/<img\b/.test(n));
+ const summary=essentials||(!['course','amenity'].includes(kind)?'<p class="detail-caption">등록된 동반 조건은 아래 안내에서 확인해 주세요.</p>':'');
+ const prepare=kind==='course'?'<a class="detail-button detail-walk-entry" href="/?course='+encodeURIComponent(match[2])+'&amp;prepare=walk#walk">이 코스로 산책 준비하기 →</a><p class="detail-caption">기록은 산책 화면에서 동의 후 직접 시작합니다.</p>':'';
+ const beforeVisit=missing.length&&!['course','amenity'].includes(kind)?'<p class="detail-lead-check"><strong>방문 전 확인</strong> '+esc(missing.slice(0,3).join(' · '))+(missing.length>3?' 외':'')+' 미확인 · <a href="#detail-conditions">전체 안내</a></p>':'';
+ const overview='<div class="detail-overview">'+trust+summary+beforeVisit+actionBar(toolbar,directions,call,address)+prepare+(kind==='stay'?booking.join(''):'')+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+'</div>';
+ const peek=!['course','amenity'].includes(kind)?'<p class="detail-arrival-summary"><span>등록 동반 자료</span> '+esc(essentialData.find(r=>!/운영시간|입실|문의처|연락처/.test(r.label))?.value||'세부 동반 조건 미확인')+' <a href="#detail-conditions">조건 확인 ↓</a></p>':'';
+ let next=links+'<div class="detail-lead'+(hasPhoto?' has-photo':' is-information')+'" data-detail-experience="quality11"><header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?addressHTML(address,name,addressLabel):'')+peek+'</header>'+(kind==='course'?overview+routeHero+photo:(hasPhoto?photo+overview:overview+photo))+'</div>'+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="'+kind+'">'+next+'</article>');
  html=html.replace(/<body([^>]*)>/,(all,attrs)=>attrs.includes('class="')?'<body'+attrs.replace('class="','class="editorial-detail ') +'>':'<body class="editorial-detail"'+attrs+'>');
  html=html.replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>');

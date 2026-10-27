@@ -62,3 +62,30 @@ body.editorial-listing{background:#faf8f1;color:#243c32;font-family:system-ui,-a
 .discovery-page #place-search label.directory-evidence-filter{display:flex;align-items:center;gap:.55rem;min-height:44px;grid-column:1/-1;font-size:.95rem;font-weight:600;cursor:pointer}
 .discovery-page #place-search .directory-evidence-filter input[type="checkbox"]{appearance:auto;flex:0 0 18px;width:18px;height:18px;min-width:18px;min-height:18px;padding:0;margin:0;border:0;box-shadow:none;accent-color:#2d5543}
 .discovery-page .directory-evidence-help{grid-column:1/-1;margin:0;font-size:.82rem;line-height:1.6;color:#647268}
+
+/* Evidence-led collections: a distinct editorial shelf, never a replacement for the full catalogue. */
+.editorial-listing .collection-curation{margin:28px 0 36px;padding:28px 0;border-block:1px solid #cbd5ca;display:block;background:transparent;min-width:0}
+.editorial-listing .curation-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:start;margin-bottom:22px}
+.editorial-listing .curation-eyebrow{grid-column:1/-1;margin:0 0 8px;color:#627568;font-size:12px;letter-spacing:.015em}
+.editorial-listing .curation-heading h2{font:650 clamp(21px,2.2vw,26px)/1.4 system-ui,-apple-system,'Segoe UI',sans-serif!important;letter-spacing:-.035em;margin:0 0 8px!important;word-break:keep-all}
+.editorial-listing .curation-heading>p:not(.curation-eyebrow){grid-column:1;font-size:14px;line-height:1.7;margin:0;color:#617065}
+.editorial-listing .curation-criteria{grid-column:1;max-width:75ch;font-size:12px;line-height:1.8;margin-top:8px}
+.editorial-listing .curation-criteria summary{display:inline-flex;align-items:center;min-height:44px;cursor:pointer;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.editorial-listing .curation-criteria p{font-size:13px;line-height:1.85;max-width:75ch;color:#57675e;margin:0 0 12px}
+.editorial-listing .curation-all{grid-column:2;grid-row:2/4;min-height:44px;display:inline-flex;align-items:center;font-size:13px;white-space:nowrap;text-underline-offset:4px}
+.editorial-listing .curation-cards{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important;list-style:none;margin:0!important;padding:0!important;columns:auto}
+.editorial-listing .curation-cards>.premium-place-card{padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:0!important;min-width:0}
+.editorial-listing .curation-cards .premium-card-title{font-size:19px!important}
+.editorial-listing .curation-cards .premium-card-facts{min-height:110px}
+.editorial-listing .curation-cards .premium-card-context small{font-size:11px;line-height:1.6;color:#677467}
+.editorial-listing .curation-cards .premium-card-cta{background:#eaf0e7!important;border-color:#d0dacf!important;color:#294a3b!important}
+html[data-directory-requested] [data-directory-curation]{display:none}
+@media(max-width:700px){
+ .editorial-listing .collection-curation{margin-block:24px;padding-block:24px}
+ .editorial-listing .curation-heading{grid-template-columns:1fr;gap:0}
+ .editorial-listing .curation-all{grid-column:1;grid-row:auto;justify-self:start}
+ .editorial-listing .curation-cards{display:flex!important;gap:18px!important;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:12px!important;scrollbar-width:thin}
+ .editorial-listing .curation-cards>.premium-place-card{flex:0 0 min(83%,310px);scroll-snap-align:start}
+}
+@media(hover:hover) and (pointer:fine){.editorial-listing .curation-cards .premium-card-cta:hover{background:#dce7d7!important}}
+@media(prefers-reduced-motion:reduce){.editorial-listing .curation-cards{scroll-behavior:auto;scroll-snap-type:none}}

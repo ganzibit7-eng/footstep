@@ -1,3 +1,4 @@
+import {DETAIL_SCRIPT_VERSION} from '../scripts/detail-editorial.mjs';
 import {controlAssetVersion} from '../scripts/publish-control-polish.mjs';
 import searchRecords from './search-records.cjs';
 import test from 'node:test';import assert from 'node:assert/strict';
@@ -45,7 +46,7 @@ test('recommendations distinguish Suwon from Gapyeong, normalize region aliases 
 test('all detail and all collection pages use the quality templates and keep canonical metadata',()=>{
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let details=0,lists=0;
  for(const file of files){const h=readFileSync(file,'utf8'),url=h.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]*)"/)?.[1];if(!url||url==='/')continue;
-  if(h.includes('data-detail-template=')){assert(h.includes('data-detail-template="editorial-v3"'),file);assert(h.includes('detail-editorial.js?v=20261026-quality3'));details++;continue;}
+  if(h.includes('data-detail-template=')){assert(h.includes('data-detail-template="editorial-v3"'),file);assert(h.includes('detail-editorial.js?v='+DETAIL_SCRIPT_VERSION));details++;continue;}
   if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v='+controlAssetVersion('listing-editorial')));lists++;}
  }
  assert.equal(details,22317);assert(lists>500);console.log('Quality coverage:',JSON.stringify({details,lists}));

@@ -1,0 +1,86 @@
+[
+  {
+    "path": "/places/cafes/",
+    "width": 390,
+    "heading": "애견동반 식당·카페",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 390,
+    "heading": "서울 애견동반 숙소",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 390,
+    "heading": "광교호수공원 반려견 놀이터",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 390,
+    "heading": "미산분교 캠핑장",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 390,
+    "heading": "가평 호명호수 호반 GPX 구간",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/mfds_a59aef2a7ff7185f83b6/",
+    "width": 390,
+    "heading": "리브베",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/cafes/",
+    "width": 1440,
+    "heading": "애견동반 식당·카페",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/regions/seoul/stays/",
+    "width": 1440,
+    "heading": "서울 애견동반 숙소",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/kto_new_20261020_2930334/",
+    "width": 1440,
+    "heading": "광교호수공원 반려견 놀이터",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/",
+    "width": 1440,
+    "heading": "미산분교 캠핑장",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/courses/c397/",
+    "width": 1440,
+    "heading": "가평 호명호수 호반 GPX 구간",
+    "overflow": false,
+    "smallCTA": 0
+  },
+  {
+    "path": "/places/mfds_a59aef2a7ff7185f83b6/",
+    "width": 1440,
+    "heading": "리브베",
+    "overflow": false,
+    "smallCTA": 0
+  }
+]

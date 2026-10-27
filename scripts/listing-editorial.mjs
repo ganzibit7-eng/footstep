@@ -20,6 +20,7 @@ export function refineListing(html){
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?#]*)"/)?.[1];if(!canonical||canonical==='/')return html;
  let cards=0;
  html=html.replace(/<li\b([^>]*)>([\s\S]*?)<\/li>/g,(all,attrs,body)=>{
+  if(attrs.includes('data-curation-item='))return all;
   const links=[...body.matchAll(/<a\b[^>]*href="(?:https:\/\/balzaguk.com)?(\/(?:places|courses|bins)\/[^/]+\/)"/g)];const record=links.map(m=>records.get(m[1])).find(Boolean);if(!record)return all;cards++;return listCard(record.item,record.type,attrs);
  });
  const listing=cards||/"@type"\s*:\s*"CollectionPage"/.test(html)||html.includes('id="find-place"');if(!listing)return html;

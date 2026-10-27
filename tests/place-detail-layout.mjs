@@ -16,7 +16,7 @@ test('refinement preserves source facts, photographs, links and structured data'
   const destinations=new Set([...after.matchAll(/href="([^"]+)"/g)].map(x=>new URL(x[1].replaceAll("&amp;","&"),"https://balzaguk.com/").href));
   for(const match of before.matchAll(/href="([^"]+)"/g)){const url=new URL(match[1].replaceAll("&amp;","&"),"https://balzaguk.com/");assert(destinations.has(url.href)||(url.origin==='https://balzaguk.com'&&url.pathname==='/'&&url.searchParams.has('facility')&&!url.hash&&destinations.has(url.href+'#map')),"destination retained: "+match[1]);}
   assert.equal((after.match(/data-place-save=/g)||[]).length,1,'one visible bookmark action');
-  assert(after.indexOf('<div class="detail-toolbar"')<after.indexOf('<figure class="detail-slide"'));
+  assert(after.includes('class="detail-overview"'));assert(after.indexOf('<div class="detail-toolbar"')<after.indexOf('<nav class="detail-sections"'));assert(after.indexOf('<figure class="detail-slide"')<after.indexOf('<nav class="detail-sections"'));
   assert(after.indexOf('<details class="place-directory"')>after.indexOf('</article>'));
  }
 });
