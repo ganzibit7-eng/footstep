@@ -1,4 +1,4 @@
-# 11차 프리미엄 서비스 경험 — 구현·로컬 검증 완료, 최종 배포 확인 중
+# 11차 프리미엄 서비스 경험 — 구현·검증·운영 배포 완료
 
 2026-10-27. 시작 main4527d84611(10차 구현2d07e69243 이후 완료기록). 작업 중 자동 날씨5bbcad8f99를 보존해 merge26ff826e45로 통합했다. A커밋2ca72d37c8, 산책준비 진입 보완7424d96097. A Application40475676952 / SEO40475676903 / Pages40475675887 success. 완료한1~10차를 재구현하지 않았다.
 
@@ -22,7 +22,7 @@
 - 검색 원본4,619건/JSON·분할 manifest의 내용과 해시 동일. 기존 자료 재사용·최신 요청 우선·오류/재시도·초기화 보존.
 
 ## 검증
-- 전체316/316(추적315+기존 미추적offline-shell1),마지막 CSS/자산 갱신 후 관련 검사도 통과. 생성23,441페이지,자산 게시 성공. [전체 검사](tests-final.txt),[최종 관련 검사](checks-final.txt),[생성](build-final.txt).
+- 최종 CSS/자산 갱신까지 포함해 전체316/316 재실행 통과(추적315+기존 미추적offline-shell1),관련 검사21/21도 통과. 생성23,441페이지,자산 게시 성공. [전체 검사](tests-final.txt),[최종 관련 검사](checks-final.txt),[생성](build-final.txt).
 - Windows Chromium에서13종×360/375/390/430/768/1024/1440px=91. 실제 innerWidth 대조,가로 넘침/43px 미만 주요CTA0. [화면 검사](preview-final.json). 이 수는 페이지별 실제 현장·휴대폰 검증 수가 아니다.
 - CSS zoom200% fixture·세로390/가로844의4건 최종 넘침0. OS 글자확대/실제 기기 회전과 다름. [기록](scale-rotation.json).
 - 경기/티크닉/세부조건/조건정렬→상세→찜 선택·해제→목록: URL/조건/정렬1결과 복원. 실제 지도·길찾기·전화 href 확인. 외부 앱/전화 실행 아님. [흐름](return-flow.json).
@@ -56,4 +56,16 @@ JSON만 gzip+150ms+128,000B/s,Windows Chromium390px,각3회 교차 측정. 원�
 ## 미검증/한계
 실제 iPhoneSafari/GalaxyChrome·중급CPU·실GPS/백그라운드·오프라인 기록·회원 서버동기화·외부지도앱/전화·네이티브공유·물리 스와이프/OS 글자확대는 직접 미검증. 모든 장소의 현재 영업/정책·외부 출처 사이트 접속 가능성을 재검증했다고 주장하지 않는다. 조건/사진이 없는 곳의 정보를 만들어 채우지 않음. 방문정보 보완목록과 별개로11차 UI/출력 개선을 진행했다.
 
-최종 GitHub/Pages와 운영 표본 확인 후 아래에 결과를 추가한다. 기존 자동화3은 재생성하지 않음. 기존 미추적supabase/.temp·tests/offline-shell.cjs는 보존/커밋 제외.
+운영 배포와 표본 확인을 완료했다. 아래 결과는 전수 정적 검사와 구별한다. 기존 자동화3은 재생성하지 않음. 기존 미추적supabase/.temp·tests/offline-shell.cjs는 보존/커밋 제외.
+
+
+## 최종 GitHub·운영 검증
+- 구현 **c75cc4258f** main push 성공. [커밋](https://github.com/ganzibit7-eng/footstep/commit/c75cc4258f).
+- [Application40482694722](https://github.com/ganzibit7-eng/footstep/actions/runs/40482694722),[SEO40482694653](https://github.com/ganzibit7-eng/footstep/actions/runs/40482694653),[Pages40482693204](https://github.com/ganzibit7-eng/footstep/actions/runs/40482693204),검색알림40482694743/40483245450 모두 success.
+- 운영13경로×390/1440px **26화면**: 실제 폭 대조·정착 후 가로 넘침0/43px미만 주요CTA0. 최초 스타일 로딩 직전의 일시 수치는 정착 상태와 재대조했다. 사진 있는 대표5유형은 로딩완료·naturalWidth 확인(미산4장 포함). 모든 이미지·URL을 실제 브라우저로 방문한 것은 아님. [운영 검사](production-screens.json).
+- 배포 전 리브베 페이지를 열어 둔 뒤 **일반 reload**만 수행. ‘동반 조건 자료 있음’이 사라지고 ‘세부 동반 조건 미확인’ 표시,등록소개 원문 보존. 강제 캐시삭제·URL 캐시무효화 없음. 이 검증은 해당 HTML 업데이트 사례이며 모든 구버전 SW/오프라인 조합을 실제 기기에서 검증한 것은 아님. [일반 새로고침](production-normal-reload.json),[전](../quality11-20261027/before-registration-trust-mobile.png),[후](production-registry-mobile.png).
+- 운영 캠핑 검색1,064결과 중20표시/선별 목록 링크→실제 캠핑 #prepared-places 이동,적합2곳만 표시 확인. 운영 카페 선별3곳/공개 기준 확인. [선별 확인](production-curation.json).
+- 운영c397의 ‘이 코스로 산책 준비하기’→기존 산책화면에 c397 전달,동의false·시작 전 유지. 시작/GPS권한/실제기록 실행 없음. 사용자 기록·개인정보는 QA문서에 저장하지 않았다. [공개 진입 상태](production-walk-entry.json).
+- 운영 미산갤러리2/4→1/4,장소찜true→false/해제완료 피드백 확인. 원래 미찜 상태로 복원. 브라우저장소찜 기능이며 회원 서버동기화 검증과 다름. [피드백](production-gallery-favorite.json).
+- 최종 운영 [PC 상세](production-dining-1440.png),[모바일 상세](production-after-places-kto_new_20261020b_3443259-390.png),[선별 목록](production-curation-1440.png). 기존 전후 비교 캡처와 별도로 사진 로딩완료 후 운영 화면을 추가했다.
+- 미완료 구현 없음. 실제기기·실GPS·외부앱·전체장소 현재 운영정책의 개별 재검증은 위 한계대로 미검증이며 기능 완료와 구분한다. 보완목록3,296곳은 향후 원천자료 보완 대상이다.

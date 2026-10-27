@@ -1,0 +1,15 @@
+{
+  "sequence": "next 2/4, previous 1/4; favorite true then restored false",
+  "favorite": [
+    {
+      "pressed": "false",
+      "text": "♡ 장소 찜"
+    }
+  ],
+  "galleryCounter": "1 / 4",
+  "status": [
+    "1 / 4",
+    "장소 찜을 해제했어요."
+  ],
+  "url": "https://balzaguk.com/places/kto_27ea733c-7e93-4f91-be36-33e0b1911a12/"
+}
