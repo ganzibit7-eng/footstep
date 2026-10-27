@@ -1,0 +1,35 @@
+Eligible evidence records (not published venues): 360
+Experience coverage {
+  total: 22317,
+  photos: 2697,
+  information: 1922,
+  professional: 17698,
+  gpx: 55,
+  proposal: 30,
+  location: 327
+}
+✔ curation only uses identity-bound pet facts, reusable real photos and recent source dates (233.4698ms)
+✔ curation adds a bounded separate shelf, preserves photo rights and never fills an ineligible region (167.1785ms)
+✔ all generated detail types use the shared overview while course evidence and preparation stay explicit (5629.3592ms)
+✔ ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS (5.0086ms)
+✔ one stable absolute icon without changing structured data or body (1.9984ms)
+{"pages":23444,"jsonLdBlocks":23443,"breadcrumbs":5538,"places":22317}
+✔ all published pages have valid JSON-LD, matching place identity and resolvable breadcrumbs (5671.1384ms)
+PASS: comparison/detail preparation, verified conditions and source, unknowns after route edits, recording/position-request guard, hidden courses, safe links, clear focus and no automatic GPS.
+PASS: same-tab reload, loading/error preservation, deduplication, stale/hidden cleanup, persisted clear, malformed/blocked storage and no automatic GPS.
+✔ tests\walk-course-handoff.cjs (228.0275ms)
+✔ today journal displays only saved today totals and preserves input rows (22.2338ms)
+✔ empty and zero-duration saved records are distinct, and sign-out hides the journal (0.8109ms)
+{ message: 'offline' }
+Walk tracking: jitter, jumps, stale fixes, pauses, GPS gaps, metrics, save failures and permission denial passed.
+✔ tests\walk-tracker.cjs (107.5376ms)
+PASS: 83 distinct sourced paths, original GPX/OSM nodes, distance and continuity, geometry binding, edited-path rejection, 77 explicit pet warnings and recommendation exclusion.
+✔ tests\walks-300.cjs (223.7644ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6453.6932

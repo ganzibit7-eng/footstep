@@ -37,7 +37,7 @@ test('all generated detail types use the shared overview while course evidence a
   assert(lead.includes('detail-overview'),file);
   if(lead.includes('<img '))photos++;else information++;
   if(folder==='courses'){
-   assert(lead.includes('?course='+encodeURIComponent(dir.name)+'&amp;prepare=walk#walk'),file);
+   assert(lead.includes('?ref=walk&amp;course='+encodeURIComponent(dir.name)+'&amp;prepare=walk#walk'),file);
    if(verifiedRoute(dir.name,h))gpx++;else{assert(!h.includes('id="detail-route-data"'));assert(h.includes('정확한 경로 미확인'));h.includes('제안 경로 안내')?proposal++:location++;}
   }
  }
