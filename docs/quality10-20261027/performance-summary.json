@@ -1,0 +1,50 @@
+{
+  "environment": "Windows Chromium 390x844. Search JSON only: gzip +150ms +128000B/s, no-store cold data. Each3 samples. Not physical iPhone/Galaxy or midrange CPU. First DOM result insertion, not paint.",
+  "scenarios": [
+    {
+      "scenario": "전국 검색",
+      "before": {
+        "firstResult": 3310,
+        "download": 3198.1,
+        "parse": 4,
+        "render": 10.6
+      },
+      "after": {
+        "firstResult": 3302.8,
+        "download": 3197.2,
+        "parse": 4.1,
+        "render": 10.6
+      }
+    },
+    {
+      "scenario": "캠핑",
+      "before": {
+        "firstResult": 868.1,
+        "download": 755,
+        "parse": 1.1,
+        "render": 5.7
+      },
+      "after": {
+        "firstResult": 859.1,
+        "download": 756.4,
+        "parse": 1,
+        "render": 7.5
+      }
+    },
+    {
+      "scenario": "식당·카페",
+      "before": {
+        "firstResult": 1190.5,
+        "download": 1084.6,
+        "parse": 1.7,
+        "render": 12.2
+      },
+      "after": {
+        "firstResult": 1189.1,
+        "download": 1083.5,
+        "parse": 1.2,
+        "render": 8.4
+      }
+    }
+  ]
+}

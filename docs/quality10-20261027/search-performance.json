@@ -1,0 +1,290 @@
+[
+  {
+    "scenario": "전국 검색",
+    "variant": "before",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3223.399999976158,
+        "parse": 5.700000047683716,
+        "parsedAt": 3325.5
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3339.1999999284744,
+    "render": 13.699999928474426
+  },
+  {
+    "scenario": "전국 검색",
+    "variant": "before",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3195.2999999523163,
+        "parse": 4,
+        "parsedAt": 3299.399999976158
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3310,
+    "render": 10.600000023841858
+  },
+  {
+    "scenario": "전국 검색",
+    "variant": "before",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3198.100000023842,
+        "parse": 3.5,
+        "parsedAt": 3293.8000000715256
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3303.2000000476837,
+    "render": 9.399999976158142
+  },
+  {
+    "scenario": "전국 검색",
+    "variant": "after",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3197.2000000476837,
+        "parse": 3.799999952316284,
+        "parsedAt": 3292.1999999284744
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3302.7999999523163,
+    "render": 10.600000023841858
+  },
+  {
+    "scenario": "전국 검색",
+    "variant": "after",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3214.100000023842,
+        "parse": 4.100000023841858,
+        "parsedAt": 3312.7000000476837
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3324.7000000476837,
+    "render": 12
+  },
+  {
+    "scenario": "전국 검색",
+    "variant": "after",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/discover-cea1fed912419b8b.json",
+        "download": 3193.7999999523163,
+        "parse": 4.200000047683716,
+        "parsedAt": 3291.100000023842
+      }
+    ],
+    "cls": 0,
+    "firstResult": 3299.600000023842,
+    "render": 8.5
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "before",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 755,
+        "parse": 1.100000023841858,
+        "parsedAt": 855.1000000238419
+      }
+    ],
+    "cls": 0,
+    "firstResult": 860.3000000715256,
+    "render": 5.200000047683716
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "before",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 751.6000000238419,
+        "parse": 1.2000000476837158,
+        "parsedAt": 857.3999999761581
+      }
+    ],
+    "cls": 0,
+    "firstResult": 869.5,
+    "render": 12.100000023841858
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "before",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 755.2000000476837,
+        "parse": 0.8999999761581421,
+        "parsedAt": 862.3999999761581
+      }
+    ],
+    "cls": 0,
+    "firstResult": 868.0999999046326,
+    "render": 5.699999928474426
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "after",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 764.6000000238419,
+        "parse": 1,
+        "parsedAt": 873.7999999523163
+      }
+    ],
+    "cls": 0,
+    "firstResult": 882,
+    "render": 8.200000047683716
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "after",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 753,
+        "parse": 1,
+        "parsedAt": 848.1000000238419
+      }
+    ],
+    "cls": 0,
+    "firstResult": 855.6000000238419,
+    "render": 7.5
+  },
+  {
+    "scenario": "캠핑",
+    "variant": "after",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-7940ef77f9b03989.json",
+        "download": 756.3999999761581,
+        "parse": 0.8999999761581421,
+        "parsedAt": 853.1000000238419
+      }
+    ],
+    "cls": 0,
+    "firstResult": 859.1000000238419,
+    "render": 6
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "before",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1099.6000000238419,
+        "parse": 1.6999999284744263,
+        "parsedAt": 1221.7999999523163
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1234,
+    "render": 12.200000047683716
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "before",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1082.3000000715256,
+        "parse": 2.899999976158142,
+        "parsedAt": 1174.1000000238419
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1189.5,
+    "render": 15.399999976158142
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "before",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1084.6000000238419,
+        "parse": 1.2999999523162842,
+        "parsedAt": 1181.7999999523163
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1190.5,
+    "render": 8.700000047683716
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "after",
+    "run": 0,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1087.1000000238419,
+        "parse": 1.2999999523162842,
+        "parsedAt": 1181.3999999761581
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1189.1000000238419,
+    "render": 7.700000047683716
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "after",
+    "run": 1,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1083.5,
+        "parse": 1.100000023841858,
+        "parsedAt": 1181.8000000715256
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1191.2000000476837,
+    "render": 9.399999976158142
+  },
+  {
+    "scenario": "식당·카페",
+    "variant": "after",
+    "run": 2,
+    "requests": [
+      {
+        "url": "/assets/search-data/part-29e0c6da6347f59a.json",
+        "download": 1083,
+        "parse": 1.2000000476837158,
+        "parsedAt": 1175.7999999523163
+      }
+    ],
+    "cls": 0.00010008894021684658,
+    "firstResult": 1184.1999999284744,
+    "render": 8.399999976158142
+  }
+]

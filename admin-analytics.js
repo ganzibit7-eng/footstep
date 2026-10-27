@@ -19,6 +19,13 @@ function comparison(data){
  const percent=previous>0?' · '+(delta>0?'+':'')+(delta/previous*100).toFixed(1)+'%':'';
  return '이전 동기간 대비 조회 '+change+'회'+percent+(previous===0?' · 이전 0회':'');
 }
+function ratio(numerator,denominator){const a=count(numerator),b=count(denominator);return a===null||b===null||b===0||a>b?null:(a/b*100).toFixed(1)+'%';}
+function interestCount(row){const total=count(row.measured_views),active=count(row.engaged_views);return total>0&&active!==null&&active<=total?format(active):'미집계';}
+function experienceHTML(data){
+ const x=data?.experience||{},rate=ratio(x.search_visitors,x.measured_visitors),detailRate=ratio(x.detail_views,x.measured_views);
+ const rows=[['기록된 검색 제출',count(x.searches)===null?'미집계':format(x.searches)+'회'],['검색 사용 브라우저 비율',rate===null?'미집계':rate],['분류된 상세 조회 비중',detailRate===null?'미집계':detailRate],['자동 접속 신호 조회',count(data.automation_views)===null?'미집계':format(data.automation_views)+'회']];
+ return '<section class="admin-experience"><h4>검색과 상세 탐색</h4><div class="admin-analytics-summary">'+rows.map(([label,value])=>'<div><span>'+label+'</span><strong>'+esc(value)+'</strong></div>').join('')+'</div><p class="admin-chart-note">검색 이용률은 자동 접속 신호가 없는 기록 브라우저 중 검색을 제출한 비율입니다. 상세 비중은 같은 분류의 조회 중 현재 등록된 장소·코스와 전문업소 상세 주소로 구분한 조회 비율이며, 사용자 이동 순서나 가입 전환율이 아닙니다. 2026-10-26 검색 집계 연결 보완 이전에는 일부 제출이 누락될 수 있습니다.</p><details class="admin-analytics-method"><summary>미집계 전환·해석 한계</summary><p>지도 보기·길찾기 구분 클릭률, 회원가입 버튼 클릭→실제 가입 완료 전환율, 정확한 이탈 단계는 미집계입니다. 기존 일반 링크 클릭을 해당 전환으로 간주하지 않습니다. 평균 활동 시간과 활동 확인 조회는 관심도 참고값이며 사람 인증이나 이탈률이 아닙니다. 새 개인정보나 이벤트는 수집하지 않았습니다.</p></details></section>';
+}
 function summary(data){
  const label=count(data.days)===1?'오늘':count(data.days)!==null?'최근 '+format(data.days)+'일':'선택 기간';
  return '<div class="admin-analytics-summary" aria-label="'+esc(label)+' 통계">'+[['views','집계 포함 조회','회'],['visitors','방문 브라우저','개'],['engaged_visitors','활동 확인','개']].map(([key,name,unit])=>'<div><span>'+esc(label)+' · '+name+'</span><strong>'+format(data[key])+'<small>'+unit+'</small></strong></div>').join('')+'</div><p class="admin-analytics-comparison">'+comparison(data)+'</p>'
@@ -58,5 +65,5 @@ function createLive({fetchCount,render,isCurrent,now=()=>new Date()}){
  }
  return {start,stop,update};
 }
-const api=Object.freeze({count,format,kstTime,dailyRows,comparison,summary,chartModel,mountChart,csv,createLive});if(typeof module==='object'&&module.exports)module.exports=api;else root.AdminAnalytics=api;
+const api=Object.freeze({count,format,kstTime,dailyRows,comparison,summary,chartModel,mountChart,csv,createLive,ratio,experienceHTML,interestCount});if(typeof module==='object'&&module.exports)module.exports=api;else root.AdminAnalytics=api;
 })(typeof globalThis==='undefined'?this:globalThis);

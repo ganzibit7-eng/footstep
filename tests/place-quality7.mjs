@@ -32,7 +32,7 @@ test('all generated details separate notices, preserve useful actions and reject
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(f=>f&&!/^(?:docs|tests|admin)/.test(f));let details=0,notices=0,phone=0,missing=0;
  for(const file of files){const h=readFileSync(file,'utf8');if(!h.includes('data-detail-template="editorial-v3"')&&!h.includes('data-listing-template="quality3"'))continue;
   assert(!/>\s*(?:undefined|null|\[object Object\])\s*</.test(h),file);assert(!/NaN\s*(?:km|분)|\bkmkm\b/.test(h),file);
-  if(h.includes('data-detail-template="editorial-v3"')){details++;assert(h.includes('detail-editorial.css?v=20261026-quality9'),file);for(const p of h.matchAll(/<p class="detail-unconfirmed">([\s\S]*?)<\/p>/g)){notices++;assert(/<strong>방문 전 문의<\/strong>\s+<span>[^<]+<\/span>/.test(p[1]),file+' joined notice');}
+  if(h.includes('data-detail-template="editorial-v3"')){details++;assert(h.includes('detail-editorial.css?v=20261027-quality10'),file);for(const p of h.matchAll(/<p class="detail-unconfirmed">([\s\S]*?)<\/p>/g)){notices++;assert(/<strong>방문 전 문의<\/strong>\s+<span>[^<]+<\/span>/.test(p[1]),file+' joined notice');}
    const primary=h.match(/<div class="detail-actions-primary">([\s\S]*?)<\/div>/)?.[1];if(primary&&h.includes('>전화 문의</a>')){phone++;assert(primary.includes('href="tel:'),file+' hidden phone');}
   }
   for(const media of h.matchAll(/<div class="premium-card-media([^\"]*)">([\s\S]*?)(?=<\/div>)/g))if(media[2].includes('premium-placeholder')){missing++;assert(media[1].includes('is-missing'),file+' missing compact header');}
@@ -41,7 +41,7 @@ test('all generated details separate notices, preserve useful actions and reject
 });
 
 test('mobile layout is established before parsing search JSON, with no new dependency',()=>{
- const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261026-quality9-search'));assert(!h.includes('quality7-metrics.js'));
+ const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261027-quality10-search'));assert(!h.includes('quality7-metrics.js'));
 });
 
 test('facility map links enter the existing map route without an intermediate home history entry',()=>{

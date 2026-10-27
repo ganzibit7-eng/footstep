@@ -15,7 +15,7 @@ export function cardRecord(item,type){
  return {url,id:String(item.id),name:item.name,category,area,address:item.address||'',photo,src:photo?Photos.url(photo):null,credit,facts:cardFacts(item,type),intro:''};
 }
 export function renderPlaceCard(record,{attrs='',related=false,context=''}={}){
- const r=record,facts=r.facts||[],heading=related?'h3':'h2',address=Media.address(r.address,r.area);
+ const r=record,facts=r.facts||[],heading=related?'h3':'h2',address=Media.address(r.address,r.area,r.name);
  const nodes=[
   Media.image(r.photo,{src:r.src,name:r.name,href:r.url,category:r.category}),
   '<p class="premium-card-meta">'+esc([r.area,r.category].filter(Boolean).join(' · '))+'</p>',

@@ -8,14 +8,20 @@
     var value={name:item.name,region:item.region,info:item.info,conditions:item.conditions,text:[item.name,item.region,item.info,item.conditions].join(' ').toLocaleLowerCase('ko')};textIndex.set(item,value);return value.text;
   }
   function category(item){return item.kind==='facilities'?(item.info||'').split(' · ').pop():'';}
+  function companionKnown(item){
+    return item.kind==='facilities'&&Array.isArray(item.facts)&&item.facts.some(function(r){
+      return /견종|크기|체중|허용 구역|동반 구역|준비물|목줄|이동장/.test(r.label||'')&&!/미확인|미확정|문의|상세 확인|확인 필요|재확인|고캠핑 공식|공식 허용|공식 소개|공식 관광 소개/.test(r.value||'')&&String(r.value||'').trim().length>0;
+    });
+  }
   function filter(data,state){
     var words=(state.q||'').trim().toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
     return data.filter(function(item){
       var text=searchable(item);
-      return (!state.kind||item.kind===state.kind)&&(!state.region||item.region===state.region)&&(!state.category||category(item)===state.category)&&words.every(function(word){return text.includes(word);});
+      return (!state.kind||item.kind===state.kind)&&(!state.region||item.region===state.region)&&(!state.category||category(item)===state.category)&&(!state.pet||companionKnown(item))&&words.every(function(word){return text.includes(word);});
     });
   }
   function ordered(data,sort){
+    if(sort==='conditions')return data.slice().sort(function(a,b){return Number(companionKnown(b))-Number(companionKnown(a))||Number(!!b.photo)-Number(!!a.photo);});
     if(sort==='name')return data.slice().sort(function(a,b){return a.name.localeCompare(b.name,'ko');});
     if(sort==='photos')return data.slice().sort(function(a,b){return Number(!!b.photo)-Number(!!a.photo);});
     return data;
@@ -59,10 +65,10 @@
       return Promise.all(parts.map(p=>part(p).load())).then(()=>merged=join());
     }};
   }
-  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource};return;}
+  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource,companionKnown:companionKnown};return;}
   var source=createDataSource(JSON.parse(document.getElementById('place-data').textContent),root.fetch?.bind(root)),data=source.peek(),ticket=0,form=document.getElementById('place-search'),query=document.getElementById('place-query'),kind=document.getElementById('place-kind'),region=document.getElementById('place-region'),type=document.getElementById('place-category'),list=document.getElementById('place-results'),count=document.getElementById('place-count'),more=document.getElementById('place-more'),limit=20,matches=[];
   source.regions.slice().sort(function(a,b){return a.localeCompare(b,'ko');}).forEach(function(name){var option=document.createElement('option');option.value=name;option.textContent=name;region.append(option);});
-  var sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title');
+  var sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title'),pet=document.getElementById('place-pet-known');
   var options=document.getElementById('place-filter-options'),selection=document.getElementById('place-filter-selection');
   // Native history still owns navigation. Restore only a back/forward document
   // whose asynchronous result list was not present when native scroll ran.
@@ -73,10 +79,10 @@
   function restorePosition(){if(returnPosition===null)return;var y=returnPosition;returnPosition=null;root.requestAnimationFrame?.(function(){root.scrollTo({top:y,behavior:'instant'});});}
   // Collapse only on first mobile entry. Later searches never close a user's open controls.
   if(options&&root.matchMedia?.('(max-width:600px)').matches)options.open=false;
-  function state(){return {q:query.value.trim().slice(0,100),kind:kind.value,region:region.value,category:type.value};}
+  function state(){return {q:query.value.trim().slice(0,100),kind:kind.value,region:region.value,category:type.value,...(pet?.checked?{pet:'known'}:{})};}
   function remember(){
     var url=new URL(root.location.href),value=state();
-    ['q','kind','region','category'].forEach(function(key){if(value[key])url.searchParams.set(key,value[key]);else url.searchParams.delete(key);});
+    ['q','kind','region','category','pet'].forEach(function(key){if(value[key])url.searchParams.set(key,value[key]);else url.searchParams.delete(key);});
     if(sort&&sort.value!=='photos')url.searchParams.set('sort',sort.value);else url.searchParams.delete('sort');
     if(limit>20)url.searchParams.set('shown',String(limit));else url.searchParams.delete('shown');
     root.history.replaceState(root.history.state,'',url.pathname+url.search+url.hash);
@@ -98,7 +104,7 @@
       else{var absent=document.createElement('p');absent.textContent=label+' · 사진 미등록';media.append(absent);}
       location.className='premium-card-meta';location.textContent=[item.region,label].filter(Boolean).join(' · ');
       a.href=item.path;a.textContent=item.name;a.className='directory-name';heading.className='premium-card-title';heading.append(a);
-      context.className='premium-card-context';p.className='directory-address';p.textContent=item.kind==='facilities'?(item.info||'').split(' · ').slice(0,-1).join(' · '):item.kind==='courses'?(item.info||'').split(' · ')[0]:item.info||'';p.title=p.textContent;var area=p.textContent.split(/\s+/).slice(0,2).join(' ');if(root.CardMedia)p.textContent=root.CardMedia.address(p.textContent,area);if(area)location.textContent=area+' · '+label;heading.setAttribute('title',item.name);context.append(p);
+      context.className='premium-card-context';p.className='directory-address';p.textContent=item.kind==='facilities'?(item.info||'').split(' · ').slice(0,-1).join(' · '):item.kind==='courses'?(item.info||'').split(' · ')[0]:item.info||'';p.title=p.textContent;var area=p.textContent.split(/\s+/).slice(0,2).join(' ');if(root.CardMedia)p.textContent=root.CardMedia.address(p.textContent,area,item.name);if(area)location.textContent=area+' · '+label;heading.setAttribute('title',item.name);context.append(p);
       note.className='premium-card-facts';
       if(item.kind==='facilities'||item.kind==='courses'){
         (Array.isArray(item.facts)?item.facts:root.PlacePresentation?root.PlacePresentation.cardSummary(conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1]};})):conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1].length<=86?r[1]:'세부 조건은 상세 안내에서 확인해 주세요.'};})).forEach(function(row){var group=document.createElement('div'),term=document.createElement('dt'),value=document.createElement('dd');if(root.CardMedia?.factNote(row))group.className='card-fact-note';term.textContent=row.label;value.textContent=row.value;group.append(term,value);note.append(group);});
@@ -120,12 +126,15 @@
     var current=++ticket;
     type.disabled=kind.value!==''&&kind.value!=='facilities';
     if(type.disabled)type.value='';
+    if(pet){pet.disabled=type.disabled;if(pet.disabled)pet.checked=false;}
+    var conditionSort=sort?.querySelector?.('option[value="conditions"]');if(conditionSort)conditionSort.disabled=type.disabled;
+    if(type.disabled&&sort?.value==='conditions')sort.value='photos';
     var value=state();if(!preserve)limit=20;
-    var selected=[value.q?'“'+value.q+'”':'',value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean);
+    var selected=[value.q?'“'+value.q+'”':'',value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:'',value.pet?'세부 동반 조건 있음':''].filter(Boolean);
     if(selection)selection.textContent=[value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean).join(' · ')||'전체';
     summary.textContent=selected.join(' · ');summary.hidden=!selected.length;
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
-    if(!value.q&&!value.kind&&!value.region&&!value.category){document.documentElement?.removeAttribute('data-directory-requested');matches=[];list.setAttribute('aria-busy','false');list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
+    if(!value.q&&!value.kind&&!value.region&&!value.category&&!value.pet){document.documentElement?.removeAttribute('data-directory-requested');matches=[];list.setAttribute('aria-busy','false');list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
     remember();
     data=source.peek(value);
     if(!data){
@@ -141,13 +150,15 @@
   kind.addEventListener('change',function(){search(false);});region.addEventListener('change',function(){search(false);});
   type.addEventListener('change',function(){if(type.value)kind.value='facilities';search(false);});
   sort?.addEventListener('change',function(){search(false);});
-  document.getElementById('place-clear').addEventListener('click',function(){query.value='';kind.value='';region.value='';type.value='';if(sort)sort.value='photos';search(false);query.focus();});
+  pet?.addEventListener('change',function(){if(pet.checked)kind.value='facilities';search(false);});
+  document.getElementById('place-clear').addEventListener('click',function(){query.value='';kind.value='';region.value='';type.value='';if(pet)pet.checked=false;if(sort)sort.value='photos';search(false);query.focus();});
   more.addEventListener('click',function(){limit+=20;render(true);remember();});
   var params=new URLSearchParams(root.location.search);query.value=(params.get('q')||'').slice(0,100);
   if(['courses','facilities','bins'].includes(params.get('kind')))kind.value=params.get('kind');
   if(Array.from(region.options).some(function(option){return option.value===params.get('region');}))region.value=params.get('region');
   if(categories.includes(params.get('category'))){type.value=params.get('category');kind.value='facilities';}
-  if(sort&&['registered','name'].includes(params.get('sort')))sort.value=params.get('sort');
+  if(sort&&['registered','name','conditions'].includes(params.get('sort')))sort.value=params.get('sort');
+  if(pet&&params.get('pet')==='known'&&(!kind.value||kind.value==='facilities')){pet.checked=true;kind.value='facilities';}
   var shown=Number(params.get('shown'));if(Number.isSafeInteger(shown)&&shown>=20&&shown<=source.count)limit=Math.ceil(shown/20)*20;
   search(true);
 })(typeof window==='undefined'?globalThis:window);

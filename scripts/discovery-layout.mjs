@@ -3,6 +3,8 @@ import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 
 function compactFilters(html){
+ if(html.includes('id="find-place"')&&!html.includes('id="place-pet-known"'))html=html.replace('</form>','<label class="directory-evidence-filter"><input type="checkbox" id="place-pet-known" aria-describedby="place-pet-help">세부 동반 조건 있는 곳</label><p id="place-pet-help" class="directory-evidence-help">목록에 크기·허용 구역·준비물 중 하나 이상 표시된 곳입니다. 전체 출입 정책 확인을 뜻하지 않아요. 사진 없는 장소도 포함합니다.</p></form>');
+ if(html.includes('id="place-sort"')&&!html.includes('value="conditions"'))html=html.replace('<option value="registered">등록 순</option>','<option value="conditions">동반 조건 있는 곳 먼저</option><option value="registered">등록 순</option>');
  let care='';
  html=html.replace(/<p class="discovery-care">[\s\S]*?<\/p>/,p=>{care=p;return '';});
  if(care)html=html.replace('<summary>지역별 안내와 산책 가이드</summary>','<summary>지역별 안내와 산책 가이드</summary>'+care);
@@ -11,7 +13,7 @@ function compactFilters(html){
  }
  // Establish the existing mobile closed state before the large JSON payload is
  // parsed, rather than collapsing a visible desktop-sized filter after paint.
- const firstPaint='<script data-directory-layout>(function(){var p=document.getElementById("place-filter-options"),q=new URLSearchParams(location.search);if(p&&window.matchMedia("(max-width:600px)").matches)p.open=false;if(["q","kind","region","category"].some(function(k){return !!q.get(k);}))document.documentElement.setAttribute("data-directory-requested","");})();</script>';
+ const firstPaint='<script data-directory-layout>(function(){var p=document.getElementById("place-filter-options"),q=new URLSearchParams(location.search);if(p&&window.matchMedia("(max-width:600px)").matches)p.open=false;if(["q","kind","region","category","pet"].some(function(k){return !!q.get(k);}))document.documentElement.setAttribute("data-directory-requested","");})();</script>';
  if(html.includes('data-directory-layout'))html=html.replace(/<script data-directory-layout>[\s\S]*?<\/script>/,firstPaint);
  else if(html.includes('id="place-filter-options"'))html=html.replace(/(<details id="place-filter-options"[\s\S]*?<\/details>)/,'$1'+firstPaint);
  if(!html.includes('id="place-active-filters"'))html=html.replace('<ul id="place-results">','<p id="place-active-filters" class="directory-active-filters"></p><ul id="place-results">');

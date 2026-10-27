@@ -43,8 +43,19 @@
   return '<div class="premium-card-credits"><div class="premium-credit-line">'+links+'</div><details><summary>사진 정보</summary><div>'+credit+(fit(photo)==='cover'&&!/가장자리.{0,12}잘림/.test(photo.changes||'')?'<p>'+cropNote+'</p>':'')+'</div></details></div>';
  }
  function mark(image,photo){image.setAttribute('data-card-fit',fit(photo));}
- function address(value,area=''){const full=String(value||'').trim();return area&&full.startsWith(area+' ')?full.slice(area.length).trim():full===area?'':full;}
+ function addressParts(value,name=''){
+  const original=String(value||'').trim(),clean=original.replace(/ · (?:식당카페|식당·카페|숙소|캠핑|공원관광|공원·관광|쇼핑)$/, '');
+  // Split only an explicit Korean road name + building number. Ambiguous lot
+  // addresses and masked public addresses remain intact; never infer an entrance.
+  const match=clean.match(/^(.+?(?:대로|로|길)\s+\d+(?:-\d+)?)(?=[\s,(]|$)(.*)$/);
+  if(!match)return {original,road:'',detail:'',display:clean};
+  let detail=match[2].trim().replace(/^,\s*/,'');
+  if(name&&detail.endsWith(' '+name))detail=detail.slice(0,-name.length).trim();
+  if(detail===name)detail='';
+  return {original,road:match[1],detail,display:match[1]};
+ }
+ function address(value,area='',name=''){const full=addressParts(value,name).display;return area&&full.startsWith(area+' ')?full.slice(area.length).trim():full===area?'':full;}
  const factNote=row=>row.label==='추가 동반 수칙'||row.value==='세부 기준 미확인';
  function professionalNote(labels){const s=String(labels);return /병원/.test(s)?'진료 대상·예약은 병원에 확인':/약국/.test(s)?'취급 품목·운영시간은 약국에 확인':/미용/.test(s)?'미용 이용 조건·예약은 업소에 확인':/돌봄|위탁/.test(s)?'위탁 기준·예약은 업소에 확인':'서비스·이용 조건은 업소에 확인';}
- return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,factNote,author,professionalNote,photoContext});
+ return Object.freeze({fit,placeholder,image,credits,mark,cropNote,address,addressParts,factNote,author,professionalNote,photoContext});
 });

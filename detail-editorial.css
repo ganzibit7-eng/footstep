@@ -269,3 +269,11 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
 
 /* Compact evidence labels; no claim of an on-site visit. */
 .editorial-detail .detail-trust{display:flex;flex-wrap:wrap;gap:6px 12px;margin:14px 0;color:#617065;font-size:12px;line-height:1.6}.editorial-detail .detail-trust span{padding:2px 0;border-bottom:1px solid #dce2d9;overflow-wrap:anywhere}
+
+/* Location hierarchy: original text remains available beside the parsed address. */
+.editorial-detail .detail-address-extra{font-size:.94rem;line-height:1.65;margin:.35rem 0;color:var(--text,#31493e)}
+.editorial-detail .detail-address-extra span{font-weight:600;margin-right:.5rem}
+.editorial-detail .detail-address-source{font-size:.8rem;line-height:1.6;margin:.4rem 0;color:#5d6c64}
+.editorial-detail .detail-route-endpoints{display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-size:.88rem}
+.editorial-detail .detail-route-endpoints dt{font-size:.8rem;color:#68766c}
+.editorial-detail .detail-route-endpoints dd{margin:.2rem 0;font-variant-numeric:tabular-nums}

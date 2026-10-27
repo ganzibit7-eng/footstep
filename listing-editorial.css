@@ -57,3 +57,8 @@ body.editorial-listing{background:#faf8f1;color:#243c32;font-family:system-ui,-a
 .editorial-listing [aria-busy=true]{cursor:progress}
 
 .editorial-listing .place-result-card:has(>.listing-photo-absent)>.listing-category{display:none}
+
+/* Optional evidence filter; no result is hidden by default. */
+.discovery-page #place-search label.directory-evidence-filter{display:flex;align-items:center;gap:.55rem;min-height:44px;grid-column:1/-1;font-size:.95rem;font-weight:600;cursor:pointer}
+.discovery-page #place-search .directory-evidence-filter input[type="checkbox"]{appearance:auto;flex:0 0 18px;width:18px;height:18px;min-width:18px;min-height:18px;padding:0;margin:0;border:0;box-shadow:none;accent-color:#2d5543}
+.discovery-page .directory-evidence-help{grid-column:1/-1;margin:0;font-size:.82rem;line-height:1.6;color:#647268}

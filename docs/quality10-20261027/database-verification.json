@@ -1,0 +1,32 @@
+{
+  "checked": "2026-10-27 Asia/Seoul",
+  "function": "public.admin_traffic_summary_v2(integer)",
+  "migrations": [
+    "traffic_experience_quality10",
+    "traffic_experience_quality10_course_paths"
+  ],
+  "metadata": [
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "security_definer": false,
+      "auth_guard": true,
+      "shared_classification": true,
+      "all_course_ids": true
+    }
+  ],
+  "unauthenticatedCall": "42501 rejected as expected",
+  "oldMetricsSameSnapshot": {
+    "countsAndDaily": true,
+    "sources": true,
+    "campaigns": true
+  },
+  "classificationFixtures": {
+    "numericCourse": true,
+    "nonNumericCourse": true,
+    "categoryPageExcluded": true,
+    "regionalListingExcluded": true
+  },
+  "collectionChanges": false,
+  "tablesPoliciesGrantsChanged": false,
+  "note": "Live RPC aggregate expression and permissions verified; authenticated admin UI was tested with local fixture data, not an actual signed-in browser."
+}

@@ -1,0 +1,45 @@
+{
+  "method": "Local fixture root font-size 200%, portrait and landscape viewport; not native OS/browser zoom.",
+  "screens": [
+    {
+      "size": {
+        "width": 360,
+        "height": 800
+      },
+      "page": "zoom-address",
+      "h1": "티크닉 앨리웨이 광교점",
+      "overflow": false,
+      "rootFont": "32px"
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 800
+      },
+      "page": "zoom-camping",
+      "h1": "미산분교 캠핑장",
+      "overflow": false,
+      "rootFont": "32px"
+    },
+    {
+      "size": {
+        "width": 844,
+        "height": 390
+      },
+      "page": "zoom-address",
+      "h1": "티크닉 앨리웨이 광교점",
+      "overflow": false,
+      "rootFont": "32px"
+    },
+    {
+      "size": {
+        "width": 844,
+        "height": 390
+      },
+      "page": "zoom-camping",
+      "h1": "미산분교 캠핑장",
+      "overflow": false,
+      "rootFont": "32px"
+    }
+  ]
+}

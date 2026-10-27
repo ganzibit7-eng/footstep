@@ -32,6 +32,10 @@ const rows=h=>[...String(h).matchAll(/<dt\b[^>]*>([\s\S]*?)<\/dt>\s*<dd\b[^>]*>(
 const unknown=v=>!v||/^(?:미확인|정보\s*없음|공개 연락처 미등록|등록된 .*없|-)\s*(?:[·.]|$)/.test(v);
 const dl=(data,cls='detail-facts')=>'<dl class="'+cls+'">'+data.map(r=>'<div><dt>'+esc(r.label)+'</dt><dd>'+esc(r.value).replaceAll('\n','<br>')+'</dd></div>').join('')+'</dl>';
 const section=(id,title,content)=>'<section class="detail-section" id="'+id+'"><h2>'+title+'</h2>'+content+'</section>';
+export function addressHTML(value,name='',label=''){
+ const a=Media.addressParts(value,name);
+ return '<div class="detail-address-block"><p class="detail-address">'+(label?'<span>'+esc(label)+'</span><br>':'')+esc(a.display)+'</p>'+(a.detail?'<p class="detail-address-extra"><span>상세 위치 안내</span> '+esc(a.detail)+'</p>':'')+(a.original!==a.display?'<details class="detail-address-source"><summary>등록 위치 원문</summary><p>'+esc(a.original)+'</p></details>':'')+'</div>';
+}
 function structured(value){
  const data=Presentation.structure(value);
  if(data.kind==='schedules')return '<div class="detail-schedules">'+data.parts.map(p=>'<section><h3>'+esc(p.label)+'</h3><dl><div><dt>입실</dt><dd>'+esc(p.checkin)+'</dd></div><div><dt>퇴실</dt><dd>'+esc(p.checkout)+'</dd></div></dl></section>').join('')+'</div>';
@@ -76,8 +80,14 @@ function petPresentation(kind,pet,visit,facilities,caution,missing,booking){
 }
 function courseMetrics(nodes,route){
  const raw=text(nodes.join('')),parts=raw.split(/\s*·\s*/),data=[];
- for(const part of parts){let m;if((m=part.match(/^거리\s+(.+)/)))data.push({label:route?'GPX 좌표 기준 거리':'등록 거리 · 경로 미확인',value:m[1]});else if((m=part.match(/^((?:평지 예상|공식 안내) 시간)\s+(.+)/)))data.push({label:m[1],value:m[2]});else if((m=part.match(/^난이도\s+(.+)/)))data.push({label:'등록 난이도',value:m[1]});}
- return '<aside class="detail-course-metrics" aria-label="산책코스 핵심 정보">'+data.map(r=>feature(r)).join('')+'</aside>';
+ if(route)data.push({label:'GPX 제공 구간 측정 거리',value:routeDistance(route).toFixed(2)+'km'});
+ for(const part of parts){let m;if((m=part.match(/^거리\s+(.+)/)))data.push({label:route?'등록 참고 거리':'등록 거리 · 경로 미확인',value:m[1]});else if((m=part.match(/^((?:평지 예상|공식 안내) 시간)\s+(.+)/)))data.push({label:m[1]+' · 참고',value:m[2]});else if((m=part.match(/^난이도\s+(.+)/)))data.push({label:'등록 난이도',value:m[1]});}
+ return '<aside class="detail-course-metrics" aria-label="산책코스 핵심 정보">'+data.map(r=>feature(r)).join('')+'<p class="detail-caption">'+(route?'측정 거리는 제공된 GPX 구간의 좌표를 합산한 값입니다. 예상 시간·난이도는 등록 참고 정보이며 현장 통행 검증이 아닙니다.':'거리·예상 시간·난이도는 등록 참고 정보입니다. 경로 전체나 실제 통행 가능 여부를 검증한 값이 아닙니다.')+'</p></aside>';
+}
+export function routeDistance(route){
+ const rad=n=>n*Math.PI/180;let km=0;
+ for(const part of route.parts)for(let i=1;i<part.length;i++){const a=part[i-1],b=part[i],h=Math.sin(rad(b[0]-a[0])/2)**2+Math.cos(rad(a[0]))*Math.cos(rad(b[0]))*Math.sin(rad(b[1]-a[1])/2)**2;km+=6371.0088*2*Math.asin(Math.min(1,Math.sqrt(h)));}
+ return km;
 }
 
 // Professional records have no reusable photographs or verified opening hours.
@@ -172,8 +182,8 @@ export function verifiedRoute(id,html){
 }
 
 function courseSection(id,html,link){
- const r=verifiedRoute(id,html);
- return section('detail-route',r?'공식 GPX'+(r.segment?' 선택 구간':' 경로'):'산책 위치 안내',r?'<p class="detail-verification">'+(r.segment?esc(r.segment)+'의 일부 구간입니다. ':'')+'공식 GPX 자료 기준 · 현장 답사 확인과 다릅니다.</p><div class="detail-route-map" data-route-map><button class="detail-button" type="button" data-route-load>경로 지도 불러오기</button><p data-route-status role="status">필요할 때 지도를 불러옵니다.</p></div><script type="application/json" id="detail-route-data">'+JSON.stringify(r).replaceAll('<','\\u003c')+'</script><p class="detail-caption"><a href="'+esc(r.source)+'" target="_blank" rel="noopener noreferrer">'+esc(r.provider)+' 원문 ↗</a> · 출발 S / 도착 E. 단절된 구간은 연결하지 않습니다.</p>':'<p class="detail-caution"><strong>정확한 경로 미확인</strong><br>제안 경로 또는 장소 위치 안내입니다. 실제 걸을 수 있는 검증 경로로 표시하지 않습니다. 출입구·통제 구역은 운영기관에 확인해 주세요.</p><a class="detail-text-link" href="'+esc(link)+'">발자국 지도에서 등록 위치 확인 ↗</a>');
+ const r=verifiedRoute(id,html),proposed=Boolean(routes()[id]?.proposed);
+ return section('detail-route',r?'공식 GPX'+(r.segment?' 선택 구간':' 경로'):(proposed?'제안 경로 안내':'산책 위치 안내'),r?'<p class="detail-verification">'+(r.segment?esc(r.segment)+'의 일부 구간입니다. ':'')+'공식 GPX 자료 기준 · 현장 답사 확인과 다릅니다.</p>'+dl([{label:'GPX 출발 좌표',value:r.parts[0][0].map(n=>n.toFixed(5)).join(', ')},{label:'GPX 도착 좌표',value:r.parts.at(-1).at(-1).map(n=>n.toFixed(5)).join(', ')}],'detail-route-endpoints')+'<div class="detail-route-map" data-route-map><button class="detail-button" type="button" data-route-load>경로 지도 불러오기</button><p data-route-status role="status">필요할 때 지도를 불러옵니다.</p></div><script type="application/json" id="detail-route-data">'+JSON.stringify(r).replaceAll('<','\\u003c')+'</script><p class="detail-caption"><a href="'+esc(r.source)+'" target="_blank" rel="noopener noreferrer">'+esc(r.provider)+' 원문 ↗</a> · 출발 S / 도착 E. 단절된 구간은 연결하지 않습니다.</p>':'<p class="detail-caution"><strong>정확한 경로 미확인</strong><br>'+(proposed?'등록된 제안 동선입니다.':'장소의 등록 위치 안내입니다.')+' 실제 걸을 수 있는 검증 경로로 표시하지 않습니다. 출입구·통제 구역은 운영기관에 확인해 주세요.</p><a class="detail-text-link" href="'+esc(link)+'">발자국 지도에서 등록 위치 확인 ↗</a>');
 }
 
 export function buildRelatedIndex(pages){
@@ -300,7 +310,7 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+'<a href="#detail-sources">출처·주의사항</a></nav>';
  const addressLabel=kind==='course'?text(location[0]?.match(/<strong>([\s\S]*?)<\/strong>/)?.[1]):'';
  const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+essentialFacts(kind,petRows,visiting,facilities,{caution:cautions.length>0}).map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';
- let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?'<p class="detail-address">'+(addressLabel?'<span>'+esc(addressLabel)+'</span><br>':'')+esc(address)+'</p>':'')+trust+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes,kind)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
+ let next=links+'<header class="detail-heading"><p class="detail-kicker">'+esc(cfg.label)+'</p>'+h1+(address?addressHTML(address,name,addressLabel):'')+trust+essentials+(kind==='stay'?booking.join(''):'')+'</header>'+routeHero+actionBar(toolbar,directions,call,address)+'<p class="detail-action-status" data-detail-status role="status" aria-live="polite"></p>'+stateNodes.join('')+gallery(photoNodes,kind)+tabs+'<div class="detail-content">'+(critical.length?'<div class="detail-critical">'+critical.join('')+'</div>':'')+editorialIntro+content+sourceSection+'</div>';
  html=html.replace(article[0],'<article class="detail-article" data-detail-template="editorial-v3" data-detail-kind="'+kind+'">'+next+'</article>');
  html=html.replace(/<body([^>]*)>/,(all,attrs)=>attrs.includes('class="')?'<body'+attrs.replace('class="','class="editorial-detail ') +'>':'<body class="editorial-detail"'+attrs+'>');
  html=html.replace('</head>','<link rel="stylesheet" href="/detail-editorial.css?v='+DETAIL_VERSION+'"></head>');
