@@ -1,4 +1,9 @@
 import Presentation from '../place-presentation.js';
+export const registryIntroduction=value=>/^(?:식품안전나라 반려동물 동반 가능 업소 현황|한국관광공사 공식 소개에서 반려동물 동반 가능|고캠핑 공식 안내:|공식 관광 소개의 동반 문구|공식 허용 조건 기준)/.test(String(value||'').trim());
+export function hasSpecificPetCondition(row){
+ const v=String(row?.value||'').trim();
+ return !registryIntroduction(v)&&!Presentation.unknown(v)&&/허용|견종|크기|체중|준비|목줄|이동장|동반|출입|반려동물 이용/.test(row?.label||'')&&/목줄|입마개|이동장|켄넬|케이지|전구역|일부구역|테라스|객실|실내|실외|야외|마당|마리|마릿|소형|대형|중형|kg|㎏|견종|맹견|사이트|배변|입장|출입|요금/i.test(v);
+}
 // Presentation labels can be misleading when an upstream 'size' field contains
 // only a permitted room. Classify explicit words; keep the exact value/source.
 export function petHighlights(rows,{kind='place',limit=3}={}){

@@ -1,4 +1,6 @@
-import {petHighlights} from './pet-highlights.mjs';
+import {petHighlights,registryIntroduction,hasSpecificPetCondition} from './pet-highlights.mjs';
+import Conditions from '../place-conditions.js';
+import {curationEvidence} from './place-curation.mjs';
 import {cardRecord,renderPlaceCard} from './place-card.mjs';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
@@ -152,12 +154,12 @@ function photoCredit(credit){
  credit=credit.replace(/^\s*<details[^>]*>\s*<summary[^>]*>[\s\S]*?<\/summary>\s*<div>([\s\S]*)<\/div>\s*<\/details>\s*$/,'$1');
  const previousCredit=credit.match(/<details class="detail-photo-credit"><summary[^>]*>[\s\S]*?<\/summary><div>([\s\S]*)<\/div><\/details>/);return previousCredit?previousCredit[1]:credit;
 }
-function photoFigure(image,credit,index){
+function photoFigure(image,credit,index,{reference=true}={}){
  image=image.replace(/src="([^"]+)"/,(_,src)=>'src="'+esc(detailPhotoURL(text(src)))+'"');
  image=image.replace(/\sstyle="[^"]*"/g,'').replace(/loading="(?:eager|lazy)"/,'loading="'+(index?'lazy':'eager')+'"');
  if(!index&&!image.includes('fetchpriority='))image=image.replace('<img ','<img fetchpriority="high" ');
  const links=[...credit.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].slice(0,2).map((m,i)=>i===0?m[0].replace(/\(\s*관광정보 제공기관\s*\)/g,'').replace(/\s*·\s*촬영자 미표기/g,'').replace(/\s*·\s*(?:사진 원문|원본)(?=<\/a>)/g,''):m[0]).join(' · ');
- return '<figure class="detail-slide" id="detail-photo-'+(index+1)+'">'+image+'<figcaption><div class="detail-credit-line">'+links+'</div><a class="detail-credit-reference" href="#detail-gallery-sources">사진 '+(index+1)+' · 전체 이용 안내</a></figcaption></figure>';
+ return '<figure class="detail-slide" id="detail-photo-'+(index+1)+'">'+image+'<figcaption><div class="detail-credit-line">'+links+'</div>'+(reference?'<a class="detail-credit-reference" href="#detail-gallery-sources">사진 '+(index+1)+' · 전체 이용 안내</a>':'')+'</figcaption></figure>';
 }
 export function gallery(nodes,kind){
  const photos=[];
@@ -171,7 +173,7 @@ export function gallery(nodes,kind){
  const repeated=[...credits.values()].filter(c=>c.credit.includes(warning));
  if(repeated.length>1)for(const c of repeated)c.credit=c.credit.replaceAll('<br>'+warning,'').replaceAll(warning,'');
  const attribution='<details class="detail-gallery-sources" id="detail-gallery-sources"><summary>사진 출처·촬영·이용 안내 · '+photos.length+'장</summary><div>'+(repeated.length>1?'<p class="detail-caption">'+warning+'</p>':'')+[...credits.values()].map(c=>'<section><h3>사진 '+c.images.join(', ')+'</h3>'+c.credit+'</section>').join('')+'</div></details>';
- return '<section class="detail-gallery" aria-label="장소 사진"><div class="detail-gallery-track" tabindex="0" aria-label="사진을 좌우로 넘겨 보세요">'+photos.map((p,i)=>photoFigure(p.img,p.credit,i)).join('')+'</div>'+(photos.length>1?'<div class="detail-gallery-controls"><span data-gallery-position aria-live="polite">1 / '+photos.length+'</span><div><button type="button" data-gallery-step="-1" aria-label="이전 사진" disabled>←</button><button type="button" data-gallery-step="1" aria-label="다음 사진">→</button></div></div>':'')+attribution+'</section>';
+ return '<section class="detail-gallery" aria-label="장소 사진"><div class="detail-gallery-track" tabindex="0" aria-label="사진을 좌우로 넘겨 보세요">'+photos.map((p,i)=>photoFigure(p.img,p.credit,i,{reference:photos.length>1})).join('')+'</div>'+(photos.length>1?'<div class="detail-gallery-controls"><span data-gallery-position aria-live="polite">1 / '+photos.length+'</span><div><button type="button" data-gallery-step="-1" aria-label="이전 사진" disabled>←</button><button type="button" data-gallery-step="1" aria-label="다음 사진">→</button></div></div>':'')+attribution+'</section>';
 }
 
 let routeRecords;
@@ -203,7 +205,15 @@ export function buildRelatedIndex(pages){
 let sharedRelatedIndex;
 export function setRelatedIndex(pages,groups=[]){
  sharedRelatedIndex=buildRelatedIndex(pages);
- for(const group of groups)for(const item of group.items){const record=cardRecord(item,group.type);sharedRelatedIndex.set(record.url,record);}
+ const originals=new Map(pages);
+ for(const group of groups)for(const item of group.items){
+  const record=cardRecord(item,group.type);
+  if(group.type.table==='facilities'){
+   const known=Conditions.get(item).some(hasSpecificPetCondition);
+   record.connectionNote=curationEvidence(item).eligible?'사진·구체 조건 자료 있음':known?'일부 동반 조건 자료 있음':'세부 동반 조건 미확인';
+  }else if(group.type.table==='courses')record.connectionNote=verifiedRoute(item.id,originals.get(record.url)||'')?'공식 GPX 제공 구간':routes()[item.id]?.proposed?'제안 경로 · 검증 경로 아님':'위치 안내 · 경로 미확인';
+  sharedRelatedIndex.set(record.url,record);
+ }
 }
 export function relatedCards(html,index){
  if(!index)return html;
@@ -215,13 +225,16 @@ export function relatedCards(html,index){
   const children=fragments(inside(node)),heading=children.find(n=>/^<h2/.test(n))||'';
   if(/같은 지역에서 함께 보기|비슷한 장소 함께 보기/.test(heading))return '<details class="detail-region-links"><summary>다른 장소도 둘러보기</summary><p>지역·분류별 탐색 링크입니다. 가까운 추천 목록은 아닙니다.</p>'+node+'</details>';
   if(!/함께 보기|주변|근처|3km 이내|다른 장소 탐색/.test(text(heading)))return node;
-  return node.slice(0,node.indexOf('>')+1).replace('class="card"','class="card detail-related" data-related-template="premium5"')+children.map(child=>{
+  const companions=/3km 이내 애견동반 장소/.test(text(heading));
+  const basis=companions?'<p class="detail-connection-basis">출발·등록 좌표 기준 직선 거리이며 실제 도보 거리·이동시간이나 코스 전체 경로가 아닙니다. 같은 시·군·구 → 사진·구체 조건 자료 → 거리 순으로 표시합니다. 인접 행정구역이 포함될 수 있으니 실제 출입구·동반 조건은 방문 전에 확인하세요.</p>':'';
+  return node.slice(0,node.indexOf('>')+1).replace('class="card"','class="card detail-related" data-related-template="premium5"'+(companions?' id="detail-companions"':''))+children.map(child=>{
+   if(companions&&/^<p\b/.test(child))return basis;
    if(!/^<ul\b/.test(child))return child;
    return '<ul class="premium-card-grid">'+fragments(inside(child)).map(li=>{
     const destination=[...li.matchAll(/<a\b[^>]*href="([^"#]+)"/g)].map(m=>m[1].replace(/^https:\/\/balzaguk.com/,'' )).find(url=>index?.has(url));
     const record=index?.get(destination);if(!record)return '';
     const distance=text(li).match(/직선(?:\s*거리)?\s*[\d.]+\s*(?:km|m)/i)?.[0]||'';
-    return renderPlaceCard(record,{related:true,context:distance});
+    return renderPlaceCard(record,{related:true,context:[distance,record.connectionNote].filter(Boolean).join(' · ')});
    }).join('')+'</ul>';
   }).join('')+'</section>';
  }).join('');
@@ -260,6 +273,7 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  const intro=[],pet=[],facilities=[],unknownLabels=[],extractedVisit=[];
  for(const row of Presentation.fields(rows(condition))){
   if(unknown(row.value)){unknownLabels.push(row.label);continue;}
+  if(registryIntroduction(row.value)){intro.push(row.value);unknownLabels.push('세부 출입 조건');continue;}
   if(/^(?:운영시간|주소|문의처|주차)$/.test(row.label)){extractedVisit.push(row);continue;}
   if(row.label==='등록 안내'){intro.push(row.value);continue;}
   if(/세부 출입|反려동물 이용|반려동물 이용/.test(row.label)){
@@ -299,8 +313,9 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  }
  const description=rawDescription.join('');
  const distinctIntro=intro.filter(s=>s!==address.split(' · ')[0]);
- const editorialIntro=kind==='course'&&description?section('detail-about','코스 소개',description):distinctIntro.length?section('detail-about',kind==='dining'?'이 공간의 이야기':'장소 소개',distinctIntro.map(s=>'<p>'+esc(s)+'</p>').join('')):'';
- const original=description&&kind!=='course'?'<details class="detail-original"><summary>등록 안내 원문</summary><div>'+description+'</div></details>':'';
+ const editedDescription=kind==='course'?description.replaceAll('선택한 구간를','선택한 구간을'):description;
+ const editorialIntro=kind==='course'&&description?section('detail-about','코스 소개',editedDescription):distinctIntro.length?section('detail-about',kind==='dining'?'이 공간의 이야기':'장소 소개',distinctIntro.map(s=>'<p>'+esc(s)+'</p>').join('')):'';
+ const original=description&&(kind!=='course'||editedDescription!==description)?'<details class="detail-original"><summary>등록 안내 원문</summary><div>'+description+'</div></details>':'';
  const remaining=nodes.filter((n,i)=>!used.has(i)&&!/^<p class="meta"/.test(n)).join('');
  const sourceNotes=sources.join('')+provenance.join('')+remaining+(condition||visit?'<details class="detail-raw-fields"><summary>동반·운영 항목 원문</summary><div>'+condition+visit+'</div></details>':'');
  const uniqueLinks=new Map();for(const m of sourceNotes.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/g))if(!uniqueLinks.has(m[1]))uniqueLinks.set(m[1],m[0]);
@@ -309,7 +324,7 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  const trust=trustHTML(trustLabels(kind,petRows,{links:[...uniqueLinks.keys()],dates:dateRows.flatMap(r=>r.value.split(' · ')),historical:sourceNotes.includes('과거에 작성된 참고 자료'),conflict:cautions.length>0}));
  const sourceSection=section('detail-sources','자료와 방문 전 확인',dl(dateRows,'detail-proof-dates')+'<p class="detail-caption">자료에 표시된 검토·조회 날짜입니다. 현장 방문이나 운영정책 갱신 확인을 뜻하지 않습니다. 당일 출입·예약·요금은 방문 전에 확인해 주세요.</p><div class="detail-source-links">'+[...uniqueLinks.values()].join(' ')+'</div>'+moreSources.join('')+original+'<details class="detail-source-notes"><summary>출처별 확인 기록과 주의사항</summary><div>'+sourceNotes+'</div></details>');
  const links=professional?careBack:'<a class="detail-back" data-detail-back href="'+(kind==='course'?'/discover.html?kind=courses#find-place':'/discover.html?kind=facilities#find-place')+'">← 목록으로</a>';
- const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+'<a href="#detail-sources">출처·주의사항</a></nav>';
+ const tabs='<nav class="detail-sections" aria-label="상세 정보 바로가기">'+(kind==='course'?'<a href="#detail-route">산책 경로</a>':'')+'<a href="#detail-conditions">'+(kind==='course'?'코스 정보':professional?'등록 정보':'동반 조건')+'</a>'+(kind==='course'?'':'<a href="#detail-visit">방문 준비</a>')+(kind==='course'&&relatedIndex&&html.includes('3km 이내 애견동반 장소')?'<a href="#detail-companions">함께 갈 장소</a>':'')+'<a href="#detail-sources">출처·주의사항</a></nav>';
  const addressLabel=kind==='course'?text(location[0]?.match(/<strong>([\s\S]*?)<\/strong>/)?.[1]):'';
  const essentialData=essentialFacts(kind,petRows,visiting,facilities,{caution:cautions.length>0});
  const essentials=!['course','amenity'].includes(kind)?'<div class="detail-essentials" aria-label="핵심 방문 정보">'+essentialData.map(r=>'<p><span>'+esc(r.label)+'</span><strong>'+esc(r.value)+'</strong></p>').join('')+'<a href="#detail-conditions">'+(kind==='camping'?'사이트·동반 조건 전체 보기':'동반 조건 전체 보기')+' ↓</a></div>':'';

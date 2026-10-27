@@ -6,22 +6,23 @@
   "sourceRows": 107671,
   "rawPhotos": 5639,
   "mapRouteLinks": 0,
+  "relatedLinkUpdates": 651,
   "sizes": {
     "courses/c387/index.html": {
       "before": 38392,
-      "after": 38725
+      "after": 39252
     },
     "places/cafes/index.html": {
       "before": 80362,
-      "after": 89140
+      "after": 89167
     },
     "places/camping/index.html": {
       "before": 114167,
-      "after": 120200
+      "after": 120227
     },
     "places/regions/seoul/stays/index.html": {
       "before": 18095,
-      "after": 18089
+      "after": 18095
     }
   }
 }

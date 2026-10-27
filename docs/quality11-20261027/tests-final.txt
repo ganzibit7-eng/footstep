@@ -1,0 +1,427 @@
+Account deletion: identity, permissions, storage ordering, failures, retry lease passed.
+Frontend scripts: syntax passed.
+Client: one authentication retry, account-switch protection, stage errors and uncertain network result passed.
+Server: Auth outage, sign-out/delete failures, post-deletion completion failure passed.
+Deno entrypoint: connection metadata does not overwrite createClient passed.
+Client: incorrect deletion target never treated as success.
+✔ tests\account-deletion.mjs (193.5154ms)
+✔ points overlay locks background and restores original overflow and inert states (3.0311ms)
+✔ switching profile to points in one update preserves the shared background lock (2.065ms)
+✔ points close restores focus after inert is released and cannot steal focus from a reopened shop (5.3015ms)
+PASS: account switch, logout and late same-account failures cannot overwrite current badges or admin roles.
+✔ tests\account-state-races.cjs (135.5652ms)
+✔ chart preserves source rows, distinguishes unknowns and never bridges a missing value (2.8708ms)
+✔ daily dates reject injection, duplicate dates, impossible dates and unordered source data (0.3167ms)
+✔ comparison uses actual previous values, handles zero and omits unsupported comparisons (18.3505ms)
+✔ CSV retains the original aggregate columns and unknowns are blank instead of zero (5.0531ms)
+✔ live polling coalesces overlapping requests and counts only confirmed numeric results (1.843ms)
+✔ live failure is explicit, preserves last successful time and recovers without a zero fallback (0.6716ms)
+✔ closing or switching identity rejects late live responses; reopening can start a fresh request (0.2824ms)
+✔ newest traffic period wins and stale responses cannot change the chart or CSV state (4.2497ms)
+✔ traffic failure enables retry and identity changes cannot display an old admin response (2.4749ms)
+✔ unknown or invalid KPI data never becomes a fabricated zero (26.5705ms)
+✔ desktop navigation folds without removing any menu or its accessible name (2.2338ms)
+✔ mobile navigation starts closed, opens explicitly, and closes on menu selection (3.3149ms)
+✔ Escape closes only the mobile menu and restores focus without bubbling to the overlay (2.1545ms)
+✔ breakpoint changes retain desktop folding and recover focus from a newly hidden menu (1.6756ms)
+✔ new shell styles are scoped and private resources remain outside the offline shell (1.5102ms)
+✔ history pages follow immutable point IDs without duplicates and terminate after final row (38.3412ms)
+✔ page failures preserve prior rows and retry from the same cursor (2.3655ms)
+✔ duplicate next-page clicks share a request and logout prevents late paging content (1.326ms)
+✔ refreshing or closing while a page is pending invalidates the response (1.5195ms)
+✔ course cursor preserves microsecond precision, tied timestamps, null dates and escaped IDs (0.5503ms)
+✔ collapsed historical panels perform no raw reads; expanded panels share in-flight work (2.03ms)
+PASS manager nickname and attribute escaping with adversarial mock input.
+✔ tests\admin-manager-escaping.cjs (114.0109ms)
+✔ member detail reads only selected owner, count-only walks, bounded courses and signed points (1.9148ms)
+✔ partial failure remains unknown, retains healthy blocks and escapes user content (15.3038ms)
+✔ server identity and role rejection prevent all activity reads (0.5379ms)
+✔ duplicate pending detail loads coalesce and close suppresses late private content (0.1985ms)
+✔ latest member selection wins; logout and disposal invalidate pending reads (0.3168ms)
+✔ missing member snapshot or local role never starts a detail request (0.0999ms)
+✔ cumulative stats reject failed point/view reads and retain last valid cards (3.3252ms)
+✔ late activity after logout cannot render private member history (0.327ms)
+✔ refresh reports failed sections explicitly and blocks duplicate runs (3.4602ms)
+Member pagination: 1001 accounts across 3 pages, no duplicates, permission errors preserved.
+✔ tests\admin-members.cjs (95.1747ms)
+PASS admin separation: unauthorized zero loads, authoritative identity/role, concurrent deduplication, logout disposal, stale session and revoked-role rejection, markup validation, public HTML and offline shell isolation.
+✔ tests\admin-separation.cjs (96.758ms)
+PASS admin reauthentication keeps session and member; only confirmed target deletion removes member.
+✔ tests\admin-withdraw.cjs (93.6217ms)
+PASS affiliate: trusted primary/middle clicks, no automatic navigation, duplicate gesture suppression, exclusions, query removal, stale-account protection, hostile HTML and CSV formula safety
+✔ tests\affiliate.cjs (128.7252ms)
+Auth UI: consent, provider options, overlapping clicks, failure recovery, email validation and result feedback passed (mock requests only).
+✔ tests\auth-ui.cjs (94.9293ms)
+Premium card coverage: {"details":22317,"listPages":1114,"relatedPages":4574,"cards":58952,"counts":{"bins":195,"courses":4370,"places":36281,"pet-care":18106},"unapplied":0}
+✔ card image policy preserves restricted, small and unknown images without stretching (2.2095ms)
+✔ an article without its own image never borrows another recommended place photograph (0.4388ms)
+✔ related cards bind title, photo, rules and CTA to the destination, not a credit or stale anchor text (6.423ms)
+✔ every generated related/list card has one matching destination, own name and own image (10897.6513ms)
+✔ interactive search scripts cannot run before their shared photo renderer (5.2544ms)
+Shared-control style coverage: 23443
+✔ control cache refresh is idempotent and preserves metadata, original links and source text (0.914ms)
+✔ static public catalogues share deferred visitor collection exactly once without altering content (0.3279ms)
+✔ every generated public listing includes one collector and its existing exclusions (4884.3786ms)
+✔ the offline shell includes local stylesheet imports without caching private data (29.256ms)
+✔ a delayed points response uses the current viewport after screen rotation (29.7815ms)
+✔ all generated user pages use current shared styles; home has no detail/list stylesheet (4914.8613ms)
+PASS: strict unknown exclusion, source/geometry binding, distance boundaries, senior preset, list filtering, legacy stair filter and empty-result fallback.
+PASS: relaxed previews use actual results, preserve original conditions, and keep other conditions selected.
+✔ tests\course-comfort.cjs (223.937ms)
+Comparison: source-bound comfort, unknowns, max 3, hidden course cleanup, dock jump/clear, and escaped content passed
+Detail guest save notice: shown only for locally saved guest courses
+Guest favorite cancellation also dismisses stale saved notice
+✔ tests\course-comparison.cjs (134.7609ms)
+PASS: 174 source-bound location/photo/address records; earlier metadata unchanged; unknown routes and visible restrictions; incorrect regional photo held
+✔ tests\course-expansion-20261012c.cjs (453.4719ms)
+PASS: 6 new source-bound routes, original consecutive OSM nodes, park scope, distance, existing-route overlap, photos, geometry-edit rejection.
+✔ tests\course-expansion-20261017.cjs (661.5636ms)
+PASS: relocated saved filter toggles independently, preserves search/difficulty/tags/time and resets pagination
+✔ tests\course-filters.cjs (109.1088ms)
+PASS: 526 course/image matches, dimensions, licenses, static page consistency, inline JS syntax, lightbox credit isolation and focus restoration
+✔ tests\course-photo-integrity.cjs (1036.4843ms)
+PASS: official-address priority, explicit regional-tag fallback, 13 new region assignments and unknown address exclusion
+✔ tests\course-region-source.cjs (91.0993ms)
+Editorial detail coverage: {"total":22317,"counts":{"camping":1064,"dining":1713,"park":849,"retail":54,"stay":489,"course":412,"amenity":38,"professional":17698},"unapplied":0}
+✔ tourism introduction is separated without losing decimal limits, exceptions or restrictions (1.4144ms)
+✔ old generator fixtures retain metadata, sources, images, credits and remain idempotent (23.1014ms)
+✔ route preview accepts bound official GPX and never draws proposed or unbound geometry (25.2298ms)
+✔ every sitemap detail has one category template, valid assets, unique IDs and unchanged canonical URL (15895.8787ms)
+✔ cafe prose, lodging rules, attribution and affiliation remain in their appropriate sections (5.2173ms)
+✔ preservation guard catches accidental source, photo and metadata loss (3.3516ms)
+✔ partially visible slides reach the final photo number and disable next at the scroll boundary (1.8825ms)
+✔ only verified gallery originals move to R2 without altering source bytes or cropping rights (328.554ms)
+✔ dashboard originals are SHA-256 verified with one read on GET, HEAD and conditional requests (25.8678ms)
+✔ same-size tampering is rejected and oversized strict verification never reads R2 (2.4055ms)
+PASS: 135 unique places, two sourced GPX paths, explicit pet permissions, address/photo bindings
+✔ tests\expansion-20261004.cjs (188.4292ms)
+PASS: 52 original GPX files and immutable coordinate bindings, continuity, distance, pet warnings and recommendation exclusion
+✔ tests\expansion-20261009-night.cjs (540.1946ms)
+PASS: 10 original GPX files and immutable coordinate bindings, continuity, distance, pet warnings and recommendation exclusion
+✔ tests\expansion-20261009.cjs (255.6882ms)
+PASS: 215 searchable addresses, nearby labels, 1052 official-condition places, 3 original GPX routes, partial/alternative-track disclosure, card/detail provenance and JS syntax.
+✔ tests\expansion-evening.cjs (220.1815ms)
+PASS: 12 added GPX routes, 5 place categories, 45 reversible aliases, approved-source checks, coordinate and multi-track integrity, frontend syntax and CSV guards.
+✔ tests\expansion-integrity.cjs (149.2734ms)
+PASS: initial loading/error do not appear as empty search results; retry works; member polling removed and re-entry refresh retained.
+✔ tests\explore-loading.cjs (87.8505ms)
+PASS: tab search choices, paging, expired/future state, malformed/blocked storage and invalid filter values.
+✔ tests\explore-state.cjs (90.0222ms)
+PASS: favorite isolation, rollback, stale responses, delete results, search failures, duplicate helpful actions, attachment failure preservation.
+✔ tests\feature-quality.cjs (115.937ms)
+PASS: 9 unique guide titles, full local destinations, one H1, valid structured data, comparison safeguards and complete directory.
+✔ tests\guide-discovery.mjs (135.0019ms)
+PASS: full public content, absolute links, XML/CDATA escaping, unsafe markup exclusion, no fabricated publication dates and stable unchanged feed.
+✔ tests\guide-rss.mjs (140.4978ms)
+✔ hero-park.js initializes valid whole-body samples even when home starts hidden (4.7955ms)
+✔ hero-park-16-preview.js initializes valid whole-body samples even when home starts hidden (1.9424ms)
+PASS: shared loop clock, asset review gates, decoded-memory limit, reduced-motion zero animation requests, preload, offscreen pause and cleanup.
+✔ tests\hero-park-player.cjs (143.3134ms)
+PASS first paint: current CSS before body, stored region mode before rendering, static verified counters.
+✔ tests\home-first-paint.cjs (98.4698ms)
+PASS 10 unique place cards per category, terminal category links and course more only at rail end with retained filters.
+✔ tests\home-more.cjs (107.7606ms)
+PASS four ordered home chapters, guest join last, sourced review/photo cards, rail boundaries, resize, keyboard and reduced motion.
+✔ tests\home-places.cjs (91.4935ms)
+PASS: strict address region, province/query intersection, unknown time/comfort exclusion, combined-region ambiguity, all 17 selections, invalid/blocked storage fallback
+✔ tests\home-region.cjs (81.293ms)
+PASS: real reviews only, empty-state hiding and clearing, count/rating ordering, hidden and unchecked exclusion
+✔ tests\home-reviewed-courses.cjs (93.7071ms)
+PASS independent heading/card entrance, late course/shopping cards, one-time observation, focus, save-data, legacy media listener and reduced/no-observer fallback.
+✔ tests\home-scenes.cjs (81.4696ms)
+✔ image sitemap covers every public photo course, without private URLs or deprecated tags (516.2893ms)
+✔ repeat enrichment preserves dates and fails before writing on missing assets or noindex (58.2842ms)
+PASS policy content, canonical routes, age guidance, optional presence and coordinate minimization (mock DB).
+✔ tests\legal-policy.cjs (91.919ms)
+✔ home life-place total conservatively excludes cross-directory duplicate candidates and offers both paths (17.27ms)
+PASS: published home counts remain stable across data loads and failures, early course list, roster before metrics, aggregate RPC, deduplication, recent reuse, metric failure and logout stale-response protection.
+✔ tests\loading-performance.cjs (108.8955ms)
+✔ unlocated records are excluded from regional payloads, search, direct detail and published counts (2.9958ms)
+✔ published dataset has one-to-one directory/map membership and verified supplementary detail addresses (62.1012ms)
+✔ queries never expand masked address; candidates require exact business and jurisdiction (6.184ms)
+✔ unambiguous results are required; no key sends no requests and quota errors stop without empty successes (7.1973ms)
+✔ quota rejection stops processing and never records a successful empty result (3.4405ms)
+✔ cluster counts preserve exact large values and allocate enough room as digits grow (27.3174ms)
+✔ unlocated records become below-map links, never geographic pins, and retain filters (5.5359ms)
+✔ all map categories have distinct vector icons with shared sizing and safe fallbacks (1.5657ms)
+✔ shared clustering keeps categories independently filterable without duplicate markers (0.7449ms)
+✔ map bounds exclude missing coordinates and retain exact public positions (1.8396ms)
+✔ map list and marker selection share one entry, filters clear selection, viewport refresh stays local (23.9367ms)
+✔ selected route uses verified source geometry and never invents unknown paths (6.7534ms)
+✔ unchanged periodic course refresh preserves markers and selection (7.3066ms)
+✔ current-location denial and retry release the UI without touching GPS walk tracking (7.983ms)
+✔ map dimensions skip unchanged work and stop after disposal (0.9634ms)
+✔ mobile panels reserve visible bottom navigation without resizing map on scroll (0.5928ms)
+✔ old cached markup loses retired category rows without losing map results (1.0135ms)
+✔ map list opens with current bounds, updates its result badge, and returns keyboard focus on Escape (2.4331ms)
+✔ an open map list follows the moved viewport without panning or remote search (0.4639ms)
+✔ refining places preserves the all-map context and switches other views to places (7.3374ms)
+PASS: missing/out-of-range coordinates, multiword matching, hidden/category filters, initial loading/error, retained stale data and isolated place layer updates.
+✔ tests\map-place-search.cjs (83.2334ms)
+PASS: local registered lookup, source distinctions, unverified general label, escaped output and registered results preserved on provider failure
+✔ tests\map-search.cjs (101.3641ms)
+✔ map service resolves ready SDK and shares initialization (3.485ms)
+✔ missing SDK and callbacks time out, then recover instead of remaining loading (12.6726ms)
+✔ only official new Kakao script host allowed and loading branch has recoverable error state (4.5643ms)
+PASS event read deadlines, uncertain-write recovery, confirmed results and close/reopen request isolation.
+✔ tests\member-event-recovery.cjs (120.5404ms)
+PASS event KST phases, opening/closing/publication boundaries and retired admin controls absent.
+✔ tests\member-event.cjs (102.572ms)
+Member filters: provider, recent/inactive/no-login, KST date boundaries and invalid ranges passed.
+✔ tests\member-filters.cjs (92.9117ms)
+PASS: region boundaries, strict environment/time, unknown safety, no QR transmission, no invented consent, failed receipt retry and expiry.
+✔ tests\mong-recommendations.cjs (95.0713ms)
+PASS: 13 additional official dog-permitted locations, licensed real photos, unknown routes, restriction visibility, response precision and earlier batch preserved
+✔ tests\more-pet-courses.cjs (132.535ms)
+8 evidence-bound courses, 7 licensed photographs, unknown routes and weight restriction verified
+✔ tests\national-pet-courses.cjs (115.906ms)
+✔ 539 new places retain source identities, commercially reusable photos and condition boundaries (911.1431ms)
+✔ introduction dates and links cannot survive changed identity or a future review date (0.8017ms)
+✔ two proposed courses use consecutive original pedestrian nodes with bounded permission and real photographs (70.0418ms)
+✔ 363 new places retain source identities, commercially reusable photos and condition boundaries (483.0395ms)
+✔ introduction dates and links cannot survive changed identity or a future review date (1.5242ms)
+✔ three proposed courses use consecutive original pedestrian nodes with bounded permission and real photographs (72.2384ms)
+✔ 121 new places have exact source identities, individual licensed original photos and bounded pet evidence (197.8555ms)
+✔ translated source photos retain matching Korean identities and never override restrictive Korean image rights (0.4347ms)
+✔ four aliases enrich existing places, preserve original camping limits and only correct one explicit map coordinate (1.2923ms)
+✔ eight additional places retain source identity, original licensed files and individually bounded permission (29.5614ms)
+✔ specific outlet restrictions replace an empty broad code while original photos, description and other information remain intact (1.7333ms)
+✔ six additional places bind exact source identities to licensed real photographs and preserve partial-access conditions (28.8245ms)
+✔ camping-only permission, barefoot path exclusion, room restrictions and same-name different-city identity remain explicit (5.6514ms)
+PASS: official GPX 140/140 original points, no baseline overlap, explicit full-route pet scope, photo hash and edited-route rejection.
+✔ tests\official-route-20261017.cjs (404.5216ms)
+PASS: all 53 current local dependencies recover offline; stale shell removed; DB, location, ads and map tiles excluded.
+✔ tests\offline-shell.cjs (142.3819ms)
+✔ research exclusions cannot remove similarly named public pages (1.6657ms)
+✔ public links and service files survive deployment exclusions (21610.0667ms)
+PASS: public courses have bound original geometry, operator permission and licensed matching photos; edited and held routes excluded.
+✔ tests\pet-access-audit-20261010.cjs (344.8598ms)
+✔ official directory totals, unique IDs, five categories and sanitized public fields (245.5735ms)
+✔ no eager fetch; selected region only; concurrent calls deduplicated; masked search stays masked (24.6068ms)
+✔ national search maximum three requests and retries failed regions (177.9898ms)
+✔ all regional pages have canonical, usable controls, no full data inline or unsupported ratings (12.0072ms)
+✔ one allowed request consumes at most one read, including conditional GET and HEAD (31.631ms)
+✔ pause, unknown paths, query floods, ranges and writes never reach R2 (3.5658ms)
+✔ storage failures and changed objects fail closed without a retry or fallback read (4.7256ms)
+✔ uploads stop before the storage or operation budgets; keys cannot overwrite unrelated files (1.6646ms)
+✔ deployment stays paused until activation, with no direct public R2 configuration (0.7543ms)
+✔ unavailable photos do not retry requests or hide place information (2.1645ms)
+✔ individually restricted image URLs are denied before any R2 operation (10.4475ms)
+✔ bulk catalogue matches retain nearby coordinates, exact street and a distinct matching name (10.6119ms)
+✔ published place counts match coverage while unrelated facilities remain unchanged (2369.3731ms)
+✔ legacy hotel breed ban and official muzzle rule remain explicitly unresolved (309.3826ms)
+✔ condition review dates follow evidence, not the date of adding a photo (3.3552ms)
+✔ camping references preserve identity, source dates and existing current-condition dates (37.4712ms)
+✔ conflicting camping introductions require reconfirmation rather than broader permission (4.982ms)
+✔ specific weight, count, room and breed restrictions stay in qualified notes (0.2794ms)
+Place conditions: restrictions preserved, unknowns explicit, HTML escaped
+✔ tests\place-conditions.cjs (334.1209ms)
+✔ all cultural references match public identity, address and coordinates (13.9484ms)
+✔ historical references never change current conditions or freshness (154.6396ms)
+✔ negative access and escaped source values cannot become indoor dog permission (2.3532ms)
+✔ refinement preserves source facts, photographs, links and structured data (27.9416ms)
+Place detail pages: 4169
+✔ all published place pages use the new stylesheet without duplicate dock or heading (3818.2309ms)
+✔ home cards open native detail, with original Naver destinations available inside (37.718ms)
+{
+  reviewed: 4170,
+  matched: 2726,
+  photos: 2285,
+  petRecords: 915,
+  photoUnresolved: 1885
+}
+✔ all enriched identities are public records; photographs are intact with rights, origin and dimensions (3812.4685ms)
+✔ current camping conditions remain bound to identity; conflicting guidance cannot become confirmed permission (158.942ms)
+✔ small-dog restriction, extra conditions and unknowns do not imply permission (0.4385ms)
+✔ home loads photo registry only on place demand; database and auth state do not depend on photo loading (7.9301ms)
+Live collection scopes 48
+✔ condition labels follow explicit meaning and one repeated scope is not two kinds of evidence (3.6395ms)
+✔ nearby places retain municipal and coordinate boundaries, offer prepared choices and remove exact identity duplicates (1.0062ms)
+✔ operator review identifies explicit public evidence gaps without treating professional registers as missing travel data (0.9247ms)
+✔ single-photo source UI is merged while actual attribution remains and course display edits keep the full original (0.8968ms)
+✔ filtered discover links only to existing evidence collections of the exact regional/category scope (37.9234ms)
+✔ all additional images preserve original file hash, source, rights, dimensions and identity (2853.3505ms)
+✔ supplementary official pet notes remain identity-bound, escaped and qualified (81.0801ms)
+✔ published details group gallery and core actions before deep information and maintain mobile controls (1.1563ms)
+✔ official food listing is bound to identical public venue and address, without new pet permissions (125.6779ms)
+✔ unmatched businesses are not given current-registration badges (0.7881ms)
+✔ bulk photos have individual commercial-use evidence and remain distinct from permission (122.3127ms)
+✔ new coastal guidance preserves every requirement and rejects changed identity (2.7523ms)
+✔ individually restricted pictures are absent from registry and home cards (26.852ms)
+✔ renderer refuses a restricted photo even if later imported accidentally (0.4735ms)
+✔ same-place course photographs preserve their existing open licence and credited source (17.8925ms)
+✔ new Commons pictures retain per-file authors, titles, licence links and source snapshots (3.0855ms)
+Course trust coverage: { count: 412, gpx: 55, unverified: 357 }
+✔ road and facility guidance split conservatively while the exact original stays accessible (1.8751ms)
+✔ optional condition filter includes photo-free facts and never treats unknown policies or operating hours as pet evidence (91.9492ms)
+✔ GPX measurement sums real parts but never invents a connection between disconnected parts (29.0447ms)
+✔ search refinement keeps metadata and URLs and exposes one optional evidence filter (7.288ms)
+✔ analytics distinguishes measured zero, unknown denominators and unavailable conversions (14.1063ms)
+✔ all course details distinguish bound GPX measurements from unverified registered information (323.8623ms)
+Eligible evidence records (not published venues): 360
+Experience coverage {
+  total: 22317,
+  photos: 2697,
+  information: 1922,
+  professional: 17698,
+  gpx: 55,
+  proposal: 30,
+  location: 327
+}
+✔ curation only uses identity-bound pet facts, reusable real photos and recent source dates (522.6416ms)
+✔ curation adds a bounded separate shelf, preserves photo rights and never fills an ineligible region (290.5048ms)
+✔ all generated detail types use the shared overview while course evidence and preparation stay explicit (9879.7215ms)
+✔ ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS (4.991ms)
+Lossless structured source fields: 591
+Quality coverage: {"details":22317,"lists":1114}
+✔ listing summaries retain the distinction between verified walking geometry and unconfirmed pet access (1.5259ms)
+✔ Misan site partitions retain all four numbered ranges, exclusions and the global small-dog exception (2.3174ms)
+✔ every source condition is losslessly partitioned and every concise factual summary has a source witness (630.0733ms)
+✔ explicit operating and caution labels do not turn an address into a pet access rule (0.4612ms)
+✔ recommendations distinguish Suwon from Gapyeong, normalize region aliases and reject invalid points (1.8025ms)
+✔ all detail and all collection pages use the quality templates and keep canonical metadata (4857.2235ms)
+✔ the camping detail, visit facts, source grouping and directory summary agree with the original (38.0435ms)
+Quality6 sourced preview facts: 7295 facility schedules: 51
+✔ complete facility schedules are lossless and ambiguous time prose remains original (3.6262ms)
+✔ compact cards keep restrictions complete, never extract an isolated positive exception (10.45ms)
+✔ every public evidence record produces bounded source-backed previews without mutating originals (616.9928ms)
+✔ collection copy belongs to its category and address shortening only removes a literal repeated prefix (0.5979ms)
+✔ compact attribution keeps every named creator, license, destination and complete original credit (1.3169ms)
+Quality7 coverage: {"details":22317,"notices":4136,"visiblePhoneActions":2401,"compactMissingPhotos":32813}
+✔ public search omits bookkeeping without changing photo rights or originals (48.6223ms)
+✔ cached search retains every original multiword, category and source-condition result (1203.0706ms)
+✔ photo-free headers distinguish professional purposes and never imply a medical service for grooming (0.8797ms)
+✔ all generated details separate notices, preserve useful actions and reject invalid display values (5473.6842ms)
+✔ mobile layout is established before parsing search JSON, with no new dependency (3.4279ms)
+✔ facility map links enter the existing map route without an intermediate home history entry (1.2817ms)
+✔ deferred public index shares one request, preserves complete records and reuses the result (1.7039ms)
+✔ failed and malformed indexes reject without dropping rows, and explicit retry reloads (3.1703ms)
+✔ index loading has a deadline and can retry after a stalled request (12.6635ms)
+✔ published directory manifest and full index agree, without precaching the payload on home (28.4791ms)
+✔ explicit facility lists preserve source characters and never split parentheses or fees (4.0073ms)
+✔ photo context changes only known editorial boilerplate, not rights or source quotations (0.5229ms)
+✔ shared gallery caveats appear once while each creator, license and date remain available (1.5613ms)
+✔ first-screen facts prioritize complete access rules and known operations without invented values (2.5761ms)
+✔ published examples contain structured facilities and category-appropriate photo context (3.4675ms)
+✔ evidence labels distinguish facts, unknown conditions, historic and dated source material (4.2937ms)
+✔ map photo credit uses the actual venue type without changing source metadata (1.9081ms)
+✔ ordinary public-page visits check worker updates without forcing a reload (2.2276ms)
+✔ navigation revalidates HTTP cache and keeps exact offline fallback while excluding private data (76.0117ms)
+✔ image failure fallback remains local to venue media and keeps credits and frame size (1.945ms)
+PASS: reload, removal, invalid cache, unsafe paths, blocked storage, save limit
+✔ tests\place-saves.mjs (93.1298ms)
+PASS: real directory region/category filters, multiword search, empty results and category isolation.
+✔ tests\place-search.cjs (146.2693ms)
+✔ official visit facts remain identity and description bound, with their own date and source (20.2151ms)
+✔ general visit notes never become confirmed breed, weight or indoor permissions (9.274ms)
+✔ same official photograph at different supplied sizes is not duplicated within a place (9.4817ms)
+✔ published pages expose the checked visit facts without leaking local cache paths (1038.6892ms)
+✔ withdrawn lodging has no public detail, discovery, sitemap, RSS or companion evidence (120.8282ms)
+✔ public count release matches the remaining directory and combined place total (44.4347ms)
+✔ Escape closes only an open points dialog without propagating to other overlays (2.2352ms)
+✔ Tab and Shift+Tab stay in visible controls; ordinary typing is untouched (1.0701ms)
+✔ entry is optional: reduced motion and data saver keep content static (1.8566ms)
+✔ visible headings enter briefly; route changes cancel unfinished motion (1.2181ms)
+✔ interaction, backgrounding and preference changes stop motion (2.6063ms)
+✔ home reuses existing motion and missing browser animation APIs do not hide content (2.8326ms)
+✔ selection semantics follow active state, including restored drafts (1.8877ms)
+✔ card observation stays on result lists and is capped per update (2.7237ms)
+✔ direct map entry restores the search header without overriding visitor interaction (6.8769ms)
+✔ returning to an already revealed heading never replays its entrance (0.9208ms)
+✔ 110 verified additions are reproducible without changing IDs, names, original addresses or other map points (117.3295ms)
+✔ missing or unsafe evidence is rejected; unrelated buildings cannot inherit a coordinate (89.2715ms)
+✔ every directory record is connected to a public map position or an explicitly unlocated regional list (180.1053ms)
+✔ map load is lazy, shared, retryable; names and public address searches preserve kind filters (42.1293ms)
+✔ home never loads the map index and all-map/category controls connect every professional kind (6.0388ms)
+✔ leaving the professional view cancels late loading and switching kinds reuses data without stale pins (21.2571ms)
+✔ all public professional pages have crawlable stable URLs and regional link coverage; hidden records have no page (7815.3453ms)
+✔ page generation refuses unlocated records, escapes business names and omits fabricated ratings and hours (9.1984ms)
+✔ optimized delivery keeps source bytes and proof, and excluded originals always resolve to a published copy (580.0532ms)
+PASS: delayed profile/region/photo saves cannot update a switched account UI; avatar metadata failures never report success; normal upload preserved.
+✔ tests\profile-save-races.cjs (91.6403ms)
+✔ published counters match all first-paint labels and never issue a count request (39.8061ms)
+✔ manual update changes HTML and snapshot together and rejects invalid inputs (13.2701ms)
+✔ directory refinement preserves data, search controls, destinations and SEO (9.8187ms)
+✔ sorting preserves eligibility, stable source order and unknown conditions (12.7239ms)
+✔ shared reading theme cannot style home cards or administrator screens (4.0194ms)
+✔ public hub hierarchy removes only an exact repeated address, preserves unknown guidance and sources (0.9411ms)
+✔ already refined pages upgrade presentation assets before idempotent layout guard (0.895ms)
+✔ only canonical public URLs; private/query/fragment/foreign URLs excluded (2.3866ms)
+✔ unchanged pages not resubmitted; removed pages notified (1.2524ms)
+✔ live ownership failure blocks submission (1.0459ms)
+✔ 200 and 202 receipts separated from indexing; failures reject (1.4589ms)
+Verification still propagating; retrying once after 30 seconds.
+✔ all sitemap entries have readable canonical indexable local pages (13142.9521ms)
+✔ temporary verification propagation retry is bounded (0.6898ms)
+PASS: legacy course redirect, tracking parameters, fragment map entry, unknown/path traversal rejection, published routes, one home H1 and favicon.
+✔ tests\search-entry.cjs (193.8729ms)
+✔ one stable absolute icon without changing structured data or body (3.6121ms)
+{"pages":23444,"jsonLdBlocks":23443,"breadcrumbs":5538,"places":22317}
+✔ all published pages have valid JSON-LD, matching place identity and resolvable breadcrumbs (11270.8967ms)
+✔ category partitions preserve every original field and ordering and reuse loaded subsets for broad searches (262.2302ms)
+✔ a cold broad query uses one original full index and never redownloads it for narrow queries (37.2985ms)
+✔ invalid partition metadata fails safely rather than omitting records (15.0265ms)
+✔ tests\search-records.cjs (66.7358ms)
+PASS Edge: bounded JSON, origins, private actor identity, hashed correlation, query removal and forged server event rejection
+PASS Edge filtering: old client CSP/auth noise ignored, missing context rejected, unexpected external script retained as unverified browser signal.
+✔ tests\security-edge.mjs (104.9663ms)
+PASS policy: enforced unexpected external scripts only; extension, eval, inline, report-only, untrusted, allowed sources and URL secrets excluded.
+PASS security: hostile audit content, popup JavaScript-string encoding, notification ownership, report throttle/query removal and syntax
+✔ tests\security-monitor.cjs (106.044ms)
+PASS security notifications: safe text, admin deep link, displayed-only read marking, account-switch isolation and collapsed panel
+✔ tests\security-notifications.cjs (80.5294ms)
+PASS: all 83 new detail pages render with valid schema and explicit pet scope warnings.
+✔ tests\seo-walks-300.mjs (533.4036ms)
+✔ share attribution keeps canonical route and excludes previous queries and personal fragments (2.2415ms)
+✔ cancel is not posted or copied; native failure falls back to clipboard (0.6066ms)
+✔ successful native share never repeats with clipboard (0.1223ms)
+✔ app does not share hidden or pending courses (8.4865ms)
+✔ pending share blocks repeated clicks and clears busy state after cancellation or failure (2.4536ms)
+✔ versioned Kakao share asset is a compact 1200 by 630 JPEG (2.8829ms)
+✔ home serves one static OG and Twitter image with matching dimensions and type (3.5909ms)
+PASS: 6 exact issued links and matching server catalog, first featured snack, dated evidence with stale/future/invalid rejection, no prices, disclosure, safe images and no automatic affiliate navigation
+✔ tests\shopping.cjs (98.2728ms)
+PASS: restored/initial sessions, auth-lock deferral, overlapping events, server-preawarded referral, stale account isolation, offline and retry recovery.
+✔ tests\signup-points.cjs (77.2025ms)
+PASS: one token per load, visible-only duration, trusted clicks, internal attribution carry, query minimization, work-test exclusion.
+✔ tests\traffic.cjs (77.3697ms)
+✔ verified stay links retain partner tracking and clear disclosure on home and detail (58.0452ms)
+✔ full stay audit distinguishes unlinked products and conflicting platform policies (2.85ms)
+✔ all ten home stays have a verified affiliate destination and their own source photo (3.6418ms)
+✔ directory more preserves existing cards and photos, focuses next result, and retains URL filters (23.381ms)
+✔ deferred directory does not request data before intent and keeps the latest filter during one shared load (10.8935ms)
+✔ deferred directory keeps reset state after a stale response and exposes a safe retry after failure (3.7846ms)
+✔ deferred list restores exact-page back scroll after render and never overrides a new user gesture (8.95ms)
+✔ mobile filters collapse once, expose restored selections and remain open during refinement (3.8463ms)
+✔ directory empty state resets existing controls without changing source conditions (1.6194ms)
+✔ detail return keeps only same-origin directory filters and rejects external destinations (0.1764ms)
+✔ detail return uses native back for ordinary clicks and preserves modified-link navigation (1.1476ms)
+✔ condition labels split only the explicit source delimiter and preserve unknown facts (0.641ms)
+✔ live directory cards keep one record across photo, heading, credits and bottom CTA (1.6305ms)
+PASS: comparison/detail preparation, verified conditions and source, unknowns after route edits, recording/position-request guard, hidden courses, safe links, clear focus and no automatic GPS.
+PASS: same-tab reload, loading/error preservation, deduplication, stale/hidden cleanup, persisted clear, malformed/blocked storage and no automatic GPS.
+✔ tests\walk-course-handoff.cjs (254.0745ms)
+✔ today journal displays only saved today totals and preserves input rows (22.1676ms)
+✔ empty and zero-duration saved records are distinct, and sign-out hides the journal (1.6095ms)
+{ message: 'offline' }
+Walk tracking: jitter, jumps, stale fixes, pauses, GPS gaps, metrics, save failures and permission denial passed.
+✔ tests\walk-tracker.cjs (103.2776ms)
+PASS: 83 distinct sourced paths, original GPX/OSM nodes, distance and continuity, geometry binding, edited-path rejection, 77 explicit pet warnings and recommendation exclusion.
+✔ tests\walks-300.cjs (335.3702ms)
+✔ regional snapshot retains provider time and valid hourly forecast values (3.5243ms)
+✔ wrong units, missing data, impossible temperatures and stale/future models cannot publish (1.1207ms)
+PASS regional selection, invalid coordinates, stale/future/missing forecast rejection, no AbortController, blocked storage, cached/offline fallback, request deduplication and latest-region isolation.
+✔ tests\weather-widget.cjs (93.9518ms)
+✔ repeated address removed without deleting restrictions (1.1525ms)
+✔ curation preserves five licensed photos, dated sources and limited access (19.3109ms)
+✔ search descriptions end cleanly and stay within the limit (0.3689ms)
+PASS: welcome cooldown, signed-in/typing protection, focus entry/restore, Tab loop, Escape and signup handoff without submitting consent.
+✔ tests\welcome-ui.cjs (66.7571ms)
+ℹ tests 316
+ℹ suites 0
+ℹ pass 316
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27947.1515

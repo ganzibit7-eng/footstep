@@ -1,0 +1,35 @@
+{
+  "before": {
+    "url": "http://127.0.0.1:8994/discover.html?region=%EA%B2%BD%EA%B8%B0&kind=facilities&category=%EC%8B%9D%EB%8B%B9%EC%B9%B4%ED%8E%98&q=%ED%8B%B0%ED%81%AC%EB%8B%89&pet=known&sort=conditions",
+    "collection": "/places/regions/gyeonggi/cafes/#prepared-places",
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "pet": true,
+    "q": "티크닉",
+    "region": "경기",
+    "sort": "conditions"
+  },
+  "savedOn": "true",
+  "savedOff": "false",
+  "actionLinks": [
+    {
+      "href": "https://balzaguk.com/?facility=kto_new_20261020b_3443259#map",
+      "label": "지도에서 위치 보기 ↗"
+    },
+    {
+      "href": "https://map.kakao.com/link/to/%ED%8B%B0%ED%81%AC%EB%8B%89%20%EC%95%A8%EB%A6%AC%EC%9B%A8%EC%9D%B4%20%EA%B4%91%EA%B5%90%EC%A0%90,37.2745173664,127.0603134717",
+      "label": "길찾기 ↗"
+    },
+    {
+      "href": "tel:050714897116",
+      "label": "전화 문의"
+    }
+  ],
+  "restored": {
+    "url": "http://127.0.0.1:8994/discover.html?region=%EA%B2%BD%EA%B8%B0&kind=facilities&category=%EC%8B%9D%EB%8B%B9%EC%B9%B4%ED%8E%98&q=%ED%8B%B0%ED%81%AC%EB%8B%89&pet=known&sort=conditions",
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "pet": true,
+    "q": "티크닉",
+    "region": "경기",
+    "sort": "conditions"
+  }
+}

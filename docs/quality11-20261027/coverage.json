@@ -1,0 +1,27 @@
+{
+  "details": 22317,
+  "detailApplied": 22317,
+  "kinds": {
+    "amenity": 38,
+    "course": 412,
+    "professional": 17698,
+    "camping": 1064,
+    "dining": 1713,
+    "park": 849,
+    "retail": 54,
+    "stay": 489
+  },
+  "lists": 1114,
+  "curationPages": 238,
+  "curationSlots": 538,
+  "curationUnique": 252,
+  "eligiblePublished": 360,
+  "relatedConditionCards": 9549,
+  "editedCourseIntros": 5,
+  "errors": [],
+  "search": {
+    "count": 4619,
+    "hash": "cea1fed912419b8b6c6b9f3b68aff318a7764899d4d028efc469c71c0866a804",
+    "curationScopes": 48
+  }
+}

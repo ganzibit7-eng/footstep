@@ -1,0 +1,12 @@
+{
+  "national": {
+    "before": 3340.2,
+    "after": 3286.7
+  },
+  "camping": {
+    "before": 785.6,
+    "after": 789.3
+  },
+  "method": "Windows Chromium 390px; JSON only gzip +150ms +128000B/s; 3 samples per case; first-result DOM insertion, not physical device/paint/medium CPU.",
+  "interpretation": "Mixed small differences; no material search-speed improvement claimed. Search bytes and record count unchanged."
+}

@@ -42,7 +42,7 @@ test('all generated details separate notices, preserve useful actions and reject
 });
 
 test('mobile layout is established before parsing search JSON, with no new dependency',()=>{
- const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261027-quality10-search'));assert(!h.includes('quality7-metrics.js'));
+ const h=discover();assert(h.indexOf('data-directory-layout')>0);assert(h.indexOf('data-directory-layout')<h.indexOf('id="place-data"'));assert(h.includes('place-search.js?v=20261027-quality11-search'));assert(!h.includes('quality7-metrics.js'));
 });
 
 test('facility map links enter the existing map route without an intermediate home history entry',()=>{

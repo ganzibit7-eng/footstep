@@ -1,5 +1,5 @@
 // Offline app shell only: no database responses, location data, ads or map tiles.
-const CACHE_NAME='balzaguk-shell-v206-quality10';
+const CACHE_NAME='balzaguk-shell-v207-quality11';
 const MAP_DESIGN_FILE='/map-premium.css?v=20261024-tools';
 const SHELL_FILES=["/course-detail-editorial.css?v=20261025-editorial","/trip-stays.css?v=20261022","/walk-calendar.js?v=20261009-detail", "/mong-calendar.css?v=20261009-results", "./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4", "/legal.css?v=20261026-controls4-final", "/home-premium.css?v=20261025-disclosure", "/experience.css?v=20261025-kickers", "traffic.js?v=20261009-affiliate", "course-photos.js?v=20261020-nationwide-b", "course-info.js?v=20261020-nationwide-b", "bin-info.js?v=20261008-disposal-sites", "/place-saves.js?v=20261026-quality8", "shopping-config.js?v=20261025-disclosure", "shopping.js?v=20261025-disclosure", "account-deletion-client.js?v=20261014-member-auth-fix", "auth-presentation.js?v=20261024-shop", "/account-ui.css?v=20261024-touch", "facility-info.js?v=20261003", "course-routes.js?v=20261004-expansion", "course-expansion-300.js?v=20261004-300", "course-expansion-20261009.js?v=20261009", "course-expansion-20261009-night.js?v=20261009-night", "course-addresses.js?v=20261020-nationwide-b", "walk-tracker.js?v=20261005-offline", "security-monitor.js?v=20261009", "/readability.css?v=20261026-quality8"];
 SHELL_FILES.push("/professional-map.js?v=20261023-explorer",MAP_DESIGN_FILE,"/map-explorer.js?v=20261024-tools","/map-services.js?v=20261020");
@@ -39,7 +39,7 @@ SHELL_FILES.push("/hero-park.css?v=20261023-home-sans","/hero-park.js?v=20261020
 // Retain the previous CSS import while already-open documents refresh.
 SHELL_FILES.push('/ui-control-tokens.css?v=20261026-controls4-final','/internal-pages.css?v=20261024-third-layout');
 SHELL_FILES.push('/place-presentation.js?v=20261026-quality8','/card-media.js?v=20261026-quality8','/card-media.css?v=20261026-quality8','/internal-pages.css?v=20261026-quality8');
-SHELL_FILES.push('/place-search.js?v=20261027-quality10-search');
+SHELL_FILES.push('/place-search.js?v=20261027-quality10-search','/place-search.js?v=20261027-quality11-search');
 SHELL_FILES.push('/public-update.js?v=20261026-quality9','/photo-display.js?v=20261026-quality9','/place-photos.js?v=20261026-context9');
 SHELL_FILES.push('/traffic.js?v=20261026-quality9');
 SHELL_FILES.push('/card-media.js?v=20261027-quality10');

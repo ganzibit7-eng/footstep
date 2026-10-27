@@ -1,4 +1,4 @@
-import {curationSection} from './place-curation.mjs';
+import {curationSection,curationEvidence,selectCurated} from './place-curation.mjs';
 import {searchParts} from './search-partitions.mjs';
 import {listingCopy} from './listing-copy.mjs';
 import {directoryPhoto} from './directory-data.mjs';
@@ -420,7 +420,12 @@ function hubHtml(hub,page){
 })();
 </script>`:''}</body></html>`;
 }
-function nearbyEntries(item,pool){const bound=entry=>Boolean(PlaceEvidence.get(entry)||CoursePetAccess.get(entry));return bound(item)?spatialNearbyEntries(item,pool.filter(other=>bound(other)&&!PlaceEvidence.caution(other))):[];}
+const preparedPlaces=new WeakMap();
+function nearbyEntries(item,pool){
+ const bound=entry=>Boolean(PlaceEvidence.get(entry)||CoursePetAccess.get(entry));
+ const priority=entry=>{if(!preparedPlaces.has(entry))preparedPlaces.set(entry,curationEvidence(entry).eligible);return preparedPlaces.get(entry);};
+ return bound(item)?spatialNearbyEntries(item,pool.filter(other=>bound(other)&&!PlaceEvidence.caution(other)),{priority}):[];
+}
 
 function detailHtml(item, type, url) {
   const needsPetCheck = type.table==='courses' && (item.tags||[]).includes('동반 확인 필요');
@@ -703,7 +708,7 @@ async function directoryHtml(groups) {
     ...(type.table==='facilities'?{conditions:PlaceConditions.summary(item),facts:listingFacts(item,type).map(({label,value})=>({label,value})),photo:directoryPhoto(PlacePhotos.get(item),PlacePhotos.get(item)?{src:PlacePhotos.url(PlacePhotos.get(item)),deliveryNote:PlacePhotos.deliveryNote(PlacePhotos.get(item))}:{})}:{}),
     ...(type.table==='courses'?{facts:listingFacts(item,type).map(({label,value})=>({label,value})),photo:directoryPhoto(CoursePhotos.get(item))}:{})
   })));
-  const searchWidget=`<p><a href="/pet-care/">동물병원·미용·돌봄 등 전문업소 찾기 ↗</a></p><section id="find-place"><h2>동네·장소 이름으로 바로 찾기</h2><form id="place-search"><label for="place-query">지역 또는 장소 이름</label><input id="place-query" type="search" maxlength="100" placeholder="예: 남산, 수원, 제주" autocomplete="off"><label for="place-kind">찾을 종류</label><select id="place-kind"><option value="">전체</option><option value="courses">산책 코스</option><option value="facilities">애견동반 장소</option><option value="bins">배변봉투함</option></select><label for="place-region">지역 선택</label><select id="place-region"><option value="">전체 지역</option></select><label for="place-category">동반장소 업종</label><select id="place-category"><option value="">전체 업종</option><option value="공원관광">공원·관광</option><option value="쇼핑">쇼핑</option><option value="숙소">숙소</option><option value="식당카페">식당·카페</option><option value="캠핑">캠핑</option></select><button type="submit">찾기</button><button id="place-clear" type="button">검색 초기화</button></form><p id="place-count" role="status" aria-live="polite">지역이나 장소 이름을 입력하세요.</p><ul id="place-results"></ul><button id="place-more" type="button" hidden>결과 더 보기</button><noscript>아래 지역·테마별 링크에서도 장소를 찾을 수 있습니다.</noscript></section>`;
+  const searchWidget=`<p><a href="/pet-care/">동물병원·미용·돌봄 등 전문업소 찾기 ↗</a></p><section id="find-place"><h2>동네·장소 이름으로 바로 찾기</h2><form id="place-search"><label for="place-query">지역 또는 장소 이름</label><input id="place-query" type="search" maxlength="100" placeholder="예: 남산, 수원, 제주" autocomplete="off"><label for="place-kind">찾을 종류</label><select id="place-kind"><option value="">전체</option><option value="courses">산책 코스</option><option value="facilities">애견동반 장소</option><option value="bins">배변봉투함</option></select><label for="place-region">지역 선택</label><select id="place-region"><option value="">전체 지역</option></select><label for="place-category">동반장소 업종</label><select id="place-category"><option value="">전체 업종</option><option value="공원관광">공원·관광</option><option value="쇼핑">쇼핑</option><option value="숙소">숙소</option><option value="식당카페">식당·카페</option><option value="캠핑">캠핑</option></select><button type="submit">찾기</button><button id="place-clear" type="button">검색 초기화</button></form><p id="place-curation-entry" class="directory-curation-entry" hidden></p><p id="place-count" role="status" aria-live="polite">지역이나 장소 이름을 입력하세요.</p><ul id="place-results"></ul><button id="place-more" type="button" hidden>결과 더 보기</button><noscript>아래 지역·테마별 링크에서도 장소를 찾을 수 있습니다.</noscript></section>`;
   const payload=JSON.stringify(searchData),dataFile=path.join(ROOT,'assets/search-data/discover.json');
   await mkdir(path.dirname(dataFile),{recursive:true});
   let previous;try{previous=await readFile(dataFile,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
@@ -713,7 +718,8 @@ async function directoryHtml(groups) {
   const immutablePath=path.join(ROOT,'assets/search-data',immutable);
   try{if(await readFile(immutablePath,'utf8')!==payload)throw new Error('Immutable search payload collision');}catch(error){if(error.code!=='ENOENT')throw error;await writeFile(immutablePath,payload,'utf8');}
   const manifest={version:2,parts:await searchParts(ROOT,searchData),src:'/assets/search-data/'+immutable,count:searchData.length,regions:[...new Set(searchData.map(r=>r.region).filter(Boolean))]};
-  const searchScript=`<script type="application/json" id="place-data">${JSON.stringify(manifest).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261026-quality8-data"></script>`;
+  const curatedScopes=searchHubs.filter(h=>h.type.table==='facilities'&&!h.path.includes('/areas/')&&selectCurated(h.items,{limit:1}).length>0).map(h=>({path:h.path,region:REGIONS.find(([slug])=>h.path.includes('/regions/'+slug+'/'))?.[1]||'',category:FacilityInfo.categories.find(c=>h.path.endsWith('/'+c.slug+'/'))?.category||''}));
+  const searchScript=`<script type="application/json" id="place-curation-scopes">${JSON.stringify(curatedScopes).replaceAll('<','\\u003c')}</script><script type="application/json" id="place-data">${JSON.stringify(manifest).replaceAll('<','\\u003c')}</script><script src="/place-search.js?v=20261026-quality8-data"></script>`;
   const sections = groups.map(({ type, items }) => {
     const limit=type.table==='bins'?40:60;
     const featured=[...items]

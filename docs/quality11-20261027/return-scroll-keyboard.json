@@ -1,0 +1,16 @@
+{
+  "before": {
+    "active": "가야산오토캠핑장",
+    "rows": 40,
+    "url": "http://127.0.0.1:8994/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40#find-place",
+    "y": 7031.33349609375
+  },
+  "visitedHeading": "가야산오토캠핑장",
+  "after": {
+    "rows": 40,
+    "sort": "name",
+    "url": "http://127.0.0.1:8994/discover.html?kind=facilities&category=%EC%BA%A0%ED%95%91&sort=name&shown=40#find-place",
+    "y": 7031.33349609375
+  },
+  "delta": 0
+}

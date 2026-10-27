@@ -1,0 +1,42 @@
+PASS: all 53 current local dependencies recover offline; stale shell removed; DB, location, ads and map tiles excluded.
+✔ tests\offline-shell.cjs (117.2743ms)
+Live collection scopes 48
+✔ condition labels follow explicit meaning and one repeated scope is not two kinds of evidence (2.6737ms)
+✔ nearby places retain municipal and coordinate boundaries, offer prepared choices and remove exact identity duplicates (0.9482ms)
+✔ operator review identifies explicit public evidence gaps without treating professional registers as missing travel data (1.7127ms)
+✔ single-photo source UI is merged while actual attribution remains and course display edits keep the full original (1.3852ms)
+✔ filtered discover links only to existing evidence collections of the exact regional/category scope (38.4681ms)
+Eligible evidence records (not published venues): 360
+Experience coverage {
+  total: 22317,
+  photos: 2697,
+  information: 1922,
+  professional: 17698,
+  gpx: 55,
+  proposal: 30,
+  location: 327
+}
+✔ curation only uses identity-bound pet facts, reusable real photos and recent source dates (242.3081ms)
+✔ curation adds a bounded separate shelf, preserves photo rights and never fills an ineligible region (167.6049ms)
+✔ all generated detail types use the shared overview while course evidence and preparation stay explicit (5933.1747ms)
+✔ ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS (4.7062ms)
+✔ evidence labels distinguish facts, unknown conditions, historic and dated source material (2.5174ms)
+✔ map photo credit uses the actual venue type without changing source metadata (2.6322ms)
+✔ ordinary public-page visits check worker updates without forcing a reload (1.0266ms)
+✔ navigation revalidates HTTP cache and keeps exact offline fallback while excluding private data (17.6684ms)
+✔ image failure fallback remains local to venue media and keeps credits and frame size (1.5098ms)
+PASS: real directory region/category filters, multiword search, empty results and category isolation.
+✔ tests\place-search.cjs (127.4027ms)
+✔ directory refinement preserves data, search controls, destinations and SEO (9.5024ms)
+✔ sorting preserves eligibility, stable source order and unknown conditions (8.3355ms)
+✔ shared reading theme cannot style home cards or administrator screens (5.6048ms)
+✔ public hub hierarchy removes only an exact repeated address, preserves unknown guidance and sources (0.9858ms)
+✔ already refined pages upgrade presentation assets before idempotent layout guard (0.3824ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6742.0335

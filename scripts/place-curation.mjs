@@ -1,7 +1,6 @@
 import Photos from '../place-photos.js';
 import Conditions from '../place-conditions.js';
 import Evidence from '../place-evidence.js';
-import Presentation from '../place-presentation.js';
 import {petHighlights} from './pet-highlights.mjs';
 import {officialSource} from './detail-trust.mjs';
 import {cardRecord,renderPlaceCard,esc} from './place-card.mjs';
@@ -30,7 +29,7 @@ export const curationCriteria='같은 장소로 연결된 공식 세부 동반 �
 export function curationSection(items,type,{target='hub-results',directory=false}={}){
  if(type.table!=='facilities')return '';
  const selected=selectCurated(items);if(!selected.length)return '';
- return '<section class="collection-curation" data-place-curation="quality11"'+(directory?' data-directory-curation':'')+' aria-label="자료로 살펴보는 장소"><div class="curation-heading"><p class="curation-eyebrow">방문 준비가 한결 쉬워지도록</p><h2>자료로 먼저 살펴볼 곳</h2><p>사진과 구체적인 동반 조건을 함께 비교해 보세요.</p><details class="curation-criteria"><summary>어떤 기준으로 골랐나요?</summary><p>'+curationCriteria+'</p></details><a class="curation-all" href="#'+target+'">전체 목록 보기 ↓</a></div><ul class="curation-cards">'+selected.map(r=>{
+ return '<section class="collection-curation" id="prepared-places" data-place-curation="quality11"'+(directory?' data-directory-curation':'')+' aria-label="자료로 살펴보는 장소"><div class="curation-heading"><p class="curation-eyebrow">방문 준비가 한결 쉬워지도록</p><h2>자료로 먼저 살펴볼 곳</h2><p>사진과 구체적인 동반 조건을 함께 비교해 보세요.</p><details class="curation-criteria"><summary>어떤 기준으로 골랐나요?</summary><p>'+curationCriteria+'</p></details><a class="curation-all" href="#'+target+'">전체 목록 보기 ↓</a></div><ul class="curation-cards">'+selected.map(r=>{
   const card={...cardRecord(r.item,type),facts:r.facts};
   return renderPlaceCard(card,{related:true,context:'동반 자료 대조 '+r.checked+' · 현장 확인 아님'}).replace('<li ','<li data-curation-item="'+esc(r.item.id)+'" ');
  }).join('')+'</ul></section>';

@@ -1,10 +1,11 @@
 import Presentation from '../place-presentation.js';
+import {hasSpecificPetCondition} from './pet-highlights.mjs';
 const officialHosts=['data.go.kr','api.visitkorea.or.kr','korean.visitkorea.or.kr','gocamping.or.kr','localdata.go.kr','foodsafetykorea.go.kr','durunubi.kr','suwon.go.kr','seoul.go.kr','visitbusan.net'];
 export function officialSource(href){try{const u=new URL(href);return u.protocol==='https:'&&!u.username&&!u.password&&officialHosts.some(h=>u.hostname===h||u.hostname.endsWith('.'+h));}catch{return false;}}
 export function trustLabels(kind,rows=[],{links=[],dates=[],historical=false,now=Date.now(),conflict=false}={}){
  const labels=[];
  if(!['professional','amenity','course'].includes(kind)){
-  const known=rows.some(r=>!Presentation.unknown(r.value)&&!/(?:미확인|미확정|확인 필요|재확인 필요)/.test(r.value));
+  const known=rows.some(hasSpecificPetCondition);
   const unknown=rows.some(r=>Presentation.unknown(r.value)||/(?:미확인|미확정)/.test(r.value));
   labels.push(conflict?'동반 안내 상충 · 재확인 필요':known?(unknown?'동반 자료 · 일부 미확인':'동반 조건 자료 있음'):'세부 동반 조건 미확인');
  }

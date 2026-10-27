@@ -1,0 +1,8 @@
+{
+  "trackedBytes": 2045031897,
+  "excludedBytes": 1086815704,
+  "publicSourceBytes": 958161540,
+  "publicFiles": 25583,
+  "excludedFiles": 4036,
+  "notes": "Public source bytes estimate; Jekyll output and compressed artifact sizes differ."
+}
