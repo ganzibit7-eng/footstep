@@ -1,0 +1,19 @@
+{
+  "entry": "home cafe more",
+  "search": "https://balzaguk.com/discover.html?kind=facilities&category=%EC%8B%9D%EB%8B%B9%EC%B9%B4%ED%8E%98&region=%EA%B2%BD%EA%B8%B0&q=%ED%8B%B0%ED%81%AC%EB%8B%89&pet=known&sort=conditions#find-place",
+  "count": "등록 정보 1곳 중 1곳 표시",
+  "detail": "https://balzaguk.com/places/kto_new_20261020b_3443259/",
+  "map": "https://balzaguk.com/?facility=kto_new_20261020b_3443259#map",
+  "mapVisible": true,
+  "selectedMapText": [],
+  "returnedDetail": "https://balzaguk.com/places/kto_new_20261020b_3443259/",
+  "restored": {
+    "pet": true,
+    "q": "티크닉",
+    "region": "경기",
+    "rows": 1,
+    "sort": "conditions",
+    "url": "https://balzaguk.com/discover.html?kind=facilities&category=%EC%8B%9D%EB%8B%B9%EC%B9%B4%ED%8E%98&region=%EA%B2%BD%EA%B8%B0&q=%ED%8B%B0%ED%81%AC%EB%8B%89&pet=known&sort=conditions#find-place",
+    "y": 715.3333129882812
+  }
+}

@@ -28,5 +28,5 @@
   },
   "collectionChanges": false,
   "tablesPoliciesGrantsChanged": false,
-  "note": "Live RPC aggregate expression and permissions verified; authenticated admin UI was tested with local fixture data, not an actual signed-in browser."
+  "note": "Live RPC permissions and aggregate preservation verified; real signed-in administrator UI checked at 390/1440px and periods1/7/30. No real visitor values or private screenshots published."
 }

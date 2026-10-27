@@ -1,0 +1,23 @@
+[
+  {
+    "label": "오늘 · 집계 포함 조회",
+    "metrics": 4,
+    "overflow": false,
+    "period": "1",
+    "validRates": true
+  },
+  {
+    "label": "최근 30일 · 집계 포함 조회",
+    "metrics": 4,
+    "overflow": false,
+    "period": "30",
+    "validRates": true
+  },
+  {
+    "label": "최근 7일 · 집계 포함 조회",
+    "metrics": 4,
+    "overflow": false,
+    "period": "7",
+    "validRates": true
+  }
+]
