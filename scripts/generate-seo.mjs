@@ -506,7 +506,7 @@ function detailHtml(item, type, url) {
     ...(item.lat != null && item.lng != null && item.lat !== '' && item.lng !== '' && Number.isFinite(Number(item.lat)) && Number.isFinite(Number(item.lng)) ? {
       geo: { '@type': 'GeoCoordinates', latitude: Number(item.lat), longitude: Number(item.lng) },
     } : {}),
-    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,...(photo.datasetContentId||type.table==='facilities'||!photo.author||/(?:미표기|미확인|미상|unknown)/i.test(photo.author)||/^https:\/\/api\.visitkorea\.or\.kr\//.test(photo.source||'')?{}:{creator:{'@type':'Person',name:photo.author}}),license:photo.licenseUrl,acquireLicensePage:photo.datasetContentId||type.table==='facilities'?photo.licenseUrl:photo.source,url:photo.source,width:photo.width,height:photo.height}} : {}),
+    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,...(photo.datasetContentId||type.table==='facilities'||!photo.author||/(?:미표기|미확인|미상|unknown)/i.test(photo.author)||/^https:\/\/(?:api\.visitkorea\.or\.kr|data\.si\.re\.kr)\//.test(photo.source||'')?{}:{creator:{'@type':'Person',name:photo.author}}),license:photo.licenseUrl,acquireLicensePage:photo.datasetContentId||type.table==='facilities'?photo.licenseUrl:photo.source,url:photo.source,width:photo.width,height:photo.height}} : {}),
     '@id': url+'#place',
   };
   const relatedLinks=[

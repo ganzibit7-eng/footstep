@@ -15,6 +15,7 @@ test('image licensing points to existing source or rights access and never inven
    const target=new URL(image.acquireLicensePage);assert.equal(target.protocol,'https:');assert(!target.username&&!target.password);
    assert([image.license,image.url].includes(image.acquireLicensePage));
    if(/촬영자 미표기/.test(image.creditText))assert.equal(image.creator,undefined,'credit provider is not an identified photographer');
+   if(/^https:\/\/data\.si\.re\.kr\//.test(image.url))assert.equal(image.creator,undefined,'publication credit does not identify an individual photographer');
    count++;
   }
  }
