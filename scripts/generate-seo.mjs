@@ -33,7 +33,7 @@ import {generateRSS} from './generate-rss.mjs';
 import {normalizePublicSearchHeads} from './search-head.mjs';
 import {enrichImageSitemap} from './image-sitemap.mjs';
 import {snapshotSitemap,finalizeModificationDates} from './sitemap-modified.mjs';
-import {evidenceGuides} from './route-evidence-guides.mjs';
+import {evidenceGuides,publishEvidenceLinks} from './route-evidence-guides.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = 'https://balzaguk.com';
@@ -636,7 +636,7 @@ function guideHtml(guide){
   const schema=[
     {'@context':'https://schema.org','@type':'WebPage','name':guide.title,'description':guide.description,'url':url,'isPartOf':{'@type':'WebSite','name':'발자국','url':SITE}},
     {'@context':'https://schema.org','@type':'Article','headline':guide.title,'description':guide.description,'mainEntityOfPage':url,'publisher':{'@type':'Organization','name':'발자국','url':SITE}},
-    {'@context':'https://schema.org','@type':'FAQPage','mainEntity':[
+    {'@context':'https://schema.org','@type':'FAQPage','mainEntity':guide.faqs?guide.faqs.map(([question,answer])=>({'@type':'Question',name:question,acceptedAnswer:{'@type':'Answer',text:answer}})):[
       {'@type':'Question','name':guide.title+'에서 가장 먼저 확인할 것은 무엇인가요?','acceptedAnswer':{'@type':'Answer','text':guide.tips.slice(0,2).join(', ')+' 등을 먼저 확인하세요.'}},
       {'@type':'Question','name':'산책 코스는 어떻게 고르면 되나요?','acceptedAnswer':{'@type':'Answer','text':'반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.'}}
     ]},
@@ -651,10 +651,10 @@ function guideHtml(guide){
   <meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="article"><meta property="og:site_name" content="발자국"><meta property="og:title" content="${escapeHtml(guide.title)} | 발자국"><meta property="og:description" content="${escapeHtml(guide.description)}"><meta property="og:url" content="${url}"><meta property="og:image" content="${SITE}/icon-512.png"><meta property="og:image:alt" content="발자국 - 강아지 산책 가이드">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(guide.title)} | 발자국"><meta name="twitter:description" content="${escapeHtml(guide.description)}"><meta name="twitter:image" content="${SITE}/icon-512.png"><meta name="twitter:image:alt" content="발자국 - 강아지 산책 가이드">
   <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<','\\u003c')}</script>
-  <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.75}.wrap{max-width:820px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.card{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:28px;margin:24px 0}h1,h2{color:#152922}li{margin:10px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}.guide-cta{display:inline-block;margin-top:20px;padding:12px 18px;border-radius:999px;background:#b5502e;color:#fff;text-decoration:none;font-weight:800}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap"><link rel="stylesheet" href="/readability.css?v=20261011-search"><link rel="stylesheet" href="/course-comfort.css?v=20261010-env"></head>
-  <body class="reading-page"><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
-  <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p>${guide.updatedAt?`<p>내용 갱신 · ${escapeHtml(guide.updatedAt)}</p>`:''}${(guide.sections||[]).map(([title,body])=>`<section><h2>${escapeHtml(title)}</h2><p>${escapeHtml(body)}</p></section>`).join('')}<h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
-  <h2>자주 묻는 질문</h2><p><strong>${escapeHtml(guide.title)}에서 가장 먼저 확인할 것은?</strong><br>${escapeHtml(guide.tips.slice(0,2).join(' · '))} 등을 먼저 확인해 보세요.</p><p><strong>산책 코스는 어떻게 고르면 되나요?</strong><br>반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.</p>
+  <style>body{margin:0;background:#efe6d3;color:#26221c;font-family:system-ui,-apple-system,sans-serif;line-height:1.75}.wrap{max-width:820px;margin:auto;padding:28px 20px}a{color:#1f3a2e}.card{background:#fbf8f1;border:1px solid #d8cbae;border-radius:20px;padding:28px;margin:24px 0}h1,h2{color:#152922}li{margin:10px 0}.links{display:flex;flex-wrap:wrap;gap:10px}.links a{padding:9px 12px;background:#eef2e7;border-radius:999px;text-decoration:none}.guide-cta{display:inline-block;margin-top:20px;padding:12px 18px;border-radius:999px;background:#b5502e;color:#fff;text-decoration:none;font-weight:800}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Sunflower:wght@300;500;700&display=swap"><link rel="stylesheet" href="/readability.css?v=20261011-search"><link rel="stylesheet" href="/course-comfort.css?v=20261010-env">${guide.bodyHTML?'<link rel="stylesheet" href="/route-guides.css?v=20261028-compare2">':''}</head>
+  <body class="reading-page${guide.bodyHTML?' route-guide':''}"><main class="wrap"><p><a href="/">🐾 발자국 홈</a> · <a href="/discover.html">전국 장소·산책 코스</a></p>
+  <article class="card"><h1>${escapeHtml(guide.title)}</h1><p>${escapeHtml(guide.intro)}</p>${guide.updatedAt?`<p>내용 갱신 · ${escapeHtml(guide.updatedAt)}</p>`:''}${guide.bodyHTML||(guide.sections||[]).map(([title,body])=>`<section><h2>${escapeHtml(title)}</h2><p>${escapeHtml(body)}</p></section>`).join('')}<h2>확인할 항목</h2><ul>${guide.tips.map(t=>`<li>${escapeHtml(t)}</li>`).join('')}</ul>
+  <h2>자주 묻는 질문</h2>${guide.faqs?guide.faqs.map(([question,answer])=>`<details class="route-faq"><summary>${escapeHtml(question)}</summary><p>${escapeHtml(answer)}</p></details>`).join(''):`<p><strong>${escapeHtml(guide.title)}에서 가장 먼저 확인할 것은?</strong><br>${escapeHtml(guide.tips.slice(0,2).join(' · '))} 등을 먼저 확인해 보세요.</p><p><strong>산책 코스는 어떻게 고르면 되나요?</strong><br>반려견의 체력과 나이, 당일 날씨, 거리와 노면 상태를 함께 확인하고 무리 없는 코스를 선택하세요.</p>`}
   <h2>관련 산책 코스 찾기</h2><div class="links">${guide.links.map(([label,href])=>`<a href="${href}">${escapeHtml(label)}</a>`).join('')}</div>
   <h2>다른 산책 가이드</h2><div class="links">${GUIDES.filter(g=>g.slug!==guide.slug).map(g=>`<a href="/guides/${g.slug}/">${escapeHtml(g.title)}</a>`).join('')}</div>
   <p><a class="guide-cta" href="/discover.html#courses">전국 산책 코스 둘러보기 →</a></p><p><a href="/#map">내 주변 산책 코스 지도에서 보기</a></p></article>
@@ -859,6 +859,7 @@ for (const guide of GUIDES) {
 await generateWeekend(ROOT);
 await writeFile(path.join(ROOT,'guides/index.html'),withTraffic(guideDirectoryHTML(GUIDES)),'utf8');
 sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
+console.log('Scoped course guide connections:',await publishEvidenceLinks(ROOT,GUIDES));
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(await directoryHtml(groups)), 'utf8');
 sitemap.push(...await generatePetCare(ROOT),...await generatePetLife(ROOT));
 const sitemapByUrl = new Map();

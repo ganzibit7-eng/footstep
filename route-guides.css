@@ -1,0 +1,49 @@
+/* Only the three source-led comparison guides use this stylesheet. */
+.route-guide .wrap{max-width:1040px}
+.route-guide .card{padding:32px;border-radius:16px;border-color:#dce2da}
+.route-guide h1{font-size:clamp(25px,3vw,36px);line-height:1.45;letter-spacing:-.035em;word-break:keep-all}
+.route-guide h2{font-size:23px;line-height:1.5;letter-spacing:-.025em;word-break:keep-all}
+.route-guide h3{font-size:17px;margin:22px 0 8px}
+.route-guide p,.route-guide li,.route-guide dd{font-size:16px;line-height:1.85;overflow-wrap:anywhere}
+.route-guide .route-comparison-scroll{overflow-x:auto;border:1px solid #d9e1d8;border-radius:10px;margin:20px 0 30px;overscroll-behavior-x:contain}
+.route-guide table{width:100%;min-width:760px;border-collapse:separate;border-spacing:0;font-size:14px;line-height:1.7;font-variant-numeric:tabular-nums}
+.route-guide caption{text-align:left;padding:12px 16px;color:#536258;background:#f3f5ef}
+.route-guide th,.route-guide td{padding:14px 12px;text-align:left;border-bottom:1px solid #dfe5dc;vertical-align:top}
+.route-guide thead th{font-weight:600;color:#536258;background:#f3f5ef}
+.route-guide tbody th{min-width:145px;max-width:190px;position:sticky;left:0;background:#fbf8f1;z-index:1;font-weight:600;border-right:1px solid #dfe5dc}
+.route-guide tbody th a{word-break:keep-all;overflow-wrap:normal}
+.route-guide tbody tr:last-child>*{border-bottom:0}
+.route-guide .route-stop{padding:28px 0;border-top:1px solid #dce2da;scroll-margin-top:24px}
+.route-guide .route-stop h2{margin:0 0 8px}
+.route-guide .route-extent{font-size:14px;color:#42614c;margin:0 0 18px}
+.route-guide .route-stop-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
+.route-guide .route-photo{min-width:0}
+.route-guide .curated-course-photo{margin:0!important}
+.route-guide .curated-course-photo img{max-height:340px!important;border-radius:8px!important;background:#f0f1eb!important}
+.route-guide .curated-course-photo figcaption{font-size:13px!important;overflow-wrap:anywhere;color:#59655b}
+.route-guide .route-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0}
+.route-guide dt{font-size:13px;color:#667168;font-weight:500}
+.route-guide dd{margin:2px 0 8px;white-space:pre-line}
+.route-guide .route-facts dd{font-weight:600;font-size:18px;line-height:1.65}
+.route-guide .route-facts .route-start{grid-column:1/-1}
+.route-guide .route-start dd{font-size:15px;font-weight:500}
+.route-guide .route-date{font-size:13px;color:#667168}
+.route-guide .route-detail-link{display:inline-flex;align-items:center;min-height:44px;padding:4px 16px;border:1px solid #becbbc;border-radius:8px;text-decoration:none;font-size:15px;font-weight:600;transition:background-color .15s}
+.route-guide .route-evidence,.route-guide .route-faq{margin:20px 0 0;padding:15px 0;border-top:1px solid #dce2da}
+.route-guide summary{cursor:pointer;min-height:32px;font-size:15px;line-height:1.8;font-weight:600}
+.route-guide .route-evidence dl{padding-top:14px}
+.route-guide .route-limit{padding:18px 0;color:#536258;font-size:14px}
+.route-guide :is(a,summary,[tabindex]):focus-visible{outline:3px solid #9b703f;outline-offset:4px}
+@media(hover:hover){.route-guide .route-detail-link:hover{background:#edf2e9}}
+@media(max-width:650px){
+ .route-guide .wrap{padding:20px 16px 40px}
+ .route-guide .card{padding:20px 16px;margin:18px 0}
+ .route-guide h1{font-size:27px}
+ .route-guide h2{font-size:22px}
+ .route-guide .route-stop-layout{grid-template-columns:minmax(0,1fr);gap:20px}
+ .route-guide .route-photo img{max-height:300px!important}
+ .route-guide .route-facts{gap:12px}
+ .route-guide tbody th{min-width:135px;max-width:150px}
+ .route-guide .route-detail-link{display:flex;justify-content:center;box-sizing:border-box;width:100%}
+}
+@media(prefers-reduced-motion:reduce){.route-guide .route-detail-link{transition:none}}
