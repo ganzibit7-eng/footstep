@@ -1,3 +1,4 @@
+import {refineRegionalSearch} from './refine-regional-search.mjs';
 import {curationSection,curationEvidence,selectCurated} from './place-curation.mjs';
 import {searchParts} from './search-partitions.mjs';
 import {listingCopy} from './listing-copy.mjs';
@@ -888,5 +889,7 @@ console.log('Public search favicon:',await normalizePublicSearchHeads(ROOT));
 const listingCoverage=await publishListingEditorial(ROOT);console.log('Quality listing coverage:',{pages:listingCoverage.pages,cards:listingCoverage.cards});
 console.log('Shared search CSS:',await cacheRepeatedSearchStyles(ROOT));
 console.log('Shared visitor controls:',await publishControlPolish(ROOT));
+
+console.log('Regional reading pages:',await refineRegionalSearch(ROOT,{updateSitemap:false,refreshRSS:true}));
 
 console.log('Sitemap content dates:',await finalizeModificationDates(ROOT,uniqueSitemap,sitemapSnapshot,editedDay));

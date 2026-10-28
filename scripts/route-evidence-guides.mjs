@@ -30,7 +30,7 @@ export async function evidenceGuides(root,courses,{updatedAt='2026-10-28'}={}){
 }
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function guidePhoto(item){
+export function guidePhoto(item){
  const photo=Photos.get(item);if(!photo)return '<p>연결된 장소 사진 없음</p>';
  const date=photo.dateNote||(/^\d{4}-\d{2}-\d{2}$/.test(photo.date||'')?photo.date+' 촬영':'촬영 시기 미상');
  const credit=Photos.credit(photo).replace(esc(Photos.dateLabel(photo)),esc(date));
