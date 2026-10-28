@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,mkdtemp,rm} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
+import path from 'node:path';
+import {tmpdir} from 'node:os';
 import {plans,refineRegionalSearch} from '../scripts/refine-regional-search.mjs';
 const read=f=>readFile(f,'utf8');
 test('five existing regional pages retain canonical, old catalogue links and distinct visible FAQ',async()=>{
@@ -33,7 +35,15 @@ test('home professional label and total use the same published scope and preserv
  assert.equal(counts.places,counts.facilities+manifest.total-counts.overlap);assert(html.includes('장소 수 집계 기준'));assert(html.includes('집계 기준일 '+counts.checked));
 });
 test('targeted regeneration is idempotent and does not regenerate professional pages',async()=>{
- const result=await refineRegionalSearch(process.cwd());assert.deepEqual(result.changed,[]);assert.equal(result.regions.length,5);assert.equal(result.counts.changed,false);
+ // Isolate generation from parallel RSS checks and prove Windows checkout parity.
+ const root=await mkdtemp(path.join(tmpdir(),'balzaguk-regions-'));
+ try{
+  const pages=plans.flatMap(p=>['with-dog/'+p.slug+'/index.html',...p.ids.map(id=>'courses/'+id+'/index.html'),...p.guides.map(slug=>'guides/'+slug+'/index.html')]);
+  const files=[...new Set([...pages,'index.html','course-routes.js','assets/search-data/discover.json','data/pet-care/manifest.json','data/pet-care/map-index.json','data/place-count-summary.json'])];
+  for(const file of files){await mkdir(path.dirname(path.join(root,file)),{recursive:true});const text=await read(file);await writeFile(path.join(root,file),file.endsWith('.html')?text.replace(/\r?\n/g,'\r\n'):text);}
+  const result=await refineRegionalSearch(root,{updateSitemap:false,refreshRSS:false});assert.deepEqual(result.changed,[]);assert.equal(result.regions.length,5);assert.equal(result.counts.changed,false);
+  assert.deepEqual((await refineRegionalSearch(root,{updateSitemap:false,refreshRSS:false})).changed,[]);
+ }finally{assert(root.startsWith(path.resolve(tmpdir())+path.sep+'balzaguk-regions-'));await rm(root,{recursive:true,force:true});}
  const source=await read('scripts/refine-regional-search.mjs');assert(!source.includes('generatePetCare('));assert(!source.includes('generateProfessionalPages('));
  const workflow=await read('.github/workflows/generate-seo.yml');assert(workflow.includes('[regional-only]'));assert(workflow.includes('node scripts/refine-regional-search.mjs'));
 });

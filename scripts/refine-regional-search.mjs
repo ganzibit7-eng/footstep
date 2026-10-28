@@ -75,8 +75,8 @@ export async function refineRegionalSearch(root,{updateSitemap=true,refreshRSS=t
  const records=JSON.parse(await readFile(path.join(root,'assets/search-data/discover.json'),'utf8')),catalog=new Map(records.map(r=>[r.path,r]));
  const raw=await readFile(path.join(root,'course-routes.js'),'utf8'),start=raw.indexOf('const routes=')+13,routeMap=JSON.parse(raw.slice(start,raw.indexOf(';',start))),guideTitles=new Map(),result=[];const changed=[];
  for(const slug of new Set(plans.flatMap(p=>p.guides))){const html=await readFile(path.join(root,'guides',slug,'index.html'),'utf8');guideTitles.set(slug,plain(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1]));}
- for(const plan of plans){const file=path.join(root,'with-dog',plan.slug,'index.html'),old=await readFile(file,'utf8'),models=[];
-  for(const id of plan.ids){const row=catalog.get('/courses/'+id+'/');if(!row||row.region!==plan.label)throw Error('Course region mismatch: '+id);const html=await readFile(path.join(root,row.path.slice(1),'index.html'),'utf8');models.push(courseModel(row,html,routeMap));}
+ for(const plan of plans){const file=path.join(root,'with-dog',plan.slug,'index.html'),old=(await readFile(file,'utf8')).replace(/\r\n/g,'\n'),models=[];
+  for(const id of plan.ids){const row=catalog.get('/courses/'+id+'/');if(!row||row.region!==plan.label)throw Error('Course region mismatch: '+id);const html=(await readFile(path.join(root,row.path.slice(1),'index.html'),'utf8')).replace(/\r\n/g,'\n');models.push(courseModel(row,html,routeMap));}
   const near=nearby(models,catalog),html=rewritePage(old,plan,models,near,guideTitles);if(html!==old){await writeFile(file,html,'utf8');changed.push('/with-dog/'+plan.slug+'/');}result.push({slug:plan.slug,courses:models.map(m=>({id:m.id,kind:m.routeLabel,petBound:Boolean(m.pet)})),nearby:near.map(n=>({course:n.course,path:n.path}))});
  }
  const counts=await reconcileHomeLabel(root,catalog);if(counts.changed)changed.push('/');
