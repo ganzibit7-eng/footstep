@@ -1,0 +1,17 @@
+(function(root){'use strict';
+const URL_API='https://euwujrpjtwsrxhiytego.supabase.co/rest/v1/rpc/public_ad_slot',KEY='sb_publishable_RcJxSk1kYXkqeyptw7sCXw_zJhQ0DJJ';
+function safeURL(v){try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null;}catch{return null;}}
+function eligible(c,server){return c&&safeURL(c.image_pc)&&safeURL(c.image_mobile)&&safeURL(c.target_url)&&typeof c.brand==='string'&&typeof c.headline==='string'&&Date.parse(c.ends_at)>server;}
+function kst(v){if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(v))throw Error('날짜와 시간을 입력해 주세요');const d=Date.parse(v+':00+09:00');if(!Number.isFinite(d))throw Error('날짜를 확인해 주세요');if(new Date(d+9*3600000).toISOString().slice(0,16)!==v)throw Error('유효한 날짜를 입력해 주세요');return new Date(d).toISOString();}
+const api={safeURL,eligible,kst};if(typeof module==='object'&&module.exports)module.exports=api;else root.PawAdvertising=api;
+if(typeof document==='undefined')return;
+const slot=document.getElementById('brand-partner-slot'),original=slot?.innerHTML;let flight=null,anchor=0,started=0,ends=0;
+function fallback(){if(slot&&slot.dataset.paid){slot.innerHTML=original;delete slot.dataset.paid;}ends=0;}
+async function refresh(){if(flight)return flight;flight=(async()=>{try{const startedRequest=performance.now(),r=await fetch(URL_API,{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:'{}',cache:'no-store',...(typeof AbortSignal!=='undefined'&&typeof AbortSignal.timeout==='function'?{signal:AbortSignal.timeout(10000)}:{})});if(!r.ok)throw Error('slot');const data=await r.json(),server=Date.parse(data.server_time);if(!Number.isFinite(server))throw Error('clock');anchor=server+(performance.now()-startedRequest);started=performance.now();
+ const km=document.getElementById('ad-kmong');const link=safeURL(data.kmong_url);if(km&&link&&new URL(link).hostname.replace(/^www\./,'')==='kmong.com'){km.href=link;km.hidden=false;}
+ if(!slot)return;const c=data.campaign;if(!eligible(c,anchor)){fallback();return;}slot.dataset.paid=c.id;slot.querySelector('[data-ad-label]').textContent='광고 · '+c.brand;const a=slot.querySelector('[data-ad-link]');a.href=safeURL(c.target_url);a.target='_blank';a.rel='sponsored noopener noreferrer';slot.querySelector('[data-ad-image]').src=safeURL(c.image_pc);slot.querySelector('[data-ad-image]').alt=c.brand+' 광고';slot.querySelector('[data-ad-mobile]').srcset=safeURL(c.image_mobile);slot.querySelector('[data-ad-title]').textContent=c.headline;slot.querySelector('[data-ad-description]').textContent=c.description||'';slot.querySelector('.ad-cta').textContent='브랜드 알아보기 ↗';slot.querySelector('[data-ad-credit]').textContent='광고주 제공 이미지';ends=Date.parse(c.ends_at);
+ }catch{fallback();}finally{flight=null;}})();return flight;}
+slot?.addEventListener('error',e=>{if(e.target.matches('[data-ad-image]'))fallback();},true);
+if(slot&&root.addEventListener)root.addEventListener('pageshow',()=>{fallback();refresh();});
+refresh();if(slot){setInterval(()=>{if(ends&&anchor+performance.now()-started>=ends)fallback();},1000);setInterval(refresh,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden){fallback();refresh();}});}
+})(typeof globalThis==='undefined'?this:globalThis);

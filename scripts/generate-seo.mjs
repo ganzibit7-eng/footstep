@@ -1,3 +1,4 @@
+import {existsSync} from 'node:fs';
 import {refineRegionalSearch} from './refine-regional-search.mjs';
 import {curationSection,curationEvidence,selectCurated} from './place-curation.mjs';
 import {searchParts} from './search-partitions.mjs';
@@ -863,6 +864,7 @@ sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
 console.log('Scoped course guide connections:',await publishEvidenceLinks(ROOT,GUIDES));
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(await directoryHtml(groups)), 'utf8');
 sitemap.push(...await generatePetCare(ROOT),...await generatePetLife(ROOT));
+if(existsSync(path.join(ROOT,'advertise/index.html')))sitemap.push({url:SITE+'/advertise/',lastmod:'2026-10-29'});
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {
   const prev = sitemapByUrl.get(entry.url);

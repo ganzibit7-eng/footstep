@@ -9,15 +9,15 @@ function harness({user='admin',role=true,markup='<div id="admin-overlay"></div>'
  return {controller,resources,client,setViewer(v){viewer=v;},release(){resources.forEach(r=>r.onload());},get stats(){return{fetches,mounts,disposed,overlay:!!overlay};}};
 }
 const timeout=setTimeout(()=>{console.error('Admin separation test did not finish');process.exit(1);},5000);
-async function ready(h){for(let i=0;i<50&&h.resources.length<8;i++)await new Promise(setImmediate);assert.equal(h.resources.length,8);}
+async function ready(h){for(let i=0;i<50&&h.resources.length<9;i++)await new Promise(setImmediate);assert.equal(h.resources.length,9);}
 (async()=>{
  for(const setup of [{user:null},{user:'member',role:false}]){const h=harness(setup);await assert.rejects(h.controller.load());assert.equal(h.stats.fetches,0);assert.equal(h.resources.length,0);assert.equal(h.stats.overlay,false);}
  let h=harness();h.client.auth.getUser=async()=>({data:{user:{id:'different'}}});await assert.rejects(h.controller.load());assert.equal(h.stats.fetches,0);
- h=harness();const a=h.controller.load(),b=h.controller.load();assert.equal(a,b);await a;assert.equal(h.stats.mounts,1);assert.equal(h.resources.length,8);assert(h.stats.overlay);h.controller.reset();assert.equal(h.stats.disposed,1);assert.equal(h.stats.overlay,false);
+ h=harness();const a=h.controller.load(),b=h.controller.load();assert.equal(a,b);await a;assert.equal(h.stats.mounts,1);assert.equal(h.resources.length,9);assert(h.stats.overlay);h.controller.reset();assert.equal(h.stats.disposed,1);assert.equal(h.stats.overlay,false);
  h=harness({waitResources:true});const stale=h.controller.load();await ready(h);h.setViewer('member');h.release();await assert.rejects(stale);assert.equal(h.stats.mounts,0);assert.equal(h.stats.overlay,false);
  h=harness({markup:'<script>alert(1)</script>'});await assert.rejects(h.controller.load());assert.equal(h.resources.length,0);
  h=harness({waitResources:true});const revoked=h.controller.load();await ready(h);h.client.rpc=async()=>({data:false});h.release();await assert.rejects(revoked);assert.equal(h.stats.mounts,0);
- assert(!html.includes('id="admin-overlay"'));assert(!html.includes('id="privacy-section"'));assert(!html.includes('id="terms-section"'));assert(!html.includes('src="admin-affiliate.js'));assert(!html.includes('PapaParse/'));
+ assert(!html.includes('id="admin-overlay"'));assert(!html.includes('id="privacy-section"'));assert(!html.includes('id="terms-section"'));assert(!html.includes('src="admin-affiliate.js'));assert(!html.includes('src="admin-advertising.js'));assert(h.resources.some(r=>r.src?.includes('/admin-advertising.js')));assert(!html.includes('PapaParse/'));
  const precache=sw.slice(0,sw.indexOf("self.addEventListener('install'"));assert(!precache.includes('admin-panel.html'));assert(!precache.includes('admin-affiliate'));assert(!precache.includes('admin-bot-panel'));assert(!precache.includes('PapaParse/'));
  console.log('PASS admin separation: unauthorized zero loads, authoritative identity/role, concurrent deduplication, logout disposal, stale session and revoked-role rejection, markup validation, public HTML and offline shell isolation.');
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>clearTimeout(timeout));
