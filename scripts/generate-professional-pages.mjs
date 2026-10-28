@@ -4,9 +4,9 @@ import {shortSnippet} from './search-snippet.mjs';
 import {readFile,writeFile,mkdir,readdir,rm} from 'node:fs/promises';import path from 'node:path';
 import {SITE,searchHead} from './search-head.mjs';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function professionalPage(row,region,manifest,mapRow,proof){
+export function professionalPage(row,region,manifest,mapRow,proof,titleLocation){
  const id=row[0];if(!/^pc-[a-z-]+-[a-f0-9]{16}$/.test(id)||!mapRow||!Number.isFinite(mapRow[2])||!Number.isFinite(mapRow[3]))throw Error('Unlocated or invalid professional page');
- const name=row[1],address=proof?.address||row[2],labels=row[5].map(i=>manifest.kinds[i].label),url=SITE+'/pet-care/places/'+id+'/',title=`${name} · ${region.label} ${labels.join('·')} | 발자국`,description=shortSnippet(`${name}의 주소와 공개 연락처, ${labels.join('·')} 등록 정보를 확인하세요. ${address}. 실제 영업·예약·이용 조건은 업소에 확인해 주세요.`);
+ const name=row[1],address=proof?.address||row[2],labels=row[5].map(i=>manifest.kinds[i].label),url=SITE+'/pet-care/places/'+id+'/',title=`${name} · ${titleLocation||region.label} ${labels.join('·')} | 발자국`,description=shortSnippet(`${name}의 주소와 공개 연락처, ${labels.join('·')} 등록 정보를 확인하세요. ${address}. 실제 영업·예약·이용 조건은 업소에 확인해 주세요.`);
  const note=proof?.note||'공개 인허가 자료의 등록 위치입니다. 실제 출입구·영업시간은 방문 전 확인해 주세요.',building=proof?.method?.includes('building');
  const phone=String(row[3]||'').trim(),safePhone=/^\+?[0-9()\s-]{8,30}$/.test(phone)&&phone.replace(/\D/g,'').length>=8;
  const schema={'@context':'https://schema.org','@graph':[{'@type':'Place','@id':url+'#place',name,url,address,geo:{'@type':'GeoCoordinates',latitude:mapRow[2],longitude:mapRow[3]},description:note,...(safePhone?{telephone:phone}:{})},{'@type':'BreadcrumbList',itemListElement:[{ '@type':'ListItem',position:1,name:'발자국',item:SITE+'/'},{'@type':'ListItem',position:2,name:'반려동물 전문업소',item:SITE+'/pet-care/'},{'@type':'ListItem',position:3,name:region.label+' 전문업소',item:SITE+'/pet-care/'+region.id+'/'},{'@type':'ListItem',position:4,name,item:url}]}]};
@@ -16,7 +16,22 @@ export function professionalPage(row,region,manifest,mapRow,proof){
 export async function generateProfessionalPages(root,manifest){
  if(manifest.visibility!=='located-only')throw Error('Publish located records before generating individual pages');
  const map=JSON.parse(await readFile(path.join(root,'data/pet-care/map-index.json'),'utf8')),byId=new Map(map.rows.map(r=>[r[0],r])),entries=[],keep=new Set(),dir=path.join(root,'pet-care/places');await mkdir(dir,{recursive:true});
- for(const region of manifest.regions){const data=JSON.parse(await readFile(path.join(root,region.file),'utf8'));for(const row of data.rows){const id=row[0],html=professionalPage(row,region,manifest,byId.get(id),map.locationEvidence?.[id]);keep.add(id);await mkdir(path.join(dir,id),{recursive:true});await writeFile(path.join(dir,id,'index.html'),html);entries.push({url:SITE+'/pet-care/places/'+id+'/',lastmod:manifest.visibilityChecked||manifest.checked});}}
+ for(const region of manifest.regions){const data=JSON.parse(await readFile(path.join(root,region.file),'utf8'));
+  const titleCounts=new Map();
+  const titleKey=row=>row[1]+'|'+row[5].join(',');
+  for(const row of data.rows)titleCounts.set(titleKey(row),(titleCounts.get(titleKey(row))||0)+1);
+  for(const row of data.rows){const id=row[0],proof=map.locationEvidence?.[id];
+   // Distinguish existing same-name businesses using their published address,
+   // rather than claiming an unverified branch name or changing their URL.
+   let titleLocation;
+   if(titleCounts.get(titleKey(row))>1){
+    const address=String(proof?.address||row[2]).trim().replace(/\s+/g,' '),parts=address.split(' ');
+    const others=data.rows.filter(other=>titleKey(other)===titleKey(row)).map(other=>String(map.locationEvidence?.[other[0]]?.address||other[2]).trim().replace(/\s+/g,' '));
+    let length=4;
+    while(length<parts.length&&others.some(other=>other!==address&&other.split(' ').slice(0,length).join(' ')===parts.slice(0,length).join(' ')))length++;
+    titleLocation=parts.slice(0,length).join(' ');
+   }
+   const html=professionalPage(row,region,manifest,byId.get(id),proof,titleLocation);keep.add(id);await mkdir(path.join(dir,id),{recursive:true});await writeFile(path.join(dir,id,'index.html'),html);entries.push({url:SITE+'/pet-care/places/'+id+'/',lastmod:manifest.visibilityChecked||manifest.checked});}}
  for(const entry of await readdir(dir,{withFileTypes:true})){if(entry.isDirectory()&&/^pc-[a-z-]+-[a-f0-9]{16}$/.test(entry.name)&&!keep.has(entry.name)){const target=path.resolve(dir,entry.name);if(path.dirname(target)!==path.resolve(dir))throw Error('Unsafe obsolete page path');await rm(target,{recursive:true});}}
  if(entries.length!==manifest.total)throw Error('Professional sitemap count mismatch');
  for(const region of manifest.regions){

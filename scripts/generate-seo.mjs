@@ -32,6 +32,8 @@ import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
 import {normalizePublicSearchHeads} from './search-head.mjs';
 import {enrichImageSitemap} from './image-sitemap.mjs';
+import {snapshotSitemap,finalizeModificationDates} from './sitemap-modified.mjs';
+import {evidenceGuides} from './route-evidence-guides.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SITE = 'https://balzaguk.com';
@@ -504,7 +506,7 @@ function detailHtml(item, type, url) {
     ...(item.lat != null && item.lng != null && item.lat !== '' && item.lng !== '' && Number.isFinite(Number(item.lat)) && Number.isFinite(Number(item.lng)) ? {
       geo: { '@type': 'GeoCoordinates', latitude: Number(item.lat), longitude: Number(item.lng) },
     } : {}),
-    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,...(photo.datasetContentId||type.table==='facilities'?{}:{creator:{'@type':'Person',name:photo.author}}),license:photo.licenseUrl,url:photo.source,width:photo.width,height:photo.height}} : {}),
+    ...(photo ? {image:{'@type':'ImageObject',contentUrl:previewImage,name:photo.place,caption:previewAlt,creditText:`${photo.author} · ${photo.license} · ${photo.changes}`,...(photo.datasetContentId||type.table==='facilities'||!photo.author||/(?:미표기|미확인|미상|unknown)/i.test(photo.author)||/^https:\/\/api\.visitkorea\.or\.kr\//.test(photo.source||'')?{}:{creator:{'@type':'Person',name:photo.author}}),license:photo.licenseUrl,acquireLicensePage:photo.datasetContentId||type.table==='facilities'?photo.licenseUrl:photo.source,url:photo.source,width:photo.width,height:photo.height}} : {}),
     '@id': url+'#place',
   };
   const relatedLinks=[
@@ -791,7 +793,8 @@ searchHubs = buildHubs(groups);
     return {slug,region,courses:regionalCourses,places:regionalPlaces};
   }).filter(page=>page.courses.length>=3 && page.places.length>=3);
 }
-// Snapshot before rebuilding public directories: only changed descriptions get a new lastmod.
+// Preserve content fingerprints before any generated directory is rebuilt.
+const sitemapSnapshot=await snapshotSitemap(ROOT);
 const previousDescriptions=new Map(),previousDetailPages=[];
 for(const {type,items} of groups)for(const item of items){
  const relative='/'+type.folder+'/'+safeSegment(item.id)+'/';
@@ -845,6 +848,7 @@ for(const page of localOutingPages){
     lastmod:newestDate([...page.courses,...page.places]) || contentLastmod
   });
 }
+GUIDES.push(...await evidenceGuides(ROOT,groups.find(g=>g.type.table==='courses').items));
 await rm(path.join(ROOT, 'guides'), { recursive: true, force: true });
 for (const guide of GUIDES) {
   const dir=path.join(ROOT,'guides',guide.slug);
@@ -883,3 +887,5 @@ console.log('Public search favicon:',await normalizePublicSearchHeads(ROOT));
 const listingCoverage=await publishListingEditorial(ROOT);console.log('Quality listing coverage:',{pages:listingCoverage.pages,cards:listingCoverage.cards});
 console.log('Shared search CSS:',await cacheRepeatedSearchStyles(ROOT));
 console.log('Shared visitor controls:',await publishControlPolish(ROOT));
+
+console.log('Sitemap content dates:',await finalizeModificationDates(ROOT,uniqueSitemap,sitemapSnapshot,editedDay));

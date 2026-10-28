@@ -9,6 +9,7 @@ exclude:
   - infrastructure
   - assets/place-photos
   - DETAIL_PAGES_PROGRESS.md
+  - SEARCH_RECOVERY_PROGRESS.md
   - AGENTS.md
   - README.md
   - "index .html"
