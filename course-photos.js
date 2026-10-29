@@ -11477,7 +11477,11 @@
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function get(course){return records.find(p => Object.hasOwn(p.courses, String(course?.id)) && p.courses[String(course.id)] === course.name) || null;}
   function dateLabel(p){
- const raw=p.dateNote||(p.date?p.date+' 촬영':'촬영 시기 미상');
+ let raw=p.dateNote||(p.date?p.date+' 촬영':'촬영 시기 미상');
+ if(p.dateNote&&!/\d{4}/.test(p.dateNote)&&/^\d{4}(?:-\d{2}(?:-\d{2})?)?$/.test(p.date||'')){
+  if(/공개일 기준/.test(p.dateNote))raw=p.date+' 공개 · '+p.dateNote;
+  else if(/촬영연도 표기/.test(p.dateNote))raw=p.date+' · '+p.dateNote;
+ }
  // Format literal calendar components only; never infer timezone or missing precision.
  return raw.replace(/\b(\d{4})-(\d{2})-(\d{2})(?:[ T]\d{2}:\d{2}(?::\d{2})?)?/g,(_,y,m,d)=>y+'년 '+Number(m)+'월 '+Number(d)+'일').replace(/\b(\d{4})-(\d{2})(?![-\d])/g,(_,y,m)=>y+'년 '+Number(m)+'월').replace(/^(\d{4})(?=\s|$)/,'$1년');
 }
