@@ -1,3 +1,4 @@
+import {verifiedProfessional} from './professional-verified.mjs';
 import {professionalCard} from './listing-editorial.mjs';
 import {editorialDetail} from './detail-editorial.mjs';
 import {shortSnippet} from './search-snippet.mjs';
@@ -31,7 +32,7 @@ export async function generateProfessionalPages(root,manifest){
     while(length<parts.length&&others.some(other=>other!==address&&other.split(' ').slice(0,length).join(' ')===parts.slice(0,length).join(' ')))length++;
     titleLocation=parts.slice(0,length).join(' ');
    }
-   const html=professionalPage(row,region,manifest,byId.get(id),proof,titleLocation);keep.add(id);await mkdir(path.join(dir,id),{recursive:true});await writeFile(path.join(dir,id,'index.html'),html);entries.push({url:SITE+'/pet-care/places/'+id+'/',lastmod:manifest.visibilityChecked||manifest.checked});}}
+   const html=verifiedProfessional(professionalPage(row,region,manifest,byId.get(id),proof,titleLocation),id);keep.add(id);await mkdir(path.join(dir,id),{recursive:true});await writeFile(path.join(dir,id,'index.html'),html);entries.push({url:SITE+'/pet-care/places/'+id+'/',lastmod:manifest.visibilityChecked||manifest.checked});}}
  for(const entry of await readdir(dir,{withFileTypes:true})){if(entry.isDirectory()&&/^pc-[a-z-]+-[a-f0-9]{16}$/.test(entry.name)&&!keep.has(entry.name)){const target=path.resolve(dir,entry.name);if(path.dirname(target)!==path.resolve(dir))throw Error('Unsafe obsolete page path');await rm(target,{recursive:true});}}
  if(entries.length!==manifest.total)throw Error('Professional sitemap count mismatch');
  for(const region of manifest.regions){
