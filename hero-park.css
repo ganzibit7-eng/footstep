@@ -10,12 +10,12 @@
 #home-hero #hero-title{font-family:'Noto Sans KR',system-ui,sans-serif;font-size:clamp(46px,4.1vw,58px);font-weight:500;line-height:1.24;letter-spacing:-.04em;text-shadow:none;text-wrap:initial;word-break:keep-all;margin:0;color:#243c32}
 #home-hero #hero-title>.hero-title-line{display:block;font:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;white-space:normal;overflow-wrap:normal}
 #home-hero #hero-style-3 .lead{font-family:'Noto Sans KR',system-ui,sans-serif;max-width:34ch;font-size:16px;font-weight:400!important;line-height:1.85!important;letter-spacing:-.018em;color:#405547!important;opacity:1;margin:24px 0 0}
-#home-hero #hero-style-3 .home-start-actions{display:grid;grid-template-columns:1.15fr 1fr;align-items:stretch;width:min(100%,390px);gap:10px;margin:28px 0 0}
-#home-hero #hero-style-3 .home-start-actions a{display:inline-flex;align-items:center;justify-content:center;min-width:0;box-sizing:border-box;min-height:52px;padding:12px 16px;border:1px solid transparent;border-radius:8px;font:500 14px/1.6 'Noto Sans KR',system-ui,sans-serif;letter-spacing:-.015em;text-decoration:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;filter:none;white-space:nowrap;transition:background .18s,color .18s,transform .18s}
-#home-hero #hero-style-3 .home-start-primary{background:#405c49;color:#fffdf8;border-color:#405c49!important}
-#home-hero #hero-style-3 .home-start-secondary{background:#fbf9f0;color:#304b38;border:1px solid #9ba994!important;text-decoration:none}
-#home-hero #hero-style-3 .home-start-actions a:focus-visible{outline:3px solid #6b805d;outline-offset:5px}
-#home-hero #hero-style-3 .home-start-actions a:active{transform:none;filter:brightness(.94)}
+#home-hero #hero-style-3 .home-action-bar{display:grid;grid-template-columns:1.5fr 1fr;align-items:stretch;width:min(100%,450px);gap:0;margin:28px 0 0;border:1px solid #829382;border-radius:14px;overflow:hidden;background:#f6f5ef}
+#home-hero #hero-style-3 .home-action-bar a{display:inline-flex;align-items:center;justify-content:center;min-width:0;box-sizing:border-box;min-height:56px;padding:14px 16px;border:0!important;border-radius:0;font:500 14px/1.6 'Noto Sans KR',system-ui,sans-serif;letter-spacing:-.015em;text-decoration:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;filter:none;white-space:nowrap;transition:background .18s,color .18s,transform .18s}
+#home-hero #hero-style-3 .hero-action-primary{background:#263d32;color:#fffdf8;gap:10px}
+#home-hero #hero-style-3 .hero-action-map{background:#f6f5ef;color:#263d32;border-left:1px solid #829382!important;text-decoration:none}
+#home-hero #hero-style-3 .home-action-bar a:focus-visible{outline:2px solid currentColor;outline-offset:-5px}
+#home-hero #hero-style-3 .home-action-bar a:active{transform:none;filter:brightness(.94)}
 #home-hero .hero-side{position:relative;display:grid;background:#f3f3e9;border-block:1px solid #dce1d1;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:0 40px;align-items:center;justify-self:auto;width:calc(100% - 48px);max-width:1120px;margin:0 auto;padding:26px 28px;box-sizing:border-box}
 #home-hero .hero-card{display:grid;grid-template-columns:1fr auto;grid-row:1/3;min-height:114px;gap:4px 16px;align-items:center;background:none;border:0;border-radius:0;padding:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;transform:none;filter:none;color:#243c32}
 #home-hero .hero-card:hover{transform:none}
@@ -36,14 +36,14 @@
 #home-hero #home-count-status{grid-column:2;align-self:start;margin:8px 0 0!important;padding-left:36px;color:#647165!important;font-size:12px!important;line-height:1.7}
 .hero-park-stage{position:absolute;inset:auto 0 44px;height:150px;z-index:1;pointer-events:none;contain:layout paint}
 html[data-hero-safe-area="true"] .hero-park-stage{outline:1px dashed #2f5b41}
-@media(hover:hover){#home-hero #hero-style-3 .home-start-primary:hover{background:#3e5944;transform:none;box-shadow:none}#home-hero #hero-style-3 .home-start-secondary:hover{background:#eef1e5;border-color:#71876b!important;color:#304b38;transform:none;box-shadow:none}#home-hero #hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}}
+@media(hover:hover){#home-hero #hero-style-3 .hero-action-primary:hover{background:#34503f;transform:none;box-shadow:none}#home-hero #hero-style-3 .hero-action-map:hover{background:#eaece2;color:#263d32;transform:none;box-shadow:none}#home-hero #hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:880px){
  #home-hero .hero-park-scene{min-height:530px;padding:32px 22px 196px}
  #home-hero .hero-inner{max-width:520px}
  #home-hero #hero-title{font-size:clamp(34px,9.2vw,40px);line-height:1.28;letter-spacing:-.035em}
  #home-hero #hero-style-3 .lead{font-size:14px;line-height:1.8!important;margin-top:18px;max-width:32ch}
- #home-hero #hero-style-3 .home-start-actions{gap:10px;margin-top:22px}
- #home-hero #hero-style-3 .home-start-actions a{min-height:48px;font-size:14px;padding:10px 12px}
+ #home-hero #hero-style-3 .home-action-bar{gap:0;margin-top:22px}
+ #home-hero #hero-style-3 .home-action-bar a{min-height:56px;font-size:14px;padding:12px}
 
  #home-hero .hero-side{width:calc(100% - 44px);max-width:520px;grid-template-columns:minmax(0,1fr);padding:16px 18px;gap:12px}
  #home-hero .hero-card{padding:0;grid-row:auto;min-height:0;gap:3px 12px}
@@ -56,15 +56,16 @@ html[data-hero-safe-area="true"] .hero-park-stage{outline:1px dashed #2f5b41}
  #home-hero #home-count-status{grid-column:1;padding:0;margin:-8px 0 0!important}
  .hero-park-stage{bottom:40px;height:146px}
 }
-@media(max-width:360px){#home-hero .hero-park-scene{padding-inline:18px}#home-hero .hero-side{width:calc(100% - 36px)}#home-hero #hero-style-3 .home-start-actions{gap:8px}#home-hero #hero-style-3 .home-start-actions a{font-size:14px;padding-inline:12px}}
-@media(max-width:359px){#home-hero #hero-style-3 .home-start-actions{grid-template-columns:1fr;max-width:280px}}
+@media(max-width:360px){#home-hero .hero-park-scene{padding-inline:18px}#home-hero .hero-side{width:calc(100% - 36px)}#home-hero #hero-style-3 .home-action-bar{gap:0}#home-hero #hero-style-3 .home-action-bar a{font-size:14px;padding-inline:12px}}
+@media(max-width:359px){#home-hero #hero-style-3 .home-action-bar{grid-template-columns:1fr;max-width:none}#home-hero #hero-style-3 .hero-action-map{border-left:0!important;border-top:1px solid #829382!important}}
 /* Keep the photographed park intact; provide solid, legible reading surfaces in dark mode. */
 html[data-theme="dark"] #home-hero .hero-side{color:var(--ink);background:#2b342d;border-color:#4b594b}
-html[data-theme="dark"] #home-hero #hero-style-3 .home-start-secondary{background:#f4f3e8;color:#304b38;border-color:#a5b19c!important}
+html[data-theme="dark"] #home-hero #hero-style-3 .hero-action-map{background:#f6f5ef;color:#263d32;border-color:#a5b19c!important}
 html[data-theme="dark"] #home-hero :is(.hero-card h3,.hero-stat-num){color:var(--ink)}
 html[data-theme="dark"] #home-hero :is(.hero-card p,.hero-card .tag,#weather-location,#weather-meta,.hero-stat-label,#home-count-status){color:var(--muted-text)!important}
-@media(prefers-reduced-motion:reduce){#home-hero #hero-style-3 .home-start-actions a{transition:none;transform:none}}
+@media(prefers-reduced-motion:reduce){#home-hero #hero-style-3 .home-action-bar a{transition:none;transform:none}}
 
+#home-hero .hero-action-arrow{width:14px;height:14px;flex:none}
 /* Character rendering, first poses and butterfly motion: unchanged from the approved player. */
 .hero-park-stage .hero-park-actor{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-park-stage .hero-park-actor[hidden]{display:none}
