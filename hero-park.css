@@ -41,7 +41,7 @@
 #home-hero #home-count-status::before{content:"i";display:inline-grid;place-items:center;flex:none;width:16px;height:16px;margin-top:2px;border:1px solid #acb8aa;border-radius:50%;font:600 11px/1 'Noto Sans KR',sans-serif;color:#809081}
 .hero-park-stage{position:absolute;inset:auto 0 44px;height:150px;z-index:1;pointer-events:none;contain:layout paint}
 html[data-hero-safe-area="true"] .hero-park-stage{outline:1px dashed #2f5b41}
-@media(hover:hover){#home-hero #hero-style-3 #home-hero #hero-style-3 .hero-action-primary:hover{background:rgba(38,61,50,.94);transform:none;box-shadow:none}#home-hero #hero-style-3 #home-hero #hero-style-3 .hero-action-map:hover{background:rgba(246,245,239,.96);color:#263d32;transform:none;box-shadow:none}#home-hero #hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}}
+@media(hover:hover){#home-hero #hero-style-3 .hero-action-primary:hover{background:rgba(38,61,50,.94);transform:none;box-shadow:none}#home-hero #hero-style-3 .hero-action-map:hover{background:rgba(246,245,239,.96);color:#263d32;transform:none;box-shadow:none}#home-hero #hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:880px){
  #home-hero .hero-park-scene{min-height:530px;padding:32px 22px 196px}
  #home-hero .hero-inner{max-width:520px}
