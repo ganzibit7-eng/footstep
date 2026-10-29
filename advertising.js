@@ -5,7 +5,14 @@ function eligible(c,server){return c&&safeURL(c.image_pc)&&safeURL(c.image_mobil
 function kst(v){if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(v))throw Error('날짜와 시간을 입력해 주세요');const d=Date.parse(v+':00+09:00');if(!Number.isFinite(d))throw Error('날짜를 확인해 주세요');if(new Date(d+9*3600000).toISOString().slice(0,16)!==v)throw Error('유효한 날짜를 입력해 주세요');return new Date(d).toISOString();}
 const api={safeURL,eligible,kst};if(typeof module==='object'&&module.exports)module.exports=api;else root.PawAdvertising=api;
 if(typeof document==='undefined')return;
-document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',()=>{const label=link.dataset.packageLabel,selected=document.getElementById('ad-selected'),email=document.getElementById('ad-email-link');if(selected){selected.hidden=false;selected.textContent='선택한 상품: '+label;}if(email)email.href='mailto:footstepbiz@gmail.com?subject='+encodeURIComponent('[발자국 광고 문의] '+label)+'&body='+encodeURIComponent('브랜드명:\n담당자 이메일:\n희망 광고 상품: '+label+'\n희망 게재 기간:\n문의 내용:\n');}));
+document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',event=>{
+ if(event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ const label=link.dataset.packageLabel,selected=document.getElementById('ad-selected'),email=document.getElementById('ad-email-link'),contact=document.getElementById('contact');
+ if(selected){selected.hidden=false;selected.textContent='선택한 상품: '+label;}
+ if(email)email.href='mailto:footstepbiz@gmail.com?subject='+encodeURIComponent('[발자국 광고 문의] '+label)+'&body='+encodeURIComponent('브랜드명:\n담당자 이메일:\n희망 광고 상품: '+label+'\n희망 게재 기간:\n문의 내용:\n');
+ // Move keyboard focus with the selected package, not just the viewport.
+ if(contact){event.preventDefault();if(root.location.hash!=='#contact')root.history.pushState(null,'','#contact');contact.scrollIntoView({block:'start',behavior:'auto'});contact.querySelector('h2')?.focus({preventScroll:true});}
+}));
 const copy=document.getElementById('ad-email-copy');let copying=false;copy?.addEventListener('click',async()=>{if(copying)return;copying=true;copy.disabled=true;const status=document.getElementById('ad-copy-status');try{await navigator.clipboard.writeText('footstepbiz@gmail.com');status.textContent='메일 주소를 복사했어요. 사용 중인 메일 서비스에 붙여 넣어 주세요.';}catch{status.textContent='자동 복사를 사용할 수 없어요. 위 이메일 주소를 직접 선택해 복사해 주세요.';}finally{copying=false;copy.disabled=false;}});
 const slot=document.getElementById('brand-partner-slot'),original=slot?.innerHTML;let flight=null,anchor=0,started=0,ends=0;
 function fallback(){if(slot&&slot.dataset.paid){slot.innerHTML=original;delete slot.dataset.paid;}ends=0;}
