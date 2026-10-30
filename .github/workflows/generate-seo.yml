@@ -129,6 +129,15 @@ jobs:
             echo "No SEO page changes"
           else
             git commit -m "검색용 상세 페이지 자동 갱신"
+            # Generator side effects outside the published allowlist can leave
+            # tracked files dirty and cause git rebase to fail. The intended
+            # public artifacts are already committed above; keep the discard
+            # explicit and visible in the Actions log before rebasing.
+            if ! git diff --quiet; then
+              echo "::notice::Discarding unstaged generator changes outside the publish allowlist"
+              git diff --name-only
+              git restore --worktree .
+            fi
             git fetch origin main
             git rebase origin/main
             git push origin main
