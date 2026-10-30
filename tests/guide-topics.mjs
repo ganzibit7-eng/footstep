@@ -12,7 +12,7 @@ const examples=groups.flat().map(slug=>({slug,title:'안내 '+slug,description:'
 
 test('guide hub groups all published guides once, exposes discovery and keeps valid item list',()=>{
  const html=guideDirectoryHTML(examples);
- assert.equal((html.match(/<article>/g)||[]).length,12);
+ assert.equal((html.match(/<article>/g)||[]).length,13);
  assert.equal((html.match(/<h1>/g)||[]).length,1);
  for(const [id,count] of [['regional-walks',3],['plan-a-walk',4],['weather-and-seasons',3],['dog-friendly-places',2]]){
   const match=html.match(new RegExp('<section class="topic" id="'+id+'"[^>]*>([\\s\\S]*?)</section>'));
@@ -38,5 +38,5 @@ test('unclassified new guide appears instead of being silently omitted',()=>{
  assert(html.includes('id="more-guides"'));
  assert(html.includes('향후 &lt;안내&gt;'));
  assert(html.includes('정보 &amp; 확인'));
- assert.equal((html.match(/<article>/g)||[]).length,13);
+ assert.equal((html.match(/<article>/g)||[]).length,14);
 });
