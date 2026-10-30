@@ -15,7 +15,7 @@ test('guide hub groups all published guides once, exposes discovery and keeps va
  assert.equal((html.match(/<article>/g)||[]).length,12);
  assert.equal((html.match(/<h1>/g)||[]).length,1);
  for(const [id,count] of [['regional-walks',3],['plan-a-walk',4],['weather-and-seasons',3],['dog-friendly-places',2]]){
-  const match=html.match(new RegExp('<section class="topic" id="'+id+'"[^>]*>([\s\S]*?)</section>'));
+  const match=html.match(new RegExp('<section class="topic" id="'+id+'"[^>]*>([\\s\\S]*?)</section>'));
   assert(match,'Missing topic '+id);
   assert.equal((match[1].match(/<article>/g)||[]).length,count);
   assert(html.includes('href="#'+id+'"'));
