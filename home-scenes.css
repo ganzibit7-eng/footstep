@@ -1,7 +1,7 @@
 /* Mobile-first home chapters. Content stays readable before/without JavaScript. */
-#nearby-section{padding-top:28px}
+#nearby-section{border-top:0;padding-top:28px}
 #nearby-section .home-scene{position:relative;min-width:0;margin:0;padding:46px 0 52px;scroll-margin-top:100px}
-#nearby-section #home-explore{border-top:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
+#nearby-section #home-explore{border-top:0;border-radius:0;background:transparent;box-shadow:none}
 
 
 #nearby-section .home-region-heading{margin:0 0 28px}
