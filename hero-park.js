@@ -1,10 +1,18 @@
 /* Whole-body chase animation with static fallback and shared motion timing. */
 (async function(){'use strict';
  const stage=document.querySelector('.hero-park-stage');if(!stage||!window.ParkHeroPlayer)return;
- // Sparse vector vegetation, layered over the existing meadow without new downloads.
+ // Small grass patches share a travelling gust; individual blades remain irregular.
  const meadow=document.createElement('div');meadow.className='hero-meadow';meadow.setAttribute('aria-hidden','true');
- const colors=['#879b58','#a5b872','#6f864c'];
- for(let i=0;i<9;i++){const tuft=document.createElement('span');tuft.className='meadow-tuft depth-'+i%3;tuft.style.left=[4,16,29,37,53,61,72,85,95][i]+'%';tuft.style.setProperty('--wind-time',(4.8+i*.39)+'s');tuft.style.setProperty('--wind-delay',(-i*.73)+'s');tuft.innerHTML='<svg viewBox="0 0 40 28" fill="none" aria-hidden="true"><path d="M20 28Q15 15 9 9M20 28Q20 10 24 3M20 28Q27 17 35 13M16 28Q10 22 4 21M25 28Q29 21 31 18" stroke="'+colors[i%3]+'" stroke-width="1.4" stroke-linecap="round"/>'+(i%4===0?'<circle cx="24" cy="4" r="2" fill="#e9dba1"/>':'')+'</svg>';meadow.append(tuft);}
+ const colors=['#849852','#a1ad68','#71884c'];
+ for(let i=0;i<9;i++){
+  const tuft=document.createElement('span');tuft.className='meadow-tuft depth-'+i%3;
+  const left=[3,15,28,38,51,63,74,86,96][i];tuft.style.left=left+'%';tuft.style.setProperty('--gust-delay',(-8.8+left*.026)+'s');tuft.style.setProperty('--wind-time',(5.7+i*.23)+'s');tuft.style.setProperty('--wind-delay',(-i*.57)+'s');
+  let groups='';for(let g=0;g<3;g++){let blades='';for(let j=0;j<7;j++){
+   const seed=(i*37+g*17+j*23)%97,x=2+g*21+j*3.1,y=30-(seed%4),height=6+seed%14,lean=2+seed%5;
+   blades+='<path d="M'+x+' '+y+' Q'+(x+1)+' '+(y-height*.5)+' '+(x+lean)+' '+(y-height)+' Q'+(x+2)+' '+(y-height*.45)+' '+(x+.65)+' '+y+'Z" fill="'+colors[(j+i)%3]+'" opacity="'+(.4+(seed%4)*.12)+'"/>';
+  }groups+='<g class="meadow-blades" style="--blade-delay:'+(-g*.7-i*.2)+'s">'+blades+'</g>';}
+  tuft.innerHTML='<svg viewBox="0 0 70 32" aria-hidden="true">'+groups+'</svg>';meadow.append(tuft);
+ }
  stage.append(meadow);
  let controller=null,manifest=null;
  try{

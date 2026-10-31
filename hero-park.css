@@ -126,13 +126,15 @@ html[data-theme="dark"] #home-hero :is(.hero-card p,.hero-card .tag,#weather-loc
 body>header .nav-links a{font-size:13px;font-weight:500;letter-spacing:-.015em}
 .hero[data-page-section="home"] .hero-variant-title{font-family:"Noto Sans KR",system-ui,sans-serif;font-size:clamp(29px,3.6vw,44px);font-weight:650;line-height:1.4;letter-spacing:-.035em}
 
-/* Sparse meadow depths share the approved ground line; no scene geometry changes. */
+/* Breeze passes through sparse patches; the park image and dog player stay fixed. */
 .hero-meadow{position:absolute;inset:0;pointer-events:none}
-.meadow-tuft{position:absolute;z-index:1000;top:calc(var(--park-height)*var(--park-ground) - 12px);width:28px;height:20px;opacity:.6;transform-origin:50% 100%;animation:meadow-wind var(--wind-time) ease-in-out var(--wind-delay) infinite alternate}
-.meadow-tuft svg{display:block;width:100%;height:100%}
-.meadow-tuft.depth-0{margin-top:-9px;width:20px;opacity:.32;z-index:0}
-.meadow-tuft.depth-2{z-index:1800;margin-top:7px;width:32px;opacity:.65}
-@keyframes meadow-wind{from{transform:rotate(-5deg) skewX(-2deg)}to{transform:rotate(6deg) skewX(3deg)}}
-.hero-park-stage:not([data-animation="playing"]) .meadow-tuft{animation-play-state:paused}
-@media(max-width:880px){.meadow-tuft{width:22px;opacity:.45}.meadow-tuft:nth-child(even){display:none}.meadow-tuft.depth-2{width:25px}}
-@media(prefers-reduced-motion:reduce){.meadow-tuft{animation:none}}
+.meadow-tuft{position:absolute;z-index:1000;top:calc(var(--park-height)*var(--park-ground) - 20px);width:86px;height:30px;opacity:.48;transform-origin:50% 100%;animation:meadow-gust 8.8s ease-in-out var(--gust-delay) infinite}
+.meadow-tuft svg{display:block;width:100%;height:100%;overflow:visible}
+.meadow-blades{transform-box:view-box;transform-origin:50% 100%;animation:meadow-blades var(--wind-time) ease-in-out var(--blade-delay) infinite}
+.meadow-tuft.depth-0{margin-top:-9px;width:64px;height:24px;opacity:.28;z-index:0}
+.meadow-tuft.depth-2{z-index:1800;margin-top:8px;width:98px;height:34px;opacity:.5}
+@keyframes meadow-gust{0%,18%,100%{transform:skewX(0deg)}38%{transform:skewX(5deg)}54%{transform:skewX(2deg)}68%{transform:skewX(4deg)}84%{transform:skewX(0deg)}}
+@keyframes meadow-blades{0%,100%{transform:skewX(-1deg)}28%{transform:skewX(2deg)}57%{transform:skewX(-.5deg)}76%{transform:skewX(1deg)}}
+.hero-park-stage:not([data-animation="playing"]) :is(.meadow-tuft,.meadow-blades){animation-play-state:paused}
+@media(max-width:880px){.meadow-tuft{width:55px;height:25px;opacity:.36}.meadow-tuft:nth-child(even){display:none}.meadow-tuft.depth-0{width:46px;height:20px}.meadow-tuft.depth-2{width:65px;height:28px}}
+@media(prefers-reduced-motion:reduce){.meadow-tuft,.meadow-blades{animation:none}}
