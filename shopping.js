@@ -8,7 +8,7 @@
   }
   function popularityText(item){
     const evidence=item.popularity;
-    if(!evidence||evidence.source!=='coupang-sales-search'||!Number.isInteger(evidence.reviews)||evidence.reviews<1)return '';
+    if(!evidence||!['coupang-sales-search','coupang-product-page'].includes(evidence.source)||!Number.isInteger(evidence.reviews)||evidence.reviews<1)return '';
     const date=String(evidence.checkedAt||'');
     if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return '';
     const stamp=Date.parse(date+'T00:00:00+09:00'),age=Date.now()-stamp;

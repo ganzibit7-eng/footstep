@@ -9,7 +9,7 @@ class Element {
   addEventListener(type,handler){(this.handlers??={})[type]=handler;}
 }
 const container=new Element('div'),disclosure=new Element('p');
-class TestDate extends Date{static now(){return Date.parse('2026-10-11T12:00:00+09:00');}}
+class TestDate extends Date{static now(){return Date.parse('2026-10-31T12:00:00+09:00');}}
 const context={URL,Date:TestDate,document:{readyState:'complete',createElement:tag=>new Element(tag),getElementById:id=>id==='walk-shopping-items'?container:id==='walk-shopping-disclosure'?disclosure:null}};
 vm.createContext(context);
 for(const file of ['shopping-config.js','shopping.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),context);
