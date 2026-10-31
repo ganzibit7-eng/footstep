@@ -20,6 +20,8 @@
   const size=base*(actorIndex?.94:1),x=center-direction*actorIndex*base*.98,y=height*(width<600?.70:.82)-actorIndex*5;
   return {x,y,size,direction,frame:(direction===1?0:8)+Math.floor(elapsed*8/1000+actorIndex*2)%4,flyX:center+direction*(base*.55+28+Math.sin(elapsed/610)*4),flyY:height*(width<600?.70:.82)-base*.72-2+Math.sin(elapsed/330)*9+Math.sin(elapsed/760)*5,flyRoll:direction*(Math.cos(elapsed/330)*9+Math.cos(elapsed/760)*4)};
  }
+ // Lift is sampled from the existing whole-body cycle; never animate limbs separately.
+ function contactAt(lift){const air=Math.max(0,Math.min(1,lift/.034));return {air,spread:1+air*.18,opacity:.18-air*.075,press:1-air};}
  function validate(m){
   if(m?.status!=='ready')throw Error('animation_assets_not_ready');
   if(typeof m.poster!=='string')throw Error('static_poster_required');
@@ -71,9 +73,11 @@
    for(const [actorIndex,entry]of canvases.entries()){const {actor,canvas,ctx,urls}=entry;if(!ctx)continue;const cw=Math.max(1,Math.round(rect.width*ratio)),ch=Math.max(1,Math.round(rect.height*ratio));if(canvas.width!==cw)canvas.width=cw;if(canvas.height!==ch)canvas.height=ch;ctx.setTransform(ratio,0,0,ratio,0,0);if(entry.dirty){const d=entry.dirty;ctx.clearRect(d.x,d.y,d.w,d.h);}
     const cyclePosition=actor.fullBodyCycle?(elapsed*.7*12/1000+actorIndex*3)%manifest.frameCount:position,pose=poseAt(actor.poses,cyclePosition),orbit=manifest.motion==='chase'?chaseAt(elapsed,actorIndex,rect.width,rect.height):manifest.motion==='orbit'?orbitAt(elapsed,actorIndex,rect.width,rect.height):null;
     const [x,y,width,lift,shadow]=pose,w=orbit?orbit.size:width*rect.width,h=w*actor.height/actor.width,cx=orbit?orbit.x:x*rect.width,ground=orbit?orbit.y:y*rect.height,frame=orbit?(actor.fullBodyCycle?Math.floor(cyclePosition):orbit.frame):index;
-    if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+shadow*.22+')';ctx.beginPath();ctx.ellipse(cx,ground,w*.33,w*.055,0,0,Math.PI*2);ctx.fill();ctx.restore();}
+    const contact=contactAt(lift);if(actor.id!=='butterfly'){ctx.save();ctx.fillStyle='rgba(38,52,31,'+contact.opacity+')';ctx.beginPath();ctx.ellipse(cx,ground,w*.33*contact.spread,w*.045*(1-contact.air*.15),0,0,Math.PI*2);ctx.fill();ctx.restore();}
     entry.dirty={x:cx-w/2-8,y:ground-h-lift*rect.height-8,w:w+16,h:h+lift*rect.height+20};
     const image=decoded.get(urls[frame]);if(image){if(actor.fullBodyCycle&&orbit?.direction===-1){ctx.save();ctx.translate(cx,0);ctx.scale(-1,1);ctx.drawImage(image,-w/2,ground-h-lift*rect.height,w,h);ctx.restore();}else ctx.drawImage(image,cx-w/2,ground-h-lift*rect.height,w,h);}
+    // Five tiny blades in the same dirty rectangle: flatten at contact and recover in flight.
+    if(actor.fullBodyCycle&&ctx.moveTo){ctx.save();ctx.strokeStyle='rgba(99,119,55,.45)';ctx.lineWidth=.8;for(let blade=0;blade<5;blade++){const bx=cx+(blade-2)*w*.12,bh=w*(.035+(blade%2)*.017)*(1-contact.press*.55);ctx.beginPath();ctx.moveTo(bx,ground+2);ctx.quadraticCurveTo(bx-2,ground-bh*.4,bx+(blade%2?2:-2),ground-bh);ctx.stroke();}ctx.restore();}
     canvas.style.zIndex=String(Math.round(ground*10)+(actor.id==='butterfly'?1000:0));
    }
   }
@@ -86,5 +90,5 @@
   const observer=new env.IntersectionObserver(entries=>{active=entries[0]?.isIntersecting===true;void sync();},{threshold:.05});observer.observe(stage);
   return {dispose(){disposed=true;++generation;stop();observer.disconnect();media.removeEventListener('change',visible);doc.removeEventListener('visibilitychange',visible);env.removeEventListener('resize',resize);release();for(const {canvas}of canvases)canvas.remove();poster.remove();},get state(){return disposed?'disposed':stage.dataset.animation||'waiting';}};
  }
- const api=Object.freeze({frameAt,poseAt,orbitAt,chaseAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
+ const api=Object.freeze({contactAt,frameAt,poseAt,orbitAt,chaseAt,validate,create});if(typeof module==='object'&&module.exports)module.exports=api;else root.ParkHeroPlayer=api;
 })(typeof globalThis==='undefined'?this:globalThis);
