@@ -2,6 +2,14 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const A=require('../admin-analytics.js');
 const fixture=()=>({days:7,to:'2026-10-24T12:00:00Z',views:12,visitors:8,engaged_visitors:3,previous_views:10,raw_views:15,excluded_views:3,unmeasured_views:0,daily:[{date:'2026-10-23',views:10,visitors:7,engaged:2},{date:'2026-10-24',views:2,visitors:2,engaged:1}]});
 const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return {promise,resolve};};
+test('activity diagnostics distinguish browser records, missing measurements and verified humans',()=>{
+ const data={...fixture(),experience:{measured_visitors:8,measured_views:12,detail_views:9,searches:1,search_visitors:1}};
+ let html=A.experienceHTML(data);assert.match(html,/37.5%/);assert.match(html,/75.0%/);assert.match(html,/5개/);assert.match(html,/실제 사람으로 인증된 수치는 아닙니다/);assert.match(html,/활동 기준 미충족 조회도 포함/);
+ assert.match(A.summary(data),/오늘은 진행 중/);
+ html=A.experienceHTML({...data,engaged_visitors:9});assert.match(html,/활동 기준 충족 비율<\/span><strong>미집계/);assert(!html.includes('-1개'));
+ html=A.experienceHTML({...data,experience:{}});assert.match(html,/활동 기준 미충족 브라우저<\/span><strong>미집계/);
+ html=A.experienceHTML({...data,engaged_visitors:0,experience:{measured_visitors:0,measured_views:0,detail_views:0}});assert(!html.includes('NaN'));assert.match(html,/활동 기준 충족 비율<\/span><strong>미집계/);
+});
 test('chart preserves source rows, distinguishes unknowns and never bridges a missing value',()=>{
  const data=fixture();data.daily.splice(1,0,{date:'2026-10-23x',views:null});assert.throws(()=>A.dailyRows(data));
  const rows=[{date:'2026-10-21',views:5},{date:'2026-10-22',views:null},{date:'2026-10-23',views:0}],copy=JSON.stringify(rows),model=A.chartModel(rows,'views');

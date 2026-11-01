@@ -7,6 +7,7 @@
   if(params.get('analytics_test')==='0')try{localStorage.removeItem('paw_analytics_exclude');}catch(e){}
   let excluded=storage('localStorage','paw_analytics_exclude')==='1',started=false,client=null,visitor=null,view=null;
   let active=0,clicks=0,depth=0,lastTick=Date.now(),page=location.pathname,lastSent=0,queued=null;
+  let wasVisible=document.visibilityState==='visible',thresholdSent=false;
   const actions={link:0,button:0,search:0,navigation:0};
   const tidy=s=>String(s||'').replace(/[^a-zA-Z0-9_.-]/g,'').slice(0,80);
   function source(){
@@ -41,7 +42,14 @@
     // Never delay or replace the user's direct affiliate navigation.
     try{Promise.resolve(client.rpc('record_affiliate_click',{p_payload:body})).catch(()=>{});}catch{}
   }
-  function tick(){const now=Date.now();if(document.visibilityState==='visible'&&!excluded&&storage('localStorage','paw_analytics_exclude')!=='1')active+=Math.min(2,Math.max(0,(now-lastTick)/1000));lastTick=now;}
+  function tick(){
+    const now=Date.now(),visible=document.visibilityState==='visible';
+    // Charge only the preceding visible interval, including its final fraction on hide.
+    // A resumed tab must never charge the hidden interval as reading time.
+    if(wasVisible&&!excluded&&storage('localStorage','paw_analytics_exclude')!=='1')active+=Math.min(2,Math.max(0,(now-lastTick)/1000));
+    lastTick=now;wasVisible=visible;
+    if(started&&!thresholdSent&&active>=10&&!excluded&&storage('localStorage','paw_analytics_exclude')!=='1'){thresholdSent=true;void send();}
+  }
   function payload(){return {visitor_id:visitor,view_token:view,path:location.pathname,page,source:entry.source,medium:entry.medium,campaign:entry.campaign,active_seconds:Math.floor(active),clicks,depth,actions,automated:!!navigator.webdriver};}
   async function send(){
     if(!started||excluded||storage('localStorage','paw_analytics_exclude')==='1'||!client)return;
@@ -54,14 +62,14 @@
     affiliateClick(event);
     if(!event.isTrusted||!started||excluded||storage('localStorage','paw_analytics_exclude')==='1')return;
     const el=event.target?.closest?.('a,button,[role="button"],input[type="submit"]');if(!el)return;
-    clicks=Math.min(1000,clicks+1);const kind=el.closest('nav')?'navigation':el.matches('a')?'link':'button';actions[kind]=Math.min(1000,actions[kind]+1);if(Date.now()-lastSent>2000)send();
+    clicks=Math.min(1000,clicks+1);const kind=el.closest('nav')?'navigation':el.matches('a')?'link':'button';actions[kind]=Math.min(1000,actions[kind]+1);if(clicks===1||Date.now()-lastSent>2000)send();
   }
   async function start(sb){
     if(started)return;started=true;client=sb;
     if(excluded||!['balzaguk.com','www.balzaguk.com'].includes(location.hostname)){excluded=true;return;}
     visitor=storage('localStorage','paw_visitor_id');
     if(!/^v[0-9]{10,16}[a-z0-9]{4,20}$/.test(visitor||'')){visitor='v'+Date.now()+Math.random().toString(36).slice(2,10);storage('localStorage','paw_visitor_id',visitor);}
-    view=root.crypto.randomUUID();entry=attribution();lastTick=Date.now();
+    view=root.crypto.randomUUID();entry=attribution();lastTick=Date.now();wasVisible=document.visibilityState==='visible';
     document.addEventListener('click',interaction,true);
     document.addEventListener('auxclick',affiliateClick,true);
     document.addEventListener('submit',e=>{if(!excluded&&storage('localStorage','paw_analytics_exclude')!=='1'&&e.isTrusted&&e.target?.matches?.('[role="search"],form[data-search],#place-search,#care-form,#map-search-form')){actions.search=Math.min(1000,actions.search+1);send();}},true);
