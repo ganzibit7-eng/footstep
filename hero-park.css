@@ -36,13 +36,13 @@
 #home-hero .hero-stat-num{font:500 26px/1.35 'Noto Sans KR',system-ui,sans-serif;letter-spacing:-.042em;color:#243c32;font-variant-numeric:tabular-nums;white-space:nowrap}
 #home-hero .hero-stat-label{display:inline-flex;align-items:center;gap:8px;font:500 13px/1.65 'Noto Sans KR',sans-serif;letter-spacing:-.012em;color:#405f4a}
 
-#home-hero #hero-stat-facilities{display:inline-block;color:inherit;text-decoration:none;border-radius:3px}
-#home-hero #hero-stat-facilities:focus-visible{outline:2px solid #6b805d;outline-offset:4px}
+#home-hero a.hero-stat-num{display:inline-block;text-decoration:none;border-radius:3px}
+#home-hero a.hero-stat-num:focus-visible{outline:2px solid #6b805d;outline-offset:4px}
 #home-hero #home-count-status{grid-column:1/-1;display:inline-flex;align-items:center;justify-self:start;align-self:start;gap:8px;width:max-content;max-width:100%;box-sizing:border-box;margin:5px 0 0!important;padding:0;border:0;border-radius:0;background:none;color:#718071!important;font:400 12px/1.65 'Noto Sans KR',sans-serif!important;letter-spacing:-.01em;word-break:keep-all}
 
 .hero-park-stage{position:absolute;inset:auto 0 44px;height:150px;z-index:1;pointer-events:none;contain:layout paint}
 html[data-hero-safe-area="true"] .hero-park-stage{outline:1px dashed #2f5b41}
-@media(hover:hover){#home-hero #hero-style-3 .hero-action-primary:hover{background:rgba(38,61,50,.94);transform:none;box-shadow:none}#home-hero #hero-style-3 .hero-action-map:hover{background:rgba(246,245,239,.96);color:#263d32;transform:none;box-shadow:none}#home-hero #hero-stat-facilities:hover{text-decoration:underline;text-underline-offset:4px}}
+@media(hover:hover){#home-hero #hero-style-3 .hero-action-primary:hover{background:rgba(38,61,50,.94);transform:none;box-shadow:none}#home-hero #hero-style-3 .hero-action-map:hover{background:rgba(246,245,239,.96);color:#263d32;transform:none;box-shadow:none}#home-hero a.hero-stat-num:hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:880px){
  #home-hero .hero-park-scene{min-height:530px;padding:32px 22px 196px}
  #home-hero .hero-inner{max-width:520px}
