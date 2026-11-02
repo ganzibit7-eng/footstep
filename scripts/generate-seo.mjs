@@ -13,6 +13,7 @@ import {refineDiscovery} from './discovery-layout.mjs';
 import {tripBooking} from './trip-stays.mjs';
 import {cacheRepeatedSearchStyles} from './search-style-cache.mjs';
 import {generatePetLife} from './generate-pet-life.mjs';
+import {generateWalkDirectory} from './walk-directory.mjs';
 import {generatePetCare} from './generate-pet-care.mjs';
 import {refinePlaceDetail} from './refine-place-details.mjs';
 import FacilityInfo from '../facility-info.js';
@@ -864,6 +865,7 @@ sitemap.push({url:`${SITE}/guides/`,lastmod:'2026-10-12'});
 console.log('Scoped course guide connections:',await publishEvidenceLinks(ROOT,GUIDES));
 await writeFile(path.join(ROOT, 'discover.html'), withTraffic(await directoryHtml(groups)), 'utf8');
 sitemap.push(...await generatePetCare(ROOT),...await generatePetLife(ROOT));
+await generateWalkDirectory(ROOT);
 if(existsSync(path.join(ROOT,'advertise/index.html')))sitemap.push({url:SITE+'/advertise/',lastmod:'2026-10-29'});
 const sitemapByUrl = new Map();
 for (const entry of sitemap) {
