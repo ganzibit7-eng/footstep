@@ -67,7 +67,7 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
 }
 </script>
 <!-- Critical hero requests precede non-hero libraries. -->
-<link rel="preload" href="/hero-park.css?v=20261102-counter-links" as="style">
+<link rel="preload" href="/hero-park.css?v=20261102-stat-navigation" as="style">
 <link rel="preload" href="/assets/fonts/home-sans-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/hero-park-preview/mobile-480.webp" imagesrcset="/assets/hero-park-preview/mobile-480.webp 480w, /assets/hero-park-preview/mobile-960.webp 941w" imagesizes="100vw" media="(max-width:880px)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/hero-park-preview/desktop-1280.webp" imagesrcset="/assets/hero-park-preview/desktop-1280.webp 1280w, /assets/hero-park-preview/desktop-1920.webp 1672w" imagesizes="100vw" media="(min-width:881px)" fetchpriority="high">
@@ -1674,7 +1674,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script defer src="/home-places.js?v=20261017-shopping"></script>
 <script defer src="/home-scenes.js?v=20261024-polish"></script>
 
-<link rel="stylesheet" href="/hero-park.css?v=20261102-counter-links">
+<link rel="stylesheet" href="/hero-park.css?v=20261102-stat-navigation">
 <script defer src="/hero-park-player.js?v=20261031-meadow"></script>
 <script defer src="/hero-park.js?v=20261031-breeze"></script>
 
@@ -1825,20 +1825,20 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         <div class="meta" id="weather-meta"><a href="https://api.met.no/weatherapi/locationforecast/2.0/documentation" target="_blank" rel="noopener noreferrer">MET Norway</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a><span class="hero-forecast-note">지역 대표 예보 · 현재 위치 실측 아님</span></div>
       </div>
       <div class="hero-stat-row">
-        <div class="hero-stat-box">
+        <a class="hero-stat-box" href="/dog-walks/" aria-label="등록 산책코스 전체 둘러보기">
           <span class="hero-stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 18c4 0 4-12 8-12s4 12 8 12M4 18h.01M20 18h.01"/><circle cx="12" cy="6" r="2"/></svg></span>
           <div>
-            <a class="hero-stat-num" id="hero-stat-courses" href="/dog-walks/" aria-label="등록 산책코스 전체 둘러보기">412개</a>
+            <span class="hero-stat-num" id="hero-stat-courses">412개</span>
             <div class="hero-stat-label">산책 코스</div>
           </div>
-        </div>
-        <div class="hero-stat-box">
+        </a>
+        <a class="hero-stat-box" href="/pet-life/" aria-label="반려생활 장소 21,864곳 둘러보기">
           <span class="hero-stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h12v8a6 6 0 0 1-12 0zM16 6h2a3 3 0 0 1 0 6h-2M3 21h15"/></svg></span>
           <div>
-            <a class="hero-stat-num" id="hero-stat-facilities" href="/pet-life/" aria-label="반려생활 장소 21,864곳 둘러보기">21,864곳</a>
+            <span class="hero-stat-num" id="hero-stat-facilities">21,864곳</span>
             <div class="hero-stat-label">반려생활 장소</div>
           </div>
-        </div>
+        </a>
       </div>
       <p id="home-count-status" role="status">등록 정보 기준 · 자료 추가 시 갱신</p>
     </div>

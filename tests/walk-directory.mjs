@@ -5,8 +5,12 @@ import {refineWalkDirectory} from '../scripts/walk-directory.mjs';
 const root=new URL('../',import.meta.url),read=p=>readFile(new URL(p,root),'utf8');
 test('course counter opens the dedicated directory without changing its identity or count',async()=>{
  const home=await read('index.html'),counts=JSON.parse(await read('data/public-counts.json'));
- assert(home.includes('id="hero-stat-courses" href="/dog-walks/"'));assert.equal((home.match(/id="hero-stat-courses"/g)||[]).length,1);
- assert(home.includes('>'+counts.courses+'개</a>'));assert.equal((home.match(/class="home-region-arrow" aria-hidden="true"><svg/g)||[]).length,6);
+ assert.equal((home.match(/id="hero-stat-courses"/g)||[]).length,1);
+ const links=[...home.matchAll(/<a class="hero-stat-box" href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];assert.equal(links.length,2);
+ for(const [i,id,label,value,url] of [[0,'courses','산책 코스',counts.courses+'개','/dog-walks/'],[1,'facilities','반려생활 장소',counts.places.toLocaleString('ko-KR')+'곳','/pet-life/']]){
+  assert.equal(links[i][1],url);assert(links[i][2].includes('id="hero-stat-'+id+'">'+value+'</span>'));assert(links[i][2].includes('class="hero-stat-label">'+label+'</div>'));assert(!links[i][2].includes('<a '),'no nested interactive links');
+ }
+ assert.equal((home.match(/class="home-region-arrow" aria-hidden="true"><svg/g)||[]).length,6);
 });
 test('walk directory preserves canonical, structured data, guides and all local destinations',async()=>{
  const page=await read('dog-walks/index.html'),counts=JSON.parse(await read('data/public-counts.json'));
