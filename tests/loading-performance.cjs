@@ -18,7 +18,7 @@ async function home(){
  vm.runInContext(html.slice(html.indexOf('  function renderStats(){'),html.indexOf('  // ===== 홈 화면 히어로 스타일')),firstVisit);
  vm.runInContext(html.slice(html.indexOf('  let courseDataState='),html.indexOf("  document.getElementById('data-load-retry').addEventListener")),firstVisit);
  firstVisit.renderStats();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.equal(el('hero-stat-facilities').textContent,publishedFacilities);assert.match(el('home-count-status').textContent,/등록 정보 기준/);
- assert(html.includes('<div class="hero-stat-num" id="hero-stat-courses">'+publishedCourses+'</div>'),'first paint must contain the published number without JavaScript');
+ assert(html.includes('<span class="hero-stat-num" id="hero-stat-courses">'+publishedCourses+'</span>')&&html.includes('class="hero-stat-box" href="/dog-walks/"'),'first paint must contain the published number and course directory link without JavaScript');
  const loading=ctx.loadData();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.match(el('home-count-status').textContent,/등록 정보 기준/);
  reads.courses.resolve(counts);await flush();assert.equal(el('hero-stat-courses').textContent,publishedCourses);assert.ok(grid>=2,'Course list must render without waiting for reviews');
  countOnly.resolve({count:1});await flush();assert.equal(ctx.facilities.length,0);reads.facilities.resolve([{status:'approved'},{status:'pending'}]);await flush();assert.equal(el('hero-stat-facilities').textContent,publishedFacilities);assert.match(el('home-count-status').textContent,/자료 추가 시 갱신/);assert.equal(saved.length,0);

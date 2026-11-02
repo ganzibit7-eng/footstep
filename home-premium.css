@@ -139,7 +139,10 @@ html[data-theme="dark"] #nearby-section .service-intro-number{background:#343a30
 .home-region-body{padding:15px 17px 17px}
 .home-region-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
 #nearby-section .home-region-title h3{font-size:21px;line-height:1.5;letter-spacing:-.025em;font-weight:700;margin:0;color:var(--experience-text)}
-.home-region-arrow{display:grid;place-items:center;width:30px;height:30px;flex:none;background:var(--experience-soft);border-radius:50%;font-size:17px;color:var(--experience-text)}
+.home-region-arrow{display:grid;place-items:center;width:30px;height:30px;flex:none;background:transparent;border:0;border-radius:7px;color:var(--experience-text)}
+.home-region-arrow svg{width:20px;height:20px;display:block;transition:transform .18s ease}
+@media(hover:hover){.home-region-card:hover .home-region-arrow svg{transform:translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.home-region-arrow svg{transition:none}.home-region-card:hover .home-region-arrow svg{transform:none}}
 #nearby-section .home-region-body p{font-size:13px;line-height:1.7;color:var(--experience-muted);margin:5px 0 12px}
 .home-region-link{display:block;border-top:1px solid var(--experience-line);padding-top:10px;font-size:12px;color:var(--experience-muted)}
 #nearby-section .home-region-note{display:flex;align-items:flex-start;gap:8px;padding-top:20px;font-size:12px;line-height:1.8;color:var(--experience-muted);margin:0}

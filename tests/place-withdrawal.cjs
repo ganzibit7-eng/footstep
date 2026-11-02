@@ -9,5 +9,5 @@ test('public count release matches the remaining directory and combined place to
  const counts=JSON.parse(fs.readFileSync('data/public-counts.json')),combined=JSON.parse(fs.readFileSync('data/place-count-summary.json'));
  const data=require('./search-records.cjs')();
  assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4169);assert.equal(counts.places,21864);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
- assert(fs.readFileSync('pet-life/index.html','utf8').includes('21,864'));assert(fs.readFileSync('index.html','utf8').includes('>21,864곳</a>'));
+ assert(fs.readFileSync('pet-life/index.html','utf8').includes('21,864'));assert(fs.readFileSync('index.html','utf8').includes('>21,864곳</span>'));
 });
