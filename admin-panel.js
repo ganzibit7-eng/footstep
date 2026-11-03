@@ -1081,16 +1081,16 @@ function create(context){
   return '<a href="'+escapeHtml(p)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(title)+' ↗</a>'+(title!==p?'<br><small>'+escapeHtml(p)+'</small>':'');
  }
  let adminBotRequest=0;
- async function renderAdminBots(){
-  const el=document.getElementById('admin-bot-result'),request=++adminBotRequest;
+ async function renderAdminBots(selection){
+  const el=document.getElementById('admin-bot-result'),request=++adminBotRequest,viewer=context.myDeviceId;
   if(!el||!isAdminUser(context.myDeviceId))return;
   el.textContent='자동 접속 기록을 불러오고 있어요…';
   try{
-   const {data,error}=await sb.rpc('admin_bot_traffic',{p_days:Number(document.getElementById('admin-traffic-period').value)});
-   if(request!==adminBotRequest)return;
+   const {data,error}=await sb.rpc('admin_bot_traffic_range',selection?.args||globalThis.AdminAnalytics.presetRange(Number(document.getElementById('admin-traffic-period').value)));
+   if(request!==adminBotRequest||viewer!==context.myDeviceId||!isAdminUser(viewer))return;
    if(error||!data)throw error||new Error('invalid_bot_stats');
    el.innerHTML=AdminBotPanel.render(data,adminTrafficPageLink);
-  }catch(e){if(request===adminBotRequest)el.textContent='자동 접속 기록을 불러오지 못했어요. 새로고침해 주세요.';}
+  }catch(e){if(request===adminBotRequest&&viewer===context.myDeviceId&&isAdminUser(viewer))el.textContent='자동 접속 기록을 불러오지 못했어요. 새로고침해 주세요.';}
  }
 
  let adminSecurityRequest=0;
@@ -1107,29 +1107,44 @@ function create(context){
  async function renderAdminTraffic(){
   affiliateAdmin?.load();
   if(!isAdminUser(context.myDeviceId))return false;
+  const custom=document.getElementById('admin-traffic-period').value==='custom';
+  let args;try{args=custom?globalThis.AdminAnalytics.dateRange(document.getElementById('admin-traffic-from').value,document.getElementById('admin-traffic-to').value):globalThis.AdminAnalytics.presetRange(Number(document.getElementById('admin-traffic-period').value));}catch(e){document.getElementById('admin-traffic-status').textContent=e.message;return false;}
   const viewer=context.myDeviceId,request=++adminTrafficRequest,el=document.getElementById('admin-traffic-result'),button=document.getElementById('admin-traffic-export'),status=document.getElementById('admin-traffic-status'),retry=document.getElementById('admin-traffic-retry');
-  adminTrafficData=null;button.disabled=true;retry.hidden=true;status.textContent='선택 기간 통계를 불러오고 있어요…';el.setAttribute('aria-busy','true');el.innerHTML='<div class="admin-chart-loading">방문 추이를 준비하고 있어요.</div>';
+  adminBotRequest++;document.getElementById('admin-bot-result').textContent='선택 기간의 자동 접속 기록을 준비하고 있어요…';
+  adminTrafficData=null;document.getElementById('admin-traffic-apply').disabled=true;button.disabled=true;retry.hidden=true;status.textContent='선택 기간 통계를 불러오고 있어요…';el.setAttribute('aria-busy','true');el.innerHTML='<div class="admin-chart-loading">방문 추이를 준비하고 있어요.</div>';
   try{
-   const {data,error}=await sb.rpc('admin_traffic_summary_v2',{p_days:Number(document.getElementById('admin-traffic-period').value)});
+   const {data,error}=await sb.rpc('admin_traffic_range',args);
    if(request!==adminTrafficRequest||viewer!==context.myDeviceId||!isAdminUser(viewer))return false;
    if(error||!Array.isArray(data?.daily))throw error||new Error('invalid_stats');
    globalThis.AdminAnalytics.dailyRows(data);
    const num=globalThis.AdminAnalytics.format;
    el.innerHTML=`${globalThis.AdminAnalytics.summary(data)}${globalThis.AdminAnalytics.experienceHTML(data)}<details class="admin-chart-table"><summary>일별 수치 표</summary><div class="admin-table-scroll"><table><caption>일별 방문 추이</caption><thead><tr><th>날짜</th><th>조회</th><th>방문 브라우저</th><th>활동 확인</th></tr></thead><tbody>${data.daily.map(r=>`<tr><td>${escapeHtml(r.date)}</td><td>${num(r.views)}</td><td>${num(r.visitors)}</td><td>${num(r.engaged)}</td></tr>`).join('')}</tbody></table></div></details><h4>주요 유입 경로</h4>${data.sources?.length?`<div class="admin-table-scroll"><table><thead><tr><th>경로</th><th>첫 유입 브라우저</th><th>조회</th></tr></thead><tbody>${data.sources.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${num(r.visitors)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>기록된 유입이 없어요.</p>'}<p><small>출처 없는 공유 링크·앱 접속은 직접 방문 / 출처 미상으로 기록됩니다. 유입 브라우저는 기간 내 첫 기록의 출처로 분류합니다.</small></p><h4>조회한 페이지</h4><div class="admin-table-scroll"><table><thead><tr><th>페이지</th><th>조회</th><th>활동 확인 조회</th><th>평균 활동 시간</th></tr></thead><tbody>${(data.paths||[]).map(r=>`<tr><td>${adminTrafficPageLink(r.path)}</td><td>${num(r.views)}</td><td>${globalThis.AdminAnalytics.interestCount(r)}</td><td>${typeof r.average_active_seconds==='number'&&Number.isFinite(r.average_active_seconds)&&r.average_active_seconds>=0?r.average_active_seconds.toFixed(1)+'초':'미집계'}</td></tr>`).join('')}</tbody></table></div><h4>홍보 캠페인</h4>${(data.campaigns||[]).length?`<div class="admin-table-scroll"><table><thead><tr><th>출처</th><th>매체</th><th>캠페인</th><th>조회</th></tr></thead><tbody>${data.campaigns.map(r=>`<tr><td>${escapeHtml(r.source)}</td><td>${escapeHtml(r.medium)}</td><td>${escapeHtml(r.campaign)}</td><td>${num(r.views)}</td></tr>`).join('')}</tbody></table></div>`:'<p>아직 UTM 캠페인 기록이 없어요.</p>'}`;
-   globalThis.AdminAnalytics.mountChart(el,data);adminTrafficData=data;button.disabled=false;status.textContent='확인 시각: '+globalThis.AdminAnalytics.kstTime(data.to);
-   renderAdminBots();
+   globalThis.AdminAnalytics.mountChart(el,data);adminTrafficData=data;button.disabled=false;status.textContent=(data.date_from?data.date_from+' ~ '+data.date_to+' · ':'')+'확인 시각: '+globalThis.AdminAnalytics.kstTime(data.generated_at||data.to);
+   renderAdminBots({custom,args});
    renderAdminSecurity();return true;
-  }catch(e){if(request===adminTrafficRequest&&viewer===context.myDeviceId&&isAdminUser(viewer)){status.textContent='통계 조회 실패 · 현재 수치는 확인할 수 없어요.';retry.hidden=false;el.textContent='관리자 로그인과 연결 상태를 확인한 뒤 다시 불러와 주세요.';}return false;}
-  finally{if(request===adminTrafficRequest)el.setAttribute('aria-busy','false');}
+  }catch(e){console.warn('관리자 방문 통계 조회 실패',e?.code||'',e?.message||'invalid_stats');if(request===adminTrafficRequest&&viewer===context.myDeviceId&&isAdminUser(viewer)){status.textContent=e?.code==='57014'?'기록이 많아 조회 시간이 초과됐어요. 날짜 범위를 줄여 다시 적용해 주세요.':'통계 조회 실패 · 현재 수치는 확인할 수 없어요.';retry.hidden=false;el.textContent='관리자 로그인과 연결 상태를 확인한 뒤 다시 불러와 주세요.';}return false;}
+  finally{if(request===adminTrafficRequest){el.setAttribute('aria-busy','false');document.getElementById('admin-traffic-apply').disabled=false;}}
  }
- document.getElementById('admin-traffic-period').addEventListener('change',renderAdminTraffic);
+ const trafficPeriod=document.getElementById('admin-traffic-period'),trafficDates=document.getElementById('admin-traffic-dates');
+ function trafficRangeMode(){
+  const custom=trafficPeriod.value==='custom';trafficDates.hidden=!custom;
+  adminTrafficRequest++;adminBotRequest++;document.getElementById('admin-traffic-apply').disabled=false;document.getElementById('admin-traffic-export').disabled=true;adminTrafficData=null;
+  if(custom){
+   const today=globalThis.AdminAnalytics.kstDate();
+   for(const id of ['admin-traffic-from','admin-traffic-to']){const input=document.getElementById(id);input.max=today;if(!input.value)input.value=today;}
+   document.getElementById('admin-traffic-status').textContent='시작일과 종료일을 정한 뒤 기간 적용을 눌러 주세요. 한 번에 최대 366일까지 조회할 수 있어요.';
+   document.getElementById('admin-traffic-result').setAttribute('aria-busy','false');
+  }else renderAdminTraffic();
+ }
+ trafficPeriod.addEventListener('change',trafficRangeMode);
+ trafficDates.addEventListener('submit',event=>{event.preventDefault();renderAdminTraffic();});
  document.getElementById('admin-traffic-retry').addEventListener('click',renderAdminTraffic);
  document.getElementById('admin-pending-search').addEventListener('input',renderPendingApprovals);
  document.getElementById('admin-traffic-export').addEventListener('click',()=>{
   if(!adminTrafficData||!isAdminUser(context.myDeviceId))return;
   const csv=globalThis.AdminAnalytics.csv(adminTrafficData);
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
-  a.href=url;a.download=`balzaguk-traffic-${adminTrafficData.days}days.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  a.href=url;a.download='balzaguk-traffic-'+(adminTrafficData.date_from?adminTrafficData.date_from+'_'+adminTrafficData.date_to:adminTrafficData.days+'days')+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
  });
 
   async function refreshAdminDashboard(){
