@@ -274,24 +274,25 @@ header .nav-links a[aria-current=page]{background:var(--product-soft);color:var(
 :is(#walk-section,#register-section,#profile-overlay,#nick-overlay) :is(.btn,.submit-btn){display:inline-flex;align-items:center;justify-content:center;gap:var(--control-gap);min-height:var(--control-height);line-height:var(--control-leading)}
 :is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button:disabled{opacity:.55}
 :is(#list-section,#walk-section,#register-section,#profile-overlay,#nick-overlay) button[aria-busy=true]{cursor:progress}
-#support-dialog{width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--product-line);border-radius:18px;background:var(--product-surface);color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);box-shadow:0 16px 56px #17332926;overscroll-behavior:contain}
-#support-dialog::backdrop{background:#182f294d;backdrop-filter:blur(4px)}
+#support-dialog{width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--product-line);border-radius:12px;background:var(--product-surface);color:var(--product-ink);font-family:var(--experience-font,'Noto Sans KR',system-ui,sans-serif);box-shadow:0 16px 56px #17332926;overscroll-behavior:contain}
+#support-dialog::backdrop{background:#182f295c}
 #support-dialog[open]{animation:support-arrive 180ms ease-out both}
 #support-dialog .support-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:24px 24px 0}
 #support-dialog .support-eyebrow{display:block;font-size:11px;font-weight:500;line-height:1.7;color:var(--product-muted);margin-bottom:8px}
 #support-dialog h2{font-family:inherit;font-size:25px;font-weight:600;line-height:1.45;letter-spacing:-.04em;margin:0}
 #support-dialog #support-close{display:grid;place-items:center;flex:none;width:44px;height:44px;margin:-7px -8px 0 0;border:0;border-radius:8px;background:transparent;color:var(--product-muted);font:400 26px/1 system-ui;cursor:pointer}
 #support-dialog .support-body{padding:0 24px 24px}
-#support-dialog #support-description{margin:12px 0 24px;font-size:13px;line-height:1.8;color:var(--product-muted);word-break:keep-all}
+#support-dialog #support-description{margin:12px 0 24px;font-size:14px;line-height:1.8;color:var(--product-muted);word-break:keep-all}
 #support-dialog .support-channels{display:grid;border-top:1px solid var(--product-line)}
-#support-dialog .support-channel{display:flex;align-items:center;gap:14px;min-height:96px;padding:18px 4px;border-bottom:1px solid var(--product-line);color:var(--product-ink);text-decoration:none;transition:background-color 160ms ease,transform 160ms ease;box-sizing:border-box}
+#support-dialog .support-channel{display:flex;align-items:center;gap:14px;min-height:88px;padding:18px 4px;border-bottom:1px solid var(--product-line);color:var(--product-ink);text-decoration:none;transition:background-color 160ms ease,transform 160ms ease;box-sizing:border-box}
 #support-dialog .support-channel-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:10px;background:var(--product-soft);color:var(--product-accent)}
 #support-dialog .support-channel-icon svg{width:23px;height:23px}
-#support-dialog .support-chat-icon{background:#faeab1;color:#51441e}
+#support-dialog .support-chat-icon{background:#f1eee1;color:#62583d}
 #support-dialog .support-channel-copy{display:grid;gap:5px;min-width:0}
 #support-dialog .support-channel-copy strong{font-size:15px;font-weight:600;line-height:1.6}
-#support-dialog .support-channel-copy>span{font-size:12px;line-height:1.7;color:var(--product-muted);overflow-wrap:anywhere}
-#support-dialog .support-arrow{margin-left:auto;flex:none;font-size:19px;color:var(--product-muted)}
+#support-dialog .support-channel-copy>span{font-size:13px;line-height:1.7;color:var(--product-muted);overflow-wrap:anywhere}
+#support-dialog .support-partnership{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:22px;padding:14px 0;border-bottom:1px solid var(--product-line);font-size:12px;color:var(--product-muted)}
+#support-dialog .support-partnership a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;color:var(--product-ink);text-underline-offset:4px}
 #support-dialog .support-note{margin-top:22px}
 #support-dialog .support-note strong{font-size:12px;font-weight:600;line-height:1.7}
 #support-dialog .support-note p{font-size:12px;line-height:1.85;color:var(--product-muted);margin:7px 0 0;word-break:keep-all}

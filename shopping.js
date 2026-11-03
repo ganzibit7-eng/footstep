@@ -55,7 +55,7 @@
         const option=root.document.createElement('p');option.className='walk-shopping-option';option.textContent=item.option||item.name;
         body.append(option);
         if(item.id==='pet-cleaner'){check.textContent='반려동물 몸에 사용하지 마세요.';body.append(check);}
-        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 보기 ↗';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;a.dataset.shoppingPlacement='home-walk-shopping';body.append(a);
+        const a=root.document.createElement('a');a.href=url;a.target='_blank';a.rel='sponsored nofollow noopener noreferrer';a.className='walk-shopping-link';a.textContent='쿠팡에서 보기';a.setAttribute('aria-label',(item.product||item.name)+' 쿠팡 제휴 상품 정보, 새 창');a.dataset.shoppingItem=item.id;a.dataset.shoppingPlacement='home-walk-shopping';body.append(a);
       }else body.append(reason,check);
       container.append(card);
     });
