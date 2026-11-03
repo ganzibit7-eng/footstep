@@ -49,18 +49,44 @@ test('closing or switching identity rejects late live responses; reopening can s
  first.resolve({data:99});assert.equal(await old,false);assert(!states.some(s=>s.value===99));current=false;second.resolve({data:4});assert.equal(await next,false);assert(!states.some(s=>s.status==='ready'));live.stop();
 });
 function traffic(){
- const nodes={};for(const id of ['admin-traffic-result','admin-traffic-export','admin-traffic-status','admin-traffic-retry','admin-traffic-period'])nodes[id]={attrs:{},value:'7',setAttribute(k,v){this.attrs[k]=v;}};
- const requests=[],charts=[],context={context:{myDeviceId:'admin'},isAdminUser:()=>true,document:{getElementById:id=>nodes[id]},affiliateAdmin:{load(){}},sb:{rpc(name,args){const d=deferred();requests.push({name,args,...d});return d.promise;}},escapeHtml:s=>s,adminTrafficPageLink:s=>s,renderAdminBots(){},renderAdminSecurity(){},AdminAnalytics:{...A,mountChart(el,data){charts.push(data);}}};
- const source=fs.readFileSync('admin-panel.js','utf8');vm.runInNewContext(source.slice(source.indexOf(' let adminTrafficData=null'),source.indexOf(" document.getElementById('admin-traffic-period').addEventListener")),context);
+ const nodes={};for(const id of ['admin-traffic-result','admin-traffic-export','admin-traffic-status','admin-traffic-retry','admin-traffic-period','admin-bot-result','admin-traffic-from','admin-traffic-to','admin-traffic-apply'])nodes[id]={attrs:{},value:'7',setAttribute(k,v){this.attrs[k]=v;}};
+ const requests=[],charts=[],context={adminBotRequest:0,context:{myDeviceId:'admin'},isAdminUser:()=>true,document:{getElementById:id=>nodes[id]},affiliateAdmin:{load(){}},sb:{rpc(name,args){const d=deferred();requests.push({name,args,...d});return d.promise;}},escapeHtml:s=>s,adminTrafficPageLink:s=>s,renderAdminBots(){},renderAdminSecurity(){},AdminAnalytics:{...A,mountChart(el,data){charts.push(data);}}};
+ const source=fs.readFileSync('admin-panel.js','utf8');vm.runInNewContext(source.slice(source.indexOf(' let adminTrafficData=null'),source.indexOf(" const trafficPeriod=")),context);
  return {context,nodes,requests,charts};
 }
 test('newest traffic period wins and stale responses cannot change the chart or CSV state',async()=>{
  const h=traffic(),first=h.context.renderAdminTraffic();h.nodes['admin-traffic-period'].value='30';const second=h.context.renderAdminTraffic();
- assert.equal(h.nodes['admin-traffic-export'].disabled,true);assert.equal(h.requests[1].args.p_days,30);
+ assert.equal(h.nodes['admin-traffic-export'].disabled,true);assert.equal((Date.parse(h.requests[1].args.p_to)-Date.parse(h.requests[1].args.p_from))/86400000+1,30);
  h.requests[1].resolve({data:{...fixture(),days:30}});assert.equal(await second,true);assert.equal(h.charts[0].days,30);assert.equal(h.nodes['admin-traffic-export'].disabled,false);
  h.requests[0].resolve({data:fixture()});assert.equal(await first,false);assert.equal(h.charts.length,1);assert.equal(h.nodes['admin-traffic-result'].attrs['aria-busy'],'false');
 });
 test('traffic failure enables retry and identity changes cannot display an old admin response',async()=>{
  const h=traffic(),first=h.context.renderAdminTraffic();h.requests[0].resolve({error:new Error('offline')});assert.equal(await first,false);assert.equal(h.nodes['admin-traffic-retry'].hidden,false);assert.equal(h.nodes['admin-traffic-export'].disabled,true);assert.match(h.nodes['admin-traffic-status'].textContent,/조회 실패/);
  const second=h.context.renderAdminTraffic();h.context.context.myDeviceId='other-admin';h.requests[1].resolve({data:fixture()});assert.equal(await second,false);assert.equal(h.charts.length,0);
+});
+
+test('explicit dates validate calendar, KST boundary, reversed range, future and size limit',()=>{
+ assert.equal(A.kstDate(new Date('2026-11-02T15:00:00Z')),'2026-11-03');
+ assert.deepEqual(A.dateRange('2026-10-01','2026-10-31','2026-11-03'),{p_from:'2026-10-01',p_to:'2026-10-31'});
+ for(const [from,to] of [['2026-02-30','2026-03-01'],['','2026-11-01'],['2026-11-02','2026-11-01'],['2026-11-03','2026-11-04'],['2025-01-01','2026-11-01']])assert.throws(()=>A.dateRange(from,to,'2026-11-03'));
+ assert.equal(A.nearestIndex(-20,30),0);assert.equal(A.nearestIndex(1000,30),29);assert.equal(A.nearestIndex(372,3),1);assert.equal(A.nearestIndex(50,1),0);
+ assert.match(A.summary({...fixture(),date_from:'2026-10-01',date_to:'2026-10-07',is_partial:false}),/하루 전체 집계/);
+ assert(!A.summary({...fixture(),date_from:'2026-10-01',date_to:'2026-10-07',is_partial:false}).includes('오늘은 진행 중'));
+});
+test('custom dates invoke the range RPC, retain period browser totals and reject stale preset results',async()=>{
+ const h=traffic(),old=h.context.renderAdminTraffic();h.nodes['admin-traffic-period'].value='custom';h.nodes['admin-traffic-from'].value='2026-10-01';h.nodes['admin-traffic-to'].value='2026-10-07';
+ const fresh=h.context.renderAdminTraffic();assert.equal(h.requests[1].name,'admin_traffic_range');assert.equal(h.requests[1].args.p_from,'2026-10-01');assert.equal(h.requests[1].args.p_to,'2026-10-07');
+ h.requests[1].resolve({data:{...fixture(),date_from:'2026-10-01',date_to:'2026-10-07',is_partial:false}});assert.equal(await fresh,true);
+ h.requests[0].resolve({data:fixture()});assert.equal(await old,false);assert.equal(h.charts.length,1);assert.equal(h.charts[0].visitors,8);
+});
+
+test('responsive plot coordinates stay in bounds without resampling or changing values',()=>{
+ const rows=[{date:'2026-10-20',views:2},{date:'2026-10-21',views:10},{date:'2026-10-22',views:null}];
+ for(const width of [220,275,640,720]){const m=A.chartModel(rows,'views',width);assert.equal(m.points[0].x,64);assert.equal(m.points[2].x,width-40);assert.deepEqual(m.points.map(p=>p.value),[2,10,null]);assert.equal(A.nearestIndex(m.points[1].x,3,width),1);}
+});
+
+test('preset dates share inclusive KST range semantics with custom selection',()=>{
+ assert.deepEqual(A.presetRange(7,'2026-11-03'),{p_from:'2026-10-28',p_to:'2026-11-03'});
+ assert.deepEqual(A.presetRange(1,'2026-11-03'),{p_from:'2026-11-03',p_to:'2026-11-03'});
+ assert.throws(()=>A.presetRange(2,'2026-11-03'));
 });

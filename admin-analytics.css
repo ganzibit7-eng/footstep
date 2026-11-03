@@ -11,15 +11,11 @@
 #admin-overlay.admin-console .admin-chart-metrics{display:flex;flex-wrap:wrap;gap:4px;background:#f0f3ef;padding:3px;border-radius:9px}
 #admin-overlay.admin-console .admin-chart-metrics button{border:1px solid transparent;background:transparent;border-radius:7px;padding:8px 9px;min-height:36px;color:#5d6e63;font:inherit;font-size:11px;cursor:pointer}
 #admin-overlay.admin-console .admin-chart-metrics button[aria-pressed=true]{background:#fff;color:#205842;border-color:#d8e3d9;font-weight:600}
-#admin-overlay.admin-console .admin-traffic-chart svg{display:block;width:100%;height:auto;max-height:280px;overflow:visible;margin-top:16px}
+#admin-overlay.admin-console .admin-traffic-chart svg{display:block;width:100%;height:auto;overflow:visible;margin-top:12px;cursor:crosshair;touch-action:pan-y}
 #admin-overlay.admin-console .admin-chart-grid{stroke:#e2e8e1;stroke-width:1}
 #admin-overlay.admin-console .admin-chart-line{fill:none;stroke:#205842;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 #admin-overlay.admin-console .admin-traffic-chart svg text{font-family:inherit;font-size:11px;fill:#718176;font-variant-numeric:tabular-nums}
 #admin-overlay.admin-console .admin-traffic-chart circle{fill:#205842;stroke:#fff;stroke-width:1}
-#admin-overlay.admin-console .admin-chart-date{margin-top:8px;display:grid;gap:8px}
-#admin-overlay.admin-console .admin-chart-date label{display:flex;align-items:center;gap:12px;font-size:11px;color:#63746a}
-#admin-overlay.admin-console .admin-chart-date input{flex:1;min-width:0;min-height:44px;accent-color:#205842;cursor:pointer}
-#admin-overlay.admin-console .admin-chart-value{font-size:12px;line-height:1.8;margin:0;font-weight:550;font-variant-numeric:tabular-nums;min-height:22px}
 #admin-overlay.admin-console .admin-chart-note{font-size:11px;line-height:1.8;color:#6c7b71;margin:10px 0 0}
 #admin-overlay.admin-console :is(.admin-analytics-method,.admin-chart-table)>summary{display:flex;align-items:center;min-height:44px;font-size:12px;cursor:pointer;color:#405e49}
 #admin-overlay.admin-console :is(.admin-analytics-method,.admin-chart-table)>summary::before{content:'＋';margin-right:8px}
@@ -39,7 +35,47 @@
  #admin-overlay.admin-console .admin-chart-metrics{margin-top:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
  #admin-overlay.admin-console .admin-chart-metrics button{font-size:10px;min-height:44px;padding:8px 5px;word-break:keep-all}
  #admin-overlay.admin-console .admin-traffic-chart svg{min-height:150px}
- #admin-overlay.admin-console .admin-traffic-chart svg text{font-size:22px}
- #admin-overlay.admin-console .admin-chart-value{min-height:44px}
- #admin-overlay.admin-console .admin-traffic-chart{margin-top:10px}
+ #admin-overlay.admin-console .admin-traffic-chart svg text{font-size:11px}
+  #admin-overlay.admin-console .admin-traffic-chart{margin-top:10px}
 }
+
+/* Date selection and readout belong to the analytics panel, not public pages. */
+#admin-overlay.admin-console .admin-traffic-toolbar{gap:10px;align-items:end;padding:14px 0;border-block:1px solid #e0e7df}
+#admin-overlay.admin-console #admin-traffic-dates{display:flex;align-items:end;gap:10px;flex-wrap:wrap;min-width:0;flex:1 1 360px;order:2}
+#admin-overlay.admin-console #admin-traffic-dates[hidden]{display:none}
+#admin-overlay.admin-console #admin-traffic-dates label{display:grid;gap:6px;font-size:12px;color:#53695e;min-width:0}
+#admin-overlay.admin-console #admin-traffic-dates input{min-width:0;min-height:44px;box-sizing:border-box;padding:9px 10px;border:1px solid #d2ded3;border-radius:7px;background:#fff;color:#203e32;font:inherit;font-size:13px}
+#admin-overlay.admin-console .admin-date-separator{align-self:center;color:#819087}
+#admin-overlay.admin-console .admin-chart-hint{font-size:12px;color:#63746a;line-height:1.7;margin:12px 0 0}
+#admin-overlay.admin-console .admin-chart-cursor{stroke:#7a9485;stroke-width:1;stroke-dasharray:3 4;pointer-events:none}
+#admin-overlay.admin-console .admin-traffic-chart .admin-chart-selected{fill:#205842;stroke:#fff;stroke-width:2;pointer-events:none}
+#admin-overlay.admin-console .admin-chart-readout{padding:14px 16px;background:#f4f6f2;border:1px solid #dde6dc;border-radius:8px;margin-top:12px}
+#admin-overlay.admin-console .admin-chart-readout-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#admin-overlay.admin-console .admin-chart-day{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;color:#294b3a}
+#admin-overlay.admin-console .admin-chart-day-controls{display:flex;gap:4px}
+#admin-overlay.admin-console .admin-chart-day-controls button{border:1px solid #d9e2d8;background:#fff;color:#385841;font:inherit;font-size:12px;border-radius:6px;min-height:44px;padding:8px 12px;cursor:pointer}
+#admin-overlay.admin-console .admin-chart-day-controls button:disabled{opacity:.4;cursor:default}
+#admin-overlay.admin-console .admin-chart-value{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-chart-value>div{min-width:0;color:#677a6d}
+#admin-overlay.admin-console .admin-chart-value .is-selected{color:#1f4e36}
+#admin-overlay.admin-console .admin-chart-value span{display:block;font-size:12px;line-height:1.6;word-break:keep-all}
+#admin-overlay.admin-console .admin-chart-value strong{display:block;font-size:21px;font-weight:600;letter-spacing:-.025em;margin-top:4px}
+#admin-overlay.admin-console .admin-chart-value small{font-size:11px;font-weight:400;margin-left:3px}
+#admin-overlay.admin-console .admin-traffic-chart :is(button,svg):focus-visible,#admin-overlay.admin-console #admin-traffic-dates :is(input,button):focus-visible{outline:2px solid #356a4c;outline-offset:3px}
+@media(max-width:650px){
+ #admin-overlay.admin-console #admin-traffic-dates{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;flex:1 0 100%}
+ #admin-overlay.admin-console #admin-traffic-dates[hidden]{display:none}
+ #admin-overlay.admin-console .admin-date-separator{display:none}
+ #admin-overlay.admin-console #admin-traffic-dates button{grid-column:1/-1;min-height:44px}
+ #admin-overlay.admin-console .admin-chart-readout{padding:12px}
+ #admin-overlay.admin-console .admin-chart-value{gap:8px}
+ #admin-overlay.admin-console .admin-chart-value span{font-size:11px}
+ #admin-overlay.admin-console .admin-chart-value strong{font-size:19px}
+}
+
+@media(max-width:650px){#admin-overlay.admin-console #admin-traffic-dates input{font-size:16px!important;width:100%}}
+@media(max-width:480px){#admin-overlay.admin-console #admin-traffic-dates{grid-template-columns:1fr}#admin-overlay.admin-console #admin-traffic-dates label{grid-template-columns:46px minmax(0,1fr);align-items:center}#admin-overlay.admin-console #admin-traffic-dates button{grid-column:auto}}
+
+#admin-overlay.admin-console .admin-analytics-period{font-size:13px;font-weight:600;margin:18px 0 0;color:#294b3a;font-variant-numeric:tabular-nums}#admin-overlay.admin-console .admin-analytics-period span{font-size:11px;font-weight:400;color:#63746a;margin-left:8px}
+
+#admin-overlay.admin-console #admin-traffic-period{order:0}#admin-overlay.admin-console #admin-traffic-export{order:1}#admin-overlay.admin-console #admin-traffic-retry{order:3}
