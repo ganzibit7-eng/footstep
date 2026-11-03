@@ -67,7 +67,7 @@ window.PawCoursePages=Object.freeze(["c133","c159","c172","c223","c224","c225","
 }
 </script>
 <!-- Critical hero requests precede non-hero libraries. -->
-<link rel="preload" href="/hero-park.css?v=20261102-stat-navigation" as="style">
+<link rel="preload" href="/hero-park.css?v=20261103-route-icon" as="style">
 <link rel="preload" href="/assets/fonts/home-sans-subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/assets/hero-park-preview/mobile-480.webp" imagesrcset="/assets/hero-park-preview/mobile-480.webp 480w, /assets/hero-park-preview/mobile-960.webp 941w" imagesizes="100vw" media="(max-width:880px)" fetchpriority="high">
 <link rel="preload" as="image" href="/assets/hero-park-preview/desktop-1280.webp" imagesrcset="/assets/hero-park-preview/desktop-1280.webp 1280w, /assets/hero-park-preview/desktop-1920.webp 1672w" imagesizes="100vw" media="(min-width:881px)" fetchpriority="high">
@@ -1674,7 +1674,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script defer src="/home-places.js?v=20261017-shopping"></script>
 <script defer src="/home-scenes.js?v=20261024-polish"></script>
 
-<link rel="stylesheet" href="/hero-park.css?v=20261102-stat-navigation">
+<link rel="stylesheet" href="/hero-park.css?v=20261103-route-icon">
 <script defer src="/hero-park-player.js?v=20261031-meadow"></script>
 <script defer src="/hero-park.js?v=20261031-breeze"></script>
 
@@ -1809,7 +1809,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       <h1 id="hero-title"><span class="hero-title-line">오늘은 어디로</span> <span class="hero-title-line">산책 갈까요?</span></h1>
       <p class="lead">우리 동네 산책길부터<br>반려견과 함께 갈 수 있는 장소까지.</p>
       <nav class="home-action-bar" aria-label="산책길 탐색">
-        <a class="hero-action-primary" href="#home-explore" data-home-jump="home-explore"><span>산책코스 둘러보기</span><svg class="hero-action-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="hero-action-primary" href="#home-explore" data-home-jump="home-explore"><span>산책코스 둘러보기</span><svg class="hero-action-course-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="18" r="2"/><path d="M7 18h7a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h7"/><circle cx="19" cy="6" r="2"/></svg></a>
         <a class="hero-action-map" href="#map" data-page-nav="map"><svg class="hero-action-map-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span>지도 보기</span></a>
       </nav>
     </div>
