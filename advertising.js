@@ -8,8 +8,8 @@ if(typeof document==='undefined')return;
 document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',event=>{
  if(event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
  const label=link.dataset.packageLabel,selected=document.getElementById('ad-selected'),email=document.getElementById('ad-email-link'),contact=document.getElementById('contact');
- if(selected){selected.hidden=false;selected.textContent='선택한 상품: '+label;}
- if(email)email.href='mailto:footstepbiz@gmail.com?subject='+encodeURIComponent('[발자국 광고 문의] '+label)+'&body='+encodeURIComponent('브랜드명:\n담당자 이메일:\n희망 광고 상품: '+label+'\n희망 게재 기간:\n문의 내용:\n');
+ if(selected){selected.hidden=false;selected.textContent='선택한 노출 방향: '+label;}
+ if(email)email.href='mailto:footstepbiz@gmail.com?subject='+encodeURIComponent('[발자국 광고 문의] '+label)+'&body='+encodeURIComponent('브랜드명:\n담당자 이메일:\n희망 노출 위치: '+label+'\n희망 게재 기간:\n문의 내용:\n');
  // Move keyboard focus with the selected package, not just the viewport.
  if(contact){event.preventDefault();if(root.location.hash!=='#contact')root.history.pushState(null,'','#contact');contact.scrollIntoView({block:'start',behavior:'auto'});contact.querySelector('h2')?.focus({preventScroll:true});}
 }));

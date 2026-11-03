@@ -50,7 +50,7 @@ SHELL_FILES.push('/place-search.js?v=20261027-quality10-search','/place-search.j
 SHELL_FILES.push('/public-update.js?v=20261026-quality9','/photo-display.js?v=20261026-quality9','/place-photos.js?v=20261026-context9');
 SHELL_FILES.push('/traffic.js?v=20261101-measurement');
 SHELL_FILES.push('/card-media.js?v=20261027-quality10');
-SHELL_FILES.push('/advertising.css?v=20261029-final3','/advertising.js?v=20261029-final3','/assets/course-photos/pet_20261012c_d79bd99d8905.webp');
+SHELL_FILES.push('/advertising.css?v=20261029-final3','/advertising.js?v=20261103-partner','/assets/course-photos/pet_20261012c_d79bd99d8905.webp');
 SHELL_FILES.push('/assets/advertising/recruitment.webp');
 SHELL_FILES.push('/home-browse.css?v=20261102','/home-browse.js?v=20261102');
 const allowed=new Set(SHELL_FILES.map(path=>new URL(path,self.location.href).href));
