@@ -10,7 +10,7 @@ test('course counter opens the dedicated directory without changing its identity
  for(const [i,id,label,value,url] of [[0,'courses','산책 코스',counts.courses+'개','/dog-walks/'],[1,'facilities','반려생활 장소',counts.places.toLocaleString('ko-KR')+'곳','/pet-life/']]){
   assert.equal(links[i][1],url);assert(links[i][2].includes('id="hero-stat-'+id+'">'+value+'</span>'));assert(links[i][2].includes('class="hero-stat-label">'+label+'</div>'));assert(!links[i][2].includes('<a '),'no nested interactive links');
  }
- assert.equal((home.match(/class="home-region-arrow" aria-hidden="true"><svg/g)||[]).length,6);
+ assert.equal((home.match(/class="home-region-card" data-home-region=/g)||[]).length,6);assert(!home.includes('home-region-action'));assert(!home.includes('home-region-arrow'));
 });
 test('walk directory preserves canonical, structured data, guides and all local destinations',async()=>{
  const page=await read('dog-walks/index.html'),counts=JSON.parse(await read('data/public-counts.json'));
