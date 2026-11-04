@@ -2492,9 +2492,9 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script src="/weather-widget.js?v=20261017-simple"></script>
 <script src="/map-explorer.js?v=20261024-tools"></script>
 <script src="share-link.js?v=20261016-growth"></script>
-<script src="admin-loader.js?v=20261103-date-range"></script>
+<script src="admin-loader.js?v=20261104-commercial"></script>
 
-<script src="traffic.js?v=20261101-measurement" data-manual></script>
+<script src="traffic.js?v=20261104-commercial" data-manual></script>
 <script src="course-photos.js?v=20261029-dates2"></script>
 <script src="course-info.js?v=20261020-nationwide-b"></script>
 <script src="account-deletion-client.js?v=20261014-member-auth-fix"></script>
@@ -6855,7 +6855,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   const adminPanelController=AdminLoader.create({client:sb,viewer:()=>myDeviceId,mount:()=>PawAdminPanel.create({sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,reauthenticateAdmin:()=>{openNickModal();AuthPresentation.feedback('회원은 삭제되지 않았어요. 관리자 본인 확인을 위해 같은 계정으로 다시 로그인한 뒤 탈퇴 버튼을 다시 눌러 주세요.');},requestAccountDeletion,resolveReport,reviewsFor,showPage,signOutUser,toast,get myDeviceId(){return myDeviceId;},get courses(){return courses;},get bins(){return bins;},get facilities(){return facilities;},get reports(){return reports;},get reviews(){return reviews;}})});
   function renderAdminList(){return adminPanelController.peek()?.renderReports();}
   function resetAdminPanel(){adminPanelController.reset();}
-  async function openAdminDashboard(){try{const panel=await adminPanelController.load();await panel.open();return true;}catch(e){toast('관리자 권한과 연결 상태를 확인해 주세요.');return false;}}
+  async function openAdminDashboard(){try{const panel=await adminPanelController.load();await panel.open();return true;}catch(e){console.warn('관리자 화면 연결 실패',e?.message||'unavailable');toast('관리자 권한과 연결 상태를 확인해 주세요.');return false;}}
   document.getElementById('my-admin-btn').addEventListener('click',async()=>{const button=document.getElementById('my-admin-btn');if(button.disabled)return;button.disabled=true;try{closeProfileModal();await openAdminDashboard();}finally{button.disabled=false;}});
 
   // ===== 스크롤하면 섹션이 부드럽게 나타나는 효과 =====
