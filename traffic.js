@@ -8,7 +8,7 @@
   let excluded=storage('localStorage','paw_analytics_exclude')==='1',started=false,client=null,visitor=null,view=null;
   let active=0,clicks=0,depth=0,lastTick=Date.now(),page=location.pathname,lastSent=0,queued=null;
   let wasVisible=document.visibilityState==='visible',thresholdSent=false;
-  const actions={link:0,button:0,search:0,navigation:0};
+  const actions={link:0,button:0,search:0,navigation:0,ad_banner:0,trip:0};
   const tidy=s=>String(s||'').replace(/[^a-zA-Z0-9_.-]/g,'').slice(0,80);
   function source(){
     const medium=tidy(params.get('utm_medium')),campaign=tidy(params.get('utm_campaign')),utm=tidy(params.get('utm_source'));
@@ -58,11 +58,26 @@
     state.promise=(async()=>{try{const {data,error}=await client.rpc('record_traffic_visit',{p_payload:payload()});if(error)return;if(data?.excluded){excluded=true;}else if(!manual&&storage('localStorage','paw_analytics_exclude')!=='1'){await client.rpc('record_presence',{p_visitor_id:visitor,p_page:'reading'});}}catch(e){}finally{queued=null;if(state.dirty&&!excluded)setTimeout(send,250);}})();
     return state.promise;
   }
+  const commercialRecent=new Map();
+  function commercialClick(event){
+    if(!event.isTrusted||!started||excluded||storage('localStorage','paw_analytics_exclude')==='1'||navigator.webdriver)return false;
+    if(event.type==='auxclick'?event.button!==1:event.button!==undefined&&event.button!==0)return false;
+    const anchor=event.target?.closest?.('a[href]');if(!anchor)return false;
+    let url;try{url=new URL(anchor.href,location.origin);}catch{return false;}
+    let key=null;
+    if(anchor.closest?.('#brand-partner-slot')&&anchor.matches?.('[data-ad-link]'))key='ad_banner';
+    else if(url.protocol==='https:'&&['kr.trip.com','www.trip.com','trip.com'].includes(url.hostname)&&anchor.closest?.('.trip-booking'))key='trip';
+    if(!key)return false;
+    const now=Date.now(),token=key+'|'+url.origin+url.pathname;
+    if(now-(commercialRecent.get(token)||0)<700)return false;
+    commercialRecent.set(token,now);actions[key]=Math.min(1000,actions[key]+1);return true;
+  }
   function interaction(event){
     affiliateClick(event);
     if(!event.isTrusted||!started||excluded||storage('localStorage','paw_analytics_exclude')==='1')return;
     const el=event.target?.closest?.('a,button,[role="button"],input[type="submit"]');if(!el)return;
-    clicks=Math.min(1000,clicks+1);const kind=el.closest('nav')?'navigation':el.matches('a')?'link':'button';actions[kind]=Math.min(1000,actions[kind]+1);if(clicks===1||Date.now()-lastSent>2000)send();
+    const commercial= commercialClick(event);
+    clicks=Math.min(1000,clicks+1);const kind=el.closest('nav')?'navigation':el.matches('a')?'link':'button';actions[kind]=Math.min(1000,actions[kind]+1);if(commercial||clicks===1||Date.now()-lastSent>2000)send();
   }
   async function start(sb){
     if(started)return;started=true;client=sb;
@@ -71,7 +86,7 @@
     if(!/^v[0-9]{10,16}[a-z0-9]{4,20}$/.test(visitor||'')){visitor='v'+Date.now()+Math.random().toString(36).slice(2,10);storage('localStorage','paw_visitor_id',visitor);}
     view=root.crypto.randomUUID();entry=attribution();lastTick=Date.now();wasVisible=document.visibilityState==='visible';
     document.addEventListener('click',interaction,true);
-    document.addEventListener('auxclick',affiliateClick,true);
+    document.addEventListener('auxclick',event=>{affiliateClick(event);if(commercialClick(event))send();},true);
     document.addEventListener('submit',e=>{if(!excluded&&storage('localStorage','paw_analytics_exclude')!=='1'&&e.isTrusted&&e.target?.matches?.('[role="search"],form[data-search],#place-search,#care-form,#map-search-form')){actions.search=Math.min(1000,actions.search+1);send();}},true);
     document.addEventListener('scroll',()=>{if(excluded||storage('localStorage','paw_analytics_exclude')==='1')return;const h=document.documentElement.scrollHeight-innerHeight;if(h>0)depth=Math.max(depth,Math.min(100,Math.round(scrollY/h*100)));},{passive:true});
     document.addEventListener('visibilitychange',()=>{tick();send();lastTick=Date.now();});

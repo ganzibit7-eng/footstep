@@ -35,7 +35,7 @@ function summary(data){
 }
 function chartModel(rows,metric,width=720){
  if(!METRICS[metric])throw new Error('invalid_metric');
- const max=Math.max(1,...rows.map(row=>count(row[metric])??0));let path='',connected=false;
+ const max=Math.ceil(Math.max(2,...rows.map(row=>count(row[metric])??0))/2)*2;let path='',connected=false;
  const points=rows.map((row,index)=>{const value=count(row[metric]),x=rows.length===1?width/2:64+index/Math.max(1,rows.length-1)*(width-104);if(value===null){connected=false;return {date:row.date,value:null,x,y:null};}const y=180-value/max*140;path+=(connected?' L':' M')+x.toFixed(2)+' '+y.toFixed(2);connected=true;return {date:row.date,value,x,y};});
  return {max,path,points};
 }
@@ -54,19 +54,21 @@ function presetRange(days,today=kstDate()){
  if(![1,7,30,90].includes(days))throw new Error('지원하지 않는 통계 기간이에요.');
  const from=new Date(Date.parse(today+'T00:00:00Z')-(days-1)*86400000).toISOString().slice(0,10);return dateRange(from,today,today);
 }
-function mountChart(host,data){
- const rows=dailyRows(data),doc=host.ownerDocument,box=doc.createElement('div');box.className='admin-traffic-chart';
+let chartSequence=0;
+function mountChart(host,data,options={}){
+ const chartMetrics=options.metrics||METRICS,chartId='admin-chart-'+(++chartSequence);
+ const rows=dailyRows(data),doc=host.ownerDocument,box=doc.createElement('div');box.className='admin-traffic-chart';box.style.setProperty('--admin-chart-columns',String(Object.keys(chartMetrics).length));
  let metric='views',index=Math.max(0,rows.length-1),width=Math.max(220,host.clientWidth||720);
  function draw(){
-  const [name]=METRICS[metric],model=chartModel(rows,metric,width);
-  box.innerHTML='<div class="admin-chart-heading"><h4>일별 방문 추이</h4><div class="admin-chart-metrics" aria-label="차트 지표">'+Object.entries(METRICS).map(([key,[label]])=>'<button type="button" data-chart-metric="'+key+'" aria-pressed="'+(metric===key)+'">'+label+'</button>').join('')+'</div></div>'
-   +(rows.length?'<p class="admin-chart-hint" id="admin-chart-hint">그래프를 눌러 날짜별 수치를 확인하세요. 키보드에서는 좌우 방향키로 이동할 수 있어요.</p><svg viewBox="0 0 '+width+' 220" tabindex="0" role="group" aria-label="'+name+' 날짜별 그래프" aria-describedby="admin-chart-hint admin-chart-value">'+[40,110,180].map((y,i)=>'<line x1="64" x2="'+(width-40)+'" y1="'+y+'" y2="'+y+'" class="admin-chart-grid"/><text x="48" y="'+(y+4)+'" text-anchor="end">'+format(Math.round(model.max*(1-i/2)))+'</text>').join('')+'<path d="'+model.path+'" class="admin-chart-line"/>'+model.points.filter(p=>p.value!==null).map(p=>'<circle cx="'+p.x+'" cy="'+p.y+'" r="3" aria-hidden="true"/>').join('')+'<line class="admin-chart-cursor" y1="30" y2="180"/><circle class="admin-chart-selected" r="6"/><text x="40" y="212">'+rows[0].date.slice(5)+'</text>'+(rows.length>1?'<text x="'+(width-40)+'" y="212" text-anchor="end">'+rows.at(-1).date.slice(5)+'</text>':'')+'</svg><div class="admin-chart-readout"><div class="admin-chart-readout-head"><time class="admin-chart-day"></time><div class="admin-chart-day-controls"><button type="button" data-chart-step="-1" aria-label="이전 날짜">이전</button><button type="button" data-chart-step="1" aria-label="다음 날짜">다음</button></div></div><div class="admin-chart-value" id="admin-chart-value" role="status" aria-live="polite"></div></div>':'<p class="empty-admin">표시할 일별 자료가 없어요.</p>')
+  const [name]=chartMetrics[metric],model=chartModel(rows,metric,width);
+  box.innerHTML='<div class="admin-chart-heading"><h4>'+esc(options.title||'일별 방문 추이')+'</h4><div class="admin-chart-metrics" aria-label="차트 지표">'+Object.entries(chartMetrics).map(([key,[label]])=>'<button type="button" data-chart-metric="'+key+'" aria-pressed="'+(metric===key)+'">'+label+'</button>').join('')+'</div></div>'
+   +(rows.length?'<p class="admin-chart-hint" id="'+chartId+'-hint">그래프를 눌러 날짜별 수치를 확인하세요. 키보드에서는 좌우 방향키로 이동할 수 있어요.</p><svg viewBox="0 0 '+width+' 220" tabindex="0" role="group" aria-label="'+name+' 날짜별 그래프" aria-describedby="'+chartId+'-hint '+chartId+'-value">'+[40,110,180].map((y,i)=>'<line x1="64" x2="'+(width-40)+'" y1="'+y+'" y2="'+y+'" class="admin-chart-grid"/><text x="48" y="'+(y+4)+'" text-anchor="end">'+format(Math.round(model.max*(1-i/2)))+'</text>').join('')+'<path d="'+model.path+'" class="admin-chart-line"/>'+model.points.filter(p=>p.value!==null).map(p=>'<circle cx="'+p.x+'" cy="'+p.y+'" r="3" aria-hidden="true"/>').join('')+'<line class="admin-chart-cursor" y1="30" y2="180"/><circle class="admin-chart-selected" r="6"/><text x="40" y="212">'+rows[0].date.slice(5)+'</text>'+(rows.length>1?'<text x="'+(width-40)+'" y="212" text-anchor="end">'+rows.at(-1).date.slice(5)+'</text>':'')+'</svg><div class="admin-chart-readout"><div class="admin-chart-readout-head"><time class="admin-chart-day"></time><div class="admin-chart-day-controls"><button type="button" data-chart-step="-1" aria-label="이전 날짜">이전</button><button type="button" data-chart-step="1" aria-label="다음 날짜">다음</button></div></div><div class="admin-chart-value" id="'+chartId+'-value" role="status" aria-live="polite"></div></div>':'<p class="empty-admin">표시할 일별 자료가 없어요.</p>')
    +'<p class="admin-chart-note">한국 시간 기준 · 오늘 값은 조회 시각까지 집계합니다. 미확인 값은 선을 연결하지 않습니다.</p>';
   const info=box.querySelector('.admin-chart-value'),svg=box.querySelector('svg');
   function select(next=index){
    index=Math.max(0,Math.min(rows.length-1,next));const row=rows[index];if(!row)return;
    box.querySelector('.admin-chart-day').textContent=row.date.replaceAll('-','.');
-   info.innerHTML=Object.entries(METRICS).map(([key,[label,unit]])=>'<div'+(key===metric?' class="is-selected"':'')+'><span>'+label+'</span><strong>'+format(row[key])+'<small>'+(row[key]===null?'미확인':unit)+'</small></strong></div>').join('');
+   info.innerHTML=Object.entries(chartMetrics).map(([key,[label,unit]])=>'<div'+(key===metric?' class="is-selected"':'')+'><span>'+label+'</span><strong>'+format(row[key])+'<small>'+(row[key]===null?(options.unknownLabel||'미확인'):unit)+'</small></strong></div>').join('');
    const point=model.points[index],cursor=box.querySelector('.admin-chart-cursor'),dot=box.querySelector('.admin-chart-selected');
    cursor.setAttribute('x1',point.x);cursor.setAttribute('x2',point.x);dot.setAttribute('cx',point.x);dot.setAttribute('cy',point.y??180);dot.style.display=point.value===null?'none':'';
    box.querySelectorAll('[data-chart-step]').forEach(b=>{b.disabled=Number(b.dataset.chartStep)<0?index===0:index===rows.length-1;});

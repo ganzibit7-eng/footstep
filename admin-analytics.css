@@ -41,10 +41,10 @@
 
 /* Date selection and readout belong to the analytics panel, not public pages. */
 #admin-overlay.admin-console .admin-traffic-toolbar{gap:10px;align-items:end;padding:14px 0;border-block:1px solid #e0e7df}
-#admin-overlay.admin-console #admin-traffic-dates{display:flex;align-items:end;gap:10px;flex-wrap:wrap;min-width:0;flex:1 1 360px;order:2}
-#admin-overlay.admin-console #admin-traffic-dates[hidden]{display:none}
-#admin-overlay.admin-console #admin-traffic-dates label{display:grid;gap:6px;font-size:12px;color:#53695e;min-width:0}
-#admin-overlay.admin-console #admin-traffic-dates input{min-width:0;min-height:44px;box-sizing:border-box;padding:9px 10px;border:1px solid #d2ded3;border-radius:7px;background:#fff;color:#203e32;font:inherit;font-size:13px}
+#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates){display:flex;align-items:end;gap:10px;flex-wrap:wrap;min-width:0;flex:1 1 360px;order:2}
+#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates)[hidden]{display:none}
+#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) label{display:grid;gap:6px;font-size:12px;color:#53695e;min-width:0}
+#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) input{min-width:0;min-height:44px;box-sizing:border-box;padding:9px 10px;border:1px solid #d2ded3;border-radius:7px;background:#fff;color:#203e32;font:inherit;font-size:13px}
 #admin-overlay.admin-console .admin-date-separator{align-self:center;color:#819087}
 #admin-overlay.admin-console .admin-chart-hint{font-size:12px;color:#63746a;line-height:1.7;margin:12px 0 0}
 #admin-overlay.admin-console .admin-chart-cursor{stroke:#7a9485;stroke-width:1;stroke-dasharray:3 4;pointer-events:none}
@@ -55,27 +55,38 @@
 #admin-overlay.admin-console .admin-chart-day-controls{display:flex;gap:4px}
 #admin-overlay.admin-console .admin-chart-day-controls button{border:1px solid #d9e2d8;background:#fff;color:#385841;font:inherit;font-size:12px;border-radius:6px;min-height:44px;padding:8px 12px;cursor:pointer}
 #admin-overlay.admin-console .admin-chart-day-controls button:disabled{opacity:.4;cursor:default}
-#admin-overlay.admin-console .admin-chart-value{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-chart-value{display:grid;grid-template-columns:repeat(var(--admin-chart-columns,3),minmax(0,1fr));gap:12px;margin-top:12px;font-variant-numeric:tabular-nums}
 #admin-overlay.admin-console .admin-chart-value>div{min-width:0;color:#677a6d}
 #admin-overlay.admin-console .admin-chart-value .is-selected{color:#1f4e36}
 #admin-overlay.admin-console .admin-chart-value span{display:block;font-size:12px;line-height:1.6;word-break:keep-all}
 #admin-overlay.admin-console .admin-chart-value strong{display:block;font-size:21px;font-weight:600;letter-spacing:-.025em;margin-top:4px}
 #admin-overlay.admin-console .admin-chart-value small{font-size:11px;font-weight:400;margin-left:3px}
-#admin-overlay.admin-console .admin-traffic-chart :is(button,svg):focus-visible,#admin-overlay.admin-console #admin-traffic-dates :is(input,button):focus-visible{outline:2px solid #356a4c;outline-offset:3px}
+#admin-overlay.admin-console .admin-traffic-chart :is(button,svg):focus-visible,#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) :is(input,button):focus-visible{outline:2px solid #356a4c;outline-offset:3px}
 @media(max-width:650px){
- #admin-overlay.admin-console #admin-traffic-dates{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;flex:1 0 100%}
- #admin-overlay.admin-console #admin-traffic-dates[hidden]{display:none}
+ #admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:100%;flex:1 0 100%}
+ #admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates)[hidden]{display:none}
  #admin-overlay.admin-console .admin-date-separator{display:none}
- #admin-overlay.admin-console #admin-traffic-dates button{grid-column:1/-1;min-height:44px}
+ #admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) button{grid-column:1/-1;min-height:44px}
  #admin-overlay.admin-console .admin-chart-readout{padding:12px}
  #admin-overlay.admin-console .admin-chart-value{gap:8px}
  #admin-overlay.admin-console .admin-chart-value span{font-size:11px}
  #admin-overlay.admin-console .admin-chart-value strong{font-size:19px}
 }
 
-@media(max-width:650px){#admin-overlay.admin-console #admin-traffic-dates input{font-size:16px!important;width:100%}}
-@media(max-width:480px){#admin-overlay.admin-console #admin-traffic-dates{grid-template-columns:1fr}#admin-overlay.admin-console #admin-traffic-dates label{grid-template-columns:46px minmax(0,1fr);align-items:center}#admin-overlay.admin-console #admin-traffic-dates button{grid-column:auto}}
+@media(max-width:650px){#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) input{font-size:16px!important;width:100%}}
+@media(max-width:480px){#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates){grid-template-columns:1fr}#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) label{grid-template-columns:46px minmax(0,1fr);align-items:center}#admin-overlay.admin-console :is(#admin-traffic-dates,#admin-commercial-dates) button{grid-column:auto}}
 
 #admin-overlay.admin-console .admin-analytics-period{font-size:13px;font-weight:600;margin:18px 0 0;color:#294b3a;font-variant-numeric:tabular-nums}#admin-overlay.admin-console .admin-analytics-period span{font-size:11px;font-weight:400;color:#63746a;margin-left:8px}
 
 #admin-overlay.admin-console #admin-traffic-period{order:0}#admin-overlay.admin-console #admin-traffic-export{order:1}#admin-overlay.admin-console #admin-traffic-retry{order:3}
+
+#admin-overlay.admin-console .admin-commercial-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+#admin-overlay.admin-console .admin-commercial-cards button{padding:14px;text-align:left;border:1px solid #dce4db;border-radius:9px;background:#fff;min-width:0;color:#254432;font:inherit;cursor:pointer}
+#admin-overlay.admin-console .admin-commercial-cards button[aria-pressed=true]{border-color:#49735b;background:#edf3ed}
+#admin-overlay.admin-console .admin-commercial-cards button:focus-visible{outline:2px solid #356a4c;outline-offset:3px}
+#admin-overlay.admin-console .admin-commercial-cards span{font-size:12px;display:block;line-height:1.7}
+#admin-overlay.admin-console .admin-commercial-cards strong{display:block;font-size:25px;margin-top:10px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+#admin-overlay.admin-console .admin-commercial-cards small{font-size:11px;font-weight:400;margin-left:4px}
+#admin-overlay.admin-console .admin-commercial-cards em{display:block;font-size:12px;font-style:normal;color:#63776a;margin-top:8px}
+#admin-overlay.admin-console #admin-commercial-period{order:0}#admin-overlay.admin-console #admin-commercial-export{order:1}#admin-overlay.admin-console #admin-commercial-retry{order:3}
+@media(max-width:650px){#admin-overlay.admin-console .admin-commercial-cards{grid-template-columns:repeat(2,minmax(0,1fr))}#admin-overlay.admin-console .admin-commercial-cards button{padding:12px}}

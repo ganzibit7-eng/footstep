@@ -29,5 +29,17 @@ function browser({search='',referrer='',shared=new Map(),test=false}={}){
  const quick=browser();await quick.start();quick.advance(100);quick.listeners.click({isTrusted:true,target:{closest:()=>el}});await quick.flush();assert.equal(quick.calls.at(-1).p_payload.clicks,1,'first trusted click inside 2 seconds is sent immediately');assert.equal(quick.calls.at(-1).p_payload.view_token,quick.calls[0].p_payload.view_token);
  const visibility=browser();await visibility.start();visibility.advance(1500);visibility.ctx.document.visibilityState='hidden';visibility.listeners.visibilitychange();await visibility.flush();assert.equal(visibility.calls.at(-1).p_payload.active_seconds,1,'final visible fraction is included');visibility.advance(60000);visibility.ctx.document.visibilityState='visible';visibility.listeners.visibilitychange();await visibility.flush();assert.equal(visibility.calls.at(-1).p_payload.active_seconds,1,'hidden time is never charged on resume');
  const hidden=browser();hidden.ctx.document.visibilityState='hidden';await hidden.start();hidden.advance(10000);hidden.timers.find(t=>t.ms===1000).fn();assert.equal(hidden.calls.length,1,'hidden initial load cannot qualify as engagement');
+
+ const business=browser();await business.start();let prevented=0;
+ const anchor=(href,type)=>({href,dataset:{},matches:sel=>sel==='a'||sel==='[data-ad-link]'&&type==='ad',closest:sel=>sel==='#brand-partner-slot'&&type==='ad'?{}:sel==='.trip-booking'&&type==='trip'?{}:null});
+ const hit=(el,extra={})=>({isTrusted:true,button:0,target:{closest:sel=>sel==='a[data-shopping-item]'?null:el},preventDefault(){prevented++;},...extra});
+ const ad=anchor('https://balzaguk.com/advertise/','ad');business.listeners.click(hit(ad));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.ad_banner,1);
+ business.listeners.click(hit(ad));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.ad_banner,1,'rapid duplicate cannot count twice');
+ business.advance(701);business.listeners.click(hit(ad));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.ad_banner,2);
+ const trip=anchor('https://kr.trip.com/hotels/test/?private=not-stored','trip');business.listeners.click(hit(trip));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.trip,1);assert(!JSON.stringify(business.calls).includes('private=not-stored'));assert.equal(prevented,0,'analytics never blocks affiliate navigation');
+ business.advance(1000);business.listeners.auxclick(hit(trip,{type:'auxclick',button:1}));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.trip,2);
+ business.advance(1000);business.listeners.click(hit(anchor('https://kr.trip.com.evil.test/','trip')));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.trip,2);
+ business.advance(1000);business.listeners.click(hit(trip,{isTrusted:false}));await business.flush();assert.equal(business.calls.at(-1).p_payload.actions.trip,2);
+ business.ctx.localStorage.setItem('paw_analytics_exclude','1');const last=business.calls.length;business.listeners.click(hit(trip));await business.flush();assert.equal(business.calls.length,last);
  console.log('PASS: one token per load, visible-only duration, trusted clicks, internal attribution carry, query minimization, work-test exclusion.');
 })().catch(e=>{console.error(e);process.exit(1);});
