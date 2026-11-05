@@ -54,7 +54,7 @@
   function reportLink(place){
     const subject=encodeURIComponent('발자국 장소 정보 수정 제보: '+String(place?.name||'장소'));
     const body=encodeURIComponent('장소: '+String(place?.name||'')+'\n장소 ID: '+String(place?.id||'')+'\n변경된 내용:\n확인 가능한 공식 안내 주소 또는 확인 경위:\n');
-    return '<a href="mailto:footstepbiz@gmail.com?subject='+subject+'&amp;body='+body+'" style="font-size:13px">정보 수정 제보 ↗</a>';
+    return '<a href="mailto:contact@balzaguk.com?subject='+subject+'&amp;body='+body+'" style="font-size:13px">정보 수정 제보 ↗</a>';
   }
   function freshness(place,now=Date.now()){
     const data=evidence||root.PlaceEvidence,pet=data?.conditions(place),camp=data?.camping?.(place),record=data?.get?.(place),checked=pet?(record?.petChecked||record?.checked):camp?.checked;

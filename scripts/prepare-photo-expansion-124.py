@@ -62,7 +62,7 @@ assert len({i for r in raw for i in r['courses']})==len(raw)
 def download(r):
  f=INPUTS/(r['local']+'.jpg')
  if not f.exists():
-  req=urllib.request.Request(r.get('download',r['original']),headers={'User-Agent':'FootstepPhotoAudit/1.0 (footstepbiz@gmail.com)'})
+  req=urllib.request.Request(r.get('download',r['original']),headers={'User-Agent':'FootstepPhotoAudit/1.0 (contact@balzaguk.com)'})
   f.write_bytes(urllib.request.urlopen(req,timeout=45).read())
  im=Image.open(f);im.load();assert im.width>=400 and im.height>=200
  return r

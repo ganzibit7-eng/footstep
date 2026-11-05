@@ -14,7 +14,7 @@
     deletion_start_failed:'탈퇴 처리를 시작하지 못했어요. 잠시 후 다시 시도해 주세요.',service_unavailable:'탈퇴 서버를 사용할 수 없어요. 잠시 후 다시 시도해 주세요.',
     network_error:'연결이 끊겨 삭제 결과를 확인하지 못했어요. 회원 목록이나 로그인 상태를 확인한 뒤 재시도해 주세요.'
   };
-  function message(code){return messages[code]||'삭제 완료를 확인하지 못했어요. 일부 삭제됐을 수 있으니 다시 로그인해 재시도하거나 footstepbiz@gmail.com으로 문의해 주세요.';}
+  function message(code){return messages[code]||'삭제 완료를 확인하지 못했어요. 일부 삭제됐을 수 있으니 다시 로그인해 재시도하거나 contact@balzaguk.com으로 문의해 주세요.';}
   async function request(sb,body){
     let session;
     try{const result=await sb.auth.getSession();if(result.error)return {error:'auth_unavailable'};session=result.data?.session;}catch{return {error:'auth_unavailable'};}
