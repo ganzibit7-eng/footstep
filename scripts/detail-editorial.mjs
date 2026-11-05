@@ -13,6 +13,14 @@ export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION=CONTROL_VERSION;
 export const DETAIL_SCRIPT_VERSION='20261027-quality11';
+export const detailScriptVersion=html=>html.includes('id="detail-route-data"')?'20261105-routes':DETAIL_SCRIPT_VERSION;
+export const detailScriptAsset=html=>html.includes('id="detail-route-data"')?'route-experience.js?v='+detailScriptVersion(html):'detail-editorial.js?v='+DETAIL_SCRIPT_VERSION;
+export function routeAssets(html){
+ if(!html.includes('id="detail-route-data"'))return html;
+ if(!html.includes('/route-experience.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/route-experience.css?v=20261105-routes"></head>');
+ if(!html.includes('/route-geometry.js?'))html=html.replace(/(<script defer src="\/detail-editorial\.js)/,'<script defer src="/route-geometry.js?v=20261105-routes"></script>$1');
+ return html.replace(/(?:detail-editorial|route-experience)\.js\?v=[\w-]+/g,detailScriptAsset(html));
+}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const text=s=>String(s||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g,c=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&nbsp;':' '}[c])).trim();
 
@@ -242,7 +250,7 @@ export function relatedCards(html,index){
 }
 
 export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
- if(html.includes('data-detail-template="editorial-v3"')||html.includes('data-detail-template="editorial-v2"'))return html;
+ if(html.includes('data-detail-template="editorial-v3"')||html.includes('data-detail-template="editorial-v2"'))return routeAssets(html);
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?]+)"/)?.[1];
  const match=canonical?.match(/^\/(places|courses|bins|pet-care\/places)\/([^/]+)\/$/);if(!match)return html;
  const professional=match[1]==='pet-care/places';if(!professional&&!html.includes('<article class="card">'))return html;
@@ -344,7 +352,7 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
   const directory=html.match(/<nav aria-label="관련 장소 목록"[^>]*>[\s\S]*?<\/nav>/)?.[0];
   if(directory&&!html.includes('class="place-directory"'))html=html.replace(directory,'').replace('</main>','<details class="place-directory"><summary>지역·분류별 장소 더 보기</summary>'+directory+'</details></main>');
  }
- html=html.replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>');
+ html=routeAssets(html.replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>'));
  html=html.replace(/<script>\s*\(function\(\)\{\s*var button=document\.getElementById\('share-detail'\)[\s\S]*?<\/script>/,'');
  html=relatedCards(html,relatedIndex);
  return html;
