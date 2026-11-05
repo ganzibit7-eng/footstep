@@ -5,3 +5,10 @@
 .discovery-page .directory-scope{font-size:14px;line-height:1.7;color:var(--rp-muted,#5b6c61);margin:0 0 20px}
 .discovery-page .directory-scope a{text-underline-offset:3px}
 @media(hover:hover){.discovery-page #place-active-filters .directory-filter-chip:hover{border-color:#8b9e8e;background:var(--rp-paper,#faf9f2)}}
+.discovery-page .directory-course-options{min-width:0;margin:8px 0 0;padding:12px 0 0;border:0;border-top:1px solid var(--rp-line,#d1d9cf)}
+.discovery-page .directory-course-options[hidden]{display:none}
+.discovery-page .directory-course-options legend{padding:0 10px 0 0;font-size:14px;font-weight:600}
+.discovery-page .directory-course-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.discovery-page .directory-course-fields>.search-field{grid-column:auto}
+.discovery-page #place-course-help{margin:10px 0 4px;font-size:14px;line-height:1.7;color:var(--rp-muted,#5b6c61)}
+@media(max-width:600px){.discovery-page #place-results{grid-template-columns:minmax(0,1fr)}.discovery-page .directory-course-fields{grid-template-columns:minmax(0,1fr)}}

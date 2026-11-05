@@ -1,0 +1,122 @@
+[
+  {
+    "cardWidth": 304.66668701171875,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "304.667px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 360
+  },
+  {
+    "cardWidth": 334.66668701171875,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "334.667px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 390
+  },
+  {
+    "cardWidth": 374.6666870117187,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "374.667px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 430
+  },
+  {
+    "cardWidth": 332.3333435058594,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "332.333px 332.333px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 768
+  },
+  {
+    "cardWidth": 298.88543701171875,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "298.885px 298.885px 298.885px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 1024
+  },
+  {
+    "cardWidth": 336,
+    "controls": [
+      {
+        "height": 46,
+        "id": "place-duration",
+        "value": "60"
+      },
+      {
+        "height": 46,
+        "id": "place-difficulty",
+        "value": "쉬움"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "grid": "336px 336px 336px",
+    "overflow": false,
+    "selection": "서울 · 산책 코스 · 30분 초과~1시간 · 쉬움",
+    "width": 1440
+  }
+]

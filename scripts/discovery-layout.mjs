@@ -3,7 +3,8 @@ import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 
 function compactFilters(html){
- if(html.includes('id="find-place"')&&!html.includes('/discovery-search.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/discovery-search.css?v=20261105-search"></head>');
+ if(html.includes('id="find-place"')&&!html.includes('/discovery-search.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/discovery-search.css?v=20261105-course-filters"></head>');
+ html=html.replace(/\/discovery-search\.css\?v=[\w-]+/g,'/discovery-search.css?v=20261105-course-filters');
  if(html.includes('id="place-sort"')&&!html.includes('value="relevance"'))html=html.replace('<option value="photos">사진 있는 곳 먼저</option>','<option value="photos">사진 있는 곳 먼저</option><option value="relevance">검색어 관련성</option>');
  if(html.includes('id="find-place"')&&!html.includes('id="place-search-scope"'))html=html.replace('<ul id="place-results">','<p id="place-search-scope" class="directory-scope">이 화면은 산책코스·동반장소·편의시설 자료를 검색합니다. 동물병원·미용 등은 <a href="/pet-care/">전문업소 찾기</a>에서 검색하세요.</p><ul id="place-results">');
 
@@ -15,13 +16,17 @@ function compactFilters(html){
  if(html.includes('id="find-place"')&&!html.includes('id="place-filter-options"')){
   html=html.replace(/(<div class="search-field"><label for="place-kind">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-region">[\s\S]*?<\/select><\/div>)(<div class="search-field"><label for="place-category">[\s\S]*?<\/select><\/div>)/,'<details id="place-filter-options" class="directory-filter-options" open><summary>지역·장소 종류 <span id="place-filter-selection">전체</span></summary><div class="directory-filter-fields">$1$2$3</div></details>');
  }
+ if(html.includes('id="place-filter-options"')&&!html.includes('id="place-course-options"')){
+  const controls='<fieldset id="place-course-options" class="directory-course-options" hidden aria-describedby="place-course-help"><legend>산책코스 조건</legend><div class="directory-course-fields"><div class="search-field"><label for="place-duration">소요 시간</label><select id="place-duration"><option value="">전체 시간</option><option value="30">30분 이하</option><option value="60">30분 초과~1시간</option><option value="120">1시간 초과~2시간</option><option value="over120">2시간 초과</option></select></div><div class="search-field"><label for="place-difficulty">등록 난이도</label><select id="place-difficulty"><option value="">전체 난이도</option><option value="쉬움">쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></div></div><p id="place-course-help">공식 안내 시간 또는 평지 예상 시간 기준입니다. 등록 난이도는 경로 검증·안전을 뜻하지 않으며, 미확인 값은 조건 선택 시 제외됩니다.</p></fieldset>';
+  html=html.replace(/(<details id="place-filter-options"[\s\S]*?)(<\/details>)/,'$1'+controls+'$2');
+ }
  // Establish the existing mobile closed state before the large JSON payload is
  // parsed, rather than collapsing a visible desktop-sized filter after paint.
- const firstPaint='<script data-directory-layout>(function(){var p=document.getElementById("place-filter-options"),q=new URLSearchParams(location.search);if(p&&window.matchMedia("(max-width:600px)").matches)p.open=false;if(["q","kind","region","category","pet"].some(function(k){return !!q.get(k);}))document.documentElement.setAttribute("data-directory-requested","");})();</script>';
+ const firstPaint='<script data-directory-layout>(function(){var p=document.getElementById("place-filter-options"),c=document.getElementById("place-course-options"),q=new URLSearchParams(location.search);if(p&&window.matchMedia("(max-width:600px)").matches)p.open=false;if(c)c.hidden=q.get("kind")!=="courses";if(["q","kind","region","category","pet","duration","difficulty"].some(function(k){return !!q.get(k);}))document.documentElement.setAttribute("data-directory-requested","");})();</script>';
  if(html.includes('data-directory-layout'))html=html.replace(/<script data-directory-layout>[\s\S]*?<\/script>/,firstPaint);
  else if(html.includes('id="place-filter-options"'))html=html.replace(/(<details id="place-filter-options"[\s\S]*?<\/details>)/,'$1'+firstPaint);
  if(!html.includes('id="place-active-filters"'))html=html.replace('<ul id="place-results">','<p id="place-active-filters" class="directory-active-filters"></p><ul id="place-results">');
- return html.replaceAll('/place-search.js?v=20261024-polish','/place-search.js?v=20261024-third').replaceAll('/readability.css?v=20261024-polish','/readability.css?v=20261024-third-layout');
+ return html.replaceAll('<summary>지역·장소 종류 ','<summary>탐색 조건 ').replaceAll('/place-search.js?v=20261024-polish','/place-search.js?v=20261024-third').replaceAll('/readability.css?v=20261024-polish','/readability.css?v=20261024-third-layout');
 }
 
 // Shared by the published directory and the generator. No source data or SEO changes.

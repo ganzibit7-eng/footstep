@@ -14,7 +14,8 @@ test('directory refinement preserves data, search controls, destinations and SEO
  for(const pattern of [/<script[^>]*>[\s\S]*?<\/script>/g,/<link rel="canonical"[^>]*>/g])assert.deepEqual([...fixture.matchAll(pattern)].map(m=>m[0]),[...next.matchAll(pattern)].map(m=>m[0]).filter(s=>!s.startsWith('<script data-directory-layout>')));
  assert.equal((next.match(/<script data-directory-layout>/g)||[]).length,1,'one early layout initializer, original scripts unchanged');
  for(const id of ['query','kind','region','category'])assert.equal((next.match(new RegExp('id="place-'+id+'"','g'))||[]).length,1);
- assert.equal((next.match(/class="search-field"/g)||[]).length,4);assert(next.includes('href="#places"'));
+ assert.equal((next.match(/class="search-field"/g)||[]).length,6);assert(next.includes('href="#places"'));
+ for(const id of ['duration','difficulty'])assert.equal((next.match(new RegExp('id="place-'+id+'"','g'))||[]).length,1);
  assert(next.includes('id="place-sort"'));assert.equal(refineDiscovery(next),next);
 });
 
