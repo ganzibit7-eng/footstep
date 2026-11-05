@@ -228,3 +228,18 @@ body:has(#admin-overlay.show){overflow:hidden}
 #admin-overlay .admin-view-heading{position:static;top:auto;z-index:auto;background:none;box-shadow:none;width:auto;min-height:0}
 @media(max-width:650px){#admin-overlay .admin-navigation button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px}#admin-overlay .admin-navigation button strong{white-space:nowrap;display:block;text-align:center}#admin-overlay .admin-navigation button svg{width:18px;height:18px;flex:none}}
 #admin-overlay #admin-close{width:44px!important;height:44px!important;min-width:44px;min-height:44px;color:#52695b}
+#admin-overlay .admin-route-drafts{max-width:850px;min-width:0;color:#293e33;font-size:14px;line-height:1.7}
+#admin-overlay .admin-route-drafts .route-draft-notice{padding:14px 16px;border-left:3px solid #708673;background:#f1f4ed}
+#admin-overlay .admin-route-drafts label{display:flex;flex-direction:column;gap:6px;margin:16px 0 8px;font-weight:600}
+#admin-overlay .admin-route-drafts input,#admin-overlay .admin-route-drafts select,#admin-overlay .admin-route-drafts textarea{box-sizing:border-box;width:100%;max-width:100%;min-height:44px;border:1px solid #c9d3c9;border-radius:8px;background:#fff;color:#263d32;padding:10px 12px;font:inherit}
+#admin-overlay .admin-route-drafts textarea{min-height:88px;resize:vertical}
+#admin-overlay .admin-route-drafts button{min-height:44px;padding:10px 14px;margin:8px 6px 8px 0;border:1px solid #c9d3c9;border-radius:8px;background:#f7f8f2;color:#294e3d;font:600 14px/1.5 system-ui;cursor:pointer}
+#admin-overlay .admin-route-drafts [data-save]{background:#294e3d;color:#fff;border-color:#294e3d}
+#admin-overlay .admin-route-drafts :disabled{opacity:.5;cursor:default}
+#admin-overlay .admin-route-drafts :focus-visible{outline:2px solid #52735a;outline-offset:3px}
+#admin-overlay .admin-route-drafts [data-status]{min-height:24px;overflow-wrap:anywhere}
+#admin-overlay .admin-route-drafts [data-map]{height:300px;isolation:isolate;margin:12px 0}
+#admin-overlay .admin-route-drafts .route-draft-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#admin-overlay .admin-route-drafts [data-history]{margin-top:28px;border-top:1px solid #d6ddd3;padding-top:16px}
+#admin-overlay .admin-route-drafts [data-history] button{display:block;width:100%;text-align:left;overflow-wrap:anywhere}
+@media(max-width:650px){#admin-overlay .admin-route-drafts .route-draft-fields{grid-template-columns:1fr}#admin-overlay .admin-route-drafts input,#admin-overlay .admin-route-drafts select,#admin-overlay .admin-route-drafts textarea{font-size:16px}}
