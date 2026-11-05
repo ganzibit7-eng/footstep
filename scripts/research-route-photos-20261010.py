@@ -12,7 +12,7 @@ def query(c):
   p={'action':'query','generator':'geosearch','ggscoord':str(point[0])+'|'+str(point[1]),'ggsradius':'300','ggsnamespace':'6','ggslimit':'15','prop':'imageinfo|coordinates','coprimary':'all','iiprop':'url|extmetadata','iiurlwidth':'900','format':'json'}
   try:
    u='https://commons.wikimedia.org/w/api.php?'+urllib.parse.urlencode(p)
-   req=urllib.request.Request(u,headers={'User-Agent':'FootstepPhotoAudit/1.0 (footstepbiz@gmail.com)'})
+   req=urllib.request.Request(u,headers={'User-Agent':'FootstepPhotoAudit/1.0 (contact@balzaguk.com)'})
    result=json.load(urllib.request.urlopen(req,timeout=20))
    for page in result.get('query',{}).get('pages',{}).values():
     ii=page.get('imageinfo',[{}])[0];m=ii.get('extmetadata',{});license=clean(m.get('LicenseShortName',{}).get('value'))
