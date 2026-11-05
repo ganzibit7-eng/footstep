@@ -17,10 +17,11 @@ class Node{
 function directory(mobile=false,setup={}){
  const nodes={};for(const id of ['place-data','place-search','place-query','place-kind','place-region','place-category','place-results','place-count','place-more','place-sort','discovery-title','place-clear'])nodes[id]=new Node();
  nodes['place-filter-options']=new Node('details');nodes['place-filter-options'].open=true;nodes['place-filter-selection']=new Node();
- const data=Array.from({length:45},(_,i)=>({name:'카페 '+i,path:'/places/'+i+'/',kind:'facilities',region:'서울',info:'서울 주소 · 식당카페',conditions:'미확인'}));
+ for(const id of ['place-course-options','place-duration','place-difficulty'])nodes[id]=new Node();
+ const data=setup.rows||Array.from({length:45},(_,i)=>({name:'카페 '+i,path:'/places/'+i+'/',kind:'facilities',region:'서울',info:'서울 주소 · 식당카페',conditions:'미확인'}));
  data[0].photo={src:'/photo.jpg',width:940,height:625,source:'https://example.com/source',author:'제공기관',licenseScope:'사진만 해당 라이선스 적용',caption:'원본 표시 안내',checked:'2026-10-26',licenseUrl:'https://example.com/license'};
  nodes['place-data'].textContent=JSON.stringify(setup.remote?{version:1,src:'/assets/search-data/discover.json?v=0123456789abcdef',count:data.length,regions:['서울']}:data);nodes['place-count'].parentElement=new Node();
- for(const [id,values]of Object.entries({'place-kind':['','facilities','courses','bins'],'place-region':[''],'place-category':['','식당카페','숙소'],'place-sort':['photos','name','registered']}))for(const value of values){const option=new Node('option');option.value=value;option.textContent=value;nodes[id].append(option);}
+ for(const [id,values]of Object.entries({'place-kind':['','facilities','courses','bins'],'place-region':[''],'place-category':['','식당카페','숙소'],'place-sort':['photos','name','registered'],'place-duration':['','30','60','120','over120'],'place-difficulty':['','쉬움','보통','어려움']}))for(const value of values){const option=new Node('option');option.value=value;option.textContent=value;nodes[id].append(option);}
  nodes['place-sort'].value='photos';
  const history={state:{preserve:'yes'},replaceState(state,_,url){this.state=state;this.url=url;}};
  const window={location:{href:'https://balzaguk.com/discover.html?kind=facilities&category='+encodeURIComponent('식당카페'),search:'?kind=facilities&category='+encodeURIComponent('식당카페')},history};
@@ -29,6 +30,7 @@ function directory(mobile=false,setup={}){
  window.performance={getEntriesByType:()=>[{type:setup.back?'back_forward':'navigate'}]};window.sessionStorage={getItem:()=>JSON.stringify({url:window.location.href,y:1234}),setItem:(_,value)=>{window.saved=value;}};
  if(setup.remote)window.fetch=(...args)=>setup.fetch(data,...args);
  if(setup.empty){window.location.href='https://balzaguk.com/discover.html';window.location.search='';}
+ if(setup.search){window.location.search=setup.search;window.location.href='https://balzaguk.com/discover.html'+setup.search;}
  vm.runInNewContext(fs.readFileSync('place-search.js','utf8'),{window,document:{getElementById:id=>nodes[id],createElement:tag=>new Node(tag),createTextNode:text=>({textContent:text})},URL,URLSearchParams,setTimeout,clearTimeout,AbortController});
  return {nodes,history,data,window};
 }
@@ -107,3 +109,23 @@ test('live directory cards keep one record across photo, heading, credits and bo
 
 test('empty-state relaxation clears only the requested condition and filter chips remain individually actionable',()=>{const {nodes,data}=directory();nodes['place-region'].value='서울';nodes['place-query'].value='없는장소';nodes['place-search'].listeners.submit({preventDefault(){}});const actions=nodes['place-results'].children[0].children.at(-1);actions.children.find(n=>n.textContent==='검색어만 지우기').click();assert.equal(nodes['place-query'].value,'');assert.equal(nodes['place-region'].value,'서울');assert.equal(nodes['place-kind'].value,'facilities');assert.equal(nodes['place-category'].value,'식당카페');const summary=nodes['place-count'].parentElement.sibling;summary.children.find(n=>n.attrs['aria-label']==='지역 서울 조건 해제').click();assert.equal(nodes['place-region'].value,'');assert.equal(nodes['place-category'].value,'식당카페');assert(data.every(r=>r.conditions==='미확인'));});
 test('query relevance is automatic only until an explicit sort choice, and shared URLs preserve photos',()=>{const {nodes,history}=directory();nodes['place-query'].value='카페';nodes['place-search'].listeners.submit({preventDefault(){}});assert.equal(nodes['place-sort'].value,'relevance');assert.match(history.url,/sort=relevance/);nodes['place-sort'].value='photos';nodes['place-sort'].listeners.change();assert.match(history.url,/sort=photos/);nodes['place-clear'].click();assert.equal(nodes['place-sort'].value,'photos');});
+
+
+const courseRows=()=>Array.from({length:45},(_,i)=>({name:'길 '+i,path:'/courses/c'+i+'/',kind:'courses',region:'서울',info:'서울 주소',facts:[{label:'공식 안내 시간',value:(i<30?45:90)+'분'},{label:'등록 난이도',value:i%2?'보통':'쉬움'}]}));
+test('course filters restore shared URL, compose with search and remain separate from facility filters',()=>{
+ const d=directory(true,{rows:courseRows(),search:'?kind=courses&region=서울&duration=60&difficulty=쉬움&sort=name'}),{nodes,history}=d;
+ assert.equal(nodes['place-course-options'].hidden,false);assert.equal(nodes['place-duration'].disabled,false);assert.equal(nodes['place-duration'].value,'60');assert.equal(nodes['place-difficulty'].value,'쉬움');assert.equal(nodes['place-results'].children.length,15);assert.match(history.url,/duration=60/);assert.match(decodeURIComponent(history.url),/difficulty=쉬움/);assert.equal(nodes['place-filter-options'].open,false);
+ nodes['place-filter-options'].open=true;nodes['place-duration'].value='120';nodes['place-duration'].listeners.change();assert.equal(nodes['place-results'].children.length,8);assert.equal(nodes['place-filter-options'].open,true);
+ nodes['place-kind'].value='facilities';nodes['place-kind'].listeners.change();assert.equal(nodes['place-course-options'].hidden,true);assert.equal(nodes['place-duration'].value,'');assert.equal(nodes['place-difficulty'].value,'');assert(!history.url.includes('duration='));assert(!history.url.includes('difficulty='));
+});
+test('course chips and no-result relaxation clear only their own condition; full reset clears both',()=>{
+ const {nodes,history}=directory(false,{rows:courseRows(),search:'?kind=courses&region=서울&duration=30&difficulty=쉬움'});assert.equal(nodes['place-results'].children[0].className,'directory-empty');
+ nodes['place-results'].children[0].children.at(-1).children.find(n=>n.textContent==='시간 조건만 해제').click();assert.equal(nodes['place-duration'].value,'');assert.equal(nodes['place-difficulty'].value,'쉬움');assert.equal(nodes['place-region'].value,'서울');assert.equal(nodes['place-results'].children.length,20);
+ nodes['place-count'].parentElement.sibling.children.find(n=>n.attrs['aria-label']==='등록 난이도 쉬움 조건 해제').click();assert.equal(nodes['place-difficulty'].value,'');assert.equal(nodes['place-kind'].value,'courses');
+ nodes['place-duration'].value='60';nodes['place-duration'].listeners.change();nodes['place-clear'].click();assert.equal(nodes['place-duration'].value,'');assert.equal(nodes['place-difficulty'].value,'');assert(!history.url.includes('duration='));assert.equal(nodes['place-course-options'].hidden,true);
+});
+test('time-only URL chooses courses, incompatible and invalid URL conditions are removed safely',()=>{
+ let d=directory(false,{rows:courseRows(),search:'?duration=60&difficulty=쉬움'});assert.equal(d.nodes['place-kind'].value,'courses');assert.equal(d.nodes['place-results'].children.length,15);
+ d=directory(false,{search:'?kind=facilities&duration=30&difficulty=쉬움'});assert.equal(d.nodes['place-kind'].value,'facilities');assert(!d.history.url.includes('duration='));assert(!d.history.url.includes('difficulty='));
+ d=directory(false,{search:'?kind=courses&duration=__proto__&difficulty=초급'});assert.equal(d.nodes['place-duration'].value,'');assert.equal(d.nodes['place-difficulty'].value,'');assert(!d.history.url.includes('duration='));
+});
