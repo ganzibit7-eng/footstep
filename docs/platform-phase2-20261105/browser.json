@@ -1,0 +1,104 @@
+[
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 360
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 390
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 430
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 768
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 1024
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "name": "검색어 서울숲공원길 조건 해제"
+      },
+      {
+        "height": 44,
+        "name": "산책 코스 조건 해제"
+      }
+    ],
+    "count": "등록 정보 1곳 중 1곳 표시",
+    "live": "polite",
+    "overflow": false,
+    "query": "서울숲공원길",
+    "width": 1440
+  }
+]

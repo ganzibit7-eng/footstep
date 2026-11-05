@@ -1,0 +1,7 @@
+.discovery-page #place-active-filters{display:flex;flex-wrap:wrap;gap:8px;min-height:0}
+.discovery-page #place-active-filters .directory-filter-chip{min-height:44px;padding:8px 12px;border:1px solid var(--rp-line,#d1d9cf);border-radius:7px;background:var(--rp-soft,#eef2eb);color:var(--rp-ink,#263d32);font-family:inherit;font-size:14px;font-weight:500;line-height:1.5;cursor:pointer;text-align:left;overflow-wrap:anywhere;max-width:100%}
+.discovery-page #place-active-filters .directory-filter-chip:focus-visible{outline:2px solid #52735a;outline-offset:3px}
+.discovery-page .directory-empty-actions{display:flex;flex-wrap:wrap;gap:8px}
+.discovery-page .directory-scope{font-size:14px;line-height:1.7;color:var(--rp-muted,#5b6c61);margin:0 0 20px}
+.discovery-page .directory-scope a{text-underline-offset:3px}
+@media(hover:hover){.discovery-page #place-active-filters .directory-filter-chip:hover{border-color:#8b9e8e;background:var(--rp-paper,#faf9f2)}}

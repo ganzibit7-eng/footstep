@@ -2,10 +2,19 @@
   'use strict';
   var categories=['공원관광','쇼핑','숙소','식당카페','캠핑'];
   var textIndex=new WeakMap();
+  var regionLabels={'서울특별시':'서울','서울시':'서울','경기도':'경기','부산광역시':'부산','인천광역시':'인천','대구광역시':'대구','광주광역시':'광주','대전광역시':'대전','울산광역시':'울산','세종특별자치시':'세종','강원특별자치도':'강원','강원도':'강원','전북특별자치도':'전북','전라북도':'전북','전라남도':'전남','충청북도':'충북','충청남도':'충남','경상북도':'경북','경상남도':'경남','제주특별자치도':'제주','제주도':'제주'};
+  var regionPattern=new RegExp('(^|\\s)('+Object.keys(regionLabels).join('|')+')(?=\\s|$)','g');
+  function normalize(value){return String(value||'').normalize('NFKC').toLowerCase().replace(/[\u200b-\u200d\ufeff]/g,'').replace(/[·ㆍ]/g,' ').replace(/[‐‑‒–—−]/g,'-').replace(/\s+/g,' ').trim().replace(regionPattern,function(_,space,label){return space+regionLabels[label];});}
+  function compact(value){return normalize(value).replace(/\s/g,'').replace(/([가-힣a-z])[-_]+(?=[가-힣a-z])/g,'$1');}
+  function compactField(value){var text=String(value||'').toLowerCase();if(/[\u0300-\u036f\u1100-\u11ff\u3130-\u318f\uff00-\uffef]/.test(text))text=text.normalize('NFKC');return text.replace(/[\s·ㆍ\u200b-\u200d\ufeff]/g,'').replace(/[‐‑‒–—−]/g,'-').replace(/([가-힣a-z])[-_]+(?=[가-힣a-z])/g,'$1');}
+  function terms(value){return normalize(value).split(/\s+/).filter(Boolean).map(compact);}
+  function wordPattern(value){var chars=Array.from(value),escape=function(c){return '\\u{'+c.codePointAt(0).toString(16)+'}';};return new RegExp(chars.map(function(c,i){var gap=/[가-힣a-z]/.test(c)&&/[가-힣a-z]/.test(chars[i+1]||'')?'[\\s·ㆍ\\u200b-\\u200d\\ufeff_‐‑‒–—−-]*':'[\\s·ㆍ\\u200b-\\u200d\\ufeff]*';return escape(c)+(i<chars.length-1?gap:'');}).join(''),'u');}
   function searchable(item){
     var prior=textIndex.get(item);
-    if(prior&&prior.name===item.name&&prior.region===item.region&&prior.info===item.info&&prior.conditions===item.conditions)return prior.text;
-    var value={name:item.name,region:item.region,info:item.info,conditions:item.conditions,text:[item.name,item.region,item.info,item.conditions].join(' ').toLocaleLowerCase('ko')};textIndex.set(item,value);return value.text;
+    if(prior&&prior.name===item.name&&prior.region===item.region&&prior.info===item.info&&prior.conditions===item.conditions)return prior;
+    var text=[item.name,item.region,item.info,item.conditions].join(' \u0000 ').toLowerCase();
+    if(/[\u0300-\u036f\u1100-\u11ff\u3130-\u318f\uff00-\uffef]/.test(text))text=text.normalize('NFKC');
+    var value={name:item.name,region:item.region,info:item.info,conditions:item.conditions,text:text};textIndex.set(item,value);return value;
   }
   function category(item){return item.kind==='facilities'?(item.info||'').split(' · ').pop():'';}
   function companionKnown(item){
@@ -20,13 +29,17 @@
     return scopes.find(r=>r.region===(state.region||'')&&r.category===(state.category||'')&&/^\/places\/(?:regions\/[a-z-]+\/(?:[a-z-]+\/)?|[a-z-]+\/)$/.test(r.path||''))||null;
   }
   function filter(data,state){
-    var words=(state.q||'').trim().toLocaleLowerCase('ko').split(/\s+/).filter(Boolean);
+    var words=terms(state.q).map(wordPattern);
     return data.filter(function(item){
-      var text=searchable(item);
-      return (!state.kind||item.kind===state.kind)&&(!state.region||item.region===state.region)&&(!state.category||category(item)===state.category)&&(!state.pet||companionKnown(item))&&words.every(function(word){return text.includes(word);});
+      if((state.kind&&item.kind!==state.kind)||(state.region&&item.region!==state.region)||(state.category&&category(item)!==state.category)||(state.pet&&!companionKnown(item)))return false;
+      if(!words.length)return true;var text=searchable(item);return words.every(function(word){return word.test(text.text);});
     });
   }
-  function ordered(data,sort){
+  function ordered(data,sort,q){
+    if(sort==='relevance'&&terms(q).length){
+      var words=terms(q),whole=compact(q);
+      return data.map(function(item,index){var record=searchable(item),name=record.nameKey||(record.nameKey=compactField(item.name)),n=words.filter(function(w){return name.includes(w);}).length;return {item:item,index:index,level:name===whole?4:name.startsWith(whole)?3:n===words.length?2:n?1:0,n:n};}).sort(function(a,b){return b.level-a.level||b.n-a.n||a.index-b.index;}).map(function(row){return row.item;});
+    }
     if(sort==='conditions')return data.slice().sort(function(a,b){return Number(companionKnown(b))-Number(companionKnown(a))||Number(!!b.photo)-Number(!!a.photo);});
     if(sort==='name')return data.slice().sort(function(a,b){return a.name.localeCompare(b.name,'ko');});
     if(sort==='photos')return data.slice().sort(function(a,b){return Number(!!b.photo)-Number(!!a.photo);});
@@ -71,10 +84,11 @@
       return Promise.all(parts.map(p=>part(p).load())).then(()=>merged=join());
     }};
   }
-  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource,companionKnown:companionKnown,curationDestination:curationDestination};return;}
+  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource,companionKnown:companionKnown,curationDestination:curationDestination,normalize:normalize};return;}
   var source=createDataSource(JSON.parse(document.getElementById('place-data').textContent),root.fetch?.bind(root)),data=source.peek(),ticket=0,form=document.getElementById('place-search'),query=document.getElementById('place-query'),kind=document.getElementById('place-kind'),region=document.getElementById('place-region'),type=document.getElementById('place-category'),list=document.getElementById('place-results'),count=document.getElementById('place-count'),more=document.getElementById('place-more'),limit=20,matches=[];
   source.regions.slice().sort(function(a,b){return a.localeCompare(b,'ko');}).forEach(function(name){var option=document.createElement('option');option.value=name;option.textContent=name;region.append(option);});
-  var sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title'),pet=document.getElementById('place-pet-known');
+  var sortChosen=false,sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title'),pet=document.getElementById('place-pet-known');
+  if(sort&&!sort.querySelector('option[value="relevance"]')){var relevant=document.createElement('option');relevant.value='relevance';relevant.textContent='검색어 관련성';sort.append(relevant);}
   var curatedEntry=document.getElementById('place-curation-entry'),curatedScopes=[];
   try{curatedScopes=JSON.parse(document.getElementById('place-curation-scopes')?.textContent||'[]');}catch(_){}
   function collectionEntry(value){
@@ -96,7 +110,7 @@
   function remember(){
     var url=new URL(root.location.href),value=state();
     ['q','kind','region','category','pet'].forEach(function(key){if(value[key])url.searchParams.set(key,value[key]);else url.searchParams.delete(key);});
-    if(sort&&sort.value!=='photos')url.searchParams.set('sort',sort.value);else url.searchParams.delete('sort');
+    if(sort&&(value.q||sort.value!=='photos'))url.searchParams.set('sort',sort.value);else url.searchParams.delete('sort');
     if(limit>20)url.searchParams.set('shown',String(limit));else url.searchParams.delete('shown');
     root.history.replaceState(root.history.state,'',url.pathname+url.search+url.hash);
   }
@@ -129,7 +143,10 @@
     });
     count.textContent=matches.length?'등록 정보 '+matches.length.toLocaleString('ko-KR')+'곳 중 '+Math.min(limit,matches.length).toLocaleString('ko-KR')+'곳 표시':'일치하는 등록 정보가 없습니다. 지역·업종 선택을 바꾸거나 검색어를 짧게 입력하세요.';
     more.hidden=limit>=matches.length;
-    if(!matches.length){var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),reset=document.createElement('button');empty.className='directory-empty';heading.textContent='조건에 맞는 곳을 찾지 못했어요';help.textContent='지역이나 업종을 바꾸거나, 장소 이름을 짧게 입력해 보세요.';reset.type='button';reset.textContent='검색 조건 초기화';reset.onclick=function(){document.getElementById('place-clear').click();};empty.append(heading,help,reset);list.append(empty);}
+    if(!matches.length){var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),reset=document.createElement('button');empty.className='directory-empty';heading.textContent='조건에 맞는 곳을 찾지 못했어요';help.textContent='지역이나 업종을 바꾸거나, 장소 이름을 짧게 입력해 보세요.';reset.type='button';reset.textContent='검색 조건 초기화';reset.onclick=function(){document.getElementById('place-clear').click();};var actions=document.createElement('div');actions.className='directory-empty-actions';
+      function relax(label,clear){var b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',function(){clear();search(false);});actions.append(b);}
+      var current=state();if(current.q)relax('검색어만 지우기',function(){query.value='';});if(current.region)relax('지역만 전체로',function(){region.value='';});if(current.pet)relax('동반 조건 자료 필터 해제',function(){pet.checked=false;});
+      actions.append(reset);empty.append(heading,help,actions);list.append(empty);}
     if(append){var next=list.children[start]?.querySelector('.directory-name');if(next){next.focus({preventScroll:true});next.scrollIntoView({block:'nearest',behavior:'instant'});}}
     else restorePosition();
 
@@ -143,10 +160,17 @@
     if(pet){pet.disabled=type.disabled;if(pet.disabled)pet.checked=false;}
     var conditionSort=sort?.querySelector?.('option[value="conditions"]');if(conditionSort)conditionSort.disabled=type.disabled;
     if(type.disabled&&sort?.value==='conditions')sort.value='photos';
-    var value=state();if(!preserve)limit=20;
+    var value=state();var relevantOption=sort?.querySelector('option[value="relevance"]');if(relevantOption)relevantOption.disabled=!value.q;if(!value.q&&sort?.value==='relevance'){sort.value='photos';sortChosen=false;}if(!sortChosen&&sort)sort.value=value.q?'relevance':'photos';if(!preserve)limit=20;
     var selected=[value.q?'“'+value.q+'”':'',value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:'',value.pet?'세부 동반 조건 있음':''].filter(Boolean);
     if(selection)selection.textContent=[value.region,value.category?type.options[type.selectedIndex].textContent:value.kind?kind.options[kind.selectedIndex].textContent:''].filter(Boolean).join(' · ')||'전체';
-    summary.textContent=selected.join(' · ');summary.hidden=!selected.length;
+    summary.replaceChildren();
+    function chip(label,clear){var b=document.createElement('button');b.type='button';b.className='directory-filter-chip';b.textContent=label+' ×';b.setAttribute('aria-label',label+' 조건 해제');b.addEventListener('click',function(){clear();search(false);query.focus({preventScroll:true});});summary.append(b);}
+    if(value.q)chip('검색어 '+value.q,function(){query.value='';});
+    if(value.region)chip('지역 '+value.region,function(){region.value='';});
+    if(value.category)chip(type.options[type.selectedIndex].textContent,function(){type.value='';});
+    if(value.kind)chip(kind.options[kind.selectedIndex].textContent,function(){kind.value='';type.value='';if(pet)pet.checked=false;});
+    if(value.pet)chip('세부 동반 조건 있음',function(){pet.checked=false;});
+    summary.hidden=!selected.length;
     if(title)title.textContent=value.category==='숙소'?'함께 머무는 숙소':value.category==='식당카페'?'산책 후, 식당과 카페':value.kind==='courses'?'다음 산책길을 찾아요':'반려견과 함께 갈 곳';
     if(!value.q&&!value.kind&&!value.region&&!value.category&&!value.pet){document.documentElement?.removeAttribute('data-directory-requested');matches=[];list.setAttribute('aria-busy','false');list.replaceChildren();count.textContent='지역·업종을 선택하거나 장소 이름을 입력하세요.';more.hidden=true;remember();return;}
     document.documentElement?.setAttribute('data-directory-requested','');
@@ -159,20 +183,20 @@
         var empty=document.createElement('li'),heading=document.createElement('strong'),help=document.createElement('p'),retry=document.createElement('button');empty.className='directory-empty';heading.textContent='잠시 연결이 원활하지 않아요';help.textContent='검색 조건은 유지됩니다. 다시 불러오거나 아래 지역별 안내를 이용해 주세요.';retry.type='button';retry.textContent='다시 불러오기';retry.onclick=function(){search(true);};empty.append(heading,help,retry);list.replaceChildren(empty);
       });return;
     }
-    matches=ordered(filter(data,value),sort?.value);collectionEntry(value);render();remember();
+    matches=ordered(filter(data,value),sort?.value,value.q);collectionEntry(value);render();remember();
   }
   form.addEventListener('submit',function(event){event.preventDefault();search(false);});
   kind.addEventListener('change',function(){search(false);});region.addEventListener('change',function(){search(false);});
   type.addEventListener('change',function(){if(type.value)kind.value='facilities';search(false);});
-  sort?.addEventListener('change',function(){search(false);});
+  sort?.addEventListener('change',function(){sortChosen=true;search(false);});
   pet?.addEventListener('change',function(){if(pet.checked)kind.value='facilities';search(false);});
-  document.getElementById('place-clear').addEventListener('click',function(){query.value='';kind.value='';region.value='';type.value='';if(pet)pet.checked=false;if(sort)sort.value='photos';search(false);query.focus();});
+  document.getElementById('place-clear').addEventListener('click',function(){query.value='';kind.value='';region.value='';type.value='';if(pet)pet.checked=false;sortChosen=false;if(sort)sort.value='photos';search(false);query.focus();});
   more.addEventListener('click',function(){limit+=20;render(true);remember();});
   var params=new URLSearchParams(root.location.search);query.value=(params.get('q')||'').slice(0,100);
   if(['courses','facilities','bins'].includes(params.get('kind')))kind.value=params.get('kind');
   if(Array.from(region.options).some(function(option){return option.value===params.get('region');}))region.value=params.get('region');
   if(categories.includes(params.get('category'))){type.value=params.get('category');kind.value='facilities';}
-  if(sort&&['registered','name','conditions'].includes(params.get('sort')))sort.value=params.get('sort');
+  if(sort&&['registered','name','conditions','photos','relevance'].includes(params.get('sort'))){sort.value=params.get('sort');sortChosen=true;}
   if(pet&&params.get('pet')==='known'&&(!kind.value||kind.value==='facilities')){pet.checked=true;kind.value='facilities';}
   var shown=Number(params.get('shown'));if(Number.isSafeInteger(shown)&&shown>=20&&shown<=source.count)limit=Math.ceil(shown/20)*20;
   search(true);

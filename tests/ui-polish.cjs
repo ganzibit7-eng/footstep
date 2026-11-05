@@ -12,7 +12,7 @@ class Node{
  scrollIntoView(options){this.scrolled=options;}
  get options(){return this.children;}
  get selectedIndex(){return Math.max(0,this.children.findIndex(n=>n.value===this.value));}
- querySelector(selector){const name=selector.slice(1);for(const n of this.children){if(n.className?.split(' ').includes(name))return n;const nested=n.querySelector?.(selector);if(nested)return nested;}return null;}
+ querySelector(selector){const option=selector.match(/^option\[value="([^"]+)"\]$/);if(option)return this.children.find(n=>n.value===option[1])||null;const name=selector.slice(1);for(const n of this.children){if(n.className?.split(' ').includes(name))return n;const nested=n.querySelector?.(selector);if(nested)return nested;}return null;}
 }
 function directory(mobile=false,setup={}){
  const nodes={};for(const id of ['place-data','place-search','place-query','place-kind','place-region','place-category','place-results','place-count','place-more','place-sort','discovery-title','place-clear'])nodes[id]=new Node();
@@ -71,7 +71,7 @@ test('mobile filters collapse once, expose restored selections and remain open d
 test('directory empty state resets existing controls without changing source conditions',()=>{
  const {nodes,data}=directory();nodes['place-query'].value='없는장소';nodes['place-search'].listeners.submit({preventDefault(){}});
  assert.equal(nodes['place-results'].children[0].className,'directory-empty');assert.equal(nodes['place-more'].hidden,true);
- nodes['place-results'].children[0].children.at(-1).click();assert.equal(nodes['place-query'].value,'');assert.equal(nodes['place-kind'].value,'');assert.equal(nodes['place-results'].children.length,0);assert.equal(nodes['place-count'].parentElement.sibling.hidden,true);assert(data.every(row=>row.conditions==='미확인'));
+ nodes['place-results'].children[0].children.at(-1).children.find(n=>n.textContent==='검색 조건 초기화').click();assert.equal(nodes['place-query'].value,'');assert.equal(nodes['place-kind'].value,'');assert.equal(nodes['place-results'].children.length,0);assert.equal(nodes['place-count'].parentElement.sibling.hidden,true);assert(data.every(row=>row.conditions==='미확인'));
 });
 const {directoryReturn}=require('../place-saves.js');
 test('detail return keeps only same-origin directory filters and rejects external destinations',()=>{
@@ -104,3 +104,6 @@ test('live directory cards keep one record across photo, heading, credits and bo
  assert(first.children[5].children[1].children[1].textContent.includes(data[0].photo.licenseScope));assert(first.children[5].children[1].children[1].textContent.includes(data[0].photo.caption));
  assert.equal(nodes['place-results'].children[1].children[0].innerHTML.includes('사진 미등록'),true);
 });
+
+test('empty-state relaxation clears only the requested condition and filter chips remain individually actionable',()=>{const {nodes,data}=directory();nodes['place-region'].value='서울';nodes['place-query'].value='없는장소';nodes['place-search'].listeners.submit({preventDefault(){}});const actions=nodes['place-results'].children[0].children.at(-1);actions.children.find(n=>n.textContent==='검색어만 지우기').click();assert.equal(nodes['place-query'].value,'');assert.equal(nodes['place-region'].value,'서울');assert.equal(nodes['place-kind'].value,'facilities');assert.equal(nodes['place-category'].value,'식당카페');const summary=nodes['place-count'].parentElement.sibling;summary.children.find(n=>n.attrs['aria-label']==='지역 서울 조건 해제').click();assert.equal(nodes['place-region'].value,'');assert.equal(nodes['place-category'].value,'식당카페');assert(data.every(r=>r.conditions==='미확인'));});
+test('query relevance is automatic only until an explicit sort choice, and shared URLs preserve photos',()=>{const {nodes,history}=directory();nodes['place-query'].value='카페';nodes['place-search'].listeners.submit({preventDefault(){}});assert.equal(nodes['place-sort'].value,'relevance');assert.match(history.url,/sort=relevance/);nodes['place-sort'].value='photos';nodes['place-sort'].listeners.change();assert.match(history.url,/sort=photos/);nodes['place-clear'].click();assert.equal(nodes['place-sort'].value,'photos');});

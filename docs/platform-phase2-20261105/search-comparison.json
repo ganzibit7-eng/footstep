@@ -1,0 +1,32 @@
+{
+  "{\"q\":\"서울\",\"kind\":\"facilities\"}": {
+    "before": {
+      "medianMs": 4.261899999999997,
+      "count": 300
+    },
+    "after": {
+      "medianMs": 2.903500000000008,
+      "count": 300
+    }
+  },
+  "{\"q\":\"서울\"}": {
+    "before": {
+      "medianMs": 3.9850999999999885,
+      "count": 444
+    },
+    "after": {
+      "medianMs": 2.85469999999998,
+      "count": 444
+    }
+  },
+  "{\"q\":\"서울\",\"kind\":\"facilities\",\"region\":\"서울\"}": {
+    "before": {
+      "medianMs": 3.642500000000041,
+      "count": 297
+    },
+    "after": {
+      "medianMs": 0.3976999999999862,
+      "count": 297
+    }
+  }
+}
