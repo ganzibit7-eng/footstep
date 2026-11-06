@@ -1688,7 +1688,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 
 <link rel="stylesheet" href="/advertising.css?v=20261029-final3">
 <link rel="icon" href="https://balzaguk.com/icon-192.png" type="image/png" sizes="192x192">
-</head>
+<link rel="stylesheet" href="/correction-request.css?v=20261106-corrections"></head>
 <body>
 
 <header>
@@ -2287,7 +2287,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
         <h3 id="modal-title">코스 이름</h3>
         <button type="button" id="detail-favorite" class="pin-btn" aria-pressed="false">찜하기</button><div id="course-detail-summary" class="course-detail-summary"></div><p id="detail-guest-save-note" role="status" hidden>찜했어요. 비로그인 찜은 이 기기에 보관됩니다. 로그인 후 MY에서 내 계정으로 가져올 수 있어요.</p><div class="modal-meta-row" id="modal-meta"></div>
         <div id="modal-address"></div><p class="course-address-note">주소는 출발 좌표 또는 인근 위치 안내입니다. 공원 입구·주차장 위치와 다를 수 있어요.</p><div id="course-arrival-info" class="course-arrival-info"></div>
-        <div class="course-detail-actions"><a id="modal-editorial-link" class="pin-btn" href="/discover.html?kind=courses#find-place">코스 상세 페이지 ↗</a><a id="modal-directions-link" href="#" target="_blank" rel="noopener" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px; text-decoration:none;">🧭 길찾기</a><button type="button" class="submit-btn" id="course-prepare-walk">이 코스로 산책 준비하기</button></div><div id="course-comfort-detail"></div><p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
+        <div class="course-detail-actions"><button type="button" id="course-correction-open" class="detail-correction-open" data-correction-open hidden>정보 정정 요청</button><a id="modal-editorial-link" class="pin-btn" href="/discover.html?kind=courses#find-place">코스 상세 페이지 ↗</a><a id="modal-directions-link" href="#" target="_blank" rel="noopener" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px; margin-left:6px; text-decoration:none;">🧭 길찾기</a><button type="button" class="submit-btn" id="course-prepare-walk">이 코스로 산책 준비하기</button></div><div id="course-comfort-detail"></div><p id="modal-desc" style="color:#5B5645; font-size:14.5px;"></p>
         <div id="photo-upload-wrap" style="margin:10px 0;">
           <label for="photo-upload-input" class="pin-btn" style="display:inline-block; cursor:pointer; width:auto; padding:8px 16px; font-size:13px;">📷 사진 추가하기</label>
           <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
@@ -2494,7 +2494,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
 <script src="/weather-widget.js?v=20261017-simple"></script>
 <script src="/map-explorer.js?v=20261024-tools"></script>
 <script src="share-link.js?v=20261016-growth"></script>
-<script src="admin-loader.js?v=20261105-contact"></script>
+<script src="admin-loader.js?v=20261106-corrections"></script>
 
 <script src="traffic.js?v=20261104-commercial" data-manual></script>
 <script src="course-photos.js?v=20261029-dates2"></script>
@@ -5624,7 +5624,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       } else {
         listEl.innerHTML = data.map(n=>{
           const d = new Date(n.created_at);
-          return `<div class="review-item"><p style="margin:0;">${escapeHtml(n.message)}</p>${n.type==='security'&&isAdminUser(viewer)?'<button type="button" class="btn-outline" data-open-security>보안 기록 확인</button>':''}<span style="font-size:11px; color:var(--muted-text);">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`;
+          return `<div class="review-item"><p style="margin:0;">${escapeHtml(n.message)}</p>${n.type==='security'&&isAdminUser(viewer)?'<button type="button" class="btn-outline" data-open-security>보안 기록 확인</button>':''}${n.type==='correction'&&isAdminUser(viewer)?'<button type="button" class="btn-outline" data-open-corrections>정정 요청 확인</button>':''}<span style="font-size:11px; color:var(--muted-text);">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span></div>`;
         }).join('');
         await sb.from('notifications').update({read:true}).eq('owner_id',viewer).in('id',data.map(n=>n.id)).eq('read',false);
         if(viewer===myDeviceId)checkNotifications();
@@ -5632,8 +5632,13 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     }catch(e){ console.error(e); if(viewer===myDeviceId)listEl.innerHTML = '<p class="empty-admin">불러오지 못했어요.</p>'; }
   }
   document.getElementById('notif-list').addEventListener('click',async event=>{
-    if(!event.target.closest('[data-open-security]')||!isAdminUser(myDeviceId))return;
+    const correction=event.target.closest('[data-open-corrections]');
+    if((!correction&&!event.target.closest('[data-open-security]'))||!isAdminUser(myDeviceId))return;
     document.getElementById('notif-overlay').classList.remove('show');
+    if(correction){
+      if(await openAdminDashboard())await adminPanelController.peek()?.openCorrections();
+      return;
+    }
     openAdminDashboard();
     const details=document.getElementById('admin-security-details');details.open=true;
     details.scrollIntoView({block:'start',behavior:'smooth'});
@@ -5672,6 +5677,9 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     const editorialLink=document.getElementById('modal-editorial-link');
     editorialLink.href='/courses/'+encodeURIComponent(c.id)+'/';
     editorialLink.hidden=!(window.PawCoursePages||[]).includes(String(c.id));
+    // Content correction entry (detail only).
+    const correctionEntry=document.getElementById('course-correction-open');correctionEntry.hidden=editorialLink.hidden;correctionEntry.dataset.correctionPath='/courses/'+encodeURIComponent(c.id)+'/';correctionEntry.dataset.correctionName=c.name;
+    // End content correction entry.
     updateDetailFavorite(); renderWalkNearby(c);
     const distanceKm=mongDistanceKm(c.distance);
     const detailWalkTime=courseWalkTime(c);
@@ -6948,5 +6956,5 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
  document.getElementById('home-update-dialog-close').addEventListener('click',()=>dialog.close());
 })();
 </script>
-<script defer src="/photo-display.js?v=20261026-quality9"></script><script defer src="/advertising.js?v=20261105-contact"></script></body>
+<script defer src="/photo-display.js?v=20261026-quality9"></script><script defer src="/advertising.js?v=20261105-contact"></script><script defer src="/correction-request.js?v=20261106-corrections"></script></body>
 </html>

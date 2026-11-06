@@ -1,0 +1,39 @@
+.detail-correction-open{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 13px;margin:12px 0 0;border:1px solid #bccbbf;border-radius:8px;background:#fffdf8;color:#274a38;font-family:inherit;font-size:13px;font-weight:600;line-height:1.5;text-decoration:none;cursor:pointer}
+.detail-correction-open svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.detail-correction-open:focus-visible,.correction-dialog :is(button,input,select,textarea,a):focus-visible{outline:2px solid #315b43;outline-offset:3px}
+.correction-dialog{box-sizing:border-box;width:min(600px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:0;border:1px solid #d6ddd4;border-radius:14px;color:#203e30;background:#fffdf9;font:400 15px/1.7 'Noto Sans KR',sans-serif;color-scheme:light;overscroll-behavior:contain}
+.correction-dialog::backdrop{background:#15271e66}
+.correction-dialog [hidden]{display:none!important}
+.correction-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 24px 18px;border-bottom:1px solid #e1e5dc}
+.correction-heading p{margin:0 0 4px;color:#657669;font-size:12px;font-weight:600}
+.correction-heading h2{margin:0;font-size:22px;line-height:1.45;letter-spacing:-.04em;color:#203e30}
+.correction-heading h2:focus{outline:0}
+.correction-dialog button{font-family:inherit;cursor:pointer;min-height:44px;border:1px solid #c4d0c4;border-radius:7px;padding:9px 14px;color:#294c38;background:#fffdf9;font-size:14px;font-weight:600}
+.correction-heading button{width:44px;padding:0;flex:none;font-size:24px;border:0;background:transparent}
+.correction-body{padding:20px 24px max(24px,env(safe-area-inset-bottom))}
+.correction-target{padding:0 0 14px;border-bottom:1px solid #e1e5dc;overflow-wrap:anywhere}
+.correction-target strong{display:block;font-size:17px;line-height:1.5;word-break:keep-all}
+html.correction-dialog-active{overflow:hidden;scrollbar-gutter:stable}
+.correction-target a{font-size:12px;color:#5a6f5e}
+.correction-intro{font-size:14px;margin:14px 0 20px;color:#526758}
+.correction-dialog label:not(.correction-ack){display:block;font-size:14px;font-weight:600;margin:0 0 16px}
+.correction-dialog label small{font-size:12px;color:#68786b;font-weight:400;margin-left:4px}
+.correction-dialog :is(select,textarea,input[type=url]){display:block;box-sizing:border-box;width:100%;margin-top:7px;border:1px solid #bbc9bc;border-radius:7px;padding:11px 12px;background:#fff;color:#203e30;font-family:inherit;font-size:16px;font-weight:400;line-height:1.6}
+.correction-dialog textarea{resize:vertical;min-height:150px}
+.correction-count{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#657668;margin:-10px 0 20px}
+.correction-count span:last-child{white-space:nowrap}
+.correction-dialog .correction-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.correction-ack{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#526758;line-height:1.8}
+.correction-ack input{width:18px;height:18px;flex:none;accent-color:#31563f;margin:3px 0 0}
+.correction-dialog a{color:#31563f;text-underline-offset:3px}
+.correction-status{font-size:14px;min-height:1.7em;margin:14px 0;color:#31563f}
+.correction-status[data-state=error]{color:#8c392b}
+.correction-actions{display:flex;justify-content:flex-end;gap:9px}
+.correction-actions button[type=submit],.correction-success button{background:#294b38;color:#fffdf6;border-color:#294b38}
+.correction-dialog button:disabled{opacity:.6;cursor:wait}
+.correction-success strong{display:block;font-size:20px;margin:18px 0 12px}
+.correction-success p{font-size:14px;overflow-wrap:anywhere}
+.correction-help{font-size:12px;color:#667568;margin:20px 0 0}
+@media(max-width:480px){.correction-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 24px - env(safe-area-inset-bottom));border-radius:12px}.correction-heading{padding:18px 18px 14px}.correction-heading h2{font-size:20px}.correction-body{padding:18px 18px max(20px,env(safe-area-inset-bottom))}.correction-count{flex-wrap:wrap}.correction-actions button{flex:1}}
+@media(hover:hover){.detail-correction-open:hover{background:#edf2ea;border-color:#8fa68f}.correction-dialog button:not(:disabled):hover{filter:brightness(.97)}}
+@media(prefers-reduced-motion:no-preference){.detail-correction-open,.correction-dialog button{transition:background 160ms,border-color 160ms}}

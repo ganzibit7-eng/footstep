@@ -4,14 +4,17 @@ const code=site.slice(site.indexOf('  async function checkNotifications(){'),sit
 function harness(){
  const els=Object.fromEntries(['notif-dot','notif-list','notif-overlay','admin-security-details'].map(id=>[id,{style:{display:'none'},innerHTML:'',classList:{add(){},remove(){}},addEventListener(type,cb){this.click=cb;},scrollIntoView(){this.scrolled=true;}}]));
  const changes=[];let resolve;let pending=false;
- const c={myDeviceId:'admin',navigator:{onLine:true},document:{getElementById:id=>els[id]},isAdminUser:id=>id==='admin',escapeHtml:v=>String(v).replace(/</g,'&lt;'),console,openNickModal(){},toast(){},openAdminDashboard(){c.opened=true;return true;},sb:{from(){let mode,filters=[];return{select(x){mode=x;return this;},update(x){mode='update';return this;},eq(...v){filters.push(v);return this;},in(...v){filters.push(v);return this;},order(){return this;},limit(){if(mode==='id')return Promise.resolve({data:[]});if(pending)return new Promise(r=>resolve=r);return Promise.resolve({data:[{id:7,type:'security',message:'<script>alert(1)</script>',created_at:'2026-10-09T00:00:00Z'}]});},then(cb){changes.push(filters);return Promise.resolve({}).then(cb);}};}}};vm.createContext(c);vm.runInContext(code,c);
+ const c={myDeviceId:'admin',navigator:{onLine:true},document:{getElementById:id=>els[id]},isAdminUser:id=>id==='admin',escapeHtml:v=>String(v).replace(/</g,'&lt;'),console,openNickModal(){},toast(){},openAdminDashboard(){c.opened=true;return true;},adminPanelController:{peek:()=>({openCorrections:async()=>{c.correctionsOpened=true;}})},sb:{from(){let mode,filters=[];return{select(x){mode=x;return this;},update(x){mode='update';return this;},eq(...v){filters.push(v);return this;},in(...v){filters.push(v);return this;},order(){return this;},limit(){if(mode==='id')return Promise.resolve({data:[]});if(pending)return new Promise(r=>resolve=r);return Promise.resolve({data:[{id:7,type:'security',message:'<script>alert(1)</script>',created_at:'2026-10-09T00:00:00Z'},{id:8,type:'correction',message:'safe title',created_at:'2026-11-06T00:00:00Z'}]});},then(cb){changes.push(filters);return Promise.resolve({}).then(cb);}};}}};vm.createContext(c);vm.runInContext(code,c);
  return{c,els,changes,delay(){pending=true;},resolve(v){resolve(v);}};
 }
 (async()=>{
  let h=harness();await h.c.openNotifications();
  assert(h.els['notif-list'].innerHTML.includes('data-open-security'));assert(!h.els['notif-list'].innerHTML.includes('<script>'));
- assert.deepEqual(JSON.parse(JSON.stringify(h.changes[0])),[['owner_id','admin'],['id',[7]],['read',false]]);
- await h.els['notif-list'].click({target:{closest:()=>true}});assert(h.c.opened);assert(h.els['admin-security-details'].open&&h.els['admin-security-details'].scrolled);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.changes[0])),[['owner_id','admin'],['id',[7,8]],['read',false]]);
+ await h.els['notif-list'].click({target:{closest:s=>s==='[data-open-security]'}});assert(h.c.opened);assert(h.els['admin-security-details'].open&&h.els['admin-security-details'].scrolled);
+ assert(h.els['notif-list'].innerHTML.includes('data-open-corrections'));
+ await h.els['notif-list'].click({target:{closest:s=>s==='[data-open-corrections]'}});assert(h.c.correctionsOpened);
+ h.c.correctionsOpened=false;h.c.myDeviceId='member';await h.els['notif-list'].click({target:{closest:s=>s==='[data-open-corrections]'}});assert(!h.c.correctionsOpened);
  h=harness();h.delay();const wait=h.c.openNotifications();h.c.myDeviceId='member';h.resolve({data:[{id:8,type:'security',message:'private',created_at:'2026-10-09'}]});await wait;assert(!h.els['notif-list'].innerHTML.includes('private'));assert.equal(h.changes.length,0);
  assert(fs.readFileSync('admin-panel.html','utf8').includes('<details class="admin-section-details" id="admin-security-details">'));
  assert(!fs.readFileSync('admin-panel.html','utf8').includes('id="admin-security-details" open'));

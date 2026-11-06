@@ -6,3 +6,7 @@ verify_jwt = false
 [functions.security-monitor]
 # Public-key reports are explicitly verified and labelled as untrusted browser signals.
 verify_jwt = false
+
+[functions.content-correction]
+# Explicitly public, bounded anonymous submissions; admin reads require server auth.
+verify_jwt = false
