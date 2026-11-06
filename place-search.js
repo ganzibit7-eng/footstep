@@ -20,9 +20,14 @@
   function category(item){return item.kind==='facilities'?(item.info||'').split(' · ').pop():'';}
   function companionKnown(item){
     return item.kind==='facilities'&&Array.isArray(item.facts)&&item.facts.some(function(r){
-      return /견종|크기|체중|허용 구역|동반 구역|준비물|목줄|이동장/.test(r.label||'')&&!/미확인|미확정|문의|상세 확인|확인 필요|재확인|고캠핑 공식|공식 허용|공식 소개|공식 관광 소개/.test(r.value||'')&&String(r.value||'').trim().length>0;
+      if(!/허용|견종|크기|체중|준비|목줄|이동장|동반|출입|반려동물 이용/.test(r.label||'')||/미확인|미확정|문의|상세 확인|확인 필요|재확인|고캠핑 공식|공식 허용|공식 소개|공식 관광 소개/.test(r.value||''))return false;
+      // A courtyard in the tourism introduction is not proof of pet access.
+      // For prose fields, the specific rule must occur in the pet clause itself.
+      var direct=/견종|크기|체중|허용.*구역|동반.*구역|준비|목줄|이동장/.test(r.label||'');
+      return String(r.value||'').split(/(?<=[.!?])\s+|[※\n]/).some(function(part){return /목줄|입마개|이동장|켄넬|케이지|전구역|일부구역|테라스|객실|실내|실외|야외|마당|마리|마릿|소형|대형|중형|kg|㎏|견종|맹견|사이트|배변|입장|출입|요금/i.test(part)&&(direct||/반려|동반|견|목줄|입마개|이동장|켄넬|케이지/.test(part)||/^(?:실내|실외|야외|테라스|객실|전구역|일부구역).{0,12}(?:가능|불가|금지|제한)/.test(part));});
     });
   }
+  function factLabel(row){return /^(?:견종·크기 조건|견종·체중 기준)$/.test(row.label)&&/^(?:반려동물|반려견)$/.test(String(row.value).trim())?'동반 대상':row.label;}
   // Only link to an actually generated collection with eligible local records.
   // This is a regional/category collection, not a claim to match the query word.
   function curationDestination(scopes,state){
@@ -99,7 +104,7 @@
       return Promise.all(parts.map(p=>part(p).load())).then(()=>merged=join());
     }};
   }
-  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource,companionKnown:companionKnown,curationDestination:curationDestination,normalize:normalize,courseFacts:courseFacts};return;}
+  if(typeof module==='object'&&module.exports){module.exports={filter:filter,category:category,ordered:ordered,conditionRows:conditionRows,createDataSource:createDataSource,companionKnown:companionKnown,curationDestination:curationDestination,normalize:normalize,courseFacts:courseFacts,factLabel:factLabel};return;}
   var source=createDataSource(JSON.parse(document.getElementById('place-data').textContent),root.fetch?.bind(root)),data=source.peek(),ticket=0,form=document.getElementById('place-search'),query=document.getElementById('place-query'),kind=document.getElementById('place-kind'),region=document.getElementById('place-region'),type=document.getElementById('place-category'),list=document.getElementById('place-results'),count=document.getElementById('place-count'),more=document.getElementById('place-more'),limit=20,matches=[];
   source.regions.slice().sort(function(a,b){return a.localeCompare(b,'ko');}).forEach(function(name){var option=document.createElement('option');option.value=name;option.textContent=name;region.append(option);});
   var sortChosen=false,sort=document.getElementById('place-sort'),title=document.getElementById('discovery-title'),pet=document.getElementById('place-pet-known');
@@ -150,7 +155,7 @@
       context.className='premium-card-context';p.className='directory-address';p.textContent=item.kind==='facilities'?(item.info||'').split(' · ').slice(0,-1).join(' · '):item.kind==='courses'?(item.info||'').split(' · ')[0]:item.info||'';p.title=p.textContent;var area=p.textContent.split(/\s+/).slice(0,2).join(' ');if(root.CardMedia)p.textContent=root.CardMedia.address(p.textContent,area,item.name);if(area)location.textContent=area+' · '+label;heading.setAttribute('title',item.name);context.append(p);
       note.className='premium-card-facts';
       if(item.kind==='facilities'||item.kind==='courses'){
-        (Array.isArray(item.facts)?item.facts:root.PlacePresentation?root.PlacePresentation.cardSummary(conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1]};})):conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1].length<=86?r[1]:'세부 조건은 상세 안내에서 확인해 주세요.'};})).forEach(function(row){var group=document.createElement('div'),term=document.createElement('dt'),value=document.createElement('dd');if(root.CardMedia?.factNote(row))group.className='card-fact-note';term.textContent=row.label;value.textContent=row.value;group.append(term,value);note.append(group);});
+        (Array.isArray(item.facts)?item.facts:root.PlacePresentation?root.PlacePresentation.cardSummary(conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1]};})):conditionRows(item.conditions).map(function(r){return {label:r[0],value:r[1].length<=86?r[1]:'세부 조건은 상세 안내에서 확인해 주세요.'};})).forEach(function(row){var group=document.createElement('div'),term=document.createElement('dt'),value=document.createElement('dd');if(root.CardMedia?.factNote(row))group.className='card-fact-note';term.textContent=factLabel(row);value.textContent=row.value;group.append(term,value);note.append(group);});
       }
       credits.className='premium-card-credits';if(!item.photo)credits.setAttribute('aria-hidden','true');
       cta.className='premium-card-cta';cta.href=item.path;var ctaLabel=document.createElement('span'),arrow=document.createElement('span');ctaLabel.textContent='자세히 보기';arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');cta.append(ctaLabel,arrow);

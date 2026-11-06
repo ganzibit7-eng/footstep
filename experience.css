@@ -126,8 +126,10 @@ header .profile-btn{white-space:nowrap}
 .home-update-toast p span{font-size:12px}
 .bottom-tab-bar button{font-family:var(--experience-font);letter-spacing:0}
 @media(max-width:880px){
- header .nav{gap:10px;padding-left:16px;padding-right:16px}
- header .logo{gap:6px}header .logo span{font-size:21px;letter-spacing:0}
+ body>header .nav{gap:10px;min-height:66px;padding:10px 22px}
+ body>header .logo{gap:8px;min-height:44px}
+ body>header .logo .mark{width:25.5px;height:25.5px}
+ body>header .logo span{font-size:22px;line-height:1.2;letter-spacing:0}
  header .nav>div:last-child{gap:6px!important;min-width:0}
  header .profile-btn{padding:8px 10px;font-size:12px;max-width:120px}
  header #profile-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -144,7 +146,7 @@ header .profile-btn{white-space:nowrap}
  html.galaxy-phone .home-update-toast .update-close{width:36px;height:44px}
 }
 @media(max-width:420px){#list-section .walk-time-options{grid-template-columns:repeat(2,minmax(0,1fr))}#list-section .walk-time-options button{font-size:13px;white-space:nowrap}}
-@media(max-width:360px){header .nav{padding-left:12px;padding-right:12px;gap:6px}header .profile-btn{padding:8px;max-width:92px}header #points-badge{padding:6px!important;font-size:11px!important}.home-update-toast time{display:none}}
+@media(max-width:360px){header .profile-btn{padding:8px;max-width:92px}header #points-badge{padding:6px!important;font-size:11px!important}.home-update-toast time{display:none}}
 #walk-location-consent{min-width:0;margin:0 0 18px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--pine-deep)}
 #walk-location-consent legend{float:left;width:100%;padding:0;margin:0 0 14px;font-size:16px;font-weight:700;line-height:1.6}
 #walk-location-consent .walk-consent-option{clear:both}

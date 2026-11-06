@@ -6,6 +6,7 @@ import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {CONTROL_VERSION} from './publish-control-polish.mjs';
 import {trustLabels,trustHTML} from './detail-trust.mjs';
+import {detailReliability,cardReliability} from './detail-reliability.mjs';
 const placePhotos=createRequire(import.meta.url)('../place-photos.js');
 const Presentation=createRequire(import.meta.url)('../place-presentation.js');
 const Media=createRequire(import.meta.url)('../card-media.js');
@@ -13,13 +14,13 @@ export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION=CONTROL_VERSION;
 export const DETAIL_SCRIPT_VERSION='20261027-quality11';
-export const detailScriptVersion=html=>html.includes('id="detail-route-data"')?'20261106-route-clarity':DETAIL_SCRIPT_VERSION;
+export const detailScriptVersion=html=>html.includes('id="detail-route-data"')?'20261106-route-tiles':DETAIL_SCRIPT_VERSION;
 export const detailScriptAsset=html=>html.includes('id="detail-route-data"')?'route-experience.js?v='+detailScriptVersion(html):'detail-editorial.js?v='+DETAIL_SCRIPT_VERSION;
 export function routeAssets(html){
  if(!html.includes('id="detail-route-data"'))return html;
  html=routeClarity(html);
- html=html.replace(/\/route-experience\.css\?v=[\w-]+/g,'/route-experience.css?v=20261106-route-clarity2');
- if(!html.includes('/route-experience.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/route-experience.css?v=20261106-route-clarity2"></head>');
+ html=html.replace(/\/route-experience\.css\?v=[\w-]+/g,'/route-experience.css?v=20261106-route-tiles');
+ if(!html.includes('/route-experience.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/route-experience.css?v=20261106-route-tiles"></head>');
  if(!html.includes('/route-geometry.js?'))html=html.replace(/(<script defer src="\/detail-editorial\.js)/,'<script defer src="/route-geometry.js?v=20261105-routes"></script>$1');
  return html.replace(/(?:detail-editorial|route-experience)\.js\?v=[\w-]+/g,detailScriptAsset(html));
 }
@@ -259,7 +260,7 @@ export function relatedCards(html,index){
 }
 
 export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
- if(html.includes('data-detail-template="editorial-v3"')||html.includes('data-detail-template="editorial-v2"'))return routeAssets(html);
+ if(html.includes('data-detail-template="editorial-v3"')||html.includes('data-detail-template="editorial-v2"'))return cardReliability(detailReliability(routeAssets(html)));
  const canonical=html.match(/rel="canonical" href="https:\/\/balzaguk.com([^"?]+)"/)?.[1];
  const match=canonical?.match(/^\/(places|courses|bins|pet-care\/places)\/([^/]+)\/$/);if(!match)return html;
  const professional=match[1]==='pet-care/places';if(!professional&&!html.includes('<article class="card">'))return html;
@@ -364,5 +365,5 @@ export function editorialDetail(html,{relatedIndex=sharedRelatedIndex}={}){
  html=routeAssets(html.replace('</body>','<script defer src="/detail-editorial.js?v='+DETAIL_SCRIPT_VERSION+'"></script></body>'));
  html=html.replace(/<script>\s*\(function\(\)\{\s*var button=document\.getElementById\('share-detail'\)[\s\S]*?<\/script>/,'');
  html=relatedCards(html,relatedIndex);
- return html;
+ return cardReliability(detailReliability(html));
 }
