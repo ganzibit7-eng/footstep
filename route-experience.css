@@ -6,3 +6,9 @@
 .editorial-detail .detail-route-map{isolation:isolate}
 @media(max-width:480px){.editorial-detail .detail-route-controls{display:grid;grid-template-columns:1fr 1fr}.editorial-detail .detail-route-controls a{grid-column:1/-1}}
 @media(prefers-color-scheme:dark){.editorial-detail .detail-route-controls .detail-button{background:#24372c;color:#f7f6ef;border-color:#69816f}.editorial-detail .detail-route-context{color:#c3d0c5}}
+
+.editorial-detail .detail-route-technical{margin:16px 0;border-top:1px solid #d1dbd1;padding-top:10px}
+.editorial-detail .detail-route-technical summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:14px;font-weight:600}
+.editorial-detail .detail-route-label{font-size:14px;font-weight:650;color:#294e3d}
+.editorial-detail .detail-route-endpoint.is-end{background:#795b40;color:#fff}
+.editorial-detail .detail-route-endpoint.is-start{background:#294e3d;color:#fff}
