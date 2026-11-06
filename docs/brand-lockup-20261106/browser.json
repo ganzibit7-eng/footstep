@@ -1,0 +1,90 @@
+[
+  {
+    "brands": [
+      {
+        "centerDifference": 0.0052089691162109375,
+        "font": "21px",
+        "gap": "6px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "header .logo"
+      },
+      {
+        "centerDifference": 0,
+        "font": "22px",
+        "gap": "8px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "footer .footer-brand"
+      }
+    ],
+    "overflow": false,
+    "width": 375
+  },
+  {
+    "brands": [
+      {
+        "centerDifference": 0.0052089691162109375,
+        "font": "21px",
+        "gap": "6px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "header .logo"
+      },
+      {
+        "centerDifference": 0,
+        "font": "22px",
+        "gap": "8px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "footer .footer-brand"
+      }
+    ],
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "brands": [
+      {
+        "centerDifference": 0.0052089691162109375,
+        "font": "21px",
+        "gap": "6px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "header .logo"
+      },
+      {
+        "centerDifference": 0,
+        "font": "22px",
+        "gap": "8px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "footer .footer-brand"
+      }
+    ],
+    "overflow": false,
+    "width": 430
+  },
+  {
+    "brands": [
+      {
+        "centerDifference": 0.0000019073486328125,
+        "font": "22px",
+        "gap": "8px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "header .logo"
+      },
+      {
+        "centerDifference": 0,
+        "font": "22px",
+        "gap": "8px",
+        "icon": 24,
+        "loaded": true,
+        "selector": "footer .footer-brand"
+      }
+    ],
+    "overflow": false,
+    "width": 1440
+  }
+]
