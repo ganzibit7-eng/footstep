@@ -23,6 +23,7 @@ on:
       - 'trip-stays.json'
       - 'scripts/refine-place-details.mjs'
       - 'scripts/detail-editorial.mjs'
+      - 'scripts/detail-reliability.mjs'
       - 'scripts/listing-editorial.mjs'
       - 'scripts/place-card.mjs'
       - 'scripts/place-curation.mjs'
