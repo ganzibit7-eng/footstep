@@ -20,3 +20,5 @@ jobs:
           node-version: '24'
       - name: Check application behavior and public data integrity
         run: node --test tests/*.cjs tests/*.mjs
+      - name: Prevent common private credentials from reaching the published tree
+        run: node scripts/check-public-secrets.mjs
