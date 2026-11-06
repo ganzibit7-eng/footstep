@@ -2583,6 +2583,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   let reviews = {}; // { courseId: [ {name, rating, text, date, ownerId} ] }
   let reports = {}; // { "type_id": { count, reporters:[] } }
   let myDeviceId = null;
+  let accountExportGeneration = 0;
   let myNickname = null;
   let myDogName = null, myDogBreed = null, myDogAge = null;
   let myBadge = null, myOwnedBadges = [];
@@ -2925,6 +2926,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     updateProfileLabel();
   }
   function applySession(session){
+    if((session?.user?.id || null)!==myDeviceId)accountExportGeneration++;
     if(session && session.user){
       myDeviceId = session.user.id;
       if(typeof SignupConsent!=='undefined')void SignupConsent.flush(sb);
@@ -3311,6 +3313,7 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
     AuthPresentation.busy(btn,false);
   }
   async function signOutUser(){
+    accountExportGeneration++;
     try{
       const {error}=await sb.auth.signOut();
       if(error) throw error;
@@ -6750,27 +6753,34 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
   // ===== 내 정보 다운로드 =====
   async function exportMyData(){
     if(!myDeviceId){ toast('로그인 후 이용해주세요'); return; }
+    const owner=myDeviceId, generation=accountExportGeneration;
+    const profile={닉네임:myNickname,강아지이름:myDogName,견종:myDogBreed,나이:myDogAge,지역:myRegionName,배지:myBadge};
+    const isCurrent=()=>myDeviceId===owner && accountExportGeneration===generation;
     const btn = document.getElementById('export-data-btn');
     const original = btn.textContent;
     if(btn.disabled)return;
     btn.disabled=true;
     btn.textContent = '준비 중...';
     try{
+      const initialAuth=await sb.auth.getUser();
+      if(!isCurrent())return;
+      if(initialAuth.error || initialAuth.data?.user?.id!==owner)throw new Error('export_session_changed');
       const [coursesRes, binsRes, reviewsRes, walksRes, pointsRes, favoritesRes] = await Promise.all([
-        sb.from('courses').select('*').eq('owner_id', myDeviceId),
-        sb.from('bins').select('*').eq('owner_id', myDeviceId),
-        sb.from('reviews').select('*').eq('owner_id', myDeviceId),
-        sb.from('walks').select('*').eq('owner_id', myDeviceId),
-        sb.from('points_log').select('*').eq('owner_id', myDeviceId),
-        sb.from('favorites').select('*').eq('owner_id', myDeviceId),
+        sb.from('courses').select('*').eq('owner_id', owner),
+        sb.from('bins').select('*').eq('owner_id', owner),
+        sb.from('reviews').select('*').eq('owner_id', owner),
+        sb.from('walks').select('*').eq('owner_id', owner),
+        sb.from('points_log').select('*').eq('owner_id', owner),
+        sb.from('favorites').select('*').eq('owner_id', owner),
       ]);
-      if([coursesRes,binsRes,reviewsRes,walksRes,pointsRes,favoritesRes].some(result=>result.error)) throw new Error('export_incomplete');
+      if(!isCurrent())return;
+      if([coursesRes,binsRes,reviewsRes,walksRes,pointsRes,favoritesRes].some(result=>!result || result.error || !Array.isArray(result.data) || result.data.some(row=>row?.owner_id!==owner)))throw new Error('export_incomplete');
+      const finalAuth=await sb.auth.getUser();
+      if(!isCurrent())return;
+      if(finalAuth.error || finalAuth.data?.user?.id!==owner)throw new Error('export_session_changed');
       const exportData = {
         내보낸_날짜: new Date().toISOString(),
-        프로필: {
-          닉네임: myNickname, 강아지이름: myDogName, 견종: myDogBreed, 나이: myDogAge,
-          지역: myRegionName, 배지: myBadge
-        },
+        프로필: profile,
         내가_등록한_코스: coursesRes.data || [],
         내가_등록한_배변봉투함: binsRes.data || [],
         내가_남긴_리뷰: reviewsRes.data || [],
@@ -6788,9 +6798,8 @@ body:has(.modal-overlay.show) .compare-dock,html.mobile-keyboard-open .compare-d
       a.remove();
       URL.revokeObjectURL(url);
       toast('내 정보를 다운로드했어요 📥');
-    }catch(e){ console.error(e); toast('다운로드에 실패했어요'); }
-    btn.disabled=false;
-    btn.textContent = original;
+    }catch(e){ if(isCurrent())toast('로그인 상태와 연결을 확인한 뒤 다시 다운로드해 주세요.'); }
+    finally{btn.disabled=false;btn.textContent=original;}
   }
   document.getElementById('export-data-btn').addEventListener('click', exportMyData);
 
