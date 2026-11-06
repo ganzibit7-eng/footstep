@@ -1,5 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import {createHash} from 'node:crypto';
 import {detailReliability,cardReliability,factLabel} from '../scripts/detail-reliability.mjs';
+import {searchHead} from '../scripts/search-head.mjs';
 import {createRequire} from 'node:module';const require=createRequire(import.meta.url),Search=require('../place-search.js');
 test('generic pet targets are not weight evidence; exact facts and originals remain',()=>{
  const head='<article data-detail-template="editorial-v3" data-detail-kind="dining">',row='<span>견종·크기 조건</span> <strong>반려동물</strong>',original='<details class="detail-source-notes"><div>'+row+' 실내·객실 출입 이번에 대조한 공식 동반 자료</div></details>';
@@ -33,9 +34,12 @@ test('background timeout and offscreen errors are recoverable without a false su
  const f=fixture(),a={};f.events.tileloadstart({tile:a});f.expire();assert(!f.retry.hidden);assert.match(f.note.textContent,/불러오지 못/);f.events.tileunload({tile:a});assert(f.retry.hidden);assert.equal(f.note.textContent,'');f.events.tileerror({tile:a});assert.equal(f.note.textContent,'');f.dispose();
 });
 test('home content and all search records stay intact apart from the approved detail correction and notification wiring',()=>{
- const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">/g,'').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'');
+ const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/\n*<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">\n*/g,'\n').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'');
  // Baseline 0b02c3701f; excludes only approved correction assets, detail entry and notification code.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
  const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'e61ecfcbe6eafa3f585026398eba1dc6bca246f6a08f1459d88cec753018f6fe','home content must stay unchanged');
+ // Publication may move the existing favicon after the new stylesheet. Its adjacent
+ // whitespace is not a visual home change; every other byte remains protected.
+ assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);
  const data=require('./search-records.cjs')();assert.equal(data.length,4619);assert.equal(Search.filter(data,{}).length,4619);assert(Search.filter(data,{pet:'known'}).every(Search.companionKnown));
 });
