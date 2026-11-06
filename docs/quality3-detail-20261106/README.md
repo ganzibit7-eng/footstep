@@ -33,3 +33,7 @@
 계정 로그인 후 코스찜 동기화·실제 산책 완료와 서버 저장·백그라운드 GPS·실기기 터치는 미검증이다. 기존 계정/기록/포인트를 임의로 변경하지 않았다. GPX와 공식 전체 거리 차이의 현장 원인도 확정하지 않았다. 관리자 충돌 편집 기능을 새로 만들거나 전체 업소의 실제 정책을 재조사하지 않았다. Lighthouse/CWV는 실제 보고서를 얻은 경우에만 별도 기록하며 현장 INP를 추정하지 않는다. 따라서 이 보고서만으로 전체3차의 모든 실기기·회원·성능 항목을 완료라고 해석하지 않는다.
 
 복구: 이번 기능 커밋 revert. DB/권한/원천 데이터 복구는 필요하지 않다. 기존 미추적 supabase/.temp 및 tests/offline-shell.cjs는 보존한다.
+
+## 추가로 확보한 실제 성능 기준
+
+Google PageSpeed Insights 운영 c352 모바일 보고서(2026-11-06 19:07 KST): 성능92/접근성95/권장사항100/SEO100, FCP2.4초/LCP2.4초/TBT30ms/CLS0/Speed Index4.3초. Lighthouse13.6.0의 Moto G Power/느린4G 실험실 측정이며 현장 데이터는 없음으로 표시됐다. 현장 INP나 실사용 속도 개선으로 해석하지 않는다. 보고서 https://pagespeed.web.dev/analysis/https-balzaguk-com-courses-c352/atvhraou9r?form_factor=mobile . 대비·제목 순서와 차단CSS/캐시 권고는 남아 있으며, 새 헤더 요청과 무관한 대규모 CSS 재구성으로 확장하지 않았다. 배포 후 같은 URL을 다시 측정해 비교하되 단일 실험의 변동을 개선 효과로 단정하지 않는다.

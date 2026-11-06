@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import cp from 'node:child_process';
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import {createHash} from 'node:crypto';
 import {detailReliability,cardReliability,factLabel} from '../scripts/detail-reliability.mjs';
 import {createRequire} from 'node:module';const require=createRequire(import.meta.url),Search=require('../place-search.js');
 test('generic pet targets are not weight evidence; exact facts and originals remain',()=>{
@@ -32,7 +32,10 @@ test('background failure never removes the route; explicit retries ignore stale 
 test('background timeout and offscreen errors are recoverable without a false success',()=>{
  const f=fixture(),a={};f.events.tileloadstart({tile:a});f.expire();assert(!f.retry.hidden);assert.match(f.note.textContent,/불러오지 못/);f.events.tileunload({tile:a});assert(f.retry.hidden);assert.equal(f.note.textContent,'');f.events.tileerror({tile:a});assert.equal(f.note.textContent,'');f.dispose();
 });
-test('home and all search records stay intact',()=>{
- const h=fs.readFileSync('index.html','utf8').replaceAll('\r\n','\n'),old=cp.execFileSync('git',['show','accdf9a91dba8edff88c44fa6bbd2cb057a03718:index.html'],{encoding:'utf8',maxBuffer:3e6}).replaceAll('\r\n','\n');assert(h===old,'home must stay unchanged');
+test('home content and all search records stay intact apart from the approved header CSS version',()=>{
+ const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header');
+ // Baseline accdf9a, normalised only for line endings and the approved CSS URL.
+ // A hash keeps this protection valid in Actions' shallow checkout as well.
+ const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'8cd68e671956587d66c1034db44ea07d67fb283a8430162a1d71b909f5900941','home content must stay unchanged');
  const data=require('./search-records.cjs')();assert.equal(data.length,4619);assert.equal(Search.filter(data,{}).length,4619);assert(Search.filter(data,{pet:'known'}).every(Search.companionKnown));
 });
