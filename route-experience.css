@@ -12,3 +12,7 @@
 .editorial-detail .detail-route-label{font-size:14px;font-weight:650;color:#294e3d}
 .editorial-detail .detail-route-endpoint.is-end{background:#795b40;color:#fff}
 .editorial-detail .detail-route-endpoint.is-start{background:#294e3d;color:#fff}
+
+.editorial-detail .detail-course-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+.editorial-detail .detail-course-metrics>.detail-route-label,.editorial-detail .detail-course-metrics>.detail-caption{grid-column:1/-1}
+@media(max-width:600px){.editorial-detail .detail-course-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}

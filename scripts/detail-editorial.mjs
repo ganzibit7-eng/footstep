@@ -18,8 +18,8 @@ export const detailScriptAsset=html=>html.includes('id="detail-route-data"')?'ro
 export function routeAssets(html){
  if(!html.includes('id="detail-route-data"'))return html;
  html=routeClarity(html);
- html=html.replace(/\/route-experience\.css\?v=[\w-]+/g,'/route-experience.css?v=20261106-route-clarity');
- if(!html.includes('/route-experience.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/route-experience.css?v=20261106-route-clarity"></head>');
+ html=html.replace(/\/route-experience\.css\?v=[\w-]+/g,'/route-experience.css?v=20261106-route-clarity2');
+ if(!html.includes('/route-experience.css?'))html=html.replace('</head>','<link rel="stylesheet" href="/route-experience.css?v=20261106-route-clarity2"></head>');
  if(!html.includes('/route-geometry.js?'))html=html.replace(/(<script defer src="\/detail-editorial\.js)/,'<script defer src="/route-geometry.js?v=20261105-routes"></script>$1');
  return html.replace(/(?:detail-editorial|route-experience)\.js\?v=[\w-]+/g,detailScriptAsset(html));
 }
