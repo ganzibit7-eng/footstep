@@ -37,3 +37,7 @@
 ## 추가로 확보한 실제 성능 기준
 
 Google PageSpeed Insights 운영 c352 모바일 보고서(2026-11-06 19:07 KST): 성능92/접근성95/권장사항100/SEO100, FCP2.4초/LCP2.4초/TBT30ms/CLS0/Speed Index4.3초. Lighthouse13.6.0의 Moto G Power/느린4G 실험실 측정이며 현장 데이터는 없음으로 표시됐다. 현장 INP나 실사용 속도 개선으로 해석하지 않는다. 보고서 https://pagespeed.web.dev/analysis/https-balzaguk-com-courses-c352/atvhraou9r?form_factor=mobile . 대비·제목 순서와 차단CSS/캐시 권고는 남아 있으며, 새 헤더 요청과 무관한 대규모 CSS 재구성으로 확장하지 않았다. 배포 후 같은 URL을 다시 측정해 비교하되 단일 실험의 변동을 개선 효과로 단정하지 않는다.
+
+배포 후19:34 KST 같은 모바일 실험: 성능95/접근성95/권장사항100/SEO100, FCP/LCP2.3초, TBT0ms, CLS0.001, Speed Index2.8초. https://pagespeed.web.dev/analysis/https-balzaguk-com-courses-c352/h21rwdevmt?form_factor=mobile . 단일 전후 실험이며 개선의 인과 증거로 주장하지 않는다. 현장 데이터는 여전히 없음이다.
+
+실제 운영 c352의 새 경로 자산과 배경 로딩, 뻘다방의 요약2행/213.98px와 새 표시 레이블·원문 링크를 확인했다. 로그인한 기존 계정의 저장된 산책 목록과 월별 합계 표시도 읽기 확인했다. 새 기록·회원 정보·포인트를 저장하거나 변경하지 않았으므로 신규 서버 저장/동기화 검증과 구별한다. 최초 Pages 성공과 RSS 후속 배포 예외는 docs/mobile-header-20261106.md에 기록했다.

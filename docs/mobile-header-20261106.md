@@ -27,3 +27,9 @@ PC1280/1440px: 기존 헤더68.67px, 로고88.22px, 아이콘24px/글자22px 유
 - 홈페이지 보호 검사는 오직 승인된 experience.css 쿼리 버전 변경만 허용하도록 유지한다. 그 외 HTML 콘텐츠는 이전 main과 동일함을 검사한다.
 
 수정 파일: experience.css, index.html(CSS 버전), sw.js(캐시), tests/detail-reliability.mjs(승인 범위 보호 검사), 이 기록. 최종 커밋·Pages 결과·운영 캡처는 outputs/header-20261106/release.json과 최종 응답에 기록한다.
+
+## 운영 검증 및 배포 기록
+
+- 헤더 기능 커밋01a860df4c, 이전 품질 보완6ba519c9b9. PR25를 main56cbb26574bd4669edca86bfe7ca7de943857f25에 병합했다. 로컬399/399, GitHub398/398 통과(로컬에만 있는 사용자 미추적 검사1개 차이).
+- 최초 Pages42202770011 성공. 실제 운영 로그인 상태에서360/375/390/430/768/1280/1440px 및 새 자산20261106-header 확인. 모바일 좌측22px/간격8px/헤더66.67px, PC68.67px 유지. 가로 넘침 없음. 로그인 창·지도/홈 왕복·스크롤 고정 확인. 운영 캡처 outputs/header-20261106/live-390.png.
+- 정적 생성42202772322 성공 후 자동 커밋be0d9803d980fe97837b049fbbef8ae80d4d6a18은 rss.xml만 변경했다. 후속 Pages42203356520은 syncing_files에서 시간 초과했고, 실패 단계 재시도는 Deployment cancelled를 반환했다. 코드·빌드 검사 실패가 아니다. 이 검증 기록을 저장하는 새 커밋으로 배포를 다시 시작한다. 최종 상태는 Actions/최종 응답/release.json에 구분해 기록한다.
