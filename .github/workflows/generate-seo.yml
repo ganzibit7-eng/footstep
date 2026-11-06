@@ -24,6 +24,7 @@ on:
       - 'scripts/refine-place-details.mjs'
       - 'scripts/detail-editorial.mjs'
       - 'scripts/detail-reliability.mjs'
+      - 'scripts/correction-entry.mjs'
       - 'scripts/listing-editorial.mjs'
       - 'scripts/place-card.mjs'
       - 'scripts/place-curation.mjs'

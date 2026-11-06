@@ -3,10 +3,12 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {cardReliability} from './detail-reliability.mjs';
+import {correctionAssets} from './correction-entry.mjs';
 export const SEARCH_VERSION='20261106-condition-trust';
 export const CONTROL_VERSION='20261026-controls4-final';
 export const controlAssetVersion=name=>name==='product-ui'?'20261103-support':name==='legal'?'20261031-light':name==='listing-editorial'?'20261027-quality11-final':name==='detail-editorial'?'20261027-quality11':['detail-editorial','listing-editorial','internal-pages','readability'].includes(name)?'20261026-quality8':CONTROL_VERSION;
 export function refineControlAssets(html){
+ html=correctionAssets(html);
  if(!/<link rel="canonical" href="https:\/\/balzaguk.com\/"/.test(html))html=cardReliability(html);
  const trafficVersion=/trip-booking|brand-partner-slot|class="ad-page"/.test(html)?'20261104-commercial':'20261101-measurement';
  html=html.replace(/\/card-media\.js\?v=[\w-]+/g,'/card-media.js?v=20261027-quality10');

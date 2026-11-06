@@ -1,0 +1,47 @@
+-- Run after the feature DDL in the SAME transaction, then ROLLBACK.
+do $$
+declare root_id uuid; request_id uuid:=gen_random_uuid(); n bigint; response jsonb; blocked boolean; h text:=repeat('a',64);
+begin
+ select id into root_id from auth.users where public.is_admin(id::text) order by id limit 1;
+ assert root_id is not null,'an existing admin is required';
+ assert not has_table_privilege('anon','private.content_corrections','select'),'anon read blocked';
+ assert not has_table_privilege('authenticated','private.content_corrections','select'),'member direct read blocked';
+ assert not has_table_privilege('anon','private.content_corrections','insert'),'anon direct writes blocked';
+ assert not has_sequence_privilege('authenticated','private.content_correction_events_id_seq','usage'),'audit identity private';
+ assert not has_function_privilege('anon','public.submit_content_correction(uuid,text,text,text,text,text,text)','execute'),'Edge only';
+ assert not has_function_privilege('authenticated','public.submit_content_correction(uuid,text,text,text,text,text,text)','execute'),'member cannot bypass Edge';
+ assert not has_function_privilege('anon','public.admin_list_content_corrections(text,integer,integer)','execute'),'admin RPC not public';
+ perform set_config('request.jwt.claims','{"role":"authenticated","sub":"00000000-0000-4000-8000-000000000001"}',true);
+ blocked:=false;begin perform public.admin_list_content_corrections();exception when insufficient_privilege then blocked:=true;end;assert blocked,'ordinary member cannot read inbox';
+ blocked:=false;begin perform public.admin_review_content_correction(request_id,1,'resolved','test note');exception when insufficient_privilege then blocked:=true;end;assert blocked,'ordinary member cannot review';
+ blocked:=false;begin perform public.submit_content_correction(request_id,'/courses/c352/','TEST','route','Rollback test fixture only',null,h);exception when insufficient_privilege then blocked:=true;end;assert blocked,'non-service caller cannot submit RPC';
+ perform set_config('request.jwt.claims','{"role":"service_role"}',true);
+ select count(*) into n from public.notifications where type='correction';
+ response:=public.submit_content_correction(request_id,'/courses/c352/','TEST','route','Rollback test fixture only',null,h);
+ assert response->>'accepted'='true';
+ perform public.submit_content_correction(request_id,'/courses/c352/','TEST','route','Rollback test fixture only',null,h);
+ assert (select count(*) from private.content_corrections where id=request_id)=1,'idempotent row';
+ assert (select count(*) from public.notifications where type='correction')=n+(select count(*) from auth.users where public.is_admin(id::text)),'one notification per existing admin';
+ blocked:=false;begin perform public.submit_content_correction(request_id,'/courses/c352/','TEST','route','Different text should conflict',null,h);exception when invalid_parameter_value then blocked:=true;end;assert blocked,'same id cannot hide changed content';
+ perform public.submit_content_correction(gen_random_uuid(),'/courses/c352/','TEST','route','Rollback test fixture only',null,h);
+ perform public.submit_content_correction(gen_random_uuid(),'/courses/c352/','TEST','route','Rollback test fixture only',null,h);
+ blocked:=false;begin perform public.submit_content_correction(gen_random_uuid(),'/courses/c352/','TEST','route','Rollback test fixture only',null,h);exception when raise_exception then assert sqlerrm='correction_rate_limited';blocked:=true;end;assert blocked,'fourth hourly request blocked';
+ assert (select sum(count) from private.correction_rate_buckets where network_hash=h)=3,'blocked write is atomic';
+ perform set_config('request.jwt.claims',jsonb_build_object('role','authenticated','sub',root_id)::text,true);
+ response:=public.admin_list_content_corrections('all',0,20);assert jsonb_array_length(response->'items')=3;
+ assert not response::text like '%network_hash%','no network hash in admin DTO';
+ blocked:=false;begin perform public.admin_list_content_corrections(null,0,20);exception when invalid_parameter_value then blocked:=true;end;assert blocked,'null filter rejected';
+ blocked:=false;begin perform public.admin_review_content_correction(request_id,1,'resolved','');exception when invalid_parameter_value then blocked:=true;end;assert blocked,'terminal state requires note';
+ response:=public.admin_review_content_correction(request_id,1,'resolved','Rollback test complete');assert response->>'revision'='2';
+ blocked:=false;begin perform public.admin_review_content_correction(request_id,1,'reviewing','stale update');exception when serialization_failure then blocked:=true;end;assert blocked,'stale review cannot overwrite';
+ assert (select count(*) from private.content_correction_events where correction_id=request_id)=1;
+ update private.content_corrections set updated_at=now()-interval '91 days' where id=request_id;
+ insert into private.correction_rate_buckets values(repeat('b',64),now()-interval '49 hours',1);
+ perform private.purge_content_corrections();
+ assert not exists(select from private.content_corrections where id=request_id),'terminal TTL';
+ assert not exists(select from private.content_correction_events where correction_id=request_id),'audit cascades with own request';
+ assert not exists(select from private.correction_rate_buckets where network_hash=repeat('b',64)),'rate TTL';
+ assert exists(select from cron.job where jobname='content-corrections-retention'),'expiry scheduled';
+end $$;
+select 'PASS: private grants, admin isolation, atomic/idempotent notifications, validation, rate limit, concurrent review and TTL; all fixtures rolled back' as result;
+rollback;

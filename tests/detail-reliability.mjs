@@ -32,10 +32,10 @@ test('background failure never removes the route; explicit retries ignore stale 
 test('background timeout and offscreen errors are recoverable without a false success',()=>{
  const f=fixture(),a={};f.events.tileloadstart({tile:a});f.expire();assert(!f.retry.hidden);assert.match(f.note.textContent,/불러오지 못/);f.events.tileunload({tile:a});assert(f.retry.hidden);assert.equal(f.note.textContent,'');f.events.tileerror({tile:a});assert.equal(f.note.textContent,'');f.dispose();
 });
-test('home content and all search records stay intact apart from the approved header CSS version',()=>{
- const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header');
- // Baseline accdf9a, normalised only for line endings and the approved CSS URL.
+test('home content and all search records stay intact apart from the approved detail correction and notification wiring',()=>{
+ const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">/g,'').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'');
+ // Baseline 0b02c3701f; excludes only approved correction assets, detail entry and notification code.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
- const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'8cd68e671956587d66c1034db44ea07d67fb283a8430162a1d71b909f5900941','home content must stay unchanged');
+ const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'e61ecfcbe6eafa3f585026398eba1dc6bca246f6a08f1459d88cec753018f6fe','home content must stay unchanged');
  const data=require('./search-records.cjs')();assert.equal(data.length,4619);assert.equal(Search.filter(data,{}).length,4619);assert(Search.filter(data,{pet:'known'}).every(Search.companionKnown));
 });
