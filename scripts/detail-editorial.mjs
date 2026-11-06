@@ -25,7 +25,7 @@ export function routeAssets(html){
 }
 export function routeClarity(html){
  if(!html.includes('id="detail-route-data"')||html.includes('data-route-clarity="1"'))return html;
- const visible=html.slice(html.indexOf('<main')),values=[...new Set([...visible.matchAll(/공식 전체 안내 거리(?:는|:)?\s*(\d+(?:\.\d+)?)\s*km/g)].map(m=>m[1]))];
+ const visible=html.match(/<section[^>]+id="detail-about"[^>]*>([\s\S]*?)<\/section>/)?.[1]||'',values=[...new Set([...visible.matchAll(/공식 전체 안내 거리(?:는|:)?\s*(\d+(?:\.\d+)?)\s*km/g)].map(m=>m[1]))];
  let registered='';
  html=html.replace(/(<aside class="detail-course-metrics"[^>]*>)([\s\S]*?)(<\/aside>)/,(all,open,body,end)=>{if(values.length===1){if(html.includes('class="detail-route-endpoints"'))body=body.replace(/<div class="detail-feature[^"]*"><span>등록 참고 거리<\/span>[\s\S]*?<\/div>/,part=>{registered=part;return '';});body=body.replace(/(<div class="detail-feature[^"]*"><span>GPX 제공 구간 측정 거리<\/span>[\s\S]*?<\/div>)/,'$1<div class="detail-feature"><span>공식 전체 안내 거리</span><strong>'+values[0]+'km</strong></div>');body=body.replace(/<p class="detail-caption">[\s\S]*?<\/p>/,'<p class="detail-caption">GPX 측정 거리는 제공된 좌표 구간의 길이이며, 공식 전체 안내 거리는 원문 안내값입니다. 차이의 원인은 이 자료만으로 확정할 수 없습니다. 시간·난이도는 등록 참고 정보이며 현장 통행 검증이 아닙니다.</p>');}return open+'<p class="detail-route-label">공식 GPX 제공 구간</p>'+body+end;});
  return html.replace(/(<section class="detail-section" id="detail-route">)([\s\S]*?)(<\/section>)/,(all,open,body,end)=>{let coordinates='';body=body.replace(/<dl class="detail-route-endpoints">[\s\S]*?<\/dl>/,dl=>{coordinates=dl;return '';});return open.replace('>',' data-route-clarity="1">')+body+(coordinates?'<details class="detail-route-technical"><summary>출발·도착 좌표 확인</summary>'+coordinates+registered+'</details>':'')+end;});
