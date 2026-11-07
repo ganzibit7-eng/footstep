@@ -717,8 +717,9 @@ async function directoryHtml(groups) {
   const payload=JSON.stringify(searchData),dataFile=path.join(ROOT,'assets/search-data/discover.json');
   await mkdir(path.dirname(dataFile),{recursive:true});
   let previous;try{previous=await readFile(dataFile,'utf8');}catch(error){if(error.code!=='ENOENT')throw error;}
-  // Preserve the v1 fixed-path payload for already-open phase-eight HTML.
-  if(previous===undefined)await writeFile(dataFile,payload,'utf8');
+  // Refresh the fixed-path search payload whenever publication eligibility changes.
+  // Leaving an older version here would resurrect delisted venues in regional reconciliation and older clients.
+  if(previous!==payload)await writeFile(dataFile,payload,'utf8');
   const immutable='discover-'+createHash('sha256').update(payload).digest('hex').slice(0,16)+'.json';
   const immutablePath=path.join(ROOT,'assets/search-data',immutable);
   try{if(await readFile(immutablePath,'utf8')!==payload)throw new Error('Immutable search payload collision');}catch(error){if(error.code!=='ENOENT')throw error;await writeFile(immutablePath,payload,'utf8');}
