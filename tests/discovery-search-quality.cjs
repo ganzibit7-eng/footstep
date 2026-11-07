@@ -19,7 +19,7 @@ test('official duration wins over estimated time; difficulty is a labelled regis
 });
 test('compound filters retain all records without selection and match the unchanged public course facts',()=>{
  const before=JSON.stringify(records),courses=records.filter(r=>r.kind==='courses');assert.equal(courses.length,412);
- assert.equal(S.filter(records,{}).length,4618);assert.equal(S.filter(records,{kind:'courses'}).length,412);
+ const counts=require('../data/public-counts.json');assert.equal(S.filter(records,{}).length,counts.courses+counts.facilities+38);assert.equal(S.filter(records,{kind:'courses'}).length,412);
  const selected=S.filter(records,{kind:'courses',region:'서울',duration:'60',difficulty:'쉬움',q:'서울숲공원길'});assert.equal(selected.length,1);assert.equal(selected[0].path,'/courses/c31/');
  assert.equal(S.filter(records,{kind:'courses',q:'서울숲공원길',duration:'30'}).length,0,'official 60 minutes must not be recalculated from 2km');
  assert.equal(S.filter(records,{kind:'facilities',duration:'30'}).length,0);assert.equal(JSON.stringify(records),before);

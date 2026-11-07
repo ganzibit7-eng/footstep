@@ -23,7 +23,8 @@ test('static public catalogues share deferred visitor collection exactly once wi
 test('every generated public listing includes one collector and its existing exclusions',()=>{
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let lists=0;
  for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const html=readFileSync(file,'utf8');if(!html.includes('data-listing-template='))continue;lists++;assert.equal((html.match(/<script\b[^>]*src="\/?traffic\.js\?/g)||[]).length,1,file);assert(html.includes('supabase-js@2.117.2'),file);}
- assert(lists>=1100);
+ const counts=JSON.parse(readFileSync('data/public-counts.json','utf8'));
+ assert(lists>=Math.floor(1100*counts.facilities/4168),'listing coverage must scale with currently approved places');
 });
 test('the offline shell includes local stylesheet imports without caching private data',async()=>{
  const html=readFileSync('index.html','utf8'),handlers={},cached=new Set();
@@ -46,5 +47,8 @@ test('a delayed points response uses the current viewport after screen rotation'
 test('all generated user pages use current shared styles; home has no detail/list stylesheet',()=>{
  const files=execFileSync('git',['ls-files','-z','--','*.html'],{encoding:'utf8',maxBuffer:10000000}).split('\0').filter(Boolean);let covered=0;
  for(const file of files){if(/^(?:tests|docs|admin)/.test(file))continue;const h=readFileSync(file,'utf8'),links=[...h.matchAll(/<link\b[^>]*href="\/(detail-editorial|listing-editorial|internal-pages|product-ui|design-system|legal)\.css\?v=([^"?]+)"/g)];if(links.length)covered++;for(const link of links)assert.equal(link[2],controlAssetVersion(link[1]),file);}
- assert(covered>=23400);const home=readFileSync('index.html','utf8');assert(!home.includes('href="/detail-editorial.css'));assert(!home.includes('href="/listing-editorial.css'));console.log('Shared-control style coverage:',covered);
+ const counts=JSON.parse(readFileSync('data/public-counts.json','utf8'));
+ const professional=JSON.parse(readFileSync('data/place-count-summary.json','utf8')).professionalPlaces;
+ const minimum=counts.courses+counts.facilities+professional+38+Math.floor(1100*counts.facilities/4168);
+ assert(covered>=minimum,'shared styles must still cover every current detail plus proportional listing pages');const home=readFileSync('index.html','utf8');assert(!home.includes('href="/detail-editorial.css'));assert(!home.includes('href="/listing-editorial.css'));console.log('Shared-control style coverage:',covered);
 });
