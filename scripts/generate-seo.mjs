@@ -26,7 +26,7 @@ import CourseAddresses from '../course-addresses.js';
 import CoursePhotos from '../course-photos.js';
 import CoursePetAccess from '../course-pet-access.js';
 import CourseComfort from '../course-comfort.js';
-import { mkdir, rm, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, rm, readFile, writeFile, readdir } from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
@@ -901,3 +901,25 @@ console.log('Shared visitor controls:',await publishControlPolish(ROOT));
 console.log('Regional reading pages:',await refineRegionalSearch(ROOT,{updateSitemap:false,refreshRSS:true}));
 
 console.log('Sitemap content dates:',await finalizeModificationDates(ROOT,uniqueSitemap,sitemapSnapshot,editedDay));
+
+// Delete only superseded immutable search snapshots, never the currently referenced
+// manifest or shared fixed-path index. Old snapshots could expose withdrawn venues
+// to already-open visitors even after the canonical detail pages are removed.
+async function pruneSupersededSearchSnapshots(root) {
+ const manifestHtml=await readFile(path.join(root,'discover.html'),'utf8');
+ const payload=manifestHtml.match(/id="place-data">([\s\S]*?)<\/script>/)?.[1];
+ if(!payload)throw Error('Search manifest missing; refusing snapshot cleanup');
+ const manifest=JSON.parse(payload);
+ const pathname=src=>{
+   if(!/^\/assets\/search-data\/(?:discover|part)-[a-f0-9]{16}\.json$/.test(src))throw Error('Unexpected immutable search path: '+src);
+   return path.basename(src);
+ };
+ const retained=new Set(['discover.json',pathname(manifest.src),...manifest.parts.map(part=>pathname(part.src))]);
+ const folder=path.join(root,'assets/search-data');
+ const old=(await readdir(folder)).filter(name=>
+   /^(?:discover|part)-[a-f0-9]{16}\.json$/.test(name)&&!retained.has(name));
+ for(const name of old)await rm(path.join(folder,name));
+ return old.length;
+}
+console.log('Superseded search snapshots removed:',await pruneSupersededSearchSnapshots(ROOT));
+

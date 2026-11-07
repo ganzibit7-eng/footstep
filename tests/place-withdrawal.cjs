@@ -28,3 +28,12 @@ test('pending verification venues cannot appear in public detail, search, or sit
  for(const id of protectedIds){assert(!fs.existsSync('places/'+id+'/index.html'),id);assert(!published.has(id),id);}
  for(const id of hold.retained_official_evidence_ids)assert(fs.existsSync('places/'+id+'/index.html'),id+' must remain published');
 });
+
+
+test('only the active immutable search snapshots remain publicly readable',()=>{
+ const html=fs.readFileSync('discover.html','utf8'),manifest=JSON.parse(html.match(/id="place-data">([\s\S]*?)<\/script>/)[1]);
+ const active=new Set(['discover.json',manifest.src.split('/').at(-1),...manifest.parts.map(p=>p.src.split('/').at(-1))]);
+ const snapshots=fs.readdirSync('assets/search-data').filter(name=>/^(?:discover|part)-[a-f0-9]{16}\.json$/.test(name));
+ assert.equal(snapshots.length,active.size-1);
+ for(const name of snapshots)assert(active.has(name),'unreferenced search snapshot '+name);
+});
