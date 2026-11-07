@@ -115,6 +115,8 @@ jobs:
           else
             node scripts/generate-seo.mjs
           fi
+      - name: Stage generated public pages before index-based coverage checks
+        run: git add -A -- places courses bins guides with-dog assets/search-data discover.html sitemap.xml rss.xml
       - name: Check deployment size and public file boundaries
         run: node --test tests/pages-storage.mjs tests/photo-storage-guard.mjs && node scripts/audit-pages-storage.mjs
       - name: Validate public page and image discovery

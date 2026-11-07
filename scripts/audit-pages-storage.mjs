@@ -13,7 +13,7 @@ export function excluded(file,entries){
 }
 export function audit(rootPath=root){
   const entries=excludesFrom(fs.readFileSync(path.join(rootPath,'_config.yml'),'utf8'));
-  const files=execFileSync('git',['ls-files','-z'],{cwd:rootPath,encoding:'utf8',maxBuffer:8e6}).split('\0').filter(Boolean);
+  const files=[...new Set(execFileSync('git',['ls-files','-z','--cached','--others','--exclude-standard'],{cwd:rootPath,encoding:'utf8',maxBuffer:8e6}).split('\0').filter(Boolean))].filter(p=>{const full=path.join(rootPath,p);return fs.existsSync(full)&&fs.statSync(full).isFile();});
   const published=files.filter(p=>!p.split('/').some(x=>/^[._#]/.test(x))&&!excluded(p,entries));
   const omitted=files.filter(p=>excluded(p,entries));
   const broken=[];

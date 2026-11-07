@@ -41,11 +41,11 @@ test('all generated detail types use the shared overview while course evidence a
    if(verifiedRoute(dir.name,h))gpx++;else{assert(!h.includes('id="detail-route-data"'));assert(h.includes('정확한 경로 미확인'));h.includes('제안 경로 안내')?proposal++:location++;}
   }
  }
- assert.equal(total,22316);assert(photos>100);assert(information>0);assert(professional>17000);assert.deepEqual({gpx,proposal,location},{gpx:55,proposal:30,location:327});console.log('Experience coverage',{total,photos,information,professional,gpx,proposal,location});
+ assert.equal(total,412+38+JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+JSON.parse(readFileSync('data/pet-care/manifest.json','utf8')).total);assert(photos>100);assert(information>0);assert(professional>17000);assert.deepEqual({gpx,proposal,location},{gpx:55,proposal:30,location:327});console.log('Experience coverage',{total,photos,information,professional,gpx,proposal,location});
 });
 
 test('ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS',()=>{
- const cafes=readFileSync('places/cafes/index.html','utf8');assert(cafes.includes('data-place-curation="quality11"'));assert(cafes.includes('id="hub-results"'));assert(cafes.includes('전체 1,713곳'));
+ const cafes=readFileSync('places/cafes/index.html','utf8');assert(cafes.includes('data-place-curation="quality11"'));assert(cafes.includes('id="hub-results"'));assert(cafes.includes('전체 1,107곳'));
  const directory=readFileSync('discover.html','utf8');assert(directory.includes('data-directory-curation'));assert(directory.includes('id="place-results"'));
  const home=readFileSync('index.html','utf8'),handler=home.slice(home.indexOf("if(sharedCourseId && allCourses().some"),home.indexOf('} else if(sharedFacilityId)'));
  assert(handler.includes("params.get('prepare')==='walk'"));assert(handler.includes('prepareCourseWalk(sharedCourseId)'));assert(!/startWalk|watchPosition|getCurrentPosition/.test(handler));

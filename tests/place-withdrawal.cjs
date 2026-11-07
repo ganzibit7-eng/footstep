@@ -8,8 +8,8 @@ test('withdrawn lodging has no public detail, discovery, sitemap, RSS or compani
 test('public count release matches the remaining directory and combined place total',()=>{
  const counts=JSON.parse(fs.readFileSync('data/public-counts.json')),combined=JSON.parse(fs.readFileSync('data/place-count-summary.json'));
  const data=require('./search-records.cjs')();
- assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168);assert.equal(counts.places,21863);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
- assert(fs.readFileSync('pet-life/index.html','utf8').includes('21,863'));assert(fs.readFileSync('index.html','utf8').includes('>21,863곳</span>'));
+ assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168-JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json')).count);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
+ assert(fs.readFileSync('pet-life/index.html','utf8').includes(counts.places.toLocaleString('ko-KR')));assert(fs.readFileSync('index.html','utf8').includes('>'+counts.places.toLocaleString('ko-KR')+'곳</span>'));
 });
 
 test('operator-withdrawn glamping has no public detail or current search entry',()=>{
@@ -17,4 +17,14 @@ test('operator-withdrawn glamping has no public detail or current search entry',
  assert(!fs.readFileSync('place-evidence.js','utf8').includes('gocamping_8099'));
  assert(!fs.readFileSync('sitemap.xml','utf8').includes('/places/gocamping_8099/'));
  assert(!require('./search-records.cjs')().some(r=>r.path==='/places/gocamping_8099/'||r.name==='글램핑로망'));
+});
+
+test('pending verification venues cannot appear in public detail, search, or sitemap',()=>{
+ const hold=JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json','utf8'));
+ assert.equal(hold.ids.length,887);
+ const protectedIds=new Set(hold.ids),records=require('./search-records.cjs')();
+ const published=new Set([...fs.readFileSync('sitemap.xml','utf8').matchAll(/<loc>https:\/\/balzaguk\.com\/places\/([A-Za-z0-9_-]+)\/<\/loc>/g)].map(m=>m[1]));
+ for(const row of records){const m=row.path.match(/^\/places\/([A-Za-z0-9_-]+)\/$/);if(m)assert(!protectedIds.has(m[1]),row.path);}
+ for(const id of protectedIds){assert(!fs.existsSync('places/'+id+'/index.html'),id);assert(!published.has(id),id);}
+ for(const id of hold.retained_official_evidence_ids)assert(fs.existsSync('places/'+id+'/index.html'),id+' must remain published');
 });

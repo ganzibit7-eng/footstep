@@ -12,7 +12,7 @@ test('optional condition filter includes photo-free facts and never treats unkno
  const base={kind:'facilities',name:'장소',info:'서울 · 식당카페',region:'서울'};
  const rows=[{...base,path:'/places/a/',facts:[{label:'필수 준비물',value:'목줄 착용'}]},{...base,path:'/places/b/',photo:{src:'/real.jpg'},facts:[{label:'견종·크기 조건',value:'미확인'}]},{...base,path:'/places/c/',facts:[{label:'운영시간',value:'09:00~18:00'}]},{...base,path:'/places/d/',facts:[{label:'허용 구역',value:'방문 전 문의'}]}];
  assert.deepEqual(Search.filter(rows,{pet:'known'}).map(r=>r.path),['/places/a/']);assert.equal(Search.filter(rows,{}).length,4);assert.equal(Search.companionKnown({...rows[0],kind:'courses'}),false);assert.equal(Search.companionKnown({...base,facts:[{label:'허용 구역',value:'한국관광공사 공식 소개에서 반려동물 동반 가능을 확인했습니다.'}]}),false);
- const real=require('./search-records.cjs')(),before=JSON.stringify(real),known=Search.filter(real,{kind:'facilities',pet:'known'});assert.equal(real.length,4618);assert(known.length>10);assert(known.some(r=>!r.photo));assert(known.every(Search.companionKnown));assert.equal(JSON.stringify(real),before);
+ const real=require('./search-records.cjs')(),before=JSON.stringify(real),known=Search.filter(real,{kind:'facilities',pet:'known'});assert.equal(real.length,JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+412+38);assert(known.length>10);assert(known.some(r=>!r.photo));assert(known.every(Search.companionKnown));assert.equal(JSON.stringify(real),before);
  assert.equal(Search.ordered(rows,'conditions')[0],rows[0]);assert.equal(Search.ordered(rows,'photos')[0],rows[1]);assert.equal(Search.ordered(rows,'conditions').length,rows.length);
 });
 test('GPX measurement sums real parts but never invents a connection between disconnected parts',()=>{
