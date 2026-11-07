@@ -755,7 +755,7 @@ async function directoryHtml(groups) {
 
 // 조회 실패 시 기존 검색 페이지를 지우지 않습니다.
 const groups = await Promise.all(types.map(async type => ({type,items:await fetchApproved(type.table)})));
-// Independent publication guard: records awaiting current operator/source verification must not be republished.
+// Independent publication guard: pending-verification venues must never be republished without reviewed evidence and guard-list updates.
 const heldPlaceIds = new Set(JSON.parse(await readFile(path.join(ROOT,'data/place-review-holds-20261107.json'),'utf8')).ids);
 for (const group of groups) if (group.type.table==='facilities') group.items=group.items.filter(item=>!heldPlaceIds.has(item.id));
 for(const group of groups) if(group.type.table==='courses') group.items=group.items.map(item=>({...item,address:CourseAddresses.get(item)?.address||'',addressPoint:CourseAddresses.get(item)?.point||''}));

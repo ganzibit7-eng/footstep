@@ -15,7 +15,7 @@ test('public search omits bookkeeping without changing photo rights or originals
  const original=JSON.stringify(p),out=directoryPhoto(p);assert.equal(JSON.stringify(p),original);assert(!('sha256'in out));assert(!('courses'in out));
  for(const key of ['author','source','original','license','licenseUrl','changes','noCrop','width','height','checked'])assert.deepEqual(out[key],p[key]);
  assert.equal(Media.fit(out),'contain');
- const data=records();assert(data.length>4000);for(const r of data)if(r.photo){assert(!r.photo.sha256&&!r.photo.courses,r.path);assert(r.photo.source&&r.photo.author&&r.photo.licenseUrl,r.path);}
+ const data=records(),count=JSON.parse(readFileSync('data/public-counts.json','utf8'));assert.equal(data.length,count.courses+count.facilities+38);for(const r of data)if(r.photo){assert(!r.photo.sha256&&!r.photo.courses,r.path);assert(r.photo.source&&r.photo.author&&r.photo.licenseUrl,r.path);}
 });
 
 test('cached search retains every original multiword, category and source-condition result',()=>{
