@@ -41,7 +41,7 @@ test('all generated detail types use the shared overview while course evidence a
    if(verifiedRoute(dir.name,h))gpx++;else{assert(!h.includes('id="detail-route-data"'));assert(h.includes('정확한 경로 미확인'));h.includes('제안 경로 안내')?proposal++:location++;}
   }
  }
- assert.equal(total,22317);assert(photos>100);assert(information>0);assert(professional>17000);assert.deepEqual({gpx,proposal,location},{gpx:55,proposal:30,location:327});console.log('Experience coverage',{total,photos,information,professional,gpx,proposal,location});
+ assert.equal(total,22316);assert(photos>100);assert(information>0);assert(professional>17000);assert.deepEqual({gpx,proposal,location},{gpx:55,proposal:30,location:327});console.log('Experience coverage',{total,photos,information,professional,gpx,proposal,location});
 });
 
 test('ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS',()=>{

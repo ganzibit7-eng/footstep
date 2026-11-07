@@ -14,7 +14,7 @@ test('all enriched identities are public records; photographs are intact with ri
  assert.equal(records.length,coverage.records);assert.equal(photos,coverage.photoPlaces);assert.equal(pets,coverage.petRecords);console.log({reviewed:coverage.publicFacilities,matched:records.length,photos,petRecords:pets,photoUnresolved:coverage.publicFacilities-photos});
 });
 test('current camping conditions remain bound to identity; conflicting guidance cannot become confirmed permission',()=>{
- const camps=records.filter(r=>r.camping);assert.equal(camps.length,969);assert.equal(records.filter(r=>r.caution).length,coverage.cautions);
+ const camps=records.filter(r=>r.camping);assert.equal(camps.length,968);assert.equal(records.filter(r=>r.caution).length,coverage.cautions);
  for(const r of camps){assert.equal(Evidence.camping({...r,description:r.description+' changed'}),null);assert.equal(Evidence.camping({...r,address:r.address+' elsewhere'}),null);assert.equal(r.camping.id,r.id);assert.match(r.camping.source,/^https:\/\/gocamping\.or\.kr\/bsite\/camp\/info\/read\.do\?c_no=\d+$/);assert(Conditions.get(r).some(row=>row.value.includes(r.camping.facts['문의처'])||!r.camping.facts['문의처']));}
  for(const r of records.filter(r=>r.caution)){assert.match(Conditions.summary(r),/재확인|출입 불가/);assert.match(Conditions.get(r)[1].value,/미확정/);assert.match(Conditions.panel(r),/role="note"/);assert.equal(Evidence.caution({...r,description:'changed'}),null);}
  const punta=records.find(r=>r.name==='푼타하우스');assert(punta);assert.equal(Evidence.caution(punta),null);

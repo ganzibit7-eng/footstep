@@ -38,9 +38,9 @@ test('home content and all search records stay intact apart from approved correc
  // Baseline 2962ad1fca; excludes approved correction wiring and export/session guards.
  // Export behavior and real session invalidation are covered by private-export.cjs.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
- const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'1ff37553f6f76fec3c815917cb1e7963bf47df37e4896d301e0eacac7941d934','home content must stay unchanged');
+ const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'8bec2855f836ab39bc8f303fe479a4d1344b3f67f185124d1258f0056f5c9829','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
  assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);
- const data=require('./search-records.cjs')();assert.equal(data.length,4619);assert.equal(Search.filter(data,{}).length,4619);assert(Search.filter(data,{pet:'known'}).every(Search.companionKnown));
+ const data=require('./search-records.cjs')();assert.equal(data.length,4618);assert.equal(Search.filter(data,{}).length,4618);assert(Search.filter(data,{pet:'known'}).every(Search.companionKnown));
 });

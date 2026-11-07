@@ -39,7 +39,7 @@ test('all generated details separate notices, preserve useful actions and reject
   }
   for(const media of h.matchAll(/<div class="premium-card-media([^\"]*)">([\s\S]*?)(?=<\/div>)/g))if(media[2].includes('premium-placeholder')){missing++;assert(media[1].includes('is-missing'),file+' missing compact header');}
  }
- assert.equal(details,22317);assert(notices>1000);assert(phone>500);assert(missing>1000);console.log('Quality7 coverage:',JSON.stringify({details,notices,visiblePhoneActions:phone,compactMissingPhotos:missing}));
+ assert.equal(details,22316);assert(notices>1000);assert(phone>500);assert(missing>1000);console.log('Quality7 coverage:',JSON.stringify({details,notices,visiblePhoneActions:phone,compactMissingPhotos:missing}));
 });
 
 test('mobile layout is established before parsing search JSON, with no new dependency',()=>{

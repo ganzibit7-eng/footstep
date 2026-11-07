@@ -49,7 +49,7 @@ test('all detail and all collection pages use the quality templates and keep can
   if(h.includes('data-detail-template=')){assert(h.includes('data-detail-template="editorial-v3"'),file);assert(h.includes(detailScriptAsset(h)));details++;continue;}
   if(/"@type"\s*:\s*"CollectionPage"/.test(h)||h.includes('id="find-place"')){assert(h.includes('data-listing-template="quality3"'),file);assert(h.includes('listing-editorial.css?v='+controlAssetVersion('listing-editorial')));lists++;}
  }
- assert.equal(details,22317);assert(lists>500);console.log('Quality coverage:',JSON.stringify({details,lists}));
+ assert.equal(details,22316);assert(lists>500);console.log('Quality coverage:',JSON.stringify({details,lists}));
  const home=readFileSync('index.html','utf8');assert(!home.includes('listing-editorial.css'));assert(!home.includes('place-presentation.js'));
 });
 test('the camping detail, visit facts, source grouping and directory summary agree with the original',()=>{

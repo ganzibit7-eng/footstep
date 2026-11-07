@@ -8,6 +8,13 @@ test('withdrawn lodging has no public detail, discovery, sitemap, RSS or compani
 test('public count release matches the remaining directory and combined place total',()=>{
  const counts=JSON.parse(fs.readFileSync('data/public-counts.json')),combined=JSON.parse(fs.readFileSync('data/place-count-summary.json'));
  const data=require('./search-records.cjs')();
- assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4169);assert.equal(counts.places,21864);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
- assert(fs.readFileSync('pet-life/index.html','utf8').includes('21,864'));assert(fs.readFileSync('index.html','utf8').includes('>21,864곳</span>'));
+ assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168);assert.equal(counts.places,21863);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
+ assert(fs.readFileSync('pet-life/index.html','utf8').includes('21,863'));assert(fs.readFileSync('index.html','utf8').includes('>21,863곳</span>'));
+});
+
+test('operator-withdrawn glamping has no public detail or current search entry',()=>{
+ assert(!fs.existsSync('places/gocamping_8099/index.html'));
+ assert(!fs.readFileSync('place-evidence.js','utf8').includes('gocamping_8099'));
+ assert(!fs.readFileSync('sitemap.xml','utf8').includes('/places/gocamping_8099/'));
+ assert(!require('./search-records.cjs')().some(r=>r.path==='/places/gocamping_8099/'||r.name==='글램핑로망'));
 });
