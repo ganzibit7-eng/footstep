@@ -35,10 +35,10 @@ test('background timeout and offscreen errors are recoverable without a false su
 });
 test('home content and all search records stay intact apart from approved correction wiring and private export protection',()=>{
  const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/\n*<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">\n*/g,'\n').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'').replace(/^  let accountExportGeneration = 0;\n/m,'').replace(/^    if\(\(session\?\.user\?\.id \|\| null\)!==myDeviceId\)accountExportGeneration\+\+;\n/m,'').replace(/^    accountExportGeneration\+\+;\n/m,'').replace(/  async function exportMyData\(\)\{[\s\S]*?(?=  document.getElementById\('export-data-btn'\).addEventListener)/,'');
- // Baseline updated after approved 2026-11-07 public place withdrawals and counters. Export/session guards remain excluded.
+ // Baseline updated after approved 2026-11-07 public place withdrawals and 2026-11-08 six copy-only home changes. Export/session guards remain excluded.
  // Export behavior and real session invalidation are covered by private-export.cjs.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
- const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'6b5080e7dca0fd51035e061d35ae5be474ee5a102d971045a7716762799714a5','home content must stay unchanged');
+ const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
  assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);
