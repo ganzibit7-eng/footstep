@@ -332,3 +332,101 @@ body.editorial-detail{margin:0;background:#faf8f1;color:#243c32;font-family:syst
  .editorial-detail .detail-arrival-summary>a{display:inline-flex;min-height:32px;align-items:center;font-size:12px;margin-left:6px}
  .editorial-detail .detail-lead .detail-slide img{aspect-ratio:16/9;max-height:320px}
 }
+
+/* 2026-11-08 — Detail-only visual polish. No homepage selectors or data changes. */
+.editorial-detail .detail-lead .detail-gallery-track{border-radius:14px}
+.editorial-detail .detail-lead .detail-slide>img,
+.editorial-detail .detail-lead .detail-slide>a>img{border-radius:14px}
+
+/* A calm summary surface separates visit essentials from the source-heavy article. */
+.editorial-detail [data-detail-kind]:not([data-detail-kind="course"]) .detail-lead>.detail-overview{
+  padding:20px 22px 18px;
+  border:1px solid #dfe7da;
+  border-radius:16px;
+  background:#fffdf8;
+  box-shadow:0 10px 32px rgba(38,63,48,.045);
+}
+.editorial-detail .detail-overview>.detail-trust{margin:0 0 14px}
+.editorial-detail .detail-trust{gap:8px}
+.editorial-detail .detail-trust span{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:4px 10px;
+  border:1px solid #dfe7d9;
+  border-radius:999px;
+  background:#f2f5ee;
+  color:#4f6555;
+  font-size:12px;
+  line-height:1.45;
+}
+.editorial-detail .detail-overview .detail-essentials{
+  padding-top:0;
+  border-top:0;
+}
+.editorial-detail .detail-overview .detail-essentials>p:first-child{padding-top:0}
+.editorial-detail .detail-overview .detail-essentials>p>span{
+  font-weight:600;
+  letter-spacing:.005em;
+}
+.editorial-detail .detail-overview .detail-essentials>p:last-of-type{border-bottom:0}
+.editorial-detail .detail-overview .detail-lead-check{
+  margin:10px 0 16px;
+  padding:11px 13px;
+  background:#f7f3e9;
+  border-left:3px solid #af9972;
+  border-radius:0 9px 9px 0;
+  color:#645b4b;
+  line-height:1.75;
+}
+.editorial-detail .detail-overview .detail-lead-check strong{color:#695337}
+.editorial-detail .detail-overview .detail-actions-primary>:is(a,button){
+  border-radius:10px;
+  min-height:46px;
+}
+.editorial-detail .detail-overview .detail-actions-secondary summary{
+  color:#526657;
+  font-weight:600!important;
+}
+
+/* Dates are evidence metadata, not an on-site verification badge. */
+.editorial-detail .detail-proof-dates{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.editorial-detail .detail-proof-dates>div{
+  min-width:0;
+  padding:13px 14px;
+  border:1px solid #e0e7db;
+  border-radius:11px;
+  background:#f3f5ef;
+}
+.editorial-detail .detail-proof-dates dt{line-height:1.5;font-weight:600}
+.editorial-detail .detail-proof-dates dd{font-weight:600;line-height:1.5;overflow-wrap:anywhere}
+.editorial-detail #detail-sources>.detail-caption{max-width:86ch}
+
+/* Improve route/comfort card legibility without altering GPX coordinates. */
+.editorial-detail .detail-route-map{border-radius:13px}
+.editorial-detail [data-detail-kind="course"] .comfort-detail dl>div{border-radius:11px}
+@media(max-width:760px){
+  .editorial-detail [data-detail-kind]:not([data-detail-kind="course"]) .detail-lead>.detail-overview{
+    width:100%;
+    margin-top:6px;
+    padding:18px 16px;
+    border-radius:14px;
+    box-shadow:0 6px 22px rgba(38,63,48,.035);
+  }
+  .editorial-detail .detail-proof-dates{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .editorial-detail .detail-proof-dates>div{padding:12px}
+  .editorial-detail .detail-course-metrics{
+    padding:16px 14px;
+    background:#f2f5ef;
+    border:1px solid #dfe6d9;
+    border-radius:12px;
+  }
+  .editorial-detail .detail-overview .detail-lead-check{font-size:13px}
+}
+@media(max-width:360px){
+  .editorial-detail .detail-proof-dates{grid-template-columns:1fr}
+}
