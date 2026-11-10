@@ -13,8 +13,8 @@ const Media=createRequire(import.meta.url)('../card-media.js');
 export const detailPhotoURL=src=>placePhotos.url(src);
 
 export const DETAIL_VERSION=CONTROL_VERSION;
-export const DETAIL_SCRIPT_VERSION='20261027-quality11';
-export const detailScriptVersion=html=>html.includes('id="detail-route-data"')?'20261106-route-tiles':DETAIL_SCRIPT_VERSION;
+export const DETAIL_SCRIPT_VERSION='20261110-return';
+export const detailScriptVersion=html=>html.includes('id="detail-route-data"')?'20261110-return':DETAIL_SCRIPT_VERSION;
 export const detailScriptAsset=html=>html.includes('id="detail-route-data"')?'route-experience.js?v='+detailScriptVersion(html):'detail-editorial.js?v='+DETAIL_SCRIPT_VERSION;
 export function routeAssets(html){
  if(!html.includes('id="detail-route-data"'))return html;
