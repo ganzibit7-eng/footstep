@@ -12,6 +12,8 @@
   try{if(navigator.share){await navigator.share({title:document.title,url:url.href});message('');}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url.href);message('공유 링크를 복사했습니다.');}else message('공유할 링크: '+url.href);}catch(error){if(error.name!=='AbortError')message('공유를 완료하지 못했어요. 주소창의 링크를 복사해 주세요.',true);}
  }));
  const back=page.querySelector('[data-detail-back]');
+ // Keep ordinary click, copied links and modified/new-tab clicks on one return URL.
+ try{const from=new URL(document.referrer);if(back&&from.origin===location.origin&&/^(\/$|\/discover\.html$|\/places\/|\/courses\/|\/pet-care\/|\/pet-life\/)/.test(from.pathname))back.href=from.pathname+from.search+from.hash;}catch{}
  // Section navigation replaces this detail's hash instead of adding history
  // entries, so the list return action still restores the original list state.
  page.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{

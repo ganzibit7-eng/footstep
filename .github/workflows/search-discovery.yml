@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths: ['index.html', 'weekend/**', 'share-link.js', 'courses/**', 'places/**', 'bins/**', 'guides/**', 'with-dog/**', 'sitemap.xml', 'walk-sitemap.xml', 'scripts/search-discovery.mjs', '.github/workflows/search-discovery.yml']
   workflow_run:
-    workflows: ['pages build and deployment', 'Generate SEO pages']
+    workflows: ['pages build and deployment', 'Generate SEO pages', 'Refresh regional weather']
     types: [completed]
     branches: [main]
 permissions:
@@ -19,52 +19,37 @@ jobs:
   notify:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.name == 'Generate SEO pages' && 'main' || github.event.workflow_run.head_sha || github.sha }}
-      - name: Publish generated pages only when missing from the live deployment
-        if: github.event.workflow_run.name == 'Generate SEO pages'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          expected=$(git rev-parse HEAD)
-          pending=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$expected&per_page=30" --jq '[.workflow_runs[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
-          if [ "$pending" -gt 0 ]; then
-            echo "Pages is already building this commit; waiting without restarting it"
-            exit 0
-          fi
-          published=$(gh api "repos/$GITHUB_REPOSITORY/pages/builds/latest" --jq '.commit + " " + .status')
-          if [[ "$published" != "$expected "* ]] || [ "$published" = "$expected errored" ]; then
-            gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
-          fi
-      - name: Wait for this commit to finish Pages deployment
-        if: github.event_name != 'workflow_run' || github.event.workflow_run.name == 'Generate SEO pages'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          expected=$(git rev-parse HEAD)
-          for attempt in $(seq 1 60); do
-            result=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?head_sha=$expected&per_page=30" --jq '.workflow_runs[] | select(.name == "pages build and deployment") | .conclusion // "pending"' | head -n 1)
-            if [ "$result" = "success" ]; then exit 0; fi
-            if [ "$result" = "failure" ] || [ "$result" = "cancelled" ]; then echo "Pages deployment did not succeed"; exit 1; fi
-            sleep 10
-          done
-          echo "Pages deployment not confirmed; no search notifications sent"
-          exit 1
+          ref: ${{ (github.event.workflow_run.name == 'Generate SEO pages' || github.event.workflow_run.name == 'Refresh regional weather') && 'main' || github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
+      - name: Serialize publication and confirm the live commit
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUEST_PUBLICATION: ${{ github.event.workflow_run.name == 'Generate SEO pages' || github.event.workflow_run.name == 'Refresh regional weather' }}
+        run: |
+          if [ "$REQUEST_PUBLICATION" = "true" ]; then
+            node scripts/pages-publication.mjs --request
+          else
+            node scripts/pages-publication.mjs
+          fi
       - uses: actions/cache/restore@v4
         with:
           path: .search-state
           key: indexnow-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: indexnow-main-
       - name: Validate sitemap pages and notify only changed public URLs
+        if: steps.publish.outputs.current == 'true'
         run: |
           node --test tests/search-discovery.mjs
           node scripts/search-discovery.mjs --submit
       - uses: actions/cache/save@v4
+        if: steps.publish.outputs.current == 'true'
         with:
           path: .search-state
           key: indexnow-main-${{ github.run_id }}-${{ github.run_attempt }}
