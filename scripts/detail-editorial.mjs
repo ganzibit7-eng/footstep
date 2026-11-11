@@ -196,6 +196,16 @@ export function gallery(nodes,kind){
 
 let routeRecords;
 function routes(){if(!routeRecords){const s=readFileSync(new URL('../course-routes.js',import.meta.url),'utf8'),a=s.indexOf('const routes=')+13,b=s.indexOf(';',a);routeRecords=JSON.parse(s.slice(a,b));}return routeRecords;}
+let proposalRecords;
+function proposedRoute(id,html){
+ if(!proposalRecords){
+  const source=readFileSync(new URL('../course-expansion-20261017.js',import.meta.url),'utf8');
+  proposalRecords=JSON.parse(source.match(/const records=(\{[^\n]*\});/)[1]);
+ }
+ const record=routes()[id]||proposalRecords[id];
+ if(!record?.proposed||!record.source)return false;
+ return [...html.matchAll(/href="([^"]+)"/g)].some(match=>text(match[1])===record.source);
+}
 export function verifiedRoute(id,html){
  const r=routes()[id];if(!r||r.proposed||r.geometryProvider!=='두루누비 공식 GPX'||!r.geometryURL)return null;
  const links=[...html.matchAll(/href="([^"]+)"/g)].map(m=>text(m[1]));if(!links.includes(r.source))return null;
@@ -204,7 +214,7 @@ export function verifiedRoute(id,html){
 }
 
 function courseSection(id,html,link){
- const r=verifiedRoute(id,html),proposed=Boolean(routes()[id]?.proposed);
+ const r=verifiedRoute(id,html),proposed=proposedRoute(id,html);
  return section('detail-route',r?'공식 GPX'+(r.segment?' 선택 구간':' 경로'):(proposed?'제안 경로 안내':'산책 위치 안내'),r?'<p class="detail-verification">'+(r.segment?esc(r.segment)+'의 일부 구간입니다. ':'')+'공식 GPX 자료 기준 · 현장 답사 확인과 다릅니다.</p>'+dl([{label:'GPX 출발 좌표',value:r.parts[0][0].map(n=>n.toFixed(5)).join(', ')},{label:'GPX 도착 좌표',value:r.parts.at(-1).at(-1).map(n=>n.toFixed(5)).join(', ')}],'detail-route-endpoints')+'<div class="detail-route-map" data-route-map><button class="detail-button" type="button" data-route-load>경로 지도 불러오기</button><p data-route-status role="status">필요할 때 지도를 불러옵니다.</p></div><script type="application/json" id="detail-route-data">'+JSON.stringify(r).replaceAll('<','\\u003c')+'</script><p class="detail-caption"><a href="'+esc(r.source)+'" target="_blank" rel="noopener noreferrer">'+esc(r.provider)+' 원문 ↗</a> · 출발 S / 도착 E. 단절된 구간은 연결하지 않습니다.</p>':'<p class="detail-caution"><strong>정확한 경로 미확인</strong><br>'+(proposed?'등록된 제안 동선입니다.':'장소의 등록 위치 안내입니다.')+' 실제 걸을 수 있는 검증 경로로 표시하지 않습니다. 출입구·통제 구역은 운영기관에 확인해 주세요.</p><a class="detail-text-link" href="'+esc(link)+'">발자국 지도에서 등록 위치 확인 ↗</a>');
 }
 

@@ -1,6 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';import {createHash} from 'node:crypto';
 import {detailReliability,cardReliability,factLabel} from '../scripts/detail-reliability.mjs';
 import {searchHead} from '../scripts/search-head.mjs';
+import {applyPublicCounts} from '../scripts/update-public-counts.mjs';
 import {createRequire} from 'node:module';const require=createRequire(import.meta.url),Search=require('../place-search.js');
 test('generic pet targets are not weight evidence; exact facts and originals remain',()=>{
  const head='<article data-detail-template="editorial-v3" data-detail-kind="dining">',row='<span>견종·크기 조건</span> <strong>반려동물</strong>',original='<details class="detail-source-notes"><div>'+row+' 실내·객실 출입 이번에 대조한 공식 동반 자료</div></details>';
@@ -38,7 +39,13 @@ test('home content and all search records stay intact apart from approved correc
  // Baseline updated after approved 2026-11-07 public place withdrawals and 2026-11-08 six copy-only home changes. Export/session guards remain excluded.
  // Export behavior and real session invalidation are covered by private-export.cjs.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
- const h=normalize(fs.readFileSync('index.html','utf8'));assert.equal(createHash('sha256').update(h).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
+ const h=normalize(fs.readFileSync('index.html','utf8'));
+ const baseline=applyPublicCounts(h,{courses:412,facilities:3281,places:20978,checked:'2026-11-07'});
+ const versions={'course-photos.js':'20261029-dates2','course-expansion-20261017.js':'20261020-nationwide-b','course-pet-access.js':'20261020-nationwide-b','course-addresses.js':'20261020-nationwide-b','place-photos.js':'20261026-context9'};
+ const previousIds=new Set(JSON.parse(fs.readFileSync('docs/expansion-20261111/batch.json','utf8')).courses.map(c=>c.id));
+ const priorContent=baseline.replace(/window\.PawCoursePages=Object\.freeze\((\[[^\n]*?\])\);/,(_,data)=>'window.PawCoursePages=Object.freeze('+JSON.stringify(JSON.parse(data).filter(id=>!previousIds.has(id)))+');').replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll('21,918','20,978').replaceAll('4,221','3,281').replace('2026-11-11','2026-11-07'));
+ const baseAssets=priorContent.replace(/(course-photos\.js|course-expansion-20261017\.js|course-pet-access\.js|course-addresses\.js|place-photos\.js)\?v=20261111-expansion/g,(_,file)=>file+'?v='+versions[file]);
+ assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
  assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);

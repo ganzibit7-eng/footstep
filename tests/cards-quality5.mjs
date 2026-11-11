@@ -54,7 +54,7 @@ test('every generated related/list card has one matching destination, own name a
    const type=url.split('/')[1];counts[type]=(counts[type]||0)+1;
   }
  }
- assert.equal(registry.size,412+38+JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+JSON.parse(readFileSync('data/pet-care/manifest.json','utf8')).total);assert(lists>=900);assert(cards>30000);assert(related>1500);
+ assert.equal(registry.size,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses+38+JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+JSON.parse(readFileSync('data/pet-care/manifest.json','utf8')).total);assert(lists>=900);assert(cards>30000);assert(related>1500);
  console.log('Premium card coverage:',JSON.stringify({details:registry.size,listPages:lists,relatedPages:related,cards,counts,unapplied:0}));
 });
 
