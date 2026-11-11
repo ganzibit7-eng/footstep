@@ -32,6 +32,7 @@ import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {snippetDetails,shortSnippet} from './search-snippet.mjs';
 import {applyCourseSearchCopy} from './course-search-copy.mjs';
+import {applyRegionSearchGuidance} from './region-search-guidance.mjs';
 import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
 import {normalizePublicSearchHeads} from './search-head.mjs';
@@ -844,7 +845,7 @@ for (const hub of searchHubs) {
     const relative=hub.path+(page>1?`page/${page}/`:'');
     const dir=path.join(ROOT,relative.slice(1));
     await mkdir(dir,{recursive:true});
-    await writeFile(path.join(dir,'index.html'),withTraffic(hubHtml(hub,page)),'utf8');
+    await writeFile(path.join(dir,'index.html'),applyRegionSearchGuidance(withTraffic(hubHtml(hub,page))),'utf8');
     sitemap.push({url:SITE+relative,lastmod:newestDate(hub.items) || contentLastmod});
   }
 }
