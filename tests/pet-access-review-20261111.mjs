@@ -48,7 +48,7 @@ test('reviewed hotel conditions bind to their operator evidence and current disp
   assert(!html.includes('9kg 이하')&&!html.includes('12Kg이하')&&!html.includes('10kg 이하'),change.id);
   if(change.oldCondition)assert(home.includes(change.cardCondition),change.id);
  }
- const replacement='kto_new_20261020_2910876';
+ const replacement='kto_new_20261020_397938';
  assert(home.includes('data-place-id="'+replacement+'"'));
  const row=JSON.parse(read('place-evidence.js').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]).find(row=>row.id===replacement);
  assert(evidence.get(row)?.photo?.noCrop);
