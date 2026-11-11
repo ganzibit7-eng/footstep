@@ -5842,7 +5842,7 @@
     "key": "pet_20261012c_114beddb5331",
     "src": "/assets/course-photos/pet_20261012c_114beddb5331.webp",
     "courses": {
-      "pet_20261012c_114beddb5331": "제주 다랑쉬오름 동반 산책 안내"
+      "pet_20261012c_114beddb5331": "제주 다랑쉬오름 아래 둘레길 동반 안내"
     },
     "place": "다랑쉬오름(월랑봉) 경관 참고사진",
     "checked": "2026-10-12",
@@ -11550,6 +11550,81 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_local_flower.webp",
+    "courses": {
+      "walk_20261111_local_flower": "계양꽃마루 꽃밭 보행로 산책"
+    },
+    "place": "계양꽃마루 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/37/4059937_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2675002&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "인천_계양구_계양꽃마루 (5)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 750,
+    "height": 500,
+    "bytes": 54806,
+    "checked": "2026-11-11",
+    "datasetContentId": "2675002",
+    "sourceSha256": "dc2b6090e1155bab7e76ccbc19f4992ade2a0bb2ab8da2db3bfc27fabbdc6676",
+    "assetSha256": "20e5ffec347445ca10826832caf23fd37048d321a77d350c3e1a55db4215e894"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_local_bupyeong.jpg",
+    "courses": {
+      "walk_20261111_local_bupyeong": "부평공원 야외 보행로 산책"
+    },
+    "place": "부평공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/24/3350024_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126837&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "인천_부평공원 (7)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 627,
+    "bytes": 613273,
+    "checked": "2026-11-11",
+    "datasetContentId": "126837",
+    "sourceSha256": "61af6fbac75a2f5585811bf064028735f0e7ebf3190ef358dcfb235bbb95b2a7",
+    "assetSha256": "61af6fbac75a2f5585811bf064028735f0e7ebf3190ef358dcfb235bbb95b2a7"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_local_art.webp",
+    "courses": {
+      "walk_20261111_local_art": "포천아트밸리 야외 보행로 산책"
+    },
+    "place": "포천아트밸리 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource_photo/11/3512111_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2464201&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "포천아트밸리",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 750,
+    "height": 563,
+    "bytes": 61552,
+    "checked": "2026-11-11",
+    "datasetContentId": "2464201",
+    "sourceSha256": "b39f0c5cc4639bae4f877bc751a6e41a98fd4e007614eda9a9020c639235cd04",
+    "assetSha256": "403363526f7d2aa195a2d579e46b074ab8a78c1e377179e9ff5280b93921d88d"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

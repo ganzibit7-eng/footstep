@@ -42,9 +42,9 @@ test('home content and all search records stay intact apart from approved correc
  const h=normalize(fs.readFileSync('index.html','utf8'));
  const baseline=applyPublicCounts(h,{courses:412,facilities:3281,places:20978,checked:'2026-11-07'});
  const versions={'course-photos.js':'20261029-dates2','course-expansion-20261017.js':'20261020-nationwide-b','course-pet-access.js':'20261020-nationwide-b','course-addresses.js':'20261020-nationwide-b','place-photos.js':'20261026-context9'};
- const previousIds=new Set(JSON.parse(fs.readFileSync('docs/expansion-20261111/batch.json','utf8')).courses.map(c=>c.id));
+ const previousIds=new Set(['docs/expansion-20261111/batch.json','docs/verified-walks-20261111/batch.json'].flatMap(file=>JSON.parse(fs.readFileSync(file,'utf8')).courses.map(c=>c.id)));
  const priorContent=baseline.replace(/window\.PawCoursePages=Object\.freeze\((\[[^\n]*?\])\);/,(_,data)=>'window.PawCoursePages=Object.freeze('+JSON.stringify(JSON.parse(data).filter(id=>!previousIds.has(id)))+');').replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll('21,918','20,978').replaceAll('4,221','3,281').replace('2026-11-11','2026-11-07'));
- const baseAssets=priorContent.replace(/(course-photos\.js|course-expansion-20261017\.js|course-pet-access\.js|course-addresses\.js|place-photos\.js)\?v=20261111-expansion/g,(_,file)=>file+'?v='+versions[file]);
+ const baseAssets=priorContent.replaceAll('course-info.js?v=20261111-walk-access','course-info.js?v=20261020-nationwide-b').replace(/(course-photos\.js|course-expansion-20261017\.js|course-pet-access\.js|course-addresses\.js|place-photos\.js)\?v=20261111-(?:expansion|walk-access)/g,(_,file)=>file+'?v='+versions[file]);
  assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
