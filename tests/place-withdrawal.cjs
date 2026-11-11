@@ -8,7 +8,7 @@ test('withdrawn lodging has no public detail, discovery, sitemap, RSS or compani
 test('public count release matches the remaining directory and combined place total',()=>{
  const counts=JSON.parse(fs.readFileSync('data/public-counts.json')),combined=JSON.parse(fs.readFileSync('data/place-count-summary.json'));
  const data=require('./search-records.cjs')();
- assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168-JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json')).count);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
+ assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168-JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json')).count+require('../docs/expansion-20261111/batch.json').places.length);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
  assert(fs.readFileSync('pet-life/index.html','utf8').includes(counts.places.toLocaleString('ko-KR')));assert(fs.readFileSync('index.html','utf8').includes('>'+counts.places.toLocaleString('ko-KR')+'곳</span>'));
 });
 

@@ -11469,5 +11469,83 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_kto3425101.jpg",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/43/4061443_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3425101&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "부천_안중근공원 (6).jpg",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 627,
+    "bytes": 154820,
+    "sha256": "0f00d7ca31b9d96be37f08793cd6e31eb2ab6832f72295b1c1467987337c3217",
+    "courses": {
+      "walk_20261111_kto3425101": "안중근공원 보행로 제안 산책 코스"
+    },
+    "place": "안중근공원 실제 장소 경관 참고사진",
+    "date": "",
+    "checked": "2026-11-11",
+    "datasetContentId": "3425101",
+    "sourceSha256": "0f00d7ca31b9d96be37f08793cd6e31eb2ab6832f72295b1c1467987337c3217",
+    "assetSha256": "0f00d7ca31b9d96be37f08793cd6e31eb2ab6832f72295b1c1467987337c3217"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_kto1115042.jpg",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/12/3573112_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1115042&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "서울_봉화산(서울) (4)",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 626,
+    "bytes": 218520,
+    "sha256": "09451c7554b4e40af45fb965ca95900e9a2b6a73db616b9a8971fbcd56a55f73",
+    "courses": {
+      "walk_20261111_kto1115042": "봉화산 보행로 제안 산책 코스"
+    },
+    "place": "봉화산 실제 장소 경관 참고사진",
+    "date": "",
+    "checked": "2026-11-11",
+    "datasetContentId": "1115042",
+    "sourceSha256": "09451c7554b4e40af45fb965ca95900e9a2b6a73db616b9a8971fbcd56a55f73",
+    "assetSha256": "09451c7554b4e40af45fb965ca95900e9a2b6a73db616b9a8971fbcd56a55f73"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261111_kto125514.jpg",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/03/3506803_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=125514&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "안양_안양예술공원 (1)",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 626,
+    "bytes": 189141,
+    "sha256": "00afb22204b81969c4bdff6992e25ebb50cd98000cd4ad08c5d6f1284718cf88",
+    "courses": {
+      "walk_20261111_kto125514": "안양예술공원 보행로 제안 산책 코스"
+    },
+    "place": "안양예술공원 실제 장소 경관 참고사진",
+    "date": "",
+    "checked": "2026-11-11",
+    "datasetContentId": "125514",
+    "sourceSha256": "00afb22204b81969c4bdff6992e25ebb50cd98000cd4ad08c5d6f1284718cf88",
+    "assetSha256": "00afb22204b81969c4bdff6992e25ebb50cd98000cd4ad08c5d6f1284718cf88"
   }
 ]
