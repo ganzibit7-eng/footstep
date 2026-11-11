@@ -181,8 +181,8 @@ footer.site-footer .footer-links :is(a,button){min-height:44px;display:inline-fl
 .home-footer-scene{height:clamp(150px,17vw,244px);margin:0;background:#eef1e8}
 .home-footer-scene img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%}
 @media(max-width:600px){
-  .home-footer-scene{height:clamp(112px,34vw,160px)}
-  .home-footer-scene img{object-position:center 52%}
+  .home-footer-scene{height:clamp(112px,34vw,160px);overflow:hidden}
+  .home-footer-scene img{object-position:center 52%;transform:scale(1.25)}
 }
 
 /* Compact only the regional recommendations; keep readable text and touch targets. */
