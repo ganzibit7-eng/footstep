@@ -759,7 +759,13 @@ async function directoryHtml(groups) {
 const groups = await Promise.all(types.map(async type => ({type,items:await fetchApproved(type.table)})));
 // Independent publication guard: pending-verification venues must never be republished without reviewed evidence and guard-list updates.
 const heldPlaceIds = new Set(JSON.parse(await readFile(path.join(ROOT,'data/place-review-holds-20261107.json'),'utf8')).ids);
-for (const group of groups) if (group.type.table==='facilities') group.items=group.items.filter(item=>!heldPlaceIds.has(item.id));
+const petAccessReview = JSON.parse(await readFile(path.join(ROOT,'data/pet-access-review-holds-20261111.json'),'utf8'));
+for (const id of petAccessReview.facilities) heldPlaceIds.add(id);
+const heldByTable = new Map([['courses',new Set(petAccessReview.courses)],['facilities',heldPlaceIds]]);
+for (const group of groups) {
+  const heldIds = heldByTable.get(group.type.table);
+  if (heldIds) group.items = group.items.filter(item => !heldIds.has(item.id));
+}
 for(const group of groups) if(group.type.table==='courses') group.items=group.items.map(item=>({...item,address:CourseAddresses.get(item)?.address||'',addressPoint:CourseAddresses.get(item)?.point||''}));
 for(const group of groups) if(['facilities','bins'].includes(group.type.table)) group.items=group.items.map(item=>({...item,address:addressFor(item)}));
 itemsByTable = new Map(groups.map(group=>[group.type.table,group.items]));
@@ -793,6 +799,8 @@ duplicateNamesByTable = new Map(groups.map(group=>{
   return [group.type.table,new Set([...counts].filter(([,count])=>count>1).map(([name])=>name))];
 }));
 searchHubs = buildHubs(groups);
+// Preserve content fingerprints before any generated directory is rebuilt.
+const sitemapSnapshot=await snapshotSitemap(ROOT);
 {
   const courses=groups.find(group=>group.type.table==='courses')?.items || [];
   const places=groups.find(group=>group.type.table==='facilities')?.items || [];
@@ -800,10 +808,11 @@ searchHubs = buildHubs(groups);
     const regionalCourses=courses.filter(item=>regionFor(item)?.[0]===slug);
     const regionalPlaces=places.filter(item=>regionFor(item)?.[0]===slug);
     return {slug,region,courses:regionalCourses,places:regionalPlaces};
-  }).filter(page=>page.courses.length>=3 && page.places.length>=3);
+  }).filter(page=>{
+    const published=sitemapSnapshot.has(SITE+'/with-dog/'+page.slug+'/');
+    return published ? page.courses.length>0 && page.places.length>0 : page.courses.length>=3 && page.places.length>=3;
+  });
 }
-// Preserve content fingerprints before any generated directory is rebuilt.
-const sitemapSnapshot=await snapshotSitemap(ROOT);
 const previousDescriptions=new Map(),previousDetailPages=[];
 for(const {type,items} of groups)for(const item of items){
  const relative='/'+type.folder+'/'+safeSegment(item.id)+'/';

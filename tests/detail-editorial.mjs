@@ -58,7 +58,7 @@ test('cafe prose, lodging rules, attribution and affiliation remain in their app
  const cafe=readFileSync('places/kto_new_20261020_2875939/index.html','utf8'),stay=readFileSync('places/kto_082dfa14-8e57-49ab-9327-a5d0659dfe23/index.html','utf8');
  const conditions=cafe.slice(cafe.indexOf('id="detail-conditions"'),cafe.indexOf('id="detail-visit"'));
  assert(conditions.includes('1층은 반려동물 동반 입장이 가능하다.'));assert(!conditions.includes('몬스터페스츄리'));assert(cafe.includes('id="detail-about"'));
- const stayConditions=stay.slice(stay.indexOf('id="detail-conditions"'),stay.indexOf('id="detail-visit"'));assert(stayConditions.includes('12Kg이하'));assert(stayConditions.includes('광견병예방접종 증명서 필수'));assert(stayConditions.includes('추가요금 항목은 미확인'));
+ const stayConditions=stay.slice(stay.indexOf('id="detail-conditions"'),stay.indexOf('id="detail-visit"'));assert(stayConditions.includes('12kg 미만'));assert(stayConditions.includes('광견병 예방접종증명서'));assert(stay.includes('44,000원'));
  assert(stay.indexOf('예약 실적에 따른 수수료')<stay.indexOf('트립닷컴에서 객실 확인'));
  assert.equal((stay.match(/data-place-save=/g)||[]).length,1);
  const script=readFileSync('detail-editorial.js','utf8'),css=readFileSync('detail-editorial.css','utf8');assert(script.includes("button.disabled=true"));assert(script.includes("error.name!=='AbortError'"));assert(script.includes('history.back()'));assert(css.includes('prefers-reduced-motion'));assert(css.includes('object-fit:contain'));

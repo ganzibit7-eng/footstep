@@ -18,6 +18,7 @@ const proof=readJSON(prefix+'source-proof.json');
 const graph=readJSON(prefix+'route-proof.json');
 const catalogue=require('./search-records.cjs')();
 const publicPaths=new Set(catalogue.map(row=>row.path));
+const held=new Set(readJSON('data/pet-access-review-holds-20261111.json').facilities);
 const normalize=s=>s.normalize('NFKC').replace(/^\s*(?:주식회사|\(주\))\s*/,'').replace(/[^가-힣0-9a-z]/gi,'').toLowerCase();
 const road=s=>s.match(/([가-힣A-Za-z0-9·.]+(?:로|길))\s*(\d+(?:-\d+)?)(?=[^\d-]|$)/)?.slice(1);
 
@@ -28,9 +29,9 @@ test('each added place is uniquely bound to its own official evidence, search pa
  assert.equal(food.size+tourism.size,batch.places.length);
  for(const place of batch.places){
   const id=place.id,route='/places/'+id+'/';
-  assert(publicPaths.has(route),id);
-  const detail=read('.'+route+'index.html');
-  assert(detail.includes('rel="canonical" href="https://balzaguk.com'+route+'"'),id);
+  assert.equal(publicPaths.has(route),!held.has(id),id);
+  const detail=held.has(id)?'':read('.'+route+'index.html');
+  if(detail)assert(detail.includes('rel="canonical" href="https://balzaguk.com'+route+'"'),id);
   assert(place.lat>33&&place.lat<39&&place.lng>124&&place.lng<132,id);
   if(food.has(id)){
    const row=food.get(id);
@@ -41,7 +42,7 @@ test('each added place is uniquely bound to its own official evidence, search pa
    assert(legalNames.includes(normalize(row.name)),id);
    assert.deepEqual(road(row.coordinateAddress),road(row.address),id);
    assert(place.description.includes(proof.mfds),id);
-   assert(detail.includes(proof.mfds),id);
+   if(detail)assert(detail.includes(proof.mfds),id);
    assert(conditions.get(place).some(row=>row.label==='체중 기준'&&row.value.includes('미확인')),id);
   }else{
    assert.equal(tourism.get(id)?.pet.contId,tourism.get(id)?.contentId,id);

@@ -1,5 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),z=require('node:zlib');
 const id='pub1788410826323_292_qamulv';
+const currentReview=require('../data/pet-access-review-holds-20261111.json');
 test('withdrawn lodging has no public detail, discovery, sitemap, RSS or companion evidence',()=>{
  assert(!fs.existsSync('places/'+id+'/index.html'));
  for(const file of ['discover.html','sitemap.xml','rss.xml','place-evidence.js','trip-stays.json','docs/trip-stays/audit-20261022.json','with-dog/ulsan/index.html','courses/c354/index.html','courses/c357/index.html','courses/c358/index.html'])assert(!fs.readFileSync(file,'utf8').includes(id),file);
@@ -8,7 +9,7 @@ test('withdrawn lodging has no public detail, discovery, sitemap, RSS or compani
 test('public count release matches the remaining directory and combined place total',()=>{
  const counts=JSON.parse(fs.readFileSync('data/public-counts.json')),combined=JSON.parse(fs.readFileSync('data/place-count-summary.json'));
  const data=require('./search-records.cjs')();
- assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168-JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json')).count+require('../docs/expansion-20261111/batch.json').places.length);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
+ assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);assert.equal(counts.facilities,4168-JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json')).count+require('../docs/expansion-20261111/batch.json').places.length-currentReview.facilities.length);assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
  assert(fs.readFileSync('pet-life/index.html','utf8').includes(counts.places.toLocaleString('ko-KR')));assert(fs.readFileSync('index.html','utf8').includes('>'+counts.places.toLocaleString('ko-KR')+'곳</span>'));
 });
 
@@ -22,11 +23,11 @@ test('operator-withdrawn glamping has no public detail or current search entry',
 test('pending verification venues cannot appear in public detail, search, or sitemap',()=>{
  const hold=JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json','utf8'));
  assert.equal(hold.ids.length,887);
- const protectedIds=new Set(hold.ids),records=require('./search-records.cjs')();
+ const protectedIds=new Set([...hold.ids,...currentReview.facilities]),records=require('./search-records.cjs')();
  const published=new Set([...fs.readFileSync('sitemap.xml','utf8').matchAll(/<loc>https:\/\/balzaguk\.com\/places\/([A-Za-z0-9_-]+)\/<\/loc>/g)].map(m=>m[1]));
  for(const row of records){const m=row.path.match(/^\/places\/([A-Za-z0-9_-]+)\/$/);if(m)assert(!protectedIds.has(m[1]),row.path);}
  for(const id of protectedIds){assert(!fs.existsSync('places/'+id+'/index.html'),id);assert(!published.has(id),id);}
- for(const id of hold.retained_official_evidence_ids)assert(fs.existsSync('places/'+id+'/index.html'),id+' must remain published');
+ for(const id of hold.retained_official_evidence_ids)if(!protectedIds.has(id))assert(fs.existsSync('places/'+id+'/index.html'),id+' must remain published');
 });
 
 

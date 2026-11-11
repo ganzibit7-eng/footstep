@@ -64,7 +64,7 @@
     if(intro&&/^\d{4}-\d{2}-\d{2}$/.test(intro.checked)&&Number.isFinite(introTime)&&new Date(introTime+9*3600000).toISOString().slice(0,10)===intro.checked&&introTime<=now)return intro.checked+' 공식 소개 대조 · 세부 허용 구역은 안내문·운영기관 확인';
     const source=description.match(/공식안내:\s*(https?:\/\/[^\s·]+)/)?.[1];
     const value=description.match(/확인일:\s*(\d{4}-\d{2}-\d{2})/)?.[1];
-    let trusted=false;try{const url=new URL(source);trusted=url.protocol==='https:'&&!url.username&&!url.password&&['gocamping.or.kr','www.gocamping.or.kr','gil.seoul.go.kr','www.foodsafetykorea.go.kr','korean.visitseoul.net','www.durunubi.kr','durunubi.kr','korean.visitkorea.or.kr','sjfmc.or.kr','www.suwon.go.kr','www.visitbusan.net','visitbusan.net'].includes(url.hostname);}catch{}
+    let trusted=false;try{const url=new URL(source);trusted=url.protocol==='https:'&&!url.username&&!url.password&&['gocamping.or.kr','www.gocamping.or.kr','gil.seoul.go.kr','www.foodsafetykorea.go.kr','korean.visitseoul.net','www.durunubi.kr','durunubi.kr','korean.visitkorea.or.kr','sjfmc.or.kr','www.suwon.go.kr','www.visitbusan.net','visitbusan.net','fpcs.co.kr','www.utopmarina.com','booking.oakwoodpremier.co.kr'].includes(url.hostname);}catch{}
     if(!trusted||!value)return '자료 확인일 미확인 · 방문 전 문의';
     const time=Date.parse(value+'T00:00:00Z');
     if(!Number.isFinite(time)||new Date(time).toISOString().slice(0,10)!==value||time>now)return '자료 확인일 미확인 · 방문 전 문의';

@@ -17,6 +17,9 @@
     'itour.incheon.go.kr':'인천광역시 인천투어',
     'artvalley.pcfac.or.kr':'포천도시공사 포천아트밸리',
     'www.visitjeju.net':'제주관광공사',
+    'fpcs.co.kr':'프레이저 플레이스 센트럴 서울',
+    'www.utopmarina.com':'유탑 마리나 호텔',
+    'booking.oakwoodpremier.co.kr':'오크우드 프리미어 인천',
     'www.visitbusan.net':'부산시 관광 안내',
     'visitbusan.net':'부산시 관광 안내'
   };
