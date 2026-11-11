@@ -51,6 +51,7 @@ test('home content and all search records stay intact apart from approved correc
  }
  homeBeforeAudit=homeBeforeAudit.replace('course-info.js?v=20261111-pet-audit','course-info.js?v=20261111-walk-access').replace('place-conditions.js?v=20261111-pet-audit','place-conditions.js?v=20261105-contact').replace('place-photos.js?v=20261111-pet-audit','place-photos.js?v=20261026-context9');
  homeBeforeAudit=homeBeforeAudit.replaceAll('hero-park.css?v=20261111-stat-links','hero-park.css?v=20261103-route-icon').replace(/(id="hero-stat-courses">[\d,]+)곳/,(_,number)=>number+'개').replace("if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'곳');","if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'개');");
+ homeBeforeAudit=homeBeforeAudit.replace('home-premium.css?v=20261111-footer-art','home-premium.css?v=20261103-actions').replace(/<picture class="app-page active home-footer-scene"[\s\S]*?<\/picture>\n/,'');
  const release=readJSON('data/public-counts.json');
  const countFmt=new Intl.NumberFormat('en-US');
  homeBeforeAudit=homeBeforeAudit.replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll(countFmt.format(release.places),'21,918').replaceAll(countFmt.format(release.facilities),'4,221'));
