@@ -14,6 +14,9 @@
     'sjfmc.or.kr':'세종시설관리공단',
     'www.suwon.go.kr':'수원시',
     'www.busan.go.kr':'부산광역시',
+    'itour.incheon.go.kr':'인천광역시 인천투어',
+    'artvalley.pcfac.or.kr':'포천도시공사 포천아트밸리',
+    'www.visitjeju.net':'제주관광공사',
     'www.visitbusan.net':'부산시 관광 안내',
     'visitbusan.net':'부산시 관광 안내'
   };

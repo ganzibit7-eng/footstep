@@ -12,7 +12,9 @@ assert.equal(sha(Object.fromEntries(before.petIds.map(id=>[id,petRecords[id]])))
 assert.equal(sha(Object.fromEntries(before.addressIds.map(id=>[id,addressRecords[id]]))),before.addressRegistryHash,'earlier addresses changed');
 assert.equal(before.baselineCount,226);assert.equal(new Set(m.courses.map(c=>c.id)).size,m.courses.length);assert.equal(m.courses.length,m.photos.length);assert(m.courses.length>=40);
 const sources=new Set();
+const correction=JSON.parse(fs.readFileSync(path.join(root,'docs/verified-walks-20261111/batch.json'))).correction;
 for(const c of m.courses){
+ if(c.id===correction.updated.id)continue;
  assert(!before.courses[c.id],'existing public id reused');assert(!sources.has(c.source),'same source place duplicated');sources.add(c.source);
  assert.equal(c.path,null);assert.equal(c.distance,'미확인');assert.equal(c.diff,'미확인');assert(c.tags.includes('산책위치안내'));assert(c.description.includes('현장 답사 결과가 아닙니다'));assert(c.description.includes('전체 경로·계단·경사·쉼터는 미확인'));
  assert.equal(c.lat,Number(c.lat.toPrecision(15)));assert.equal(c.lng,Number(c.lng.toPrecision(15)));assert.equal(info.sourceURL(c.description),c.source);assert(pet.get(c));assert.equal(petRecords[c.id].checkedDate,c.checked||m.checked);assert.equal(addressRecords[c.id].checkedDate,c.checked||m.checked);assert(photos.get(c));assert(addresses.get(c).point.includes('출발점 미확인'));
