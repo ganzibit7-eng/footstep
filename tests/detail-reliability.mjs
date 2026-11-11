@@ -36,16 +36,37 @@ test('background timeout and offscreen errors are recoverable without a false su
 });
 test('home content and all search records stay intact apart from approved correction wiring and private export protection',()=>{
  const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/\n*<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">\n*/g,'\n').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'').replace(/^  let accountExportGeneration = 0;\n/m,'').replace(/^    if\(\(session\?\.user\?\.id \|\| null\)!==myDeviceId\)accountExportGeneration\+\+;\n/m,'').replace(/^    accountExportGeneration\+\+;\n/m,'').replace(/  async function exportMyData\(\)\{[\s\S]*?(?=  document.getElementById\('export-data-btn'\).addEventListener)/,'');
- // Baseline updated after approved 2026-11-07 public place withdrawals and 2026-11-08 six copy-only home changes. Export/session guards remain excluded.
+ // Baseline updated after approved home changes, including removal of the shopping section and its scripts. Export/session guards remain excluded.
  // Export behavior and real session invalidation are covered by private-export.cjs.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
  const h=normalize(fs.readFileSync('index.html','utf8'));
- const baseline=applyPublicCounts(h,{courses:412,facilities:3281,places:20978,checked:'2026-11-07'});
+ const readJSON=file=>JSON.parse(fs.readFileSync(file,'utf8'));
+ const audit='docs/pet-access-full-20261111/';
+ const previousCard=fs.readFileSync(audit+'previous-home-card.html.txt','utf8').trim();
+ let homeBeforeAudit=h.replace(/<article class="home-place-card" data-place-id="kto_new_20261020_2910876">[\s\S]*?<\/article>/,previousCard);
+ for(const hotel of readJSON(audit+'amendments.json')){
+  if(!hotel.oldCondition)continue;
+  const pattern=new RegExp('(<article class="home-place-card" data-place-id="'+hotel.id+'">[\\s\\S]*?<p class="home-place-condition">)[^<]*(</p>)');
+  homeBeforeAudit=homeBeforeAudit.replace(pattern,(_,a,b)=>a+hotel.oldCondition+b);
+ }
+ homeBeforeAudit=homeBeforeAudit.replace('course-info.js?v=20261111-pet-audit','course-info.js?v=20261111-walk-access').replace('place-conditions.js?v=20261111-pet-audit','place-conditions.js?v=20261105-contact').replace('place-photos.js?v=20261111-pet-audit','place-photos.js?v=20261026-context9');
+ homeBeforeAudit=homeBeforeAudit.replaceAll('hero-park.css?v=20261111-stat-links','hero-park.css?v=20261103-route-icon').replace(/(id="hero-stat-courses">[\d,]+)곳/,(_,number)=>number+'개').replace("if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'곳');","if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'개');");
+ const release=readJSON('data/public-counts.json');
+ const countFmt=new Intl.NumberFormat('en-US');
+ homeBeforeAudit=homeBeforeAudit.replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll(countFmt.format(release.places),'21,918').replaceAll(countFmt.format(release.facilities),'4,221'));
+ homeBeforeAudit=homeBeforeAudit.replace(/window\.PawCoursePages=Object\.freeze\((\[[^\n]*?\])\);/,(_,data)=>{
+  const courses=JSON.parse(data);
+  const position=courses.indexOf('c433');
+  assert(position>=0&&!courses.includes('c434'));
+  courses.splice(position+1,0,'c434');
+  return 'window.PawCoursePages=Object.freeze('+JSON.stringify(courses)+');';
+ });
+ const baseline=applyPublicCounts(homeBeforeAudit,{courses:412,facilities:3281,places:20978,checked:'2026-11-07'});
  const versions={'course-photos.js':'20261029-dates2','course-expansion-20261017.js':'20261020-nationwide-b','course-pet-access.js':'20261020-nationwide-b','course-addresses.js':'20261020-nationwide-b','place-photos.js':'20261026-context9'};
  const previousIds=new Set(['docs/expansion-20261111/batch.json','docs/verified-walks-20261111/batch.json'].flatMap(file=>JSON.parse(fs.readFileSync(file,'utf8')).courses.map(c=>c.id)));
  const priorContent=baseline.replace(/window\.PawCoursePages=Object\.freeze\((\[[^\n]*?\])\);/,(_,data)=>'window.PawCoursePages=Object.freeze('+JSON.stringify(JSON.parse(data).filter(id=>!previousIds.has(id)))+');').replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll('21,918','20,978').replaceAll('4,221','3,281').replace('2026-11-11','2026-11-07'));
  const baseAssets=priorContent.replaceAll('course-info.js?v=20261111-walk-access','course-info.js?v=20261020-nationwide-b').replace(/(course-photos\.js|course-expansion-20261017\.js|course-pet-access\.js|course-addresses\.js|place-photos\.js)\?v=20261111-(?:expansion|walk-access)/g,(_,file)=>file+'?v='+versions[file]);
- assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
+ assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'f2899aed7bb195e87dc39ad1b8d776aed2d04739b416c22f1207607b7ef41878','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
  assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);

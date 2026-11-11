@@ -10,7 +10,7 @@ test('bulk catalogue matches retain nearby coordinates, exact street and a disti
 test('published place counts match coverage while unrelated facilities remain unchanged',()=>{
  const summary=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json')));let photos=0,galleries=0,notes=0,total=0;
  for(const folder of fs.readdirSync(path.join(root,'places'),{withFileTypes:true})){if(!folder.isDirectory())continue;const file=path.join(root,'places',folder.name,'index.html');if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');if(!html.includes('reading-page place-detail-page'))continue;total++;if((html.includes('class="place-photo"')||html.includes('class="detail-gallery"')))photos++;if((html.includes('class="place-photo-gallery"')||html.includes('class="detail-gallery-controls"')))galleries++;if(html.includes('class="place-official-notes"'))notes++;}
- assert.equal(total,JSON.parse(fs.readFileSync(path.join(root,'data/public-counts.json'))).facilities);const held=JSON.parse(fs.readFileSync(path.join(root,'data/place-review-holds-20261107.json'),'utf8')).count;
+ assert.equal(total,JSON.parse(fs.readFileSync(path.join(root,'data/public-counts.json'))).facilities);const held=require('../data/place-review-holds-20261107.json').count+require('../data/pet-access-review-holds-20261111.json').facilities.length;
  // Historical source coverage includes unpublished venues. Public coverage can only decrease by the number on hold.
  for(const [observed,baseline] of [[photos,summary.photoPlaces],[galleries,summary.galleryPlaces],[notes,summary.tourNotes]]){assert(observed<=baseline);assert(observed>=baseline-held);}
 assert.equal(summary.addedPhotos,6);assert.equal(summary.newPhotoPlaces,6);

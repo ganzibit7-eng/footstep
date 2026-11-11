@@ -7,9 +7,11 @@ test('course counter opens the dedicated directory without changing its identity
  const home=await read('index.html'),counts=JSON.parse(await read('data/public-counts.json'));
  assert.equal((home.match(/id="hero-stat-courses"/g)||[]).length,1);
  const links=[...home.matchAll(/<a class="hero-stat-box" href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];assert.equal(links.length,2);
- for(const [i,id,label,value,url] of [[0,'courses','산책 코스',counts.courses+'개','/dog-walks/'],[1,'facilities','반려생활 장소',counts.places.toLocaleString('ko-KR')+'곳','/pet-life/']]){
+ for(const [i,id,label,value,url] of [[0,'courses','산책 코스',counts.courses.toLocaleString('ko-KR')+'곳','/dog-walks/'],[1,'facilities','반려생활 장소',counts.places.toLocaleString('ko-KR')+'곳','/pet-life/']]){
   assert.equal(links[i][1],url);assert(links[i][2].includes('id="hero-stat-'+id+'">'+value+'</span>'));assert(links[i][2].includes('class="hero-stat-label">'+label+'</div>'));assert(!links[i][2].includes('<a '),'no nested interactive links');
  }
+ const css=await read('hero-park.css');assert.match(css,/#home-hero a\.hero-stat-box \.hero-stat-num\{text-decoration:underline dotted [^;]+;text-underline-offset:5px/);
+ assert.match(css,/a\.hero-stat-box:focus-visible\{outline:2px/);
  assert.equal((home.match(/class="home-region-card" data-home-region=/g)||[]).length,6);assert(!home.includes('home-region-action'));assert(!home.includes('home-region-arrow'));
 });
 test('walk directory preserves canonical, structured data, guides and all local destinations',async()=>{

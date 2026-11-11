@@ -48,10 +48,11 @@ for(const invalid of ['javascript:alert(1)','http://link.coupang.com/a/x','https
 for(const invalid of ['https://coupangcdn.com.evil.test/thumbnails/remote/a.jpg','https://evil.test/a.jpg','javascript:alert(1)','https://secret@t4c.coupangcdn.com/thumbnails/remote/a.jpg'])assert.equal(context.PawShopping.productImageURL(invalid),null);
 const firstImage=descendants(container.children[0]).find(n=>n.tag==='img');firstImage.handlers.error();assert.equal(firstImage.hidden,true);assert.equal(descendants(container.children[0]).some(n=>n.tag==='img'),false,'a failed photo must leave a readable category fallback');
 config.items=[{id:'bad',name:'<img src=x onerror=alert(1)>',url:'javascript:alert(1)',image:'https://evil.test/a.jpg'}];context.PawShopping.render();assert.equal(disclosure.hidden,true);assert.equal(descendants(container.children[0]).some(n=>n.tag==='a'||n.tag==='img'),false);assert.equal(descendants(container.children[0]).find(n=>n.tag==='h3').textContent,config.items[0].name);
-const html=fs.readFileSync(path.join(base,'index.html'),'utf8'),shoppingStart=html.indexOf('<section id="walk-shopping"'),section=html.slice(shoppingStart,html.indexOf('</section>',shoppingStart));
-const shoppingHeading=/<h2\b[^>]*\bid="walk-shopping-title"[^>]*>/.exec(section);assert.ok(shoppingHeading,'commercial heading exists');assert.ok(section.indexOf('id="walk-shopping-disclosure"')>=0&&section.indexOf('id="walk-shopping-disclosure"')<shoppingHeading.index,'disclosure precedes commercial recommendations');
-const initialDisclosure=/<p\b[^>]*id="walk-shopping-disclosure"[^>]*>([^<]+)<\/p>/.exec(section);assert.ok(initialDisclosure,'initial HTML contains the economic disclosure');assert.doesNotMatch(initialDisclosure[0],/\bhidden\b/,'disclosure is visible before JavaScript');assert.match(initialDisclosure[1],/쿠팡 파트너스.*구매 실적.*수수료를 지급받습니다/);
-assert.match(section,/현재 가격과 배송 조건은 쿠팡/);
-assert(!section.includes('walk-shopping-selection'),'repeated selection paragraph removed');
+for(const file of ['index.html','hero-park-preview.html']){
+ const html=fs.readFileSync(path.join(base,file),'utf8');
+ assert.doesNotMatch(html,/id="walk-shopping(?:-items)?"|href="#walk-shopping"|<script[^>]+src="\/?shopping(?:-config)?\.js/);
+ assert.doesNotMatch(html,/<a[^>]+href="https:\/\/link\.coupang\.com\//);
+}
+assert.doesNotMatch(fs.readFileSync(path.join(base,'sw.js'),'utf8'),/shopping(?:-config)?\.js\?v=/);
 assert.doesNotMatch(fs.readFileSync(path.join(base,'shopping.js'),'utf8'),/fetch\(|\.click\(|window\.open|location\.(href|assign)|setInterval/,'rendering must not generate clicks, navigation or background affiliate requests');
 console.log('PASS: 6 exact issued links and matching server catalog, first featured snack, dated evidence with stale/future/invalid rejection, no prices, disclosure, safe images and no automatic affiliate navigation');
