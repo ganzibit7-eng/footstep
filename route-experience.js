@@ -7,9 +7,34 @@
  page.querySelectorAll('[data-copy-address]').forEach(button=>button.addEventListener('click',()=>action(button,async()=>{
   try{if(!navigator.clipboard||!window.isSecureContext)throw Error();await navigator.clipboard.writeText(button.dataset.copyAddress);message('주소를 복사했습니다.');}catch{message('자동 복사가 어려워요. 위 주소를 선택해 복사해 주세요.',true);}
  })));
- page.querySelector('[data-detail-share]')?.addEventListener('click',event=>action(event.currentTarget,async()=>{
-  const url=new URL(document.querySelector('link[rel="canonical"]').href);url.searchParams.set('utm_source','share');url.searchParams.set('utm_medium','referral');url.searchParams.set('utm_campaign','place_detail');
-  try{if(navigator.share){await navigator.share({title:document.title,url:url.href});message('');}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url.href);message('공유 링크를 복사했습니다.');}else message('공유할 링크: '+url.href);}catch(error){if(error.name!=='AbortError')message('공유를 완료하지 못했어요. 주소창의 링크를 복사해 주세요.',true);}
+ const shareButton=page.querySelector('[data-detail-share]');
+ // Promote the existing control: no duplicate button or additional tracking.
+ const primaryActions=page.querySelector('.detail-actions-primary');
+ if(shareButton&&primaryActions){
+  primaryActions.append(shareButton);
+  shareButton.textContent='친구에게 공유';
+  const secondaryLabel=page.querySelector('.detail-actions-secondary > summary');
+  if(secondaryLabel)secondaryLabel.textContent='다른 지도·주소';
+ }
+ shareButton?.addEventListener('click',event=>action(event.currentTarget,async()=>{
+  let url;
+  try{
+   const canonical=document.querySelector('link[rel="canonical"]');
+   url=new URL(canonical?.href);
+   if(url.origin!=='https://balzaguk.com'||!/^\/(?:courses|places|bins|pet-care\/places)\/[^/]+\/$/.test(url.pathname))throw Error('invalid canonical');
+   // Never carry a visitor's query parameters or fragments into a shared link.
+   url.search='';url.hash='';
+   url.searchParams.set('utm_source','share');url.searchParams.set('utm_medium','referral');
+   url.searchParams.set('utm_campaign',url.pathname.startsWith('/courses/')?'course_detail':url.pathname.startsWith('/bins/')?'bin_detail':url.pathname.startsWith('/pet-care/')?'pet_care_detail':'place_detail');
+  }catch{message('공유 주소를 확인할 수 없어요. 페이지를 새로고침한 뒤 다시 시도해 주세요.',true);return;}
+  if(navigator.share){
+   try{await navigator.share({title:document.title,url:url.href});message('');return;}
+   catch(error){if(error.name!=='AbortError'){/* Fall through to copy on unsupported or failed native sharing. */}else{message('');return;}}
+  }
+  try{
+   if(!navigator.clipboard||!window.isSecureContext)throw Error('clipboard unavailable');
+   await navigator.clipboard.writeText(url.href);message('공유 링크를 복사했어요. 함께 갈 친구에게 보내보세요.');
+  }catch{message('아래 링크를 선택해 복사해 주세요: '+url.href);}
  }));
  const back=page.querySelector('[data-detail-back]');
  // Keep ordinary click, copied links and modified/new-tab clicks on one return URL.

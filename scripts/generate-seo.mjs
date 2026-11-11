@@ -31,6 +31,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {comparisonGuide,guideDirectoryHTML} from './guide-discovery.mjs';
 import {snippetDetails,shortSnippet} from './search-snippet.mjs';
+import {applyCourseSearchCopy} from './course-search-copy.mjs';
 import {generateWeekend} from './weekend-guide.mjs';
 import {generateRSS} from './generate-rss.mjs';
 import {normalizePublicSearchHeads} from './search-head.mjs';
@@ -821,7 +822,8 @@ for (const {type,items} of groups) {
     const dir = path.join(ROOT, type.folder, segment);
     const url = `${SITE}/${type.folder}/${segment}/`;
     await mkdir(dir, { recursive: true });
-    const generatedHtml=withTraffic(detailHtml(item,type,url));
+    const detail=withTraffic(detailHtml(item,type,url));
+    const generatedHtml=type.table==='courses'?applyCourseSearchCopy(detail,item.id):detail;
     const oldDescription=previousDescriptions.get(url),newDescription=generatedHtml.match(/<meta name="description" content="([^"]*)"/)?.[1]||'';
     await writeFile(path.join(dir,'index.html'),generatedHtml,'utf8');
     sitemap.push({url,lastmod:type.table==='facilities'&&(PlacePhotos.get(item)||PlaceEvidence.conditions(item)||PlaceEvidence.camping(item))?(PlaceEvidence.get(item)?.enrichedOn||'2026-10-17'):oldDescription!==undefined&&oldDescription!==newDescription?editedDay:dateOnly(item.created_at)});

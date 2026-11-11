@@ -75,7 +75,10 @@ test('Darangshwi Oreum keeps its URL and photograph and never offers the summit 
  assert(addresses.get(updated).point.includes('출발점 미확인'));
  const html=detail(updated);
  assert(html.includes('정상 탐방로 반려동물 출입 금지'));
- assert(html.includes(photos.get(updated).src));
+ const photo=photos.get(updated);
+ assert.equal(photo.src,'/assets/course-photos/'+previous.id+'.webp');
+ assert.equal(createHash('sha256').update(readFileSync('.'+photo.src)).digest('hex'),photo.assetSha256);
+ assert(html.includes(photo.src));
  assert(!html.split('data-related-template=')[0].includes('전구역 동반가능'));
  assert(!html.includes('id="detail-route-data"'));
 });
@@ -97,4 +100,5 @@ test('the Darangshwi place, its map record and the walking detail agree about th
  assert(html.includes('하단 둘레길에서만 반려견 동반 가능'));
  assert(!html.includes('전구역 동반가능'));
  assert(html.includes(evidence.get(updated).photo.src));
+ assert(html.includes('alt="다랑쉬오름 일대 경관"'));
 });
