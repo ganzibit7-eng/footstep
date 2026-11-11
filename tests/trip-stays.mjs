@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
 import {tripStays,tripBooking,tripDisclosure} from '../scripts/trip-stays.mjs';
+const require=createRequire(import.meta.url);
 test('verified stay links retain partner tracking and clear disclosure on home and detail',()=>{
  const home=readFileSync('index.html','utf8');
  assert.equal(new Set(tripStays.map(x=>x.id)).size,tripStays.length);
@@ -28,5 +30,20 @@ test('all ten home stays have a verified affiliate destination and their own sou
  const html=readFileSync('index.html','utf8');const start=html.indexOf('<section id="home-stays"');assert(start>=0);
  const section=html.slice(start,html.indexOf('</section>',start));
  const cards=[...section.matchAll(/<article class="home-place-card" data-place-id="([^"]+)">([\s\S]*?)<\/article>/g)];assert.equal(cards.length,10);
- const urls=new Set();for(const[,id,card]of cards){const stay=tripStays.find(x=>x.id===id);assert(stay);assert(stay.bookingPetPolicy.startsWith('동반 가능'));assert(card.includes(stay.url.replaceAll('&','&amp;')));assert(card.includes('<img '));assert(card.includes('사진·자료 출처'));urls.add(stay.url);}assert.equal(urls.size,10);
+ const catalogue=JSON.parse(readFileSync('place-evidence.js','utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
+ const photos=require('../place-photos.js');
+ const urls=new Set();
+ for(const[,id,card]of cards){
+  const stay=tripStays.find(x=>x.id===id);
+  assert(stay?.bookingPetPolicy.startsWith('동반 가능'),id);
+  assert(card.includes(stay.url.replaceAll('&','&amp;')),id);
+  const image=card.match(/<img[^>]*\bsrc="([^"]+)"[^>]*\bwidth="(\d+)"[^>]*\bheight="(\d+)"/);
+  assert(image&&Math.abs(Number(image[2])/Number(image[3])-1.5)<.003,id+' full 3:2 frame');
+  const record=catalogue.find(r=>r.id===id);
+  const matched=[record?.photo,...record?.gallery||[]].find(p=>p&&photos.url(p)===image[1]&&p.width===Number(image[2])&&p.height===Number(image[3]));
+  assert(matched?.noCrop&&matched.licenseUrl,id+' licensed source image');
+  assert(card.includes('사진·자료 출처')&&card.includes(matched.licenseUrl),id+' photo attribution');
+  urls.add(stay.url);
+ }
+ assert.equal(urls.size,10);
 });

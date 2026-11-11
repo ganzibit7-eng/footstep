@@ -11,6 +11,7 @@ test('course counter opens the dedicated directory without changing its identity
   assert.equal(links[i][1],url);assert(links[i][2].includes('id="hero-stat-'+id+'">'+value+'</span>'));assert(links[i][2].includes('class="hero-stat-label">'+label+'</div>'));assert(!links[i][2].includes('<a '),'no nested interactive links');
  }
  const css=await read('hero-park.css');assert.match(css,/#home-hero a\.hero-stat-box \.hero-stat-num\{text-decoration:underline dotted [^;]+;text-underline-offset:5px/);
+ assert.match(css,/#home-hero a\.hero-stat-box #hero-stat-facilities\{text-decoration-style:solid;text-decoration-color:currentColor;text-decoration-thickness:2px\}/);
  assert.match(css,/a\.hero-stat-box:focus-visible\{outline:2px/);
  assert.equal((home.match(/class="home-region-card" data-home-region=/g)||[]).length,6);assert(!home.includes('home-region-action'));assert(!home.includes('home-region-arrow'));
 });
