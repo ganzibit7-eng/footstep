@@ -25,7 +25,8 @@ test('full stay audit distinguishes unlinked products and conflicting platform p
  for(const item of audit.filter(x=>x.status==='platform-policy-review'))assert.equal(tripBooking(item.id),'');
 });
 test('all ten home stays have a verified affiliate destination and their own source photo',()=>{
- const html=readFileSync('index.html','utf8');const section=html.slice(html.indexOf('<section id="home-stays"'),html.indexOf('<section id="walk-shopping"'));
+ const html=readFileSync('index.html','utf8');const start=html.indexOf('<section id="home-stays"');assert(start>=0);
+ const section=html.slice(start,html.indexOf('</section>',start));
  const cards=[...section.matchAll(/<article class="home-place-card" data-place-id="([^"]+)">([\s\S]*?)<\/article>/g)];assert.equal(cards.length,10);
  const urls=new Set();for(const[,id,card]of cards){const stay=tripStays.find(x=>x.id===id);assert(stay);assert(stay.bookingPetPolicy.startsWith('동반 가능'));assert(card.includes(stay.url.replaceAll('&','&amp;')));assert(card.includes('<img '));assert(card.includes('사진·자료 출처'));urls.add(stay.url);}assert.equal(urls.size,10);
 });

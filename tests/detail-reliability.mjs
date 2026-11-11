@@ -36,7 +36,7 @@ test('background timeout and offscreen errors are recoverable without a false su
 });
 test('home content and all search records stay intact apart from approved correction wiring and private export protection',()=>{
  const normalize=h=>h.replaceAll('\r\n','\n').replace(/experience\.css\?v=[\w-]+/g,'experience.css?v=approved-header').replace(/admin-loader\.js\?v=[\w-]+/g,'admin-loader.js?v=approved-inbox').replace(/\n*<link rel="stylesheet" href="\/correction-request\.css\?v=[\w-]+">\n*/g,'\n').replace(/<script defer src="\/correction-request\.js\?v=[\w-]+"><\/script>/g,'').replace(/<button type="button" id="course-correction-open"[^>]*>정보 정정 요청<\/button>/g,'').replace(/    \/\/ Content correction entry \(detail only\)\.[\s\S]*?    \/\/ End content correction entry\.\n/,'').replace(/  async function openNotifications\(\)\{[\s\S]*?(?=  async function shareCourse)/,'').replace(/^  let accountExportGeneration = 0;\n/m,'').replace(/^    if\(\(session\?\.user\?\.id \|\| null\)!==myDeviceId\)accountExportGeneration\+\+;\n/m,'').replace(/^    accountExportGeneration\+\+;\n/m,'').replace(/  async function exportMyData\(\)\{[\s\S]*?(?=  document.getElementById\('export-data-btn'\).addEventListener)/,'');
- // Baseline updated after approved 2026-11-07 public place withdrawals and 2026-11-08 six copy-only home changes. Export/session guards remain excluded.
+ // Baseline updated after approved home changes, including removal of the shopping section and its scripts. Export/session guards remain excluded.
  // Export behavior and real session invalidation are covered by private-export.cjs.
  // A hash keeps this protection valid in Actions' shallow checkout as well.
  const h=normalize(fs.readFileSync('index.html','utf8'));
@@ -66,7 +66,7 @@ test('home content and all search records stay intact apart from approved correc
  const previousIds=new Set(['docs/expansion-20261111/batch.json','docs/verified-walks-20261111/batch.json'].flatMap(file=>JSON.parse(fs.readFileSync(file,'utf8')).courses.map(c=>c.id)));
  const priorContent=baseline.replace(/window\.PawCoursePages=Object\.freeze\((\[[^\n]*?\])\);/,(_,data)=>'window.PawCoursePages=Object.freeze('+JSON.stringify(JSON.parse(data).filter(id=>!previousIds.has(id)))+');').replace(/<!--home-count-method:start-->[\s\S]*?<!--home-count-method:end-->/,part=>part.replaceAll('21,918','20,978').replaceAll('4,221','3,281').replace('2026-11-11','2026-11-07'));
  const baseAssets=priorContent.replaceAll('course-info.js?v=20261111-walk-access','course-info.js?v=20261020-nationwide-b').replace(/(course-photos\.js|course-expansion-20261017\.js|course-pet-access\.js|course-addresses\.js|place-photos\.js)\?v=20261111-(?:expansion|walk-access)/g,(_,file)=>file+'?v='+versions[file]);
- assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'0b422d37f3911ebd6c2d2ce019295df755c1258965e96522df247ac05b14abb5','home content must stay unchanged');
+ assert.equal(createHash('sha256').update(baseAssets).digest('hex'),'f2899aed7bb195e87dc39ad1b8d776aed2d04739b416c22f1207607b7ef41878','home content must stay unchanged');
  // Publication may move the existing favicon after the new stylesheet. Its adjacent
  // whitespace is not a visual home change; every other byte remains protected.
  assert.equal(normalize(searchHead(fs.readFileSync('index.html','utf8'))),h);
