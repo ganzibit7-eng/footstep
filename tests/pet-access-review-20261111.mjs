@@ -9,6 +9,7 @@ const review = require('../data/pet-access-review-holds-20261111.json');
 const counts = require('../data/public-counts.json');
 const decisions = read('docs/pet-access-full-20261111/decisions.jsonl').trim().split('\n').map(row=>JSON.parse(row));
 const laterPlaces = require('../docs/expansion-20261112/proof.json').places;
+const followup = require('../docs/place-enrichment-20261113/verification.json');
 const publicResults = require('./search-records.cjs')();
 const pathFor = row => '/'+(row.category==='course'?'courses':'places')+'/'+row.id+'/';
 
@@ -35,7 +36,7 @@ test('every reviewed course and place is accounted for across publication and se
  assert.deepEqual(review.courses,decisions.filter(r=>r.category==='course'&&r.status!=='keep').map(r=>r.id).sort());
  assert.deepEqual(review.facilities,decisions.filter(r=>r.category!=='course'&&r.status!=='keep').map(r=>r.id).sort());
  assert.equal(counts.courses,review.reviewed.courses-review.courses.length);
- assert.equal(counts.facilities,review.reviewed.facilities-review.facilities.length+laterPlaces.length);
+ assert.equal(counts.facilities,review.reviewed.facilities-review.facilities.length+laterPlaces.length-followup.holds.length);
 });
 
 test('reviewed hotel conditions bind to their operator evidence and current display',()=>{

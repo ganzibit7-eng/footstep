@@ -1,6 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),z=require('node:zlib');
 const id='pub1788410826323_292_qamulv';
 const currentReview=require('../data/pet-access-review-holds-20261111.json');
+const followupReview=require('../docs/place-enrichment-20261113/verification.json');
 test('withdrawn lodging has no public detail, discovery, sitemap, RSS or companion evidence',()=>{
  assert(!fs.existsSync('places/'+id+'/index.html'));
  for(const file of ['discover.html','sitemap.xml','rss.xml','place-evidence.js','trip-stays.json','docs/trip-stays/audit-20261022.json','with-dog/ulsan/index.html','courses/c354/index.html','courses/c357/index.html','courses/c358/index.html'])assert(!fs.readFileSync(file,'utf8').includes(id),file);
@@ -12,7 +13,7 @@ test('public count release matches the remaining directory and combined place to
  const firstHolds=require('../data/place-review-holds-20261107.json').count;
  const additions=require('../docs/expansion-20261111/batch.json').places.length+require('../docs/expansion-20261112/proof.json').places.length;
  assert.equal(data.filter(p=>p.kind==='facilities').length,counts.facilities);
- assert.equal(counts.facilities,4168-firstHolds-currentReview.facilities.length+additions);
+ assert.equal(counts.facilities,4168-firstHolds-currentReview.facilities.length+additions-followupReview.holds.length);
  assert.equal(counts.places,combined.facilities+combined.professionalPlaces-combined.overlap);
  assert(fs.readFileSync('pet-life/index.html','utf8').includes(counts.places.toLocaleString('ko-KR')));assert(fs.readFileSync('index.html','utf8').includes('>'+counts.places.toLocaleString('ko-KR')+'곳</span>'));
 });
@@ -27,7 +28,7 @@ test('operator-withdrawn glamping has no public detail or current search entry',
 test('pending verification venues cannot appear in public detail, search, or sitemap',()=>{
  const hold=JSON.parse(fs.readFileSync('data/place-review-holds-20261107.json','utf8'));
  assert.equal(hold.ids.length,887);
- const protectedIds=new Set([...hold.ids,...currentReview.facilities]),records=require('./search-records.cjs')();
+ const protectedIds=new Set([...hold.ids,...currentReview.facilities,...followupReview.holds.map(row=>row.id)]),records=require('./search-records.cjs')();
  const published=new Set([...fs.readFileSync('sitemap.xml','utf8').matchAll(/<loc>https:\/\/balzaguk\.com\/places\/([A-Za-z0-9_-]+)\/<\/loc>/g)].map(m=>m[1]));
  for(const row of records){const m=row.path.match(/^\/places\/([A-Za-z0-9_-]+)\/$/);if(m)assert(!protectedIds.has(m[1]),row.path);}
  for(const id of protectedIds){assert(!fs.existsSync('places/'+id+'/index.html'),id);assert(!published.has(id),id);}

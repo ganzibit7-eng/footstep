@@ -48,7 +48,7 @@ test('home content and all search records stay intact apart from approved correc
   const pattern=new RegExp('(<article class="home-place-card" data-place-id="'+hotel.id+'">[\\s\\S]*?<p class="home-place-condition">)[^<]*(</p>)');
   homeBeforeAudit=homeBeforeAudit.replace(pattern,(_,a,b)=>a+hotel.oldCondition+b);
  }
- homeBeforeAudit=homeBeforeAudit.replace('course-info.js?v=20261111-pet-audit','course-info.js?v=20261111-walk-access').replace('place-conditions.js?v=20261111-pet-audit','place-conditions.js?v=20261105-contact').replace(/place-photos\.js\?v=(?:20261111-pet-audit|20261112-verified)/,'place-photos.js?v=20261026-context9');
+ homeBeforeAudit=homeBeforeAudit.replace('course-info.js?v=20261111-pet-audit','course-info.js?v=20261111-walk-access').replace('place-conditions.js?v=20261111-pet-audit','place-conditions.js?v=20261105-contact').replace(/place-photos\.js\?v=(?:20261111-pet-audit|20261112-verified|20261113-venue-evidence)/,'place-photos.js?v=20261026-context9');
  homeBeforeAudit=homeBeforeAudit.replaceAll('hero-park.css?v=20261111-stat-solid','hero-park.css?v=20261103-route-icon').replace(/(id="hero-stat-courses">[\d,]+)곳/,(_,number)=>number+'개').replace("if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'곳');","if(heroCourses) heroCourses.textContent = display(approvedCourseCount,'개');");
  homeBeforeAudit=homeBeforeAudit.replace('home-premium.css?v=20261111-footer-framing','home-premium.css?v=20261103-actions').replace(/<picture class="app-page active home-footer-scene"[\s\S]*?<\/picture>\n/,'');
  const release=readJSON('data/public-counts.json');

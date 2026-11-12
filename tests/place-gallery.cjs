@@ -4,12 +4,13 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'place-evidence.js'),'utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
 const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json')));
+const additions=require('../docs/place-enrichment-20261113/verification.json').photos;
 test('all additional images preserve original file hash, source, rights, dimensions and identity',()=>{
  let count=0,places=0;for(const r of records){const photos=Photos.gallery(r);if(photos.length)places++;
   assert.equal(Photos.gallery({...r,address:r.address+' 다른 장소'}).length,0);
   const seen=new Set([r.photo?.sha256]);for(const p of photos){count++;assert(!seen.has(p.sha256),r.name+' duplicate picture');seen.add(p.sha256);assert(p.width>=150&&p.height>=150);assert(p.noCrop);verifySource(p);verifyOriginal(p);}
   if(photos.length){assert(Photos.figure(r).includes('place-photo-gallery'));assert(!Photos.figure(r,{compact:true}).includes('place-photo-gallery'),'map/list renders only one photo');assert(Photos.figure(r).includes('loading="lazy"'));}
- }assert.equal(count,coverage.galleryPhotos);assert.equal(places,coverage.galleryPlaces);
+ }assert.equal(count,coverage.galleryPhotos+additions.reduce((total,row)=>total+row.photos.length-1,0));assert.equal(places,coverage.galleryPlaces+additions.filter(row=>row.photos.length>1).length);
 });
 test('supplementary official pet notes remain identity-bound, escaped and qualified',()=>{
  let notes=0;for(const r of records){if(!r.tourNotes)continue;notes++;assert.equal(Evidence.notes({...r,description:r.description+' changed'}),null);const html=Conditions.panel(r);assert(html.includes('공식 소개의 동반 안내 더 보기'));assert(html.includes('당일 운영·허용 범위를 보장하지 않습니다'));assert(html.includes(r.tourNotes.checked));}

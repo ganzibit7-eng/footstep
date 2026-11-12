@@ -1,0 +1,377 @@
+{
+  "checked": "2026-11-13",
+  "sourceCohort": 383,
+  "photoCandidates": 380,
+  "commonsChecked": 354,
+  "officialCampingReviewed": 150,
+  "linkedOperatorHomepages": 84,
+  "conditions": [
+    {
+      "id": "mfds_20261112_d50dc13c574ab259b6",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2782701&langDiv=KOR",
+      "sourceLabel": "한국관광공사 장소 소개",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "acmpyPsblCpam": "13kg 이하 · 대형견 제외",
+        "etcAcmpyInfo": "반려견 입장료가 있습니다. 실내·야외 구역별 이용 수칙은 방문 전 매장에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_101374",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101374",
+      "sourceLabel": "고캠핑 캠핑장 소개",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "acmpyPsblCpam": "맹견 입장 불가",
+        "acmpyNeedMtr": "목줄 착용 및 배변 처리"
+      }
+    },
+    {
+      "id": "gocamping_102034",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=102034",
+      "sourceLabel": "고캠핑 캠핑장 소개 및 출입 항목",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "소형견만 가능",
+        "etcAcmpyInfo": "울타리로 구획한 반려견 전용 사이트가 따로 있습니다. 예약할 때 해당 사이트를 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_102243",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=102243",
+      "sourceLabel": "고캠핑 캠핑장 소개 및 출입 항목",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "소형견만 가능",
+        "etcAcmpyInfo": "C·D 사이트에서 동반할 수 있습니다. 실내 놀이터·수영장과 그 밖의 사이트는 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_100572",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=100572",
+      "sourceLabel": "고캠핑 캠핑장 소개 및 출입 항목",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "acmpyPsblCpam": "소형견만 가능",
+        "acmpyNeedMtr": "목줄 착용 및 배변 봉투 지참"
+      }
+    },
+    {
+      "id": "gocamping_101399",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101399",
+      "sourceLabel": "고캠핑 캠핑장 소개 및 출입 항목",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "소형견만 가능",
+        "etcAcmpyInfo": "반려견과 함께 이용 가능한 글램핑장입니다. 예약 상품별 체중 기준과 실내 공용시설 조건은 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_102089",
+      "source": "https://camfit.co.kr/camp/695cba75106a2e001dc7eb27",
+      "sourceLabel": "캠핑장 예약 페이지의 시설 소개",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "etcAcmpyInfo": "개별 울타리가 있는 야외 캠핑 사이트와 별도의 반려견 운동장을 이용할 수 있습니다. 실내 공용시설과 체중 제한은 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_102022",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=102022",
+      "sourceLabel": "고캠핑 캠핑장 소개",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "etcAcmpyInfo": "반려견과 함께 이용하는 우주셔틀 카라반에 반려견 용품이 비치되어 있고 개별 운동장을 이용할 수 있습니다. 공용시설과 체중 제한은 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_100550",
+      "source": "https://hbasecamp.com/page/caution.php",
+      "sourceLabel": "운영사 야영장 이용 수칙",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "acmpyPsblCpam": "소형견 위주로 허용 · 그 외 크기는 사전 문의"
+      }
+    },
+    {
+      "id": "gocamping_101280",
+      "source": "https://www.lisaforestvillage.co.kr/26",
+      "sourceLabel": "운영사 예약 안내",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "etcAcmpyInfo": "반려견과 함께 방문하려면 사전 문의가 필요합니다. 허용 구역과 객실 조건은 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_101295",
+      "source": "https://xn--bj1b32gh10atzab8l.kr/g5/bbs/board.php?bo_table=tl_qna",
+      "sourceLabel": "운영사 이용 안내 및 정원 피크닉 소개",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "10kg 이하 중소형견만 가능 · 맹견 제외",
+        "etcAcmpyInfo": "야외 정원 피크닉은 동반 가능합니다. 객실과 다른 시설은 예약할 때 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_101376",
+      "source": "https://xn--q20b641bhkbhwnyza36x5g.com/info/",
+      "sourceLabel": "운영사 시설 이용 안내",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "7kg 이하 · 운영사 안내상 맹견 제외",
+        "etcAcmpyInfo": "야외 오토캠핑장과 카라반 사이트는 동반 가능합니다. 카라반 객실과 수영장·샤워장·화장실에는 들어갈 수 없습니다.",
+        "acmpyNeedMtr": "목줄 착용"
+      }
+    },
+    {
+      "id": "gocamping_100435",
+      "source": "https://site.onda.me/136394",
+      "sourceLabel": "운영사 하조스테이 예약 안내",
+      "pet": {
+        "acmpyTypeCd": "일부 구역 동반 가능",
+        "acmpyPsblCpam": "운영사 안내상 5대 맹견 제외",
+        "etcAcmpyInfo": "동반 조건에 해당하면 카라반 객실에 입실할 수 있습니다. 체중과 마릿수는 예약 전 운영사에 확인해 주세요."
+      }
+    },
+    {
+      "id": "gocamping_102348",
+      "source": "https://xn--oi2bp5sdra72k93co0mw7f.kr/?page_id=6964",
+      "sourceLabel": "운영사 예약 안내와 고캠핑 출입 항목",
+      "pet": {
+        "acmpyTypeCd": "조건부 동반 가능",
+        "acmpyPsblCpam": "고캠핑 출입 항목 기준 소형견만 가능",
+        "etcAcmpyInfo": "운영사는 반려동물 동반이 금지된 객실을 구분합니다. 동반하려는 사이트나 객실은 예약 전 확인해 주세요."
+      }
+    }
+  ],
+  "photos": [
+    {
+      "id": "mfds_20261112_d50dc13c574ab259b6",
+      "name": "멜팅",
+      "contentId": "2782701",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2782701&langDiv=KOR",
+      "officialName": "멜팅",
+      "officialAddress": "경기도 동두천시 천보산로 628",
+      "photos": [
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-2782701-9971aba8f880.jpg",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/70/2783070_image2_1.jpg",
+            "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2782701&langDiv=KOR",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "경기도_동두천시_멜팅_전경",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 705,
+            "bytes": 433253,
+            "sha256": "9971aba8f88001c0fd30426a1a0d539555390943ceaf2954a377d697cfb2a447"
+          },
+          "rights": {
+            "contentId": "2782701",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/70/2783070_image2_1.jpg",
+            "cpyrhtDivCd": "Type3",
+            "imgname": "경기도_동두천시_멜팅_전경"
+          }
+        },
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-2782701-00c103c635b4.jpg",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/75/2783075_image2_1.jpg",
+            "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2782701&langDiv=KOR",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "경기도_동두천시_멜팅_실내놀이터",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 705,
+            "bytes": 305716,
+            "sha256": "00c103c635b4dc9fd4dc90c015e220aaa1b2abd97989e09071a4d8882bc2d5fa"
+          },
+          "rights": {
+            "contentId": "2782701",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/75/2783075_image2_1.jpg",
+            "cpyrhtDivCd": "Type3",
+            "imgname": "경기도_동두천시_멜팅_실내놀이터"
+          }
+        },
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-2782701-61570009e0ba.jpg",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/77/2783077_image2_1.jpg",
+            "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2782701&langDiv=KOR",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "경기도_동두천시_멜팅_실내",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 626,
+            "bytes": 350045,
+            "sha256": "61570009e0bad987b535d98f4862261cf5163e1ea82977337d823ea2882dd7fa"
+          },
+          "rights": {
+            "contentId": "2782701",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/77/2783077_image2_1.jpg",
+            "cpyrhtDivCd": "Type3",
+            "imgname": "경기도_동두천시_멜팅_실내"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mfds_20261112_d7de86b6c27b3c81a6",
+      "name": "디스커버리카페",
+      "contentId": "2899900",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2899900&langDiv=KOR",
+      "officialName": "디스커버리카페",
+      "officialAddress": "경상남도 거제시 옥포대첩로 1248",
+      "photos": [
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-2899900-fdafe5f64c52.jpg",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/93/2899893_image2_1.jpg",
+            "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2899900&langDiv=KOR",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "경상남도_거제시_디스커버리카페_메뉴_실내",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 627,
+            "bytes": 391474,
+            "sha256": "fdafe5f64c52f0518e356f4eedbc87ae29262727ea4a01dd47255e6506c924fa"
+          },
+          "rights": {
+            "contentId": "2899900",
+            "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/93/2899893_image2_1.jpg",
+            "cpyrhtDivCd": "Type3",
+            "imgname": "경상남도_거제시_디스커버리카페_메뉴_실내"
+          }
+        },
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-2899900-20c4558f4139.jpg",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/94/2899894_image2_1.jpg",
+            "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2899900&langDiv=KOR",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "경상남도_거제시_디스커버리카페_메뉴_야외",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101578/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 627,
+            "bytes": 351558,
+            "sha256": "20c4558f4139270fb0bbe26bb3e9084c8e7fca981535d4f9cd2323ca423711ab"
+          },
+          "rights": {
+            "contentId": "2899900",
+            "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/94/2899894_image2_1.jpg",
+            "cpyrhtDivCd": "Type3",
+            "imgname": "경상남도_거제시_디스커버리카페_메뉴_야외"
+          }
+        }
+      ]
+    }
+  ],
+  "holds": [
+    {
+      "id": "gocamping_100418",
+      "reason": "휴업",
+      "note": "고캠핑 운영기간에 현재 휴업으로 표시됨",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=100418",
+      "name": "그로브(grove)캠핑",
+      "address": "경상북도 청도군 운문면 신원3길 2-4"
+    },
+    {
+      "id": "gocamping_100890",
+      "reason": "휴업",
+      "note": "고캠핑 운영기간에 현재 휴업으로 표시됨",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=100890",
+      "name": "템플 온더 비치",
+      "address": "강원특별자치도 양양군 현남면 창리길 19-1"
+    },
+    {
+      "id": "gocamping_102067",
+      "reason": "휴업",
+      "note": "고캠핑 운영기간에 현재 휴업으로 표시됨",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=102067",
+      "name": "칠장산스포츠센터 야영장",
+      "address": "경기도 안성시 죽산면 극락길 63"
+    },
+    {
+      "id": "gocamping_101208",
+      "reason": "휴업",
+      "note": "고캠핑 운영기간에 현재 휴업으로 표시됨",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101208",
+      "name": "치휴관광농원 야영장",
+      "address": "충청남도 논산시 연산면 선비로604번길 16"
+    },
+    {
+      "id": "gocamping_101394",
+      "reason": "휴업",
+      "note": "고캠핑 운영기간에 현재 휴업으로 표시됨",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101394",
+      "name": "별빛 오토캠핑장",
+      "address": "강원특별자치도 양양군 현북면 법수치길 782"
+    },
+    {
+      "id": "gocamping_101043",
+      "reason": "운영사 안내상 동반 불가",
+      "note": "운영사가 캠핑장 전반의 이용 수칙에서 반려동물 입장을 금지함",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101043",
+      "operator": "https://donggucamp.co.kr/notice/8",
+      "name": "용암산성오토캠핑장",
+      "address": "대구광역시 동구 둔산로 484-52 (도동)"
+    },
+    {
+      "id": "gocamping_101094",
+      "reason": "동반 안내 상충",
+      "note": "고캠핑과 같은 주소의 운영사 안내에서 반려동물 입장을 금지해 보류",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=101094",
+      "operator": "https://starluvdream.modoo.ro/",
+      "name": "별애드림 캠핑장",
+      "address": "충청북도 영동군 심천면 난계로 712-42"
+    },
+    {
+      "id": "gocamping_100412",
+      "reason": "운영사 안내상 동반 불가",
+      "note": "운영사의 카라반·독채 공통 예약 안내에 반려견 동반 불가 명시",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=100412",
+      "operator": "https://xn--hy1bu3cab2np9y7v8a.com/reservation.html",
+      "name": "라라랜드",
+      "address": "충청남도 금산군 제원면 신안사로 487"
+    },
+    {
+      "id": "gocamping_100786",
+      "reason": "동반 객실 미확인",
+      "note": "고캠핑은 동반 가능으로 표기하지만 글램핑만 운영하며, 운영사 예약 안내에서 반려동물 동반을 허용하는 객실을 확인할 수 없음",
+      "source": "https://gocamping.or.kr/bsite/camp/info/read.do?c_no=100786",
+      "operator": "https://www.thestay309.kr/html/sub6_reser.html",
+      "name": "The Stay 309",
+      "address": "전남광주통합특별시 여수시 돌산읍 백초길 62"
+    }
+  ]
+}
