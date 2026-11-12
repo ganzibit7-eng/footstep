@@ -46,7 +46,9 @@ test('all generated detail types use the shared overview while course evidence a
 });
 
 test('ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS',()=>{
- const cafes=readFileSync('places/cafes/index.html','utf8');assert(cafes.includes('data-place-curation="quality11"'));assert(cafes.includes('id="hub-results"'));const newDining=JSON.parse(readFileSync('docs/expansion-20261111/batch.json','utf8')).places.filter(r=>r.category==='식당카페').length;
+ const cafes=readFileSync('places/cafes/index.html','utf8');assert(cafes.includes('data-place-curation="quality11"'));assert(cafes.includes('id="hub-results"'));
+ const newDining=['docs/expansion-20261111/batch.json','docs/expansion-20261112/proof.json']
+  .flatMap(file=>JSON.parse(readFileSync(file,'utf8')).places).filter(r=>r.category==='식당카페').length;
  const withdrawnDining=readFileSync('docs/pet-access-full-20261111/decisions.jsonl','utf8').trim().split('\n').map(JSON.parse).filter(r=>r.category==='식당카페'&&r.status!=='keep').length;
  assert(cafes.includes('전체 '+(1107+newDining-withdrawnDining).toLocaleString('ko-KR')+'곳'));
  const directory=readFileSync('discover.html','utf8');assert(directory.includes('data-directory-curation'));assert(directory.includes('id="place-results"'));

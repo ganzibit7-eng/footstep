@@ -11,7 +11,12 @@ test('all enriched identities are public records; photographs are intact with ri
   if(r.pet){pets++;assert.equal(Evidence.conditions({...r,description:r.description+' 변경'}),null);const rows=Conditions.get(r).map(x=>x.value).join('\n');for(const key of ['acmpyTypeCd','acmpyPsblCpam','acmpyNeedMtr','etcAcmpyInfo','relaPosesFclty','relaAcdntRiskMtr','relaFrnshPrdlst','relaPurcPrdlst','relaRntlPrdlst']){const value=r.pet[key];if(value&&value.trim()&&!/<|&/.test(value))assert(rows.includes(value.trim()),r.name+' missing '+key);}}
   if(r.photo){photos++;const p=Photos.get(r);assert(p.noCrop);assert(p.width>=150&&p.height>=150);verifySource(p);assert(p.source&&p.author);verifyOriginal(p);const html=Photos.figure(r);assert.match(html,/object-fit:contain/);assert.match(html,/이용 조건/);assert(!html.includes('undefined'));}
  }
- const added=require('../docs/expansion-20261111/batch.json');assert.equal(records.length,coverage.records+added.photographedPlaces);assert.equal(photos,coverage.photoPlaces+added.photographedPlaces);assert.equal(pets,coverage.petRecords+added.places.filter(row=>row.id.startsWith('kto_new_')).length);console.log({reviewed:coverage.publicFacilities,matched:records.length,photos,petRecords:pets,photoUnresolved:coverage.publicFacilities-photos});
+ const added=require('../docs/expansion-20261111/batch.json');
+ const newPhotos=require('../docs/expansion-20261112/proof.json').photos.length;
+ assert.equal(records.length,coverage.records+added.photographedPlaces+newPhotos);
+ assert.equal(photos,coverage.photoPlaces+added.photographedPlaces+newPhotos);
+ assert.equal(pets,coverage.petRecords+added.places.filter(row=>row.id.startsWith('kto_new_')).length);
+ console.log({reviewed:coverage.publicFacilities,matched:records.length,photos,petRecords:pets,photoUnresolved:coverage.publicFacilities-photos});
 });
 test('current camping conditions remain bound to identity; conflicting guidance cannot become confirmed permission',()=>{
  const camps=records.filter(r=>r.camping);assert.equal(camps.length,968);assert.equal(records.filter(r=>r.caution).length,coverage.cautions);
