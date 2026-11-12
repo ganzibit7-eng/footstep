@@ -7,7 +7,9 @@ const counts = require('../data/public-counts.json');
 const held = require('../data/pet-access-review-holds-20261111.json');
 const registryHolds = require('../data/place-review-holds-20261107.json');
 const photos = require('../place-photos.js');
-const followup = require('../docs/place-enrichment-20261113/verification.json');
+const previousReview = require('../docs/place-enrichment-20261113/verification.json');
+const nextReview = require('../docs/place-enrichment-followup-20261113/verification.json');
+const followup = {conditions:[...previousReview.conditions,...nextReview.conditions],holds:[...previousReview.holds,...nextReview.holds],photos:[...previousReview.photos,...nextReview.photos]};
 
 test('the verified additions have matching public details, search entries and sitemap URLs', () => {
   const indexed = new Map(require('./search-records.cjs')().map(row => [row.path, row]));

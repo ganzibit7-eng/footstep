@@ -4,7 +4,9 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
 const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json'),'utf8'));
 const script=fs.readFileSync(path.join(root,'place-evidence.js'),'utf8'),records=JSON.parse(script.match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
-const followup=require('../docs/place-enrichment-20261113/verification.json');
+const previousReview = require('../docs/place-enrichment-20261113/verification.json');
+const nextReview = require('../docs/place-enrichment-followup-20261113/verification.json');
+const followup = {conditions:[...previousReview.conditions,...nextReview.conditions],holds:[...previousReview.holds,...nextReview.holds],photos:[...previousReview.photos,...nextReview.photos]};
 const followupSources=new Map(followup.conditions.map(row=>[row.id,row.source]));
 test('all enriched identities are public records; photographs are intact with rights, origin and dimensions',()=>{
  let photos=0,pets=0;const ids=new Set();

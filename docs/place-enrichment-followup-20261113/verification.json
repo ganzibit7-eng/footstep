@@ -1,0 +1,220 @@
+{
+  "checked": "2026-11-13",
+  "photoCohort": 369,
+  "publicCatalogueEntries": 110438,
+  "openLicenseSearches": 369,
+  "conditions": [
+    {
+      "id": "mfds_20261112_e8f4e53423a5bde874",
+      "source": "https://www.shinsegaegroupnewsroom.com/starbucks-hanriver-r-store-pet/",
+      "verifiedBy": "스타벅스 운영사 보도자료, 식품안전나라의 북한강로 1098 현행 등록, 한국관광공사 지점 정보 대조",
+      "pet": {
+        "acmpyTypeCd": "1층 실내 펫존·야외 펫파크 동반 가능",
+        "etcAcmpyInfo": "2·3층과 루프탑은 반려동물 출입 제한. 주문·픽업 중에는 1층 대기 공간을 이용하세요."
+      }
+    },
+    {
+      "id": "gocamping_101950",
+      "source": "https://www.tfmc.or.kr/www/contents/WWW0300001.do",
+      "verifiedBy": "태백시시설관리공단의 고원힐링캠핑장 사용자 수칙 제7항과 공식 예약 링크 대조",
+      "pet": {
+        "acmpyTypeCd": "야외 사이트 동반 가능",
+        "etcAcmpyInfo": "세척장·샤워장·화장실 등 밀폐형 시설의 실내는 출입 불가. 배정받은 사이트 밖으로 벗어나지 않도록 관리하세요.",
+        "acmpyPsblCpam": "15kg 이하, 체고 40cm 이하 중·소형견 · 사이트당 최대 2마리",
+        "acmpyNeedMtr": "인식표, 1.5m 이내 목줄, 입마개, 배변봉투 필수"
+      }
+    },
+    {
+      "id": "gocamping_101290",
+      "source": "https://camfit.co.kr/camp/65a09b77180f07001edd948d",
+      "verifiedBy": "고캠핑에서 연결한 운영자 예약 페이지의 구역별 안내. 단경로 568은 언별리 1335-1의 도로명주소",
+      "pet": {
+        "acmpyTypeCd": "야외 A1~A8·B6 동반 가능",
+        "etcAcmpyInfo": "B1~B5는 반려견 동반 불가. A1~A7은 1마리 기본·최대 2마리, A8·B6은 2마리 기본이며 추가는 사이트별 안내를 확인하세요.",
+        "acmpyPsblCpam": "10kg 미만 소형견"
+      }
+    },
+    {
+      "id": "gocamping_100476",
+      "source": "https://camfit.co.kr/camp/629097a5bfa6d2001e18ac32",
+      "verifiedBy": "고캠핑에서 연결한 운영자 예약 페이지의 B타입 캠핑하우스 안내 및 관대문길 31 대조",
+      "pet": {
+        "acmpyTypeCd": "동반 가능 사이트 별도 확인",
+        "etcAcmpyInfo": "B타입 캠핑하우스는 반려견 동반 불가. 다른 캠핑하우스의 실내 출입과 세부 체중 기준은 운영사에 확인하세요."
+      }
+    },
+    {
+      "id": "gocamping_101247",
+      "source": "https://camfit.co.kr/camp/657a95180cdff9001eee133c",
+      "verifiedBy": "고캠핑에서 연결한 운영자 예약 페이지의 잔디 마당 안내 및 돌산로 649-12 대조",
+      "pet": {
+        "acmpyTypeCd": "야외 잔디 마당 동반 가능",
+        "etcAcmpyInfo": "카페 실내의 동반 허용과 체중 기준은 운영사 안내에서 확인되지 않았습니다."
+      }
+    },
+    {
+      "id": "gocamping_102011",
+      "source": "https://camfit.co.kr/camp/690222210b7ca1001d3cfd83/690aac9bb6ec55001d715984",
+      "verifiedBy": "고캠핑에서 연결한 운영자 예약 페이지의 B구역 숲속캠핑 안내 및 검산길 278 대조",
+      "pet": {
+        "acmpyTypeCd": "야외 B구역 숲속캠핑 동반 가능",
+        "etcAcmpyInfo": "B구역은 최대 2마리. 다른 구역과 실내 시설의 출입 및 체중 기준은 운영사에 확인하세요."
+      }
+    },
+    {
+      "id": "gocamping_101938",
+      "source": "https://m.thankqcamping.com/resv/view.hbb?cseq=17644&go_main=Y&path=RP",
+      "verifiedBy": "고캠핑에서 연결한 운영자 예약 페이지의 2026~2027년 동계 장박 공지",
+      "pet": {
+        "acmpyTypeCd": "동계 장박 지정 야외 사이트 동반 가능",
+        "etcAcmpyInfo": "운영사 동계 장박 공지 기준으로 B구역·루프탑 장박 예약 시 동반 가능. 공지에 기재된 일부 견종, 심한 짖음이나 입질이 있는 반려견은 제한되며 일반 예약과 체중 기준은 별도 확인이 필요합니다."
+      }
+    },
+    {
+      "id": "mfds_20261112_d4dc840f5acd86e60d",
+      "source": "https://ban-life.com/store/view?id=27498&type=s",
+      "verifiedBy": "카페가 작성한 반려생활 이용안내, 양평군 소식의 실내 전용 구역 및 동일 도로명주소 대조",
+      "pet": {
+        "acmpyTypeCd": "실내 전용 공간·야외 테이블·테라스 동반 가능",
+        "etcAcmpyInfo": "업소 안내 기준 모든 견종이 동반 가능하며, 숫자로 정한 체중 기준은 확인되지 않았습니다.",
+        "acmpyNeedMtr": "2m 이내 목줄. 생후 3개월 이상 맹견은 입마개와 목줄 착용."
+      }
+    },
+    {
+      "id": "mfds_20261112_cff657159b8ec36541",
+      "source": "https://www.ban-life.com/store/view?id=15418&type=s",
+      "verifiedBy": "반려생활 업소 이용안내, 식품안전나라의 애기봉로 809-5 현행 등록 대조",
+      "pet": {
+        "acmpyTypeCd": "실내 동반 공간 이용 가능",
+        "etcAcmpyInfo": "실내 이용 시 개인 방석 또는 유모차를 사용하세요. 심한 짖음, 마킹 또는 공격성이 있는 경우 입장이 제한될 수 있습니다.",
+        "acmpyNeedMtr": "목줄 필수 · 실내에서는 개인 방석 또는 유모차"
+      }
+    }
+  ],
+  "photos": [
+    {
+      "id": "mfds_20261112_e8f4e53423a5bde874",
+      "name": "스타벅스 더북한강R",
+      "contentId": "3046403",
+      "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=184334",
+      "venueAddress": "1098 Bukhangang-ro Hwado-eup, Namyangju-si, Gyeonggi-do",
+      "photos": [
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-3046403-916c3fc3d691.jpg",
+            "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=184334",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/93/3039493_image2_1.jpg",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "스타벅스 더북한강R점_2",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101753/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 628,
+            "bytes": 467094,
+            "sha256": "916c3fc3d691e9f2be42139531b002a2e0ed03e10e88e6b7c3bdf122faae6e67",
+            "alt": "스타벅스 더북한강R 야외 펫파크의 반려견 두 마리",
+            "placeNameOverride": "스타벅스 더북한강R 현장 사진",
+            "placeCaption": "스타벅스 더북한강R 현장 참고 사진 · 실내 동반은 1층 펫존만 허용됩니다.",
+            "place": "스타벅스 더북한강R 현장 사진",
+            "date": "",
+            "datasetContentId": "3046403"
+          },
+          "rights": {
+            "serialnum": "3039493_1",
+            "contentId": "3046403",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/93/3039493_image2_1.jpg",
+            "imgname": "스타벅스 더북한강R점_2",
+            "cpyrhtDivCd": "Type3"
+          }
+        },
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-3046403-406c255fdf37.jpg",
+            "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=184334",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/91/3039491_image2_1.jpg",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "스타벅스 더북한강R점_5",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101753/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 705,
+            "bytes": 521808,
+            "sha256": "406c255fdf3749c45d0916bda8c869034a828c41849950b7cbe1d6d41fc3377d",
+            "alt": "스타벅스 더북한강R 북한강이 보이는 실내 창가 좌석",
+            "placeNameOverride": "스타벅스 더북한강R 현장 사진",
+            "placeCaption": "스타벅스 더북한강R 현장 참고 사진 · 실내 동반은 1층 펫존만 허용됩니다.",
+            "place": "스타벅스 더북한강R 현장 사진",
+            "date": "",
+            "datasetContentId": "3046403"
+          },
+          "rights": {
+            "serialnum": "3039491_4",
+            "contentId": "3046403",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/91/3039491_image2_1.jpg",
+            "imgname": "스타벅스 더북한강R점_5",
+            "cpyrhtDivCd": "Type3"
+          }
+        },
+        {
+          "asset": {
+            "src": "/assets/place-supplement/kto-3046403-2cf5e2e91e6d.jpg",
+            "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=184334",
+            "original": "https://tong.visitkorea.or.kr/cms/resource/94/3039494_image2_1.jpg",
+            "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+            "title": "스타벅스 더북한강R점_3",
+            "dateNote": "촬영일 미상",
+            "license": "공공누리 제3유형",
+            "licenseUrl": "https://www.data.go.kr/data/15101753/openapi.do",
+            "rightsType": "Type3",
+            "photoKind": "kto-verified-photo",
+            "noCrop": true,
+            "changes": "제공 JPEG 원본과 전체 비율 유지",
+            "width": 940,
+            "height": 705,
+            "bytes": 497332,
+            "sha256": "2cf5e2e91e6d59ac0a6d59eaa3de759b534f89ff61b3e6624b32d2689f0102f2",
+            "alt": "스타벅스 더북한강R 목재 테이블과 벽 장식이 있는 매장 내부",
+            "placeNameOverride": "스타벅스 더북한강R 현장 사진",
+            "placeCaption": "스타벅스 더북한강R 현장 참고 사진 · 실내 동반은 1층 펫존만 허용됩니다.",
+            "place": "스타벅스 더북한강R 현장 사진",
+            "date": "",
+            "datasetContentId": "3046403"
+          },
+          "rights": {
+            "serialnum": "3039494_2",
+            "contentId": "3046403",
+            "originimgurl": "http://tong.visitkorea.or.kr/cms/resource/94/3039494_image2_1.jpg",
+            "imgname": "스타벅스 더북한강R점_3",
+            "cpyrhtDivCd": "Type3"
+          }
+        }
+      ]
+    }
+  ],
+  "holds": [
+    {
+      "id": "gocamping_100554",
+      "source": "https://camfit.co.kr/camp/652f9828345ec3001e61d3c3",
+      "reason": "운영사 예약 안내에서 캠핑장 전체를 노펫으로 명시. 논산 벌곡로330번길 29-44.",
+      "name": "숩쏙캠핑장",
+      "address": "충청남도 논산시 벌곡면 벌곡로330번길 29-44"
+    },
+    {
+      "id": "gocamping_101599",
+      "source": "https://camfit.co.kr/camp/66065eb9b236d2001ec1a246",
+      "reason": "운영사 공통 예약 안내에서 반려동물 동반 불가 명시. 울주 향산다개로 136-116.",
+      "name": "화장산 캠핑장",
+      "address": "울산광역시 울주군 상북면 향산다개로 136-116"
+    }
+  ]
+}
