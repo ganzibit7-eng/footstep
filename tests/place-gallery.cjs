@@ -4,7 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
 const records=JSON.parse(fs.readFileSync(path.join(root,'place-evidence.js'),'utf8').match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
 const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json')));
-const additions=require('../docs/place-enrichment-20261113/verification.json').photos;
+const additions=[...require('../docs/place-enrichment-20261113/verification.json').photos,...require('../docs/place-enrichment-followup-20261113/verification.json').photos];
 test('all additional images preserve original file hash, source, rights, dimensions and identity',()=>{
  let count=0,places=0;for(const r of records){const photos=Photos.gallery(r);if(photos.length)places++;
   assert.equal(Photos.gallery({...r,address:r.address+' 다른 장소'}).length,0);

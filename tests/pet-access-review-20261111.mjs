@@ -9,7 +9,9 @@ const review = require('../data/pet-access-review-holds-20261111.json');
 const counts = require('../data/public-counts.json');
 const decisions = read('docs/pet-access-full-20261111/decisions.jsonl').trim().split('\n').map(row=>JSON.parse(row));
 const laterPlaces = require('../docs/expansion-20261112/proof.json').places;
-const followup = require('../docs/place-enrichment-20261113/verification.json');
+const previousReview = require('../docs/place-enrichment-20261113/verification.json');
+const nextReview = require('../docs/place-enrichment-followup-20261113/verification.json');
+const followup = {conditions:[...previousReview.conditions,...nextReview.conditions],holds:[...previousReview.holds,...nextReview.holds],photos:[...previousReview.photos,...nextReview.photos]};
 const publicResults = require('./search-records.cjs')();
 const pathFor = row => '/'+(row.category==='course'?'courses':'places')+'/'+row.id+'/';
 
