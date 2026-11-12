@@ -4,18 +4,21 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),Evidence=require('../place-evidence.js'),Photos=require('../place-photos.js'),Conditions=require('../place-conditions.js');
 const coverage=JSON.parse(fs.readFileSync(path.join(root,'docs/nationwide-expansion-20261020e/summary.json'),'utf8'));
 const script=fs.readFileSync(path.join(root,'place-evidence.js'),'utf8'),records=JSON.parse(script.match(/const records=(\[[\s\S]*?\]);\r?\n/)[1]);
+const followup=require('../docs/place-enrichment-20261113/verification.json');
+const followupSources=new Map(followup.conditions.map(row=>[row.id,row.source]));
 test('all enriched identities are public records; photographs are intact with rights, origin and dimensions',()=>{
  let photos=0,pets=0;const ids=new Set();
- for(const r of records){assert(!ids.has(r.id));ids.add(r.id);assert.equal(Evidence.get(r).id,r.id);if(r.photo?.photoKind==='commons-photo'&&r.source===r.photo.source)verifySource(r.photo);else if(r.id==='kto_951e2041-3348-4244-b468-827205d00296')assert.equal(r.source,require('../docs/verified-walks-20261111/batch.json').facilityCorrection.source);else assert.match(r.source,/^https:\/\/(api\.visitkorea\.or\.kr|gocamping\.or\.kr)\//);
+ for(const r of records){assert(!ids.has(r.id));ids.add(r.id);assert.equal(Evidence.get(r).id,r.id);if(r.photo?.photoKind==='commons-photo'&&r.source===r.photo.source)verifySource(r.photo);else if(r.id==='kto_951e2041-3348-4244-b468-827205d00296')assert.equal(r.source,require('../docs/verified-walks-20261111/batch.json').facilityCorrection.source);else if(followupSources.has(r.id))assert.equal(r.source,followupSources.get(r.id));else assert.match(r.source,/^https:\/\/(api\.visitkorea\.or\.kr|gocamping\.or\.kr)\//);
   for(const change of [{name:r.name+' 다른 지점'},{address:r.address+' 다른 주소'},{lat:r.lat+0.01},{lng:r.lng+0.01},{lat:null}])assert.equal(Evidence.get({...r,...change}),null);
   if(r.pet){pets++;assert.equal(Evidence.conditions({...r,description:r.description+' 변경'}),null);const rows=Conditions.get(r).map(x=>x.value).join('\n');for(const key of ['acmpyTypeCd','acmpyPsblCpam','acmpyNeedMtr','etcAcmpyInfo','relaPosesFclty','relaAcdntRiskMtr','relaFrnshPrdlst','relaPurcPrdlst','relaRntlPrdlst']){const value=r.pet[key];if(value&&value.trim()&&!/<|&/.test(value))assert(rows.includes(value.trim()),r.name+' missing '+key);}}
   if(r.photo){photos++;const p=Photos.get(r);assert(p.noCrop);assert(p.width>=150&&p.height>=150);verifySource(p);assert(p.source&&p.author);verifyOriginal(p);const html=Photos.figure(r);assert.match(html,/object-fit:contain/);assert.match(html,/이용 조건/);assert(!html.includes('undefined'));}
  }
  const added=require('../docs/expansion-20261111/batch.json');
  const newPhotos=require('../docs/expansion-20261112/proof.json').photos.length;
- assert.equal(records.length,coverage.records+added.photographedPlaces+newPhotos);
- assert.equal(photos,coverage.photoPlaces+added.photographedPlaces+newPhotos);
- assert.equal(pets,coverage.petRecords+added.places.filter(row=>row.id.startsWith('kto_new_')).length);
+ const followupIds=new Set([...followup.conditions,...followup.photos].map(row=>row.id));
+ assert.equal(records.length,coverage.records+added.photographedPlaces+newPhotos+followupIds.size);
+ assert.equal(photos,coverage.photoPlaces+added.photographedPlaces+newPhotos+followup.photos.length);
+ assert.equal(pets,coverage.petRecords+added.places.filter(row=>row.id.startsWith('kto_new_')).length+followup.conditions.length);
  console.log({reviewed:coverage.publicFacilities,matched:records.length,photos,petRecords:pets,photoUnresolved:coverage.publicFacilities-photos});
 });
 test('current camping conditions remain bound to identity; conflicting guidance cannot become confirmed permission',()=>{

@@ -761,6 +761,8 @@ const groups = await Promise.all(types.map(async type => ({type,items:await fetc
 const heldPlaceIds = new Set(JSON.parse(await readFile(path.join(ROOT,'data/place-review-holds-20261107.json'),'utf8')).ids);
 const petAccessReview = JSON.parse(await readFile(path.join(ROOT,'data/pet-access-review-holds-20261111.json'),'utf8'));
 for (const id of petAccessReview.facilities) heldPlaceIds.add(id);
+const followupReview = JSON.parse(await readFile(path.join(ROOT,'docs/place-enrichment-20261113/verification.json'),'utf8'));
+for (const venue of followupReview.holds) heldPlaceIds.add(venue.id);
 const heldByTable = new Map([['courses',new Set(petAccessReview.courses)],['facilities',heldPlaceIds]]);
 for (const group of groups) {
   const heldIds = heldByTable.get(group.type.table);
