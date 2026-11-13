@@ -1,0 +1,1970 @@
+{
+  "checked": "2026-11-13",
+  "publicBefore": 417,
+  "publicAfter": 430,
+  "courses": [
+    {
+      "id": "walk_20261113_kto_125973",
+      "name": "진천 농다리 돌다리 보행 구간",
+      "description": "진천 농다리의 야외 돌다리 보행 구간에서 동반할 수 있습니다. 돌다리 한 구간을 안내합니다. 초평호 출렁다리나 미르숲 동반 조건은 별도이며 진천군은 호우·태풍 기상특보 시 진입을 금지합니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 공개 지도 보행로를 이용한 제안 경로입니다. 거리는 지도 기준이며 현장 답사 여부는 미확인입니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=125973&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 36.8262976,
+      "lng": 127.4930075,
+      "path": [
+        [
+          36.8262976,
+          127.4930075
+        ],
+        [
+          36.826152,
+          127.4932011
+        ],
+        [
+          36.8261093,
+          127.4932672
+        ],
+        [
+          36.8260248,
+          127.4933502
+        ],
+        [
+          36.8259658,
+          127.4934287
+        ],
+        [
+          36.8259269,
+          127.4934996
+        ],
+        [
+          36.825898,
+          127.4935528
+        ],
+        [
+          36.8258234,
+          127.4936435
+        ]
+      ],
+      "tags": [
+        "충북",
+        "반려견 동반",
+        "제안 경로"
+      ],
+      "diff": "미확인",
+      "distance": "0.08km",
+      "author": "한국관광공사 동반 자료 · OpenStreetMap 보행로 대조",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_126133",
+      "name": "대구 경상감영공원 돌담 안쪽 산책",
+      "description": "경상감영공원 안쪽의 야외 보행로에서 동반할 수 있습니다. 공원 안에서 옛 관아 건물과 돌담을 볼 수 있는 짧은 구간입니다. 건물 내부는 이 안내에 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 공개 지도 보행로를 이용한 제안 경로입니다. 거리는 지도 기준이며 현장 답사 여부는 미확인입니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126133&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.8720039,
+      "lng": 128.5912457,
+      "path": [
+        [
+          35.8720039,
+          128.5912457
+        ],
+        [
+          35.8720619,
+          128.591316
+        ],
+        [
+          35.8721609,
+          128.5913786
+        ],
+        [
+          35.8721918,
+          128.5915975
+        ],
+        [
+          35.8721653,
+          128.591928
+        ],
+        [
+          35.8722062,
+          128.5925244
+        ],
+        [
+          35.8723266,
+          128.5925372
+        ],
+        [
+          35.8724591,
+          128.5927303
+        ],
+        [
+          35.8725934,
+          128.5927189
+        ]
+      ],
+      "tags": [
+        "대구",
+        "반려견 동반",
+        "제안 경로"
+      ],
+      "diff": "미확인",
+      "distance": "0.18km",
+      "author": "한국관광공사 동반 자료 · OpenStreetMap 보행로 대조",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_126317",
+      "name": "순천 고인돌공원 야외 산책로",
+      "description": "고인돌공원의 야외 산책로에서 10kg 이하 반려견을 동반할 수 있습니다. 고인돌과 옛 생활 유적을 옮겨 조성한 공원입니다. 전시관과 체험 공간의 반려견 출입은 확인되지 않았습니다. 10kg 이하 · 일부 견종 동반 가능(세부 견종은 미기재). 목줄 착용 · 배변봉투 지참 및 배변 처리. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126317&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 34.9798517983,
+      "lng": 127.2255364109,
+      "path": null,
+      "tags": [
+        "전남",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_127542",
+      "name": "대전 보문산 행복 숲 둘레길",
+      "description": "보문산 행복 숲 둘레길의 공개 야외 보행 구간에서 동반할 수 있습니다. 대사동에 있는 보문산 둘레길 위치를 안내합니다. 보문산의 다른 산길, 시설 및 전체 둘레 동선은 이 안내에 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=127542&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 36.3093154326,
+      "lng": 127.4222602576,
+      "path": null,
+      "tags": [
+        "대전",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_128211",
+      "name": "울산 학성공원 허리 산책로",
+      "description": "학성공원 내 공개 야외 산책로에서 동반할 수 있습니다. 학성공원 언덕 중턱을 감싸는 산책로가 있는 곳입니다. 출발점과 전체 경로선은 확인되지 않았습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128211&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.5544574522015,
+      "lng": 129.33931181458,
+      "path": null,
+      "tags": [
+        "울산",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_128792",
+      "name": "창원 진해 여좌천 벚꽃 산책길",
+      "description": "여좌천의 공개 야외 하천변 보행로에서 동반할 수 있습니다. 로망스다리 부근에서 여좌천의 벚나무를 따라 걷는 길입니다. 등록 위치는 하천 일대의 대표 위치이며 행사 중 혼잡과 통제를 확인하세요. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128792&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.1551,
+      "lng": 128.6594,
+      "path": null,
+      "tags": [
+        "경남",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_1626156",
+      "name": "정읍 구절초 지방정원 야외 산책로",
+      "description": "정읍 구절초 지방정원의 공개 야외 산책로에서 동반할 수 있습니다. 솔숲과 구절초 꽃밭 사이의 정원 산책로를 안내합니다. 출렁다리, 짚와이어, 실내 시설 및 행사별 출입 조건은 이 안내에 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1626156&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.5542736114,
+      "lng": 127.018895547,
+      "path": null,
+      "tags": [
+        "전북",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_2514467",
+      "name": "하동 화개 십리벚꽃길 보행 구간",
+      "description": "화개 십리벚꽃길의 공개 야외 보행 구간에서 동반할 수 있습니다. 화개로를 따라 벚나무가 이어지는 길입니다. 차도와 인도가 이어지는 곳이 있으므로 현장 보행 안내를 따르고 축제 기간의 통제를 확인하세요. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2514467&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.2000061238,
+      "lng": 127.6304656321,
+      "path": null,
+      "tags": [
+        "경남",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_2615384",
+      "name": "진안 부귀 메타세쿼이아길 보행 데크",
+      "description": "부귀 메타세쿼이아길의 야외 보행 데크에서 동반할 수 있습니다. 가로수 옆 데크 구간을 안내합니다. 차량 통행로와 전체 가로수길은 경로에 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 공개 지도 보행로를 이용한 제안 경로입니다. 거리는 지도 기준이며 현장 답사 여부는 미확인입니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2615384&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.8078148,
+      "lng": 127.3220875,
+      "path": [
+        [
+          35.8078148,
+          127.3220875
+        ],
+        [
+          35.8078306,
+          127.322056
+        ],
+        [
+          35.8078507,
+          127.3220305
+        ],
+        [
+          35.8079779,
+          127.3218776
+        ],
+        [
+          35.8081063,
+          127.3217147
+        ],
+        [
+          35.8082874,
+          127.3214988
+        ],
+        [
+          35.8084266,
+          127.3213459
+        ],
+        [
+          35.8085174,
+          127.3212292
+        ],
+        [
+          35.8086914,
+          127.3210227
+        ],
+        [
+          35.8088551,
+          127.3208456
+        ],
+        [
+          35.8091004,
+          127.3205727
+        ],
+        [
+          35.8092717,
+          127.3204058
+        ],
+        [
+          35.8094207,
+          127.3202422
+        ],
+        [
+          35.809437,
+          127.3202059
+        ],
+        [
+          35.8096333,
+          127.3199947
+        ],
+        [
+          35.8098328,
+          127.3197882
+        ],
+        [
+          35.8100553,
+          127.3195548
+        ],
+        [
+          35.8102385,
+          127.3193617
+        ],
+        [
+          35.8104386,
+          127.3191351
+        ],
+        [
+          35.8106551,
+          127.3189071
+        ],
+        [
+          35.8108193,
+          127.3187294
+        ],
+        [
+          35.8108737,
+          127.3186737
+        ],
+        [
+          35.8109041,
+          127.3186576
+        ],
+        [
+          35.8109248,
+          127.3186503
+        ]
+      ],
+      "tags": [
+        "전북",
+        "반려견 동반",
+        "제안 경로"
+      ],
+      "diff": "미확인",
+      "distance": "0.47km",
+      "author": "한국관광공사 동반 자료 · OpenStreetMap 보행로 대조",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_2648994",
+      "name": "구례 섬진강 벚꽃길 수변 산책",
+      "description": "문척면 구례 섬진강 벚꽃길의 공개 야외 보행 구간에서 동반할 수 있습니다. 섬진강과 벚나무를 함께 볼 수 있는 문척면 일대입니다. 지도는 대표 위치이며 차도에 진입하지 말고 현장 보행 구간만 이용하세요. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2648994&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 35.1792176705878,
+      "lng": 127.469719834145,
+      "path": null,
+      "tags": [
+        "전남",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_2661736",
+      "name": "고양 행주산성 역사공원 한강변 산책",
+      "description": "행주산성 역사공원 내 공개 야외 보행로에서 동반할 수 있습니다. 잔디밭과 한강이 보이는 역사공원 안쪽을 걷는 구간입니다. 행주산성 관람 구역, 습지, 다른 누리길 구간은 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 공개 지도 보행로를 이용한 제안 경로입니다. 거리는 지도 기준이며 현장 답사 여부는 미확인입니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2661736&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 37.5987305,
+      "lng": 126.8172686,
+      "path": [
+        [
+          37.5987305,
+          126.8172686
+        ],
+        [
+          37.5984538,
+          126.8177906
+        ],
+        [
+          37.5982898,
+          126.8180398
+        ],
+        [
+          37.5981672,
+          126.8183157
+        ],
+        [
+          37.5976174,
+          126.8188896
+        ],
+        [
+          37.597228,
+          126.819401
+        ],
+        [
+          37.5971989,
+          126.8194348
+        ],
+        [
+          37.5969744,
+          126.8196964
+        ],
+        [
+          37.596752,
+          126.8199219
+        ],
+        [
+          37.5966939,
+          126.8198952
+        ],
+        [
+          37.5966954,
+          126.8197987
+        ]
+      ],
+      "tags": [
+        "경기",
+        "반려견 동반",
+        "제안 경로"
+      ],
+      "diff": "미확인",
+      "distance": "0.34km",
+      "author": "한국관광공사 동반 자료 · OpenStreetMap 보행로 대조",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_2756585",
+      "name": "상주 함창명주테마파크 장미동산 산책",
+      "description": "함창명주테마파크공원의 장미동산 야외 산책로에서 동반할 수 있습니다. 장미동산에 조성된 공개 보행로를 안내합니다. 명주 박물관과 한국한복진흥원 등 인근 실내 시설의 동반 가능 여부는 확인되지 않았습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2756585&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 36.577351,
+      "lng": 128.161663,
+      "path": null,
+      "tags": [
+        "경북",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    },
+    {
+      "id": "walk_20261113_kto_3006983",
+      "name": "서울 노원 삿갓봉근린공원 산책",
+      "description": "삿갓봉근린공원의 야외 산책길에서 동반할 수 있습니다. 한글비석로의 노원어린이도서관과 맞닿은 공원입니다. 어린이 놀이시설과 도서관 내부는 이 안내에 포함하지 않습니다. 전 견종 동반 가능 · 체중 상한 별도 기재 없음. 목줄 착용 · 배변봉투 지참 및 배변 처리 · 맹견은 입마개 착용. 지도는 장소 대표 위치를 안내합니다. 출발점과 전체 경로·거리는 확인되지 않았습니다. · 공식안내: https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3006983&langDiv=KOR 확인일: 2026-11-13",
+      "lat": 37.65796899943583,
+      "lng": 127.07630127353355,
+      "path": null,
+      "tags": [
+        "서울",
+        "반려견 동반",
+        "산책 위치 안내"
+      ],
+      "diff": "미확인",
+      "distance": "",
+      "author": "한국관광공사 동반 자료",
+      "status": "approved",
+      "created_at": "2026-11-13T11:20:00.000Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "walk_20261113_kto_125973",
+      "contentId": "125973",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=125973&langDiv=KOR",
+      "otherOfficialSource": "https://www.jincheon.go.kr/site/tour/sub.do?menukey=2162",
+      "scope": "진천 농다리의 야외 돌다리 보행 구간에서 동반할 수 있습니다.",
+      "rawAddress": "충청북도 진천군 문백면 구산동리",
+      "rawPet": {
+        "contId": "125973",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3535437_9",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/37/3535437_image2_1.jpg",
+        "imgname": "진천 농다리 (1)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/37/3535437_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "125973",
+        "provider": null
+      },
+      "location": "proposed",
+      "geometry": {
+        "meters": 77.68961500520273,
+        "nodeIds": [
+          9560157005,
+          11187543294,
+          11187543293,
+          11187543290,
+          11187543292,
+          11187543291,
+          11187543289,
+          9560157004
+        ],
+        "wayIds": [
+          1037945076,
+          1037945076,
+          1037945076,
+          1037945076,
+          1037945076,
+          1037945076,
+          1037945076
+        ],
+        "path": [
+          [
+            36.8262976,
+            127.4930075
+          ],
+          [
+            36.826152,
+            127.4932011
+          ],
+          [
+            36.8261093,
+            127.4932672
+          ],
+          [
+            36.8260248,
+            127.4933502
+          ],
+          [
+            36.8259658,
+            127.4934287
+          ],
+          [
+            36.8259269,
+            127.4934996
+          ],
+          [
+            36.825898,
+            127.4935528
+          ],
+          [
+            36.8258234,
+            127.4936435
+          ]
+        ],
+        "ways": [
+          {
+            "id": 1037945076,
+            "tags": {
+              "bridge": "yes",
+              "highway": "footway",
+              "layer": "1",
+              "name": "진천농다리",
+              "surface": "stones"
+            },
+            "pts": [
+              [
+                9560157005,
+                36.8262976,
+                127.4930075
+              ],
+              [
+                11187543294,
+                36.826152,
+                127.4932011
+              ],
+              [
+                11187543293,
+                36.8261093,
+                127.4932672
+              ],
+              [
+                11187543290,
+                36.8260248,
+                127.4933502
+              ],
+              [
+                11187543292,
+                36.8259658,
+                127.4934287
+              ],
+              [
+                11187543291,
+                36.8259269,
+                127.4934996
+              ],
+              [
+                11187543289,
+                36.825898,
+                127.4935528
+              ],
+              [
+                9560157004,
+                36.8258234,
+                127.4936435
+              ]
+            ]
+          }
+        ],
+        "boundary": null,
+        "excluded": []
+      }
+    },
+    {
+      "id": "walk_20261113_kto_126133",
+      "contentId": "126133",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126133&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "경상감영공원 안쪽의 야외 보행로에서 동반할 수 있습니다.",
+      "rawAddress": "대구광역시 중구 경상감영길 99",
+      "rawPet": {
+        "contId": "126133",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수\n- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3310541_3",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/41/3310541_image2_1.jpg",
+        "imgname": "경상감영공원 (3)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/41/3310541_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "126133",
+        "provider": null
+      },
+      "location": "proposed",
+      "geometry": {
+        "meters": 176.49023749984804,
+        "nodeIds": [
+          5117296117,
+          5117296116,
+          5117296115,
+          5117296114,
+          5117296113,
+          5117296112,
+          5117297750,
+          5117297751,
+          5117297752
+        ],
+        "wayIds": [
+          526172307,
+          526172307,
+          526172307,
+          526172307,
+          526172307,
+          526172315,
+          526172315,
+          526172315
+        ],
+        "path": [
+          [
+            35.8720039,
+            128.5912457
+          ],
+          [
+            35.8720619,
+            128.591316
+          ],
+          [
+            35.8721609,
+            128.5913786
+          ],
+          [
+            35.8721918,
+            128.5915975
+          ],
+          [
+            35.8721653,
+            128.591928
+          ],
+          [
+            35.8722062,
+            128.5925244
+          ],
+          [
+            35.8723266,
+            128.5925372
+          ],
+          [
+            35.8724591,
+            128.5927303
+          ],
+          [
+            35.8725934,
+            128.5927189
+          ]
+        ],
+        "ways": [
+          {
+            "id": 526172307,
+            "tags": {
+              "highway": "footway"
+            },
+            "pts": [
+              [
+                5117296108,
+                35.8717842,
+                128.5930285
+              ],
+              [
+                5117296110,
+                35.8719331,
+                128.5928338
+              ],
+              [
+                5117297754,
+                35.8719978,
+                128.5927613
+              ],
+              [
+                5117296111,
+                35.8720515,
+                128.5927011
+              ],
+              [
+                5117296112,
+                35.8722062,
+                128.5925244
+              ],
+              [
+                5117296113,
+                35.8721653,
+                128.591928
+              ],
+              [
+                5117296114,
+                35.8721918,
+                128.5915975
+              ],
+              [
+                5117296115,
+                35.8721609,
+                128.5913786
+              ],
+              [
+                5117296116,
+                35.8720619,
+                128.591316
+              ],
+              [
+                5117296117,
+                35.8720039,
+                128.5912457
+              ],
+              [
+                5117296118,
+                35.8719704,
+                128.5909465
+              ]
+            ]
+          },
+          {
+            "id": 526172315,
+            "tags": {
+              "highway": "footway"
+            },
+            "pts": [
+              [
+                5117296112,
+                35.8722062,
+                128.5925244
+              ],
+              [
+                5117297750,
+                35.8723266,
+                128.5925372
+              ],
+              [
+                5117297751,
+                35.8724591,
+                128.5927303
+              ],
+              [
+                5117297752,
+                35.8725934,
+                128.5927189
+              ],
+              [
+                5117297753,
+                35.8727099,
+                128.5929139
+              ]
+            ]
+          }
+        ],
+        "boundary": {
+          "id": 32836262,
+          "tags": {
+            "leisure": "park",
+            "name": "경상감영공원",
+            "name:en": "Gyeongsanggamyeong Park",
+            "name:ja": "慶尚監営公園",
+            "name:ko-Latn": "Gyeongsanggamyeonggongwon",
+            "wikidata": "Q5624080"
+          },
+          "pts": [
+            [
+              5117296107,
+              35.8719416,
+              128.5929689
+            ],
+            [
+              369916469,
+              35.872852,
+              128.592856
+            ],
+            [
+              12669106753,
+              35.8728062,
+              128.5922839
+            ],
+            [
+              369916471,
+              35.8727543,
+              128.5915912
+            ],
+            [
+              4760137341,
+              35.8726425,
+              128.5915577
+            ],
+            [
+              4760137340,
+              35.8725249,
+              128.5915313
+            ],
+            [
+              4760137342,
+              35.8723958,
+              128.5914943
+            ],
+            [
+              4760137343,
+              35.8723342,
+              128.5914864
+            ],
+            [
+              369916472,
+              35.8723184,
+              128.5911706
+            ],
+            [
+              369916474,
+              35.8722176,
+              128.591172
+            ],
+            [
+              4760137344,
+              35.8721102,
+              128.5911722
+            ],
+            [
+              4760137345,
+              35.8720909,
+              128.5910094
+            ],
+            [
+              4760137346,
+              35.8719522,
+              128.591013
+            ],
+            [
+              369916476,
+              35.8719684,
+              128.5913068
+            ],
+            [
+              369916478,
+              35.8719119,
+              128.5914892
+            ],
+            [
+              369916479,
+              35.8717902,
+              128.5916662
+            ],
+            [
+              5117296106,
+              35.8716539,
+              128.5917337
+            ],
+            [
+              5117296109,
+              35.8717923,
+              128.5928494
+            ],
+            [
+              5117296107,
+              35.8719416,
+              128.5929689
+            ]
+          ]
+        },
+        "excluded": []
+      }
+    },
+    {
+      "id": "walk_20261113_kto_126317",
+      "contentId": "126317",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126317&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "고인돌공원의 야외 산책로에서 10kg 이하 반려견을 동반할 수 있습니다.",
+      "rawAddress": "전남광주통합특별시 순천시 송광면 고인돌길 543",
+      "rawPet": {
+        "contId": "126317",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "일부 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 10kg 이하 출입 가능- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "일부 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3346674_1",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/74/3346674_image2_1.JPG",
+        "imgname": "순천 고인돌 공원 (3)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/74/3346674_image2_1.JPG",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "126317",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_127542",
+      "contentId": "127542",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=127542&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "보문산 행복 숲 둘레길의 공개 야외 보행 구간에서 동반할 수 있습니다.",
+      "rawAddress": "대전광역시 중구 대사동",
+      "rawPet": {
+        "contId": "127542",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3062381_11",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/81/3062381_image2_1.JPG",
+        "imgname": "대전 보문산 행복 숲 둘레길 (8)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/81/3062381_image2_1.JPG",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "127542",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_128211",
+      "contentId": "128211",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128211&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "학성공원 내 공개 야외 산책로에서 동반할 수 있습니다.",
+      "rawAddress": "울산광역시 중구 학성공원3길 54",
+      "rawPet": {
+        "contId": "128211",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3510551_2",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/51/3510551_image2_1.jpg",
+        "imgname": "울산_학성공원 (2)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/51/3510551_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "128211",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_128792",
+      "contentId": "128792",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128792&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "여좌천의 공개 야외 하천변 보행로에서 동반할 수 있습니다.",
+      "rawAddress": "경상남도 창원시 진해구 여좌동 217",
+      "rawPet": {
+        "contId": "128792",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3304706_3",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/06/3304706_image2_1.jpg",
+        "imgname": "여좌천(벚꽃명소) (1)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/06/3304706_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "128792",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_1626156",
+      "contentId": "1626156",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1626156&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "정읍 구절초 지방정원의 공개 야외 산책로에서 동반할 수 있습니다.",
+      "rawAddress": "전북특별자치도 정읍시 산내면 청정로 926-65",
+      "rawPet": {
+        "contId": "1626156",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3573572_5",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/72/3573572_image2_1.jpg",
+        "imgname": "정읍_정읍 구절초 지방정원 (6)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/72/3573572_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "1626156",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_2514467",
+      "contentId": "2514467",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2514467&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "화개 십리벚꽃길의 공개 야외 보행 구간에서 동반할 수 있습니다.",
+      "rawAddress": "경상남도 하동군 화개면 화개로 142",
+      "rawPet": {
+        "contId": "2514467",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3351936_4",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/36/3351936_image2_1.jpg",
+        "imgname": "경남_하동_십리벚꽃길 (5)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/36/3351936_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "2514467",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_2615384",
+      "contentId": "2615384",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2615384&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "부귀 메타세쿼이아길의 야외 보행 데크에서 동반할 수 있습니다.",
+      "rawAddress": "전북 진안군 부귀면 세동리 68-1",
+      "rawPet": {
+        "contId": "2615384",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3520667_12",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/67/3520667_image2_1.jpg",
+        "imgname": "진안_부귀 메타세쿼이아길 (7)",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/67/3520667_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "2615384",
+        "provider": null
+      },
+      "location": "proposed",
+      "geometry": {
+        "meters": 465.4217592269649,
+        "nodeIds": [
+          14178929415,
+          14178929414,
+          14178929413,
+          14178929412,
+          14178929411,
+          14178929410,
+          14178929409,
+          14178929408,
+          14178929407,
+          14178929406,
+          14178929405,
+          14178929404,
+          14178929403,
+          14178929402,
+          14178929401,
+          14178929400,
+          14178929399,
+          14178929398,
+          14178929397,
+          14178929396,
+          14178929395,
+          14178929394,
+          14178929393,
+          14178929392
+        ],
+        "wayIds": [
+          1558649404,
+          1558649404,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408,
+          1558649408
+        ],
+        "path": [
+          [
+            35.8078148,
+            127.3220875
+          ],
+          [
+            35.8078306,
+            127.322056
+          ],
+          [
+            35.8078507,
+            127.3220305
+          ],
+          [
+            35.8079779,
+            127.3218776
+          ],
+          [
+            35.8081063,
+            127.3217147
+          ],
+          [
+            35.8082874,
+            127.3214988
+          ],
+          [
+            35.8084266,
+            127.3213459
+          ],
+          [
+            35.8085174,
+            127.3212292
+          ],
+          [
+            35.8086914,
+            127.3210227
+          ],
+          [
+            35.8088551,
+            127.3208456
+          ],
+          [
+            35.8091004,
+            127.3205727
+          ],
+          [
+            35.8092717,
+            127.3204058
+          ],
+          [
+            35.8094207,
+            127.3202422
+          ],
+          [
+            35.809437,
+            127.3202059
+          ],
+          [
+            35.8096333,
+            127.3199947
+          ],
+          [
+            35.8098328,
+            127.3197882
+          ],
+          [
+            35.8100553,
+            127.3195548
+          ],
+          [
+            35.8102385,
+            127.3193617
+          ],
+          [
+            35.8104386,
+            127.3191351
+          ],
+          [
+            35.8106551,
+            127.3189071
+          ],
+          [
+            35.8108193,
+            127.3187294
+          ],
+          [
+            35.8108737,
+            127.3186737
+          ],
+          [
+            35.8109041,
+            127.3186576
+          ],
+          [
+            35.8109248,
+            127.3186503
+          ]
+        ],
+        "ways": [
+          {
+            "id": 1558649404,
+            "tags": {
+              "highway": "footway"
+            },
+            "pts": [
+              [
+                14178929415,
+                35.8078148,
+                127.3220875
+              ],
+              [
+                14178929414,
+                35.8078306,
+                127.322056
+              ],
+              [
+                14178929413,
+                35.8078507,
+                127.3220305
+              ]
+            ]
+          },
+          {
+            "id": 1558649408,
+            "tags": {
+              "bridge": "boardwalk",
+              "highway": "footway"
+            },
+            "pts": [
+              [
+                14178929413,
+                35.8078507,
+                127.3220305
+              ],
+              [
+                14178929412,
+                35.8079779,
+                127.3218776
+              ],
+              [
+                14178929411,
+                35.8081063,
+                127.3217147
+              ],
+              [
+                14178929410,
+                35.8082874,
+                127.3214988
+              ],
+              [
+                14178929409,
+                35.8084266,
+                127.3213459
+              ],
+              [
+                14178929408,
+                35.8085174,
+                127.3212292
+              ],
+              [
+                14178929407,
+                35.8086914,
+                127.3210227
+              ],
+              [
+                14178929406,
+                35.8088551,
+                127.3208456
+              ],
+              [
+                14178929405,
+                35.8091004,
+                127.3205727
+              ],
+              [
+                14178929404,
+                35.8092717,
+                127.3204058
+              ],
+              [
+                14178929403,
+                35.8094207,
+                127.3202422
+              ],
+              [
+                14178929402,
+                35.809437,
+                127.3202059
+              ],
+              [
+                14178929401,
+                35.8096333,
+                127.3199947
+              ],
+              [
+                14178929400,
+                35.8098328,
+                127.3197882
+              ],
+              [
+                14178929399,
+                35.8100553,
+                127.3195548
+              ],
+              [
+                14178929398,
+                35.8102385,
+                127.3193617
+              ],
+              [
+                14178929397,
+                35.8104386,
+                127.3191351
+              ],
+              [
+                14178929396,
+                35.8106551,
+                127.3189071
+              ],
+              [
+                14178929395,
+                35.8108193,
+                127.3187294
+              ],
+              [
+                14178929394,
+                35.8108737,
+                127.3186737
+              ],
+              [
+                14178929393,
+                35.8109041,
+                127.3186576
+              ],
+              [
+                14178929392,
+                35.8109248,
+                127.3186503
+              ]
+            ]
+          }
+        ],
+        "boundary": null,
+        "excluded": []
+      }
+    },
+    {
+      "id": "walk_20261113_kto_2648994",
+      "contentId": "2648994",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2648994&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "문척면 구례 섬진강 벚꽃길의 공개 야외 보행 구간에서 동반할 수 있습니다.",
+      "rawAddress": "전남광주통합특별시 구례군 문척면",
+      "rawPet": {
+        "contId": "2648994",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "4064089_6",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/89/4064089_image2_1.jpg",
+        "imgname": "구례_구례 섬진강 벚꽃길 (6).jpg",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/89/4064089_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type1",
+        "copyrightNm": "제1유형",
+        "copyrightDesc": "제1유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 가능",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "2648994",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_2661736",
+      "contentId": "2661736",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2661736&langDiv=KOR",
+      "otherOfficialSource": "https://www.goyang.go.kr/visitgoyang/www/contents.do?key=284",
+      "scope": "행주산성 역사공원 내 공개 야외 보행로에서 동반할 수 있습니다.",
+      "rawAddress": "경기도 고양시 덕양구 행주외동",
+      "rawPet": {
+        "contId": "2661736",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3021024_2",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/24/3021024_image2_1.jpg",
+        "imgname": "행주산성 역사공원_2",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/24/3021024_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "2661736",
+        "provider": null
+      },
+      "location": "proposed",
+      "geometry": {
+        "meters": 339.0371689548074,
+        "nodeIds": [
+          7125688554,
+          7125688555,
+          7125688568,
+          7125688567,
+          7125688566,
+          7125688564,
+          7125688614,
+          7125688561,
+          7125688562,
+          7125688563,
+          7125688559
+        ],
+        "wayIds": [
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683,
+          762605683
+        ],
+        "path": [
+          [
+            37.5987305,
+            126.8172686
+          ],
+          [
+            37.5984538,
+            126.8177906
+          ],
+          [
+            37.5982898,
+            126.8180398
+          ],
+          [
+            37.5981672,
+            126.8183157
+          ],
+          [
+            37.5976174,
+            126.8188896
+          ],
+          [
+            37.597228,
+            126.819401
+          ],
+          [
+            37.5971989,
+            126.8194348
+          ],
+          [
+            37.5969744,
+            126.8196964
+          ],
+          [
+            37.596752,
+            126.8199219
+          ],
+          [
+            37.5966939,
+            126.8198952
+          ],
+          [
+            37.5966954,
+            126.8197987
+          ]
+        ],
+        "ways": [
+          {
+            "id": 762605683,
+            "tags": {
+              "highway": "footway"
+            },
+            "pts": [
+              [
+                7125688564,
+                37.597228,
+                126.819401
+              ],
+              [
+                7125688614,
+                37.5971989,
+                126.8194348
+              ],
+              [
+                7125688561,
+                37.5969744,
+                126.8196964
+              ],
+              [
+                7125688562,
+                37.596752,
+                126.8199219
+              ],
+              [
+                7125688563,
+                37.5966939,
+                126.8198952
+              ],
+              [
+                7125688559,
+                37.5966954,
+                126.8197987
+              ],
+              [
+                7125688558,
+                37.5967408,
+                126.8194857
+              ],
+              [
+                7125688560,
+                37.5967862,
+                126.8191994
+              ],
+              [
+                7125688557,
+                37.5968826,
+                126.819101
+              ],
+              [
+                7125688556,
+                37.5970899,
+                126.8189477
+              ],
+              [
+                7125688547,
+                37.5972896,
+                126.8187465
+              ],
+              [
+                7125688548,
+                37.5974108,
+                126.8186204
+              ],
+              [
+                7125688549,
+                37.5979272,
+                126.8179982
+              ],
+              [
+                7125688565,
+                37.59828,
+                126.8175797
+              ],
+              [
+                7125688550,
+                37.5983692,
+                126.8174215
+              ],
+              [
+                7125688551,
+                37.5985201,
+                126.8172579
+              ],
+              [
+                7125688552,
+                37.5986434,
+                126.8172069
+              ],
+              [
+                7125688553,
+                37.598722,
+                126.8172284
+              ],
+              [
+                7125688554,
+                37.5987305,
+                126.8172686
+              ],
+              [
+                7125688555,
+                37.5984538,
+                126.8177906
+              ],
+              [
+                7125688568,
+                37.5982898,
+                126.8180398
+              ],
+              [
+                7125688567,
+                37.5981672,
+                126.8183157
+              ],
+              [
+                7125688566,
+                37.5976174,
+                126.8188896
+              ],
+              [
+                7125688564,
+                37.597228,
+                126.819401
+              ]
+            ]
+          }
+        ],
+        "boundary": null,
+        "excluded": []
+      }
+    },
+    {
+      "id": "walk_20261113_kto_2756585",
+      "contentId": "2756585",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2756585&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "함창명주테마파크공원의 장미동산 야외 산책로에서 동반할 수 있습니다.",
+      "rawAddress": "경상북도 상주시 함창읍 교촌리",
+      "rawPet": {
+        "contId": "2756585",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "4119035_1",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/35/4119035_image2_1.jpg",
+        "imgname": "상주_함창명주테마파크공원 (1).jpg",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/35/4119035_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "2756585",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    },
+    {
+      "id": "walk_20261113_kto_3006983",
+      "contentId": "3006983",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3006983&langDiv=KOR",
+      "otherOfficialSource": null,
+      "scope": "삿갓봉근린공원의 야외 산책길에서 동반할 수 있습니다.",
+      "rawAddress": "서울특별시 노원구 한글비석로 346 노원구어린이도서관",
+      "rawPet": {
+        "contId": "3006983",
+        "petTursmInfo": "",
+        "relaAcdntRiskMtr": "전 견종 동반 가능",
+        "acmpyTypeCd": "전구역 동반가능",
+        "relaPosesFclty": "",
+        "relaFrnshPrdlst": "",
+        "etcAcmpyInfo": "- 맹견의 경우, 입마개 착용 필수- 배변봉투 지참 및 배변처리 필수",
+        "relaPurcPrdlst": "",
+        "acmpyPsblCpam": "전 견종 동반 가능",
+        "relaRntlPrdlst": "",
+        "acmpyNeedMtr": "목줄 착용"
+      },
+      "photo": {
+        "langType": "KOR",
+        "contentid": null,
+        "serialnum": "3006961_1",
+        "originimgurl": "https://tong.visitkorea.or.kr/cms/resource/61/3006961_image2_1.jpg",
+        "imgname": "N01658_서울_노원_삿갓봉근린공원_공원 전경 4_e",
+        "smallimageurl": "https://tong.visitkorea.or.kr/cms/resource/61/3006961_image2_1.jpg",
+        "mnuimgyn": "Y",
+        "contentidArray": null,
+        "contentIdList": null,
+        "useDiv": null,
+        "title": null,
+        "cpyrhtDivCd": "Type3",
+        "copyrightNm": "제3유형",
+        "copyrightDesc": "제3유형: 출처 표시/ 상업·비상업적 이용가능/ 변경·2차 저작물 작성 불가",
+        "type": null,
+        "imgOrgType": null,
+        "contentId": "3006983",
+        "provider": null
+      },
+      "location": "reference-point",
+      "geometry": null
+    }
+  ],
+  "holds": [
+    {
+      "contentId": "126132",
+      "name": "대구앞산공원",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126132&langDiv=KOR",
+      "reason": "기존 앞산자락길과 일부 중복 가능"
+    },
+    {
+      "contentId": "127422",
+      "name": "석남사계곡",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=127422&langDiv=KOR",
+      "reason": "계곡 보행로가 사찰 경내까지 이어지며 허용 경계가 명확하지 않음"
+    },
+    {
+      "contentId": "129501",
+      "name": "낙산공원",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=129501&langDiv=KOR",
+      "reason": "기존 한양도성 낙산 산책과 중복 가능"
+    },
+    {
+      "contentId": "1338947",
+      "name": "삼락생태공원",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=1338947&langDiv=KOR",
+      "reason": "기존 삼락 물억새길과 독립된 구간 범위를 확인하지 못함"
+    },
+    {
+      "contentId": "2702507",
+      "name": "[해파랑길] 44코스",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2702507&langDiv=KOR",
+      "reason": "낙산사 관람 구간과 계절별 해변 출입 조건이 포함되는지 확정하지 못함"
+    },
+    {
+      "contentId": "2710897",
+      "name": "쌍천길",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2710897&langDiv=KOR",
+      "reason": "기존 해파랑길 45코스와 독립된 구간의 정확한 경계가 미확인"
+    },
+    {
+      "contentId": "2714850",
+      "name": "추암조각공원",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2714850&langDiv=KOR",
+      "reason": "조각공원 자료가 인접 해변만 동반 가능으로 명시함. 해변 사진과 정확한 범위를 추가 대조해야 함"
+    },
+    {
+      "contentId": "2756567",
+      "name": "경천섬(경천섬공원)",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2756567&langDiv=KOR",
+      "reason": "기존 경천섬 코스와 중복"
+    },
+    {
+      "contentId": "2774566",
+      "name": "춘천중도 물레길",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2774566&langDiv=KOR",
+      "reason": "육상 보행 코스가 아닌 카누 체험"
+    },
+    {
+      "contentId": "2779449",
+      "name": "비밀의 숲",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2779449&langDiv=KOR",
+      "reason": "기존 안돌오름 산책과 중복 가능"
+    },
+    {
+      "contentId": "3426645",
+      "name": "황장목숲길",
+      "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3426645&langDiv=KOR",
+      "reason": "원주시 자료가 치악산국립공원 반려견 출입 제한을 안내해 제외",
+      "operatorSource": "https://www.wonju.go.kr/cityofliterature/user_sub.php?bcd=newskor&bk=MUIWG1626659126&bt=rd&gid=www&mu_idx=380&pg=4"
+    }
+  ],
+  "geometry": {
+    "provider": "OpenStreetMap contributors",
+    "licence": "ODbL 1.0",
+    "download": "https://download.geofabrik.de/asia/south-korea.html",
+    "extractSha256": "4e44c2315ea171b0c9041e9ea625865163fddaf9325d146884dd00ba9a17484d"
+  }
+}
