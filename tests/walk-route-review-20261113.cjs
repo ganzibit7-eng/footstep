@@ -4,6 +4,7 @@ const {readFileSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/walks-route-review-20261113/batch.json');
 const previous=require('../docs/operator-walks-20261113/batch.json');
+const next=require('../docs/walks-evidence-20261114/batch.json');
 const Access=require('../course-pet-access.js');
 const Address=require('../course-addresses.js');
 const Photos=require('../course-photos.js');
@@ -12,7 +13,7 @@ const rows=new Map([...batch.courses,...batch.updates.map(u=>u.after)].map(c=>[c
 test('reviewed routes follow mapped pedestrian nodes and preserve pet access, images and route scope',()=>{
  assert.equal(batch.publicBefore,previous.publicAfter);
  assert.equal(batch.publicAfter,batch.publicBefore+batch.courses.length);
- assert.equal(batch.publicAfter,require('../data/public-counts.json').courses);
+ assert.equal(batch.publicAfter,next.publicBefore);
  assert.equal(batch.updates.length+Object.keys(batch.holds).length,previous.courses.filter(c=>!c.path).length);
  for(const {id,source,geometry,photo} of batch.evidence){
   const c=rows.get(id);

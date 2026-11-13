@@ -4,7 +4,8 @@ const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/operator-walks-20261113/batch.json');
 const review=require('../docs/walks-route-review-20261113/batch.json');
-const amended=new Map(review.updates.map(x=>[x.after.id,x.after]));
+const followup=require('../docs/walks-evidence-20261114/batch.json');
+const amended=new Map([review,followup].flatMap(b=>b.updates.map(x=>[x.after.id,{course:x.after,checked:b.checked}])));
 const delivery=require('../docs/operator-walks-20261113/photo-delivery.json');
 const priorBatches=['verified-walks-20261113','municipal-walks-20261113','regional-walks-20261113'].map(n=>require('../docs/'+n+'/batch.json'));
 const priorIds=new Set(priorBatches.flatMap(b=>b.courses.map(c=>c.id)));
@@ -22,12 +23,13 @@ test('operator-verified additions pair the same outdoor walking area, pet rules 
  assert.equal(new Set(courses.map(c=>c.name)).size,courses.length);
  assert(courses.every(c=>!priorIds.has(c.id)));
  for(const originalCourse of courses){
-  const c=amended.get(originalCourse.id)||originalCourse;
+  const c=amended.get(originalCourse.id)?.course||originalCourse;
   const proof=evidence.find(p=>p.id===c.id);
   const access=Access.get(c),photo=Photos.get(c),address=Addresses.get(c);
   assert(access&&photo&&address,c.id);
-  assert.equal(Info.sourceURL(c.description),proof.source,c.id);
-  assert.equal(Info.checkedDate(c.description),amended.has(c.id)?review.checked:checked,c.id);
+  assert.equal(Info.sourceURL(originalCourse.description),proof.source,c.id);
+  assert.equal(Info.sourceURL(c.description),access.source,c.id);
+  assert.equal(Info.checkedDate(c.description),amended.get(c.id)?.checked||checked,c.id);
   assert(!Info.cleanDescription(c.description).includes('공식안내:'),c.id);
   assert.equal(access.conditions.동반구분,proof.scope);
   assert.equal(proof.contentId,photo.datasetContentId);
@@ -78,7 +80,7 @@ test('operator-verified additions are available in course details, home, search 
  const sitemap=readFileSync('sitemap.xml','utf8');
  const home=readFileSync('index.html','utf8');
  for(const originalCourse of batch.courses){
-  const c=amended.get(originalCourse.id)||originalCourse;
+  const c=amended.get(originalCourse.id)?.course||originalCourse;
   const url='/courses/'+c.id+'/';
   const html=readFileSync('.'+url+'index.html','utf8');
   assert(html.includes(c.name),url);
