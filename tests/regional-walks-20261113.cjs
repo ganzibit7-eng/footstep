@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/regional-walks-20261113/batch.json');
+const following=require('../docs/operator-walks-20261113/batch.json');
 const delivery=require('../docs/regional-walks-20261113/photo-delivery.json');
 const Access=require('../course-pet-access.js');
 const Info=require('../course-info.js');
@@ -14,7 +15,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 test('regional additions pair the same outdoor walking area, pet rules and licensed photograph',()=>{
  const {courses,evidence,publicBefore,publicAfter,checked}=batch;
  assert.equal(publicAfter,publicBefore+courses.length);
- assert.equal(require('../data/public-counts.json').courses,publicAfter);
+ assert.equal(following.publicBefore,publicAfter);
  assert.equal(new Set(courses.map(c=>c.name)).size,courses.length);
  for(const c of courses){
   const proof=evidence.find(p=>p.id===c.id);
@@ -77,7 +78,10 @@ test('regional additions are available in course details, home, search and sitem
   assert(sitemap.includes('https://balzaguk.com'+url),url);
   assert(home.includes('"'+c.id+'"'),url);
  }
- for(const item of batch.holds)assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ const verifiedLater=new Set(following.evidence.map(item=>item.contentId));
+ for(const item of batch.holds){
+  if(!verifiedLater.has(item.contentId))assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ }
 });
 
 test('consolidated photograph delivery preserves the original bytes and photo mapping',()=>{
