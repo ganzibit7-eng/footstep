@@ -21,6 +21,10 @@ export async function enrichImageSitemap(root){
   if(!photo){xml=xml.replace(entry,clean);continue;}
   if(!/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png)$/.test(record.src))throw Error('Unexpected curated photo path: '+id);
   const image=new URL(photo.src,SITE);
+  if(image.origin===SITE&&image.pathname!==record.src){
+   if(!/^\/assets\/place-supplement\/kto-\d+-[a-f0-9]{12}\.jpg$/.test(image.pathname))throw Error('Unexpected shared original path: '+id);
+   if(!(await stat(path.join(root,image.pathname.slice(1)))).isFile())throw Error('Shared original missing: '+id);
+  }
   if(image.origin!==SITE&&!/^https:\/\/balzaguk-place-photos\.balzaguk-photo-delivery\.workers\.dev\/assets\/place-photos\/kto-\d+(?:-[a-f0-9]{12})?\.jpg$/.test(image.href))throw Error('Unexpected photo delivery URL: '+id);
   if(!html.includes(`<link rel="canonical" href="${url}">`)||/<meta[^>]*content="[^"]*noindex/i.test(html))throw Error('Image page is not public canonical: '+id);
   if(!html.includes(`src="${photo.src}"`))throw Error('Curated image missing from course page: '+id);

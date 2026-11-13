@@ -14425,6 +14425,206 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_126330.webp",
+    "courses": {
+      "walk_20261114_kto_126330": "순천 죽도봉공원 숲길 산책"
+    },
+    "place": "죽도봉공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/91/3495691_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126330&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "죽도봉공원 (3)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 800,
+    "height": 534,
+    "bytes": 80028,
+    "checked": "2026-11-14",
+    "datasetContentId": "126330",
+    "sourceSha256": "d8fa2b2e40fc0f83cbfeee0b2f85d6d161251ba62c26b2276fd61bf732fd01b7",
+    "assetSha256": "2778faaade2e683aa9cc52caac86738c78dc486b57b78aac94d96aa3b1a7bc8a"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_987810.webp",
+    "courses": {
+      "walk_20261114_kto_987810": "부산 해운대 동백섬 숲길 산책"
+    },
+    "place": "해운대 동백섬 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/57/4105457_image2_1.JPG",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=987810&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "부산_해운대_해운대 동백섬_3.JPG",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 800,
+    "height": 534,
+    "bytes": 122614,
+    "checked": "2026-11-14",
+    "datasetContentId": "987810",
+    "sourceSha256": "18e0eca43c2fef709bfbd3790f532fb134e537cd84e16b20288227fe2b49e75e",
+    "assetSha256": "e6256ec57152929698ea11165bbca06fd4274fd888426b3a0898e21f06578931"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_2606117.jpg",
+    "courses": {
+      "walk_20261114_kto_2606117": "군산 금강습지생태공원 꽃밭 보행로"
+    },
+    "place": "금강습지생태공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/38/3335638_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2606117&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "금강습지생태공원 (4)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 627,
+    "bytes": 428182,
+    "checked": "2026-11-14",
+    "datasetContentId": "2606117",
+    "sourceSha256": "0efe4abb75a1d84b8226074b36f246498cadf9018a9a8195a297a3ff0fb333a6",
+    "assetSha256": "0efe4abb75a1d84b8226074b36f246498cadf9018a9a8195a297a3ff0fb333a6"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_2712734.jpg",
+    "courses": {
+      "walk_20261114_kto_2712734": "남원 요천생태습지공원 산책길"
+    },
+    "place": "요천생태습지공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/13/4002713_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2712734&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "남원_요천생태습지공원 (6).jpg",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 628,
+    "bytes": 81149,
+    "checked": "2026-11-14",
+    "datasetContentId": "2712734",
+    "sourceSha256": "76b7bca8cf87c0b34ab25f93b42c75a9a879c0579fc074e42ec61fe75a5cc1b9",
+    "assetSha256": "76b7bca8cf87c0b34ab25f93b42c75a9a879c0579fc074e42ec61fe75a5cc1b9"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_2737298.webp",
+    "courses": {
+      "walk_20261114_kto_2737298": "순천 조례호수공원 서쪽 산책로"
+    },
+    "place": "조례호수공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/20/4101620_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2737298&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "순천_조례호수공원 (9).jpg",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 800,
+    "height": 534,
+    "bytes": 93710,
+    "checked": "2026-11-14",
+    "datasetContentId": "2737298",
+    "sourceSha256": "ac765e522d52c759da5cc2bca3b6e5cd4c108cec26a23efa0c8f3df51e6a3a5a",
+    "assetSha256": "26d3fcbf9ad2ebf5c4bca251a0ff29da3670cfc388835047eeca8cd8acbbe70f"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_2776859.webp",
+    "courses": {
+      "walk_20261114_kto_2776859": "속초 청초호 호수공원 수변 산책"
+    },
+    "place": "청초호 호수공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/22/3577522_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2776859&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "서울에서 강원도 속초 당일치기 여행 버스노선 뮤지엄엑스 아바이마을 맛집 수험생 할인_청초호 호수공원_4-1",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 800,
+    "height": 534,
+    "bytes": 68236,
+    "checked": "2026-11-14",
+    "datasetContentId": "2776859",
+    "sourceSha256": "5546c1ae61169effd138005670a2ca524081346f441dd548ac6632a539359e71",
+    "assetSha256": "dc5f56b67d93b3ca6647622a9b318b776cbf3d9c3c4f2ad25238516b24efb102"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_2872004.jpg",
+    "courses": {
+      "walk_20261114_kto_2872004": "울산 달천철장유적공원 야외 산책"
+    },
+    "place": "달천철장유적공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/65/4065965_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=2872004&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "울산_달천철장유적공원 (6).jpg",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 627,
+    "bytes": 92704,
+    "checked": "2026-11-14",
+    "datasetContentId": "2872004",
+    "sourceSha256": "5316699834b2695dd4311dc70999785ba45b30eefd316d7a91950f68f8bbcc8a",
+    "assetSha256": "5316699834b2695dd4311dc70999785ba45b30eefd316d7a91950f68f8bbcc8a"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261114_kto_3022743.webp",
+    "courses": {
+      "walk_20261114_kto_3022743": "고양 화정중앙공원 정원 산책"
+    },
+    "place": "화정중앙공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/15/3430415_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=3022743&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "화정중앙공원-주출입구",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 800,
+    "height": 600,
+    "bytes": 42218,
+    "checked": "2026-11-14",
+    "datasetContentId": "3022743",
+    "sourceSha256": "e093823bd1684c467b80b9a61feb413560cb37a06d787a9e1d5f05fe13115da3",
+    "assetSha256": "9cae9e5843c577929f092bc4ad3f56ee8feb2825904ce10aa6ef67871158a297"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14513,13 +14713,28 @@
     '/assets/course-photos/pet_20261012c_eb1624c307bf.jpg': 'kto-2781318.jpg',
     '/assets/course-photos/walk_20261113_kto_250094.jpg': 'kto-250094-3cf49ad6c87e.jpg',
     '/assets/course-photos/walk_20261113_kto_2569476.jpg': 'kto-2569476-7400d5e0290c.jpg',
-    '/assets/course-photos/walk_20261113_kto_2661814.jpg': 'kto-2661814-7fa73fd59cfa.jpg'
+    '/assets/course-photos/walk_20261113_kto_2661814.jpg': 'kto-2661814-7fa73fd59cfa.jpg',
+    '/assets/course-photos/walk_20261114_kto_2872004.jpg': 'kto-2872004-689300dcf875.jpg'
   });
+  const sharedOriginals = Object.freeze({
+  "/assets/course-photos/walk_20261114_kto_2712734.jpg": "/assets/place-supplement/kto-2712734-76b7bca8cf87.jpg",
+  "/assets/course-photos/walk_20261020_kto2871570.jpg": "/assets/place-supplement/kto-2871570-8fcb0c537161.jpg",
+  "/assets/course-photos/walk_20261020_kto2900511.jpg": "/assets/place-supplement/kto-2900511-f728a7613536.jpg",
+  "/assets/course-photos/walk_20261020b_kto2902497-f7bda7bb16ee.jpg": "/assets/place-supplement/kto-2902497-f7bda7bb16ee.jpg",
+  "/assets/course-photos/walk_20261113_kto_127925.jpg": "/assets/place-supplement/kto-127925-c0ac57b31eb3.jpg",
+  "/assets/course-photos/walk_20261113_kto_2738665.jpg": "/assets/place-supplement/kto-2738665-15e9ee61398c.jpg",
+  "/assets/course-photos/walk_20261113_kto_2798935.jpg": "/assets/place-supplement/kto-2798935-853a81ed9d53.jpg",
+  "/assets/course-photos/walk_20261113_kto_2704456.jpg": "/assets/place-supplement/kto-2704456-c4b32fcc7e11.jpg",
+  "/assets/course-photos/walk_20261113_kto_125445.jpg": "/assets/place-supplement/kto-125445-7a04d24e2387.jpg",
+  "/assets/course-photos/walk_20261113_kto_128908.jpg": "/assets/place-supplement/kto-128908-58bdd772ad0c.jpg"
+});
   function get(course){
     const photo=records.find(p=>Object.hasOwn(p.courses,String(course?.id))&&p.courses[String(course.id)]===course.name);
     if(!photo)return null;
     const key=delivery[photo.src];
-    return key?{...photo,src:'https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/'+key}:photo;
+    if(key)return {...photo,src:'https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/'+key};
+    const shared = sharedOriginals[photo.src];
+    return shared?{...photo,src:shared}:photo;
   }
   function dateLabel(p){
  let raw=p.dateNote||(p.date?p.date+' 촬영':'촬영 시기 미상');
