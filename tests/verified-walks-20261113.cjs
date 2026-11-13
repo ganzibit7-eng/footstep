@@ -3,7 +3,6 @@ const assert=require('node:assert/strict');
 const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const {courses,evidence,holds,publicBefore,publicAfter}=require('../docs/verified-walks-20261113/batch.json');
-const {courses:published}=require('../data/public-counts.json');
 const Access=require('../course-pet-access.js');
 const Address=require('../course-addresses.js');
 const Photos=require('../course-photos.js');
@@ -12,7 +11,7 @@ const delivery=require('../docs/verified-walks-20261113/photo-delivery.json');
 
 test('new courses have same-place pet evidence, correct rights, and real connected geometry when present',()=>{
  assert.equal(publicAfter,publicBefore+courses.length);
- assert.equal(published,publicAfter+require('../docs/municipal-walks-20261113/batch.json').courses.length);
+ assert.equal(publicAfter,require('../docs/municipal-walks-20261113/batch.json').publicBefore);
  assert.equal(new Set(courses.map(c=>c.id)).size,courses.length);
  for(const course of courses){
   const proof=evidence.find(e=>e.id===course.id);

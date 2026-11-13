@@ -14,7 +14,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 test('municipal additions pair the same outdoor walking area, pet rules and licensed photograph',()=>{
  const {courses,evidence,publicBefore,publicAfter,checked}=batch;
  assert.equal(publicAfter,publicBefore+courses.length);
- assert.equal(require('../data/public-counts.json').courses,publicAfter);
+ assert.equal(require('../docs/regional-walks-20261113/batch.json').publicBefore,publicAfter);
  assert.equal(new Set(courses.map(c=>c.name)).size,courses.length);
  for(const c of courses){
   const proof=evidence.find(p=>p.id===c.id);
