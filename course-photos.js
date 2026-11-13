@@ -11953,7 +11953,18 @@
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  function get(course){return records.find(p => Object.hasOwn(p.courses, String(course?.id)) && p.courses[String(course.id)] === course.name) || null;}
+  // These originals are already served by the photo host with identical bytes.
+  const delivery = Object.freeze({
+    '/assets/course-photos/pet_20261012c_7e99f62ea7a1.jpg': 'kto-2930677.jpg',
+    '/assets/course-photos/pet_20261012c_3d1bcd015920.jpg': 'kto-3061636.jpg',
+    '/assets/course-photos/walk_20261113_kto_3006983.jpg': 'kto-3006983-8c76498add94.jpg'
+  });
+  function get(course){
+    const photo=records.find(p=>Object.hasOwn(p.courses,String(course?.id))&&p.courses[String(course.id)]===course.name);
+    if(!photo)return null;
+    const key=delivery[photo.src];
+    return key?{...photo,src:'https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/'+key}:photo;
+  }
   function dateLabel(p){
  let raw=p.dateNote||(p.date?p.date+' 촬영':'촬영 시기 미상');
  if(p.dateNote&&!/\d{4}/.test(p.dateNote)&&/^\d{4}(?:-\d{2}(?:-\d{2})?)?$/.test(p.date||'')){

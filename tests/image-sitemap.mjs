@@ -11,7 +11,8 @@ test('image sitemap covers every public photo course, without private URLs or de
  for(const [entry,image] of [...xml.matchAll(/<url>[\s\S]*?<\/url>/g)].filter(([s])=>s.includes('<image:image>')).map(([s])=>[s,s.match(/<image:loc>([^<]+)/)[1]])){
   const url=entry.match(/<loc>([^<]+)/)[1];assert.match(url,/^https:\/\/balzaguk.com\/courses\/[\w-]+\/$/);
   const html=await readFile(path.join(root,new URL(url).pathname,'index.html'),'utf8');
-  assert(html.includes(`src="${new URL(image).pathname}"`));assert(html.includes('사진:'));assert(html.includes('license'));
+  const src=image.startsWith('https://balzaguk.com/')?new URL(image).pathname:image;
+  assert(html.includes(`src="${src}"`));assert(html.includes('사진:'));assert(html.includes('license'));
  }
 });
 test('repeat enrichment preserves dates and fails before writing on missing assets or noindex',async()=>{

@@ -7,6 +7,8 @@ const {courses:published}=require('../data/public-counts.json');
 const Access=require('../course-pet-access.js');
 const Address=require('../course-addresses.js');
 const Photos=require('../course-photos.js');
+const credits=require('../assets/course-photos/credits.json');
+const delivery=require('../docs/verified-walks-20261113/photo-delivery.json');
 
 test('new courses have same-place pet evidence, correct rights, and real connected geometry when present',()=>{
  assert.equal(publicAfter,publicBefore+courses.length);
@@ -21,7 +23,8 @@ test('new courses have same-place pet evidence, correct rights, and real connect
   assert.match(access.conditions.동반구분,/야외/);
   assert.equal(proof.photo.contentId,photo.datasetContentId);
   assert.equal(proof.photo.cpyrhtDivCd,photo.rightsType);
-  assert.equal(createHash('sha256').update(readFileSync('.'+photo.src)).digest('hex'),photo.assetSha256);
+  const original=credits.find(p=>Object.hasOwn(p.courses,course.id));
+  assert.equal(createHash('sha256').update(readFileSync('.'+original.src)).digest('hex'),photo.assetSha256);
   if(photo.rightsType==='Type3'){
    assert(photo.noCrop);
    assert.equal(photo.assetSha256,photo.sourceSha256);
@@ -64,4 +67,15 @@ test('every approved addition reaches detail, search, home directory and sitemap
   assert(home.includes('"'+c.id+'"'));
  }
  for(const item of holds)assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+});
+
+test('shared originals keep the published URL, source bytes and Pages exclusions in sync',()=>{
+ const config=readFileSync('_config.yml','utf8');
+ for(const [src,proof] of Object.entries(delivery)){
+  assert(config.includes('  - '+src.slice(1)));
+  const bytes=readFileSync('.'+src);
+  assert.equal(bytes.length,proof.bytes);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),proof.sha256);
+  for(const [id,name] of Object.entries(credits.find(p=>p.src===src).courses))assert.equal(Photos.get({id,name}).src,proof.url);
+ }
 });

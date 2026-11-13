@@ -9,6 +9,10 @@ exclude:
   - infrastructure
   - data/pet-access-review-holds-20261111.json
   - assets/place-photos
+  # Identical originals are already delivered by the photo host.
+  - assets/course-photos/pet_20261012c_7e99f62ea7a1.jpg
+  - assets/course-photos/pet_20261012c_3d1bcd015920.jpg
+  - assets/course-photos/walk_20261113_kto_3006983.jpg
   - DETAIL_PAGES_PROGRESS.md
   - SEARCH_RECOVERY_PROGRESS.md
   - CONTENT_CORRECTIONS_PROGRESS.md
