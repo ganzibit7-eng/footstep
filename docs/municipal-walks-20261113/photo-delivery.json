@@ -1,0 +1,52 @@
+{
+  "/assets/course-photos/pet_20261012c_b036f94991b6.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3097770.jpg",
+    "sha256": "9e117d7545c8ea0b18a8e3f6577e3fffb3d1ce2ee0d5a73470237c81b4fa5c86",
+    "bytes": 710645
+  },
+  "/assets/course-photos/pet_20261012c_207db53b7c87.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3336122.jpg",
+    "sha256": "ecdb3ea35fba191e219311c2b1a455601e1e097d78d78e3d4e27b7adcc52a903",
+    "bytes": 662903
+  },
+  "/assets/course-photos/pet_20261012c_7a70d57faa62.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3034236.jpg",
+    "sha256": "9bfbbe46e7b2ddbf86110ef002cf24acbc063641bdc6f455f4a79c1465520add",
+    "bytes": 610737
+  },
+  "/assets/course-photos/pet_20261012c_fe96c457763a.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3056221.jpg",
+    "sha256": "215d57328ac6f1dc5bf83166130ea7676cea86922d6f0e5f2180dc16668d0ec5",
+    "bytes": 582288
+  },
+  "/assets/course-photos/pet_20261012c_28dc0e0c5d0a.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3072035.jpg",
+    "sha256": "2f2ac2fb008e39d5f7727ab3bf5364c9671b0d020f775dc65e1c14d4a0ce74cb",
+    "bytes": 531647
+  },
+  "/assets/course-photos/pet_20261012c_eec19d9f5f4c.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2661447.jpg",
+    "sha256": "489bc7e65e86167f3a137541aed010bff85e485881643d3428717df14e21bf5f",
+    "bytes": 522446
+  },
+  "/assets/course-photos/pet_20261012c_d117d2f2f3a5.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2930667.jpg",
+    "sha256": "75d65fcc5e79c9ae0324bcaf56900bfe169fe415e91b08e897e87c18d2eaccbe",
+    "bytes": 511006
+  },
+  "/assets/course-photos/walk_20261113_kto_2705409.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2705409-d0a964026530.jpg",
+    "sha256": "a82a62e7aca5934acc6bc28f5e8dd0a7bb0f76c6ed1ef4ee1a79e5f785b3eade",
+    "bytes": 657491
+  },
+  "/assets/course-photos/walk_20261113_kto_2847726.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-2847726-672c6031f9ec.jpg",
+    "sha256": "d099f835a887a808414f60cfb27edc3f8cb9b33d46095d34d3716a646b18cee8",
+    "bytes": 788912
+  },
+  "/assets/course-photos/walk_20261113_kto_3026041.jpg": {
+    "url": "https://balzaguk-place-photos.balzaguk-photo-delivery.workers.dev/assets/place-photos/kto-3026041-a34a2564fd52.jpg",
+    "sha256": "aaa92fd6cce62b16c6e5410b064c611cd0dde7c9cea2e8f27da87111f86ba478",
+    "bytes": 733136
+  }
+}

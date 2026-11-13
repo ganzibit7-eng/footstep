@@ -12,7 +12,7 @@ const delivery=require('../docs/verified-walks-20261113/photo-delivery.json');
 
 test('new courses have same-place pet evidence, correct rights, and real connected geometry when present',()=>{
  assert.equal(publicAfter,publicBefore+courses.length);
- assert.equal(published,publicAfter);
+ assert.equal(published,publicAfter+require('../docs/municipal-walks-20261113/batch.json').courses.length);
  assert.equal(new Set(courses.map(c=>c.id)).size,courses.length);
  for(const course of courses){
   const proof=evidence.find(e=>e.id===course.id);
