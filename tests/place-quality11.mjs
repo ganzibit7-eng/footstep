@@ -27,7 +27,7 @@ test('curation adds a bounded separate shelf, preserves photo rights and never f
 });
 
 test('all generated detail types use the shared overview while course evidence and preparation stay explicit',()=>{
- let total=0,photos=0,information=0,professional=0,gpx=0,proposal=0,location=0;
+ let total=0,photos=0,information=0,professional=0,gpx=0,pedestrian=0,proposal=0,location=0;
  for(const folder of ['places','courses','bins','pet-care/places'])for(const dir of readdirSync(folder,{withFileTypes:true})){
   const file=folder+'/'+dir.name+'/index.html';if(!dir.isDirectory()||!existsSync(file))continue;
   const h=readFileSync(file,'utf8');if(!h.includes('data-detail-template="editorial-v3"'))continue;total++;
@@ -38,11 +38,11 @@ test('all generated detail types use the shared overview while course evidence a
   if(lead.includes('<img '))photos++;else information++;
   if(folder==='courses'){
    assert(lead.includes('?ref=walk&amp;course='+encodeURIComponent(dir.name)+'&amp;prepare=walk#walk'),file);
-   if(verifiedRoute(dir.name,h))gpx++;else{assert(!h.includes('id="detail-route-data"'));assert(h.includes('정확한 경로 미확인'));h.includes('제안 경로 안내')?proposal++:location++;}
+   if(verifiedRoute(dir.name,h))gpx++;else if(h.includes('data-pedestrian-review="1"')){pedestrian++;assert(h.includes('공개 보행로 기반 제안 경로'),file);assert(!h.includes('data-route-clarity'),file);}else{assert(!h.includes('id="detail-route-data"'));assert(h.includes('정확한 경로 미확인'));h.includes('제안 경로 안내')?proposal++:location++;}
   }
  }
  const withdrawnVerifiedRoutes=JSON.parse(readFileSync('data/pet-access-review-holds-20261111.json','utf8')).courses.filter(id=>id==='c434').length;
- assert.equal(total,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses+38+JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+JSON.parse(readFileSync('data/pet-care/manifest.json','utf8')).total);assert(photos>100);assert(information>0);assert(professional>17000);assert.equal(gpx,55-withdrawnVerifiedRoutes);assert(proposal>=30+JSON.parse(readFileSync('docs/expansion-20261111/batch.json','utf8')).courses.length);assert.equal(gpx+proposal+location,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses);console.log('Experience coverage',{total,photos,information,professional,gpx,proposal,location});
+ assert.equal(total,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses+38+JSON.parse(readFileSync('data/public-counts.json','utf8')).facilities+JSON.parse(readFileSync('data/pet-care/manifest.json','utf8')).total);assert(photos>100);assert(information>0);assert(professional>17000);assert.equal(gpx,55-withdrawnVerifiedRoutes);assert(proposal>=30+JSON.parse(readFileSync('docs/expansion-20261111/batch.json','utf8')).courses.length);assert.equal(gpx+pedestrian+proposal+location,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses);console.log('Experience coverage',{total,photos,information,professional,gpx,pedestrian,proposal,location});
 });
 
 test('ordinary catalogue and discover records stay complete; new preparation entry cannot start GPS',()=>{

@@ -28,9 +28,9 @@ test('analytics distinguishes measured zero, unknown denominators and unavailabl
  const h=Analytics.experienceHTML({automation_views:12,experience:{measured_views:20,measured_visitors:10,searches:4,search_visitors:2,detail_views:15}});assert(h.includes('20.0%'));assert(h.includes('75.0%'));assert(h.includes('미집계'));assert(h.includes('이탈'));assert(!h.includes('사람 인증 완료'));assert(Analytics.experienceHTML({}).includes('미집계'));assert.equal(Analytics.interestCount({measured_views:0,engaged_views:0}),'미집계');assert.equal(Analytics.interestCount({measured_views:10,engaged_views:0}),'0');assert.equal(Analytics.interestCount({measured_views:10,engaged_views:11}),'미집계');
 });
 test('all course details distinguish bound GPX measurements from unverified registered information',()=>{
- let count=0,gpx=0;
+ let count=0,gpx=0,pedestrian=0;
  for(const dir of readdirSync('courses',{withFileTypes:true})){if(!dir.isDirectory()||!existsSync('courses/'+dir.name+'/index.html'))continue;const html=readFileSync('courses/'+dir.name+'/index.html','utf8');if(!html.includes('data-detail-kind="course"'))continue;count++;
-  const route=verifiedRoute(dir.name,html);if(route){gpx++;assert(html.includes('GPX 제공 구간 측정 거리'),dir.name);assert(html.includes('GPX 출발 좌표'),dir.name);assert(html.includes('GPX 도착 좌표'),dir.name);}else{assert(!html.includes('id="detail-route-data"'),dir.name);assert(html.includes('등록 참고 정보입니다'),dir.name);assert(html.includes('정확한 경로 미확인'),dir.name);}
+  const route=verifiedRoute(dir.name,html);if(route){gpx++;assert(html.includes('GPX 제공 구간 측정 거리'),dir.name);assert(html.includes('GPX 출발 좌표'),dir.name);assert(html.includes('GPX 도착 좌표'),dir.name);}else if(html.includes('data-pedestrian-review="1"')){pedestrian++;assert(html.includes('id="detail-route-data"'),dir.name);assert(html.includes('공개 보행로 기반 제안 경로'),dir.name);assert(!html.includes('GPX 제공 구간 측정 거리'),dir.name);}else{assert(!html.includes('id="detail-route-data"'),dir.name);assert(html.includes('등록 참고 정보입니다'),dir.name);assert(html.includes('정확한 경로 미확인'),dir.name);}
  }
- assert.equal(count,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses);assert(gpx>0);console.log('Course trust coverage:',{count,gpx,unverified:count-gpx});
+ assert.equal(count,JSON.parse(readFileSync('data/public-counts.json','utf8')).courses);assert(gpx>0);console.log('Course trust coverage:',{count,gpx,pedestrian,unverified:count-gpx-pedestrian});
 });

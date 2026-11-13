@@ -4,6 +4,7 @@ const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/regional-walks-20261113/batch.json');
 const following=require('../docs/operator-walks-20261113/batch.json');
+const reviewed=require('../docs/walks-route-review-20261113/batch.json');
 const delivery=require('../docs/regional-walks-20261113/photo-delivery.json');
 const Access=require('../course-pet-access.js');
 const Info=require('../course-info.js');
@@ -78,7 +79,10 @@ test('regional additions are available in course details, home, search and sitem
   assert(sitemap.includes('https://balzaguk.com'+url),url);
   assert(home.includes('"'+c.id+'"'),url);
  }
- const verifiedLater=new Set(following.evidence.map(item=>item.contentId));
+ const verifiedLater=new Set([
+  ...following.evidence.map(item=>item.contentId),
+  ...reviewed.courses.map(course=>course.id.split('_').at(-1))
+ ]);
  for(const item of batch.holds){
   if(!verifiedLater.has(item.contentId))assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
  }
