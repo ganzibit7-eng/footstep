@@ -21,6 +21,8 @@
     'www.dforest.co.kr':'강아지숲',
     'gnews.gg.go.kr':'경기도',
     'sports.seoul.go.kr':'서울시 체육포털',
+    'hangang.seoul.go.kr':'서울시 미래한강본부',
+    'gis.gyeongnam.go.kr':'경상남도 반려동물 여행지도',
     'nodeul.org':'노들섬 운영기관',
     'www.incheon.go.kr':'인천광역시',
     'artvalley.pcfac.or.kr':'포천도시공사 포천아트밸리',

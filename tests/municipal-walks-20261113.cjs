@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/municipal-walks-20261113/batch.json');
+const laterEvidence=require('../docs/operator-walks-20261113/batch.json').evidence;
 const delivery=require('../docs/municipal-walks-20261113/photo-delivery.json');
 const Access=require('../course-pet-access.js');
 const Info=require('../course-info.js');
@@ -77,7 +78,10 @@ test('municipal additions are available in course details, home, search and site
   assert(sitemap.includes('https://balzaguk.com'+url),url);
   assert(home.includes('"'+c.id+'"'),url);
  }
- for(const item of batch.holds)assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ const releasedLater=new Set(laterEvidence.map(item=>item.contentId));
+ for(const item of batch.holds){
+  if(!releasedLater.has(item.contentId))assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ }
 });
 
 test('consolidated photograph delivery preserves the original bytes and photo mapping',()=>{
