@@ -7,6 +7,6 @@
   const close=Math.hypot((start[0]-end[0])*111000,(start[1]-end[1])*88000)<30;
   return {start,end,count,parts:data.parts,close,disconnected:data.parts.length>1};
  }
- function directions(name,point){return 'https://map.kakao.com/link/to/'+encodeURIComponent(name+' GPX 첫 지점')+','+point[0]+','+point[1];}
+ function directions(name,point,label='GPX 첫 지점'){return 'https://map.kakao.com/link/to/'+encodeURIComponent(name+' '+label)+','+point[0]+','+point[1];}
  const api=Object.freeze({inspect,directions});root.RouteGeometry=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof globalThis==='undefined'?this:globalThis);

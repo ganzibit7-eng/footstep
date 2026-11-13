@@ -14350,6 +14350,81 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261113_kto_127813.webp",
+    "courses": {
+      "walk_20261113_kto_127813": "제주 섭지코지 해안 보행로 산책"
+    },
+    "place": "섭지코지 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/93/3099993_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=127813&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "섭지코지_1",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "전체 비율 유지, 표시용 크기로 축소하여 WebP 변환",
+    "width": 850,
+    "height": 477,
+    "bytes": 55838,
+    "checked": "2026-11-13",
+    "datasetContentId": "127813",
+    "sourceSha256": "0bc437b7a66072989a02c5cc5ddd422c70aa05907048f059b7f06e5e89a0ef39",
+    "assetSha256": "ac7f2c25400c8b6974869b412257a5856ba9da4e54f9aae609ffbf493ac6758e"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261113_kto_128794.jpg",
+    "courses": {
+      "walk_20261113_kto_128794": "제주 표선해변 육상 산책"
+    },
+    "place": "표선해수욕장 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/05/3034605_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=128794&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "표선 해비치 해변 (5)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 627,
+    "bytes": 414815,
+    "checked": "2026-11-13",
+    "datasetContentId": "128794",
+    "sourceSha256": "abcbf9a2add846e11688f7ba73c2e9ce59c8ac065ccd88a01d782c14ea66be8f",
+    "assetSha256": "abcbf9a2add846e11688f7ba73c2e9ce59c8ac065ccd88a01d782c14ea66be8f"
+  },
+  {
+    "src": "/assets/course-photos/walk_20261113_kto_129401.jpg",
+    "courses": {
+      "walk_20261113_kto_129401": "제주 삼양해변 육상 산책"
+    },
+    "place": "삼양해수욕장 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/07/3039507_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=129401&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "삼양해수욕장_7",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제3유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type3",
+    "noCrop": true,
+    "changes": "제공 JPEG 원본과 전체 비율 유지",
+    "width": 940,
+    "height": 705,
+    "bytes": 402471,
+    "checked": "2026-11-13",
+    "datasetContentId": "129401",
+    "sourceSha256": "b7fdb8dc4b92a1668f746567c57b33f830ddd393f7e595a11581d07ee4324ad6",
+    "assetSha256": "b7fdb8dc4b92a1668f746567c57b33f830ddd393f7e595a11581d07ee4324ad6"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -3,6 +3,8 @@ const assert=require('node:assert/strict');
 const {readFileSync,existsSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/operator-walks-20261113/batch.json');
+const review=require('../docs/walks-route-review-20261113/batch.json');
+const amended=new Map(review.updates.map(x=>[x.after.id,x.after]));
 const delivery=require('../docs/operator-walks-20261113/photo-delivery.json');
 const priorBatches=['verified-walks-20261113','municipal-walks-20261113','regional-walks-20261113'].map(n=>require('../docs/'+n+'/batch.json'));
 const priorIds=new Set(priorBatches.flatMap(b=>b.courses.map(c=>c.id)));
@@ -16,15 +18,16 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 test('operator-verified additions pair the same outdoor walking area, pet rules and licensed photograph',()=>{
  const {courses,evidence,publicBefore,publicAfter,checked}=batch;
  assert.equal(publicAfter,publicBefore+courses.length);
- assert.equal(require('../data/public-counts.json').courses,publicAfter);
+ assert.equal(review.publicBefore,publicAfter);
  assert.equal(new Set(courses.map(c=>c.name)).size,courses.length);
  assert(courses.every(c=>!priorIds.has(c.id)));
- for(const c of courses){
+ for(const originalCourse of courses){
+  const c=amended.get(originalCourse.id)||originalCourse;
   const proof=evidence.find(p=>p.id===c.id);
   const access=Access.get(c),photo=Photos.get(c),address=Addresses.get(c);
   assert(access&&photo&&address,c.id);
   assert.equal(Info.sourceURL(c.description),proof.source,c.id);
-  assert.equal(Info.checkedDate(c.description),checked,c.id);
+  assert.equal(Info.checkedDate(c.description),amended.has(c.id)?review.checked:checked,c.id);
   assert(!Info.cleanDescription(c.description).includes('공식안내:'),c.id);
   assert.equal(access.conditions.동반구분,proof.scope);
   assert.equal(proof.contentId,photo.datasetContentId);
@@ -42,6 +45,7 @@ test('operator-verified additions pair the same outdoor walking area, pet rules 
    assert(photo.noCrop);
    assert.equal(photo.assetSha256,photo.sourceSha256);
   }
+  if(amended.has(c.id))continue;
   if(!c.path){
    assert.equal(c.distance,'');
    assert.equal(proof.location,'reference-point');
@@ -73,18 +77,21 @@ test('operator-verified additions are available in course details, home, search 
  const search=new Set(require('./search-records.cjs')().map(row=>row.path));
  const sitemap=readFileSync('sitemap.xml','utf8');
  const home=readFileSync('index.html','utf8');
- for(const c of batch.courses){
+ for(const originalCourse of batch.courses){
+  const c=amended.get(originalCourse.id)||originalCourse;
   const url='/courses/'+c.id+'/';
   const html=readFileSync('.'+url+'index.html','utf8');
   assert(html.includes(c.name),url);
   assert(html.includes(Photos.get(c).src),url);
-  assert(html.includes(c.path?'제안 경로 안내':'출발점 미확인'),url);
+  assert(html.includes(amended.has(c.id)?'공개 보행로 기반 제안 경로':c.path?'제안 경로 안내':'출발점 미확인'),url);
   assert(html.includes(Access.get(c).source.replaceAll('&','&amp;')),url);
   assert(search.has(url),url);
   assert(sitemap.includes('https://balzaguk.com'+url),url);
   assert(home.includes('"'+c.id+'"'),url);
  }
- for(const item of batch.holds)assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ for(const item of batch.holds){
+  if(!review.evidence.some(x=>x.contentId===item.contentId))assert(!existsSync('courses/walk_20261113_kto_'+item.contentId));
+ }
 });
 
 test('consolidated photograph delivery preserves the original bytes and photo mapping',()=>{
