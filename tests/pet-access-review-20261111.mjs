@@ -9,6 +9,7 @@ const review = require('../data/pet-access-review-holds-20261111.json');
 const counts = require('../data/public-counts.json');
 const decisions = read('docs/pet-access-full-20261111/decisions.jsonl').trim().split('\n').map(row=>JSON.parse(row));
 const laterPlaces = require('../docs/expansion-20261112/proof.json').places;
+const laterCourses = require('../docs/verified-walks-20261113/batch.json').courses;
 const previousReview = require('../docs/place-enrichment-20261113/verification.json');
 const nextReview = require('../docs/place-enrichment-followup-20261113/verification.json');
 const followup = {conditions:[...previousReview.conditions,...nextReview.conditions],holds:[...previousReview.holds,...nextReview.holds],photos:[...previousReview.photos,...nextReview.photos]};
@@ -37,7 +38,7 @@ test('every reviewed course and place is accounted for across publication and se
  }
  assert.deepEqual(review.courses,decisions.filter(r=>r.category==='course'&&r.status!=='keep').map(r=>r.id).sort());
  assert.deepEqual(review.facilities,decisions.filter(r=>r.category!=='course'&&r.status!=='keep').map(r=>r.id).sort());
- assert.equal(counts.courses,review.reviewed.courses-review.courses.length);
+ assert.equal(counts.courses,review.reviewed.courses-review.courses.length+laterCourses.length);
  assert.equal(counts.facilities,review.reviewed.facilities-review.facilities.length+laterPlaces.length-followup.holds.length);
 });
 

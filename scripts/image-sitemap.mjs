@@ -19,11 +19,13 @@ export async function enrichImageSitemap(root){
   const photo=record&&CoursePhotos.get({id,name:record.courses[id]});
   const clean=entry.replace(/<image:image>[\s\S]*?<\/image:image>/g,'');
   if(!photo){xml=xml.replace(entry,clean);continue;}
-  if(!/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png)$/.test(photo.src))throw Error('Unexpected curated photo path: '+id);
+  if(!/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png)$/.test(record.src))throw Error('Unexpected curated photo path: '+id);
+  const image=new URL(photo.src,SITE);
+  if(image.origin!==SITE&&!/^https:\/\/balzaguk-place-photos\.balzaguk-photo-delivery\.workers\.dev\/assets\/place-photos\/kto-\d+(?:-[a-f0-9]{12})?\.jpg$/.test(image.href))throw Error('Unexpected photo delivery URL: '+id);
   if(!html.includes(`<link rel="canonical" href="${url}">`)||/<meta[^>]*content="[^"]*noindex/i.test(html))throw Error('Image page is not public canonical: '+id);
   if(!html.includes(`src="${photo.src}"`))throw Error('Curated image missing from course page: '+id);
-  if(!(await stat(path.join(root,photo.src.slice(1)))).isFile())throw Error('Image file missing: '+id);
-  xml=xml.replace(entry,clean.replace('</url>',`<image:image><image:loc>${xmlEscape(SITE+photo.src)}</image:loc></image:image></url>`));count++;
+  if(!(await stat(path.join(root,record.src.slice(1)))).isFile())throw Error('Image file missing: '+id);
+  xml=xml.replace(entry,clean.replace('</url>',`<image:image><image:loc>${xmlEscape(image.href)}</image:loc></image:image></url>`));count++;
  }
  if(count&&!xml.includes('xmlns:image='))xml=xml.replace('<urlset ',`<urlset xmlns:image="${NS}" `);
  await writeFile(file,xml,'utf8');
