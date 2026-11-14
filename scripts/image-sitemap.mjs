@@ -19,7 +19,10 @@ export async function enrichImageSitemap(root){
   const photo=record&&CoursePhotos.get({id,name:record.courses[id]});
   const clean=entry.replace(/<image:image>[\s\S]*?<\/image:image>/g,'');
   if(!photo){xml=xml.replace(entry,clean);continue;}
-  if(!/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png)$/.test(record.src))throw Error('Unexpected curated photo path: '+id);
+  const sharedDelivery=record.rightsType==='Type1'
+   && /^\d+$/.test(String(record.datasetContentId))
+   && new RegExp('^/assets/place-delivery/kto-'+record.datasetContentId+'-[a-f0-9]{12}\\.webp$').test(record.src);
+  if(!sharedDelivery&&!/^\/assets\/course-photos\/[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png)$/.test(record.src))throw Error('Unexpected curated photo path: '+id);
   const image=new URL(photo.src,SITE);
   if(image.origin===SITE&&image.pathname!==record.src){
    if(!/^\/assets\/place-supplement\/kto-\d+-[a-f0-9]{12}\.jpg$/.test(image.pathname))throw Error('Unexpected shared original path: '+id);

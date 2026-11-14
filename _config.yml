@@ -114,6 +114,7 @@ exclude:
   - AGENTS.md
   - README.md
   - "index .html"
+  - hero-park-preview.html
   - 개선_적용_안내.txt
 
   # Full originals stay in Git; verified delivery copies preserve licensing.
