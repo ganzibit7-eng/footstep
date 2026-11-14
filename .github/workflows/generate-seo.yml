@@ -52,6 +52,7 @@ on:
       - 'scripts/route-evidence-guides.mjs'
       - 'route-guides.css'
       - 'scripts/refine-regional-search.mjs'
+      - 'scripts/region-search-guidance.mjs'
       - 'regional-search.css'
       - 'scripts/search-style-cache.mjs'
       - 'scripts/image-sitemap.mjs'

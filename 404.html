@@ -13,12 +13,18 @@
     <a href="/">🐾 발자국 홈</a>
     <h1>페이지를 찾을 수 없어요</h1>
     <p>주소가 바뀌었거나 장소 정보가 공개 목록에서 내려갔을 수 있어요. 지금 볼 수 있는 장소와 산책 코스를 찾아보세요.</p>
-    <nav aria-label="공개 장소와 산책 코스 둘러보기">
+    <section id="entry-recovery" hidden aria-labelledby="entry-recovery-title">
+      <h2 id="entry-recovery-title">같은 지역에서 찾아보기</h2>
+      <p>요청하신 상세 주소는 현재 공개되지 않습니다.</p>
+      <nav id="entry-recovery-links" class="quick-links" aria-label="현재 공개된 지역 목록"></nav>
+    </section>
+    <nav class="quick-links" aria-label="공개 장소와 산책 코스 둘러보기">
       <a href="/discover.html">지역별로 찾아보기</a>
       <a href="/places/cafes/">애견동반 카페·식당</a>
       <a href="/places/stays/">애견동반 숙소</a>
       <a href="/dog-walks/">강아지 산책 코스</a>
     </nav>
   </main>
+  <script defer src="/search-entry-recovery.js?v=20261114"></script>
 </body>
 </html>
