@@ -11,8 +11,9 @@ const decisions = read('docs/pet-access-full-20261111/decisions.jsonl').trim().s
 const laterPlaces = require('../docs/expansion-20261112/proof.json').places;
 const reviewed = require('../docs/walks-route-review-20261113/batch.json');
 const latestWalks = require('../docs/walks-evidence-20261114/batch.json');
-const changedRoutes = new Map([reviewed,latestWalks].flatMap(batch=>batch.updates.map(x=>[x.after.id,x.after])));
-const laterCourses = ['../docs/verified-walks-20261113/batch.json','../docs/municipal-walks-20261113/batch.json','../docs/regional-walks-20261113/batch.json','../docs/operator-walks-20261113/batch.json'].flatMap(file=>require(file).courses).map(c=>changedRoutes.get(c.id)||c).concat(reviewed.courses,latestWalks.courses);
+const publicTrails = require('../docs/walks-public-trails-20261114/batch.json');
+const changedRoutes = new Map([reviewed,latestWalks,publicTrails].flatMap(batch=>batch.updates.map(x=>[x.after.id,x.after])));
+const laterCourses = ['../docs/verified-walks-20261113/batch.json','../docs/municipal-walks-20261113/batch.json','../docs/regional-walks-20261113/batch.json','../docs/operator-walks-20261113/batch.json'].flatMap(file=>require(file).courses).map(c=>changedRoutes.get(c.id)||c).concat(reviewed.courses,latestWalks.courses,publicTrails.courses);
 const previousReview = require('../docs/place-enrichment-20261113/verification.json');
 const nextReview = require('../docs/place-enrichment-followup-20261113/verification.json');
 const followup = {conditions:[...previousReview.conditions,...nextReview.conditions],holds:[...previousReview.holds,...nextReview.holds],photos:[...previousReview.photos,...nextReview.photos]};

@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const {readFileSync}=require('node:fs');
 const {createHash}=require('node:crypto');
 const batch=require('../docs/walks-evidence-20261114/batch.json');
+const next=require('../docs/walks-public-trails-20261114/batch.json');
 const prior=require('../docs/walks-route-review-20261113/batch.json');
 const Access=require('../course-pet-access.js');
 const Addresses=require('../course-addresses.js');
@@ -13,7 +14,7 @@ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 test('new and revised walks follow exact consecutive public path nodes',()=>{
  assert.equal(batch.publicBefore,prior.publicAfter);
  assert.equal(batch.publicAfter,batch.publicBefore+batch.courses.length);
- assert.equal(batch.publicAfter,require('../data/public-counts.json').courses);
+ assert.equal(batch.publicAfter,next.publicBefore);
  const reviewed=[...batch.updates.map(x=>x.after.id.split('_').at(-1)),...Object.keys(batch.holds)];
  assert.deepEqual(reviewed.sort(),Object.keys(prior.holds).sort());
  for(const row of [...batch.courses,...batch.updates.map(x=>x.after)]){
@@ -48,7 +49,7 @@ test('new and revised walks follow exact consecutive public path nodes',()=>{
 test('course detail, search and sitemap preserve published links, photo credit and routes',()=>{
  const sitemap=readFileSync('sitemap.xml','utf8');
  const search=new Set(require('./search-records.cjs')().map(x=>x.path));
- const config=readFileSync('_config.yml','utf8');
+ const config=readFileSync('_config.yml','utf8').replaceAll('\r\n','\n');
  for(const row of [...batch.courses,...batch.updates.map(x=>x.after)]){
   const url='/courses/'+row.id+'/',html=readFileSync('.'+url+'index.html','utf8');
   const route=JSON.parse(html.match(/id="detail-route-data">([^<]+)/)[1]);
