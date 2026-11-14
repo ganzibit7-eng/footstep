@@ -15025,6 +15025,56 @@
     "height": 627,
     "sourceSha256": "abb0e2af4d9bdedff5229bf0efce7ce3f28f343c7fa5d7df6d15a860fe9a4de5",
     "assetSha256": "a58fcb474b10210d5aa04220fe77469ecf5c424b0e6658c09132f69bf3816c1d"
+  },
+  {
+    "src": "/assets/place-delivery/kto-126799-5b141bb2d597.webp",
+    "courses": {
+      "walk_20261114d_kto_126799": "부산 민락수변공원 갈맷길 산책"
+    },
+    "place": "민락수변공원 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/67/3498367_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=126799&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "부산_민락수변공원 (2)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "기존 장소 사진의 웹용 변환본 재사용, 이미지 전체 비율 유지",
+    "width": 940,
+    "height": 626,
+    "bytes": 69242,
+    "checked": "2026-11-14",
+    "datasetContentId": "126799",
+    "sourceSha256": "5b141bb2d597838f8cb608c65b2bc4840c027410974f35cbcd71dbcb264fc204",
+    "assetSha256": "01eb4b2c7959a12c2c326e8b26208eb9e258cdd58e3149b487d1a44ba111bd8c"
+  },
+  {
+    "src": "/assets/place-delivery/kto-970052-5acea9790a8f.webp",
+    "courses": {
+      "walk_20261114d_kto_970052": "서울 반포 달빛광장 세빛섬 앞 산책로"
+    },
+    "place": "세빛섬 실제 경관 참고사진",
+    "original": "https://tong.visitkorea.or.kr/cms/resource/11/3515811_image2_1.jpg",
+    "source": "https://api.visitkorea.or.kr/#/hubTourSearchCatDetail?contentId=970052&langDiv=KOR",
+    "author": "한국관광공사(관광정보 제공기관) · 촬영자 미표기",
+    "title": "서울_세빛섬 (2)",
+    "date": "",
+    "dateNote": "촬영일 미상",
+    "license": "공공누리 제1유형",
+    "licenseUrl": "https://www.kogl.or.kr/info/license.do",
+    "rightsType": "Type1",
+    "noCrop": true,
+    "changes": "기존 장소 사진의 웹용 변환본 재사용, 이미지 전체 비율 유지",
+    "width": 940,
+    "height": 626,
+    "bytes": 61874,
+    "checked": "2026-11-14",
+    "datasetContentId": "970052",
+    "sourceSha256": "5acea9790a8f233f543262c5ba04519e3e26d37bf584fa217ce295842c0abd90",
+    "assetSha256": "e9cc68b05b78f9eb7ebe8189c84eb95d1cda41d2ef8ee1c83b359e5d3cafa68c"
   }
 ];
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -13,7 +13,7 @@ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 test('new and revised walks follow exact consecutive public path nodes',()=>{
  assert.equal(batch.publicBefore,prior.publicAfter);
  assert.equal(batch.publicAfter,batch.publicBefore+batch.courses.length);
- assert.equal(batch.publicAfter,require('../data/public-counts.json').courses);
+ assert.equal(batch.publicAfter,require('../docs/walks-pedestrian-20261114/batch.json').publicBefore);
  const reviewed=[...batch.updates.map(x=>x.after.id.split('_').at(-1)),...Object.keys(batch.holds)];
  assert.deepEqual(reviewed.sort(),Object.keys(prior.holds).sort());
  for(const row of [...batch.courses,...batch.updates.map(x=>x.after)]){
