@@ -24,7 +24,7 @@ const guidance = {
     description: '제주에서 반려견과 걸을 송악산 해안 둘레길, 닭머르해안길, 쇠소깍 동쪽 보행로를 비교하세요. 지도 경로 범위와 동반 구역을 확인할 수 있습니다.',
     heading: '제주에서 반려견과 걸을 해안·하구 산책로',
     rows: [
-      { url: '/courses/c395/', label: '서귀포 송악산 해안 둘레길', detail: '지도에는 공식 GPX 제공 구간을 표시합니다. 접근 구간과 당일 통제는 별도로 확인하세요.' },
+      { url: '/courses/c395/', label: '서귀포 송악산 해안 둘레길', detail: '공식 GPX 중 해안 선택 구간을 표시합니다. 정상부와 정상탐방로는 2027년 7월 31일까지 출입이 제한됩니다.', source: 'https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500378' },
       { url: '/courses/c430/', label: '제주시 닭머르해안길', detail: '공식 GPX에서 반려견 동반 자료와 대조한 구간을 확인할 수 있습니다.' },
       { url: '/courses/walk_20261114c_kto_129617/', label: '서귀포 쇠소깍 동쪽 야외 산책로', detail: '하구 동쪽 공개 보행로 약 400m를 안내합니다. 선착장과 나룻배는 포함되지 않습니다.' },
     ],
@@ -43,8 +43,10 @@ export function applyRegionSearchGuidance(html) {
 
   const note = /<div class="note"><strong>(?:방문 전에 확인하세요|산책 코스 고르는 방법)<\/strong>[\s\S]*?<\/div>/;
   if (!note.test(html)) return html;
-  const rows = copy.rows.map(({url, label, detail}) =>
-    `<li><a href="${url}">${escapeHtml(label)}</a> · ${escapeHtml(detail)}</li>`).join('');
+  const rows = copy.rows.map(({url, label, detail, source}) => {
+    const sourceLink = source ? ` <a href="${escapeHtml(source)}">운영기관 안내</a>` : '';
+    return `<li><a href="${url}">${escapeHtml(label)}</a> · ${escapeHtml(detail)}${sourceLink}</li>`;
+  }).join('');
   const section = `<section class="note" id="region-search-guidance" aria-labelledby="region-search-heading"><h2 id="region-search-heading">${escapeHtml(copy.heading)}</h2><ul>${rows}</ul></section>`;
 
   return html.replace(note, () => section).replace(/<head\b[^>]*>[\s\S]*?<\/head>/i, head => head
