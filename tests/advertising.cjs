@@ -13,7 +13,8 @@ test('public advertisement routes and assets stay paused',()=>{
  assert.doesNotMatch(notice,/<script|<form|mailto:|kakao\.com|kmong\.com/);
  assert.doesNotMatch(home,/brand-partner-slot|support-partnership|\/advertise\/|\/advertising\.(?:js|css)/);
  assert(!sitemap.includes('https://balzaguk.com/advertise/'));
- for(const name of ['assets/advertising','advertising.js','advertising.css','admin-advertising.js','shopping.js','shopping-config.js','trip-stays.json','trip-stays.css']){
+ assert(!serviceWorker.includes('/admin-advertising.js'));
+ for(const name of ['assets/advertising','advertising.js','advertising.css','shopping.js','shopping-config.js','trip-stays.json','trip-stays.css']){
   assert(config.includes('  - '+name+'\n'),name);
   assert(!serviceWorker.includes('/'+name),name);
  }

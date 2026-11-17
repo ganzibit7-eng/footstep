@@ -8,6 +8,29 @@ function harness({user='admin',role=true,markup='<div id="admin-overlay"></div>'
  const controller=ctx.module.exports.create({client,viewer:()=>viewer,mount:()=>{mounts++;return{dispose(){disposed++;overlay=null;}};}});
  return {controller,resources,client,setViewer(v){viewer=v;},release(){resources.forEach(r=>r.onload());},get stats(){return{fetches,mounts,disposed,overlay:!!overlay};}};
 }
+
+function checkWorkspacePermissions(){
+ const source=fs.readFileSync('admin-panel.js','utf8');
+ const setup=source.match(/  const menus=([\s\S]+?)(?=  const viewHeading=)/)?.[0];
+ assert(setup,'admin workspace setup must include the shared owner');
+ const context={myDeviceId:'signed-in-admin'};
+ let isAdmin=true;
+ const guards=[];
+ const check=(...args)=>{const allowed=args.at(-1);assert.equal(allowed(),true);guards.push(allowed);return {};};
+ vm.runInNewContext(setup,{
+  context,isAdminUser:uid=>isAdmin&&uid==='signed-in-admin',
+  document:{createElement:()=>({dataset:{}})},content:{append(){}},menus:[],
+  sb:{},allCourses:()=>[],correctionAdmin:null,routeDraftAdmin:null,
+  AdminCorrections:{mount:check},AdminRouteDrafts:{mount:check},
+ });
+ assert.equal(guards.length,2);
+ context.myDeviceId='other-admin';
+ assert(guards.every(guard=>guard()===false));
+ context.myDeviceId='signed-in-admin';isAdmin=false;
+ assert(guards.every(guard=>guard()===false));
+}
+
+checkWorkspacePermissions();
 const timeout=setTimeout(()=>{console.error('Admin separation test did not finish');process.exit(1);},5000);
 async function ready(h){for(let i=0;i<50&&h.resources.length<12;i++)await new Promise(setImmediate);assert.equal(h.resources.length,12);}
 (async()=>{
