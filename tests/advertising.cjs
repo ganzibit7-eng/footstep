@@ -11,9 +11,10 @@ test('public advertisement routes and assets stay paused',()=>{
  assert.match(notice,/content="noindex, follow"/);
  assert.match(notice,/광고 게재와 신규 광고·제휴 문의 접수를 잠정 중단/);
  assert.doesNotMatch(notice,/<script|<form|mailto:|kakao\.com|kmong\.com/);
- assert.doesNotMatch(home,/brand-partner-slot|support-partnership|\/advertise\/|\/advertising\.(?:js|css)/);
+ assert.doesNotMatch(home,/brand-partner-slot|support-partnership|trip-section-disclosure|트립닷컴에서 객실을 확인할 수 있는 숙소|\/advertise\/|\/advertising\.(?:js|css)/);
  assert(!sitemap.includes('https://balzaguk.com/advertise/'));
- for(const name of ['assets/advertising','advertising.js','advertising.css','admin-advertising.js','shopping.js','shopping-config.js','trip-stays.json','trip-stays.css']){
+ assert(!serviceWorker.includes('/admin-advertising.js'));
+ for(const name of ['assets/advertising','advertising.js','advertising.css','shopping.js','shopping-config.js','trip-stays.json','trip-stays.css']){
   assert(config.includes('  - '+name+'\n'),name);
   assert(!serviceWorker.includes('/'+name),name);
  }
