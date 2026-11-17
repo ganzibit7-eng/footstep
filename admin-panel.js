@@ -747,33 +747,45 @@ function create(context){
   let bulkParsedRows = [];
   let bulkHeaders = [];
   let bulkSelectedType = 'course';
-  document.getElementById('bulk-csv-input').addEventListener('change', (e)=>{
-    const file = e.target.files[0];
-    if(!file) return;
-    if(typeof Papa === 'undefined'){ toast('CSV 처리 도구를 불러오지 못했어요. 새로고침 후 다시 시도해주세요'); return; }
-    Papa.parse(file, {
-      header: true,
-      skipEmptyLines: true,
-      encoding: 'UTF-8',
-      complete: (results)=>{
-        bulkParsedRows = results.data;
-        bulkHeaders = results.meta.fields || [];
-        if(!bulkParsedRows.length){ toast('CSV에서 데이터를 찾지 못했어요'); return; }
+  let bulkParseSequence = 0;
+  document.getElementById('bulk-csv-input').addEventListener('change', async (event)=>{
+    const input=event.currentTarget,file=input.files[0],owner=context.myDeviceId;
+    if(!file||!isAdminUser(owner))return;
+    const sequence=++bulkParseSequence;
+    const active=()=>input.isConnected&&sequence===bulkParseSequence&&context.myDeviceId===owner&&isAdminUser(owner);
+    bulkParsedRows=[];bulkHeaders=[];
+    document.getElementById('bulk-import-mapping').style.display='none';
+    input.value='';
+    let parser;
+    try{parser=typeof root.Papa?.parse==='function'?root.Papa:await root.AdminLoader.loadCsvParser();}
+    catch{if(active())toast('CSV 처리 도구를 불러오지 못했어요. 연결을 확인한 뒤 파일을 다시 선택해 주세요.');return;}
+    if(!active())return;
+    try{parser.parse(file,{
+      header:true,
+      skipEmptyLines:true,
+      encoding:'UTF-8',
+      complete:(results)=>{
+        if(!active())return;
+        bulkParsedRows=results.data;bulkHeaders=results.meta.fields||[];
+        if(!bulkParsedRows.length){toast('CSV에서 데이터를 찾지 못했어요');return;}
         populateBulkColumnSelects();
         renderBulkPreview();
-        document.getElementById('bulk-import-mapping').style.display = '';
-        toast(`${bulkParsedRows.length}개 행을 불러왔어요. 컬럼을 지정해주세요`);
+        document.getElementById('bulk-import-mapping').style.display='';
+        toast(bulkParsedRows.length+'개 행을 불러왔어요. 컬럼을 지정해주세요');
       },
-      error: (err)=>{ console.error(err); toast('CSV를 읽는 데 실패했어요. 인코딩이 UTF-8인지 확인해주세요'); }
-    });
+      error:()=>{if(active())toast('CSV를 읽는 데 실패했어요. 인코딩이 UTF-8인지 확인해주세요');}
+    });}catch{if(active())toast('CSV를 읽는 데 실패했어요. 파일을 다시 확인해 주세요.');}
   });
   function populateBulkColumnSelects(){
     const selects = ['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'];
     selects.forEach(id=>{
       const sel = document.getElementById(id);
-      const keepEmpty = id === 'bulk-col-desc';
-      sel.innerHTML = (keepEmpty ? '<option value="">— 사용 안 함 —</option>' : '') +
-        bulkHeaders.map(h=>`<option value="${h}">${h}</option>`).join('');
+      sel.replaceChildren();
+      const addOption=(value,label)=>{
+        const option=document.createElement('option');option.value=value;option.textContent=label;sel.append(option);
+      };
+      if(id==='bulk-col-desc')addOption('','— 사용 안 함 —');
+      for(const header of bulkHeaders)addOption(header,header);
     });
     // 흔한 공공데이터 컬럼명 자동 추정
     const guess = (cands)=> bulkHeaders.find(h => cands.some(c => h.includes(c)));

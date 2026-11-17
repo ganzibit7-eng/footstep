@@ -1,9 +1,15 @@
 (function(root){'use strict';
 const VERSION='20261106-corrections';
+const CSV_PARSER='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js';
 const scripts=new Map();
 let stylesheet=null;
 function style(){if(stylesheet)return stylesheet;stylesheet=new Promise((resolve,reject)=>{const el=document.createElement('link');el.rel='stylesheet';el.href='/admin-panel.css?v='+VERSION;el.dataset.adminStyle='';el.onload=resolve;el.onerror=()=>{el.remove();stylesheet=null;reject(new Error('admin_style_failed'));};document.head.append(el);});return stylesheet;}
 function script(url){if(scripts.has(url))return scripts.get(url);const pending=new Promise((resolve,reject)=>{const el=document.createElement('script');el.src=url;el.onload=resolve;el.onerror=()=>{el.remove();scripts.delete(url);reject(new Error('admin_resource_failed'));};document.head.append(el);});scripts.set(url,pending);return pending;}
+async function loadCsvParser(){
+ if(typeof root.Papa?.parse!=='function')await script(CSV_PARSER);
+ if(typeof root.Papa?.parse!=='function')throw new Error('csv_parser_unavailable');
+ return root.Papa;
+}
 function create({client,viewer,mount}){
  let panel=null,owner=null,pending=null,generation=0;
  function reset(){generation++;panel?.dispose();panel=null;owner=null;pending=null;document.getElementById('admin-overlay')?.remove();}
@@ -11,7 +17,7 @@ function create({client,viewer,mount}){
  function load(){if(pending)return pending;const expected=viewer();if(!expected){reset();return Promise.reject(new Error('admin_sign_in_required'));}const request=++generation;
   const task=(async()=>{await authorize(expected);if(request!==generation)throw new Error('admin_session_changed');if(panel&&owner===expected)return panel;
    const response=await fetch('/admin-panel.html?v='+VERSION,{credentials:'same-origin',cache:'no-cache'});if(!response.ok)throw new Error('admin_markup_failed');const markup=await response.text();if(/<script|<iframe|<object|<embed|\bon[a-z]+\s*=/i.test(markup))throw new Error('admin_markup_invalid');
-   await Promise.all([style(),script('https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js'),script('/admin-bot-panel.js?v=20261026-quality9'),script('/admin-affiliate.js?v=20261009'),script('/admin-console.js?v='+VERSION),script('/admin-analytics.js?v=20261105-route-drafts2'),script('/admin-commercial.js?v='+VERSION),script('/admin-member-details.js?v='+VERSION),script('/route-draft-model.js?v='+VERSION),script('/admin-route-drafts.js?v='+VERSION),script('/admin-corrections.js?v=20261110-refresh'),script('/admin-panel.js?v=20261117-workspace')]);
+   await Promise.all([style(),script('/admin-bot-panel.js?v=20261026-quality9'),script('/admin-affiliate.js?v=20261009'),script('/admin-console.js?v='+VERSION),script('/admin-analytics.js?v=20261105-route-drafts2'),script('/admin-commercial.js?v='+VERSION),script('/admin-member-details.js?v='+VERSION),script('/route-draft-model.js?v='+VERSION),script('/admin-route-drafts.js?v='+VERSION),script('/admin-corrections.js?v=20261110-refresh'),script('/admin-panel.js?v=20261117-csv')]);
    await authorize(expected);if(request!==generation)throw new Error('admin_session_changed');
    const template=document.createElement('template');template.innerHTML=markup;const overlay=template.content.querySelector('#admin-overlay');if(!overlay||template.content.children.length!==1)throw new Error('admin_markup_invalid');
    document.body.append(overlay);try{panel=mount();owner=expected;return panel;}catch(error){overlay.remove();throw error;}
@@ -19,5 +25,5 @@ function create({client,viewer,mount}){
  }
  return Object.freeze({load,reset,peek:()=>panel});
 }
-const api=Object.freeze({create});if(typeof module==='object'&&module.exports)module.exports=api;else root.AdminLoader=api;
+const api=Object.freeze({create,loadCsvParser});if(typeof module==='object'&&module.exports)module.exports=api;else root.AdminLoader=api;
 })(typeof globalThis==='undefined'?this:globalThis);

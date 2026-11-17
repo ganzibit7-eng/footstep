@@ -1,0 +1,40 @@
+const {readFileSync}=require('node:fs');
+const vm=require('node:vm');
+const test=require('node:test');
+const assert=require('node:assert/strict');
+
+const panel=readFileSync('admin-panel.js','utf8');
+const source=panel.slice(panel.indexOf('  let bulkParsedRows = [];'),panel.indexOf('  function renderBulkPreview(){'));
+
+test('CSV import ignores stale parser responses and renders source headers as text',async()=>{
+ const selectors=['bulk-col-name','bulk-col-lat','bulk-col-lng','bulk-col-desc'];
+ const select=()=>({children:[],replaceChildren(){this.children=[];},append(node){this.children.push(node);}});
+ const elements=Object.fromEntries(selectors.map(id=>[id,select()]));
+ const context={myDeviceId:'manager'};
+ let change,parsed=[],renders=0;
+ const input={id:'bulk-csv-input',value:'',isConnected:true,files:[],addEventListener(type,handler){assert.equal(type,'change');change=handler;}};
+ const mapping={style:{display:''}};
+ const document={getElementById:id=>elements[id]||(id==='bulk-csv-input'?input:mapping),createElement:tag=>{assert.equal(tag,'option');return {};}};
+ const parser={parse(file,options){parsed.push({file,options});}};
+ const root={AdminLoader:{loadCsvParser:async()=>parser}};
+ vm.runInNewContext(source,{root,context,document,isAdminUser:id=>id==='manager',renderBulkPreview:()=>renders++,toast(){}});
+ const upload=async name=>{input.value=name;input.files=[{name}];await change({currentTarget:input});};
+ assert.equal(typeof change,'function');
+ await upload('older.csv');
+ await upload('current.csv');
+ assert.equal(input.value,'');
+ assert.equal(mapping.style.display,'none');
+ const header='장소 <확인> "원본"';
+ parsed[0].options.complete({data:[{}],meta:{fields:['old']}});
+ assert.equal(renders,0);
+ parsed[1].options.complete({data:[{}],meta:{fields:[header,'위도','경도']}});
+ assert.equal(renders,1);
+ assert.equal(elements['bulk-col-name'].children[0].textContent,header);
+ assert.equal(elements['bulk-col-name'].children[0].value,header);
+ assert.equal(mapping.style.display,'');
+ await upload('changed-session.csv');
+ context.myDeviceId='other';
+ parsed[2].options.complete({data:[{}],meta:{fields:['late']}});
+ assert.equal(renders,1);
+ assert.equal(mapping.style.display,'none');
+});
