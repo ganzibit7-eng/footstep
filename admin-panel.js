@@ -1,7 +1,7 @@
 (function(root){'use strict';
 function create(context){
  const {sb,ADMIN_UID,adminDayKey,adminDayStart,adminReadRows,allBins,allCourses,avgRating,closeProfileModal,escapeHtml,isAdminUser,isSuperAdmin,loadData,openCourseDetail,openMemberProfile,openNickModal,requestAccountDeletion,resolveReport,reviewsFor,showPage,toast}=context;
-  let adminShell=null,memberDetails=null,adAdmin=null,routeDraftAdmin=null,correctionAdmin=null;
+  let adminShell=null,memberDetails=null,routeDraftAdmin=null,correctionAdmin=null;
   const sectionChecks=new Map(),sectionRequests=new Map();
   function markAdminSection(id,state){
     const target=document.getElementById(id);if(!target)return;
@@ -592,7 +592,7 @@ function create(context){
   document.getElementById('admin-affiliate-details').dataset.adminView='affiliate';document.getElementById('admin-security-details').dataset.adminView='security';
   const workspace=document.createElement('div');workspace.className='admin-workspace';details.before(workspace);const nav=document.createElement('nav');nav.className='admin-navigation';nav.setAttribute('aria-label','관리 메뉴');const content=document.createElement('div');content.className='admin-workspace-content';workspace.append(nav,content);while(workspace.nextSibling)content.append(workspace.nextSibling);
   const menus=[['overview','운영 개요','방문·활동 현황','M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z'],['members','회원 관리','회원·권한·활동','M16 21v-3a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v3M18 8a3 3 0 0 1 0 6M22 21v-3a4 4 0 0 0-3-4M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0'],['review','콘텐츠 검수','승인 대기·신고','M5 3h14v18H5zM8 8h8M8 12h8M8 16h5'],['affiliate','제휴 성과','배너·쿠팡·트립닷컴','M4 20V10M10 20V4M16 20v-7M22 20H2'],['security','보안 기록','접근·이상 감지','M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7l-9-4M8 12l3 3 5-6'],['tools','데이터 관리','공공데이터 등록','M4 5h16v14H4zM4 10h16M10 10v9']];
-  const ads=document.createElement('section');ads.dataset.adminView='advertising';ads.hidden=true;content.append(ads);const adOwner=context.myDeviceId;adAdmin=globalThis.PawAdvertisingAdmin.mount(ads,sb,()=>context.myDeviceId===adOwner&&isAdminUser(adOwner));menus.push(['advertising','광고·제휴 관리','배너·일정·문의 채널','M4 5h16v14H4zM7 9h10M7 13h6']);
+  const ads=document.createElement('section');ads.dataset.adminView='advertising';ads.hidden=true;ads.innerHTML='<h4>광고·제휴 운영 중단</h4><p>광고 게재, 신규 문의 접수, 제휴 링크 공개를 중단했습니다. 이전 통계는 기존 통계 메뉴에서 확인할 수 있습니다.</p>';content.append(ads);menus.push(['advertising','광고·제휴 운영 상태','현재 공개 중단','M4 5h16v14H4zM7 9h10M7 13h6']);
   const corrections=document.createElement('section');corrections.dataset.adminView='corrections';corrections.hidden=true;content.append(corrections);correctionAdmin=globalThis.AdminCorrections.mount(corrections,sb,()=>context.myDeviceId===adOwner&&isAdminUser(adOwner));menus.push(['corrections','정정 요청','비회원 접수·검토 기록','M4 4h12v16H4zM8 8h4M8 12h4M16 4l4 4-7 7-4 1 1-4']);
   const drafts=document.createElement('section');drafts.dataset.adminView='routes';drafts.hidden=true;content.append(drafts);routeDraftAdmin=globalThis.AdminRouteDrafts.mount(drafts,sb,()=>allCourses(),()=>context.myDeviceId===adOwner&&isAdminUser(adOwner));menus.push(['routes','경로 초안','자료·구간·수정 이력','M4 17 9 5l6 14 5-12M4 17h0M20 7h0']);
   const viewHeading=document.createElement("header");viewHeading.className="admin-view-heading";const viewTitle=document.createElement("h4");const viewSummary=document.createElement("p");viewHeading.append(viewTitle,viewSummary);content.prepend(viewHeading);
@@ -1221,7 +1221,7 @@ function create(context){
 
 
 
- function dispose(){correctionAdmin?.dispose();routeDraftAdmin?.dispose();adAdmin?.dispose();adminReadFlights.clear();sectionRequests.clear();sectionChecks.clear();memberDetails?.dispose();adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();commercialAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
+ function dispose(){correctionAdmin?.dispose();routeDraftAdmin?.dispose();adminReadFlights.clear();sectionRequests.clear();sectionChecks.clear();memberDetails?.dispose();adminTrafficRequest++;adminShell?.dispose();clearMemberInventory();affiliateAdmin?.clear();commercialAdmin?.clear();stopLiveVisitors();document.getElementById('admin-overlay')?.remove();}
  return Object.freeze({open:openAdminDashboard,openCorrections:async()=>{selectAdminView('corrections',true);await correctionAdmin?.load();},renderReports:renderAdminList,dispose});
 }
 root.PawAdminPanel=Object.freeze({create});

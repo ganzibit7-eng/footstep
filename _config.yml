@@ -7,6 +7,15 @@ exclude:
   - tests
   - supabase
   - infrastructure
+  # Monetization is paused. Keep past configuration in the repository only.
+  - assets/advertising
+  - advertising.css
+  - advertising.js
+  - admin-advertising.js
+  - shopping-config.js
+  - shopping.js
+  - trip-stays.css
+  - trip-stays.json
   - data/pet-access-review-holds-20261111.json
   - assets/place-photos
   # Identical originals are already delivered by the photo host.
