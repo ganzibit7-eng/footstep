@@ -15,7 +15,7 @@
     const camping=description.match(/고캠핑 반려동물 출입 안내:\s*([^·]+)/)?.[1].trim();
     if(size.startsWith('미확인')&&camping&&/소형견/.test(camping))size=camping+' · 세부 체중 기준 미확인';
     const rows=[{label:'허용 구역·제한',value:clean(verified?.acmpyTypeCd)?clean(verified.acmpyTypeCd)+(detail.startsWith('미확인')?'':' · '+detail):scope},{label:'견종·크기 조건',value:size},{label:'필수 준비물',value:clean(verified?.acmpyNeedMtr)||field(['동반시 필요사항','동반 시 필요사항'])},{label:'문의',value:field(['문의','문의처'])}];
-    if(rows[3].value.startsWith('미확인')&&visit?.phone)rows[3].value=visit.phone+' · 공식 관광자료 연락처 ('+visit.checked+')';
+    if(rows[3].value.startsWith('미확인')&&visit?.phone)rows[3].value=visit.phone+' · '+(visit.sourceLabel?'매장 공개 연락처':'공식 관광자료 연락처')+' ('+visit.checked+')';
     if(current){
       const facts=current.facts,access=clean(facts['반려동물 출입']);
       rows[0].value='고캠핑 공식 안내: '+access+' · 세부 허용 구역은 방문 전 문의';
@@ -35,7 +35,9 @@
   function listingPanel(place){
     const r=(evidence||root.PlaceEvidence)?.listing?.(place);
     if(!r||r.source!=='https://www.foodsafetykorea.go.kr/portal/petKorea.do')return '';
-    return '<details class="place-official-listing place-official-notes"><summary>식품안전나라 등록 현황</summary><p>반려동물 동반 가능 업소 현황에서 같은 상호·주소로 등재된 것을 확인했습니다.</p><p>목록 대조 '+escape(r.checked)+' · '+escape(r.businessType)+'</p><p>이 목록에는 견종·체중·실내 출입·준비물별 기준이 없어 세부 조건은 미확인입니다. 현재 운영과 현장 출입 조건은 방문 전 업소에 확인해 주세요.</p><p><a href="'+escape(r.source)+'" target="_blank" rel="noopener noreferrer">공식 등록 현황 ↗</a></p></details>';
+    const otherConditions=(evidence||root.PlaceEvidence)?.operator?.(place);
+    const listingNote=otherConditions?'세부 조건은 별도로 확인한 매장 안내를 참고해 주세요.':'이 목록에는 견종·체중·실내 출입·준비물별 기준이 없어 세부 조건은 미확인입니다. 현재 운영과 현장 출입 조건은 방문 전 업소에 확인해 주세요.';
+    return '<details class="place-official-listing place-official-notes"><summary>식품안전나라 등록 현황</summary><p>반려동물 동반 가능 업소 현황에서 같은 상호·주소로 등재된 것을 확인했습니다.</p><p>목록 대조 '+escape(r.checked)+' · '+escape(r.businessType)+'</p><p>'+listingNote+'</p><p><a href="'+escape(r.source)+'" target="_blank" rel="noopener noreferrer">공식 등록 현황 ↗</a></p></details>';
   }
   function culturePanel(place){
     const info=(evidence||root.PlaceEvidence)?.culture?.(place);if(!info)return '';
@@ -48,17 +50,17 @@
     if(!rows.length)return '';
     return '<details class="place-cultural-info" style="margin:16px 0;padding:16px;border:1px solid #ddd3c4;border-radius:12px;background:#fffef9"><summary style="font-weight:700;cursor:pointer">공공자료의 동반 조건 · '+escape(info.written)+' 기록</summary><p role="note" style="font-size:13px;line-height:1.7;color:#6b5143">과거에 작성된 참고 자료입니다. 현재 동반 허용·크기·요금이 확인된 정보가 아니며, 위의 최근 안내와 다를 수 있습니다. 방문 전 운영기관에 확인해 주세요.</p><dl>'+rows.map(row=>'<div style="margin:10px 0"><dt style="font-size:12px;font-weight:700">'+escape(row.label)+'</dt><dd style="margin:4px 0 0;font-size:14px;line-height:1.7;overflow-wrap:anywhere">'+escape(row.value)+'</dd></div>').join('')+'</dl><p style="font-size:12px;line-height:1.7"><a href="https://www.data.go.kr/data/15111389/fileData.do" target="_blank" rel="noopener noreferrer">한국문화정보원 공공자료 ↗</a><br>자료 작성 '+escape(info.written)+' · 발자국 자료 대조 '+escape(info.checked)+'<br>자료 대조일은 운영정책 갱신일·현장 확인일과 다릅니다.</p></details>';
   }
-  function visitPanel(place){const info=(evidence||root.PlaceEvidence)?.visit?.(place);if(!info)return '';return '<details class="place-visit-info" style="margin:16px 0;padding:16px;border:1px solid #ddd3c4;border-radius:12px;background:#fffef9"><summary style="font-weight:700;cursor:pointer">운영시간·주차·공식 이용 안내</summary><dl style="margin:14px 0">'+info.rows.map(row=>'<div style="margin:10px 0"><dt style="font-weight:700;font-size:13px">'+escape(row.label)+'</dt><dd style="margin:4px 0 0;white-space:pre-line;font-size:14px;line-height:1.7">'+escape(row.value)+'</dd></div>').join('')+'</dl>'+(info.petNotes.length?'<h3 style="font-size:15px">반려견 관련 추가 안내</h3>'+info.petNotes.map(note=>'<p style="white-space:pre-line;font-size:14px;line-height:1.7">'+escape(note)+'</p>').join(''):'')+'<p style="font-size:12px;line-height:1.7"><a href="'+escape(info.source)+'" target="_blank" rel="noopener noreferrer">공식 관광 상세 자료 ↗</a> · 자료 조회 '+escape(info.checked)+'<br>방문 전 운영시간·요금·동반 조건을 운영기관에 확인해 주세요.</p></details>';}
-  function summary(place){const rows=get(place),caution=(evidence||root.PlaceEvidence)?.caution?.(place);return (caution?caution.summary+' · ':'')+rows[1].value+' · 준비물: '+rows[2].value;}
-  function source(place){const data=evidence||root.PlaceEvidence;return data?.camping?.(place)?.source||data?.intro?.(place)?.source||(data?.conditions(place)?data.get(place).source:'');}
+  function visitPanel(place){const info=(evidence||root.PlaceEvidence)?.visit?.(place);if(!info)return '';return '<details class="place-visit-info" style="margin:16px 0;padding:16px;border:1px solid #ddd3c4;border-radius:12px;background:#fffef9"><summary style="font-weight:700;cursor:pointer">운영시간·주차·공식 이용 안내</summary><dl style="margin:14px 0">'+info.rows.map(row=>'<div style="margin:10px 0"><dt style="font-weight:700;font-size:13px">'+escape(row.label)+'</dt><dd style="margin:4px 0 0;white-space:pre-line;font-size:14px;line-height:1.7">'+escape(row.value)+'</dd></div>').join('')+'</dl>'+(info.petNotes.length?'<h3 style="font-size:15px">반려견 관련 추가 안내</h3>'+info.petNotes.map(note=>'<p style="white-space:pre-line;font-size:14px;line-height:1.7">'+escape(note)+'</p>').join(''):'')+'<p style="font-size:12px;line-height:1.7"><a href="'+escape(info.source)+'" target="_blank" rel="noopener noreferrer">'+escape(info.sourceLabel||'공식 관광 상세 자료')+' ↗</a> · 자료 조회 '+escape(info.checked)+'<br>방문 전 운영시간·요금·동반 조건을 운영기관에 확인해 주세요.</p>'+(info.links||[]).map(link=>'<p><a href="'+escape(link.url)+'" target="_blank" rel="noopener noreferrer">'+escape(link.label)+' ↗</a></p>').join('')+'</details>';}
+  function summary(place){const data=evidence||root.PlaceEvidence,operator=data?.operator?.(place);if(operator)return operator.pet.acmpyTypeCd+' · 견종·체중은 매장 문의';const rows=get(place),caution=data?.caution?.(place);return (caution?caution.summary+' · ':'')+rows[1].value+' · 준비물: '+rows[2].value;}
+  function source(place){const data=evidence||root.PlaceEvidence;return data?.operator?.(place)?.source||data?.camping?.(place)?.source||data?.intro?.(place)?.source||(data?.conditions(place)?data.get(place).source:'');}
   function reportLink(place){
     const subject=encodeURIComponent('발자국 장소 정보 수정 제보: '+String(place?.name||'장소'));
     const body=encodeURIComponent('장소: '+String(place?.name||'')+'\n장소 ID: '+String(place?.id||'')+'\n변경된 내용:\n확인 가능한 공식 안내 주소 또는 확인 경위:\n');
     return '<a href="mailto:contact@balzaguk.com?subject='+subject+'&amp;body='+body+'" style="font-size:13px">정보 수정 제보 ↗</a>';
   }
   function freshness(place,now=Date.now()){
-    const data=evidence||root.PlaceEvidence,pet=data?.conditions(place),camp=data?.camping?.(place),record=data?.get?.(place),checked=pet?(record?.petChecked||record?.checked):camp?.checked;
-    if((pet||camp)&&/^\d{4}-\d{2}-\d{2}$/.test(checked||'')){const time=Date.parse(checked+'T00:00:00+09:00');if(Number.isFinite(time)&&new Date(time+9*3600000).toISOString().slice(0,10)===checked&&time<=now)return checked+' 공식 동반 자료 확인 · 당일 운영은 방문 전 확인';}
+    const data=evidence||root.PlaceEvidence,pet=data?.conditions(place),camp=data?.camping?.(place),operator=data?.operator?.(place),record=data?.get?.(place),checked=pet?(operator?.checked||record?.petChecked||record?.checked):camp?.checked;
+    if((pet||camp)&&/^\d{4}-\d{2}-\d{2}$/.test(checked||'')){const time=Date.parse(checked+'T00:00:00+09:00');if(Number.isFinite(time)&&new Date(time+9*3600000).toISOString().slice(0,10)===checked&&time<=now)return checked+(operator?' 매장 동반 안내 확인':' 공식 동반 자료 확인')+' · 당일 운영은 방문 전 확인';}
     const description=String(place?.description||'');
     const intro=data?.intro?.(place),introTime=Date.parse(String(intro?.checked)+'T00:00:00+09:00');
     if(intro&&/^\d{4}-\d{2}-\d{2}$/.test(intro.checked)&&Number.isFinite(introTime)&&new Date(introTime+9*3600000).toISOString().slice(0,10)===intro.checked&&introTime<=now)return intro.checked+' 공식 소개 대조 · 세부 허용 구역은 안내문·운영기관 확인';

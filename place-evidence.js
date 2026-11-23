@@ -9,8 +9,76 @@ const officialListingRecords=[{"id":"mfds_0091b9084df31dc1da87","name":"릴로�
 const officialListingById=new Map(officialListingRecords.map(r=>[r.id,r]));
 function listing(p){const r=officialListingById.get(String(p?.id));return r&&r.name===p.name&&r.address===p.address&&r.description===p.description&&p.lat!=null&&p.lng!=null&&Math.abs(Number(p.lat)-r.lat)<0.000001&&Math.abs(Number(p.lng)-r.lng)<0.000001?r:null;}
 const byId=new Map(records.map(r=>[r.id,r]));
-function get(p){const r=byId.get(String(p?.id));return r&&r.name===p.name&&r.address===p.address&&p.lat!=null&&p.lng!=null&&Math.abs(Number(p.lat)-r.lat)<0.000001&&Math.abs(Number(p.lng)-r.lng)<0.000001?r:null;}
+function samePlace(r,p){return r&&r.name===p.name&&r.address===p.address&&p.lat!=null&&p.lng!=null&&Math.abs(Number(p.lat)-r.lat)<0.000001&&Math.abs(Number(p.lng)-r.lng)<0.000001;}
+function get(p){const r=byId.get(String(p?.id));return samePlace(r,p)?r:null;}
 function bound(p,key){const r=get(p);return r&&r.description===p.description?r[key]||null:null;}
-const api=Object.freeze({get,culture,listing,conditions:p=>bound(p,'pet'),intro:p=>bound(p,'introAllowance'),camping:p=>bound(p,'camping'),caution:p=>bound(p,'caution'),notes:p=>bound(p,'tourNotes'),visit:p=>bound(p,'visitInfo')});
+const operatorRecords = [{
+    "id": "mfds_20261111_9b209c159c51fd0501",
+    "name": "동래이층",
+    "address": "부산광역시 동래구 명륜로 145(2층 명륜동)",
+    "lat": 35.2067636166973,
+    "lng": 129.081860093736,
+    "description": "식품안전나라 반려동물 동반 가능 업소 현황에 등재된 일반음식점입니다. 세부 동반 조건은 방문 전 업소에 확인해 주세요. · 공식안내: https://www.foodsafetykorea.go.kr/portal/petKorea.do 확인일: 2026-11-11",
+    "source": "https://www.daangn.com/kr/local-profile/%EB%8F%99%EB%9E%98%EC%9D%B4%EC%B8%B5-b1r2kui2f7im/",
+    "checked": "2026-11-23",
+    "pet": {
+      "acmpyTypeCd": "실내 홀과 야외 테라스(돔텐트) 동반 가능",
+      "acmpyNeedMtr": "마킹하는 반려견은 매너벨트 필수. 매장 안에서는 전용의자·이동장·목줄 등 현장 안전수칙을 따라 주세요. 예약 시 반려견 동반 여부를 알려주세요."
+    },
+    "visitInfo": {
+      "source": "https://www.daangn.com/kr/local-profile/%EB%8F%99%EB%9E%98%EC%9D%B4%EC%B8%B5-b1r2kui2f7im/",
+      "sourceLabel": "매장 공개 운영 안내",
+      "checked": "2026-11-23",
+      "phone": "051-555-1270",
+      "rows": [
+        {
+          "label": "상세 위치",
+          "value": "부산광역시 동래구 명륜로 145, 2층 (명륜동 564-9). 매장 안내 기준 1층 어바웃더슈트 쪽입니다."
+        },
+        {
+          "label": "문의처",
+          "value": "051-555-1270 (매장) · 0507-1411-5759 (안심번호)"
+        },
+        {
+          "label": "운영시간",
+          "value": "월~금 11:30~24:00, 브레이크타임 14:00~17:00\n토 17:00~24:00"
+        },
+        {
+          "label": "주문 마감",
+          "value": "평일 점심 13:30 · 월~토 저녁 23:00"
+        },
+        {
+          "label": "쉬는 날",
+          "value": "매주 일요일"
+        },
+        {
+          "label": "주차",
+          "value": "전용 주차장 없음. 건희주차장·동래역 공영주차장·메가마트 등 인근 유료주차장 이용 시 매장에서 2,000원 지원."
+        },
+        {
+          "label": "좌석",
+          "value": "실내 홀과 개별 난방이 있는 2~6인용 야외 돔텐트. 단체석·대관, 돔텐트 이용시간은 예약 시 확인해 주세요."
+        },
+        {
+          "label": "예약",
+          "value": "네이버 예약·캐치테이블·전화. 반려견 동반과 희망 좌석은 예약할 때 알려주세요."
+        }
+      ],
+      "petNotes": [],
+      "links": [
+        {
+          "label": "토요일 영업·테라스 안내",
+          "url": "https://www.tabling.co.kr/restaurant/11710"
+        },
+        {
+          "label": "식약처 반려동물 동반출입 음식점 이용 안내",
+          "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148960462"
+        }
+      ]
+    }
+  }];
+const operatorById = new Map(operatorRecords.map(record => [record.id, record]));
+function operator(p){const r=operatorById.get(String(p?.id));return samePlace(r,p)&&r.description===p.description?r:null;}
+const api=Object.freeze({get,culture,listing,operator,conditions:p=>operator(p)?.pet||bound(p,'pet'),intro:p=>bound(p,'introAllowance'),camping:p=>bound(p,'camping'),caution:p=>bound(p,'caution'),notes:p=>bound(p,'tourNotes'),visit:p=>operator(p)?.visitInfo||bound(p,'visitInfo')});
 if(typeof module==='object'&&module.exports)module.exports=api;else root.PlaceEvidence=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
