@@ -40,13 +40,31 @@ test('successful review and reload retain normal confirmation',async()=>{
  const f=inbox(false);await f.instance.load();await f.save();assert.match(f.messages.at(-1),/저장했어요/);f.instance.dispose();
 });
 
-for(const file of ['detail-editorial.js','route-experience.js'])test(file+' preserves query/hash for normal, copied and modified-click return links',()=>{
- const source=fs.readFileSync(file,'utf8'),a=source.indexOf(" const back=page.querySelector('[data-detail-back]');"),b=source.indexOf(" back?.addEventListener('click'",a),end=source.indexOf('\n',b);
- const snippet=source.slice(a,end);for(const ref of ['https://balzaguk.com/discover.html?q=광교&sort=relevance#find-place','https://evil.example/discover.html?q=bad','']){
-  let handler,backs=0;const link={href:'/discover.html?kind=facilities#find-place',addEventListener:(n,f)=>handler=f};const c={page:{querySelector:()=>link,querySelectorAll:()=>[]},document:{referrer:ref},location:{origin:'https://balzaguk.com'},history:{length:3,back(){backs++}},URL};
-  vm.runInNewContext(snippet,c);let prevented=0;handler({button:0,ctrlKey:true,preventDefault(){prevented++}});assert.equal(prevented,0);assert.equal(backs,0);
-  handler({button:0,preventDefault(){prevented++}});
-  if(ref.includes('https://balzaguk.com/')){assert.match(link.href,/q=%EA%B4%91%EA%B5%90&sort=relevance#find-place/);assert.equal(backs,1);}else{assert.equal(link.href,'/discover.html?kind=facilities#find-place');assert.equal(backs,0);}
+for(const file of ['detail-editorial.js','route-experience.js'])test(file+' returns to the originating search, regional guide or curated list',()=>{
+ const origin='https://balzaguk.com',fallback='/discover.html?kind=facilities#find-place';
+ const sources=[
+  ['/discover.html?q=광교&sort=relevance#find-place',true],['/with-dog/seoul/',true],
+  ['/guides/incheon-gpx-dog-walks/',true],['/weekend/',true],['/bins/b1/',true],
+  ['/pet-care/',true],['/admin-panel.html',false],['/guides-unrelated/',false],
+  ['https://example.org/guides/',false],['',false]
+ ];
+ for(const [source,eligible] of sources){
+  const referrer=source?new URL(source,origin).href:'';
+  let handler,backs=0,prevented=0;
+  const link={href:fallback,addEventListener:(name,callback)=>{if(name==='click')handler=callback;}};
+  const page={querySelector:selector=>selector==='[data-detail-back]'?link:null,querySelectorAll:()=>[]};
+  const history={length:1,back(){backs++;}};
+  vm.runInNewContext(fs.readFileSync(file,'utf8'),{
+   document:{querySelector:()=>page,referrer},location:{origin},history,URL
+  });
+  const expected=eligible?new URL(referrer):null;
+  assert.equal(link.href,expected?expected.pathname+expected.search+expected.hash:fallback,source);
+  const click=(overrides={})=>handler?.({button:0,preventDefault(){prevented++;},...overrides});
+  click();
+  history.length=3;
+  click({ctrlKey:true});click({metaKey:true});click({button:1});
+  assert.equal(backs,0);assert.equal(prevented,0);
+  click();assert.equal(backs,eligible?1:0);assert.equal(prevented,backs);
  }
 });
 test('weather no longer requests independent Pages builds; one serialized workflow owns requests',()=>{

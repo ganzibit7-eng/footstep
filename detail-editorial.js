@@ -38,7 +38,18 @@
  }));
  const back=page.querySelector('[data-detail-back]');
  // Keep ordinary click, copied links and modified/new-tab clicks on one return URL.
- try{const from=new URL(document.referrer);if(back&&from.origin===location.origin&&/^(\/$|\/discover\.html$|\/places\/|\/courses\/|\/pet-care\/|\/pet-life\/)/.test(from.pathname))back.href=from.pathname+from.search+from.hash;}catch{}
+ if(back&&document.referrer){
+  const originPage=new URL(document.referrer);
+  const browsePath=/^\/(?:$|discover\.html$|(?:places|courses|bins|pet-care|pet-life|with-dog|guides|weekend|dog-walks)\/)/;
+  if(originPage.origin===location.origin&&browsePath.test(originPage.pathname)){
+   back.href=originPage.pathname+originPage.search+originPage.hash;
+   back.addEventListener('click',event=>{
+    if(event.button||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||history.length<2)return;
+    event.preventDefault();
+    history.back();
+   });
+  }
+ }
  // Section navigation replaces this detail's hash instead of adding history
  // entries, so the list return action still restores the original list state.
  page.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
@@ -47,7 +58,6 @@
   event.preventDefault();if(target.tagName==='DETAILS')target.open=true;
   history.replaceState(history.state,'',link.getAttribute('href'));target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'start',inline:'nearest',behavior:reduced()?'instant':'smooth'});
  }));
- back?.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button)return;try{const from=new URL(document.referrer);if(from.origin===location.origin&&history.length>1&&/^(\/$|\/discover\.html$|\/places\/|\/courses\/|\/pet-care\/|\/pet-life\/)/.test(from.pathname)){event.preventDefault();history.back();}}catch{}});
  const gallery=page.querySelector('.detail-gallery-track');
  if(gallery){
   const slides=[...gallery.children],controls=page.querySelector('.detail-gallery-controls');let frame=0;

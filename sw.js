@@ -22,12 +22,37 @@ async function warmShell(){
 }
 self.addEventListener('install',event=>{event.waitUntil(warmShell().then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('balzaguk-shell-')&&k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+function offlineNotice(){
+ const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>인터넷 연결을 확인해 주세요 | 발자국</title><link rel="stylesheet" href="/internal-pages.css?v=20261026-quality8">
+<main class="wrap"><h1>인터넷 연결을 확인해 주세요</h1><p>이 기기에 저장된 페이지가 없어요. 다시 연결되면 이 주소에서 이어 볼 수 있어요.</p>
+<nav class="quick-links" aria-label="페이지 이동"><a href="">다시 시도</a><a href="/">발자국 홈</a></nav></main></html>`;
+ return new Response(html,{status:503,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}});
+}
 self.addEventListener('fetch',event=>{
  if(event.request.method!=='GET')return;
  const url=new URL(event.request.url),navigation=url.origin===self.location.origin&&event.request.mode==='navigate';
  if(url.origin===self.location.origin&&/^\/(?:admin-panel\.(?:html|js|css)|admin-affiliate\.js|admin-bot-panel\.js)$/.test(url.pathname))return;
  if(!navigation&&!allowed.has(url.href))return;
- event.respondWith(fetch(event.request,navigation?{cache:'no-cache'}:undefined).then(response=>{if(response.ok&&(allowed.has(url.href)||navigation)){const copy=response.clone();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)).catch(()=>{}));}return response;}).catch(async()=>{const cache=await caches.open(CACHE_NAME);const hit=await cache.match(event.request);if(hit)return hit;if(navigation)return (await cache.match('./index.html'))||Response.error();return Response.error();}));
+ event.respondWith(fetch(event.request,navigation?{cache:'no-cache'}:undefined).then(response=>{
+  if(response.ok){
+   const copy=response.clone();
+   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.put(event.request,copy)).catch(()=>{}));
+  }else if(navigation&&(response.status===404||response.status===410)){
+   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.delete(event.request,{ignoreSearch:true})).catch(()=>{}));
+  }
+  return response;
+ }).catch(async()=>{
+  const cache=await caches.open(CACHE_NAME).catch(()=>null);
+  const hit=await cache?.match(event.request);
+  if(hit)return hit;
+  if(!navigation)return Response.error();
+  if(url.pathname==='/'||url.pathname==='/index.html'){
+   const home=await cache?.match('./index.html')||await cache?.match('./');
+   if(home)return home;
+  }
+  return offlineNotice();
+ }));
 });
 
 SHELL_FILES.push("course-expansion-20261017.js?v=20261114-walks-pedestrian");
